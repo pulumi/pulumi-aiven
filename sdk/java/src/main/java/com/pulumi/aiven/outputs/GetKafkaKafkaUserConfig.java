@@ -8,6 +8,7 @@ import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafka;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
+import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaConnectPluginVersion;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProvider;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaRestConfig;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaSaslMechanisms;
@@ -90,6 +91,11 @@ public final class GetKafkaKafkaUserConfig {
      * 
      */
     private @Nullable GetKafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
+    /**
+     * @return The plugin selected by the user
+     * 
+     */
+    private @Nullable List<GetKafkaKafkaUserConfigKafkaConnectPluginVersion> kafkaConnectPluginVersions;
     private @Nullable List<GetKafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders;
     /**
      * @return Enable Kafka-REST service. Default: `false`.
@@ -253,6 +259,13 @@ public final class GetKafkaKafkaUserConfig {
     public Optional<GetKafkaKafkaUserConfigKafkaConnectConfig> kafkaConnectConfig() {
         return Optional.ofNullable(this.kafkaConnectConfig);
     }
+    /**
+     * @return The plugin selected by the user
+     * 
+     */
+    public List<GetKafkaKafkaUserConfigKafkaConnectPluginVersion> kafkaConnectPluginVersions() {
+        return this.kafkaConnectPluginVersions == null ? List.of() : this.kafkaConnectPluginVersions;
+    }
     public List<GetKafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders() {
         return this.kafkaConnectSecretProviders == null ? List.of() : this.kafkaConnectSecretProviders;
     }
@@ -382,6 +395,7 @@ public final class GetKafkaKafkaUserConfig {
         private @Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
         private @Nullable Boolean kafkaConnect;
         private @Nullable GetKafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
+        private @Nullable List<GetKafkaKafkaUserConfigKafkaConnectPluginVersion> kafkaConnectPluginVersions;
         private @Nullable List<GetKafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders;
         private @Nullable Boolean kafkaRest;
         private @Nullable Boolean kafkaRestAuthorization;
@@ -412,6 +426,7 @@ public final class GetKafkaKafkaUserConfig {
     	      this.kafkaAuthenticationMethods = defaults.kafkaAuthenticationMethods;
     	      this.kafkaConnect = defaults.kafkaConnect;
     	      this.kafkaConnectConfig = defaults.kafkaConnectConfig;
+    	      this.kafkaConnectPluginVersions = defaults.kafkaConnectPluginVersions;
     	      this.kafkaConnectSecretProviders = defaults.kafkaConnectSecretProviders;
     	      this.kafkaRest = defaults.kafkaRest;
     	      this.kafkaRestAuthorization = defaults.kafkaRestAuthorization;
@@ -504,6 +519,15 @@ public final class GetKafkaKafkaUserConfig {
 
             this.kafkaConnectConfig = kafkaConnectConfig;
             return this;
+        }
+        @CustomType.Setter
+        public Builder kafkaConnectPluginVersions(@Nullable List<GetKafkaKafkaUserConfigKafkaConnectPluginVersion> kafkaConnectPluginVersions) {
+
+            this.kafkaConnectPluginVersions = kafkaConnectPluginVersions;
+            return this;
+        }
+        public Builder kafkaConnectPluginVersions(GetKafkaKafkaUserConfigKafkaConnectPluginVersion... kafkaConnectPluginVersions) {
+            return kafkaConnectPluginVersions(List.of(kafkaConnectPluginVersions));
         }
         @CustomType.Setter
         public Builder kafkaConnectSecretProviders(@Nullable List<GetKafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders) {
@@ -617,6 +641,7 @@ public final class GetKafkaKafkaUserConfig {
             _resultValue.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
             _resultValue.kafkaConnect = kafkaConnect;
             _resultValue.kafkaConnectConfig = kafkaConnectConfig;
+            _resultValue.kafkaConnectPluginVersions = kafkaConnectPluginVersions;
             _resultValue.kafkaConnectSecretProviders = kafkaConnectSecretProviders;
             _resultValue.kafkaRest = kafkaRest;
             _resultValue.kafkaRestAuthorization = kafkaRestAuthorization;

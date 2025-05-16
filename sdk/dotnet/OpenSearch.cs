@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
+    /// Creates and manages an [Aiven for OpenSearch®](https://aiven.io/docs/products/opensearch) service.
     /// 
     /// ## Example Usage
     /// 
@@ -22,17 +22,16 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var os1 = new Aiven.OpenSearch("os1", new()
+    ///     var exampleOpensearch = new Aiven.OpenSearch("example_opensearch", new()
     ///     {
-    ///         Project = pr1.Project,
+    ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-4",
-    ///         ServiceName = "my-os1",
+    ///         ServiceName = "example-opensearch",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "10:00:00",
     ///         OpensearchUserConfig = new Aiven.Inputs.OpenSearchOpensearchUserConfigArgs
     ///         {
-    ///             OpensearchVersion = "1",
     ///             OpensearchDashboards = new Aiven.Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs
     ///             {
     ///                 Enabled = true,
@@ -52,7 +51,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
+    /// $ pulumi import aiven:index/openSearch:OpenSearch example_opensearch PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/openSearch:OpenSearch")]
@@ -125,7 +124,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.OpenSearchOpensearchUserConfig?> OpensearchUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// OpenSearch server provided values
+        /// Values provided by the OpenSearch server.
         /// </summary>
         [Output("opensearches")]
         public Output<ImmutableArray<Outputs.OpenSearchOpensearch>> Opensearches { get; private set; } = null!;
@@ -315,7 +314,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OpenSearchOpensearchArgs>? _opensearches;
 
         /// <summary>
-        /// OpenSearch server provided values
+        /// Values provided by the OpenSearch server.
         /// </summary>
         public InputList<Inputs.OpenSearchOpensearchArgs> Opensearches
         {
@@ -489,7 +488,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OpenSearchOpensearchGetArgs>? _opensearches;
 
         /// <summary>
-        /// OpenSearch server provided values
+        /// Values provided by the OpenSearch server.
         /// </summary>
         public InputList<Inputs.OpenSearchOpensearchGetArgs> Opensearches
         {

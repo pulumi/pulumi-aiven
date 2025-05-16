@@ -4,31 +4,40 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetOrganizationProjectTag;
+import com.pulumi.aiven.outputs.GetOrganizationProjectTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationProjectResult {
     /**
-     * @return Billing group ID to assign to the project.
+     * @return Valid port number (1-65535) to use as a base for service port allocation.
+     * 
+     */
+    private Integer basePort;
+    /**
+     * @return Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
      * 
      */
     private String billingGroupId;
     /**
-     * @return The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * @return PEM encoded certificate.
      * 
      */
     private String caCert;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID, a composite of `organization_id` and `project_id` IDs.
      * 
      */
     private String id;
     /**
-     * @return ID of an organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization.
      * 
      */
     private String organizationId;
@@ -38,7 +47,7 @@ public final class GetOrganizationProjectResult {
      */
     private String parentId;
     /**
-     * @return Unique identifier for the project that also serves as the project name.
+     * @return The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
      * 
      */
     private String projectId;
@@ -46,37 +55,45 @@ public final class GetOrganizationProjectResult {
      * @return Tags are key-value pairs that allow you to categorize projects.
      * 
      */
-    private List<GetOrganizationProjectTag> tags;
+    private @Nullable List<GetOrganizationProjectTag> tags;
     /**
      * @return The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It&#39;s good practice to keep these up-to-date to be aware of any potential issues with your project.
      * 
      */
     private List<String> technicalEmails;
+    private @Nullable GetOrganizationProjectTimeouts timeouts;
 
     private GetOrganizationProjectResult() {}
     /**
-     * @return Billing group ID to assign to the project.
+     * @return Valid port number (1-65535) to use as a base for service port allocation.
+     * 
+     */
+    public Integer basePort() {
+        return this.basePort;
+    }
+    /**
+     * @return Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
      * 
      */
     public String billingGroupId() {
         return this.billingGroupId;
     }
     /**
-     * @return The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * @return PEM encoded certificate.
      * 
      */
     public String caCert() {
         return this.caCert;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID, a composite of `organization_id` and `project_id` IDs.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return ID of an organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
@@ -90,7 +107,7 @@ public final class GetOrganizationProjectResult {
         return this.parentId;
     }
     /**
-     * @return Unique identifier for the project that also serves as the project name.
+     * @return The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
      * 
      */
     public String projectId() {
@@ -101,7 +118,7 @@ public final class GetOrganizationProjectResult {
      * 
      */
     public List<GetOrganizationProjectTag> tags() {
-        return this.tags;
+        return this.tags == null ? List.of() : this.tags;
     }
     /**
      * @return The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It&#39;s good practice to keep these up-to-date to be aware of any potential issues with your project.
@@ -109,6 +126,9 @@ public final class GetOrganizationProjectResult {
      */
     public List<String> technicalEmails() {
         return this.technicalEmails;
+    }
+    public Optional<GetOrganizationProjectTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     public static Builder builder() {
@@ -120,17 +140,20 @@ public final class GetOrganizationProjectResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer basePort;
         private String billingGroupId;
         private String caCert;
         private String id;
         private String organizationId;
         private String parentId;
         private String projectId;
-        private List<GetOrganizationProjectTag> tags;
+        private @Nullable List<GetOrganizationProjectTag> tags;
         private List<String> technicalEmails;
+        private @Nullable GetOrganizationProjectTimeouts timeouts;
         public Builder() {}
         public Builder(GetOrganizationProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.basePort = defaults.basePort;
     	      this.billingGroupId = defaults.billingGroupId;
     	      this.caCert = defaults.caCert;
     	      this.id = defaults.id;
@@ -139,8 +162,17 @@ public final class GetOrganizationProjectResult {
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
     	      this.technicalEmails = defaults.technicalEmails;
+    	      this.timeouts = defaults.timeouts;
         }
 
+        @CustomType.Setter
+        public Builder basePort(Integer basePort) {
+            if (basePort == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationProjectResult", "basePort");
+            }
+            this.basePort = basePort;
+            return this;
+        }
         @CustomType.Setter
         public Builder billingGroupId(String billingGroupId) {
             if (billingGroupId == null) {
@@ -190,10 +222,8 @@ public final class GetOrganizationProjectResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(List<GetOrganizationProjectTag> tags) {
-            if (tags == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationProjectResult", "tags");
-            }
+        public Builder tags(@Nullable List<GetOrganizationProjectTag> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -211,8 +241,15 @@ public final class GetOrganizationProjectResult {
         public Builder technicalEmails(String... technicalEmails) {
             return technicalEmails(List.of(technicalEmails));
         }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetOrganizationProjectTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
         public GetOrganizationProjectResult build() {
             final var _resultValue = new GetOrganizationProjectResult();
+            _resultValue.basePort = basePort;
             _resultValue.billingGroupId = billingGroupId;
             _resultValue.caCert = caCert;
             _resultValue.id = id;
@@ -221,6 +258,7 @@ public final class GetOrganizationProjectResult {
             _resultValue.projectId = projectId;
             _resultValue.tags = tags;
             _resultValue.technicalEmails = technicalEmails;
+            _resultValue.timeouts = timeouts;
             return _resultValue;
         }
     }

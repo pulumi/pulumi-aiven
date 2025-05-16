@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The OpenSearch User resource allows the creation and management of Aiven OpenSearch Users.
+ * Creates and manages an Aiven for OpenSearch® service user.
  *
  * ## Example Usage
  *
@@ -13,18 +13,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = new aiven.OpensearchUser("foo", {
- *     serviceName: bar.serviceName,
- *     project: "my-project",
- *     username: "user-1",
- *     password: "Test$1234",
+ * const exampleOpensearchUser = new aiven.OpensearchUser("example_opensearch_user", {
+ *     serviceName: exampleOpensearch.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-opensearch-user",
+ *     password: opensearchUserPassword,
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/opensearchUser:OpensearchUser foo PROJECT/SERVICE_NAME/USERNAME
+ * $ pulumi import aiven:index/opensearchUser:OpensearchUser example_opensearch_user PROJECT/SERVICE_NAME/USERNAME
  * ```
  */
 export class OpensearchUser extends pulumi.CustomResource {
@@ -56,7 +56,7 @@ export class OpensearchUser extends pulumi.CustomResource {
     }
 
     /**
-     * The password of the OpenSearch User.
+     * The OpenSearch service user's password.
      */
     public readonly password!: pulumi.Output<string>;
     /**
@@ -68,11 +68,11 @@ export class OpensearchUser extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -123,7 +123,7 @@ export class OpensearchUser extends pulumi.CustomResource {
  */
 export interface OpensearchUserState {
     /**
-     * The password of the OpenSearch User.
+     * The OpenSearch service user's password.
      */
     password?: pulumi.Input<string>;
     /**
@@ -135,11 +135,11 @@ export interface OpensearchUserState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     type?: pulumi.Input<string>;
     /**
-     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
 }
@@ -149,7 +149,7 @@ export interface OpensearchUserState {
  */
 export interface OpensearchUserArgs {
     /**
-     * The password of the OpenSearch User.
+     * The OpenSearch service user's password.
      */
     password?: pulumi.Input<string>;
     /**
@@ -161,7 +161,7 @@ export interface OpensearchUserArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

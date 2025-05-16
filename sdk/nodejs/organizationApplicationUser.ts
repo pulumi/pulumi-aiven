@@ -63,6 +63,8 @@ export class OrganizationApplicationUser extends pulumi.CustomResource {
     public /*out*/ readonly email!: pulumi.Output<string>;
     /**
      * Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
      */
     public readonly isSuperAdmin!: pulumi.Output<boolean | undefined>;
     /**
@@ -122,6 +124,8 @@ export interface OrganizationApplicationUserState {
     email?: pulumi.Input<string>;
     /**
      * Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
      */
     isSuperAdmin?: pulumi.Input<boolean>;
     /**
@@ -144,6 +148,8 @@ export interface OrganizationApplicationUserState {
 export interface OrganizationApplicationUserArgs {
     /**
      * Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
      */
     isSuperAdmin?: pulumi.Input<boolean>;
     /**

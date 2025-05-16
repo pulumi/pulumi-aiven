@@ -100,16 +100,31 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationProjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of an organization. Changing this property forces recreation of the resource.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier for the project that also serves as the project name.
+        /// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
+
+        [Input("tags")]
+        private List<Inputs.GetOrganizationProjectTagArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize projects.
+        /// </summary>
+        public List<Inputs.GetOrganizationProjectTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new List<Inputs.GetOrganizationProjectTagArgs>());
+            set => _tags = value;
+        }
+
+        [Input("timeouts")]
+        public Inputs.GetOrganizationProjectTimeoutsArgs? Timeouts { get; set; }
 
         public GetOrganizationProjectArgs()
         {
@@ -120,16 +135,31 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of an organization. Changing this property forces recreation of the resource.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier for the project that also serves as the project name.
+        /// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        [Input("tags")]
+        private InputList<Inputs.GetOrganizationProjectTagInputArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize projects.
+        /// </summary>
+        public InputList<Inputs.GetOrganizationProjectTagInputArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.GetOrganizationProjectTagInputArgs>());
+            set => _tags = value;
+        }
+
+        [Input("timeouts")]
+        public Input<Inputs.GetOrganizationProjectTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetOrganizationProjectInvokeArgs()
         {
@@ -142,19 +172,23 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationProjectResult
     {
         /// <summary>
-        /// Billing group ID to assign to the project.
+        /// Valid port number (1-65535) to use as a base for service port allocation.
+        /// </summary>
+        public readonly int BasePort;
+        /// <summary>
+        /// Billing group ID to assign to the project. It's required when moving projects between organizations.
         /// </summary>
         public readonly string BillingGroupId;
         /// <summary>
-        /// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        /// PEM encoded certificate.
         /// </summary>
         public readonly string CaCert;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID, a composite of `organization_id` and `project_id` IDs.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// ID of an organization. Changing this property forces recreation of the resource.
+        /// ID of an organization.
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
@@ -162,7 +196,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ParentId;
         /// <summary>
-        /// Unique identifier for the project that also serves as the project name.
+        /// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
@@ -173,9 +207,12 @@ namespace Pulumi.Aiven
         /// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         /// </summary>
         public readonly ImmutableArray<string> TechnicalEmails;
+        public readonly Outputs.GetOrganizationProjectTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetOrganizationProjectResult(
+            int basePort,
+
             string billingGroupId,
 
             string caCert,
@@ -190,8 +227,11 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetOrganizationProjectTagResult> tags,
 
-            ImmutableArray<string> technicalEmails)
+            ImmutableArray<string> technicalEmails,
+
+            Outputs.GetOrganizationProjectTimeoutsResult? timeouts)
         {
+            BasePort = basePort;
             BillingGroupId = billingGroupId;
             CaCert = caCert;
             Id = id;
@@ -200,6 +240,7 @@ namespace Pulumi.Aiven
             ProjectId = projectId;
             Tags = tags;
             TechnicalEmails = technicalEmails;
+            Timeouts = timeouts;
         }
     }
 }

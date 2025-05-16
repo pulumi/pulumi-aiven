@@ -12,7 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
+// Enables access control for an Aiven for OpenSearch® service.
+//
+// By default, service users are granted full access rights. To limit their access, you can enable access control and create ACLs
+// that define permissions and patterns. Alternatively, you can enable OpenSearch Security management
+// to manage users and permissions with the OpenSearch Security dashboard.
 //
 // ## Example Usage
 //
@@ -28,34 +32,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := aiven.LookupProject(ctx, &aiven.LookupProjectArgs{
-//				Project: "example_project",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			bar, err := aiven.NewOpenSearch(ctx, "bar", &aiven.OpenSearchArgs{
-//				Project:               pulumi.String(foo.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("startup-4"),
-//				ServiceName:           pulumi.String("example_service_name"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewOpensearchUser(ctx, "foo", &aiven.OpensearchUserArgs{
-//				ServiceName: bar.ServiceName,
-//				Project:     pulumi.String(foo.Project),
-//				Username:    pulumi.String("user-example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewOpenSearchAclConfig(ctx, "foo", &aiven.OpenSearchAclConfigArgs{
-//				Project:     pulumi.String(foo.Project),
-//				ServiceName: bar.ServiceName,
+//			_, err := aiven.NewOpenSearchAclConfig(ctx, "main", &aiven.OpenSearchAclConfigArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleOpensearch.ServiceName),
 //				Enabled:     pulumi.Bool(true),
 //				ExtendedAcl: pulumi.Bool(false),
 //			})
@@ -70,11 +49,13 @@ import (
 //
 // ## Import
 //
-// TERRAFORM IMPORT AIVEN_OPENSEARCH_ACL_CONFIG.FOO project/service_name
+// ```sh
+// $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig main PROJECT/SERVICE_NAME
+// ```
 type OpenSearchAclConfig struct {
 	pulumi.CustomResourceState
 
-	// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+	// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
 	ExtendedAcl pulumi.BoolPtrOutput `pulumi:"extendedAcl"`
@@ -120,7 +101,7 @@ func GetOpenSearchAclConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OpenSearchAclConfig resources.
 type openSearchAclConfigState struct {
-	// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+	// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
 	Enabled *bool `pulumi:"enabled"`
 	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
 	ExtendedAcl *bool `pulumi:"extendedAcl"`
@@ -131,7 +112,7 @@ type openSearchAclConfigState struct {
 }
 
 type OpenSearchAclConfigState struct {
-	// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+	// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
 	Enabled pulumi.BoolPtrInput
 	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
 	ExtendedAcl pulumi.BoolPtrInput
@@ -146,7 +127,7 @@ func (OpenSearchAclConfigState) ElementType() reflect.Type {
 }
 
 type openSearchAclConfigArgs struct {
-	// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+	// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
 	Enabled *bool `pulumi:"enabled"`
 	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
 	ExtendedAcl *bool `pulumi:"extendedAcl"`
@@ -158,7 +139,7 @@ type openSearchAclConfigArgs struct {
 
 // The set of arguments for constructing a OpenSearchAclConfig resource.
 type OpenSearchAclConfigArgs struct {
-	// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+	// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
 	Enabled pulumi.BoolPtrInput
 	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
 	ExtendedAcl pulumi.BoolPtrInput
@@ -255,7 +236,7 @@ func (o OpenSearchAclConfigOutput) ToOpenSearchAclConfigOutputWithContext(ctx co
 	return o
 }
 
-// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
 func (o OpenSearchAclConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OpenSearchAclConfig) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }

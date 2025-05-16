@@ -17,62 +17,31 @@ import (
 // **This resource is in the beta stage and may change without notice.** Set
 // the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganizationProject(ctx, "foo", &aiven.OrganizationProjectArgs{
-//				ProjectId:      pulumi.String("example-project"),
-//				OrganizationId: pulumi.Any(fooAivenOrganization.Id),
-//				BillingGroupId: pulumi.Any(fooAivenBillingGroup.Id),
-//				Tags: aiven.OrganizationProjectTagArray{
-//					&aiven.OrganizationProjectTagArgs{
-//						Key:   pulumi.String("key_1"),
-//						Value: pulumi.String("value_1"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/organizationProject:OrganizationProject main ORGANIZATION_ID/PROJECT_ID
+// $ pulumi import aiven:index/organizationProject:OrganizationProject example_project ORGANIZATION_ID/PROJECT_ID
 // ```
 type OrganizationProject struct {
 	pulumi.CustomResourceState
 
-	// Billing group ID to assign to the project.
+	// Valid port number (1-65535) to use as a base for service port allocation.
+	BasePort pulumi.IntOutput `pulumi:"basePort"`
+	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
-	// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+	// PEM encoded certificate.
 	CaCert pulumi.StringOutput `pulumi:"caCert"`
-	// ID of an organization. Changing this property forces recreation of the resource.
+	// ID of an organization. Maximum length: `36`.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
-	// Unique identifier for the project that also serves as the project name.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags OrganizationProjectTagArrayOutput `pulumi:"tags"`
 	// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
-	TechnicalEmails pulumi.StringArrayOutput `pulumi:"technicalEmails"`
+	TechnicalEmails pulumi.StringArrayOutput             `pulumi:"technicalEmails"`
+	Timeouts        OrganizationProjectTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewOrganizationProject registers a new resource with the given unique name, arguments, and options.
@@ -121,37 +90,43 @@ func GetOrganizationProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationProject resources.
 type organizationProjectState struct {
-	// Billing group ID to assign to the project.
+	// Valid port number (1-65535) to use as a base for service port allocation.
+	BasePort *int `pulumi:"basePort"`
+	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId *string `pulumi:"billingGroupId"`
-	// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+	// PEM encoded certificate.
 	CaCert *string `pulumi:"caCert"`
-	// ID of an organization. Changing this property forces recreation of the resource.
+	// ID of an organization. Maximum length: `36`.
 	OrganizationId *string `pulumi:"organizationId"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
-	// Unique identifier for the project that also serves as the project name.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags []OrganizationProjectTag `pulumi:"tags"`
 	// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
-	TechnicalEmails []string `pulumi:"technicalEmails"`
+	TechnicalEmails []string                     `pulumi:"technicalEmails"`
+	Timeouts        *OrganizationProjectTimeouts `pulumi:"timeouts"`
 }
 
 type OrganizationProjectState struct {
-	// Billing group ID to assign to the project.
+	// Valid port number (1-65535) to use as a base for service port allocation.
+	BasePort pulumi.IntPtrInput
+	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId pulumi.StringPtrInput
-	// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+	// PEM encoded certificate.
 	CaCert pulumi.StringPtrInput
-	// ID of an organization. Changing this property forces recreation of the resource.
+	// ID of an organization. Maximum length: `36`.
 	OrganizationId pulumi.StringPtrInput
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
-	// Unique identifier for the project that also serves as the project name.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
 	ProjectId pulumi.StringPtrInput
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags OrganizationProjectTagArrayInput
 	// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
+	Timeouts        OrganizationProjectTimeoutsPtrInput
 }
 
 func (OrganizationProjectState) ElementType() reflect.Type {
@@ -159,34 +134,40 @@ func (OrganizationProjectState) ElementType() reflect.Type {
 }
 
 type organizationProjectArgs struct {
-	// Billing group ID to assign to the project.
+	// Valid port number (1-65535) to use as a base for service port allocation.
+	BasePort *int `pulumi:"basePort"`
+	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId string `pulumi:"billingGroupId"`
-	// ID of an organization. Changing this property forces recreation of the resource.
+	// ID of an organization. Maximum length: `36`.
 	OrganizationId string `pulumi:"organizationId"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId string `pulumi:"parentId"`
-	// Unique identifier for the project that also serves as the project name.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
 	ProjectId string `pulumi:"projectId"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags []OrganizationProjectTag `pulumi:"tags"`
 	// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
-	TechnicalEmails []string `pulumi:"technicalEmails"`
+	TechnicalEmails []string                     `pulumi:"technicalEmails"`
+	Timeouts        *OrganizationProjectTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a OrganizationProject resource.
 type OrganizationProjectArgs struct {
-	// Billing group ID to assign to the project.
+	// Valid port number (1-65535) to use as a base for service port allocation.
+	BasePort pulumi.IntPtrInput
+	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId pulumi.StringInput
-	// ID of an organization. Changing this property forces recreation of the resource.
+	// ID of an organization. Maximum length: `36`.
 	OrganizationId pulumi.StringInput
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringInput
-	// Unique identifier for the project that also serves as the project name.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
 	ProjectId pulumi.StringInput
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags OrganizationProjectTagArrayInput
 	// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
+	Timeouts        OrganizationProjectTimeoutsPtrInput
 }
 
 func (OrganizationProjectArgs) ElementType() reflect.Type {
@@ -276,17 +257,22 @@ func (o OrganizationProjectOutput) ToOrganizationProjectOutputWithContext(ctx co
 	return o
 }
 
-// Billing group ID to assign to the project.
+// Valid port number (1-65535) to use as a base for service port allocation.
+func (o OrganizationProjectOutput) BasePort() pulumi.IntOutput {
+	return o.ApplyT(func(v *OrganizationProject) pulumi.IntOutput { return v.BasePort }).(pulumi.IntOutput)
+}
+
+// Billing group ID to assign to the project. It's required when moving projects between organizations.
 func (o OrganizationProjectOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.BillingGroupId }).(pulumi.StringOutput)
 }
 
-// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+// PEM encoded certificate.
 func (o OrganizationProjectOutput) CaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.CaCert }).(pulumi.StringOutput)
 }
 
-// ID of an organization. Changing this property forces recreation of the resource.
+// ID of an organization. Maximum length: `36`.
 func (o OrganizationProjectOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
@@ -296,7 +282,7 @@ func (o OrganizationProjectOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Unique identifier for the project that also serves as the project name.
+// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
 func (o OrganizationProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -309,6 +295,10 @@ func (o OrganizationProjectOutput) Tags() OrganizationProjectTagArrayOutput {
 // The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
 func (o OrganizationProjectOutput) TechnicalEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringArrayOutput { return v.TechnicalEmails }).(pulumi.StringArrayOutput)
+}
+
+func (o OrganizationProjectOutput) Timeouts() OrganizationProjectTimeoutsPtrOutput {
+	return o.ApplyT(func(v *OrganizationProject) OrganizationProjectTimeoutsPtrOutput { return v.Timeouts }).(OrganizationProjectTimeoutsPtrOutput)
 }
 
 type OrganizationProjectArrayOutput struct{ *pulumi.OutputState }

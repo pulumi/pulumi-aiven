@@ -54,30 +54,36 @@ func LookupOrganizationProject(ctx *pulumi.Context, args *LookupOrganizationProj
 
 // A collection of arguments for invoking getOrganizationProject.
 type LookupOrganizationProjectArgs struct {
-	// ID of an organization. Changing this property forces recreation of the resource.
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
-	// Unique identifier for the project that also serves as the project name.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
 	ProjectId string `pulumi:"projectId"`
+	// Tags are key-value pairs that allow you to categorize projects.
+	Tags     []GetOrganizationProjectTag     `pulumi:"tags"`
+	Timeouts *GetOrganizationProjectTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getOrganizationProject.
 type LookupOrganizationProjectResult struct {
-	// Billing group ID to assign to the project.
+	// Valid port number (1-65535) to use as a base for service port allocation.
+	BasePort int `pulumi:"basePort"`
+	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId string `pulumi:"billingGroupId"`
-	// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+	// PEM encoded certificate.
 	CaCert string `pulumi:"caCert"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID, a composite of `organizationId` and `projectId` IDs.
 	Id string `pulumi:"id"`
-	// ID of an organization. Changing this property forces recreation of the resource.
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId string `pulumi:"parentId"`
-	// Unique identifier for the project that also serves as the project name.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
 	ProjectId string `pulumi:"projectId"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags []GetOrganizationProjectTag `pulumi:"tags"`
 	// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
-	TechnicalEmails []string `pulumi:"technicalEmails"`
+	TechnicalEmails []string                        `pulumi:"technicalEmails"`
+	Timeouts        *GetOrganizationProjectTimeouts `pulumi:"timeouts"`
 }
 
 func LookupOrganizationProjectOutput(ctx *pulumi.Context, args LookupOrganizationProjectOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationProjectResultOutput {
@@ -91,10 +97,13 @@ func LookupOrganizationProjectOutput(ctx *pulumi.Context, args LookupOrganizatio
 
 // A collection of arguments for invoking getOrganizationProject.
 type LookupOrganizationProjectOutputArgs struct {
-	// ID of an organization. Changing this property forces recreation of the resource.
+	// ID of an organization.
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
-	// Unique identifier for the project that also serves as the project name.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Tags are key-value pairs that allow you to categorize projects.
+	Tags     GetOrganizationProjectTagArrayInput    `pulumi:"tags"`
+	Timeouts GetOrganizationProjectTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupOrganizationProjectOutputArgs) ElementType() reflect.Type {
@@ -116,22 +125,27 @@ func (o LookupOrganizationProjectResultOutput) ToLookupOrganizationProjectResult
 	return o
 }
 
-// Billing group ID to assign to the project.
+// Valid port number (1-65535) to use as a base for service port allocation.
+func (o LookupOrganizationProjectResultOutput) BasePort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupOrganizationProjectResult) int { return v.BasePort }).(pulumi.IntOutput)
+}
+
+// Billing group ID to assign to the project. It's required when moving projects between organizations.
 func (o LookupOrganizationProjectResultOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.BillingGroupId }).(pulumi.StringOutput)
 }
 
-// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+// PEM encoded certificate.
 func (o LookupOrganizationProjectResultOutput) CaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.CaCert }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID, a composite of `organizationId` and `projectId` IDs.
 func (o LookupOrganizationProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// ID of an organization. Changing this property forces recreation of the resource.
+// ID of an organization.
 func (o LookupOrganizationProjectResultOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
@@ -141,7 +155,7 @@ func (o LookupOrganizationProjectResultOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Unique identifier for the project that also serves as the project name.
+// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
 func (o LookupOrganizationProjectResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -154,6 +168,10 @@ func (o LookupOrganizationProjectResultOutput) Tags() GetOrganizationProjectTagA
 // The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
 func (o LookupOrganizationProjectResultOutput) TechnicalEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) []string { return v.TechnicalEmails }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupOrganizationProjectResultOutput) Timeouts() GetOrganizationProjectTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationProjectResult) *GetOrganizationProjectTimeouts { return v.Timeouts }).(GetOrganizationProjectTimeoutsPtrOutput)
 }
 
 func init() {

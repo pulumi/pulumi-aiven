@@ -4059,7 +4059,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getDragonfly:getDragonfly", TypeShape.of(GetDragonflyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Maps an external service user to an Aiven user.
+     * Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -4069,7 +4069,7 @@ public final class AivenFunctions {
         return getExternalIdentity(args, InvokeOptions.Empty);
     }
     /**
-     * Maps an external service user to an Aiven user.
+     * Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -4079,7 +4079,7 @@ public final class AivenFunctions {
         return getExternalIdentityPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Maps an external service user to an Aiven user.
+     * Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -4089,7 +4089,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getExternalIdentity:getExternalIdentity", TypeShape.of(GetExternalIdentityResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Maps an external service user to an Aiven user.
+     * Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -4099,7 +4099,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getExternalIdentity:getExternalIdentity", TypeShape.of(GetExternalIdentityResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Maps an external service user to an Aiven user.
+     * Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -9109,7 +9109,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getMysqlUser:getMysqlUser", TypeShape.of(GetMysqlUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+     * Gets information about an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9136,9 +9136,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-os1")
+     *         final var exampleOpensearch = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-opensearch")
      *             .build());
      * 
      *     }
@@ -9152,7 +9152,7 @@ public final class AivenFunctions {
         return getOpenSearch(args, InvokeOptions.Empty);
     }
     /**
-     * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+     * Gets information about an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9179,9 +9179,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-os1")
+     *         final var exampleOpensearch = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-opensearch")
      *             .build());
      * 
      *     }
@@ -9195,7 +9195,7 @@ public final class AivenFunctions {
         return getOpenSearchPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+     * Gets information about an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9222,9 +9222,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-os1")
+     *         final var exampleOpensearch = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-opensearch")
      *             .build());
      * 
      *     }
@@ -9238,7 +9238,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpenSearch:getOpenSearch", TypeShape.of(GetOpenSearchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+     * Gets information about an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9265,9 +9265,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-os1")
+     *         final var exampleOpensearch = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-opensearch")
      *             .build());
      * 
      *     }
@@ -9281,7 +9281,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpenSearch:getOpenSearch", TypeShape.of(GetOpenSearchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+     * Gets information about an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9308,9 +9308,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-os1")
+     *         final var exampleOpensearch = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-opensearch")
      *             .build());
      * 
      *     }
@@ -9324,7 +9324,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOpenSearch:getOpenSearch", TypeShape.of(GetOpenSearchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+     * Gets information about access control for an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9352,8 +9352,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
-     *             .project(os_project.project())
-     *             .serviceName(os.serviceName())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
      *             .build());
      * 
      *     }
@@ -9367,7 +9367,7 @@ public final class AivenFunctions {
         return getOpenSearchAclConfig(args, InvokeOptions.Empty);
     }
     /**
-     * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+     * Gets information about access control for an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9395,8 +9395,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
-     *             .project(os_project.project())
-     *             .serviceName(os.serviceName())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
      *             .build());
      * 
      *     }
@@ -9410,7 +9410,7 @@ public final class AivenFunctions {
         return getOpenSearchAclConfigPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+     * Gets information about access control for an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9438,8 +9438,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
-     *             .project(os_project.project())
-     *             .serviceName(os.serviceName())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
      *             .build());
      * 
      *     }
@@ -9453,7 +9453,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", TypeShape.of(GetOpenSearchAclConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+     * Gets information about access control for an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9481,8 +9481,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
-     *             .project(os_project.project())
-     *             .serviceName(os.serviceName())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
      *             .build());
      * 
      *     }
@@ -9496,7 +9496,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", TypeShape.of(GetOpenSearchAclConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+     * Gets information about access control for an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9524,8 +9524,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
-     *             .project(os_project.project())
-     *             .serviceName(os.serviceName())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
      *             .build());
      * 
      *     }
@@ -9539,7 +9539,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", TypeShape.of(GetOpenSearchAclConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+     * Gets information about an Aiven for OpenSearch® ACL rule.
      * 
      * ## Example Usage
      * 
@@ -9567,10 +9567,10 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
-     *             .project(osAclsConfig.project())
-     *             .serviceName(osAclsConfig.serviceName())
-     *             .username("<USERNAME>")
-     *             .index("<INDEX>")
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
+     *             .username("documentation-user-1")
+     *             .index("index5")
      *             .build());
      * 
      *     }
@@ -9584,7 +9584,7 @@ public final class AivenFunctions {
         return getOpenSearchAclRule(args, InvokeOptions.Empty);
     }
     /**
-     * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+     * Gets information about an Aiven for OpenSearch® ACL rule.
      * 
      * ## Example Usage
      * 
@@ -9612,10 +9612,10 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
-     *             .project(osAclsConfig.project())
-     *             .serviceName(osAclsConfig.serviceName())
-     *             .username("<USERNAME>")
-     *             .index("<INDEX>")
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
+     *             .username("documentation-user-1")
+     *             .index("index5")
      *             .build());
      * 
      *     }
@@ -9629,7 +9629,7 @@ public final class AivenFunctions {
         return getOpenSearchAclRulePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+     * Gets information about an Aiven for OpenSearch® ACL rule.
      * 
      * ## Example Usage
      * 
@@ -9657,10 +9657,10 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
-     *             .project(osAclsConfig.project())
-     *             .serviceName(osAclsConfig.serviceName())
-     *             .username("<USERNAME>")
-     *             .index("<INDEX>")
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
+     *             .username("documentation-user-1")
+     *             .index("index5")
      *             .build());
      * 
      *     }
@@ -9674,7 +9674,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", TypeShape.of(GetOpenSearchAclRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+     * Gets information about an Aiven for OpenSearch® ACL rule.
      * 
      * ## Example Usage
      * 
@@ -9702,10 +9702,10 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
-     *             .project(osAclsConfig.project())
-     *             .serviceName(osAclsConfig.serviceName())
-     *             .username("<USERNAME>")
-     *             .index("<INDEX>")
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
+     *             .username("documentation-user-1")
+     *             .index("index5")
      *             .build());
      * 
      *     }
@@ -9719,7 +9719,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", TypeShape.of(GetOpenSearchAclRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+     * Gets information about an Aiven for OpenSearch® ACL rule.
      * 
      * ## Example Usage
      * 
@@ -9747,10 +9747,10 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
-     *             .project(osAclsConfig.project())
-     *             .serviceName(osAclsConfig.serviceName())
-     *             .username("<USERNAME>")
-     *             .index("<INDEX>")
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
+     *             .username("documentation-user-1")
+     *             .index("index5")
      *             .build());
      * 
      *     }
@@ -9764,7 +9764,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", TypeShape.of(GetOpenSearchAclRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+     * Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9792,8 +9792,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(os_project.project())
-     *             .serviceName(os.serviceName())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
      *             .build());
      * 
      *     }
@@ -9807,7 +9807,7 @@ public final class AivenFunctions {
         return getOpensearchSecurityPluginConfig(args, InvokeOptions.Empty);
     }
     /**
-     * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+     * Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9835,8 +9835,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(os_project.project())
-     *             .serviceName(os.serviceName())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
      *             .build());
      * 
      *     }
@@ -9850,7 +9850,7 @@ public final class AivenFunctions {
         return getOpensearchSecurityPluginConfigPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+     * Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9878,8 +9878,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(os_project.project())
-     *             .serviceName(os.serviceName())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
      *             .build());
      * 
      *     }
@@ -9893,7 +9893,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", TypeShape.of(GetOpensearchSecurityPluginConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+     * Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9921,8 +9921,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(os_project.project())
-     *             .serviceName(os.serviceName())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
      *             .build());
      * 
      *     }
@@ -9936,7 +9936,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", TypeShape.of(GetOpensearchSecurityPluginConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+     * Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
      * 
      * ## Example Usage
      * 
@@ -9964,8 +9964,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(os_project.project())
-     *             .serviceName(os.serviceName())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleOpensearch.serviceName())
      *             .build());
      * 
      *     }
@@ -9979,7 +9979,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", TypeShape.of(GetOpensearchSecurityPluginConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+     * Gets information about an Aiven for OpenSearch® service user.
      * 
      * ## Example Usage
      * 
@@ -10006,10 +10006,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleOpensearchUser = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
+     *             .serviceName("example-opensearch-service")
+     *             .project(exampleProject.project())
+     *             .username("example-opensearch-user")
      *             .build());
      * 
      *     }
@@ -10023,7 +10023,7 @@ public final class AivenFunctions {
         return getOpensearchUser(args, InvokeOptions.Empty);
     }
     /**
-     * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+     * Gets information about an Aiven for OpenSearch® service user.
      * 
      * ## Example Usage
      * 
@@ -10050,10 +10050,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleOpensearchUser = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
+     *             .serviceName("example-opensearch-service")
+     *             .project(exampleProject.project())
+     *             .username("example-opensearch-user")
      *             .build());
      * 
      *     }
@@ -10067,7 +10067,7 @@ public final class AivenFunctions {
         return getOpensearchUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+     * Gets information about an Aiven for OpenSearch® service user.
      * 
      * ## Example Usage
      * 
@@ -10094,10 +10094,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleOpensearchUser = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
+     *             .serviceName("example-opensearch-service")
+     *             .project(exampleProject.project())
+     *             .username("example-opensearch-user")
      *             .build());
      * 
      *     }
@@ -10111,7 +10111,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpensearchUser:getOpensearchUser", TypeShape.of(GetOpensearchUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+     * Gets information about an Aiven for OpenSearch® service user.
      * 
      * ## Example Usage
      * 
@@ -10138,10 +10138,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleOpensearchUser = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
+     *             .serviceName("example-opensearch-service")
+     *             .project(exampleProject.project())
+     *             .username("example-opensearch-user")
      *             .build());
      * 
      *     }
@@ -10155,7 +10155,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getOpensearchUser:getOpensearchUser", TypeShape.of(GetOpensearchUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+     * Gets information about an Aiven for OpenSearch® service user.
      * 
      * ## Example Usage
      * 
@@ -10182,10 +10182,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleOpensearchUser = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
+     *             .serviceName("example-opensearch-service")
+     *             .project(exampleProject.project())
+     *             .username("example-opensearch-user")
      *             .build());
      * 
      *     }
@@ -10495,12 +10495,18 @@ public final class AivenFunctions {
     /**
      * Gets information about an organization address.
      * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
      */
     public static Output<GetOrganizationAddressResult> getOrganizationAddress(GetOrganizationAddressArgs args) {
         return getOrganizationAddress(args, InvokeOptions.Empty);
     }
     /**
      * Gets information about an organization address.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      */
     public static CompletableFuture<GetOrganizationAddressResult> getOrganizationAddressPlain(GetOrganizationAddressPlainArgs args) {
@@ -10509,6 +10515,9 @@ public final class AivenFunctions {
     /**
      * Gets information about an organization address.
      * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
      */
     public static Output<GetOrganizationAddressResult> getOrganizationAddress(GetOrganizationAddressArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationAddress:getOrganizationAddress", TypeShape.of(GetOrganizationAddressResult.class), args, Utilities.withVersion(options));
@@ -10516,12 +10525,18 @@ public final class AivenFunctions {
     /**
      * Gets information about an organization address.
      * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
      */
     public static Output<GetOrganizationAddressResult> getOrganizationAddress(GetOrganizationAddressArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationAddress:getOrganizationAddress", TypeShape.of(GetOrganizationAddressResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an organization address.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      */
     public static CompletableFuture<GetOrganizationAddressResult> getOrganizationAddressPlain(GetOrganizationAddressPlainArgs args, InvokeOptions options) {
@@ -10565,12 +10580,18 @@ public final class AivenFunctions {
     /**
      * Gets information about a billing group.
      * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
      */
     public static Output<GetOrganizationBillingGroupResult> getOrganizationBillingGroup(GetOrganizationBillingGroupArgs args) {
         return getOrganizationBillingGroup(args, InvokeOptions.Empty);
     }
     /**
      * Gets information about a billing group.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      */
     public static CompletableFuture<GetOrganizationBillingGroupResult> getOrganizationBillingGroupPlain(GetOrganizationBillingGroupPlainArgs args) {
@@ -10579,12 +10600,18 @@ public final class AivenFunctions {
     /**
      * Gets information about a billing group.
      * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
      */
     public static Output<GetOrganizationBillingGroupResult> getOrganizationBillingGroup(GetOrganizationBillingGroupArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", TypeShape.of(GetOrganizationBillingGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about a billing group.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      */
     public static Output<GetOrganizationBillingGroupResult> getOrganizationBillingGroup(GetOrganizationBillingGroupArgs args, InvokeOutputOptions options) {
@@ -10593,12 +10620,18 @@ public final class AivenFunctions {
     /**
      * Gets information about a billing group.
      * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
      */
     public static CompletableFuture<GetOrganizationBillingGroupResult> getOrganizationBillingGroupPlain(GetOrganizationBillingGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", TypeShape.of(GetOrganizationBillingGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Lists billing groups for an organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      */
     public static Output<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs args) {
@@ -10607,12 +10640,18 @@ public final class AivenFunctions {
     /**
      * Lists billing groups for an organization.
      * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
      */
     public static CompletableFuture<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupListPlain(GetOrganizationBillingGroupListPlainArgs args) {
         return getOrganizationBillingGroupListPlain(args, InvokeOptions.Empty);
     }
     /**
      * Lists billing groups for an organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      */
     public static Output<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs args, InvokeOptions options) {
@@ -10621,12 +10660,18 @@ public final class AivenFunctions {
     /**
      * Lists billing groups for an organization.
      * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
      */
     public static Output<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", TypeShape.of(GetOrganizationBillingGroupListResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Lists billing groups for an organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      */
     public static CompletableFuture<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupListPlain(GetOrganizationBillingGroupListPlainArgs args, InvokeOptions options) {

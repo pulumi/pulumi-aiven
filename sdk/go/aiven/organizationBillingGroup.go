@@ -13,28 +13,31 @@ import (
 )
 
 // Creates and manages an organization billing group.
+//
+// **This resource is in the beta stage and may change without notice.** Set
+// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 type OrganizationBillingGroup struct {
 	pulumi.CustomResourceState
 
-	// ID of the billing address.
+	// Billing address ID. Maximum length: `36`.
 	BillingAddressId pulumi.StringOutput `pulumi:"billingAddressId"`
 	// List of billing contact emails.
 	BillingContactEmails pulumi.StringArrayOutput `pulumi:"billingContactEmails"`
-	// Billing currency.
+	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency pulumi.StringPtrOutput `pulumi:"billingCurrency"`
-	// List of billing emails.
+	// List of billing contact emails.
 	BillingEmails pulumi.StringArrayOutput `pulumi:"billingEmails"`
-	// ID of the billing group.
+	// Billing group ID.
 	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
-	// Name of the billing group.
+	// Billing Group Name. Maximum length: `128`.
 	BillingGroupName pulumi.StringOutput `pulumi:"billingGroupName"`
-	// Custom invoice text.
+	// Extra billing text. Maximum length: `254`.
 	CustomInvoiceText pulumi.StringPtrOutput `pulumi:"customInvoiceText"`
-	// ID of the organization.
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// ID of the payment method.
+	// Payment method ID.
 	PaymentMethodId pulumi.StringOutput `pulumi:"paymentMethodId"`
-	// ID of the shipping address.
+	// Shipping address ID. Maximum length: `36`.
 	ShippingAddressId pulumi.StringOutput                       `pulumi:"shippingAddressId"`
 	Timeouts          OrganizationBillingGroupTimeoutsPtrOutput `pulumi:"timeouts"`
 	// VAT ID.
@@ -92,25 +95,25 @@ func GetOrganizationBillingGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationBillingGroup resources.
 type organizationBillingGroupState struct {
-	// ID of the billing address.
+	// Billing address ID. Maximum length: `36`.
 	BillingAddressId *string `pulumi:"billingAddressId"`
 	// List of billing contact emails.
 	BillingContactEmails []string `pulumi:"billingContactEmails"`
-	// Billing currency.
+	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency *string `pulumi:"billingCurrency"`
-	// List of billing emails.
+	// List of billing contact emails.
 	BillingEmails []string `pulumi:"billingEmails"`
-	// ID of the billing group.
+	// Billing group ID.
 	BillingGroupId *string `pulumi:"billingGroupId"`
-	// Name of the billing group.
+	// Billing Group Name. Maximum length: `128`.
 	BillingGroupName *string `pulumi:"billingGroupName"`
-	// Custom invoice text.
+	// Extra billing text. Maximum length: `254`.
 	CustomInvoiceText *string `pulumi:"customInvoiceText"`
-	// ID of the organization.
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
-	// ID of the payment method.
+	// Payment method ID.
 	PaymentMethodId *string `pulumi:"paymentMethodId"`
-	// ID of the shipping address.
+	// Shipping address ID. Maximum length: `36`.
 	ShippingAddressId *string                           `pulumi:"shippingAddressId"`
 	Timeouts          *OrganizationBillingGroupTimeouts `pulumi:"timeouts"`
 	// VAT ID.
@@ -118,25 +121,25 @@ type organizationBillingGroupState struct {
 }
 
 type OrganizationBillingGroupState struct {
-	// ID of the billing address.
+	// Billing address ID. Maximum length: `36`.
 	BillingAddressId pulumi.StringPtrInput
 	// List of billing contact emails.
 	BillingContactEmails pulumi.StringArrayInput
-	// Billing currency.
+	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency pulumi.StringPtrInput
-	// List of billing emails.
+	// List of billing contact emails.
 	BillingEmails pulumi.StringArrayInput
-	// ID of the billing group.
+	// Billing group ID.
 	BillingGroupId pulumi.StringPtrInput
-	// Name of the billing group.
+	// Billing Group Name. Maximum length: `128`.
 	BillingGroupName pulumi.StringPtrInput
-	// Custom invoice text.
+	// Extra billing text. Maximum length: `254`.
 	CustomInvoiceText pulumi.StringPtrInput
-	// ID of the organization.
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
-	// ID of the payment method.
+	// Payment method ID.
 	PaymentMethodId pulumi.StringPtrInput
-	// ID of the shipping address.
+	// Shipping address ID. Maximum length: `36`.
 	ShippingAddressId pulumi.StringPtrInput
 	Timeouts          OrganizationBillingGroupTimeoutsPtrInput
 	// VAT ID.
@@ -148,23 +151,23 @@ func (OrganizationBillingGroupState) ElementType() reflect.Type {
 }
 
 type organizationBillingGroupArgs struct {
-	// ID of the billing address.
+	// Billing address ID. Maximum length: `36`.
 	BillingAddressId string `pulumi:"billingAddressId"`
 	// List of billing contact emails.
 	BillingContactEmails []string `pulumi:"billingContactEmails"`
-	// Billing currency.
+	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency *string `pulumi:"billingCurrency"`
-	// List of billing emails.
+	// List of billing contact emails.
 	BillingEmails []string `pulumi:"billingEmails"`
-	// Name of the billing group.
+	// Billing Group Name. Maximum length: `128`.
 	BillingGroupName string `pulumi:"billingGroupName"`
-	// Custom invoice text.
+	// Extra billing text. Maximum length: `254`.
 	CustomInvoiceText *string `pulumi:"customInvoiceText"`
-	// ID of the organization.
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
-	// ID of the payment method.
+	// Payment method ID.
 	PaymentMethodId string `pulumi:"paymentMethodId"`
-	// ID of the shipping address.
+	// Shipping address ID. Maximum length: `36`.
 	ShippingAddressId string                            `pulumi:"shippingAddressId"`
 	Timeouts          *OrganizationBillingGroupTimeouts `pulumi:"timeouts"`
 	// VAT ID.
@@ -173,23 +176,23 @@ type organizationBillingGroupArgs struct {
 
 // The set of arguments for constructing a OrganizationBillingGroup resource.
 type OrganizationBillingGroupArgs struct {
-	// ID of the billing address.
+	// Billing address ID. Maximum length: `36`.
 	BillingAddressId pulumi.StringInput
 	// List of billing contact emails.
 	BillingContactEmails pulumi.StringArrayInput
-	// Billing currency.
+	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency pulumi.StringPtrInput
-	// List of billing emails.
+	// List of billing contact emails.
 	BillingEmails pulumi.StringArrayInput
-	// Name of the billing group.
+	// Billing Group Name. Maximum length: `128`.
 	BillingGroupName pulumi.StringInput
-	// Custom invoice text.
+	// Extra billing text. Maximum length: `254`.
 	CustomInvoiceText pulumi.StringPtrInput
-	// ID of the organization.
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
-	// ID of the payment method.
+	// Payment method ID.
 	PaymentMethodId pulumi.StringInput
-	// ID of the shipping address.
+	// Shipping address ID. Maximum length: `36`.
 	ShippingAddressId pulumi.StringInput
 	Timeouts          OrganizationBillingGroupTimeoutsPtrInput
 	// VAT ID.
@@ -283,7 +286,7 @@ func (o OrganizationBillingGroupOutput) ToOrganizationBillingGroupOutputWithCont
 	return o
 }
 
-// ID of the billing address.
+// Billing address ID. Maximum length: `36`.
 func (o OrganizationBillingGroupOutput) BillingAddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.BillingAddressId }).(pulumi.StringOutput)
 }
@@ -293,42 +296,42 @@ func (o OrganizationBillingGroupOutput) BillingContactEmails() pulumi.StringArra
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringArrayOutput { return v.BillingContactEmails }).(pulumi.StringArrayOutput)
 }
 
-// Billing currency.
+// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 func (o OrganizationBillingGroupOutput) BillingCurrency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringPtrOutput { return v.BillingCurrency }).(pulumi.StringPtrOutput)
 }
 
-// List of billing emails.
+// List of billing contact emails.
 func (o OrganizationBillingGroupOutput) BillingEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringArrayOutput { return v.BillingEmails }).(pulumi.StringArrayOutput)
 }
 
-// ID of the billing group.
+// Billing group ID.
 func (o OrganizationBillingGroupOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.BillingGroupId }).(pulumi.StringOutput)
 }
 
-// Name of the billing group.
+// Billing Group Name. Maximum length: `128`.
 func (o OrganizationBillingGroupOutput) BillingGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.BillingGroupName }).(pulumi.StringOutput)
 }
 
-// Custom invoice text.
+// Extra billing text. Maximum length: `254`.
 func (o OrganizationBillingGroupOutput) CustomInvoiceText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringPtrOutput { return v.CustomInvoiceText }).(pulumi.StringPtrOutput)
 }
 
-// ID of the organization.
+// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 func (o OrganizationBillingGroupOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// ID of the payment method.
+// Payment method ID.
 func (o OrganizationBillingGroupOutput) PaymentMethodId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.PaymentMethodId }).(pulumi.StringOutput)
 }
 
-// ID of the shipping address.
+// Shipping address ID. Maximum length: `36`.
 func (o OrganizationBillingGroupOutput) ShippingAddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.ShippingAddressId }).(pulumi.StringOutput)
 }

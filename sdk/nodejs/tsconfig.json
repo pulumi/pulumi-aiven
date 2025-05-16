@@ -133,6 +133,7 @@
         "getTransitGatewayVpcAttachment.ts",
         "getValkey.ts",
         "getValkeyUser.ts",
+        "governanceAccess.ts",
         "grafana.ts",
         "index.ts",
         "influxDb.ts",

@@ -4,8 +4,10 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.OrganizationProjectTagArgs;
+import com.pulumi.aiven.inputs.OrganizationProjectTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,14 +20,29 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
     public static final OrganizationProjectState Empty = new OrganizationProjectState();
 
     /**
-     * Billing group ID to assign to the project.
+     * Valid port number (1-65535) to use as a base for service port allocation.
+     * 
+     */
+    @Import(name="basePort")
+    private @Nullable Output<Integer> basePort;
+
+    /**
+     * @return Valid port number (1-65535) to use as a base for service port allocation.
+     * 
+     */
+    public Optional<Output<Integer>> basePort() {
+        return Optional.ofNullable(this.basePort);
+    }
+
+    /**
+     * Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
      * 
      */
     @Import(name="billingGroupId")
     private @Nullable Output<String> billingGroupId;
 
     /**
-     * @return Billing group ID to assign to the project.
+     * @return Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
      * 
      */
     public Optional<Output<String>> billingGroupId() {
@@ -33,14 +50,14 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * PEM encoded certificate.
      * 
      */
     @Import(name="caCert")
     private @Nullable Output<String> caCert;
 
     /**
-     * @return The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * @return PEM encoded certificate.
      * 
      */
     public Optional<Output<String>> caCert() {
@@ -48,14 +65,14 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ID of an organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Maximum length: `36`.
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return ID of an organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization. Maximum length: `36`.
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -78,14 +95,14 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Unique identifier for the project that also serves as the project name.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier for the project that also serves as the project name.
+     * @return The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -122,9 +139,17 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.technicalEmails);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationProjectTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationProjectTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private OrganizationProjectState() {}
 
     private OrganizationProjectState(OrganizationProjectState $) {
+        this.basePort = $.basePort;
         this.billingGroupId = $.billingGroupId;
         this.caCert = $.caCert;
         this.organizationId = $.organizationId;
@@ -132,6 +157,7 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         this.projectId = $.projectId;
         this.tags = $.tags;
         this.technicalEmails = $.technicalEmails;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -153,7 +179,28 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param billingGroupId Billing group ID to assign to the project.
+         * @param basePort Valid port number (1-65535) to use as a base for service port allocation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder basePort(@Nullable Output<Integer> basePort) {
+            $.basePort = basePort;
+            return this;
+        }
+
+        /**
+         * @param basePort Valid port number (1-65535) to use as a base for service port allocation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder basePort(Integer basePort) {
+            return basePort(Output.of(basePort));
+        }
+
+        /**
+         * @param billingGroupId Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
          * 
          * @return builder
          * 
@@ -164,7 +211,7 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param billingGroupId Billing group ID to assign to the project.
+         * @param billingGroupId Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
          * 
          * @return builder
          * 
@@ -174,7 +221,7 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param caCert The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+         * @param caCert PEM encoded certificate.
          * 
          * @return builder
          * 
@@ -185,7 +232,7 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param caCert The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+         * @param caCert PEM encoded certificate.
          * 
          * @return builder
          * 
@@ -195,7 +242,7 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -206,7 +253,7 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -237,7 +284,7 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param projectId Unique identifier for the project that also serves as the project name.
+         * @param projectId The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -248,7 +295,7 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param projectId Unique identifier for the project that also serves as the project name.
+         * @param projectId The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -317,6 +364,15 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
          */
         public Builder technicalEmails(String... technicalEmails) {
             return technicalEmails(List.of(technicalEmails));
+        }
+
+        public Builder timeouts(@Nullable Output<OrganizationProjectTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationProjectTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public OrganizationProjectState build() {

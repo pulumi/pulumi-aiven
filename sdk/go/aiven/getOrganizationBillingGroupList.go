@@ -12,6 +12,9 @@ import (
 )
 
 // Lists billing groups for an organization.
+//
+// **This resource is in the beta stage and may change without notice.** Set
+// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 func GetOrganizationBillingGroupList(ctx *pulumi.Context, args *GetOrganizationBillingGroupListArgs, opts ...pulumi.InvokeOption) (*GetOrganizationBillingGroupListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOrganizationBillingGroupListResult
@@ -24,18 +27,22 @@ func GetOrganizationBillingGroupList(ctx *pulumi.Context, args *GetOrganizationB
 
 // A collection of arguments for invoking getOrganizationBillingGroupList.
 type GetOrganizationBillingGroupListArgs struct {
-	// ID of the organization.
-	OrganizationId string `pulumi:"organizationId"`
+	// A list of all billing groups belonging to the organization.
+	BillingGroups []GetOrganizationBillingGroupListBillingGroup `pulumi:"billingGroups"`
+	// ID of an organization.
+	OrganizationId string                                   `pulumi:"organizationId"`
+	Timeouts       *GetOrganizationBillingGroupListTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getOrganizationBillingGroupList.
 type GetOrganizationBillingGroupListResult struct {
-	// List of billing groups.
+	// A list of all billing groups belonging to the organization.
 	BillingGroups []GetOrganizationBillingGroupListBillingGroup `pulumi:"billingGroups"`
-	// Resource ID, a composite of organization_id.
+	// Resource ID, equal to `organizationId`.
 	Id string `pulumi:"id"`
-	// ID of the organization.
-	OrganizationId string `pulumi:"organizationId"`
+	// ID of an organization.
+	OrganizationId string                                   `pulumi:"organizationId"`
+	Timeouts       *GetOrganizationBillingGroupListTimeouts `pulumi:"timeouts"`
 }
 
 func GetOrganizationBillingGroupListOutput(ctx *pulumi.Context, args GetOrganizationBillingGroupListOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationBillingGroupListResultOutput {
@@ -49,8 +56,11 @@ func GetOrganizationBillingGroupListOutput(ctx *pulumi.Context, args GetOrganiza
 
 // A collection of arguments for invoking getOrganizationBillingGroupList.
 type GetOrganizationBillingGroupListOutputArgs struct {
-	// ID of the organization.
-	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	// A list of all billing groups belonging to the organization.
+	BillingGroups GetOrganizationBillingGroupListBillingGroupArrayInput `pulumi:"billingGroups"`
+	// ID of an organization.
+	OrganizationId pulumi.StringInput                              `pulumi:"organizationId"`
+	Timeouts       GetOrganizationBillingGroupListTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (GetOrganizationBillingGroupListOutputArgs) ElementType() reflect.Type {
@@ -72,21 +82,27 @@ func (o GetOrganizationBillingGroupListResultOutput) ToGetOrganizationBillingGro
 	return o
 }
 
-// List of billing groups.
+// A list of all billing groups belonging to the organization.
 func (o GetOrganizationBillingGroupListResultOutput) BillingGroups() GetOrganizationBillingGroupListBillingGroupArrayOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListResult) []GetOrganizationBillingGroupListBillingGroup {
 		return v.BillingGroups
 	}).(GetOrganizationBillingGroupListBillingGroupArrayOutput)
 }
 
-// Resource ID, a composite of organization_id.
+// Resource ID, equal to `organizationId`.
 func (o GetOrganizationBillingGroupListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// ID of the organization.
+// ID of an organization.
 func (o GetOrganizationBillingGroupListResultOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListResult) string { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+func (o GetOrganizationBillingGroupListResultOutput) Timeouts() GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListResult) *GetOrganizationBillingGroupListTimeouts {
+		return v.Timeouts
+	}).(GetOrganizationBillingGroupListTimeoutsPtrOutput)
 }
 
 func init() {

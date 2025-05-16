@@ -15,57 +15,35 @@ namespace Pulumi.Aiven
     /// **This resource is in the beta stage and may change without notice.** Set
     /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new Aiven.OrganizationProject("foo", new()
-    ///     {
-    ///         ProjectId = "example-project",
-    ///         OrganizationId = fooAivenOrganization.Id,
-    ///         BillingGroupId = fooAivenBillingGroup.Id,
-    ///         Tags = new[]
-    ///         {
-    ///             new Aiven.Inputs.OrganizationProjectTagArgs
-    ///             {
-    ///                 Key = "key_1",
-    ///                 Value = "value_1",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/organizationProject:OrganizationProject main ORGANIZATION_ID/PROJECT_ID
+    /// $ pulumi import aiven:index/organizationProject:OrganizationProject example_project ORGANIZATION_ID/PROJECT_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organizationProject:OrganizationProject")]
     public partial class OrganizationProject : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Billing group ID to assign to the project.
+        /// Valid port number (1-65535) to use as a base for service port allocation.
+        /// </summary>
+        [Output("basePort")]
+        public Output<int> BasePort { get; private set; } = null!;
+
+        /// <summary>
+        /// Billing group ID to assign to the project. It's required when moving projects between organizations.
         /// </summary>
         [Output("billingGroupId")]
         public Output<string> BillingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        /// PEM encoded certificate.
         /// </summary>
         [Output("caCert")]
         public Output<string> CaCert { get; private set; } = null!;
 
         /// <summary>
-        /// ID of an organization. Changing this property forces recreation of the resource.
+        /// ID of an organization. Maximum length: `36`.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
@@ -77,7 +55,7 @@ namespace Pulumi.Aiven
         public Output<string> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier for the project that also serves as the project name.
+        /// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -93,6 +71,9 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("technicalEmails")]
         public Output<ImmutableArray<string>> TechnicalEmails { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.OrganizationProjectTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -145,13 +126,19 @@ namespace Pulumi.Aiven
     public sealed class OrganizationProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Billing group ID to assign to the project.
+        /// Valid port number (1-65535) to use as a base for service port allocation.
+        /// </summary>
+        [Input("basePort")]
+        public Input<int>? BasePort { get; set; }
+
+        /// <summary>
+        /// Billing group ID to assign to the project. It's required when moving projects between organizations.
         /// </summary>
         [Input("billingGroupId", required: true)]
         public Input<string> BillingGroupId { get; set; } = null!;
 
         /// <summary>
-        /// ID of an organization. Changing this property forces recreation of the resource.
+        /// ID of an organization. Maximum length: `36`.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -163,7 +150,7 @@ namespace Pulumi.Aiven
         public Input<string> ParentId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier for the project that also serves as the project name.
+        /// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -192,6 +179,9 @@ namespace Pulumi.Aiven
             set => _technicalEmails = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationProjectTimeoutsArgs>? Timeouts { get; set; }
+
         public OrganizationProjectArgs()
         {
         }
@@ -201,7 +191,13 @@ namespace Pulumi.Aiven
     public sealed class OrganizationProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Billing group ID to assign to the project.
+        /// Valid port number (1-65535) to use as a base for service port allocation.
+        /// </summary>
+        [Input("basePort")]
+        public Input<int>? BasePort { get; set; }
+
+        /// <summary>
+        /// Billing group ID to assign to the project. It's required when moving projects between organizations.
         /// </summary>
         [Input("billingGroupId")]
         public Input<string>? BillingGroupId { get; set; }
@@ -210,7 +206,7 @@ namespace Pulumi.Aiven
         private Input<string>? _caCert;
 
         /// <summary>
-        /// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        /// PEM encoded certificate.
         /// </summary>
         public Input<string>? CaCert
         {
@@ -223,7 +219,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// ID of an organization. Changing this property forces recreation of the resource.
+        /// ID of an organization. Maximum length: `36`.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
@@ -235,7 +231,7 @@ namespace Pulumi.Aiven
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// Unique identifier for the project that also serves as the project name.
+        /// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -263,6 +259,9 @@ namespace Pulumi.Aiven
             get => _technicalEmails ?? (_technicalEmails = new InputList<string>());
             set => _technicalEmails = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationProjectTimeoutsGetArgs>? Timeouts { get; set; }
 
         public OrganizationProjectState()
         {

@@ -53,20 +53,22 @@ export class Organization extends pulumi.CustomResource {
     }
 
     /**
-     * Timestamp of the creation of the organization.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Name of the organization.
+     * Name of the organization. Maximum length: `128`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Tenant ID of the organization.
+     * Tenant identifier.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
     public /*out*/ readonly tenantId!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.OrganizationTimeouts | undefined>;
     /**
-     * Timestamp of the last update of the organization.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -106,20 +108,22 @@ export class Organization extends pulumi.CustomResource {
  */
 export interface OrganizationState {
     /**
-     * Timestamp of the creation of the organization.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Name of the organization.
+     * Name of the organization. Maximum length: `128`.
      */
     name?: pulumi.Input<string>;
     /**
-     * Tenant ID of the organization.
+     * Tenant identifier.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
     tenantId?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationTimeouts>;
     /**
-     * Timestamp of the last update of the organization.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -129,7 +133,7 @@ export interface OrganizationState {
  */
 export interface OrganizationArgs {
     /**
-     * Name of the organization.
+     * Name of the organization. Maximum length: `128`.
      */
     name?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationTimeouts>;

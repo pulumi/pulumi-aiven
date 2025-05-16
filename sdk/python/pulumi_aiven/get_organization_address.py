@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOrganizationAddressResult',
@@ -27,7 +29,7 @@ class GetOrganizationAddressResult:
     """
     A collection of values returned by getOrganizationAddress.
     """
-    def __init__(__self__, address_id=None, address_lines=None, city=None, company_name=None, country_code=None, create_time=None, id=None, organization_id=None, state=None, update_time=None, zip_code=None):
+    def __init__(__self__, address_id=None, address_lines=None, city=None, country_code=None, create_time=None, id=None, name=None, organization_id=None, state=None, timeouts=None, update_time=None, zip_code=None):
         if address_id and not isinstance(address_id, str):
             raise TypeError("Expected argument 'address_id' to be a str")
         pulumi.set(__self__, "address_id", address_id)
@@ -37,9 +39,6 @@ class GetOrganizationAddressResult:
         if city and not isinstance(city, str):
             raise TypeError("Expected argument 'city' to be a str")
         pulumi.set(__self__, "city", city)
-        if company_name and not isinstance(company_name, str):
-            raise TypeError("Expected argument 'company_name' to be a str")
-        pulumi.set(__self__, "company_name", company_name)
         if country_code and not isinstance(country_code, str):
             raise TypeError("Expected argument 'country_code' to be a str")
         pulumi.set(__self__, "country_code", country_code)
@@ -49,12 +48,18 @@ class GetOrganizationAddressResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
         if organization_id and not isinstance(organization_id, str):
             raise TypeError("Expected argument 'organization_id' to be a str")
         pulumi.set(__self__, "organization_id", organization_id)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -66,7 +71,7 @@ class GetOrganizationAddressResult:
     @pulumi.getter(name="addressId")
     def address_id(self) -> builtins.str:
         """
-        ID of the address.
+        Address ID.
         """
         return pulumi.get(self, "address_id")
 
@@ -74,7 +79,7 @@ class GetOrganizationAddressResult:
     @pulumi.getter(name="addressLines")
     def address_lines(self) -> Sequence[builtins.str]:
         """
-        Array of address lines.
+        Address Lines.
         """
         return pulumi.get(self, "address_lines")
 
@@ -82,23 +87,15 @@ class GetOrganizationAddressResult:
     @pulumi.getter
     def city(self) -> builtins.str:
         """
-        City name.
+        City.
         """
         return pulumi.get(self, "city")
-
-    @property
-    @pulumi.getter(name="companyName")
-    def company_name(self) -> builtins.str:
-        """
-        Name of the company.
-        """
-        return pulumi.get(self, "company_name")
 
     @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> builtins.str:
         """
-        Country code.
+        Country Code.
         """
         return pulumi.get(self, "country_code")
 
@@ -106,7 +103,7 @@ class GetOrganizationAddressResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> builtins.str:
         """
-        Timestamp of the creation.
+        Create Time.
         """
         return pulumi.get(self, "create_time")
 
@@ -114,15 +111,23 @@ class GetOrganizationAddressResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Resource ID, a composite of organization*id and address*id.
+        Resource ID, a composite of `organization_id` and `address_id` IDs.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        Name of a company.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> builtins.str:
         """
-        ID of organization.
+        ID of an organization.
         """
         return pulumi.get(self, "organization_id")
 
@@ -130,15 +135,20 @@ class GetOrganizationAddressResult:
     @pulumi.getter
     def state(self) -> builtins.str:
         """
-        State name.
+        State.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetOrganizationAddressTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> builtins.str:
         """
-        Timestamp of the last update.
+        Update Time.
         """
         return pulumi.get(self, "update_time")
 
@@ -146,7 +156,7 @@ class GetOrganizationAddressResult:
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> builtins.str:
         """
-        Zip code.
+        Zip Code.
         """
         return pulumi.get(self, "zip_code")
 
@@ -160,29 +170,35 @@ class AwaitableGetOrganizationAddressResult(GetOrganizationAddressResult):
             address_id=self.address_id,
             address_lines=self.address_lines,
             city=self.city,
-            company_name=self.company_name,
             country_code=self.country_code,
             create_time=self.create_time,
             id=self.id,
+            name=self.name,
             organization_id=self.organization_id,
             state=self.state,
+            timeouts=self.timeouts,
             update_time=self.update_time,
             zip_code=self.zip_code)
 
 
 def get_organization_address(address_id: Optional[builtins.str] = None,
                              organization_id: Optional[builtins.str] = None,
+                             timeouts: Optional[Union['GetOrganizationAddressTimeoutsArgs', 'GetOrganizationAddressTimeoutsArgsDict']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationAddressResult:
     """
     Gets information about an organization address.
 
+    **This resource is in the beta stage and may change without notice.** Set
+    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
-    :param builtins.str address_id: ID of the address.
-    :param builtins.str organization_id: ID of organization.
+
+    :param builtins.str address_id: Address ID.
+    :param builtins.str organization_id: ID of an organization.
     """
     __args__ = dict()
     __args__['addressId'] = address_id
     __args__['organizationId'] = organization_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganizationAddress:getOrganizationAddress', __args__, opts=opts, typ=GetOrganizationAddressResult).value
 
@@ -190,38 +206,45 @@ def get_organization_address(address_id: Optional[builtins.str] = None,
         address_id=pulumi.get(__ret__, 'address_id'),
         address_lines=pulumi.get(__ret__, 'address_lines'),
         city=pulumi.get(__ret__, 'city'),
-        company_name=pulumi.get(__ret__, 'company_name'),
         country_code=pulumi.get(__ret__, 'country_code'),
         create_time=pulumi.get(__ret__, 'create_time'),
         id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
         state=pulumi.get(__ret__, 'state'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         update_time=pulumi.get(__ret__, 'update_time'),
         zip_code=pulumi.get(__ret__, 'zip_code'))
 def get_organization_address_output(address_id: Optional[pulumi.Input[builtins.str]] = None,
                                     organization_id: Optional[pulumi.Input[builtins.str]] = None,
+                                    timeouts: Optional[pulumi.Input[Optional[Union['GetOrganizationAddressTimeoutsArgs', 'GetOrganizationAddressTimeoutsArgsDict']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationAddressResult]:
     """
     Gets information about an organization address.
 
+    **This resource is in the beta stage and may change without notice.** Set
+    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
-    :param builtins.str address_id: ID of the address.
-    :param builtins.str organization_id: ID of organization.
+
+    :param builtins.str address_id: Address ID.
+    :param builtins.str organization_id: ID of an organization.
     """
     __args__ = dict()
     __args__['addressId'] = address_id
     __args__['organizationId'] = organization_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationAddress:getOrganizationAddress', __args__, opts=opts, typ=GetOrganizationAddressResult)
     return __ret__.apply(lambda __response__: GetOrganizationAddressResult(
         address_id=pulumi.get(__response__, 'address_id'),
         address_lines=pulumi.get(__response__, 'address_lines'),
         city=pulumi.get(__response__, 'city'),
-        company_name=pulumi.get(__response__, 'company_name'),
         country_code=pulumi.get(__response__, 'country_code'),
         create_time=pulumi.get(__response__, 'create_time'),
         id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
         organization_id=pulumi.get(__response__, 'organization_id'),
         state=pulumi.get(__response__, 'state'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         update_time=pulumi.get(__response__, 'update_time'),
         zip_code=pulumi.get(__response__, 'zip_code')))

@@ -59,6 +59,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? EnableRemoteBackedStorage;
         /// <summary>
+        /// Enable searchable snapshots.
+        /// </summary>
+        public readonly bool? EnableSearchableSnapshots;
+        /// <summary>
         /// Enable/Disable security audit.
         /// </summary>
         public readonly bool? EnableSecurityAudit;
@@ -242,6 +246,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? enableRemoteBackedStorage,
 
+            bool? enableSearchableSnapshots,
+
             bool? enableSecurityAudit,
 
             int? httpMaxContentLength,
@@ -334,6 +340,7 @@ namespace Pulumi.Aiven.Outputs
             EmailSenderPassword = emailSenderPassword;
             EmailSenderUsername = emailSenderUsername;
             EnableRemoteBackedStorage = enableRemoteBackedStorage;
+            EnableSearchableSnapshots = enableSearchableSnapshots;
             EnableSecurityAudit = enableSecurityAudit;
             HttpMaxContentLength = httpMaxContentLength;
             HttpMaxHeaderSize = httpMaxHeaderSize;

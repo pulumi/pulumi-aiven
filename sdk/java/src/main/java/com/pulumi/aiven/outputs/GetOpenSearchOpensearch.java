@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetOpenSearchOpensearch {
     /**
-     * @return URI for Kibana dashboard frontend
+     * @return URI for Kibana dashboard frontend.
      * 
      * @deprecated
      * This field was added by mistake and has never worked. It will be removed in future versions.
@@ -21,12 +21,12 @@ public final class GetOpenSearchOpensearch {
     @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     private String kibanaUri;
     /**
-     * @return URI for OpenSearch dashboard frontend
+     * @return URI for OpenSearch dashboard frontend.
      * 
      */
     private String opensearchDashboardsUri;
     /**
-     * @return OpenSearch password
+     * @return OpenSearch password.
      * 
      */
     private String password;
@@ -36,14 +36,14 @@ public final class GetOpenSearchOpensearch {
      */
     private List<String> uris;
     /**
-     * @return OpenSearch username
+     * @return OpenSearch username.
      * 
      */
     private String username;
 
     private GetOpenSearchOpensearch() {}
     /**
-     * @return URI for Kibana dashboard frontend
+     * @return URI for Kibana dashboard frontend.
      * 
      * @deprecated
      * This field was added by mistake and has never worked. It will be removed in future versions.
@@ -54,14 +54,14 @@ public final class GetOpenSearchOpensearch {
         return this.kibanaUri;
     }
     /**
-     * @return URI for OpenSearch dashboard frontend
+     * @return URI for OpenSearch dashboard frontend.
      * 
      */
     public String opensearchDashboardsUri() {
         return this.opensearchDashboardsUri;
     }
     /**
-     * @return OpenSearch password
+     * @return OpenSearch password.
      * 
      */
     public String password() {
@@ -75,7 +75,7 @@ public final class GetOpenSearchOpensearch {
         return this.uris;
     }
     /**
-     * @return OpenSearch username
+     * @return OpenSearch username.
      * 
      */
     public String username() {

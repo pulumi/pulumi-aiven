@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+// Gets information about an Aiven for OpenSearch® service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupOpenSearch(ctx, &aiven.LookupOpenSearchArgs{
-//				Project:     pr1.Project,
-//				ServiceName: "my-os1",
+//				Project:     exampleProject.Project,
+//				ServiceName: "example-opensearch",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -83,7 +83,7 @@ type LookupOpenSearchResult struct {
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	OpensearchUserConfigs []GetOpenSearchOpensearchUserConfig `pulumi:"opensearchUserConfigs"`
-	// OpenSearch server provided values
+	// Values provided by the OpenSearch server.
 	Opensearches []GetOpenSearchOpensearch `pulumi:"opensearches"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
@@ -214,7 +214,7 @@ func (o LookupOpenSearchResultOutput) OpensearchUserConfigs() GetOpenSearchOpens
 	return o.ApplyT(func(v LookupOpenSearchResult) []GetOpenSearchOpensearchUserConfig { return v.OpensearchUserConfigs }).(GetOpenSearchOpensearchUserConfigArrayOutput)
 }
 
-// OpenSearch server provided values
+// Values provided by the OpenSearch server.
 func (o LookupOpenSearchResultOutput) Opensearches() GetOpenSearchOpensearchArrayOutput {
 	return o.ApplyT(func(v LookupOpenSearchResult) []GetOpenSearchOpensearch { return v.Opensearches }).(GetOpenSearchOpensearchArrayOutput)
 }

@@ -3,143 +3,150 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetOrganizationAddressTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationAddressResult {
     /**
-     * @return ID of the address.
+     * @return Address ID.
      * 
      */
     private String addressId;
     /**
-     * @return Array of address lines.
+     * @return Address Lines.
      * 
      */
     private List<String> addressLines;
     /**
-     * @return City name.
+     * @return City.
      * 
      */
     private String city;
     /**
-     * @return Name of the company.
-     * 
-     */
-    private String companyName;
-    /**
-     * @return Country code.
+     * @return Country Code.
      * 
      */
     private String countryCode;
     /**
-     * @return Timestamp of the creation.
+     * @return Create Time.
      * 
      */
     private String createTime;
     /**
-     * @return Resource ID, a composite of organization*id and address*id.
+     * @return Resource ID, a composite of `organization_id` and `address_id` IDs.
      * 
      */
     private String id;
     /**
-     * @return ID of organization.
+     * @return Name of a company.
+     * 
+     */
+    private String name;
+    /**
+     * @return ID of an organization.
      * 
      */
     private String organizationId;
     /**
-     * @return State name.
+     * @return State.
      * 
      */
     private String state;
+    private @Nullable GetOrganizationAddressTimeouts timeouts;
     /**
-     * @return Timestamp of the last update.
+     * @return Update Time.
      * 
      */
     private String updateTime;
     /**
-     * @return Zip code.
+     * @return Zip Code.
      * 
      */
     private String zipCode;
 
     private GetOrganizationAddressResult() {}
     /**
-     * @return ID of the address.
+     * @return Address ID.
      * 
      */
     public String addressId() {
         return this.addressId;
     }
     /**
-     * @return Array of address lines.
+     * @return Address Lines.
      * 
      */
     public List<String> addressLines() {
         return this.addressLines;
     }
     /**
-     * @return City name.
+     * @return City.
      * 
      */
     public String city() {
         return this.city;
     }
     /**
-     * @return Name of the company.
-     * 
-     */
-    public String companyName() {
-        return this.companyName;
-    }
-    /**
-     * @return Country code.
+     * @return Country Code.
      * 
      */
     public String countryCode() {
         return this.countryCode;
     }
     /**
-     * @return Timestamp of the creation.
+     * @return Create Time.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return Resource ID, a composite of organization*id and address*id.
+     * @return Resource ID, a composite of `organization_id` and `address_id` IDs.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return ID of organization.
+     * @return Name of a company.
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
         return this.organizationId;
     }
     /**
-     * @return State name.
+     * @return State.
      * 
      */
     public String state() {
         return this.state;
     }
+    public Optional<GetOrganizationAddressTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return Timestamp of the last update.
+     * @return Update Time.
      * 
      */
     public String updateTime() {
         return this.updateTime;
     }
     /**
-     * @return Zip code.
+     * @return Zip Code.
      * 
      */
     public String zipCode() {
@@ -158,12 +165,13 @@ public final class GetOrganizationAddressResult {
         private String addressId;
         private List<String> addressLines;
         private String city;
-        private String companyName;
         private String countryCode;
         private String createTime;
         private String id;
+        private String name;
         private String organizationId;
         private String state;
+        private @Nullable GetOrganizationAddressTimeouts timeouts;
         private String updateTime;
         private String zipCode;
         public Builder() {}
@@ -172,12 +180,13 @@ public final class GetOrganizationAddressResult {
     	      this.addressId = defaults.addressId;
     	      this.addressLines = defaults.addressLines;
     	      this.city = defaults.city;
-    	      this.companyName = defaults.companyName;
     	      this.countryCode = defaults.countryCode;
     	      this.createTime = defaults.createTime;
     	      this.id = defaults.id;
+    	      this.name = defaults.name;
     	      this.organizationId = defaults.organizationId;
     	      this.state = defaults.state;
+    	      this.timeouts = defaults.timeouts;
     	      this.updateTime = defaults.updateTime;
     	      this.zipCode = defaults.zipCode;
         }
@@ -210,14 +219,6 @@ public final class GetOrganizationAddressResult {
             return this;
         }
         @CustomType.Setter
-        public Builder companyName(String companyName) {
-            if (companyName == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationAddressResult", "companyName");
-            }
-            this.companyName = companyName;
-            return this;
-        }
-        @CustomType.Setter
         public Builder countryCode(String countryCode) {
             if (countryCode == null) {
               throw new MissingRequiredPropertyException("GetOrganizationAddressResult", "countryCode");
@@ -242,6 +243,14 @@ public final class GetOrganizationAddressResult {
             return this;
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationAddressResult", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
         public Builder organizationId(String organizationId) {
             if (organizationId == null) {
               throw new MissingRequiredPropertyException("GetOrganizationAddressResult", "organizationId");
@@ -255,6 +264,12 @@ public final class GetOrganizationAddressResult {
               throw new MissingRequiredPropertyException("GetOrganizationAddressResult", "state");
             }
             this.state = state;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetOrganizationAddressTimeouts timeouts) {
+
+            this.timeouts = timeouts;
             return this;
         }
         @CustomType.Setter
@@ -278,12 +293,13 @@ public final class GetOrganizationAddressResult {
             _resultValue.addressId = addressId;
             _resultValue.addressLines = addressLines;
             _resultValue.city = city;
-            _resultValue.companyName = companyName;
             _resultValue.countryCode = countryCode;
             _resultValue.createTime = createTime;
             _resultValue.id = id;
+            _resultValue.name = name;
             _resultValue.organizationId = organizationId;
             _resultValue.state = state;
+            _resultValue.timeouts = timeouts;
             _resultValue.updateTime = updateTime;
             _resultValue.zipCode = zipCode;
             return _resultValue;

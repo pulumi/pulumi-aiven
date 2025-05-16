@@ -16,7 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
+ * Enables access control for an Aiven for OpenSearch® service.
+ * 
+ * By default, service users are granted full access rights. To limit their access, you can enable access control and create ACLs
+ * that define permissions and patterns. Alternatively, you can enable OpenSearch Security management
+ * to manage users and permissions with the OpenSearch Security dashboard.
  * 
  * ## Example Usage
  * 
@@ -28,12 +32,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aiven.AivenFunctions;
- * import com.pulumi.aiven.inputs.GetProjectArgs;
- * import com.pulumi.aiven.OpenSearch;
- * import com.pulumi.aiven.OpenSearchArgs;
- * import com.pulumi.aiven.OpensearchUser;
- * import com.pulumi.aiven.OpensearchUserArgs;
  * import com.pulumi.aiven.OpenSearchAclConfig;
  * import com.pulumi.aiven.OpenSearchAclConfigArgs;
  * import java.util.List;
@@ -49,28 +47,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var foo = AivenFunctions.getProject(GetProjectArgs.builder()
- *             .project("example_project")
- *             .build());
- * 
- *         var bar = new OpenSearch("bar", OpenSearchArgs.builder()
- *             .project(foo.project())
- *             .cloudName("google-europe-west1")
- *             .plan("startup-4")
- *             .serviceName("example_service_name")
- *             .maintenanceWindowDow("monday")
- *             .maintenanceWindowTime("10:00:00")
- *             .build());
- * 
- *         var fooOpensearchUser = new OpensearchUser("fooOpensearchUser", OpensearchUserArgs.builder()
- *             .serviceName(bar.serviceName())
- *             .project(foo.project())
- *             .username("user-example")
- *             .build());
- * 
- *         var fooOpenSearchAclConfig = new OpenSearchAclConfig("fooOpenSearchAclConfig", OpenSearchAclConfigArgs.builder()
- *             .project(foo.project())
- *             .serviceName(bar.serviceName())
+ *         var main = new OpenSearchAclConfig("main", OpenSearchAclConfigArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleOpensearch.serviceName())
  *             .enabled(true)
  *             .extendedAcl(false)
  *             .build());
@@ -83,20 +62,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * TERRAFORM IMPORT AIVEN_OPENSEARCH_ACL_CONFIG.FOO project/service_name
+ * ```sh
+ * $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig main PROJECT/SERVICE_NAME
+ * ```
  * 
  */
 @ResourceType(type="aiven:index/openSearchAclConfig:OpenSearchAclConfig")
 public class OpenSearchAclConfig extends com.pulumi.resources.CustomResource {
     /**
-     * Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * @return Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
      * 
      */
     public Output<Optional<Boolean>> enabled() {

@@ -59,7 +59,7 @@ class GetOpenSearchAclRuleResult:
     @pulumi.getter
     def index(self) -> builtins.str:
         """
-        The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+        The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "index")
 
@@ -67,7 +67,7 @@ class GetOpenSearchAclRuleResult:
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+        The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 
@@ -91,7 +91,7 @@ class GetOpenSearchAclRuleResult:
     @pulumi.getter
     def username(self) -> builtins.str:
         """
-        The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -117,7 +117,7 @@ def get_open_search_acl_rule(index: Optional[builtins.str] = None,
                              username: Optional[builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpenSearchAclRuleResult:
     """
-    The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+    Gets information about an Aiven for OpenSearch® ACL rule.
 
     ## Example Usage
 
@@ -125,18 +125,18 @@ def get_open_search_acl_rule(index: Optional[builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    os_acl_rule = aiven.get_open_search_acl_rule(project=os_acls_config["project"],
-        service_name=os_acls_config["serviceName"],
-        username="<USERNAME>",
-        index="<INDEX>")
+    os_acl_rule = aiven.get_open_search_acl_rule(project=example_project["project"],
+        service_name=example_opensearch["serviceName"],
+        username="documentation-user-1",
+        index="index5")
     ```
 
 
-    :param builtins.str index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
-    :param builtins.str permission: The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+    :param builtins.str index: The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
+    :param builtins.str permission: The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
     :param builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param builtins.str username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param builtins.str username: The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['index'] = index
@@ -161,7 +161,7 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[builtins.str]] 
                                     username: Optional[pulumi.Input[builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenSearchAclRuleResult]:
     """
-    The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+    Gets information about an Aiven for OpenSearch® ACL rule.
 
     ## Example Usage
 
@@ -169,18 +169,18 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[builtins.str]] 
     import pulumi
     import pulumi_aiven as aiven
 
-    os_acl_rule = aiven.get_open_search_acl_rule(project=os_acls_config["project"],
-        service_name=os_acls_config["serviceName"],
-        username="<USERNAME>",
-        index="<INDEX>")
+    os_acl_rule = aiven.get_open_search_acl_rule(project=example_project["project"],
+        service_name=example_opensearch["serviceName"],
+        username="documentation-user-1",
+        index="index5")
     ```
 
 
-    :param builtins.str index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
-    :param builtins.str permission: The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+    :param builtins.str index: The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
+    :param builtins.str permission: The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
     :param builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param builtins.str username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param builtins.str username: The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['index'] = index

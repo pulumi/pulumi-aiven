@@ -30,14 +30,14 @@ public final class GetExternalIdentityArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The user&#39;s ID on the external service.
+     * The user&#39;s ID on the external service. For GitHub, this is their GitHub username.
      * 
      */
     @Import(name="externalUserId", required=true)
     private Output<String> externalUserId;
 
     /**
-     * @return The user&#39;s ID on the external service.
+     * @return The user&#39;s ID on the external service. For GitHub, this is their GitHub username.
      * 
      */
     public Output<String> externalUserId() {
@@ -123,7 +123,7 @@ public final class GetExternalIdentityArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param externalUserId The user&#39;s ID on the external service.
+         * @param externalUserId The user&#39;s ID on the external service. For GitHub, this is their GitHub username.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class GetExternalIdentityArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param externalUserId The user&#39;s ID on the external service.
+         * @param externalUserId The user&#39;s ID on the external service. For GitHub, this is their GitHub username.
          * 
          * @return builder
          * 

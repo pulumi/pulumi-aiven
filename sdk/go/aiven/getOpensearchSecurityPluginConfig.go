@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+// Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupOpensearchSecurityPluginConfig(ctx, &aiven.LookupOpensearchSecurityPluginConfigArgs{
-//				Project:     os_project.Project,
-//				ServiceName: os.ServiceName,
+//				Project:     exampleProject.Project,
+//				ServiceName: exampleOpensearch.ServiceName,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -59,7 +59,7 @@ type LookupOpensearchSecurityPluginConfigArgs struct {
 
 // A collection of values returned by getOpensearchSecurityPluginConfig.
 type LookupOpensearchSecurityPluginConfigResult struct {
-	// Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+	// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
 	AdminEnabled bool `pulumi:"adminEnabled"`
 	// The password for the os-sec-admin user.
 	AdminPassword string `pulumi:"adminPassword"`
@@ -111,7 +111,7 @@ func (o LookupOpensearchSecurityPluginConfigResultOutput) ToLookupOpensearchSecu
 	return o
 }
 
-// Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
 func (o LookupOpensearchSecurityPluginConfigResultOutput) AdminEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) bool { return v.AdminEnabled }).(pulumi.BoolOutput)
 }

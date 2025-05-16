@@ -17,7 +17,7 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
     public static final OpenSearchOpensearchArgs Empty = new OpenSearchOpensearchArgs();
 
     /**
-     * URI for Kibana dashboard frontend
+     * URI for Kibana dashboard frontend.
      * 
      * @deprecated
      * This field was added by mistake and has never worked. It will be removed in future versions.
@@ -28,7 +28,7 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> kibanaUri;
 
     /**
-     * @return URI for Kibana dashboard frontend
+     * @return URI for Kibana dashboard frontend.
      * 
      * @deprecated
      * This field was added by mistake and has never worked. It will be removed in future versions.
@@ -40,14 +40,14 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * URI for OpenSearch dashboard frontend
+     * URI for OpenSearch dashboard frontend.
      * 
      */
     @Import(name="opensearchDashboardsUri")
     private @Nullable Output<String> opensearchDashboardsUri;
 
     /**
-     * @return URI for OpenSearch dashboard frontend
+     * @return URI for OpenSearch dashboard frontend.
      * 
      */
     public Optional<Output<String>> opensearchDashboardsUri() {
@@ -55,14 +55,14 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * OpenSearch password
+     * OpenSearch password.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return OpenSearch password
+     * @return OpenSearch password.
      * 
      */
     public Optional<Output<String>> password() {
@@ -85,14 +85,14 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * OpenSearch username
+     * OpenSearch username.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return OpenSearch username
+     * @return OpenSearch username.
      * 
      */
     public Optional<Output<String>> username() {
@@ -128,7 +128,7 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kibanaUri URI for Kibana dashboard frontend
+         * @param kibanaUri URI for Kibana dashboard frontend.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kibanaUri URI for Kibana dashboard frontend
+         * @param kibanaUri URI for Kibana dashboard frontend.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param opensearchDashboardsUri URI for OpenSearch dashboard frontend
+         * @param opensearchDashboardsUri URI for OpenSearch dashboard frontend.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param opensearchDashboardsUri URI for OpenSearch dashboard frontend
+         * @param opensearchDashboardsUri URI for OpenSearch dashboard frontend.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param password OpenSearch password
+         * @param password OpenSearch password.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param password OpenSearch password
+         * @param password OpenSearch password.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param username OpenSearch username
+         * @param username OpenSearch username.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param username OpenSearch username
+         * @param username OpenSearch username.
          * 
          * @return builder
          * 

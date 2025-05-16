@@ -3,15 +3,18 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetOrganizationTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationResult {
     /**
-     * @return Timestamp of the creation of the organization.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     private String createTime;
@@ -19,26 +22,31 @@ public final class GetOrganizationResult {
      * @return ID of the organization.
      * 
      */
-    private String id;
+    private @Nullable String id;
     /**
      * @return Name of the organization.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
-     * @return Tenant ID of the organization.
+     * @return Tenant identifier.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     private String tenantId;
+    private @Nullable GetOrganizationTimeouts timeouts;
     /**
-     * @return Timestamp of the last update of the organization.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     private String updateTime;
 
     private GetOrganizationResult() {}
     /**
-     * @return Timestamp of the creation of the organization.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public String createTime() {
@@ -48,25 +56,32 @@ public final class GetOrganizationResult {
      * @return ID of the organization.
      * 
      */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
     /**
      * @return Name of the organization.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
-     * @return Tenant ID of the organization.
+     * @return Tenant identifier.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     public String tenantId() {
         return this.tenantId;
     }
+    public Optional<GetOrganizationTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return Timestamp of the last update of the organization.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public String updateTime() {
@@ -83,9 +98,10 @@ public final class GetOrganizationResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
-        private String id;
-        private String name;
+        private @Nullable String id;
+        private @Nullable String name;
         private String tenantId;
+        private @Nullable GetOrganizationTimeouts timeouts;
         private String updateTime;
         public Builder() {}
         public Builder(GetOrganizationResult defaults) {
@@ -94,6 +110,7 @@ public final class GetOrganizationResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.tenantId = defaults.tenantId;
+    	      this.timeouts = defaults.timeouts;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -106,18 +123,14 @@ public final class GetOrganizationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationResult", "id");
-            }
+        public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationResult", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
@@ -127,6 +140,12 @@ public final class GetOrganizationResult {
               throw new MissingRequiredPropertyException("GetOrganizationResult", "tenantId");
             }
             this.tenantId = tenantId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetOrganizationTimeouts timeouts) {
+
+            this.timeouts = timeouts;
             return this;
         }
         @CustomType.Setter
@@ -143,6 +162,7 @@ public final class GetOrganizationResult {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.tenantId = tenantId;
+            _resultValue.timeouts = timeouts;
             _resultValue.updateTime = updateTime;
             return _resultValue;
         }

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+// Gets information about an Aiven for OpenSearch® ACL rule.
 //
 // ## Example Usage
 //
@@ -28,10 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupOpenSearchAclRule(ctx, &aiven.LookupOpenSearchAclRuleArgs{
-//				Project:     osAclsConfig.Project,
-//				ServiceName: osAclsConfig.ServiceName,
-//				Username:    "<USERNAME>",
-//				Index:       "<INDEX>",
+//				Project:     exampleProject.Project,
+//				ServiceName: exampleOpensearch.ServiceName,
+//				Username:    "documentation-user-1",
+//				Index:       "index5",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,15 +53,15 @@ func LookupOpenSearchAclRule(ctx *pulumi.Context, args *LookupOpenSearchAclRuleA
 
 // A collection of arguments for invoking getOpenSearchAclRule.
 type LookupOpenSearchAclRuleArgs struct {
-	// The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+	// The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
 	Index string `pulumi:"index"`
-	// The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+	// The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
 	Permission string `pulumi:"permission"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
@@ -69,15 +69,15 @@ type LookupOpenSearchAclRuleArgs struct {
 type LookupOpenSearchAclRuleResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+	// The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
 	Index string `pulumi:"index"`
-	// The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+	// The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
 	Permission string `pulumi:"permission"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
@@ -92,15 +92,15 @@ func LookupOpenSearchAclRuleOutput(ctx *pulumi.Context, args LookupOpenSearchAcl
 
 // A collection of arguments for invoking getOpenSearchAclRule.
 type LookupOpenSearchAclRuleOutputArgs struct {
-	// The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+	// The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
 	Index pulumi.StringInput `pulumi:"index"`
-	// The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+	// The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
 	Permission pulumi.StringInput `pulumi:"permission"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -128,12 +128,12 @@ func (o LookupOpenSearchAclRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+// The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
 func (o LookupOpenSearchAclRuleResultOutput) Index() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.Index }).(pulumi.StringOutput)
 }
 
-// The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+// The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
 func (o LookupOpenSearchAclRuleResultOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.Permission }).(pulumi.StringOutput)
 }
@@ -148,7 +148,7 @@ func (o LookupOpenSearchAclRuleResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupOpenSearchAclRuleResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.Username }).(pulumi.StringOutput)
 }

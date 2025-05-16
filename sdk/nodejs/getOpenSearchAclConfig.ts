@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+ * Gets information about access control for an Aiven for OpenSearch® service.
  *
  * ## Example Usage
  *
@@ -14,8 +14,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const os_acl_config = aiven.getOpenSearchAclConfig({
- *     project: os_project.project,
- *     serviceName: os.serviceName,
+ *     project: exampleProject.project,
+ *     serviceName: exampleOpensearch.serviceName,
  * });
  * ```
  */
@@ -46,7 +46,7 @@ export interface GetOpenSearchAclConfigArgs {
  */
 export interface GetOpenSearchAclConfigResult {
     /**
-     * Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
      */
     readonly enabled: boolean;
     /**
@@ -67,7 +67,7 @@ export interface GetOpenSearchAclConfigResult {
     readonly serviceName: string;
 }
 /**
- * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+ * Gets information about access control for an Aiven for OpenSearch® service.
  *
  * ## Example Usage
  *
@@ -76,8 +76,8 @@ export interface GetOpenSearchAclConfigResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const os_acl_config = aiven.getOpenSearchAclConfig({
- *     project: os_project.project,
- *     serviceName: os.serviceName,
+ *     project: exampleProject.project,
+ *     serviceName: exampleOpensearch.serviceName,
  * });
  * ```
  */

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+ * Gets information about an Aiven for OpenSearch® service user.
  *
  * ## Example Usage
  *
@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = aiven.getOpensearchUser({
- *     serviceName: "my-service",
- *     project: "my-project",
- *     username: "user1",
+ * const exampleOpensearchUser = aiven.getOpensearchUser({
+ *     serviceName: "example-opensearch-service",
+ *     project: exampleProject.project,
+ *     username: "example-opensearch-user",
  * });
  * ```
  */
@@ -42,7 +42,7 @@ export interface GetOpensearchUserArgs {
      */
     serviceName: string;
     /**
-     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -56,7 +56,7 @@ export interface GetOpensearchUserResult {
      */
     readonly id: string;
     /**
-     * The password of the OpenSearch User.
+     * The OpenSearch service user's password.
      */
     readonly password: string;
     /**
@@ -68,16 +68,16 @@ export interface GetOpensearchUserResult {
      */
     readonly serviceName: string;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     readonly type: string;
     /**
-     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly username: string;
 }
 /**
- * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+ * Gets information about an Aiven for OpenSearch® service user.
  *
  * ## Example Usage
  *
@@ -85,10 +85,10 @@ export interface GetOpensearchUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = aiven.getOpensearchUser({
- *     serviceName: "my-service",
- *     project: "my-project",
- *     username: "user1",
+ * const exampleOpensearchUser = aiven.getOpensearchUser({
+ *     serviceName: "example-opensearch-service",
+ *     project: exampleProject.project,
+ *     username: "example-opensearch-user",
  * });
  * ```
  */
@@ -114,7 +114,7 @@ export interface GetOpensearchUserOutputArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

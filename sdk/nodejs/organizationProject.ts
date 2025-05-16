@@ -12,27 +12,10 @@ import * as utilities from "./utilities";
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const foo = new aiven.OrganizationProject("foo", {
- *     projectId: "example-project",
- *     organizationId: fooAivenOrganization.id,
- *     billingGroupId: fooAivenBillingGroup.id,
- *     tags: [{
- *         key: "key_1",
- *         value: "value_1",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/organizationProject:OrganizationProject main ORGANIZATION_ID/PROJECT_ID
+ * $ pulumi import aiven:index/organizationProject:OrganizationProject example_project ORGANIZATION_ID/PROJECT_ID
  * ```
  */
 export class OrganizationProject extends pulumi.CustomResource {
@@ -64,15 +47,19 @@ export class OrganizationProject extends pulumi.CustomResource {
     }
 
     /**
-     * Billing group ID to assign to the project.
+     * Valid port number (1-65535) to use as a base for service port allocation.
+     */
+    public readonly basePort!: pulumi.Output<number>;
+    /**
+     * Billing group ID to assign to the project. It's required when moving projects between organizations.
      */
     public readonly billingGroupId!: pulumi.Output<string>;
     /**
-     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * PEM encoded certificate.
      */
     public /*out*/ readonly caCert!: pulumi.Output<string>;
     /**
-     * ID of an organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Maximum length: `36`.
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
@@ -80,7 +67,7 @@ export class OrganizationProject extends pulumi.CustomResource {
      */
     public readonly parentId!: pulumi.Output<string>;
     /**
-     * Unique identifier for the project that also serves as the project name.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
@@ -91,6 +78,7 @@ export class OrganizationProject extends pulumi.CustomResource {
      * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
     public readonly technicalEmails!: pulumi.Output<string[] | undefined>;
+    public readonly timeouts!: pulumi.Output<outputs.OrganizationProjectTimeouts | undefined>;
 
     /**
      * Create a OrganizationProject resource with the given unique name, arguments, and options.
@@ -105,6 +93,7 @@ export class OrganizationProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationProjectState | undefined;
+            resourceInputs["basePort"] = state ? state.basePort : undefined;
             resourceInputs["billingGroupId"] = state ? state.billingGroupId : undefined;
             resourceInputs["caCert"] = state ? state.caCert : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
@@ -112,6 +101,7 @@ export class OrganizationProject extends pulumi.CustomResource {
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["technicalEmails"] = state ? state.technicalEmails : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
         } else {
             const args = argsOrState as OrganizationProjectArgs | undefined;
             if ((!args || args.billingGroupId === undefined) && !opts.urn) {
@@ -126,12 +116,14 @@ export class OrganizationProject extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
+            resourceInputs["basePort"] = args ? args.basePort : undefined;
             resourceInputs["billingGroupId"] = args ? args.billingGroupId : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["parentId"] = args ? args.parentId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["technicalEmails"] = args ? args.technicalEmails : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["caCert"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -146,15 +138,19 @@ export class OrganizationProject extends pulumi.CustomResource {
  */
 export interface OrganizationProjectState {
     /**
-     * Billing group ID to assign to the project.
+     * Valid port number (1-65535) to use as a base for service port allocation.
+     */
+    basePort?: pulumi.Input<number>;
+    /**
+     * Billing group ID to assign to the project. It's required when moving projects between organizations.
      */
     billingGroupId?: pulumi.Input<string>;
     /**
-     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * PEM encoded certificate.
      */
     caCert?: pulumi.Input<string>;
     /**
-     * ID of an organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Maximum length: `36`.
      */
     organizationId?: pulumi.Input<string>;
     /**
@@ -162,7 +158,7 @@ export interface OrganizationProjectState {
      */
     parentId?: pulumi.Input<string>;
     /**
-     * Unique identifier for the project that also serves as the project name.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -173,6 +169,7 @@ export interface OrganizationProjectState {
      * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    timeouts?: pulumi.Input<inputs.OrganizationProjectTimeouts>;
 }
 
 /**
@@ -180,11 +177,15 @@ export interface OrganizationProjectState {
  */
 export interface OrganizationProjectArgs {
     /**
-     * Billing group ID to assign to the project.
+     * Valid port number (1-65535) to use as a base for service port allocation.
+     */
+    basePort?: pulumi.Input<number>;
+    /**
+     * Billing group ID to assign to the project. It's required when moving projects between organizations.
      */
     billingGroupId: pulumi.Input<string>;
     /**
-     * ID of an organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Maximum length: `36`.
      */
     organizationId: pulumi.Input<string>;
     /**
@@ -192,7 +193,7 @@ export interface OrganizationProjectArgs {
      */
     parentId: pulumi.Input<string>;
     /**
-     * Unique identifier for the project that also serves as the project name.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
      */
     projectId: pulumi.Input<string>;
     /**
@@ -203,4 +204,5 @@ export interface OrganizationProjectArgs {
      * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    timeouts?: pulumi.Input<inputs.OrganizationProjectTimeouts>;
 }

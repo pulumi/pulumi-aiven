@@ -15,6 +15,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOrganizationProjectResult',
@@ -28,7 +29,10 @@ class GetOrganizationProjectResult:
     """
     A collection of values returned by getOrganizationProject.
     """
-    def __init__(__self__, billing_group_id=None, ca_cert=None, id=None, organization_id=None, parent_id=None, project_id=None, tags=None, technical_emails=None):
+    def __init__(__self__, base_port=None, billing_group_id=None, ca_cert=None, id=None, organization_id=None, parent_id=None, project_id=None, tags=None, technical_emails=None, timeouts=None):
+        if base_port and not isinstance(base_port, int):
+            raise TypeError("Expected argument 'base_port' to be a int")
+        pulumi.set(__self__, "base_port", base_port)
         if billing_group_id and not isinstance(billing_group_id, str):
             raise TypeError("Expected argument 'billing_group_id' to be a str")
         pulumi.set(__self__, "billing_group_id", billing_group_id)
@@ -53,12 +57,23 @@ class GetOrganizationProjectResult:
         if technical_emails and not isinstance(technical_emails, list):
             raise TypeError("Expected argument 'technical_emails' to be a list")
         pulumi.set(__self__, "technical_emails", technical_emails)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
+
+    @property
+    @pulumi.getter(name="basePort")
+    def base_port(self) -> builtins.int:
+        """
+        Valid port number (1-65535) to use as a base for service port allocation.
+        """
+        return pulumi.get(self, "base_port")
 
     @property
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> builtins.str:
         """
-        Billing group ID to assign to the project.
+        Billing group ID to assign to the project. It's required when moving projects between organizations.
         """
         return pulumi.get(self, "billing_group_id")
 
@@ -66,7 +81,7 @@ class GetOrganizationProjectResult:
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> builtins.str:
         """
-        The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        PEM encoded certificate.
         """
         return pulumi.get(self, "ca_cert")
 
@@ -74,7 +89,7 @@ class GetOrganizationProjectResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID, a composite of `organization_id` and `project_id` IDs.
         """
         return pulumi.get(self, "id")
 
@@ -82,7 +97,7 @@ class GetOrganizationProjectResult:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> builtins.str:
         """
-        ID of an organization. Changing this property forces recreation of the resource.
+        ID of an organization.
         """
         return pulumi.get(self, "organization_id")
 
@@ -98,13 +113,13 @@ class GetOrganizationProjectResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> builtins.str:
         """
-        Unique identifier for the project that also serves as the project name.
+        The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
-    def tags(self) -> Sequence['outputs.GetOrganizationProjectTagResult']:
+    def tags(self) -> Optional[Sequence['outputs.GetOrganizationProjectTagResult']]:
         """
         Tags are key-value pairs that allow you to categorize projects.
         """
@@ -118,6 +133,11 @@ class GetOrganizationProjectResult:
         """
         return pulumi.get(self, "technical_emails")
 
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetOrganizationProjectTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
 
 class AwaitableGetOrganizationProjectResult(GetOrganizationProjectResult):
     # pylint: disable=using-constant-test
@@ -125,6 +145,7 @@ class AwaitableGetOrganizationProjectResult(GetOrganizationProjectResult):
         if False:
             yield self
         return GetOrganizationProjectResult(
+            base_port=self.base_port,
             billing_group_id=self.billing_group_id,
             ca_cert=self.ca_cert,
             id=self.id,
@@ -132,11 +153,14 @@ class AwaitableGetOrganizationProjectResult(GetOrganizationProjectResult):
             parent_id=self.parent_id,
             project_id=self.project_id,
             tags=self.tags,
-            technical_emails=self.technical_emails)
+            technical_emails=self.technical_emails,
+            timeouts=self.timeouts)
 
 
 def get_organization_project(organization_id: Optional[builtins.str] = None,
                              project_id: Optional[builtins.str] = None,
+                             tags: Optional[Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict']]] = None,
+                             timeouts: Optional[Union['GetOrganizationProjectTimeoutsArgs', 'GetOrganizationProjectTimeoutsArgsDict']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationProjectResult:
     """
     Gets information about an Aiven project.
@@ -155,16 +179,20 @@ def get_organization_project(organization_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str organization_id: ID of an organization. Changing this property forces recreation of the resource.
-    :param builtins.str project_id: Unique identifier for the project that also serves as the project name.
+    :param builtins.str organization_id: ID of an organization.
+    :param builtins.str project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
+    :param Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict']] tags: Tags are key-value pairs that allow you to categorize projects.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id
     __args__['projectId'] = project_id
+    __args__['tags'] = tags
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganizationProject:getOrganizationProject', __args__, opts=opts, typ=GetOrganizationProjectResult).value
 
     return AwaitableGetOrganizationProjectResult(
+        base_port=pulumi.get(__ret__, 'base_port'),
         billing_group_id=pulumi.get(__ret__, 'billing_group_id'),
         ca_cert=pulumi.get(__ret__, 'ca_cert'),
         id=pulumi.get(__ret__, 'id'),
@@ -172,9 +200,12 @@ def get_organization_project(organization_id: Optional[builtins.str] = None,
         parent_id=pulumi.get(__ret__, 'parent_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'),
-        technical_emails=pulumi.get(__ret__, 'technical_emails'))
+        technical_emails=pulumi.get(__ret__, 'technical_emails'),
+        timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_organization_project_output(organization_id: Optional[pulumi.Input[builtins.str]] = None,
                                     project_id: Optional[pulumi.Input[builtins.str]] = None,
+                                    tags: Optional[pulumi.Input[Optional[Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict']]]]] = None,
+                                    timeouts: Optional[pulumi.Input[Optional[Union['GetOrganizationProjectTimeoutsArgs', 'GetOrganizationProjectTimeoutsArgsDict']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationProjectResult]:
     """
     Gets information about an Aiven project.
@@ -193,15 +224,19 @@ def get_organization_project_output(organization_id: Optional[pulumi.Input[built
     ```
 
 
-    :param builtins.str organization_id: ID of an organization. Changing this property forces recreation of the resource.
-    :param builtins.str project_id: Unique identifier for the project that also serves as the project name.
+    :param builtins.str organization_id: ID of an organization.
+    :param builtins.str project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
+    :param Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict']] tags: Tags are key-value pairs that allow you to categorize projects.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id
     __args__['projectId'] = project_id
+    __args__['tags'] = tags
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationProject:getOrganizationProject', __args__, opts=opts, typ=GetOrganizationProjectResult)
     return __ret__.apply(lambda __response__: GetOrganizationProjectResult(
+        base_port=pulumi.get(__response__, 'base_port'),
         billing_group_id=pulumi.get(__response__, 'billing_group_id'),
         ca_cert=pulumi.get(__response__, 'ca_cert'),
         id=pulumi.get(__response__, 'id'),
@@ -209,4 +244,5 @@ def get_organization_project_output(organization_id: Optional[pulumi.Input[built
         parent_id=pulumi.get(__response__, 'parent_id'),
         project_id=pulumi.get(__response__, 'project_id'),
         tags=pulumi.get(__response__, 'tags'),
-        technical_emails=pulumi.get(__response__, 'technical_emails')))
+        technical_emails=pulumi.get(__response__, 'technical_emails'),
+        timeouts=pulumi.get(__response__, 'timeouts')))

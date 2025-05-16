@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
+// Creates and manages an [Aiven for OpenSearch®](https://aiven.io/docs/products/opensearch) service.
 //
 // ## Example Usage
 //
@@ -28,15 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOpenSearch(ctx, "os1", &aiven.OpenSearchArgs{
-//				Project:               pulumi.Any(pr1.Project),
+//			_, err := aiven.NewOpenSearch(ctx, "example_opensearch", &aiven.OpenSearchArgs{
+//				Project:               pulumi.Any(exampleProject.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("startup-4"),
-//				ServiceName:           pulumi.String("my-os1"),
+//				ServiceName:           pulumi.String("example-opensearch"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				OpensearchUserConfig: &aiven.OpenSearchOpensearchUserConfigArgs{
-//					OpensearchVersion: pulumi.String("1"),
 //					OpensearchDashboards: &aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{
 //						Enabled:                  pulumi.Bool(true),
 //						OpensearchRequestTimeout: pulumi.Int(30000),
@@ -59,7 +58,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
+// $ pulumi import aiven:index/openSearch:OpenSearch example_opensearch PROJECT/SERVICE_NAME
 // ```
 type OpenSearch struct {
 	pulumi.CustomResourceState
@@ -90,7 +89,7 @@ type OpenSearch struct {
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
 	// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	OpensearchUserConfig OpenSearchOpensearchUserConfigPtrOutput `pulumi:"opensearchUserConfig"`
-	// OpenSearch server provided values
+	// Values provided by the OpenSearch server.
 	Opensearches OpenSearchOpensearchArrayOutput `pulumi:"opensearches"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringOutput `pulumi:"plan"`
@@ -199,7 +198,7 @@ type openSearchState struct {
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
 	// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	OpensearchUserConfig *OpenSearchOpensearchUserConfig `pulumi:"opensearchUserConfig"`
-	// OpenSearch server provided values
+	// Values provided by the OpenSearch server.
 	Opensearches []OpenSearchOpensearch `pulumi:"opensearches"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
@@ -261,7 +260,7 @@ type OpenSearchState struct {
 	MaintenanceWindowTime pulumi.StringPtrInput
 	// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	OpensearchUserConfig OpenSearchOpensearchUserConfigPtrInput
-	// OpenSearch server provided values
+	// Values provided by the OpenSearch server.
 	Opensearches OpenSearchOpensearchArrayInput
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
@@ -315,7 +314,7 @@ type openSearchArgs struct {
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
 	// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	OpensearchUserConfig *OpenSearchOpensearchUserConfig `pulumi:"opensearchUserConfig"`
-	// OpenSearch server provided values
+	// Values provided by the OpenSearch server.
 	Opensearches []OpenSearchOpensearch `pulumi:"opensearches"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
@@ -353,7 +352,7 @@ type OpenSearchArgs struct {
 	MaintenanceWindowTime pulumi.StringPtrInput
 	// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	OpensearchUserConfig OpenSearchOpensearchUserConfigPtrInput
-	// OpenSearch server provided values
+	// Values provided by the OpenSearch server.
 	Opensearches OpenSearchOpensearchArrayInput
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringInput
@@ -521,7 +520,7 @@ func (o OpenSearchOutput) OpensearchUserConfig() OpenSearchOpensearchUserConfigP
 	return o.ApplyT(func(v *OpenSearch) OpenSearchOpensearchUserConfigPtrOutput { return v.OpensearchUserConfig }).(OpenSearchOpensearchUserConfigPtrOutput)
 }
 
-// OpenSearch server provided values
+// Values provided by the OpenSearch server.
 func (o OpenSearchOutput) Opensearches() OpenSearchOpensearchArrayOutput {
 	return o.ApplyT(func(v *OpenSearch) OpenSearchOpensearchArrayOutput { return v.Opensearches }).(OpenSearchOpensearchArrayOutput)
 }

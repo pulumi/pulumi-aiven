@@ -11,54 +11,57 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// Creates and manages an organization address.
+    /// 
+    /// **This resource is in the beta stage and may change without notice.** Set
+    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// </summary>
     [AivenResourceType("aiven:index/organizationAddress:OrganizationAddress")]
     public partial class OrganizationAddress : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ID of the address.
+        /// Address ID.
         /// </summary>
         [Output("addressId")]
         public Output<string> AddressId { get; private set; } = null!;
 
         /// <summary>
-        /// Array of address lines.
+        /// Address Lines.
         /// </summary>
         [Output("addressLines")]
         public Output<ImmutableArray<string>> AddressLines { get; private set; } = null!;
 
         /// <summary>
-        /// City name.
+        /// City.
         /// </summary>
         [Output("city")]
         public Output<string> City { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the company.
-        /// </summary>
-        [Output("companyName")]
-        public Output<string?> CompanyName { get; private set; } = null!;
-
-        /// <summary>
-        /// Country code.
+        /// Country Code.
         /// </summary>
         [Output("countryCode")]
         public Output<string> CountryCode { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of the creation.
+        /// Create Time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// ID of organization.
+        /// Name of a company. Maximum length: `128`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// State name.
+        /// State. Maximum length: `128`.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -67,13 +70,13 @@ namespace Pulumi.Aiven
         public Output<Outputs.OrganizationAddressTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of the last update.
+        /// Update Time.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Zip code.
+        /// Zip Code. Maximum length: `32`.
         /// </summary>
         [Output("zipCode")]
         public Output<string?> ZipCode { get; private set; } = null!;
@@ -128,7 +131,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _addressLines;
 
         /// <summary>
-        /// Array of address lines.
+        /// Address Lines.
         /// </summary>
         public InputList<string> AddressLines
         {
@@ -137,31 +140,31 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// City name.
+        /// City.
         /// </summary>
         [Input("city", required: true)]
         public Input<string> City { get; set; } = null!;
 
         /// <summary>
-        /// Name of the company.
-        /// </summary>
-        [Input("companyName")]
-        public Input<string>? CompanyName { get; set; }
-
-        /// <summary>
-        /// Country code.
+        /// Country Code.
         /// </summary>
         [Input("countryCode", required: true)]
         public Input<string> CountryCode { get; set; } = null!;
 
         /// <summary>
-        /// ID of organization.
+        /// Name of a company. Maximum length: `128`.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// State name.
+        /// State. Maximum length: `128`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -170,7 +173,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.OrganizationAddressTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Zip code.
+        /// Zip Code. Maximum length: `32`.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }
@@ -184,7 +187,7 @@ namespace Pulumi.Aiven
     public sealed class OrganizationAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the address.
+        /// Address ID.
         /// </summary>
         [Input("addressId")]
         public Input<string>? AddressId { get; set; }
@@ -193,7 +196,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _addressLines;
 
         /// <summary>
-        /// Array of address lines.
+        /// Address Lines.
         /// </summary>
         public InputList<string> AddressLines
         {
@@ -202,37 +205,37 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// City name.
+        /// City.
         /// </summary>
         [Input("city")]
         public Input<string>? City { get; set; }
 
         /// <summary>
-        /// Name of the company.
-        /// </summary>
-        [Input("companyName")]
-        public Input<string>? CompanyName { get; set; }
-
-        /// <summary>
-        /// Country code.
+        /// Country Code.
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// Timestamp of the creation.
+        /// Create Time.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// ID of organization.
+        /// Name of a company. Maximum length: `128`.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// State name.
+        /// State. Maximum length: `128`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -241,13 +244,13 @@ namespace Pulumi.Aiven
         public Input<Inputs.OrganizationAddressTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Timestamp of the last update.
+        /// Update Time.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Zip code.
+        /// Zip Code. Maximum length: `32`.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }

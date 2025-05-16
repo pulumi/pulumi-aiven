@@ -56,7 +56,7 @@ class GetExternalIdentityResult:
     @pulumi.getter(name="externalUserId")
     def external_user_id(self) -> builtins.str:
         """
-        The user's ID on the external service.
+        The user's ID on the external service. For GitHub, this is their GitHub username.
         """
         return pulumi.get(self, "external_user_id")
 
@@ -104,14 +104,14 @@ def get_external_identity(external_service_name: Optional[builtins.str] = None,
                           organization_id: Optional[builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalIdentityResult:
     """
-    Maps an external service user to an Aiven user.
+    Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
 
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
 
     :param builtins.str external_service_name: The name of the external service. The possible value is `github`.
-    :param builtins.str external_user_id: The user's ID on the external service.
+    :param builtins.str external_user_id: The user's ID on the external service. For GitHub, this is their GitHub username.
     :param builtins.str internal_user_id: The Aiven user ID.
     :param builtins.str organization_id: The ID of the Aiven organization that the user is part of.
     """
@@ -135,14 +135,14 @@ def get_external_identity_output(external_service_name: Optional[pulumi.Input[bu
                                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalIdentityResult]:
     """
-    Maps an external service user to an Aiven user.
+    Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
 
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
 
     :param builtins.str external_service_name: The name of the external service. The possible value is `github`.
-    :param builtins.str external_user_id: The user's ID on the external service.
+    :param builtins.str external_user_id: The user's ID on the external service. For GitHub, this is their GitHub username.
     :param builtins.str internal_user_id: The Aiven user ID.
     :param builtins.str organization_id: The ID of the Aiven organization that the user is part of.
     """

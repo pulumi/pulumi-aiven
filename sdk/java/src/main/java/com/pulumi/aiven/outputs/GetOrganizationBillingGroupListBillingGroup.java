@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetOrganizationBillingGroupListBillingGroup {
     /**
-     * @return ID of the billing address.
+     * @return Billing address ID.
      * 
      */
     private String billingAddressId;
@@ -22,47 +22,42 @@ public final class GetOrganizationBillingGroupListBillingGroup {
      */
     private List<String> billingContactEmails;
     /**
-     * @return Billing currency.
+     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     private String billingCurrency;
     /**
-     * @return List of billing emails.
+     * @return List of billing contact emails.
      * 
      */
     private List<String> billingEmails;
     /**
-     * @return ID of the billing group.
+     * @return Billing group ID.
      * 
      */
     private String billingGroupId;
     /**
-     * @return Name of the billing group.
+     * @return Billing Group Name.
      * 
      */
     private String billingGroupName;
     /**
-     * @return Custom invoice text.
+     * @return Extra billing text.
      * 
      */
     private String customInvoiceText;
     /**
-     * @return Resource ID, a composite of organization*id and billing*group_id.
-     * 
-     */
-    private String id;
-    /**
-     * @return ID of the organization.
+     * @return Organization ID.
      * 
      */
     private String organizationId;
     /**
-     * @return ID of the payment method.
+     * @return Payment method ID.
      * 
      */
     private String paymentMethodId;
     /**
-     * @return ID of the shipping address.
+     * @return Shipping address ID.
      * 
      */
     private String shippingAddressId;
@@ -74,7 +69,7 @@ public final class GetOrganizationBillingGroupListBillingGroup {
 
     private GetOrganizationBillingGroupListBillingGroup() {}
     /**
-     * @return ID of the billing address.
+     * @return Billing address ID.
      * 
      */
     public String billingAddressId() {
@@ -88,63 +83,56 @@ public final class GetOrganizationBillingGroupListBillingGroup {
         return this.billingContactEmails;
     }
     /**
-     * @return Billing currency.
+     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     public String billingCurrency() {
         return this.billingCurrency;
     }
     /**
-     * @return List of billing emails.
+     * @return List of billing contact emails.
      * 
      */
     public List<String> billingEmails() {
         return this.billingEmails;
     }
     /**
-     * @return ID of the billing group.
+     * @return Billing group ID.
      * 
      */
     public String billingGroupId() {
         return this.billingGroupId;
     }
     /**
-     * @return Name of the billing group.
+     * @return Billing Group Name.
      * 
      */
     public String billingGroupName() {
         return this.billingGroupName;
     }
     /**
-     * @return Custom invoice text.
+     * @return Extra billing text.
      * 
      */
     public String customInvoiceText() {
         return this.customInvoiceText;
     }
     /**
-     * @return Resource ID, a composite of organization*id and billing*group_id.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
-     * @return ID of the organization.
+     * @return Organization ID.
      * 
      */
     public String organizationId() {
         return this.organizationId;
     }
     /**
-     * @return ID of the payment method.
+     * @return Payment method ID.
      * 
      */
     public String paymentMethodId() {
         return this.paymentMethodId;
     }
     /**
-     * @return ID of the shipping address.
+     * @return Shipping address ID.
      * 
      */
     public String shippingAddressId() {
@@ -174,7 +162,6 @@ public final class GetOrganizationBillingGroupListBillingGroup {
         private String billingGroupId;
         private String billingGroupName;
         private String customInvoiceText;
-        private String id;
         private String organizationId;
         private String paymentMethodId;
         private String shippingAddressId;
@@ -189,7 +176,6 @@ public final class GetOrganizationBillingGroupListBillingGroup {
     	      this.billingGroupId = defaults.billingGroupId;
     	      this.billingGroupName = defaults.billingGroupName;
     	      this.customInvoiceText = defaults.customInvoiceText;
-    	      this.id = defaults.id;
     	      this.organizationId = defaults.organizationId;
     	      this.paymentMethodId = defaults.paymentMethodId;
     	      this.shippingAddressId = defaults.shippingAddressId;
@@ -259,14 +245,6 @@ public final class GetOrganizationBillingGroupListBillingGroup {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder organizationId(String organizationId) {
             if (organizationId == null) {
               throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "organizationId");
@@ -307,7 +285,6 @@ public final class GetOrganizationBillingGroupListBillingGroup {
             _resultValue.billingGroupId = billingGroupId;
             _resultValue.billingGroupName = billingGroupName;
             _resultValue.customInvoiceText = customInvoiceText;
-            _resultValue.id = id;
             _resultValue.organizationId = organizationId;
             _resultValue.paymentMethodId = paymentMethodId;
             _resultValue.shippingAddressId = shippingAddressId;

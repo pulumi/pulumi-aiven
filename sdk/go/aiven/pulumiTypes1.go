@@ -13,6 +13,829 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetM3DbM3dbUserConfigRulesMappingNamespacesObject struct {
+	// The resolution for the matching namespace. Example: `30s`.
+	Resolution string `pulumi:"resolution"`
+	// The retention period of the matching namespace. Example: `48h`.
+	Retention *string `pulumi:"retention"`
+}
+
+// GetM3DbM3dbUserConfigRulesMappingNamespacesObjectInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs and GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingNamespacesObjectInput` via:
+//
+//	GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs{...}
+type GetM3DbM3dbUserConfigRulesMappingNamespacesObjectInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput() GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput
+	ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput
+}
+
+type GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs struct {
+	// The resolution for the matching namespace. Example: `30s`.
+	Resolution pulumi.StringInput `pulumi:"resolution"`
+	// The retention period of the matching namespace. Example: `48h`.
+	Retention pulumi.StringPtrInput `pulumi:"retention"`
+}
+
+func (GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingNamespacesObject)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs) ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput() GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs) ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput)
+}
+
+// GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArray and GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayInput` via:
+//
+//	GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArray{ GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs{...} }
+type GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput() GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput
+	ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput
+}
+
+type GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArray []GetM3DbM3dbUserConfigRulesMappingNamespacesObjectInput
+
+func (GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigRulesMappingNamespacesObject)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArray) ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput() GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArray) ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingNamespacesObject)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput) ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput() GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput) ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput {
+	return o
+}
+
+// The resolution for the matching namespace. Example: `30s`.
+func (o GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput) Resolution() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMappingNamespacesObject) string { return v.Resolution }).(pulumi.StringOutput)
+}
+
+// The retention period of the matching namespace. Example: `48h`.
+func (o GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput) Retention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMappingNamespacesObject) *string { return v.Retention }).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigRulesMappingNamespacesObject)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput) ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput() GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput) ToGetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3dbUserConfigRulesMappingNamespacesObject {
+		return vs[0].([]GetM3DbM3dbUserConfigRulesMappingNamespacesObject)[vs[1].(int)]
+	}).(GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingTag struct {
+	// Name of the tag. Example: `myTag`.
+	Name string `pulumi:"name"`
+	// Value of the tag. Example: `myValue`.
+	Value string `pulumi:"value"`
+}
+
+// GetM3DbM3dbUserConfigRulesMappingTagInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingTagArgs and GetM3DbM3dbUserConfigRulesMappingTagOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingTagInput` via:
+//
+//	GetM3DbM3dbUserConfigRulesMappingTagArgs{...}
+type GetM3DbM3dbUserConfigRulesMappingTagInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesMappingTagOutput() GetM3DbM3dbUserConfigRulesMappingTagOutput
+	ToGetM3DbM3dbUserConfigRulesMappingTagOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesMappingTagOutput
+}
+
+type GetM3DbM3dbUserConfigRulesMappingTagArgs struct {
+	// Name of the tag. Example: `myTag`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value of the tag. Example: `myValue`.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetM3DbM3dbUserConfigRulesMappingTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingTagArgs) ToGetM3DbM3dbUserConfigRulesMappingTagOutput() GetM3DbM3dbUserConfigRulesMappingTagOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesMappingTagOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingTagArgs) ToGetM3DbM3dbUserConfigRulesMappingTagOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesMappingTagOutput)
+}
+
+// GetM3DbM3dbUserConfigRulesMappingTagArrayInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingTagArray and GetM3DbM3dbUserConfigRulesMappingTagArrayOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingTagArrayInput` via:
+//
+//	GetM3DbM3dbUserConfigRulesMappingTagArray{ GetM3DbM3dbUserConfigRulesMappingTagArgs{...} }
+type GetM3DbM3dbUserConfigRulesMappingTagArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutput() GetM3DbM3dbUserConfigRulesMappingTagArrayOutput
+	ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesMappingTagArrayOutput
+}
+
+type GetM3DbM3dbUserConfigRulesMappingTagArray []GetM3DbM3dbUserConfigRulesMappingTagInput
+
+func (GetM3DbM3dbUserConfigRulesMappingTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingTagArray) ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutput() GetM3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingTagArray) ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesMappingTagArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingTagOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesMappingTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingTagOutput) ToGetM3DbM3dbUserConfigRulesMappingTagOutput() GetM3DbM3dbUserConfigRulesMappingTagOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingTagOutput) ToGetM3DbM3dbUserConfigRulesMappingTagOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingTagOutput {
+	return o
+}
+
+// Name of the tag. Example: `myTag`.
+func (o GetM3DbM3dbUserConfigRulesMappingTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMappingTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of the tag. Example: `myValue`.
+func (o GetM3DbM3dbUserConfigRulesMappingTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMappingTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesMappingTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigRulesMappingTag)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingTagArrayOutput) ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutput() GetM3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingTagArrayOutput) ToGetM3DbM3dbUserConfigRulesMappingTagArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingTagArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUserConfigRulesMappingTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3dbUserConfigRulesMappingTag {
+		return vs[0].([]GetM3DbM3dbUserConfigRulesMappingTag)[vs[1].(int)]
+	}).(GetM3DbM3dbUserConfigRulesMappingTagOutput)
+}
+
+type GetM3DbServiceIntegration struct {
+	// Type of the service integration
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetM3DbServiceIntegrationInput is an input type that accepts GetM3DbServiceIntegrationArgs and GetM3DbServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetM3DbServiceIntegrationInput` via:
+//
+//	GetM3DbServiceIntegrationArgs{...}
+type GetM3DbServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetM3DbServiceIntegrationOutput() GetM3DbServiceIntegrationOutput
+	ToGetM3DbServiceIntegrationOutputWithContext(context.Context) GetM3DbServiceIntegrationOutput
+}
+
+type GetM3DbServiceIntegrationArgs struct {
+	// Type of the service integration
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetM3DbServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbServiceIntegration)(nil)).Elem()
+}
+
+func (i GetM3DbServiceIntegrationArgs) ToGetM3DbServiceIntegrationOutput() GetM3DbServiceIntegrationOutput {
+	return i.ToGetM3DbServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetM3DbServiceIntegrationArgs) ToGetM3DbServiceIntegrationOutputWithContext(ctx context.Context) GetM3DbServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbServiceIntegrationOutput)
+}
+
+// GetM3DbServiceIntegrationArrayInput is an input type that accepts GetM3DbServiceIntegrationArray and GetM3DbServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetM3DbServiceIntegrationArrayInput` via:
+//
+//	GetM3DbServiceIntegrationArray{ GetM3DbServiceIntegrationArgs{...} }
+type GetM3DbServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbServiceIntegrationArrayOutput() GetM3DbServiceIntegrationArrayOutput
+	ToGetM3DbServiceIntegrationArrayOutputWithContext(context.Context) GetM3DbServiceIntegrationArrayOutput
+}
+
+type GetM3DbServiceIntegrationArray []GetM3DbServiceIntegrationInput
+
+func (GetM3DbServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbServiceIntegration)(nil)).Elem()
+}
+
+func (i GetM3DbServiceIntegrationArray) ToGetM3DbServiceIntegrationArrayOutput() GetM3DbServiceIntegrationArrayOutput {
+	return i.ToGetM3DbServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbServiceIntegrationArray) ToGetM3DbServiceIntegrationArrayOutputWithContext(ctx context.Context) GetM3DbServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbServiceIntegrationArrayOutput)
+}
+
+type GetM3DbServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbServiceIntegration)(nil)).Elem()
+}
+
+func (o GetM3DbServiceIntegrationOutput) ToGetM3DbServiceIntegrationOutput() GetM3DbServiceIntegrationOutput {
+	return o
+}
+
+func (o GetM3DbServiceIntegrationOutput) ToGetM3DbServiceIntegrationOutputWithContext(ctx context.Context) GetM3DbServiceIntegrationOutput {
+	return o
+}
+
+// Type of the service integration
+func (o GetM3DbServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Name of the source service
+func (o GetM3DbServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetM3DbServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbServiceIntegration)(nil)).Elem()
+}
+
+func (o GetM3DbServiceIntegrationArrayOutput) ToGetM3DbServiceIntegrationArrayOutput() GetM3DbServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetM3DbServiceIntegrationArrayOutput) ToGetM3DbServiceIntegrationArrayOutputWithContext(ctx context.Context) GetM3DbServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetM3DbServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetM3DbServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbServiceIntegration {
+		return vs[0].([]GetM3DbServiceIntegration)[vs[1].(int)]
+	}).(GetM3DbServiceIntegrationOutput)
+}
+
+type GetM3DbTag struct {
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
+	Value string `pulumi:"value"`
+}
+
+// GetM3DbTagInput is an input type that accepts GetM3DbTagArgs and GetM3DbTagOutput values.
+// You can construct a concrete instance of `GetM3DbTagInput` via:
+//
+//	GetM3DbTagArgs{...}
+type GetM3DbTagInput interface {
+	pulumi.Input
+
+	ToGetM3DbTagOutput() GetM3DbTagOutput
+	ToGetM3DbTagOutputWithContext(context.Context) GetM3DbTagOutput
+}
+
+type GetM3DbTagArgs struct {
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetM3DbTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbTag)(nil)).Elem()
+}
+
+func (i GetM3DbTagArgs) ToGetM3DbTagOutput() GetM3DbTagOutput {
+	return i.ToGetM3DbTagOutputWithContext(context.Background())
+}
+
+func (i GetM3DbTagArgs) ToGetM3DbTagOutputWithContext(ctx context.Context) GetM3DbTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbTagOutput)
+}
+
+// GetM3DbTagArrayInput is an input type that accepts GetM3DbTagArray and GetM3DbTagArrayOutput values.
+// You can construct a concrete instance of `GetM3DbTagArrayInput` via:
+//
+//	GetM3DbTagArray{ GetM3DbTagArgs{...} }
+type GetM3DbTagArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbTagArrayOutput() GetM3DbTagArrayOutput
+	ToGetM3DbTagArrayOutputWithContext(context.Context) GetM3DbTagArrayOutput
+}
+
+type GetM3DbTagArray []GetM3DbTagInput
+
+func (GetM3DbTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbTag)(nil)).Elem()
+}
+
+func (i GetM3DbTagArray) ToGetM3DbTagArrayOutput() GetM3DbTagArrayOutput {
+	return i.ToGetM3DbTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbTagArray) ToGetM3DbTagArrayOutputWithContext(ctx context.Context) GetM3DbTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbTagArrayOutput)
+}
+
+type GetM3DbTagOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbTag)(nil)).Elem()
+}
+
+func (o GetM3DbTagOutput) ToGetM3DbTagOutput() GetM3DbTagOutput {
+	return o
+}
+
+func (o GetM3DbTagOutput) ToGetM3DbTagOutputWithContext(ctx context.Context) GetM3DbTagOutput {
+	return o
+}
+
+// Service tag key
+func (o GetM3DbTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Service tag value
+func (o GetM3DbTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetM3DbTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbTag)(nil)).Elem()
+}
+
+func (o GetM3DbTagArrayOutput) ToGetM3DbTagArrayOutput() GetM3DbTagArrayOutput {
+	return o
+}
+
+func (o GetM3DbTagArrayOutput) ToGetM3DbTagArrayOutputWithContext(ctx context.Context) GetM3DbTagArrayOutput {
+	return o
+}
+
+func (o GetM3DbTagArrayOutput) Index(i pulumi.IntInput) GetM3DbTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbTag {
+		return vs[0].([]GetM3DbTag)[vs[1].(int)]
+	}).(GetM3DbTagOutput)
+}
+
+type GetM3DbTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// GetM3DbTechEmailInput is an input type that accepts GetM3DbTechEmailArgs and GetM3DbTechEmailOutput values.
+// You can construct a concrete instance of `GetM3DbTechEmailInput` via:
+//
+//	GetM3DbTechEmailArgs{...}
+type GetM3DbTechEmailInput interface {
+	pulumi.Input
+
+	ToGetM3DbTechEmailOutput() GetM3DbTechEmailOutput
+	ToGetM3DbTechEmailOutputWithContext(context.Context) GetM3DbTechEmailOutput
+}
+
+type GetM3DbTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetM3DbTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbTechEmail)(nil)).Elem()
+}
+
+func (i GetM3DbTechEmailArgs) ToGetM3DbTechEmailOutput() GetM3DbTechEmailOutput {
+	return i.ToGetM3DbTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetM3DbTechEmailArgs) ToGetM3DbTechEmailOutputWithContext(ctx context.Context) GetM3DbTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbTechEmailOutput)
+}
+
+// GetM3DbTechEmailArrayInput is an input type that accepts GetM3DbTechEmailArray and GetM3DbTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetM3DbTechEmailArrayInput` via:
+//
+//	GetM3DbTechEmailArray{ GetM3DbTechEmailArgs{...} }
+type GetM3DbTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbTechEmailArrayOutput() GetM3DbTechEmailArrayOutput
+	ToGetM3DbTechEmailArrayOutputWithContext(context.Context) GetM3DbTechEmailArrayOutput
+}
+
+type GetM3DbTechEmailArray []GetM3DbTechEmailInput
+
+func (GetM3DbTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbTechEmail)(nil)).Elem()
+}
+
+func (i GetM3DbTechEmailArray) ToGetM3DbTechEmailArrayOutput() GetM3DbTechEmailArrayOutput {
+	return i.ToGetM3DbTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbTechEmailArray) ToGetM3DbTechEmailArrayOutputWithContext(ctx context.Context) GetM3DbTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbTechEmailArrayOutput)
+}
+
+type GetM3DbTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbTechEmail)(nil)).Elem()
+}
+
+func (o GetM3DbTechEmailOutput) ToGetM3DbTechEmailOutput() GetM3DbTechEmailOutput {
+	return o
+}
+
+func (o GetM3DbTechEmailOutput) ToGetM3DbTechEmailOutputWithContext(ctx context.Context) GetM3DbTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o GetM3DbTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetM3DbTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbTechEmail)(nil)).Elem()
+}
+
+func (o GetM3DbTechEmailArrayOutput) ToGetM3DbTechEmailArrayOutput() GetM3DbTechEmailArrayOutput {
+	return o
+}
+
+func (o GetM3DbTechEmailArrayOutput) ToGetM3DbTechEmailArrayOutputWithContext(ctx context.Context) GetM3DbTechEmailArrayOutput {
+	return o
+}
+
+func (o GetM3DbTechEmailArrayOutput) Index(i pulumi.IntInput) GetM3DbTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbTechEmail {
+		return vs[0].([]GetM3DbTechEmail)[vs[1].(int)]
+	}).(GetM3DbTechEmailOutput)
+}
+
+type GetMySqlComponent struct {
+	// Service component name
+	Component string `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri string `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host string `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa string `pulumi:"kafkaSslCa"`
+	// Port number for connecting to the service component
+	Port int `pulumi:"port"`
+	// Network access route
+	Route string `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl bool `pulumi:"ssl"`
+	// DNS usage name
+	Usage string `pulumi:"usage"`
+}
+
+// GetMySqlComponentInput is an input type that accepts GetMySqlComponentArgs and GetMySqlComponentOutput values.
+// You can construct a concrete instance of `GetMySqlComponentInput` via:
+//
+//	GetMySqlComponentArgs{...}
+type GetMySqlComponentInput interface {
+	pulumi.Input
+
+	ToGetMySqlComponentOutput() GetMySqlComponentOutput
+	ToGetMySqlComponentOutputWithContext(context.Context) GetMySqlComponentOutput
+}
+
+type GetMySqlComponentArgs struct {
+	// Service component name
+	Component pulumi.StringInput `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri pulumi.StringInput `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host pulumi.StringInput `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
+	// Port number for connecting to the service component
+	Port pulumi.IntInput `pulumi:"port"`
+	// Network access route
+	Route pulumi.StringInput `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl pulumi.BoolInput `pulumi:"ssl"`
+	// DNS usage name
+	Usage pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetMySqlComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlComponent)(nil)).Elem()
+}
+
+func (i GetMySqlComponentArgs) ToGetMySqlComponentOutput() GetMySqlComponentOutput {
+	return i.ToGetMySqlComponentOutputWithContext(context.Background())
+}
+
+func (i GetMySqlComponentArgs) ToGetMySqlComponentOutputWithContext(ctx context.Context) GetMySqlComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlComponentOutput)
+}
+
+// GetMySqlComponentArrayInput is an input type that accepts GetMySqlComponentArray and GetMySqlComponentArrayOutput values.
+// You can construct a concrete instance of `GetMySqlComponentArrayInput` via:
+//
+//	GetMySqlComponentArray{ GetMySqlComponentArgs{...} }
+type GetMySqlComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetMySqlComponentArrayOutput() GetMySqlComponentArrayOutput
+	ToGetMySqlComponentArrayOutputWithContext(context.Context) GetMySqlComponentArrayOutput
+}
+
+type GetMySqlComponentArray []GetMySqlComponentInput
+
+func (GetMySqlComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlComponent)(nil)).Elem()
+}
+
+func (i GetMySqlComponentArray) ToGetMySqlComponentArrayOutput() GetMySqlComponentArrayOutput {
+	return i.ToGetMySqlComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetMySqlComponentArray) ToGetMySqlComponentArrayOutputWithContext(ctx context.Context) GetMySqlComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlComponentArrayOutput)
+}
+
+type GetMySqlComponentOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlComponent)(nil)).Elem()
+}
+
+func (o GetMySqlComponentOutput) ToGetMySqlComponentOutput() GetMySqlComponentOutput {
+	return o
+}
+
+func (o GetMySqlComponentOutput) ToGetMySqlComponentOutputWithContext(ctx context.Context) GetMySqlComponentOutput {
+	return o
+}
+
+// Service component name
+func (o GetMySqlComponentOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+// Connection info for connecting to the service component. This is a combination of host and port.
+func (o GetMySqlComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
+// Host name for connecting to the service component
+func (o GetMySqlComponentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlComponent) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Kafka authentication method. This is a value specific to the 'kafka' service component
+func (o GetMySqlComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+func (o GetMySqlComponentOutput) KafkaSslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlComponent) string { return v.KafkaSslCa }).(pulumi.StringOutput)
+}
+
+// Port number for connecting to the service component
+func (o GetMySqlComponentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMySqlComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Network access route
+func (o GetMySqlComponentOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlComponent) string { return v.Route }).(pulumi.StringOutput)
+}
+
+// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+func (o GetMySqlComponentOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMySqlComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+}
+
+// DNS usage name
+func (o GetMySqlComponentOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlComponent) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetMySqlComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlComponent)(nil)).Elem()
+}
+
+func (o GetMySqlComponentArrayOutput) ToGetMySqlComponentArrayOutput() GetMySqlComponentArrayOutput {
+	return o
+}
+
+func (o GetMySqlComponentArrayOutput) ToGetMySqlComponentArrayOutputWithContext(ctx context.Context) GetMySqlComponentArrayOutput {
+	return o
+}
+
+func (o GetMySqlComponentArrayOutput) Index(i pulumi.IntInput) GetMySqlComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMySqlComponent {
+		return vs[0].([]GetMySqlComponent)[vs[1].(int)]
+	}).(GetMySqlComponentOutput)
+}
+
+type GetMySqlMysql struct {
+	// MySQL connection parameters.
+	Params []GetMySqlMysqlParam `pulumi:"params"`
+	// MySQL replica URI for services with a replica.
+	ReplicaUri string `pulumi:"replicaUri"`
+	// MySQL standby connection URIs.
+	StandbyUris []string `pulumi:"standbyUris"`
+	// MySQL syncing connection URIs.
+	SyncingUris []string `pulumi:"syncingUris"`
+	// MySQL connection URIs.
+	Uris []string `pulumi:"uris"`
+}
+
+// GetMySqlMysqlInput is an input type that accepts GetMySqlMysqlArgs and GetMySqlMysqlOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlInput` via:
+//
+//	GetMySqlMysqlArgs{...}
+type GetMySqlMysqlInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlOutput() GetMySqlMysqlOutput
+	ToGetMySqlMysqlOutputWithContext(context.Context) GetMySqlMysqlOutput
+}
+
+type GetMySqlMysqlArgs struct {
+	// MySQL connection parameters.
+	Params GetMySqlMysqlParamArrayInput `pulumi:"params"`
+	// MySQL replica URI for services with a replica.
+	ReplicaUri pulumi.StringInput `pulumi:"replicaUri"`
+	// MySQL standby connection URIs.
+	StandbyUris pulumi.StringArrayInput `pulumi:"standbyUris"`
+	// MySQL syncing connection URIs.
+	SyncingUris pulumi.StringArrayInput `pulumi:"syncingUris"`
+	// MySQL connection URIs.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (GetMySqlMysqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysql)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlArgs) ToGetMySqlMysqlOutput() GetMySqlMysqlOutput {
+	return i.ToGetMySqlMysqlOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlArgs) ToGetMySqlMysqlOutputWithContext(ctx context.Context) GetMySqlMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlOutput)
+}
+
+// GetMySqlMysqlArrayInput is an input type that accepts GetMySqlMysqlArray and GetMySqlMysqlArrayOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlArrayInput` via:
+//
+//	GetMySqlMysqlArray{ GetMySqlMysqlArgs{...} }
+type GetMySqlMysqlArrayInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlArrayOutput() GetMySqlMysqlArrayOutput
+	ToGetMySqlMysqlArrayOutputWithContext(context.Context) GetMySqlMysqlArrayOutput
+}
+
+type GetMySqlMysqlArray []GetMySqlMysqlInput
+
+func (GetMySqlMysqlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlMysql)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlArray) ToGetMySqlMysqlArrayOutput() GetMySqlMysqlArrayOutput {
+	return i.ToGetMySqlMysqlArrayOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlArray) ToGetMySqlMysqlArrayOutputWithContext(ctx context.Context) GetMySqlMysqlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlArrayOutput)
+}
+
+type GetMySqlMysqlOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysql)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlOutput) ToGetMySqlMysqlOutput() GetMySqlMysqlOutput {
+	return o
+}
+
+func (o GetMySqlMysqlOutput) ToGetMySqlMysqlOutputWithContext(ctx context.Context) GetMySqlMysqlOutput {
+	return o
+}
+
+// MySQL connection parameters.
+func (o GetMySqlMysqlOutput) Params() GetMySqlMysqlParamArrayOutput {
+	return o.ApplyT(func(v GetMySqlMysql) []GetMySqlMysqlParam { return v.Params }).(GetMySqlMysqlParamArrayOutput)
+}
+
+// MySQL replica URI for services with a replica.
+func (o GetMySqlMysqlOutput) ReplicaUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlMysql) string { return v.ReplicaUri }).(pulumi.StringOutput)
+}
+
+// MySQL standby connection URIs.
+func (o GetMySqlMysqlOutput) StandbyUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMySqlMysql) []string { return v.StandbyUris }).(pulumi.StringArrayOutput)
+}
+
+// MySQL syncing connection URIs.
+func (o GetMySqlMysqlOutput) SyncingUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMySqlMysql) []string { return v.SyncingUris }).(pulumi.StringArrayOutput)
+}
+
+// MySQL connection URIs.
+func (o GetMySqlMysqlOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMySqlMysql) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type GetMySqlMysqlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlMysql)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlArrayOutput) ToGetMySqlMysqlArrayOutput() GetMySqlMysqlArrayOutput {
+	return o
+}
+
+func (o GetMySqlMysqlArrayOutput) ToGetMySqlMysqlArrayOutputWithContext(ctx context.Context) GetMySqlMysqlArrayOutput {
+	return o
+}
+
+func (o GetMySqlMysqlArrayOutput) Index(i pulumi.IntInput) GetMySqlMysqlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMySqlMysql {
+		return vs[0].([]GetMySqlMysql)[vs[1].(int)]
+	}).(GetMySqlMysqlOutput)
+}
+
 type GetMySqlMysqlParam struct {
 	// Thr name of the primary MySQL database.
 	DatabaseName string `pulumi:"databaseName"`
@@ -2535,17 +3358,17 @@ func (o GetOpenSearchComponentArrayOutput) Index(i pulumi.IntInput) GetOpenSearc
 }
 
 type GetOpenSearchOpensearch struct {
-	// URI for Kibana dashboard frontend
+	// URI for Kibana dashboard frontend.
 	//
 	// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
 	KibanaUri string `pulumi:"kibanaUri"`
-	// URI for OpenSearch dashboard frontend
+	// URI for OpenSearch dashboard frontend.
 	OpensearchDashboardsUri string `pulumi:"opensearchDashboardsUri"`
-	// OpenSearch password
+	// OpenSearch password.
 	Password string `pulumi:"password"`
 	// OpenSearch server URIs.
 	Uris []string `pulumi:"uris"`
-	// OpenSearch username
+	// OpenSearch username.
 	Username string `pulumi:"username"`
 }
 
@@ -2561,17 +3384,17 @@ type GetOpenSearchOpensearchInput interface {
 }
 
 type GetOpenSearchOpensearchArgs struct {
-	// URI for Kibana dashboard frontend
+	// URI for Kibana dashboard frontend.
 	//
 	// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
 	KibanaUri pulumi.StringInput `pulumi:"kibanaUri"`
-	// URI for OpenSearch dashboard frontend
+	// URI for OpenSearch dashboard frontend.
 	OpensearchDashboardsUri pulumi.StringInput `pulumi:"opensearchDashboardsUri"`
-	// OpenSearch password
+	// OpenSearch password.
 	Password pulumi.StringInput `pulumi:"password"`
 	// OpenSearch server URIs.
 	Uris pulumi.StringArrayInput `pulumi:"uris"`
-	// OpenSearch username
+	// OpenSearch username.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -2626,19 +3449,19 @@ func (o GetOpenSearchOpensearchOutput) ToGetOpenSearchOpensearchOutputWithContex
 	return o
 }
 
-// URI for Kibana dashboard frontend
+// URI for Kibana dashboard frontend.
 //
 // Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
 func (o GetOpenSearchOpensearchOutput) KibanaUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearch) string { return v.KibanaUri }).(pulumi.StringOutput)
 }
 
-// URI for OpenSearch dashboard frontend
+// URI for OpenSearch dashboard frontend.
 func (o GetOpenSearchOpensearchOutput) OpensearchDashboardsUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearch) string { return v.OpensearchDashboardsUri }).(pulumi.StringOutput)
 }
 
-// OpenSearch password
+// OpenSearch password.
 func (o GetOpenSearchOpensearchOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearch) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -2648,7 +3471,7 @@ func (o GetOpenSearchOpensearchOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearch) []string { return v.Uris }).(pulumi.StringArrayOutput)
 }
 
-// OpenSearch username
+// OpenSearch username.
 func (o GetOpenSearchOpensearchOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearch) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -4686,6 +5509,8 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	EmailSenderUsername *string `pulumi:"emailSenderUsername"`
 	// Enable remote-backed storage.
 	EnableRemoteBackedStorage *bool `pulumi:"enableRemoteBackedStorage"`
+	// Enable searchable snapshots.
+	EnableSearchableSnapshots *bool `pulumi:"enableSearchableSnapshots"`
 	// Enable/Disable security audit.
 	EnableSecurityAudit *bool `pulumi:"enableSecurityAudit"`
 	// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
@@ -4802,6 +5627,8 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	EmailSenderUsername pulumi.StringPtrInput `pulumi:"emailSenderUsername"`
 	// Enable remote-backed storage.
 	EnableRemoteBackedStorage pulumi.BoolPtrInput `pulumi:"enableRemoteBackedStorage"`
+	// Enable searchable snapshots.
+	EnableSearchableSnapshots pulumi.BoolPtrInput `pulumi:"enableSearchableSnapshots"`
 	// Enable/Disable security audit.
 	EnableSecurityAudit pulumi.BoolPtrInput `pulumi:"enableSecurityAudit"`
 	// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
@@ -5027,6 +5854,11 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderUsername()
 // Enable remote-backed storage.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EnableRemoteBackedStorage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.EnableRemoteBackedStorage }).(pulumi.BoolPtrOutput)
+}
+
+// Enable searchable snapshots.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EnableSearchableSnapshots() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.EnableSearchableSnapshots }).(pulumi.BoolPtrOutput)
 }
 
 // Enable/Disable security audit.
@@ -5380,6 +6212,16 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EnableRemoteBacked
 			return nil
 		}
 		return v.EnableRemoteBackedStorage
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable searchable snapshots.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EnableSearchableSnapshots() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSearchableSnapshots
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -11465,28 +12307,163 @@ func (o GetOpenSearchTechEmailArrayOutput) Index(i pulumi.IntInput) GetOpenSearc
 	}).(GetOpenSearchTechEmailOutput)
 }
 
+type GetOrganizationAddressTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationAddressTimeoutsInput is an input type that accepts GetOrganizationAddressTimeoutsArgs and GetOrganizationAddressTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationAddressTimeoutsInput` via:
+//
+//	GetOrganizationAddressTimeoutsArgs{...}
+type GetOrganizationAddressTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationAddressTimeoutsOutput() GetOrganizationAddressTimeoutsOutput
+	ToGetOrganizationAddressTimeoutsOutputWithContext(context.Context) GetOrganizationAddressTimeoutsOutput
+}
+
+type GetOrganizationAddressTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationAddressTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationAddressTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationAddressTimeoutsArgs) ToGetOrganizationAddressTimeoutsOutput() GetOrganizationAddressTimeoutsOutput {
+	return i.ToGetOrganizationAddressTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationAddressTimeoutsArgs) ToGetOrganizationAddressTimeoutsOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationAddressTimeoutsOutput)
+}
+
+func (i GetOrganizationAddressTimeoutsArgs) ToGetOrganizationAddressTimeoutsPtrOutput() GetOrganizationAddressTimeoutsPtrOutput {
+	return i.ToGetOrganizationAddressTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationAddressTimeoutsArgs) ToGetOrganizationAddressTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationAddressTimeoutsOutput).ToGetOrganizationAddressTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationAddressTimeoutsPtrInput is an input type that accepts GetOrganizationAddressTimeoutsArgs, GetOrganizationAddressTimeoutsPtr and GetOrganizationAddressTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationAddressTimeoutsPtrInput` via:
+//
+//	        GetOrganizationAddressTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationAddressTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationAddressTimeoutsPtrOutput() GetOrganizationAddressTimeoutsPtrOutput
+	ToGetOrganizationAddressTimeoutsPtrOutputWithContext(context.Context) GetOrganizationAddressTimeoutsPtrOutput
+}
+
+type getOrganizationAddressTimeoutsPtrType GetOrganizationAddressTimeoutsArgs
+
+func GetOrganizationAddressTimeoutsPtr(v *GetOrganizationAddressTimeoutsArgs) GetOrganizationAddressTimeoutsPtrInput {
+	return (*getOrganizationAddressTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationAddressTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationAddressTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationAddressTimeoutsPtrType) ToGetOrganizationAddressTimeoutsPtrOutput() GetOrganizationAddressTimeoutsPtrOutput {
+	return i.ToGetOrganizationAddressTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationAddressTimeoutsPtrType) ToGetOrganizationAddressTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationAddressTimeoutsPtrOutput)
+}
+
+type GetOrganizationAddressTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationAddressTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationAddressTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationAddressTimeoutsOutput) ToGetOrganizationAddressTimeoutsOutput() GetOrganizationAddressTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationAddressTimeoutsOutput) ToGetOrganizationAddressTimeoutsOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationAddressTimeoutsOutput) ToGetOrganizationAddressTimeoutsPtrOutput() GetOrganizationAddressTimeoutsPtrOutput {
+	return o.ToGetOrganizationAddressTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationAddressTimeoutsOutput) ToGetOrganizationAddressTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationAddressTimeouts) *GetOrganizationAddressTimeouts {
+		return &v
+	}).(GetOrganizationAddressTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationAddressTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationAddressTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationAddressTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationAddressTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationAddressTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationAddressTimeoutsPtrOutput) ToGetOrganizationAddressTimeoutsPtrOutput() GetOrganizationAddressTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationAddressTimeoutsPtrOutput) ToGetOrganizationAddressTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationAddressTimeoutsPtrOutput) Elem() GetOrganizationAddressTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationAddressTimeouts) GetOrganizationAddressTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationAddressTimeouts
+		return ret
+	}).(GetOrganizationAddressTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationAddressTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationAddressTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetOrganizationBillingGroupListBillingGroup struct {
-	// ID of the billing address.
+	// Billing address ID.
 	BillingAddressId string `pulumi:"billingAddressId"`
 	// List of billing contact emails.
 	BillingContactEmails []string `pulumi:"billingContactEmails"`
-	// Billing currency.
+	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency string `pulumi:"billingCurrency"`
-	// List of billing emails.
+	// List of billing contact emails.
 	BillingEmails []string `pulumi:"billingEmails"`
-	// ID of the billing group.
+	// Billing group ID.
 	BillingGroupId string `pulumi:"billingGroupId"`
-	// Name of the billing group.
+	// Billing Group Name.
 	BillingGroupName string `pulumi:"billingGroupName"`
-	// Custom invoice text.
+	// Extra billing text.
 	CustomInvoiceText string `pulumi:"customInvoiceText"`
-	// Resource ID, a composite of organization*id and billing*group_id.
-	Id string `pulumi:"id"`
-	// ID of the organization.
+	// Organization ID.
 	OrganizationId string `pulumi:"organizationId"`
-	// ID of the payment method.
+	// Payment method ID.
 	PaymentMethodId string `pulumi:"paymentMethodId"`
-	// ID of the shipping address.
+	// Shipping address ID.
 	ShippingAddressId string `pulumi:"shippingAddressId"`
 	// VAT ID.
 	VatId string `pulumi:"vatId"`
@@ -11504,27 +12481,25 @@ type GetOrganizationBillingGroupListBillingGroupInput interface {
 }
 
 type GetOrganizationBillingGroupListBillingGroupArgs struct {
-	// ID of the billing address.
+	// Billing address ID.
 	BillingAddressId pulumi.StringInput `pulumi:"billingAddressId"`
 	// List of billing contact emails.
 	BillingContactEmails pulumi.StringArrayInput `pulumi:"billingContactEmails"`
-	// Billing currency.
+	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency pulumi.StringInput `pulumi:"billingCurrency"`
-	// List of billing emails.
+	// List of billing contact emails.
 	BillingEmails pulumi.StringArrayInput `pulumi:"billingEmails"`
-	// ID of the billing group.
+	// Billing group ID.
 	BillingGroupId pulumi.StringInput `pulumi:"billingGroupId"`
-	// Name of the billing group.
+	// Billing Group Name.
 	BillingGroupName pulumi.StringInput `pulumi:"billingGroupName"`
-	// Custom invoice text.
+	// Extra billing text.
 	CustomInvoiceText pulumi.StringInput `pulumi:"customInvoiceText"`
-	// Resource ID, a composite of organization*id and billing*group_id.
-	Id pulumi.StringInput `pulumi:"id"`
-	// ID of the organization.
+	// Organization ID.
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
-	// ID of the payment method.
+	// Payment method ID.
 	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
-	// ID of the shipping address.
+	// Shipping address ID.
 	ShippingAddressId pulumi.StringInput `pulumi:"shippingAddressId"`
 	// VAT ID.
 	VatId pulumi.StringInput `pulumi:"vatId"`
@@ -11581,7 +12556,7 @@ func (o GetOrganizationBillingGroupListBillingGroupOutput) ToGetOrganizationBill
 	return o
 }
 
-// ID of the billing address.
+// Billing address ID.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingAddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingAddressId }).(pulumi.StringOutput)
 }
@@ -11591,47 +12566,42 @@ func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingContactEmails(
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []string { return v.BillingContactEmails }).(pulumi.StringArrayOutput)
 }
 
-// Billing currency.
+// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingCurrency() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingCurrency }).(pulumi.StringOutput)
 }
 
-// List of billing emails.
+// List of billing contact emails.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
 }
 
-// ID of the billing group.
+// Billing group ID.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingGroupId }).(pulumi.StringOutput)
 }
 
-// Name of the billing group.
+// Billing Group Name.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingGroupName }).(pulumi.StringOutput)
 }
 
-// Custom invoice text.
+// Extra billing text.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) CustomInvoiceText() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.CustomInvoiceText }).(pulumi.StringOutput)
 }
 
-// Resource ID, a composite of organization*id and billing*group_id.
-func (o GetOrganizationBillingGroupListBillingGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// ID of the organization.
+// Organization ID.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// ID of the payment method.
+// Payment method ID.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) PaymentMethodId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.PaymentMethodId }).(pulumi.StringOutput)
 }
 
-// ID of the shipping address.
+// Shipping address ID.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) ShippingAddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.ShippingAddressId }).(pulumi.StringOutput)
 }
@@ -11659,6 +12629,280 @@ func (o GetOrganizationBillingGroupListBillingGroupArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupListBillingGroup {
 		return vs[0].([]GetOrganizationBillingGroupListBillingGroup)[vs[1].(int)]
 	}).(GetOrganizationBillingGroupListBillingGroupOutput)
+}
+
+type GetOrganizationBillingGroupListTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationBillingGroupListTimeoutsInput is an input type that accepts GetOrganizationBillingGroupListTimeoutsArgs and GetOrganizationBillingGroupListTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListTimeoutsInput` via:
+//
+//	GetOrganizationBillingGroupListTimeoutsArgs{...}
+type GetOrganizationBillingGroupListTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListTimeoutsOutput() GetOrganizationBillingGroupListTimeoutsOutput
+	ToGetOrganizationBillingGroupListTimeoutsOutputWithContext(context.Context) GetOrganizationBillingGroupListTimeoutsOutput
+}
+
+type GetOrganizationBillingGroupListTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationBillingGroupListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListTimeoutsArgs) ToGetOrganizationBillingGroupListTimeoutsOutput() GetOrganizationBillingGroupListTimeoutsOutput {
+	return i.ToGetOrganizationBillingGroupListTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListTimeoutsArgs) ToGetOrganizationBillingGroupListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListTimeoutsOutput)
+}
+
+func (i GetOrganizationBillingGroupListTimeoutsArgs) ToGetOrganizationBillingGroupListTimeoutsPtrOutput() GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return i.ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListTimeoutsArgs) ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListTimeoutsOutput).ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationBillingGroupListTimeoutsPtrInput is an input type that accepts GetOrganizationBillingGroupListTimeoutsArgs, GetOrganizationBillingGroupListTimeoutsPtr and GetOrganizationBillingGroupListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListTimeoutsPtrInput` via:
+//
+//	        GetOrganizationBillingGroupListTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationBillingGroupListTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListTimeoutsPtrOutput() GetOrganizationBillingGroupListTimeoutsPtrOutput
+	ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(context.Context) GetOrganizationBillingGroupListTimeoutsPtrOutput
+}
+
+type getOrganizationBillingGroupListTimeoutsPtrType GetOrganizationBillingGroupListTimeoutsArgs
+
+func GetOrganizationBillingGroupListTimeoutsPtr(v *GetOrganizationBillingGroupListTimeoutsArgs) GetOrganizationBillingGroupListTimeoutsPtrInput {
+	return (*getOrganizationBillingGroupListTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationBillingGroupListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationBillingGroupListTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationBillingGroupListTimeoutsPtrType) ToGetOrganizationBillingGroupListTimeoutsPtrOutput() GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return i.ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationBillingGroupListTimeoutsPtrType) ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListTimeoutsPtrOutput)
+}
+
+type GetOrganizationBillingGroupListTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsOutput) ToGetOrganizationBillingGroupListTimeoutsOutput() GetOrganizationBillingGroupListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsOutput) ToGetOrganizationBillingGroupListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsOutput) ToGetOrganizationBillingGroupListTimeoutsPtrOutput() GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return o.ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsOutput) ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationBillingGroupListTimeouts) *GetOrganizationBillingGroupListTimeouts {
+		return &v
+	}).(GetOrganizationBillingGroupListTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationBillingGroupListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationBillingGroupListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationBillingGroupListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsPtrOutput) ToGetOrganizationBillingGroupListTimeoutsPtrOutput() GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsPtrOutput) ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsPtrOutput) Elem() GetOrganizationBillingGroupListTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationBillingGroupListTimeouts) GetOrganizationBillingGroupListTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationBillingGroupListTimeouts
+		return ret
+	}).(GetOrganizationBillingGroupListTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationBillingGroupListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationBillingGroupListTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationBillingGroupTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationBillingGroupTimeoutsInput is an input type that accepts GetOrganizationBillingGroupTimeoutsArgs and GetOrganizationBillingGroupTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupTimeoutsInput` via:
+//
+//	GetOrganizationBillingGroupTimeoutsArgs{...}
+type GetOrganizationBillingGroupTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupTimeoutsOutput() GetOrganizationBillingGroupTimeoutsOutput
+	ToGetOrganizationBillingGroupTimeoutsOutputWithContext(context.Context) GetOrganizationBillingGroupTimeoutsOutput
+}
+
+type GetOrganizationBillingGroupTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationBillingGroupTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupTimeoutsArgs) ToGetOrganizationBillingGroupTimeoutsOutput() GetOrganizationBillingGroupTimeoutsOutput {
+	return i.ToGetOrganizationBillingGroupTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupTimeoutsArgs) ToGetOrganizationBillingGroupTimeoutsOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupTimeoutsOutput)
+}
+
+func (i GetOrganizationBillingGroupTimeoutsArgs) ToGetOrganizationBillingGroupTimeoutsPtrOutput() GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return i.ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupTimeoutsArgs) ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupTimeoutsOutput).ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationBillingGroupTimeoutsPtrInput is an input type that accepts GetOrganizationBillingGroupTimeoutsArgs, GetOrganizationBillingGroupTimeoutsPtr and GetOrganizationBillingGroupTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupTimeoutsPtrInput` via:
+//
+//	        GetOrganizationBillingGroupTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationBillingGroupTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupTimeoutsPtrOutput() GetOrganizationBillingGroupTimeoutsPtrOutput
+	ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(context.Context) GetOrganizationBillingGroupTimeoutsPtrOutput
+}
+
+type getOrganizationBillingGroupTimeoutsPtrType GetOrganizationBillingGroupTimeoutsArgs
+
+func GetOrganizationBillingGroupTimeoutsPtr(v *GetOrganizationBillingGroupTimeoutsArgs) GetOrganizationBillingGroupTimeoutsPtrInput {
+	return (*getOrganizationBillingGroupTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationBillingGroupTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationBillingGroupTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationBillingGroupTimeoutsPtrType) ToGetOrganizationBillingGroupTimeoutsPtrOutput() GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return i.ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationBillingGroupTimeoutsPtrType) ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupTimeoutsPtrOutput)
+}
+
+type GetOrganizationBillingGroupTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupTimeoutsOutput) ToGetOrganizationBillingGroupTimeoutsOutput() GetOrganizationBillingGroupTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupTimeoutsOutput) ToGetOrganizationBillingGroupTimeoutsOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupTimeoutsOutput) ToGetOrganizationBillingGroupTimeoutsPtrOutput() GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return o.ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationBillingGroupTimeoutsOutput) ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationBillingGroupTimeouts) *GetOrganizationBillingGroupTimeouts {
+		return &v
+	}).(GetOrganizationBillingGroupTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationBillingGroupTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationBillingGroupTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationBillingGroupTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupTimeoutsPtrOutput) ToGetOrganizationBillingGroupTimeoutsPtrOutput() GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupTimeoutsPtrOutput) ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupTimeoutsPtrOutput) Elem() GetOrganizationBillingGroupTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationBillingGroupTimeouts) GetOrganizationBillingGroupTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationBillingGroupTimeouts
+		return ret
+	}).(GetOrganizationBillingGroupTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationBillingGroupTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationBillingGroupTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetOrganizationProjectTag struct {
@@ -11765,6 +13009,280 @@ func (o GetOrganizationProjectTagArrayOutput) Index(i pulumi.IntInput) GetOrgani
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationProjectTag {
 		return vs[0].([]GetOrganizationProjectTag)[vs[1].(int)]
 	}).(GetOrganizationProjectTagOutput)
+}
+
+type GetOrganizationProjectTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationProjectTimeoutsInput is an input type that accepts GetOrganizationProjectTimeoutsArgs and GetOrganizationProjectTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationProjectTimeoutsInput` via:
+//
+//	GetOrganizationProjectTimeoutsArgs{...}
+type GetOrganizationProjectTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationProjectTimeoutsOutput() GetOrganizationProjectTimeoutsOutput
+	ToGetOrganizationProjectTimeoutsOutputWithContext(context.Context) GetOrganizationProjectTimeoutsOutput
+}
+
+type GetOrganizationProjectTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationProjectTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationProjectTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationProjectTimeoutsArgs) ToGetOrganizationProjectTimeoutsOutput() GetOrganizationProjectTimeoutsOutput {
+	return i.ToGetOrganizationProjectTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationProjectTimeoutsArgs) ToGetOrganizationProjectTimeoutsOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationProjectTimeoutsOutput)
+}
+
+func (i GetOrganizationProjectTimeoutsArgs) ToGetOrganizationProjectTimeoutsPtrOutput() GetOrganizationProjectTimeoutsPtrOutput {
+	return i.ToGetOrganizationProjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationProjectTimeoutsArgs) ToGetOrganizationProjectTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationProjectTimeoutsOutput).ToGetOrganizationProjectTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationProjectTimeoutsPtrInput is an input type that accepts GetOrganizationProjectTimeoutsArgs, GetOrganizationProjectTimeoutsPtr and GetOrganizationProjectTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationProjectTimeoutsPtrInput` via:
+//
+//	        GetOrganizationProjectTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationProjectTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationProjectTimeoutsPtrOutput() GetOrganizationProjectTimeoutsPtrOutput
+	ToGetOrganizationProjectTimeoutsPtrOutputWithContext(context.Context) GetOrganizationProjectTimeoutsPtrOutput
+}
+
+type getOrganizationProjectTimeoutsPtrType GetOrganizationProjectTimeoutsArgs
+
+func GetOrganizationProjectTimeoutsPtr(v *GetOrganizationProjectTimeoutsArgs) GetOrganizationProjectTimeoutsPtrInput {
+	return (*getOrganizationProjectTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationProjectTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationProjectTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationProjectTimeoutsPtrType) ToGetOrganizationProjectTimeoutsPtrOutput() GetOrganizationProjectTimeoutsPtrOutput {
+	return i.ToGetOrganizationProjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationProjectTimeoutsPtrType) ToGetOrganizationProjectTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationProjectTimeoutsPtrOutput)
+}
+
+type GetOrganizationProjectTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationProjectTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationProjectTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationProjectTimeoutsOutput) ToGetOrganizationProjectTimeoutsOutput() GetOrganizationProjectTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTimeoutsOutput) ToGetOrganizationProjectTimeoutsOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTimeoutsOutput) ToGetOrganizationProjectTimeoutsPtrOutput() GetOrganizationProjectTimeoutsPtrOutput {
+	return o.ToGetOrganizationProjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationProjectTimeoutsOutput) ToGetOrganizationProjectTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationProjectTimeouts) *GetOrganizationProjectTimeouts {
+		return &v
+	}).(GetOrganizationProjectTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationProjectTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationProjectTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationProjectTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationProjectTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationProjectTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationProjectTimeoutsPtrOutput) ToGetOrganizationProjectTimeoutsPtrOutput() GetOrganizationProjectTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTimeoutsPtrOutput) ToGetOrganizationProjectTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTimeoutsPtrOutput) Elem() GetOrganizationProjectTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationProjectTimeouts) GetOrganizationProjectTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationProjectTimeouts
+		return ret
+	}).(GetOrganizationProjectTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationProjectTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationProjectTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationTimeoutsInput is an input type that accepts GetOrganizationTimeoutsArgs and GetOrganizationTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationTimeoutsInput` via:
+//
+//	GetOrganizationTimeoutsArgs{...}
+type GetOrganizationTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationTimeoutsOutput() GetOrganizationTimeoutsOutput
+	ToGetOrganizationTimeoutsOutputWithContext(context.Context) GetOrganizationTimeoutsOutput
+}
+
+type GetOrganizationTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationTimeoutsArgs) ToGetOrganizationTimeoutsOutput() GetOrganizationTimeoutsOutput {
+	return i.ToGetOrganizationTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationTimeoutsArgs) ToGetOrganizationTimeoutsOutputWithContext(ctx context.Context) GetOrganizationTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationTimeoutsOutput)
+}
+
+func (i GetOrganizationTimeoutsArgs) ToGetOrganizationTimeoutsPtrOutput() GetOrganizationTimeoutsPtrOutput {
+	return i.ToGetOrganizationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationTimeoutsArgs) ToGetOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationTimeoutsOutput).ToGetOrganizationTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationTimeoutsPtrInput is an input type that accepts GetOrganizationTimeoutsArgs, GetOrganizationTimeoutsPtr and GetOrganizationTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationTimeoutsPtrInput` via:
+//
+//	        GetOrganizationTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationTimeoutsPtrOutput() GetOrganizationTimeoutsPtrOutput
+	ToGetOrganizationTimeoutsPtrOutputWithContext(context.Context) GetOrganizationTimeoutsPtrOutput
+}
+
+type getOrganizationTimeoutsPtrType GetOrganizationTimeoutsArgs
+
+func GetOrganizationTimeoutsPtr(v *GetOrganizationTimeoutsArgs) GetOrganizationTimeoutsPtrInput {
+	return (*getOrganizationTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationTimeoutsPtrType) ToGetOrganizationTimeoutsPtrOutput() GetOrganizationTimeoutsPtrOutput {
+	return i.ToGetOrganizationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationTimeoutsPtrType) ToGetOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationTimeoutsPtrOutput)
+}
+
+type GetOrganizationTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationTimeoutsOutput) ToGetOrganizationTimeoutsOutput() GetOrganizationTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationTimeoutsOutput) ToGetOrganizationTimeoutsOutputWithContext(ctx context.Context) GetOrganizationTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationTimeoutsOutput) ToGetOrganizationTimeoutsPtrOutput() GetOrganizationTimeoutsPtrOutput {
+	return o.ToGetOrganizationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationTimeoutsOutput) ToGetOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationTimeouts) *GetOrganizationTimeouts {
+		return &v
+	}).(GetOrganizationTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationTimeoutsPtrOutput) ToGetOrganizationTimeoutsPtrOutput() GetOrganizationTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationTimeoutsPtrOutput) ToGetOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationTimeoutsPtrOutput) Elem() GetOrganizationTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationTimeouts) GetOrganizationTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationTimeouts
+		return ret
+	}).(GetOrganizationTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetOrganizationUserListUser struct {
@@ -12653,8 +14171,6 @@ type GetPgPgUserConfig struct {
 	// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
 	PgVersion *string `pulumi:"pgVersion"`
 	// System-wide settings for the pgaudit extension
-	//
-	// Deprecated: This property is deprecated.
 	Pgaudit *GetPgPgUserConfigPgaudit `pulumi:"pgaudit"`
 	// PGBouncer connection pooling settings
 	Pgbouncer *GetPgPgUserConfigPgbouncer `pulumi:"pgbouncer"`
@@ -12737,8 +14253,6 @@ type GetPgPgUserConfigArgs struct {
 	// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
 	PgVersion pulumi.StringPtrInput `pulumi:"pgVersion"`
 	// System-wide settings for the pgaudit extension
-	//
-	// Deprecated: This property is deprecated.
 	Pgaudit GetPgPgUserConfigPgauditPtrInput `pulumi:"pgaudit"`
 	// PGBouncer connection pooling settings
 	Pgbouncer GetPgPgUserConfigPgbouncerPtrInput `pulumi:"pgbouncer"`
@@ -12908,8 +14422,6 @@ func (o GetPgPgUserConfigOutput) PgVersion() pulumi.StringPtrOutput {
 }
 
 // System-wide settings for the pgaudit extension
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigOutput) Pgaudit() GetPgPgUserConfigPgauditPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPgaudit { return v.Pgaudit }).(GetPgPgUserConfigPgauditPtrOutput)
 }
@@ -14727,60 +16239,32 @@ func (o GetPgPgUserConfigPgQualstatsPtrOutput) TrackPgCatalog() pulumi.BoolPtrOu
 
 type GetPgPgUserConfigPgaudit struct {
 	// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	FeatureEnabled *bool `pulumi:"featureEnabled"`
 	// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
-	//
-	// Deprecated: This property is deprecated.
 	LogCatalog *bool `pulumi:"logCatalog"`
 	// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	LogClient *bool `pulumi:"logClient"`
-	// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
-	//
-	// Deprecated: This property is deprecated.
+	// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
 	LogLevel *string `pulumi:"logLevel"`
 	// Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-	//
-	// Deprecated: This property is deprecated.
 	LogMaxStringLength *int `pulumi:"logMaxStringLength"`
 	// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-	//
-	// Deprecated: This property is deprecated.
 	LogNestedStatements *bool `pulumi:"logNestedStatements"`
 	// Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	LogParameter *bool `pulumi:"logParameter"`
 	// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
-	//
-	// Deprecated: This property is deprecated.
 	LogParameterMaxSize *int `pulumi:"logParameterMaxSize"`
 	// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	LogRelation *bool `pulumi:"logRelation"`
 	// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	LogRows *bool `pulumi:"logRows"`
 	// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-	//
-	// Deprecated: This property is deprecated.
 	LogStatement *bool `pulumi:"logStatement"`
 	// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	LogStatementOnce *bool `pulumi:"logStatementOnce"`
 	// Specifies which classes of statements will be logged by session audit logging.
-	//
-	// Deprecated: This property is deprecated.
 	Logs []string `pulumi:"logs"`
 	// Specifies the master role to use for object audit logging.
-	//
-	// Deprecated: This property is deprecated.
 	Role *string `pulumi:"role"`
 }
 
@@ -14797,60 +16281,32 @@ type GetPgPgUserConfigPgauditInput interface {
 
 type GetPgPgUserConfigPgauditArgs struct {
 	// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	FeatureEnabled pulumi.BoolPtrInput `pulumi:"featureEnabled"`
 	// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
-	//
-	// Deprecated: This property is deprecated.
 	LogCatalog pulumi.BoolPtrInput `pulumi:"logCatalog"`
 	// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	LogClient pulumi.BoolPtrInput `pulumi:"logClient"`
-	// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
-	//
-	// Deprecated: This property is deprecated.
+	// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
 	LogLevel pulumi.StringPtrInput `pulumi:"logLevel"`
 	// Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-	//
-	// Deprecated: This property is deprecated.
 	LogMaxStringLength pulumi.IntPtrInput `pulumi:"logMaxStringLength"`
 	// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-	//
-	// Deprecated: This property is deprecated.
 	LogNestedStatements pulumi.BoolPtrInput `pulumi:"logNestedStatements"`
 	// Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	LogParameter pulumi.BoolPtrInput `pulumi:"logParameter"`
 	// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
-	//
-	// Deprecated: This property is deprecated.
 	LogParameterMaxSize pulumi.IntPtrInput `pulumi:"logParameterMaxSize"`
 	// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	LogRelation pulumi.BoolPtrInput `pulumi:"logRelation"`
 	// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	LogRows pulumi.BoolPtrInput `pulumi:"logRows"`
 	// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-	//
-	// Deprecated: This property is deprecated.
 	LogStatement pulumi.BoolPtrInput `pulumi:"logStatement"`
 	// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-	//
-	// Deprecated: This property is deprecated.
 	LogStatementOnce pulumi.BoolPtrInput `pulumi:"logStatementOnce"`
 	// Specifies which classes of statements will be logged by session audit logging.
-	//
-	// Deprecated: This property is deprecated.
 	Logs pulumi.StringArrayInput `pulumi:"logs"`
 	// Specifies the master role to use for object audit logging.
-	//
-	// Deprecated: This property is deprecated.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -14932,99 +16388,71 @@ func (o GetPgPgUserConfigPgauditOutput) ToGetPgPgUserConfigPgauditPtrOutputWithC
 }
 
 // Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) FeatureEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.FeatureEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) LogCatalog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogCatalog }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) LogClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogClient }).(pulumi.BoolPtrOutput)
 }
 
-// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
-//
-// Deprecated: This property is deprecated.
+// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
 func (o GetPgPgUserConfigPgauditOutput) LogLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *string { return v.LogLevel }).(pulumi.StringPtrOutput)
 }
 
 // Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) LogMaxStringLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *int { return v.LogMaxStringLength }).(pulumi.IntPtrOutput)
 }
 
 // This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) LogNestedStatements() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogNestedStatements }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) LogParameter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogParameter }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) LogParameterMaxSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *int { return v.LogParameterMaxSize }).(pulumi.IntPtrOutput)
 }
 
 // Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) LogRelation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogRelation }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) LogRows() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogRows }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) LogStatement() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogStatement }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) LogStatementOnce() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogStatementOnce }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies which classes of statements will be logged by session audit logging.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) Logs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) []string { return v.Logs }).(pulumi.StringArrayOutput)
 }
 
 // Specifies the master role to use for object audit logging.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -15054,8 +16482,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) Elem() GetPgPgUserConfigPgauditOutput
 }
 
 // Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) FeatureEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
 		if v == nil {
@@ -15066,8 +16492,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) FeatureEnabled() pulumi.BoolPtrOutput
 }
 
 // Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogCatalog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
 		if v == nil {
@@ -15078,8 +16502,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogCatalog() pulumi.BoolPtrOutput {
 }
 
 // Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
 		if v == nil {
@@ -15089,9 +16511,7 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogClient() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
-//
-// Deprecated: This property is deprecated.
+// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *string {
 		if v == nil {
@@ -15102,8 +16522,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogLevel() pulumi.StringPtrOutput {
 }
 
 // Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogMaxStringLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *int {
 		if v == nil {
@@ -15114,8 +16532,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogMaxStringLength() pulumi.IntPtrOut
 }
 
 // This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogNestedStatements() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
 		if v == nil {
@@ -15126,8 +16542,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogNestedStatements() pulumi.BoolPtrO
 }
 
 // Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogParameter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
 		if v == nil {
@@ -15138,8 +16552,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogParameter() pulumi.BoolPtrOutput {
 }
 
 // Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogParameterMaxSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *int {
 		if v == nil {
@@ -15150,8 +16562,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogParameterMaxSize() pulumi.IntPtrOu
 }
 
 // Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogRelation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
 		if v == nil {
@@ -15162,8 +16572,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogRelation() pulumi.BoolPtrOutput {
 }
 
 // Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogRows() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
 		if v == nil {
@@ -15174,8 +16582,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogRows() pulumi.BoolPtrOutput {
 }
 
 // Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogStatement() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
 		if v == nil {
@@ -15186,8 +16592,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogStatement() pulumi.BoolPtrOutput {
 }
 
 // Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogStatementOnce() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
 		if v == nil {
@@ -15198,8 +16602,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogStatementOnce() pulumi.BoolPtrOutp
 }
 
 // Specifies which classes of statements will be logged by session audit logging.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) Logs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) []string {
 		if v == nil {
@@ -15210,8 +16612,6 @@ func (o GetPgPgUserConfigPgauditPtrOutput) Logs() pulumi.StringArrayOutput {
 }
 
 // Specifies the master role to use for object audit logging.
-//
-// Deprecated: This property is deprecated.
 func (o GetPgPgUserConfigPgauditPtrOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *string {
 		if v == nil {
@@ -29497,6 +30897,20 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingNamespacesObjectInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingTagInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingTagArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbServiceIntegrationInput)(nil)).Elem(), GetM3DbServiceIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbServiceIntegrationArrayInput)(nil)).Elem(), GetM3DbServiceIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbTagInput)(nil)).Elem(), GetM3DbTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbTagArrayInput)(nil)).Elem(), GetM3DbTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbTechEmailInput)(nil)).Elem(), GetM3DbTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbTechEmailArrayInput)(nil)).Elem(), GetM3DbTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlComponentInput)(nil)).Elem(), GetMySqlComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlComponentArrayInput)(nil)).Elem(), GetMySqlComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlInput)(nil)).Elem(), GetMySqlMysqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlArrayInput)(nil)).Elem(), GetMySqlMysqlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlParamInput)(nil)).Elem(), GetMySqlMysqlParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlParamArrayInput)(nil)).Elem(), GetMySqlMysqlParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigInput)(nil)).Elem(), GetMySqlMysqlUserConfigArgs{})
@@ -29599,10 +31013,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTagArrayInput)(nil)).Elem(), GetOpenSearchTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailInput)(nil)).Elem(), GetOpenSearchTechEmailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailArrayInput)(nil)).Elem(), GetOpenSearchTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationAddressTimeoutsInput)(nil)).Elem(), GetOrganizationAddressTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationAddressTimeoutsPtrInput)(nil)).Elem(), GetOrganizationAddressTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListTimeoutsInput)(nil)).Elem(), GetOrganizationBillingGroupListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationBillingGroupListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupTimeoutsInput)(nil)).Elem(), GetOrganizationBillingGroupTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupTimeoutsPtrInput)(nil)).Elem(), GetOrganizationBillingGroupTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTagInput)(nil)).Elem(), GetOrganizationProjectTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTagArrayInput)(nil)).Elem(), GetOrganizationProjectTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTimeoutsInput)(nil)).Elem(), GetOrganizationProjectTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTimeoutsPtrInput)(nil)).Elem(), GetOrganizationProjectTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTimeoutsInput)(nil)).Elem(), GetOrganizationTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTimeoutsPtrInput)(nil)).Elem(), GetOrganizationTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserInput)(nil)).Elem(), GetOrganizationUserListUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserArrayInput)(nil)).Elem(), GetOrganizationUserListUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserUserInfoInput)(nil)).Elem(), GetOrganizationUserListUserUserInfoArgs{})
@@ -29815,6 +31239,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingTagOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingTagArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetM3DbServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbTagOutput{})
+	pulumi.RegisterOutputType(GetM3DbTagArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbTechEmailOutput{})
+	pulumi.RegisterOutputType(GetM3DbTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetMySqlComponentOutput{})
+	pulumi.RegisterOutputType(GetMySqlComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlParamOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlParamArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigOutput{})
@@ -29917,10 +31355,20 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchTagArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchTechEmailOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationAddressTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationAddressTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationProjectTagOutput{})
 	pulumi.RegisterOutputType(GetOrganizationProjectTagArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationProjectTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationProjectTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserUserInfoOutput{})

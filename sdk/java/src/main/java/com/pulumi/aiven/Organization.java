@@ -63,42 +63,46 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/organization:Organization")
 public class Organization extends com.pulumi.resources.CustomResource {
     /**
-     * Timestamp of the creation of the organization.
+     * Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Timestamp of the creation of the organization.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Name of the organization.
+     * Name of the organization. Maximum length: `128`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the organization.
+     * @return Name of the organization. Maximum length: `128`.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Tenant ID of the organization.
+     * Tenant identifier.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
-     * @return Tenant ID of the organization.
+     * @return Tenant identifier.
      * 
      */
     public Output<String> tenantId() {
@@ -111,14 +115,14 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeouts);
     }
     /**
-     * Timestamp of the last update of the organization.
+     * Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Timestamp of the last update of the organization.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public Output<String> updateTime() {

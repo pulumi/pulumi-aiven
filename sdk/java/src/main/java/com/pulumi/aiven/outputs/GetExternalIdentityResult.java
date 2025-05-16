@@ -16,7 +16,7 @@ public final class GetExternalIdentityResult {
      */
     private String externalServiceName;
     /**
-     * @return The user&#39;s ID on the external service.
+     * @return The user&#39;s ID on the external service. For GitHub, this is their GitHub username.
      * 
      */
     private String externalUserId;
@@ -45,7 +45,7 @@ public final class GetExternalIdentityResult {
         return this.externalServiceName;
     }
     /**
-     * @return The user&#39;s ID on the external service.
+     * @return The user&#39;s ID on the external service. For GitHub, this is their GitHub username.
      * 
      */
     public String externalUserId() {

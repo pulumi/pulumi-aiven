@@ -217,7 +217,7 @@ class GetOpenSearchResult:
     @pulumi.getter
     def opensearches(self) -> Sequence['outputs.GetOpenSearchOpensearchResult']:
         """
-        OpenSearch server provided values
+        Values provided by the OpenSearch server.
         """
         return pulumi.get(self, "opensearches")
 
@@ -388,7 +388,7 @@ def get_open_search(project: Optional[builtins.str] = None,
                     service_name: Optional[builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpenSearchResult:
     """
-    The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+    Gets information about an Aiven for OpenSearch® service.
 
     ## Example Usage
 
@@ -396,8 +396,8 @@ def get_open_search(project: Optional[builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    os1 = aiven.get_open_search(project=pr1["project"],
-        service_name="my-os1")
+    example_opensearch = aiven.get_open_search(project=example_project["project"],
+        service_name="example-opensearch")
     ```
 
 
@@ -444,7 +444,7 @@ def get_open_search_output(project: Optional[pulumi.Input[builtins.str]] = None,
                            service_name: Optional[pulumi.Input[builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenSearchResult]:
     """
-    The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+    Gets information about an Aiven for OpenSearch® service.
 
     ## Example Usage
 
@@ -452,8 +452,8 @@ def get_open_search_output(project: Optional[pulumi.Input[builtins.str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    os1 = aiven.get_open_search(project=pr1["project"],
-        service_name="my-os1")
+    example_opensearch = aiven.get_open_search(project=example_project["project"],
+        service_name="example-opensearch")
     ```
 
 

@@ -29,14 +29,14 @@ public final class GetExternalIdentityPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The user&#39;s ID on the external service.
+     * The user&#39;s ID on the external service. For GitHub, this is their GitHub username.
      * 
      */
     @Import(name="externalUserId", required=true)
     private String externalUserId;
 
     /**
-     * @return The user&#39;s ID on the external service.
+     * @return The user&#39;s ID on the external service. For GitHub, this is their GitHub username.
      * 
      */
     public String externalUserId() {
@@ -112,7 +112,7 @@ public final class GetExternalIdentityPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param externalUserId The user&#39;s ID on the external service.
+         * @param externalUserId The user&#39;s ID on the external service. For GitHub, this is their GitHub username.
          * 
          * @return builder
          * 

@@ -28,6 +28,8 @@ __all__ = [
     'AlloydbomniAlloydbomniUserConfigIpFilterObjectArgsDict',
     'AlloydbomniAlloydbomniUserConfigPgArgs',
     'AlloydbomniAlloydbomniUserConfigPgArgsDict',
+    'AlloydbomniAlloydbomniUserConfigPgauditArgs',
+    'AlloydbomniAlloydbomniUserConfigPgauditArgsDict',
     'AlloydbomniAlloydbomniUserConfigPgbouncerArgs',
     'AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict',
     'AlloydbomniAlloydbomniUserConfigPglookoutArgs',
@@ -142,6 +144,10 @@ __all__ = [
     'FlinkTagArgsDict',
     'FlinkTechEmailArgs',
     'FlinkTechEmailArgsDict',
+    'GovernanceAccessAccessDataArgs',
+    'GovernanceAccessAccessDataArgsDict',
+    'GovernanceAccessAccessDataAclArgs',
+    'GovernanceAccessAccessDataAclArgsDict',
     'GrafanaComponentArgs',
     'GrafanaComponentArgsDict',
     'GrafanaGrafanaArgs',
@@ -246,6 +252,8 @@ __all__ = [
     'KafkaKafkaUserConfigKafkaAuthenticationMethodsArgsDict',
     'KafkaKafkaUserConfigKafkaConnectConfigArgs',
     'KafkaKafkaUserConfigKafkaConnectConfigArgsDict',
+    'KafkaKafkaUserConfigKafkaConnectPluginVersionArgs',
+    'KafkaKafkaUserConfigKafkaConnectPluginVersionArgsDict',
     'KafkaKafkaUserConfigKafkaConnectSecretProviderArgs',
     'KafkaKafkaUserConfigKafkaConnectSecretProviderArgsDict',
     'KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs',
@@ -462,6 +470,8 @@ __all__ = [
     'OrganizationPermissionPermissionArgsDict',
     'OrganizationProjectTagArgs',
     'OrganizationProjectTagArgsDict',
+    'OrganizationProjectTimeoutsArgs',
+    'OrganizationProjectTimeoutsArgsDict',
     'OrganizationTimeoutsArgs',
     'OrganizationTimeoutsArgsDict',
     'OrganizationUserGroupMemberTimeoutsArgs',
@@ -674,6 +684,20 @@ __all__ = [
     'ValkeyValkeyUserConfigPrivatelinkAccessArgsDict',
     'ValkeyValkeyUserConfigPublicAccessArgs',
     'ValkeyValkeyUserConfigPublicAccessArgsDict',
+    'GetOrganizationAddressTimeoutsArgs',
+    'GetOrganizationAddressTimeoutsArgsDict',
+    'GetOrganizationBillingGroupListBillingGroupArgs',
+    'GetOrganizationBillingGroupListBillingGroupArgsDict',
+    'GetOrganizationBillingGroupListTimeoutsArgs',
+    'GetOrganizationBillingGroupListTimeoutsArgsDict',
+    'GetOrganizationBillingGroupTimeoutsArgs',
+    'GetOrganizationBillingGroupTimeoutsArgsDict',
+    'GetOrganizationProjectTagArgs',
+    'GetOrganizationProjectTagArgsDict',
+    'GetOrganizationProjectTimeoutsArgs',
+    'GetOrganizationProjectTimeoutsArgsDict',
+    'GetOrganizationTimeoutsArgs',
+    'GetOrganizationTimeoutsArgsDict',
 ]
 
 MYPY = False
@@ -1284,6 +1308,10 @@ if not MYPY:
         """
         Enum: `15`, and newer. PostgreSQL major version.
         """
+        pgaudit: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgsDict']]
+        """
+        System-wide settings for the pgaudit extension
+        """
         pgbouncer: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict']]
         """
         PGBouncer connection pooling settings
@@ -1362,6 +1390,7 @@ class AlloydbomniAlloydbomniUserConfigArgs:
                  pg_read_replica: Optional[pulumi.Input[builtins.bool]] = None,
                  pg_service_to_fork_from: Optional[pulumi.Input[builtins.str]] = None,
                  pg_version: Optional[pulumi.Input[builtins.str]] = None,
+                 pgaudit: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgs']] = None,
                  pgbouncer: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgbouncerArgs']] = None,
                  pglookout: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPglookoutArgs']] = None,
                  private_access: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivateAccessArgs']] = None,
@@ -1393,6 +1422,7 @@ class AlloydbomniAlloydbomniUserConfigArgs:
         :param pulumi.Input[builtins.bool] pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param pulumi.Input[builtins.str] pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         :param pulumi.Input[builtins.str] pg_version: Enum: `15`, and newer. PostgreSQL major version.
+        :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgs'] pgaudit: System-wide settings for the pgaudit extension
         :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPgbouncerArgs'] pgbouncer: PGBouncer connection pooling settings
         :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPglookoutArgs'] pglookout: System-wide settings for pglookout
         :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
@@ -1443,6 +1473,8 @@ class AlloydbomniAlloydbomniUserConfigArgs:
             pulumi.set(__self__, "pg_service_to_fork_from", pg_service_to_fork_from)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
+        if pgaudit is not None:
+            pulumi.set(__self__, "pgaudit", pgaudit)
         if pgbouncer is not None:
             pulumi.set(__self__, "pgbouncer", pgbouncer)
         if pglookout is not None:
@@ -1664,6 +1696,18 @@ class AlloydbomniAlloydbomniUserConfigArgs:
     @pg_version.setter
     def pg_version(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "pg_version", value)
+
+    @property
+    @pulumi.getter
+    def pgaudit(self) -> Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgs']]:
+        """
+        System-wide settings for the pgaudit extension
+        """
+        return pulumi.get(self, "pgaudit")
+
+    @pgaudit.setter
+    def pgaudit(self, value: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgs']]):
+        pulumi.set(self, "pgaudit", value)
 
     @property
     @pulumi.getter
@@ -2855,6 +2899,298 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
     @wal_writer_delay.setter
     def wal_writer_delay(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "wal_writer_delay", value)
+
+
+if not MYPY:
+    class AlloydbomniAlloydbomniUserConfigPgauditArgsDict(TypedDict):
+        feature_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+        """
+        log_catalog: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        """
+        log_client: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+        """
+        log_level: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+        """
+        log_max_string_length: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+        """
+        log_nested_statements: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        """
+        log_parameter: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+        """
+        log_parameter_max_size: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+        """
+        log_relation: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        """
+        log_rows: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        """
+        log_statement: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+        """
+        log_statement_once: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        """
+        logs: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Specifies which classes of statements will be logged by session audit logging.
+        """
+        role: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the master role to use for object audit logging.
+        """
+elif False:
+    AlloydbomniAlloydbomniUserConfigPgauditArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlloydbomniAlloydbomniUserConfigPgauditArgs:
+    def __init__(__self__, *,
+                 feature_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 log_catalog: Optional[pulumi.Input[builtins.bool]] = None,
+                 log_client: Optional[pulumi.Input[builtins.bool]] = None,
+                 log_level: Optional[pulumi.Input[builtins.str]] = None,
+                 log_max_string_length: Optional[pulumi.Input[builtins.int]] = None,
+                 log_nested_statements: Optional[pulumi.Input[builtins.bool]] = None,
+                 log_parameter: Optional[pulumi.Input[builtins.bool]] = None,
+                 log_parameter_max_size: Optional[pulumi.Input[builtins.int]] = None,
+                 log_relation: Optional[pulumi.Input[builtins.bool]] = None,
+                 log_rows: Optional[pulumi.Input[builtins.bool]] = None,
+                 log_statement: Optional[pulumi.Input[builtins.bool]] = None,
+                 log_statement_once: Optional[pulumi.Input[builtins.bool]] = None,
+                 logs: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 role: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.bool] feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+        :param pulumi.Input[builtins.bool] log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        :param pulumi.Input[builtins.bool] log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+        :param pulumi.Input[builtins.str] log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+        :param pulumi.Input[builtins.int] log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+        :param pulumi.Input[builtins.bool] log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        :param pulumi.Input[builtins.bool] log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+        :param pulumi.Input[builtins.int] log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+        :param pulumi.Input[builtins.bool] log_relation: Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        :param pulumi.Input[builtins.bool] log_rows: Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        :param pulumi.Input[builtins.bool] log_statement: Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+        :param pulumi.Input[builtins.bool] log_statement_once: Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] logs: Specifies which classes of statements will be logged by session audit logging.
+        :param pulumi.Input[builtins.str] role: Specifies the master role to use for object audit logging.
+        """
+        if feature_enabled is not None:
+            pulumi.set(__self__, "feature_enabled", feature_enabled)
+        if log_catalog is not None:
+            pulumi.set(__self__, "log_catalog", log_catalog)
+        if log_client is not None:
+            pulumi.set(__self__, "log_client", log_client)
+        if log_level is not None:
+            pulumi.set(__self__, "log_level", log_level)
+        if log_max_string_length is not None:
+            pulumi.set(__self__, "log_max_string_length", log_max_string_length)
+        if log_nested_statements is not None:
+            pulumi.set(__self__, "log_nested_statements", log_nested_statements)
+        if log_parameter is not None:
+            pulumi.set(__self__, "log_parameter", log_parameter)
+        if log_parameter_max_size is not None:
+            pulumi.set(__self__, "log_parameter_max_size", log_parameter_max_size)
+        if log_relation is not None:
+            pulumi.set(__self__, "log_relation", log_relation)
+        if log_rows is not None:
+            pulumi.set(__self__, "log_rows", log_rows)
+        if log_statement is not None:
+            pulumi.set(__self__, "log_statement", log_statement)
+        if log_statement_once is not None:
+            pulumi.set(__self__, "log_statement_once", log_statement_once)
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="featureEnabled")
+    def feature_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+        """
+        return pulumi.get(self, "feature_enabled")
+
+    @feature_enabled.setter
+    def feature_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "feature_enabled", value)
+
+    @property
+    @pulumi.getter(name="logCatalog")
+    def log_catalog(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        """
+        return pulumi.get(self, "log_catalog")
+
+    @log_catalog.setter
+    def log_catalog(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_catalog", value)
+
+    @property
+    @pulumi.getter(name="logClient")
+    def log_client(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+        """
+        return pulumi.get(self, "log_client")
+
+    @log_client.setter
+    def log_client(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_client", value)
+
+    @property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+        """
+        return pulumi.get(self, "log_level")
+
+    @log_level.setter
+    def log_level(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "log_level", value)
+
+    @property
+    @pulumi.getter(name="logMaxStringLength")
+    def log_max_string_length(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+        """
+        return pulumi.get(self, "log_max_string_length")
+
+    @log_max_string_length.setter
+    def log_max_string_length(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "log_max_string_length", value)
+
+    @property
+    @pulumi.getter(name="logNestedStatements")
+    def log_nested_statements(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        """
+        return pulumi.get(self, "log_nested_statements")
+
+    @log_nested_statements.setter
+    def log_nested_statements(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_nested_statements", value)
+
+    @property
+    @pulumi.getter(name="logParameter")
+    def log_parameter(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+        """
+        return pulumi.get(self, "log_parameter")
+
+    @log_parameter.setter
+    def log_parameter(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_parameter", value)
+
+    @property
+    @pulumi.getter(name="logParameterMaxSize")
+    def log_parameter_max_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+        """
+        return pulumi.get(self, "log_parameter_max_size")
+
+    @log_parameter_max_size.setter
+    def log_parameter_max_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "log_parameter_max_size", value)
+
+    @property
+    @pulumi.getter(name="logRelation")
+    def log_relation(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        """
+        return pulumi.get(self, "log_relation")
+
+    @log_relation.setter
+    def log_relation(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_relation", value)
+
+    @property
+    @pulumi.getter(name="logRows")
+    def log_rows(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        """
+        return pulumi.get(self, "log_rows")
+
+    @log_rows.setter
+    def log_rows(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_rows", value)
+
+    @property
+    @pulumi.getter(name="logStatement")
+    def log_statement(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+        """
+        return pulumi.get(self, "log_statement")
+
+    @log_statement.setter
+    def log_statement(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_statement", value)
+
+    @property
+    @pulumi.getter(name="logStatementOnce")
+    def log_statement_once(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        """
+        return pulumi.get(self, "log_statement_once")
+
+    @log_statement_once.setter
+    def log_statement_once(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_statement_once", value)
+
+    @property
+    @pulumi.getter
+    def logs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Specifies which classes of statements will be logged by session audit logging.
+        """
+        return pulumi.get(self, "logs")
+
+    @logs.setter
+    def logs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "logs", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the master role to use for object audit logging.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "role", value)
 
 
 if not MYPY:
@@ -8309,6 +8645,263 @@ class FlinkTechEmailArgs:
     @email.setter
     def email(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class GovernanceAccessAccessDataArgsDict(TypedDict):
+        acls: pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgsDict']]]
+        """
+        The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+        """
+        project: pulumi.Input[builtins.str]
+        """
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        """
+        service_name: pulumi.Input[builtins.str]
+        """
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        """
+        username: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+        """
+elif False:
+    GovernanceAccessAccessDataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GovernanceAccessAccessDataArgs:
+    def __init__(__self__, *,
+                 acls: pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]],
+                 project: pulumi.Input[builtins.str],
+                 service_name: pulumi.Input[builtins.str],
+                 username: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]] acls: The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] username: The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+        """
+        pulumi.set(__self__, "acls", acls)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def acls(self) -> pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]]:
+        """
+        The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]]):
+        pulumi.set(self, "acls", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class GovernanceAccessAccessDataAclArgsDict(TypedDict):
+        operation: pulumi.Input[builtins.str]
+        """
+        The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+        """
+        permission_type: pulumi.Input[builtins.str]
+        """
+        Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+        """
+        resource_name: pulumi.Input[builtins.str]
+        """
+        The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+        """
+        resource_type: pulumi.Input[builtins.str]
+        """
+        The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+        """
+        host: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        """
+        id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The ACL ID.
+        """
+        pattern_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Pattern used to match specified resources. The possible value is `LITERAL`.
+        """
+        principal: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Identities in `user:name` format that the permissions apply to.
+        """
+elif False:
+    GovernanceAccessAccessDataAclArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GovernanceAccessAccessDataAclArgs:
+    def __init__(__self__, *,
+                 operation: pulumi.Input[builtins.str],
+                 permission_type: pulumi.Input[builtins.str],
+                 resource_name: pulumi.Input[builtins.str],
+                 resource_type: pulumi.Input[builtins.str],
+                 host: Optional[pulumi.Input[builtins.str]] = None,
+                 id: Optional[pulumi.Input[builtins.str]] = None,
+                 pattern_type: Optional[pulumi.Input[builtins.str]] = None,
+                 principal: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] operation: The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] permission_type: Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] resource_name: The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] resource_type: The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] id: The ACL ID.
+        :param pulumi.Input[builtins.str] pattern_type: Pattern used to match specified resources. The possible value is `LITERAL`.
+        :param pulumi.Input[builtins.str] principal: Identities in `user:name` format that the permissions apply to.
+        """
+        pulumi.set(__self__, "operation", operation)
+        pulumi.set(__self__, "permission_type", permission_type)
+        pulumi.set(__self__, "resource_name", resource_name)
+        pulumi.set(__self__, "resource_type", resource_type)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if pattern_type is not None:
+            pulumi.set(__self__, "pattern_type", pattern_type)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> pulumi.Input[builtins.str]:
+        """
+        The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "operation", value)
+
+    @property
+    @pulumi.getter(name="permissionType")
+    def permission_type(self) -> pulumi.Input[builtins.str]:
+        """
+        Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "permission_type")
+
+    @permission_type.setter
+    def permission_type(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "permission_type", value)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "resource_name")
+
+    @resource_name.setter
+    def resource_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "resource_name", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Input[builtins.str]:
+        """
+        The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ACL ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="patternType")
+    def pattern_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Pattern used to match specified resources. The possible value is `LITERAL`.
+        """
+        return pulumi.get(self, "pattern_type")
+
+    @pattern_type.setter
+    def pattern_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pattern_type", value)
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Identities in `user:name` format that the permissions apply to.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "principal", value)
 
 
 if not MYPY:
@@ -13893,6 +14486,10 @@ if not MYPY:
         """
         Kafka Connect configuration values
         """
+        kafka_connect_plugin_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectPluginVersionArgsDict']]]]
+        """
+        The plugin selected by the user
+        """
         kafka_connect_secret_providers: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderArgsDict']]]]
         kafka_rest: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -13971,6 +14568,7 @@ class KafkaKafkaUserConfigArgs:
                  kafka_authentication_methods: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs']] = None,
                  kafka_connect: Optional[pulumi.Input[builtins.bool]] = None,
                  kafka_connect_config: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaConnectConfigArgs']] = None,
+                 kafka_connect_plugin_versions: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectPluginVersionArgs']]]] = None,
                  kafka_connect_secret_providers: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderArgs']]]] = None,
                  kafka_rest: Optional[pulumi.Input[builtins.bool]] = None,
                  kafka_rest_authorization: Optional[pulumi.Input[builtins.bool]] = None,
@@ -13999,6 +14597,7 @@ class KafkaKafkaUserConfigArgs:
         :param pulumi.Input['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs'] kafka_authentication_methods: Kafka authentication methods
         :param pulumi.Input[builtins.bool] kafka_connect: Enable Kafka Connect service. Default: `false`.
         :param pulumi.Input['KafkaKafkaUserConfigKafkaConnectConfigArgs'] kafka_connect_config: Kafka Connect configuration values
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectPluginVersionArgs']]] kafka_connect_plugin_versions: The plugin selected by the user
         :param pulumi.Input[builtins.bool] kafka_rest: Enable Kafka-REST service. Default: `false`.
         :param pulumi.Input[builtins.bool] kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgs'] kafka_rest_config: Kafka REST configuration
@@ -14043,6 +14642,8 @@ class KafkaKafkaUserConfigArgs:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if kafka_connect_config is not None:
             pulumi.set(__self__, "kafka_connect_config", kafka_connect_config)
+        if kafka_connect_plugin_versions is not None:
+            pulumi.set(__self__, "kafka_connect_plugin_versions", kafka_connect_plugin_versions)
         if kafka_connect_secret_providers is not None:
             pulumi.set(__self__, "kafka_connect_secret_providers", kafka_connect_secret_providers)
         if kafka_rest is not None:
@@ -14209,6 +14810,18 @@ class KafkaKafkaUserConfigArgs:
     @kafka_connect_config.setter
     def kafka_connect_config(self, value: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaConnectConfigArgs']]):
         pulumi.set(self, "kafka_connect_config", value)
+
+    @property
+    @pulumi.getter(name="kafkaConnectPluginVersions")
+    def kafka_connect_plugin_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectPluginVersionArgs']]]]:
+        """
+        The plugin selected by the user
+        """
+        return pulumi.get(self, "kafka_connect_plugin_versions")
+
+    @kafka_connect_plugin_versions.setter
+    def kafka_connect_plugin_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectPluginVersionArgs']]]]):
+        pulumi.set(self, "kafka_connect_plugin_versions", value)
 
     @property
     @pulumi.getter(name="kafkaConnectSecretProviders")
@@ -15797,6 +16410,56 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
     @session_timeout_ms.setter
     def session_timeout_ms(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "session_timeout_ms", value)
+
+
+if not MYPY:
+    class KafkaKafkaUserConfigKafkaConnectPluginVersionArgsDict(TypedDict):
+        plugin_name: pulumi.Input[builtins.str]
+        """
+        The name of the plugin. Example: `debezium-connector`.
+        """
+        version: pulumi.Input[builtins.str]
+        """
+        The version of the plugin. Example: `2.5.0`.
+        """
+elif False:
+    KafkaKafkaUserConfigKafkaConnectPluginVersionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KafkaKafkaUserConfigKafkaConnectPluginVersionArgs:
+    def __init__(__self__, *,
+                 plugin_name: pulumi.Input[builtins.str],
+                 version: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] plugin_name: The name of the plugin. Example: `debezium-connector`.
+        :param pulumi.Input[builtins.str] version: The version of the plugin. Example: `2.5.0`.
+        """
+        pulumi.set(__self__, "plugin_name", plugin_name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="pluginName")
+    def plugin_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of the plugin. Example: `debezium-connector`.
+        """
+        return pulumi.get(self, "plugin_name")
+
+    @plugin_name.setter
+    def plugin_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "plugin_name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[builtins.str]:
+        """
+        The version of the plugin. Example: `2.5.0`.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "version", value)
 
 
 if not MYPY:
@@ -17907,111 +18570,111 @@ if not MYPY:
     class KafkaTopicConfigArgsDict(TypedDict):
         cleanup_policy: NotRequired[pulumi.Input[builtins.str]]
         """
-        cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+        The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
         """
         compression_type: NotRequired[pulumi.Input[builtins.str]]
         """
-        compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+        Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         """
         delete_retention_ms: NotRequired[pulumi.Input[builtins.str]]
         """
-        delete.retention.ms value
+        The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
         """
         file_delete_delay_ms: NotRequired[pulumi.Input[builtins.str]]
         """
-        file.delete.delay.ms value
+        The time to wait before deleting a file from the filesystem.
         """
         flush_messages: NotRequired[pulumi.Input[builtins.str]]
         """
-        flush.messages value
+        This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         """
         flush_ms: NotRequired[pulumi.Input[builtins.str]]
         """
-        flush.ms value
+        This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         """
         index_interval_bytes: NotRequired[pulumi.Input[builtins.str]]
         """
-        index.interval.bytes value
+        This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
         """
         local_retention_bytes: NotRequired[pulumi.Input[builtins.str]]
         """
-        local.retention.bytes value
+        This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         """
         local_retention_ms: NotRequired[pulumi.Input[builtins.str]]
         """
-        local.retention.ms value
+        This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
         """
         max_compaction_lag_ms: NotRequired[pulumi.Input[builtins.str]]
         """
-        max.compaction.lag.ms value
+        The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         """
         max_message_bytes: NotRequired[pulumi.Input[builtins.str]]
         """
-        max.message.bytes value
+        The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         """
         message_downconversion_enable: NotRequired[pulumi.Input[builtins.bool]]
         """
-        message.downconversion.enable value
+        This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
         """
         message_format_version: NotRequired[pulumi.Input[builtins.str]]
         """
-        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
         """
         message_timestamp_difference_max_ms: NotRequired[pulumi.Input[builtins.str]]
         """
-        message.timestamp.difference.max.ms value
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         """
         message_timestamp_type: NotRequired[pulumi.Input[builtins.str]]
         """
-        message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+        Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
         """
         min_cleanable_dirty_ratio: NotRequired[pulumi.Input[builtins.float]]
         """
-        min.cleanable.dirty.ratio value
+        This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
         """
         min_compaction_lag_ms: NotRequired[pulumi.Input[builtins.str]]
         """
-        min.compaction.lag.ms value
+        The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
         """
         min_insync_replicas: NotRequired[pulumi.Input[builtins.str]]
         """
-        min.insync.replicas value
+        When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
         """
         preallocate: NotRequired[pulumi.Input[builtins.bool]]
         """
-        preallocate value
+        True if we should preallocate the file on disk when creating a new log segment.
         """
         remote_storage_enable: NotRequired[pulumi.Input[builtins.bool]]
         """
-        remote.storage.enable value
+        Indicates whether tiered storage should be enabled.
         """
         retention_bytes: NotRequired[pulumi.Input[builtins.str]]
         """
-        retention.bytes value
+        This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
         """
         retention_ms: NotRequired[pulumi.Input[builtins.str]]
         """
-        retention.ms value
+        This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
         """
         segment_bytes: NotRequired[pulumi.Input[builtins.str]]
         """
-        segment.bytes value
+        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         """
         segment_index_bytes: NotRequired[pulumi.Input[builtins.str]]
         """
-        segment.index.bytes value
+        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         """
         segment_jitter_ms: NotRequired[pulumi.Input[builtins.str]]
         """
-        segment.jitter.ms value
+        The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
         """
         segment_ms: NotRequired[pulumi.Input[builtins.str]]
         """
-        segment.ms value
+        This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
         """
         unclean_leader_election_enable: NotRequired[pulumi.Input[builtins.bool]]
         """
-        unclean.leader.election.enable value; This field is deprecated and no longer functional.
+        Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
         """
 elif False:
     KafkaTopicConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -18047,33 +18710,33 @@ class KafkaTopicConfigArgs:
                  segment_ms: Optional[pulumi.Input[builtins.str]] = None,
                  unclean_leader_election_enable: Optional[pulumi.Input[builtins.bool]] = None):
         """
-        :param pulumi.Input[builtins.str] cleanup_policy: cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
-        :param pulumi.Input[builtins.str] compression_type: compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
-        :param pulumi.Input[builtins.str] delete_retention_ms: delete.retention.ms value
-        :param pulumi.Input[builtins.str] file_delete_delay_ms: file.delete.delay.ms value
-        :param pulumi.Input[builtins.str] flush_messages: flush.messages value
-        :param pulumi.Input[builtins.str] flush_ms: flush.ms value
-        :param pulumi.Input[builtins.str] index_interval_bytes: index.interval.bytes value
-        :param pulumi.Input[builtins.str] local_retention_bytes: local.retention.bytes value
-        :param pulumi.Input[builtins.str] local_retention_ms: local.retention.ms value
-        :param pulumi.Input[builtins.str] max_compaction_lag_ms: max.compaction.lag.ms value
-        :param pulumi.Input[builtins.str] max_message_bytes: max.message.bytes value
-        :param pulumi.Input[builtins.bool] message_downconversion_enable: message.downconversion.enable value
-        :param pulumi.Input[builtins.str] message_format_version: message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
-        :param pulumi.Input[builtins.str] message_timestamp_difference_max_ms: message.timestamp.difference.max.ms value
-        :param pulumi.Input[builtins.str] message_timestamp_type: message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
-        :param pulumi.Input[builtins.float] min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
-        :param pulumi.Input[builtins.str] min_compaction_lag_ms: min.compaction.lag.ms value
-        :param pulumi.Input[builtins.str] min_insync_replicas: min.insync.replicas value
-        :param pulumi.Input[builtins.bool] preallocate: preallocate value
-        :param pulumi.Input[builtins.bool] remote_storage_enable: remote.storage.enable value
-        :param pulumi.Input[builtins.str] retention_bytes: retention.bytes value
-        :param pulumi.Input[builtins.str] retention_ms: retention.ms value
-        :param pulumi.Input[builtins.str] segment_bytes: segment.bytes value
-        :param pulumi.Input[builtins.str] segment_index_bytes: segment.index.bytes value
-        :param pulumi.Input[builtins.str] segment_jitter_ms: segment.jitter.ms value
-        :param pulumi.Input[builtins.str] segment_ms: segment.ms value
-        :param pulumi.Input[builtins.bool] unclean_leader_election_enable: unclean.leader.election.enable value; This field is deprecated and no longer functional.
+        :param pulumi.Input[builtins.str] cleanup_policy: The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
+        :param pulumi.Input[builtins.str] compression_type: Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+        :param pulumi.Input[builtins.str] delete_retention_ms: The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
+        :param pulumi.Input[builtins.str] file_delete_delay_ms: The time to wait before deleting a file from the filesystem.
+        :param pulumi.Input[builtins.str] flush_messages: This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+        :param pulumi.Input[builtins.str] flush_ms: This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+        :param pulumi.Input[builtins.str] index_interval_bytes: This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
+        :param pulumi.Input[builtins.str] local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
+        :param pulumi.Input[builtins.str] local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+        :param pulumi.Input[builtins.str] max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+        :param pulumi.Input[builtins.str] max_message_bytes: The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
+        :param pulumi.Input[builtins.bool] message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
+        :param pulumi.Input[builtins.str] message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+        :param pulumi.Input[builtins.str] message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
+        :param pulumi.Input[builtins.str] message_timestamp_type: Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
+        :param pulumi.Input[builtins.float] min_cleanable_dirty_ratio: This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+        :param pulumi.Input[builtins.str] min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+        :param pulumi.Input[builtins.str] min_insync_replicas: When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+        :param pulumi.Input[builtins.bool] preallocate: True if we should preallocate the file on disk when creating a new log segment.
+        :param pulumi.Input[builtins.bool] remote_storage_enable: Indicates whether tiered storage should be enabled.
+        :param pulumi.Input[builtins.str] retention_bytes: This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+        :param pulumi.Input[builtins.str] retention_ms: This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
+        :param pulumi.Input[builtins.str] segment_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+        :param pulumi.Input[builtins.str] segment_index_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+        :param pulumi.Input[builtins.str] segment_jitter_ms: The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+        :param pulumi.Input[builtins.str] segment_ms: This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+        :param pulumi.Input[builtins.bool] unclean_leader_election_enable: Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
         """
         if cleanup_policy is not None:
             pulumi.set(__self__, "cleanup_policy", cleanup_policy)
@@ -18128,16 +18791,13 @@ class KafkaTopicConfigArgs:
         if segment_ms is not None:
             pulumi.set(__self__, "segment_ms", segment_ms)
         if unclean_leader_election_enable is not None:
-            warnings.warn("""This field is deprecated and no longer functional.""", DeprecationWarning)
-            pulumi.log.warn("""unclean_leader_election_enable is deprecated: This field is deprecated and no longer functional.""")
-        if unclean_leader_election_enable is not None:
             pulumi.set(__self__, "unclean_leader_election_enable", unclean_leader_election_enable)
 
     @property
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+        The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
         """
         return pulumi.get(self, "cleanup_policy")
 
@@ -18149,7 +18809,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+        Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         """
         return pulumi.get(self, "compression_type")
 
@@ -18161,7 +18821,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="deleteRetentionMs")
     def delete_retention_ms(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        delete.retention.ms value
+        The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
         """
         return pulumi.get(self, "delete_retention_ms")
 
@@ -18173,7 +18833,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="fileDeleteDelayMs")
     def file_delete_delay_ms(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        file.delete.delay.ms value
+        The time to wait before deleting a file from the filesystem.
         """
         return pulumi.get(self, "file_delete_delay_ms")
 
@@ -18185,7 +18845,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="flushMessages")
     def flush_messages(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        flush.messages value
+        This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         """
         return pulumi.get(self, "flush_messages")
 
@@ -18197,7 +18857,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="flushMs")
     def flush_ms(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        flush.ms value
+        This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         """
         return pulumi.get(self, "flush_ms")
 
@@ -18209,7 +18869,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="indexIntervalBytes")
     def index_interval_bytes(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        index.interval.bytes value
+        This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
         """
         return pulumi.get(self, "index_interval_bytes")
 
@@ -18221,7 +18881,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="localRetentionBytes")
     def local_retention_bytes(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        local.retention.bytes value
+        This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         """
         return pulumi.get(self, "local_retention_bytes")
 
@@ -18233,7 +18893,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="localRetentionMs")
     def local_retention_ms(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        local.retention.ms value
+        This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
         """
         return pulumi.get(self, "local_retention_ms")
 
@@ -18245,7 +18905,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="maxCompactionLagMs")
     def max_compaction_lag_ms(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        max.compaction.lag.ms value
+        The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         """
         return pulumi.get(self, "max_compaction_lag_ms")
 
@@ -18257,7 +18917,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="maxMessageBytes")
     def max_message_bytes(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        max.message.bytes value
+        The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         """
         return pulumi.get(self, "max_message_bytes")
 
@@ -18269,7 +18929,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="messageDownconversionEnable")
     def message_downconversion_enable(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        message.downconversion.enable value
+        This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
         """
         return pulumi.get(self, "message_downconversion_enable")
 
@@ -18281,7 +18941,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -18293,7 +18953,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="messageTimestampDifferenceMaxMs")
     def message_timestamp_difference_max_ms(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        message.timestamp.difference.max.ms value
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         """
         return pulumi.get(self, "message_timestamp_difference_max_ms")
 
@@ -18305,7 +18965,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="messageTimestampType")
     def message_timestamp_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+        Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
         """
         return pulumi.get(self, "message_timestamp_type")
 
@@ -18317,7 +18977,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="minCleanableDirtyRatio")
     def min_cleanable_dirty_ratio(self) -> Optional[pulumi.Input[builtins.float]]:
         """
-        min.cleanable.dirty.ratio value
+        This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
         """
         return pulumi.get(self, "min_cleanable_dirty_ratio")
 
@@ -18329,7 +18989,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="minCompactionLagMs")
     def min_compaction_lag_ms(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        min.compaction.lag.ms value
+        The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
         """
         return pulumi.get(self, "min_compaction_lag_ms")
 
@@ -18341,7 +19001,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="minInsyncReplicas")
     def min_insync_replicas(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        min.insync.replicas value
+        When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
         """
         return pulumi.get(self, "min_insync_replicas")
 
@@ -18353,7 +19013,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter
     def preallocate(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        preallocate value
+        True if we should preallocate the file on disk when creating a new log segment.
         """
         return pulumi.get(self, "preallocate")
 
@@ -18365,7 +19025,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="remoteStorageEnable")
     def remote_storage_enable(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        remote.storage.enable value
+        Indicates whether tiered storage should be enabled.
         """
         return pulumi.get(self, "remote_storage_enable")
 
@@ -18377,7 +19037,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="retentionBytes")
     def retention_bytes(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        retention.bytes value
+        This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
         """
         return pulumi.get(self, "retention_bytes")
 
@@ -18389,7 +19049,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="retentionMs")
     def retention_ms(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        retention.ms value
+        This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
         """
         return pulumi.get(self, "retention_ms")
 
@@ -18401,7 +19061,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="segmentBytes")
     def segment_bytes(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        segment.bytes value
+        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         """
         return pulumi.get(self, "segment_bytes")
 
@@ -18413,7 +19073,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="segmentIndexBytes")
     def segment_index_bytes(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        segment.index.bytes value
+        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         """
         return pulumi.get(self, "segment_index_bytes")
 
@@ -18425,7 +19085,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="segmentJitterMs")
     def segment_jitter_ms(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        segment.jitter.ms value
+        The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
         """
         return pulumi.get(self, "segment_jitter_ms")
 
@@ -18437,7 +19097,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="segmentMs")
     def segment_ms(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        segment.ms value
+        This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
         """
         return pulumi.get(self, "segment_ms")
 
@@ -18447,10 +19107,9 @@ class KafkaTopicConfigArgs:
 
     @property
     @pulumi.getter(name="uncleanLeaderElectionEnable")
-    @_utilities.deprecated("""This field is deprecated and no longer functional.""")
     def unclean_leader_election_enable(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        unclean.leader.election.enable value; This field is deprecated and no longer functional.
+        Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
         """
         return pulumi.get(self, "unclean_leader_election_enable")
 
@@ -23123,15 +23782,15 @@ if not MYPY:
     class OpenSearchOpensearchArgsDict(TypedDict):
         kibana_uri: NotRequired[pulumi.Input[builtins.str]]
         """
-        URI for Kibana dashboard frontend
+        URI for Kibana dashboard frontend.
         """
         opensearch_dashboards_uri: NotRequired[pulumi.Input[builtins.str]]
         """
-        URI for OpenSearch dashboard frontend
+        URI for OpenSearch dashboard frontend.
         """
         password: NotRequired[pulumi.Input[builtins.str]]
         """
-        OpenSearch password
+        OpenSearch password.
         """
         uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
@@ -23139,7 +23798,7 @@ if not MYPY:
         """
         username: NotRequired[pulumi.Input[builtins.str]]
         """
-        OpenSearch username
+        OpenSearch username.
         """
 elif False:
     OpenSearchOpensearchArgsDict: TypeAlias = Mapping[str, Any]
@@ -23153,11 +23812,11 @@ class OpenSearchOpensearchArgs:
                  uris: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  username: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] kibana_uri: URI for Kibana dashboard frontend
-        :param pulumi.Input[builtins.str] opensearch_dashboards_uri: URI for OpenSearch dashboard frontend
-        :param pulumi.Input[builtins.str] password: OpenSearch password
+        :param pulumi.Input[builtins.str] kibana_uri: URI for Kibana dashboard frontend.
+        :param pulumi.Input[builtins.str] opensearch_dashboards_uri: URI for OpenSearch dashboard frontend.
+        :param pulumi.Input[builtins.str] password: OpenSearch password.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] uris: OpenSearch server URIs.
-        :param pulumi.Input[builtins.str] username: OpenSearch username
+        :param pulumi.Input[builtins.str] username: OpenSearch username.
         """
         if kibana_uri is not None:
             warnings.warn("""This field was added by mistake and has never worked. It will be removed in future versions.""", DeprecationWarning)
@@ -23178,7 +23837,7 @@ class OpenSearchOpensearchArgs:
     @_utilities.deprecated("""This field was added by mistake and has never worked. It will be removed in future versions.""")
     def kibana_uri(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        URI for Kibana dashboard frontend
+        URI for Kibana dashboard frontend.
         """
         return pulumi.get(self, "kibana_uri")
 
@@ -23190,7 +23849,7 @@ class OpenSearchOpensearchArgs:
     @pulumi.getter(name="opensearchDashboardsUri")
     def opensearch_dashboards_uri(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        URI for OpenSearch dashboard frontend
+        URI for OpenSearch dashboard frontend.
         """
         return pulumi.get(self, "opensearch_dashboards_uri")
 
@@ -23202,7 +23861,7 @@ class OpenSearchOpensearchArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        OpenSearch password
+        OpenSearch password.
         """
         return pulumi.get(self, "password")
 
@@ -23226,7 +23885,7 @@ class OpenSearchOpensearchArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        OpenSearch username
+        OpenSearch username.
         """
         return pulumi.get(self, "username")
 
@@ -24865,6 +25524,10 @@ if not MYPY:
         """
         Enable remote-backed storage.
         """
+        enable_searchable_snapshots: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Enable searchable snapshots.
+        """
         enable_security_audit: NotRequired[pulumi.Input[builtins.bool]]
         """
         Enable/Disable security audit.
@@ -25040,6 +25703,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  email_sender_password: Optional[pulumi.Input[builtins.str]] = None,
                  email_sender_username: Optional[pulumi.Input[builtins.str]] = None,
                  enable_remote_backed_storage: Optional[pulumi.Input[builtins.bool]] = None,
+                 enable_searchable_snapshots: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_security_audit: Optional[pulumi.Input[builtins.bool]] = None,
                  http_max_content_length: Optional[pulumi.Input[builtins.int]] = None,
                  http_max_header_size: Optional[pulumi.Input[builtins.int]] = None,
@@ -25092,6 +25756,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         :param pulumi.Input[builtins.str] email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         :param pulumi.Input[builtins.str] email_sender_username: Sender username for Opensearch alerts. Example: `jane@example.com`.
         :param pulumi.Input[builtins.bool] enable_remote_backed_storage: Enable remote-backed storage.
+        :param pulumi.Input[builtins.bool] enable_searchable_snapshots: Enable searchable snapshots.
         :param pulumi.Input[builtins.bool] enable_security_audit: Enable/Disable security audit.
         :param pulumi.Input[builtins.int] http_max_content_length: Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
         :param pulumi.Input[builtins.int] http_max_header_size: The max size of allowed headers, in bytes. Example: `8192`.
@@ -25156,6 +25821,8 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "email_sender_username", email_sender_username)
         if enable_remote_backed_storage is not None:
             pulumi.set(__self__, "enable_remote_backed_storage", enable_remote_backed_storage)
+        if enable_searchable_snapshots is not None:
+            pulumi.set(__self__, "enable_searchable_snapshots", enable_searchable_snapshots)
         if enable_security_audit is not None:
             pulumi.set(__self__, "enable_security_audit", enable_security_audit)
         if http_max_content_length is not None:
@@ -25377,6 +26044,18 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
     @enable_remote_backed_storage.setter
     def enable_remote_backed_storage(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enable_remote_backed_storage", value)
+
+    @property
+    @pulumi.getter(name="enableSearchableSnapshots")
+    def enable_searchable_snapshots(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable searchable snapshots.
+        """
+        return pulumi.get(self, "enable_searchable_snapshots")
+
+    @enable_searchable_snapshots.setter
+    def enable_searchable_snapshots(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_searchable_snapshots", value)
 
     @property
     @pulumi.getter(name="enableSecurityAudit")
@@ -28958,6 +29637,98 @@ class OrganizationProjectTagArgs:
 
 
 if not MYPY:
+    class OrganizationProjectTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    OrganizationProjectTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrganizationProjectTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[builtins.str]] = None,
+                 delete: Optional[pulumi.Input[builtins.str]] = None,
+                 read: Optional[pulumi.Input[builtins.str]] = None,
+                 update: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
     class OrganizationTimeoutsArgsDict(TypedDict):
         create: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -30002,9 +30773,6 @@ class PgPgUserConfigArgs:
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
         if pgaudit is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""pgaudit is deprecated: This property is deprecated.""")
-        if pgaudit is not None:
             pulumi.set(__self__, "pgaudit", pgaudit)
         if pgbouncer is not None:
             pulumi.set(__self__, "pgbouncer", pgbouncer)
@@ -30233,7 +31001,6 @@ class PgPgUserConfigArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""This property is deprecated.""")
     def pgaudit(self) -> Optional[pulumi.Input['PgPgUserConfigPgauditArgs']]:
         """
         System-wide settings for the pgaudit extension
@@ -31826,7 +32593,7 @@ if not MYPY:
         """
         log_level: NotRequired[pulumi.Input[builtins.str]]
         """
-        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
         """
         log_max_string_length: NotRequired[pulumi.Input[builtins.int]]
         """
@@ -31892,7 +32659,7 @@ class PgPgUserConfigPgauditArgs:
         :param pulumi.Input[builtins.bool] feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
         :param pulumi.Input[builtins.bool] log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
         :param pulumi.Input[builtins.bool] log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-        :param pulumi.Input[builtins.str] log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+        :param pulumi.Input[builtins.str] log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
         :param pulumi.Input[builtins.int] log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
         :param pulumi.Input[builtins.bool] log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         :param pulumi.Input[builtins.bool] log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
@@ -31905,79 +32672,36 @@ class PgPgUserConfigPgauditArgs:
         :param pulumi.Input[builtins.str] role: Specifies the master role to use for object audit logging.
         """
         if feature_enabled is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""feature_enabled is deprecated: This property is deprecated.""")
-        if feature_enabled is not None:
             pulumi.set(__self__, "feature_enabled", feature_enabled)
-        if log_catalog is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""log_catalog is deprecated: This property is deprecated.""")
         if log_catalog is not None:
             pulumi.set(__self__, "log_catalog", log_catalog)
         if log_client is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""log_client is deprecated: This property is deprecated.""")
-        if log_client is not None:
             pulumi.set(__self__, "log_client", log_client)
-        if log_level is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""log_level is deprecated: This property is deprecated.""")
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
         if log_max_string_length is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""log_max_string_length is deprecated: This property is deprecated.""")
-        if log_max_string_length is not None:
             pulumi.set(__self__, "log_max_string_length", log_max_string_length)
-        if log_nested_statements is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""log_nested_statements is deprecated: This property is deprecated.""")
         if log_nested_statements is not None:
             pulumi.set(__self__, "log_nested_statements", log_nested_statements)
         if log_parameter is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""log_parameter is deprecated: This property is deprecated.""")
-        if log_parameter is not None:
             pulumi.set(__self__, "log_parameter", log_parameter)
-        if log_parameter_max_size is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""log_parameter_max_size is deprecated: This property is deprecated.""")
         if log_parameter_max_size is not None:
             pulumi.set(__self__, "log_parameter_max_size", log_parameter_max_size)
         if log_relation is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""log_relation is deprecated: This property is deprecated.""")
-        if log_relation is not None:
             pulumi.set(__self__, "log_relation", log_relation)
-        if log_rows is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""log_rows is deprecated: This property is deprecated.""")
         if log_rows is not None:
             pulumi.set(__self__, "log_rows", log_rows)
         if log_statement is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""log_statement is deprecated: This property is deprecated.""")
-        if log_statement is not None:
             pulumi.set(__self__, "log_statement", log_statement)
-        if log_statement_once is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""log_statement_once is deprecated: This property is deprecated.""")
         if log_statement_once is not None:
             pulumi.set(__self__, "log_statement_once", log_statement_once)
         if logs is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""logs is deprecated: This property is deprecated.""")
-        if logs is not None:
             pulumi.set(__self__, "logs", logs)
-        if role is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""role is deprecated: This property is deprecated.""")
         if role is not None:
             pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter(name="featureEnabled")
-    @_utilities.deprecated("""This property is deprecated.""")
     def feature_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
@@ -31990,7 +32714,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter(name="logCatalog")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_catalog(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
@@ -32003,7 +32726,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter(name="logClient")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_client(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
@@ -32016,10 +32738,9 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter(name="logLevel")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
         """
         return pulumi.get(self, "log_level")
 
@@ -32029,7 +32750,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter(name="logMaxStringLength")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_max_string_length(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
@@ -32042,7 +32762,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter(name="logNestedStatements")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_nested_statements(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
@@ -32055,7 +32774,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter(name="logParameter")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_parameter(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
@@ -32068,7 +32786,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter(name="logParameterMaxSize")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_parameter_max_size(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
@@ -32081,7 +32798,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter(name="logRelation")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_relation(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
@@ -32094,7 +32810,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter(name="logRows")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_rows(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
@@ -32107,7 +32822,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter(name="logStatement")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_statement(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
@@ -32120,7 +32834,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter(name="logStatementOnce")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_statement_once(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
@@ -32133,7 +32846,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""This property is deprecated.""")
     def logs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         Specifies which classes of statements will be logged by session audit logging.
@@ -32146,7 +32858,6 @@ class PgPgUserConfigPgauditArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""This property is deprecated.""")
     def role(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Specifies the master role to use for object audit logging.
@@ -41489,5 +42200,436 @@ class ValkeyValkeyUserConfigPublicAccessArgs:
     @valkey.setter
     def valkey(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "valkey", value)
+
+
+if not MYPY:
+    class GetOrganizationAddressTimeoutsArgsDict(TypedDict):
+        read: NotRequired[builtins.str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    GetOrganizationAddressTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationAddressTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[builtins.str] = None):
+        """
+        :param builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
+    class GetOrganizationBillingGroupListBillingGroupArgsDict(TypedDict):
+        billing_address_id: builtins.str
+        """
+        Billing address ID.
+        """
+        billing_contact_emails: Sequence[builtins.str]
+        """
+        List of billing contact emails.
+        """
+        billing_currency: builtins.str
+        """
+        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        """
+        billing_emails: Sequence[builtins.str]
+        """
+        List of billing contact emails.
+        """
+        billing_group_id: builtins.str
+        """
+        Billing group ID.
+        """
+        billing_group_name: builtins.str
+        """
+        Billing Group Name.
+        """
+        custom_invoice_text: builtins.str
+        """
+        Extra billing text.
+        """
+        organization_id: builtins.str
+        """
+        Organization ID.
+        """
+        payment_method_id: builtins.str
+        """
+        Payment method ID.
+        """
+        shipping_address_id: builtins.str
+        """
+        Shipping address ID.
+        """
+        vat_id: builtins.str
+        """
+        VAT ID.
+        """
+elif False:
+    GetOrganizationBillingGroupListBillingGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationBillingGroupListBillingGroupArgs:
+    def __init__(__self__, *,
+                 billing_address_id: builtins.str,
+                 billing_contact_emails: Sequence[builtins.str],
+                 billing_currency: builtins.str,
+                 billing_emails: Sequence[builtins.str],
+                 billing_group_id: builtins.str,
+                 billing_group_name: builtins.str,
+                 custom_invoice_text: builtins.str,
+                 organization_id: builtins.str,
+                 payment_method_id: builtins.str,
+                 shipping_address_id: builtins.str,
+                 vat_id: builtins.str):
+        """
+        :param builtins.str billing_address_id: Billing address ID.
+        :param Sequence[builtins.str] billing_contact_emails: List of billing contact emails.
+        :param builtins.str billing_currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        :param Sequence[builtins.str] billing_emails: List of billing contact emails.
+        :param builtins.str billing_group_id: Billing group ID.
+        :param builtins.str billing_group_name: Billing Group Name.
+        :param builtins.str custom_invoice_text: Extra billing text.
+        :param builtins.str organization_id: Organization ID.
+        :param builtins.str payment_method_id: Payment method ID.
+        :param builtins.str shipping_address_id: Shipping address ID.
+        :param builtins.str vat_id: VAT ID.
+        """
+        pulumi.set(__self__, "billing_address_id", billing_address_id)
+        pulumi.set(__self__, "billing_contact_emails", billing_contact_emails)
+        pulumi.set(__self__, "billing_currency", billing_currency)
+        pulumi.set(__self__, "billing_emails", billing_emails)
+        pulumi.set(__self__, "billing_group_id", billing_group_id)
+        pulumi.set(__self__, "billing_group_name", billing_group_name)
+        pulumi.set(__self__, "custom_invoice_text", custom_invoice_text)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "payment_method_id", payment_method_id)
+        pulumi.set(__self__, "shipping_address_id", shipping_address_id)
+        pulumi.set(__self__, "vat_id", vat_id)
+
+    @property
+    @pulumi.getter(name="billingAddressId")
+    def billing_address_id(self) -> builtins.str:
+        """
+        Billing address ID.
+        """
+        return pulumi.get(self, "billing_address_id")
+
+    @billing_address_id.setter
+    def billing_address_id(self, value: builtins.str):
+        pulumi.set(self, "billing_address_id", value)
+
+    @property
+    @pulumi.getter(name="billingContactEmails")
+    def billing_contact_emails(self) -> Sequence[builtins.str]:
+        """
+        List of billing contact emails.
+        """
+        return pulumi.get(self, "billing_contact_emails")
+
+    @billing_contact_emails.setter
+    def billing_contact_emails(self, value: Sequence[builtins.str]):
+        pulumi.set(self, "billing_contact_emails", value)
+
+    @property
+    @pulumi.getter(name="billingCurrency")
+    def billing_currency(self) -> builtins.str:
+        """
+        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        """
+        return pulumi.get(self, "billing_currency")
+
+    @billing_currency.setter
+    def billing_currency(self, value: builtins.str):
+        pulumi.set(self, "billing_currency", value)
+
+    @property
+    @pulumi.getter(name="billingEmails")
+    def billing_emails(self) -> Sequence[builtins.str]:
+        """
+        List of billing contact emails.
+        """
+        return pulumi.get(self, "billing_emails")
+
+    @billing_emails.setter
+    def billing_emails(self, value: Sequence[builtins.str]):
+        pulumi.set(self, "billing_emails", value)
+
+    @property
+    @pulumi.getter(name="billingGroupId")
+    def billing_group_id(self) -> builtins.str:
+        """
+        Billing group ID.
+        """
+        return pulumi.get(self, "billing_group_id")
+
+    @billing_group_id.setter
+    def billing_group_id(self, value: builtins.str):
+        pulumi.set(self, "billing_group_id", value)
+
+    @property
+    @pulumi.getter(name="billingGroupName")
+    def billing_group_name(self) -> builtins.str:
+        """
+        Billing Group Name.
+        """
+        return pulumi.get(self, "billing_group_name")
+
+    @billing_group_name.setter
+    def billing_group_name(self, value: builtins.str):
+        pulumi.set(self, "billing_group_name", value)
+
+    @property
+    @pulumi.getter(name="customInvoiceText")
+    def custom_invoice_text(self) -> builtins.str:
+        """
+        Extra billing text.
+        """
+        return pulumi.get(self, "custom_invoice_text")
+
+    @custom_invoice_text.setter
+    def custom_invoice_text(self, value: builtins.str):
+        pulumi.set(self, "custom_invoice_text", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> builtins.str:
+        """
+        Organization ID.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: builtins.str):
+        pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="paymentMethodId")
+    def payment_method_id(self) -> builtins.str:
+        """
+        Payment method ID.
+        """
+        return pulumi.get(self, "payment_method_id")
+
+    @payment_method_id.setter
+    def payment_method_id(self, value: builtins.str):
+        pulumi.set(self, "payment_method_id", value)
+
+    @property
+    @pulumi.getter(name="shippingAddressId")
+    def shipping_address_id(self) -> builtins.str:
+        """
+        Shipping address ID.
+        """
+        return pulumi.get(self, "shipping_address_id")
+
+    @shipping_address_id.setter
+    def shipping_address_id(self, value: builtins.str):
+        pulumi.set(self, "shipping_address_id", value)
+
+    @property
+    @pulumi.getter(name="vatId")
+    def vat_id(self) -> builtins.str:
+        """
+        VAT ID.
+        """
+        return pulumi.get(self, "vat_id")
+
+    @vat_id.setter
+    def vat_id(self, value: builtins.str):
+        pulumi.set(self, "vat_id", value)
+
+
+if not MYPY:
+    class GetOrganizationBillingGroupListTimeoutsArgsDict(TypedDict):
+        read: NotRequired[builtins.str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    GetOrganizationBillingGroupListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationBillingGroupListTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[builtins.str] = None):
+        """
+        :param builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
+    class GetOrganizationBillingGroupTimeoutsArgsDict(TypedDict):
+        read: NotRequired[builtins.str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    GetOrganizationBillingGroupTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationBillingGroupTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[builtins.str] = None):
+        """
+        :param builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
+    class GetOrganizationProjectTagArgsDict(TypedDict):
+        key: builtins.str
+        """
+        Project tag key.
+        """
+        value: builtins.str
+        """
+        Project tag value.
+        """
+elif False:
+    GetOrganizationProjectTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationProjectTagArgs:
+    def __init__(__self__, *,
+                 key: builtins.str,
+                 value: builtins.str):
+        """
+        :param builtins.str key: Project tag key.
+        :param builtins.str value: Project tag value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> builtins.str:
+        """
+        Project tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: builtins.str):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> builtins.str:
+        """
+        Project tag value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: builtins.str):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class GetOrganizationProjectTimeoutsArgsDict(TypedDict):
+        read: NotRequired[builtins.str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    GetOrganizationProjectTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationProjectTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[builtins.str] = None):
+        """
+        :param builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
+    class GetOrganizationTimeoutsArgsDict(TypedDict):
+        read: NotRequired[builtins.str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    GetOrganizationTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[builtins.str] = None):
+        """
+        :param builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[builtins.str]):
+        pulumi.set(self, "read", value)
 
 

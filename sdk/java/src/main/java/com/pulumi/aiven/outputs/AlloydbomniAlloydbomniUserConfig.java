@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.AlloydbomniAlloydbomniUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.AlloydbomniAlloydbomniUserConfigPg;
+import com.pulumi.aiven.outputs.AlloydbomniAlloydbomniUserConfigPgaudit;
 import com.pulumi.aiven.outputs.AlloydbomniAlloydbomniUserConfigPgbouncer;
 import com.pulumi.aiven.outputs.AlloydbomniAlloydbomniUserConfigPglookout;
 import com.pulumi.aiven.outputs.AlloydbomniAlloydbomniUserConfigPrivateAccess;
@@ -106,6 +107,11 @@ public final class AlloydbomniAlloydbomniUserConfig {
      * 
      */
     private @Nullable String pgVersion;
+    /**
+     * @return System-wide settings for the pgaudit extension
+     * 
+     */
+    private @Nullable AlloydbomniAlloydbomniUserConfigPgaudit pgaudit;
     /**
      * @return PGBouncer connection pooling settings
      * 
@@ -295,6 +301,13 @@ public final class AlloydbomniAlloydbomniUserConfig {
         return Optional.ofNullable(this.pgVersion);
     }
     /**
+     * @return System-wide settings for the pgaudit extension
+     * 
+     */
+    public Optional<AlloydbomniAlloydbomniUserConfigPgaudit> pgaudit() {
+        return Optional.ofNullable(this.pgaudit);
+    }
+    /**
      * @return PGBouncer connection pooling settings
      * 
      */
@@ -418,6 +431,7 @@ public final class AlloydbomniAlloydbomniUserConfig {
         private @Nullable Boolean pgReadReplica;
         private @Nullable String pgServiceToForkFrom;
         private @Nullable String pgVersion;
+        private @Nullable AlloydbomniAlloydbomniUserConfigPgaudit pgaudit;
         private @Nullable AlloydbomniAlloydbomniUserConfigPgbouncer pgbouncer;
         private @Nullable AlloydbomniAlloydbomniUserConfigPglookout pglookout;
         private @Nullable AlloydbomniAlloydbomniUserConfigPrivateAccess privateAccess;
@@ -451,6 +465,7 @@ public final class AlloydbomniAlloydbomniUserConfig {
     	      this.pgReadReplica = defaults.pgReadReplica;
     	      this.pgServiceToForkFrom = defaults.pgServiceToForkFrom;
     	      this.pgVersion = defaults.pgVersion;
+    	      this.pgaudit = defaults.pgaudit;
     	      this.pgbouncer = defaults.pgbouncer;
     	      this.pglookout = defaults.pglookout;
     	      this.privateAccess = defaults.privateAccess;
@@ -573,6 +588,12 @@ public final class AlloydbomniAlloydbomniUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder pgaudit(@Nullable AlloydbomniAlloydbomniUserConfigPgaudit pgaudit) {
+
+            this.pgaudit = pgaudit;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pgbouncer(@Nullable AlloydbomniAlloydbomniUserConfigPgbouncer pgbouncer) {
 
             this.pgbouncer = pgbouncer;
@@ -674,6 +695,7 @@ public final class AlloydbomniAlloydbomniUserConfig {
             _resultValue.pgReadReplica = pgReadReplica;
             _resultValue.pgServiceToForkFrom = pgServiceToForkFrom;
             _resultValue.pgVersion = pgVersion;
+            _resultValue.pgaudit = pgaudit;
             _resultValue.pgbouncer = pgbouncer;
             _resultValue.pglookout = pglookout;
             _resultValue.privateAccess = privateAccess;

@@ -8,6 +8,9 @@ import * as utilities from "./utilities";
 
 /**
  * Creates and manages an organization address.
+ *
+ * **This resource is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export class OrganizationAddress extends pulumi.CustomResource {
     /**
@@ -38,44 +41,44 @@ export class OrganizationAddress extends pulumi.CustomResource {
     }
 
     /**
-     * ID of the address.
+     * Address ID.
      */
     public /*out*/ readonly addressId!: pulumi.Output<string>;
     /**
-     * Array of address lines.
+     * Address Lines.
      */
     public readonly addressLines!: pulumi.Output<string[]>;
     /**
-     * City name.
+     * City.
      */
     public readonly city!: pulumi.Output<string>;
     /**
-     * Name of the company.
-     */
-    public readonly companyName!: pulumi.Output<string | undefined>;
-    /**
-     * Country code.
+     * Country Code.
      */
     public readonly countryCode!: pulumi.Output<string>;
     /**
-     * Timestamp of the creation.
+     * Create Time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * ID of organization.
+     * Name of a company. Maximum length: `128`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * State name.
+     * State. Maximum length: `128`.
      */
     public readonly state!: pulumi.Output<string | undefined>;
     public readonly timeouts!: pulumi.Output<outputs.OrganizationAddressTimeouts | undefined>;
     /**
-     * Timestamp of the last update.
+     * Update Time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Zip code.
+     * Zip Code. Maximum length: `32`.
      */
     public readonly zipCode!: pulumi.Output<string | undefined>;
 
@@ -95,9 +98,9 @@ export class OrganizationAddress extends pulumi.CustomResource {
             resourceInputs["addressId"] = state ? state.addressId : undefined;
             resourceInputs["addressLines"] = state ? state.addressLines : undefined;
             resourceInputs["city"] = state ? state.city : undefined;
-            resourceInputs["companyName"] = state ? state.companyName : undefined;
             resourceInputs["countryCode"] = state ? state.countryCode : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["timeouts"] = state ? state.timeouts : undefined;
@@ -119,8 +122,8 @@ export class OrganizationAddress extends pulumi.CustomResource {
             }
             resourceInputs["addressLines"] = args ? args.addressLines : undefined;
             resourceInputs["city"] = args ? args.city : undefined;
-            resourceInputs["companyName"] = args ? args.companyName : undefined;
             resourceInputs["countryCode"] = args ? args.countryCode : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
@@ -139,44 +142,44 @@ export class OrganizationAddress extends pulumi.CustomResource {
  */
 export interface OrganizationAddressState {
     /**
-     * ID of the address.
+     * Address ID.
      */
     addressId?: pulumi.Input<string>;
     /**
-     * Array of address lines.
+     * Address Lines.
      */
     addressLines?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * City name.
+     * City.
      */
     city?: pulumi.Input<string>;
     /**
-     * Name of the company.
-     */
-    companyName?: pulumi.Input<string>;
-    /**
-     * Country code.
+     * Country Code.
      */
     countryCode?: pulumi.Input<string>;
     /**
-     * Timestamp of the creation.
+     * Create Time.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * ID of organization.
+     * Name of a company. Maximum length: `128`.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * State name.
+     * State. Maximum length: `128`.
      */
     state?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationAddressTimeouts>;
     /**
-     * Timestamp of the last update.
+     * Update Time.
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * Zip code.
+     * Zip Code. Maximum length: `32`.
      */
     zipCode?: pulumi.Input<string>;
 }
@@ -186,32 +189,32 @@ export interface OrganizationAddressState {
  */
 export interface OrganizationAddressArgs {
     /**
-     * Array of address lines.
+     * Address Lines.
      */
     addressLines: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * City name.
+     * City.
      */
     city: pulumi.Input<string>;
     /**
-     * Name of the company.
-     */
-    companyName?: pulumi.Input<string>;
-    /**
-     * Country code.
+     * Country Code.
      */
     countryCode: pulumi.Input<string>;
     /**
-     * ID of organization.
+     * Name of a company. Maximum length: `128`.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * State name.
+     * State. Maximum length: `128`.
      */
     state?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationAddressTimeouts>;
     /**
-     * Zip code.
+     * Zip Code. Maximum length: `32`.
      */
     zipCode?: pulumi.Input<string>;
 }

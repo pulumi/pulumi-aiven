@@ -81,7 +81,7 @@ class _OpensearchSecurityPluginConfigState:
                  service_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering OpensearchSecurityPluginConfig resources.
-        :param pulumi.Input[builtins.bool] admin_enabled: Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+        :param pulumi.Input[builtins.bool] admin_enabled: Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
         :param pulumi.Input[builtins.str] admin_password: The password for the os-sec-admin user.
         :param pulumi.Input[builtins.bool] available: Whether the security plugin is available. This is always true for recently created services.
         :param pulumi.Input[builtins.bool] enabled: Whether the security plugin is enabled. This is always true for recently created services.
@@ -105,7 +105,7 @@ class _OpensearchSecurityPluginConfigState:
     @pulumi.getter(name="adminEnabled")
     def admin_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+        Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
         """
         return pulumi.get(self, "admin_enabled")
 
@@ -185,36 +185,22 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.get_project(project="example_project")
-        bar = aiven.OpenSearch("bar",
-            project=foo.project,
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example_service_name",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        foo_opensearch_user = aiven.OpensearchUser("foo",
-            service_name=bar.service_name,
-            project=foo.project,
-            username="user-example")
-        foo_opensearch_security_plugin_config = aiven.OpensearchSecurityPluginConfig("foo",
-            project=foo.project,
-            service_name=bar.service_name,
-            admin_password="ThisIsATest123^=^")
+        main = aiven.OpensearchSecurityPluginConfig("main",
+            project=example_project["project"],
+            service_name=example_opensearch["serviceName"],
+            admin_password=opensearch_security_admin_password)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo PROJECT/SERVICE_NAME
+        $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -230,36 +216,22 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
                  args: OpensearchSecurityPluginConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.get_project(project="example_project")
-        bar = aiven.OpenSearch("bar",
-            project=foo.project,
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example_service_name",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        foo_opensearch_user = aiven.OpensearchUser("foo",
-            service_name=bar.service_name,
-            project=foo.project,
-            username="user-example")
-        foo_opensearch_security_plugin_config = aiven.OpensearchSecurityPluginConfig("foo",
-            project=foo.project,
-            service_name=bar.service_name,
-            admin_password="ThisIsATest123^=^")
+        main = aiven.OpensearchSecurityPluginConfig("main",
+            project=example_project["project"],
+            service_name=example_opensearch["serviceName"],
+            admin_password=opensearch_security_admin_password)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo PROJECT/SERVICE_NAME
+        $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -326,7 +298,7 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] admin_enabled: Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+        :param pulumi.Input[builtins.bool] admin_enabled: Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
         :param pulumi.Input[builtins.str] admin_password: The password for the os-sec-admin user.
         :param pulumi.Input[builtins.bool] available: Whether the security plugin is available. This is always true for recently created services.
         :param pulumi.Input[builtins.bool] enabled: Whether the security plugin is enabled. This is always true for recently created services.
@@ -349,7 +321,7 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
     @pulumi.getter(name="adminEnabled")
     def admin_enabled(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+        Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
         """
         return pulumi.get(self, "admin_enabled")
 

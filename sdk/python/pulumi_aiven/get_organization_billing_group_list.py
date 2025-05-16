@@ -15,6 +15,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOrganizationBillingGroupListResult',
@@ -28,7 +29,7 @@ class GetOrganizationBillingGroupListResult:
     """
     A collection of values returned by getOrganizationBillingGroupList.
     """
-    def __init__(__self__, billing_groups=None, id=None, organization_id=None):
+    def __init__(__self__, billing_groups=None, id=None, organization_id=None, timeouts=None):
         if billing_groups and not isinstance(billing_groups, list):
             raise TypeError("Expected argument 'billing_groups' to be a list")
         pulumi.set(__self__, "billing_groups", billing_groups)
@@ -38,12 +39,15 @@ class GetOrganizationBillingGroupListResult:
         if organization_id and not isinstance(organization_id, str):
             raise TypeError("Expected argument 'organization_id' to be a str")
         pulumi.set(__self__, "organization_id", organization_id)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="billingGroups")
-    def billing_groups(self) -> Sequence['outputs.GetOrganizationBillingGroupListBillingGroupResult']:
+    def billing_groups(self) -> Optional[Sequence['outputs.GetOrganizationBillingGroupListBillingGroupResult']]:
         """
-        List of billing groups.
+        A list of all billing groups belonging to the organization.
         """
         return pulumi.get(self, "billing_groups")
 
@@ -51,7 +55,7 @@ class GetOrganizationBillingGroupListResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Resource ID, a composite of organization_id.
+        Resource ID, equal to `organization_id`.
         """
         return pulumi.get(self, "id")
 
@@ -59,9 +63,14 @@ class GetOrganizationBillingGroupListResult:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> builtins.str:
         """
-        ID of the organization.
+        ID of an organization.
         """
         return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetOrganizationBillingGroupListTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
 
 class AwaitableGetOrganizationBillingGroupListResult(GetOrganizationBillingGroupListResult):
@@ -72,39 +81,58 @@ class AwaitableGetOrganizationBillingGroupListResult(GetOrganizationBillingGroup
         return GetOrganizationBillingGroupListResult(
             billing_groups=self.billing_groups,
             id=self.id,
-            organization_id=self.organization_id)
+            organization_id=self.organization_id,
+            timeouts=self.timeouts)
 
 
-def get_organization_billing_group_list(organization_id: Optional[builtins.str] = None,
+def get_organization_billing_group_list(billing_groups: Optional[Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']]] = None,
+                                        organization_id: Optional[builtins.str] = None,
+                                        timeouts: Optional[Union['GetOrganizationBillingGroupListTimeoutsArgs', 'GetOrganizationBillingGroupListTimeoutsArgsDict']] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationBillingGroupListResult:
     """
     Lists billing groups for an organization.
 
+    **This resource is in the beta stage and may change without notice.** Set
+    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
-    :param builtins.str organization_id: ID of the organization.
+
+    :param Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']] billing_groups: A list of all billing groups belonging to the organization.
+    :param builtins.str organization_id: ID of an organization.
     """
     __args__ = dict()
+    __args__['billingGroups'] = billing_groups
     __args__['organizationId'] = organization_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList', __args__, opts=opts, typ=GetOrganizationBillingGroupListResult).value
 
     return AwaitableGetOrganizationBillingGroupListResult(
         billing_groups=pulumi.get(__ret__, 'billing_groups'),
         id=pulumi.get(__ret__, 'id'),
-        organization_id=pulumi.get(__ret__, 'organization_id'))
-def get_organization_billing_group_list_output(organization_id: Optional[pulumi.Input[builtins.str]] = None,
+        organization_id=pulumi.get(__ret__, 'organization_id'),
+        timeouts=pulumi.get(__ret__, 'timeouts'))
+def get_organization_billing_group_list_output(billing_groups: Optional[pulumi.Input[Optional[Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']]]]] = None,
+                                               organization_id: Optional[pulumi.Input[builtins.str]] = None,
+                                               timeouts: Optional[pulumi.Input[Optional[Union['GetOrganizationBillingGroupListTimeoutsArgs', 'GetOrganizationBillingGroupListTimeoutsArgsDict']]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationBillingGroupListResult]:
     """
     Lists billing groups for an organization.
 
+    **This resource is in the beta stage and may change without notice.** Set
+    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
-    :param builtins.str organization_id: ID of the organization.
+
+    :param Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']] billing_groups: A list of all billing groups belonging to the organization.
+    :param builtins.str organization_id: ID of an organization.
     """
     __args__ = dict()
+    __args__['billingGroups'] = billing_groups
     __args__['organizationId'] = organization_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList', __args__, opts=opts, typ=GetOrganizationBillingGroupListResult)
     return __ret__.apply(lambda __response__: GetOrganizationBillingGroupListResult(
         billing_groups=pulumi.get(__response__, 'billing_groups'),
         id=pulumi.get(__response__, 'id'),
-        organization_id=pulumi.get(__response__, 'organization_id')))
+        organization_id=pulumi.get(__response__, 'organization_id'),
+        timeouts=pulumi.get(__response__, 'timeouts')))

@@ -12,8 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
-//
 // ## Example Usage
 //
 // ```go
@@ -28,35 +26,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := aiven.LookupProject(ctx, &aiven.LookupProjectArgs{
-//				Project: "example_project",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			bar, err := aiven.NewOpenSearch(ctx, "bar", &aiven.OpenSearchArgs{
-//				Project:               pulumi.String(foo.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("startup-4"),
-//				ServiceName:           pulumi.String("example_service_name"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewOpensearchUser(ctx, "foo", &aiven.OpensearchUserArgs{
-//				ServiceName: bar.ServiceName,
-//				Project:     pulumi.String(foo.Project),
-//				Username:    pulumi.String("user-example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewOpensearchSecurityPluginConfig(ctx, "foo", &aiven.OpensearchSecurityPluginConfigArgs{
-//				Project:       pulumi.String(foo.Project),
-//				ServiceName:   bar.ServiceName,
-//				AdminPassword: pulumi.String("ThisIsATest123^=^"),
+//			_, err := aiven.NewOpensearchSecurityPluginConfig(ctx, "main", &aiven.OpensearchSecurityPluginConfigArgs{
+//				Project:       pulumi.Any(exampleProject.Project),
+//				ServiceName:   pulumi.Any(exampleOpensearch.ServiceName),
+//				AdminPassword: pulumi.Any(opensearchSecurityAdminPassword),
 //			})
 //			if err != nil {
 //				return err
@@ -70,12 +43,12 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo PROJECT/SERVICE_NAME
+// $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
 // ```
 type OpensearchSecurityPluginConfig struct {
 	pulumi.CustomResourceState
 
-	// Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+	// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
 	AdminEnabled pulumi.BoolOutput `pulumi:"adminEnabled"`
 	// The password for the os-sec-admin user.
 	AdminPassword pulumi.StringOutput `pulumi:"adminPassword"`
@@ -135,7 +108,7 @@ func GetOpensearchSecurityPluginConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OpensearchSecurityPluginConfig resources.
 type opensearchSecurityPluginConfigState struct {
-	// Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+	// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
 	AdminEnabled *bool `pulumi:"adminEnabled"`
 	// The password for the os-sec-admin user.
 	AdminPassword *string `pulumi:"adminPassword"`
@@ -150,7 +123,7 @@ type opensearchSecurityPluginConfigState struct {
 }
 
 type OpensearchSecurityPluginConfigState struct {
-	// Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+	// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
 	AdminEnabled pulumi.BoolPtrInput
 	// The password for the os-sec-admin user.
 	AdminPassword pulumi.StringPtrInput
@@ -274,7 +247,7 @@ func (o OpensearchSecurityPluginConfigOutput) ToOpensearchSecurityPluginConfigOu
 	return o
 }
 
-// Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
 func (o OpensearchSecurityPluginConfigOutput) AdminEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OpensearchSecurityPluginConfig) pulumi.BoolOutput { return v.AdminEnabled }).(pulumi.BoolOutput)
 }

@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetOpensearchSecurityPluginConfigResult {
     /**
-     * @return Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+     * @return Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
      * 
      */
     private Boolean adminEnabled;
@@ -49,7 +49,7 @@ public final class GetOpensearchSecurityPluginConfigResult {
 
     private GetOpensearchSecurityPluginConfigResult() {}
     /**
-     * @return Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+     * @return Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
      * 
      */
     public Boolean adminEnabled() {

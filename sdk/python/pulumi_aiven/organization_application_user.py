@@ -31,6 +31,9 @@ class OrganizationApplicationUserArgs:
         """
         pulumi.set(__self__, "organization_id", organization_id)
         if is_super_admin is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""", DeprecationWarning)
+            pulumi.log.warn("""is_super_admin is deprecated: This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""")
+        if is_super_admin is not None:
             pulumi.set(__self__, "is_super_admin", is_super_admin)
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -49,6 +52,7 @@ class OrganizationApplicationUserArgs:
 
     @property
     @pulumi.getter(name="isSuperAdmin")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""")
     def is_super_admin(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.
@@ -91,6 +95,9 @@ class _OrganizationApplicationUserState:
         if email is not None:
             pulumi.set(__self__, "email", email)
         if is_super_admin is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""", DeprecationWarning)
+            pulumi.log.warn("""is_super_admin is deprecated: This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""")
+        if is_super_admin is not None:
             pulumi.set(__self__, "is_super_admin", is_super_admin)
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -113,6 +120,7 @@ class _OrganizationApplicationUserState:
 
     @property
     @pulumi.getter(name="isSuperAdmin")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""")
     def is_super_admin(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.
@@ -313,6 +321,7 @@ class OrganizationApplicationUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isSuperAdmin")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""")
     def is_super_admin(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.

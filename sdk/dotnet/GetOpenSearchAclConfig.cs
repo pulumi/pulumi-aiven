@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOpenSearchAclConfig
     {
         /// <summary>
-        /// The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+        /// Gets information about access control for an Aiven for OpenSearch® service.
         /// 
         /// ## Example Usage
         /// 
@@ -26,8 +26,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()
         ///     {
-        ///         Project = os_project.Project,
-        ///         ServiceName = os.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleOpensearch.ServiceName,
         ///     });
         /// 
         /// });
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclConfigResult>("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args ?? new GetOpenSearchAclConfigArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+        /// Gets information about access control for an Aiven for OpenSearch® service.
         /// 
         /// ## Example Usage
         /// 
@@ -51,8 +51,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()
         ///     {
-        ///         Project = os_project.Project,
-        ///         ServiceName = os.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleOpensearch.ServiceName,
         ///     });
         /// 
         /// });
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclConfigResult>("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args ?? new GetOpenSearchAclConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+        /// Gets information about access control for an Aiven for OpenSearch® service.
         /// 
         /// ## Example Usage
         /// 
@@ -76,8 +76,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()
         ///     {
-        ///         Project = os_project.Project,
-        ///         ServiceName = os.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleOpensearch.ServiceName,
         ///     });
         /// 
         /// });
@@ -133,7 +133,7 @@ namespace Pulumi.Aiven
     public sealed class GetOpenSearchAclConfigResult
     {
         /// <summary>
-        /// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        /// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

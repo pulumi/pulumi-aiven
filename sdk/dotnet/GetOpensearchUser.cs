@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOpensearchUser
     {
         /// <summary>
-        /// The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+        /// Gets information about an Aiven for OpenSearch® service user.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Aiven.GetOpensearchUser.Invoke(new()
+        ///     var exampleOpensearchUser = Aiven.GetOpensearchUser.Invoke(new()
         ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
+        ///         ServiceName = "example-opensearch-service",
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-opensearch-user",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpensearchUserResult>("aiven:index/getOpensearchUser:getOpensearchUser", args ?? new GetOpensearchUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+        /// Gets information about an Aiven for OpenSearch® service user.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Aiven.GetOpensearchUser.Invoke(new()
+        ///     var exampleOpensearchUser = Aiven.GetOpensearchUser.Invoke(new()
         ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
+        ///         ServiceName = "example-opensearch-service",
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-opensearch-user",
         ///     });
         /// 
         /// });
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetOpensearchUserResult>("aiven:index/getOpensearchUser:getOpensearchUser", args ?? new GetOpensearchUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+        /// Gets information about an Aiven for OpenSearch® service user.
         /// 
         /// ## Example Usage
         /// 
@@ -76,11 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Aiven.GetOpensearchUser.Invoke(new()
+        ///     var exampleOpensearchUser = Aiven.GetOpensearchUser.Invoke(new()
         ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
+        ///         ServiceName = "example-opensearch-service",
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-opensearch-user",
         ///     });
         /// 
         /// });
@@ -106,7 +106,7 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the OpenSearch User.
+        /// The OpenSearch service user's password.
         /// </summary>
         public readonly string Password;
         /// <summary>
@@ -164,11 +164,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// User account type, such as primary or regular account.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Username;
 

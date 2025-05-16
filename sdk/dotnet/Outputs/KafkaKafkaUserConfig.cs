@@ -57,6 +57,10 @@ namespace Pulumi.Aiven.Outputs
         /// Kafka Connect configuration values
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaConnectConfig? KafkaConnectConfig;
+        /// <summary>
+        /// The plugin selected by the user
+        /// </summary>
+        public readonly ImmutableArray<Outputs.KafkaKafkaUserConfigKafkaConnectPluginVersion> KafkaConnectPluginVersions;
         public readonly ImmutableArray<Outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider> KafkaConnectSecretProviders;
         /// <summary>
         /// Enable Kafka-REST service. Default: `false`.
@@ -143,6 +147,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.KafkaKafkaUserConfigKafkaConnectConfig? kafkaConnectConfig,
 
+            ImmutableArray<Outputs.KafkaKafkaUserConfigKafkaConnectPluginVersion> kafkaConnectPluginVersions,
+
             ImmutableArray<Outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders,
 
             bool? kafkaRest,
@@ -186,6 +192,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaAuthenticationMethods = kafkaAuthenticationMethods;
             KafkaConnect = kafkaConnect;
             KafkaConnectConfig = kafkaConnectConfig;
+            KafkaConnectPluginVersions = kafkaConnectPluginVersions;
             KafkaConnectSecretProviders = kafkaConnectSecretProviders;
             KafkaRest = kafkaRest;
             KafkaRestAuthorization = kafkaRestAuthorization;

@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetExternalIdentity
     {
         /// <summary>
-        /// Maps an external service user to an Aiven user. 
+        /// Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows. 
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -21,7 +21,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalIdentityResult>("aiven:index/getExternalIdentity:getExternalIdentity", args ?? new GetExternalIdentityArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Maps an external service user to an Aiven user. 
+        /// Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows. 
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalIdentityResult>("aiven:index/getExternalIdentity:getExternalIdentity", args ?? new GetExternalIdentityInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Maps an external service user to an Aiven user. 
+        /// Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows. 
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven
         public string ExternalServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The user's ID on the external service.
+        /// The user's ID on the external service. For GitHub, this is their GitHub username.
         /// </summary>
         [Input("externalUserId", required: true)]
         public string ExternalUserId { get; set; } = null!;
@@ -81,7 +81,7 @@ namespace Pulumi.Aiven
         public Input<string> ExternalServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The user's ID on the external service.
+        /// The user's ID on the external service. For GitHub, this is their GitHub username.
         /// </summary>
         [Input("externalUserId", required: true)]
         public Input<string> ExternalUserId { get; set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ExternalServiceName;
         /// <summary>
-        /// The user's ID on the external service.
+        /// The user's ID on the external service. For GitHub, this is their GitHub username.
         /// </summary>
         public readonly string ExternalUserId;
         /// <summary>

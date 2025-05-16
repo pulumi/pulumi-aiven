@@ -17,14 +17,14 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
     public static final OpensearchSecurityPluginConfigState Empty = new OpensearchSecurityPluginConfigState();
 
     /**
-     * Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+     * Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
      * 
      */
     @Import(name="adminEnabled")
     private @Nullable Output<Boolean> adminEnabled;
 
     /**
-     * @return Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+     * @return Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
      * 
      */
     public Optional<Output<Boolean>> adminEnabled() {
@@ -136,7 +136,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param adminEnabled Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+         * @param adminEnabled Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param adminEnabled Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+         * @param adminEnabled Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
          * 
          * @return builder
          * 

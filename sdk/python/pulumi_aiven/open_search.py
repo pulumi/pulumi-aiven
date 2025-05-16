@@ -49,7 +49,7 @@ class OpenSearchArgs:
         :param pulumi.Input[builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input['OpenSearchOpensearchUserConfigArgs'] opensearch_user_config: Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
-        :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]] opensearches: OpenSearch server provided values
+        :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]] opensearches: Values provided by the OpenSearch server.
         :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
@@ -203,7 +203,7 @@ class OpenSearchArgs:
     @pulumi.getter
     def opensearches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]]]:
         """
-        OpenSearch server provided values
+        Values provided by the OpenSearch server.
         """
         return pulumi.get(self, "opensearches")
 
@@ -328,7 +328,7 @@ class _OpenSearchState:
         :param pulumi.Input[builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input['OpenSearchOpensearchUserConfigArgs'] opensearch_user_config: Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
-        :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]] opensearches: OpenSearch server provided values
+        :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]] opensearches: Values provided by the OpenSearch server.
         :param pulumi.Input[builtins.str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
@@ -546,7 +546,7 @@ class _OpenSearchState:
     @pulumi.getter
     def opensearches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]]]:
         """
-        OpenSearch server provided values
+        Values provided by the OpenSearch server.
         """
         return pulumi.get(self, "opensearches")
 
@@ -768,7 +768,7 @@ class OpenSearch(pulumi.CustomResource):
                  termination_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
-        The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
+        Creates and manages an [Aiven for OpenSearch®](https://aiven.io/docs/products/opensearch) service.
 
         ## Example Usage
 
@@ -776,15 +776,14 @@ class OpenSearch(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        os1 = aiven.OpenSearch("os1",
-            project=pr1["project"],
+        example_opensearch = aiven.OpenSearch("example_opensearch",
+            project=example_project["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
-            service_name="my-os1",
+            service_name="example-opensearch",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             opensearch_user_config={
-                "opensearch_version": "1",
                 "opensearch_dashboards": {
                     "enabled": True,
                     "opensearch_request_timeout": 30000,
@@ -799,7 +798,7 @@ class OpenSearch(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
+        $ pulumi import aiven:index/openSearch:OpenSearch example_opensearch PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -810,7 +809,7 @@ class OpenSearch(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[Union['OpenSearchOpensearchUserConfigArgs', 'OpenSearchOpensearchUserConfigArgsDict']] opensearch_user_config: Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OpenSearchOpensearchArgs', 'OpenSearchOpensearchArgsDict']]]] opensearches: OpenSearch server provided values
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OpenSearchOpensearchArgs', 'OpenSearchOpensearchArgsDict']]]] opensearches: Values provided by the OpenSearch server.
         :param pulumi.Input[builtins.str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
@@ -828,7 +827,7 @@ class OpenSearch(pulumi.CustomResource):
                  args: OpenSearchArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
+        Creates and manages an [Aiven for OpenSearch®](https://aiven.io/docs/products/opensearch) service.
 
         ## Example Usage
 
@@ -836,15 +835,14 @@ class OpenSearch(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        os1 = aiven.OpenSearch("os1",
-            project=pr1["project"],
+        example_opensearch = aiven.OpenSearch("example_opensearch",
+            project=example_project["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
-            service_name="my-os1",
+            service_name="example-opensearch",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             opensearch_user_config={
-                "opensearch_version": "1",
                 "opensearch_dashboards": {
                     "enabled": True,
                     "opensearch_request_timeout": 30000,
@@ -859,7 +857,7 @@ class OpenSearch(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
+        $ pulumi import aiven:index/openSearch:OpenSearch example_opensearch PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -994,7 +992,7 @@ class OpenSearch(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[Union['OpenSearchOpensearchUserConfigArgs', 'OpenSearchOpensearchUserConfigArgsDict']] opensearch_user_config: Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OpenSearchOpensearchArgs', 'OpenSearchOpensearchArgsDict']]]] opensearches: OpenSearch server provided values
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OpenSearchOpensearchArgs', 'OpenSearchOpensearchArgsDict']]]] opensearches: Values provided by the OpenSearch server.
         :param pulumi.Input[builtins.str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
@@ -1139,7 +1137,7 @@ class OpenSearch(pulumi.CustomResource):
     @pulumi.getter
     def opensearches(self) -> pulumi.Output[Sequence['outputs.OpenSearchOpensearch']]:
         """
-        OpenSearch server provided values
+        Values provided by the OpenSearch server.
         """
         return pulumi.get(self, "opensearches")
 

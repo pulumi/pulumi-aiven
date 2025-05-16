@@ -3,16 +3,19 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetOrganizationBillingGroupTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationBillingGroupResult {
     /**
-     * @return ID of the billing address.
+     * @return Billing address ID.
      * 
      */
     private String billingAddressId;
@@ -22,50 +25,51 @@ public final class GetOrganizationBillingGroupResult {
      */
     private List<String> billingContactEmails;
     /**
-     * @return Billing currency.
+     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     private String billingCurrency;
     /**
-     * @return List of billing emails.
+     * @return List of billing contact emails.
      * 
      */
     private List<String> billingEmails;
     /**
-     * @return ID of the billing group.
+     * @return Billing group ID.
      * 
      */
     private String billingGroupId;
     /**
-     * @return Name of the billing group.
+     * @return Billing Group Name.
      * 
      */
     private String billingGroupName;
     /**
-     * @return Custom invoice text.
+     * @return Extra billing text.
      * 
      */
     private String customInvoiceText;
     /**
-     * @return Resource ID, a composite of organization*id and billing*group_id.
+     * @return Resource ID, a composite of `organization_id` and `billing_group_id` IDs.
      * 
      */
     private String id;
     /**
-     * @return ID of the organization.
+     * @return ID of an organization.
      * 
      */
     private String organizationId;
     /**
-     * @return ID of the payment method.
+     * @return Payment method ID.
      * 
      */
     private String paymentMethodId;
     /**
-     * @return ID of the shipping address.
+     * @return Shipping address ID.
      * 
      */
     private String shippingAddressId;
+    private @Nullable GetOrganizationBillingGroupTimeouts timeouts;
     /**
      * @return VAT ID.
      * 
@@ -74,7 +78,7 @@ public final class GetOrganizationBillingGroupResult {
 
     private GetOrganizationBillingGroupResult() {}
     /**
-     * @return ID of the billing address.
+     * @return Billing address ID.
      * 
      */
     public String billingAddressId() {
@@ -88,67 +92,70 @@ public final class GetOrganizationBillingGroupResult {
         return this.billingContactEmails;
     }
     /**
-     * @return Billing currency.
+     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     public String billingCurrency() {
         return this.billingCurrency;
     }
     /**
-     * @return List of billing emails.
+     * @return List of billing contact emails.
      * 
      */
     public List<String> billingEmails() {
         return this.billingEmails;
     }
     /**
-     * @return ID of the billing group.
+     * @return Billing group ID.
      * 
      */
     public String billingGroupId() {
         return this.billingGroupId;
     }
     /**
-     * @return Name of the billing group.
+     * @return Billing Group Name.
      * 
      */
     public String billingGroupName() {
         return this.billingGroupName;
     }
     /**
-     * @return Custom invoice text.
+     * @return Extra billing text.
      * 
      */
     public String customInvoiceText() {
         return this.customInvoiceText;
     }
     /**
-     * @return Resource ID, a composite of organization*id and billing*group_id.
+     * @return Resource ID, a composite of `organization_id` and `billing_group_id` IDs.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return ID of the organization.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
         return this.organizationId;
     }
     /**
-     * @return ID of the payment method.
+     * @return Payment method ID.
      * 
      */
     public String paymentMethodId() {
         return this.paymentMethodId;
     }
     /**
-     * @return ID of the shipping address.
+     * @return Shipping address ID.
      * 
      */
     public String shippingAddressId() {
         return this.shippingAddressId;
+    }
+    public Optional<GetOrganizationBillingGroupTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
     /**
      * @return VAT ID.
@@ -178,6 +185,7 @@ public final class GetOrganizationBillingGroupResult {
         private String organizationId;
         private String paymentMethodId;
         private String shippingAddressId;
+        private @Nullable GetOrganizationBillingGroupTimeouts timeouts;
         private String vatId;
         public Builder() {}
         public Builder(GetOrganizationBillingGroupResult defaults) {
@@ -193,6 +201,7 @@ public final class GetOrganizationBillingGroupResult {
     	      this.organizationId = defaults.organizationId;
     	      this.paymentMethodId = defaults.paymentMethodId;
     	      this.shippingAddressId = defaults.shippingAddressId;
+    	      this.timeouts = defaults.timeouts;
     	      this.vatId = defaults.vatId;
         }
 
@@ -291,6 +300,12 @@ public final class GetOrganizationBillingGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetOrganizationBillingGroupTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vatId(String vatId) {
             if (vatId == null) {
               throw new MissingRequiredPropertyException("GetOrganizationBillingGroupResult", "vatId");
@@ -311,6 +326,7 @@ public final class GetOrganizationBillingGroupResult {
             _resultValue.organizationId = organizationId;
             _resultValue.paymentMethodId = paymentMethodId;
             _resultValue.shippingAddressId = shippingAddressId;
+            _resultValue.timeouts = timeouts;
             _resultValue.vatId = vatId;
             return _resultValue;
         }

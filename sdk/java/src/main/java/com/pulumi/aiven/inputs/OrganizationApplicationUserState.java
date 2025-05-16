@@ -34,14 +34,22 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
     /**
      * Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource. */
     @Import(name="isSuperAdmin")
     private @Nullable Output<Boolean> isSuperAdmin;
 
     /**
      * @return Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource. */
     public Optional<Output<Boolean>> isSuperAdmin() {
         return Optional.ofNullable(this.isSuperAdmin);
     }
@@ -145,7 +153,11 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource. */
         public Builder isSuperAdmin(@Nullable Output<Boolean> isSuperAdmin) {
             $.isSuperAdmin = isSuperAdmin;
             return this;
@@ -156,7 +168,11 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource. */
         public Builder isSuperAdmin(Boolean isSuperAdmin) {
             return isSuperAdmin(Output.of(isSuperAdmin));
         }

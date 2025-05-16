@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
+ * Creates and manages an [Aiven for OpenSearch®](https://aiven.io/docs/products/opensearch) service.
  *
  * ## Example Usage
  *
@@ -15,15 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const os1 = new aiven.OpenSearch("os1", {
- *     project: pr1.project,
+ * const exampleOpensearch = new aiven.OpenSearch("example_opensearch", {
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-4",
- *     serviceName: "my-os1",
+ *     serviceName: "example-opensearch",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     opensearchUserConfig: {
- *         opensearchVersion: "1",
  *         opensearchDashboards: {
  *             enabled: true,
  *             opensearchRequestTimeout: 30000,
@@ -39,7 +38,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
+ * $ pulumi import aiven:index/openSearch:OpenSearch example_opensearch PROJECT/SERVICE_NAME
  * ```
  */
 export class OpenSearch extends pulumi.CustomResource {
@@ -119,7 +118,7 @@ export class OpenSearch extends pulumi.CustomResource {
      */
     public readonly opensearchUserConfig!: pulumi.Output<outputs.OpenSearchOpensearchUserConfig | undefined>;
     /**
-     * OpenSearch server provided values
+     * Values provided by the OpenSearch server.
      */
     public readonly opensearches!: pulumi.Output<outputs.OpenSearchOpensearch[]>;
     /**
@@ -325,7 +324,7 @@ export interface OpenSearchState {
      */
     opensearchUserConfig?: pulumi.Input<inputs.OpenSearchOpensearchUserConfig>;
     /**
-     * OpenSearch server provided values
+     * Values provided by the OpenSearch server.
      */
     opensearches?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearch>[]>;
     /**
@@ -422,7 +421,7 @@ export interface OpenSearchArgs {
      */
     opensearchUserConfig?: pulumi.Input<inputs.OpenSearchOpensearchUserConfig>;
     /**
-     * OpenSearch server provided values
+     * Values provided by the OpenSearch server.
      */
     opensearches?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearch>[]>;
     /**

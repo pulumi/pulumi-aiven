@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -24,6 +26,7 @@ export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.Invoke
     return pulumi.runtime.invoke("aiven:index/getOrganization:getOrganization", {
         "id": args.id,
         "name": args.name,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -39,6 +42,7 @@ export interface GetOrganizationArgs {
      * Name of the organization.
      */
     name?: string;
+    timeouts?: inputs.GetOrganizationTimeouts;
 }
 
 /**
@@ -46,23 +50,26 @@ export interface GetOrganizationArgs {
  */
 export interface GetOrganizationResult {
     /**
-     * Timestamp of the creation of the organization.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     readonly createTime: string;
     /**
      * ID of the organization.
      */
-    readonly id: string;
+    readonly id?: string;
     /**
      * Name of the organization.
      */
-    readonly name: string;
+    readonly name?: string;
     /**
-     * Tenant ID of the organization.
+     * Tenant identifier.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
     readonly tenantId: string;
+    readonly timeouts?: outputs.GetOrganizationTimeouts;
     /**
-     * Timestamp of the last update of the organization.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     readonly updateTime: string;
 }
@@ -86,6 +93,7 @@ export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: p
     return pulumi.runtime.invokeOutput("aiven:index/getOrganization:getOrganization", {
         "id": args.id,
         "name": args.name,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -101,4 +109,5 @@ export interface GetOrganizationOutputArgs {
      * Name of the organization.
      */
     name?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationTimeoutsArgs>;
 }

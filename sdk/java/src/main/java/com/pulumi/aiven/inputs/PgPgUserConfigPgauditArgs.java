@@ -21,22 +21,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="featureEnabled")
     private @Nullable Output<Boolean> featureEnabled;
 
     /**
      * @return Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> featureEnabled() {
         return Optional.ofNullable(this.featureEnabled);
     }
@@ -44,22 +36,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logCatalog")
     private @Nullable Output<Boolean> logCatalog;
 
     /**
      * @return Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> logCatalog() {
         return Optional.ofNullable(this.logCatalog);
     }
@@ -67,45 +51,29 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logClient")
     private @Nullable Output<Boolean> logClient;
 
     /**
      * @return Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> logClient() {
         return Optional.ofNullable(this.logClient);
     }
 
     /**
-     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
-     * 
-     * @deprecated
-     * This property is deprecated.
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
      * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logLevel")
     private @Nullable Output<String> logLevel;
 
     /**
-     * @return Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
-     * 
-     * @deprecated
-     * This property is deprecated.
+     * @return Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
      * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<String>> logLevel() {
         return Optional.ofNullable(this.logLevel);
     }
@@ -113,22 +81,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logMaxStringLength")
     private @Nullable Output<Integer> logMaxStringLength;
 
     /**
      * @return Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<Integer>> logMaxStringLength() {
         return Optional.ofNullable(this.logMaxStringLength);
     }
@@ -136,22 +96,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logNestedStatements")
     private @Nullable Output<Boolean> logNestedStatements;
 
     /**
      * @return This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> logNestedStatements() {
         return Optional.ofNullable(this.logNestedStatements);
     }
@@ -159,22 +111,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logParameter")
     private @Nullable Output<Boolean> logParameter;
 
     /**
      * @return Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> logParameter() {
         return Optional.ofNullable(this.logParameter);
     }
@@ -182,22 +126,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logParameterMaxSize")
     private @Nullable Output<Integer> logParameterMaxSize;
 
     /**
      * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<Integer>> logParameterMaxSize() {
         return Optional.ofNullable(this.logParameterMaxSize);
     }
@@ -205,22 +141,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logRelation")
     private @Nullable Output<Boolean> logRelation;
 
     /**
      * @return Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> logRelation() {
         return Optional.ofNullable(this.logRelation);
     }
@@ -228,22 +156,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logRows")
     private @Nullable Output<Boolean> logRows;
 
     /**
      * @return Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> logRows() {
         return Optional.ofNullable(this.logRows);
     }
@@ -251,22 +171,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logStatement")
     private @Nullable Output<Boolean> logStatement;
 
     /**
      * @return Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> logStatement() {
         return Optional.ofNullable(this.logStatement);
     }
@@ -274,22 +186,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logStatementOnce")
     private @Nullable Output<Boolean> logStatementOnce;
 
     /**
      * @return Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> logStatementOnce() {
         return Optional.ofNullable(this.logStatementOnce);
     }
@@ -297,22 +201,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Specifies which classes of statements will be logged by session audit logging.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="logs")
     private @Nullable Output<List<String>> logs;
 
     /**
      * @return Specifies which classes of statements will be logged by session audit logging.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<List<String>>> logs() {
         return Optional.ofNullable(this.logs);
     }
@@ -320,22 +216,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     /**
      * Specifies the master role to use for object audit logging.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
      * @return Specifies the master role to use for object audit logging.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
@@ -382,11 +270,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder featureEnabled(@Nullable Output<Boolean> featureEnabled) {
             $.featureEnabled = featureEnabled;
             return this;
@@ -397,11 +281,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder featureEnabled(Boolean featureEnabled) {
             return featureEnabled(Output.of(featureEnabled));
         }
@@ -411,11 +291,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logCatalog(@Nullable Output<Boolean> logCatalog) {
             $.logCatalog = logCatalog;
             return this;
@@ -426,11 +302,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logCatalog(Boolean logCatalog) {
             return logCatalog(Output.of(logCatalog));
         }
@@ -440,11 +312,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logClient(@Nullable Output<Boolean> logClient) {
             $.logClient = logClient;
             return this;
@@ -455,40 +323,28 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logClient(Boolean logClient) {
             return logClient(Output.of(logClient));
         }
 
         /**
-         * @param logLevel Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+         * @param logLevel Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logLevel(@Nullable Output<String> logLevel) {
             $.logLevel = logLevel;
             return this;
         }
 
         /**
-         * @param logLevel Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+         * @param logLevel Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logLevel(String logLevel) {
             return logLevel(Output.of(logLevel));
         }
@@ -498,11 +354,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logMaxStringLength(@Nullable Output<Integer> logMaxStringLength) {
             $.logMaxStringLength = logMaxStringLength;
             return this;
@@ -513,11 +365,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logMaxStringLength(Integer logMaxStringLength) {
             return logMaxStringLength(Output.of(logMaxStringLength));
         }
@@ -527,11 +375,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logNestedStatements(@Nullable Output<Boolean> logNestedStatements) {
             $.logNestedStatements = logNestedStatements;
             return this;
@@ -542,11 +386,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logNestedStatements(Boolean logNestedStatements) {
             return logNestedStatements(Output.of(logNestedStatements));
         }
@@ -556,11 +396,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logParameter(@Nullable Output<Boolean> logParameter) {
             $.logParameter = logParameter;
             return this;
@@ -571,11 +407,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logParameter(Boolean logParameter) {
             return logParameter(Output.of(logParameter));
         }
@@ -585,11 +417,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logParameterMaxSize(@Nullable Output<Integer> logParameterMaxSize) {
             $.logParameterMaxSize = logParameterMaxSize;
             return this;
@@ -600,11 +428,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logParameterMaxSize(Integer logParameterMaxSize) {
             return logParameterMaxSize(Output.of(logParameterMaxSize));
         }
@@ -614,11 +438,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logRelation(@Nullable Output<Boolean> logRelation) {
             $.logRelation = logRelation;
             return this;
@@ -629,11 +449,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logRelation(Boolean logRelation) {
             return logRelation(Output.of(logRelation));
         }
@@ -643,11 +459,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logRows(@Nullable Output<Boolean> logRows) {
             $.logRows = logRows;
             return this;
@@ -658,11 +470,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logRows(Boolean logRows) {
             return logRows(Output.of(logRows));
         }
@@ -672,11 +480,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logStatement(@Nullable Output<Boolean> logStatement) {
             $.logStatement = logStatement;
             return this;
@@ -687,11 +491,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logStatement(Boolean logStatement) {
             return logStatement(Output.of(logStatement));
         }
@@ -701,11 +501,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logStatementOnce(@Nullable Output<Boolean> logStatementOnce) {
             $.logStatementOnce = logStatementOnce;
             return this;
@@ -716,11 +512,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logStatementOnce(Boolean logStatementOnce) {
             return logStatementOnce(Output.of(logStatementOnce));
         }
@@ -730,11 +522,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logs(@Nullable Output<List<String>> logs) {
             $.logs = logs;
             return this;
@@ -745,11 +533,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logs(List<String> logs) {
             return logs(Output.of(logs));
         }
@@ -759,11 +543,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder logs(String... logs) {
             return logs(List.of(logs));
         }
@@ -773,11 +553,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
@@ -788,11 +564,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder role(String role) {
             return role(Output.of(role));
         }

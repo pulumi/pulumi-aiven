@@ -26,14 +26,17 @@ class OrganizationProjectArgs:
                  organization_id: pulumi.Input[builtins.str],
                  parent_id: pulumi.Input[builtins.str],
                  project_id: pulumi.Input[builtins.str],
+                 base_port: Optional[pulumi.Input[builtins.int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]] = None,
-                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 timeouts: Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationProject resource.
-        :param pulumi.Input[builtins.str] billing_group_id: Billing group ID to assign to the project.
-        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
+        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[builtins.str] project_id: Unique identifier for the project that also serves as the project name.
+        :param pulumi.Input[builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.int] base_port: Valid port number (1-65535) to use as a base for service port allocation.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
@@ -41,16 +44,20 @@ class OrganizationProjectArgs:
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "parent_id", parent_id)
         pulumi.set(__self__, "project_id", project_id)
+        if base_port is not None:
+            pulumi.set(__self__, "base_port", base_port)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if technical_emails is not None:
             pulumi.set(__self__, "technical_emails", technical_emails)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> pulumi.Input[builtins.str]:
         """
-        Billing group ID to assign to the project.
+        Billing group ID to assign to the project. It's required when moving projects between organizations.
         """
         return pulumi.get(self, "billing_group_id")
 
@@ -62,7 +69,7 @@ class OrganizationProjectArgs:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[builtins.str]:
         """
-        ID of an organization. Changing this property forces recreation of the resource.
+        ID of an organization. Maximum length: `36`.
         """
         return pulumi.get(self, "organization_id")
 
@@ -86,13 +93,25 @@ class OrganizationProjectArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[builtins.str]:
         """
-        Unique identifier for the project that also serves as the project name.
+        The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
     def project_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="basePort")
+    def base_port(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Valid port number (1-65535) to use as a base for service port allocation.
+        """
+        return pulumi.get(self, "base_port")
+
+    @base_port.setter
+    def base_port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "base_port", value)
 
     @property
     @pulumi.getter
@@ -118,27 +137,41 @@ class OrganizationProjectArgs:
     def technical_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "technical_emails", value)
 
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _OrganizationProjectState:
     def __init__(__self__, *,
+                 base_port: Optional[pulumi.Input[builtins.int]] = None,
                  billing_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  ca_cert: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
                  parent_id: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]] = None,
-                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 timeouts: Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OrganizationProject resources.
-        :param pulumi.Input[builtins.str] billing_group_id: Billing group ID to assign to the project.
-        :param pulumi.Input[builtins.str] ca_cert: The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
-        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.int] base_port: Valid port number (1-65535) to use as a base for service port allocation.
+        :param pulumi.Input[builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
+        :param pulumi.Input[builtins.str] ca_cert: PEM encoded certificate.
+        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[builtins.str] project_id: Unique identifier for the project that also serves as the project name.
+        :param pulumi.Input[builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
+        if base_port is not None:
+            pulumi.set(__self__, "base_port", base_port)
         if billing_group_id is not None:
             pulumi.set(__self__, "billing_group_id", billing_group_id)
         if ca_cert is not None:
@@ -153,12 +186,26 @@ class _OrganizationProjectState:
             pulumi.set(__self__, "tags", tags)
         if technical_emails is not None:
             pulumi.set(__self__, "technical_emails", technical_emails)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
+
+    @property
+    @pulumi.getter(name="basePort")
+    def base_port(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Valid port number (1-65535) to use as a base for service port allocation.
+        """
+        return pulumi.get(self, "base_port")
+
+    @base_port.setter
+    def base_port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "base_port", value)
 
     @property
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Billing group ID to assign to the project.
+        Billing group ID to assign to the project. It's required when moving projects between organizations.
         """
         return pulumi.get(self, "billing_group_id")
 
@@ -170,7 +217,7 @@ class _OrganizationProjectState:
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        PEM encoded certificate.
         """
         return pulumi.get(self, "ca_cert")
 
@@ -182,7 +229,7 @@ class _OrganizationProjectState:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        ID of an organization. Changing this property forces recreation of the resource.
+        ID of an organization. Maximum length: `36`.
         """
         return pulumi.get(self, "organization_id")
 
@@ -206,7 +253,7 @@ class _OrganizationProjectState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Unique identifier for the project that also serves as the project name.
+        The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project_id")
 
@@ -238,6 +285,15 @@ class _OrganizationProjectState:
     def technical_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "technical_emails", value)
 
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.type_token("aiven:index/organizationProject:OrganizationProject")
 class OrganizationProject(pulumi.CustomResource):
@@ -245,12 +301,14 @@ class OrganizationProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 base_port: Optional[pulumi.Input[builtins.int]] = None,
                  billing_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
                  parent_id: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
@@ -258,34 +316,19 @@ class OrganizationProject(pulumi.CustomResource):
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo = aiven.OrganizationProject("foo",
-            project_id="example-project",
-            organization_id=foo_aiven_organization["id"],
-            billing_group_id=foo_aiven_billing_group["id"],
-            tags=[{
-                "key": "key_1",
-                "value": "value_1",
-            }])
-        ```
-
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organizationProject:OrganizationProject main ORGANIZATION_ID/PROJECT_ID
+        $ pulumi import aiven:index/organizationProject:OrganizationProject example_project ORGANIZATION_ID/PROJECT_ID
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] billing_group_id: Billing group ID to assign to the project.
-        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.int] base_port: Valid port number (1-65535) to use as a base for service port allocation.
+        :param pulumi.Input[builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
+        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[builtins.str] project_id: Unique identifier for the project that also serves as the project name.
+        :param pulumi.Input[builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
@@ -301,26 +344,10 @@ class OrganizationProject(pulumi.CustomResource):
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo = aiven.OrganizationProject("foo",
-            project_id="example-project",
-            organization_id=foo_aiven_organization["id"],
-            billing_group_id=foo_aiven_billing_group["id"],
-            tags=[{
-                "key": "key_1",
-                "value": "value_1",
-            }])
-        ```
-
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organizationProject:OrganizationProject main ORGANIZATION_ID/PROJECT_ID
+        $ pulumi import aiven:index/organizationProject:OrganizationProject example_project ORGANIZATION_ID/PROJECT_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -338,12 +365,14 @@ class OrganizationProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 base_port: Optional[pulumi.Input[builtins.int]] = None,
                  billing_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
                  parent_id: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -353,6 +382,7 @@ class OrganizationProject(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationProjectArgs.__new__(OrganizationProjectArgs)
 
+            __props__.__dict__["base_port"] = base_port
             if billing_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_group_id'")
             __props__.__dict__["billing_group_id"] = billing_group_id
@@ -367,6 +397,7 @@ class OrganizationProject(pulumi.CustomResource):
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["technical_emails"] = technical_emails
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["ca_cert"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["caCert"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -380,13 +411,15 @@ class OrganizationProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            base_port: Optional[pulumi.Input[builtins.int]] = None,
             billing_group_id: Optional[pulumi.Input[builtins.str]] = None,
             ca_cert: Optional[pulumi.Input[builtins.str]] = None,
             organization_id: Optional[pulumi.Input[builtins.str]] = None,
             parent_id: Optional[pulumi.Input[builtins.str]] = None,
             project_id: Optional[pulumi.Input[builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
-            technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None) -> 'OrganizationProject':
+            technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            timeouts: Optional[pulumi.Input[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None) -> 'OrganizationProject':
         """
         Get an existing OrganizationProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -394,11 +427,12 @@ class OrganizationProject(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] billing_group_id: Billing group ID to assign to the project.
-        :param pulumi.Input[builtins.str] ca_cert: The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
-        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.int] base_port: Valid port number (1-65535) to use as a base for service port allocation.
+        :param pulumi.Input[builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
+        :param pulumi.Input[builtins.str] ca_cert: PEM encoded certificate.
+        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[builtins.str] project_id: Unique identifier for the project that also serves as the project name.
+        :param pulumi.Input[builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
@@ -406,6 +440,7 @@ class OrganizationProject(pulumi.CustomResource):
 
         __props__ = _OrganizationProjectState.__new__(_OrganizationProjectState)
 
+        __props__.__dict__["base_port"] = base_port
         __props__.__dict__["billing_group_id"] = billing_group_id
         __props__.__dict__["ca_cert"] = ca_cert
         __props__.__dict__["organization_id"] = organization_id
@@ -413,13 +448,22 @@ class OrganizationProject(pulumi.CustomResource):
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["technical_emails"] = technical_emails
+        __props__.__dict__["timeouts"] = timeouts
         return OrganizationProject(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="basePort")
+    def base_port(self) -> pulumi.Output[builtins.int]:
+        """
+        Valid port number (1-65535) to use as a base for service port allocation.
+        """
+        return pulumi.get(self, "base_port")
 
     @property
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> pulumi.Output[builtins.str]:
         """
-        Billing group ID to assign to the project.
+        Billing group ID to assign to the project. It's required when moving projects between organizations.
         """
         return pulumi.get(self, "billing_group_id")
 
@@ -427,7 +471,7 @@ class OrganizationProject(pulumi.CustomResource):
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> pulumi.Output[builtins.str]:
         """
-        The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        PEM encoded certificate.
         """
         return pulumi.get(self, "ca_cert")
 
@@ -435,7 +479,7 @@ class OrganizationProject(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[builtins.str]:
         """
-        ID of an organization. Changing this property forces recreation of the resource.
+        ID of an organization. Maximum length: `36`.
         """
         return pulumi.get(self, "organization_id")
 
@@ -451,7 +495,7 @@ class OrganizationProject(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[builtins.str]:
         """
-        Unique identifier for the project that also serves as the project name.
+        The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project_id")
 
@@ -470,4 +514,9 @@ class OrganizationProject(pulumi.CustomResource):
         The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.OrganizationProjectTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

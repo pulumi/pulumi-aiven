@@ -8,6 +8,7 @@ import com.pulumi.aiven.inputs.KafkaKafkaUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectConfigArgs;
+import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectPluginVersionArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaRestConfigArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaSaslMechanismsArgs;
@@ -210,6 +211,21 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<KafkaKafkaUserConfigKafkaConnectConfigArgs>> kafkaConnectConfig() {
         return Optional.ofNullable(this.kafkaConnectConfig);
+    }
+
+    /**
+     * The plugin selected by the user
+     * 
+     */
+    @Import(name="kafkaConnectPluginVersions")
+    private @Nullable Output<List<KafkaKafkaUserConfigKafkaConnectPluginVersionArgs>> kafkaConnectPluginVersions;
+
+    /**
+     * @return The plugin selected by the user
+     * 
+     */
+    public Optional<Output<List<KafkaKafkaUserConfigKafkaConnectPluginVersionArgs>>> kafkaConnectPluginVersions() {
+        return Optional.ofNullable(this.kafkaConnectPluginVersions);
     }
 
     @Import(name="kafkaConnectSecretProviders")
@@ -458,6 +474,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         this.kafkaAuthenticationMethods = $.kafkaAuthenticationMethods;
         this.kafkaConnect = $.kafkaConnect;
         this.kafkaConnectConfig = $.kafkaConnectConfig;
+        this.kafkaConnectPluginVersions = $.kafkaConnectPluginVersions;
         this.kafkaConnectSecretProviders = $.kafkaConnectSecretProviders;
         this.kafkaRest = $.kafkaRest;
         this.kafkaRestAuthorization = $.kafkaRestAuthorization;
@@ -773,6 +790,37 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder kafkaConnectConfig(KafkaKafkaUserConfigKafkaConnectConfigArgs kafkaConnectConfig) {
             return kafkaConnectConfig(Output.of(kafkaConnectConfig));
+        }
+
+        /**
+         * @param kafkaConnectPluginVersions The plugin selected by the user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaConnectPluginVersions(@Nullable Output<List<KafkaKafkaUserConfigKafkaConnectPluginVersionArgs>> kafkaConnectPluginVersions) {
+            $.kafkaConnectPluginVersions = kafkaConnectPluginVersions;
+            return this;
+        }
+
+        /**
+         * @param kafkaConnectPluginVersions The plugin selected by the user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaConnectPluginVersions(List<KafkaKafkaUserConfigKafkaConnectPluginVersionArgs> kafkaConnectPluginVersions) {
+            return kafkaConnectPluginVersions(Output.of(kafkaConnectPluginVersions));
+        }
+
+        /**
+         * @param kafkaConnectPluginVersions The plugin selected by the user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaConnectPluginVersions(KafkaKafkaUserConfigKafkaConnectPluginVersionArgs... kafkaConnectPluginVersions) {
+            return kafkaConnectPluginVersions(List.of(kafkaConnectPluginVersions));
         }
 
         public Builder kafkaConnectSecretProviders(@Nullable Output<List<KafkaKafkaUserConfigKafkaConnectSecretProviderArgs>> kafkaConnectSecretProviders) {

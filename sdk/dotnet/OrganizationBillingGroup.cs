@@ -11,12 +11,15 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// Creates and manages an organization billing group.
+    /// 
+    /// **This resource is in the beta stage and may change without notice.** Set
+    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// </summary>
     [AivenResourceType("aiven:index/organizationBillingGroup:OrganizationBillingGroup")]
     public partial class OrganizationBillingGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ID of the billing address.
+        /// Billing address ID. Maximum length: `36`.
         /// </summary>
         [Output("billingAddressId")]
         public Output<string> BillingAddressId { get; private set; } = null!;
@@ -28,49 +31,49 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> BillingContactEmails { get; private set; } = null!;
 
         /// <summary>
-        /// Billing currency.
+        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         /// </summary>
         [Output("billingCurrency")]
         public Output<string?> BillingCurrency { get; private set; } = null!;
 
         /// <summary>
-        /// List of billing emails.
+        /// List of billing contact emails.
         /// </summary>
         [Output("billingEmails")]
         public Output<ImmutableArray<string>> BillingEmails { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the billing group.
+        /// Billing group ID.
         /// </summary>
         [Output("billingGroupId")]
         public Output<string> BillingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the billing group.
+        /// Billing Group Name. Maximum length: `128`.
         /// </summary>
         [Output("billingGroupName")]
         public Output<string> BillingGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Custom invoice text.
+        /// Extra billing text. Maximum length: `254`.
         /// </summary>
         [Output("customInvoiceText")]
         public Output<string?> CustomInvoiceText { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the organization.
+        /// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the payment method.
+        /// Payment method ID.
         /// </summary>
         [Output("paymentMethodId")]
         public Output<string> PaymentMethodId { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the shipping address.
+        /// Shipping address ID. Maximum length: `36`.
         /// </summary>
         [Output("shippingAddressId")]
         public Output<string> ShippingAddressId { get; private set; } = null!;
@@ -131,7 +134,7 @@ namespace Pulumi.Aiven
     public sealed class OrganizationBillingGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the billing address.
+        /// Billing address ID. Maximum length: `36`.
         /// </summary>
         [Input("billingAddressId", required: true)]
         public Input<string> BillingAddressId { get; set; } = null!;
@@ -149,7 +152,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Billing currency.
+        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         /// </summary>
         [Input("billingCurrency")]
         public Input<string>? BillingCurrency { get; set; }
@@ -158,7 +161,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _billingEmails;
 
         /// <summary>
-        /// List of billing emails.
+        /// List of billing contact emails.
         /// </summary>
         public InputList<string> BillingEmails
         {
@@ -167,31 +170,31 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Name of the billing group.
+        /// Billing Group Name. Maximum length: `128`.
         /// </summary>
         [Input("billingGroupName", required: true)]
         public Input<string> BillingGroupName { get; set; } = null!;
 
         /// <summary>
-        /// Custom invoice text.
+        /// Extra billing text. Maximum length: `254`.
         /// </summary>
         [Input("customInvoiceText")]
         public Input<string>? CustomInvoiceText { get; set; }
 
         /// <summary>
-        /// ID of the organization.
+        /// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// ID of the payment method.
+        /// Payment method ID.
         /// </summary>
         [Input("paymentMethodId", required: true)]
         public Input<string> PaymentMethodId { get; set; } = null!;
 
         /// <summary>
-        /// ID of the shipping address.
+        /// Shipping address ID. Maximum length: `36`.
         /// </summary>
         [Input("shippingAddressId", required: true)]
         public Input<string> ShippingAddressId { get; set; } = null!;
@@ -214,7 +217,7 @@ namespace Pulumi.Aiven
     public sealed class OrganizationBillingGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the billing address.
+        /// Billing address ID. Maximum length: `36`.
         /// </summary>
         [Input("billingAddressId")]
         public Input<string>? BillingAddressId { get; set; }
@@ -232,7 +235,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Billing currency.
+        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         /// </summary>
         [Input("billingCurrency")]
         public Input<string>? BillingCurrency { get; set; }
@@ -241,7 +244,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _billingEmails;
 
         /// <summary>
-        /// List of billing emails.
+        /// List of billing contact emails.
         /// </summary>
         public InputList<string> BillingEmails
         {
@@ -250,37 +253,37 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// ID of the billing group.
+        /// Billing group ID.
         /// </summary>
         [Input("billingGroupId")]
         public Input<string>? BillingGroupId { get; set; }
 
         /// <summary>
-        /// Name of the billing group.
+        /// Billing Group Name. Maximum length: `128`.
         /// </summary>
         [Input("billingGroupName")]
         public Input<string>? BillingGroupName { get; set; }
 
         /// <summary>
-        /// Custom invoice text.
+        /// Extra billing text. Maximum length: `254`.
         /// </summary>
         [Input("customInvoiceText")]
         public Input<string>? CustomInvoiceText { get; set; }
 
         /// <summary>
-        /// ID of the organization.
+        /// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// ID of the payment method.
+        /// Payment method ID.
         /// </summary>
         [Input("paymentMethodId")]
         public Input<string>? PaymentMethodId { get; set; }
 
         /// <summary>
-        /// ID of the shipping address.
+        /// Shipping address ID. Maximum length: `36`.
         /// </summary>
         [Input("shippingAddressId")]
         public Input<string>? ShippingAddressId { get; set; }

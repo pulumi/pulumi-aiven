@@ -92,6 +92,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? EnableRemoteBackedStorage { get; set; }
 
         /// <summary>
+        /// Enable searchable snapshots.
+        /// </summary>
+        [Input("enableSearchableSnapshots")]
+        public Input<bool>? EnableSearchableSnapshots { get; set; }
+
+        /// <summary>
         /// Enable/Disable security audit.
         /// </summary>
         [Input("enableSecurityAudit")]

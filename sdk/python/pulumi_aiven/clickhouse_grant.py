@@ -243,6 +243,7 @@ class ClickhouseGrant(pulumi.CustomResource):
 
         **Note:**
         * Users cannot have the same name as roles.
+        * Global privileges cannot be granted on the database level. To grant global privileges, use `database="*"`.
         * To grant a privilege on all tables of a database, omit the table and only keep the database. Don't use `table="*"`.
         * Changes first revoke all grants and then reissue the remaining grants for convergence.
 
@@ -270,6 +271,14 @@ class ClickhouseGrant(pulumi.CustomResource):
                 {
                     "privilege": "SELECT",
                     "database": example_db["name"],
+                },
+                {
+                    "privilege": "CREATE TEMPORARY TABLE",
+                    "database": "*",
+                },
+                {
+                    "privilege": "SYSTEM DROP CACHE",
+                    "database": "*",
                 },
             ])
         # Grant the role to the user.
@@ -312,6 +321,7 @@ class ClickhouseGrant(pulumi.CustomResource):
 
         **Note:**
         * Users cannot have the same name as roles.
+        * Global privileges cannot be granted on the database level. To grant global privileges, use `database="*"`.
         * To grant a privilege on all tables of a database, omit the table and only keep the database. Don't use `table="*"`.
         * Changes first revoke all grants and then reissue the remaining grants for convergence.
 
@@ -339,6 +349,14 @@ class ClickhouseGrant(pulumi.CustomResource):
                 {
                     "privilege": "SELECT",
                     "database": example_db["name"],
+                },
+                {
+                    "privilege": "CREATE TEMPORARY TABLE",
+                    "database": "*",
+                },
+                {
+                    "privilege": "SYSTEM DROP CACHE",
+                    "database": "*",
                 },
             ])
         # Grant the role to the user.

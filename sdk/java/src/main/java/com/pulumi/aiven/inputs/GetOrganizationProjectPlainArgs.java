@@ -3,10 +3,15 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationProjectTag;
+import com.pulumi.aiven.inputs.GetOrganizationProjectTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +19,14 @@ public final class GetOrganizationProjectPlainArgs extends com.pulumi.resources.
     public static final GetOrganizationProjectPlainArgs Empty = new GetOrganizationProjectPlainArgs();
 
     /**
-     * ID of an organization. Changing this property forces recreation of the resource.
+     * ID of an organization.
      * 
      */
     @Import(name="organizationId", required=true)
     private String organizationId;
 
     /**
-     * @return ID of an organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
@@ -29,18 +34,40 @@ public final class GetOrganizationProjectPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * Unique identifier for the project that also serves as the project name.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="projectId", required=true)
     private String projectId;
 
     /**
-     * @return Unique identifier for the project that also serves as the project name.
+     * @return The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
      * 
      */
     public String projectId() {
         return this.projectId;
+    }
+
+    /**
+     * Tags are key-value pairs that allow you to categorize projects.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable List<GetOrganizationProjectTag> tags;
+
+    /**
+     * @return Tags are key-value pairs that allow you to categorize projects.
+     * 
+     */
+    public Optional<List<GetOrganizationProjectTag>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable GetOrganizationProjectTimeouts timeouts;
+
+    public Optional<GetOrganizationProjectTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetOrganizationProjectPlainArgs() {}
@@ -48,6 +75,8 @@ public final class GetOrganizationProjectPlainArgs extends com.pulumi.resources.
     private GetOrganizationProjectPlainArgs(GetOrganizationProjectPlainArgs $) {
         this.organizationId = $.organizationId;
         this.projectId = $.projectId;
+        this.tags = $.tags;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -69,7 +98,7 @@ public final class GetOrganizationProjectPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -80,13 +109,39 @@ public final class GetOrganizationProjectPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param projectId Unique identifier for the project that also serves as the project name.
+         * @param projectId The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder projectId(String projectId) {
             $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param tags Tags are key-value pairs that allow you to categorize projects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable List<GetOrganizationProjectTag> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags are key-value pairs that allow you to categorize projects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(GetOrganizationProjectTag... tags) {
+            return tags(List.of(tags));
+        }
+
+        public Builder timeouts(@Nullable GetOrganizationProjectTimeouts timeouts) {
+            $.timeouts = timeouts;
             return this;
         }
 

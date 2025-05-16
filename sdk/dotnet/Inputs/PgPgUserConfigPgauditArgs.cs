@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? LogClient { get; set; }
 
         /// <summary>
-        /// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+        /// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
@@ -90,7 +90,6 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Specifies which classes of statements will be logged by session audit logging.
         /// </summary>
-        [Obsolete(@"This property is deprecated.")]
         public InputList<string> Logs
         {
             get => _logs ?? (_logs = new InputList<string>());

@@ -59,7 +59,7 @@ class GetOpensearchUserResult:
     @pulumi.getter
     def password(self) -> builtins.str:
         """
-        The password of the OpenSearch User.
+        The OpenSearch service user's password.
         """
         return pulumi.get(self, "password")
 
@@ -83,7 +83,7 @@ class GetOpensearchUserResult:
     @pulumi.getter
     def type(self) -> builtins.str:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        User account type, such as primary or regular account.
         """
         return pulumi.get(self, "type")
 
@@ -91,7 +91,7 @@ class GetOpensearchUserResult:
     @pulumi.getter
     def username(self) -> builtins.str:
         """
-        The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -115,7 +115,7 @@ def get_opensearch_user(project: Optional[builtins.str] = None,
                         username: Optional[builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpensearchUserResult:
     """
-    The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+    Gets information about an Aiven for OpenSearch® service user.
 
     ## Example Usage
 
@@ -123,15 +123,15 @@ def get_opensearch_user(project: Optional[builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    user = aiven.get_opensearch_user(service_name="my-service",
-        project="my-project",
-        username="user1")
+    example_opensearch_user = aiven.get_opensearch_user(service_name="example-opensearch-service",
+        project=example_project["project"],
+        username="example-opensearch-user")
     ```
 
 
     :param builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param builtins.str username: The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param builtins.str username: Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -152,7 +152,7 @@ def get_opensearch_user_output(project: Optional[pulumi.Input[builtins.str]] = N
                                username: Optional[pulumi.Input[builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpensearchUserResult]:
     """
-    The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+    Gets information about an Aiven for OpenSearch® service user.
 
     ## Example Usage
 
@@ -160,15 +160,15 @@ def get_opensearch_user_output(project: Optional[pulumi.Input[builtins.str]] = N
     import pulumi
     import pulumi_aiven as aiven
 
-    user = aiven.get_opensearch_user(service_name="my-service",
-        project="my-project",
-        username="user1")
+    example_opensearch_user = aiven.get_opensearch_user(service_name="example-opensearch-service",
+        project=example_project["project"],
+        username="example-opensearch-user")
     ```
 
 
     :param builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param builtins.str username: The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param builtins.str username: Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project

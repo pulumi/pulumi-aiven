@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+ * Gets information about an Aiven for OpenSearch® service.
  *
  * ## Example Usage
  *
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const os1 = aiven.getOpenSearch({
- *     project: pr1.project,
- *     serviceName: "my-os1",
+ * const exampleOpensearch = aiven.getOpenSearch({
+ *     project: exampleProject.project,
+ *     serviceName: "example-opensearch",
  * });
  * ```
  */
@@ -96,7 +96,7 @@ export interface GetOpenSearchResult {
      */
     readonly opensearchUserConfigs: outputs.GetOpenSearchOpensearchUserConfig[];
     /**
-     * OpenSearch server provided values
+     * Values provided by the OpenSearch server.
      */
     readonly opensearches: outputs.GetOpenSearchOpensearch[];
     /**
@@ -162,7 +162,7 @@ export interface GetOpenSearchResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+ * Gets information about an Aiven for OpenSearch® service.
  *
  * ## Example Usage
  *
@@ -170,9 +170,9 @@ export interface GetOpenSearchResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const os1 = aiven.getOpenSearch({
- *     project: pr1.project,
- *     serviceName: "my-os1",
+ * const exampleOpensearch = aiven.getOpenSearch({
+ *     project: exampleProject.project,
+ *     serviceName: "example-opensearch",
  * });
  * ```
  */

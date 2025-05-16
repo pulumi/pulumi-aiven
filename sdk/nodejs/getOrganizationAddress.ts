@@ -2,16 +2,22 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Gets information about an organization address.
+ *
+ * **This resource is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getOrganizationAddress(args: GetOrganizationAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationAddressResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganizationAddress:getOrganizationAddress", {
         "addressId": args.addressId,
         "organizationId": args.organizationId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -20,13 +26,14 @@ export function getOrganizationAddress(args: GetOrganizationAddressArgs, opts?: 
  */
 export interface GetOrganizationAddressArgs {
     /**
-     * ID of the address.
+     * Address ID.
      */
     addressId: string;
     /**
-     * ID of organization.
+     * ID of an organization.
      */
     organizationId: string;
+    timeouts?: inputs.GetOrganizationAddressTimeouts;
 }
 
 /**
@@ -34,58 +41,63 @@ export interface GetOrganizationAddressArgs {
  */
 export interface GetOrganizationAddressResult {
     /**
-     * ID of the address.
+     * Address ID.
      */
     readonly addressId: string;
     /**
-     * Array of address lines.
+     * Address Lines.
      */
     readonly addressLines: string[];
     /**
-     * City name.
+     * City.
      */
     readonly city: string;
     /**
-     * Name of the company.
-     */
-    readonly companyName: string;
-    /**
-     * Country code.
+     * Country Code.
      */
     readonly countryCode: string;
     /**
-     * Timestamp of the creation.
+     * Create Time.
      */
     readonly createTime: string;
     /**
-     * Resource ID, a composite of organization*id and address*id.
+     * Resource ID, a composite of `organizationId` and `addressId` IDs.
      */
     readonly id: string;
     /**
-     * ID of organization.
+     * Name of a company.
+     */
+    readonly name: string;
+    /**
+     * ID of an organization.
      */
     readonly organizationId: string;
     /**
-     * State name.
+     * State.
      */
     readonly state: string;
+    readonly timeouts?: outputs.GetOrganizationAddressTimeouts;
     /**
-     * Timestamp of the last update.
+     * Update Time.
      */
     readonly updateTime: string;
     /**
-     * Zip code.
+     * Zip Code.
      */
     readonly zipCode: string;
 }
 /**
  * Gets information about an organization address.
+ *
+ * **This resource is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getOrganizationAddressOutput(args: GetOrganizationAddressOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationAddressResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationAddress:getOrganizationAddress", {
         "addressId": args.addressId,
         "organizationId": args.organizationId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -94,11 +106,12 @@ export function getOrganizationAddressOutput(args: GetOrganizationAddressOutputA
  */
 export interface GetOrganizationAddressOutputArgs {
     /**
-     * ID of the address.
+     * Address ID.
      */
     addressId: pulumi.Input<string>;
     /**
-     * ID of organization.
+     * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationAddressTimeoutsArgs>;
 }

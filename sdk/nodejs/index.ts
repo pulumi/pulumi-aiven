@@ -595,6 +595,11 @@ export const getValkeyUser: typeof import("./getValkeyUser").getValkeyUser = nul
 export const getValkeyUserOutput: typeof import("./getValkeyUser").getValkeyUserOutput = null as any;
 utilities.lazyLoad(exports, ["getValkeyUser","getValkeyUserOutput"], () => require("./getValkeyUser"));
 
+export { GovernanceAccessArgs, GovernanceAccessState } from "./governanceAccess";
+export type GovernanceAccess = import("./governanceAccess").GovernanceAccess;
+export const GovernanceAccess: typeof import("./governanceAccess").GovernanceAccess = null as any;
+utilities.lazyLoad(exports, ["GovernanceAccess"], () => require("./governanceAccess"));
+
 export { GrafanaArgs, GrafanaState } from "./grafana";
 export type Grafana = import("./grafana").Grafana;
 export const Grafana: typeof import("./grafana").Grafana = null as any;
@@ -964,6 +969,8 @@ const _module = {
                 return new GcpPrivatelinkConnectionApproval(name, <any>undefined, { urn })
             case "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection":
                 return new GcpVpcPeeringConnection(name, <any>undefined, { urn })
+            case "aiven:index/governanceAccess:GovernanceAccess":
+                return new GovernanceAccess(name, <any>undefined, { urn })
             case "aiven:index/grafana:Grafana":
                 return new Grafana(name, <any>undefined, { urn })
             case "aiven:index/influxDb:InfluxDb":
@@ -1117,6 +1124,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/gcpOrgVpcPeeringConnection
 pulumi.runtime.registerResourceModule("aiven", "index/gcpPrivatelink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpPrivatelinkConnectionApproval", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpVpcPeeringConnection", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/governanceAccess", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/grafana", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/influxDb", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/influxdbDatabase", _module)

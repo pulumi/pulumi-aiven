@@ -12,19 +12,28 @@ namespace Pulumi.Aiven
     public static class GetOrganizationBillingGroup
     {
         /// <summary>
-        /// Gets information about a billing group.
+        /// Gets information about a billing group. 
+        /// 
+        /// **This resource is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
         /// </summary>
         public static Task<GetOrganizationBillingGroupResult> InvokeAsync(GetOrganizationBillingGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationBillingGroupResult>("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", args ?? new GetOrganizationBillingGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a billing group.
+        /// Gets information about a billing group. 
+        /// 
+        /// **This resource is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
         /// </summary>
         public static Output<GetOrganizationBillingGroupResult> Invoke(GetOrganizationBillingGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationBillingGroupResult>("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", args ?? new GetOrganizationBillingGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a billing group.
+        /// Gets information about a billing group. 
+        /// 
+        /// **This resource is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
         /// </summary>
         public static Output<GetOrganizationBillingGroupResult> Invoke(GetOrganizationBillingGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationBillingGroupResult>("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", args ?? new GetOrganizationBillingGroupInvokeArgs(), options.WithDefaults());
@@ -34,16 +43,19 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationBillingGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the billing group.
+        /// Billing group ID.
         /// </summary>
         [Input("billingGroupId", required: true)]
         public string BillingGroupId { get; set; } = null!;
 
         /// <summary>
-        /// ID of the organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetOrganizationBillingGroupTimeoutsArgs? Timeouts { get; set; }
 
         public GetOrganizationBillingGroupArgs()
         {
@@ -54,16 +66,19 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationBillingGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the billing group.
+        /// Billing group ID.
         /// </summary>
         [Input("billingGroupId", required: true)]
         public Input<string> BillingGroupId { get; set; } = null!;
 
         /// <summary>
-        /// ID of the organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetOrganizationBillingGroupTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetOrganizationBillingGroupInvokeArgs()
         {
@@ -76,7 +91,7 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationBillingGroupResult
     {
         /// <summary>
-        /// ID of the billing address.
+        /// Billing address ID.
         /// </summary>
         public readonly string BillingAddressId;
         /// <summary>
@@ -84,41 +99,42 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<string> BillingContactEmails;
         /// <summary>
-        /// Billing currency.
+        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         /// </summary>
         public readonly string BillingCurrency;
         /// <summary>
-        /// List of billing emails.
+        /// List of billing contact emails.
         /// </summary>
         public readonly ImmutableArray<string> BillingEmails;
         /// <summary>
-        /// ID of the billing group.
+        /// Billing group ID.
         /// </summary>
         public readonly string BillingGroupId;
         /// <summary>
-        /// Name of the billing group.
+        /// Billing Group Name.
         /// </summary>
         public readonly string BillingGroupName;
         /// <summary>
-        /// Custom invoice text.
+        /// Extra billing text.
         /// </summary>
         public readonly string CustomInvoiceText;
         /// <summary>
-        /// Resource ID, a composite of organization*id and billing*group_id.
+        /// Resource ID, a composite of `organization_id` and `billing_group_id` IDs.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// ID of the organization.
+        /// ID of an organization.
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
-        /// ID of the payment method.
+        /// Payment method ID.
         /// </summary>
         public readonly string PaymentMethodId;
         /// <summary>
-        /// ID of the shipping address.
+        /// Shipping address ID.
         /// </summary>
         public readonly string ShippingAddressId;
+        public readonly Outputs.GetOrganizationBillingGroupTimeoutsResult? Timeouts;
         /// <summary>
         /// VAT ID.
         /// </summary>
@@ -148,6 +164,8 @@ namespace Pulumi.Aiven
 
             string shippingAddressId,
 
+            Outputs.GetOrganizationBillingGroupTimeoutsResult? timeouts,
+
             string vatId)
         {
             BillingAddressId = billingAddressId;
@@ -161,6 +179,7 @@ namespace Pulumi.Aiven
             OrganizationId = organizationId;
             PaymentMethodId = paymentMethodId;
             ShippingAddressId = shippingAddressId;
+            Timeouts = timeouts;
             VatId = vatId;
         }
     }

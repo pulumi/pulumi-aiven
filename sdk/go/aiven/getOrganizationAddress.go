@@ -12,6 +12,9 @@ import (
 )
 
 // Gets information about an organization address.
+//
+// **This resource is in the beta stage and may change without notice.** Set
+// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 func LookupOrganizationAddress(ctx *pulumi.Context, args *LookupOrganizationAddressArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationAddressResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationAddressResult
@@ -24,35 +27,37 @@ func LookupOrganizationAddress(ctx *pulumi.Context, args *LookupOrganizationAddr
 
 // A collection of arguments for invoking getOrganizationAddress.
 type LookupOrganizationAddressArgs struct {
-	// ID of the address.
+	// Address ID.
 	AddressId string `pulumi:"addressId"`
-	// ID of organization.
-	OrganizationId string `pulumi:"organizationId"`
+	// ID of an organization.
+	OrganizationId string                          `pulumi:"organizationId"`
+	Timeouts       *GetOrganizationAddressTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getOrganizationAddress.
 type LookupOrganizationAddressResult struct {
-	// ID of the address.
+	// Address ID.
 	AddressId string `pulumi:"addressId"`
-	// Array of address lines.
+	// Address Lines.
 	AddressLines []string `pulumi:"addressLines"`
-	// City name.
+	// City.
 	City string `pulumi:"city"`
-	// Name of the company.
-	CompanyName string `pulumi:"companyName"`
-	// Country code.
+	// Country Code.
 	CountryCode string `pulumi:"countryCode"`
-	// Timestamp of the creation.
+	// Create Time.
 	CreateTime string `pulumi:"createTime"`
-	// Resource ID, a composite of organization*id and address*id.
+	// Resource ID, a composite of `organizationId` and `addressId` IDs.
 	Id string `pulumi:"id"`
-	// ID of organization.
+	// Name of a company.
+	Name string `pulumi:"name"`
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
-	// State name.
-	State string `pulumi:"state"`
-	// Timestamp of the last update.
+	// State.
+	State    string                          `pulumi:"state"`
+	Timeouts *GetOrganizationAddressTimeouts `pulumi:"timeouts"`
+	// Update Time.
 	UpdateTime string `pulumi:"updateTime"`
-	// Zip code.
+	// Zip Code.
 	ZipCode string `pulumi:"zipCode"`
 }
 
@@ -67,10 +72,11 @@ func LookupOrganizationAddressOutput(ctx *pulumi.Context, args LookupOrganizatio
 
 // A collection of arguments for invoking getOrganizationAddress.
 type LookupOrganizationAddressOutputArgs struct {
-	// ID of the address.
+	// Address ID.
 	AddressId pulumi.StringInput `pulumi:"addressId"`
-	// ID of organization.
-	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	// ID of an organization.
+	OrganizationId pulumi.StringInput                     `pulumi:"organizationId"`
+	Timeouts       GetOrganizationAddressTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupOrganizationAddressOutputArgs) ElementType() reflect.Type {
@@ -92,57 +98,61 @@ func (o LookupOrganizationAddressResultOutput) ToLookupOrganizationAddressResult
 	return o
 }
 
-// ID of the address.
+// Address ID.
 func (o LookupOrganizationAddressResultOutput) AddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.AddressId }).(pulumi.StringOutput)
 }
 
-// Array of address lines.
+// Address Lines.
 func (o LookupOrganizationAddressResultOutput) AddressLines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) []string { return v.AddressLines }).(pulumi.StringArrayOutput)
 }
 
-// City name.
+// City.
 func (o LookupOrganizationAddressResultOutput) City() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.City }).(pulumi.StringOutput)
 }
 
-// Name of the company.
-func (o LookupOrganizationAddressResultOutput) CompanyName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.CompanyName }).(pulumi.StringOutput)
-}
-
-// Country code.
+// Country Code.
 func (o LookupOrganizationAddressResultOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.CountryCode }).(pulumi.StringOutput)
 }
 
-// Timestamp of the creation.
+// Create Time.
 func (o LookupOrganizationAddressResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Resource ID, a composite of organization*id and address*id.
+// Resource ID, a composite of `organizationId` and `addressId` IDs.
 func (o LookupOrganizationAddressResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// ID of organization.
+// Name of a company.
+func (o LookupOrganizationAddressResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of an organization.
 func (o LookupOrganizationAddressResultOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// State name.
+// State.
 func (o LookupOrganizationAddressResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Timestamp of the last update.
+func (o LookupOrganizationAddressResultOutput) Timeouts() GetOrganizationAddressTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationAddressResult) *GetOrganizationAddressTimeouts { return v.Timeouts }).(GetOrganizationAddressTimeoutsPtrOutput)
+}
+
+// Update Time.
 func (o LookupOrganizationAddressResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Zip code.
+// Zip Code.
 func (o LookupOrganizationAddressResultOutput) ZipCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.ZipCode }).(pulumi.StringOutput)
 }

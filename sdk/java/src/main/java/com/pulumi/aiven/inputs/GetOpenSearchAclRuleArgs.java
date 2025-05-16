@@ -15,14 +15,14 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
     public static final GetOpenSearchAclRuleArgs Empty = new GetOpenSearchAclRuleArgs();
 
     /**
-     * The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+     * The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="index", required=true)
     private Output<String> index;
 
     /**
-     * @return The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+     * @return The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> index() {
@@ -30,14 +30,14 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      * 
      */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
     /**
-     * @return The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+     * @return The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      * 
      */
     public Output<String> permission() {
@@ -75,14 +75,14 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {
@@ -118,7 +118,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param index The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+         * @param index The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param index The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+         * @param index The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param permission The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+         * @param permission The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param permission The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+         * @param permission The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param username The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param username The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

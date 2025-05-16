@@ -68,6 +68,16 @@
                                 "pg": {
                                     "maxItemsOne": true
                                 },
+                                "pgaudit": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "log": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "pgbouncer": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -522,6 +532,22 @@
                 "current": "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection",
                 "majorVersion": 6
             },
+            "aiven_governance_access": {
+                "current": "aiven:index/governanceAccess:GovernanceAccess",
+                "majorVersion": 6,
+                "fields": {
+                    "access_data": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "acls": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "aiven_grafana": {
                 "current": "aiven:index/grafana:Grafana",
                 "majorVersion": 6,
@@ -766,6 +792,9 @@
                                 },
                                 "kafka_connect_config": {
                                     "maxItemsOne": true
+                                },
+                                "kafka_connect_plugin_versions": {
+                                    "maxItemsOne": false
                                 },
                                 "kafka_connect_secret_providers": {
                                     "maxItemsOne": false,
@@ -2251,6 +2280,16 @@
                                 "pg": {
                                     "maxItemsOne": true
                                 },
+                                "pgaudit": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "log": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "pgbouncer": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -2940,6 +2979,9 @@
                                 },
                                 "kafka_connect_config": {
                                     "maxItemsOne": true
+                                },
+                                "kafka_connect_plugin_versions": {
+                                    "maxItemsOne": false
                                 },
                                 "kafka_connect_secret_providers": {
                                     "maxItemsOne": false,
@@ -4406,6 +4448,7 @@
             "aiven:index/gcpPrivatelink:GcpPrivatelink": 0,
             "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": 0,
             "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection": 0,
+            "aiven:index/governanceAccess:GovernanceAccess": 0,
             "aiven:index/grafana:Grafana": 0,
             "aiven:index/influxDb:InfluxDb": 0,
             "aiven:index/influxdbDatabase:InfluxdbDatabase": 0,
@@ -4441,7 +4484,7 @@
             "aiven:index/organizationBillingGroup:OrganizationBillingGroup": 1,
             "aiven:index/organizationGroupProject:OrganizationGroupProject": 1,
             "aiven:index/organizationPermission:OrganizationPermission": 0,
-            "aiven:index/organizationProject:OrganizationProject": 0,
+            "aiven:index/organizationProject:OrganizationProject": 1,
             "aiven:index/organizationUser:OrganizationUser": 0,
             "aiven:index/organizationUserGroup:OrganizationUserGroup": 0,
             "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember": 1,
@@ -4525,7 +4568,7 @@
             "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser": 0,
             "aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup": 1,
             "aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList": 1,
-            "aiven:index/getOrganizationProject:getOrganizationProject": 0,
+            "aiven:index/getOrganizationProject:getOrganizationProject": 1,
             "aiven:index/getOrganizationUser:getOrganizationUser": 0,
             "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 0,
             "aiven:index/getOrganizationUserList:getOrganizationUserList": 0,

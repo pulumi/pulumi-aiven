@@ -4,51 +4,58 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetOrganizationBillingGroupListBillingGroup;
+import com.pulumi.aiven.outputs.GetOrganizationBillingGroupListTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationBillingGroupListResult {
     /**
-     * @return List of billing groups.
+     * @return A list of all billing groups belonging to the organization.
      * 
      */
-    private List<GetOrganizationBillingGroupListBillingGroup> billingGroups;
+    private @Nullable List<GetOrganizationBillingGroupListBillingGroup> billingGroups;
     /**
-     * @return Resource ID, a composite of organization_id.
+     * @return Resource ID, equal to `organization_id`.
      * 
      */
     private String id;
     /**
-     * @return ID of the organization.
+     * @return ID of an organization.
      * 
      */
     private String organizationId;
+    private @Nullable GetOrganizationBillingGroupListTimeouts timeouts;
 
     private GetOrganizationBillingGroupListResult() {}
     /**
-     * @return List of billing groups.
+     * @return A list of all billing groups belonging to the organization.
      * 
      */
     public List<GetOrganizationBillingGroupListBillingGroup> billingGroups() {
-        return this.billingGroups;
+        return this.billingGroups == null ? List.of() : this.billingGroups;
     }
     /**
-     * @return Resource ID, a composite of organization_id.
+     * @return Resource ID, equal to `organization_id`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return ID of the organization.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
         return this.organizationId;
+    }
+    public Optional<GetOrganizationBillingGroupListTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     public static Builder builder() {
@@ -60,22 +67,22 @@ public final class GetOrganizationBillingGroupListResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetOrganizationBillingGroupListBillingGroup> billingGroups;
+        private @Nullable List<GetOrganizationBillingGroupListBillingGroup> billingGroups;
         private String id;
         private String organizationId;
+        private @Nullable GetOrganizationBillingGroupListTimeouts timeouts;
         public Builder() {}
         public Builder(GetOrganizationBillingGroupListResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.billingGroups = defaults.billingGroups;
     	      this.id = defaults.id;
     	      this.organizationId = defaults.organizationId;
+    	      this.timeouts = defaults.timeouts;
         }
 
         @CustomType.Setter
-        public Builder billingGroups(List<GetOrganizationBillingGroupListBillingGroup> billingGroups) {
-            if (billingGroups == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListResult", "billingGroups");
-            }
+        public Builder billingGroups(@Nullable List<GetOrganizationBillingGroupListBillingGroup> billingGroups) {
+
             this.billingGroups = billingGroups;
             return this;
         }
@@ -98,11 +105,18 @@ public final class GetOrganizationBillingGroupListResult {
             this.organizationId = organizationId;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetOrganizationBillingGroupListTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
         public GetOrganizationBillingGroupListResult build() {
             final var _resultValue = new GetOrganizationBillingGroupListResult();
             _resultValue.billingGroups = billingGroups;
             _resultValue.id = id;
             _resultValue.organizationId = organizationId;
+            _resultValue.timeouts = timeouts;
             return _resultValue;
         }
     }

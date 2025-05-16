@@ -5,41 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = aiven.getProject({
- *     project: "example_project",
- * });
- * const bar = new aiven.OpenSearch("bar", {
- *     project: foo.then(foo => foo.project),
- *     cloudName: "google-europe-west1",
- *     plan: "startup-4",
- *     serviceName: "example_service_name",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- * });
- * const fooOpensearchUser = new aiven.OpensearchUser("foo", {
- *     serviceName: bar.serviceName,
- *     project: foo.then(foo => foo.project),
- *     username: "user-example",
- * });
- * const fooOpensearchSecurityPluginConfig = new aiven.OpensearchSecurityPluginConfig("foo", {
- *     project: foo.then(foo => foo.project),
- *     serviceName: bar.serviceName,
- *     adminPassword: "ThisIsATest123^=^",
+ * const main = new aiven.OpensearchSecurityPluginConfig("main", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleOpensearch.serviceName,
+ *     adminPassword: opensearchSecurityAdminPassword,
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
  * ```
  */
 export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {
@@ -71,7 +53,7 @@ export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+     * Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
      */
     public /*out*/ readonly adminEnabled!: pulumi.Output<boolean>;
     /**
@@ -144,7 +126,7 @@ export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {
  */
 export interface OpensearchSecurityPluginConfigState {
     /**
-     * Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+     * Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
      */
     adminEnabled?: pulumi.Input<boolean>;
     /**

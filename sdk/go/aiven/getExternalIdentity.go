@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Maps an external service user to an Aiven user.
+// Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
 //
 // **This resource is in the beta stage and may change without notice.** Set
 // the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -29,7 +29,7 @@ func GetExternalIdentity(ctx *pulumi.Context, args *GetExternalIdentityArgs, opt
 type GetExternalIdentityArgs struct {
 	// The name of the external service. The possible value is `github`.
 	ExternalServiceName string `pulumi:"externalServiceName"`
-	// The user's ID on the external service.
+	// The user's ID on the external service. For GitHub, this is their GitHub username.
 	ExternalUserId string `pulumi:"externalUserId"`
 	// The Aiven user ID.
 	InternalUserId string `pulumi:"internalUserId"`
@@ -41,7 +41,7 @@ type GetExternalIdentityArgs struct {
 type GetExternalIdentityResult struct {
 	// The name of the external service. The possible value is `github`.
 	ExternalServiceName string `pulumi:"externalServiceName"`
-	// The user's ID on the external service.
+	// The user's ID on the external service. For GitHub, this is their GitHub username.
 	ExternalUserId string `pulumi:"externalUserId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -64,7 +64,7 @@ func GetExternalIdentityOutput(ctx *pulumi.Context, args GetExternalIdentityOutp
 type GetExternalIdentityOutputArgs struct {
 	// The name of the external service. The possible value is `github`.
 	ExternalServiceName pulumi.StringInput `pulumi:"externalServiceName"`
-	// The user's ID on the external service.
+	// The user's ID on the external service. For GitHub, this is their GitHub username.
 	ExternalUserId pulumi.StringInput `pulumi:"externalUserId"`
 	// The Aiven user ID.
 	InternalUserId pulumi.StringInput `pulumi:"internalUserId"`
@@ -96,7 +96,7 @@ func (o GetExternalIdentityResultOutput) ExternalServiceName() pulumi.StringOutp
 	return o.ApplyT(func(v GetExternalIdentityResult) string { return v.ExternalServiceName }).(pulumi.StringOutput)
 }
 
-// The user's ID on the external service.
+// The user's ID on the external service. For GitHub, this is their GitHub username.
 func (o GetExternalIdentityResultOutput) ExternalUserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalIdentityResult) string { return v.ExternalUserId }).(pulumi.StringOutput)
 }

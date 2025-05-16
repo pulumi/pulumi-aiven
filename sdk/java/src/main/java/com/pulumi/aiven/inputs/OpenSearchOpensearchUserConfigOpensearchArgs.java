@@ -198,6 +198,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Enable searchable snapshots.
+     * 
+     */
+    @Import(name="enableSearchableSnapshots")
+    private @Nullable Output<Boolean> enableSearchableSnapshots;
+
+    /**
+     * @return Enable searchable snapshots.
+     * 
+     */
+    public Optional<Output<Boolean>> enableSearchableSnapshots() {
+        return Optional.ofNullable(this.enableSearchableSnapshots);
+    }
+
+    /**
      * Enable/Disable security audit.
      * 
      */
@@ -804,6 +819,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.emailSenderPassword = $.emailSenderPassword;
         this.emailSenderUsername = $.emailSenderUsername;
         this.enableRemoteBackedStorage = $.enableRemoteBackedStorage;
+        this.enableSearchableSnapshots = $.enableSearchableSnapshots;
         this.enableSecurityAudit = $.enableSecurityAudit;
         this.httpMaxContentLength = $.httpMaxContentLength;
         this.httpMaxHeaderSize = $.httpMaxHeaderSize;
@@ -1102,6 +1118,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder enableRemoteBackedStorage(Boolean enableRemoteBackedStorage) {
             return enableRemoteBackedStorage(Output.of(enableRemoteBackedStorage));
+        }
+
+        /**
+         * @param enableSearchableSnapshots Enable searchable snapshots.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSearchableSnapshots(@Nullable Output<Boolean> enableSearchableSnapshots) {
+            $.enableSearchableSnapshots = enableSearchableSnapshots;
+            return this;
+        }
+
+        /**
+         * @param enableSearchableSnapshots Enable searchable snapshots.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSearchableSnapshots(Boolean enableSearchableSnapshots) {
+            return enableSearchableSnapshots(Output.of(enableSearchableSnapshots));
         }
 
         /**
