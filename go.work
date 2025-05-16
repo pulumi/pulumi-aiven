@@ -1,0 +1,12 @@
+go 1.24.3
+
+use (
+	./examples
+	./provider
+	./sdk
+	./sdk/dotnet
+	./sdk/java
+	./sdk/nodejs
+	./sdk/python
+	./upstream
+)
