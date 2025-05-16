@@ -53,20 +53,24 @@ type LookupOrganizationArgs struct {
 	// ID of the organization.
 	Id *string `pulumi:"id"`
 	// Name of the organization.
-	Name *string `pulumi:"name"`
+	Name     *string                  `pulumi:"name"`
+	Timeouts *GetOrganizationTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getOrganization.
 type LookupOrganizationResult struct {
-	// Timestamp of the creation of the organization.
+	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime string `pulumi:"createTime"`
 	// ID of the organization.
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 	// Name of the organization.
-	Name string `pulumi:"name"`
-	// Tenant ID of the organization.
-	TenantId string `pulumi:"tenantId"`
-	// Timestamp of the last update of the organization.
+	Name *string `pulumi:"name"`
+	// Tenant identifier.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
+	TenantId string                   `pulumi:"tenantId"`
+	Timeouts *GetOrganizationTimeouts `pulumi:"timeouts"`
+	// Timestamp in ISO 8601 format, always in UTC.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -84,7 +88,8 @@ type LookupOrganizationOutputArgs struct {
 	// ID of the organization.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Name of the organization.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name     pulumi.StringPtrInput           `pulumi:"name"`
+	Timeouts GetOrganizationTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupOrganizationOutputArgs) ElementType() reflect.Type {
@@ -106,27 +111,33 @@ func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutputWithCont
 	return o
 }
 
-// Timestamp of the creation of the organization.
+// Timestamp in ISO 8601 format, always in UTC.
 func (o LookupOrganizationResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // ID of the organization.
-func (o LookupOrganizationResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupOrganizationResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Name of the organization.
-func (o LookupOrganizationResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupOrganizationResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Tenant ID of the organization.
+// Tenant identifier.
+//
+// Deprecated: This field is deprecated and will be removed in the next major release.
 func (o LookupOrganizationResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Timestamp of the last update of the organization.
+func (o LookupOrganizationResultOutput) Timeouts() GetOrganizationTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) *GetOrganizationTimeouts { return v.Timeouts }).(GetOrganizationTimeoutsPtrOutput)
+}
+
+// Timestamp in ISO 8601 format, always in UTC.
 func (o LookupOrganizationResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

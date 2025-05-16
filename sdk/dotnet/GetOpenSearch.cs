@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOpenSearch
     {
         /// <summary>
-        /// The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+        /// Gets information about an Aiven for OpenSearch® service.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var os1 = Aiven.GetOpenSearch.Invoke(new()
+        ///     var exampleOpensearch = Aiven.GetOpenSearch.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "my-os1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-opensearch",
         ///     });
         /// 
         /// });
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+        /// Gets information about an Aiven for OpenSearch® service.
         /// 
         /// ## Example Usage
         /// 
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var os1 = Aiven.GetOpenSearch.Invoke(new()
+        ///     var exampleOpensearch = Aiven.GetOpenSearch.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "my-os1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-opensearch",
         ///     });
         /// 
         /// });
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+        /// Gets information about an Aiven for OpenSearch® service.
         /// 
         /// ## Example Usage
         /// 
@@ -74,10 +74,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var os1 = Aiven.GetOpenSearch.Invoke(new()
+        ///     var exampleOpensearch = Aiven.GetOpenSearch.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "my-os1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-opensearch",
         ///     });
         /// 
         /// });
@@ -181,7 +181,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigResult> OpensearchUserConfigs;
         /// <summary>
-        /// OpenSearch server provided values
+        /// Values provided by the OpenSearch server.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchResult> Opensearches;
         /// <summary>

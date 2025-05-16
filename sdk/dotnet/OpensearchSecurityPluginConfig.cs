@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,33 +20,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = Aiven.GetProject.Invoke(new()
+    ///     var main = new Aiven.OpensearchSecurityPluginConfig("main", new()
     ///     {
-    ///         Project = "example_project",
-    ///     });
-    /// 
-    ///     var bar = new Aiven.OpenSearch("bar", new()
-    ///     {
-    ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Project),
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-4",
-    ///         ServiceName = "example_service_name",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///     });
-    /// 
-    ///     var fooOpensearchUser = new Aiven.OpensearchUser("foo", new()
-    ///     {
-    ///         ServiceName = bar.ServiceName,
-    ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Project),
-    ///         Username = "user-example",
-    ///     });
-    /// 
-    ///     var fooOpensearchSecurityPluginConfig = new Aiven.OpensearchSecurityPluginConfig("foo", new()
-    ///     {
-    ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Project),
-    ///         ServiceName = bar.ServiceName,
-    ///         AdminPassword = "ThisIsATest123^=^",
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleOpensearch.ServiceName,
+    ///         AdminPassword = opensearchSecurityAdminPassword,
     ///     });
     /// 
     /// });
@@ -57,14 +33,14 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo PROJECT/SERVICE_NAME
+    /// $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig")]
     public partial class OpensearchSecurityPluginConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+        /// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
         /// </summary>
         [Output("adminEnabled")]
         public Output<bool> AdminEnabled { get; private set; } = null!;
@@ -186,7 +162,7 @@ namespace Pulumi.Aiven
     public sealed class OpensearchSecurityPluginConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+        /// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
         /// </summary>
         [Input("adminEnabled")]
         public Input<bool>? AdminEnabled { get; set; }

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+ * Gets information about an Aiven for OpenSearch® ACL rule.
  *
  * ## Example Usage
  *
@@ -14,10 +14,10 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const osAclRule = aiven.getOpenSearchAclRule({
- *     project: osAclsConfig.project,
- *     serviceName: osAclsConfig.serviceName,
- *     username: "<USERNAME>",
- *     index: "<INDEX>",
+ *     project: exampleProject.project,
+ *     serviceName: exampleOpensearch.serviceName,
+ *     username: "documentation-user-1",
+ *     index: "index5",
  * });
  * ```
  */
@@ -37,11 +37,11 @@ export function getOpenSearchAclRule(args: GetOpenSearchAclRuleArgs, opts?: pulu
  */
 export interface GetOpenSearchAclRuleArgs {
     /**
-     * The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+     * The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
      */
     index: string;
     /**
-     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      */
     permission: string;
     /**
@@ -53,7 +53,7 @@ export interface GetOpenSearchAclRuleArgs {
      */
     serviceName: string;
     /**
-     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -67,11 +67,11 @@ export interface GetOpenSearchAclRuleResult {
      */
     readonly id: string;
     /**
-     * The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+     * The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
      */
     readonly index: string;
     /**
-     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      */
     readonly permission: string;
     /**
@@ -83,12 +83,12 @@ export interface GetOpenSearchAclRuleResult {
      */
     readonly serviceName: string;
     /**
-     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly username: string;
 }
 /**
- * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+ * Gets information about an Aiven for OpenSearch® ACL rule.
  *
  * ## Example Usage
  *
@@ -97,10 +97,10 @@ export interface GetOpenSearchAclRuleResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const osAclRule = aiven.getOpenSearchAclRule({
- *     project: osAclsConfig.project,
- *     serviceName: osAclsConfig.serviceName,
- *     username: "<USERNAME>",
- *     index: "<INDEX>",
+ *     project: exampleProject.project,
+ *     serviceName: exampleOpensearch.serviceName,
+ *     username: "documentation-user-1",
+ *     index: "index5",
  * });
  * ```
  */
@@ -120,11 +120,11 @@ export function getOpenSearchAclRuleOutput(args: GetOpenSearchAclRuleOutputArgs,
  */
 export interface GetOpenSearchAclRuleOutputArgs {
     /**
-     * The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+     * The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
      */
     index: pulumi.Input<string>;
     /**
-     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      */
     permission: pulumi.Input<string>;
     /**
@@ -136,7 +136,7 @@ export interface GetOpenSearchAclRuleOutputArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+ * Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
  *
  * ## Example Usage
  *
@@ -14,8 +14,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const os_sec_config = aiven.getOpensearchSecurityPluginConfig({
- *     project: os_project.project,
- *     serviceName: os.serviceName,
+ *     project: exampleProject.project,
+ *     serviceName: exampleOpensearch.serviceName,
  * });
  * ```
  */
@@ -46,7 +46,7 @@ export interface GetOpensearchSecurityPluginConfigArgs {
  */
 export interface GetOpensearchSecurityPluginConfigResult {
     /**
-     * Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+     * Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
      */
     readonly adminEnabled: boolean;
     /**
@@ -75,7 +75,7 @@ export interface GetOpensearchSecurityPluginConfigResult {
     readonly serviceName: string;
 }
 /**
- * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+ * Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
  *
  * ## Example Usage
  *
@@ -84,8 +84,8 @@ export interface GetOpensearchSecurityPluginConfigResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const os_sec_config = aiven.getOpensearchSecurityPluginConfig({
- *     project: os_project.project,
- *     serviceName: os.serviceName,
+ *     project: exampleProject.project,
+ *     serviceName: exampleOpensearch.serviceName,
  * });
  * ```
  */

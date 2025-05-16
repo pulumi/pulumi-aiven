@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOrganizationResult',
@@ -27,7 +29,7 @@ class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, create_time=None, id=None, name=None, tenant_id=None, update_time=None):
+    def __init__(__self__, create_time=None, id=None, name=None, tenant_id=None, timeouts=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -40,6 +42,9 @@ class GetOrganizationResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -48,13 +53,13 @@ class GetOrganizationResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> builtins.str:
         """
-        Timestamp of the creation of the organization.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
-    def id(self) -> builtins.str:
+    def id(self) -> Optional[builtins.str]:
         """
         ID of the organization.
         """
@@ -62,7 +67,7 @@ class GetOrganizationResult:
 
     @property
     @pulumi.getter
-    def name(self) -> builtins.str:
+    def name(self) -> Optional[builtins.str]:
         """
         Name of the organization.
         """
@@ -70,17 +75,23 @@ class GetOrganizationResult:
 
     @property
     @pulumi.getter(name="tenantId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def tenant_id(self) -> builtins.str:
         """
-        Tenant ID of the organization.
+        Tenant identifier.
         """
         return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetOrganizationTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> builtins.str:
         """
-        Timestamp of the last update of the organization.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "update_time")
 
@@ -95,11 +106,13 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             id=self.id,
             name=self.name,
             tenant_id=self.tenant_id,
+            timeouts=self.timeouts,
             update_time=self.update_time)
 
 
 def get_organization(id: Optional[builtins.str] = None,
                      name: Optional[builtins.str] = None,
+                     timeouts: Optional[Union['GetOrganizationTimeoutsArgs', 'GetOrganizationTimeoutsArgsDict']] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationResult:
     """
     Gets information about an organization.
@@ -120,6 +133,7 @@ def get_organization(id: Optional[builtins.str] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult).value
 
@@ -128,9 +142,11 @@ def get_organization(id: Optional[builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_organization_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                             name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                            timeouts: Optional[pulumi.Input[Optional[Union['GetOrganizationTimeoutsArgs', 'GetOrganizationTimeoutsArgsDict']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     Gets information about an organization.
@@ -151,6 +167,7 @@ def get_organization_output(id: Optional[pulumi.Input[Optional[builtins.str]]] =
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult)
     return __ret__.apply(lambda __response__: GetOrganizationResult(
@@ -158,4 +175,5 @@ def get_organization_output(id: Optional[pulumi.Input[Optional[builtins.str]]] =
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         tenant_id=pulumi.get(__response__, 'tenant_id'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         update_time=pulumi.get(__response__, 'update_time')))

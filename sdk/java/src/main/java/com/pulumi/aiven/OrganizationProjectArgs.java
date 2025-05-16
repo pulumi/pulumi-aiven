@@ -4,9 +4,11 @@
 package com.pulumi.aiven;
 
 import com.pulumi.aiven.inputs.OrganizationProjectTagArgs;
+import com.pulumi.aiven.inputs.OrganizationProjectTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,14 +21,29 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
     public static final OrganizationProjectArgs Empty = new OrganizationProjectArgs();
 
     /**
-     * Billing group ID to assign to the project.
+     * Valid port number (1-65535) to use as a base for service port allocation.
+     * 
+     */
+    @Import(name="basePort")
+    private @Nullable Output<Integer> basePort;
+
+    /**
+     * @return Valid port number (1-65535) to use as a base for service port allocation.
+     * 
+     */
+    public Optional<Output<Integer>> basePort() {
+        return Optional.ofNullable(this.basePort);
+    }
+
+    /**
+     * Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
      * 
      */
     @Import(name="billingGroupId", required=true)
     private Output<String> billingGroupId;
 
     /**
-     * @return Billing group ID to assign to the project.
+     * @return Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
      * 
      */
     public Output<String> billingGroupId() {
@@ -34,14 +51,14 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * ID of an organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Maximum length: `36`.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return ID of an organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization. Maximum length: `36`.
      * 
      */
     public Output<String> organizationId() {
@@ -64,14 +81,14 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Unique identifier for the project that also serves as the project name.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier for the project that also serves as the project name.
+     * @return The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> projectId() {
@@ -108,15 +125,24 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.technicalEmails);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationProjectTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationProjectTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private OrganizationProjectArgs() {}
 
     private OrganizationProjectArgs(OrganizationProjectArgs $) {
+        this.basePort = $.basePort;
         this.billingGroupId = $.billingGroupId;
         this.organizationId = $.organizationId;
         this.parentId = $.parentId;
         this.projectId = $.projectId;
         this.tags = $.tags;
         this.technicalEmails = $.technicalEmails;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -138,7 +164,28 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param billingGroupId Billing group ID to assign to the project.
+         * @param basePort Valid port number (1-65535) to use as a base for service port allocation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder basePort(@Nullable Output<Integer> basePort) {
+            $.basePort = basePort;
+            return this;
+        }
+
+        /**
+         * @param basePort Valid port number (1-65535) to use as a base for service port allocation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder basePort(Integer basePort) {
+            return basePort(Output.of(basePort));
+        }
+
+        /**
+         * @param billingGroupId Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
          * 
          * @return builder
          * 
@@ -149,7 +196,7 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param billingGroupId Billing group ID to assign to the project.
+         * @param billingGroupId Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
          * 
          * @return builder
          * 
@@ -159,7 +206,7 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -170,7 +217,7 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -201,7 +248,7 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param projectId Unique identifier for the project that also serves as the project name.
+         * @param projectId The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -212,7 +259,7 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param projectId Unique identifier for the project that also serves as the project name.
+         * @param projectId The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -281,6 +328,15 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
          */
         public Builder technicalEmails(String... technicalEmails) {
             return technicalEmails(List.of(technicalEmails));
+        }
+
+        public Builder timeouts(@Nullable Output<OrganizationProjectTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationProjectTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public OrganizationProjectArgs build() {

@@ -40,19 +40,19 @@ namespace Pulumi.Aiven
     public partial class Organization : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Timestamp of the creation of the organization.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the organization.
+        /// Name of the organization. Maximum length: `128`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Tenant ID of the organization.
+        /// Tenant identifier.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.OrganizationTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of the last update of the organization.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.Aiven
     public sealed class OrganizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the organization.
+        /// Name of the organization. Maximum length: `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -130,19 +130,19 @@ namespace Pulumi.Aiven
     public sealed class OrganizationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Timestamp of the creation of the organization.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Name of the organization.
+        /// Name of the organization. Maximum length: `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Tenant ID of the organization.
+        /// Tenant identifier.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.OrganizationTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Timestamp of the last update of the organization.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

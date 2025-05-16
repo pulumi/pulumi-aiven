@@ -48,7 +48,7 @@ class GetOpenSearchAclConfigResult:
     @pulumi.getter
     def enabled(self) -> builtins.bool:
         """
-        Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -102,7 +102,7 @@ def get_open_search_acl_config(project: Optional[builtins.str] = None,
                                service_name: Optional[builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpenSearchAclConfigResult:
     """
-    The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+    Gets information about access control for an Aiven for OpenSearch® service.
 
     ## Example Usage
 
@@ -110,8 +110,8 @@ def get_open_search_acl_config(project: Optional[builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    os_acl_config = aiven.get_open_search_acl_config(project=os_project["project"],
-        service_name=os["serviceName"])
+    os_acl_config = aiven.get_open_search_acl_config(project=example_project["project"],
+        service_name=example_opensearch["serviceName"])
     ```
 
 
@@ -134,7 +134,7 @@ def get_open_search_acl_config_output(project: Optional[pulumi.Input[builtins.st
                                       service_name: Optional[pulumi.Input[builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenSearchAclConfigResult]:
     """
-    The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+    Gets information about access control for an Aiven for OpenSearch® service.
 
     ## Example Usage
 
@@ -142,8 +142,8 @@ def get_open_search_acl_config_output(project: Optional[pulumi.Input[builtins.st
     import pulumi
     import pulumi_aiven as aiven
 
-    os_acl_config = aiven.get_open_search_acl_config(project=os_project["project"],
-        service_name=os["serviceName"])
+    os_acl_config = aiven.get_open_search_acl_config(project=example_project["project"],
+        service_name=example_opensearch["serviceName"])
     ```
 
 

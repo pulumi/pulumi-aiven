@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _kibanaUri;
 
         /// <summary>
-        /// URI for Kibana dashboard frontend
+        /// URI for Kibana dashboard frontend.
         /// </summary>
         [Obsolete(@"This field was added by mistake and has never worked. It will be removed in future versions.")]
         public Input<string>? KibanaUri
@@ -33,7 +33,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _opensearchDashboardsUri;
 
         /// <summary>
-        /// URI for OpenSearch dashboard frontend
+        /// URI for OpenSearch dashboard frontend.
         /// </summary>
         public Input<string>? OpensearchDashboardsUri
         {
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// OpenSearch password
+        /// OpenSearch password.
         /// </summary>
         public Input<string>? Password
         {
@@ -81,7 +81,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _username;
 
         /// <summary>
-        /// OpenSearch username
+        /// OpenSearch username.
         /// </summary>
         public Input<string>? Username
         {

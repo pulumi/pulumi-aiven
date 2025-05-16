@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationBillingGroupTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationBillingGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +17,14 @@ public final class GetOrganizationBillingGroupPlainArgs extends com.pulumi.resou
     public static final GetOrganizationBillingGroupPlainArgs Empty = new GetOrganizationBillingGroupPlainArgs();
 
     /**
-     * ID of the billing group.
+     * Billing group ID.
      * 
      */
     @Import(name="billingGroupId", required=true)
     private String billingGroupId;
 
     /**
-     * @return ID of the billing group.
+     * @return Billing group ID.
      * 
      */
     public String billingGroupId() {
@@ -29,18 +32,25 @@ public final class GetOrganizationBillingGroupPlainArgs extends com.pulumi.resou
     }
 
     /**
-     * ID of the organization.
+     * ID of an organization.
      * 
      */
     @Import(name="organizationId", required=true)
     private String organizationId;
 
     /**
-     * @return ID of the organization.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
         return this.organizationId;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable GetOrganizationBillingGroupTimeouts timeouts;
+
+    public Optional<GetOrganizationBillingGroupTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetOrganizationBillingGroupPlainArgs() {}
@@ -48,6 +58,7 @@ public final class GetOrganizationBillingGroupPlainArgs extends com.pulumi.resou
     private GetOrganizationBillingGroupPlainArgs(GetOrganizationBillingGroupPlainArgs $) {
         this.billingGroupId = $.billingGroupId;
         this.organizationId = $.organizationId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -69,7 +80,7 @@ public final class GetOrganizationBillingGroupPlainArgs extends com.pulumi.resou
         }
 
         /**
-         * @param billingGroupId ID of the billing group.
+         * @param billingGroupId Billing group ID.
          * 
          * @return builder
          * 
@@ -80,13 +91,18 @@ public final class GetOrganizationBillingGroupPlainArgs extends com.pulumi.resou
         }
 
         /**
-         * @param organizationId ID of the organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
          */
         public Builder organizationId(String organizationId) {
             $.organizationId = organizationId;
+            return this;
+        }
+
+        public Builder timeouts(@Nullable GetOrganizationBillingGroupTimeouts timeouts) {
+            $.timeouts = timeouts;
             return this;
         }
 

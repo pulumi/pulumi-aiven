@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
+    /// Enables access control for an Aiven for OpenSearch® service.
+    /// 
+    /// By default, service users are granted full access rights. To limit their access, you can enable access control and create ACLs
+    /// that define permissions and patterns. Alternatively, you can enable OpenSearch Security management
+    /// to manage users and permissions with the OpenSearch Security dashboard.
     /// 
     /// ## Example Usage
     /// 
@@ -22,32 +26,10 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = Aiven.GetProject.Invoke(new()
+    ///     var main = new Aiven.OpenSearchAclConfig("main", new()
     ///     {
-    ///         Project = "example_project",
-    ///     });
-    /// 
-    ///     var bar = new Aiven.OpenSearch("bar", new()
-    ///     {
-    ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Project),
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-4",
-    ///         ServiceName = "example_service_name",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///     });
-    /// 
-    ///     var fooOpensearchUser = new Aiven.OpensearchUser("foo", new()
-    ///     {
-    ///         ServiceName = bar.ServiceName,
-    ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Project),
-    ///         Username = "user-example",
-    ///     });
-    /// 
-    ///     var fooOpenSearchAclConfig = new Aiven.OpenSearchAclConfig("foo", new()
-    ///     {
-    ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Project),
-    ///         ServiceName = bar.ServiceName,
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleOpensearch.ServiceName,
     ///         Enabled = true,
     ///         ExtendedAcl = false,
     ///     });
@@ -57,13 +39,15 @@ namespace Pulumi.Aiven
     /// 
     /// ## Import
     /// 
-    /// TERRAFORM IMPORT AIVEN_OPENSEARCH_ACL_CONFIG.FOO project/service_name
+    /// ```sh
+    /// $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig main PROJECT/SERVICE_NAME
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/openSearchAclConfig:OpenSearchAclConfig")]
     public partial class OpenSearchAclConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        /// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -133,7 +117,7 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchAclConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        /// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -165,7 +149,7 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchAclConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        /// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

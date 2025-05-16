@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.AlloydbomniAlloydbomniUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.AlloydbomniAlloydbomniUserConfigPgArgs;
+import com.pulumi.aiven.inputs.AlloydbomniAlloydbomniUserConfigPgauditArgs;
 import com.pulumi.aiven.inputs.AlloydbomniAlloydbomniUserConfigPgbouncerArgs;
 import com.pulumi.aiven.inputs.AlloydbomniAlloydbomniUserConfigPglookoutArgs;
 import com.pulumi.aiven.inputs.AlloydbomniAlloydbomniUserConfigPrivateAccessArgs;
@@ -275,6 +276,21 @@ public final class AlloydbomniAlloydbomniUserConfigArgs extends com.pulumi.resou
     }
 
     /**
+     * System-wide settings for the pgaudit extension
+     * 
+     */
+    @Import(name="pgaudit")
+    private @Nullable Output<AlloydbomniAlloydbomniUserConfigPgauditArgs> pgaudit;
+
+    /**
+     * @return System-wide settings for the pgaudit extension
+     * 
+     */
+    public Optional<Output<AlloydbomniAlloydbomniUserConfigPgauditArgs>> pgaudit() {
+        return Optional.ofNullable(this.pgaudit);
+    }
+
+    /**
      * PGBouncer connection pooling settings
      * 
      */
@@ -503,6 +519,7 @@ public final class AlloydbomniAlloydbomniUserConfigArgs extends com.pulumi.resou
         this.pgReadReplica = $.pgReadReplica;
         this.pgServiceToForkFrom = $.pgServiceToForkFrom;
         this.pgVersion = $.pgVersion;
+        this.pgaudit = $.pgaudit;
         this.pgbouncer = $.pgbouncer;
         this.pglookout = $.pglookout;
         this.privateAccess = $.privateAccess;
@@ -913,6 +930,27 @@ public final class AlloydbomniAlloydbomniUserConfigArgs extends com.pulumi.resou
          */
         public Builder pgVersion(String pgVersion) {
             return pgVersion(Output.of(pgVersion));
+        }
+
+        /**
+         * @param pgaudit System-wide settings for the pgaudit extension
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pgaudit(@Nullable Output<AlloydbomniAlloydbomniUserConfigPgauditArgs> pgaudit) {
+            $.pgaudit = pgaudit;
+            return this;
+        }
+
+        /**
+         * @param pgaudit System-wide settings for the pgaudit extension
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pgaudit(AlloydbomniAlloydbomniUserConfigPgauditArgs pgaudit) {
+            return pgaudit(Output.of(pgaudit));
         }
 
         /**

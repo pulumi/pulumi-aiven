@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOrganizationBillingGroupResult',
@@ -27,7 +29,7 @@ class GetOrganizationBillingGroupResult:
     """
     A collection of values returned by getOrganizationBillingGroup.
     """
-    def __init__(__self__, billing_address_id=None, billing_contact_emails=None, billing_currency=None, billing_emails=None, billing_group_id=None, billing_group_name=None, custom_invoice_text=None, id=None, organization_id=None, payment_method_id=None, shipping_address_id=None, vat_id=None):
+    def __init__(__self__, billing_address_id=None, billing_contact_emails=None, billing_currency=None, billing_emails=None, billing_group_id=None, billing_group_name=None, custom_invoice_text=None, id=None, organization_id=None, payment_method_id=None, shipping_address_id=None, timeouts=None, vat_id=None):
         if billing_address_id and not isinstance(billing_address_id, str):
             raise TypeError("Expected argument 'billing_address_id' to be a str")
         pulumi.set(__self__, "billing_address_id", billing_address_id)
@@ -61,6 +63,9 @@ class GetOrganizationBillingGroupResult:
         if shipping_address_id and not isinstance(shipping_address_id, str):
             raise TypeError("Expected argument 'shipping_address_id' to be a str")
         pulumi.set(__self__, "shipping_address_id", shipping_address_id)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if vat_id and not isinstance(vat_id, str):
             raise TypeError("Expected argument 'vat_id' to be a str")
         pulumi.set(__self__, "vat_id", vat_id)
@@ -69,7 +74,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter(name="billingAddressId")
     def billing_address_id(self) -> builtins.str:
         """
-        ID of the billing address.
+        Billing address ID.
         """
         return pulumi.get(self, "billing_address_id")
 
@@ -85,7 +90,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter(name="billingCurrency")
     def billing_currency(self) -> builtins.str:
         """
-        Billing currency.
+        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         """
         return pulumi.get(self, "billing_currency")
 
@@ -93,7 +98,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Sequence[builtins.str]:
         """
-        List of billing emails.
+        List of billing contact emails.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -101,7 +106,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> builtins.str:
         """
-        ID of the billing group.
+        Billing group ID.
         """
         return pulumi.get(self, "billing_group_id")
 
@@ -109,7 +114,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter(name="billingGroupName")
     def billing_group_name(self) -> builtins.str:
         """
-        Name of the billing group.
+        Billing Group Name.
         """
         return pulumi.get(self, "billing_group_name")
 
@@ -117,7 +122,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter(name="customInvoiceText")
     def custom_invoice_text(self) -> builtins.str:
         """
-        Custom invoice text.
+        Extra billing text.
         """
         return pulumi.get(self, "custom_invoice_text")
 
@@ -125,7 +130,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Resource ID, a composite of organization*id and billing*group_id.
+        Resource ID, a composite of `organization_id` and `billing_group_id` IDs.
         """
         return pulumi.get(self, "id")
 
@@ -133,7 +138,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> builtins.str:
         """
-        ID of the organization.
+        ID of an organization.
         """
         return pulumi.get(self, "organization_id")
 
@@ -141,7 +146,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter(name="paymentMethodId")
     def payment_method_id(self) -> builtins.str:
         """
-        ID of the payment method.
+        Payment method ID.
         """
         return pulumi.get(self, "payment_method_id")
 
@@ -149,9 +154,14 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter(name="shippingAddressId")
     def shipping_address_id(self) -> builtins.str:
         """
-        ID of the shipping address.
+        Shipping address ID.
         """
         return pulumi.get(self, "shipping_address_id")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetOrganizationBillingGroupTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @property
     @pulumi.getter(name="vatId")
@@ -179,22 +189,28 @@ class AwaitableGetOrganizationBillingGroupResult(GetOrganizationBillingGroupResu
             organization_id=self.organization_id,
             payment_method_id=self.payment_method_id,
             shipping_address_id=self.shipping_address_id,
+            timeouts=self.timeouts,
             vat_id=self.vat_id)
 
 
 def get_organization_billing_group(billing_group_id: Optional[builtins.str] = None,
                                    organization_id: Optional[builtins.str] = None,
+                                   timeouts: Optional[Union['GetOrganizationBillingGroupTimeoutsArgs', 'GetOrganizationBillingGroupTimeoutsArgsDict']] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationBillingGroupResult:
     """
     Gets information about a billing group.
 
+    **This resource is in the beta stage and may change without notice.** Set
+    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
-    :param builtins.str billing_group_id: ID of the billing group.
-    :param builtins.str organization_id: ID of the organization.
+
+    :param builtins.str billing_group_id: Billing group ID.
+    :param builtins.str organization_id: ID of an organization.
     """
     __args__ = dict()
     __args__['billingGroupId'] = billing_group_id
     __args__['organizationId'] = organization_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup', __args__, opts=opts, typ=GetOrganizationBillingGroupResult).value
 
@@ -210,20 +226,26 @@ def get_organization_billing_group(billing_group_id: Optional[builtins.str] = No
         organization_id=pulumi.get(__ret__, 'organization_id'),
         payment_method_id=pulumi.get(__ret__, 'payment_method_id'),
         shipping_address_id=pulumi.get(__ret__, 'shipping_address_id'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         vat_id=pulumi.get(__ret__, 'vat_id'))
 def get_organization_billing_group_output(billing_group_id: Optional[pulumi.Input[builtins.str]] = None,
                                           organization_id: Optional[pulumi.Input[builtins.str]] = None,
+                                          timeouts: Optional[pulumi.Input[Optional[Union['GetOrganizationBillingGroupTimeoutsArgs', 'GetOrganizationBillingGroupTimeoutsArgsDict']]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationBillingGroupResult]:
     """
     Gets information about a billing group.
 
+    **This resource is in the beta stage and may change without notice.** Set
+    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
-    :param builtins.str billing_group_id: ID of the billing group.
-    :param builtins.str organization_id: ID of the organization.
+
+    :param builtins.str billing_group_id: Billing group ID.
+    :param builtins.str organization_id: ID of an organization.
     """
     __args__ = dict()
     __args__['billingGroupId'] = billing_group_id
     __args__['organizationId'] = organization_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup', __args__, opts=opts, typ=GetOrganizationBillingGroupResult)
     return __ret__.apply(lambda __response__: GetOrganizationBillingGroupResult(
@@ -238,4 +260,5 @@ def get_organization_billing_group_output(billing_group_id: Optional[pulumi.Inpu
         organization_id=pulumi.get(__response__, 'organization_id'),
         payment_method_id=pulumi.get(__response__, 'payment_method_id'),
         shipping_address_id=pulumi.get(__response__, 'shipping_address_id'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         vat_id=pulumi.get(__response__, 'vat_id')))

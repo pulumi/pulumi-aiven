@@ -184,6 +184,10 @@ export interface AlloydbomniAlloydbomniUserConfig {
      */
     pgVersion?: pulumi.Input<string>;
     /**
+     * System-wide settings for the pgaudit extension
+     */
+    pgaudit?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfigPgaudit>;
+    /**
      * PGBouncer connection pooling settings
      */
     pgbouncer?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfigPgbouncer>;
@@ -445,6 +449,65 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
      */
     walWriterDelay?: pulumi.Input<number>;
+}
+
+export interface AlloydbomniAlloydbomniUserConfigPgaudit {
+    /**
+     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+     */
+    featureEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     */
+    logCatalog?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+     */
+    logClient?: pulumi.Input<boolean>;
+    /**
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+     */
+    logLevel?: pulumi.Input<string>;
+    /**
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+     */
+    logMaxStringLength?: pulumi.Input<number>;
+    /**
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+     */
+    logNestedStatements?: pulumi.Input<boolean>;
+    /**
+     * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+     */
+    logParameter?: pulumi.Input<boolean>;
+    /**
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+     */
+    logParameterMaxSize?: pulumi.Input<number>;
+    /**
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     */
+    logRelation?: pulumi.Input<boolean>;
+    /**
+     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     */
+    logRows?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+     */
+    logStatement?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     */
+    logStatementOnce?: pulumi.Input<boolean>;
+    /**
+     * Specifies which classes of statements will be logged by session audit logging.
+     */
+    logs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies the master role to use for object audit logging.
+     */
+    role?: pulumi.Input<string>;
 }
 
 export interface AlloydbomniAlloydbomniUserConfigPgbouncer {
@@ -1584,6 +1647,246 @@ export interface FlinkTechEmail {
      * An email address to contact for technical issues
      */
     email: pulumi.Input<string>;
+}
+
+export interface GetOrganizationAddressTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationAddressTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationBillingGroupListBillingGroup {
+    /**
+     * Billing address ID.
+     */
+    billingAddressId?: string;
+    /**
+     * List of billing contact emails.
+     */
+    billingContactEmails?: string[];
+    /**
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     */
+    billingCurrency?: string;
+    /**
+     * List of billing contact emails.
+     */
+    billingEmails?: string[];
+    /**
+     * Billing group ID.
+     */
+    billingGroupId?: string;
+    /**
+     * Billing Group Name.
+     */
+    billingGroupName?: string;
+    /**
+     * Extra billing text.
+     */
+    customInvoiceText?: string;
+    /**
+     * Organization ID.
+     */
+    organizationId?: string;
+    /**
+     * Payment method ID.
+     */
+    paymentMethodId?: string;
+    /**
+     * Shipping address ID.
+     */
+    shippingAddressId?: string;
+    /**
+     * VAT ID.
+     */
+    vatId?: string;
+}
+
+export interface GetOrganizationBillingGroupListBillingGroupArgs {
+    /**
+     * Billing address ID.
+     */
+    billingAddressId?: pulumi.Input<string>;
+    /**
+     * List of billing contact emails.
+     */
+    billingContactEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     */
+    billingCurrency?: pulumi.Input<string>;
+    /**
+     * List of billing contact emails.
+     */
+    billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Billing group ID.
+     */
+    billingGroupId?: pulumi.Input<string>;
+    /**
+     * Billing Group Name.
+     */
+    billingGroupName?: pulumi.Input<string>;
+    /**
+     * Extra billing text.
+     */
+    customInvoiceText?: pulumi.Input<string>;
+    /**
+     * Organization ID.
+     */
+    organizationId?: pulumi.Input<string>;
+    /**
+     * Payment method ID.
+     */
+    paymentMethodId?: pulumi.Input<string>;
+    /**
+     * Shipping address ID.
+     */
+    shippingAddressId?: pulumi.Input<string>;
+    /**
+     * VAT ID.
+     */
+    vatId?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationBillingGroupListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationBillingGroupListTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationBillingGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationBillingGroupTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationProjectTag {
+    /**
+     * Project tag key.
+     */
+    key?: string;
+    /**
+     * Project tag value.
+     */
+    value?: string;
+}
+
+export interface GetOrganizationProjectTagArgs {
+    /**
+     * Project tag key.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Project tag value.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationProjectTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationProjectTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GovernanceAccessAccessData {
+    /**
+     * The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+     */
+    acls: pulumi.Input<pulumi.Input<inputs.GovernanceAccessAccessDataAcl>[]>;
+    /**
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     */
+    project: pulumi.Input<string>;
+    /**
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     */
+    serviceName: pulumi.Input<string>;
+    /**
+     * The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface GovernanceAccessAccessDataAcl {
+    /**
+     * The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * The ACL ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+     */
+    operation: pulumi.Input<string>;
+    /**
+     * Pattern used to match specified resources. The possible value is `LITERAL`.
+     */
+    patternType?: pulumi.Input<string>;
+    /**
+     * Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+     */
+    permissionType: pulumi.Input<string>;
+    /**
+     * Identities in `user:name` format that the permissions apply to.
+     */
+    principal?: pulumi.Input<string>;
+    /**
+     * The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+     */
+    resourceName: pulumi.Input<string>;
+    /**
+     * The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+     */
+    resourceType: pulumi.Input<string>;
 }
 
 export interface GrafanaComponent {
@@ -2784,6 +3087,10 @@ export interface KafkaKafkaUserConfig {
      * Kafka Connect configuration values
      */
     kafkaConnectConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectConfig>;
+    /**
+     * The plugin selected by the user
+     */
+    kafkaConnectPluginVersions?: pulumi.Input<pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectPluginVersion>[]>;
     kafkaConnectSecretProviders?: pulumi.Input<pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProvider>[]>;
     /**
      * Enable Kafka-REST service. Default: `false`.
@@ -3128,6 +3435,17 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      * The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
      */
     sessionTimeoutMs?: pulumi.Input<number>;
+}
+
+export interface KafkaKafkaUserConfigKafkaConnectPluginVersion {
+    /**
+     * The name of the plugin. Example: `debezium-connector`.
+     */
+    pluginName: pulumi.Input<string>;
+    /**
+     * The version of the plugin. Example: `2.5.0`.
+     */
+    version: pulumi.Input<string>;
 }
 
 export interface KafkaKafkaUserConfigKafkaConnectSecretProvider {
@@ -3574,113 +3892,111 @@ export interface KafkaTechEmail {
 
 export interface KafkaTopicConfig {
     /**
-     * cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+     * The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
      */
     cleanupPolicy?: pulumi.Input<string>;
     /**
-     * compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+     * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
      */
     compressionType?: pulumi.Input<string>;
     /**
-     * delete.retention.ms value
+     * The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
      */
     deleteRetentionMs?: pulumi.Input<string>;
     /**
-     * file.delete.delay.ms value
+     * The time to wait before deleting a file from the filesystem.
      */
     fileDeleteDelayMs?: pulumi.Input<string>;
     /**
-     * flush.messages value
+     * This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
      */
     flushMessages?: pulumi.Input<string>;
     /**
-     * flush.ms value
+     * This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
      */
     flushMs?: pulumi.Input<string>;
     /**
-     * index.interval.bytes value
+     * This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
      */
     indexIntervalBytes?: pulumi.Input<string>;
     /**
-     * local.retention.bytes value
+     * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
      */
     localRetentionBytes?: pulumi.Input<string>;
     /**
-     * local.retention.ms value
+     * This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
      */
     localRetentionMs?: pulumi.Input<string>;
     /**
-     * max.compaction.lag.ms value
+     * The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
      */
     maxCompactionLagMs?: pulumi.Input<string>;
     /**
-     * max.message.bytes value
+     * The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
      */
     maxMessageBytes?: pulumi.Input<string>;
     /**
-     * message.downconversion.enable value
+     * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
      */
     messageDownconversionEnable?: pulumi.Input<boolean>;
     /**
-     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
      */
     messageFormatVersion?: pulumi.Input<string>;
     /**
-     * message.timestamp.difference.max.ms value
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      */
     messageTimestampDifferenceMaxMs?: pulumi.Input<string>;
     /**
-     * message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+     * Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
      */
     messageTimestampType?: pulumi.Input<string>;
     /**
-     * min.cleanable.dirty.ratio value
+     * This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
      */
     minCleanableDirtyRatio?: pulumi.Input<number>;
     /**
-     * min.compaction.lag.ms value
+     * The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
      */
     minCompactionLagMs?: pulumi.Input<string>;
     /**
-     * min.insync.replicas value
+     * When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
      */
     minInsyncReplicas?: pulumi.Input<string>;
     /**
-     * preallocate value
+     * True if we should preallocate the file on disk when creating a new log segment.
      */
     preallocate?: pulumi.Input<boolean>;
     /**
-     * remote.storage.enable value
+     * Indicates whether tiered storage should be enabled.
      */
     remoteStorageEnable?: pulumi.Input<boolean>;
     /**
-     * retention.bytes value
+     * This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
      */
     retentionBytes?: pulumi.Input<string>;
     /**
-     * retention.ms value
+     * This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
      */
     retentionMs?: pulumi.Input<string>;
     /**
-     * segment.bytes value
+     * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      */
     segmentBytes?: pulumi.Input<string>;
     /**
-     * segment.index.bytes value
+     * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      */
     segmentIndexBytes?: pulumi.Input<string>;
     /**
-     * segment.jitter.ms value
+     * The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
      */
     segmentJitterMs?: pulumi.Input<string>;
     /**
-     * segment.ms value
+     * This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
      */
     segmentMs?: pulumi.Input<string>;
     /**
-     * unclean.leader.election.enable value; This field is deprecated and no longer functional.
-     *
-     * @deprecated This field is deprecated and no longer functional.
+     * Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
      */
     uncleanLeaderElectionEnable?: pulumi.Input<boolean>;
 }
@@ -4654,17 +4970,17 @@ export interface OpenSearchComponent {
 
 export interface OpenSearchOpensearch {
     /**
-     * URI for Kibana dashboard frontend
+     * URI for Kibana dashboard frontend.
      *
      * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     kibanaUri?: pulumi.Input<string>;
     /**
-     * URI for OpenSearch dashboard frontend
+     * URI for OpenSearch dashboard frontend.
      */
     opensearchDashboardsUri?: pulumi.Input<string>;
     /**
-     * OpenSearch password
+     * OpenSearch password.
      */
     password?: pulumi.Input<string>;
     /**
@@ -4672,7 +4988,7 @@ export interface OpenSearchOpensearch {
      */
     uris?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * OpenSearch username
+     * OpenSearch username.
      */
     username?: pulumi.Input<string>;
 }
@@ -5049,6 +5365,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Enable remote-backed storage.
      */
     enableRemoteBackedStorage?: pulumi.Input<boolean>;
+    /**
+     * Enable searchable snapshots.
+     */
+    enableSearchableSnapshots?: pulumi.Input<boolean>;
     /**
      * Enable/Disable security audit.
      */
@@ -5857,6 +6177,25 @@ export interface OrganizationProjectTag {
     value: pulumi.Input<string>;
 }
 
+export interface OrganizationProjectTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface OrganizationTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -6093,8 +6432,6 @@ export interface PgPgUserConfig {
     pgVersion?: pulumi.Input<string>;
     /**
      * System-wide settings for the pgaudit extension
-     *
-     * @deprecated This property is deprecated.
      */
     pgaudit?: pulumi.Input<inputs.PgPgUserConfigPgaudit>;
     /**
@@ -6448,86 +6785,58 @@ export interface PgPgUserConfigPgQualstats {
 export interface PgPgUserConfigPgaudit {
     /**
      * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     featureEnabled?: pulumi.Input<boolean>;
     /**
      * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
-     *
-     * @deprecated This property is deprecated.
      */
     logCatalog?: pulumi.Input<boolean>;
     /**
      * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logClient?: pulumi.Input<boolean>;
     /**
-     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
-     *
-     * @deprecated This property is deprecated.
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
      */
     logLevel?: pulumi.Input<string>;
     /**
      * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-     *
-     * @deprecated This property is deprecated.
      */
     logMaxStringLength?: pulumi.Input<number>;
     /**
      * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-     *
-     * @deprecated This property is deprecated.
      */
     logNestedStatements?: pulumi.Input<boolean>;
     /**
      * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logParameter?: pulumi.Input<boolean>;
     /**
      * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
-     *
-     * @deprecated This property is deprecated.
      */
     logParameterMaxSize?: pulumi.Input<number>;
     /**
      * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logRelation?: pulumi.Input<boolean>;
     /**
      * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logRows?: pulumi.Input<boolean>;
     /**
      * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-     *
-     * @deprecated This property is deprecated.
      */
     logStatement?: pulumi.Input<boolean>;
     /**
      * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logStatementOnce?: pulumi.Input<boolean>;
     /**
      * Specifies which classes of statements will be logged by session audit logging.
-     *
-     * @deprecated This property is deprecated.
      */
     logs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies the master role to use for object audit logging.
-     *
-     * @deprecated This property is deprecated.
      */
     role?: pulumi.Input<string>;
 }

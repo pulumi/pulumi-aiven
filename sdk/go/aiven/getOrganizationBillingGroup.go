@@ -12,6 +12,9 @@ import (
 )
 
 // Gets information about a billing group.
+//
+// **This resource is in the beta stage and may change without notice.** Set
+// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 func LookupOrganizationBillingGroup(ctx *pulumi.Context, args *LookupOrganizationBillingGroupArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationBillingGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationBillingGroupResult
@@ -24,36 +27,38 @@ func LookupOrganizationBillingGroup(ctx *pulumi.Context, args *LookupOrganizatio
 
 // A collection of arguments for invoking getOrganizationBillingGroup.
 type LookupOrganizationBillingGroupArgs struct {
-	// ID of the billing group.
+	// Billing group ID.
 	BillingGroupId string `pulumi:"billingGroupId"`
-	// ID of the organization.
-	OrganizationId string `pulumi:"organizationId"`
+	// ID of an organization.
+	OrganizationId string                               `pulumi:"organizationId"`
+	Timeouts       *GetOrganizationBillingGroupTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getOrganizationBillingGroup.
 type LookupOrganizationBillingGroupResult struct {
-	// ID of the billing address.
+	// Billing address ID.
 	BillingAddressId string `pulumi:"billingAddressId"`
 	// List of billing contact emails.
 	BillingContactEmails []string `pulumi:"billingContactEmails"`
-	// Billing currency.
+	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency string `pulumi:"billingCurrency"`
-	// List of billing emails.
+	// List of billing contact emails.
 	BillingEmails []string `pulumi:"billingEmails"`
-	// ID of the billing group.
+	// Billing group ID.
 	BillingGroupId string `pulumi:"billingGroupId"`
-	// Name of the billing group.
+	// Billing Group Name.
 	BillingGroupName string `pulumi:"billingGroupName"`
-	// Custom invoice text.
+	// Extra billing text.
 	CustomInvoiceText string `pulumi:"customInvoiceText"`
-	// Resource ID, a composite of organization*id and billing*group_id.
+	// Resource ID, a composite of `organizationId` and `billingGroupId` IDs.
 	Id string `pulumi:"id"`
-	// ID of the organization.
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
-	// ID of the payment method.
+	// Payment method ID.
 	PaymentMethodId string `pulumi:"paymentMethodId"`
-	// ID of the shipping address.
-	ShippingAddressId string `pulumi:"shippingAddressId"`
+	// Shipping address ID.
+	ShippingAddressId string                               `pulumi:"shippingAddressId"`
+	Timeouts          *GetOrganizationBillingGroupTimeouts `pulumi:"timeouts"`
 	// VAT ID.
 	VatId string `pulumi:"vatId"`
 }
@@ -69,10 +74,11 @@ func LookupOrganizationBillingGroupOutput(ctx *pulumi.Context, args LookupOrgani
 
 // A collection of arguments for invoking getOrganizationBillingGroup.
 type LookupOrganizationBillingGroupOutputArgs struct {
-	// ID of the billing group.
+	// Billing group ID.
 	BillingGroupId pulumi.StringInput `pulumi:"billingGroupId"`
-	// ID of the organization.
-	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	// ID of an organization.
+	OrganizationId pulumi.StringInput                          `pulumi:"organizationId"`
+	Timeouts       GetOrganizationBillingGroupTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupOrganizationBillingGroupOutputArgs) ElementType() reflect.Type {
@@ -94,7 +100,7 @@ func (o LookupOrganizationBillingGroupResultOutput) ToLookupOrganizationBillingG
 	return o
 }
 
-// ID of the billing address.
+// Billing address ID.
 func (o LookupOrganizationBillingGroupResultOutput) BillingAddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.BillingAddressId }).(pulumi.StringOutput)
 }
@@ -104,49 +110,53 @@ func (o LookupOrganizationBillingGroupResultOutput) BillingContactEmails() pulum
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) []string { return v.BillingContactEmails }).(pulumi.StringArrayOutput)
 }
 
-// Billing currency.
+// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 func (o LookupOrganizationBillingGroupResultOutput) BillingCurrency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.BillingCurrency }).(pulumi.StringOutput)
 }
 
-// List of billing emails.
+// List of billing contact emails.
 func (o LookupOrganizationBillingGroupResultOutput) BillingEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
 }
 
-// ID of the billing group.
+// Billing group ID.
 func (o LookupOrganizationBillingGroupResultOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.BillingGroupId }).(pulumi.StringOutput)
 }
 
-// Name of the billing group.
+// Billing Group Name.
 func (o LookupOrganizationBillingGroupResultOutput) BillingGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.BillingGroupName }).(pulumi.StringOutput)
 }
 
-// Custom invoice text.
+// Extra billing text.
 func (o LookupOrganizationBillingGroupResultOutput) CustomInvoiceText() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.CustomInvoiceText }).(pulumi.StringOutput)
 }
 
-// Resource ID, a composite of organization*id and billing*group_id.
+// Resource ID, a composite of `organizationId` and `billingGroupId` IDs.
 func (o LookupOrganizationBillingGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// ID of the organization.
+// ID of an organization.
 func (o LookupOrganizationBillingGroupResultOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// ID of the payment method.
+// Payment method ID.
 func (o LookupOrganizationBillingGroupResultOutput) PaymentMethodId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.PaymentMethodId }).(pulumi.StringOutput)
 }
 
-// ID of the shipping address.
+// Shipping address ID.
 func (o LookupOrganizationBillingGroupResultOutput) ShippingAddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.ShippingAddressId }).(pulumi.StringOutput)
+}
+
+func (o LookupOrganizationBillingGroupResultOutput) Timeouts() GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) *GetOrganizationBillingGroupTimeouts { return v.Timeouts }).(GetOrganizationBillingGroupTimeoutsPtrOutput)
 }
 
 // VAT ID.

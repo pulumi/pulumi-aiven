@@ -19,14 +19,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     public static final OrganizationAddressArgs Empty = new OrganizationAddressArgs();
 
     /**
-     * Array of address lines.
+     * Address Lines.
      * 
      */
     @Import(name="addressLines", required=true)
     private Output<List<String>> addressLines;
 
     /**
-     * @return Array of address lines.
+     * @return Address Lines.
      * 
      */
     public Output<List<String>> addressLines() {
@@ -34,14 +34,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * City name.
+     * City.
      * 
      */
     @Import(name="city", required=true)
     private Output<String> city;
 
     /**
-     * @return City name.
+     * @return City.
      * 
      */
     public Output<String> city() {
@@ -49,29 +49,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Name of the company.
-     * 
-     */
-    @Import(name="companyName")
-    private @Nullable Output<String> companyName;
-
-    /**
-     * @return Name of the company.
-     * 
-     */
-    public Optional<Output<String>> companyName() {
-        return Optional.ofNullable(this.companyName);
-    }
-
-    /**
-     * Country code.
+     * Country Code.
      * 
      */
     @Import(name="countryCode", required=true)
     private Output<String> countryCode;
 
     /**
-     * @return Country code.
+     * @return Country Code.
      * 
      */
     public Output<String> countryCode() {
@@ -79,14 +64,29 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * ID of organization.
+     * Name of a company. Maximum length: `128`.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Name of a company. Maximum length: `128`.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return ID of organization.
+     * @return ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -94,14 +94,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * State name.
+     * State. Maximum length: `128`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State name.
+     * @return State. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -116,14 +116,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Zip code.
+     * Zip Code. Maximum length: `32`.
      * 
      */
     @Import(name="zipCode")
     private @Nullable Output<String> zipCode;
 
     /**
-     * @return Zip code.
+     * @return Zip Code. Maximum length: `32`.
      * 
      */
     public Optional<Output<String>> zipCode() {
@@ -135,8 +135,8 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     private OrganizationAddressArgs(OrganizationAddressArgs $) {
         this.addressLines = $.addressLines;
         this.city = $.city;
-        this.companyName = $.companyName;
         this.countryCode = $.countryCode;
+        this.name = $.name;
         this.organizationId = $.organizationId;
         this.state = $.state;
         this.timeouts = $.timeouts;
@@ -162,7 +162,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param addressLines Array of address lines.
+         * @param addressLines Address Lines.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param addressLines Array of address lines.
+         * @param addressLines Address Lines.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param addressLines Array of address lines.
+         * @param addressLines Address Lines.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param city City name.
+         * @param city City.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param city City name.
+         * @param city City.
          * 
          * @return builder
          * 
@@ -214,28 +214,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param companyName Name of the company.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder companyName(@Nullable Output<String> companyName) {
-            $.companyName = companyName;
-            return this;
-        }
-
-        /**
-         * @param companyName Name of the company.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder companyName(String companyName) {
-            return companyName(Output.of(companyName));
-        }
-
-        /**
-         * @param countryCode Country code.
+         * @param countryCode Country Code.
          * 
          * @return builder
          * 
@@ -246,7 +225,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param countryCode Country code.
+         * @param countryCode Country Code.
          * 
          * @return builder
          * 
@@ -256,7 +235,28 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param organizationId ID of organization.
+         * @param name Name of a company. Maximum length: `128`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Name of a company. Maximum length: `128`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param organizationId ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param organizationId ID of organization.
+         * @param organizationId ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param state State name.
+         * @param state State. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param state State name.
+         * @param state State. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zipCode Zip code.
+         * @param zipCode Zip Code. Maximum length: `32`.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zipCode Zip code.
+         * @param zipCode Zip Code. Maximum length: `32`.
          * 
          * @return builder
          * 

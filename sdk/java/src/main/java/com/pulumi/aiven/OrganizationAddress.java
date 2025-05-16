@@ -19,116 +19,119 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages an organization address.
  * 
+ * **This resource is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * 
  */
 @ResourceType(type="aiven:index/organizationAddress:OrganizationAddress")
 public class OrganizationAddress extends com.pulumi.resources.CustomResource {
     /**
-     * ID of the address.
+     * Address ID.
      * 
      */
     @Export(name="addressId", refs={String.class}, tree="[0]")
     private Output<String> addressId;
 
     /**
-     * @return ID of the address.
+     * @return Address ID.
      * 
      */
     public Output<String> addressId() {
         return this.addressId;
     }
     /**
-     * Array of address lines.
+     * Address Lines.
      * 
      */
     @Export(name="addressLines", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> addressLines;
 
     /**
-     * @return Array of address lines.
+     * @return Address Lines.
      * 
      */
     public Output<List<String>> addressLines() {
         return this.addressLines;
     }
     /**
-     * City name.
+     * City.
      * 
      */
     @Export(name="city", refs={String.class}, tree="[0]")
     private Output<String> city;
 
     /**
-     * @return City name.
+     * @return City.
      * 
      */
     public Output<String> city() {
         return this.city;
     }
     /**
-     * Name of the company.
-     * 
-     */
-    @Export(name="companyName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> companyName;
-
-    /**
-     * @return Name of the company.
-     * 
-     */
-    public Output<Optional<String>> companyName() {
-        return Codegen.optional(this.companyName);
-    }
-    /**
-     * Country code.
+     * Country Code.
      * 
      */
     @Export(name="countryCode", refs={String.class}, tree="[0]")
     private Output<String> countryCode;
 
     /**
-     * @return Country code.
+     * @return Country Code.
      * 
      */
     public Output<String> countryCode() {
         return this.countryCode;
     }
     /**
-     * Timestamp of the creation.
+     * Create Time.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Timestamp of the creation.
+     * @return Create Time.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * ID of organization.
+     * Name of a company. Maximum length: `128`.
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return Name of a company. Maximum length: `128`.
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return ID of organization.
+     * @return ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * State name.
+     * State. Maximum length: `128`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
-     * @return State name.
+     * @return State. Maximum length: `128`.
      * 
      */
     public Output<Optional<String>> state() {
@@ -141,28 +144,28 @@ public class OrganizationAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeouts);
     }
     /**
-     * Timestamp of the last update.
+     * Update Time.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Timestamp of the last update.
+     * @return Update Time.
      * 
      */
     public Output<String> updateTime() {
         return this.updateTime;
     }
     /**
-     * Zip code.
+     * Zip Code. Maximum length: `32`.
      * 
      */
     @Export(name="zipCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zipCode;
 
     /**
-     * @return Zip code.
+     * @return Zip Code. Maximum length: `32`.
      * 
      */
     public Output<Optional<String>> zipCode() {

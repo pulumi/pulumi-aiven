@@ -78,6 +78,11 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Boolean enableRemoteBackedStorage;
     /**
+     * @return Enable searchable snapshots.
+     * 
+     */
+    private @Nullable Boolean enableSearchableSnapshots;
+    /**
      * @return Enable/Disable security audit.
      * 
      */
@@ -354,6 +359,13 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     public Optional<Boolean> enableRemoteBackedStorage() {
         return Optional.ofNullable(this.enableRemoteBackedStorage);
+    }
+    /**
+     * @return Enable searchable snapshots.
+     * 
+     */
+    public Optional<Boolean> enableSearchableSnapshots() {
+        return Optional.ofNullable(this.enableSearchableSnapshots);
     }
     /**
      * @return Enable/Disable security audit.
@@ -653,6 +665,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         private @Nullable String emailSenderPassword;
         private @Nullable String emailSenderUsername;
         private @Nullable Boolean enableRemoteBackedStorage;
+        private @Nullable Boolean enableSearchableSnapshots;
         private @Nullable Boolean enableSecurityAudit;
         private @Nullable Integer httpMaxContentLength;
         private @Nullable Integer httpMaxHeaderSize;
@@ -708,6 +721,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     	      this.emailSenderPassword = defaults.emailSenderPassword;
     	      this.emailSenderUsername = defaults.emailSenderUsername;
     	      this.enableRemoteBackedStorage = defaults.enableRemoteBackedStorage;
+    	      this.enableSearchableSnapshots = defaults.enableSearchableSnapshots;
     	      this.enableSecurityAudit = defaults.enableSecurityAudit;
     	      this.httpMaxContentLength = defaults.httpMaxContentLength;
     	      this.httpMaxHeaderSize = defaults.httpMaxHeaderSize;
@@ -820,6 +834,12 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         public Builder enableRemoteBackedStorage(@Nullable Boolean enableRemoteBackedStorage) {
 
             this.enableRemoteBackedStorage = enableRemoteBackedStorage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableSearchableSnapshots(@Nullable Boolean enableSearchableSnapshots) {
+
+            this.enableSearchableSnapshots = enableSearchableSnapshots;
             return this;
         }
         @CustomType.Setter
@@ -1079,6 +1099,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             _resultValue.emailSenderPassword = emailSenderPassword;
             _resultValue.emailSenderUsername = emailSenderUsername;
             _resultValue.enableRemoteBackedStorage = enableRemoteBackedStorage;
+            _resultValue.enableSearchableSnapshots = enableSearchableSnapshots;
             _resultValue.enableSecurityAudit = enableSecurityAudit;
             _resultValue.httpMaxContentLength = httpMaxContentLength;
             _resultValue.httpMaxHeaderSize = httpMaxHeaderSize;

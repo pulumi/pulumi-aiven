@@ -8,6 +8,9 @@ import * as utilities from "./utilities";
 
 /**
  * Creates and manages an organization billing group.
+ *
+ * **This resource is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export class OrganizationBillingGroup extends pulumi.CustomResource {
     /**
@@ -38,7 +41,7 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
     }
 
     /**
-     * ID of the billing address.
+     * Billing address ID. Maximum length: `36`.
      */
     public readonly billingAddressId!: pulumi.Output<string>;
     /**
@@ -46,35 +49,35 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      */
     public readonly billingContactEmails!: pulumi.Output<string[]>;
     /**
-     * Billing currency.
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
     public readonly billingCurrency!: pulumi.Output<string | undefined>;
     /**
-     * List of billing emails.
+     * List of billing contact emails.
      */
     public readonly billingEmails!: pulumi.Output<string[]>;
     /**
-     * ID of the billing group.
+     * Billing group ID.
      */
     public /*out*/ readonly billingGroupId!: pulumi.Output<string>;
     /**
-     * Name of the billing group.
+     * Billing Group Name. Maximum length: `128`.
      */
     public readonly billingGroupName!: pulumi.Output<string>;
     /**
-     * Custom invoice text.
+     * Extra billing text. Maximum length: `254`.
      */
     public readonly customInvoiceText!: pulumi.Output<string | undefined>;
     /**
-     * ID of the organization.
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * ID of the payment method.
+     * Payment method ID.
      */
     public readonly paymentMethodId!: pulumi.Output<string>;
     /**
-     * ID of the shipping address.
+     * Shipping address ID. Maximum length: `36`.
      */
     public readonly shippingAddressId!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.OrganizationBillingGroupTimeouts | undefined>;
@@ -154,7 +157,7 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
  */
 export interface OrganizationBillingGroupState {
     /**
-     * ID of the billing address.
+     * Billing address ID. Maximum length: `36`.
      */
     billingAddressId?: pulumi.Input<string>;
     /**
@@ -162,35 +165,35 @@ export interface OrganizationBillingGroupState {
      */
     billingContactEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Billing currency.
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
     billingCurrency?: pulumi.Input<string>;
     /**
-     * List of billing emails.
+     * List of billing contact emails.
      */
     billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ID of the billing group.
+     * Billing group ID.
      */
     billingGroupId?: pulumi.Input<string>;
     /**
-     * Name of the billing group.
+     * Billing Group Name. Maximum length: `128`.
      */
     billingGroupName?: pulumi.Input<string>;
     /**
-     * Custom invoice text.
+     * Extra billing text. Maximum length: `254`.
      */
     customInvoiceText?: pulumi.Input<string>;
     /**
-     * ID of the organization.
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * ID of the payment method.
+     * Payment method ID.
      */
     paymentMethodId?: pulumi.Input<string>;
     /**
-     * ID of the shipping address.
+     * Shipping address ID. Maximum length: `36`.
      */
     shippingAddressId?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationBillingGroupTimeouts>;
@@ -205,7 +208,7 @@ export interface OrganizationBillingGroupState {
  */
 export interface OrganizationBillingGroupArgs {
     /**
-     * ID of the billing address.
+     * Billing address ID. Maximum length: `36`.
      */
     billingAddressId: pulumi.Input<string>;
     /**
@@ -213,31 +216,31 @@ export interface OrganizationBillingGroupArgs {
      */
     billingContactEmails: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Billing currency.
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
     billingCurrency?: pulumi.Input<string>;
     /**
-     * List of billing emails.
+     * List of billing contact emails.
      */
     billingEmails: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the billing group.
+     * Billing Group Name. Maximum length: `128`.
      */
     billingGroupName: pulumi.Input<string>;
     /**
-     * Custom invoice text.
+     * Extra billing text. Maximum length: `254`.
      */
     customInvoiceText?: pulumi.Input<string>;
     /**
-     * ID of the organization.
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * ID of the payment method.
+     * Payment method ID.
      */
     paymentMethodId: pulumi.Input<string>;
     /**
-     * ID of the shipping address.
+     * Shipping address ID. Maximum length: `36`.
      */
     shippingAddressId: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationBillingGroupTimeouts>;

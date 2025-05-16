@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearch {
     /**
-     * @return URI for Kibana dashboard frontend
+     * @return URI for Kibana dashboard frontend.
      * 
      * @deprecated
      * This field was added by mistake and has never worked. It will be removed in future versions.
@@ -22,12 +22,12 @@ public final class OpenSearchOpensearch {
     @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     private @Nullable String kibanaUri;
     /**
-     * @return URI for OpenSearch dashboard frontend
+     * @return URI for OpenSearch dashboard frontend.
      * 
      */
     private @Nullable String opensearchDashboardsUri;
     /**
-     * @return OpenSearch password
+     * @return OpenSearch password.
      * 
      */
     private @Nullable String password;
@@ -37,14 +37,14 @@ public final class OpenSearchOpensearch {
      */
     private @Nullable List<String> uris;
     /**
-     * @return OpenSearch username
+     * @return OpenSearch username.
      * 
      */
     private @Nullable String username;
 
     private OpenSearchOpensearch() {}
     /**
-     * @return URI for Kibana dashboard frontend
+     * @return URI for Kibana dashboard frontend.
      * 
      * @deprecated
      * This field was added by mistake and has never worked. It will be removed in future versions.
@@ -55,14 +55,14 @@ public final class OpenSearchOpensearch {
         return Optional.ofNullable(this.kibanaUri);
     }
     /**
-     * @return URI for OpenSearch dashboard frontend
+     * @return URI for OpenSearch dashboard frontend.
      * 
      */
     public Optional<String> opensearchDashboardsUri() {
         return Optional.ofNullable(this.opensearchDashboardsUri);
     }
     /**
-     * @return OpenSearch password
+     * @return OpenSearch password.
      * 
      */
     public Optional<String> password() {
@@ -76,7 +76,7 @@ public final class OpenSearchOpensearch {
         return this.uris == null ? List.of() : this.uris;
     }
     /**
-     * @return OpenSearch username
+     * @return OpenSearch username.
      * 
      */
     public Optional<String> username() {

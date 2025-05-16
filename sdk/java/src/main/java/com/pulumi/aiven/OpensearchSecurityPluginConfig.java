@@ -16,8 +16,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -28,12 +26,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aiven.AivenFunctions;
- * import com.pulumi.aiven.inputs.GetProjectArgs;
- * import com.pulumi.aiven.OpenSearch;
- * import com.pulumi.aiven.OpenSearchArgs;
- * import com.pulumi.aiven.OpensearchUser;
- * import com.pulumi.aiven.OpensearchUserArgs;
  * import com.pulumi.aiven.OpensearchSecurityPluginConfig;
  * import com.pulumi.aiven.OpensearchSecurityPluginConfigArgs;
  * import java.util.List;
@@ -49,29 +41,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var foo = AivenFunctions.getProject(GetProjectArgs.builder()
- *             .project("example_project")
- *             .build());
- * 
- *         var bar = new OpenSearch("bar", OpenSearchArgs.builder()
- *             .project(foo.project())
- *             .cloudName("google-europe-west1")
- *             .plan("startup-4")
- *             .serviceName("example_service_name")
- *             .maintenanceWindowDow("monday")
- *             .maintenanceWindowTime("10:00:00")
- *             .build());
- * 
- *         var fooOpensearchUser = new OpensearchUser("fooOpensearchUser", OpensearchUserArgs.builder()
- *             .serviceName(bar.serviceName())
- *             .project(foo.project())
- *             .username("user-example")
- *             .build());
- * 
- *         var fooOpensearchSecurityPluginConfig = new OpensearchSecurityPluginConfig("fooOpensearchSecurityPluginConfig", OpensearchSecurityPluginConfigArgs.builder()
- *             .project(foo.project())
- *             .serviceName(bar.serviceName())
- *             .adminPassword("ThisIsATest123^=^")
+ *         var main = new OpensearchSecurityPluginConfig("main", OpensearchSecurityPluginConfigArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleOpensearch.serviceName())
+ *             .adminPassword(opensearchSecurityAdminPassword)
  *             .build());
  * 
  *     }
@@ -83,21 +56,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig")
 public class OpensearchSecurityPluginConfig extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+     * Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
      * 
      */
     @Export(name="adminEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> adminEnabled;
 
     /**
-     * @return Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+     * @return Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
      * 
      */
     public Output<Boolean> adminEnabled() {

@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The OpenSearch ACL Rule resource models a single ACL Rule for an Aiven OpenSearch service.
+ * Create an access control list (ACL) rule for indexes in an Aiven for OpenSearch® service. ACLs apply only to indexes and don&#39;t control access to other OpenSearch APIs such as OpenSearch Dashboards.
  * 
  * ## Example Usage
  * 
@@ -31,28 +31,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/openSearchAclRule:OpenSearchAclRule")
 public class OpenSearchAclRule extends com.pulumi.resources.CustomResource {
     /**
-     * The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+     * The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="index", refs={String.class}, tree="[0]")
     private Output<String> index;
 
     /**
-     * @return The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+     * @return The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> index() {
         return this.index;
     }
     /**
-     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      * 
      */
     @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
-     * @return The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+     * @return The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      * 
      */
     public Output<String> permission() {
@@ -87,14 +87,14 @@ public class OpenSearchAclRule extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

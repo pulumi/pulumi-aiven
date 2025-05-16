@@ -29,6 +29,8 @@ export function getOrganizationProject(args: GetOrganizationProjectArgs, opts?: 
     return pulumi.runtime.invoke("aiven:index/getOrganizationProject:getOrganizationProject", {
         "organizationId": args.organizationId,
         "projectId": args.projectId,
+        "tags": args.tags,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -37,13 +39,18 @@ export function getOrganizationProject(args: GetOrganizationProjectArgs, opts?: 
  */
 export interface GetOrganizationProjectArgs {
     /**
-     * ID of an organization. Changing this property forces recreation of the resource.
+     * ID of an organization.
      */
     organizationId: string;
     /**
-     * Unique identifier for the project that also serves as the project name.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
      */
     projectId: string;
+    /**
+     * Tags are key-value pairs that allow you to categorize projects.
+     */
+    tags?: inputs.GetOrganizationProjectTag[];
+    timeouts?: inputs.GetOrganizationProjectTimeouts;
 }
 
 /**
@@ -51,19 +58,23 @@ export interface GetOrganizationProjectArgs {
  */
 export interface GetOrganizationProjectResult {
     /**
-     * Billing group ID to assign to the project.
+     * Valid port number (1-65535) to use as a base for service port allocation.
+     */
+    readonly basePort: number;
+    /**
+     * Billing group ID to assign to the project. It's required when moving projects between organizations.
      */
     readonly billingGroupId: string;
     /**
-     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * PEM encoded certificate.
      */
     readonly caCert: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID, a composite of `organizationId` and `projectId` IDs.
      */
     readonly id: string;
     /**
-     * ID of an organization. Changing this property forces recreation of the resource.
+     * ID of an organization.
      */
     readonly organizationId: string;
     /**
@@ -71,17 +82,18 @@ export interface GetOrganizationProjectResult {
      */
     readonly parentId: string;
     /**
-     * Unique identifier for the project that also serves as the project name.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
      */
     readonly projectId: string;
     /**
      * Tags are key-value pairs that allow you to categorize projects.
      */
-    readonly tags: outputs.GetOrganizationProjectTag[];
+    readonly tags?: outputs.GetOrganizationProjectTag[];
     /**
      * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
     readonly technicalEmails: string[];
+    readonly timeouts?: outputs.GetOrganizationProjectTimeouts;
 }
 /**
  * Gets information about an Aiven project.
@@ -106,6 +118,8 @@ export function getOrganizationProjectOutput(args: GetOrganizationProjectOutputA
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationProject:getOrganizationProject", {
         "organizationId": args.organizationId,
         "projectId": args.projectId,
+        "tags": args.tags,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -114,11 +128,16 @@ export function getOrganizationProjectOutput(args: GetOrganizationProjectOutputA
  */
 export interface GetOrganizationProjectOutputArgs {
     /**
-     * ID of an organization. Changing this property forces recreation of the resource.
+     * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Unique identifier for the project that also serves as the project name.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * Tags are key-value pairs that allow you to categorize projects.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.GetOrganizationProjectTagArgs>[]>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationProjectTimeoutsArgs>;
 }

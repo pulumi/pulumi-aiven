@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+// Gets information about access control for an Aiven for OpenSearch® service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupOpenSearchAclConfig(ctx, &aiven.LookupOpenSearchAclConfigArgs{
-//				Project:     os_project.Project,
-//				ServiceName: os.ServiceName,
+//				Project:     exampleProject.Project,
+//				ServiceName: exampleOpensearch.ServiceName,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -59,7 +59,7 @@ type LookupOpenSearchAclConfigArgs struct {
 
 // A collection of values returned by getOpenSearchAclConfig.
 type LookupOpenSearchAclConfigResult struct {
-	// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+	// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
 	Enabled bool `pulumi:"enabled"`
 	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
 	ExtendedAcl bool `pulumi:"extendedAcl"`
@@ -107,7 +107,7 @@ func (o LookupOpenSearchAclConfigResultOutput) ToLookupOpenSearchAclConfigResult
 	return o
 }
 
-// Enable OpenSearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
 func (o LookupOpenSearchAclConfigResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }

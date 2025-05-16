@@ -289,22 +289,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * System-wide settings for the pgaudit extension
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="pgaudit")
     private @Nullable Output<PgPgUserConfigPgauditArgs> pgaudit;
 
     /**
      * @return System-wide settings for the pgaudit extension
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<PgPgUserConfigPgauditArgs>> pgaudit() {
         return Optional.ofNullable(this.pgaudit);
     }
@@ -980,11 +972,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder pgaudit(@Nullable Output<PgPgUserConfigPgauditArgs> pgaudit) {
             $.pgaudit = pgaudit;
             return this;
@@ -995,11 +983,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder pgaudit(PgPgUserConfigPgauditArgs pgaudit) {
             return pgaudit(Output.of(pgaudit));
         }

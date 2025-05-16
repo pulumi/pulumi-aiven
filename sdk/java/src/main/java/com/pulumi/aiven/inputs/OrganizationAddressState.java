@@ -18,14 +18,14 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
     public static final OrganizationAddressState Empty = new OrganizationAddressState();
 
     /**
-     * ID of the address.
+     * Address ID.
      * 
      */
     @Import(name="addressId")
     private @Nullable Output<String> addressId;
 
     /**
-     * @return ID of the address.
+     * @return Address ID.
      * 
      */
     public Optional<Output<String>> addressId() {
@@ -33,14 +33,14 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Array of address lines.
+     * Address Lines.
      * 
      */
     @Import(name="addressLines")
     private @Nullable Output<List<String>> addressLines;
 
     /**
-     * @return Array of address lines.
+     * @return Address Lines.
      * 
      */
     public Optional<Output<List<String>>> addressLines() {
@@ -48,14 +48,14 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * City name.
+     * City.
      * 
      */
     @Import(name="city")
     private @Nullable Output<String> city;
 
     /**
-     * @return City name.
+     * @return City.
      * 
      */
     public Optional<Output<String>> city() {
@@ -63,29 +63,14 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the company.
-     * 
-     */
-    @Import(name="companyName")
-    private @Nullable Output<String> companyName;
-
-    /**
-     * @return Name of the company.
-     * 
-     */
-    public Optional<Output<String>> companyName() {
-        return Optional.ofNullable(this.companyName);
-    }
-
-    /**
-     * Country code.
+     * Country Code.
      * 
      */
     @Import(name="countryCode")
     private @Nullable Output<String> countryCode;
 
     /**
-     * @return Country code.
+     * @return Country Code.
      * 
      */
     public Optional<Output<String>> countryCode() {
@@ -93,14 +78,14 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Timestamp of the creation.
+     * Create Time.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Timestamp of the creation.
+     * @return Create Time.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -108,14 +93,29 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ID of organization.
+     * Name of a company. Maximum length: `128`.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Name of a company. Maximum length: `128`.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return ID of organization.
+     * @return ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -123,14 +123,14 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * State name.
+     * State. Maximum length: `128`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State name.
+     * @return State. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -145,14 +145,14 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Timestamp of the last update.
+     * Update Time.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Timestamp of the last update.
+     * @return Update Time.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -160,14 +160,14 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Zip code.
+     * Zip Code. Maximum length: `32`.
      * 
      */
     @Import(name="zipCode")
     private @Nullable Output<String> zipCode;
 
     /**
-     * @return Zip code.
+     * @return Zip Code. Maximum length: `32`.
      * 
      */
     public Optional<Output<String>> zipCode() {
@@ -180,9 +180,9 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         this.addressId = $.addressId;
         this.addressLines = $.addressLines;
         this.city = $.city;
-        this.companyName = $.companyName;
         this.countryCode = $.countryCode;
         this.createTime = $.createTime;
+        this.name = $.name;
         this.organizationId = $.organizationId;
         this.state = $.state;
         this.timeouts = $.timeouts;
@@ -209,7 +209,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param addressId ID of the address.
+         * @param addressId Address ID.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param addressId ID of the address.
+         * @param addressId Address ID.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param addressLines Array of address lines.
+         * @param addressLines Address Lines.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param addressLines Array of address lines.
+         * @param addressLines Address Lines.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param addressLines Array of address lines.
+         * @param addressLines Address Lines.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param city City name.
+         * @param city City.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param city City name.
+         * @param city City.
          * 
          * @return builder
          * 
@@ -282,28 +282,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param companyName Name of the company.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder companyName(@Nullable Output<String> companyName) {
-            $.companyName = companyName;
-            return this;
-        }
-
-        /**
-         * @param companyName Name of the company.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder companyName(String companyName) {
-            return companyName(Output.of(companyName));
-        }
-
-        /**
-         * @param countryCode Country code.
+         * @param countryCode Country Code.
          * 
          * @return builder
          * 
@@ -314,7 +293,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param countryCode Country code.
+         * @param countryCode Country Code.
          * 
          * @return builder
          * 
@@ -324,7 +303,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime Timestamp of the creation.
+         * @param createTime Create Time.
          * 
          * @return builder
          * 
@@ -335,7 +314,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime Timestamp of the creation.
+         * @param createTime Create Time.
          * 
          * @return builder
          * 
@@ -345,7 +324,28 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param organizationId ID of organization.
+         * @param name Name of a company. Maximum length: `128`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Name of a company. Maximum length: `128`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param organizationId ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param organizationId ID of organization.
+         * @param organizationId ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state State name.
+         * @param state State. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state State name.
+         * @param state State. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updateTime Timestamp of the last update.
+         * @param updateTime Update Time.
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updateTime Timestamp of the last update.
+         * @param updateTime Update Time.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zipCode Zip code.
+         * @param zipCode Zip Code. Maximum length: `32`.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zipCode Zip code.
+         * @param zipCode Zip Code. Maximum length: `32`.
          * 
          * @return builder
          * 

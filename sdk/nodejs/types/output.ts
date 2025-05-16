@@ -184,6 +184,10 @@ export interface AlloydbomniAlloydbomniUserConfig {
      */
     pgVersion?: string;
     /**
+     * System-wide settings for the pgaudit extension
+     */
+    pgaudit?: outputs.AlloydbomniAlloydbomniUserConfigPgaudit;
+    /**
      * PGBouncer connection pooling settings
      */
     pgbouncer?: outputs.AlloydbomniAlloydbomniUserConfigPgbouncer;
@@ -445,6 +449,65 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
      */
     walWriterDelay?: number;
+}
+
+export interface AlloydbomniAlloydbomniUserConfigPgaudit {
+    /**
+     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+     */
+    featureEnabled?: boolean;
+    /**
+     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     */
+    logCatalog?: boolean;
+    /**
+     * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+     */
+    logClient?: boolean;
+    /**
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+     */
+    logLevel?: string;
+    /**
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+     */
+    logMaxStringLength?: number;
+    /**
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+     */
+    logNestedStatements?: boolean;
+    /**
+     * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+     */
+    logParameter?: boolean;
+    /**
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+     */
+    logParameterMaxSize?: number;
+    /**
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     */
+    logRelation?: boolean;
+    /**
+     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     */
+    logRows?: boolean;
+    /**
+     * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+     */
+    logStatement?: boolean;
+    /**
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     */
+    logStatementOnce?: boolean;
+    /**
+     * Specifies which classes of statements will be logged by session audit logging.
+     */
+    logs?: string[];
+    /**
+     * Specifies the master role to use for object audit logging.
+     */
+    role?: string;
 }
 
 export interface AlloydbomniAlloydbomniUserConfigPgbouncer {
@@ -1765,6 +1828,10 @@ export interface GetAlloydbomniAlloydbomniUserConfig {
      */
     pgVersion?: string;
     /**
+     * System-wide settings for the pgaudit extension
+     */
+    pgaudit?: outputs.GetAlloydbomniAlloydbomniUserConfigPgaudit;
+    /**
      * PGBouncer connection pooling settings
      */
     pgbouncer?: outputs.GetAlloydbomniAlloydbomniUserConfigPgbouncer;
@@ -2026,6 +2093,65 @@ export interface GetAlloydbomniAlloydbomniUserConfigPg {
      * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
      */
     walWriterDelay?: number;
+}
+
+export interface GetAlloydbomniAlloydbomniUserConfigPgaudit {
+    /**
+     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+     */
+    featureEnabled?: boolean;
+    /**
+     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     */
+    logCatalog?: boolean;
+    /**
+     * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+     */
+    logClient?: boolean;
+    /**
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+     */
+    logLevel?: string;
+    /**
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+     */
+    logMaxStringLength?: number;
+    /**
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+     */
+    logNestedStatements?: boolean;
+    /**
+     * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+     */
+    logParameter?: boolean;
+    /**
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
+     */
+    logParameterMaxSize?: number;
+    /**
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     */
+    logRelation?: boolean;
+    /**
+     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     */
+    logRows?: boolean;
+    /**
+     * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+     */
+    logStatement?: boolean;
+    /**
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     */
+    logStatementOnce?: boolean;
+    /**
+     * Specifies which classes of statements will be logged by session audit logging.
+     */
+    logs?: string[];
+    /**
+     * Specifies the master role to use for object audit logging.
+     */
+    role?: string;
 }
 
 export interface GetAlloydbomniAlloydbomniUserConfigPgbouncer {
@@ -4399,6 +4525,10 @@ export interface GetKafkaKafkaUserConfig {
      * Kafka Connect configuration values
      */
     kafkaConnectConfig?: outputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
+    /**
+     * The plugin selected by the user
+     */
+    kafkaConnectPluginVersions?: outputs.GetKafkaKafkaUserConfigKafkaConnectPluginVersion[];
     kafkaConnectSecretProviders?: outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProvider[];
     /**
      * Enable Kafka-REST service. Default: `false`.
@@ -4743,6 +4873,17 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
      * The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
      */
     sessionTimeoutMs?: number;
+}
+
+export interface GetKafkaKafkaUserConfigKafkaConnectPluginVersion {
+    /**
+     * The name of the plugin. Example: `debezium-connector`.
+     */
+    pluginName: string;
+    /**
+     * The version of the plugin. Example: `2.5.0`.
+     */
+    version: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
@@ -5189,113 +5330,111 @@ export interface GetKafkaTechEmail {
 
 export interface GetKafkaTopicConfig {
     /**
-     * cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+     * The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
      */
     cleanupPolicy?: string;
     /**
-     * compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+     * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
      */
     compressionType?: string;
     /**
-     * delete.retention.ms value
+     * The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
      */
     deleteRetentionMs?: string;
     /**
-     * file.delete.delay.ms value
+     * The time to wait before deleting a file from the filesystem.
      */
     fileDeleteDelayMs?: string;
     /**
-     * flush.messages value
+     * This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
      */
     flushMessages?: string;
     /**
-     * flush.ms value
+     * This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
      */
     flushMs?: string;
     /**
-     * index.interval.bytes value
+     * This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
      */
     indexIntervalBytes?: string;
     /**
-     * local.retention.bytes value
+     * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
      */
     localRetentionBytes?: string;
     /**
-     * local.retention.ms value
+     * This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
      */
     localRetentionMs?: string;
     /**
-     * max.compaction.lag.ms value
+     * The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
      */
     maxCompactionLagMs?: string;
     /**
-     * max.message.bytes value
+     * The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
      */
     maxMessageBytes?: string;
     /**
-     * message.downconversion.enable value
+     * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
      */
     messageDownconversionEnable?: boolean;
     /**
-     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
      */
     messageFormatVersion?: string;
     /**
-     * message.timestamp.difference.max.ms value
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      */
     messageTimestampDifferenceMaxMs?: string;
     /**
-     * message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+     * Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
      */
     messageTimestampType?: string;
     /**
-     * min.cleanable.dirty.ratio value
+     * This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
      */
     minCleanableDirtyRatio?: number;
     /**
-     * min.compaction.lag.ms value
+     * The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
      */
     minCompactionLagMs?: string;
     /**
-     * min.insync.replicas value
+     * When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
      */
     minInsyncReplicas?: string;
     /**
-     * preallocate value
+     * True if we should preallocate the file on disk when creating a new log segment.
      */
     preallocate?: boolean;
     /**
-     * remote.storage.enable value
+     * Indicates whether tiered storage should be enabled.
      */
     remoteStorageEnable?: boolean;
     /**
-     * retention.bytes value
+     * This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
      */
     retentionBytes?: string;
     /**
-     * retention.ms value
+     * This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
      */
     retentionMs?: string;
     /**
-     * segment.bytes value
+     * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      */
     segmentBytes?: string;
     /**
-     * segment.index.bytes value
+     * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      */
     segmentIndexBytes?: string;
     /**
-     * segment.jitter.ms value
+     * The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
      */
     segmentJitterMs?: string;
     /**
-     * segment.ms value
+     * This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
      */
     segmentMs?: string;
     /**
-     * unclean.leader.election.enable value; This field is deprecated and no longer functional.
-     *
-     * @deprecated This field is deprecated and no longer functional.
+     * Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
      */
     uncleanLeaderElectionEnable?: boolean;
 }
@@ -6269,17 +6408,17 @@ export interface GetOpenSearchComponent {
 
 export interface GetOpenSearchOpensearch {
     /**
-     * URI for Kibana dashboard frontend
+     * URI for Kibana dashboard frontend.
      *
      * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     kibanaUri: string;
     /**
-     * URI for OpenSearch dashboard frontend
+     * URI for OpenSearch dashboard frontend.
      */
     opensearchDashboardsUri: string;
     /**
-     * OpenSearch password
+     * OpenSearch password.
      */
     password: string;
     /**
@@ -6287,7 +6426,7 @@ export interface GetOpenSearchOpensearch {
      */
     uris: string[];
     /**
-     * OpenSearch username
+     * OpenSearch username.
      */
     username: string;
 }
@@ -6664,6 +6803,10 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      * Enable remote-backed storage.
      */
     enableRemoteBackedStorage?: boolean;
+    /**
+     * Enable searchable snapshots.
+     */
+    enableSearchableSnapshots?: boolean;
     /**
      * Enable/Disable security audit.
      */
@@ -7381,9 +7524,16 @@ export interface GetOpenSearchTechEmail {
     email: string;
 }
 
+export interface GetOrganizationAddressTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
 export interface GetOrganizationBillingGroupListBillingGroup {
     /**
-     * ID of the billing address.
+     * Billing address ID.
      */
     billingAddressId: string;
     /**
@@ -7391,45 +7541,55 @@ export interface GetOrganizationBillingGroupListBillingGroup {
      */
     billingContactEmails: string[];
     /**
-     * Billing currency.
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
     billingCurrency: string;
     /**
-     * List of billing emails.
+     * List of billing contact emails.
      */
     billingEmails: string[];
     /**
-     * ID of the billing group.
+     * Billing group ID.
      */
     billingGroupId: string;
     /**
-     * Name of the billing group.
+     * Billing Group Name.
      */
     billingGroupName: string;
     /**
-     * Custom invoice text.
+     * Extra billing text.
      */
     customInvoiceText: string;
     /**
-     * Resource ID, a composite of organization*id and billing*group_id.
-     */
-    id: string;
-    /**
-     * ID of the organization.
+     * Organization ID.
      */
     organizationId: string;
     /**
-     * ID of the payment method.
+     * Payment method ID.
      */
     paymentMethodId: string;
     /**
-     * ID of the shipping address.
+     * Shipping address ID.
      */
     shippingAddressId: string;
     /**
      * VAT ID.
      */
     vatId: string;
+}
+
+export interface GetOrganizationBillingGroupListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationBillingGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetOrganizationProjectTag {
@@ -7441,6 +7601,20 @@ export interface GetOrganizationProjectTag {
      * Project tag value.
      */
     value: string;
+}
+
+export interface GetOrganizationProjectTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetOrganizationUserListUser {
@@ -7708,8 +7882,6 @@ export interface GetPgPgUserConfig {
     pgVersion?: string;
     /**
      * System-wide settings for the pgaudit extension
-     *
-     * @deprecated This property is deprecated.
      */
     pgaudit?: outputs.GetPgPgUserConfigPgaudit;
     /**
@@ -8063,86 +8235,58 @@ export interface GetPgPgUserConfigPgQualstats {
 export interface GetPgPgUserConfigPgaudit {
     /**
      * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     featureEnabled?: boolean;
     /**
      * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
-     *
-     * @deprecated This property is deprecated.
      */
     logCatalog?: boolean;
     /**
      * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logClient?: boolean;
     /**
-     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
-     *
-     * @deprecated This property is deprecated.
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
      */
     logLevel?: string;
     /**
      * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-     *
-     * @deprecated This property is deprecated.
      */
     logMaxStringLength?: number;
     /**
      * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-     *
-     * @deprecated This property is deprecated.
      */
     logNestedStatements?: boolean;
     /**
      * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logParameter?: boolean;
     /**
      * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
-     *
-     * @deprecated This property is deprecated.
      */
     logParameterMaxSize?: number;
     /**
      * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logRelation?: boolean;
     /**
      * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logRows?: boolean;
     /**
      * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-     *
-     * @deprecated This property is deprecated.
      */
     logStatement?: boolean;
     /**
      * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logStatementOnce?: boolean;
     /**
      * Specifies which classes of statements will be logged by session audit logging.
-     *
-     * @deprecated This property is deprecated.
      */
     logs?: string[];
     /**
      * Specifies the master role to use for object audit logging.
-     *
-     * @deprecated This property is deprecated.
      */
     role?: string;
 }
@@ -10107,6 +10251,60 @@ export interface GetValkeyValkeyUserConfigPublicAccess {
     valkey?: boolean;
 }
 
+export interface GovernanceAccessAccessData {
+    /**
+     * The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+     */
+    acls: outputs.GovernanceAccessAccessDataAcl[];
+    /**
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     */
+    project: string;
+    /**
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     */
+    serviceName: string;
+    /**
+     * The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+     */
+    username: string;
+}
+
+export interface GovernanceAccessAccessDataAcl {
+    /**
+     * The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+     */
+    host: string;
+    /**
+     * The ACL ID.
+     */
+    id: string;
+    /**
+     * The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+     */
+    operation: string;
+    /**
+     * Pattern used to match specified resources. The possible value is `LITERAL`.
+     */
+    patternType: string;
+    /**
+     * Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+     */
+    permissionType: string;
+    /**
+     * Identities in `user:name` format that the permissions apply to.
+     */
+    principal: string;
+    /**
+     * The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+     */
+    resourceName: string;
+    /**
+     * The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+     */
+    resourceType: string;
+}
+
 export interface GrafanaComponent {
     /**
      * Service component name
@@ -11305,6 +11503,10 @@ export interface KafkaKafkaUserConfig {
      * Kafka Connect configuration values
      */
     kafkaConnectConfig?: outputs.KafkaKafkaUserConfigKafkaConnectConfig;
+    /**
+     * The plugin selected by the user
+     */
+    kafkaConnectPluginVersions?: outputs.KafkaKafkaUserConfigKafkaConnectPluginVersion[];
     kafkaConnectSecretProviders?: outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider[];
     /**
      * Enable Kafka-REST service. Default: `false`.
@@ -11649,6 +11851,17 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      * The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
      */
     sessionTimeoutMs?: number;
+}
+
+export interface KafkaKafkaUserConfigKafkaConnectPluginVersion {
+    /**
+     * The name of the plugin. Example: `debezium-connector`.
+     */
+    pluginName: string;
+    /**
+     * The version of the plugin. Example: `2.5.0`.
+     */
+    version: string;
 }
 
 export interface KafkaKafkaUserConfigKafkaConnectSecretProvider {
@@ -12095,113 +12308,111 @@ export interface KafkaTechEmail {
 
 export interface KafkaTopicConfig {
     /**
-     * cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+     * The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
      */
     cleanupPolicy?: string;
     /**
-     * compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+     * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
      */
     compressionType?: string;
     /**
-     * delete.retention.ms value
+     * The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
      */
     deleteRetentionMs?: string;
     /**
-     * file.delete.delay.ms value
+     * The time to wait before deleting a file from the filesystem.
      */
     fileDeleteDelayMs?: string;
     /**
-     * flush.messages value
+     * This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
      */
     flushMessages?: string;
     /**
-     * flush.ms value
+     * This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
      */
     flushMs?: string;
     /**
-     * index.interval.bytes value
+     * This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
      */
     indexIntervalBytes?: string;
     /**
-     * local.retention.bytes value
+     * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
      */
     localRetentionBytes?: string;
     /**
-     * local.retention.ms value
+     * This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
      */
     localRetentionMs?: string;
     /**
-     * max.compaction.lag.ms value
+     * The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
      */
     maxCompactionLagMs?: string;
     /**
-     * max.message.bytes value
+     * The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
      */
     maxMessageBytes?: string;
     /**
-     * message.downconversion.enable value
+     * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
      */
     messageDownconversionEnable?: boolean;
     /**
-     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
      */
     messageFormatVersion?: string;
     /**
-     * message.timestamp.difference.max.ms value
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      */
     messageTimestampDifferenceMaxMs?: string;
     /**
-     * message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+     * Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
      */
     messageTimestampType?: string;
     /**
-     * min.cleanable.dirty.ratio value
+     * This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
      */
     minCleanableDirtyRatio?: number;
     /**
-     * min.compaction.lag.ms value
+     * The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
      */
     minCompactionLagMs?: string;
     /**
-     * min.insync.replicas value
+     * When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
      */
     minInsyncReplicas?: string;
     /**
-     * preallocate value
+     * True if we should preallocate the file on disk when creating a new log segment.
      */
     preallocate?: boolean;
     /**
-     * remote.storage.enable value
+     * Indicates whether tiered storage should be enabled.
      */
     remoteStorageEnable?: boolean;
     /**
-     * retention.bytes value
+     * This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
      */
     retentionBytes?: string;
     /**
-     * retention.ms value
+     * This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
      */
     retentionMs?: string;
     /**
-     * segment.bytes value
+     * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      */
     segmentBytes?: string;
     /**
-     * segment.index.bytes value
+     * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      */
     segmentIndexBytes?: string;
     /**
-     * segment.jitter.ms value
+     * The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
      */
     segmentJitterMs?: string;
     /**
-     * segment.ms value
+     * This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
      */
     segmentMs?: string;
     /**
-     * unclean.leader.election.enable value; This field is deprecated and no longer functional.
-     *
-     * @deprecated This field is deprecated and no longer functional.
+     * Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
      */
     uncleanLeaderElectionEnable?: boolean;
 }
@@ -13175,17 +13386,17 @@ export interface OpenSearchComponent {
 
 export interface OpenSearchOpensearch {
     /**
-     * URI for Kibana dashboard frontend
+     * URI for Kibana dashboard frontend.
      *
      * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     kibanaUri: string;
     /**
-     * URI for OpenSearch dashboard frontend
+     * URI for OpenSearch dashboard frontend.
      */
     opensearchDashboardsUri: string;
     /**
-     * OpenSearch password
+     * OpenSearch password.
      */
     password: string;
     /**
@@ -13193,7 +13404,7 @@ export interface OpenSearchOpensearch {
      */
     uris: string[];
     /**
-     * OpenSearch username
+     * OpenSearch username.
      */
     username: string;
 }
@@ -13570,6 +13781,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Enable remote-backed storage.
      */
     enableRemoteBackedStorage?: boolean;
+    /**
+     * Enable searchable snapshots.
+     */
+    enableSearchableSnapshots?: boolean;
     /**
      * Enable/Disable security audit.
      */
@@ -14378,6 +14593,25 @@ export interface OrganizationProjectTag {
     value: string;
 }
 
+export interface OrganizationProjectTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface OrganizationTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -14614,8 +14848,6 @@ export interface PgPgUserConfig {
     pgVersion?: string;
     /**
      * System-wide settings for the pgaudit extension
-     *
-     * @deprecated This property is deprecated.
      */
     pgaudit?: outputs.PgPgUserConfigPgaudit;
     /**
@@ -14969,86 +15201,58 @@ export interface PgPgUserConfigPgQualstats {
 export interface PgPgUserConfigPgaudit {
     /**
      * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     featureEnabled?: boolean;
     /**
      * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
-     *
-     * @deprecated This property is deprecated.
      */
     logCatalog?: boolean;
     /**
      * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logClient?: boolean;
     /**
-     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
-     *
-     * @deprecated This property is deprecated.
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
      */
     logLevel?: string;
     /**
      * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-     *
-     * @deprecated This property is deprecated.
      */
     logMaxStringLength?: number;
     /**
      * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-     *
-     * @deprecated This property is deprecated.
      */
     logNestedStatements?: boolean;
     /**
      * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logParameter?: boolean;
     /**
      * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
-     *
-     * @deprecated This property is deprecated.
      */
     logParameterMaxSize?: number;
     /**
      * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logRelation?: boolean;
     /**
      * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logRows?: boolean;
     /**
      * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-     *
-     * @deprecated This property is deprecated.
      */
     logStatement?: boolean;
     /**
      * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-     *
-     * @deprecated This property is deprecated.
      */
     logStatementOnce?: boolean;
     /**
      * Specifies which classes of statements will be logged by session audit logging.
-     *
-     * @deprecated This property is deprecated.
      */
     logs?: string[];
     /**
      * Specifies the master role to use for object audit logging.
-     *
-     * @deprecated This property is deprecated.
      */
     role?: string;
 }

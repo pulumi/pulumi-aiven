@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The OpenSearch User resource allows the creation and management of Aiven OpenSearch Users.
+ * Creates and manages an Aiven for OpenSearch® service user.
  * 
  * ## Example Usage
  * 
@@ -42,11 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new OpensearchUser("foo", OpensearchUserArgs.builder()
- *             .serviceName(bar.serviceName())
- *             .project("my-project")
- *             .username("user-1")
- *             .password("Test$1234")
+ *         var exampleOpensearchUser = new OpensearchUser("exampleOpensearchUser", OpensearchUserArgs.builder()
+ *             .serviceName(exampleOpensearch.serviceName())
+ *             .project(exampleProject.project())
+ *             .username("example-opensearch-user")
+ *             .password(opensearchUserPassword)
  *             .build());
  * 
  *     }
@@ -58,21 +58,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/opensearchUser:OpensearchUser foo PROJECT/SERVICE_NAME/USERNAME
+ * $ pulumi import aiven:index/opensearchUser:OpensearchUser example_opensearch_user PROJECT/SERVICE_NAME/USERNAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/opensearchUser:OpensearchUser")
 public class OpensearchUser extends com.pulumi.resources.CustomResource {
     /**
-     * The password of the OpenSearch User.
+     * The OpenSearch service user&#39;s password.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the OpenSearch User.
+     * @return The OpenSearch service user&#39;s password.
      * 
      */
     public Output<String> password() {
@@ -107,28 +107,28 @@ public class OpensearchUser extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

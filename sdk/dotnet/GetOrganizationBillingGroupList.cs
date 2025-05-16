@@ -12,19 +12,28 @@ namespace Pulumi.Aiven
     public static class GetOrganizationBillingGroupList
     {
         /// <summary>
-        /// Lists billing groups for an organization.
+        /// Lists billing groups for an organization. 
+        /// 
+        /// **This resource is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
         /// </summary>
         public static Task<GetOrganizationBillingGroupListResult> InvokeAsync(GetOrganizationBillingGroupListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationBillingGroupListResult>("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", args ?? new GetOrganizationBillingGroupListArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Lists billing groups for an organization.
+        /// Lists billing groups for an organization. 
+        /// 
+        /// **This resource is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
         /// </summary>
         public static Output<GetOrganizationBillingGroupListResult> Invoke(GetOrganizationBillingGroupListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationBillingGroupListResult>("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", args ?? new GetOrganizationBillingGroupListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Lists billing groups for an organization.
+        /// Lists billing groups for an organization. 
+        /// 
+        /// **This resource is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
         /// </summary>
         public static Output<GetOrganizationBillingGroupListResult> Invoke(GetOrganizationBillingGroupListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationBillingGroupListResult>("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", args ?? new GetOrganizationBillingGroupListInvokeArgs(), options.WithDefaults());
@@ -33,11 +42,26 @@ namespace Pulumi.Aiven
 
     public sealed class GetOrganizationBillingGroupListArgs : global::Pulumi.InvokeArgs
     {
+        [Input("billingGroups")]
+        private List<Inputs.GetOrganizationBillingGroupListBillingGroupArgs>? _billingGroups;
+
         /// <summary>
-        /// ID of the organization.
+        /// A list of all billing groups belonging to the organization.
+        /// </summary>
+        public List<Inputs.GetOrganizationBillingGroupListBillingGroupArgs> BillingGroups
+        {
+            get => _billingGroups ?? (_billingGroups = new List<Inputs.GetOrganizationBillingGroupListBillingGroupArgs>());
+            set => _billingGroups = value;
+        }
+
+        /// <summary>
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetOrganizationBillingGroupListTimeoutsArgs? Timeouts { get; set; }
 
         public GetOrganizationBillingGroupListArgs()
         {
@@ -47,11 +71,26 @@ namespace Pulumi.Aiven
 
     public sealed class GetOrganizationBillingGroupListInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("billingGroups")]
+        private InputList<Inputs.GetOrganizationBillingGroupListBillingGroupInputArgs>? _billingGroups;
+
         /// <summary>
-        /// ID of the organization.
+        /// A list of all billing groups belonging to the organization.
+        /// </summary>
+        public InputList<Inputs.GetOrganizationBillingGroupListBillingGroupInputArgs> BillingGroups
+        {
+            get => _billingGroups ?? (_billingGroups = new InputList<Inputs.GetOrganizationBillingGroupListBillingGroupInputArgs>());
+            set => _billingGroups = value;
+        }
+
+        /// <summary>
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetOrganizationBillingGroupListTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetOrganizationBillingGroupListInvokeArgs()
         {
@@ -64,17 +103,18 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationBillingGroupListResult
     {
         /// <summary>
-        /// List of billing groups.
+        /// A list of all billing groups belonging to the organization.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOrganizationBillingGroupListBillingGroupResult> BillingGroups;
         /// <summary>
-        /// Resource ID, a composite of organization_id.
+        /// Resource ID, equal to `organization_id`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// ID of the organization.
+        /// ID of an organization.
         /// </summary>
         public readonly string OrganizationId;
+        public readonly Outputs.GetOrganizationBillingGroupListTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetOrganizationBillingGroupListResult(
@@ -82,11 +122,14 @@ namespace Pulumi.Aiven
 
             string id,
 
-            string organizationId)
+            string organizationId,
+
+            Outputs.GetOrganizationBillingGroupListTimeoutsResult? timeouts)
         {
             BillingGroups = billingGroups;
             Id = id;
             OrganizationId = organizationId;
+            Timeouts = timeouts;
         }
     }
 }

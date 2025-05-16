@@ -24,7 +24,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
+ * Creates and manages an [Aiven for OpenSearch®](https://aiven.io/docs/products/opensearch) service.
  * 
  * ## Example Usage
  * 
@@ -54,15 +54,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var os1 = new OpenSearch("os1", OpenSearchArgs.builder()
- *             .project(pr1.project())
+ *         var exampleOpensearch = new OpenSearch("exampleOpensearch", OpenSearchArgs.builder()
+ *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
- *             .serviceName("my-os1")
+ *             .serviceName("example-opensearch")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .opensearchUserConfig(OpenSearchOpensearchUserConfigArgs.builder()
- *                 .opensearchVersion("1")
  *                 .opensearchDashboards(OpenSearchOpensearchUserConfigOpensearchDashboardsArgs.builder()
  *                     .enabled(true)
  *                     .opensearchRequestTimeout(30000)
@@ -83,7 +82,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
+ * $ pulumi import aiven:index/openSearch:OpenSearch example_opensearch PROJECT/SERVICE_NAME
  * ```
  * 
  */
@@ -252,14 +251,14 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.opensearchUserConfig);
     }
     /**
-     * OpenSearch server provided values
+     * Values provided by the OpenSearch server.
      * 
      */
     @Export(name="opensearches", refs={List.class,OpenSearchOpensearch.class}, tree="[0,1]")
     private Output<List<OpenSearchOpensearch>> opensearches;
 
     /**
-     * @return OpenSearch server provided values
+     * @return Values provided by the OpenSearch server.
      * 
      */
     public Output<List<OpenSearchOpensearch>> opensearches() {
