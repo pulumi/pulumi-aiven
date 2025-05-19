@@ -93,6 +93,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GcpPrivatelinkConnectionApproval{}
 	case "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection":
 		r = &GcpVpcPeeringConnection{}
+	case "aiven:index/governanceAccess:GovernanceAccess":
+		r = &GovernanceAccess{}
 	case "aiven:index/grafana:Grafana":
 		r = &Grafana{}
 	case "aiven:index/influxDb:InfluxDb":
@@ -414,6 +416,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/gcpVpcPeeringConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/governanceAccess",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

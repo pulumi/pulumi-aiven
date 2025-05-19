@@ -16,7 +16,7 @@ namespace Pulumi.Aiven
         /// 
         /// &gt; **This resource is deprecated**
         /// Use `aiven.OrganizationPermission` instead and
-        /// migrate existing `aiven.ProjectUser` resources 
+        /// migrate existing `aiven.ProjectUser` resources
         /// to the new resource. **Do not use the `aiven.ProjectUser` and `aiven.OrganizationPermission` resources together**.
         /// 
         /// ## Example Usage
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven
         /// 
         /// &gt; **This resource is deprecated**
         /// Use `aiven.OrganizationPermission` instead and
-        /// migrate existing `aiven.ProjectUser` resources 
+        /// migrate existing `aiven.ProjectUser` resources
         /// to the new resource. **Do not use the `aiven.ProjectUser` and `aiven.OrganizationPermission` resources together**.
         /// 
         /// ## Example Usage
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         /// 
         /// &gt; **This resource is deprecated**
         /// Use `aiven.OrganizationPermission` instead and
-        /// migrate existing `aiven.ProjectUser` resources 
+        /// migrate existing `aiven.ProjectUser` resources
         /// to the new resource. **Do not use the `aiven.ProjectUser` and `aiven.OrganizationPermission` resources together**.
         /// 
         /// ## Example Usage

@@ -122,14 +122,14 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OpenSearch server provided values
+     * Values provided by the OpenSearch server.
      * 
      */
     @Import(name="opensearches")
     private @Nullable Output<List<OpenSearchOpensearchArgs>> opensearches;
 
     /**
-     * @return OpenSearch server provided values
+     * @return Values provided by the OpenSearch server.
      * 
      */
     public Optional<Output<List<OpenSearchOpensearchArgs>>> opensearches() {
@@ -445,7 +445,7 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearches OpenSearch server provided values
+         * @param opensearches Values provided by the OpenSearch server.
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearches OpenSearch server provided values
+         * @param opensearches Values provided by the OpenSearch server.
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearches OpenSearch server provided values
+         * @param opensearches Values provided by the OpenSearch server.
          * 
          * @return builder
          * 

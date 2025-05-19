@@ -117,11 +117,7 @@ public final class PgPgUserConfig {
     /**
      * @return System-wide settings for the pgaudit extension
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     private @Nullable PgPgUserConfigPgaudit pgaudit;
     /**
      * @return PGBouncer connection pooling settings
@@ -323,11 +319,7 @@ public final class PgPgUserConfig {
     /**
      * @return System-wide settings for the pgaudit extension
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<PgPgUserConfigPgaudit> pgaudit() {
         return Optional.ofNullable(this.pgaudit);
     }

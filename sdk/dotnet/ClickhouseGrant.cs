@@ -14,6 +14,7 @@ namespace Pulumi.Aiven
     /// 
     /// **Note:**
     /// * Users cannot have the same name as roles.
+    /// * Global privileges cannot be granted on the database level. To grant global privileges, use `database="*"`.
     /// * To grant a privilege on all tables of a database, omit the table and only keep the database. Don't use `table="*"`.
     /// * Changes first revoke all grants and then reissue the remaining grants for convergence.
     /// 
@@ -52,6 +53,16 @@ namespace Pulumi.Aiven
     ///             {
     ///                 Privilege = "SELECT",
     ///                 Database = exampleDb.Name,
+    ///             },
+    ///             new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
+    ///             {
+    ///                 Privilege = "CREATE TEMPORARY TABLE",
+    ///                 Database = "*",
+    ///             },
+    ///             new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
+    ///             {
+    ///                 Privilege = "SYSTEM DROP CACHE",
+    ///                 Database = "*",
     ///             },
     ///         },
     ///     });

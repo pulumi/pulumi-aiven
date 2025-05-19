@@ -78,6 +78,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? PgVersion;
         /// <summary>
+        /// System-wide settings for the pgaudit extension
+        /// </summary>
+        public readonly Outputs.GetAlloydbomniAlloydbomniUserConfigPgauditResult? Pgaudit;
+        /// <summary>
         /// PGBouncer connection pooling settings
         /// </summary>
         public readonly Outputs.GetAlloydbomniAlloydbomniUserConfigPgbouncerResult? Pgbouncer;
@@ -168,6 +172,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? pgVersion,
 
+            Outputs.GetAlloydbomniAlloydbomniUserConfigPgauditResult? pgaudit,
+
             Outputs.GetAlloydbomniAlloydbomniUserConfigPgbouncerResult? pgbouncer,
 
             Outputs.GetAlloydbomniAlloydbomniUserConfigPglookoutResult? pglookout,
@@ -212,6 +218,7 @@ namespace Pulumi.Aiven.Outputs
             PgReadReplica = pgReadReplica;
             PgServiceToForkFrom = pgServiceToForkFrom;
             PgVersion = pgVersion;
+            Pgaudit = pgaudit;
             Pgbouncer = pgbouncer;
             Pglookout = pglookout;
             PrivateAccess = privateAccess;

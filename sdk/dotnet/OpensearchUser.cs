@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The OpenSearch User resource allows the creation and management of Aiven OpenSearch Users.
+    /// Creates and manages an Aiven for OpenSearch® service user.
     /// 
     /// ## Example Usage
     /// 
@@ -22,12 +22,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Aiven.OpensearchUser("foo", new()
+    ///     var exampleOpensearchUser = new Aiven.OpensearchUser("example_opensearch_user", new()
     ///     {
-    ///         ServiceName = bar.ServiceName,
-    ///         Project = "my-project",
-    ///         Username = "user-1",
-    ///         Password = "Test$1234",
+    ///         ServiceName = exampleOpensearch.ServiceName,
+    ///         Project = exampleProject.Project,
+    ///         Username = "example-opensearch-user",
+    ///         Password = opensearchUserPassword,
     ///     });
     /// 
     /// });
@@ -36,14 +36,14 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/opensearchUser:OpensearchUser foo PROJECT/SERVICE_NAME/USERNAME
+    /// $ pulumi import aiven:index/opensearchUser:OpensearchUser example_opensearch_user PROJECT/SERVICE_NAME/USERNAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/opensearchUser:OpensearchUser")]
     public partial class OpensearchUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The password of the OpenSearch User.
+        /// The OpenSearch service user's password.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -61,13 +61,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// User account type, such as primary or regular account.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the OpenSearch User.
+        /// The OpenSearch service user's password.
         /// </summary>
         public Input<string>? Password
         {
@@ -151,7 +151,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the OpenSearch User.
+        /// The OpenSearch service user's password.
         /// </summary>
         public Input<string>? Password
         {
@@ -193,13 +193,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// User account type, such as primary or regular account.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

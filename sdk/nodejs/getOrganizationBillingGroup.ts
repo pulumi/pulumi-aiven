@@ -2,16 +2,22 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Gets information about a billing group.
+ *
+ * **This resource is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getOrganizationBillingGroup(args: GetOrganizationBillingGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationBillingGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", {
         "billingGroupId": args.billingGroupId,
         "organizationId": args.organizationId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -20,13 +26,14 @@ export function getOrganizationBillingGroup(args: GetOrganizationBillingGroupArg
  */
 export interface GetOrganizationBillingGroupArgs {
     /**
-     * ID of the billing group.
+     * Billing group ID.
      */
     billingGroupId: string;
     /**
-     * ID of the organization.
+     * ID of an organization.
      */
     organizationId: string;
+    timeouts?: inputs.GetOrganizationBillingGroupTimeouts;
 }
 
 /**
@@ -34,7 +41,7 @@ export interface GetOrganizationBillingGroupArgs {
  */
 export interface GetOrganizationBillingGroupResult {
     /**
-     * ID of the billing address.
+     * Billing address ID.
      */
     readonly billingAddressId: string;
     /**
@@ -42,41 +49,42 @@ export interface GetOrganizationBillingGroupResult {
      */
     readonly billingContactEmails: string[];
     /**
-     * Billing currency.
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
     readonly billingCurrency: string;
     /**
-     * List of billing emails.
+     * List of billing contact emails.
      */
     readonly billingEmails: string[];
     /**
-     * ID of the billing group.
+     * Billing group ID.
      */
     readonly billingGroupId: string;
     /**
-     * Name of the billing group.
+     * Billing Group Name.
      */
     readonly billingGroupName: string;
     /**
-     * Custom invoice text.
+     * Extra billing text.
      */
     readonly customInvoiceText: string;
     /**
-     * Resource ID, a composite of organization*id and billing*group_id.
+     * Resource ID, a composite of `organizationId` and `billingGroupId` IDs.
      */
     readonly id: string;
     /**
-     * ID of the organization.
+     * ID of an organization.
      */
     readonly organizationId: string;
     /**
-     * ID of the payment method.
+     * Payment method ID.
      */
     readonly paymentMethodId: string;
     /**
-     * ID of the shipping address.
+     * Shipping address ID.
      */
     readonly shippingAddressId: string;
+    readonly timeouts?: outputs.GetOrganizationBillingGroupTimeouts;
     /**
      * VAT ID.
      */
@@ -84,12 +92,16 @@ export interface GetOrganizationBillingGroupResult {
 }
 /**
  * Gets information about a billing group.
+ *
+ * **This resource is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getOrganizationBillingGroupOutput(args: GetOrganizationBillingGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationBillingGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", {
         "billingGroupId": args.billingGroupId,
         "organizationId": args.organizationId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -98,11 +110,12 @@ export function getOrganizationBillingGroupOutput(args: GetOrganizationBillingGr
  */
 export interface GetOrganizationBillingGroupOutputArgs {
     /**
-     * ID of the billing group.
+     * Billing group ID.
      */
     billingGroupId: pulumi.Input<string>;
     /**
-     * ID of the organization.
+     * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationBillingGroupTimeoutsArgs>;
 }

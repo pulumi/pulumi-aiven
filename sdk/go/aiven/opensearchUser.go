@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The OpenSearch User resource allows the creation and management of Aiven OpenSearch Users.
+// Creates and manages an Aiven for OpenSearch® service user.
 //
 // ## Example Usage
 //
@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOpensearchUser(ctx, "foo", &aiven.OpensearchUserArgs{
-//				ServiceName: pulumi.Any(bar.ServiceName),
-//				Project:     pulumi.String("my-project"),
-//				Username:    pulumi.String("user-1"),
-//				Password:    pulumi.String("Test$1234"),
+//			_, err := aiven.NewOpensearchUser(ctx, "example_opensearch_user", &aiven.OpensearchUserArgs{
+//				ServiceName: pulumi.Any(exampleOpensearch.ServiceName),
+//				Project:     pulumi.Any(exampleProject.Project),
+//				Username:    pulumi.String("example-opensearch-user"),
+//				Password:    pulumi.Any(opensearchUserPassword),
 //			})
 //			if err != nil {
 //				return err
@@ -46,20 +46,20 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/opensearchUser:OpensearchUser foo PROJECT/SERVICE_NAME/USERNAME
+// $ pulumi import aiven:index/opensearchUser:OpensearchUser example_opensearch_user PROJECT/SERVICE_NAME/USERNAME
 // ```
 type OpensearchUser struct {
 	pulumi.CustomResourceState
 
-	// The password of the OpenSearch User.
+	// The OpenSearch service user's password.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -109,28 +109,28 @@ func GetOpensearchUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OpensearchUser resources.
 type opensearchUserState struct {
-	// The password of the OpenSearch User.
+	// The OpenSearch service user's password.
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type *string `pulumi:"type"`
-	// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type OpensearchUserState struct {
-	// The password of the OpenSearch User.
+	// The OpenSearch service user's password.
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type pulumi.StringPtrInput
-	// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -139,25 +139,25 @@ func (OpensearchUserState) ElementType() reflect.Type {
 }
 
 type opensearchUserArgs struct {
-	// The password of the OpenSearch User.
+	// The OpenSearch service user's password.
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a OpensearchUser resource.
 type OpensearchUserArgs struct {
-	// The password of the OpenSearch User.
+	// The OpenSearch service user's password.
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -248,7 +248,7 @@ func (o OpensearchUserOutput) ToOpensearchUserOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The password of the OpenSearch User.
+// The OpenSearch service user's password.
 func (o OpensearchUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -263,12 +263,12 @@ func (o OpensearchUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Type of the user account. Tells whether the user is the primary account or a regular account.
+// User account type, such as primary or regular account.
 func (o OpensearchUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o OpensearchUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

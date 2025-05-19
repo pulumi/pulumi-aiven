@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOrganizationBillingGroupListBillingGroupResult
     {
         /// <summary>
-        /// ID of the billing address.
+        /// Billing address ID.
         /// </summary>
         public readonly string BillingAddressId;
         /// <summary>
@@ -22,39 +22,35 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> BillingContactEmails;
         /// <summary>
-        /// Billing currency.
+        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         /// </summary>
         public readonly string BillingCurrency;
         /// <summary>
-        /// List of billing emails.
+        /// List of billing contact emails.
         /// </summary>
         public readonly ImmutableArray<string> BillingEmails;
         /// <summary>
-        /// ID of the billing group.
+        /// Billing group ID.
         /// </summary>
         public readonly string BillingGroupId;
         /// <summary>
-        /// Name of the billing group.
+        /// Billing Group Name.
         /// </summary>
         public readonly string BillingGroupName;
         /// <summary>
-        /// Custom invoice text.
+        /// Extra billing text.
         /// </summary>
         public readonly string CustomInvoiceText;
         /// <summary>
-        /// Resource ID, a composite of organization*id and billing*group_id.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// ID of the organization.
+        /// Organization ID.
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
-        /// ID of the payment method.
+        /// Payment method ID.
         /// </summary>
         public readonly string PaymentMethodId;
         /// <summary>
-        /// ID of the shipping address.
+        /// Shipping address ID.
         /// </summary>
         public readonly string ShippingAddressId;
         /// <summary>
@@ -78,8 +74,6 @@ namespace Pulumi.Aiven.Outputs
 
             string customInvoiceText,
 
-            string id,
-
             string organizationId,
 
             string paymentMethodId,
@@ -95,7 +89,6 @@ namespace Pulumi.Aiven.Outputs
             BillingGroupId = billingGroupId;
             BillingGroupName = billingGroupName;
             CustomInvoiceText = customInvoiceText;
-            Id = id;
             OrganizationId = organizationId;
             PaymentMethodId = paymentMethodId;
             ShippingAddressId = shippingAddressId;

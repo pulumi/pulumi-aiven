@@ -124,6 +124,7 @@ from .get_thanos import *
 from .get_transit_gateway_vpc_attachment import *
 from .get_valkey import *
 from .get_valkey_user import *
+from .governance_access import *
 from .grafana import *
 from .influx_db import *
 from .influxdb_database import *
@@ -480,6 +481,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection": "GcpVpcPeeringConnection"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/governanceAccess",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/governanceAccess:GovernanceAccess": "GovernanceAccess"
   }
  },
  {

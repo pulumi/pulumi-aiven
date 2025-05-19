@@ -17,14 +17,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     public static final OrganizationState Empty = new OrganizationState();
 
     /**
-     * Timestamp of the creation of the organization.
+     * Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Timestamp of the creation of the organization.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -32,14 +32,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the organization.
+     * Name of the organization. Maximum length: `128`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the organization.
+     * @return Name of the organization. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,16 +47,24 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tenant ID of the organization.
+     * Tenant identifier.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Tenant ID of the organization.
+     * @return Tenant identifier.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     public Optional<Output<String>> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
@@ -69,14 +77,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timestamp of the last update of the organization.
+     * Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Timestamp of the last update of the organization.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -112,7 +120,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Timestamp of the creation of the organization.
+         * @param createTime Timestamp in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 
@@ -123,7 +131,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Timestamp of the creation of the organization.
+         * @param createTime Timestamp in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 
@@ -133,7 +141,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the organization.
+         * @param name Name of the organization. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -144,7 +152,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the organization.
+         * @param name Name of the organization. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -154,22 +162,30 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId Tenant ID of the organization.
+         * @param tenantId Tenant identifier.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. */
         public Builder tenantId(@Nullable Output<String> tenantId) {
             $.tenantId = tenantId;
             return this;
         }
 
         /**
-         * @param tenantId Tenant ID of the organization.
+         * @param tenantId Tenant identifier.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in the next major release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. */
         public Builder tenantId(String tenantId) {
             return tenantId(Output.of(tenantId));
         }
@@ -184,7 +200,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Timestamp of the last update of the organization.
+         * @param updateTime Timestamp in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 
@@ -195,7 +211,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Timestamp of the last update of the organization.
+         * @param updateTime Timestamp in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 

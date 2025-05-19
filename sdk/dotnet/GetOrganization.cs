@@ -99,6 +99,9 @@ namespace Pulumi.Aiven
         [Input("name")]
         public string? Name { get; set; }
 
+        [Input("timeouts")]
+        public Inputs.GetOrganizationTimeoutsArgs? Timeouts { get; set; }
+
         public GetOrganizationArgs()
         {
         }
@@ -119,6 +122,9 @@ namespace Pulumi.Aiven
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.GetOrganizationTimeoutsInputArgs>? Timeouts { get; set; }
+
         public GetOrganizationInvokeArgs()
         {
         }
@@ -130,23 +136,24 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationResult
     {
         /// <summary>
-        /// Timestamp of the creation of the organization.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// ID of the organization.
         /// </summary>
-        public readonly string Id;
+        public readonly string? Id;
         /// <summary>
         /// Name of the organization.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
-        /// Tenant ID of the organization.
+        /// Tenant identifier.
         /// </summary>
         public readonly string TenantId;
+        public readonly Outputs.GetOrganizationTimeoutsResult? Timeouts;
         /// <summary>
-        /// Timestamp of the last update of the organization.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         public readonly string UpdateTime;
 
@@ -154,11 +161,13 @@ namespace Pulumi.Aiven
         private GetOrganizationResult(
             string createTime,
 
-            string id,
+            string? id,
 
-            string name,
+            string? name,
 
             string tenantId,
+
+            Outputs.GetOrganizationTimeoutsResult? timeouts,
 
             string updateTime)
         {
@@ -166,6 +175,7 @@ namespace Pulumi.Aiven
             Id = id;
             Name = name;
             TenantId = tenantId;
+            Timeouts = timeouts;
             UpdateTime = updateTime;
         }
     }

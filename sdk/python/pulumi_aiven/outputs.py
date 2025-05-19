@@ -23,6 +23,7 @@ __all__ = [
     'AlloydbomniAlloydbomniUserConfig',
     'AlloydbomniAlloydbomniUserConfigIpFilterObject',
     'AlloydbomniAlloydbomniUserConfigPg',
+    'AlloydbomniAlloydbomniUserConfigPgaudit',
     'AlloydbomniAlloydbomniUserConfigPgbouncer',
     'AlloydbomniAlloydbomniUserConfigPglookout',
     'AlloydbomniAlloydbomniUserConfigPrivateAccess',
@@ -80,6 +81,8 @@ __all__ = [
     'FlinkServiceIntegration',
     'FlinkTag',
     'FlinkTechEmail',
+    'GovernanceAccessAccessData',
+    'GovernanceAccessAccessDataAcl',
     'GrafanaComponent',
     'GrafanaGrafana',
     'GrafanaGrafanaUserConfig',
@@ -132,6 +135,7 @@ __all__ = [
     'KafkaKafkaUserConfigKafka',
     'KafkaKafkaUserConfigKafkaAuthenticationMethods',
     'KafkaKafkaUserConfigKafkaConnectConfig',
+    'KafkaKafkaUserConfigKafkaConnectPluginVersion',
     'KafkaKafkaUserConfigKafkaConnectSecretProvider',
     'KafkaKafkaUserConfigKafkaConnectSecretProviderAws',
     'KafkaKafkaUserConfigKafkaConnectSecretProviderVault',
@@ -240,6 +244,7 @@ __all__ = [
     'OrganizationGroupProjectTimeouts',
     'OrganizationPermissionPermission',
     'OrganizationProjectTag',
+    'OrganizationProjectTimeouts',
     'OrganizationTimeouts',
     'OrganizationUserGroupMemberTimeouts',
     'PgComponent',
@@ -352,6 +357,7 @@ __all__ = [
     'GetAlloydbomniAlloydbomniUserConfigResult',
     'GetAlloydbomniAlloydbomniUserConfigIpFilterObjectResult',
     'GetAlloydbomniAlloydbomniUserConfigPgResult',
+    'GetAlloydbomniAlloydbomniUserConfigPgauditResult',
     'GetAlloydbomniAlloydbomniUserConfigPgbouncerResult',
     'GetAlloydbomniAlloydbomniUserConfigPglookoutResult',
     'GetAlloydbomniAlloydbomniUserConfigPrivateAccessResult',
@@ -465,6 +471,7 @@ __all__ = [
     'GetKafkaKafkaUserConfigKafkaResult',
     'GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult',
     'GetKafkaKafkaUserConfigKafkaConnectConfigResult',
+    'GetKafkaKafkaUserConfigKafkaConnectPluginVersionResult',
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult',
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderAwsResult',
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultResult',
@@ -568,8 +575,13 @@ __all__ = [
     'GetOpenSearchServiceIntegrationResult',
     'GetOpenSearchTagResult',
     'GetOpenSearchTechEmailResult',
+    'GetOrganizationAddressTimeoutsResult',
     'GetOrganizationBillingGroupListBillingGroupResult',
+    'GetOrganizationBillingGroupListTimeoutsResult',
+    'GetOrganizationBillingGroupTimeoutsResult',
     'GetOrganizationProjectTagResult',
+    'GetOrganizationProjectTimeoutsResult',
+    'GetOrganizationTimeoutsResult',
     'GetOrganizationUserListUserResult',
     'GetOrganizationUserListUserUserInfoResult',
     'GetPgComponentResult',
@@ -1147,6 +1159,7 @@ class AlloydbomniAlloydbomniUserConfig(dict):
                  pg_read_replica: Optional[builtins.bool] = None,
                  pg_service_to_fork_from: Optional[builtins.str] = None,
                  pg_version: Optional[builtins.str] = None,
+                 pgaudit: Optional['outputs.AlloydbomniAlloydbomniUserConfigPgaudit'] = None,
                  pgbouncer: Optional['outputs.AlloydbomniAlloydbomniUserConfigPgbouncer'] = None,
                  pglookout: Optional['outputs.AlloydbomniAlloydbomniUserConfigPglookout'] = None,
                  private_access: Optional['outputs.AlloydbomniAlloydbomniUserConfigPrivateAccess'] = None,
@@ -1178,6 +1191,7 @@ class AlloydbomniAlloydbomniUserConfig(dict):
         :param builtins.bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param builtins.str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         :param builtins.str pg_version: Enum: `15`, and newer. PostgreSQL major version.
+        :param 'AlloydbomniAlloydbomniUserConfigPgauditArgs' pgaudit: System-wide settings for the pgaudit extension
         :param 'AlloydbomniAlloydbomniUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings
         :param 'AlloydbomniAlloydbomniUserConfigPglookoutArgs' pglookout: System-wide settings for pglookout
         :param 'AlloydbomniAlloydbomniUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
@@ -1225,6 +1239,8 @@ class AlloydbomniAlloydbomniUserConfig(dict):
             pulumi.set(__self__, "pg_service_to_fork_from", pg_service_to_fork_from)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
+        if pgaudit is not None:
+            pulumi.set(__self__, "pgaudit", pgaudit)
         if pgbouncer is not None:
             pulumi.set(__self__, "pgbouncer", pgbouncer)
         if pglookout is not None:
@@ -1382,6 +1398,14 @@ class AlloydbomniAlloydbomniUserConfig(dict):
         Enum: `15`, and newer. PostgreSQL major version.
         """
         return pulumi.get(self, "pg_version")
+
+    @property
+    @pulumi.getter
+    def pgaudit(self) -> Optional['outputs.AlloydbomniAlloydbomniUserConfigPgaudit']:
+        """
+        System-wide settings for the pgaudit extension
+        """
+        return pulumi.get(self, "pgaudit")
 
     @property
     @pulumi.getter
@@ -2214,6 +2238,220 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
         WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
         """
         return pulumi.get(self, "wal_writer_delay")
+
+
+@pulumi.output_type
+class AlloydbomniAlloydbomniUserConfigPgaudit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "featureEnabled":
+            suggest = "feature_enabled"
+        elif key == "logCatalog":
+            suggest = "log_catalog"
+        elif key == "logClient":
+            suggest = "log_client"
+        elif key == "logLevel":
+            suggest = "log_level"
+        elif key == "logMaxStringLength":
+            suggest = "log_max_string_length"
+        elif key == "logNestedStatements":
+            suggest = "log_nested_statements"
+        elif key == "logParameter":
+            suggest = "log_parameter"
+        elif key == "logParameterMaxSize":
+            suggest = "log_parameter_max_size"
+        elif key == "logRelation":
+            suggest = "log_relation"
+        elif key == "logRows":
+            suggest = "log_rows"
+        elif key == "logStatement":
+            suggest = "log_statement"
+        elif key == "logStatementOnce":
+            suggest = "log_statement_once"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlloydbomniAlloydbomniUserConfigPgaudit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlloydbomniAlloydbomniUserConfigPgaudit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlloydbomniAlloydbomniUserConfigPgaudit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 feature_enabled: Optional[builtins.bool] = None,
+                 log_catalog: Optional[builtins.bool] = None,
+                 log_client: Optional[builtins.bool] = None,
+                 log_level: Optional[builtins.str] = None,
+                 log_max_string_length: Optional[builtins.int] = None,
+                 log_nested_statements: Optional[builtins.bool] = None,
+                 log_parameter: Optional[builtins.bool] = None,
+                 log_parameter_max_size: Optional[builtins.int] = None,
+                 log_relation: Optional[builtins.bool] = None,
+                 log_rows: Optional[builtins.bool] = None,
+                 log_statement: Optional[builtins.bool] = None,
+                 log_statement_once: Optional[builtins.bool] = None,
+                 logs: Optional[Sequence[builtins.str]] = None,
+                 role: Optional[builtins.str] = None):
+        """
+        :param builtins.bool feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+        :param builtins.bool log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        :param builtins.bool log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+        :param builtins.str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+        :param builtins.int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+        :param builtins.bool log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        :param builtins.bool log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+        :param builtins.int log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+        :param builtins.bool log_relation: Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        :param builtins.bool log_rows: Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        :param builtins.bool log_statement: Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+        :param builtins.bool log_statement_once: Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        :param Sequence[builtins.str] logs: Specifies which classes of statements will be logged by session audit logging.
+        :param builtins.str role: Specifies the master role to use for object audit logging.
+        """
+        if feature_enabled is not None:
+            pulumi.set(__self__, "feature_enabled", feature_enabled)
+        if log_catalog is not None:
+            pulumi.set(__self__, "log_catalog", log_catalog)
+        if log_client is not None:
+            pulumi.set(__self__, "log_client", log_client)
+        if log_level is not None:
+            pulumi.set(__self__, "log_level", log_level)
+        if log_max_string_length is not None:
+            pulumi.set(__self__, "log_max_string_length", log_max_string_length)
+        if log_nested_statements is not None:
+            pulumi.set(__self__, "log_nested_statements", log_nested_statements)
+        if log_parameter is not None:
+            pulumi.set(__self__, "log_parameter", log_parameter)
+        if log_parameter_max_size is not None:
+            pulumi.set(__self__, "log_parameter_max_size", log_parameter_max_size)
+        if log_relation is not None:
+            pulumi.set(__self__, "log_relation", log_relation)
+        if log_rows is not None:
+            pulumi.set(__self__, "log_rows", log_rows)
+        if log_statement is not None:
+            pulumi.set(__self__, "log_statement", log_statement)
+        if log_statement_once is not None:
+            pulumi.set(__self__, "log_statement_once", log_statement_once)
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="featureEnabled")
+    def feature_enabled(self) -> Optional[builtins.bool]:
+        """
+        Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+        """
+        return pulumi.get(self, "feature_enabled")
+
+    @property
+    @pulumi.getter(name="logCatalog")
+    def log_catalog(self) -> Optional[builtins.bool]:
+        """
+        Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        """
+        return pulumi.get(self, "log_catalog")
+
+    @property
+    @pulumi.getter(name="logClient")
+    def log_client(self) -> Optional[builtins.bool]:
+        """
+        Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+        """
+        return pulumi.get(self, "log_client")
+
+    @property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> Optional[builtins.str]:
+        """
+        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+        """
+        return pulumi.get(self, "log_level")
+
+    @property
+    @pulumi.getter(name="logMaxStringLength")
+    def log_max_string_length(self) -> Optional[builtins.int]:
+        """
+        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+        """
+        return pulumi.get(self, "log_max_string_length")
+
+    @property
+    @pulumi.getter(name="logNestedStatements")
+    def log_nested_statements(self) -> Optional[builtins.bool]:
+        """
+        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        """
+        return pulumi.get(self, "log_nested_statements")
+
+    @property
+    @pulumi.getter(name="logParameter")
+    def log_parameter(self) -> Optional[builtins.bool]:
+        """
+        Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+        """
+        return pulumi.get(self, "log_parameter")
+
+    @property
+    @pulumi.getter(name="logParameterMaxSize")
+    def log_parameter_max_size(self) -> Optional[builtins.int]:
+        """
+        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+        """
+        return pulumi.get(self, "log_parameter_max_size")
+
+    @property
+    @pulumi.getter(name="logRelation")
+    def log_relation(self) -> Optional[builtins.bool]:
+        """
+        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        """
+        return pulumi.get(self, "log_relation")
+
+    @property
+    @pulumi.getter(name="logRows")
+    def log_rows(self) -> Optional[builtins.bool]:
+        """
+        Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        """
+        return pulumi.get(self, "log_rows")
+
+    @property
+    @pulumi.getter(name="logStatement")
+    def log_statement(self) -> Optional[builtins.bool]:
+        """
+        Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+        """
+        return pulumi.get(self, "log_statement")
+
+    @property
+    @pulumi.getter(name="logStatementOnce")
+    def log_statement_once(self) -> Optional[builtins.bool]:
+        """
+        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        """
+        return pulumi.get(self, "log_statement_once")
+
+    @property
+    @pulumi.getter
+    def logs(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Specifies which classes of statements will be logged by session audit logging.
+        """
+        return pulumi.get(self, "logs")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[builtins.str]:
+        """
+        Specifies the master role to use for object audit logging.
+        """
+        return pulumi.get(self, "role")
 
 
 @pulumi.output_type
@@ -6171,6 +6409,197 @@ class FlinkTechEmail(dict):
         An email address to contact for technical issues
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GovernanceAccessAccessData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GovernanceAccessAccessData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GovernanceAccessAccessData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GovernanceAccessAccessData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acls: Sequence['outputs.GovernanceAccessAccessDataAcl'],
+                 project: builtins.str,
+                 service_name: builtins.str,
+                 username: Optional[builtins.str] = None):
+        """
+        :param Sequence['GovernanceAccessAccessDataAclArgs'] acls: The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+        :param builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param builtins.str username: The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+        """
+        pulumi.set(__self__, "acls", acls)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def acls(self) -> Sequence['outputs.GovernanceAccessAccessDataAcl']:
+        """
+        The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "acls")
+
+    @property
+    @pulumi.getter
+    def project(self) -> builtins.str:
+        """
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> builtins.str:
+        """
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[builtins.str]:
+        """
+        The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GovernanceAccessAccessDataAcl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "permissionType":
+            suggest = "permission_type"
+        elif key == "resourceName":
+            suggest = "resource_name"
+        elif key == "resourceType":
+            suggest = "resource_type"
+        elif key == "patternType":
+            suggest = "pattern_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GovernanceAccessAccessDataAcl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GovernanceAccessAccessDataAcl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GovernanceAccessAccessDataAcl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 operation: builtins.str,
+                 permission_type: builtins.str,
+                 resource_name: builtins.str,
+                 resource_type: builtins.str,
+                 host: Optional[builtins.str] = None,
+                 id: Optional[builtins.str] = None,
+                 pattern_type: Optional[builtins.str] = None,
+                 principal: Optional[builtins.str] = None):
+        """
+        :param builtins.str operation: The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+        :param builtins.str permission_type: Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+        :param builtins.str resource_name: The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param builtins.str resource_type: The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+        :param builtins.str host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param builtins.str id: The ACL ID.
+        :param builtins.str pattern_type: Pattern used to match specified resources. The possible value is `LITERAL`.
+        :param builtins.str principal: Identities in `user:name` format that the permissions apply to.
+        """
+        pulumi.set(__self__, "operation", operation)
+        pulumi.set(__self__, "permission_type", permission_type)
+        pulumi.set(__self__, "resource_name", resource_name)
+        pulumi.set(__self__, "resource_type", resource_type)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if pattern_type is not None:
+            pulumi.set(__self__, "pattern_type", pattern_type)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> builtins.str:
+        """
+        The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter(name="permissionType")
+    def permission_type(self) -> builtins.str:
+        """
+        Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "permission_type")
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> builtins.str:
+        """
+        The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "resource_name")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> builtins.str:
+        """
+        The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[builtins.str]:
+        """
+        The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[builtins.str]:
+        """
+        The ACL ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="patternType")
+    def pattern_type(self) -> Optional[builtins.str]:
+        """
+        Pattern used to match specified resources. The possible value is `LITERAL`.
+        """
+        return pulumi.get(self, "pattern_type")
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[builtins.str]:
+        """
+        Identities in `user:name` format that the permissions apply to.
+        """
+        return pulumi.get(self, "principal")
 
 
 @pulumi.output_type
@@ -10307,6 +10736,8 @@ class KafkaKafkaUserConfig(dict):
             suggest = "kafka_connect"
         elif key == "kafkaConnectConfig":
             suggest = "kafka_connect_config"
+        elif key == "kafkaConnectPluginVersions":
+            suggest = "kafka_connect_plugin_versions"
         elif key == "kafkaConnectSecretProviders":
             suggest = "kafka_connect_secret_providers"
         elif key == "kafkaRest":
@@ -10363,6 +10794,7 @@ class KafkaKafkaUserConfig(dict):
                  kafka_authentication_methods: Optional['outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods'] = None,
                  kafka_connect: Optional[builtins.bool] = None,
                  kafka_connect_config: Optional['outputs.KafkaKafkaUserConfigKafkaConnectConfig'] = None,
+                 kafka_connect_plugin_versions: Optional[Sequence['outputs.KafkaKafkaUserConfigKafkaConnectPluginVersion']] = None,
                  kafka_connect_secret_providers: Optional[Sequence['outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider']] = None,
                  kafka_rest: Optional[builtins.bool] = None,
                  kafka_rest_authorization: Optional[builtins.bool] = None,
@@ -10391,6 +10823,7 @@ class KafkaKafkaUserConfig(dict):
         :param 'KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs' kafka_authentication_methods: Kafka authentication methods
         :param builtins.bool kafka_connect: Enable Kafka Connect service. Default: `false`.
         :param 'KafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
+        :param Sequence['KafkaKafkaUserConfigKafkaConnectPluginVersionArgs'] kafka_connect_plugin_versions: The plugin selected by the user
         :param builtins.bool kafka_rest: Enable Kafka-REST service. Default: `false`.
         :param builtins.bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'KafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
@@ -10429,6 +10862,8 @@ class KafkaKafkaUserConfig(dict):
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if kafka_connect_config is not None:
             pulumi.set(__self__, "kafka_connect_config", kafka_connect_config)
+        if kafka_connect_plugin_versions is not None:
+            pulumi.set(__self__, "kafka_connect_plugin_versions", kafka_connect_plugin_versions)
         if kafka_connect_secret_providers is not None:
             pulumi.set(__self__, "kafka_connect_secret_providers", kafka_connect_secret_providers)
         if kafka_rest is not None:
@@ -10551,6 +10986,14 @@ class KafkaKafkaUserConfig(dict):
         Kafka Connect configuration values
         """
         return pulumi.get(self, "kafka_connect_config")
+
+    @property
+    @pulumi.getter(name="kafkaConnectPluginVersions")
+    def kafka_connect_plugin_versions(self) -> Optional[Sequence['outputs.KafkaKafkaUserConfigKafkaConnectPluginVersion']]:
+        """
+        The plugin selected by the user
+        """
+        return pulumi.get(self, "kafka_connect_plugin_versions")
 
     @property
     @pulumi.getter(name="kafkaConnectSecretProviders")
@@ -11668,6 +12111,52 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
         The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
         """
         return pulumi.get(self, "session_timeout_ms")
+
+
+@pulumi.output_type
+class KafkaKafkaUserConfigKafkaConnectPluginVersion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pluginName":
+            suggest = "plugin_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigKafkaConnectPluginVersion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigKafkaConnectPluginVersion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigKafkaConnectPluginVersion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 plugin_name: builtins.str,
+                 version: builtins.str):
+        """
+        :param builtins.str plugin_name: The name of the plugin. Example: `debezium-connector`.
+        :param builtins.str version: The version of the plugin. Example: `2.5.0`.
+        """
+        pulumi.set(__self__, "plugin_name", plugin_name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="pluginName")
+    def plugin_name(self) -> builtins.str:
+        """
+        The name of the plugin. Example: `debezium-connector`.
+        """
+        return pulumi.get(self, "plugin_name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> builtins.str:
+        """
+        The version of the plugin. Example: `2.5.0`.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -13344,33 +13833,33 @@ class KafkaTopicConfig(dict):
                  segment_ms: Optional[builtins.str] = None,
                  unclean_leader_election_enable: Optional[builtins.bool] = None):
         """
-        :param builtins.str cleanup_policy: cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
-        :param builtins.str compression_type: compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
-        :param builtins.str delete_retention_ms: delete.retention.ms value
-        :param builtins.str file_delete_delay_ms: file.delete.delay.ms value
-        :param builtins.str flush_messages: flush.messages value
-        :param builtins.str flush_ms: flush.ms value
-        :param builtins.str index_interval_bytes: index.interval.bytes value
-        :param builtins.str local_retention_bytes: local.retention.bytes value
-        :param builtins.str local_retention_ms: local.retention.ms value
-        :param builtins.str max_compaction_lag_ms: max.compaction.lag.ms value
-        :param builtins.str max_message_bytes: max.message.bytes value
-        :param builtins.bool message_downconversion_enable: message.downconversion.enable value
-        :param builtins.str message_format_version: message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
-        :param builtins.str message_timestamp_difference_max_ms: message.timestamp.difference.max.ms value
-        :param builtins.str message_timestamp_type: message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
-        :param builtins.float min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
-        :param builtins.str min_compaction_lag_ms: min.compaction.lag.ms value
-        :param builtins.str min_insync_replicas: min.insync.replicas value
-        :param builtins.bool preallocate: preallocate value
-        :param builtins.bool remote_storage_enable: remote.storage.enable value
-        :param builtins.str retention_bytes: retention.bytes value
-        :param builtins.str retention_ms: retention.ms value
-        :param builtins.str segment_bytes: segment.bytes value
-        :param builtins.str segment_index_bytes: segment.index.bytes value
-        :param builtins.str segment_jitter_ms: segment.jitter.ms value
-        :param builtins.str segment_ms: segment.ms value
-        :param builtins.bool unclean_leader_election_enable: unclean.leader.election.enable value; This field is deprecated and no longer functional.
+        :param builtins.str cleanup_policy: The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
+        :param builtins.str compression_type: Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+        :param builtins.str delete_retention_ms: The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
+        :param builtins.str file_delete_delay_ms: The time to wait before deleting a file from the filesystem.
+        :param builtins.str flush_messages: This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+        :param builtins.str flush_ms: This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+        :param builtins.str index_interval_bytes: This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
+        :param builtins.str local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
+        :param builtins.str local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+        :param builtins.str max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+        :param builtins.str max_message_bytes: The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
+        :param builtins.bool message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
+        :param builtins.str message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+        :param builtins.str message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
+        :param builtins.str message_timestamp_type: Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
+        :param builtins.float min_cleanable_dirty_ratio: This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+        :param builtins.str min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+        :param builtins.str min_insync_replicas: When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+        :param builtins.bool preallocate: True if we should preallocate the file on disk when creating a new log segment.
+        :param builtins.bool remote_storage_enable: Indicates whether tiered storage should be enabled.
+        :param builtins.str retention_bytes: This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+        :param builtins.str retention_ms: This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
+        :param builtins.str segment_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+        :param builtins.str segment_index_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+        :param builtins.str segment_jitter_ms: The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+        :param builtins.str segment_ms: This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+        :param builtins.bool unclean_leader_election_enable: Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
         """
         if cleanup_policy is not None:
             pulumi.set(__self__, "cleanup_policy", cleanup_policy)
@@ -13431,7 +13920,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[builtins.str]:
         """
-        cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+        The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
         """
         return pulumi.get(self, "cleanup_policy")
 
@@ -13439,7 +13928,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[builtins.str]:
         """
-        compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+        Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         """
         return pulumi.get(self, "compression_type")
 
@@ -13447,7 +13936,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="deleteRetentionMs")
     def delete_retention_ms(self) -> Optional[builtins.str]:
         """
-        delete.retention.ms value
+        The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
         """
         return pulumi.get(self, "delete_retention_ms")
 
@@ -13455,7 +13944,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="fileDeleteDelayMs")
     def file_delete_delay_ms(self) -> Optional[builtins.str]:
         """
-        file.delete.delay.ms value
+        The time to wait before deleting a file from the filesystem.
         """
         return pulumi.get(self, "file_delete_delay_ms")
 
@@ -13463,7 +13952,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="flushMessages")
     def flush_messages(self) -> Optional[builtins.str]:
         """
-        flush.messages value
+        This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         """
         return pulumi.get(self, "flush_messages")
 
@@ -13471,7 +13960,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="flushMs")
     def flush_ms(self) -> Optional[builtins.str]:
         """
-        flush.ms value
+        This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         """
         return pulumi.get(self, "flush_ms")
 
@@ -13479,7 +13968,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="indexIntervalBytes")
     def index_interval_bytes(self) -> Optional[builtins.str]:
         """
-        index.interval.bytes value
+        This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
         """
         return pulumi.get(self, "index_interval_bytes")
 
@@ -13487,7 +13976,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="localRetentionBytes")
     def local_retention_bytes(self) -> Optional[builtins.str]:
         """
-        local.retention.bytes value
+        This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         """
         return pulumi.get(self, "local_retention_bytes")
 
@@ -13495,7 +13984,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="localRetentionMs")
     def local_retention_ms(self) -> Optional[builtins.str]:
         """
-        local.retention.ms value
+        This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
         """
         return pulumi.get(self, "local_retention_ms")
 
@@ -13503,7 +13992,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="maxCompactionLagMs")
     def max_compaction_lag_ms(self) -> Optional[builtins.str]:
         """
-        max.compaction.lag.ms value
+        The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         """
         return pulumi.get(self, "max_compaction_lag_ms")
 
@@ -13511,7 +14000,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="maxMessageBytes")
     def max_message_bytes(self) -> Optional[builtins.str]:
         """
-        max.message.bytes value
+        The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         """
         return pulumi.get(self, "max_message_bytes")
 
@@ -13519,7 +14008,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="messageDownconversionEnable")
     def message_downconversion_enable(self) -> Optional[builtins.bool]:
         """
-        message.downconversion.enable value
+        This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
         """
         return pulumi.get(self, "message_downconversion_enable")
 
@@ -13527,7 +14016,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> Optional[builtins.str]:
         """
-        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -13535,7 +14024,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="messageTimestampDifferenceMaxMs")
     def message_timestamp_difference_max_ms(self) -> Optional[builtins.str]:
         """
-        message.timestamp.difference.max.ms value
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         """
         return pulumi.get(self, "message_timestamp_difference_max_ms")
 
@@ -13543,7 +14032,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="messageTimestampType")
     def message_timestamp_type(self) -> Optional[builtins.str]:
         """
-        message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+        Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
         """
         return pulumi.get(self, "message_timestamp_type")
 
@@ -13551,7 +14040,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="minCleanableDirtyRatio")
     def min_cleanable_dirty_ratio(self) -> Optional[builtins.float]:
         """
-        min.cleanable.dirty.ratio value
+        This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
         """
         return pulumi.get(self, "min_cleanable_dirty_ratio")
 
@@ -13559,7 +14048,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="minCompactionLagMs")
     def min_compaction_lag_ms(self) -> Optional[builtins.str]:
         """
-        min.compaction.lag.ms value
+        The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
         """
         return pulumi.get(self, "min_compaction_lag_ms")
 
@@ -13567,7 +14056,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="minInsyncReplicas")
     def min_insync_replicas(self) -> Optional[builtins.str]:
         """
-        min.insync.replicas value
+        When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
         """
         return pulumi.get(self, "min_insync_replicas")
 
@@ -13575,7 +14064,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter
     def preallocate(self) -> Optional[builtins.bool]:
         """
-        preallocate value
+        True if we should preallocate the file on disk when creating a new log segment.
         """
         return pulumi.get(self, "preallocate")
 
@@ -13583,7 +14072,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="remoteStorageEnable")
     def remote_storage_enable(self) -> Optional[builtins.bool]:
         """
-        remote.storage.enable value
+        Indicates whether tiered storage should be enabled.
         """
         return pulumi.get(self, "remote_storage_enable")
 
@@ -13591,7 +14080,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="retentionBytes")
     def retention_bytes(self) -> Optional[builtins.str]:
         """
-        retention.bytes value
+        This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
         """
         return pulumi.get(self, "retention_bytes")
 
@@ -13599,7 +14088,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="retentionMs")
     def retention_ms(self) -> Optional[builtins.str]:
         """
-        retention.ms value
+        This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
         """
         return pulumi.get(self, "retention_ms")
 
@@ -13607,7 +14096,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="segmentBytes")
     def segment_bytes(self) -> Optional[builtins.str]:
         """
-        segment.bytes value
+        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         """
         return pulumi.get(self, "segment_bytes")
 
@@ -13615,7 +14104,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="segmentIndexBytes")
     def segment_index_bytes(self) -> Optional[builtins.str]:
         """
-        segment.index.bytes value
+        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         """
         return pulumi.get(self, "segment_index_bytes")
 
@@ -13623,7 +14112,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="segmentJitterMs")
     def segment_jitter_ms(self) -> Optional[builtins.str]:
         """
-        segment.jitter.ms value
+        The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
         """
         return pulumi.get(self, "segment_jitter_ms")
 
@@ -13631,16 +14120,15 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="segmentMs")
     def segment_ms(self) -> Optional[builtins.str]:
         """
-        segment.ms value
+        This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
         """
         return pulumi.get(self, "segment_ms")
 
     @property
     @pulumi.getter(name="uncleanLeaderElectionEnable")
-    @_utilities.deprecated("""This field is deprecated and no longer functional.""")
     def unclean_leader_election_enable(self) -> Optional[builtins.bool]:
         """
-        unclean.leader.election.enable value; This field is deprecated and no longer functional.
+        Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
         """
         return pulumi.get(self, "unclean_leader_election_enable")
 
@@ -17014,11 +17502,11 @@ class OpenSearchOpensearch(dict):
                  uris: Optional[Sequence[builtins.str]] = None,
                  username: Optional[builtins.str] = None):
         """
-        :param builtins.str kibana_uri: URI for Kibana dashboard frontend
-        :param builtins.str opensearch_dashboards_uri: URI for OpenSearch dashboard frontend
-        :param builtins.str password: OpenSearch password
+        :param builtins.str kibana_uri: URI for Kibana dashboard frontend.
+        :param builtins.str opensearch_dashboards_uri: URI for OpenSearch dashboard frontend.
+        :param builtins.str password: OpenSearch password.
         :param Sequence[builtins.str] uris: OpenSearch server URIs.
-        :param builtins.str username: OpenSearch username
+        :param builtins.str username: OpenSearch username.
         """
         if kibana_uri is not None:
             pulumi.set(__self__, "kibana_uri", kibana_uri)
@@ -17036,7 +17524,7 @@ class OpenSearchOpensearch(dict):
     @_utilities.deprecated("""This field was added by mistake and has never worked. It will be removed in future versions.""")
     def kibana_uri(self) -> Optional[builtins.str]:
         """
-        URI for Kibana dashboard frontend
+        URI for Kibana dashboard frontend.
         """
         return pulumi.get(self, "kibana_uri")
 
@@ -17044,7 +17532,7 @@ class OpenSearchOpensearch(dict):
     @pulumi.getter(name="opensearchDashboardsUri")
     def opensearch_dashboards_uri(self) -> Optional[builtins.str]:
         """
-        URI for OpenSearch dashboard frontend
+        URI for OpenSearch dashboard frontend.
         """
         return pulumi.get(self, "opensearch_dashboards_uri")
 
@@ -17052,7 +17540,7 @@ class OpenSearchOpensearch(dict):
     @pulumi.getter
     def password(self) -> Optional[builtins.str]:
         """
-        OpenSearch password
+        OpenSearch password.
         """
         return pulumi.get(self, "password")
 
@@ -17068,7 +17556,7 @@ class OpenSearchOpensearch(dict):
     @pulumi.getter
     def username(self) -> Optional[builtins.str]:
         """
-        OpenSearch username
+        OpenSearch username.
         """
         return pulumi.get(self, "username")
 
@@ -18257,6 +18745,8 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             suggest = "email_sender_username"
         elif key == "enableRemoteBackedStorage":
             suggest = "enable_remote_backed_storage"
+        elif key == "enableSearchableSnapshots":
+            suggest = "enable_searchable_snapshots"
         elif key == "enableSecurityAudit":
             suggest = "enable_security_audit"
         elif key == "httpMaxContentLength":
@@ -18360,6 +18850,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
                  email_sender_password: Optional[builtins.str] = None,
                  email_sender_username: Optional[builtins.str] = None,
                  enable_remote_backed_storage: Optional[builtins.bool] = None,
+                 enable_searchable_snapshots: Optional[builtins.bool] = None,
                  enable_security_audit: Optional[builtins.bool] = None,
                  http_max_content_length: Optional[builtins.int] = None,
                  http_max_header_size: Optional[builtins.int] = None,
@@ -18412,6 +18903,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         :param builtins.str email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         :param builtins.str email_sender_username: Sender username for Opensearch alerts. Example: `jane@example.com`.
         :param builtins.bool enable_remote_backed_storage: Enable remote-backed storage.
+        :param builtins.bool enable_searchable_snapshots: Enable searchable snapshots.
         :param builtins.bool enable_security_audit: Enable/Disable security audit.
         :param builtins.int http_max_content_length: Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
         :param builtins.int http_max_header_size: The max size of allowed headers, in bytes. Example: `8192`.
@@ -18476,6 +18968,8 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             pulumi.set(__self__, "email_sender_username", email_sender_username)
         if enable_remote_backed_storage is not None:
             pulumi.set(__self__, "enable_remote_backed_storage", enable_remote_backed_storage)
+        if enable_searchable_snapshots is not None:
+            pulumi.set(__self__, "enable_searchable_snapshots", enable_searchable_snapshots)
         if enable_security_audit is not None:
             pulumi.set(__self__, "enable_security_audit", enable_security_audit)
         if http_max_content_length is not None:
@@ -18649,6 +19143,14 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         Enable remote-backed storage.
         """
         return pulumi.get(self, "enable_remote_backed_storage")
+
+    @property
+    @pulumi.getter(name="enableSearchableSnapshots")
+    def enable_searchable_snapshots(self) -> Optional[builtins.bool]:
+        """
+        Enable searchable snapshots.
+        """
+        return pulumi.get(self, "enable_searchable_snapshots")
 
     @property
     @pulumi.getter(name="enableSecurityAudit")
@@ -21317,6 +21819,61 @@ class OrganizationProjectTag(dict):
 
 
 @pulumi.output_type
+class OrganizationProjectTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[builtins.str] = None,
+                 delete: Optional[builtins.str] = None,
+                 read: Optional[builtins.str] = None,
+                 update: Optional[builtins.str] = None):
+        """
+        :param builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class OrganizationTimeouts(dict):
     def __init__(__self__, *,
                  create: Optional[builtins.str] = None,
@@ -22188,7 +22745,6 @@ class PgPgUserConfig(dict):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""This property is deprecated.""")
     def pgaudit(self) -> Optional['outputs.PgPgUserConfigPgaudit']:
         """
         System-wide settings for the pgaudit extension
@@ -23351,7 +23907,7 @@ class PgPgUserConfigPgaudit(dict):
         :param builtins.bool feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
         :param builtins.bool log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
         :param builtins.bool log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-        :param builtins.str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+        :param builtins.str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
         :param builtins.int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
         :param builtins.bool log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         :param builtins.bool log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
@@ -23394,7 +23950,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter(name="featureEnabled")
-    @_utilities.deprecated("""This property is deprecated.""")
     def feature_enabled(self) -> Optional[builtins.bool]:
         """
         Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
@@ -23403,7 +23958,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter(name="logCatalog")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_catalog(self) -> Optional[builtins.bool]:
         """
         Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
@@ -23412,7 +23966,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter(name="logClient")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_client(self) -> Optional[builtins.bool]:
         """
         Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
@@ -23421,16 +23974,14 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter(name="logLevel")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_level(self) -> Optional[builtins.str]:
         """
-        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
         """
         return pulumi.get(self, "log_level")
 
     @property
     @pulumi.getter(name="logMaxStringLength")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_max_string_length(self) -> Optional[builtins.int]:
         """
         Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
@@ -23439,7 +23990,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter(name="logNestedStatements")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_nested_statements(self) -> Optional[builtins.bool]:
         """
         This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
@@ -23448,7 +23998,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter(name="logParameter")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_parameter(self) -> Optional[builtins.bool]:
         """
         Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
@@ -23457,7 +24006,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter(name="logParameterMaxSize")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_parameter_max_size(self) -> Optional[builtins.int]:
         """
         Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
@@ -23466,7 +24014,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter(name="logRelation")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_relation(self) -> Optional[builtins.bool]:
         """
         Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
@@ -23475,7 +24022,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter(name="logRows")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_rows(self) -> Optional[builtins.bool]:
         """
         Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
@@ -23484,7 +24030,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter(name="logStatement")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_statement(self) -> Optional[builtins.bool]:
         """
         Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
@@ -23493,7 +24038,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter(name="logStatementOnce")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_statement_once(self) -> Optional[builtins.bool]:
         """
         Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
@@ -23502,7 +24046,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""This property is deprecated.""")
     def logs(self) -> Optional[Sequence[builtins.str]]:
         """
         Specifies which classes of statements will be logged by session audit logging.
@@ -23511,7 +24054,6 @@ class PgPgUserConfigPgaudit(dict):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""This property is deprecated.""")
     def role(self) -> Optional[builtins.str]:
         """
         Specifies the master role to use for object audit logging.
@@ -30801,6 +31343,7 @@ class GetAlloydbomniAlloydbomniUserConfigResult(dict):
                  pg_read_replica: Optional[builtins.bool] = None,
                  pg_service_to_fork_from: Optional[builtins.str] = None,
                  pg_version: Optional[builtins.str] = None,
+                 pgaudit: Optional['outputs.GetAlloydbomniAlloydbomniUserConfigPgauditResult'] = None,
                  pgbouncer: Optional['outputs.GetAlloydbomniAlloydbomniUserConfigPgbouncerResult'] = None,
                  pglookout: Optional['outputs.GetAlloydbomniAlloydbomniUserConfigPglookoutResult'] = None,
                  private_access: Optional['outputs.GetAlloydbomniAlloydbomniUserConfigPrivateAccessResult'] = None,
@@ -30832,6 +31375,7 @@ class GetAlloydbomniAlloydbomniUserConfigResult(dict):
         :param builtins.bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param builtins.str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         :param builtins.str pg_version: Enum: `15`, and newer. PostgreSQL major version.
+        :param 'GetAlloydbomniAlloydbomniUserConfigPgauditArgs' pgaudit: System-wide settings for the pgaudit extension
         :param 'GetAlloydbomniAlloydbomniUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings
         :param 'GetAlloydbomniAlloydbomniUserConfigPglookoutArgs' pglookout: System-wide settings for pglookout
         :param 'GetAlloydbomniAlloydbomniUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
@@ -30879,6 +31423,8 @@ class GetAlloydbomniAlloydbomniUserConfigResult(dict):
             pulumi.set(__self__, "pg_service_to_fork_from", pg_service_to_fork_from)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
+        if pgaudit is not None:
+            pulumi.set(__self__, "pgaudit", pgaudit)
         if pgbouncer is not None:
             pulumi.set(__self__, "pgbouncer", pgbouncer)
         if pglookout is not None:
@@ -31036,6 +31582,14 @@ class GetAlloydbomniAlloydbomniUserConfigResult(dict):
         Enum: `15`, and newer. PostgreSQL major version.
         """
         return pulumi.get(self, "pg_version")
+
+    @property
+    @pulumi.getter
+    def pgaudit(self) -> Optional['outputs.GetAlloydbomniAlloydbomniUserConfigPgauditResult']:
+        """
+        System-wide settings for the pgaudit extension
+        """
+        return pulumi.get(self, "pgaudit")
 
     @property
     @pulumi.getter
@@ -31761,6 +32315,181 @@ class GetAlloydbomniAlloydbomniUserConfigPgResult(dict):
         WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
         """
         return pulumi.get(self, "wal_writer_delay")
+
+
+@pulumi.output_type
+class GetAlloydbomniAlloydbomniUserConfigPgauditResult(dict):
+    def __init__(__self__, *,
+                 feature_enabled: Optional[builtins.bool] = None,
+                 log_catalog: Optional[builtins.bool] = None,
+                 log_client: Optional[builtins.bool] = None,
+                 log_level: Optional[builtins.str] = None,
+                 log_max_string_length: Optional[builtins.int] = None,
+                 log_nested_statements: Optional[builtins.bool] = None,
+                 log_parameter: Optional[builtins.bool] = None,
+                 log_parameter_max_size: Optional[builtins.int] = None,
+                 log_relation: Optional[builtins.bool] = None,
+                 log_rows: Optional[builtins.bool] = None,
+                 log_statement: Optional[builtins.bool] = None,
+                 log_statement_once: Optional[builtins.bool] = None,
+                 logs: Optional[Sequence[builtins.str]] = None,
+                 role: Optional[builtins.str] = None):
+        """
+        :param builtins.bool feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+        :param builtins.bool log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        :param builtins.bool log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+        :param builtins.str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+        :param builtins.int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+        :param builtins.bool log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        :param builtins.bool log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+        :param builtins.int log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
+        :param builtins.bool log_relation: Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        :param builtins.bool log_rows: Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        :param builtins.bool log_statement: Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+        :param builtins.bool log_statement_once: Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        :param Sequence[builtins.str] logs: Specifies which classes of statements will be logged by session audit logging.
+        :param builtins.str role: Specifies the master role to use for object audit logging.
+        """
+        if feature_enabled is not None:
+            pulumi.set(__self__, "feature_enabled", feature_enabled)
+        if log_catalog is not None:
+            pulumi.set(__self__, "log_catalog", log_catalog)
+        if log_client is not None:
+            pulumi.set(__self__, "log_client", log_client)
+        if log_level is not None:
+            pulumi.set(__self__, "log_level", log_level)
+        if log_max_string_length is not None:
+            pulumi.set(__self__, "log_max_string_length", log_max_string_length)
+        if log_nested_statements is not None:
+            pulumi.set(__self__, "log_nested_statements", log_nested_statements)
+        if log_parameter is not None:
+            pulumi.set(__self__, "log_parameter", log_parameter)
+        if log_parameter_max_size is not None:
+            pulumi.set(__self__, "log_parameter_max_size", log_parameter_max_size)
+        if log_relation is not None:
+            pulumi.set(__self__, "log_relation", log_relation)
+        if log_rows is not None:
+            pulumi.set(__self__, "log_rows", log_rows)
+        if log_statement is not None:
+            pulumi.set(__self__, "log_statement", log_statement)
+        if log_statement_once is not None:
+            pulumi.set(__self__, "log_statement_once", log_statement_once)
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="featureEnabled")
+    def feature_enabled(self) -> Optional[builtins.bool]:
+        """
+        Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+        """
+        return pulumi.get(self, "feature_enabled")
+
+    @property
+    @pulumi.getter(name="logCatalog")
+    def log_catalog(self) -> Optional[builtins.bool]:
+        """
+        Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        """
+        return pulumi.get(self, "log_catalog")
+
+    @property
+    @pulumi.getter(name="logClient")
+    def log_client(self) -> Optional[builtins.bool]:
+        """
+        Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+        """
+        return pulumi.get(self, "log_client")
+
+    @property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> Optional[builtins.str]:
+        """
+        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+        """
+        return pulumi.get(self, "log_level")
+
+    @property
+    @pulumi.getter(name="logMaxStringLength")
+    def log_max_string_length(self) -> Optional[builtins.int]:
+        """
+        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+        """
+        return pulumi.get(self, "log_max_string_length")
+
+    @property
+    @pulumi.getter(name="logNestedStatements")
+    def log_nested_statements(self) -> Optional[builtins.bool]:
+        """
+        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        """
+        return pulumi.get(self, "log_nested_statements")
+
+    @property
+    @pulumi.getter(name="logParameter")
+    def log_parameter(self) -> Optional[builtins.bool]:
+        """
+        Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+        """
+        return pulumi.get(self, "log_parameter")
+
+    @property
+    @pulumi.getter(name="logParameterMaxSize")
+    def log_parameter_max_size(self) -> Optional[builtins.int]:
+        """
+        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
+        """
+        return pulumi.get(self, "log_parameter_max_size")
+
+    @property
+    @pulumi.getter(name="logRelation")
+    def log_relation(self) -> Optional[builtins.bool]:
+        """
+        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        """
+        return pulumi.get(self, "log_relation")
+
+    @property
+    @pulumi.getter(name="logRows")
+    def log_rows(self) -> Optional[builtins.bool]:
+        """
+        Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        """
+        return pulumi.get(self, "log_rows")
+
+    @property
+    @pulumi.getter(name="logStatement")
+    def log_statement(self) -> Optional[builtins.bool]:
+        """
+        Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+        """
+        return pulumi.get(self, "log_statement")
+
+    @property
+    @pulumi.getter(name="logStatementOnce")
+    def log_statement_once(self) -> Optional[builtins.bool]:
+        """
+        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        """
+        return pulumi.get(self, "log_statement_once")
+
+    @property
+    @pulumi.getter
+    def logs(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Specifies which classes of statements will be logged by session audit logging.
+        """
+        return pulumi.get(self, "logs")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[builtins.str]:
+        """
+        Specifies the master role to use for object audit logging.
+        """
+        return pulumi.get(self, "role")
 
 
 @pulumi.output_type
@@ -38275,6 +39004,7 @@ class GetKafkaKafkaUserConfigResult(dict):
                  kafka_authentication_methods: Optional['outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult'] = None,
                  kafka_connect: Optional[builtins.bool] = None,
                  kafka_connect_config: Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectConfigResult'] = None,
+                 kafka_connect_plugin_versions: Optional[Sequence['outputs.GetKafkaKafkaUserConfigKafkaConnectPluginVersionResult']] = None,
                  kafka_connect_secret_providers: Optional[Sequence['outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult']] = None,
                  kafka_rest: Optional[builtins.bool] = None,
                  kafka_rest_authorization: Optional[builtins.bool] = None,
@@ -38303,6 +39033,7 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param 'GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs' kafka_authentication_methods: Kafka authentication methods
         :param builtins.bool kafka_connect: Enable Kafka Connect service. Default: `false`.
         :param 'GetKafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
+        :param Sequence['GetKafkaKafkaUserConfigKafkaConnectPluginVersionArgs'] kafka_connect_plugin_versions: The plugin selected by the user
         :param builtins.bool kafka_rest: Enable Kafka-REST service. Default: `false`.
         :param builtins.bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'GetKafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
@@ -38341,6 +39072,8 @@ class GetKafkaKafkaUserConfigResult(dict):
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if kafka_connect_config is not None:
             pulumi.set(__self__, "kafka_connect_config", kafka_connect_config)
+        if kafka_connect_plugin_versions is not None:
+            pulumi.set(__self__, "kafka_connect_plugin_versions", kafka_connect_plugin_versions)
         if kafka_connect_secret_providers is not None:
             pulumi.set(__self__, "kafka_connect_secret_providers", kafka_connect_secret_providers)
         if kafka_rest is not None:
@@ -38463,6 +39196,14 @@ class GetKafkaKafkaUserConfigResult(dict):
         Kafka Connect configuration values
         """
         return pulumi.get(self, "kafka_connect_config")
+
+    @property
+    @pulumi.getter(name="kafkaConnectPluginVersions")
+    def kafka_connect_plugin_versions(self) -> Optional[Sequence['outputs.GetKafkaKafkaUserConfigKafkaConnectPluginVersionResult']]:
+        """
+        The plugin selected by the user
+        """
+        return pulumi.get(self, "kafka_connect_plugin_versions")
 
     @property
     @pulumi.getter(name="kafkaConnectSecretProviders")
@@ -39426,6 +40167,35 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
         The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
         """
         return pulumi.get(self, "session_timeout_ms")
+
+
+@pulumi.output_type
+class GetKafkaKafkaUserConfigKafkaConnectPluginVersionResult(dict):
+    def __init__(__self__, *,
+                 plugin_name: builtins.str,
+                 version: builtins.str):
+        """
+        :param builtins.str plugin_name: The name of the plugin. Example: `debezium-connector`.
+        :param builtins.str version: The version of the plugin. Example: `2.5.0`.
+        """
+        pulumi.set(__self__, "plugin_name", plugin_name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="pluginName")
+    def plugin_name(self) -> builtins.str:
+        """
+        The name of the plugin. Example: `debezium-connector`.
+        """
+        return pulumi.get(self, "plugin_name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> builtins.str:
+        """
+        The version of the plugin. Example: `2.5.0`.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -40696,33 +41466,33 @@ class GetKafkaTopicConfigResult(dict):
                  segment_ms: Optional[builtins.str] = None,
                  unclean_leader_election_enable: Optional[builtins.bool] = None):
         """
-        :param builtins.str cleanup_policy: cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
-        :param builtins.str compression_type: compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
-        :param builtins.str delete_retention_ms: delete.retention.ms value
-        :param builtins.str file_delete_delay_ms: file.delete.delay.ms value
-        :param builtins.str flush_messages: flush.messages value
-        :param builtins.str flush_ms: flush.ms value
-        :param builtins.str index_interval_bytes: index.interval.bytes value
-        :param builtins.str local_retention_bytes: local.retention.bytes value
-        :param builtins.str local_retention_ms: local.retention.ms value
-        :param builtins.str max_compaction_lag_ms: max.compaction.lag.ms value
-        :param builtins.str max_message_bytes: max.message.bytes value
-        :param builtins.bool message_downconversion_enable: message.downconversion.enable value
-        :param builtins.str message_format_version: message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
-        :param builtins.str message_timestamp_difference_max_ms: message.timestamp.difference.max.ms value
-        :param builtins.str message_timestamp_type: message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
-        :param builtins.float min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
-        :param builtins.str min_compaction_lag_ms: min.compaction.lag.ms value
-        :param builtins.str min_insync_replicas: min.insync.replicas value
-        :param builtins.bool preallocate: preallocate value
-        :param builtins.bool remote_storage_enable: remote.storage.enable value
-        :param builtins.str retention_bytes: retention.bytes value
-        :param builtins.str retention_ms: retention.ms value
-        :param builtins.str segment_bytes: segment.bytes value
-        :param builtins.str segment_index_bytes: segment.index.bytes value
-        :param builtins.str segment_jitter_ms: segment.jitter.ms value
-        :param builtins.str segment_ms: segment.ms value
-        :param builtins.bool unclean_leader_election_enable: unclean.leader.election.enable value; This field is deprecated and no longer functional.
+        :param builtins.str cleanup_policy: The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
+        :param builtins.str compression_type: Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+        :param builtins.str delete_retention_ms: The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
+        :param builtins.str file_delete_delay_ms: The time to wait before deleting a file from the filesystem.
+        :param builtins.str flush_messages: This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+        :param builtins.str flush_ms: This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+        :param builtins.str index_interval_bytes: This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
+        :param builtins.str local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
+        :param builtins.str local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+        :param builtins.str max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+        :param builtins.str max_message_bytes: The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
+        :param builtins.bool message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
+        :param builtins.str message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+        :param builtins.str message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
+        :param builtins.str message_timestamp_type: Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
+        :param builtins.float min_cleanable_dirty_ratio: This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+        :param builtins.str min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+        :param builtins.str min_insync_replicas: When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+        :param builtins.bool preallocate: True if we should preallocate the file on disk when creating a new log segment.
+        :param builtins.bool remote_storage_enable: Indicates whether tiered storage should be enabled.
+        :param builtins.str retention_bytes: This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+        :param builtins.str retention_ms: This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
+        :param builtins.str segment_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+        :param builtins.str segment_index_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+        :param builtins.str segment_jitter_ms: The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+        :param builtins.str segment_ms: This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+        :param builtins.bool unclean_leader_election_enable: Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
         """
         if cleanup_policy is not None:
             pulumi.set(__self__, "cleanup_policy", cleanup_policy)
@@ -40783,7 +41553,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[builtins.str]:
         """
-        cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+        The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
         """
         return pulumi.get(self, "cleanup_policy")
 
@@ -40791,7 +41561,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[builtins.str]:
         """
-        compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+        Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         """
         return pulumi.get(self, "compression_type")
 
@@ -40799,7 +41569,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="deleteRetentionMs")
     def delete_retention_ms(self) -> Optional[builtins.str]:
         """
-        delete.retention.ms value
+        The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
         """
         return pulumi.get(self, "delete_retention_ms")
 
@@ -40807,7 +41577,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="fileDeleteDelayMs")
     def file_delete_delay_ms(self) -> Optional[builtins.str]:
         """
-        file.delete.delay.ms value
+        The time to wait before deleting a file from the filesystem.
         """
         return pulumi.get(self, "file_delete_delay_ms")
 
@@ -40815,7 +41585,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="flushMessages")
     def flush_messages(self) -> Optional[builtins.str]:
         """
-        flush.messages value
+        This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         """
         return pulumi.get(self, "flush_messages")
 
@@ -40823,7 +41593,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="flushMs")
     def flush_ms(self) -> Optional[builtins.str]:
         """
-        flush.ms value
+        This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         """
         return pulumi.get(self, "flush_ms")
 
@@ -40831,7 +41601,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="indexIntervalBytes")
     def index_interval_bytes(self) -> Optional[builtins.str]:
         """
-        index.interval.bytes value
+        This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
         """
         return pulumi.get(self, "index_interval_bytes")
 
@@ -40839,7 +41609,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="localRetentionBytes")
     def local_retention_bytes(self) -> Optional[builtins.str]:
         """
-        local.retention.bytes value
+        This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         """
         return pulumi.get(self, "local_retention_bytes")
 
@@ -40847,7 +41617,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="localRetentionMs")
     def local_retention_ms(self) -> Optional[builtins.str]:
         """
-        local.retention.ms value
+        This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
         """
         return pulumi.get(self, "local_retention_ms")
 
@@ -40855,7 +41625,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="maxCompactionLagMs")
     def max_compaction_lag_ms(self) -> Optional[builtins.str]:
         """
-        max.compaction.lag.ms value
+        The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         """
         return pulumi.get(self, "max_compaction_lag_ms")
 
@@ -40863,7 +41633,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="maxMessageBytes")
     def max_message_bytes(self) -> Optional[builtins.str]:
         """
-        max.message.bytes value
+        The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         """
         return pulumi.get(self, "max_message_bytes")
 
@@ -40871,7 +41641,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="messageDownconversionEnable")
     def message_downconversion_enable(self) -> Optional[builtins.bool]:
         """
-        message.downconversion.enable value
+        This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
         """
         return pulumi.get(self, "message_downconversion_enable")
 
@@ -40879,7 +41649,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> Optional[builtins.str]:
         """
-        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -40887,7 +41657,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="messageTimestampDifferenceMaxMs")
     def message_timestamp_difference_max_ms(self) -> Optional[builtins.str]:
         """
-        message.timestamp.difference.max.ms value
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         """
         return pulumi.get(self, "message_timestamp_difference_max_ms")
 
@@ -40895,7 +41665,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="messageTimestampType")
     def message_timestamp_type(self) -> Optional[builtins.str]:
         """
-        message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+        Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
         """
         return pulumi.get(self, "message_timestamp_type")
 
@@ -40903,7 +41673,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="minCleanableDirtyRatio")
     def min_cleanable_dirty_ratio(self) -> Optional[builtins.float]:
         """
-        min.cleanable.dirty.ratio value
+        This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
         """
         return pulumi.get(self, "min_cleanable_dirty_ratio")
 
@@ -40911,7 +41681,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="minCompactionLagMs")
     def min_compaction_lag_ms(self) -> Optional[builtins.str]:
         """
-        min.compaction.lag.ms value
+        The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
         """
         return pulumi.get(self, "min_compaction_lag_ms")
 
@@ -40919,7 +41689,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="minInsyncReplicas")
     def min_insync_replicas(self) -> Optional[builtins.str]:
         """
-        min.insync.replicas value
+        When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
         """
         return pulumi.get(self, "min_insync_replicas")
 
@@ -40927,7 +41697,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter
     def preallocate(self) -> Optional[builtins.bool]:
         """
-        preallocate value
+        True if we should preallocate the file on disk when creating a new log segment.
         """
         return pulumi.get(self, "preallocate")
 
@@ -40935,7 +41705,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="remoteStorageEnable")
     def remote_storage_enable(self) -> Optional[builtins.bool]:
         """
-        remote.storage.enable value
+        Indicates whether tiered storage should be enabled.
         """
         return pulumi.get(self, "remote_storage_enable")
 
@@ -40943,7 +41713,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="retentionBytes")
     def retention_bytes(self) -> Optional[builtins.str]:
         """
-        retention.bytes value
+        This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
         """
         return pulumi.get(self, "retention_bytes")
 
@@ -40951,7 +41721,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="retentionMs")
     def retention_ms(self) -> Optional[builtins.str]:
         """
-        retention.ms value
+        This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
         """
         return pulumi.get(self, "retention_ms")
 
@@ -40959,7 +41729,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="segmentBytes")
     def segment_bytes(self) -> Optional[builtins.str]:
         """
-        segment.bytes value
+        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         """
         return pulumi.get(self, "segment_bytes")
 
@@ -40967,7 +41737,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="segmentIndexBytes")
     def segment_index_bytes(self) -> Optional[builtins.str]:
         """
-        segment.index.bytes value
+        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         """
         return pulumi.get(self, "segment_index_bytes")
 
@@ -40975,7 +41745,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="segmentJitterMs")
     def segment_jitter_ms(self) -> Optional[builtins.str]:
         """
-        segment.jitter.ms value
+        The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
         """
         return pulumi.get(self, "segment_jitter_ms")
 
@@ -40983,16 +41753,15 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="segmentMs")
     def segment_ms(self) -> Optional[builtins.str]:
         """
-        segment.ms value
+        This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
         """
         return pulumi.get(self, "segment_ms")
 
     @property
     @pulumi.getter(name="uncleanLeaderElectionEnable")
-    @_utilities.deprecated("""This field is deprecated and no longer functional.""")
     def unclean_leader_election_enable(self) -> Optional[builtins.bool]:
         """
-        unclean.leader.election.enable value; This field is deprecated and no longer functional.
+        Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
         """
         return pulumi.get(self, "unclean_leader_election_enable")
 
@@ -43722,11 +44491,11 @@ class GetOpenSearchOpensearchResult(dict):
                  uris: Sequence[builtins.str],
                  username: builtins.str):
         """
-        :param builtins.str kibana_uri: URI for Kibana dashboard frontend
-        :param builtins.str opensearch_dashboards_uri: URI for OpenSearch dashboard frontend
-        :param builtins.str password: OpenSearch password
+        :param builtins.str kibana_uri: URI for Kibana dashboard frontend.
+        :param builtins.str opensearch_dashboards_uri: URI for OpenSearch dashboard frontend.
+        :param builtins.str password: OpenSearch password.
         :param Sequence[builtins.str] uris: OpenSearch server URIs.
-        :param builtins.str username: OpenSearch username
+        :param builtins.str username: OpenSearch username.
         """
         pulumi.set(__self__, "kibana_uri", kibana_uri)
         pulumi.set(__self__, "opensearch_dashboards_uri", opensearch_dashboards_uri)
@@ -43739,7 +44508,7 @@ class GetOpenSearchOpensearchResult(dict):
     @_utilities.deprecated("""This field was added by mistake and has never worked. It will be removed in future versions.""")
     def kibana_uri(self) -> builtins.str:
         """
-        URI for Kibana dashboard frontend
+        URI for Kibana dashboard frontend.
         """
         return pulumi.get(self, "kibana_uri")
 
@@ -43747,7 +44516,7 @@ class GetOpenSearchOpensearchResult(dict):
     @pulumi.getter(name="opensearchDashboardsUri")
     def opensearch_dashboards_uri(self) -> builtins.str:
         """
-        URI for OpenSearch dashboard frontend
+        URI for OpenSearch dashboard frontend.
         """
         return pulumi.get(self, "opensearch_dashboards_uri")
 
@@ -43755,7 +44524,7 @@ class GetOpenSearchOpensearchResult(dict):
     @pulumi.getter
     def password(self) -> builtins.str:
         """
-        OpenSearch password
+        OpenSearch password.
         """
         return pulumi.get(self, "password")
 
@@ -43771,7 +44540,7 @@ class GetOpenSearchOpensearchResult(dict):
     @pulumi.getter
     def username(self) -> builtins.str:
         """
-        OpenSearch username
+        OpenSearch username.
         """
         return pulumi.get(self, "username")
 
@@ -44731,6 +45500,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
                  email_sender_password: Optional[builtins.str] = None,
                  email_sender_username: Optional[builtins.str] = None,
                  enable_remote_backed_storage: Optional[builtins.bool] = None,
+                 enable_searchable_snapshots: Optional[builtins.bool] = None,
                  enable_security_audit: Optional[builtins.bool] = None,
                  http_max_content_length: Optional[builtins.int] = None,
                  http_max_header_size: Optional[builtins.int] = None,
@@ -44783,6 +45553,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         :param builtins.str email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         :param builtins.str email_sender_username: Sender username for Opensearch alerts. Example: `jane@example.com`.
         :param builtins.bool enable_remote_backed_storage: Enable remote-backed storage.
+        :param builtins.bool enable_searchable_snapshots: Enable searchable snapshots.
         :param builtins.bool enable_security_audit: Enable/Disable security audit.
         :param builtins.int http_max_content_length: Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
         :param builtins.int http_max_header_size: The max size of allowed headers, in bytes. Example: `8192`.
@@ -44847,6 +45618,8 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
             pulumi.set(__self__, "email_sender_username", email_sender_username)
         if enable_remote_backed_storage is not None:
             pulumi.set(__self__, "enable_remote_backed_storage", enable_remote_backed_storage)
+        if enable_searchable_snapshots is not None:
+            pulumi.set(__self__, "enable_searchable_snapshots", enable_searchable_snapshots)
         if enable_security_audit is not None:
             pulumi.set(__self__, "enable_security_audit", enable_security_audit)
         if http_max_content_length is not None:
@@ -45020,6 +45793,14 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         Enable remote-backed storage.
         """
         return pulumi.get(self, "enable_remote_backed_storage")
+
+    @property
+    @pulumi.getter(name="enableSearchableSnapshots")
+    def enable_searchable_snapshots(self) -> Optional[builtins.bool]:
+        """
+        Enable searchable snapshots.
+        """
+        return pulumi.get(self, "enable_searchable_snapshots")
 
     @property
     @pulumi.getter(name="enableSecurityAudit")
@@ -46929,6 +47710,25 @@ class GetOpenSearchTechEmailResult(dict):
 
 
 @pulumi.output_type
+class GetOrganizationAddressTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[builtins.str] = None):
+        """
+        :param builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetOrganizationBillingGroupListBillingGroupResult(dict):
     def __init__(__self__, *,
                  billing_address_id: builtins.str,
@@ -46938,23 +47738,21 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
                  billing_group_id: builtins.str,
                  billing_group_name: builtins.str,
                  custom_invoice_text: builtins.str,
-                 id: builtins.str,
                  organization_id: builtins.str,
                  payment_method_id: builtins.str,
                  shipping_address_id: builtins.str,
                  vat_id: builtins.str):
         """
-        :param builtins.str billing_address_id: ID of the billing address.
+        :param builtins.str billing_address_id: Billing address ID.
         :param Sequence[builtins.str] billing_contact_emails: List of billing contact emails.
-        :param builtins.str billing_currency: Billing currency.
-        :param Sequence[builtins.str] billing_emails: List of billing emails.
-        :param builtins.str billing_group_id: ID of the billing group.
-        :param builtins.str billing_group_name: Name of the billing group.
-        :param builtins.str custom_invoice_text: Custom invoice text.
-        :param builtins.str id: Resource ID, a composite of organization*id and billing*group_id.
-        :param builtins.str organization_id: ID of the organization.
-        :param builtins.str payment_method_id: ID of the payment method.
-        :param builtins.str shipping_address_id: ID of the shipping address.
+        :param builtins.str billing_currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        :param Sequence[builtins.str] billing_emails: List of billing contact emails.
+        :param builtins.str billing_group_id: Billing group ID.
+        :param builtins.str billing_group_name: Billing Group Name.
+        :param builtins.str custom_invoice_text: Extra billing text.
+        :param builtins.str organization_id: Organization ID.
+        :param builtins.str payment_method_id: Payment method ID.
+        :param builtins.str shipping_address_id: Shipping address ID.
         :param builtins.str vat_id: VAT ID.
         """
         pulumi.set(__self__, "billing_address_id", billing_address_id)
@@ -46964,7 +47762,6 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
         pulumi.set(__self__, "billing_group_id", billing_group_id)
         pulumi.set(__self__, "billing_group_name", billing_group_name)
         pulumi.set(__self__, "custom_invoice_text", custom_invoice_text)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "payment_method_id", payment_method_id)
         pulumi.set(__self__, "shipping_address_id", shipping_address_id)
@@ -46974,7 +47771,7 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
     @pulumi.getter(name="billingAddressId")
     def billing_address_id(self) -> builtins.str:
         """
-        ID of the billing address.
+        Billing address ID.
         """
         return pulumi.get(self, "billing_address_id")
 
@@ -46990,7 +47787,7 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
     @pulumi.getter(name="billingCurrency")
     def billing_currency(self) -> builtins.str:
         """
-        Billing currency.
+        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         """
         return pulumi.get(self, "billing_currency")
 
@@ -46998,7 +47795,7 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Sequence[builtins.str]:
         """
-        List of billing emails.
+        List of billing contact emails.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -47006,7 +47803,7 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> builtins.str:
         """
-        ID of the billing group.
+        Billing group ID.
         """
         return pulumi.get(self, "billing_group_id")
 
@@ -47014,7 +47811,7 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
     @pulumi.getter(name="billingGroupName")
     def billing_group_name(self) -> builtins.str:
         """
-        Name of the billing group.
+        Billing Group Name.
         """
         return pulumi.get(self, "billing_group_name")
 
@@ -47022,23 +47819,15 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
     @pulumi.getter(name="customInvoiceText")
     def custom_invoice_text(self) -> builtins.str:
         """
-        Custom invoice text.
+        Extra billing text.
         """
         return pulumi.get(self, "custom_invoice_text")
-
-    @property
-    @pulumi.getter
-    def id(self) -> builtins.str:
-        """
-        Resource ID, a composite of organization*id and billing*group_id.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> builtins.str:
         """
-        ID of the organization.
+        Organization ID.
         """
         return pulumi.get(self, "organization_id")
 
@@ -47046,7 +47835,7 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
     @pulumi.getter(name="paymentMethodId")
     def payment_method_id(self) -> builtins.str:
         """
-        ID of the payment method.
+        Payment method ID.
         """
         return pulumi.get(self, "payment_method_id")
 
@@ -47054,7 +47843,7 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
     @pulumi.getter(name="shippingAddressId")
     def shipping_address_id(self) -> builtins.str:
         """
-        ID of the shipping address.
+        Shipping address ID.
         """
         return pulumi.get(self, "shipping_address_id")
 
@@ -47065,6 +47854,44 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
         VAT ID.
         """
         return pulumi.get(self, "vat_id")
+
+
+@pulumi.output_type
+class GetOrganizationBillingGroupListTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[builtins.str] = None):
+        """
+        :param builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetOrganizationBillingGroupTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[builtins.str] = None):
+        """
+        :param builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -47094,6 +47921,44 @@ class GetOrganizationProjectTagResult(dict):
         Project tag value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetOrganizationProjectTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[builtins.str] = None):
+        """
+        :param builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetOrganizationTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[builtins.str] = None):
+        """
+        :param builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -47889,7 +48754,6 @@ class GetPgPgUserConfigResult(dict):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""This property is deprecated.""")
     def pgaudit(self) -> Optional['outputs.GetPgPgUserConfigPgauditResult']:
         """
         System-wide settings for the pgaudit extension
@@ -48860,7 +49724,7 @@ class GetPgPgUserConfigPgauditResult(dict):
         :param builtins.bool feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
         :param builtins.bool log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
         :param builtins.bool log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-        :param builtins.str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+        :param builtins.str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
         :param builtins.int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
         :param builtins.bool log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         :param builtins.bool log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
@@ -48903,7 +49767,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter(name="featureEnabled")
-    @_utilities.deprecated("""This property is deprecated.""")
     def feature_enabled(self) -> Optional[builtins.bool]:
         """
         Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
@@ -48912,7 +49775,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter(name="logCatalog")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_catalog(self) -> Optional[builtins.bool]:
         """
         Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
@@ -48921,7 +49783,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter(name="logClient")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_client(self) -> Optional[builtins.bool]:
         """
         Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
@@ -48930,16 +49791,14 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter(name="logLevel")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_level(self) -> Optional[builtins.str]:
         """
-        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
         """
         return pulumi.get(self, "log_level")
 
     @property
     @pulumi.getter(name="logMaxStringLength")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_max_string_length(self) -> Optional[builtins.int]:
         """
         Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
@@ -48948,7 +49807,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter(name="logNestedStatements")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_nested_statements(self) -> Optional[builtins.bool]:
         """
         This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
@@ -48957,7 +49815,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter(name="logParameter")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_parameter(self) -> Optional[builtins.bool]:
         """
         Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
@@ -48966,7 +49823,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter(name="logParameterMaxSize")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_parameter_max_size(self) -> Optional[builtins.int]:
         """
         Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
@@ -48975,7 +49831,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter(name="logRelation")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_relation(self) -> Optional[builtins.bool]:
         """
         Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
@@ -48984,7 +49839,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter(name="logRows")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_rows(self) -> Optional[builtins.bool]:
         """
         Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
@@ -48993,7 +49847,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter(name="logStatement")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_statement(self) -> Optional[builtins.bool]:
         """
         Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
@@ -49002,7 +49855,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter(name="logStatementOnce")
-    @_utilities.deprecated("""This property is deprecated.""")
     def log_statement_once(self) -> Optional[builtins.bool]:
         """
         Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
@@ -49011,7 +49863,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""This property is deprecated.""")
     def logs(self) -> Optional[Sequence[builtins.str]]:
         """
         Specifies which classes of statements will be logged by session audit logging.
@@ -49020,7 +49871,6 @@ class GetPgPgUserConfigPgauditResult(dict):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""This property is deprecated.""")
     def role(self) -> Optional[builtins.str]:
         """
         Specifies the master role to use for object audit logging.

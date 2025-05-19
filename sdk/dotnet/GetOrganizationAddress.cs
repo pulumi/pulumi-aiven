@@ -12,19 +12,28 @@ namespace Pulumi.Aiven
     public static class GetOrganizationAddress
     {
         /// <summary>
-        /// Gets information about an organization address.
+        /// Gets information about an organization address. 
+        /// 
+        /// **This resource is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
         /// </summary>
         public static Task<GetOrganizationAddressResult> InvokeAsync(GetOrganizationAddressArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationAddressResult>("aiven:index/getOrganizationAddress:getOrganizationAddress", args ?? new GetOrganizationAddressArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an organization address.
+        /// Gets information about an organization address. 
+        /// 
+        /// **This resource is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
         /// </summary>
         public static Output<GetOrganizationAddressResult> Invoke(GetOrganizationAddressInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationAddressResult>("aiven:index/getOrganizationAddress:getOrganizationAddress", args ?? new GetOrganizationAddressInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an organization address.
+        /// Gets information about an organization address. 
+        /// 
+        /// **This resource is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
         /// </summary>
         public static Output<GetOrganizationAddressResult> Invoke(GetOrganizationAddressInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationAddressResult>("aiven:index/getOrganizationAddress:getOrganizationAddress", args ?? new GetOrganizationAddressInvokeArgs(), options.WithDefaults());
@@ -34,16 +43,19 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationAddressArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the address.
+        /// Address ID.
         /// </summary>
         [Input("addressId", required: true)]
         public string AddressId { get; set; } = null!;
 
         /// <summary>
-        /// ID of organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetOrganizationAddressTimeoutsArgs? Timeouts { get; set; }
 
         public GetOrganizationAddressArgs()
         {
@@ -54,16 +66,19 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationAddressInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the address.
+        /// Address ID.
         /// </summary>
         [Input("addressId", required: true)]
         public Input<string> AddressId { get; set; } = null!;
 
         /// <summary>
-        /// ID of organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetOrganizationAddressTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetOrganizationAddressInvokeArgs()
         {
@@ -76,47 +91,48 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationAddressResult
     {
         /// <summary>
-        /// ID of the address.
+        /// Address ID.
         /// </summary>
         public readonly string AddressId;
         /// <summary>
-        /// Array of address lines.
+        /// Address Lines.
         /// </summary>
         public readonly ImmutableArray<string> AddressLines;
         /// <summary>
-        /// City name.
+        /// City.
         /// </summary>
         public readonly string City;
         /// <summary>
-        /// Name of the company.
-        /// </summary>
-        public readonly string CompanyName;
-        /// <summary>
-        /// Country code.
+        /// Country Code.
         /// </summary>
         public readonly string CountryCode;
         /// <summary>
-        /// Timestamp of the creation.
+        /// Create Time.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Resource ID, a composite of organization*id and address*id.
+        /// Resource ID, a composite of `organization_id` and `address_id` IDs.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// ID of organization.
+        /// Name of a company.
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// ID of an organization.
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
-        /// State name.
+        /// State.
         /// </summary>
         public readonly string State;
+        public readonly Outputs.GetOrganizationAddressTimeoutsResult? Timeouts;
         /// <summary>
-        /// Timestamp of the last update.
+        /// Update Time.
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// Zip code.
+        /// Zip Code.
         /// </summary>
         public readonly string ZipCode;
 
@@ -128,17 +144,19 @@ namespace Pulumi.Aiven
 
             string city,
 
-            string companyName,
-
             string countryCode,
 
             string createTime,
 
             string id,
 
+            string name,
+
             string organizationId,
 
             string state,
+
+            Outputs.GetOrganizationAddressTimeoutsResult? timeouts,
 
             string updateTime,
 
@@ -147,12 +165,13 @@ namespace Pulumi.Aiven
             AddressId = addressId;
             AddressLines = addressLines;
             City = city;
-            CompanyName = companyName;
             CountryCode = countryCode;
             CreateTime = createTime;
             Id = id;
+            Name = name;
             OrganizationId = organizationId;
             State = state;
+            Timeouts = timeouts;
             UpdateTime = updateTime;
             ZipCode = zipCode;
         }

@@ -13,29 +13,32 @@ import (
 )
 
 // Creates and manages an organization address.
+//
+// **This resource is in the beta stage and may change without notice.** Set
+// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 type OrganizationAddress struct {
 	pulumi.CustomResourceState
 
-	// ID of the address.
+	// Address ID.
 	AddressId pulumi.StringOutput `pulumi:"addressId"`
-	// Array of address lines.
+	// Address Lines.
 	AddressLines pulumi.StringArrayOutput `pulumi:"addressLines"`
-	// City name.
+	// City.
 	City pulumi.StringOutput `pulumi:"city"`
-	// Name of the company.
-	CompanyName pulumi.StringPtrOutput `pulumi:"companyName"`
-	// Country code.
+	// Country Code.
 	CountryCode pulumi.StringOutput `pulumi:"countryCode"`
-	// Timestamp of the creation.
+	// Create Time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// ID of organization.
+	// Name of a company. Maximum length: `128`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// State name.
+	// State. Maximum length: `128`.
 	State    pulumi.StringPtrOutput               `pulumi:"state"`
 	Timeouts OrganizationAddressTimeoutsPtrOutput `pulumi:"timeouts"`
-	// Timestamp of the last update.
+	// Update Time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Zip code.
+	// Zip Code. Maximum length: `32`.
 	ZipCode pulumi.StringPtrOutput `pulumi:"zipCode"`
 }
 
@@ -81,50 +84,50 @@ func GetOrganizationAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationAddress resources.
 type organizationAddressState struct {
-	// ID of the address.
+	// Address ID.
 	AddressId *string `pulumi:"addressId"`
-	// Array of address lines.
+	// Address Lines.
 	AddressLines []string `pulumi:"addressLines"`
-	// City name.
+	// City.
 	City *string `pulumi:"city"`
-	// Name of the company.
-	CompanyName *string `pulumi:"companyName"`
-	// Country code.
+	// Country Code.
 	CountryCode *string `pulumi:"countryCode"`
-	// Timestamp of the creation.
+	// Create Time.
 	CreateTime *string `pulumi:"createTime"`
-	// ID of organization.
+	// Name of a company. Maximum length: `128`.
+	Name *string `pulumi:"name"`
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
-	// State name.
+	// State. Maximum length: `128`.
 	State    *string                      `pulumi:"state"`
 	Timeouts *OrganizationAddressTimeouts `pulumi:"timeouts"`
-	// Timestamp of the last update.
+	// Update Time.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Zip code.
+	// Zip Code. Maximum length: `32`.
 	ZipCode *string `pulumi:"zipCode"`
 }
 
 type OrganizationAddressState struct {
-	// ID of the address.
+	// Address ID.
 	AddressId pulumi.StringPtrInput
-	// Array of address lines.
+	// Address Lines.
 	AddressLines pulumi.StringArrayInput
-	// City name.
+	// City.
 	City pulumi.StringPtrInput
-	// Name of the company.
-	CompanyName pulumi.StringPtrInput
-	// Country code.
+	// Country Code.
 	CountryCode pulumi.StringPtrInput
-	// Timestamp of the creation.
+	// Create Time.
 	CreateTime pulumi.StringPtrInput
-	// ID of organization.
+	// Name of a company. Maximum length: `128`.
+	Name pulumi.StringPtrInput
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
-	// State name.
+	// State. Maximum length: `128`.
 	State    pulumi.StringPtrInput
 	Timeouts OrganizationAddressTimeoutsPtrInput
-	// Timestamp of the last update.
+	// Update Time.
 	UpdateTime pulumi.StringPtrInput
-	// Zip code.
+	// Zip Code. Maximum length: `32`.
 	ZipCode pulumi.StringPtrInput
 }
 
@@ -133,39 +136,39 @@ func (OrganizationAddressState) ElementType() reflect.Type {
 }
 
 type organizationAddressArgs struct {
-	// Array of address lines.
+	// Address Lines.
 	AddressLines []string `pulumi:"addressLines"`
-	// City name.
+	// City.
 	City string `pulumi:"city"`
-	// Name of the company.
-	CompanyName *string `pulumi:"companyName"`
-	// Country code.
+	// Country Code.
 	CountryCode string `pulumi:"countryCode"`
-	// ID of organization.
+	// Name of a company. Maximum length: `128`.
+	Name *string `pulumi:"name"`
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
-	// State name.
+	// State. Maximum length: `128`.
 	State    *string                      `pulumi:"state"`
 	Timeouts *OrganizationAddressTimeouts `pulumi:"timeouts"`
-	// Zip code.
+	// Zip Code. Maximum length: `32`.
 	ZipCode *string `pulumi:"zipCode"`
 }
 
 // The set of arguments for constructing a OrganizationAddress resource.
 type OrganizationAddressArgs struct {
-	// Array of address lines.
+	// Address Lines.
 	AddressLines pulumi.StringArrayInput
-	// City name.
+	// City.
 	City pulumi.StringInput
-	// Name of the company.
-	CompanyName pulumi.StringPtrInput
-	// Country code.
+	// Country Code.
 	CountryCode pulumi.StringInput
-	// ID of organization.
+	// Name of a company. Maximum length: `128`.
+	Name pulumi.StringPtrInput
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
-	// State name.
+	// State. Maximum length: `128`.
 	State    pulumi.StringPtrInput
 	Timeouts OrganizationAddressTimeoutsPtrInput
-	// Zip code.
+	// Zip Code. Maximum length: `32`.
 	ZipCode pulumi.StringPtrInput
 }
 
@@ -256,42 +259,42 @@ func (o OrganizationAddressOutput) ToOrganizationAddressOutputWithContext(ctx co
 	return o
 }
 
-// ID of the address.
+// Address ID.
 func (o OrganizationAddressOutput) AddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.AddressId }).(pulumi.StringOutput)
 }
 
-// Array of address lines.
+// Address Lines.
 func (o OrganizationAddressOutput) AddressLines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringArrayOutput { return v.AddressLines }).(pulumi.StringArrayOutput)
 }
 
-// City name.
+// City.
 func (o OrganizationAddressOutput) City() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.City }).(pulumi.StringOutput)
 }
 
-// Name of the company.
-func (o OrganizationAddressOutput) CompanyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringPtrOutput { return v.CompanyName }).(pulumi.StringPtrOutput)
-}
-
-// Country code.
+// Country Code.
 func (o OrganizationAddressOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.CountryCode }).(pulumi.StringOutput)
 }
 
-// Timestamp of the creation.
+// Create Time.
 func (o OrganizationAddressOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// ID of organization.
+// Name of a company. Maximum length: `128`.
+func (o OrganizationAddressOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 func (o OrganizationAddressOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// State name.
+// State. Maximum length: `128`.
 func (o OrganizationAddressOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -300,12 +303,12 @@ func (o OrganizationAddressOutput) Timeouts() OrganizationAddressTimeoutsPtrOutp
 	return o.ApplyT(func(v *OrganizationAddress) OrganizationAddressTimeoutsPtrOutput { return v.Timeouts }).(OrganizationAddressTimeoutsPtrOutput)
 }
 
-// Timestamp of the last update.
+// Update Time.
 func (o OrganizationAddressOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Zip code.
+// Zip Code. Maximum length: `32`.
 func (o OrganizationAddressOutput) ZipCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringPtrOutput { return v.ZipCode }).(pulumi.StringPtrOutput)
 }

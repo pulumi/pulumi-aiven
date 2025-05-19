@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOpenSearchAclRule
     {
         /// <summary>
-        /// The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+        /// Gets information about an Aiven for OpenSearch® ACL rule.
         /// 
         /// ## Example Usage
         /// 
@@ -26,10 +26,10 @@ namespace Pulumi.Aiven
         /// {
         ///     var osAclRule = Aiven.GetOpenSearchAclRule.Invoke(new()
         ///     {
-        ///         Project = osAclsConfig.Project,
-        ///         ServiceName = osAclsConfig.ServiceName,
-        ///         Username = "&lt;USERNAME&gt;",
-        ///         Index = "&lt;INDEX&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleOpensearch.ServiceName,
+        ///         Username = "documentation-user-1",
+        ///         Index = "index5",
         ///     });
         /// 
         /// });
@@ -39,7 +39,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+        /// Gets information about an Aiven for OpenSearch® ACL rule.
         /// 
         /// ## Example Usage
         /// 
@@ -53,10 +53,10 @@ namespace Pulumi.Aiven
         /// {
         ///     var osAclRule = Aiven.GetOpenSearchAclRule.Invoke(new()
         ///     {
-        ///         Project = osAclsConfig.Project,
-        ///         ServiceName = osAclsConfig.ServiceName,
-        ///         Username = "&lt;USERNAME&gt;",
-        ///         Index = "&lt;INDEX&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleOpensearch.ServiceName,
+        ///         Username = "documentation-user-1",
+        ///         Index = "index5",
         ///     });
         /// 
         /// });
@@ -66,7 +66,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+        /// Gets information about an Aiven for OpenSearch® ACL rule.
         /// 
         /// ## Example Usage
         /// 
@@ -80,10 +80,10 @@ namespace Pulumi.Aiven
         /// {
         ///     var osAclRule = Aiven.GetOpenSearchAclRule.Invoke(new()
         ///     {
-        ///         Project = osAclsConfig.Project,
-        ///         ServiceName = osAclsConfig.ServiceName,
-        ///         Username = "&lt;USERNAME&gt;",
-        ///         Index = "&lt;INDEX&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleOpensearch.ServiceName,
+        ///         Username = "documentation-user-1",
+        ///         Index = "index5",
         ///     });
         /// 
         /// });
@@ -97,13 +97,13 @@ namespace Pulumi.Aiven
     public sealed class GetOpenSearchAclRuleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+        /// The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("index", required: true)]
         public string Index { get; set; } = null!;
 
         /// <summary>
-        /// The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+        /// The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         /// </summary>
         [Input("permission", required: true)]
         public string Permission { get; set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -135,13 +135,13 @@ namespace Pulumi.Aiven
     public sealed class GetOpenSearchAclRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+        /// The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("index", required: true)]
         public Input<string> Index { get; set; } = null!;
 
         /// <summary>
-        /// The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+        /// The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -179,11 +179,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
+        /// The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Index;
         /// <summary>
-        /// The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+        /// The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         /// </summary>
         public readonly string Permission;
         /// <summary>
@@ -195,7 +195,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Username;
 

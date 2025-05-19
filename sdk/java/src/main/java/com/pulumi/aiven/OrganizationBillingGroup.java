@@ -19,18 +19,21 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages an organization billing group.
  * 
+ * **This resource is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * 
  */
 @ResourceType(type="aiven:index/organizationBillingGroup:OrganizationBillingGroup")
 public class OrganizationBillingGroup extends com.pulumi.resources.CustomResource {
     /**
-     * ID of the billing address.
+     * Billing address ID. Maximum length: `36`.
      * 
      */
     @Export(name="billingAddressId", refs={String.class}, tree="[0]")
     private Output<String> billingAddressId;
 
     /**
-     * @return ID of the billing address.
+     * @return Billing address ID. Maximum length: `36`.
      * 
      */
     public Output<String> billingAddressId() {
@@ -51,112 +54,112 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
         return this.billingContactEmails;
     }
     /**
-     * Billing currency.
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     @Export(name="billingCurrency", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingCurrency;
 
     /**
-     * @return Billing currency.
+     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     public Output<Optional<String>> billingCurrency() {
         return Codegen.optional(this.billingCurrency);
     }
     /**
-     * List of billing emails.
+     * List of billing contact emails.
      * 
      */
     @Export(name="billingEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> billingEmails;
 
     /**
-     * @return List of billing emails.
+     * @return List of billing contact emails.
      * 
      */
     public Output<List<String>> billingEmails() {
         return this.billingEmails;
     }
     /**
-     * ID of the billing group.
+     * Billing group ID.
      * 
      */
     @Export(name="billingGroupId", refs={String.class}, tree="[0]")
     private Output<String> billingGroupId;
 
     /**
-     * @return ID of the billing group.
+     * @return Billing group ID.
      * 
      */
     public Output<String> billingGroupId() {
         return this.billingGroupId;
     }
     /**
-     * Name of the billing group.
+     * Billing Group Name. Maximum length: `128`.
      * 
      */
     @Export(name="billingGroupName", refs={String.class}, tree="[0]")
     private Output<String> billingGroupName;
 
     /**
-     * @return Name of the billing group.
+     * @return Billing Group Name. Maximum length: `128`.
      * 
      */
     public Output<String> billingGroupName() {
         return this.billingGroupName;
     }
     /**
-     * Custom invoice text.
+     * Extra billing text. Maximum length: `254`.
      * 
      */
     @Export(name="customInvoiceText", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customInvoiceText;
 
     /**
-     * @return Custom invoice text.
+     * @return Extra billing text. Maximum length: `254`.
      * 
      */
     public Output<Optional<String>> customInvoiceText() {
         return Codegen.optional(this.customInvoiceText);
     }
     /**
-     * ID of the organization.
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return ID of the organization.
+     * @return ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * ID of the payment method.
+     * Payment method ID.
      * 
      */
     @Export(name="paymentMethodId", refs={String.class}, tree="[0]")
     private Output<String> paymentMethodId;
 
     /**
-     * @return ID of the payment method.
+     * @return Payment method ID.
      * 
      */
     public Output<String> paymentMethodId() {
         return this.paymentMethodId;
     }
     /**
-     * ID of the shipping address.
+     * Shipping address ID. Maximum length: `36`.
      * 
      */
     @Export(name="shippingAddressId", refs={String.class}, tree="[0]")
     private Output<String> shippingAddressId;
 
     /**
-     * @return ID of the shipping address.
+     * @return Shipping address ID. Maximum length: `36`.
      * 
      */
     public Output<String> shippingAddressId() {

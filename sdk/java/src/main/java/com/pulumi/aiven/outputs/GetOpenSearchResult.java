@@ -80,7 +80,7 @@ public final class GetOpenSearchResult {
      */
     private List<GetOpenSearchOpensearchUserConfig> opensearchUserConfigs;
     /**
-     * @return OpenSearch server provided values
+     * @return Values provided by the OpenSearch server.
      * 
      */
     private List<GetOpenSearchOpensearch> opensearches;
@@ -247,7 +247,7 @@ public final class GetOpenSearchResult {
         return this.opensearchUserConfigs;
     }
     /**
-     * @return OpenSearch server provided values
+     * @return Values provided by the OpenSearch server.
      * 
      */
     public List<GetOpenSearchOpensearch> opensearches() {

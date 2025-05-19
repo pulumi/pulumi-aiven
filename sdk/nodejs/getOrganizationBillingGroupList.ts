@@ -8,11 +8,16 @@ import * as utilities from "./utilities";
 
 /**
  * Lists billing groups for an organization.
+ *
+ * **This resource is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getOrganizationBillingGroupList(args: GetOrganizationBillingGroupListArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationBillingGroupListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", {
+        "billingGroups": args.billingGroups,
         "organizationId": args.organizationId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -21,9 +26,14 @@ export function getOrganizationBillingGroupList(args: GetOrganizationBillingGrou
  */
 export interface GetOrganizationBillingGroupListArgs {
     /**
-     * ID of the organization.
+     * A list of all billing groups belonging to the organization.
+     */
+    billingGroups?: inputs.GetOrganizationBillingGroupListBillingGroup[];
+    /**
+     * ID of an organization.
      */
     organizationId: string;
+    timeouts?: inputs.GetOrganizationBillingGroupListTimeouts;
 }
 
 /**
@@ -31,25 +41,31 @@ export interface GetOrganizationBillingGroupListArgs {
  */
 export interface GetOrganizationBillingGroupListResult {
     /**
-     * List of billing groups.
+     * A list of all billing groups belonging to the organization.
      */
-    readonly billingGroups: outputs.GetOrganizationBillingGroupListBillingGroup[];
+    readonly billingGroups?: outputs.GetOrganizationBillingGroupListBillingGroup[];
     /**
-     * Resource ID, a composite of organization_id.
+     * Resource ID, equal to `organizationId`.
      */
     readonly id: string;
     /**
-     * ID of the organization.
+     * ID of an organization.
      */
     readonly organizationId: string;
+    readonly timeouts?: outputs.GetOrganizationBillingGroupListTimeouts;
 }
 /**
  * Lists billing groups for an organization.
+ *
+ * **This resource is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getOrganizationBillingGroupListOutput(args: GetOrganizationBillingGroupListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationBillingGroupListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", {
+        "billingGroups": args.billingGroups,
         "organizationId": args.organizationId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -58,7 +74,12 @@ export function getOrganizationBillingGroupListOutput(args: GetOrganizationBilli
  */
 export interface GetOrganizationBillingGroupListOutputArgs {
     /**
-     * ID of the organization.
+     * A list of all billing groups belonging to the organization.
+     */
+    billingGroups?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupListBillingGroupArgs>[]>;
+    /**
+     * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationBillingGroupListTimeoutsArgs>;
 }

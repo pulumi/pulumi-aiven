@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationTimeouts;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
@@ -44,11 +45,19 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="timeouts")
+    private @Nullable GetOrganizationTimeouts timeouts;
+
+    public Optional<GetOrganizationTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private GetOrganizationPlainArgs() {}
 
     private GetOrganizationPlainArgs(GetOrganizationPlainArgs $) {
         this.id = $.id;
         this.name = $.name;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -88,6 +97,11 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
          */
         public Builder name(@Nullable String name) {
             $.name = name;
+            return this;
+        }
+
+        public Builder timeouts(@Nullable GetOrganizationTimeouts timeouts) {
+            $.timeouts = timeouts;
             return this;
         }
 

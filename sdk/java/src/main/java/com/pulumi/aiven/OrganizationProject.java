@@ -7,10 +7,12 @@ import com.pulumi.aiven.OrganizationProjectArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.OrganizationProjectState;
 import com.pulumi.aiven.outputs.OrganizationProjectTag;
+import com.pulumi.aiven.outputs.OrganizationProjectTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -22,94 +24,66 @@ import javax.annotation.Nullable;
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aiven.OrganizationProject;
- * import com.pulumi.aiven.OrganizationProjectArgs;
- * import com.pulumi.aiven.inputs.OrganizationProjectTagArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foo = new OrganizationProject("foo", OrganizationProjectArgs.builder()
- *             .projectId("example-project")
- *             .organizationId(fooAivenOrganization.id())
- *             .billingGroupId(fooAivenBillingGroup.id())
- *             .tags(OrganizationProjectTagArgs.builder()
- *                 .key("key_1")
- *                 .value("value_1")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/organizationProject:OrganizationProject main ORGANIZATION_ID/PROJECT_ID
+ * $ pulumi import aiven:index/organizationProject:OrganizationProject example_project ORGANIZATION_ID/PROJECT_ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/organizationProject:OrganizationProject")
 public class OrganizationProject extends com.pulumi.resources.CustomResource {
     /**
-     * Billing group ID to assign to the project.
+     * Valid port number (1-65535) to use as a base for service port allocation.
+     * 
+     */
+    @Export(name="basePort", refs={Integer.class}, tree="[0]")
+    private Output<Integer> basePort;
+
+    /**
+     * @return Valid port number (1-65535) to use as a base for service port allocation.
+     * 
+     */
+    public Output<Integer> basePort() {
+        return this.basePort;
+    }
+    /**
+     * Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
      * 
      */
     @Export(name="billingGroupId", refs={String.class}, tree="[0]")
     private Output<String> billingGroupId;
 
     /**
-     * @return Billing group ID to assign to the project.
+     * @return Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
      * 
      */
     public Output<String> billingGroupId() {
         return this.billingGroupId;
     }
     /**
-     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * PEM encoded certificate.
      * 
      */
     @Export(name="caCert", refs={String.class}, tree="[0]")
     private Output<String> caCert;
 
     /**
-     * @return The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * @return PEM encoded certificate.
      * 
      */
     public Output<String> caCert() {
         return this.caCert;
     }
     /**
-     * ID of an organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Maximum length: `36`.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return ID of an organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization. Maximum length: `36`.
      * 
      */
     public Output<String> organizationId() {
@@ -130,14 +104,14 @@ public class OrganizationProject extends com.pulumi.resources.CustomResource {
         return this.parentId;
     }
     /**
-     * Unique identifier for the project that also serves as the project name.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier for the project that also serves as the project name.
+     * @return The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> projectId() {
@@ -170,6 +144,12 @@ public class OrganizationProject extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> technicalEmails() {
         return Codegen.optional(this.technicalEmails);
+    }
+    @Export(name="timeouts", refs={OrganizationProjectTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationProjectTimeouts> timeouts;
+
+    public Output<Optional<OrganizationProjectTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

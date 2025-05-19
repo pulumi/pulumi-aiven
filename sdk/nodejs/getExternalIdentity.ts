@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Maps an external service user to an Aiven user.
+ * Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -29,7 +29,7 @@ export interface GetExternalIdentityArgs {
      */
     externalServiceName: string;
     /**
-     * The user's ID on the external service.
+     * The user's ID on the external service. For GitHub, this is their GitHub username.
      */
     externalUserId: string;
     /**
@@ -51,7 +51,7 @@ export interface GetExternalIdentityResult {
      */
     readonly externalServiceName: string;
     /**
-     * The user's ID on the external service.
+     * The user's ID on the external service. For GitHub, this is their GitHub username.
      */
     readonly externalUserId: string;
     /**
@@ -68,7 +68,7 @@ export interface GetExternalIdentityResult {
     readonly organizationId: string;
 }
 /**
- * Maps an external service user to an Aiven user.
+ * Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -92,7 +92,7 @@ export interface GetExternalIdentityOutputArgs {
      */
     externalServiceName: pulumi.Input<string>;
     /**
-     * The user's ID on the external service.
+     * The user's ID on the external service. For GitHub, this is their GitHub username.
      */
     externalUserId: pulumi.Input<string>;
     /**

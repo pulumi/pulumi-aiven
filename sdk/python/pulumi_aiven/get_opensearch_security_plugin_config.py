@@ -54,7 +54,7 @@ class GetOpensearchSecurityPluginConfigResult:
     @pulumi.getter(name="adminEnabled")
     def admin_enabled(self) -> builtins.bool:
         """
-        Whether the os-sec-admin user is enabled. This indicates whether the user management with the security plugin is enabled. This is always true when the os-sec-admin password was set at least once.
+        Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
         """
         return pulumi.get(self, "admin_enabled")
 
@@ -126,7 +126,7 @@ def get_opensearch_security_plugin_config(project: Optional[builtins.str] = None
                                           service_name: Optional[builtins.str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpensearchSecurityPluginConfigResult:
     """
-    The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+    Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
 
     ## Example Usage
 
@@ -134,8 +134,8 @@ def get_opensearch_security_plugin_config(project: Optional[builtins.str] = None
     import pulumi
     import pulumi_aiven as aiven
 
-    os_sec_config = aiven.get_opensearch_security_plugin_config(project=os_project["project"],
-        service_name=os["serviceName"])
+    os_sec_config = aiven.get_opensearch_security_plugin_config(project=example_project["project"],
+        service_name=example_opensearch["serviceName"])
     ```
 
 
@@ -160,7 +160,7 @@ def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[
                                                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpensearchSecurityPluginConfigResult]:
     """
-    The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+    Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
 
     ## Example Usage
 
@@ -168,8 +168,8 @@ def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[
     import pulumi
     import pulumi_aiven as aiven
 
-    os_sec_config = aiven.get_opensearch_security_plugin_config(project=os_project["project"],
-        service_name=os["serviceName"])
+    os_sec_config = aiven.get_opensearch_security_plugin_config(project=example_project["project"],
+        service_name=example_opensearch["serviceName"])
     ```
 
 

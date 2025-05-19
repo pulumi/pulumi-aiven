@@ -13,163 +13,163 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaTopicConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+        /// The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
         /// </summary>
         [Input("cleanupPolicy")]
         public Input<string>? CleanupPolicy { get; set; }
 
         /// <summary>
-        /// compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+        /// Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         /// </summary>
         [Input("compressionType")]
         public Input<string>? CompressionType { get; set; }
 
         /// <summary>
-        /// delete.retention.ms value
+        /// The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
         /// </summary>
         [Input("deleteRetentionMs")]
         public Input<string>? DeleteRetentionMs { get; set; }
 
         /// <summary>
-        /// file.delete.delay.ms value
+        /// The time to wait before deleting a file from the filesystem.
         /// </summary>
         [Input("fileDeleteDelayMs")]
         public Input<string>? FileDeleteDelayMs { get; set; }
 
         /// <summary>
-        /// flush.messages value
+        /// This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         /// </summary>
         [Input("flushMessages")]
         public Input<string>? FlushMessages { get; set; }
 
         /// <summary>
-        /// flush.ms value
+        /// This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         /// </summary>
         [Input("flushMs")]
         public Input<string>? FlushMs { get; set; }
 
         /// <summary>
-        /// index.interval.bytes value
+        /// This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
         /// </summary>
         [Input("indexIntervalBytes")]
         public Input<string>? IndexIntervalBytes { get; set; }
 
         /// <summary>
-        /// local.retention.bytes value
+        /// This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         /// </summary>
         [Input("localRetentionBytes")]
         public Input<string>? LocalRetentionBytes { get; set; }
 
         /// <summary>
-        /// local.retention.ms value
+        /// This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
         /// </summary>
         [Input("localRetentionMs")]
         public Input<string>? LocalRetentionMs { get; set; }
 
         /// <summary>
-        /// max.compaction.lag.ms value
+        /// The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         /// </summary>
         [Input("maxCompactionLagMs")]
         public Input<string>? MaxCompactionLagMs { get; set; }
 
         /// <summary>
-        /// max.message.bytes value
+        /// The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         /// </summary>
         [Input("maxMessageBytes")]
         public Input<string>? MaxMessageBytes { get; set; }
 
         /// <summary>
-        /// message.downconversion.enable value
+        /// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
         /// </summary>
         [Input("messageDownconversionEnable")]
         public Input<bool>? MessageDownconversionEnable { get; set; }
 
         /// <summary>
-        /// message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+        /// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
         /// </summary>
         [Input("messageFormatVersion")]
         public Input<string>? MessageFormatVersion { get; set; }
 
         /// <summary>
-        /// message.timestamp.difference.max.ms value
+        /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         /// </summary>
         [Input("messageTimestampDifferenceMaxMs")]
         public Input<string>? MessageTimestampDifferenceMaxMs { get; set; }
 
         /// <summary>
-        /// message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+        /// Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
         /// </summary>
         [Input("messageTimestampType")]
         public Input<string>? MessageTimestampType { get; set; }
 
         /// <summary>
-        /// min.cleanable.dirty.ratio value
+        /// This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
         /// </summary>
         [Input("minCleanableDirtyRatio")]
         public Input<double>? MinCleanableDirtyRatio { get; set; }
 
         /// <summary>
-        /// min.compaction.lag.ms value
+        /// The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
         /// </summary>
         [Input("minCompactionLagMs")]
         public Input<string>? MinCompactionLagMs { get; set; }
 
         /// <summary>
-        /// min.insync.replicas value
+        /// When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
         /// </summary>
         [Input("minInsyncReplicas")]
         public Input<string>? MinInsyncReplicas { get; set; }
 
         /// <summary>
-        /// preallocate value
+        /// True if we should preallocate the file on disk when creating a new log segment.
         /// </summary>
         [Input("preallocate")]
         public Input<bool>? Preallocate { get; set; }
 
         /// <summary>
-        /// remote.storage.enable value
+        /// Indicates whether tiered storage should be enabled.
         /// </summary>
         [Input("remoteStorageEnable")]
         public Input<bool>? RemoteStorageEnable { get; set; }
 
         /// <summary>
-        /// retention.bytes value
+        /// This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
         /// </summary>
         [Input("retentionBytes")]
         public Input<string>? RetentionBytes { get; set; }
 
         /// <summary>
-        /// retention.ms value
+        /// This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
         /// </summary>
         [Input("retentionMs")]
         public Input<string>? RetentionMs { get; set; }
 
         /// <summary>
-        /// segment.bytes value
+        /// This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         /// </summary>
         [Input("segmentBytes")]
         public Input<string>? SegmentBytes { get; set; }
 
         /// <summary>
-        /// segment.index.bytes value
+        /// This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         /// </summary>
         [Input("segmentIndexBytes")]
         public Input<string>? SegmentIndexBytes { get; set; }
 
         /// <summary>
-        /// segment.jitter.ms value
+        /// The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
         /// </summary>
         [Input("segmentJitterMs")]
         public Input<string>? SegmentJitterMs { get; set; }
 
         /// <summary>
-        /// segment.ms value
+        /// This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
         /// </summary>
         [Input("segmentMs")]
         public Input<string>? SegmentMs { get; set; }
 
         /// <summary>
-        /// unclean.leader.election.enable value; This field is deprecated and no longer functional.
+        /// Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
         /// </summary>
         [Input("uncleanLeaderElectionEnable")]
         public Input<bool>? UncleanLeaderElectionEnable { get; set; }

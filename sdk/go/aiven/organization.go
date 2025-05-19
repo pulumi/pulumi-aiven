@@ -47,14 +47,16 @@ import (
 type Organization struct {
 	pulumi.CustomResourceState
 
-	// Timestamp of the creation of the organization.
+	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Name of the organization.
+	// Name of the organization. Maximum length: `128`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Tenant ID of the organization.
+	// Tenant identifier.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	TenantId pulumi.StringOutput           `pulumi:"tenantId"`
 	Timeouts OrganizationTimeoutsPtrOutput `pulumi:"timeouts"`
-	// Timestamp of the last update of the organization.
+	// Timestamp in ISO 8601 format, always in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -88,26 +90,30 @@ func GetOrganization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Organization resources.
 type organizationState struct {
-	// Timestamp of the creation of the organization.
+	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime *string `pulumi:"createTime"`
-	// Name of the organization.
+	// Name of the organization. Maximum length: `128`.
 	Name *string `pulumi:"name"`
-	// Tenant ID of the organization.
+	// Tenant identifier.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	TenantId *string               `pulumi:"tenantId"`
 	Timeouts *OrganizationTimeouts `pulumi:"timeouts"`
-	// Timestamp of the last update of the organization.
+	// Timestamp in ISO 8601 format, always in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type OrganizationState struct {
-	// Timestamp of the creation of the organization.
+	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime pulumi.StringPtrInput
-	// Name of the organization.
+	// Name of the organization. Maximum length: `128`.
 	Name pulumi.StringPtrInput
-	// Tenant ID of the organization.
+	// Tenant identifier.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	TenantId pulumi.StringPtrInput
 	Timeouts OrganizationTimeoutsPtrInput
-	// Timestamp of the last update of the organization.
+	// Timestamp in ISO 8601 format, always in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -116,14 +122,14 @@ func (OrganizationState) ElementType() reflect.Type {
 }
 
 type organizationArgs struct {
-	// Name of the organization.
+	// Name of the organization. Maximum length: `128`.
 	Name     *string               `pulumi:"name"`
 	Timeouts *OrganizationTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a Organization resource.
 type OrganizationArgs struct {
-	// Name of the organization.
+	// Name of the organization. Maximum length: `128`.
 	Name     pulumi.StringPtrInput
 	Timeouts OrganizationTimeoutsPtrInput
 }
@@ -215,17 +221,19 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Timestamp of the creation of the organization.
+// Timestamp in ISO 8601 format, always in UTC.
 func (o OrganizationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Name of the organization.
+// Name of the organization. Maximum length: `128`.
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Tenant ID of the organization.
+// Tenant identifier.
+//
+// Deprecated: This field is deprecated and will be removed in the next major release.
 func (o OrganizationOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
@@ -234,7 +242,7 @@ func (o OrganizationOutput) Timeouts() OrganizationTimeoutsPtrOutput {
 	return o.ApplyT(func(v *Organization) OrganizationTimeoutsPtrOutput { return v.Timeouts }).(OrganizationTimeoutsPtrOutput)
 }
 
-// Timestamp of the last update of the organization.
+// Timestamp in ISO 8601 format, always in UTC.
 func (o OrganizationOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

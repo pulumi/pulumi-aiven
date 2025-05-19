@@ -26,7 +26,7 @@ class OrganizationArgs:
                  timeouts: Optional[pulumi.Input['OrganizationTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Organization resource.
-        :param pulumi.Input[builtins.str] name: Name of the organization.
+        :param pulumi.Input[builtins.str] name: Name of the organization. Maximum length: `128`.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -37,7 +37,7 @@ class OrganizationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the organization.
+        Name of the organization. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
@@ -65,15 +65,18 @@ class _OrganizationState:
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Organization resources.
-        :param pulumi.Input[builtins.str] create_time: Timestamp of the creation of the organization.
-        :param pulumi.Input[builtins.str] name: Name of the organization.
-        :param pulumi.Input[builtins.str] tenant_id: Tenant ID of the organization.
-        :param pulumi.Input[builtins.str] update_time: Timestamp of the last update of the organization.
+        :param pulumi.Input[builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
+        :param pulumi.Input[builtins.str] name: Name of the organization. Maximum length: `128`.
+        :param pulumi.Input[builtins.str] tenant_id: Tenant identifier.
+        :param pulumi.Input[builtins.str] update_time: Timestamp in ISO 8601 format, always in UTC.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tenant_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""tenant_id is deprecated: This field is deprecated and will be removed in the next major release.""")
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if timeouts is not None:
@@ -85,7 +88,7 @@ class _OrganizationState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Timestamp of the creation of the organization.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -97,7 +100,7 @@ class _OrganizationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the organization.
+        Name of the organization. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
@@ -107,9 +110,10 @@ class _OrganizationState:
 
     @property
     @pulumi.getter(name="tenantId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def tenant_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Tenant ID of the organization.
+        Tenant identifier.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -130,7 +134,7 @@ class _OrganizationState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Timestamp of the last update of the organization.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "update_time")
 
@@ -168,7 +172,7 @@ class Organization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] name: Name of the organization.
+        :param pulumi.Input[builtins.str] name: Name of the organization. Maximum length: `128`.
         """
         ...
     @overload
@@ -247,10 +251,10 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] create_time: Timestamp of the creation of the organization.
-        :param pulumi.Input[builtins.str] name: Name of the organization.
-        :param pulumi.Input[builtins.str] tenant_id: Tenant ID of the organization.
-        :param pulumi.Input[builtins.str] update_time: Timestamp of the last update of the organization.
+        :param pulumi.Input[builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
+        :param pulumi.Input[builtins.str] name: Name of the organization. Maximum length: `128`.
+        :param pulumi.Input[builtins.str] tenant_id: Tenant identifier.
+        :param pulumi.Input[builtins.str] update_time: Timestamp in ISO 8601 format, always in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -267,7 +271,7 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[builtins.str]:
         """
-        Timestamp of the creation of the organization.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -275,15 +279,16 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        Name of the organization.
+        Name of the organization. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="tenantId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def tenant_id(self) -> pulumi.Output[builtins.str]:
         """
-        Tenant ID of the organization.
+        Tenant identifier.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -296,7 +301,7 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[builtins.str]:
         """
-        Timestamp of the last update of the organization.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "update_time")
 

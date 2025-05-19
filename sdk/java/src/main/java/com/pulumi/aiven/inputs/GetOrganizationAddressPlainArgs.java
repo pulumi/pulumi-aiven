@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationAddressTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationAddressPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +17,14 @@ public final class GetOrganizationAddressPlainArgs extends com.pulumi.resources.
     public static final GetOrganizationAddressPlainArgs Empty = new GetOrganizationAddressPlainArgs();
 
     /**
-     * ID of the address.
+     * Address ID.
      * 
      */
     @Import(name="addressId", required=true)
     private String addressId;
 
     /**
-     * @return ID of the address.
+     * @return Address ID.
      * 
      */
     public String addressId() {
@@ -29,18 +32,25 @@ public final class GetOrganizationAddressPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * ID of organization.
+     * ID of an organization.
      * 
      */
     @Import(name="organizationId", required=true)
     private String organizationId;
 
     /**
-     * @return ID of organization.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
         return this.organizationId;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable GetOrganizationAddressTimeouts timeouts;
+
+    public Optional<GetOrganizationAddressTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetOrganizationAddressPlainArgs() {}
@@ -48,6 +58,7 @@ public final class GetOrganizationAddressPlainArgs extends com.pulumi.resources.
     private GetOrganizationAddressPlainArgs(GetOrganizationAddressPlainArgs $) {
         this.addressId = $.addressId;
         this.organizationId = $.organizationId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -69,7 +80,7 @@ public final class GetOrganizationAddressPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param addressId ID of the address.
+         * @param addressId Address ID.
          * 
          * @return builder
          * 
@@ -80,13 +91,18 @@ public final class GetOrganizationAddressPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param organizationId ID of organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
          */
         public Builder organizationId(String organizationId) {
             $.organizationId = organizationId;
+            return this;
+        }
+
+        public Builder timeouts(@Nullable GetOrganizationAddressTimeouts timeouts) {
+            $.timeouts = timeouts;
             return this;
         }
 

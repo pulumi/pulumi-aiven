@@ -18,14 +18,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     public static final KafkaTopicConfigArgs Empty = new KafkaTopicConfigArgs();
 
     /**
-     * cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+     * The retention policy to use on old segments. Possible values include &#39;delete&#39;, &#39;compact&#39;, or a comma-separated list of them. The default policy (&#39;delete&#39;) will discard old segments when their retention time or size limit has been reached. The &#39;compact&#39; setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
      * 
      */
     @Import(name="cleanupPolicy")
     private @Nullable Output<String> cleanupPolicy;
 
     /**
-     * @return cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+     * @return The retention policy to use on old segments. Possible values include &#39;delete&#39;, &#39;compact&#39;, or a comma-separated list of them. The default policy (&#39;delete&#39;) will discard old segments when their retention time or size limit has been reached. The &#39;compact&#39; setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
      * 
      */
     public Optional<Output<String>> cleanupPolicy() {
@@ -33,14 +33,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+     * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
      * 
      */
     @Import(name="compressionType")
     private @Nullable Output<String> compressionType;
 
     /**
-     * @return compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+     * @return Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
      * 
      */
     public Optional<Output<String>> compressionType() {
@@ -48,14 +48,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * delete.retention.ms value
+     * The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
      * 
      */
     @Import(name="deleteRetentionMs")
     private @Nullable Output<String> deleteRetentionMs;
 
     /**
-     * @return delete.retention.ms value
+     * @return The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
      * 
      */
     public Optional<Output<String>> deleteRetentionMs() {
@@ -63,14 +63,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * file.delete.delay.ms value
+     * The time to wait before deleting a file from the filesystem.
      * 
      */
     @Import(name="fileDeleteDelayMs")
     private @Nullable Output<String> fileDeleteDelayMs;
 
     /**
-     * @return file.delete.delay.ms value
+     * @return The time to wait before deleting a file from the filesystem.
      * 
      */
     public Optional<Output<String>> fileDeleteDelayMs() {
@@ -78,14 +78,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * flush.messages value
+     * This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system&#39;s background flush capabilities as it is more efficient.
      * 
      */
     @Import(name="flushMessages")
     private @Nullable Output<String> flushMessages;
 
     /**
-     * @return flush.messages value
+     * @return This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system&#39;s background flush capabilities as it is more efficient.
      * 
      */
     public Optional<Output<String>> flushMessages() {
@@ -93,14 +93,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * flush.ms value
+     * This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system&#39;s background flush capabilities as it is more efficient.
      * 
      */
     @Import(name="flushMs")
     private @Nullable Output<String> flushMs;
 
     /**
-     * @return flush.ms value
+     * @return This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system&#39;s background flush capabilities as it is more efficient.
      * 
      */
     public Optional<Output<String>> flushMs() {
@@ -108,14 +108,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * index.interval.bytes value
+     * This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don&#39;t need to change this.
      * 
      */
     @Import(name="indexIntervalBytes")
     private @Nullable Output<String> indexIntervalBytes;
 
     /**
-     * @return index.interval.bytes value
+     * @return This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don&#39;t need to change this.
      * 
      */
     public Optional<Output<String>> indexIntervalBytes() {
@@ -123,14 +123,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * local.retention.bytes value
+     * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1.
      * 
      */
     @Import(name="localRetentionBytes")
     private @Nullable Output<String> localRetentionBytes;
 
     /**
-     * @return local.retention.bytes value
+     * @return This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1.
      * 
      */
     public Optional<Output<String>> localRetentionBytes() {
@@ -138,14 +138,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * local.retention.ms value
+     * This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1.
      * 
      */
     @Import(name="localRetentionMs")
     private @Nullable Output<String> localRetentionMs;
 
     /**
-     * @return local.retention.ms value
+     * @return This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1.
      * 
      */
     public Optional<Output<String>> localRetentionMs() {
@@ -153,14 +153,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * max.compaction.lag.ms value
+     * The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
      * 
      */
     @Import(name="maxCompactionLagMs")
     private @Nullable Output<String> maxCompactionLagMs;
 
     /**
-     * @return max.compaction.lag.ms value
+     * @return The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
      * 
      */
     public Optional<Output<String>> maxCompactionLagMs() {
@@ -168,14 +168,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * max.message.bytes value
+     * The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers&#39; fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
      * 
      */
     @Import(name="maxMessageBytes")
     private @Nullable Output<String> maxMessageBytes;
 
     /**
-     * @return max.message.bytes value
+     * @return The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers&#39; fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
      * 
      */
     public Optional<Output<String>> maxMessageBytes() {
@@ -183,14 +183,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * message.downconversion.enable value
+     * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
      * 
      */
     @Import(name="messageDownconversionEnable")
     private @Nullable Output<Boolean> messageDownconversionEnable;
 
     /**
-     * @return message.downconversion.enable value
+     * @return This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
      * 
      */
     public Optional<Output<Boolean>> messageDownconversionEnable() {
@@ -198,14 +198,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don&#39;t understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
      * 
      */
     @Import(name="messageFormatVersion")
     private @Nullable Output<String> messageFormatVersion;
 
     /**
-     * @return message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+     * @return Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don&#39;t understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
      * 
      */
     public Optional<Output<String>> messageFormatVersion() {
@@ -213,14 +213,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * message.timestamp.difference.max.ms value
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      * 
      */
     @Import(name="messageTimestampDifferenceMaxMs")
     private @Nullable Output<String> messageTimestampDifferenceMaxMs;
 
     /**
-     * @return message.timestamp.difference.max.ms value
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      * 
      */
     public Optional<Output<String>> messageTimestampDifferenceMaxMs() {
@@ -228,14 +228,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+     * Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
      * 
      */
     @Import(name="messageTimestampType")
     private @Nullable Output<String> messageTimestampType;
 
     /**
-     * @return message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+     * @return Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
      * 
      */
     public Optional<Output<String>> messageTimestampType() {
@@ -243,14 +243,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * min.cleanable.dirty.ratio value
+     * This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
      * 
      */
     @Import(name="minCleanableDirtyRatio")
     private @Nullable Output<Double> minCleanableDirtyRatio;
 
     /**
-     * @return min.cleanable.dirty.ratio value
+     * @return This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
      * 
      */
     public Optional<Output<Double>> minCleanableDirtyRatio() {
@@ -258,14 +258,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * min.compaction.lag.ms value
+     * The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
      * 
      */
     @Import(name="minCompactionLagMs")
     private @Nullable Output<String> minCompactionLagMs;
 
     /**
-     * @return min.compaction.lag.ms value
+     * @return The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
      * 
      */
     public Optional<Output<String>> minCompactionLagMs() {
@@ -273,14 +273,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * min.insync.replicas value
+     * When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
      * 
      */
     @Import(name="minInsyncReplicas")
     private @Nullable Output<String> minInsyncReplicas;
 
     /**
-     * @return min.insync.replicas value
+     * @return When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
      * 
      */
     public Optional<Output<String>> minInsyncReplicas() {
@@ -288,14 +288,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * preallocate value
+     * True if we should preallocate the file on disk when creating a new log segment.
      * 
      */
     @Import(name="preallocate")
     private @Nullable Output<Boolean> preallocate;
 
     /**
-     * @return preallocate value
+     * @return True if we should preallocate the file on disk when creating a new log segment.
      * 
      */
     public Optional<Output<Boolean>> preallocate() {
@@ -303,14 +303,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * remote.storage.enable value
+     * Indicates whether tiered storage should be enabled.
      * 
      */
     @Import(name="remoteStorageEnable")
     private @Nullable Output<Boolean> remoteStorageEnable;
 
     /**
-     * @return remote.storage.enable value
+     * @return Indicates whether tiered storage should be enabled.
      * 
      */
     public Optional<Output<Boolean>> remoteStorageEnable() {
@@ -318,14 +318,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * retention.bytes value
+     * This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the &#39;delete&#39; retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
      * 
      */
     @Import(name="retentionBytes")
     private @Nullable Output<String> retentionBytes;
 
     /**
-     * @return retention.bytes value
+     * @return This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the &#39;delete&#39; retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
      * 
      */
     public Optional<Output<String>> retentionBytes() {
@@ -333,14 +333,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * retention.ms value
+     * This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the &#39;delete&#39; retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
      * 
      */
     @Import(name="retentionMs")
     private @Nullable Output<String> retentionMs;
 
     /**
-     * @return retention.ms value
+     * @return This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the &#39;delete&#39; retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
      * 
      */
     public Optional<Output<String>> retentionMs() {
@@ -348,14 +348,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * segment.bytes value
+     * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      * 
      */
     @Import(name="segmentBytes")
     private @Nullable Output<String> segmentBytes;
 
     /**
-     * @return segment.bytes value
+     * @return This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      * 
      */
     public Optional<Output<String>> segmentBytes() {
@@ -363,14 +363,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * segment.index.bytes value
+     * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      * 
      */
     @Import(name="segmentIndexBytes")
     private @Nullable Output<String> segmentIndexBytes;
 
     /**
-     * @return segment.index.bytes value
+     * @return This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      * 
      */
     public Optional<Output<String>> segmentIndexBytes() {
@@ -378,14 +378,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * segment.jitter.ms value
+     * The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
      * 
      */
     @Import(name="segmentJitterMs")
     private @Nullable Output<String> segmentJitterMs;
 
     /**
-     * @return segment.jitter.ms value
+     * @return The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
      * 
      */
     public Optional<Output<String>> segmentJitterMs() {
@@ -393,14 +393,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * segment.ms value
+     * This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
      * 
      */
     @Import(name="segmentMs")
     private @Nullable Output<String> segmentMs;
 
     /**
-     * @return segment.ms value
+     * @return This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
      * 
      */
     public Optional<Output<String>> segmentMs() {
@@ -408,24 +408,16 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * unclean.leader.election.enable value; This field is deprecated and no longer functional.
-     * 
-     * @deprecated
-     * This field is deprecated and no longer functional.
+     * Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
      * 
      */
-    @Deprecated /* This field is deprecated and no longer functional. */
     @Import(name="uncleanLeaderElectionEnable")
     private @Nullable Output<Boolean> uncleanLeaderElectionEnable;
 
     /**
-     * @return unclean.leader.election.enable value; This field is deprecated and no longer functional.
-     * 
-     * @deprecated
-     * This field is deprecated and no longer functional.
+     * @return Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
      * 
      */
-    @Deprecated /* This field is deprecated and no longer functional. */
     public Optional<Output<Boolean>> uncleanLeaderElectionEnable() {
         return Optional.ofNullable(this.uncleanLeaderElectionEnable);
     }
@@ -481,7 +473,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cleanupPolicy cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+         * @param cleanupPolicy The retention policy to use on old segments. Possible values include &#39;delete&#39;, &#39;compact&#39;, or a comma-separated list of them. The default policy (&#39;delete&#39;) will discard old segments when their retention time or size limit has been reached. The &#39;compact&#39; setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
          * 
          * @return builder
          * 
@@ -492,7 +484,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cleanupPolicy cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+         * @param cleanupPolicy The retention policy to use on old segments. Possible values include &#39;delete&#39;, &#39;compact&#39;, or a comma-separated list of them. The default policy (&#39;delete&#39;) will discard old segments when their retention time or size limit has been reached. The &#39;compact&#39; setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
          * 
          * @return builder
          * 
@@ -502,7 +494,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param compressionType compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+         * @param compressionType Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
          * 
          * @return builder
          * 
@@ -513,7 +505,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param compressionType compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+         * @param compressionType Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
          * 
          * @return builder
          * 
@@ -523,7 +515,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deleteRetentionMs delete.retention.ms value
+         * @param deleteRetentionMs The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
          * 
          * @return builder
          * 
@@ -534,7 +526,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deleteRetentionMs delete.retention.ms value
+         * @param deleteRetentionMs The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
          * 
          * @return builder
          * 
@@ -544,7 +536,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fileDeleteDelayMs file.delete.delay.ms value
+         * @param fileDeleteDelayMs The time to wait before deleting a file from the filesystem.
          * 
          * @return builder
          * 
@@ -555,7 +547,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fileDeleteDelayMs file.delete.delay.ms value
+         * @param fileDeleteDelayMs The time to wait before deleting a file from the filesystem.
          * 
          * @return builder
          * 
@@ -565,7 +557,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param flushMessages flush.messages value
+         * @param flushMessages This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system&#39;s background flush capabilities as it is more efficient.
          * 
          * @return builder
          * 
@@ -576,7 +568,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param flushMessages flush.messages value
+         * @param flushMessages This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system&#39;s background flush capabilities as it is more efficient.
          * 
          * @return builder
          * 
@@ -586,7 +578,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param flushMs flush.ms value
+         * @param flushMs This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system&#39;s background flush capabilities as it is more efficient.
          * 
          * @return builder
          * 
@@ -597,7 +589,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param flushMs flush.ms value
+         * @param flushMs This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system&#39;s background flush capabilities as it is more efficient.
          * 
          * @return builder
          * 
@@ -607,7 +599,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param indexIntervalBytes index.interval.bytes value
+         * @param indexIntervalBytes This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don&#39;t need to change this.
          * 
          * @return builder
          * 
@@ -618,7 +610,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param indexIntervalBytes index.interval.bytes value
+         * @param indexIntervalBytes This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don&#39;t need to change this.
          * 
          * @return builder
          * 
@@ -628,7 +620,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionBytes local.retention.bytes value
+         * @param localRetentionBytes This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1.
          * 
          * @return builder
          * 
@@ -639,7 +631,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionBytes local.retention.bytes value
+         * @param localRetentionBytes This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1.
          * 
          * @return builder
          * 
@@ -649,7 +641,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionMs local.retention.ms value
+         * @param localRetentionMs This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1.
          * 
          * @return builder
          * 
@@ -660,7 +652,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionMs local.retention.ms value
+         * @param localRetentionMs This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1.
          * 
          * @return builder
          * 
@@ -670,7 +662,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxCompactionLagMs max.compaction.lag.ms value
+         * @param maxCompactionLagMs The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
          * 
          * @return builder
          * 
@@ -681,7 +673,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxCompactionLagMs max.compaction.lag.ms value
+         * @param maxCompactionLagMs The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
          * 
          * @return builder
          * 
@@ -691,7 +683,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxMessageBytes max.message.bytes value
+         * @param maxMessageBytes The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers&#39; fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
          * 
          * @return builder
          * 
@@ -702,7 +694,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxMessageBytes max.message.bytes value
+         * @param maxMessageBytes The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers&#39; fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
          * 
          * @return builder
          * 
@@ -712,7 +704,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param messageDownconversionEnable message.downconversion.enable value
+         * @param messageDownconversionEnable This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
          * 
          * @return builder
          * 
@@ -723,7 +715,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param messageDownconversionEnable message.downconversion.enable value
+         * @param messageDownconversionEnable This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
          * 
          * @return builder
          * 
@@ -733,7 +725,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param messageFormatVersion message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+         * @param messageFormatVersion Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don&#39;t understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
          * 
          * @return builder
          * 
@@ -744,7 +736,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param messageFormatVersion message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
+         * @param messageFormatVersion Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don&#39;t understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
          * 
          * @return builder
          * 
@@ -754,7 +746,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param messageTimestampDifferenceMaxMs message.timestamp.difference.max.ms value
+         * @param messageTimestampDifferenceMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
          * 
          * @return builder
          * 
@@ -765,7 +757,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param messageTimestampDifferenceMaxMs message.timestamp.difference.max.ms value
+         * @param messageTimestampDifferenceMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
          * 
          * @return builder
          * 
@@ -775,7 +767,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param messageTimestampType message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+         * @param messageTimestampType Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
          * 
          * @return builder
          * 
@@ -786,7 +778,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param messageTimestampType message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
+         * @param messageTimestampType Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
          * 
          * @return builder
          * 
@@ -796,7 +788,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minCleanableDirtyRatio min.cleanable.dirty.ratio value
+         * @param minCleanableDirtyRatio This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
          * 
          * @return builder
          * 
@@ -807,7 +799,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minCleanableDirtyRatio min.cleanable.dirty.ratio value
+         * @param minCleanableDirtyRatio This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
          * 
          * @return builder
          * 
@@ -817,7 +809,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minCompactionLagMs min.compaction.lag.ms value
+         * @param minCompactionLagMs The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
          * 
          * @return builder
          * 
@@ -828,7 +820,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minCompactionLagMs min.compaction.lag.ms value
+         * @param minCompactionLagMs The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
          * 
          * @return builder
          * 
@@ -838,7 +830,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minInsyncReplicas min.insync.replicas value
+         * @param minInsyncReplicas When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
          * 
          * @return builder
          * 
@@ -849,7 +841,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minInsyncReplicas min.insync.replicas value
+         * @param minInsyncReplicas When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
          * 
          * @return builder
          * 
@@ -859,7 +851,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param preallocate preallocate value
+         * @param preallocate True if we should preallocate the file on disk when creating a new log segment.
          * 
          * @return builder
          * 
@@ -870,7 +862,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param preallocate preallocate value
+         * @param preallocate True if we should preallocate the file on disk when creating a new log segment.
          * 
          * @return builder
          * 
@@ -880,7 +872,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param remoteStorageEnable remote.storage.enable value
+         * @param remoteStorageEnable Indicates whether tiered storage should be enabled.
          * 
          * @return builder
          * 
@@ -891,7 +883,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param remoteStorageEnable remote.storage.enable value
+         * @param remoteStorageEnable Indicates whether tiered storage should be enabled.
          * 
          * @return builder
          * 
@@ -901,7 +893,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param retentionBytes retention.bytes value
+         * @param retentionBytes This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the &#39;delete&#39; retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
          * 
          * @return builder
          * 
@@ -912,7 +904,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param retentionBytes retention.bytes value
+         * @param retentionBytes This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the &#39;delete&#39; retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
          * 
          * @return builder
          * 
@@ -922,7 +914,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param retentionMs retention.ms value
+         * @param retentionMs This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the &#39;delete&#39; retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
          * 
          * @return builder
          * 
@@ -933,7 +925,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param retentionMs retention.ms value
+         * @param retentionMs This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the &#39;delete&#39; retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
          * 
          * @return builder
          * 
@@ -943,7 +935,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentBytes segment.bytes value
+         * @param segmentBytes This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
          * 
          * @return builder
          * 
@@ -954,7 +946,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentBytes segment.bytes value
+         * @param segmentBytes This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
          * 
          * @return builder
          * 
@@ -964,7 +956,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentIndexBytes segment.index.bytes value
+         * @param segmentIndexBytes This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
          * 
          * @return builder
          * 
@@ -975,7 +967,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentIndexBytes segment.index.bytes value
+         * @param segmentIndexBytes This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
          * 
          * @return builder
          * 
@@ -985,7 +977,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentJitterMs segment.jitter.ms value
+         * @param segmentJitterMs The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
          * 
          * @return builder
          * 
@@ -996,7 +988,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentJitterMs segment.jitter.ms value
+         * @param segmentJitterMs The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
          * 
          * @return builder
          * 
@@ -1006,7 +998,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentMs segment.ms value
+         * @param segmentMs This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
          * 
          * @return builder
          * 
@@ -1017,7 +1009,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentMs segment.ms value
+         * @param segmentMs This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
          * 
          * @return builder
          * 
@@ -1027,30 +1019,22 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param uncleanLeaderElectionEnable unclean.leader.election.enable value; This field is deprecated and no longer functional.
+         * @param uncleanLeaderElectionEnable Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and no longer functional.
-         * 
          */
-        @Deprecated /* This field is deprecated and no longer functional. */
         public Builder uncleanLeaderElectionEnable(@Nullable Output<Boolean> uncleanLeaderElectionEnable) {
             $.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
             return this;
         }
 
         /**
-         * @param uncleanLeaderElectionEnable unclean.leader.election.enable value; This field is deprecated and no longer functional.
+         * @param uncleanLeaderElectionEnable Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and no longer functional.
-         * 
          */
-        @Deprecated /* This field is deprecated and no longer functional. */
         public Builder uncleanLeaderElectionEnable(Boolean uncleanLeaderElectionEnable) {
             return uncleanLeaderElectionEnable(Output.of(uncleanLeaderElectionEnable));
         }

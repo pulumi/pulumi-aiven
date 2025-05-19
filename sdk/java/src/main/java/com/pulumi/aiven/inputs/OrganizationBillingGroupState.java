@@ -18,14 +18,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     public static final OrganizationBillingGroupState Empty = new OrganizationBillingGroupState();
 
     /**
-     * ID of the billing address.
+     * Billing address ID. Maximum length: `36`.
      * 
      */
     @Import(name="billingAddressId")
     private @Nullable Output<String> billingAddressId;
 
     /**
-     * @return ID of the billing address.
+     * @return Billing address ID. Maximum length: `36`.
      * 
      */
     public Optional<Output<String>> billingAddressId() {
@@ -48,14 +48,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Billing currency.
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     @Import(name="billingCurrency")
     private @Nullable Output<String> billingCurrency;
 
     /**
-     * @return Billing currency.
+     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     public Optional<Output<String>> billingCurrency() {
@@ -63,14 +63,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * List of billing emails.
+     * List of billing contact emails.
      * 
      */
     @Import(name="billingEmails")
     private @Nullable Output<List<String>> billingEmails;
 
     /**
-     * @return List of billing emails.
+     * @return List of billing contact emails.
      * 
      */
     public Optional<Output<List<String>>> billingEmails() {
@@ -78,14 +78,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * ID of the billing group.
+     * Billing group ID.
      * 
      */
     @Import(name="billingGroupId")
     private @Nullable Output<String> billingGroupId;
 
     /**
-     * @return ID of the billing group.
+     * @return Billing group ID.
      * 
      */
     public Optional<Output<String>> billingGroupId() {
@@ -93,14 +93,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Name of the billing group.
+     * Billing Group Name. Maximum length: `128`.
      * 
      */
     @Import(name="billingGroupName")
     private @Nullable Output<String> billingGroupName;
 
     /**
-     * @return Name of the billing group.
+     * @return Billing Group Name. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> billingGroupName() {
@@ -108,14 +108,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Custom invoice text.
+     * Extra billing text. Maximum length: `254`.
      * 
      */
     @Import(name="customInvoiceText")
     private @Nullable Output<String> customInvoiceText;
 
     /**
-     * @return Custom invoice text.
+     * @return Extra billing text. Maximum length: `254`.
      * 
      */
     public Optional<Output<String>> customInvoiceText() {
@@ -123,14 +123,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * ID of the organization.
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return ID of the organization.
+     * @return ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -138,14 +138,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * ID of the payment method.
+     * Payment method ID.
      * 
      */
     @Import(name="paymentMethodId")
     private @Nullable Output<String> paymentMethodId;
 
     /**
-     * @return ID of the payment method.
+     * @return Payment method ID.
      * 
      */
     public Optional<Output<String>> paymentMethodId() {
@@ -153,14 +153,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * ID of the shipping address.
+     * Shipping address ID. Maximum length: `36`.
      * 
      */
     @Import(name="shippingAddressId")
     private @Nullable Output<String> shippingAddressId;
 
     /**
-     * @return ID of the shipping address.
+     * @return Shipping address ID. Maximum length: `36`.
      * 
      */
     public Optional<Output<String>> shippingAddressId() {
@@ -225,7 +225,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingAddressId ID of the billing address.
+         * @param billingAddressId Billing address ID. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingAddressId ID of the billing address.
+         * @param billingAddressId Billing address ID. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingCurrency Billing currency.
+         * @param billingCurrency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingCurrency Billing currency.
+         * @param billingCurrency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingEmails List of billing emails.
+         * @param billingEmails List of billing contact emails.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingEmails List of billing emails.
+         * @param billingEmails List of billing contact emails.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingEmails List of billing emails.
+         * @param billingEmails List of billing contact emails.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingGroupId ID of the billing group.
+         * @param billingGroupId Billing group ID.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingGroupId ID of the billing group.
+         * @param billingGroupId Billing group ID.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingGroupName Name of the billing group.
+         * @param billingGroupName Billing Group Name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingGroupName Name of the billing group.
+         * @param billingGroupName Billing Group Name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customInvoiceText Custom invoice text.
+         * @param customInvoiceText Extra billing text. Maximum length: `254`.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customInvoiceText Custom invoice text.
+         * @param customInvoiceText Extra billing text. Maximum length: `254`.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param organizationId ID of the organization.
+         * @param organizationId ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param organizationId ID of the organization.
+         * @param organizationId ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param paymentMethodId ID of the payment method.
+         * @param paymentMethodId Payment method ID.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param paymentMethodId ID of the payment method.
+         * @param paymentMethodId Payment method ID.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param shippingAddressId ID of the shipping address.
+         * @param shippingAddressId Shipping address ID. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param shippingAddressId ID of the shipping address.
+         * @param shippingAddressId Shipping address ID. Maximum length: `36`.
          * 
          * @return builder
          * 
