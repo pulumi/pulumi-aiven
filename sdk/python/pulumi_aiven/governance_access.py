@@ -22,43 +22,35 @@ __all__ = ['GovernanceAccessArgs', 'GovernanceAccess']
 @pulumi.input_type
 class GovernanceAccessArgs:
     def __init__(__self__, *,
-                 access_data: pulumi.Input['GovernanceAccessAccessDataArgs'],
                  access_name: pulumi.Input[builtins.str],
                  access_type: pulumi.Input[builtins.str],
                  organization_id: pulumi.Input[builtins.str],
-                 owner_user_group_id: Optional[pulumi.Input[builtins.str]] = None):
+                 access_data: Optional[pulumi.Input['GovernanceAccessAccessDataArgs']] = None,
+                 owner_user_group_id: Optional[pulumi.Input[builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a GovernanceAccess resource.
-        :param pulumi.Input['GovernanceAccessAccessDataArgs'] access_data: Details of the access. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] access_name: The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] access_type: The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] owner_user_group_id: The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] access_name: Label to describe the access. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] access_type: An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input['GovernanceAccessAccessDataArgs'] access_data: Required property. access type specific data. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] owner_user_group_id: The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
-        pulumi.set(__self__, "access_data", access_data)
         pulumi.set(__self__, "access_name", access_name)
         pulumi.set(__self__, "access_type", access_type)
         pulumi.set(__self__, "organization_id", organization_id)
+        if access_data is not None:
+            pulumi.set(__self__, "access_data", access_data)
         if owner_user_group_id is not None:
             pulumi.set(__self__, "owner_user_group_id", owner_user_group_id)
-
-    @property
-    @pulumi.getter(name="accessData")
-    def access_data(self) -> pulumi.Input['GovernanceAccessAccessDataArgs']:
-        """
-        Details of the access. Changing this property forces recreation of the resource.
-        """
-        return pulumi.get(self, "access_data")
-
-    @access_data.setter
-    def access_data(self, value: pulumi.Input['GovernanceAccessAccessDataArgs']):
-        pulumi.set(self, "access_data", value)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="accessName")
     def access_name(self) -> pulumi.Input[builtins.str]:
         """
-        The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        Label to describe the access. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "access_name")
 
@@ -70,7 +62,7 @@ class GovernanceAccessArgs:
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Input[builtins.str]:
         """
-        The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+        An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "access_type")
 
@@ -82,7 +74,7 @@ class GovernanceAccessArgs:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the organization. Changing this property forces recreation of the resource.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -91,16 +83,37 @@ class GovernanceAccessArgs:
         pulumi.set(self, "organization_id", value)
 
     @property
+    @pulumi.getter(name="accessData")
+    def access_data(self) -> Optional[pulumi.Input['GovernanceAccessAccessDataArgs']]:
+        """
+        Required property. access type specific data. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "access_data")
+
+    @access_data.setter
+    def access_data(self, value: Optional[pulumi.Input['GovernanceAccessAccessDataArgs']]):
+        pulumi.set(self, "access_data", value)
+
+    @property
     @pulumi.getter(name="ownerUserGroupId")
     def owner_user_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "owner_user_group_id")
 
     @owner_user_group_id.setter
     def owner_user_group_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "owner_user_group_id", value)
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -111,14 +124,15 @@ class _GovernanceAccessState:
                  access_type: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
                  owner_user_group_id: Optional[pulumi.Input[builtins.str]] = None,
-                 susbcription_id: Optional[pulumi.Input[builtins.str]] = None):
+                 susbcription_id: Optional[pulumi.Input[builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering GovernanceAccess resources.
-        :param pulumi.Input['GovernanceAccessAccessDataArgs'] access_data: Details of the access. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] access_name: The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] access_type: The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] owner_user_group_id: The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        :param pulumi.Input['GovernanceAccessAccessDataArgs'] access_data: Required property. access type specific data. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] access_name: Label to describe the access. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] access_type: An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] owner_user_group_id: The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[builtins.str] susbcription_id: The ID of the access.
         """
         if access_data is not None:
@@ -133,12 +147,14 @@ class _GovernanceAccessState:
             pulumi.set(__self__, "owner_user_group_id", owner_user_group_id)
         if susbcription_id is not None:
             pulumi.set(__self__, "susbcription_id", susbcription_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="accessData")
     def access_data(self) -> Optional[pulumi.Input['GovernanceAccessAccessDataArgs']]:
         """
-        Details of the access. Changing this property forces recreation of the resource.
+        Required property. access type specific data. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "access_data")
 
@@ -150,7 +166,7 @@ class _GovernanceAccessState:
     @pulumi.getter(name="accessName")
     def access_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        Label to describe the access. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "access_name")
 
@@ -162,7 +178,7 @@ class _GovernanceAccessState:
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+        An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "access_type")
 
@@ -174,7 +190,7 @@ class _GovernanceAccessState:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the organization. Changing this property forces recreation of the resource.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -186,7 +202,7 @@ class _GovernanceAccessState:
     @pulumi.getter(name="ownerUserGroupId")
     def owner_user_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "owner_user_group_id")
 
@@ -206,6 +222,15 @@ class _GovernanceAccessState:
     def susbcription_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "susbcription_id", value)
 
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.type_token("aiven:index/governanceAccess:GovernanceAccess")
 class GovernanceAccess(pulumi.CustomResource):
@@ -218,6 +243,7 @@ class GovernanceAccess(pulumi.CustomResource):
                  access_type: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
                  owner_user_group_id: Optional[pulumi.Input[builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -246,11 +272,11 @@ class GovernanceAccess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']] access_data: Details of the access. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] access_name: The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] access_type: The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] owner_user_group_id: The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']] access_data: Required property. access type specific data. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] access_name: Label to describe the access. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] access_type: An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] owner_user_group_id: The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -303,6 +329,7 @@ class GovernanceAccess(pulumi.CustomResource):
                  access_type: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
                  owner_user_group_id: Optional[pulumi.Input[builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,8 +339,6 @@ class GovernanceAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GovernanceAccessArgs.__new__(GovernanceAccessArgs)
 
-            if access_data is None and not opts.urn:
-                raise TypeError("Missing required property 'access_data'")
             __props__.__dict__["access_data"] = access_data
             if access_name is None and not opts.urn:
                 raise TypeError("Missing required property 'access_name'")
@@ -325,6 +350,7 @@ class GovernanceAccess(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["owner_user_group_id"] = owner_user_group_id
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["susbcription_id"] = None
         super(GovernanceAccess, __self__).__init__(
             'aiven:index/governanceAccess:GovernanceAccess',
@@ -341,7 +367,8 @@ class GovernanceAccess(pulumi.CustomResource):
             access_type: Optional[pulumi.Input[builtins.str]] = None,
             organization_id: Optional[pulumi.Input[builtins.str]] = None,
             owner_user_group_id: Optional[pulumi.Input[builtins.str]] = None,
-            susbcription_id: Optional[pulumi.Input[builtins.str]] = None) -> 'GovernanceAccess':
+            susbcription_id: Optional[pulumi.Input[builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None) -> 'GovernanceAccess':
         """
         Get an existing GovernanceAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -349,11 +376,11 @@ class GovernanceAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']] access_data: Details of the access. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] access_name: The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] access_type: The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] owner_user_group_id: The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']] access_data: Required property. access type specific data. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] access_name: Label to describe the access. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] access_type: An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[builtins.str] owner_user_group_id: The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[builtins.str] susbcription_id: The ID of the access.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -366,13 +393,14 @@ class GovernanceAccess(pulumi.CustomResource):
         __props__.__dict__["organization_id"] = organization_id
         __props__.__dict__["owner_user_group_id"] = owner_user_group_id
         __props__.__dict__["susbcription_id"] = susbcription_id
+        __props__.__dict__["timeouts"] = timeouts
         return GovernanceAccess(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accessData")
-    def access_data(self) -> pulumi.Output['outputs.GovernanceAccessAccessData']:
+    def access_data(self) -> pulumi.Output[Optional['outputs.GovernanceAccessAccessData']]:
         """
-        Details of the access. Changing this property forces recreation of the resource.
+        Required property. access type specific data. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "access_data")
 
@@ -380,7 +408,7 @@ class GovernanceAccess(pulumi.CustomResource):
     @pulumi.getter(name="accessName")
     def access_name(self) -> pulumi.Output[builtins.str]:
         """
-        The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        Label to describe the access. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "access_name")
 
@@ -388,7 +416,7 @@ class GovernanceAccess(pulumi.CustomResource):
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[builtins.str]:
         """
-        The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+        An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "access_type")
 
@@ -396,7 +424,7 @@ class GovernanceAccess(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the organization. Changing this property forces recreation of the resource.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -404,7 +432,7 @@ class GovernanceAccess(pulumi.CustomResource):
     @pulumi.getter(name="ownerUserGroupId")
     def owner_user_group_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "owner_user_group_id")
 
@@ -415,4 +443,9 @@ class GovernanceAccess(pulumi.CustomResource):
         The ID of the access.
         """
         return pulumi.get(self, "susbcription_id")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.GovernanceAccessTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

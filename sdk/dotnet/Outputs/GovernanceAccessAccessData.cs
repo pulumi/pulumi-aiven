@@ -14,19 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GovernanceAccessAccessData
     {
         /// <summary>
-        /// The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+        /// Required property. Acls. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.GovernanceAccessAccessDataAcl> Acls;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+        /// The service username assigned to the access. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string? Username;
 

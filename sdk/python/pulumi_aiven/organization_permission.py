@@ -171,15 +171,6 @@ class OrganizationPermission(pulumi.CustomResource):
                  resource_type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions)
-        to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level.
-        Unit-level permissions aren't shown in the Aiven Console.
-
-        To assign permissions to multiple users and groups on the same combination of organization ID, resource ID and resource type, don't use multiple `OrganizationPermission` resources.
-        Instead, use multiple permission blocks as in the example usage.
-
-        **Do not use the `ProjectUser` or `OrganizationGroupProject` resources with this resource**.
-
         ## Example Usage
 
         ```python
@@ -256,15 +247,6 @@ class OrganizationPermission(pulumi.CustomResource):
                  args: OrganizationPermissionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions)
-        to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level.
-        Unit-level permissions aren't shown in the Aiven Console.
-
-        To assign permissions to multiple users and groups on the same combination of organization ID, resource ID and resource type, don't use multiple `OrganizationPermission` resources.
-        Instead, use multiple permission blocks as in the example usage.
-
-        **Do not use the `ProjectUser` or `OrganizationGroupProject` resources with this resource**.
-
         ## Example Usage
 
         ```python

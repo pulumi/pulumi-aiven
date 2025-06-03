@@ -19,29 +19,29 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
     public static final GovernanceAccessAccessDataArgs Empty = new GovernanceAccessAccessDataArgs();
 
     /**
-     * The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * Required property. Acls. Changing this property forces recreation of the resource.
      * 
      */
-    @Import(name="acls", required=true)
-    private Output<List<GovernanceAccessAccessDataAclArgs>> acls;
+    @Import(name="acls")
+    private @Nullable Output<List<GovernanceAccessAccessDataAclArgs>> acls;
 
     /**
-     * @return The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * @return Required property. Acls. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<List<GovernanceAccessAccessDataAclArgs>> acls() {
-        return this.acls;
+    public Optional<Output<List<GovernanceAccessAccessDataAclArgs>>> acls() {
+        return Optional.ofNullable(this.acls);
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -49,14 +49,14 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -64,14 +64,14 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * The service username assigned to the access. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * @return The service username assigned to the access. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -106,18 +106,18 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param acls The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+         * @param acls Required property. Acls. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
-        public Builder acls(Output<List<GovernanceAccessAccessDataAclArgs>> acls) {
+        public Builder acls(@Nullable Output<List<GovernanceAccessAccessDataAclArgs>> acls) {
             $.acls = acls;
             return this;
         }
 
         /**
-         * @param acls The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+         * @param acls Required property. Acls. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param acls The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+         * @param acls Required property. Acls. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param username The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+         * @param username The service username assigned to the access. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param username The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+         * @param username The service username assigned to the access. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -200,9 +200,6 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         public GovernanceAccessAccessDataArgs build() {
-            if ($.acls == null) {
-                throw new MissingRequiredPropertyException("GovernanceAccessAccessDataArgs", "acls");
-            }
             if ($.project == null) {
                 throw new MissingRequiredPropertyException("GovernanceAccessAccessDataArgs", "project");
             }

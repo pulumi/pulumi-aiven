@@ -16,15 +16,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions)
- * to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level.
- * Unit-level permissions aren&#39;t shown in the Aiven Console.
- * 
- * To assign permissions to multiple users and groups on the same combination of organization ID, resource ID and resource type, don&#39;t use multiple `aiven.OrganizationPermission` resources.
- * Instead, use multiple permission blocks as in the example usage.
- * 
- * **Do not use the `aiven.ProjectUser` or `aiven.OrganizationGroupProject` resources with this resource**.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

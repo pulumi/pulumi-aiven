@@ -257,14 +257,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
+     * Enable the pg*stat*monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
      * 
      */
     @Import(name="pgStatMonitorEnable")
     private @Nullable Output<Boolean> pgStatMonitorEnable;
 
     /**
-     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
+     * @return Enable the pg*stat*monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> pgStatMonitorEnable() {
@@ -437,14 +437,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
      * 
      */
     @Import(name="sharedBuffersPercentage")
     private @Nullable Output<Double> sharedBuffersPercentage;
 
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
      * 
      */
     public Optional<Output<Double>> sharedBuffersPercentage() {
@@ -512,14 +512,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
      * 
      */
     @Import(name="workMem")
     private @Nullable Output<Integer> workMem;
 
     /**
-     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
      * 
      */
     public Optional<Output<Integer>> workMem() {
@@ -926,7 +926,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
+         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
          * 
          * @return builder
          * 
@@ -937,7 +937,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
+         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
          * 
          * @return builder
          * 
@@ -1178,7 +1178,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
+         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
          * 
          * @return builder
          * 
@@ -1189,7 +1189,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
+         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
          * 
          * @return builder
          * 
@@ -1283,7 +1283,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workMem Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
+         * @param workMem Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
          * 
          * @return builder
          * 
@@ -1294,7 +1294,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workMem Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
+         * @param workMem Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
          * 
          * @return builder
          * 

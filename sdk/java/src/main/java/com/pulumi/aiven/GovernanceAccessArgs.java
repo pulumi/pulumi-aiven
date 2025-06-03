@@ -4,6 +4,7 @@
 package com.pulumi.aiven;
 
 import com.pulumi.aiven.inputs.GovernanceAccessAccessDataArgs;
+import com.pulumi.aiven.inputs.GovernanceAccessTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -18,29 +19,29 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
     public static final GovernanceAccessArgs Empty = new GovernanceAccessArgs();
 
     /**
-     * Details of the access. Changing this property forces recreation of the resource.
+     * Required property. access type specific data. Changing this property forces recreation of the resource.
      * 
      */
-    @Import(name="accessData", required=true)
-    private Output<GovernanceAccessAccessDataArgs> accessData;
+    @Import(name="accessData")
+    private @Nullable Output<GovernanceAccessAccessDataArgs> accessData;
 
     /**
-     * @return Details of the access. Changing this property forces recreation of the resource.
+     * @return Required property. access type specific data. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<GovernanceAccessAccessDataArgs> accessData() {
-        return this.accessData;
+    public Optional<Output<GovernanceAccessAccessDataArgs>> accessData() {
+        return Optional.ofNullable(this.accessData);
     }
 
     /**
-     * The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * Label to describe the access. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="accessName", required=true)
     private Output<String> accessName;
 
     /**
-     * @return The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * @return Label to describe the access. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> accessName() {
@@ -48,14 +49,14 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+     * An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="accessType", required=true)
     private Output<String> accessType;
 
     /**
-     * @return The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+     * @return An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> accessType() {
@@ -63,14 +64,14 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -78,18 +79,25 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="ownerUserGroupId")
     private @Nullable Output<String> ownerUserGroupId;
 
     /**
-     * @return The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * @return The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> ownerUserGroupId() {
         return Optional.ofNullable(this.ownerUserGroupId);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<GovernanceAccessTimeoutsArgs> timeouts;
+
+    public Optional<Output<GovernanceAccessTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GovernanceAccessArgs() {}
@@ -100,6 +108,7 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
         this.accessType = $.accessType;
         this.organizationId = $.organizationId;
         this.ownerUserGroupId = $.ownerUserGroupId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -121,18 +130,18 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessData Details of the access. Changing this property forces recreation of the resource.
+         * @param accessData Required property. access type specific data. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
-        public Builder accessData(Output<GovernanceAccessAccessDataArgs> accessData) {
+        public Builder accessData(@Nullable Output<GovernanceAccessAccessDataArgs> accessData) {
             $.accessData = accessData;
             return this;
         }
 
         /**
-         * @param accessData Details of the access. Changing this property forces recreation of the resource.
+         * @param accessData Required property. access type specific data. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -142,7 +151,7 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessName The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+         * @param accessName Label to describe the access. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -153,7 +162,7 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessName The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+         * @param accessName Label to describe the access. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -163,7 +172,7 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessType The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+         * @param accessType An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -174,7 +183,7 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessType The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+         * @param accessType An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -184,7 +193,7 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param organizationId The ID of the organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -195,7 +204,7 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param organizationId The ID of the organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -205,7 +214,7 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ownerUserGroupId The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+         * @param ownerUserGroupId The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -216,7 +225,7 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ownerUserGroupId The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+         * @param ownerUserGroupId The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -225,10 +234,16 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
             return ownerUserGroupId(Output.of(ownerUserGroupId));
         }
 
+        public Builder timeouts(@Nullable Output<GovernanceAccessTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GovernanceAccessTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         public GovernanceAccessArgs build() {
-            if ($.accessData == null) {
-                throw new MissingRequiredPropertyException("GovernanceAccessArgs", "accessData");
-            }
             if ($.accessName == null) {
                 throw new MissingRequiredPropertyException("GovernanceAccessArgs", "accessName");
             }
