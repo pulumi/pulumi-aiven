@@ -4448,7 +4448,7 @@
             "aiven:index/gcpPrivatelink:GcpPrivatelink": 0,
             "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": 0,
             "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection": 0,
-            "aiven:index/governanceAccess:GovernanceAccess": 0,
+            "aiven:index/governanceAccess:GovernanceAccess": 1,
             "aiven:index/grafana:Grafana": 0,
             "aiven:index/influxDb:InfluxDb": 0,
             "aiven:index/influxdbDatabase:InfluxdbDatabase": 0,
