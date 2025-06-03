@@ -88,6 +88,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Boolean enableSecurityAudit;
     /**
+     * @return Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+     * 
+     */
+    private @Nullable Boolean enableSnapshotApi;
+    /**
      * @return Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
      * 
      */
@@ -373,6 +378,13 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     public Optional<Boolean> enableSecurityAudit() {
         return Optional.ofNullable(this.enableSecurityAudit);
+    }
+    /**
+     * @return Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+     * 
+     */
+    public Optional<Boolean> enableSnapshotApi() {
+        return Optional.ofNullable(this.enableSnapshotApi);
     }
     /**
      * @return Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
@@ -667,6 +679,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Boolean enableRemoteBackedStorage;
         private @Nullable Boolean enableSearchableSnapshots;
         private @Nullable Boolean enableSecurityAudit;
+        private @Nullable Boolean enableSnapshotApi;
         private @Nullable Integer httpMaxContentLength;
         private @Nullable Integer httpMaxHeaderSize;
         private @Nullable Integer httpMaxInitialLineLength;
@@ -723,6 +736,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     	      this.enableRemoteBackedStorage = defaults.enableRemoteBackedStorage;
     	      this.enableSearchableSnapshots = defaults.enableSearchableSnapshots;
     	      this.enableSecurityAudit = defaults.enableSecurityAudit;
+    	      this.enableSnapshotApi = defaults.enableSnapshotApi;
     	      this.httpMaxContentLength = defaults.httpMaxContentLength;
     	      this.httpMaxHeaderSize = defaults.httpMaxHeaderSize;
     	      this.httpMaxInitialLineLength = defaults.httpMaxInitialLineLength;
@@ -846,6 +860,12 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         public Builder enableSecurityAudit(@Nullable Boolean enableSecurityAudit) {
 
             this.enableSecurityAudit = enableSecurityAudit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableSnapshotApi(@Nullable Boolean enableSnapshotApi) {
+
+            this.enableSnapshotApi = enableSnapshotApi;
             return this;
         }
         @CustomType.Setter
@@ -1101,6 +1121,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             _resultValue.enableRemoteBackedStorage = enableRemoteBackedStorage;
             _resultValue.enableSearchableSnapshots = enableSearchableSnapshots;
             _resultValue.enableSecurityAudit = enableSecurityAudit;
+            _resultValue.enableSnapshotApi = enableSnapshotApi;
             _resultValue.httpMaxContentLength = httpMaxContentLength;
             _resultValue.httpMaxHeaderSize = httpMaxHeaderSize;
             _resultValue.httpMaxInitialLineLength = httpMaxInitialLineLength;

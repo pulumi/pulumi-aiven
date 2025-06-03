@@ -7,6 +7,7 @@ import com.pulumi.aiven.GovernanceAccessArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.GovernanceAccessState;
 import com.pulumi.aiven.outputs.GovernanceAccessAccessData;
+import com.pulumi.aiven.outputs.GovernanceAccessTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -70,70 +71,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/governanceAccess:GovernanceAccess")
 public class GovernanceAccess extends com.pulumi.resources.CustomResource {
     /**
-     * Details of the access. Changing this property forces recreation of the resource.
+     * Required property. access type specific data. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="accessData", refs={GovernanceAccessAccessData.class}, tree="[0]")
-    private Output<GovernanceAccessAccessData> accessData;
+    private Output</* @Nullable */ GovernanceAccessAccessData> accessData;
 
     /**
-     * @return Details of the access. Changing this property forces recreation of the resource.
+     * @return Required property. access type specific data. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<GovernanceAccessAccessData> accessData() {
-        return this.accessData;
+    public Output<Optional<GovernanceAccessAccessData>> accessData() {
+        return Codegen.optional(this.accessData);
     }
     /**
-     * The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * Label to describe the access. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="accessName", refs={String.class}, tree="[0]")
     private Output<String> accessName;
 
     /**
-     * @return The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * @return Label to describe the access. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> accessName() {
         return this.accessName;
     }
     /**
-     * The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+     * An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="accessType", refs={String.class}, tree="[0]")
     private Output<String> accessType;
 
     /**
-     * @return The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+     * @return An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> accessType() {
         return this.accessType;
     }
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="ownerUserGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ownerUserGroupId;
 
     /**
-     * @return The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * @return The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> ownerUserGroupId() {
@@ -152,6 +153,12 @@ public class GovernanceAccess extends com.pulumi.resources.CustomResource {
      */
     public Output<String> susbcriptionId() {
         return this.susbcriptionId;
+    }
+    @Export(name="timeouts", refs={GovernanceAccessTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ GovernanceAccessTimeouts> timeouts;
+
+    public Output<Optional<GovernanceAccessTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

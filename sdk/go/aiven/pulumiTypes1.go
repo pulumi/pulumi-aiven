@@ -13,6 +13,174 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetM3DbM3dbUserConfigRulesMapping struct {
+	// List of aggregations to be applied.
+	Aggregations []string `pulumi:"aggregations"`
+	// Only store the derived metric (as specified in the roll-up rules), if any.
+	Drop *bool `pulumi:"drop"`
+	// Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
+	Filter string `pulumi:"filter"`
+	// The (optional) name of the rule. Example: `important disk metrics`.
+	Name *string `pulumi:"name"`
+	// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+	//
+	// Deprecated: Deprecated. Use `namespacesString` instead.
+	Namespaces []string `pulumi:"namespaces"`
+	// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
+	NamespacesObjects []GetM3DbM3dbUserConfigRulesMappingNamespacesObject `pulumi:"namespacesObjects"`
+	// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+	NamespacesStrings []string `pulumi:"namespacesStrings"`
+	// List of tags to be appended to matching metrics
+	Tags []GetM3DbM3dbUserConfigRulesMappingTag `pulumi:"tags"`
+}
+
+// GetM3DbM3dbUserConfigRulesMappingInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingArgs and GetM3DbM3dbUserConfigRulesMappingOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingInput` via:
+//
+//	GetM3DbM3dbUserConfigRulesMappingArgs{...}
+type GetM3DbM3dbUserConfigRulesMappingInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesMappingOutput() GetM3DbM3dbUserConfigRulesMappingOutput
+	ToGetM3DbM3dbUserConfigRulesMappingOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesMappingOutput
+}
+
+type GetM3DbM3dbUserConfigRulesMappingArgs struct {
+	// List of aggregations to be applied.
+	Aggregations pulumi.StringArrayInput `pulumi:"aggregations"`
+	// Only store the derived metric (as specified in the roll-up rules), if any.
+	Drop pulumi.BoolPtrInput `pulumi:"drop"`
+	// Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// The (optional) name of the rule. Example: `important disk metrics`.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+	//
+	// Deprecated: Deprecated. Use `namespacesString` instead.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
+	NamespacesObjects GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayInput `pulumi:"namespacesObjects"`
+	// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+	NamespacesStrings pulumi.StringArrayInput `pulumi:"namespacesStrings"`
+	// List of tags to be appended to matching metrics
+	Tags GetM3DbM3dbUserConfigRulesMappingTagArrayInput `pulumi:"tags"`
+}
+
+func (GetM3DbM3dbUserConfigRulesMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingArgs) ToGetM3DbM3dbUserConfigRulesMappingOutput() GetM3DbM3dbUserConfigRulesMappingOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesMappingOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingArgs) ToGetM3DbM3dbUserConfigRulesMappingOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesMappingOutput)
+}
+
+// GetM3DbM3dbUserConfigRulesMappingArrayInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingArray and GetM3DbM3dbUserConfigRulesMappingArrayOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingArrayInput` via:
+//
+//	GetM3DbM3dbUserConfigRulesMappingArray{ GetM3DbM3dbUserConfigRulesMappingArgs{...} }
+type GetM3DbM3dbUserConfigRulesMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesMappingArrayOutput() GetM3DbM3dbUserConfigRulesMappingArrayOutput
+	ToGetM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesMappingArrayOutput
+}
+
+type GetM3DbM3dbUserConfigRulesMappingArray []GetM3DbM3dbUserConfigRulesMappingInput
+
+func (GetM3DbM3dbUserConfigRulesMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingArray) ToGetM3DbM3dbUserConfigRulesMappingArrayOutput() GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesMappingArray) ToGetM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesMappingArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) ToGetM3DbM3dbUserConfigRulesMappingOutput() GetM3DbM3dbUserConfigRulesMappingOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) ToGetM3DbM3dbUserConfigRulesMappingOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingOutput {
+	return o
+}
+
+// List of aggregations to be applied.
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) Aggregations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) []string { return v.Aggregations }).(pulumi.StringArrayOutput)
+}
+
+// Only store the derived metric (as specified in the roll-up rules), if any.
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) Drop() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) *bool { return v.Drop }).(pulumi.BoolPtrOutput)
+}
+
+// Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// The (optional) name of the rule. Example: `important disk metrics`.
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+//
+// Deprecated: Deprecated. Use `namespacesString` instead.
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) NamespacesObjects() GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) []GetM3DbM3dbUserConfigRulesMappingNamespacesObject {
+		return v.NamespacesObjects
+	}).(GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput)
+}
+
+// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) NamespacesStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) []string { return v.NamespacesStrings }).(pulumi.StringArrayOutput)
+}
+
+// List of tags to be appended to matching metrics
+func (o GetM3DbM3dbUserConfigRulesMappingOutput) Tags() GetM3DbM3dbUserConfigRulesMappingTagArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRulesMapping) []GetM3DbM3dbUserConfigRulesMappingTag { return v.Tags }).(GetM3DbM3dbUserConfigRulesMappingTagArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigRulesMapping)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingArrayOutput) ToGetM3DbM3dbUserConfigRulesMappingArrayOutput() GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingArrayOutput) ToGetM3DbM3dbUserConfigRulesMappingArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesMappingArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUserConfigRulesMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3dbUserConfigRulesMapping {
+		return vs[0].([]GetM3DbM3dbUserConfigRulesMapping)[vs[1].(int)]
+	}).(GetM3DbM3dbUserConfigRulesMappingOutput)
+}
+
 type GetM3DbM3dbUserConfigRulesMappingNamespacesObject struct {
 	// The resolution for the matching namespace. Example: `30s`.
 	Resolution string `pulumi:"resolution"`
@@ -5513,6 +5681,8 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	EnableSearchableSnapshots *bool `pulumi:"enableSearchableSnapshots"`
 	// Enable/Disable security audit.
 	EnableSecurityAudit *bool `pulumi:"enableSecurityAudit"`
+	// Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+	EnableSnapshotApi *bool `pulumi:"enableSnapshotApi"`
 	// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
 	HttpMaxContentLength *int `pulumi:"httpMaxContentLength"`
 	// The max size of allowed headers, in bytes. Example: `8192`.
@@ -5631,6 +5801,8 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	EnableSearchableSnapshots pulumi.BoolPtrInput `pulumi:"enableSearchableSnapshots"`
 	// Enable/Disable security audit.
 	EnableSecurityAudit pulumi.BoolPtrInput `pulumi:"enableSecurityAudit"`
+	// Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+	EnableSnapshotApi pulumi.BoolPtrInput `pulumi:"enableSnapshotApi"`
 	// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
 	HttpMaxContentLength pulumi.IntPtrInput `pulumi:"httpMaxContentLength"`
 	// The max size of allowed headers, in bytes. Example: `8192`.
@@ -5864,6 +6036,11 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EnableSearchableSnaps
 // Enable/Disable security audit.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EnableSecurityAudit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.EnableSecurityAudit }).(pulumi.BoolPtrOutput)
+}
+
+// Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EnableSnapshotApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.EnableSnapshotApi }).(pulumi.BoolPtrOutput)
 }
 
 // Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
@@ -6232,6 +6409,16 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EnableSecurityAudi
 			return nil
 		}
 		return v.EnableSecurityAudit
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EnableSnapshotApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSnapshotApi
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -14166,7 +14353,7 @@ type GetPgPgUserConfig struct {
 	PgReadReplica *bool `pulumi:"pgReadReplica"`
 	// Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
 	PgServiceToForkFrom *string `pulumi:"pgServiceToForkFrom"`
-	// Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
+	// Enable the pgStatMonitor extension. Changing this parameter causes a service restart. When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
 	PgStatMonitorEnable *bool `pulumi:"pgStatMonitorEnable"`
 	// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
 	PgVersion *string `pulumi:"pgVersion"`
@@ -14190,7 +14377,7 @@ type GetPgPgUserConfig struct {
 	ServiceLog *bool `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
 	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
-	// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Example: `41.5`.
+	// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
 	SharedBuffersPercentage *float64 `pulumi:"sharedBuffersPercentage"`
 	// Use static public IP addresses.
 	StaticIps *bool `pulumi:"staticIps"`
@@ -14200,7 +14387,7 @@ type GetPgPgUserConfig struct {
 	Timescaledb *GetPgPgUserConfigTimescaledb `pulumi:"timescaledb"`
 	// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
 	Variant *string `pulumi:"variant"`
-	// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
+	// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
 	WorkMem *int `pulumi:"workMem"`
 }
 
@@ -14248,7 +14435,7 @@ type GetPgPgUserConfigArgs struct {
 	PgReadReplica pulumi.BoolPtrInput `pulumi:"pgReadReplica"`
 	// Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
 	PgServiceToForkFrom pulumi.StringPtrInput `pulumi:"pgServiceToForkFrom"`
-	// Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
+	// Enable the pgStatMonitor extension. Changing this parameter causes a service restart. When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
 	PgStatMonitorEnable pulumi.BoolPtrInput `pulumi:"pgStatMonitorEnable"`
 	// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
 	PgVersion pulumi.StringPtrInput `pulumi:"pgVersion"`
@@ -14272,7 +14459,7 @@ type GetPgPgUserConfigArgs struct {
 	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
 	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
-	// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Example: `41.5`.
+	// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
 	SharedBuffersPercentage pulumi.Float64PtrInput `pulumi:"sharedBuffersPercentage"`
 	// Use static public IP addresses.
 	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
@@ -14282,7 +14469,7 @@ type GetPgPgUserConfigArgs struct {
 	Timescaledb GetPgPgUserConfigTimescaledbPtrInput `pulumi:"timescaledb"`
 	// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
 	Variant pulumi.StringPtrInput `pulumi:"variant"`
-	// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
+	// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
 	WorkMem pulumi.IntPtrInput `pulumi:"workMem"`
 }
 
@@ -14411,7 +14598,7 @@ func (o GetPgPgUserConfigOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.PgServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
+// Enable the pgStatMonitor extension. Changing this parameter causes a service restart. When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
 func (o GetPgPgUserConfigOutput) PgStatMonitorEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *bool { return v.PgStatMonitorEnable }).(pulumi.BoolPtrOutput)
 }
@@ -14471,7 +14658,7 @@ func (o GetPgPgUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Example: `41.5`.
+// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
 func (o GetPgPgUserConfigOutput) SharedBuffersPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *float64 { return v.SharedBuffersPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -14496,7 +14683,7 @@ func (o GetPgPgUserConfigOutput) Variant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.Variant }).(pulumi.StringPtrOutput)
 }
 
-// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
+// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
 func (o GetPgPgUserConfigOutput) WorkMem() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *int { return v.WorkMem }).(pulumi.IntPtrOutput)
 }
@@ -14917,41 +15104,41 @@ func (o GetPgPgUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
 }
 
 type GetPgPgUserConfigPg struct {
-	// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+	// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
 	AutovacuumAnalyzeScaleFactor *float64 `pulumi:"autovacuumAnalyzeScaleFactor"`
-	// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+	// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
 	AutovacuumAnalyzeThreshold *int `pulumi:"autovacuumAnalyzeThreshold"`
-	// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+	// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
 	AutovacuumFreezeMaxAge *int `pulumi:"autovacuumFreezeMaxAge"`
-	// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+	// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
 	AutovacuumMaxWorkers *int `pulumi:"autovacuumMaxWorkers"`
-	// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+	// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
 	AutovacuumNaptime *int `pulumi:"autovacuumNaptime"`
-	// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds.
+	// Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
 	AutovacuumVacuumCostDelay *int `pulumi:"autovacuumVacuumCostDelay"`
-	// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+	// Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
 	AutovacuumVacuumCostLimit *int `pulumi:"autovacuumVacuumCostLimit"`
-	// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+	// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
 	AutovacuumVacuumScaleFactor *float64 `pulumi:"autovacuumVacuumScaleFactor"`
-	// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+	// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
 	AutovacuumVacuumThreshold *int `pulumi:"autovacuumVacuumThreshold"`
-	// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+	// Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
 	BgwriterDelay *int `pulumi:"bgwriterDelay"`
-	// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+	// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
 	BgwriterFlushAfter *int `pulumi:"bgwriterFlushAfter"`
-	// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+	// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
 	BgwriterLruMaxpages *int `pulumi:"bgwriterLruMaxpages"`
-	// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+	// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
 	BgwriterLruMultiplier *float64 `pulumi:"bgwriterLruMultiplier"`
-	// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+	// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
 	DeadlockTimeout *int `pulumi:"deadlockTimeout"`
-	// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+	// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
 	DefaultToastCompression *string `pulumi:"defaultToastCompression"`
 	// Time out sessions with open transactions after this number of milliseconds.
 	IdleInTransactionSessionTimeout *int `pulumi:"idleInTransactionSessionTimeout"`
 	// Controls system-wide use of Just-in-Time Compilation (JIT).
 	Jit *bool `pulumi:"jit"`
-	// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+	// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
 	LogAutovacuumMinDuration *int `pulumi:"logAutovacuumMinDuration"`
 	// Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
 	LogErrorVerbosity *string `pulumi:"logErrorVerbosity"`
@@ -14961,61 +15148,61 @@ type GetPgPgUserConfigPg struct {
 	LogMinDurationStatement *int `pulumi:"logMinDurationStatement"`
 	// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
 	LogTempFiles *int `pulumi:"logTempFiles"`
-	// PostgreSQL maximum number of files that can be open per process.
+	// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 	MaxFilesPerProcess *int `pulumi:"maxFilesPerProcess"`
-	// PostgreSQL maximum locks per transaction.
+	// PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
 	MaxLocksPerTransaction *int `pulumi:"maxLocksPerTransaction"`
-	// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+	// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
 	MaxLogicalReplicationWorkers *int `pulumi:"maxLogicalReplicationWorkers"`
-	// Sets the maximum number of workers that the system can support for parallel queries.
+	// Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
 	MaxParallelWorkers *int `pulumi:"maxParallelWorkers"`
-	// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+	// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
 	MaxParallelWorkersPerGather *int `pulumi:"maxParallelWorkersPerGather"`
-	// PostgreSQL maximum predicate locks per transaction.
+	// PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
 	MaxPredLocksPerTransaction *int `pulumi:"maxPredLocksPerTransaction"`
-	// PostgreSQL maximum prepared transactions.
+	// PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
 	MaxPreparedTransactions *int `pulumi:"maxPreparedTransactions"`
-	// PostgreSQL maximum replication slots.
+	// PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
 	MaxReplicationSlots *int `pulumi:"maxReplicationSlots"`
-	// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+	// PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
 	MaxSlotWalKeepSize *int `pulumi:"maxSlotWalKeepSize"`
-	// Maximum depth of the stack in bytes.
+	// Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
 	MaxStackDepth *int `pulumi:"maxStackDepth"`
-	// Max standby archive delay in milliseconds.
+	// Max standby archive delay in milliseconds. The default is `30000` (upstream default).
 	MaxStandbyArchiveDelay *int `pulumi:"maxStandbyArchiveDelay"`
-	// Max standby streaming delay in milliseconds.
+	// Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
 	MaxStandbyStreamingDelay *int `pulumi:"maxStandbyStreamingDelay"`
-	// PostgreSQL maximum WAL senders.
+	// PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
 	MaxWalSenders *int `pulumi:"maxWalSenders"`
-	// Sets the maximum number of background processes that the system can support.
+	// Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
 	MaxWorkerProcesses *int `pulumi:"maxWorkerProcesses"`
 	// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
 	PasswordEncryption *string `pulumi:"passwordEncryption"`
-	// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
+	// Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
 	PgPartmanBgwDotInterval *int `pulumi:"pgPartmanBgwDotInterval"`
 	// Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
 	PgPartmanBgwDotRole *string `pulumi:"pgPartmanBgwDotRole"`
-	// Enables or disables query plan monitoring.
+	// Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
 	PgStatMonitorDotPgsmEnableQueryPlan *bool `pulumi:"pgStatMonitorDotPgsmEnableQueryPlan"`
-	// Sets the maximum number of buckets. Example: `10`.
+	// Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
 	PgStatMonitorDotPgsmMaxBuckets *int `pulumi:"pgStatMonitorDotPgsmMaxBuckets"`
-	// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+	// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
 	PgStatStatementsDotTrack *string `pulumi:"pgStatStatementsDotTrack"`
 	// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
 	TempFileLimit *int `pulumi:"tempFileLimit"`
 	// PostgreSQL service timezone. Example: `Europe/Helsinki`.
 	Timezone *string `pulumi:"timezone"`
-	// Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+	// Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
 	TrackActivityQuerySize *int `pulumi:"trackActivityQuerySize"`
-	// Enum: `off`, `on`. Record commit time of transactions.
+	// Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
 	TrackCommitTimestamp *string `pulumi:"trackCommitTimestamp"`
 	// Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
 	TrackFunctions *string `pulumi:"trackFunctions"`
-	// Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+	// Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
 	TrackIoTiming *string `pulumi:"trackIoTiming"`
 	// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
 	WalSenderTimeout *int `pulumi:"walSenderTimeout"`
-	// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+	// WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
 	WalWriterDelay *int `pulumi:"walWriterDelay"`
 }
 
@@ -15031,41 +15218,41 @@ type GetPgPgUserConfigPgInput interface {
 }
 
 type GetPgPgUserConfigPgArgs struct {
-	// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+	// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
 	AutovacuumAnalyzeScaleFactor pulumi.Float64PtrInput `pulumi:"autovacuumAnalyzeScaleFactor"`
-	// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+	// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
 	AutovacuumAnalyzeThreshold pulumi.IntPtrInput `pulumi:"autovacuumAnalyzeThreshold"`
-	// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+	// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
 	AutovacuumFreezeMaxAge pulumi.IntPtrInput `pulumi:"autovacuumFreezeMaxAge"`
-	// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+	// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
 	AutovacuumMaxWorkers pulumi.IntPtrInput `pulumi:"autovacuumMaxWorkers"`
-	// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+	// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
 	AutovacuumNaptime pulumi.IntPtrInput `pulumi:"autovacuumNaptime"`
-	// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds.
+	// Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
 	AutovacuumVacuumCostDelay pulumi.IntPtrInput `pulumi:"autovacuumVacuumCostDelay"`
-	// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+	// Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
 	AutovacuumVacuumCostLimit pulumi.IntPtrInput `pulumi:"autovacuumVacuumCostLimit"`
-	// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+	// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
 	AutovacuumVacuumScaleFactor pulumi.Float64PtrInput `pulumi:"autovacuumVacuumScaleFactor"`
-	// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+	// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
 	AutovacuumVacuumThreshold pulumi.IntPtrInput `pulumi:"autovacuumVacuumThreshold"`
-	// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+	// Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
 	BgwriterDelay pulumi.IntPtrInput `pulumi:"bgwriterDelay"`
-	// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+	// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
 	BgwriterFlushAfter pulumi.IntPtrInput `pulumi:"bgwriterFlushAfter"`
-	// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+	// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
 	BgwriterLruMaxpages pulumi.IntPtrInput `pulumi:"bgwriterLruMaxpages"`
-	// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+	// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
 	BgwriterLruMultiplier pulumi.Float64PtrInput `pulumi:"bgwriterLruMultiplier"`
-	// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+	// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
 	DeadlockTimeout pulumi.IntPtrInput `pulumi:"deadlockTimeout"`
-	// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+	// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
 	DefaultToastCompression pulumi.StringPtrInput `pulumi:"defaultToastCompression"`
 	// Time out sessions with open transactions after this number of milliseconds.
 	IdleInTransactionSessionTimeout pulumi.IntPtrInput `pulumi:"idleInTransactionSessionTimeout"`
 	// Controls system-wide use of Just-in-Time Compilation (JIT).
 	Jit pulumi.BoolPtrInput `pulumi:"jit"`
-	// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+	// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
 	LogAutovacuumMinDuration pulumi.IntPtrInput `pulumi:"logAutovacuumMinDuration"`
 	// Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
 	LogErrorVerbosity pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
@@ -15075,61 +15262,61 @@ type GetPgPgUserConfigPgArgs struct {
 	LogMinDurationStatement pulumi.IntPtrInput `pulumi:"logMinDurationStatement"`
 	// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
 	LogTempFiles pulumi.IntPtrInput `pulumi:"logTempFiles"`
-	// PostgreSQL maximum number of files that can be open per process.
+	// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 	MaxFilesPerProcess pulumi.IntPtrInput `pulumi:"maxFilesPerProcess"`
-	// PostgreSQL maximum locks per transaction.
+	// PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
 	MaxLocksPerTransaction pulumi.IntPtrInput `pulumi:"maxLocksPerTransaction"`
-	// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+	// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
 	MaxLogicalReplicationWorkers pulumi.IntPtrInput `pulumi:"maxLogicalReplicationWorkers"`
-	// Sets the maximum number of workers that the system can support for parallel queries.
+	// Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
 	MaxParallelWorkers pulumi.IntPtrInput `pulumi:"maxParallelWorkers"`
-	// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+	// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
 	MaxParallelWorkersPerGather pulumi.IntPtrInput `pulumi:"maxParallelWorkersPerGather"`
-	// PostgreSQL maximum predicate locks per transaction.
+	// PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
 	MaxPredLocksPerTransaction pulumi.IntPtrInput `pulumi:"maxPredLocksPerTransaction"`
-	// PostgreSQL maximum prepared transactions.
+	// PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
 	MaxPreparedTransactions pulumi.IntPtrInput `pulumi:"maxPreparedTransactions"`
-	// PostgreSQL maximum replication slots.
+	// PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
 	MaxReplicationSlots pulumi.IntPtrInput `pulumi:"maxReplicationSlots"`
-	// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+	// PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
 	MaxSlotWalKeepSize pulumi.IntPtrInput `pulumi:"maxSlotWalKeepSize"`
-	// Maximum depth of the stack in bytes.
+	// Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
 	MaxStackDepth pulumi.IntPtrInput `pulumi:"maxStackDepth"`
-	// Max standby archive delay in milliseconds.
+	// Max standby archive delay in milliseconds. The default is `30000` (upstream default).
 	MaxStandbyArchiveDelay pulumi.IntPtrInput `pulumi:"maxStandbyArchiveDelay"`
-	// Max standby streaming delay in milliseconds.
+	// Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
 	MaxStandbyStreamingDelay pulumi.IntPtrInput `pulumi:"maxStandbyStreamingDelay"`
-	// PostgreSQL maximum WAL senders.
+	// PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
 	MaxWalSenders pulumi.IntPtrInput `pulumi:"maxWalSenders"`
-	// Sets the maximum number of background processes that the system can support.
+	// Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
 	MaxWorkerProcesses pulumi.IntPtrInput `pulumi:"maxWorkerProcesses"`
 	// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
 	PasswordEncryption pulumi.StringPtrInput `pulumi:"passwordEncryption"`
-	// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
+	// Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
 	PgPartmanBgwDotInterval pulumi.IntPtrInput `pulumi:"pgPartmanBgwDotInterval"`
 	// Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
 	PgPartmanBgwDotRole pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
-	// Enables or disables query plan monitoring.
+	// Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
 	PgStatMonitorDotPgsmEnableQueryPlan pulumi.BoolPtrInput `pulumi:"pgStatMonitorDotPgsmEnableQueryPlan"`
-	// Sets the maximum number of buckets. Example: `10`.
+	// Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
 	PgStatMonitorDotPgsmMaxBuckets pulumi.IntPtrInput `pulumi:"pgStatMonitorDotPgsmMaxBuckets"`
-	// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+	// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
 	PgStatStatementsDotTrack pulumi.StringPtrInput `pulumi:"pgStatStatementsDotTrack"`
 	// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
 	TempFileLimit pulumi.IntPtrInput `pulumi:"tempFileLimit"`
 	// PostgreSQL service timezone. Example: `Europe/Helsinki`.
 	Timezone pulumi.StringPtrInput `pulumi:"timezone"`
-	// Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+	// Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
 	TrackActivityQuerySize pulumi.IntPtrInput `pulumi:"trackActivityQuerySize"`
-	// Enum: `off`, `on`. Record commit time of transactions.
+	// Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
 	TrackCommitTimestamp pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
 	// Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
 	TrackFunctions pulumi.StringPtrInput `pulumi:"trackFunctions"`
-	// Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+	// Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
 	TrackIoTiming pulumi.StringPtrInput `pulumi:"trackIoTiming"`
 	// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
 	WalSenderTimeout pulumi.IntPtrInput `pulumi:"walSenderTimeout"`
-	// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+	// WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
 	WalWriterDelay pulumi.IntPtrInput `pulumi:"walWriterDelay"`
 }
 
@@ -15210,77 +15397,77 @@ func (o GetPgPgUserConfigPgOutput) ToGetPgPgUserConfigPgPtrOutputWithContext(ctx
 	}).(GetPgPgUserConfigPgPtrOutput)
 }
 
-// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
 func (o GetPgPgUserConfigPgOutput) AutovacuumAnalyzeScaleFactor() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *float64 { return v.AutovacuumAnalyzeScaleFactor }).(pulumi.Float64PtrOutput)
 }
 
-// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
 func (o GetPgPgUserConfigPgOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumAnalyzeThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
 func (o GetPgPgUserConfigPgOutput) AutovacuumFreezeMaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumFreezeMaxAge }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) AutovacuumMaxWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumMaxWorkers }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
 func (o GetPgPgUserConfigPgOutput) AutovacuumNaptime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumNaptime }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds.
+// Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
 func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumCostDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumVacuumCostDelay }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+// Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
 func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumCostLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumVacuumCostLimit }).(pulumi.IntPtrOutput)
 }
 
-// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
 func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumScaleFactor() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *float64 { return v.AutovacuumVacuumScaleFactor }).(pulumi.Float64PtrOutput)
 }
 
-// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
 func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumVacuumThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+// Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
 func (o GetPgPgUserConfigPgOutput) BgwriterDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.BgwriterDelay }).(pulumi.IntPtrOutput)
 }
 
-// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
 func (o GetPgPgUserConfigPgOutput) BgwriterFlushAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.BgwriterFlushAfter }).(pulumi.IntPtrOutput)
 }
 
-// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
 func (o GetPgPgUserConfigPgOutput) BgwriterLruMaxpages() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.BgwriterLruMaxpages }).(pulumi.IntPtrOutput)
 }
 
-// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
 func (o GetPgPgUserConfigPgOutput) BgwriterLruMultiplier() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *float64 { return v.BgwriterLruMultiplier }).(pulumi.Float64PtrOutput)
 }
 
-// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
 func (o GetPgPgUserConfigPgOutput) DeadlockTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.DeadlockTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
 func (o GetPgPgUserConfigPgOutput) DefaultToastCompression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.DefaultToastCompression }).(pulumi.StringPtrOutput)
 }
@@ -15295,7 +15482,7 @@ func (o GetPgPgUserConfigPgOutput) Jit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *bool { return v.Jit }).(pulumi.BoolPtrOutput)
 }
 
-// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
 func (o GetPgPgUserConfigPgOutput) LogAutovacuumMinDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.LogAutovacuumMinDuration }).(pulumi.IntPtrOutput)
 }
@@ -15320,72 +15507,72 @@ func (o GetPgPgUserConfigPgOutput) LogTempFiles() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.LogTempFiles }).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum number of files that can be open per process.
+// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxFilesPerProcess() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxFilesPerProcess }).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum locks per transaction.
+// PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxLocksPerTransaction }).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxLogicalReplicationWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxLogicalReplicationWorkers }).(pulumi.IntPtrOutput)
 }
 
-// Sets the maximum number of workers that the system can support for parallel queries.
+// Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
 func (o GetPgPgUserConfigPgOutput) MaxParallelWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxParallelWorkers }).(pulumi.IntPtrOutput)
 }
 
-// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
 func (o GetPgPgUserConfigPgOutput) MaxParallelWorkersPerGather() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxParallelWorkersPerGather }).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum predicate locks per transaction.
+// PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxPredLocksPerTransaction() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxPredLocksPerTransaction }).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum prepared transactions.
+// PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxPreparedTransactions() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxPreparedTransactions }).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum replication slots.
+// PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxReplicationSlots() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxReplicationSlots }).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+// PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
 func (o GetPgPgUserConfigPgOutput) MaxSlotWalKeepSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxSlotWalKeepSize }).(pulumi.IntPtrOutput)
 }
 
-// Maximum depth of the stack in bytes.
+// Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
 func (o GetPgPgUserConfigPgOutput) MaxStackDepth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxStackDepth }).(pulumi.IntPtrOutput)
 }
 
-// Max standby archive delay in milliseconds.
+// Max standby archive delay in milliseconds. The default is `30000` (upstream default).
 func (o GetPgPgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxStandbyArchiveDelay }).(pulumi.IntPtrOutput)
 }
 
-// Max standby streaming delay in milliseconds.
+// Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
 func (o GetPgPgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxStandbyStreamingDelay }).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum WAL senders.
+// PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxWalSenders() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxWalSenders }).(pulumi.IntPtrOutput)
 }
 
-// Sets the maximum number of background processes that the system can support.
+// Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxWorkerProcesses }).(pulumi.IntPtrOutput)
 }
@@ -15395,7 +15582,7 @@ func (o GetPgPgUserConfigPgOutput) PasswordEncryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PasswordEncryption }).(pulumi.StringPtrOutput)
 }
 
-// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
+// Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
 func (o GetPgPgUserConfigPgOutput) PgPartmanBgwDotInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.PgPartmanBgwDotInterval }).(pulumi.IntPtrOutput)
 }
@@ -15405,17 +15592,17 @@ func (o GetPgPgUserConfigPgOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PgPartmanBgwDotRole }).(pulumi.StringPtrOutput)
 }
 
-// Enables or disables query plan monitoring.
+// Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
 func (o GetPgPgUserConfigPgOutput) PgStatMonitorDotPgsmEnableQueryPlan() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *bool { return v.PgStatMonitorDotPgsmEnableQueryPlan }).(pulumi.BoolPtrOutput)
 }
 
-// Sets the maximum number of buckets. Example: `10`.
+// Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
 func (o GetPgPgUserConfigPgOutput) PgStatMonitorDotPgsmMaxBuckets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.PgStatMonitorDotPgsmMaxBuckets }).(pulumi.IntPtrOutput)
 }
 
-// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
 func (o GetPgPgUserConfigPgOutput) PgStatStatementsDotTrack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PgStatStatementsDotTrack }).(pulumi.StringPtrOutput)
 }
@@ -15430,12 +15617,12 @@ func (o GetPgPgUserConfigPgOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+// Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
 func (o GetPgPgUserConfigPgOutput) TrackActivityQuerySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.TrackActivityQuerySize }).(pulumi.IntPtrOutput)
 }
 
-// Enum: `off`, `on`. Record commit time of transactions.
+// Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TrackCommitTimestamp }).(pulumi.StringPtrOutput)
 }
@@ -15445,7 +15632,7 @@ func (o GetPgPgUserConfigPgOutput) TrackFunctions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
 }
 
-// Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+// Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
 func (o GetPgPgUserConfigPgOutput) TrackIoTiming() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TrackIoTiming }).(pulumi.StringPtrOutput)
 }
@@ -15455,7 +15642,7 @@ func (o GetPgPgUserConfigPgOutput) WalSenderTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.WalSenderTimeout }).(pulumi.IntPtrOutput)
 }
 
-// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+// WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
 func (o GetPgPgUserConfigPgOutput) WalWriterDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.WalWriterDelay }).(pulumi.IntPtrOutput)
 }
@@ -15484,7 +15671,7 @@ func (o GetPgPgUserConfigPgPtrOutput) Elem() GetPgPgUserConfigPgOutput {
 	}).(GetPgPgUserConfigPgOutput)
 }
 
-// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *float64 {
 		if v == nil {
@@ -15494,7 +15681,7 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.Floa
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15504,7 +15691,7 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumFreezeMaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15514,7 +15701,7 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumFreezeMaxAge() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15524,7 +15711,7 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15534,7 +15721,7 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds.
+// Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15544,7 +15731,7 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+// Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15554,7 +15741,7 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *float64 {
 		if v == nil {
@@ -15564,7 +15751,7 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.Float
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15574,7 +15761,7 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+// Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
 func (o GetPgPgUserConfigPgPtrOutput) BgwriterDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15584,7 +15771,7 @@ func (o GetPgPgUserConfigPgPtrOutput) BgwriterDelay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
 func (o GetPgPgUserConfigPgPtrOutput) BgwriterFlushAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15594,7 +15781,7 @@ func (o GetPgPgUserConfigPgPtrOutput) BgwriterFlushAfter() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
 func (o GetPgPgUserConfigPgPtrOutput) BgwriterLruMaxpages() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15604,7 +15791,7 @@ func (o GetPgPgUserConfigPgPtrOutput) BgwriterLruMaxpages() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
 func (o GetPgPgUserConfigPgPtrOutput) BgwriterLruMultiplier() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *float64 {
 		if v == nil {
@@ -15614,7 +15801,7 @@ func (o GetPgPgUserConfigPgPtrOutput) BgwriterLruMultiplier() pulumi.Float64PtrO
 	}).(pulumi.Float64PtrOutput)
 }
 
-// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
 func (o GetPgPgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15624,7 +15811,7 @@ func (o GetPgPgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
 func (o GetPgPgUserConfigPgPtrOutput) DefaultToastCompression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -15654,7 +15841,7 @@ func (o GetPgPgUserConfigPgPtrOutput) Jit() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
 func (o GetPgPgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15704,7 +15891,7 @@ func (o GetPgPgUserConfigPgPtrOutput) LogTempFiles() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum number of files that can be open per process.
+// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxFilesPerProcess() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15714,7 +15901,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxFilesPerProcess() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum locks per transaction.
+// PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15724,7 +15911,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxLogicalReplicationWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15734,7 +15921,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxLogicalReplicationWorkers() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Sets the maximum number of workers that the system can support for parallel queries.
+// Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
 func (o GetPgPgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15744,7 +15931,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
 func (o GetPgPgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15754,7 +15941,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum predicate locks per transaction.
+// PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15764,7 +15951,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum prepared transactions.
+// PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15774,7 +15961,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum replication slots.
+// PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxReplicationSlots() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15784,7 +15971,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxReplicationSlots() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+// PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
 func (o GetPgPgUserConfigPgPtrOutput) MaxSlotWalKeepSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15794,7 +15981,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxSlotWalKeepSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Maximum depth of the stack in bytes.
+// Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
 func (o GetPgPgUserConfigPgPtrOutput) MaxStackDepth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15804,7 +15991,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxStackDepth() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Max standby archive delay in milliseconds.
+// Max standby archive delay in milliseconds. The default is `30000` (upstream default).
 func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15814,7 +16001,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// Max standby streaming delay in milliseconds.
+// Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
 func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15824,7 +16011,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum WAL senders.
+// PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxWalSenders() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15834,7 +16021,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxWalSenders() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Sets the maximum number of background processes that the system can support.
+// Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15854,7 +16041,7 @@ func (o GetPgPgUserConfigPgPtrOutput) PasswordEncryption() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
+// Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
 func (o GetPgPgUserConfigPgPtrOutput) PgPartmanBgwDotInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15874,7 +16061,7 @@ func (o GetPgPgUserConfigPgPtrOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enables or disables query plan monitoring.
+// Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
 func (o GetPgPgUserConfigPgPtrOutput) PgStatMonitorDotPgsmEnableQueryPlan() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *bool {
 		if v == nil {
@@ -15884,7 +16071,7 @@ func (o GetPgPgUserConfigPgPtrOutput) PgStatMonitorDotPgsmEnableQueryPlan() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Sets the maximum number of buckets. Example: `10`.
+// Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
 func (o GetPgPgUserConfigPgPtrOutput) PgStatMonitorDotPgsmMaxBuckets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15894,7 +16081,7 @@ func (o GetPgPgUserConfigPgPtrOutput) PgStatMonitorDotPgsmMaxBuckets() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
-// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
 func (o GetPgPgUserConfigPgPtrOutput) PgStatStatementsDotTrack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -15924,7 +16111,7 @@ func (o GetPgPgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+// Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
 func (o GetPgPgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -15934,7 +16121,7 @@ func (o GetPgPgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// Enum: `off`, `on`. Record commit time of transactions.
+// Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -15954,7 +16141,7 @@ func (o GetPgPgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+// Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
 func (o GetPgPgUserConfigPgPtrOutput) TrackIoTiming() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -15974,7 +16161,7 @@ func (o GetPgPgUserConfigPgPtrOutput) WalSenderTimeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+// WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
 func (o GetPgPgUserConfigPgPtrOutput) WalWriterDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -30897,6 +31084,8 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingNamespacesObjectInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingTagInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingTagArgs{})
@@ -31239,6 +31428,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingTagOutput{})

@@ -51,31 +51,31 @@ namespace Pulumi.Aiven
     public partial class GovernanceAccess : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Details of the access. Changing this property forces recreation of the resource.
+        /// Required property. access type specific data. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("accessData")]
-        public Output<Outputs.GovernanceAccessAccessData> AccessData { get; private set; } = null!;
+        public Output<Outputs.GovernanceAccessAccessData?> AccessData { get; private set; } = null!;
 
         /// <summary>
-        /// The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        /// Label to describe the access. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("accessName")]
         public Output<string> AccessName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+        /// An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("accessType")]
         public Output<string> AccessType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the organization. Changing this property forces recreation of the resource.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        /// The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("ownerUserGroupId")]
         public Output<string?> OwnerUserGroupId { get; private set; } = null!;
@@ -85,6 +85,9 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("susbcriptionId")]
         public Output<string> SusbcriptionId { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.GovernanceAccessTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -133,34 +136,37 @@ namespace Pulumi.Aiven
     public sealed class GovernanceAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Details of the access. Changing this property forces recreation of the resource.
+        /// Required property. access type specific data. Changing this property forces recreation of the resource.
         /// </summary>
-        [Input("accessData", required: true)]
-        public Input<Inputs.GovernanceAccessAccessDataArgs> AccessData { get; set; } = null!;
+        [Input("accessData")]
+        public Input<Inputs.GovernanceAccessAccessDataArgs>? AccessData { get; set; }
 
         /// <summary>
-        /// The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        /// Label to describe the access. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("accessName", required: true)]
         public Input<string> AccessName { get; set; } = null!;
 
         /// <summary>
-        /// The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+        /// An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("accessType", required: true)]
         public Input<string> AccessType { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the organization. Changing this property forces recreation of the resource.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        /// The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("ownerUserGroupId")]
         public Input<string>? OwnerUserGroupId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.GovernanceAccessTimeoutsArgs>? Timeouts { get; set; }
 
         public GovernanceAccessArgs()
         {
@@ -171,31 +177,31 @@ namespace Pulumi.Aiven
     public sealed class GovernanceAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Details of the access. Changing this property forces recreation of the resource.
+        /// Required property. access type specific data. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("accessData")]
         public Input<Inputs.GovernanceAccessAccessDataGetArgs>? AccessData { get; set; }
 
         /// <summary>
-        /// The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        /// Label to describe the access. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("accessName")]
         public Input<string>? AccessName { get; set; }
 
         /// <summary>
-        /// The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+        /// An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
 
         /// <summary>
-        /// The ID of the organization. Changing this property forces recreation of the resource.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+        /// The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("ownerUserGroupId")]
         public Input<string>? OwnerUserGroupId { get; set; }
@@ -205,6 +211,9 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("susbcriptionId")]
         public Input<string>? SusbcriptionId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.GovernanceAccessTimeoutsGetArgs>? Timeouts { get; set; }
 
         public GovernanceAccessState()
         {

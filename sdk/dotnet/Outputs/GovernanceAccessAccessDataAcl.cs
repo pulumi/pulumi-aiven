@@ -18,31 +18,31 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// The ACL ID.
+        /// Acl ID.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+        /// An enumeration. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Operation;
         /// <summary>
-        /// Pattern used to match specified resources. The possible value is `LITERAL`.
+        /// An enumeration. The possible value is `LITERAL`.
         /// </summary>
         public readonly string? PatternType;
         /// <summary>
-        /// Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+        /// An enumeration. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string PermissionType;
         /// <summary>
-        /// Identities in `user:name` format that the permissions apply to.
+        /// Acl principal.
         /// </summary>
         public readonly string? Principal;
         /// <summary>
-        /// The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// Acl resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string ResourceName;
         /// <summary>
-        /// The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+        /// An enumeration. The possible value is `Topic`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string ResourceType;
 

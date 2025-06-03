@@ -13,91 +13,91 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPgArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+        /// Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
         /// </summary>
         [Input("autovacuumAnalyzeScaleFactor")]
         public Input<double>? AutovacuumAnalyzeScaleFactor { get; set; }
 
         /// <summary>
-        /// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        /// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
         /// </summary>
         [Input("autovacuumAnalyzeThreshold")]
         public Input<int>? AutovacuumAnalyzeThreshold { get; set; }
 
         /// <summary>
-        /// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+        /// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
         /// </summary>
         [Input("autovacuumFreezeMaxAge")]
         public Input<int>? AutovacuumFreezeMaxAge { get; set; }
 
         /// <summary>
-        /// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        /// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
         /// </summary>
         [Input("autovacuumMaxWorkers")]
         public Input<int>? AutovacuumMaxWorkers { get; set; }
 
         /// <summary>
-        /// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+        /// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
         /// </summary>
         [Input("autovacuumNaptime")]
         public Input<int>? AutovacuumNaptime { get; set; }
 
         /// <summary>
-        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum*cost*delay value will be used. The default value is 20 milliseconds.
+        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
         /// </summary>
         [Input("autovacuumVacuumCostDelay")]
         public Input<int>? AutovacuumVacuumCostDelay { get; set; }
 
         /// <summary>
-        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum*cost*limit value will be used.
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
         /// </summary>
         [Input("autovacuumVacuumCostLimit")]
         public Input<int>? AutovacuumVacuumCostLimit { get; set; }
 
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        /// Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
         /// </summary>
         [Input("autovacuumVacuumScaleFactor")]
         public Input<double>? AutovacuumVacuumScaleFactor { get; set; }
 
         /// <summary>
-        /// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        /// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
         /// </summary>
         [Input("autovacuumVacuumThreshold")]
         public Input<int>? AutovacuumVacuumThreshold { get; set; }
 
         /// <summary>
-        /// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+        /// Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
         /// </summary>
         [Input("bgwriterDelay")]
         public Input<int>? BgwriterDelay { get; set; }
 
         /// <summary>
-        /// Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+        /// Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
         /// </summary>
         [Input("bgwriterFlushAfter")]
         public Input<int>? BgwriterFlushAfter { get; set; }
 
         /// <summary>
-        /// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+        /// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
         /// </summary>
         [Input("bgwriterLruMaxpages")]
         public Input<int>? BgwriterLruMaxpages { get; set; }
 
         /// <summary>
-        /// The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+        /// The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
         /// </summary>
         [Input("bgwriterLruMultiplier")]
         public Input<double>? BgwriterLruMultiplier { get; set; }
 
         /// <summary>
-        /// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+        /// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
         /// </summary>
         [Input("deadlockTimeout")]
         public Input<int>? DeadlockTimeout { get; set; }
 
         /// <summary>
-        /// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        /// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
         /// </summary>
         [Input("defaultToastCompression")]
         public Input<string>? DefaultToastCompression { get; set; }
@@ -115,7 +115,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Jit { get; set; }
 
         /// <summary>
-        /// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+        /// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
         /// </summary>
         [Input("logAutovacuumMinDuration")]
         public Input<int>? LogAutovacuumMinDuration { get; set; }
@@ -145,85 +145,85 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? LogTempFiles { get; set; }
 
         /// <summary>
-        /// PostgreSQL maximum number of files that can be open per process.
+        /// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
         /// </summary>
         [Input("maxFilesPerProcess")]
         public Input<int>? MaxFilesPerProcess { get; set; }
 
         /// <summary>
-        /// PostgreSQL maximum locks per transaction.
+        /// PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
         /// </summary>
         [Input("maxLocksPerTransaction")]
         public Input<int>? MaxLocksPerTransaction { get; set; }
 
         /// <summary>
-        /// PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers).
+        /// PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
         /// </summary>
         [Input("maxLogicalReplicationWorkers")]
         public Input<int>? MaxLogicalReplicationWorkers { get; set; }
 
         /// <summary>
-        /// Sets the maximum number of workers that the system can support for parallel queries.
+        /// Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
         /// </summary>
         [Input("maxParallelWorkers")]
         public Input<int>? MaxParallelWorkers { get; set; }
 
         /// <summary>
-        /// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        /// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
         /// </summary>
         [Input("maxParallelWorkersPerGather")]
         public Input<int>? MaxParallelWorkersPerGather { get; set; }
 
         /// <summary>
-        /// PostgreSQL maximum predicate locks per transaction.
+        /// PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
         /// </summary>
         [Input("maxPredLocksPerTransaction")]
         public Input<int>? MaxPredLocksPerTransaction { get; set; }
 
         /// <summary>
-        /// PostgreSQL maximum prepared transactions.
+        /// PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
         /// </summary>
         [Input("maxPreparedTransactions")]
         public Input<int>? MaxPreparedTransactions { get; set; }
 
         /// <summary>
-        /// PostgreSQL maximum replication slots.
+        /// PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
         /// </summary>
         [Input("maxReplicationSlots")]
         public Input<int>? MaxReplicationSlots { get; set; }
 
         /// <summary>
-        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal*keep*size minimum WAL size setting takes precedence over this.
+        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
         /// </summary>
         [Input("maxSlotWalKeepSize")]
         public Input<int>? MaxSlotWalKeepSize { get; set; }
 
         /// <summary>
-        /// Maximum depth of the stack in bytes.
+        /// Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
         /// </summary>
         [Input("maxStackDepth")]
         public Input<int>? MaxStackDepth { get; set; }
 
         /// <summary>
-        /// Max standby archive delay in milliseconds.
+        /// Max standby archive delay in milliseconds. The default is `30000` (upstream default).
         /// </summary>
         [Input("maxStandbyArchiveDelay")]
         public Input<int>? MaxStandbyArchiveDelay { get; set; }
 
         /// <summary>
-        /// Max standby streaming delay in milliseconds.
+        /// Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
         /// </summary>
         [Input("maxStandbyStreamingDelay")]
         public Input<int>? MaxStandbyStreamingDelay { get; set; }
 
         /// <summary>
-        /// PostgreSQL maximum WAL senders.
+        /// PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
         /// </summary>
         [Input("maxWalSenders")]
         public Input<int>? MaxWalSenders { get; set; }
 
         /// <summary>
-        /// Sets the maximum number of background processes that the system can support.
+        /// Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
         /// </summary>
         [Input("maxWorkerProcesses")]
         public Input<int>? MaxWorkerProcesses { get; set; }
@@ -235,7 +235,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? PasswordEncryption { get; set; }
 
         /// <summary>
-        /// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
+        /// Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
         /// </summary>
         [Input("pgPartmanBgwDotInterval")]
         public Input<int>? PgPartmanBgwDotInterval { get; set; }
@@ -247,19 +247,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? PgPartmanBgwDotRole { get; set; }
 
         /// <summary>
-        /// Enables or disables query plan monitoring.
+        /// Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
         /// </summary>
         [Input("pgStatMonitorDotPgsmEnableQueryPlan")]
         public Input<bool>? PgStatMonitorDotPgsmEnableQueryPlan { get; set; }
 
         /// <summary>
-        /// Sets the maximum number of buckets. Example: `10`.
+        /// Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
         /// </summary>
         [Input("pgStatMonitorDotPgsmMaxBuckets")]
         public Input<int>? PgStatMonitorDotPgsmMaxBuckets { get; set; }
 
         /// <summary>
-        /// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        /// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
         /// </summary>
         [Input("pgStatStatementsDotTrack")]
         public Input<string>? PgStatStatementsDotTrack { get; set; }
@@ -277,13 +277,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Timezone { get; set; }
 
         /// <summary>
-        /// Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+        /// Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
         /// </summary>
         [Input("trackActivityQuerySize")]
         public Input<int>? TrackActivityQuerySize { get; set; }
 
         /// <summary>
-        /// Enum: `off`, `on`. Record commit time of transactions.
+        /// Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
         /// </summary>
         [Input("trackCommitTimestamp")]
         public Input<string>? TrackCommitTimestamp { get; set; }
@@ -295,7 +295,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? TrackFunctions { get; set; }
 
         /// <summary>
-        /// Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        /// Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
         /// </summary>
         [Input("trackIoTiming")]
         public Input<string>? TrackIoTiming { get; set; }
@@ -307,7 +307,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? WalSenderTimeout { get; set; }
 
         /// <summary>
-        /// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+        /// WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
         /// </summary>
         [Input("walWriterDelay")]
         public Input<int>? WalWriterDelay { get; set; }

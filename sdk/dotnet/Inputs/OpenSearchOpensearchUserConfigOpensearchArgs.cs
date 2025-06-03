@@ -104,6 +104,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? EnableSecurityAudit { get; set; }
 
         /// <summary>
+        /// Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+        /// </summary>
+        [Input("enableSnapshotApi")]
+        public Input<bool>? EnableSnapshotApi { get; set; }
+
+        /// <summary>
         /// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
         /// </summary>
         [Input("httpMaxContentLength")]

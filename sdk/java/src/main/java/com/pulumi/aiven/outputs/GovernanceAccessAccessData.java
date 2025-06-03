@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GovernanceAccessAccessData {
     /**
-     * @return The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * @return Required property. Acls. Changing this property forces recreation of the resource.
      * 
      */
-    private List<GovernanceAccessAccessDataAcl> acls;
+    private @Nullable List<GovernanceAccessAccessDataAcl> acls;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     private String serviceName;
     /**
-     * @return The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * @return The service username assigned to the access. Changing this property forces recreation of the resource.
      * 
      */
     private @Nullable String username;
 
     private GovernanceAccessAccessData() {}
     /**
-     * @return The permissions granted to the assigned service user. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * @return Required property. Acls. Changing this property forces recreation of the resource.
      * 
      */
     public List<GovernanceAccessAccessDataAcl> acls() {
-        return this.acls;
+        return this.acls == null ? List.of() : this.acls;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return The name for the new service user given access. If not provided, the name is automatically generated. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * @return The service username assigned to the access. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<String> username() {
@@ -74,7 +74,7 @@ public final class GovernanceAccessAccessData {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GovernanceAccessAccessDataAcl> acls;
+        private @Nullable List<GovernanceAccessAccessDataAcl> acls;
         private String project;
         private String serviceName;
         private @Nullable String username;
@@ -88,10 +88,8 @@ public final class GovernanceAccessAccessData {
         }
 
         @CustomType.Setter
-        public Builder acls(List<GovernanceAccessAccessDataAcl> acls) {
-            if (acls == null) {
-              throw new MissingRequiredPropertyException("GovernanceAccessAccessData", "acls");
-            }
+        public Builder acls(@Nullable List<GovernanceAccessAccessDataAcl> acls) {
+
             this.acls = acls;
             return this;
         }

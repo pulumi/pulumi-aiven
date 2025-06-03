@@ -32,14 +32,14 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
     }
 
     /**
-     * The ACL ID.
+     * Acl ID.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The ACL ID.
+     * @return Acl ID.
      * 
      */
     public Optional<Output<String>> id() {
@@ -47,14 +47,14 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
     }
 
     /**
-     * The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+     * An enumeration. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="operation", required=true)
     private Output<String> operation;
 
     /**
-     * @return The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+     * @return An enumeration. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> operation() {
@@ -62,14 +62,14 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
     }
 
     /**
-     * Pattern used to match specified resources. The possible value is `LITERAL`.
+     * An enumeration. The possible value is `LITERAL`.
      * 
      */
     @Import(name="patternType")
     private @Nullable Output<String> patternType;
 
     /**
-     * @return Pattern used to match specified resources. The possible value is `LITERAL`.
+     * @return An enumeration. The possible value is `LITERAL`.
      * 
      */
     public Optional<Output<String>> patternType() {
@@ -77,14 +77,14 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
     }
 
     /**
-     * Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+     * An enumeration. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="permissionType", required=true)
     private Output<String> permissionType;
 
     /**
-     * @return Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+     * @return An enumeration. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> permissionType() {
@@ -92,14 +92,14 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
     }
 
     /**
-     * Identities in `user:name` format that the permissions apply to.
+     * Acl principal.
      * 
      */
     @Import(name="principal")
     private @Nullable Output<String> principal;
 
     /**
-     * @return Identities in `user:name` format that the permissions apply to.
+     * @return Acl principal.
      * 
      */
     public Optional<Output<String>> principal() {
@@ -107,14 +107,14 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
     }
 
     /**
-     * The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * Acl resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceName", required=true)
     private Output<String> resourceName;
 
     /**
-     * @return The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return Acl resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceName() {
@@ -122,14 +122,14 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
     }
 
     /**
-     * The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+     * An enumeration. The possible value is `Topic`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
     /**
-     * @return The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+     * @return An enumeration. The possible value is `Topic`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceType() {
@@ -189,7 +189,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param id The ACL ID.
+         * @param id Acl ID.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param id The ACL ID.
+         * @param id Acl ID.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param operation The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+         * @param operation An enumeration. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param operation The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+         * @param operation An enumeration. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param patternType Pattern used to match specified resources. The possible value is `LITERAL`.
+         * @param patternType An enumeration. The possible value is `LITERAL`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param patternType Pattern used to match specified resources. The possible value is `LITERAL`.
+         * @param patternType An enumeration. The possible value is `LITERAL`.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param permissionType Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+         * @param permissionType An enumeration. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param permissionType Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+         * @param permissionType An enumeration. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param principal Identities in `user:name` format that the permissions apply to.
+         * @param principal Acl principal.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param principal Identities in `user:name` format that the permissions apply to.
+         * @param principal Acl principal.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param resourceName The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param resourceName Acl resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param resourceName The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param resourceName Acl resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param resourceType The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+         * @param resourceType An enumeration. The possible value is `Topic`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class GovernanceAccessAccessDataAclArgs extends com.pulumi.resource
         }
 
         /**
-         * @param resourceType The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+         * @param resourceType An enumeration. The possible value is `Topic`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

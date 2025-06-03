@@ -67,6 +67,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? EnableSecurityAudit;
         /// <summary>
+        /// Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+        /// </summary>
+        public readonly bool? EnableSnapshotApi;
+        /// <summary>
         /// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
         /// </summary>
         public readonly int? HttpMaxContentLength;
@@ -250,6 +254,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? enableSecurityAudit,
 
+            bool? enableSnapshotApi,
+
             int? httpMaxContentLength,
 
             int? httpMaxHeaderSize,
@@ -342,6 +348,7 @@ namespace Pulumi.Aiven.Outputs
             EnableRemoteBackedStorage = enableRemoteBackedStorage;
             EnableSearchableSnapshots = enableSearchableSnapshots;
             EnableSecurityAudit = enableSecurityAudit;
+            EnableSnapshotApi = enableSnapshotApi;
             HttpMaxContentLength = httpMaxContentLength;
             HttpMaxHeaderSize = httpMaxHeaderSize;
             HttpMaxInitialLineLength = httpMaxInitialLineLength;

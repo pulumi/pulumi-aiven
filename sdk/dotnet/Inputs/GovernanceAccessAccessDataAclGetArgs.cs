@@ -19,43 +19,43 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// The ACL ID.
+        /// Acl ID.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+        /// An enumeration. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("operation", required: true)]
         public Input<string> Operation { get; set; } = null!;
 
         /// <summary>
-        /// Pattern used to match specified resources. The possible value is `LITERAL`.
+        /// An enumeration. The possible value is `LITERAL`.
         /// </summary>
         [Input("patternType")]
         public Input<string>? PatternType { get; set; }
 
         /// <summary>
-        /// Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+        /// An enumeration. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permissionType", required: true)]
         public Input<string> PermissionType { get; set; } = null!;
 
         /// <summary>
-        /// Identities in `user:name` format that the permissions apply to.
+        /// Acl principal.
         /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }
 
         /// <summary>
-        /// The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// Acl resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceName", required: true)]
         public Input<string> ResourceName { get; set; } = null!;
 
         /// <summary>
-        /// The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+        /// An enumeration. The possible value is `Topic`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;

@@ -18,37 +18,37 @@ public final class GovernanceAccessAccessDataAcl {
      */
     private @Nullable String host;
     /**
-     * @return The ACL ID.
+     * @return Acl ID.
      * 
      */
     private @Nullable String id;
     /**
-     * @return The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+     * @return An enumeration. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
      * 
      */
     private String operation;
     /**
-     * @return Pattern used to match specified resources. The possible value is `LITERAL`.
+     * @return An enumeration. The possible value is `LITERAL`.
      * 
      */
     private @Nullable String patternType;
     /**
-     * @return Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+     * @return An enumeration. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
      * 
      */
     private String permissionType;
     /**
-     * @return Identities in `user:name` format that the permissions apply to.
+     * @return Acl principal.
      * 
      */
     private @Nullable String principal;
     /**
-     * @return The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return Acl resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     private String resourceName;
     /**
-     * @return The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+     * @return An enumeration. The possible value is `Topic`. Changing this property forces recreation of the resource.
      * 
      */
     private String resourceType;
@@ -62,49 +62,49 @@ public final class GovernanceAccessAccessDataAcl {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return The ACL ID.
+     * @return Acl ID.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The action that will be allowed for the service user. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+     * @return An enumeration. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
      * 
      */
     public String operation() {
         return this.operation;
     }
     /**
-     * @return Pattern used to match specified resources. The possible value is `LITERAL`.
+     * @return An enumeration. The possible value is `LITERAL`.
      * 
      */
     public Optional<String> patternType() {
         return Optional.ofNullable(this.patternType);
     }
     /**
-     * @return Explicitly allows or denies the action for the service user on the specified resource. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+     * @return An enumeration. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
      * 
      */
     public String permissionType() {
         return this.permissionType;
     }
     /**
-     * @return Identities in `user:name` format that the permissions apply to.
+     * @return Acl principal.
      * 
      */
     public Optional<String> principal() {
         return Optional.ofNullable(this.principal);
     }
     /**
-     * @return The name of the resource the permission applies to, such as the topic name or group ID in the Kafka service. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return Acl resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public String resourceName() {
         return this.resourceName;
     }
     /**
-     * @return The type of resource. The possible value is `Topic`. Changing this property forces recreation of the resource.
+     * @return An enumeration. The possible value is `Topic`. Changing this property forces recreation of the resource.
      * 
      */
     public String resourceType() {

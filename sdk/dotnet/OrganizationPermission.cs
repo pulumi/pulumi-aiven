@@ -10,15 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions)
-    /// to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level.
-    /// Unit-level permissions aren't shown in the Aiven Console.
-    /// 
-    /// To assign permissions to multiple users and groups on the same combination of organization ID, resource ID and resource type, don't use multiple `aiven.OrganizationPermission` resources.
-    /// Instead, use multiple permission blocks as in the example usage.
-    /// 
-    /// **Do not use the `aiven.ProjectUser` or `aiven.OrganizationGroupProject` resources with this resource**.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

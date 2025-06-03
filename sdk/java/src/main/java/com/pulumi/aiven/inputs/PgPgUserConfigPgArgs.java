@@ -19,14 +19,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     public static final PgPgUserConfigPgArgs Empty = new PgPgUserConfigPgArgs();
 
     /**
-     * Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     @Import(name="autovacuumAnalyzeScaleFactor")
     private @Nullable Output<Double> autovacuumAnalyzeScaleFactor;
 
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * @return Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     public Optional<Output<Double>> autovacuumAnalyzeScaleFactor() {
@@ -34,14 +34,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
      * 
      */
     @Import(name="autovacuumAnalyzeThreshold")
     private @Nullable Output<Integer> autovacuumAnalyzeThreshold;
 
     /**
-     * @return Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * @return Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
      * 
      */
     public Optional<Output<Integer>> autovacuumAnalyzeThreshold() {
@@ -49,14 +49,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+     * Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
      * 
      */
     @Import(name="autovacuumFreezeMaxAge")
     private @Nullable Output<Integer> autovacuumFreezeMaxAge;
 
     /**
-     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
      * 
      */
     public Optional<Output<Integer>> autovacuumFreezeMaxAge() {
@@ -64,14 +64,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
      * 
      */
     @Import(name="autovacuumMaxWorkers")
     private @Nullable Output<Integer> autovacuumMaxWorkers;
 
     /**
-     * @return Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * @return Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<Integer>> autovacuumMaxWorkers() {
@@ -79,14 +79,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
      * 
      */
     @Import(name="autovacuumNaptime")
     private @Nullable Output<Integer> autovacuumNaptime;
 
     /**
-     * @return Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+     * @return Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
      * 
      */
     public Optional<Output<Integer>> autovacuumNaptime() {
@@ -94,14 +94,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum*cost*delay value will be used. The default value is 20 milliseconds.
+     * Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
      * 
      */
     @Import(name="autovacuumVacuumCostDelay")
     private @Nullable Output<Integer> autovacuumVacuumCostDelay;
 
     /**
-     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum*cost*delay value will be used. The default value is 20 milliseconds.
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
      * 
      */
     public Optional<Output<Integer>> autovacuumVacuumCostDelay() {
@@ -109,14 +109,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum*cost*limit value will be used.
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
      * 
      */
     @Import(name="autovacuumVacuumCostLimit")
     private @Nullable Output<Integer> autovacuumVacuumCostLimit;
 
     /**
-     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum*cost*limit value will be used.
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
      * 
      */
     public Optional<Output<Integer>> autovacuumVacuumCostLimit() {
@@ -124,14 +124,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     @Import(name="autovacuumVacuumScaleFactor")
     private @Nullable Output<Double> autovacuumVacuumScaleFactor;
 
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * @return Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     public Optional<Output<Double>> autovacuumVacuumScaleFactor() {
@@ -139,14 +139,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
      * 
      */
     @Import(name="autovacuumVacuumThreshold")
     private @Nullable Output<Integer> autovacuumVacuumThreshold;
 
     /**
-     * @return Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * @return Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
      * 
      */
     public Optional<Output<Integer>> autovacuumVacuumThreshold() {
@@ -154,14 +154,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+     * Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
      * 
      */
     @Import(name="bgwriterDelay")
     private @Nullable Output<Integer> bgwriterDelay;
 
     /**
-     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+     * @return Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
      * 
      */
     public Optional<Output<Integer>> bgwriterDelay() {
@@ -169,14 +169,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
      * 
      */
     @Import(name="bgwriterFlushAfter")
     private @Nullable Output<Integer> bgwriterFlushAfter;
 
     /**
-     * @return Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+     * @return Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
      * 
      */
     public Optional<Output<Integer>> bgwriterFlushAfter() {
@@ -184,14 +184,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
      * 
      */
     @Import(name="bgwriterLruMaxpages")
     private @Nullable Output<Integer> bgwriterLruMaxpages;
 
     /**
-     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
      * 
      */
     public Optional<Output<Integer>> bgwriterLruMaxpages() {
@@ -199,14 +199,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
      * 
      */
     @Import(name="bgwriterLruMultiplier")
     private @Nullable Output<Double> bgwriterLruMultiplier;
 
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+     * @return The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
      * 
      */
     public Optional<Output<Double>> bgwriterLruMultiplier() {
@@ -214,14 +214,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
      * 
      */
     @Import(name="deadlockTimeout")
     private @Nullable Output<Integer> deadlockTimeout;
 
     /**
-     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
      * 
      */
     public Optional<Output<Integer>> deadlockTimeout() {
@@ -229,14 +229,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
      * 
      */
     @Import(name="defaultToastCompression")
     private @Nullable Output<String> defaultToastCompression;
 
     /**
-     * @return Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * @return Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
      * 
      */
     public Optional<Output<String>> defaultToastCompression() {
@@ -274,14 +274,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+     * Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
      * 
      */
     @Import(name="logAutovacuumMinDuration")
     private @Nullable Output<Integer> logAutovacuumMinDuration;
 
     /**
-     * @return Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+     * @return Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
      * 
      */
     public Optional<Output<Integer>> logAutovacuumMinDuration() {
@@ -349,14 +349,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PostgreSQL maximum number of files that can be open per process.
+     * PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
      * 
      */
     @Import(name="maxFilesPerProcess")
     private @Nullable Output<Integer> maxFilesPerProcess;
 
     /**
-     * @return PostgreSQL maximum number of files that can be open per process.
+     * @return PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<Integer>> maxFilesPerProcess() {
@@ -364,14 +364,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PostgreSQL maximum locks per transaction.
+     * PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
      * 
      */
     @Import(name="maxLocksPerTransaction")
     private @Nullable Output<Integer> maxLocksPerTransaction;
 
     /**
-     * @return PostgreSQL maximum locks per transaction.
+     * @return PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<Integer>> maxLocksPerTransaction() {
@@ -379,14 +379,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers).
+     * PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
      * 
      */
     @Import(name="maxLogicalReplicationWorkers")
     private @Nullable Output<Integer> maxLogicalReplicationWorkers;
 
     /**
-     * @return PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers).
+     * @return PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<Integer>> maxLogicalReplicationWorkers() {
@@ -394,14 +394,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Sets the maximum number of workers that the system can support for parallel queries.
+     * Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
      * 
      */
     @Import(name="maxParallelWorkers")
     private @Nullable Output<Integer> maxParallelWorkers;
 
     /**
-     * @return Sets the maximum number of workers that the system can support for parallel queries.
+     * @return Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
      * 
      */
     public Optional<Output<Integer>> maxParallelWorkers() {
@@ -409,14 +409,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
      * 
      */
     @Import(name="maxParallelWorkersPerGather")
     private @Nullable Output<Integer> maxParallelWorkersPerGather;
 
     /**
-     * @return Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * @return Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
      * 
      */
     public Optional<Output<Integer>> maxParallelWorkersPerGather() {
@@ -424,14 +424,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PostgreSQL maximum predicate locks per transaction.
+     * PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
      * 
      */
     @Import(name="maxPredLocksPerTransaction")
     private @Nullable Output<Integer> maxPredLocksPerTransaction;
 
     /**
-     * @return PostgreSQL maximum predicate locks per transaction.
+     * @return PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<Integer>> maxPredLocksPerTransaction() {
@@ -439,14 +439,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PostgreSQL maximum prepared transactions.
+     * PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
      * 
      */
     @Import(name="maxPreparedTransactions")
     private @Nullable Output<Integer> maxPreparedTransactions;
 
     /**
-     * @return PostgreSQL maximum prepared transactions.
+     * @return PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<Integer>> maxPreparedTransactions() {
@@ -454,14 +454,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PostgreSQL maximum replication slots.
+     * PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
      * 
      */
     @Import(name="maxReplicationSlots")
     private @Nullable Output<Integer> maxReplicationSlots;
 
     /**
-     * @return PostgreSQL maximum replication slots.
+     * @return PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<Integer>> maxReplicationSlots() {
@@ -469,14 +469,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal*keep*size minimum WAL size setting takes precedence over this.
+     * PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
      * 
      */
     @Import(name="maxSlotWalKeepSize")
     private @Nullable Output<Integer> maxSlotWalKeepSize;
 
     /**
-     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal*keep*size minimum WAL size setting takes precedence over this.
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
      * 
      */
     public Optional<Output<Integer>> maxSlotWalKeepSize() {
@@ -484,14 +484,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Maximum depth of the stack in bytes.
+     * Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
      * 
      */
     @Import(name="maxStackDepth")
     private @Nullable Output<Integer> maxStackDepth;
 
     /**
-     * @return Maximum depth of the stack in bytes.
+     * @return Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
      * 
      */
     public Optional<Output<Integer>> maxStackDepth() {
@@ -499,14 +499,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Max standby archive delay in milliseconds.
+     * Max standby archive delay in milliseconds. The default is `30000` (upstream default).
      * 
      */
     @Import(name="maxStandbyArchiveDelay")
     private @Nullable Output<Integer> maxStandbyArchiveDelay;
 
     /**
-     * @return Max standby archive delay in milliseconds.
+     * @return Max standby archive delay in milliseconds. The default is `30000` (upstream default).
      * 
      */
     public Optional<Output<Integer>> maxStandbyArchiveDelay() {
@@ -514,14 +514,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Max standby streaming delay in milliseconds.
+     * Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
      * 
      */
     @Import(name="maxStandbyStreamingDelay")
     private @Nullable Output<Integer> maxStandbyStreamingDelay;
 
     /**
-     * @return Max standby streaming delay in milliseconds.
+     * @return Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
      * 
      */
     public Optional<Output<Integer>> maxStandbyStreamingDelay() {
@@ -529,14 +529,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PostgreSQL maximum WAL senders.
+     * PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
      * 
      */
     @Import(name="maxWalSenders")
     private @Nullable Output<Integer> maxWalSenders;
 
     /**
-     * @return PostgreSQL maximum WAL senders.
+     * @return PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<Integer>> maxWalSenders() {
@@ -544,14 +544,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Sets the maximum number of background processes that the system can support.
+     * Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
      * 
      */
     @Import(name="maxWorkerProcesses")
     private @Nullable Output<Integer> maxWorkerProcesses;
 
     /**
-     * @return Sets the maximum number of background processes that the system can support.
+     * @return Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<Integer>> maxWorkerProcesses() {
@@ -574,14 +574,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
+     * Sets the time interval in seconds to run pg_partman&#39;s scheduled tasks. The default is `3600`. Example: `3600`.
      * 
      */
     @Import(name="pgPartmanBgwDotInterval")
     private @Nullable Output<Integer> pgPartmanBgwDotInterval;
 
     /**
-     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
+     * @return Sets the time interval in seconds to run pg_partman&#39;s scheduled tasks. The default is `3600`. Example: `3600`.
      * 
      */
     public Optional<Output<Integer>> pgPartmanBgwDotInterval() {
@@ -604,14 +604,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enables or disables query plan monitoring.
+     * Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
      * 
      */
     @Import(name="pgStatMonitorDotPgsmEnableQueryPlan")
     private @Nullable Output<Boolean> pgStatMonitorDotPgsmEnableQueryPlan;
 
     /**
-     * @return Enables or disables query plan monitoring.
+     * @return Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
      * 
      */
     public Optional<Output<Boolean>> pgStatMonitorDotPgsmEnableQueryPlan() {
@@ -619,14 +619,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Sets the maximum number of buckets. Example: `10`.
+     * Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
      * 
      */
     @Import(name="pgStatMonitorDotPgsmMaxBuckets")
     private @Nullable Output<Integer> pgStatMonitorDotPgsmMaxBuckets;
 
     /**
-     * @return Sets the maximum number of buckets. Example: `10`.
+     * @return Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
      * 
      */
     public Optional<Output<Integer>> pgStatMonitorDotPgsmMaxBuckets() {
@@ -634,14 +634,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
      * 
      */
     @Import(name="pgStatStatementsDotTrack")
     private @Nullable Output<String> pgStatStatementsDotTrack;
 
     /**
-     * @return Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * @return Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
      * 
      */
     public Optional<Output<String>> pgStatStatementsDotTrack() {
@@ -679,14 +679,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+     * Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
      * 
      */
     @Import(name="trackActivityQuerySize")
     private @Nullable Output<Integer> trackActivityQuerySize;
 
     /**
-     * @return Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+     * @return Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
      * 
      */
     public Optional<Output<Integer>> trackActivityQuerySize() {
@@ -694,14 +694,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enum: `off`, `on`. Record commit time of transactions.
+     * Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
      * 
      */
     @Import(name="trackCommitTimestamp")
     private @Nullable Output<String> trackCommitTimestamp;
 
     /**
-     * @return Enum: `off`, `on`. Record commit time of transactions.
+     * @return Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<String>> trackCommitTimestamp() {
@@ -724,14 +724,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
      * 
      */
     @Import(name="trackIoTiming")
     private @Nullable Output<String> trackIoTiming;
 
     /**
-     * @return Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * @return Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
      * 
      */
     public Optional<Output<String>> trackIoTiming() {
@@ -754,14 +754,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+     * WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
      * 
      */
     @Import(name="walWriterDelay")
     private @Nullable Output<Integer> walWriterDelay;
 
     /**
-     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+     * @return WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
      * 
      */
     public Optional<Output<Integer>> walWriterDelay() {
@@ -842,7 +842,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
          * 
          * @return builder
          * 
@@ -853,7 +853,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
          * 
          * @return builder
          * 
@@ -863,7 +863,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumAnalyzeThreshold Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+         * @param autovacuumAnalyzeThreshold Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
          * 
          * @return builder
          * 
@@ -874,7 +874,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumAnalyzeThreshold Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+         * @param autovacuumAnalyzeThreshold Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
          * 
          * @return builder
          * 
@@ -884,7 +884,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumFreezeMaxAge Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+         * @param autovacuumFreezeMaxAge Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
          * 
          * @return builder
          * 
@@ -895,7 +895,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumFreezeMaxAge Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+         * @param autovacuumFreezeMaxAge Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
          * 
          * @return builder
          * 
@@ -905,7 +905,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumMaxWorkers Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+         * @param autovacuumMaxWorkers Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -916,7 +916,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumMaxWorkers Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+         * @param autovacuumMaxWorkers Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -926,7 +926,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumNaptime Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+         * @param autovacuumNaptime Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
          * 
          * @return builder
          * 
@@ -937,7 +937,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumNaptime Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+         * @param autovacuumNaptime Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
          * 
          * @return builder
          * 
@@ -947,7 +947,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumVacuumCostDelay Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum*cost*delay value will be used. The default value is 20 milliseconds.
+         * @param autovacuumVacuumCostDelay Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
          * 
          * @return builder
          * 
@@ -958,7 +958,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumVacuumCostDelay Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum*cost*delay value will be used. The default value is 20 milliseconds.
+         * @param autovacuumVacuumCostDelay Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
          * 
          * @return builder
          * 
@@ -968,7 +968,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum*cost*limit value will be used.
+         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
          * 
          * @return builder
          * 
@@ -979,7 +979,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum*cost*limit value will be used.
+         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
          * 
          * @return builder
          * 
@@ -989,7 +989,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
          * 
          * @return builder
          * 
@@ -1000,7 +1000,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
          * 
          * @return builder
          * 
@@ -1010,7 +1010,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumVacuumThreshold Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+         * @param autovacuumVacuumThreshold Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
          * 
          * @return builder
          * 
@@ -1021,7 +1021,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumVacuumThreshold Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+         * @param autovacuumVacuumThreshold Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
          * 
          * @return builder
          * 
@@ -1031,7 +1031,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterDelay Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+         * @param bgwriterDelay Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
          * 
          * @return builder
          * 
@@ -1042,7 +1042,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterDelay Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+         * @param bgwriterDelay Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
          * 
          * @return builder
          * 
@@ -1052,7 +1052,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterFlushAfter Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+         * @param bgwriterFlushAfter Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
          * 
          * @return builder
          * 
@@ -1063,7 +1063,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterFlushAfter Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+         * @param bgwriterFlushAfter Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
          * 
          * @return builder
          * 
@@ -1073,7 +1073,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterLruMaxpages In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+         * @param bgwriterLruMaxpages In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
          * 
          * @return builder
          * 
@@ -1084,7 +1084,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterLruMaxpages In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+         * @param bgwriterLruMaxpages In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
          * 
          * @return builder
          * 
@@ -1094,7 +1094,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
          * 
          * @return builder
          * 
@@ -1105,7 +1105,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
          * 
          * @return builder
          * 
@@ -1115,7 +1115,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deadlockTimeout This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+         * @param deadlockTimeout This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
          * 
          * @return builder
          * 
@@ -1126,7 +1126,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deadlockTimeout This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+         * @param deadlockTimeout This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
          * 
          * @return builder
          * 
@@ -1136,7 +1136,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param defaultToastCompression Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+         * @param defaultToastCompression Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
          * 
          * @return builder
          * 
@@ -1147,7 +1147,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param defaultToastCompression Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+         * @param defaultToastCompression Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
          * 
          * @return builder
          * 
@@ -1199,7 +1199,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logAutovacuumMinDuration Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+         * @param logAutovacuumMinDuration Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
          * 
          * @return builder
          * 
@@ -1210,7 +1210,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logAutovacuumMinDuration Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+         * @param logAutovacuumMinDuration Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
          * 
          * @return builder
          * 
@@ -1304,7 +1304,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxFilesPerProcess PostgreSQL maximum number of files that can be open per process.
+         * @param maxFilesPerProcess PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1315,7 +1315,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxFilesPerProcess PostgreSQL maximum number of files that can be open per process.
+         * @param maxFilesPerProcess PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1325,7 +1325,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxLocksPerTransaction PostgreSQL maximum locks per transaction.
+         * @param maxLocksPerTransaction PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1336,7 +1336,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxLocksPerTransaction PostgreSQL maximum locks per transaction.
+         * @param maxLocksPerTransaction PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1346,7 +1346,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxLogicalReplicationWorkers PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers).
+         * @param maxLogicalReplicationWorkers PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1357,7 +1357,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxLogicalReplicationWorkers PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers).
+         * @param maxLogicalReplicationWorkers PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1367,7 +1367,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxParallelWorkers Sets the maximum number of workers that the system can support for parallel queries.
+         * @param maxParallelWorkers Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
          * 
          * @return builder
          * 
@@ -1378,7 +1378,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxParallelWorkers Sets the maximum number of workers that the system can support for parallel queries.
+         * @param maxParallelWorkers Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
          * 
          * @return builder
          * 
@@ -1388,7 +1388,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxParallelWorkersPerGather Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+         * @param maxParallelWorkersPerGather Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
          * 
          * @return builder
          * 
@@ -1399,7 +1399,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxParallelWorkersPerGather Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+         * @param maxParallelWorkersPerGather Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
          * 
          * @return builder
          * 
@@ -1409,7 +1409,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxPredLocksPerTransaction PostgreSQL maximum predicate locks per transaction.
+         * @param maxPredLocksPerTransaction PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1420,7 +1420,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxPredLocksPerTransaction PostgreSQL maximum predicate locks per transaction.
+         * @param maxPredLocksPerTransaction PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1430,7 +1430,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxPreparedTransactions PostgreSQL maximum prepared transactions.
+         * @param maxPreparedTransactions PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1441,7 +1441,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxPreparedTransactions PostgreSQL maximum prepared transactions.
+         * @param maxPreparedTransactions PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1451,7 +1451,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxReplicationSlots PostgreSQL maximum replication slots.
+         * @param maxReplicationSlots PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1462,7 +1462,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxReplicationSlots PostgreSQL maximum replication slots.
+         * @param maxReplicationSlots PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1472,7 +1472,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxSlotWalKeepSize PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal*keep*size minimum WAL size setting takes precedence over this.
+         * @param maxSlotWalKeepSize PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
          * 
          * @return builder
          * 
@@ -1483,7 +1483,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxSlotWalKeepSize PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal*keep*size minimum WAL size setting takes precedence over this.
+         * @param maxSlotWalKeepSize PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
          * 
          * @return builder
          * 
@@ -1493,7 +1493,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxStackDepth Maximum depth of the stack in bytes.
+         * @param maxStackDepth Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
          * 
          * @return builder
          * 
@@ -1504,7 +1504,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxStackDepth Maximum depth of the stack in bytes.
+         * @param maxStackDepth Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
          * 
          * @return builder
          * 
@@ -1514,7 +1514,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxStandbyArchiveDelay Max standby archive delay in milliseconds.
+         * @param maxStandbyArchiveDelay Max standby archive delay in milliseconds. The default is `30000` (upstream default).
          * 
          * @return builder
          * 
@@ -1525,7 +1525,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxStandbyArchiveDelay Max standby archive delay in milliseconds.
+         * @param maxStandbyArchiveDelay Max standby archive delay in milliseconds. The default is `30000` (upstream default).
          * 
          * @return builder
          * 
@@ -1535,7 +1535,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxStandbyStreamingDelay Max standby streaming delay in milliseconds.
+         * @param maxStandbyStreamingDelay Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
          * 
          * @return builder
          * 
@@ -1546,7 +1546,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxStandbyStreamingDelay Max standby streaming delay in milliseconds.
+         * @param maxStandbyStreamingDelay Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
          * 
          * @return builder
          * 
@@ -1556,7 +1556,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxWalSenders PostgreSQL maximum WAL senders.
+         * @param maxWalSenders PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1567,7 +1567,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxWalSenders PostgreSQL maximum WAL senders.
+         * @param maxWalSenders PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1577,7 +1577,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxWorkerProcesses Sets the maximum number of background processes that the system can support.
+         * @param maxWorkerProcesses Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1588,7 +1588,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxWorkerProcesses Sets the maximum number of background processes that the system can support.
+         * @param maxWorkerProcesses Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1619,7 +1619,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgPartmanBgwDotInterval Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
+         * @param pgPartmanBgwDotInterval Sets the time interval in seconds to run pg_partman&#39;s scheduled tasks. The default is `3600`. Example: `3600`.
          * 
          * @return builder
          * 
@@ -1630,7 +1630,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgPartmanBgwDotInterval Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
+         * @param pgPartmanBgwDotInterval Sets the time interval in seconds to run pg_partman&#39;s scheduled tasks. The default is `3600`. Example: `3600`.
          * 
          * @return builder
          * 
@@ -1661,7 +1661,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatMonitorDotPgsmEnableQueryPlan Enables or disables query plan monitoring.
+         * @param pgStatMonitorDotPgsmEnableQueryPlan Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
          * 
          * @return builder
          * 
@@ -1672,7 +1672,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatMonitorDotPgsmEnableQueryPlan Enables or disables query plan monitoring.
+         * @param pgStatMonitorDotPgsmEnableQueryPlan Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
          * 
          * @return builder
          * 
@@ -1682,7 +1682,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets. Example: `10`.
+         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
          * 
          * @return builder
          * 
@@ -1693,7 +1693,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets. Example: `10`.
+         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
          * 
          * @return builder
          * 
@@ -1703,7 +1703,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatStatementsDotTrack Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+         * @param pgStatStatementsDotTrack Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
          * 
          * @return builder
          * 
@@ -1714,7 +1714,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatStatementsDotTrack Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+         * @param pgStatStatementsDotTrack Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
          * 
          * @return builder
          * 
@@ -1766,7 +1766,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackActivityQuerySize Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+         * @param trackActivityQuerySize Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
          * 
          * @return builder
          * 
@@ -1777,7 +1777,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackActivityQuerySize Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+         * @param trackActivityQuerySize Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
          * 
          * @return builder
          * 
@@ -1787,7 +1787,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackCommitTimestamp Enum: `off`, `on`. Record commit time of transactions.
+         * @param trackCommitTimestamp Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1798,7 +1798,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackCommitTimestamp Enum: `off`, `on`. Record commit time of transactions.
+         * @param trackCommitTimestamp Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1829,7 +1829,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackIoTiming Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+         * @param trackIoTiming Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
          * 
          * @return builder
          * 
@@ -1840,7 +1840,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackIoTiming Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+         * @param trackIoTiming Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
          * 
          * @return builder
          * 
@@ -1871,7 +1871,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param walWriterDelay WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+         * @param walWriterDelay WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
          * 
          * @return builder
          * 
@@ -1882,7 +1882,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param walWriterDelay WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+         * @param walWriterDelay WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
          * 
          * @return builder
          * 

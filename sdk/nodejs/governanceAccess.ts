@@ -61,29 +61,30 @@ export class GovernanceAccess extends pulumi.CustomResource {
     }
 
     /**
-     * Details of the access. Changing this property forces recreation of the resource.
+     * Required property. access type specific data. Changing this property forces recreation of the resource.
      */
-    public readonly accessData!: pulumi.Output<outputs.GovernanceAccessAccessData>;
+    public readonly accessData!: pulumi.Output<outputs.GovernanceAccessAccessData | undefined>;
     /**
-     * The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * Label to describe the access. Changing this property forces recreation of the resource.
      */
     public readonly accessName!: pulumi.Output<string>;
     /**
-     * The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+     * An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
      */
     public readonly accessType!: pulumi.Output<string>;
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     public readonly ownerUserGroupId!: pulumi.Output<string | undefined>;
     /**
      * The ID of the access.
      */
     public /*out*/ readonly susbcriptionId!: pulumi.Output<string>;
+    public readonly timeouts!: pulumi.Output<outputs.GovernanceAccessTimeouts | undefined>;
 
     /**
      * Create a GovernanceAccess resource with the given unique name, arguments, and options.
@@ -104,11 +105,9 @@ export class GovernanceAccess extends pulumi.CustomResource {
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
             resourceInputs["ownerUserGroupId"] = state ? state.ownerUserGroupId : undefined;
             resourceInputs["susbcriptionId"] = state ? state.susbcriptionId : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
         } else {
             const args = argsOrState as GovernanceAccessArgs | undefined;
-            if ((!args || args.accessData === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accessData'");
-            }
             if ((!args || args.accessName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessName'");
             }
@@ -123,6 +122,7 @@ export class GovernanceAccess extends pulumi.CustomResource {
             resourceInputs["accessType"] = args ? args.accessType : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["ownerUserGroupId"] = args ? args.ownerUserGroupId : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["susbcriptionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -135,29 +135,30 @@ export class GovernanceAccess extends pulumi.CustomResource {
  */
 export interface GovernanceAccessState {
     /**
-     * Details of the access. Changing this property forces recreation of the resource.
+     * Required property. access type specific data. Changing this property forces recreation of the resource.
      */
     accessData?: pulumi.Input<inputs.GovernanceAccessAccessData>;
     /**
-     * The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * Label to describe the access. Changing this property forces recreation of the resource.
      */
     accessName?: pulumi.Input<string>;
     /**
-     * The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+     * An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
      */
     accessType?: pulumi.Input<string>;
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     ownerUserGroupId?: pulumi.Input<string>;
     /**
      * The ID of the access.
      */
     susbcriptionId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GovernanceAccessTimeouts>;
 }
 
 /**
@@ -165,23 +166,24 @@ export interface GovernanceAccessState {
  */
 export interface GovernanceAccessArgs {
     /**
-     * Details of the access. Changing this property forces recreation of the resource.
+     * Required property. access type specific data. Changing this property forces recreation of the resource.
      */
-    accessData: pulumi.Input<inputs.GovernanceAccessAccessData>;
+    accessData?: pulumi.Input<inputs.GovernanceAccessAccessData>;
     /**
-     * The name to describe the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * Label to describe the access. Changing this property forces recreation of the resource.
      */
     accessName: pulumi.Input<string>;
     /**
-     * The type of access. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
+     * An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
      */
     accessType: pulumi.Input<string>;
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * The ID of the user group that owns the access. Maximum length: `54`. Changing this property forces recreation of the resource.
+     * The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     ownerUserGroupId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GovernanceAccessTimeouts>;
 }

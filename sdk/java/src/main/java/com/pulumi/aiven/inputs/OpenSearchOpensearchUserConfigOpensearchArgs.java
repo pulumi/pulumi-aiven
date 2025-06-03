@@ -228,6 +228,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+     * 
+     */
+    @Import(name="enableSnapshotApi")
+    private @Nullable Output<Boolean> enableSnapshotApi;
+
+    /**
+     * @return Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> enableSnapshotApi() {
+        return Optional.ofNullable(this.enableSnapshotApi);
+    }
+
+    /**
      * Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
      * 
      */
@@ -821,6 +836,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.enableRemoteBackedStorage = $.enableRemoteBackedStorage;
         this.enableSearchableSnapshots = $.enableSearchableSnapshots;
         this.enableSecurityAudit = $.enableSecurityAudit;
+        this.enableSnapshotApi = $.enableSnapshotApi;
         this.httpMaxContentLength = $.httpMaxContentLength;
         this.httpMaxHeaderSize = $.httpMaxHeaderSize;
         this.httpMaxInitialLineLength = $.httpMaxInitialLineLength;
@@ -1160,6 +1176,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder enableSecurityAudit(Boolean enableSecurityAudit) {
             return enableSecurityAudit(Output.of(enableSecurityAudit));
+        }
+
+        /**
+         * @param enableSnapshotApi Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSnapshotApi(@Nullable Output<Boolean> enableSnapshotApi) {
+            $.enableSnapshotApi = enableSnapshotApi;
+            return this;
+        }
+
+        /**
+         * @param enableSnapshotApi Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSnapshotApi(Boolean enableSnapshotApi) {
+            return enableSnapshotApi(Output.of(enableSnapshotApi));
         }
 
         /**
