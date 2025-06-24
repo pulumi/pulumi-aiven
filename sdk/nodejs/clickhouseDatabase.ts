@@ -5,11 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an Aiven for ClickHouse® database.
- *
- * > Tables cannot be created using Aiven Operator. To create a table,
- * use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
- *
  * ## Example Usage
  *
  * ```typescript

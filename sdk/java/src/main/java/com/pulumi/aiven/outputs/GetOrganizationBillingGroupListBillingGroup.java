@@ -22,11 +22,6 @@ public final class GetOrganizationBillingGroupListBillingGroup {
      */
     private List<String> billingContactEmails;
     /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    private String billingCurrency;
-    /**
      * @return List of billing contact emails.
      * 
      */
@@ -41,6 +36,11 @@ public final class GetOrganizationBillingGroupListBillingGroup {
      * 
      */
     private String billingGroupName;
+    /**
+     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     * 
+     */
+    private String currency;
     /**
      * @return Extra billing text.
      * 
@@ -83,13 +83,6 @@ public final class GetOrganizationBillingGroupListBillingGroup {
         return this.billingContactEmails;
     }
     /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    public String billingCurrency() {
-        return this.billingCurrency;
-    }
-    /**
      * @return List of billing contact emails.
      * 
      */
@@ -109,6 +102,13 @@ public final class GetOrganizationBillingGroupListBillingGroup {
      */
     public String billingGroupName() {
         return this.billingGroupName;
+    }
+    /**
+     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     * 
+     */
+    public String currency() {
+        return this.currency;
     }
     /**
      * @return Extra billing text.
@@ -157,10 +157,10 @@ public final class GetOrganizationBillingGroupListBillingGroup {
     public static final class Builder {
         private String billingAddressId;
         private List<String> billingContactEmails;
-        private String billingCurrency;
         private List<String> billingEmails;
         private String billingGroupId;
         private String billingGroupName;
+        private String currency;
         private String customInvoiceText;
         private String organizationId;
         private String paymentMethodId;
@@ -171,10 +171,10 @@ public final class GetOrganizationBillingGroupListBillingGroup {
     	      Objects.requireNonNull(defaults);
     	      this.billingAddressId = defaults.billingAddressId;
     	      this.billingContactEmails = defaults.billingContactEmails;
-    	      this.billingCurrency = defaults.billingCurrency;
     	      this.billingEmails = defaults.billingEmails;
     	      this.billingGroupId = defaults.billingGroupId;
     	      this.billingGroupName = defaults.billingGroupName;
+    	      this.currency = defaults.currency;
     	      this.customInvoiceText = defaults.customInvoiceText;
     	      this.organizationId = defaults.organizationId;
     	      this.paymentMethodId = defaults.paymentMethodId;
@@ -202,14 +202,6 @@ public final class GetOrganizationBillingGroupListBillingGroup {
             return billingContactEmails(List.of(billingContactEmails));
         }
         @CustomType.Setter
-        public Builder billingCurrency(String billingCurrency) {
-            if (billingCurrency == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "billingCurrency");
-            }
-            this.billingCurrency = billingCurrency;
-            return this;
-        }
-        @CustomType.Setter
         public Builder billingEmails(List<String> billingEmails) {
             if (billingEmails == null) {
               throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "billingEmails");
@@ -234,6 +226,14 @@ public final class GetOrganizationBillingGroupListBillingGroup {
               throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "billingGroupName");
             }
             this.billingGroupName = billingGroupName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder currency(String currency) {
+            if (currency == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "currency");
+            }
+            this.currency = currency;
             return this;
         }
         @CustomType.Setter
@@ -280,10 +280,10 @@ public final class GetOrganizationBillingGroupListBillingGroup {
             final var _resultValue = new GetOrganizationBillingGroupListBillingGroup();
             _resultValue.billingAddressId = billingAddressId;
             _resultValue.billingContactEmails = billingContactEmails;
-            _resultValue.billingCurrency = billingCurrency;
             _resultValue.billingEmails = billingEmails;
             _resultValue.billingGroupId = billingGroupId;
             _resultValue.billingGroupName = billingGroupName;
+            _resultValue.currency = currency;
             _resultValue.customInvoiceText = customInvoiceText;
             _resultValue.organizationId = organizationId;
             _resultValue.paymentMethodId = paymentMethodId;

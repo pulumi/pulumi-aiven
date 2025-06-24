@@ -22,10 +22,6 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> BillingContactEmails;
         /// <summary>
-        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        /// </summary>
-        public readonly string BillingCurrency;
-        /// <summary>
         /// List of billing contact emails.
         /// </summary>
         public readonly ImmutableArray<string> BillingEmails;
@@ -37,6 +33,10 @@ namespace Pulumi.Aiven.Outputs
         /// Billing Group Name.
         /// </summary>
         public readonly string BillingGroupName;
+        /// <summary>
+        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        /// </summary>
+        public readonly string Currency;
         /// <summary>
         /// Extra billing text.
         /// </summary>
@@ -64,13 +64,13 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> billingContactEmails,
 
-            string billingCurrency,
-
             ImmutableArray<string> billingEmails,
 
             string billingGroupId,
 
             string billingGroupName,
+
+            string currency,
 
             string customInvoiceText,
 
@@ -84,10 +84,10 @@ namespace Pulumi.Aiven.Outputs
         {
             BillingAddressId = billingAddressId;
             BillingContactEmails = billingContactEmails;
-            BillingCurrency = billingCurrency;
             BillingEmails = billingEmails;
             BillingGroupId = billingGroupId;
             BillingGroupName = billingGroupName;
+            Currency = currency;
             CustomInvoiceText = customInvoiceText;
             OrganizationId = organizationId;
             PaymentMethodId = paymentMethodId;

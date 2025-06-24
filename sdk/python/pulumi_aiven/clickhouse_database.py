@@ -163,11 +163,6 @@ class ClickhouseDatabase(pulumi.CustomResource):
                  termination_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
-        Creates and manages an Aiven for ClickHouse® database.
-
-        > Tables cannot be created using Aiven Operator. To create a table,
-        use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
-
         ## Example Usage
 
         ```python
@@ -206,11 +201,6 @@ class ClickhouseDatabase(pulumi.CustomResource):
                  args: ClickhouseDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an Aiven for ClickHouse® database.
-
-        > Tables cannot be created using Aiven Operator. To create a table,
-        use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
-
         ## Example Usage
 
         ```python

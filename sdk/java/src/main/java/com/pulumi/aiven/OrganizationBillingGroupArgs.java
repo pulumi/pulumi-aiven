@@ -49,21 +49,6 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    @Import(name="billingCurrency")
-    private @Nullable Output<String> billingCurrency;
-
-    /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    public Optional<Output<String>> billingCurrency() {
-        return Optional.ofNullable(this.billingCurrency);
-    }
-
-    /**
      * List of billing contact emails.
      * 
      */
@@ -91,6 +76,21 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
      */
     public Output<String> billingGroupName() {
         return this.billingGroupName;
+    }
+
+    /**
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     * 
+     */
+    @Import(name="currency")
+    private @Nullable Output<String> currency;
+
+    /**
+     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     * 
+     */
+    public Optional<Output<String>> currency() {
+        return Optional.ofNullable(this.currency);
     }
 
     /**
@@ -180,9 +180,9 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
     private OrganizationBillingGroupArgs(OrganizationBillingGroupArgs $) {
         this.billingAddressId = $.billingAddressId;
         this.billingContactEmails = $.billingContactEmails;
-        this.billingCurrency = $.billingCurrency;
         this.billingEmails = $.billingEmails;
         this.billingGroupName = $.billingGroupName;
+        this.currency = $.currency;
         this.customInvoiceText = $.customInvoiceText;
         this.organizationId = $.organizationId;
         this.paymentMethodId = $.paymentMethodId;
@@ -262,27 +262,6 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param billingCurrency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder billingCurrency(@Nullable Output<String> billingCurrency) {
-            $.billingCurrency = billingCurrency;
-            return this;
-        }
-
-        /**
-         * @param billingCurrency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder billingCurrency(String billingCurrency) {
-            return billingCurrency(Output.of(billingCurrency));
-        }
-
-        /**
          * @param billingEmails List of billing contact emails.
          * 
          * @return builder
@@ -332,6 +311,27 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
          */
         public Builder billingGroupName(String billingGroupName) {
             return billingGroupName(Output.of(billingGroupName));
+        }
+
+        /**
+         * @param currency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currency(@Nullable Output<String> currency) {
+            $.currency = currency;
+            return this;
+        }
+
+        /**
+         * @param currency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currency(String currency) {
+            return currency(Output.of(currency));
         }
 
         /**

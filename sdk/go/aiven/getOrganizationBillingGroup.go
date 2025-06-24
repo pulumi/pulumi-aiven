@@ -40,14 +40,14 @@ type LookupOrganizationBillingGroupResult struct {
 	BillingAddressId string `pulumi:"billingAddressId"`
 	// List of billing contact emails.
 	BillingContactEmails []string `pulumi:"billingContactEmails"`
-	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-	BillingCurrency string `pulumi:"billingCurrency"`
 	// List of billing contact emails.
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// Billing Group Name.
 	BillingGroupName string `pulumi:"billingGroupName"`
+	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+	Currency string `pulumi:"currency"`
 	// Extra billing text.
 	CustomInvoiceText string `pulumi:"customInvoiceText"`
 	// Resource ID, a composite of `organizationId` and `billingGroupId` IDs.
@@ -110,11 +110,6 @@ func (o LookupOrganizationBillingGroupResultOutput) BillingContactEmails() pulum
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) []string { return v.BillingContactEmails }).(pulumi.StringArrayOutput)
 }
 
-// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-func (o LookupOrganizationBillingGroupResultOutput) BillingCurrency() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.BillingCurrency }).(pulumi.StringOutput)
-}
-
 // List of billing contact emails.
 func (o LookupOrganizationBillingGroupResultOutput) BillingEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
@@ -128,6 +123,11 @@ func (o LookupOrganizationBillingGroupResultOutput) BillingGroupId() pulumi.Stri
 // Billing Group Name.
 func (o LookupOrganizationBillingGroupResultOutput) BillingGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.BillingGroupName }).(pulumi.StringOutput)
+}
+
+// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+func (o LookupOrganizationBillingGroupResultOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.Currency }).(pulumi.StringOutput)
 }
 
 // Extra billing text.

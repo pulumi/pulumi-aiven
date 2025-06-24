@@ -123,6 +123,21 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+     * 
+     */
+    @Import(name="inklessEnable")
+    private @Nullable Output<Boolean> inklessEnable;
+
+    /**
+     * @return Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> inklessEnable() {
+        return Optional.ofNullable(this.inklessEnable);
+    }
+
+    /**
      * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1.
      * 
      */
@@ -432,6 +447,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         this.flushMessages = $.flushMessages;
         this.flushMs = $.flushMs;
         this.indexIntervalBytes = $.indexIntervalBytes;
+        this.inklessEnable = $.inklessEnable;
         this.localRetentionBytes = $.localRetentionBytes;
         this.localRetentionMs = $.localRetentionMs;
         this.maxCompactionLagMs = $.maxCompactionLagMs;
@@ -617,6 +633,27 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder indexIntervalBytes(String indexIntervalBytes) {
             return indexIntervalBytes(Output.of(indexIntervalBytes));
+        }
+
+        /**
+         * @param inklessEnable Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inklessEnable(@Nullable Output<Boolean> inklessEnable) {
+            $.inklessEnable = inklessEnable;
+            return this;
+        }
+
+        /**
+         * @param inklessEnable Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inklessEnable(Boolean inklessEnable) {
+            return inklessEnable(Output.of(inklessEnable));
         }
 
         /**

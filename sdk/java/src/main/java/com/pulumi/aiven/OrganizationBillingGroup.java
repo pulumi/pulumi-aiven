@@ -54,20 +54,6 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
         return this.billingContactEmails;
     }
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    @Export(name="billingCurrency", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> billingCurrency;
-
-    /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    public Output<Optional<String>> billingCurrency() {
-        return Codegen.optional(this.billingCurrency);
-    }
-    /**
      * List of billing contact emails.
      * 
      */
@@ -108,6 +94,20 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
      */
     public Output<String> billingGroupName() {
         return this.billingGroupName;
+    }
+    /**
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     * 
+     */
+    @Export(name="currency", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> currency;
+
+    /**
+     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     * 
+     */
+    public Output<Optional<String>> currency() {
+        return Codegen.optional(this.currency);
     }
     /**
      * Extra billing text. Maximum length: `254`.

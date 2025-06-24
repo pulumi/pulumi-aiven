@@ -31,12 +31,6 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> BillingContactEmails { get; private set; } = null!;
 
         /// <summary>
-        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        /// </summary>
-        [Output("billingCurrency")]
-        public Output<string?> BillingCurrency { get; private set; } = null!;
-
-        /// <summary>
         /// List of billing contact emails.
         /// </summary>
         [Output("billingEmails")]
@@ -53,6 +47,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("billingGroupName")]
         public Output<string> BillingGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        /// </summary>
+        [Output("currency")]
+        public Output<string?> Currency { get; private set; } = null!;
 
         /// <summary>
         /// Extra billing text. Maximum length: `254`.
@@ -151,12 +151,6 @@ namespace Pulumi.Aiven
             set => _billingContactEmails = value;
         }
 
-        /// <summary>
-        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        /// </summary>
-        [Input("billingCurrency")]
-        public Input<string>? BillingCurrency { get; set; }
-
         [Input("billingEmails", required: true)]
         private InputList<string>? _billingEmails;
 
@@ -174,6 +168,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("billingGroupName", required: true)]
         public Input<string> BillingGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        /// </summary>
+        [Input("currency")]
+        public Input<string>? Currency { get; set; }
 
         /// <summary>
         /// Extra billing text. Maximum length: `254`.
@@ -234,12 +234,6 @@ namespace Pulumi.Aiven
             set => _billingContactEmails = value;
         }
 
-        /// <summary>
-        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        /// </summary>
-        [Input("billingCurrency")]
-        public Input<string>? BillingCurrency { get; set; }
-
         [Input("billingEmails")]
         private InputList<string>? _billingEmails;
 
@@ -263,6 +257,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("billingGroupName")]
         public Input<string>? BillingGroupName { get; set; }
+
+        /// <summary>
+        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        /// </summary>
+        [Input("currency")]
+        public Input<string>? Currency { get; set; }
 
         /// <summary>
         /// Extra billing text. Maximum length: `254`.

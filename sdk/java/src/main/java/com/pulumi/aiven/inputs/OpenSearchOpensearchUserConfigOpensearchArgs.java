@@ -4,8 +4,10 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSegrepArgs;
@@ -13,6 +15,7 @@ import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchShardInde
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -71,6 +74,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+     * 
+     */
+    @Import(name="clusterFilecacheRemoteDataRatio")
+    private @Nullable Output<Double> clusterFilecacheRemoteDataRatio;
+
+    /**
+     * @return Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+     * 
+     */
+    public Optional<Output<Double>> clusterFilecacheRemoteDataRatio() {
+        return Optional.ofNullable(this.clusterFilecacheRemoteDataRatio);
+    }
+
+    /**
      * Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      * 
      */
@@ -85,15 +103,22 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         return Optional.ofNullable(this.clusterMaxShardsPerNode);
     }
 
+    @Import(name="clusterRemoteStore")
+    private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs> clusterRemoteStore;
+
+    public Optional<Output<OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs>> clusterRemoteStore() {
+        return Optional.ofNullable(this.clusterRemoteStore);
+    }
+
     /**
-     * When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+     * When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
      * 
      */
     @Import(name="clusterRoutingAllocationBalancePreferPrimary")
     private @Nullable Output<Boolean> clusterRoutingAllocationBalancePreferPrimary;
 
     /**
-     * @return When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+     * @return When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
      * 
      */
     public Optional<Output<Boolean>> clusterRoutingAllocationBalancePreferPrimary() {
@@ -528,6 +553,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+     * 
+     */
+    @Import(name="nodeSearchCacheSize")
+    private @Nullable Output<String> nodeSearchCacheSize;
+
+    /**
+     * @return Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+     * 
+     */
+    public Optional<Output<String>> nodeSearchCacheSize() {
+        return Optional.ofNullable(this.nodeSearchCacheSize);
+    }
+
+    /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      * 
      */
@@ -570,6 +610,13 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
      */
     public Optional<Output<List<String>>> reindexRemoteWhitelists() {
         return Optional.ofNullable(this.reindexRemoteWhitelists);
+    }
+
+    @Import(name="remoteStore")
+    private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs> remoteStore;
+
+    public Optional<Output<OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs>> remoteStore() {
+        return Optional.ofNullable(this.remoteStore);
     }
 
     /**
@@ -825,7 +872,9 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.actionAutoCreateIndexEnabled = $.actionAutoCreateIndexEnabled;
         this.actionDestructiveRequiresName = $.actionDestructiveRequiresName;
         this.authFailureListeners = $.authFailureListeners;
+        this.clusterFilecacheRemoteDataRatio = $.clusterFilecacheRemoteDataRatio;
         this.clusterMaxShardsPerNode = $.clusterMaxShardsPerNode;
+        this.clusterRemoteStore = $.clusterRemoteStore;
         this.clusterRoutingAllocationBalancePreferPrimary = $.clusterRoutingAllocationBalancePreferPrimary;
         this.clusterRoutingAllocationNodeConcurrentRecoveries = $.clusterRoutingAllocationNodeConcurrentRecoveries;
         this.clusterSearchRequestSlowlog = $.clusterSearchRequestSlowlog;
@@ -856,9 +905,11 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.ismHistoryRolloverRetentionPeriod = $.ismHistoryRolloverRetentionPeriod;
         this.knnMemoryCircuitBreakerEnabled = $.knnMemoryCircuitBreakerEnabled;
         this.knnMemoryCircuitBreakerLimit = $.knnMemoryCircuitBreakerLimit;
+        this.nodeSearchCacheSize = $.nodeSearchCacheSize;
         this.overrideMainResponseVersion = $.overrideMainResponseVersion;
         this.pluginsAlertingFilterByBackendRoles = $.pluginsAlertingFilterByBackendRoles;
         this.reindexRemoteWhitelists = $.reindexRemoteWhitelists;
+        this.remoteStore = $.remoteStore;
         this.scriptMaxCompilationsRate = $.scriptMaxCompilationsRate;
         this.searchBackpressure = $.searchBackpressure;
         this.searchInsightsTopQueries = $.searchInsightsTopQueries;
@@ -960,6 +1011,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
+         * @param clusterFilecacheRemoteDataRatio Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterFilecacheRemoteDataRatio(@Nullable Output<Double> clusterFilecacheRemoteDataRatio) {
+            $.clusterFilecacheRemoteDataRatio = clusterFilecacheRemoteDataRatio;
+            return this;
+        }
+
+        /**
+         * @param clusterFilecacheRemoteDataRatio Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterFilecacheRemoteDataRatio(Double clusterFilecacheRemoteDataRatio) {
+            return clusterFilecacheRemoteDataRatio(Output.of(clusterFilecacheRemoteDataRatio));
+        }
+
+        /**
          * @param clusterMaxShardsPerNode Controls the number of shards allowed in the cluster per data node. Example: `1000`.
          * 
          * @return builder
@@ -980,8 +1052,17 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
             return clusterMaxShardsPerNode(Output.of(clusterMaxShardsPerNode));
         }
 
+        public Builder clusterRemoteStore(@Nullable Output<OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs> clusterRemoteStore) {
+            $.clusterRemoteStore = clusterRemoteStore;
+            return this;
+        }
+
+        public Builder clusterRemoteStore(OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs clusterRemoteStore) {
+            return clusterRemoteStore(Output.of(clusterRemoteStore));
+        }
+
         /**
-         * @param clusterRoutingAllocationBalancePreferPrimary When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+         * @param clusterRoutingAllocationBalancePreferPrimary When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
          * 
          * @return builder
          * 
@@ -992,7 +1073,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param clusterRoutingAllocationBalancePreferPrimary When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+         * @param clusterRoutingAllocationBalancePreferPrimary When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
          * 
          * @return builder
          * 
@@ -1599,6 +1680,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
+         * @param nodeSearchCacheSize Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeSearchCacheSize(@Nullable Output<String> nodeSearchCacheSize) {
+            $.nodeSearchCacheSize = nodeSearchCacheSize;
+            return this;
+        }
+
+        /**
+         * @param nodeSearchCacheSize Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeSearchCacheSize(String nodeSearchCacheSize) {
+            return nodeSearchCacheSize(Output.of(nodeSearchCacheSize));
+        }
+
+        /**
          * @param overrideMainResponseVersion Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
          * 
          * @return builder
@@ -1669,6 +1771,15 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder reindexRemoteWhitelists(String... reindexRemoteWhitelists) {
             return reindexRemoteWhitelists(List.of(reindexRemoteWhitelists));
+        }
+
+        public Builder remoteStore(@Nullable Output<OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs> remoteStore) {
+            $.remoteStore = remoteStore;
+            return this;
+        }
+
+        public Builder remoteStore(OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs remoteStore) {
+            return remoteStore(Output.of(remoteStore));
         }
 
         /**

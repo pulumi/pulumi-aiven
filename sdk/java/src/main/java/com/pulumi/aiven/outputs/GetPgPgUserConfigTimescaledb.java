@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPgPgUserConfigTimescaledb {
     /**
-     * @return The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+     * @return The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
      * 
      */
     private @Nullable Integer maxBackgroundWorkers;
 
     private GetPgPgUserConfigTimescaledb() {}
     /**
-     * @return The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+     * @return The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
      * 
      */
     public Optional<Integer> maxBackgroundWorkers() {

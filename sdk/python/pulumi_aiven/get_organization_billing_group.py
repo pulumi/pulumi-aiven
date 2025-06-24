@@ -29,16 +29,13 @@ class GetOrganizationBillingGroupResult:
     """
     A collection of values returned by getOrganizationBillingGroup.
     """
-    def __init__(__self__, billing_address_id=None, billing_contact_emails=None, billing_currency=None, billing_emails=None, billing_group_id=None, billing_group_name=None, custom_invoice_text=None, id=None, organization_id=None, payment_method_id=None, shipping_address_id=None, timeouts=None, vat_id=None):
+    def __init__(__self__, billing_address_id=None, billing_contact_emails=None, billing_emails=None, billing_group_id=None, billing_group_name=None, currency=None, custom_invoice_text=None, id=None, organization_id=None, payment_method_id=None, shipping_address_id=None, timeouts=None, vat_id=None):
         if billing_address_id and not isinstance(billing_address_id, str):
             raise TypeError("Expected argument 'billing_address_id' to be a str")
         pulumi.set(__self__, "billing_address_id", billing_address_id)
         if billing_contact_emails and not isinstance(billing_contact_emails, list):
             raise TypeError("Expected argument 'billing_contact_emails' to be a list")
         pulumi.set(__self__, "billing_contact_emails", billing_contact_emails)
-        if billing_currency and not isinstance(billing_currency, str):
-            raise TypeError("Expected argument 'billing_currency' to be a str")
-        pulumi.set(__self__, "billing_currency", billing_currency)
         if billing_emails and not isinstance(billing_emails, list):
             raise TypeError("Expected argument 'billing_emails' to be a list")
         pulumi.set(__self__, "billing_emails", billing_emails)
@@ -48,6 +45,9 @@ class GetOrganizationBillingGroupResult:
         if billing_group_name and not isinstance(billing_group_name, str):
             raise TypeError("Expected argument 'billing_group_name' to be a str")
         pulumi.set(__self__, "billing_group_name", billing_group_name)
+        if currency and not isinstance(currency, str):
+            raise TypeError("Expected argument 'currency' to be a str")
+        pulumi.set(__self__, "currency", currency)
         if custom_invoice_text and not isinstance(custom_invoice_text, str):
             raise TypeError("Expected argument 'custom_invoice_text' to be a str")
         pulumi.set(__self__, "custom_invoice_text", custom_invoice_text)
@@ -87,14 +87,6 @@ class GetOrganizationBillingGroupResult:
         return pulumi.get(self, "billing_contact_emails")
 
     @property
-    @pulumi.getter(name="billingCurrency")
-    def billing_currency(self) -> builtins.str:
-        """
-        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        """
-        return pulumi.get(self, "billing_currency")
-
-    @property
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Sequence[builtins.str]:
         """
@@ -117,6 +109,14 @@ class GetOrganizationBillingGroupResult:
         Billing Group Name.
         """
         return pulumi.get(self, "billing_group_name")
+
+    @property
+    @pulumi.getter
+    def currency(self) -> builtins.str:
+        """
+        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        """
+        return pulumi.get(self, "currency")
 
     @property
     @pulumi.getter(name="customInvoiceText")
@@ -180,10 +180,10 @@ class AwaitableGetOrganizationBillingGroupResult(GetOrganizationBillingGroupResu
         return GetOrganizationBillingGroupResult(
             billing_address_id=self.billing_address_id,
             billing_contact_emails=self.billing_contact_emails,
-            billing_currency=self.billing_currency,
             billing_emails=self.billing_emails,
             billing_group_id=self.billing_group_id,
             billing_group_name=self.billing_group_name,
+            currency=self.currency,
             custom_invoice_text=self.custom_invoice_text,
             id=self.id,
             organization_id=self.organization_id,
@@ -217,10 +217,10 @@ def get_organization_billing_group(billing_group_id: Optional[builtins.str] = No
     return AwaitableGetOrganizationBillingGroupResult(
         billing_address_id=pulumi.get(__ret__, 'billing_address_id'),
         billing_contact_emails=pulumi.get(__ret__, 'billing_contact_emails'),
-        billing_currency=pulumi.get(__ret__, 'billing_currency'),
         billing_emails=pulumi.get(__ret__, 'billing_emails'),
         billing_group_id=pulumi.get(__ret__, 'billing_group_id'),
         billing_group_name=pulumi.get(__ret__, 'billing_group_name'),
+        currency=pulumi.get(__ret__, 'currency'),
         custom_invoice_text=pulumi.get(__ret__, 'custom_invoice_text'),
         id=pulumi.get(__ret__, 'id'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
@@ -251,10 +251,10 @@ def get_organization_billing_group_output(billing_group_id: Optional[pulumi.Inpu
     return __ret__.apply(lambda __response__: GetOrganizationBillingGroupResult(
         billing_address_id=pulumi.get(__response__, 'billing_address_id'),
         billing_contact_emails=pulumi.get(__response__, 'billing_contact_emails'),
-        billing_currency=pulumi.get(__response__, 'billing_currency'),
         billing_emails=pulumi.get(__response__, 'billing_emails'),
         billing_group_id=pulumi.get(__response__, 'billing_group_id'),
         billing_group_name=pulumi.get(__response__, 'billing_group_name'),
+        currency=pulumi.get(__response__, 'currency'),
         custom_invoice_text=pulumi.get(__response__, 'custom_invoice_text'),
         id=pulumi.get(__response__, 'id'),
         organization_id=pulumi.get(__response__, 'organization_id'),

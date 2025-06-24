@@ -410,6 +410,8 @@ __all__ = [
     'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs',
     'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs',
+    'OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs',
     'OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs',
@@ -418,6 +420,8 @@ __all__ = [
     'OpenSearchOpensearchUserConfigOpensearchDashboardsArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs',
     'OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs',
+    'OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs',
@@ -4942,6 +4946,10 @@ if not MYPY:
         """
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
+        enable_ipv6: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        """
         ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgsDict']]]]
         """
         Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -4995,6 +5003,7 @@ class ClickhouseClickhouseUserConfigArgs:
                  additional_backup_regions: Optional[pulumi.Input[builtins.str]] = None,
                  backup_hour: Optional[pulumi.Input[builtins.int]] = None,
                  backup_minute: Optional[pulumi.Input[builtins.int]] = None,
+                 enable_ipv6: Optional[pulumi.Input[builtins.bool]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -5010,6 +5019,7 @@ class ClickhouseClickhouseUserConfigArgs:
         :param pulumi.Input[builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[builtins.int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param pulumi.Input[builtins.int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param pulumi.Input[builtins.bool] enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -5031,6 +5041,8 @@ class ClickhouseClickhouseUserConfigArgs:
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if enable_ipv6 is not None:
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filter_strings is not None:
@@ -5093,6 +5105,18 @@ class ClickhouseClickhouseUserConfigArgs:
     @backup_minute.setter
     def backup_minute(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "backup_minute", value)
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        """
+        return pulumi.get(self, "enable_ipv6")
+
+    @enable_ipv6.setter
+    def enable_ipv6(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_ipv6", value)
 
     @property
     @pulumi.getter(name="ipFilterObjects")
@@ -9343,7 +9367,7 @@ if not MYPY:
         """
         oauth_allow_insecure_email_lookup: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Enforce user lookup based on email instead of the unique ID provided by the IdP.
+        Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
         """
         private_access: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigPrivateAccessArgsDict']]
         """
@@ -9481,7 +9505,7 @@ class GrafanaGrafanaUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[builtins.bool] metrics_enabled: Enable Grafana's /metrics endpoint.
-        :param pulumi.Input[builtins.bool] oauth_allow_insecure_email_lookup: Enforce user lookup based on email instead of the unique ID provided by the IdP.
+        :param pulumi.Input[builtins.bool] oauth_allow_insecure_email_lookup: Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
         :param pulumi.Input['GrafanaGrafanaUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['GrafanaGrafanaUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input[builtins.str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
@@ -9942,7 +9966,7 @@ class GrafanaGrafanaUserConfigArgs:
     @pulumi.getter(name="oauthAllowInsecureEmailLookup")
     def oauth_allow_insecure_email_lookup(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Enforce user lookup based on email instead of the unique ID provided by the IdP.
+        Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
         """
         return pulumi.get(self, "oauth_allow_insecure_email_lookup")
 
@@ -18691,6 +18715,10 @@ if not MYPY:
         """
         This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
         """
+        inkless_enable: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+        """
         local_retention_bytes: NotRequired[pulumi.Input[builtins.str]]
         """
         This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
@@ -18784,6 +18812,7 @@ class KafkaTopicConfigArgs:
                  flush_messages: Optional[pulumi.Input[builtins.str]] = None,
                  flush_ms: Optional[pulumi.Input[builtins.str]] = None,
                  index_interval_bytes: Optional[pulumi.Input[builtins.str]] = None,
+                 inkless_enable: Optional[pulumi.Input[builtins.bool]] = None,
                  local_retention_bytes: Optional[pulumi.Input[builtins.str]] = None,
                  local_retention_ms: Optional[pulumi.Input[builtins.str]] = None,
                  max_compaction_lag_ms: Optional[pulumi.Input[builtins.str]] = None,
@@ -18812,6 +18841,7 @@ class KafkaTopicConfigArgs:
         :param pulumi.Input[builtins.str] flush_messages: This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param pulumi.Input[builtins.str] flush_ms: This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param pulumi.Input[builtins.str] index_interval_bytes: This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
+        :param pulumi.Input[builtins.bool] inkless_enable: Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
         :param pulumi.Input[builtins.str] local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         :param pulumi.Input[builtins.str] local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
         :param pulumi.Input[builtins.str] max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
@@ -18847,6 +18877,8 @@ class KafkaTopicConfigArgs:
             pulumi.set(__self__, "flush_ms", flush_ms)
         if index_interval_bytes is not None:
             pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
+        if inkless_enable is not None:
+            pulumi.set(__self__, "inkless_enable", inkless_enable)
         if local_retention_bytes is not None:
             pulumi.set(__self__, "local_retention_bytes", local_retention_bytes)
         if local_retention_ms is not None:
@@ -18971,6 +19003,18 @@ class KafkaTopicConfigArgs:
     @index_interval_bytes.setter
     def index_interval_bytes(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "index_interval_bytes", value)
+
+    @property
+    @pulumi.getter(name="inklessEnable")
+    def inkless_enable(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+        """
+        return pulumi.get(self, "inkless_enable")
+
+    @inkless_enable.setter
+    def inkless_enable(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "inkless_enable", value)
 
     @property
     @pulumi.getter(name="localRetentionBytes")
@@ -25586,13 +25630,18 @@ if not MYPY:
         """
         Opensearch Security Plugin Settings
         """
+        cluster_filecache_remote_data_ratio: NotRequired[pulumi.Input[builtins.float]]
+        """
+        Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+        """
         cluster_max_shards_per_node: NotRequired[pulumi.Input[builtins.int]]
         """
         Controls the number of shards allowed in the cluster per data node. Example: `1000`.
         """
+        cluster_remote_store: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgsDict']]
         cluster_routing_allocation_balance_prefer_primary: NotRequired[pulumi.Input[builtins.bool]]
         """
-        When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+        When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
         """
         cluster_routing_allocation_node_concurrent_recoveries: NotRequired[pulumi.Input[builtins.int]]
         """
@@ -25707,6 +25756,10 @@ if not MYPY:
         """
         Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
         """
+        node_search_cache_size: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+        """
         override_main_response_version: NotRequired[pulumi.Input[builtins.bool]]
         """
         Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
@@ -25719,6 +25772,7 @@ if not MYPY:
         """
         Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
         """
+        remote_store: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgsDict']]
         script_max_compilations_rate: NotRequired[pulumi.Input[builtins.str]]
         """
         Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
@@ -25793,7 +25847,9 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  action_auto_create_index_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  action_destructive_requires_name: Optional[pulumi.Input[builtins.bool]] = None,
                  auth_failure_listeners: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs']] = None,
+                 cluster_filecache_remote_data_ratio: Optional[pulumi.Input[builtins.float]] = None,
                  cluster_max_shards_per_node: Optional[pulumi.Input[builtins.int]] = None,
+                 cluster_remote_store: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs']] = None,
                  cluster_routing_allocation_balance_prefer_primary: Optional[pulumi.Input[builtins.bool]] = None,
                  cluster_routing_allocation_node_concurrent_recoveries: Optional[pulumi.Input[builtins.int]] = None,
                  cluster_search_request_slowlog: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs']] = None,
@@ -25824,9 +25880,11 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  ism_history_rollover_retention_period: Optional[pulumi.Input[builtins.int]] = None,
                  knn_memory_circuit_breaker_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  knn_memory_circuit_breaker_limit: Optional[pulumi.Input[builtins.int]] = None,
+                 node_search_cache_size: Optional[pulumi.Input[builtins.str]] = None,
                  override_main_response_version: Optional[pulumi.Input[builtins.bool]] = None,
                  plugins_alerting_filter_by_backend_roles: Optional[pulumi.Input[builtins.bool]] = None,
                  reindex_remote_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 remote_store: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs']] = None,
                  script_max_compilations_rate: Optional[pulumi.Input[builtins.str]] = None,
                  search_backpressure: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs']] = None,
                  search_insights_top_queries: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs']] = None,
@@ -25848,8 +25906,9 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         :param pulumi.Input[builtins.bool] action_auto_create_index_enabled: Explicitly allow or block automatic creation of indices. Defaults to true.
         :param pulumi.Input[builtins.bool] action_destructive_requires_name: Require explicit index names when deleting.
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs'] auth_failure_listeners: Opensearch Security Plugin Settings
+        :param pulumi.Input[builtins.float] cluster_filecache_remote_data_ratio: Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
         :param pulumi.Input[builtins.int] cluster_max_shards_per_node: Controls the number of shards allowed in the cluster per data node. Example: `1000`.
-        :param pulumi.Input[builtins.bool] cluster_routing_allocation_balance_prefer_primary: When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+        :param pulumi.Input[builtins.bool] cluster_routing_allocation_balance_prefer_primary: When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
         :param pulumi.Input[builtins.int] cluster_routing_allocation_node_concurrent_recoveries: How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs'] disk_watermarks: Watermark settings
         :param pulumi.Input[builtins.str] email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
@@ -25878,6 +25937,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         :param pulumi.Input[builtins.int] ism_history_rollover_retention_period: How long audit history indices are kept in days. Example: `30`.
         :param pulumi.Input[builtins.bool] knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true.
         :param pulumi.Input[builtins.int] knn_memory_circuit_breaker_limit: Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+        :param pulumi.Input[builtins.str] node_search_cache_size: Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
         :param pulumi.Input[builtins.bool] override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         :param pulumi.Input[builtins.bool] plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] reindex_remote_whitelists: Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
@@ -25904,8 +25964,12 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "action_destructive_requires_name", action_destructive_requires_name)
         if auth_failure_listeners is not None:
             pulumi.set(__self__, "auth_failure_listeners", auth_failure_listeners)
+        if cluster_filecache_remote_data_ratio is not None:
+            pulumi.set(__self__, "cluster_filecache_remote_data_ratio", cluster_filecache_remote_data_ratio)
         if cluster_max_shards_per_node is not None:
             pulumi.set(__self__, "cluster_max_shards_per_node", cluster_max_shards_per_node)
+        if cluster_remote_store is not None:
+            pulumi.set(__self__, "cluster_remote_store", cluster_remote_store)
         if cluster_routing_allocation_balance_prefer_primary is not None:
             pulumi.set(__self__, "cluster_routing_allocation_balance_prefer_primary", cluster_routing_allocation_balance_prefer_primary)
         if cluster_routing_allocation_node_concurrent_recoveries is not None:
@@ -25966,12 +26030,16 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "knn_memory_circuit_breaker_enabled", knn_memory_circuit_breaker_enabled)
         if knn_memory_circuit_breaker_limit is not None:
             pulumi.set(__self__, "knn_memory_circuit_breaker_limit", knn_memory_circuit_breaker_limit)
+        if node_search_cache_size is not None:
+            pulumi.set(__self__, "node_search_cache_size", node_search_cache_size)
         if override_main_response_version is not None:
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if plugins_alerting_filter_by_backend_roles is not None:
             pulumi.set(__self__, "plugins_alerting_filter_by_backend_roles", plugins_alerting_filter_by_backend_roles)
         if reindex_remote_whitelists is not None:
             pulumi.set(__self__, "reindex_remote_whitelists", reindex_remote_whitelists)
+        if remote_store is not None:
+            pulumi.set(__self__, "remote_store", remote_store)
         if script_max_compilations_rate is not None:
             pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_backpressure is not None:
@@ -26044,6 +26112,18 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         pulumi.set(self, "auth_failure_listeners", value)
 
     @property
+    @pulumi.getter(name="clusterFilecacheRemoteDataRatio")
+    def cluster_filecache_remote_data_ratio(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+        """
+        return pulumi.get(self, "cluster_filecache_remote_data_ratio")
+
+    @cluster_filecache_remote_data_ratio.setter
+    def cluster_filecache_remote_data_ratio(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "cluster_filecache_remote_data_ratio", value)
+
+    @property
     @pulumi.getter(name="clusterMaxShardsPerNode")
     def cluster_max_shards_per_node(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -26056,10 +26136,19 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         pulumi.set(self, "cluster_max_shards_per_node", value)
 
     @property
+    @pulumi.getter(name="clusterRemoteStore")
+    def cluster_remote_store(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs']]:
+        return pulumi.get(self, "cluster_remote_store")
+
+    @cluster_remote_store.setter
+    def cluster_remote_store(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs']]):
+        pulumi.set(self, "cluster_remote_store", value)
+
+    @property
     @pulumi.getter(name="clusterRoutingAllocationBalancePreferPrimary")
     def cluster_routing_allocation_balance_prefer_primary(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+        When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
         """
         return pulumi.get(self, "cluster_routing_allocation_balance_prefer_primary")
 
@@ -26413,6 +26502,18 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         pulumi.set(self, "knn_memory_circuit_breaker_limit", value)
 
     @property
+    @pulumi.getter(name="nodeSearchCacheSize")
+    def node_search_cache_size(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+        """
+        return pulumi.get(self, "node_search_cache_size")
+
+    @node_search_cache_size.setter
+    def node_search_cache_size(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "node_search_cache_size", value)
+
+    @property
     @pulumi.getter(name="overrideMainResponseVersion")
     def override_main_response_version(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -26447,6 +26548,15 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
     @reindex_remote_whitelists.setter
     def reindex_remote_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "reindex_remote_whitelists", value)
+
+    @property
+    @pulumi.getter(name="remoteStore")
+    def remote_store(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs']]:
+        return pulumi.get(self, "remote_store")
+
+    @remote_store.setter
+    def remote_store(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs']]):
+        pulumi.set(self, "remote_store", value)
 
     @property
     @pulumi.getter(name="scriptMaxCompilationsRate")
@@ -26984,6 +27094,98 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
 
 
 if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgsDict(TypedDict):
+        state_global_metadata_upload_timeout: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The amount of time to wait for the cluster state upload to complete. Defaults to 20s.
+        """
+        state_metadata_manifest_upload_timeout: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The amount of time to wait for the manifest file upload to complete. The manifest file contains the details of each of the files uploaded for a single cluster state, both index metadata files and global metadata files. Defaults to 20s.
+        """
+        translog_buffer_interval: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The default value of the translog buffer interval used when performing periodic translog updates. This setting is only effective when the index setting `index.remote_store.translog.buffer_interval` is not present. Defaults to 650ms.
+        """
+        translog_max_readers: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Sets the maximum number of open translog files for remote-backed indexes. This limits the total number of translog files per shard. After reaching this limit, the remote store flushes the translog files. Default is 1000. The minimum required is 100. Example: `1000`.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs:
+    def __init__(__self__, *,
+                 state_global_metadata_upload_timeout: Optional[pulumi.Input[builtins.str]] = None,
+                 state_metadata_manifest_upload_timeout: Optional[pulumi.Input[builtins.str]] = None,
+                 translog_buffer_interval: Optional[pulumi.Input[builtins.str]] = None,
+                 translog_max_readers: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.str] state_global_metadata_upload_timeout: The amount of time to wait for the cluster state upload to complete. Defaults to 20s.
+        :param pulumi.Input[builtins.str] state_metadata_manifest_upload_timeout: The amount of time to wait for the manifest file upload to complete. The manifest file contains the details of each of the files uploaded for a single cluster state, both index metadata files and global metadata files. Defaults to 20s.
+        :param pulumi.Input[builtins.str] translog_buffer_interval: The default value of the translog buffer interval used when performing periodic translog updates. This setting is only effective when the index setting `index.remote_store.translog.buffer_interval` is not present. Defaults to 650ms.
+        :param pulumi.Input[builtins.int] translog_max_readers: Sets the maximum number of open translog files for remote-backed indexes. This limits the total number of translog files per shard. After reaching this limit, the remote store flushes the translog files. Default is 1000. The minimum required is 100. Example: `1000`.
+        """
+        if state_global_metadata_upload_timeout is not None:
+            pulumi.set(__self__, "state_global_metadata_upload_timeout", state_global_metadata_upload_timeout)
+        if state_metadata_manifest_upload_timeout is not None:
+            pulumi.set(__self__, "state_metadata_manifest_upload_timeout", state_metadata_manifest_upload_timeout)
+        if translog_buffer_interval is not None:
+            pulumi.set(__self__, "translog_buffer_interval", translog_buffer_interval)
+        if translog_max_readers is not None:
+            pulumi.set(__self__, "translog_max_readers", translog_max_readers)
+
+    @property
+    @pulumi.getter(name="stateGlobalMetadataUploadTimeout")
+    def state_global_metadata_upload_timeout(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The amount of time to wait for the cluster state upload to complete. Defaults to 20s.
+        """
+        return pulumi.get(self, "state_global_metadata_upload_timeout")
+
+    @state_global_metadata_upload_timeout.setter
+    def state_global_metadata_upload_timeout(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "state_global_metadata_upload_timeout", value)
+
+    @property
+    @pulumi.getter(name="stateMetadataManifestUploadTimeout")
+    def state_metadata_manifest_upload_timeout(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The amount of time to wait for the manifest file upload to complete. The manifest file contains the details of each of the files uploaded for a single cluster state, both index metadata files and global metadata files. Defaults to 20s.
+        """
+        return pulumi.get(self, "state_metadata_manifest_upload_timeout")
+
+    @state_metadata_manifest_upload_timeout.setter
+    def state_metadata_manifest_upload_timeout(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "state_metadata_manifest_upload_timeout", value)
+
+    @property
+    @pulumi.getter(name="translogBufferInterval")
+    def translog_buffer_interval(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The default value of the translog buffer interval used when performing periodic translog updates. This setting is only effective when the index setting `index.remote_store.translog.buffer_interval` is not present. Defaults to 650ms.
+        """
+        return pulumi.get(self, "translog_buffer_interval")
+
+    @translog_buffer_interval.setter
+    def translog_buffer_interval(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "translog_buffer_interval", value)
+
+    @property
+    @pulumi.getter(name="translogMaxReaders")
+    def translog_max_readers(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the maximum number of open translog files for remote-backed indexes. This limits the total number of translog files per shard. After reaching this limit, the remote store flushes the translog files. Default is 1000. The minimum required is 100. Example: `1000`.
+        """
+        return pulumi.get(self, "translog_max_readers")
+
+    @translog_max_readers.setter
+    def translog_max_readers(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "translog_max_readers", value)
+
+
+if not MYPY:
     class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict(TypedDict):
         level: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -27279,6 +27481,98 @@ class OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs:
     @low.setter
     def low(self, value: pulumi.Input[builtins.int]):
         pulumi.set(self, "low", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgsDict(TypedDict):
+        segment_pressure_bytes_lag_variance_factor: NotRequired[pulumi.Input[builtins.float]]
+        """
+        The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+        """
+        segment_pressure_consecutive_failures_limit: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+        """
+        segment_pressure_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Enables remote segment backpressure. Default is `true`.
+        """
+        segment_pressure_time_lag_variance_factor: NotRequired[pulumi.Input[builtins.float]]
+        """
+        The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs:
+    def __init__(__self__, *,
+                 segment_pressure_bytes_lag_variance_factor: Optional[pulumi.Input[builtins.float]] = None,
+                 segment_pressure_consecutive_failures_limit: Optional[pulumi.Input[builtins.int]] = None,
+                 segment_pressure_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 segment_pressure_time_lag_variance_factor: Optional[pulumi.Input[builtins.float]] = None):
+        """
+        :param pulumi.Input[builtins.float] segment_pressure_bytes_lag_variance_factor: The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+        :param pulumi.Input[builtins.int] segment_pressure_consecutive_failures_limit: The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+        :param pulumi.Input[builtins.bool] segment_pressure_enabled: Enables remote segment backpressure. Default is `true`.
+        :param pulumi.Input[builtins.float] segment_pressure_time_lag_variance_factor: The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+        """
+        if segment_pressure_bytes_lag_variance_factor is not None:
+            pulumi.set(__self__, "segment_pressure_bytes_lag_variance_factor", segment_pressure_bytes_lag_variance_factor)
+        if segment_pressure_consecutive_failures_limit is not None:
+            pulumi.set(__self__, "segment_pressure_consecutive_failures_limit", segment_pressure_consecutive_failures_limit)
+        if segment_pressure_enabled is not None:
+            pulumi.set(__self__, "segment_pressure_enabled", segment_pressure_enabled)
+        if segment_pressure_time_lag_variance_factor is not None:
+            pulumi.set(__self__, "segment_pressure_time_lag_variance_factor", segment_pressure_time_lag_variance_factor)
+
+    @property
+    @pulumi.getter(name="segmentPressureBytesLagVarianceFactor")
+    def segment_pressure_bytes_lag_variance_factor(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+        """
+        return pulumi.get(self, "segment_pressure_bytes_lag_variance_factor")
+
+    @segment_pressure_bytes_lag_variance_factor.setter
+    def segment_pressure_bytes_lag_variance_factor(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "segment_pressure_bytes_lag_variance_factor", value)
+
+    @property
+    @pulumi.getter(name="segmentPressureConsecutiveFailuresLimit")
+    def segment_pressure_consecutive_failures_limit(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+        """
+        return pulumi.get(self, "segment_pressure_consecutive_failures_limit")
+
+    @segment_pressure_consecutive_failures_limit.setter
+    def segment_pressure_consecutive_failures_limit(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "segment_pressure_consecutive_failures_limit", value)
+
+    @property
+    @pulumi.getter(name="segmentPressureEnabled")
+    def segment_pressure_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enables remote segment backpressure. Default is `true`.
+        """
+        return pulumi.get(self, "segment_pressure_enabled")
+
+    @segment_pressure_enabled.setter
+    def segment_pressure_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "segment_pressure_enabled", value)
+
+    @property
+    @pulumi.getter(name="segmentPressureTimeLagVarianceFactor")
+    def segment_pressure_time_lag_variance_factor(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+        """
+        return pulumi.get(self, "segment_pressure_time_lag_variance_factor")
+
+    @segment_pressure_time_lag_variance_factor.setter
+    def segment_pressure_time_lag_variance_factor(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "segment_pressure_time_lag_variance_factor", value)
 
 
 if not MYPY:
@@ -33448,7 +33742,7 @@ if not MYPY:
     class PgPgUserConfigTimescaledbArgsDict(TypedDict):
         max_background_workers: NotRequired[pulumi.Input[builtins.int]]
         """
-        The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+        The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
         """
 elif False:
     PgPgUserConfigTimescaledbArgsDict: TypeAlias = Mapping[str, Any]
@@ -33458,7 +33752,7 @@ class PgPgUserConfigTimescaledbArgs:
     def __init__(__self__, *,
                  max_background_workers: Optional[pulumi.Input[builtins.int]] = None):
         """
-        :param pulumi.Input[builtins.int] max_background_workers: The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+        :param pulumi.Input[builtins.int] max_background_workers: The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
         """
         if max_background_workers is not None:
             pulumi.set(__self__, "max_background_workers", max_background_workers)
@@ -33467,7 +33761,7 @@ class PgPgUserConfigTimescaledbArgs:
     @pulumi.getter(name="maxBackgroundWorkers")
     def max_background_workers(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+        The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
         """
         return pulumi.get(self, "max_background_workers")
 
@@ -42359,10 +42653,6 @@ if not MYPY:
         """
         List of billing contact emails.
         """
-        billing_currency: builtins.str
-        """
-        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        """
         billing_emails: Sequence[builtins.str]
         """
         List of billing contact emails.
@@ -42374,6 +42664,10 @@ if not MYPY:
         billing_group_name: builtins.str
         """
         Billing Group Name.
+        """
+        currency: builtins.str
+        """
+        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         """
         custom_invoice_text: builtins.str
         """
@@ -42403,10 +42697,10 @@ class GetOrganizationBillingGroupListBillingGroupArgs:
     def __init__(__self__, *,
                  billing_address_id: builtins.str,
                  billing_contact_emails: Sequence[builtins.str],
-                 billing_currency: builtins.str,
                  billing_emails: Sequence[builtins.str],
                  billing_group_id: builtins.str,
                  billing_group_name: builtins.str,
+                 currency: builtins.str,
                  custom_invoice_text: builtins.str,
                  organization_id: builtins.str,
                  payment_method_id: builtins.str,
@@ -42415,10 +42709,10 @@ class GetOrganizationBillingGroupListBillingGroupArgs:
         """
         :param builtins.str billing_address_id: Billing address ID.
         :param Sequence[builtins.str] billing_contact_emails: List of billing contact emails.
-        :param builtins.str billing_currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         :param Sequence[builtins.str] billing_emails: List of billing contact emails.
         :param builtins.str billing_group_id: Billing group ID.
         :param builtins.str billing_group_name: Billing Group Name.
+        :param builtins.str currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         :param builtins.str custom_invoice_text: Extra billing text.
         :param builtins.str organization_id: Organization ID.
         :param builtins.str payment_method_id: Payment method ID.
@@ -42427,10 +42721,10 @@ class GetOrganizationBillingGroupListBillingGroupArgs:
         """
         pulumi.set(__self__, "billing_address_id", billing_address_id)
         pulumi.set(__self__, "billing_contact_emails", billing_contact_emails)
-        pulumi.set(__self__, "billing_currency", billing_currency)
         pulumi.set(__self__, "billing_emails", billing_emails)
         pulumi.set(__self__, "billing_group_id", billing_group_id)
         pulumi.set(__self__, "billing_group_name", billing_group_name)
+        pulumi.set(__self__, "currency", currency)
         pulumi.set(__self__, "custom_invoice_text", custom_invoice_text)
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "payment_method_id", payment_method_id)
@@ -42460,18 +42754,6 @@ class GetOrganizationBillingGroupListBillingGroupArgs:
     @billing_contact_emails.setter
     def billing_contact_emails(self, value: Sequence[builtins.str]):
         pulumi.set(self, "billing_contact_emails", value)
-
-    @property
-    @pulumi.getter(name="billingCurrency")
-    def billing_currency(self) -> builtins.str:
-        """
-        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        """
-        return pulumi.get(self, "billing_currency")
-
-    @billing_currency.setter
-    def billing_currency(self, value: builtins.str):
-        pulumi.set(self, "billing_currency", value)
 
     @property
     @pulumi.getter(name="billingEmails")
@@ -42508,6 +42790,18 @@ class GetOrganizationBillingGroupListBillingGroupArgs:
     @billing_group_name.setter
     def billing_group_name(self, value: builtins.str):
         pulumi.set(self, "billing_group_name", value)
+
+    @property
+    @pulumi.getter
+    def currency(self) -> builtins.str:
+        """
+        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        """
+        return pulumi.get(self, "currency")
+
+    @currency.setter
+    def currency(self, value: builtins.str):
+        pulumi.set(self, "currency", value)
 
     @property
     @pulumi.getter(name="customInvoiceText")

@@ -49,10 +49,6 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      */
     public readonly billingContactEmails!: pulumi.Output<string[]>;
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     */
-    public readonly billingCurrency!: pulumi.Output<string | undefined>;
-    /**
      * List of billing contact emails.
      */
     public readonly billingEmails!: pulumi.Output<string[]>;
@@ -64,6 +60,10 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      * Billing Group Name. Maximum length: `128`.
      */
     public readonly billingGroupName!: pulumi.Output<string>;
+    /**
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     */
+    public readonly currency!: pulumi.Output<string | undefined>;
     /**
      * Extra billing text. Maximum length: `254`.
      */
@@ -101,10 +101,10 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
             const state = argsOrState as OrganizationBillingGroupState | undefined;
             resourceInputs["billingAddressId"] = state ? state.billingAddressId : undefined;
             resourceInputs["billingContactEmails"] = state ? state.billingContactEmails : undefined;
-            resourceInputs["billingCurrency"] = state ? state.billingCurrency : undefined;
             resourceInputs["billingEmails"] = state ? state.billingEmails : undefined;
             resourceInputs["billingGroupId"] = state ? state.billingGroupId : undefined;
             resourceInputs["billingGroupName"] = state ? state.billingGroupName : undefined;
+            resourceInputs["currency"] = state ? state.currency : undefined;
             resourceInputs["customInvoiceText"] = state ? state.customInvoiceText : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
             resourceInputs["paymentMethodId"] = state ? state.paymentMethodId : undefined;
@@ -136,9 +136,9 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
             }
             resourceInputs["billingAddressId"] = args ? args.billingAddressId : undefined;
             resourceInputs["billingContactEmails"] = args ? args.billingContactEmails : undefined;
-            resourceInputs["billingCurrency"] = args ? args.billingCurrency : undefined;
             resourceInputs["billingEmails"] = args ? args.billingEmails : undefined;
             resourceInputs["billingGroupName"] = args ? args.billingGroupName : undefined;
+            resourceInputs["currency"] = args ? args.currency : undefined;
             resourceInputs["customInvoiceText"] = args ? args.customInvoiceText : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["paymentMethodId"] = args ? args.paymentMethodId : undefined;
@@ -165,10 +165,6 @@ export interface OrganizationBillingGroupState {
      */
     billingContactEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     */
-    billingCurrency?: pulumi.Input<string>;
-    /**
      * List of billing contact emails.
      */
     billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
@@ -180,6 +176,10 @@ export interface OrganizationBillingGroupState {
      * Billing Group Name. Maximum length: `128`.
      */
     billingGroupName?: pulumi.Input<string>;
+    /**
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     */
+    currency?: pulumi.Input<string>;
     /**
      * Extra billing text. Maximum length: `254`.
      */
@@ -216,10 +216,6 @@ export interface OrganizationBillingGroupArgs {
      */
     billingContactEmails: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     */
-    billingCurrency?: pulumi.Input<string>;
-    /**
      * List of billing contact emails.
      */
     billingEmails: pulumi.Input<pulumi.Input<string>[]>;
@@ -227,6 +223,10 @@ export interface OrganizationBillingGroupArgs {
      * Billing Group Name. Maximum length: `128`.
      */
     billingGroupName: pulumi.Input<string>;
+    /**
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     */
+    currency?: pulumi.Input<string>;
     /**
      * Extra billing text. Maximum length: `254`.
      */

@@ -888,6 +888,10 @@ export interface ClickhouseClickhouseUserConfig {
      */
     backupMinute?: number;
     /**
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     */
+    enableIpv6?: boolean;
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.ClickhouseClickhouseUserConfigIpFilterObject[];
@@ -2724,6 +2728,10 @@ export interface GetClickhouseClickhouseUserConfig {
      */
     backupMinute?: number;
     /**
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     */
+    enableIpv6?: boolean;
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetClickhouseClickhouseUserConfigIpFilterObject[];
@@ -3493,7 +3501,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     metricsEnabled?: boolean;
     /**
-     * Enforce user lookup based on email instead of the unique ID provided by the IdP.
+     * Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
      */
     oauthAllowInsecureEmailLookup?: boolean;
     /**
@@ -5358,6 +5366,10 @@ export interface GetKafkaTopicConfig {
      */
     indexIntervalBytes?: string;
     /**
+     * Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+     */
+    inklessEnable?: boolean;
+    /**
      * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
      */
     localRetentionBytes?: string;
@@ -6771,11 +6783,16 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     authFailureListeners?: outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
     /**
+     * Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+     */
+    clusterFilecacheRemoteDataRatio?: number;
+    /**
      * Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      */
     clusterMaxShardsPerNode?: number;
+    clusterRemoteStore?: outputs.GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore;
     /**
-     * When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+     * When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
      */
     clusterRoutingAllocationBalancePreferPrimary?: boolean;
     /**
@@ -6892,6 +6909,10 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     knnMemoryCircuitBreakerLimit?: number;
     /**
+     * Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+     */
+    nodeSearchCacheSize?: string;
+    /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      */
     overrideMainResponseVersion?: boolean;
@@ -6903,6 +6924,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      * Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
      */
     reindexRemoteWhitelists?: string[];
+    remoteStore?: outputs.GetOpenSearchOpensearchUserConfigOpensearchRemoteStore;
     /**
      * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
      */
@@ -7038,6 +7060,25 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
     type?: string;
 }
 
+export interface GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore {
+    /**
+     * The amount of time to wait for the cluster state upload to complete. Defaults to 20s.
+     */
+    stateGlobalMetadataUploadTimeout?: string;
+    /**
+     * The amount of time to wait for the manifest file upload to complete. The manifest file contains the details of each of the files uploaded for a single cluster state, both index metadata files and global metadata files. Defaults to 20s.
+     */
+    stateMetadataManifestUploadTimeout?: string;
+    /**
+     * The default value of the translog buffer interval used when performing periodic translog updates. This setting is only effective when the index setting `index.remote_store.translog.buffer_interval` is not present. Defaults to 650ms.
+     */
+    translogBufferInterval?: string;
+    /**
+     * Sets the maximum number of open translog files for remote-backed indexes. This limits the total number of translog files per shard. After reaching this limit, the remote store flushes the translog files. Default is 1000. The minimum required is 100. Example: `1000`.
+     */
+    translogMaxReaders?: number;
+}
+
 export interface GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog {
     /**
      * Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
@@ -7097,6 +7138,25 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
      * The low watermark for disk usage. Example: `85`.
      */
     low: number;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchRemoteStore {
+    /**
+     * The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+     */
+    segmentPressureBytesLagVarianceFactor?: number;
+    /**
+     * The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+     */
+    segmentPressureConsecutiveFailuresLimit?: number;
+    /**
+     * Enables remote segment backpressure. Default is `true`.
+     */
+    segmentPressureEnabled?: boolean;
+    /**
+     * The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+     */
+    segmentPressureTimeLagVarianceFactor?: number;
 }
 
 export interface GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
@@ -7545,10 +7605,6 @@ export interface GetOrganizationBillingGroupListBillingGroup {
      */
     billingContactEmails: string[];
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     */
-    billingCurrency: string;
-    /**
      * List of billing contact emails.
      */
     billingEmails: string[];
@@ -7560,6 +7616,10 @@ export interface GetOrganizationBillingGroupListBillingGroup {
      * Billing Group Name.
      */
     billingGroupName: string;
+    /**
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     */
+    currency: string;
     /**
      * Extra billing text.
      */
@@ -8392,7 +8452,7 @@ export interface GetPgPgUserConfigPublicAccess {
 
 export interface GetPgPgUserConfigTimescaledb {
     /**
-     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
      */
     maxBackgroundWorkers?: number;
 }
@@ -10494,7 +10554,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     metricsEnabled?: boolean;
     /**
-     * Enforce user lookup based on email instead of the unique ID provided by the IdP.
+     * Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
      */
     oauthAllowInsecureEmailLookup?: boolean;
     /**
@@ -12359,6 +12419,10 @@ export interface KafkaTopicConfig {
      */
     indexIntervalBytes?: string;
     /**
+     * Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+     */
+    inklessEnable?: boolean;
+    /**
      * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
      */
     localRetentionBytes?: string;
@@ -13772,11 +13836,16 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     authFailureListeners?: outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
     /**
+     * Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+     */
+    clusterFilecacheRemoteDataRatio?: number;
+    /**
      * Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      */
     clusterMaxShardsPerNode?: number;
+    clusterRemoteStore?: outputs.OpenSearchOpensearchUserConfigOpensearchClusterRemoteStore;
     /**
-     * When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+     * When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
      */
     clusterRoutingAllocationBalancePreferPrimary?: boolean;
     /**
@@ -13893,6 +13962,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     knnMemoryCircuitBreakerLimit?: number;
     /**
+     * Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+     */
+    nodeSearchCacheSize?: string;
+    /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      */
     overrideMainResponseVersion?: boolean;
@@ -13904,6 +13977,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
      */
     reindexRemoteWhitelists?: string[];
+    remoteStore?: outputs.OpenSearchOpensearchUserConfigOpensearchRemoteStore;
     /**
      * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
      */
@@ -14039,6 +14113,25 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
     type?: string;
 }
 
+export interface OpenSearchOpensearchUserConfigOpensearchClusterRemoteStore {
+    /**
+     * The amount of time to wait for the cluster state upload to complete. Defaults to 20s.
+     */
+    stateGlobalMetadataUploadTimeout?: string;
+    /**
+     * The amount of time to wait for the manifest file upload to complete. The manifest file contains the details of each of the files uploaded for a single cluster state, both index metadata files and global metadata files. Defaults to 20s.
+     */
+    stateMetadataManifestUploadTimeout?: string;
+    /**
+     * The default value of the translog buffer interval used when performing periodic translog updates. This setting is only effective when the index setting `index.remote_store.translog.buffer_interval` is not present. Defaults to 650ms.
+     */
+    translogBufferInterval?: string;
+    /**
+     * Sets the maximum number of open translog files for remote-backed indexes. This limits the total number of translog files per shard. After reaching this limit, the remote store flushes the translog files. Default is 1000. The minimum required is 100. Example: `1000`.
+     */
+    translogMaxReaders?: number;
+}
+
 export interface OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog {
     /**
      * Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
@@ -14098,6 +14191,25 @@ export interface OpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
      * The low watermark for disk usage. Example: `85`.
      */
     low: number;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchRemoteStore {
+    /**
+     * The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+     */
+    segmentPressureBytesLagVarianceFactor?: number;
+    /**
+     * The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+     */
+    segmentPressureConsecutiveFailuresLimit?: number;
+    /**
+     * Enables remote segment backpressure. Default is `true`.
+     */
+    segmentPressureEnabled?: boolean;
+    /**
+     * The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+     */
+    segmentPressureTimeLagVarianceFactor?: number;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
@@ -15381,7 +15493,7 @@ export interface PgPgUserConfigPublicAccess {
 
 export interface PgPgUserConfigTimescaledb {
     /**
-     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
      */
     maxBackgroundWorkers?: number;
 }

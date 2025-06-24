@@ -474,14 +474,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enforce user lookup based on email instead of the unique ID provided by the IdP.
+     * Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
      * 
      */
     @Import(name="oauthAllowInsecureEmailLookup")
     private @Nullable Output<Boolean> oauthAllowInsecureEmailLookup;
 
     /**
-     * @return Enforce user lookup based on email instead of the unique ID provided by the IdP.
+     * @return Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
      * 
      */
     public Optional<Output<Boolean>> oauthAllowInsecureEmailLookup() {
@@ -1417,7 +1417,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param oauthAllowInsecureEmailLookup Enforce user lookup based on email instead of the unique ID provided by the IdP.
+         * @param oauthAllowInsecureEmailLookup Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
          * 
          * @return builder
          * 
@@ -1428,7 +1428,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param oauthAllowInsecureEmailLookup Enforce user lookup based on email instead of the unique ID provided by the IdP.
+         * @param oauthAllowInsecureEmailLookup Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
          * 
          * @return builder
          * 

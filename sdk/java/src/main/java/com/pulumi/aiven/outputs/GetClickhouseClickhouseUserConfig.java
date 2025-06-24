@@ -38,6 +38,11 @@ public final class GetClickhouseClickhouseUserConfig {
      */
     private @Nullable Integer backupMinute;
     /**
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    private @Nullable Boolean enableIpv6;
+    /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -122,6 +127,13 @@ public final class GetClickhouseClickhouseUserConfig {
      */
     public Optional<Integer> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
+    }
+    /**
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    public Optional<Boolean> enableIpv6() {
+        return Optional.ofNullable(this.enableIpv6);
     }
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -217,6 +229,7 @@ public final class GetClickhouseClickhouseUserConfig {
         private @Nullable String additionalBackupRegions;
         private @Nullable Integer backupHour;
         private @Nullable Integer backupMinute;
+        private @Nullable Boolean enableIpv6;
         private @Nullable List<GetClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
@@ -234,6 +247,7 @@ public final class GetClickhouseClickhouseUserConfig {
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.backupHour = defaults.backupHour;
     	      this.backupMinute = defaults.backupMinute;
+    	      this.enableIpv6 = defaults.enableIpv6;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
@@ -263,6 +277,12 @@ public final class GetClickhouseClickhouseUserConfig {
         public Builder backupMinute(@Nullable Integer backupMinute) {
 
             this.backupMinute = backupMinute;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableIpv6(@Nullable Boolean enableIpv6) {
+
+            this.enableIpv6 = enableIpv6;
             return this;
         }
         @CustomType.Setter
@@ -345,6 +365,7 @@ public final class GetClickhouseClickhouseUserConfig {
             _resultValue.additionalBackupRegions = additionalBackupRegions;
             _resultValue.backupHour = backupHour;
             _resultValue.backupMinute = backupMinute;
+            _resultValue.enableIpv6 = enableIpv6;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;

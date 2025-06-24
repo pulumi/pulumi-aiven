@@ -55,6 +55,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? IndexIntervalBytes { get; set; }
 
         /// <summary>
+        /// Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+        /// </summary>
+        [Input("inklessEnable")]
+        public Input<bool>? InklessEnable { get; set; }
+
+        /// <summary>
         /// This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         /// </summary>
         [Input("localRetentionBytes")]

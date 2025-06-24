@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetAlloydbomniDatabase
     {
         /// <summary>
-        /// Gets information about a database in an Aiven for AlloyDB Omni service. 
+        /// Gets information about a database in an Aiven for AlloyDB Omni service.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -21,7 +21,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlloydbomniDatabaseResult>("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", args ?? new GetAlloydbomniDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a database in an Aiven for AlloyDB Omni service. 
+        /// Gets information about a database in an Aiven for AlloyDB Omni service.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetAlloydbomniDatabaseResult>("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", args ?? new GetAlloydbomniDatabaseInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a database in an Aiven for AlloyDB Omni service. 
+        /// Gets information about a database in an Aiven for AlloyDB Omni service.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.

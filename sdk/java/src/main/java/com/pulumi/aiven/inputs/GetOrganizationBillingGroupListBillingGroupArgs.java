@@ -46,21 +46,6 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
     }
 
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    @Import(name="billingCurrency", required=true)
-    private Output<String> billingCurrency;
-
-    /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    public Output<String> billingCurrency() {
-        return this.billingCurrency;
-    }
-
-    /**
      * List of billing contact emails.
      * 
      */
@@ -103,6 +88,21 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
      */
     public Output<String> billingGroupName() {
         return this.billingGroupName;
+    }
+
+    /**
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     * 
+     */
+    @Import(name="currency", required=true)
+    private Output<String> currency;
+
+    /**
+     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     * 
+     */
+    public Output<String> currency() {
+        return this.currency;
     }
 
     /**
@@ -185,10 +185,10 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
     private GetOrganizationBillingGroupListBillingGroupArgs(GetOrganizationBillingGroupListBillingGroupArgs $) {
         this.billingAddressId = $.billingAddressId;
         this.billingContactEmails = $.billingContactEmails;
-        this.billingCurrency = $.billingCurrency;
         this.billingEmails = $.billingEmails;
         this.billingGroupId = $.billingGroupId;
         this.billingGroupName = $.billingGroupName;
+        this.currency = $.currency;
         this.customInvoiceText = $.customInvoiceText;
         this.organizationId = $.organizationId;
         this.paymentMethodId = $.paymentMethodId;
@@ -267,27 +267,6 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
         }
 
         /**
-         * @param billingCurrency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder billingCurrency(Output<String> billingCurrency) {
-            $.billingCurrency = billingCurrency;
-            return this;
-        }
-
-        /**
-         * @param billingCurrency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder billingCurrency(String billingCurrency) {
-            return billingCurrency(Output.of(billingCurrency));
-        }
-
-        /**
          * @param billingEmails List of billing contact emails.
          * 
          * @return builder
@@ -358,6 +337,27 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
          */
         public Builder billingGroupName(String billingGroupName) {
             return billingGroupName(Output.of(billingGroupName));
+        }
+
+        /**
+         * @param currency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currency(Output<String> currency) {
+            $.currency = currency;
+            return this;
+        }
+
+        /**
+         * @param currency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currency(String currency) {
+            return currency(Output.of(currency));
         }
 
         /**
@@ -472,9 +472,6 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
             if ($.billingContactEmails == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "billingContactEmails");
             }
-            if ($.billingCurrency == null) {
-                throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "billingCurrency");
-            }
             if ($.billingEmails == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "billingEmails");
             }
@@ -483,6 +480,9 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
             }
             if ($.billingGroupName == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "billingGroupName");
+            }
+            if ($.currency == null) {
+                throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "currency");
             }
             if ($.customInvoiceText == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "customInvoiceText");

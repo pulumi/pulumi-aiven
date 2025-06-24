@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOrganizationBillingGroupList
     {
         /// <summary>
-        /// Lists billing groups for an organization. 
+        /// Lists billing groups for an organization.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -21,7 +21,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationBillingGroupListResult>("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", args ?? new GetOrganizationBillingGroupListArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Lists billing groups for an organization. 
+        /// Lists billing groups for an organization.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationBillingGroupListResult>("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", args ?? new GetOrganizationBillingGroupListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Lists billing groups for an organization. 
+        /// Lists billing groups for an organization.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.

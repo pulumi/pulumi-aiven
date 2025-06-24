@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOrganizationBillingGroup
     {
         /// <summary>
-        /// Gets information about a billing group. 
+        /// Gets information about a billing group.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -21,7 +21,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationBillingGroupResult>("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", args ?? new GetOrganizationBillingGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a billing group. 
+        /// Gets information about a billing group.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationBillingGroupResult>("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", args ?? new GetOrganizationBillingGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a billing group. 
+        /// Gets information about a billing group.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -99,10 +99,6 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<string> BillingContactEmails;
         /// <summary>
-        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        /// </summary>
-        public readonly string BillingCurrency;
-        /// <summary>
         /// List of billing contact emails.
         /// </summary>
         public readonly ImmutableArray<string> BillingEmails;
@@ -114,6 +110,10 @@ namespace Pulumi.Aiven
         /// Billing Group Name.
         /// </summary>
         public readonly string BillingGroupName;
+        /// <summary>
+        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        /// </summary>
+        public readonly string Currency;
         /// <summary>
         /// Extra billing text.
         /// </summary>
@@ -146,13 +146,13 @@ namespace Pulumi.Aiven
 
             ImmutableArray<string> billingContactEmails,
 
-            string billingCurrency,
-
             ImmutableArray<string> billingEmails,
 
             string billingGroupId,
 
             string billingGroupName,
+
+            string currency,
 
             string customInvoiceText,
 
@@ -170,10 +170,10 @@ namespace Pulumi.Aiven
         {
             BillingAddressId = billingAddressId;
             BillingContactEmails = billingContactEmails;
-            BillingCurrency = billingCurrency;
             BillingEmails = billingEmails;
             BillingGroupId = billingGroupId;
             BillingGroupName = billingGroupName;
+            Currency = currency;
             CustomInvoiceText = customInvoiceText;
             Id = id;
             OrganizationId = organizationId;

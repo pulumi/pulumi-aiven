@@ -1348,6 +1348,9 @@
                                                     }
                                                 }
                                             },
+                                            "cluster_remote_store": {
+                                                "maxItemsOne": true
+                                            },
                                             "cluster_search_request_slowlog": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -1363,6 +1366,9 @@
                                             },
                                             "reindex_remote_whitelist": {
                                                 "maxItemsOne": false
+                                            },
+                                            "remote_store": {
+                                                "maxItemsOne": true
                                             },
                                             "search_backpressure": {
                                                 "maxItemsOne": true,
@@ -3527,6 +3533,9 @@
                                                     }
                                                 }
                                             },
+                                            "cluster_remote_store": {
+                                                "maxItemsOne": true
+                                            },
                                             "cluster_search_request_slowlog": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -3542,6 +3551,9 @@
                                             },
                                             "reindex_remote_whitelist": {
                                                 "maxItemsOne": false
+                                            },
+                                            "remote_store": {
+                                                "maxItemsOne": true
                                             },
                                             "search_backpressure": {
                                                 "maxItemsOne": true,

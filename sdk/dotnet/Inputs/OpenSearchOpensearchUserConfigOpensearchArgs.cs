@@ -31,13 +31,22 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs>? AuthFailureListeners { get; set; }
 
         /// <summary>
+        /// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+        /// </summary>
+        [Input("clusterFilecacheRemoteDataRatio")]
+        public Input<double>? ClusterFilecacheRemoteDataRatio { get; set; }
+
+        /// <summary>
         /// Controls the number of shards allowed in the cluster per data node. Example: `1000`.
         /// </summary>
         [Input("clusterMaxShardsPerNode")]
         public Input<int>? ClusterMaxShardsPerNode { get; set; }
 
+        [Input("clusterRemoteStore")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs>? ClusterRemoteStore { get; set; }
+
         /// <summary>
-        /// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+        /// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
         /// </summary>
         [Input("clusterRoutingAllocationBalancePreferPrimary")]
         public Input<bool>? ClusterRoutingAllocationBalancePreferPrimary { get; set; }
@@ -224,6 +233,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? KnnMemoryCircuitBreakerLimit { get; set; }
 
         /// <summary>
+        /// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+        /// </summary>
+        [Input("nodeSearchCacheSize")]
+        public Input<string>? NodeSearchCacheSize { get; set; }
+
+        /// <summary>
         /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         /// </summary>
         [Input("overrideMainResponseVersion")]
@@ -246,6 +261,9 @@ namespace Pulumi.Aiven.Inputs
             get => _reindexRemoteWhitelists ?? (_reindexRemoteWhitelists = new InputList<string>());
             set => _reindexRemoteWhitelists = value;
         }
+
+        [Input("remoteStore")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs>? RemoteStore { get; set; }
 
         /// <summary>
         /// Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.

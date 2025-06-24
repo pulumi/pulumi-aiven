@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetGcpOrgVpcPeeringConnection
     {
         /// <summary>
-        /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection. 
+        /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -21,7 +21,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGcpOrgVpcPeeringConnectionResult>("aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection", args ?? new GetGcpOrgVpcPeeringConnectionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection. 
+        /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpOrgVpcPeeringConnectionResult>("aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection", args ?? new GetGcpOrgVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection. 
+        /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.

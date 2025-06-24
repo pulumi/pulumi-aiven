@@ -284,18 +284,18 @@ public class Flink extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+     * Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
      * 
      */
     @Export(name="projectVpcId", refs={String.class}, tree="[0]")
-    private Output<String> projectVpcId;
+    private Output</* @Nullable */ String> projectVpcId;
 
     /**
-     * @return Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+     * @return Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
      * 
      */
-    public Output<String> projectVpcId() {
-        return this.projectVpcId;
+    public Output<Optional<String>> projectVpcId() {
+        return Codegen.optional(this.projectVpcId);
     }
     /**
      * The hostname of the service.
