@@ -206,7 +206,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? MetricsEnabled { get; set; }
 
         /// <summary>
-        /// Enforce user lookup based on email instead of the unique ID provided by the IdP.
+        /// Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
         /// </summary>
         [Input("oauthAllowInsecureEmailLookup")]
         public Input<bool>? OauthAllowInsecureEmailLookup { get; set; }

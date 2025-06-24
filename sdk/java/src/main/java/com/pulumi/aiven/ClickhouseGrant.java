@@ -18,14 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages ClickHouse grants to give users and roles privileges to a ClickHouse service.
- * 
- * **Note:**
- * * Users cannot have the same name as roles.
- * * Global privileges cannot be granted on the database level. To grant global privileges, use `database=&#34;*&#34;`.
- * * To grant a privilege on all tables of a database, omit the table and only keep the database. Don&#39;t use `table=&#34;*&#34;`.
- * * Changes first revoke all grants and then reissue the remaining grants for convergence.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

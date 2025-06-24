@@ -26,11 +26,16 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners? AuthFailureListeners;
         /// <summary>
+        /// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+        /// </summary>
+        public readonly double? ClusterFilecacheRemoteDataRatio;
+        /// <summary>
         /// Controls the number of shards allowed in the cluster per data node. Example: `1000`.
         /// </summary>
         public readonly int? ClusterMaxShardsPerNode;
+        public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchClusterRemoteStore? ClusterRemoteStore;
         /// <summary>
-        /// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+        /// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
         /// </summary>
         public readonly bool? ClusterRoutingAllocationBalancePreferPrimary;
         /// <summary>
@@ -147,6 +152,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? KnnMemoryCircuitBreakerLimit;
         /// <summary>
+        /// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+        /// </summary>
+        public readonly string? NodeSearchCacheSize;
+        /// <summary>
         /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         /// </summary>
         public readonly bool? OverrideMainResponseVersion;
@@ -158,6 +167,7 @@ namespace Pulumi.Aiven.Outputs
         /// Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
         /// </summary>
         public readonly ImmutableArray<string> ReindexRemoteWhitelists;
+        public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchRemoteStore? RemoteStore;
         /// <summary>
         /// Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
         /// </summary>
@@ -232,7 +242,11 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners? authFailureListeners,
 
+            double? clusterFilecacheRemoteDataRatio,
+
             int? clusterMaxShardsPerNode,
+
+            Outputs.OpenSearchOpensearchUserConfigOpensearchClusterRemoteStore? clusterRemoteStore,
 
             bool? clusterRoutingAllocationBalancePreferPrimary,
 
@@ -294,11 +308,15 @@ namespace Pulumi.Aiven.Outputs
 
             int? knnMemoryCircuitBreakerLimit,
 
+            string? nodeSearchCacheSize,
+
             bool? overrideMainResponseVersion,
 
             bool? pluginsAlertingFilterByBackendRoles,
 
             ImmutableArray<string> reindexRemoteWhitelists,
+
+            Outputs.OpenSearchOpensearchUserConfigOpensearchRemoteStore? remoteStore,
 
             string? scriptMaxCompilationsRate,
 
@@ -337,7 +355,9 @@ namespace Pulumi.Aiven.Outputs
             ActionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
             AuthFailureListeners = authFailureListeners;
+            ClusterFilecacheRemoteDataRatio = clusterFilecacheRemoteDataRatio;
             ClusterMaxShardsPerNode = clusterMaxShardsPerNode;
+            ClusterRemoteStore = clusterRemoteStore;
             ClusterRoutingAllocationBalancePreferPrimary = clusterRoutingAllocationBalancePreferPrimary;
             ClusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             ClusterSearchRequestSlowlog = clusterSearchRequestSlowlog;
@@ -368,9 +388,11 @@ namespace Pulumi.Aiven.Outputs
             IsmHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
             KnnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
             KnnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
+            NodeSearchCacheSize = nodeSearchCacheSize;
             OverrideMainResponseVersion = overrideMainResponseVersion;
             PluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;
             ReindexRemoteWhitelists = reindexRemoteWhitelists;
+            RemoteStore = remoteStore;
             ScriptMaxCompilationsRate = scriptMaxCompilationsRate;
             SearchBackpressure = searchBackpressure;
             SearchInsightsTopQueries = searchInsightsTopQueries;

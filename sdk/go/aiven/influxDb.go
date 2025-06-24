@@ -66,11 +66,12 @@ type InfluxDb struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId pulumi.StringOutput `pulumi:"projectVpcId"`
+	// Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+	// the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+	// region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+	// migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+	// data.
+	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
@@ -202,10 +203,11 @@ type influxDbState struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+	// the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+	// region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+	// migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+	// data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost *string `pulumi:"serviceHost"`
@@ -291,10 +293,11 @@ type InfluxDbState struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+	// the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+	// region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+	// migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+	// data.
 	ProjectVpcId pulumi.StringPtrInput
 	// The hostname of the service.
 	ServiceHost pulumi.StringPtrInput
@@ -370,10 +373,11 @@ type influxDbArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+	// the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+	// region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+	// migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+	// data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []InfluxDbServiceIntegration `pulumi:"serviceIntegrations"`
@@ -433,10 +437,11 @@ type InfluxDbArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+	// the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+	// region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+	// migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+	// data.
 	ProjectVpcId pulumi.StringPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations InfluxDbServiceIntegrationArrayInput
@@ -637,12 +642,13 @@ func (o InfluxDbOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-// servers so the operation can take significant amount of time to complete if the service has a lot of data.
-func (o InfluxDbOutput) ProjectVpcId() pulumi.StringOutput {
-	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.ProjectVpcId }).(pulumi.StringOutput)
+// Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+// the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+// region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+// migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+// data.
+func (o InfluxDbOutput) ProjectVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfluxDb) pulumi.StringPtrOutput { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
 }
 
 // The hostname of the service.

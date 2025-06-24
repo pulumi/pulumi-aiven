@@ -176,7 +176,7 @@ public final class GetGrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean metricsEnabled;
     /**
-     * @return Enforce user lookup based on email instead of the unique ID provided by the IdP.
+     * @return Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
      * 
      */
     private @Nullable Boolean oauthAllowInsecureEmailLookup;
@@ -460,7 +460,7 @@ public final class GetGrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.metricsEnabled);
     }
     /**
-     * @return Enforce user lookup based on email instead of the unique ID provided by the IdP.
+     * @return Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
      * 
      */
     public Optional<Boolean> oauthAllowInsecureEmailLookup() {

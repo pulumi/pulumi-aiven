@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BackupMinute;
         /// <summary>
+        /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        /// </summary>
+        public readonly bool? EnableIpv6;
+        /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.ClickhouseClickhouseUserConfigIpFilterObject> IpFilterObjects;
@@ -78,6 +82,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? backupMinute,
 
+            bool? enableIpv6,
+
             ImmutableArray<Outputs.ClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects,
 
             ImmutableArray<string> ipFilterStrings,
@@ -103,6 +109,7 @@ namespace Pulumi.Aiven.Outputs
             AdditionalBackupRegions = additionalBackupRegions;
             BackupHour = backupHour;
             BackupMinute = backupMinute;
+            EnableIpv6 = enableIpv6;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;

@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOrganizationAddress
     {
         /// <summary>
-        /// Gets information about an organization address. 
+        /// Gets information about an organization address.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -21,7 +21,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationAddressResult>("aiven:index/getOrganizationAddress:getOrganizationAddress", args ?? new GetOrganizationAddressArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an organization address. 
+        /// Gets information about an organization address.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationAddressResult>("aiven:index/getOrganizationAddress:getOrganizationAddress", args ?? new GetOrganizationAddressInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an organization address. 
+        /// Gets information about an organization address.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.

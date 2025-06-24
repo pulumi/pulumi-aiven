@@ -68,10 +68,11 @@ class InfluxDbArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbArgs']]] influxdbs: InfluxDB server provided values
         :param pulumi.Input[builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-               value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-               as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-               servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+               the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+               region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+               migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+               data.
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
@@ -258,10 +259,11 @@ class InfluxDbArgs:
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-        value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-        as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-        servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+        the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+        region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+        migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+        data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -400,10 +402,11 @@ class _InfluxDbState:
                options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-               value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-               as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-               servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+               the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+               region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+               migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+               data.
         :param pulumi.Input[builtins.str] service_host: The hostname of the service.
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[builtins.str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
@@ -678,10 +681,11 @@ class _InfluxDbState:
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-        value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-        as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-        servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+        the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+        region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+        migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+        data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -901,10 +905,11 @@ class InfluxDb(pulumi.CustomResource):
                options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-               value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-               as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-               servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+               the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+               region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+               migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+               data.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbServiceIntegrationArgs', 'InfluxDbServiceIntegrationArgsDict']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[builtins.str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
                service so name should be picked based on intended service usage rather than current attributes.
@@ -1079,10 +1084,11 @@ class InfluxDb(pulumi.CustomResource):
                options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-               value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-               as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-               servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+               the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+               region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+               migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+               data.
         :param pulumi.Input[builtins.str] service_host: The hostname of the service.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbServiceIntegrationArgs', 'InfluxDbServiceIntegrationArgsDict']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[builtins.str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
@@ -1270,12 +1276,13 @@ class InfluxDb(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectVpcId")
-    def project_vpc_id(self) -> pulumi.Output[builtins.str]:
+    def project_vpc_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-        value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-        as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-        servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
+        the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
+        region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
+        migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
+        data.
         """
         return pulumi.get(self, "project_vpc_id")
 

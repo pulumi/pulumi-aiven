@@ -49,6 +49,11 @@ public final class KafkaTopicConfig {
      */
     private @Nullable String indexIntervalBytes;
     /**
+     * @return Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+     * 
+     */
+    private @Nullable Boolean inklessEnable;
+    /**
      * @return This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1.
      * 
      */
@@ -198,6 +203,13 @@ public final class KafkaTopicConfig {
      */
     public Optional<String> indexIntervalBytes() {
         return Optional.ofNullable(this.indexIntervalBytes);
+    }
+    /**
+     * @return Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+     * 
+     */
+    public Optional<Boolean> inklessEnable() {
+        return Optional.ofNullable(this.inklessEnable);
     }
     /**
      * @return This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1.
@@ -356,6 +368,7 @@ public final class KafkaTopicConfig {
         private @Nullable String flushMessages;
         private @Nullable String flushMs;
         private @Nullable String indexIntervalBytes;
+        private @Nullable Boolean inklessEnable;
         private @Nullable String localRetentionBytes;
         private @Nullable String localRetentionMs;
         private @Nullable String maxCompactionLagMs;
@@ -386,6 +399,7 @@ public final class KafkaTopicConfig {
     	      this.flushMessages = defaults.flushMessages;
     	      this.flushMs = defaults.flushMs;
     	      this.indexIntervalBytes = defaults.indexIntervalBytes;
+    	      this.inklessEnable = defaults.inklessEnable;
     	      this.localRetentionBytes = defaults.localRetentionBytes;
     	      this.localRetentionMs = defaults.localRetentionMs;
     	      this.maxCompactionLagMs = defaults.maxCompactionLagMs;
@@ -448,6 +462,12 @@ public final class KafkaTopicConfig {
         public Builder indexIntervalBytes(@Nullable String indexIntervalBytes) {
 
             this.indexIntervalBytes = indexIntervalBytes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder inklessEnable(@Nullable Boolean inklessEnable) {
+
+            this.inklessEnable = inklessEnable;
             return this;
         }
         @CustomType.Setter
@@ -579,6 +599,7 @@ public final class KafkaTopicConfig {
             _resultValue.flushMessages = flushMessages;
             _resultValue.flushMs = flushMs;
             _resultValue.indexIntervalBytes = indexIntervalBytes;
+            _resultValue.inklessEnable = inklessEnable;
             _resultValue.localRetentionBytes = localRetentionBytes;
             _resultValue.localRetentionMs = localRetentionMs;
             _resultValue.maxCompactionLagMs = maxCompactionLagMs;

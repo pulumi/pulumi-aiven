@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetAwsOrgVpcPeeringConnection
     {
         /// <summary>
-        /// Gets information about an AWS VPC peering connection. 
+        /// Gets information about an AWS VPC peering connection.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -21,7 +21,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsOrgVpcPeeringConnectionResult>("aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection", args ?? new GetAwsOrgVpcPeeringConnectionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an AWS VPC peering connection. 
+        /// Gets information about an AWS VPC peering connection.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsOrgVpcPeeringConnectionResult>("aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection", args ?? new GetAwsOrgVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an AWS VPC peering connection. 
+        /// Gets information about an AWS VPC peering connection.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.

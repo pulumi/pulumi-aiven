@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetExternalIdentity
     {
         /// <summary>
-        /// Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows. 
+        /// Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -21,7 +21,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalIdentityResult>("aiven:index/getExternalIdentity:getExternalIdentity", args ?? new GetExternalIdentityArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows. 
+        /// Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalIdentityResult>("aiven:index/getExternalIdentity:getExternalIdentity", args ?? new GetExternalIdentityInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows. 
+        /// Links external usernames to Aiven users, ensuring that requesters and approvers are correctly identified for Aiven for Apache Kafka® Governance approval workflows.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.

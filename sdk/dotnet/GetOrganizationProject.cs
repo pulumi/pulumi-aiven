@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOrganizationProject
     {
         /// <summary>
-        /// Gets information about an Aiven project. 
+        /// Gets information about an Aiven project.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -40,7 +40,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationProjectResult>("aiven:index/getOrganizationProject:getOrganizationProject", args ?? new GetOrganizationProjectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an Aiven project. 
+        /// Gets information about an Aiven project.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -68,7 +68,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationProjectResult>("aiven:index/getOrganizationProject:getOrganizationProject", args ?? new GetOrganizationProjectInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an Aiven project. 
+        /// Gets information about an Aiven project.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.

@@ -130,7 +130,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? MetricsEnabled;
         /// <summary>
-        /// Enforce user lookup based on email instead of the unique ID provided by the IdP.
+        /// Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
         /// </summary>
         public readonly bool? OauthAllowInsecureEmailLookup;
         /// <summary>

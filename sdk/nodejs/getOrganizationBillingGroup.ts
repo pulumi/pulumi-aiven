@@ -49,10 +49,6 @@ export interface GetOrganizationBillingGroupResult {
      */
     readonly billingContactEmails: string[];
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     */
-    readonly billingCurrency: string;
-    /**
      * List of billing contact emails.
      */
     readonly billingEmails: string[];
@@ -64,6 +60,10 @@ export interface GetOrganizationBillingGroupResult {
      * Billing Group Name.
      */
     readonly billingGroupName: string;
+    /**
+     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     */
+    readonly currency: string;
     /**
      * Extra billing text.
      */

@@ -76,6 +76,21 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    @Import(name="enableIpv6")
+    private @Nullable Output<Boolean> enableIpv6;
+
+    /**
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    public Optional<Output<Boolean>> enableIpv6() {
+        return Optional.ofNullable(this.enableIpv6);
+    }
+
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -254,6 +269,7 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         this.additionalBackupRegions = $.additionalBackupRegions;
         this.backupHour = $.backupHour;
         this.backupMinute = $.backupMinute;
+        this.enableIpv6 = $.enableIpv6;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
@@ -354,6 +370,27 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
          */
         public Builder backupMinute(Integer backupMinute) {
             return backupMinute(Output.of(backupMinute));
+        }
+
+        /**
+         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv6(@Nullable Output<Boolean> enableIpv6) {
+            $.enableIpv6 = enableIpv6;
+            return this;
+        }
+
+        /**
+         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv6(Boolean enableIpv6) {
+            return enableIpv6(Output.of(enableIpv6));
         }
 
         /**

@@ -4,14 +4,17 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks;
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchRemoteStore;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchSegrep;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -37,12 +40,18 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners authFailureListeners;
     /**
+     * @return Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+     * 
+     */
+    private @Nullable Double clusterFilecacheRemoteDataRatio;
+    /**
      * @return Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      * 
      */
     private @Nullable Integer clusterMaxShardsPerNode;
+    private @Nullable GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore clusterRemoteStore;
     /**
-     * @return When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+     * @return When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
      * 
      */
     private @Nullable Boolean clusterRoutingAllocationBalancePreferPrimary;
@@ -188,6 +197,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer knnMemoryCircuitBreakerLimit;
     /**
+     * @return Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+     * 
+     */
+    private @Nullable String nodeSearchCacheSize;
+    /**
      * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      * 
      */
@@ -202,6 +216,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      * 
      */
     private @Nullable List<String> reindexRemoteWhitelists;
+    private @Nullable GetOpenSearchOpensearchUserConfigOpensearchRemoteStore remoteStore;
     /**
      * @return Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
      * 
@@ -307,14 +322,24 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.authFailureListeners);
     }
     /**
+     * @return Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+     * 
+     */
+    public Optional<Double> clusterFilecacheRemoteDataRatio() {
+        return Optional.ofNullable(this.clusterFilecacheRemoteDataRatio);
+    }
+    /**
      * @return Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      * 
      */
     public Optional<Integer> clusterMaxShardsPerNode() {
         return Optional.ofNullable(this.clusterMaxShardsPerNode);
     }
+    public Optional<GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore> clusterRemoteStore() {
+        return Optional.ofNullable(this.clusterRemoteStore);
+    }
     /**
-     * @return When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+     * @return When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
      * 
      */
     public Optional<Boolean> clusterRoutingAllocationBalancePreferPrimary() {
@@ -520,6 +545,13 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.knnMemoryCircuitBreakerLimit);
     }
     /**
+     * @return Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+     * 
+     */
+    public Optional<String> nodeSearchCacheSize() {
+        return Optional.ofNullable(this.nodeSearchCacheSize);
+    }
+    /**
      * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      * 
      */
@@ -539,6 +571,9 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     public List<String> reindexRemoteWhitelists() {
         return this.reindexRemoteWhitelists == null ? List.of() : this.reindexRemoteWhitelists;
+    }
+    public Optional<GetOpenSearchOpensearchUserConfigOpensearchRemoteStore> remoteStore() {
+        return Optional.ofNullable(this.remoteStore);
     }
     /**
      * @return Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
@@ -668,7 +703,9 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Boolean actionAutoCreateIndexEnabled;
         private @Nullable Boolean actionDestructiveRequiresName;
         private @Nullable GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners authFailureListeners;
+        private @Nullable Double clusterFilecacheRemoteDataRatio;
         private @Nullable Integer clusterMaxShardsPerNode;
+        private @Nullable GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore clusterRemoteStore;
         private @Nullable Boolean clusterRoutingAllocationBalancePreferPrimary;
         private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
         private @Nullable GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog clusterSearchRequestSlowlog;
@@ -699,9 +736,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Integer ismHistoryRolloverRetentionPeriod;
         private @Nullable Boolean knnMemoryCircuitBreakerEnabled;
         private @Nullable Integer knnMemoryCircuitBreakerLimit;
+        private @Nullable String nodeSearchCacheSize;
         private @Nullable Boolean overrideMainResponseVersion;
         private @Nullable Boolean pluginsAlertingFilterByBackendRoles;
         private @Nullable List<String> reindexRemoteWhitelists;
+        private @Nullable GetOpenSearchOpensearchUserConfigOpensearchRemoteStore remoteStore;
         private @Nullable String scriptMaxCompilationsRate;
         private @Nullable GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure searchBackpressure;
         private @Nullable GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries searchInsightsTopQueries;
@@ -725,7 +764,9 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     	      this.actionAutoCreateIndexEnabled = defaults.actionAutoCreateIndexEnabled;
     	      this.actionDestructiveRequiresName = defaults.actionDestructiveRequiresName;
     	      this.authFailureListeners = defaults.authFailureListeners;
+    	      this.clusterFilecacheRemoteDataRatio = defaults.clusterFilecacheRemoteDataRatio;
     	      this.clusterMaxShardsPerNode = defaults.clusterMaxShardsPerNode;
+    	      this.clusterRemoteStore = defaults.clusterRemoteStore;
     	      this.clusterRoutingAllocationBalancePreferPrimary = defaults.clusterRoutingAllocationBalancePreferPrimary;
     	      this.clusterRoutingAllocationNodeConcurrentRecoveries = defaults.clusterRoutingAllocationNodeConcurrentRecoveries;
     	      this.clusterSearchRequestSlowlog = defaults.clusterSearchRequestSlowlog;
@@ -756,9 +797,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     	      this.ismHistoryRolloverRetentionPeriod = defaults.ismHistoryRolloverRetentionPeriod;
     	      this.knnMemoryCircuitBreakerEnabled = defaults.knnMemoryCircuitBreakerEnabled;
     	      this.knnMemoryCircuitBreakerLimit = defaults.knnMemoryCircuitBreakerLimit;
+    	      this.nodeSearchCacheSize = defaults.nodeSearchCacheSize;
     	      this.overrideMainResponseVersion = defaults.overrideMainResponseVersion;
     	      this.pluginsAlertingFilterByBackendRoles = defaults.pluginsAlertingFilterByBackendRoles;
     	      this.reindexRemoteWhitelists = defaults.reindexRemoteWhitelists;
+    	      this.remoteStore = defaults.remoteStore;
     	      this.scriptMaxCompilationsRate = defaults.scriptMaxCompilationsRate;
     	      this.searchBackpressure = defaults.searchBackpressure;
     	      this.searchInsightsTopQueries = defaults.searchInsightsTopQueries;
@@ -797,9 +840,21 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder clusterFilecacheRemoteDataRatio(@Nullable Double clusterFilecacheRemoteDataRatio) {
+
+            this.clusterFilecacheRemoteDataRatio = clusterFilecacheRemoteDataRatio;
+            return this;
+        }
+        @CustomType.Setter
         public Builder clusterMaxShardsPerNode(@Nullable Integer clusterMaxShardsPerNode) {
 
             this.clusterMaxShardsPerNode = clusterMaxShardsPerNode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clusterRemoteStore(@Nullable GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore clusterRemoteStore) {
+
+            this.clusterRemoteStore = clusterRemoteStore;
             return this;
         }
         @CustomType.Setter
@@ -983,6 +1038,12 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeSearchCacheSize(@Nullable String nodeSearchCacheSize) {
+
+            this.nodeSearchCacheSize = nodeSearchCacheSize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder overrideMainResponseVersion(@Nullable Boolean overrideMainResponseVersion) {
 
             this.overrideMainResponseVersion = overrideMainResponseVersion;
@@ -1002,6 +1063,12 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         }
         public Builder reindexRemoteWhitelists(String... reindexRemoteWhitelists) {
             return reindexRemoteWhitelists(List.of(reindexRemoteWhitelists));
+        }
+        @CustomType.Setter
+        public Builder remoteStore(@Nullable GetOpenSearchOpensearchUserConfigOpensearchRemoteStore remoteStore) {
+
+            this.remoteStore = remoteStore;
+            return this;
         }
         @CustomType.Setter
         public Builder scriptMaxCompilationsRate(@Nullable String scriptMaxCompilationsRate) {
@@ -1110,7 +1177,9 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             _resultValue.actionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             _resultValue.actionDestructiveRequiresName = actionDestructiveRequiresName;
             _resultValue.authFailureListeners = authFailureListeners;
+            _resultValue.clusterFilecacheRemoteDataRatio = clusterFilecacheRemoteDataRatio;
             _resultValue.clusterMaxShardsPerNode = clusterMaxShardsPerNode;
+            _resultValue.clusterRemoteStore = clusterRemoteStore;
             _resultValue.clusterRoutingAllocationBalancePreferPrimary = clusterRoutingAllocationBalancePreferPrimary;
             _resultValue.clusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             _resultValue.clusterSearchRequestSlowlog = clusterSearchRequestSlowlog;
@@ -1141,9 +1210,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             _resultValue.ismHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
             _resultValue.knnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
             _resultValue.knnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
+            _resultValue.nodeSearchCacheSize = nodeSearchCacheSize;
             _resultValue.overrideMainResponseVersion = overrideMainResponseVersion;
             _resultValue.pluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;
             _resultValue.reindexRemoteWhitelists = reindexRemoteWhitelists;
+            _resultValue.remoteStore = remoteStore;
             _resultValue.scriptMaxCompilationsRate = scriptMaxCompilationsRate;
             _resultValue.searchBackpressure = searchBackpressure;
             _resultValue.searchInsightsTopQueries = searchInsightsTopQueries;

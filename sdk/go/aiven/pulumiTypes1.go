@@ -13,6 +13,280 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetM3DbM3dbUserConfigPublicAccess struct {
+	// Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
+	M3coordinator *bool `pulumi:"m3coordinator"`
+}
+
+// GetM3DbM3dbUserConfigPublicAccessInput is an input type that accepts GetM3DbM3dbUserConfigPublicAccessArgs and GetM3DbM3dbUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigPublicAccessInput` via:
+//
+//	GetM3DbM3dbUserConfigPublicAccessArgs{...}
+type GetM3DbM3dbUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigPublicAccessOutput() GetM3DbM3dbUserConfigPublicAccessOutput
+	ToGetM3DbM3dbUserConfigPublicAccessOutputWithContext(context.Context) GetM3DbM3dbUserConfigPublicAccessOutput
+}
+
+type GetM3DbM3dbUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
+	M3coordinator pulumi.BoolPtrInput `pulumi:"m3coordinator"`
+}
+
+func (GetM3DbM3dbUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigPublicAccessArgs) ToGetM3DbM3dbUserConfigPublicAccessOutput() GetM3DbM3dbUserConfigPublicAccessOutput {
+	return i.ToGetM3DbM3dbUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigPublicAccessArgs) ToGetM3DbM3dbUserConfigPublicAccessOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPublicAccessOutput)
+}
+
+func (i GetM3DbM3dbUserConfigPublicAccessArgs) ToGetM3DbM3dbUserConfigPublicAccessPtrOutput() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigPublicAccessArgs) ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPublicAccessOutput).ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigPublicAccessPtrInput is an input type that accepts GetM3DbM3dbUserConfigPublicAccessArgs, GetM3DbM3dbUserConfigPublicAccessPtr and GetM3DbM3dbUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigPublicAccessPtrInput` via:
+//
+//	        GetM3DbM3dbUserConfigPublicAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetM3DbM3dbUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigPublicAccessPtrOutput() GetM3DbM3dbUserConfigPublicAccessPtrOutput
+	ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigPublicAccessPtrOutput
+}
+
+type getM3DbM3dbUserConfigPublicAccessPtrType GetM3DbM3dbUserConfigPublicAccessArgs
+
+func GetM3DbM3dbUserConfigPublicAccessPtr(v *GetM3DbM3dbUserConfigPublicAccessArgs) GetM3DbM3dbUserConfigPublicAccessPtrInput {
+	return (*getM3DbM3dbUserConfigPublicAccessPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigPublicAccessPtrType) ToGetM3DbM3dbUserConfigPublicAccessPtrOutput() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigPublicAccessPtrType) ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessOutput) ToGetM3DbM3dbUserConfigPublicAccessOutput() GetM3DbM3dbUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessOutput) ToGetM3DbM3dbUserConfigPublicAccessOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessOutput) ToGetM3DbM3dbUserConfigPublicAccessPtrOutput() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessOutput) ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetM3DbM3dbUserConfigPublicAccess) *GetM3DbM3dbUserConfigPublicAccess {
+		return &v
+	}).(GetM3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+// Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetM3DbM3dbUserConfigPublicAccessOutput) M3coordinator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigPublicAccess) *bool { return v.M3coordinator }).(pulumi.BoolPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessPtrOutput) ToGetM3DbM3dbUserConfigPublicAccessPtrOutput() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessPtrOutput) ToGetM3DbM3dbUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPublicAccessPtrOutput) Elem() GetM3DbM3dbUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigPublicAccess) GetM3DbM3dbUserConfigPublicAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetM3DbM3dbUserConfigPublicAccess
+		return ret
+	}).(GetM3DbM3dbUserConfigPublicAccessOutput)
+}
+
+// Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetM3DbM3dbUserConfigPublicAccessPtrOutput) M3coordinator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.M3coordinator
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigRules struct {
+	// List of M3 mapping rules
+	Mappings []GetM3DbM3dbUserConfigRulesMapping `pulumi:"mappings"`
+}
+
+// GetM3DbM3dbUserConfigRulesInput is an input type that accepts GetM3DbM3dbUserConfigRulesArgs and GetM3DbM3dbUserConfigRulesOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesInput` via:
+//
+//	GetM3DbM3dbUserConfigRulesArgs{...}
+type GetM3DbM3dbUserConfigRulesInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesOutput() GetM3DbM3dbUserConfigRulesOutput
+	ToGetM3DbM3dbUserConfigRulesOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesOutput
+}
+
+type GetM3DbM3dbUserConfigRulesArgs struct {
+	// List of M3 mapping rules
+	Mappings GetM3DbM3dbUserConfigRulesMappingArrayInput `pulumi:"mappings"`
+}
+
+func (GetM3DbM3dbUserConfigRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigRulesArgs) ToGetM3DbM3dbUserConfigRulesOutput() GetM3DbM3dbUserConfigRulesOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesArgs) ToGetM3DbM3dbUserConfigRulesOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesOutput)
+}
+
+func (i GetM3DbM3dbUserConfigRulesArgs) ToGetM3DbM3dbUserConfigRulesPtrOutput() GetM3DbM3dbUserConfigRulesPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigRulesArgs) ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesOutput).ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigRulesPtrInput is an input type that accepts GetM3DbM3dbUserConfigRulesArgs, GetM3DbM3dbUserConfigRulesPtr and GetM3DbM3dbUserConfigRulesPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesPtrInput` via:
+//
+//	        GetM3DbM3dbUserConfigRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetM3DbM3dbUserConfigRulesPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigRulesPtrOutput() GetM3DbM3dbUserConfigRulesPtrOutput
+	ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigRulesPtrOutput
+}
+
+type getM3DbM3dbUserConfigRulesPtrType GetM3DbM3dbUserConfigRulesArgs
+
+func GetM3DbM3dbUserConfigRulesPtr(v *GetM3DbM3dbUserConfigRulesArgs) GetM3DbM3dbUserConfigRulesPtrInput {
+	return (*getM3DbM3dbUserConfigRulesPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigRulesPtrType) ToGetM3DbM3dbUserConfigRulesPtrOutput() GetM3DbM3dbUserConfigRulesPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigRulesPtrType) ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigRulesPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesOutput) ToGetM3DbM3dbUserConfigRulesOutput() GetM3DbM3dbUserConfigRulesOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesOutput) ToGetM3DbM3dbUserConfigRulesOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesOutput) ToGetM3DbM3dbUserConfigRulesPtrOutput() GetM3DbM3dbUserConfigRulesPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigRulesOutput) ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetM3DbM3dbUserConfigRules) *GetM3DbM3dbUserConfigRules {
+		return &v
+	}).(GetM3DbM3dbUserConfigRulesPtrOutput)
+}
+
+// List of M3 mapping rules
+func (o GetM3DbM3dbUserConfigRulesOutput) Mappings() GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigRules) []GetM3DbM3dbUserConfigRulesMapping { return v.Mappings }).(GetM3DbM3dbUserConfigRulesMappingArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigRules)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigRulesPtrOutput) ToGetM3DbM3dbUserConfigRulesPtrOutput() GetM3DbM3dbUserConfigRulesPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesPtrOutput) ToGetM3DbM3dbUserConfigRulesPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigRulesPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigRulesPtrOutput) Elem() GetM3DbM3dbUserConfigRulesOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigRules) GetM3DbM3dbUserConfigRules {
+		if v != nil {
+			return *v
+		}
+		var ret GetM3DbM3dbUserConfigRules
+		return ret
+	}).(GetM3DbM3dbUserConfigRulesOutput)
+}
+
+// List of M3 mapping rules
+func (o GetM3DbM3dbUserConfigRulesPtrOutput) Mappings() GetM3DbM3dbUserConfigRulesMappingArrayOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigRules) []GetM3DbM3dbUserConfigRulesMapping {
+		if v == nil {
+			return nil
+		}
+		return v.Mappings
+	}).(GetM3DbM3dbUserConfigRulesMappingArrayOutput)
+}
+
 type GetM3DbM3dbUserConfigRulesMapping struct {
 	// List of aggregations to be applied.
 	Aggregations []string `pulumi:"aggregations"`
@@ -5660,9 +5934,12 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	ActionDestructiveRequiresName *bool `pulumi:"actionDestructiveRequiresName"`
 	// Opensearch Security Plugin Settings
 	AuthFailureListeners *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners `pulumi:"authFailureListeners"`
+	// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+	ClusterFilecacheRemoteDataRatio *float64 `pulumi:"clusterFilecacheRemoteDataRatio"`
 	// Controls the number of shards allowed in the cluster per data node. Example: `1000`.
-	ClusterMaxShardsPerNode *int `pulumi:"clusterMaxShardsPerNode"`
-	// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+	ClusterMaxShardsPerNode *int                                                           `pulumi:"clusterMaxShardsPerNode"`
+	ClusterRemoteStore      *GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore `pulumi:"clusterRemoteStore"`
+	// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
 	ClusterRoutingAllocationBalancePreferPrimary *bool `pulumi:"clusterRoutingAllocationBalancePreferPrimary"`
 	// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
 	ClusterRoutingAllocationNodeConcurrentRecoveries *int                                                                    `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
@@ -5721,12 +5998,15 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	KnnMemoryCircuitBreakerEnabled *bool `pulumi:"knnMemoryCircuitBreakerEnabled"`
 	// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
 	KnnMemoryCircuitBreakerLimit *int `pulumi:"knnMemoryCircuitBreakerLimit"`
+	// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+	NodeSearchCacheSize *string `pulumi:"nodeSearchCacheSize"`
 	// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
 	OverrideMainResponseVersion *bool `pulumi:"overrideMainResponseVersion"`
 	// Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
 	PluginsAlertingFilterByBackendRoles *bool `pulumi:"pluginsAlertingFilterByBackendRoles"`
 	// Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
-	ReindexRemoteWhitelists []string `pulumi:"reindexRemoteWhitelists"`
+	ReindexRemoteWhitelists []string                                                `pulumi:"reindexRemoteWhitelists"`
+	RemoteStore             *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore `pulumi:"remoteStore"`
 	// Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
 	ScriptMaxCompilationsRate *string `pulumi:"scriptMaxCompilationsRate"`
 	// Search Backpressure Settings
@@ -5780,9 +6060,12 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	ActionDestructiveRequiresName pulumi.BoolPtrInput `pulumi:"actionDestructiveRequiresName"`
 	// Opensearch Security Plugin Settings
 	AuthFailureListeners GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput `pulumi:"authFailureListeners"`
+	// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+	ClusterFilecacheRemoteDataRatio pulumi.Float64PtrInput `pulumi:"clusterFilecacheRemoteDataRatio"`
 	// Controls the number of shards allowed in the cluster per data node. Example: `1000`.
-	ClusterMaxShardsPerNode pulumi.IntPtrInput `pulumi:"clusterMaxShardsPerNode"`
-	// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+	ClusterMaxShardsPerNode pulumi.IntPtrInput                                                    `pulumi:"clusterMaxShardsPerNode"`
+	ClusterRemoteStore      GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrInput `pulumi:"clusterRemoteStore"`
+	// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
 	ClusterRoutingAllocationBalancePreferPrimary pulumi.BoolPtrInput `pulumi:"clusterRoutingAllocationBalancePreferPrimary"`
 	// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
 	ClusterRoutingAllocationNodeConcurrentRecoveries pulumi.IntPtrInput                                                             `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
@@ -5841,12 +6124,15 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	KnnMemoryCircuitBreakerEnabled pulumi.BoolPtrInput `pulumi:"knnMemoryCircuitBreakerEnabled"`
 	// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
 	KnnMemoryCircuitBreakerLimit pulumi.IntPtrInput `pulumi:"knnMemoryCircuitBreakerLimit"`
+	// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+	NodeSearchCacheSize pulumi.StringPtrInput `pulumi:"nodeSearchCacheSize"`
 	// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
 	OverrideMainResponseVersion pulumi.BoolPtrInput `pulumi:"overrideMainResponseVersion"`
 	// Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
 	PluginsAlertingFilterByBackendRoles pulumi.BoolPtrInput `pulumi:"pluginsAlertingFilterByBackendRoles"`
 	// Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
-	ReindexRemoteWhitelists pulumi.StringArrayInput `pulumi:"reindexRemoteWhitelists"`
+	ReindexRemoteWhitelists pulumi.StringArrayInput                                        `pulumi:"reindexRemoteWhitelists"`
+	RemoteStore             GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput `pulumi:"remoteStore"`
 	// Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
 	ScriptMaxCompilationsRate pulumi.StringPtrInput `pulumi:"scriptMaxCompilationsRate"`
 	// Search Backpressure Settings
@@ -5976,12 +6262,23 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) AuthFailureListeners(
 	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput)
 }
 
+// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ClusterFilecacheRemoteDataRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *float64 { return v.ClusterFilecacheRemoteDataRatio }).(pulumi.Float64PtrOutput)
+}
+
 // Controls the number of shards allowed in the cluster per data node. Example: `1000`.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ClusterMaxShardsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.ClusterMaxShardsPerNode }).(pulumi.IntPtrOutput)
 }
 
-// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ClusterRemoteStore() GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore {
+		return v.ClusterRemoteStore
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput)
+}
+
+// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ClusterRoutingAllocationBalancePreferPrimary() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool {
 		return v.ClusterRoutingAllocationBalancePreferPrimary
@@ -6140,6 +6437,11 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) KnnMemoryCircuitBreak
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.KnnMemoryCircuitBreakerLimit }).(pulumi.IntPtrOutput)
 }
 
+// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) NodeSearchCacheSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *string { return v.NodeSearchCacheSize }).(pulumi.StringPtrOutput)
+}
+
 // Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) OverrideMainResponseVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.OverrideMainResponseVersion }).(pulumi.BoolPtrOutput)
@@ -6155,6 +6457,12 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) PluginsAlertingFilter
 // Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ReindexRemoteWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) []string { return v.ReindexRemoteWhitelists }).(pulumi.StringArrayOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) RemoteStore() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore {
+		return v.RemoteStore
+	}).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput)
 }
 
 // Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
@@ -6303,6 +6611,16 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) AuthFailureListene
 	}).(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput)
 }
 
+// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterFilecacheRemoteDataRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterFilecacheRemoteDataRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Controls the number of shards allowed in the cluster per data node. Example: `1000`.
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterMaxShardsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
@@ -6313,7 +6631,16 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterMaxShardsPe
 	}).(pulumi.IntPtrOutput)
 }
 
-// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterRemoteStore() GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterRemoteStore
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput)
+}
+
+// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterRoutingAllocationBalancePreferPrimary() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
 		if v == nil {
@@ -6612,6 +6939,16 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnMemoryCircuitBr
 	}).(pulumi.IntPtrOutput)
 }
 
+// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) NodeSearchCacheSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSearchCacheSize
+	}).(pulumi.StringPtrOutput)
+}
+
 // Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) OverrideMainResponseVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
@@ -6640,6 +6977,15 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ReindexRemoteWhite
 		}
 		return v.ReindexRemoteWhitelists
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) RemoteStore() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteStore
+	}).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput)
 }
 
 // Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
@@ -7484,6 +7830,208 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLim
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore struct {
+	// The amount of time to wait for the cluster state upload to complete. Defaults to 20s.
+	StateGlobalMetadataUploadTimeout *string `pulumi:"stateGlobalMetadataUploadTimeout"`
+	// The amount of time to wait for the manifest file upload to complete. The manifest file contains the details of each of the files uploaded for a single cluster state, both index metadata files and global metadata files. Defaults to 20s.
+	StateMetadataManifestUploadTimeout *string `pulumi:"stateMetadataManifestUploadTimeout"`
+	// The default value of the translog buffer interval used when performing periodic translog updates. This setting is only effective when the index setting `index.remote_store.translog.buffer_interval` is not present. Defaults to 650ms.
+	TranslogBufferInterval *string `pulumi:"translogBufferInterval"`
+	// Sets the maximum number of open translog files for remote-backed indexes. This limits the total number of translog files per shard. After reaching this limit, the remote store flushes the translog files. Default is 1000. The minimum required is 100. Example: `1000`.
+	TranslogMaxReaders *int `pulumi:"translogMaxReaders"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs and GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs struct {
+	// The amount of time to wait for the cluster state upload to complete. Defaults to 20s.
+	StateGlobalMetadataUploadTimeout pulumi.StringPtrInput `pulumi:"stateGlobalMetadataUploadTimeout"`
+	// The amount of time to wait for the manifest file upload to complete. The manifest file contains the details of each of the files uploaded for a single cluster state, both index metadata files and global metadata files. Defaults to 20s.
+	StateMetadataManifestUploadTimeout pulumi.StringPtrInput `pulumi:"stateMetadataManifestUploadTimeout"`
+	// The default value of the translog buffer interval used when performing periodic translog updates. This setting is only effective when the index setting `index.remote_store.translog.buffer_interval` is not present. Defaults to 650ms.
+	TranslogBufferInterval pulumi.StringPtrInput `pulumi:"translogBufferInterval"`
+	// Sets the maximum number of open translog files for remote-backed indexes. This limits the total number of translog files per shard. After reaching this limit, the remote store flushes the translog files. Default is 1000. The minimum required is 100. Example: `1000`.
+	TranslogMaxReaders pulumi.IntPtrInput `pulumi:"translogMaxReaders"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput).ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs, GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtr and GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrType GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtr(v *GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs) GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore) *GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput)
+}
+
+// The amount of time to wait for the cluster state upload to complete. Defaults to 20s.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput) StateGlobalMetadataUploadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore) *string {
+		return v.StateGlobalMetadataUploadTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of time to wait for the manifest file upload to complete. The manifest file contains the details of each of the files uploaded for a single cluster state, both index metadata files and global metadata files. Defaults to 20s.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput) StateMetadataManifestUploadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore) *string {
+		return v.StateMetadataManifestUploadTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default value of the translog buffer interval used when performing periodic translog updates. This setting is only effective when the index setting `index.remote_store.translog.buffer_interval` is not present. Defaults to 650ms.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput) TranslogBufferInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore) *string {
+		return v.TranslogBufferInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets the maximum number of open translog files for remote-backed indexes. This limits the total number of translog files per shard. After reaching this limit, the remote store flushes the translog files. Default is 1000. The minimum required is 100. Example: `1000`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput) TranslogMaxReaders() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore) *int {
+		return v.TranslogMaxReaders
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore) GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput)
+}
+
+// The amount of time to wait for the cluster state upload to complete. Defaults to 20s.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput) StateGlobalMetadataUploadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StateGlobalMetadataUploadTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of time to wait for the manifest file upload to complete. The manifest file contains the details of each of the files uploaded for a single cluster state, both index metadata files and global metadata files. Defaults to 20s.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput) StateMetadataManifestUploadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StateMetadataManifestUploadTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default value of the translog buffer interval used when performing periodic translog updates. This setting is only effective when the index setting `index.remote_store.translog.buffer_interval` is not present. Defaults to 650ms.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput) TranslogBufferInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TranslogBufferInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets the maximum number of open translog files for remote-backed indexes. This limits the total number of translog files per shard. After reaching this limit, the remote store flushes the translog files. Default is 1000. The minimum required is 100. Example: `1000`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput) TranslogMaxReaders() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStore) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TranslogMaxReaders
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog struct {
 	// Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
 	Level     *string                                                                          `pulumi:"level"`
@@ -8209,6 +8757,206 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) Low(
 		}
 		return &v.Low
 	}).(pulumi.IntPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStore struct {
+	// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+	SegmentPressureBytesLagVarianceFactor *float64 `pulumi:"segmentPressureBytesLagVarianceFactor"`
+	// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+	SegmentPressureConsecutiveFailuresLimit *int `pulumi:"segmentPressureConsecutiveFailuresLimit"`
+	// Enables remote segment backpressure. Default is `true`.
+	SegmentPressureEnabled *bool `pulumi:"segmentPressureEnabled"`
+	// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+	SegmentPressureTimeLagVarianceFactor *float64 `pulumi:"segmentPressureTimeLagVarianceFactor"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs and GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs struct {
+	// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+	SegmentPressureBytesLagVarianceFactor pulumi.Float64PtrInput `pulumi:"segmentPressureBytesLagVarianceFactor"`
+	// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+	SegmentPressureConsecutiveFailuresLimit pulumi.IntPtrInput `pulumi:"segmentPressureConsecutiveFailuresLimit"`
+	// Enables remote segment backpressure. Default is `true`.
+	SegmentPressureEnabled pulumi.BoolPtrInput `pulumi:"segmentPressureEnabled"`
+	// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+	SegmentPressureTimeLagVarianceFactor pulumi.Float64PtrInput `pulumi:"segmentPressureTimeLagVarianceFactor"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput).ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs, GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtr and GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtr(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput)
+}
+
+// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureBytesLagVarianceFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
+		return v.SegmentPressureBytesLagVarianceFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureConsecutiveFailuresLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *int {
+		return v.SegmentPressureConsecutiveFailuresLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enables remote segment backpressure. Default is `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *bool { return v.SegmentPressureEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureTimeLagVarianceFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
+		return v.SegmentPressureTimeLagVarianceFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) GetOpenSearchOpensearchUserConfigOpensearchRemoteStore {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchRemoteStore
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput)
+}
+
+// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureBytesLagVarianceFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentPressureBytesLagVarianceFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureConsecutiveFailuresLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentPressureConsecutiveFailuresLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enables remote segment backpressure. Default is `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentPressureEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureTimeLagVarianceFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentPressureTimeLagVarianceFactor
+	}).(pulumi.Float64PtrOutput)
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure struct {
@@ -12636,14 +13384,14 @@ type GetOrganizationBillingGroupListBillingGroup struct {
 	BillingAddressId string `pulumi:"billingAddressId"`
 	// List of billing contact emails.
 	BillingContactEmails []string `pulumi:"billingContactEmails"`
-	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-	BillingCurrency string `pulumi:"billingCurrency"`
 	// List of billing contact emails.
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// Billing Group Name.
 	BillingGroupName string `pulumi:"billingGroupName"`
+	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+	Currency string `pulumi:"currency"`
 	// Extra billing text.
 	CustomInvoiceText string `pulumi:"customInvoiceText"`
 	// Organization ID.
@@ -12672,14 +13420,14 @@ type GetOrganizationBillingGroupListBillingGroupArgs struct {
 	BillingAddressId pulumi.StringInput `pulumi:"billingAddressId"`
 	// List of billing contact emails.
 	BillingContactEmails pulumi.StringArrayInput `pulumi:"billingContactEmails"`
-	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-	BillingCurrency pulumi.StringInput `pulumi:"billingCurrency"`
 	// List of billing contact emails.
 	BillingEmails pulumi.StringArrayInput `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId pulumi.StringInput `pulumi:"billingGroupId"`
 	// Billing Group Name.
 	BillingGroupName pulumi.StringInput `pulumi:"billingGroupName"`
+	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+	Currency pulumi.StringInput `pulumi:"currency"`
 	// Extra billing text.
 	CustomInvoiceText pulumi.StringInput `pulumi:"customInvoiceText"`
 	// Organization ID.
@@ -12753,11 +13501,6 @@ func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingContactEmails(
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []string { return v.BillingContactEmails }).(pulumi.StringArrayOutput)
 }
 
-// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingCurrency() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingCurrency }).(pulumi.StringOutput)
-}
-
 // List of billing contact emails.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
@@ -12771,6 +13514,11 @@ func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingGroupId() pulu
 // Billing Group Name.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingGroupName }).(pulumi.StringOutput)
+}
+
+// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.Currency }).(pulumi.StringOutput)
 }
 
 // Extra billing text.
@@ -17779,7 +18527,7 @@ func (o GetPgPgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutpu
 }
 
 type GetPgPgUserConfigTimescaledb struct {
-	// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+	// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
 	MaxBackgroundWorkers *int `pulumi:"maxBackgroundWorkers"`
 }
 
@@ -17795,7 +18543,7 @@ type GetPgPgUserConfigTimescaledbInput interface {
 }
 
 type GetPgPgUserConfigTimescaledbArgs struct {
-	// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+	// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
 	MaxBackgroundWorkers pulumi.IntPtrInput `pulumi:"maxBackgroundWorkers"`
 }
 
@@ -17876,7 +18624,7 @@ func (o GetPgPgUserConfigTimescaledbOutput) ToGetPgPgUserConfigTimescaledbPtrOut
 	}).(GetPgPgUserConfigTimescaledbPtrOutput)
 }
 
-// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
 func (o GetPgPgUserConfigTimescaledbOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigTimescaledb) *int { return v.MaxBackgroundWorkers }).(pulumi.IntPtrOutput)
 }
@@ -17905,7 +18653,7 @@ func (o GetPgPgUserConfigTimescaledbPtrOutput) Elem() GetPgPgUserConfigTimescale
 	}).(GetPgPgUserConfigTimescaledbOutput)
 }
 
-// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
 func (o GetPgPgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigTimescaledb) *int {
 		if v == nil {
@@ -31084,6 +31832,10 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigPublicAccessInput)(nil)).Elem(), GetM3DbM3dbUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigPublicAccessPtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesPtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesMappingNamespacesObjectInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs{})
@@ -31150,6 +31902,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{})
@@ -31158,6 +31912,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs{})
@@ -31428,6 +32184,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesPtrOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesMappingNamespacesObjectOutput{})
@@ -31494,6 +32254,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput{})
@@ -31502,6 +32264,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput{})

@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOrganizationVpc
     {
         /// <summary>
-        /// Gets information about an existing VPC in an Aiven organization. 
+        /// Gets information about an existing VPC in an Aiven organization.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -21,7 +21,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationVpcResult>("aiven:index/getOrganizationVpc:getOrganizationVpc", args ?? new GetOrganizationVpcArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an existing VPC in an Aiven organization. 
+        /// Gets information about an existing VPC in an Aiven organization.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationVpcResult>("aiven:index/getOrganizationVpc:getOrganizationVpc", args ?? new GetOrganizationVpcInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an existing VPC in an Aiven organization. 
+        /// Gets information about an existing VPC in an Aiven organization.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.

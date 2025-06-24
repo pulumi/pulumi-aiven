@@ -30,6 +30,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("backupMinute")]
         public Input<int>? BackupMinute { get; set; }
 
+        /// <summary>
+        /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        /// </summary>
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
         [Input("ipFilterObjects")]
         private InputList<Inputs.ClickhouseClickhouseUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 
