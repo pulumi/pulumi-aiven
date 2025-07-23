@@ -51,7 +51,7 @@ class KafkaArgs:
         :param pulumi.Input[builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input['KafkaKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]] kafkas: Kafka server connection details.
-        :param pulumi.Input[builtins.bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+        :param pulumi.Input[builtins.bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
         :param pulumi.Input[builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
@@ -215,7 +215,7 @@ class KafkaArgs:
     @_utilities.deprecated("""Usage of this field is discouraged.""")
     def karapace(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+        Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
         """
         return pulumi.get(self, "karapace")
 
@@ -366,7 +366,7 @@ class _KafkaState:
         :param pulumi.Input[builtins.str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input['KafkaKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]] kafkas: Kafka server connection details.
-        :param pulumi.Input[builtins.bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+        :param pulumi.Input[builtins.bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
         :param pulumi.Input[builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[builtins.str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
@@ -594,7 +594,7 @@ class _KafkaState:
     @_utilities.deprecated("""Usage of this field is discouraged.""")
     def karapace(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+        Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
         """
         return pulumi.get(self, "karapace")
 
@@ -887,7 +887,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[Union['KafkaKafkaUserConfigArgs', 'KafkaKafkaUserConfigArgsDict']] kafka_user_config: Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaKafkaArgs', 'KafkaKafkaArgsDict']]]] kafkas: Kafka server connection details.
-        :param pulumi.Input[builtins.bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+        :param pulumi.Input[builtins.bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
         :param pulumi.Input[builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[builtins.str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
@@ -1082,7 +1082,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input[Union['KafkaKafkaUserConfigArgs', 'KafkaKafkaUserConfigArgsDict']] kafka_user_config: Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaKafkaArgs', 'KafkaKafkaArgsDict']]]] kafkas: Kafka server connection details.
-        :param pulumi.Input[builtins.bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+        :param pulumi.Input[builtins.bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
         :param pulumi.Input[builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[builtins.str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
@@ -1232,7 +1232,7 @@ class Kafka(pulumi.CustomResource):
     @_utilities.deprecated("""Usage of this field is discouraged.""")
     def karapace(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+        Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
         """
         return pulumi.get(self, "karapace")
 

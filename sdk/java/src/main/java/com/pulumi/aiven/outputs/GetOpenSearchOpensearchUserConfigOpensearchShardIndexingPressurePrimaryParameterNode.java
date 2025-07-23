@@ -12,18 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode {
     /**
-     * @return Define the percentage of the node-level memory
-     *                             threshold that acts as a soft indicator for strain on a node.
-     *                             Default is 0.7.
+     * @return Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
      * 
      */
     private @Nullable Double softLimit;
 
     private GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode() {}
     /**
-     * @return Define the percentage of the node-level memory
-     *                             threshold that acts as a soft indicator for strain on a node.
-     *                             Default is 0.7.
+     * @return Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
      * 
      */
     public Optional<Double> softLimit() {

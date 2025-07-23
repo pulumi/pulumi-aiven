@@ -181,7 +181,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaKafkaResult> Kafkas;
         /// <summary>
-        /// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+        /// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
         /// </summary>
         public readonly bool Karapace;
         /// <summary>

@@ -75,6 +75,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
     }
 
     /**
+     * ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    public readonly clickhouseCredentialsUserConfig!: pulumi.Output<outputs.ServiceIntegrationClickhouseCredentialsUserConfig | undefined>;
+    /**
      * ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     public readonly clickhouseKafkaUserConfig!: pulumi.Output<outputs.ServiceIntegrationClickhouseKafkaUserConfig | undefined>;
@@ -180,6 +184,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIntegrationState | undefined;
+            resourceInputs["clickhouseCredentialsUserConfig"] = state ? state.clickhouseCredentialsUserConfig : undefined;
             resourceInputs["clickhouseKafkaUserConfig"] = state ? state.clickhouseKafkaUserConfig : undefined;
             resourceInputs["clickhousePostgresqlUserConfig"] = state ? state.clickhousePostgresqlUserConfig : undefined;
             resourceInputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
@@ -211,6 +216,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            resourceInputs["clickhouseCredentialsUserConfig"] = args ? args.clickhouseCredentialsUserConfig : undefined;
             resourceInputs["clickhouseKafkaUserConfig"] = args ? args.clickhouseKafkaUserConfig : undefined;
             resourceInputs["clickhousePostgresqlUserConfig"] = args ? args.clickhousePostgresqlUserConfig : undefined;
             resourceInputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
@@ -244,6 +250,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServiceIntegration resources.
  */
 export interface ServiceIntegrationState {
+    /**
+     * ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    clickhouseCredentialsUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseCredentialsUserConfig>;
     /**
      * ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
@@ -342,6 +352,10 @@ export interface ServiceIntegrationState {
  * The set of arguments for constructing a ServiceIntegration resource.
  */
 export interface ServiceIntegrationArgs {
+    /**
+     * ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    clickhouseCredentialsUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseCredentialsUserConfig>;
     /**
      * ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */

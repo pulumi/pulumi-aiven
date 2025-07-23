@@ -108,6 +108,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.MySqlMysqlUserConfigMysqlGetArgs>? Mysql { get; set; }
 
         /// <summary>
+        /// MySQL incremental backup configuration
+        /// </summary>
+        [Input("mysqlIncrementalBackup")]
+        public Input<Inputs.MySqlMysqlUserConfigMysqlIncrementalBackupGetArgs>? MysqlIncrementalBackup { get; set; }
+
+        /// <summary>
         /// Enum: `8`, and newer. MySQL major version.
         /// </summary>
         [Input("mysqlVersion")]

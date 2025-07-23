@@ -58,6 +58,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigMysql? Mysql;
         /// <summary>
+        /// MySQL incremental backup configuration
+        /// </summary>
+        public readonly Outputs.MySqlMysqlUserConfigMysqlIncrementalBackup? MysqlIncrementalBackup;
+        /// <summary>
         /// Enum: `8`, and newer. MySQL major version.
         /// </summary>
         public readonly string? MysqlVersion;
@@ -118,6 +122,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.MySqlMysqlUserConfigMysql? mysql,
 
+            Outputs.MySqlMysqlUserConfigMysqlIncrementalBackup? mysqlIncrementalBackup,
+
             string? mysqlVersion,
 
             Outputs.MySqlMysqlUserConfigPrivateAccess? privateAccess,
@@ -147,6 +153,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             Migration = migration;
             Mysql = mysql;
+            MysqlIncrementalBackup = mysqlIncrementalBackup;
             MysqlVersion = mysqlVersion;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;

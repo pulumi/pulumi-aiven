@@ -123,14 +123,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
      * 
      */
     @Import(name="inklessEnable")
     private @Nullable Output<Boolean> inklessEnable;
 
     /**
-     * @return Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+     * @return Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
      * 
      */
     public Optional<Output<Boolean>> inklessEnable() {
@@ -636,7 +636,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param inklessEnable Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+         * @param inklessEnable Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
          * 
          * @return builder
          * 
@@ -647,7 +647,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param inklessEnable Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+         * @param inklessEnable Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
          * 
          * @return builder
          * 

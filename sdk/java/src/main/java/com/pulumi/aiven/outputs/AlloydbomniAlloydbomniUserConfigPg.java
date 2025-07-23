@@ -185,6 +185,11 @@ public final class AlloydbomniAlloydbomniUserConfigPg {
      */
     private @Nullable Integer maxStandbyStreamingDelay;
     /**
+     * @return Maximum number of synchronization workers per subscription. The default is `2`.
+     * 
+     */
+    private @Nullable Integer maxSyncWorkersPerSubscription;
+    /**
      * @return PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
      * 
      */
@@ -495,6 +500,13 @@ public final class AlloydbomniAlloydbomniUserConfigPg {
         return Optional.ofNullable(this.maxStandbyStreamingDelay);
     }
     /**
+     * @return Maximum number of synchronization workers per subscription. The default is `2`.
+     * 
+     */
+    public Optional<Integer> maxSyncWorkersPerSubscription() {
+        return Optional.ofNullable(this.maxSyncWorkersPerSubscription);
+    }
+    /**
      * @return PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
      * 
      */
@@ -636,6 +648,7 @@ public final class AlloydbomniAlloydbomniUserConfigPg {
         private @Nullable Integer maxStackDepth;
         private @Nullable Integer maxStandbyArchiveDelay;
         private @Nullable Integer maxStandbyStreamingDelay;
+        private @Nullable Integer maxSyncWorkersPerSubscription;
         private @Nullable Integer maxWalSenders;
         private @Nullable Integer maxWorkerProcesses;
         private @Nullable String passwordEncryption;
@@ -687,6 +700,7 @@ public final class AlloydbomniAlloydbomniUserConfigPg {
     	      this.maxStackDepth = defaults.maxStackDepth;
     	      this.maxStandbyArchiveDelay = defaults.maxStandbyArchiveDelay;
     	      this.maxStandbyStreamingDelay = defaults.maxStandbyStreamingDelay;
+    	      this.maxSyncWorkersPerSubscription = defaults.maxSyncWorkersPerSubscription;
     	      this.maxWalSenders = defaults.maxWalSenders;
     	      this.maxWorkerProcesses = defaults.maxWorkerProcesses;
     	      this.passwordEncryption = defaults.passwordEncryption;
@@ -908,6 +922,12 @@ public final class AlloydbomniAlloydbomniUserConfigPg {
             return this;
         }
         @CustomType.Setter
+        public Builder maxSyncWorkersPerSubscription(@Nullable Integer maxSyncWorkersPerSubscription) {
+
+            this.maxSyncWorkersPerSubscription = maxSyncWorkersPerSubscription;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxWalSenders(@Nullable Integer maxWalSenders) {
 
             this.maxWalSenders = maxWalSenders;
@@ -1027,6 +1047,7 @@ public final class AlloydbomniAlloydbomniUserConfigPg {
             _resultValue.maxStackDepth = maxStackDepth;
             _resultValue.maxStandbyArchiveDelay = maxStandbyArchiveDelay;
             _resultValue.maxStandbyStreamingDelay = maxStandbyStreamingDelay;
+            _resultValue.maxSyncWorkersPerSubscription = maxSyncWorkersPerSubscription;
             _resultValue.maxWalSenders = maxWalSenders;
             _resultValue.maxWorkerProcesses = maxWorkerProcesses;
             _resultValue.passwordEncryption = passwordEncryption;

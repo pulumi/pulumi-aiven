@@ -76,6 +76,8 @@ import (
 type ServiceIntegration struct {
 	pulumi.CustomResourceState
 
+	// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ClickhouseCredentialsUserConfig ServiceIntegrationClickhouseCredentialsUserConfigPtrOutput `pulumi:"clickhouseCredentialsUserConfig"`
 	// ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseKafkaUserConfig ServiceIntegrationClickhouseKafkaUserConfigPtrOutput `pulumi:"clickhouseKafkaUserConfig"`
 	// ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -160,6 +162,8 @@ func GetServiceIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceIntegration resources.
 type serviceIntegrationState struct {
+	// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ClickhouseCredentialsUserConfig *ServiceIntegrationClickhouseCredentialsUserConfig `pulumi:"clickhouseCredentialsUserConfig"`
 	// ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseKafkaUserConfig *ServiceIntegrationClickhouseKafkaUserConfig `pulumi:"clickhouseKafkaUserConfig"`
 	// ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -209,6 +213,8 @@ type serviceIntegrationState struct {
 }
 
 type ServiceIntegrationState struct {
+	// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ClickhouseCredentialsUserConfig ServiceIntegrationClickhouseCredentialsUserConfigPtrInput
 	// ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseKafkaUserConfig ServiceIntegrationClickhouseKafkaUserConfigPtrInput
 	// ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -262,6 +268,8 @@ func (ServiceIntegrationState) ElementType() reflect.Type {
 }
 
 type serviceIntegrationArgs struct {
+	// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ClickhouseCredentialsUserConfig *ServiceIntegrationClickhouseCredentialsUserConfig `pulumi:"clickhouseCredentialsUserConfig"`
 	// ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseKafkaUserConfig *ServiceIntegrationClickhouseKafkaUserConfig `pulumi:"clickhouseKafkaUserConfig"`
 	// ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -310,6 +318,8 @@ type serviceIntegrationArgs struct {
 
 // The set of arguments for constructing a ServiceIntegration resource.
 type ServiceIntegrationArgs struct {
+	// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ClickhouseCredentialsUserConfig ServiceIntegrationClickhouseCredentialsUserConfigPtrInput
 	// ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseKafkaUserConfig ServiceIntegrationClickhouseKafkaUserConfigPtrInput
 	// ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -441,6 +451,13 @@ func (o ServiceIntegrationOutput) ToServiceIntegrationOutput() ServiceIntegratio
 
 func (o ServiceIntegrationOutput) ToServiceIntegrationOutputWithContext(ctx context.Context) ServiceIntegrationOutput {
 	return o
+}
+
+// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+func (o ServiceIntegrationOutput) ClickhouseCredentialsUserConfig() ServiceIntegrationClickhouseCredentialsUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationClickhouseCredentialsUserConfigPtrOutput {
+		return v.ClickhouseCredentialsUserConfig
+	}).(ServiceIntegrationClickhouseCredentialsUserConfigPtrOutput)
 }
 
 // ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

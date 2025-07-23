@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.ServiceIntegrationArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.ServiceIntegrationState;
+import com.pulumi.aiven.outputs.ServiceIntegrationClickhouseCredentialsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationClickhouseKafkaUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationClickhousePostgresqlUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationDatadogUserConfig;
@@ -100,6 +101,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="aiven:index/serviceIntegration:ServiceIntegration")
 public class ServiceIntegration extends com.pulumi.resources.CustomResource {
+    /**
+     * ClickhouseCredentials user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    @Export(name="clickhouseCredentialsUserConfig", refs={ServiceIntegrationClickhouseCredentialsUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationClickhouseCredentialsUserConfig> clickhouseCredentialsUserConfig;
+
+    /**
+     * @return ClickhouseCredentials user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public Output<Optional<ServiceIntegrationClickhouseCredentialsUserConfig>> clickhouseCredentialsUserConfig() {
+        return Codegen.optional(this.clickhouseCredentialsUserConfig);
+    }
     /**
      * ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 

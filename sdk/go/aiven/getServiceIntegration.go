@@ -65,6 +65,8 @@ type LookupServiceIntegrationArgs struct {
 
 // A collection of values returned by getServiceIntegration.
 type LookupServiceIntegrationResult struct {
+	// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ClickhouseCredentialsUserConfigs []GetServiceIntegrationClickhouseCredentialsUserConfig `pulumi:"clickhouseCredentialsUserConfigs"`
 	// ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseKafkaUserConfigs []GetServiceIntegrationClickhouseKafkaUserConfig `pulumi:"clickhouseKafkaUserConfigs"`
 	// ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -153,6 +155,13 @@ func (o LookupServiceIntegrationResultOutput) ToLookupServiceIntegrationResultOu
 
 func (o LookupServiceIntegrationResultOutput) ToLookupServiceIntegrationResultOutputWithContext(ctx context.Context) LookupServiceIntegrationResultOutput {
 	return o
+}
+
+// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+func (o LookupServiceIntegrationResultOutput) ClickhouseCredentialsUserConfigs() GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationClickhouseCredentialsUserConfig {
+		return v.ClickhouseCredentialsUserConfigs
+	}).(GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput)
 }
 
 // ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

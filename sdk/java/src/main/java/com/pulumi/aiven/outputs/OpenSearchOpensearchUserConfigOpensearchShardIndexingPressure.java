@@ -19,12 +19,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Run shard indexing backpressure in shadow mode or enforced mode.
-     *         In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
-     *         but it doesn’t actually reject any indexing requests.
-     *         In enforced mode (value set as true),
-     *         shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
-     *         Default is false.
+     * @return Run shard indexing backpressure in shadow mode or enforced mode.            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,            but it doesn’t actually reject any indexing requests.            In enforced mode (value set as true),            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.            Default is false.
      * 
      */
     private @Nullable Boolean enforced;
@@ -48,12 +43,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Run shard indexing backpressure in shadow mode or enforced mode.
-     *         In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
-     *         but it doesn’t actually reject any indexing requests.
-     *         In enforced mode (value set as true),
-     *         shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
-     *         Default is false.
+     * @return Run shard indexing backpressure in shadow mode or enforced mode.            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,            but it doesn’t actually reject any indexing requests.            In enforced mode (value set as true),            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.            Default is false.
      * 
      */
     public Optional<Boolean> enforced() {

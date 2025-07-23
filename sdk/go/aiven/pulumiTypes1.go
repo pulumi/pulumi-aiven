@@ -13,6 +13,537 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetM3DbM3dbUserConfigNamespaceOptions struct {
+	// Retention options
+	RetentionOptions GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions `pulumi:"retentionOptions"`
+	// Controls whether M3DB will create snapshot files for this namespace.
+	SnapshotEnabled *bool `pulumi:"snapshotEnabled"`
+	// Controls whether M3DB will include writes to this namespace in the commitlog.
+	WritesToCommitlog *bool `pulumi:"writesToCommitlog"`
+}
+
+// GetM3DbM3dbUserConfigNamespaceOptionsInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsArgs and GetM3DbM3dbUserConfigNamespaceOptionsOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsInput` via:
+//
+//	GetM3DbM3dbUserConfigNamespaceOptionsArgs{...}
+type GetM3DbM3dbUserConfigNamespaceOptionsInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsOutput
+	ToGetM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceOptionsOutput
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsArgs struct {
+	// Retention options
+	RetentionOptions GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput `pulumi:"retentionOptions"`
+	// Controls whether M3DB will create snapshot files for this namespace.
+	SnapshotEnabled pulumi.BoolPtrInput `pulumi:"snapshotEnabled"`
+	// Controls whether M3DB will include writes to this namespace in the commitlog.
+	WritesToCommitlog pulumi.BoolPtrInput `pulumi:"writesToCommitlog"`
+}
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsOutput)
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsOutput).ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigNamespaceOptionsPtrInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsArgs, GetM3DbM3dbUserConfigNamespaceOptionsPtr and GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsPtrInput` via:
+//
+//	        GetM3DbM3dbUserConfigNamespaceOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetM3DbM3dbUserConfigNamespaceOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput
+	ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput
+}
+
+type getM3DbM3dbUserConfigNamespaceOptionsPtrType GetM3DbM3dbUserConfigNamespaceOptionsArgs
+
+func GetM3DbM3dbUserConfigNamespaceOptionsPtr(v *GetM3DbM3dbUserConfigNamespaceOptionsArgs) GetM3DbM3dbUserConfigNamespaceOptionsPtrInput {
+	return (*getM3DbM3dbUserConfigNamespaceOptionsPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigNamespaceOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigNamespaceOptionsPtrType) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigNamespaceOptionsPtrType) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetM3DbM3dbUserConfigNamespaceOptions) *GetM3DbM3dbUserConfigNamespaceOptions {
+		return &v
+	}).(GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput)
+}
+
+// Retention options
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) RetentionOptions() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptions) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		return v.RetentionOptions
+	}).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput)
+}
+
+// Controls whether M3DB will create snapshot files for this namespace.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) SnapshotEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptions) *bool { return v.SnapshotEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Controls whether M3DB will include writes to this namespace in the commitlog.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsOutput) WritesToCommitlog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptions) *bool { return v.WritesToCommitlog }).(pulumi.BoolPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigNamespaceOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) Elem() GetM3DbM3dbUserConfigNamespaceOptionsOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptions) GetM3DbM3dbUserConfigNamespaceOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GetM3DbM3dbUserConfigNamespaceOptions
+		return ret
+	}).(GetM3DbM3dbUserConfigNamespaceOptionsOutput)
+}
+
+// Retention options
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) RetentionOptions() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptions) *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		if v == nil {
+			return nil
+		}
+		return &v.RetentionOptions
+	}).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput)
+}
+
+// Controls whether M3DB will create snapshot files for this namespace.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) SnapshotEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Controls whether M3DB will include writes to this namespace in the commitlog.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput) WritesToCommitlog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WritesToCommitlog
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions struct {
+	// Controls how long we wait before expiring stale data. Example: `5m`.
+	BlockDataExpiryDuration *string `pulumi:"blockDataExpiryDuration"`
+	// Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
+	BlocksizeDuration *string `pulumi:"blocksizeDuration"`
+	// Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
+	BufferFutureDuration *string `pulumi:"bufferFutureDuration"`
+	// Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
+	BufferPastDuration *string `pulumi:"bufferPastDuration"`
+	// Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
+	RetentionPeriodDuration *string `pulumi:"retentionPeriodDuration"`
+}
+
+// GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs and GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput` via:
+//
+//	GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput
+	ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs struct {
+	// Controls how long we wait before expiring stale data. Example: `5m`.
+	BlockDataExpiryDuration pulumi.StringPtrInput `pulumi:"blockDataExpiryDuration"`
+	// Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
+	BlocksizeDuration pulumi.StringPtrInput `pulumi:"blocksizeDuration"`
+	// Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
+	BufferFutureDuration pulumi.StringPtrInput `pulumi:"bufferFutureDuration"`
+	// Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
+	BufferPastDuration pulumi.StringPtrInput `pulumi:"bufferPastDuration"`
+	// Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
+	RetentionPeriodDuration pulumi.StringPtrInput `pulumi:"retentionPeriodDuration"`
+}
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput)
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput).ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs, GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtr and GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput` via:
+//
+//	        GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput
+	ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput
+}
+
+type getM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs
+
+func GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtr(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput {
+	return (*getM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrType) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		return &v
+	}).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput)
+}
+
+// Controls how long we wait before expiring stale data. Example: `5m`.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BlockDataExpiryDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		return v.BlockDataExpiryDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BlocksizeDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string { return v.BlocksizeDuration }).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BufferFutureDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string { return v.BufferFutureDuration }).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) BufferPastDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string { return v.BufferPastDuration }).(pulumi.StringPtrOutput)
+}
+
+// Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput) RetentionPeriodDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		return v.RetentionPeriodDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) ToGetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) Elem() GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions
+		return ret
+	}).(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput)
+}
+
+// Controls how long we wait before expiring stale data. Example: `5m`.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BlockDataExpiryDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlockDataExpiryDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BlocksizeDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlocksizeDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BufferFutureDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BufferFutureDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) BufferPastDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BufferPastDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
+func (o GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput) RetentionPeriodDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionPeriodDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigPrivateAccess struct {
+	// Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	M3coordinator *bool `pulumi:"m3coordinator"`
+}
+
+// GetM3DbM3dbUserConfigPrivateAccessInput is an input type that accepts GetM3DbM3dbUserConfigPrivateAccessArgs and GetM3DbM3dbUserConfigPrivateAccessOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigPrivateAccessInput` via:
+//
+//	GetM3DbM3dbUserConfigPrivateAccessArgs{...}
+type GetM3DbM3dbUserConfigPrivateAccessInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigPrivateAccessOutput() GetM3DbM3dbUserConfigPrivateAccessOutput
+	ToGetM3DbM3dbUserConfigPrivateAccessOutputWithContext(context.Context) GetM3DbM3dbUserConfigPrivateAccessOutput
+}
+
+type GetM3DbM3dbUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	M3coordinator pulumi.BoolPtrInput `pulumi:"m3coordinator"`
+}
+
+func (GetM3DbM3dbUserConfigPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigPrivateAccessArgs) ToGetM3DbM3dbUserConfigPrivateAccessOutput() GetM3DbM3dbUserConfigPrivateAccessOutput {
+	return i.ToGetM3DbM3dbUserConfigPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigPrivateAccessArgs) ToGetM3DbM3dbUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPrivateAccessOutput)
+}
+
+func (i GetM3DbM3dbUserConfigPrivateAccessArgs) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutput() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigPrivateAccessArgs) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPrivateAccessOutput).ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigPrivateAccessPtrInput is an input type that accepts GetM3DbM3dbUserConfigPrivateAccessArgs, GetM3DbM3dbUserConfigPrivateAccessPtr and GetM3DbM3dbUserConfigPrivateAccessPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigPrivateAccessPtrInput` via:
+//
+//	        GetM3DbM3dbUserConfigPrivateAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetM3DbM3dbUserConfigPrivateAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigPrivateAccessPtrOutput() GetM3DbM3dbUserConfigPrivateAccessPtrOutput
+	ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigPrivateAccessPtrOutput
+}
+
+type getM3DbM3dbUserConfigPrivateAccessPtrType GetM3DbM3dbUserConfigPrivateAccessArgs
+
+func GetM3DbM3dbUserConfigPrivateAccessPtr(v *GetM3DbM3dbUserConfigPrivateAccessArgs) GetM3DbM3dbUserConfigPrivateAccessPtrInput {
+	return (*getM3DbM3dbUserConfigPrivateAccessPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigPrivateAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigPrivateAccessPtrType) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutput() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigPrivateAccessPtrType) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigPrivateAccessPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessOutput) ToGetM3DbM3dbUserConfigPrivateAccessOutput() GetM3DbM3dbUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessOutput) ToGetM3DbM3dbUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessOutput) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutput() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessOutput) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetM3DbM3dbUserConfigPrivateAccess) *GetM3DbM3dbUserConfigPrivateAccess {
+		return &v
+	}).(GetM3DbM3dbUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetM3DbM3dbUserConfigPrivateAccessOutput) M3coordinator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigPrivateAccess) *bool { return v.M3coordinator }).(pulumi.BoolPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigPrivateAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigPrivateAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessPtrOutput) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutput() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessPtrOutput) ToGetM3DbM3dbUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigPrivateAccessPtrOutput) Elem() GetM3DbM3dbUserConfigPrivateAccessOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigPrivateAccess) GetM3DbM3dbUserConfigPrivateAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetM3DbM3dbUserConfigPrivateAccess
+		return ret
+	}).(GetM3DbM3dbUserConfigPrivateAccessOutput)
+}
+
+// Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetM3DbM3dbUserConfigPrivateAccessPtrOutput) M3coordinator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.M3coordinator
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetM3DbM3dbUserConfigPublicAccess struct {
 	// Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
 	M3coordinator *bool `pulumi:"m3coordinator"`
@@ -1445,6 +1976,8 @@ type GetMySqlMysqlUserConfig struct {
 	Migration *GetMySqlMysqlUserConfigMigration `pulumi:"migration"`
 	// mysql.conf configuration values
 	Mysql *GetMySqlMysqlUserConfigMysql `pulumi:"mysql"`
+	// MySQL incremental backup configuration
+	MysqlIncrementalBackup *GetMySqlMysqlUserConfigMysqlIncrementalBackup `pulumi:"mysqlIncrementalBackup"`
 	// Enum: `8`, and newer. MySQL major version.
 	MysqlVersion *string `pulumi:"mysqlVersion"`
 	// Allow access to selected service ports from private networks
@@ -1501,6 +2034,8 @@ type GetMySqlMysqlUserConfigArgs struct {
 	Migration GetMySqlMysqlUserConfigMigrationPtrInput `pulumi:"migration"`
 	// mysql.conf configuration values
 	Mysql GetMySqlMysqlUserConfigMysqlPtrInput `pulumi:"mysql"`
+	// MySQL incremental backup configuration
+	MysqlIncrementalBackup GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrInput `pulumi:"mysqlIncrementalBackup"`
 	// Enum: `8`, and newer. MySQL major version.
 	MysqlVersion pulumi.StringPtrInput `pulumi:"mysqlVersion"`
 	// Allow access to selected service ports from private networks
@@ -1627,6 +2162,13 @@ func (o GetMySqlMysqlUserConfigOutput) Migration() GetMySqlMysqlUserConfigMigrat
 // mysql.conf configuration values
 func (o GetMySqlMysqlUserConfigOutput) Mysql() GetMySqlMysqlUserConfigMysqlPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigMysql { return v.Mysql }).(GetMySqlMysqlUserConfigMysqlPtrOutput)
+}
+
+// MySQL incremental backup configuration
+func (o GetMySqlMysqlUserConfigOutput) MysqlIncrementalBackup() GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigMysqlIncrementalBackup {
+		return v.MysqlIncrementalBackup
+	}).(GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput)
 }
 
 // Enum: `8`, and newer. MySQL major version.
@@ -2794,6 +3336,162 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.IntPtrOutput
 		}
 		return v.WaitTimeout
 	}).(pulumi.IntPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigMysqlIncrementalBackup struct {
+	// Enable periodic incremental backups. When enabled, fullBackupWeekSchedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+	Enabled bool `pulumi:"enabled"`
+	// Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.
+	FullBackupWeekSchedule *string `pulumi:"fullBackupWeekSchedule"`
+}
+
+// GetMySqlMysqlUserConfigMysqlIncrementalBackupInput is an input type that accepts GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs and GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigMysqlIncrementalBackupInput` via:
+//
+//	GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs{...}
+type GetMySqlMysqlUserConfigMysqlIncrementalBackupInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigMysqlIncrementalBackupOutput() GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput
+	ToGetMySqlMysqlUserConfigMysqlIncrementalBackupOutputWithContext(context.Context) GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput
+}
+
+type GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs struct {
+	// Enable periodic incremental backups. When enabled, fullBackupWeekSchedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.
+	FullBackupWeekSchedule pulumi.StringPtrInput `pulumi:"fullBackupWeekSchedule"`
+}
+
+func (GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigMysqlIncrementalBackup)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupOutput() GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput {
+	return i.ToGetMySqlMysqlUserConfigMysqlIncrementalBackupOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput)
+}
+
+func (i GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput() GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput).ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutputWithContext(ctx)
+}
+
+// GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrInput is an input type that accepts GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs, GetMySqlMysqlUserConfigMysqlIncrementalBackupPtr and GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrInput` via:
+//
+//	        GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput() GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput
+	ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutputWithContext(context.Context) GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput
+}
+
+type getMySqlMysqlUserConfigMysqlIncrementalBackupPtrType GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs
+
+func GetMySqlMysqlUserConfigMysqlIncrementalBackupPtr(v *GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs) GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrInput {
+	return (*getMySqlMysqlUserConfigMysqlIncrementalBackupPtrType)(v)
+}
+
+func (*getMySqlMysqlUserConfigMysqlIncrementalBackupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigMysqlIncrementalBackup)(nil)).Elem()
+}
+
+func (i *getMySqlMysqlUserConfigMysqlIncrementalBackupPtrType) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput() GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutputWithContext(context.Background())
+}
+
+func (i *getMySqlMysqlUserConfigMysqlIncrementalBackupPtrType) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigMysqlIncrementalBackup)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupOutput() GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput() GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput {
+	return o.ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutputWithContext(context.Background())
+}
+
+func (o GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMySqlMysqlUserConfigMysqlIncrementalBackup) *GetMySqlMysqlUserConfigMysqlIncrementalBackup {
+		return &v
+	}).(GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput)
+}
+
+// Enable periodic incremental backups. When enabled, fullBackupWeekSchedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+func (o GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysqlIncrementalBackup) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.
+func (o GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput) FullBackupWeekSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysqlIncrementalBackup) *string { return v.FullBackupWeekSchedule }).(pulumi.StringPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigMysqlIncrementalBackup)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput() GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput) ToGetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput) Elem() GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysqlIncrementalBackup) GetMySqlMysqlUserConfigMysqlIncrementalBackup {
+		if v != nil {
+			return *v
+		}
+		var ret GetMySqlMysqlUserConfigMysqlIncrementalBackup
+		return ret
+	}).(GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput)
+}
+
+// Enable periodic incremental backups. When enabled, fullBackupWeekSchedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+func (o GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysqlIncrementalBackup) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.
+func (o GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput) FullBackupWeekSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysqlIncrementalBackup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FullBackupWeekSchedule
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetMySqlMysqlUserConfigPrivateAccess struct {
@@ -10871,12 +11569,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) PressureTime
 type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure struct {
 	// Enable or disable shard indexing backpressure. Default is false.
 	Enabled *bool `pulumi:"enabled"`
-	// Run shard indexing backpressure in shadow mode or enforced mode.
-	//             In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
-	//             but it doesn’t actually reject any indexing requests.
-	//             In enforced mode (value set as true),
-	//             shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
-	//             Default is false.
+	// Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
 	Enforced *bool `pulumi:"enforced"`
 	// Operating factor
 	OperatingFactor *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor `pulumi:"operatingFactor"`
@@ -10898,12 +11591,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureInput inter
 type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs struct {
 	// Enable or disable shard indexing backpressure. Default is false.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Run shard indexing backpressure in shadow mode or enforced mode.
-	//             In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
-	//             but it doesn’t actually reject any indexing requests.
-	//             In enforced mode (value set as true),
-	//             shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
-	//             Default is false.
+	// Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
 	Enforced pulumi.BoolPtrInput `pulumi:"enforced"`
 	// Operating factor
 	OperatingFactor GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrInput `pulumi:"operatingFactor"`
@@ -10993,13 +11681,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput) 
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Run shard indexing backpressure in shadow mode or enforced mode.
-//
-//	In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
-//	but it doesn’t actually reject any indexing requests.
-//	In enforced mode (value set as true),
-//	shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
-//	Default is false.
+// Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput) Enforced() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *bool { return v.Enforced }).(pulumi.BoolPtrOutput)
 }
@@ -11052,13 +11734,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Run shard indexing backpressure in shadow mode or enforced mode.
-//
-//	In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
-//	but it doesn’t actually reject any indexing requests.
-//	In enforced mode (value set as true),
-//	shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
-//	Default is false.
+// Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput) Enforced() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *bool {
 		if v == nil {
@@ -11089,20 +11765,11 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutpu
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor struct {
-	// Specify the lower occupancy limit of the allocated quota of memory for the shard.
-	//                     If the total memory usage of a shard is below this limit,
-	//                     shard indexing backpressure decreases the current allocated memory for that shard.
-	//                     Default is 0.75.
+	// Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
 	Lower *float64 `pulumi:"lower"`
-	// Specify the optimal occupancy of the allocated quota of memory for the shard.
-	//                     If the total memory usage of a shard is at this level,
-	//                     shard indexing backpressure doesn’t change the current allocated memory for that shard.
-	//                     Default is 0.85.
+	// Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
 	Optimal *float64 `pulumi:"optimal"`
-	// Specify the upper occupancy limit of the allocated quota of memory for the shard.
-	//                     If the total memory usage of a shard is above this limit,
-	//                     shard indexing backpressure increases the current allocated memory for that shard.
-	//                     Default is 0.95.
+	// Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
 	Upper *float64 `pulumi:"upper"`
 }
 
@@ -11118,20 +11785,11 @@ type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFa
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs struct {
-	// Specify the lower occupancy limit of the allocated quota of memory for the shard.
-	//                     If the total memory usage of a shard is below this limit,
-	//                     shard indexing backpressure decreases the current allocated memory for that shard.
-	//                     Default is 0.75.
+	// Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
 	Lower pulumi.Float64PtrInput `pulumi:"lower"`
-	// Specify the optimal occupancy of the allocated quota of memory for the shard.
-	//                     If the total memory usage of a shard is at this level,
-	//                     shard indexing backpressure doesn’t change the current allocated memory for that shard.
-	//                     Default is 0.85.
+	// Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
 	Optimal pulumi.Float64PtrInput `pulumi:"optimal"`
-	// Specify the upper occupancy limit of the allocated quota of memory for the shard.
-	//                     If the total memory usage of a shard is above this limit,
-	//                     shard indexing backpressure increases the current allocated memory for that shard.
-	//                     Default is 0.95.
+	// Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
 	Upper pulumi.Float64PtrInput `pulumi:"upper"`
 }
 
@@ -11212,33 +11870,21 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatin
 	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput)
 }
 
-// Specify the lower occupancy limit of the allocated quota of memory for the shard.
-//
-//	If the total memory usage of a shard is below this limit,
-//	shard indexing backpressure decreases the current allocated memory for that shard.
-//	Default is 0.75.
+// Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput) Lower() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
 		return v.Lower
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Specify the optimal occupancy of the allocated quota of memory for the shard.
-//
-//	If the total memory usage of a shard is at this level,
-//	shard indexing backpressure doesn’t change the current allocated memory for that shard.
-//	Default is 0.85.
+// Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput) Optimal() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
 		return v.Optimal
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Specify the upper occupancy limit of the allocated quota of memory for the shard.
-//
-//	If the total memory usage of a shard is above this limit,
-//	shard indexing backpressure increases the current allocated memory for that shard.
-//	Default is 0.95.
+// Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput) Upper() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
 		return v.Upper
@@ -11269,11 +11915,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatin
 	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput)
 }
 
-// Specify the lower occupancy limit of the allocated quota of memory for the shard.
-//
-//	If the total memory usage of a shard is below this limit,
-//	shard indexing backpressure decreases the current allocated memory for that shard.
-//	Default is 0.75.
+// Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput) Lower() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
 		if v == nil {
@@ -11283,11 +11925,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatin
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Specify the optimal occupancy of the allocated quota of memory for the shard.
-//
-//	If the total memory usage of a shard is at this level,
-//	shard indexing backpressure doesn’t change the current allocated memory for that shard.
-//	Default is 0.85.
+// Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput) Optimal() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
 		if v == nil {
@@ -11297,11 +11935,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatin
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Specify the upper occupancy limit of the allocated quota of memory for the shard.
-//
-//	If the total memory usage of a shard is above this limit,
-//	shard indexing backpressure increases the current allocated memory for that shard.
-//	Default is 0.95.
+// Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput) Upper() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
 		if v == nil {
@@ -11464,9 +12098,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryP
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode struct {
-	// Define the percentage of the node-level memory
-	//                             threshold that acts as a soft indicator for strain on a node.
-	//                             Default is 0.7.
+	// Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
 	SoftLimit *float64 `pulumi:"softLimit"`
 }
 
@@ -11482,9 +12114,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryPara
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs struct {
-	// Define the percentage of the node-level memory
-	//                             threshold that acts as a soft indicator for strain on a node.
-	//                             Default is 0.7.
+	// Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
 	SoftLimit pulumi.Float64PtrInput `pulumi:"softLimit"`
 }
 
@@ -11565,10 +12195,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryP
 	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput)
 }
 
-// Define the percentage of the node-level memory
-//
-//	threshold that acts as a soft indicator for strain on a node.
-//	Default is 0.7.
+// Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput) SoftLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode) *float64 {
 		return v.SoftLimit
@@ -11599,10 +12226,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryP
 	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput)
 }
 
-// Define the percentage of the node-level memory
-//
-//	threshold that acts as a soft indicator for strain on a node.
-//	Default is 0.7.
+// Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput) SoftLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode) *float64 {
 		if v == nil {
@@ -11613,9 +12237,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryP
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard struct {
-	// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
-	//                             Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
-	//                             Default is 0.001.
+	// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
 	MinLimit *float64 `pulumi:"minLimit"`
 }
 
@@ -11631,9 +12253,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryPara
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs struct {
-	// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
-	//                             Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
-	//                             Default is 0.001.
+	// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
 	MinLimit pulumi.Float64PtrInput `pulumi:"minLimit"`
 }
 
@@ -11714,10 +12334,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryP
 	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput)
 }
 
-// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
-//
-//	Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
-//	Default is 0.001.
+// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput) MinLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard) *float64 {
 		return v.MinLimit
@@ -11748,10 +12365,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryP
 	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput)
 }
 
-// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
-//
-//	Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
-//	Default is 0.001.
+// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
 func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput) MinLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard) *float64 {
 		if v == nil {
@@ -15896,6 +16510,8 @@ type GetPgPgUserConfigPg struct {
 	LogMinDurationStatement *int `pulumi:"logMinDurationStatement"`
 	// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
 	LogTempFiles *int `pulumi:"logTempFiles"`
+	// PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+	MaxConnections *int `pulumi:"maxConnections"`
 	// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 	MaxFilesPerProcess *int `pulumi:"maxFilesPerProcess"`
 	// PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
@@ -15920,6 +16536,8 @@ type GetPgPgUserConfigPg struct {
 	MaxStandbyArchiveDelay *int `pulumi:"maxStandbyArchiveDelay"`
 	// Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
 	MaxStandbyStreamingDelay *int `pulumi:"maxStandbyStreamingDelay"`
+	// Maximum number of synchronization workers per subscription. The default is `2`.
+	MaxSyncWorkersPerSubscription *int `pulumi:"maxSyncWorkersPerSubscription"`
 	// PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
 	MaxWalSenders *int `pulumi:"maxWalSenders"`
 	// Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
@@ -16010,6 +16628,8 @@ type GetPgPgUserConfigPgArgs struct {
 	LogMinDurationStatement pulumi.IntPtrInput `pulumi:"logMinDurationStatement"`
 	// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
 	LogTempFiles pulumi.IntPtrInput `pulumi:"logTempFiles"`
+	// PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
 	// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 	MaxFilesPerProcess pulumi.IntPtrInput `pulumi:"maxFilesPerProcess"`
 	// PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
@@ -16034,6 +16654,8 @@ type GetPgPgUserConfigPgArgs struct {
 	MaxStandbyArchiveDelay pulumi.IntPtrInput `pulumi:"maxStandbyArchiveDelay"`
 	// Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
 	MaxStandbyStreamingDelay pulumi.IntPtrInput `pulumi:"maxStandbyStreamingDelay"`
+	// Maximum number of synchronization workers per subscription. The default is `2`.
+	MaxSyncWorkersPerSubscription pulumi.IntPtrInput `pulumi:"maxSyncWorkersPerSubscription"`
 	// PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
 	MaxWalSenders pulumi.IntPtrInput `pulumi:"maxWalSenders"`
 	// Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
@@ -16255,6 +16877,11 @@ func (o GetPgPgUserConfigPgOutput) LogTempFiles() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.LogTempFiles }).(pulumi.IntPtrOutput)
 }
 
+// PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+func (o GetPgPgUserConfigPgOutput) MaxConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
+}
+
 // PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxFilesPerProcess() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxFilesPerProcess }).(pulumi.IntPtrOutput)
@@ -16313,6 +16940,11 @@ func (o GetPgPgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutput 
 // Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
 func (o GetPgPgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxStandbyStreamingDelay }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of synchronization workers per subscription. The default is `2`.
+func (o GetPgPgUserConfigPgOutput) MaxSyncWorkersPerSubscription() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxSyncWorkersPerSubscription }).(pulumi.IntPtrOutput)
 }
 
 // PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
@@ -16639,6 +17271,16 @@ func (o GetPgPgUserConfigPgPtrOutput) LogTempFiles() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+func (o GetPgPgUserConfigPgPtrOutput) MaxConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConnections
+	}).(pulumi.IntPtrOutput)
+}
+
 // PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxFilesPerProcess() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
@@ -16756,6 +17398,16 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOu
 			return nil
 		}
 		return v.MaxStandbyStreamingDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of synchronization workers per subscription. The default is `2`.
+func (o GetPgPgUserConfigPgPtrOutput) MaxSyncWorkersPerSubscription() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSyncWorkersPerSubscription
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -17175,7 +17827,7 @@ func (o GetPgPgUserConfigPgQualstatsPtrOutput) TrackPgCatalog() pulumi.BoolPtrOu
 type GetPgPgUserConfigPgaudit struct {
 	// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
 	FeatureEnabled *bool `pulumi:"featureEnabled"`
-	// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+	// Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
 	LogCatalog *bool `pulumi:"logCatalog"`
 	// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
 	LogClient *bool `pulumi:"logClient"`
@@ -17191,7 +17843,7 @@ type GetPgPgUserConfigPgaudit struct {
 	LogParameterMaxSize *int `pulumi:"logParameterMaxSize"`
 	// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
 	LogRelation *bool `pulumi:"logRelation"`
-	// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+	// Log Rows. Default: `false`.
 	LogRows *bool `pulumi:"logRows"`
 	// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
 	LogStatement *bool `pulumi:"logStatement"`
@@ -17217,7 +17869,7 @@ type GetPgPgUserConfigPgauditInput interface {
 type GetPgPgUserConfigPgauditArgs struct {
 	// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
 	FeatureEnabled pulumi.BoolPtrInput `pulumi:"featureEnabled"`
-	// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+	// Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
 	LogCatalog pulumi.BoolPtrInput `pulumi:"logCatalog"`
 	// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
 	LogClient pulumi.BoolPtrInput `pulumi:"logClient"`
@@ -17233,7 +17885,7 @@ type GetPgPgUserConfigPgauditArgs struct {
 	LogParameterMaxSize pulumi.IntPtrInput `pulumi:"logParameterMaxSize"`
 	// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
 	LogRelation pulumi.BoolPtrInput `pulumi:"logRelation"`
-	// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+	// Log Rows. Default: `false`.
 	LogRows pulumi.BoolPtrInput `pulumi:"logRows"`
 	// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
 	LogStatement pulumi.BoolPtrInput `pulumi:"logStatement"`
@@ -17327,7 +17979,7 @@ func (o GetPgPgUserConfigPgauditOutput) FeatureEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.FeatureEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+// Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
 func (o GetPgPgUserConfigPgauditOutput) LogCatalog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogCatalog }).(pulumi.BoolPtrOutput)
 }
@@ -17367,7 +18019,7 @@ func (o GetPgPgUserConfigPgauditOutput) LogRelation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogRelation }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+// Log Rows. Default: `false`.
 func (o GetPgPgUserConfigPgauditOutput) LogRows() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogRows }).(pulumi.BoolPtrOutput)
 }
@@ -17426,7 +18078,7 @@ func (o GetPgPgUserConfigPgauditPtrOutput) FeatureEnabled() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+// Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogCatalog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
 		if v == nil {
@@ -17506,7 +18158,7 @@ func (o GetPgPgUserConfigPgauditPtrOutput) LogRelation() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+// Log Rows. Default: `false`.
 func (o GetPgPgUserConfigPgauditPtrOutput) LogRows() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
 		if v == nil {
@@ -20880,6 +21532,202 @@ func (o GetRedisTechEmailArrayOutput) Index(i pulumi.IntInput) GetRedisTechEmail
 	}).(GetRedisTechEmailOutput)
 }
 
+type GetServiceIntegrationClickhouseCredentialsUserConfig struct {
+	// Grants to assign
+	Grants []GetServiceIntegrationClickhouseCredentialsUserConfigGrant `pulumi:"grants"`
+}
+
+// GetServiceIntegrationClickhouseCredentialsUserConfigInput is an input type that accepts GetServiceIntegrationClickhouseCredentialsUserConfigArgs and GetServiceIntegrationClickhouseCredentialsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseCredentialsUserConfigInput` via:
+//
+//	GetServiceIntegrationClickhouseCredentialsUserConfigArgs{...}
+type GetServiceIntegrationClickhouseCredentialsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseCredentialsUserConfigOutput() GetServiceIntegrationClickhouseCredentialsUserConfigOutput
+	ToGetServiceIntegrationClickhouseCredentialsUserConfigOutputWithContext(context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigOutput
+}
+
+type GetServiceIntegrationClickhouseCredentialsUserConfigArgs struct {
+	// Grants to assign
+	Grants GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayInput `pulumi:"grants"`
+}
+
+func (GetServiceIntegrationClickhouseCredentialsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseCredentialsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseCredentialsUserConfigArgs) ToGetServiceIntegrationClickhouseCredentialsUserConfigOutput() GetServiceIntegrationClickhouseCredentialsUserConfigOutput {
+	return i.ToGetServiceIntegrationClickhouseCredentialsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseCredentialsUserConfigArgs) ToGetServiceIntegrationClickhouseCredentialsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseCredentialsUserConfigOutput)
+}
+
+// GetServiceIntegrationClickhouseCredentialsUserConfigArrayInput is an input type that accepts GetServiceIntegrationClickhouseCredentialsUserConfigArray and GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseCredentialsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationClickhouseCredentialsUserConfigArray{ GetServiceIntegrationClickhouseCredentialsUserConfigArgs{...} }
+type GetServiceIntegrationClickhouseCredentialsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput() GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput
+	ToGetServiceIntegrationClickhouseCredentialsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationClickhouseCredentialsUserConfigArray []GetServiceIntegrationClickhouseCredentialsUserConfigInput
+
+func (GetServiceIntegrationClickhouseCredentialsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseCredentialsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseCredentialsUserConfigArray) ToGetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput() GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationClickhouseCredentialsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseCredentialsUserConfigArray) ToGetServiceIntegrationClickhouseCredentialsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationClickhouseCredentialsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseCredentialsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseCredentialsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigOutput) ToGetServiceIntegrationClickhouseCredentialsUserConfigOutput() GetServiceIntegrationClickhouseCredentialsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigOutput) ToGetServiceIntegrationClickhouseCredentialsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigOutput {
+	return o
+}
+
+// Grants to assign
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigOutput) Grants() GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseCredentialsUserConfig) []GetServiceIntegrationClickhouseCredentialsUserConfigGrant {
+		return v.Grants
+	}).(GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput)
+}
+
+type GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseCredentialsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput) ToGetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput() GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput) ToGetServiceIntegrationClickhouseCredentialsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationClickhouseCredentialsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationClickhouseCredentialsUserConfig {
+		return vs[0].([]GetServiceIntegrationClickhouseCredentialsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationClickhouseCredentialsUserConfigOutput)
+}
+
+type GetServiceIntegrationClickhouseCredentialsUserConfigGrant struct {
+	// User or role to assign the grant to. Example: `alice`.
+	User string `pulumi:"user"`
+}
+
+// GetServiceIntegrationClickhouseCredentialsUserConfigGrantInput is an input type that accepts GetServiceIntegrationClickhouseCredentialsUserConfigGrantArgs and GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseCredentialsUserConfigGrantInput` via:
+//
+//	GetServiceIntegrationClickhouseCredentialsUserConfigGrantArgs{...}
+type GetServiceIntegrationClickhouseCredentialsUserConfigGrantInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput() GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput
+	ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantOutputWithContext(context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput
+}
+
+type GetServiceIntegrationClickhouseCredentialsUserConfigGrantArgs struct {
+	// User or role to assign the grant to. Example: `alice`.
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (GetServiceIntegrationClickhouseCredentialsUserConfigGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseCredentialsUserConfigGrant)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseCredentialsUserConfigGrantArgs) ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput() GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput {
+	return i.ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseCredentialsUserConfigGrantArgs) ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput)
+}
+
+// GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayInput is an input type that accepts GetServiceIntegrationClickhouseCredentialsUserConfigGrantArray and GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayInput` via:
+//
+//	GetServiceIntegrationClickhouseCredentialsUserConfigGrantArray{ GetServiceIntegrationClickhouseCredentialsUserConfigGrantArgs{...} }
+type GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput() GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput
+	ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutputWithContext(context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput
+}
+
+type GetServiceIntegrationClickhouseCredentialsUserConfigGrantArray []GetServiceIntegrationClickhouseCredentialsUserConfigGrantInput
+
+func (GetServiceIntegrationClickhouseCredentialsUserConfigGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseCredentialsUserConfigGrant)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseCredentialsUserConfigGrantArray) ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput() GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput {
+	return i.ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseCredentialsUserConfigGrantArray) ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput)
+}
+
+type GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseCredentialsUserConfigGrant)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput) ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput() GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput) ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput {
+	return o
+}
+
+// User or role to assign the grant to. Example: `alice`.
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseCredentialsUserConfigGrant) string { return v.User }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseCredentialsUserConfigGrant)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput) ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput() GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput) ToGetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationClickhouseCredentialsUserConfigGrant {
+		return vs[0].([]GetServiceIntegrationClickhouseCredentialsUserConfigGrant)[vs[1].(int)]
+	}).(GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput)
+}
+
 type GetServiceIntegrationClickhouseKafkaUserConfig struct {
 	// Tables to create
 	Tables []GetServiceIntegrationClickhouseKafkaUserConfigTable `pulumi:"tables"`
@@ -24208,7 +25056,7 @@ type GetServiceIntegrationEndpointExternalPostgresql struct {
 	// ...
 	// -----END PRIVATE KEY-----`.
 	SslClientKey *string `pulumi:"sslClientKey"`
-	// Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+	// Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
 	SslMode *string `pulumi:"sslMode"`
 	// SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
 	// ...
@@ -24248,7 +25096,7 @@ type GetServiceIntegrationEndpointExternalPostgresqlArgs struct {
 	// ...
 	// -----END PRIVATE KEY-----`.
 	SslClientKey pulumi.StringPtrInput `pulumi:"sslClientKey"`
-	// Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+	// Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
 	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
 	// SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
 	// ...
@@ -24345,7 +25193,7 @@ func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) SslClientKey() pu
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) *string { return v.SslClientKey }).(pulumi.StringPtrOutput)
 }
 
-// Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+// Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
 func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) SslMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) *string { return v.SslMode }).(pulumi.StringPtrOutput)
 }
@@ -31832,6 +32680,12 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsPtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigPrivateAccessInput)(nil)).Elem(), GetM3DbM3dbUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigPrivateAccessPtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigPrivateAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigPublicAccessInput)(nil)).Elem(), GetM3DbM3dbUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigPublicAccessPtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigRulesInput)(nil)).Elem(), GetM3DbM3dbUserConfigRulesArgs{})
@@ -31862,6 +32716,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMigrationPtrInput)(nil)).Elem(), GetMySqlMysqlUserConfigMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMysqlInput)(nil)).Elem(), GetMySqlMysqlUserConfigMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMysqlPtrInput)(nil)).Elem(), GetMySqlMysqlUserConfigMysqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMysqlIncrementalBackupInput)(nil)).Elem(), GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrInput)(nil)).Elem(), GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigPrivateAccessInput)(nil)).Elem(), GetMySqlMysqlUserConfigPrivateAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigPrivateAccessPtrInput)(nil)).Elem(), GetMySqlMysqlUserConfigPrivateAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigPrivatelinkAccessInput)(nil)).Elem(), GetMySqlMysqlUserConfigPrivatelinkAccessArgs{})
@@ -32036,6 +32892,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisTagArrayInput)(nil)).Elem(), GetRedisTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisTechEmailInput)(nil)).Elem(), GetRedisTechEmailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisTechEmailArrayInput)(nil)).Elem(), GetRedisTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseCredentialsUserConfigInput)(nil)).Elem(), GetServiceIntegrationClickhouseCredentialsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseCredentialsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationClickhouseCredentialsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseCredentialsUserConfigGrantInput)(nil)).Elem(), GetServiceIntegrationClickhouseCredentialsUserConfigGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayInput)(nil)).Elem(), GetServiceIntegrationClickhouseCredentialsUserConfigGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigTableArgs{})
@@ -32184,6 +33044,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPrivateAccessOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigRulesOutput{})
@@ -32214,6 +33080,8 @@ func init() {
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMigrationPtrOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMysqlOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMysqlPtrOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMysqlIncrementalBackupOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMysqlIncrementalBackupPtrOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigPrivateAccessOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigPrivateAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigPrivatelinkAccessOutput{})
@@ -32388,6 +33256,10 @@ func init() {
 	pulumi.RegisterOutputType(GetRedisTagArrayOutput{})
 	pulumi.RegisterOutputType(GetRedisTechEmailOutput{})
 	pulumi.RegisterOutputType(GetRedisTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseCredentialsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseCredentialsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseCredentialsUserConfigGrantOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigTableOutput{})

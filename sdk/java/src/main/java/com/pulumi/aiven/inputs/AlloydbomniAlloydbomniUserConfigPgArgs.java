@@ -529,6 +529,21 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
     }
 
     /**
+     * Maximum number of synchronization workers per subscription. The default is `2`.
+     * 
+     */
+    @Import(name="maxSyncWorkersPerSubscription")
+    private @Nullable Output<Integer> maxSyncWorkersPerSubscription;
+
+    /**
+     * @return Maximum number of synchronization workers per subscription. The default is `2`.
+     * 
+     */
+    public Optional<Output<Integer>> maxSyncWorkersPerSubscription() {
+        return Optional.ofNullable(this.maxSyncWorkersPerSubscription);
+    }
+
+    /**
      * PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
      * 
      */
@@ -775,6 +790,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         this.maxStackDepth = $.maxStackDepth;
         this.maxStandbyArchiveDelay = $.maxStandbyArchiveDelay;
         this.maxStandbyStreamingDelay = $.maxStandbyStreamingDelay;
+        this.maxSyncWorkersPerSubscription = $.maxSyncWorkersPerSubscription;
         this.maxWalSenders = $.maxWalSenders;
         this.maxWorkerProcesses = $.maxWorkerProcesses;
         this.passwordEncryption = $.passwordEncryption;
@@ -1521,6 +1537,27 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
          */
         public Builder maxStandbyStreamingDelay(Integer maxStandbyStreamingDelay) {
             return maxStandbyStreamingDelay(Output.of(maxStandbyStreamingDelay));
+        }
+
+        /**
+         * @param maxSyncWorkersPerSubscription Maximum number of synchronization workers per subscription. The default is `2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSyncWorkersPerSubscription(@Nullable Output<Integer> maxSyncWorkersPerSubscription) {
+            $.maxSyncWorkersPerSubscription = maxSyncWorkersPerSubscription;
+            return this;
+        }
+
+        /**
+         * @param maxSyncWorkersPerSubscription Maximum number of synchronization workers per subscription. The default is `2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSyncWorkersPerSubscription(Integer maxSyncWorkersPerSubscription) {
+            return maxSyncWorkersPerSubscription(Output.of(maxSyncWorkersPerSubscription));
         }
 
         /**

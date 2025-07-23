@@ -16,18 +16,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
     public static final OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs Empty = new OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs();
 
     /**
-     * Define the percentage of the node-level memory
-     *                         threshold that acts as a soft indicator for strain on a node.
-     *                         Default is 0.7.
+     * Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.
      * 
      */
     @Import(name="softLimit")
     private @Nullable Output<Double> softLimit;
 
     /**
-     * @return Define the percentage of the node-level memory
-     *                         threshold that acts as a soft indicator for strain on a node.
-     *                         Default is 0.7.
+     * @return Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.
      * 
      */
     public Optional<Output<Double>> softLimit() {
@@ -59,9 +55,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
         }
 
         /**
-         * @param softLimit Define the percentage of the node-level memory
-         *                         threshold that acts as a soft indicator for strain on a node.
-         *                         Default is 0.7.
+         * @param softLimit Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.
          * 
          * @return builder
          * 
@@ -72,9 +66,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
         }
 
         /**
-         * @param softLimit Define the percentage of the node-level memory
-         *                         threshold that acts as a soft indicator for strain on a node.
-         *                         Default is 0.7.
+         * @param softLimit Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.
          * 
          * @return builder
          * 

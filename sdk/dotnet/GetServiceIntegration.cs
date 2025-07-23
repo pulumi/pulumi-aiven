@@ -163,6 +163,10 @@ namespace Pulumi.Aiven
     public sealed class GetServiceIntegrationResult
     {
         /// <summary>
+        /// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationClickhouseCredentialsUserConfigResult> ClickhouseCredentialsUserConfigs;
+        /// <summary>
         /// ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationClickhouseKafkaUserConfigResult> ClickhouseKafkaUserConfigs;
@@ -261,6 +265,8 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetServiceIntegrationResult(
+            ImmutableArray<Outputs.GetServiceIntegrationClickhouseCredentialsUserConfigResult> clickhouseCredentialsUserConfigs,
+
             ImmutableArray<Outputs.GetServiceIntegrationClickhouseKafkaUserConfigResult> clickhouseKafkaUserConfigs,
 
             ImmutableArray<Outputs.GetServiceIntegrationClickhousePostgresqlUserConfigResult> clickhousePostgresqlUserConfigs,
@@ -309,6 +315,7 @@ namespace Pulumi.Aiven
 
             string sourceServiceProject)
         {
+            ClickhouseCredentialsUserConfigs = clickhouseCredentialsUserConfigs;
             ClickhouseKafkaUserConfigs = clickhouseKafkaUserConfigs;
             ClickhousePostgresqlUserConfigs = clickhousePostgresqlUserConfigs;
             DatadogUserConfigs = datadogUserConfigs;

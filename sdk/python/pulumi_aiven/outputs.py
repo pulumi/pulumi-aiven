@@ -194,6 +194,7 @@ __all__ = [
     'MySqlMysqlUserConfigIpFilterObject',
     'MySqlMysqlUserConfigMigration',
     'MySqlMysqlUserConfigMysql',
+    'MySqlMysqlUserConfigMysqlIncrementalBackup',
     'MySqlMysqlUserConfigPrivateAccess',
     'MySqlMysqlUserConfigPrivatelinkAccess',
     'MySqlMysqlUserConfigPublicAccess',
@@ -280,6 +281,8 @@ __all__ = [
     'RedisServiceIntegration',
     'RedisTag',
     'RedisTechEmail',
+    'ServiceIntegrationClickhouseCredentialsUserConfig',
+    'ServiceIntegrationClickhouseCredentialsUserConfigGrant',
     'ServiceIntegrationClickhouseKafkaUserConfig',
     'ServiceIntegrationClickhouseKafkaUserConfigTable',
     'ServiceIntegrationClickhouseKafkaUserConfigTableColumn',
@@ -532,6 +535,7 @@ __all__ = [
     'GetMySqlMysqlUserConfigIpFilterObjectResult',
     'GetMySqlMysqlUserConfigMigrationResult',
     'GetMySqlMysqlUserConfigMysqlResult',
+    'GetMySqlMysqlUserConfigMysqlIncrementalBackupResult',
     'GetMySqlMysqlUserConfigPrivateAccessResult',
     'GetMySqlMysqlUserConfigPrivatelinkAccessResult',
     'GetMySqlMysqlUserConfigPublicAccessResult',
@@ -619,6 +623,8 @@ __all__ = [
     'GetRedisServiceIntegrationResult',
     'GetRedisTagResult',
     'GetRedisTechEmailResult',
+    'GetServiceIntegrationClickhouseCredentialsUserConfigResult',
+    'GetServiceIntegrationClickhouseCredentialsUserConfigGrantResult',
     'GetServiceIntegrationClickhouseKafkaUserConfigResult',
     'GetServiceIntegrationClickhouseKafkaUserConfigTableResult',
     'GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult',
@@ -1626,6 +1632,8 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
             suggest = "max_standby_archive_delay"
         elif key == "maxStandbyStreamingDelay":
             suggest = "max_standby_streaming_delay"
+        elif key == "maxSyncWorkersPerSubscription":
+            suggest = "max_sync_workers_per_subscription"
         elif key == "maxWalSenders":
             suggest = "max_wal_senders"
         elif key == "maxWorkerProcesses":
@@ -1699,6 +1707,7 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
                  max_stack_depth: Optional[builtins.int] = None,
                  max_standby_archive_delay: Optional[builtins.int] = None,
                  max_standby_streaming_delay: Optional[builtins.int] = None,
+                 max_sync_workers_per_subscription: Optional[builtins.int] = None,
                  max_wal_senders: Optional[builtins.int] = None,
                  max_worker_processes: Optional[builtins.int] = None,
                  password_encryption: Optional[builtins.str] = None,
@@ -1748,6 +1757,7 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
         :param builtins.int max_stack_depth: Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
         :param builtins.int max_standby_archive_delay: Max standby archive delay in milliseconds. The default is `30000` (upstream default).
         :param builtins.int max_standby_streaming_delay: Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
+        :param builtins.int max_sync_workers_per_subscription: Maximum number of synchronization workers per subscription. The default is `2`.
         :param builtins.int max_wal_senders: PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
         :param builtins.int max_worker_processes: Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
         :param builtins.str password_encryption: Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
@@ -1831,6 +1841,8 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
             pulumi.set(__self__, "max_standby_archive_delay", max_standby_archive_delay)
         if max_standby_streaming_delay is not None:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
+        if max_sync_workers_per_subscription is not None:
+            pulumi.set(__self__, "max_sync_workers_per_subscription", max_sync_workers_per_subscription)
         if max_wal_senders is not None:
             pulumi.set(__self__, "max_wal_senders", max_wal_senders)
         if max_worker_processes is not None:
@@ -2133,6 +2145,14 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
         return pulumi.get(self, "max_standby_streaming_delay")
 
     @property
+    @pulumi.getter(name="maxSyncWorkersPerSubscription")
+    def max_sync_workers_per_subscription(self) -> Optional[builtins.int]:
+        """
+        Maximum number of synchronization workers per subscription. The default is `2`.
+        """
+        return pulumi.get(self, "max_sync_workers_per_subscription")
+
+    @property
     @pulumi.getter(name="maxWalSenders")
     def max_wal_senders(self) -> Optional[builtins.int]:
         """
@@ -2303,17 +2323,17 @@ class AlloydbomniAlloydbomniUserConfigPgaudit(dict):
                  role: Optional[builtins.str] = None):
         """
         :param builtins.bool feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-        :param builtins.bool log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        :param builtins.bool log_catalog: Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
         :param builtins.bool log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
         :param builtins.str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-        :param builtins.int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-        :param builtins.bool log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        :param builtins.int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+        :param builtins.bool log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
         :param builtins.bool log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-        :param builtins.int log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
-        :param builtins.bool log_relation: Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-        :param builtins.bool log_rows: Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        :param builtins.int log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.
+        :param builtins.bool log_relation: Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        :param builtins.bool log_rows: Log Rows. Default: `false`.
         :param builtins.bool log_statement: Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-        :param builtins.bool log_statement_once: Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        :param builtins.bool log_statement_once: Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
         :param Sequence[builtins.str] logs: Specifies which classes of statements will be logged by session audit logging.
         :param builtins.str role: Specifies the master role to use for object audit logging.
         """
@@ -2358,7 +2378,7 @@ class AlloydbomniAlloydbomniUserConfigPgaudit(dict):
     @pulumi.getter(name="logCatalog")
     def log_catalog(self) -> Optional[builtins.bool]:
         """
-        Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
         """
         return pulumi.get(self, "log_catalog")
 
@@ -2382,7 +2402,7 @@ class AlloydbomniAlloydbomniUserConfigPgaudit(dict):
     @pulumi.getter(name="logMaxStringLength")
     def log_max_string_length(self) -> Optional[builtins.int]:
         """
-        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+        Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
         """
         return pulumi.get(self, "log_max_string_length")
 
@@ -2390,7 +2410,7 @@ class AlloydbomniAlloydbomniUserConfigPgaudit(dict):
     @pulumi.getter(name="logNestedStatements")
     def log_nested_statements(self) -> Optional[builtins.bool]:
         """
-        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
         """
         return pulumi.get(self, "log_nested_statements")
 
@@ -2406,7 +2426,7 @@ class AlloydbomniAlloydbomniUserConfigPgaudit(dict):
     @pulumi.getter(name="logParameterMaxSize")
     def log_parameter_max_size(self) -> Optional[builtins.int]:
         """
-        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+        Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.
         """
         return pulumi.get(self, "log_parameter_max_size")
 
@@ -2414,7 +2434,7 @@ class AlloydbomniAlloydbomniUserConfigPgaudit(dict):
     @pulumi.getter(name="logRelation")
     def log_relation(self) -> Optional[builtins.bool]:
         """
-        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         """
         return pulumi.get(self, "log_relation")
 
@@ -2422,7 +2442,7 @@ class AlloydbomniAlloydbomniUserConfigPgaudit(dict):
     @pulumi.getter(name="logRows")
     def log_rows(self) -> Optional[builtins.bool]:
         """
-        Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        Log Rows. Default: `false`.
         """
         return pulumi.get(self, "log_rows")
 
@@ -2438,7 +2458,7 @@ class AlloydbomniAlloydbomniUserConfigPgaudit(dict):
     @pulumi.getter(name="logStatementOnce")
     def log_statement_once(self) -> Optional[builtins.bool]:
         """
-        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
         """
         return pulumi.get(self, "log_statement_once")
 
@@ -13030,13 +13050,42 @@ class KafkaKafkaUserConfigSchemaRegistryConfig(dict):
 
 @pulumi.output_type
 class KafkaKafkaUserConfigSingleZone(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigSingleZone. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigSingleZone.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigSingleZone.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 availability_zone: Optional[builtins.str] = None,
                  enabled: Optional[builtins.bool] = None):
         """
+        :param builtins.str availability_zone: The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
         :param builtins.bool enabled: Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
         """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[builtins.str]:
+        """
+        The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+        """
+        return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
@@ -13918,7 +13967,7 @@ class KafkaTopicConfig(dict):
         :param builtins.str flush_messages: This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param builtins.str flush_ms: This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param builtins.str index_interval_bytes: This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
-        :param builtins.bool inkless_enable: Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+        :param builtins.bool inkless_enable: Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
         :param builtins.str local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         :param builtins.str local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
         :param builtins.str max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
@@ -14057,7 +14106,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="inklessEnable")
     def inkless_enable(self) -> Optional[builtins.bool]:
         """
-        Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+        Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
         """
         return pulumi.get(self, "inkless_enable")
 
@@ -16309,6 +16358,8 @@ class MySqlMysqlUserConfig(dict):
             suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
+        elif key == "mysqlIncrementalBackup":
+            suggest = "mysql_incremental_backup"
         elif key == "mysqlVersion":
             suggest = "mysql_version"
         elif key == "privateAccess":
@@ -16351,6 +16402,7 @@ class MySqlMysqlUserConfig(dict):
                  ip_filters: Optional[Sequence[builtins.str]] = None,
                  migration: Optional['outputs.MySqlMysqlUserConfigMigration'] = None,
                  mysql: Optional['outputs.MySqlMysqlUserConfigMysql'] = None,
+                 mysql_incremental_backup: Optional['outputs.MySqlMysqlUserConfigMysqlIncrementalBackup'] = None,
                  mysql_version: Optional[builtins.str] = None,
                  private_access: Optional['outputs.MySqlMysqlUserConfigPrivateAccess'] = None,
                  privatelink_access: Optional['outputs.MySqlMysqlUserConfigPrivatelinkAccess'] = None,
@@ -16372,6 +16424,7 @@ class MySqlMysqlUserConfig(dict):
         :param Sequence[builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param 'MySqlMysqlUserConfigMigrationArgs' migration: Migrate data from existing server
         :param 'MySqlMysqlUserConfigMysqlArgs' mysql: mysql.conf configuration values
+        :param 'MySqlMysqlUserConfigMysqlIncrementalBackupArgs' mysql_incremental_backup: MySQL incremental backup configuration
         :param builtins.str mysql_version: Enum: `8`, and newer. MySQL major version.
         :param 'MySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'MySqlMysqlUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
@@ -16404,6 +16457,8 @@ class MySqlMysqlUserConfig(dict):
             pulumi.set(__self__, "migration", migration)
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysql_incremental_backup is not None:
+            pulumi.set(__self__, "mysql_incremental_backup", mysql_incremental_backup)
         if mysql_version is not None:
             pulumi.set(__self__, "mysql_version", mysql_version)
         if private_access is not None:
@@ -16511,6 +16566,14 @@ class MySqlMysqlUserConfig(dict):
         mysql.conf configuration values
         """
         return pulumi.get(self, "mysql")
+
+    @property
+    @pulumi.getter(name="mysqlIncrementalBackup")
+    def mysql_incremental_backup(self) -> Optional['outputs.MySqlMysqlUserConfigMysqlIncrementalBackup']:
+        """
+        MySQL incremental backup configuration
+        """
+        return pulumi.get(self, "mysql_incremental_backup")
 
     @property
     @pulumi.getter(name="mysqlVersion")
@@ -17201,6 +17264,53 @@ class MySqlMysqlUserConfigMysql(dict):
         The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
         """
         return pulumi.get(self, "wait_timeout")
+
+
+@pulumi.output_type
+class MySqlMysqlUserConfigMysqlIncrementalBackup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullBackupWeekSchedule":
+            suggest = "full_backup_week_schedule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MySqlMysqlUserConfigMysqlIncrementalBackup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MySqlMysqlUserConfigMysqlIncrementalBackup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MySqlMysqlUserConfigMysqlIncrementalBackup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: builtins.bool,
+                 full_backup_week_schedule: Optional[builtins.str] = None):
+        """
+        :param builtins.bool enabled: Enable periodic incremental backups. When enabled, full*backup*week_schedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+        :param builtins.str full_backup_week_schedule: Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if full_backup_week_schedule is not None:
+            pulumi.set(__self__, "full_backup_week_schedule", full_backup_week_schedule)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> builtins.bool:
+        """
+        Enable periodic incremental backups. When enabled, full*backup*week_schedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="fullBackupWeekSchedule")
+    def full_backup_week_schedule(self) -> Optional[builtins.str]:
+        """
+        Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.
+        """
+        return pulumi.get(self, "full_backup_week_schedule")
 
 
 @pulumi.output_type
@@ -21032,12 +21142,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure(dict):
                  primary_parameter: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter'] = None):
         """
         :param builtins.bool enabled: Enable or disable shard indexing backpressure. Default is false.
-        :param builtins.bool enforced: Run shard indexing backpressure in shadow mode or enforced mode.
-                       In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
-                       but it doesn’t actually reject any indexing requests.
-                       In enforced mode (value set as true),
-                       shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
-                       Default is false.
+        :param builtins.bool enforced: Run shard indexing backpressure in shadow mode or enforced mode.            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,            but it doesn’t actually reject any indexing requests.            In enforced mode (value set as true),            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.            Default is false.
         :param 'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs' operating_factor: Operating factor
         :param 'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs' primary_parameter: Primary parameter
         """
@@ -21062,12 +21167,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure(dict):
     @pulumi.getter
     def enforced(self) -> Optional[builtins.bool]:
         """
-        Run shard indexing backpressure in shadow mode or enforced mode.
-                In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
-                but it doesn’t actually reject any indexing requests.
-                In enforced mode (value set as true),
-                shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
-                Default is false.
+        Run shard indexing backpressure in shadow mode or enforced mode.            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,            but it doesn’t actually reject any indexing requests.            In enforced mode (value set as true),            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.            Default is false.
         """
         return pulumi.get(self, "enforced")
 
@@ -21095,18 +21195,9 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFact
                  optimal: Optional[builtins.float] = None,
                  upper: Optional[builtins.float] = None):
         """
-        :param builtins.float lower: Specify the lower occupancy limit of the allocated quota of memory for the shard.
-                               If the total memory usage of a shard is below this limit,
-                               shard indexing backpressure decreases the current allocated memory for that shard.
-                               Default is 0.75.
-        :param builtins.float optimal: Specify the optimal occupancy of the allocated quota of memory for the shard.
-                               If the total memory usage of a shard is at this level,
-                               shard indexing backpressure doesn’t change the current allocated memory for that shard.
-                               Default is 0.85.
-        :param builtins.float upper: Specify the upper occupancy limit of the allocated quota of memory for the shard.
-                               If the total memory usage of a shard is above this limit,
-                               shard indexing backpressure increases the current allocated memory for that shard.
-                               Default is 0.95.
+        :param builtins.float lower: Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.
+        :param builtins.float optimal: Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.
+        :param builtins.float upper: Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.
         """
         if lower is not None:
             pulumi.set(__self__, "lower", lower)
@@ -21119,10 +21210,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFact
     @pulumi.getter
     def lower(self) -> Optional[builtins.float]:
         """
-        Specify the lower occupancy limit of the allocated quota of memory for the shard.
-                        If the total memory usage of a shard is below this limit,
-                        shard indexing backpressure decreases the current allocated memory for that shard.
-                        Default is 0.75.
+        Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.
         """
         return pulumi.get(self, "lower")
 
@@ -21130,10 +21218,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFact
     @pulumi.getter
     def optimal(self) -> Optional[builtins.float]:
         """
-        Specify the optimal occupancy of the allocated quota of memory for the shard.
-                        If the total memory usage of a shard is at this level,
-                        shard indexing backpressure doesn’t change the current allocated memory for that shard.
-                        Default is 0.85.
+        Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.
         """
         return pulumi.get(self, "optimal")
 
@@ -21141,10 +21226,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFact
     @pulumi.getter
     def upper(self) -> Optional[builtins.float]:
         """
-        Specify the upper occupancy limit of the allocated quota of memory for the shard.
-                        If the total memory usage of a shard is above this limit,
-                        shard indexing backpressure increases the current allocated memory for that shard.
-                        Default is 0.95.
+        Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.
         """
         return pulumi.get(self, "upper")
 
@@ -21192,9 +21274,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParame
     def __init__(__self__, *,
                  soft_limit: Optional[builtins.float] = None):
         """
-        :param builtins.float soft_limit: Define the percentage of the node-level memory
-                                       threshold that acts as a soft indicator for strain on a node.
-                                       Default is 0.7.
+        :param builtins.float soft_limit: Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.
         """
         if soft_limit is not None:
             pulumi.set(__self__, "soft_limit", soft_limit)
@@ -21203,9 +21283,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParame
     @pulumi.getter(name="softLimit")
     def soft_limit(self) -> Optional[builtins.float]:
         """
-        Define the percentage of the node-level memory
-                                threshold that acts as a soft indicator for strain on a node.
-                                Default is 0.7.
+        Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.
         """
         return pulumi.get(self, "soft_limit")
 
@@ -21232,9 +21310,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParame
     def __init__(__self__, *,
                  min_limit: Optional[builtins.float] = None):
         """
-        :param builtins.float min_limit: Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
-                                       Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
-                                       Default is 0.001.
+        :param builtins.float min_limit: Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.
         """
         if min_limit is not None:
             pulumi.set(__self__, "min_limit", min_limit)
@@ -21243,9 +21319,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParame
     @pulumi.getter(name="minLimit")
     def min_limit(self) -> Optional[builtins.float]:
         """
-        Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
-                                Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
-                                Default is 0.001.
+        Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.
         """
         return pulumi.get(self, "min_limit")
 
@@ -22041,7 +22115,7 @@ class OrganizationPermissionPermission(dict):
                  create_time: Optional[builtins.str] = None,
                  update_time: Optional[builtins.str] = None):
         """
-        :param Sequence[builtins.str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        :param Sequence[builtins.str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         :param builtins.str principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param builtins.str principal_type: The type of principal. The possible values are `user` and `user_group`.
         :param builtins.str create_time: Time created.
@@ -22059,7 +22133,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter
     def permissions(self) -> Sequence[builtins.str]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -23388,6 +23462,8 @@ class PgPgUserConfigPg(dict):
             suggest = "log_min_duration_statement"
         elif key == "logTempFiles":
             suggest = "log_temp_files"
+        elif key == "maxConnections":
+            suggest = "max_connections"
         elif key == "maxFilesPerProcess":
             suggest = "max_files_per_process"
         elif key == "maxLocksPerTransaction":
@@ -23412,6 +23488,8 @@ class PgPgUserConfigPg(dict):
             suggest = "max_standby_archive_delay"
         elif key == "maxStandbyStreamingDelay":
             suggest = "max_standby_streaming_delay"
+        elif key == "maxSyncWorkersPerSubscription":
+            suggest = "max_sync_workers_per_subscription"
         elif key == "maxWalSenders":
             suggest = "max_wal_senders"
         elif key == "maxWorkerProcesses":
@@ -23477,6 +23555,7 @@ class PgPgUserConfigPg(dict):
                  log_line_prefix: Optional[builtins.str] = None,
                  log_min_duration_statement: Optional[builtins.int] = None,
                  log_temp_files: Optional[builtins.int] = None,
+                 max_connections: Optional[builtins.int] = None,
                  max_files_per_process: Optional[builtins.int] = None,
                  max_locks_per_transaction: Optional[builtins.int] = None,
                  max_logical_replication_workers: Optional[builtins.int] = None,
@@ -23489,6 +23568,7 @@ class PgPgUserConfigPg(dict):
                  max_stack_depth: Optional[builtins.int] = None,
                  max_standby_archive_delay: Optional[builtins.int] = None,
                  max_standby_streaming_delay: Optional[builtins.int] = None,
+                 max_sync_workers_per_subscription: Optional[builtins.int] = None,
                  max_wal_senders: Optional[builtins.int] = None,
                  max_worker_processes: Optional[builtins.int] = None,
                  password_encryption: Optional[builtins.str] = None,
@@ -23528,6 +23608,7 @@ class PgPgUserConfigPg(dict):
         :param builtins.str log_line_prefix: Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         :param builtins.int log_min_duration_statement: Log statements that take more than this number of milliseconds to run, -1 disables.
         :param builtins.int log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+        :param builtins.int max_connections: PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
         :param builtins.int max_files_per_process: PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
         :param builtins.int max_locks_per_transaction: PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
         :param builtins.int max_logical_replication_workers: PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
@@ -23540,6 +23621,7 @@ class PgPgUserConfigPg(dict):
         :param builtins.int max_stack_depth: Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
         :param builtins.int max_standby_archive_delay: Max standby archive delay in milliseconds. The default is `30000` (upstream default).
         :param builtins.int max_standby_streaming_delay: Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
+        :param builtins.int max_sync_workers_per_subscription: Maximum number of synchronization workers per subscription. The default is `2`.
         :param builtins.int max_wal_senders: PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
         :param builtins.int max_worker_processes: Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
         :param builtins.str password_encryption: Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
@@ -23601,6 +23683,8 @@ class PgPgUserConfigPg(dict):
             pulumi.set(__self__, "log_min_duration_statement", log_min_duration_statement)
         if log_temp_files is not None:
             pulumi.set(__self__, "log_temp_files", log_temp_files)
+        if max_connections is not None:
+            pulumi.set(__self__, "max_connections", max_connections)
         if max_files_per_process is not None:
             pulumi.set(__self__, "max_files_per_process", max_files_per_process)
         if max_locks_per_transaction is not None:
@@ -23625,6 +23709,8 @@ class PgPgUserConfigPg(dict):
             pulumi.set(__self__, "max_standby_archive_delay", max_standby_archive_delay)
         if max_standby_streaming_delay is not None:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
+        if max_sync_workers_per_subscription is not None:
+            pulumi.set(__self__, "max_sync_workers_per_subscription", max_sync_workers_per_subscription)
         if max_wal_senders is not None:
             pulumi.set(__self__, "max_wal_senders", max_wal_senders)
         if max_worker_processes is not None:
@@ -23835,6 +23921,14 @@ class PgPgUserConfigPg(dict):
         return pulumi.get(self, "log_temp_files")
 
     @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> Optional[builtins.int]:
+        """
+        PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @property
     @pulumi.getter(name="maxFilesPerProcess")
     def max_files_per_process(self) -> Optional[builtins.int]:
         """
@@ -23929,6 +24023,14 @@ class PgPgUserConfigPg(dict):
         Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
         """
         return pulumi.get(self, "max_standby_streaming_delay")
+
+    @property
+    @pulumi.getter(name="maxSyncWorkersPerSubscription")
+    def max_sync_workers_per_subscription(self) -> Optional[builtins.int]:
+        """
+        Maximum number of synchronization workers per subscription. The default is `2`.
+        """
+        return pulumi.get(self, "max_sync_workers_per_subscription")
 
     @property
     @pulumi.getter(name="maxWalSenders")
@@ -24212,17 +24314,17 @@ class PgPgUserConfigPgaudit(dict):
                  role: Optional[builtins.str] = None):
         """
         :param builtins.bool feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-        :param builtins.bool log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        :param builtins.bool log_catalog: Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
         :param builtins.bool log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
         :param builtins.str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-        :param builtins.int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-        :param builtins.bool log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        :param builtins.int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+        :param builtins.bool log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
         :param builtins.bool log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-        :param builtins.int log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
-        :param builtins.bool log_relation: Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-        :param builtins.bool log_rows: Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        :param builtins.int log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.
+        :param builtins.bool log_relation: Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        :param builtins.bool log_rows: Log Rows. Default: `false`.
         :param builtins.bool log_statement: Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-        :param builtins.bool log_statement_once: Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        :param builtins.bool log_statement_once: Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
         :param Sequence[builtins.str] logs: Specifies which classes of statements will be logged by session audit logging.
         :param builtins.str role: Specifies the master role to use for object audit logging.
         """
@@ -24267,7 +24369,7 @@ class PgPgUserConfigPgaudit(dict):
     @pulumi.getter(name="logCatalog")
     def log_catalog(self) -> Optional[builtins.bool]:
         """
-        Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
         """
         return pulumi.get(self, "log_catalog")
 
@@ -24291,7 +24393,7 @@ class PgPgUserConfigPgaudit(dict):
     @pulumi.getter(name="logMaxStringLength")
     def log_max_string_length(self) -> Optional[builtins.int]:
         """
-        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+        Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
         """
         return pulumi.get(self, "log_max_string_length")
 
@@ -24299,7 +24401,7 @@ class PgPgUserConfigPgaudit(dict):
     @pulumi.getter(name="logNestedStatements")
     def log_nested_statements(self) -> Optional[builtins.bool]:
         """
-        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
         """
         return pulumi.get(self, "log_nested_statements")
 
@@ -24315,7 +24417,7 @@ class PgPgUserConfigPgaudit(dict):
     @pulumi.getter(name="logParameterMaxSize")
     def log_parameter_max_size(self) -> Optional[builtins.int]:
         """
-        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+        Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.
         """
         return pulumi.get(self, "log_parameter_max_size")
 
@@ -24323,7 +24425,7 @@ class PgPgUserConfigPgaudit(dict):
     @pulumi.getter(name="logRelation")
     def log_relation(self) -> Optional[builtins.bool]:
         """
-        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         """
         return pulumi.get(self, "log_relation")
 
@@ -24331,7 +24433,7 @@ class PgPgUserConfigPgaudit(dict):
     @pulumi.getter(name="logRows")
     def log_rows(self) -> Optional[builtins.bool]:
         """
-        Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        Log Rows. Default: `false`.
         """
         return pulumi.get(self, "log_rows")
 
@@ -24347,7 +24449,7 @@ class PgPgUserConfigPgaudit(dict):
     @pulumi.getter(name="logStatementOnce")
     def log_statement_once(self) -> Optional[builtins.bool]:
         """
-        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
         """
         return pulumi.get(self, "log_statement_once")
 
@@ -25812,6 +25914,43 @@ class RedisTechEmail(dict):
         An email address to contact for technical issues
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class ServiceIntegrationClickhouseCredentialsUserConfig(dict):
+    def __init__(__self__, *,
+                 grants: Optional[Sequence['outputs.ServiceIntegrationClickhouseCredentialsUserConfigGrant']] = None):
+        """
+        :param Sequence['ServiceIntegrationClickhouseCredentialsUserConfigGrantArgs'] grants: Grants to assign
+        """
+        if grants is not None:
+            pulumi.set(__self__, "grants", grants)
+
+    @property
+    @pulumi.getter
+    def grants(self) -> Optional[Sequence['outputs.ServiceIntegrationClickhouseCredentialsUserConfigGrant']]:
+        """
+        Grants to assign
+        """
+        return pulumi.get(self, "grants")
+
+
+@pulumi.output_type
+class ServiceIntegrationClickhouseCredentialsUserConfigGrant(dict):
+    def __init__(__self__, *,
+                 user: builtins.str):
+        """
+        :param builtins.str user: User or role to assign the grant to. Example: `alice`.
+        """
+        pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def user(self) -> builtins.str:
+        """
+        User or role to assign the grant to. Example: `alice`.
+        """
+        return pulumi.get(self, "user")
 
 
 @pulumi.output_type
@@ -32078,6 +32217,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgResult(dict):
                  max_stack_depth: Optional[builtins.int] = None,
                  max_standby_archive_delay: Optional[builtins.int] = None,
                  max_standby_streaming_delay: Optional[builtins.int] = None,
+                 max_sync_workers_per_subscription: Optional[builtins.int] = None,
                  max_wal_senders: Optional[builtins.int] = None,
                  max_worker_processes: Optional[builtins.int] = None,
                  password_encryption: Optional[builtins.str] = None,
@@ -32127,6 +32267,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgResult(dict):
         :param builtins.int max_stack_depth: Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
         :param builtins.int max_standby_archive_delay: Max standby archive delay in milliseconds. The default is `30000` (upstream default).
         :param builtins.int max_standby_streaming_delay: Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
+        :param builtins.int max_sync_workers_per_subscription: Maximum number of synchronization workers per subscription. The default is `2`.
         :param builtins.int max_wal_senders: PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
         :param builtins.int max_worker_processes: Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
         :param builtins.str password_encryption: Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
@@ -32210,6 +32351,8 @@ class GetAlloydbomniAlloydbomniUserConfigPgResult(dict):
             pulumi.set(__self__, "max_standby_archive_delay", max_standby_archive_delay)
         if max_standby_streaming_delay is not None:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
+        if max_sync_workers_per_subscription is not None:
+            pulumi.set(__self__, "max_sync_workers_per_subscription", max_sync_workers_per_subscription)
         if max_wal_senders is not None:
             pulumi.set(__self__, "max_wal_senders", max_wal_senders)
         if max_worker_processes is not None:
@@ -32512,6 +32655,14 @@ class GetAlloydbomniAlloydbomniUserConfigPgResult(dict):
         return pulumi.get(self, "max_standby_streaming_delay")
 
     @property
+    @pulumi.getter(name="maxSyncWorkersPerSubscription")
+    def max_sync_workers_per_subscription(self) -> Optional[builtins.int]:
+        """
+        Maximum number of synchronization workers per subscription. The default is `2`.
+        """
+        return pulumi.get(self, "max_sync_workers_per_subscription")
+
+    @property
     @pulumi.getter(name="maxWalSenders")
     def max_wal_senders(self) -> Optional[builtins.int]:
         """
@@ -32643,7 +32794,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgauditResult(dict):
                  role: Optional[builtins.str] = None):
         """
         :param builtins.bool feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-        :param builtins.bool log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        :param builtins.bool log_catalog: Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         :param builtins.bool log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
         :param builtins.str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
         :param builtins.int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
@@ -32651,7 +32802,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgauditResult(dict):
         :param builtins.bool log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
         :param builtins.int log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
         :param builtins.bool log_relation: Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-        :param builtins.bool log_rows: Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        :param builtins.bool log_rows: Log Rows. Default: `false`.
         :param builtins.bool log_statement: Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
         :param builtins.bool log_statement_once: Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
         :param Sequence[builtins.str] logs: Specifies which classes of statements will be logged by session audit logging.
@@ -32698,7 +32849,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgauditResult(dict):
     @pulumi.getter(name="logCatalog")
     def log_catalog(self) -> Optional[builtins.bool]:
         """
-        Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         """
         return pulumi.get(self, "log_catalog")
 
@@ -32762,7 +32913,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgauditResult(dict):
     @pulumi.getter(name="logRows")
     def log_rows(self) -> Optional[builtins.bool]:
         """
-        Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        Log Rows. Default: `false`.
         """
         return pulumi.get(self, "log_rows")
 
@@ -41130,12 +41281,24 @@ class GetKafkaKafkaUserConfigSchemaRegistryConfigResult(dict):
 @pulumi.output_type
 class GetKafkaKafkaUserConfigSingleZoneResult(dict):
     def __init__(__self__, *,
+                 availability_zone: Optional[builtins.str] = None,
                  enabled: Optional[builtins.bool] = None):
         """
+        :param builtins.str availability_zone: The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
         :param builtins.bool enabled: Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
         """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[builtins.str]:
+        """
+        The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+        """
+        return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
@@ -41793,7 +41956,7 @@ class GetKafkaTopicConfigResult(dict):
         :param builtins.str flush_messages: This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param builtins.str flush_ms: This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param builtins.str index_interval_bytes: This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
-        :param builtins.bool inkless_enable: Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+        :param builtins.bool inkless_enable: Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
         :param builtins.str local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         :param builtins.str local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
         :param builtins.str max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
@@ -41932,7 +42095,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="inklessEnable")
     def inkless_enable(self) -> Optional[builtins.bool]:
         """
-        Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+        Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
         """
         return pulumi.get(self, "inkless_enable")
 
@@ -43746,6 +43909,7 @@ class GetMySqlMysqlUserConfigResult(dict):
                  ip_filters: Optional[Sequence[builtins.str]] = None,
                  migration: Optional['outputs.GetMySqlMysqlUserConfigMigrationResult'] = None,
                  mysql: Optional['outputs.GetMySqlMysqlUserConfigMysqlResult'] = None,
+                 mysql_incremental_backup: Optional['outputs.GetMySqlMysqlUserConfigMysqlIncrementalBackupResult'] = None,
                  mysql_version: Optional[builtins.str] = None,
                  private_access: Optional['outputs.GetMySqlMysqlUserConfigPrivateAccessResult'] = None,
                  privatelink_access: Optional['outputs.GetMySqlMysqlUserConfigPrivatelinkAccessResult'] = None,
@@ -43767,6 +43931,7 @@ class GetMySqlMysqlUserConfigResult(dict):
         :param Sequence[builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param 'GetMySqlMysqlUserConfigMigrationArgs' migration: Migrate data from existing server
         :param 'GetMySqlMysqlUserConfigMysqlArgs' mysql: mysql.conf configuration values
+        :param 'GetMySqlMysqlUserConfigMysqlIncrementalBackupArgs' mysql_incremental_backup: MySQL incremental backup configuration
         :param builtins.str mysql_version: Enum: `8`, and newer. MySQL major version.
         :param 'GetMySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetMySqlMysqlUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
@@ -43799,6 +43964,8 @@ class GetMySqlMysqlUserConfigResult(dict):
             pulumi.set(__self__, "migration", migration)
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysql_incremental_backup is not None:
+            pulumi.set(__self__, "mysql_incremental_backup", mysql_incremental_backup)
         if mysql_version is not None:
             pulumi.set(__self__, "mysql_version", mysql_version)
         if private_access is not None:
@@ -43906,6 +44073,14 @@ class GetMySqlMysqlUserConfigResult(dict):
         mysql.conf configuration values
         """
         return pulumi.get(self, "mysql")
+
+    @property
+    @pulumi.getter(name="mysqlIncrementalBackup")
+    def mysql_incremental_backup(self) -> Optional['outputs.GetMySqlMysqlUserConfigMysqlIncrementalBackupResult']:
+        """
+        MySQL incremental backup configuration
+        """
+        return pulumi.get(self, "mysql_incremental_backup")
 
     @property
     @pulumi.getter(name="mysqlVersion")
@@ -44500,6 +44675,36 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
         """
         return pulumi.get(self, "wait_timeout")
+
+
+@pulumi.output_type
+class GetMySqlMysqlUserConfigMysqlIncrementalBackupResult(dict):
+    def __init__(__self__, *,
+                 enabled: builtins.bool,
+                 full_backup_week_schedule: Optional[builtins.str] = None):
+        """
+        :param builtins.bool enabled: Enable periodic incremental backups. When enabled, full_backup_week_schedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+        :param builtins.str full_backup_week_schedule: Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if full_backup_week_schedule is not None:
+            pulumi.set(__self__, "full_backup_week_schedule", full_backup_week_schedule)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> builtins.bool:
+        """
+        Enable periodic incremental backups. When enabled, full_backup_week_schedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="fullBackupWeekSchedule")
+    def full_backup_week_schedule(self) -> Optional[builtins.str]:
+        """
+        Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.
+        """
+        return pulumi.get(self, "full_backup_week_schedule")
 
 
 @pulumi.output_type
@@ -47552,12 +47757,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureResult(dic
                  primary_parameter: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterResult'] = None):
         """
         :param builtins.bool enabled: Enable or disable shard indexing backpressure. Default is false.
-        :param builtins.bool enforced: Run shard indexing backpressure in shadow mode or enforced mode.
-                           In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
-                           but it doesn’t actually reject any indexing requests.
-                           In enforced mode (value set as true),
-                           shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
-                           Default is false.
+        :param builtins.bool enforced: Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
         :param 'GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs' operating_factor: Operating factor
         :param 'GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs' primary_parameter: Primary parameter
         """
@@ -47582,12 +47782,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureResult(dic
     @pulumi.getter
     def enforced(self) -> Optional[builtins.bool]:
         """
-        Run shard indexing backpressure in shadow mode or enforced mode.
-                    In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
-                    but it doesn’t actually reject any indexing requests.
-                    In enforced mode (value set as true),
-                    shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
-                    Default is false.
+        Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
         """
         return pulumi.get(self, "enforced")
 
@@ -47615,18 +47810,9 @@ class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingF
                  optimal: Optional[builtins.float] = None,
                  upper: Optional[builtins.float] = None):
         """
-        :param builtins.float lower: Specify the lower occupancy limit of the allocated quota of memory for the shard.
-                                   If the total memory usage of a shard is below this limit,
-                                   shard indexing backpressure decreases the current allocated memory for that shard.
-                                   Default is 0.75.
-        :param builtins.float optimal: Specify the optimal occupancy of the allocated quota of memory for the shard.
-                                   If the total memory usage of a shard is at this level,
-                                   shard indexing backpressure doesn’t change the current allocated memory for that shard.
-                                   Default is 0.85.
-        :param builtins.float upper: Specify the upper occupancy limit of the allocated quota of memory for the shard.
-                                   If the total memory usage of a shard is above this limit,
-                                   shard indexing backpressure increases the current allocated memory for that shard.
-                                   Default is 0.95.
+        :param builtins.float lower: Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
+        :param builtins.float optimal: Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
+        :param builtins.float upper: Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
         """
         if lower is not None:
             pulumi.set(__self__, "lower", lower)
@@ -47639,10 +47825,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingF
     @pulumi.getter
     def lower(self) -> Optional[builtins.float]:
         """
-        Specify the lower occupancy limit of the allocated quota of memory for the shard.
-                            If the total memory usage of a shard is below this limit,
-                            shard indexing backpressure decreases the current allocated memory for that shard.
-                            Default is 0.75.
+        Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
         """
         return pulumi.get(self, "lower")
 
@@ -47650,10 +47833,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingF
     @pulumi.getter
     def optimal(self) -> Optional[builtins.float]:
         """
-        Specify the optimal occupancy of the allocated quota of memory for the shard.
-                            If the total memory usage of a shard is at this level,
-                            shard indexing backpressure doesn’t change the current allocated memory for that shard.
-                            Default is 0.85.
+        Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
         """
         return pulumi.get(self, "optimal")
 
@@ -47661,10 +47841,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingF
     @pulumi.getter
     def upper(self) -> Optional[builtins.float]:
         """
-        Specify the upper occupancy limit of the allocated quota of memory for the shard.
-                            If the total memory usage of a shard is above this limit,
-                            shard indexing backpressure increases the current allocated memory for that shard.
-                            Default is 0.95.
+        Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
         """
         return pulumi.get(self, "upper")
 
@@ -47695,9 +47872,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryPar
     def __init__(__self__, *,
                  soft_limit: Optional[builtins.float] = None):
         """
-        :param builtins.float soft_limit: Define the percentage of the node-level memory
-                                           threshold that acts as a soft indicator for strain on a node.
-                                           Default is 0.7.
+        :param builtins.float soft_limit: Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
         """
         if soft_limit is not None:
             pulumi.set(__self__, "soft_limit", soft_limit)
@@ -47706,9 +47881,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryPar
     @pulumi.getter(name="softLimit")
     def soft_limit(self) -> Optional[builtins.float]:
         """
-        Define the percentage of the node-level memory
-                                    threshold that acts as a soft indicator for strain on a node.
-                                    Default is 0.7.
+        Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
         """
         return pulumi.get(self, "soft_limit")
 
@@ -47718,9 +47891,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryPar
     def __init__(__self__, *,
                  min_limit: Optional[builtins.float] = None):
         """
-        :param builtins.float min_limit: Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
-                                           Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
-                                           Default is 0.001.
+        :param builtins.float min_limit: Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
         """
         if min_limit is not None:
             pulumi.set(__self__, "min_limit", min_limit)
@@ -47729,9 +47900,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryPar
     @pulumi.getter(name="minLimit")
     def min_limit(self) -> Optional[builtins.float]:
         """
-        Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
-                                    Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
-                                    Default is 0.001.
+        Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
         """
         return pulumi.get(self, "min_limit")
 
@@ -49542,6 +49711,7 @@ class GetPgPgUserConfigPgResult(dict):
                  log_line_prefix: Optional[builtins.str] = None,
                  log_min_duration_statement: Optional[builtins.int] = None,
                  log_temp_files: Optional[builtins.int] = None,
+                 max_connections: Optional[builtins.int] = None,
                  max_files_per_process: Optional[builtins.int] = None,
                  max_locks_per_transaction: Optional[builtins.int] = None,
                  max_logical_replication_workers: Optional[builtins.int] = None,
@@ -49554,6 +49724,7 @@ class GetPgPgUserConfigPgResult(dict):
                  max_stack_depth: Optional[builtins.int] = None,
                  max_standby_archive_delay: Optional[builtins.int] = None,
                  max_standby_streaming_delay: Optional[builtins.int] = None,
+                 max_sync_workers_per_subscription: Optional[builtins.int] = None,
                  max_wal_senders: Optional[builtins.int] = None,
                  max_worker_processes: Optional[builtins.int] = None,
                  password_encryption: Optional[builtins.str] = None,
@@ -49593,6 +49764,7 @@ class GetPgPgUserConfigPgResult(dict):
         :param builtins.str log_line_prefix: Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         :param builtins.int log_min_duration_statement: Log statements that take more than this number of milliseconds to run, -1 disables.
         :param builtins.int log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+        :param builtins.int max_connections: PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
         :param builtins.int max_files_per_process: PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
         :param builtins.int max_locks_per_transaction: PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
         :param builtins.int max_logical_replication_workers: PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
@@ -49605,6 +49777,7 @@ class GetPgPgUserConfigPgResult(dict):
         :param builtins.int max_stack_depth: Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
         :param builtins.int max_standby_archive_delay: Max standby archive delay in milliseconds. The default is `30000` (upstream default).
         :param builtins.int max_standby_streaming_delay: Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
+        :param builtins.int max_sync_workers_per_subscription: Maximum number of synchronization workers per subscription. The default is `2`.
         :param builtins.int max_wal_senders: PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
         :param builtins.int max_worker_processes: Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
         :param builtins.str password_encryption: Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
@@ -49666,6 +49839,8 @@ class GetPgPgUserConfigPgResult(dict):
             pulumi.set(__self__, "log_min_duration_statement", log_min_duration_statement)
         if log_temp_files is not None:
             pulumi.set(__self__, "log_temp_files", log_temp_files)
+        if max_connections is not None:
+            pulumi.set(__self__, "max_connections", max_connections)
         if max_files_per_process is not None:
             pulumi.set(__self__, "max_files_per_process", max_files_per_process)
         if max_locks_per_transaction is not None:
@@ -49690,6 +49865,8 @@ class GetPgPgUserConfigPgResult(dict):
             pulumi.set(__self__, "max_standby_archive_delay", max_standby_archive_delay)
         if max_standby_streaming_delay is not None:
             pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
+        if max_sync_workers_per_subscription is not None:
+            pulumi.set(__self__, "max_sync_workers_per_subscription", max_sync_workers_per_subscription)
         if max_wal_senders is not None:
             pulumi.set(__self__, "max_wal_senders", max_wal_senders)
         if max_worker_processes is not None:
@@ -49900,6 +50077,14 @@ class GetPgPgUserConfigPgResult(dict):
         return pulumi.get(self, "log_temp_files")
 
     @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> Optional[builtins.int]:
+        """
+        PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @property
     @pulumi.getter(name="maxFilesPerProcess")
     def max_files_per_process(self) -> Optional[builtins.int]:
         """
@@ -49994,6 +50179,14 @@ class GetPgPgUserConfigPgResult(dict):
         Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
         """
         return pulumi.get(self, "max_standby_streaming_delay")
+
+    @property
+    @pulumi.getter(name="maxSyncWorkersPerSubscription")
+    def max_sync_workers_per_subscription(self) -> Optional[builtins.int]:
+        """
+        Maximum number of synchronization workers per subscription. The default is `2`.
+        """
+        return pulumi.get(self, "max_sync_workers_per_subscription")
 
     @property
     @pulumi.getter(name="maxWalSenders")
@@ -50215,7 +50408,7 @@ class GetPgPgUserConfigPgauditResult(dict):
                  role: Optional[builtins.str] = None):
         """
         :param builtins.bool feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-        :param builtins.bool log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        :param builtins.bool log_catalog: Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         :param builtins.bool log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
         :param builtins.str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
         :param builtins.int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
@@ -50223,7 +50416,7 @@ class GetPgPgUserConfigPgauditResult(dict):
         :param builtins.bool log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
         :param builtins.int log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
         :param builtins.bool log_relation: Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-        :param builtins.bool log_rows: Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        :param builtins.bool log_rows: Log Rows. Default: `false`.
         :param builtins.bool log_statement: Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
         :param builtins.bool log_statement_once: Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
         :param Sequence[builtins.str] logs: Specifies which classes of statements will be logged by session audit logging.
@@ -50270,7 +50463,7 @@ class GetPgPgUserConfigPgauditResult(dict):
     @pulumi.getter(name="logCatalog")
     def log_catalog(self) -> Optional[builtins.bool]:
         """
-        Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         """
         return pulumi.get(self, "log_catalog")
 
@@ -50334,7 +50527,7 @@ class GetPgPgUserConfigPgauditResult(dict):
     @pulumi.getter(name="logRows")
     def log_rows(self) -> Optional[builtins.bool]:
         """
-        Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        Log Rows. Default: `false`.
         """
         return pulumi.get(self, "log_rows")
 
@@ -51569,6 +51762,43 @@ class GetRedisTechEmailResult(dict):
         An email address to contact for technical issues
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GetServiceIntegrationClickhouseCredentialsUserConfigResult(dict):
+    def __init__(__self__, *,
+                 grants: Optional[Sequence['outputs.GetServiceIntegrationClickhouseCredentialsUserConfigGrantResult']] = None):
+        """
+        :param Sequence['GetServiceIntegrationClickhouseCredentialsUserConfigGrantArgs'] grants: Grants to assign
+        """
+        if grants is not None:
+            pulumi.set(__self__, "grants", grants)
+
+    @property
+    @pulumi.getter
+    def grants(self) -> Optional[Sequence['outputs.GetServiceIntegrationClickhouseCredentialsUserConfigGrantResult']]:
+        """
+        Grants to assign
+        """
+        return pulumi.get(self, "grants")
+
+
+@pulumi.output_type
+class GetServiceIntegrationClickhouseCredentialsUserConfigGrantResult(dict):
+    def __init__(__self__, *,
+                 user: builtins.str):
+        """
+        :param builtins.str user: User or role to assign the grant to. Example: `alice`.
+        """
+        pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def user(self) -> builtins.str:
+        """
+        User or role to assign the grant to. Example: `alice`.
+        """
+        return pulumi.get(self, "user")
 
 
 @pulumi.output_type
@@ -52986,7 +53216,7 @@ class GetServiceIntegrationEndpointExternalPostgresqlResult(dict):
         :param builtins.str ssl_client_key: Client key. Example: `-----BEGIN PRIVATE KEY-----
                ...
                -----END PRIVATE KEY-----`.
-        :param builtins.str ssl_mode: Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+        :param builtins.str ssl_mode: Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         :param builtins.str ssl_root_cert: SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
                ...
                -----END CERTIFICATE-----
@@ -53073,7 +53303,7 @@ class GetServiceIntegrationEndpointExternalPostgresqlResult(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> Optional[builtins.str]:
         """
-        Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+        Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         """
         return pulumi.get(self, "ssl_mode")
 

@@ -69,6 +69,12 @@ namespace Pulumi.Aiven
     public partial class ServiceIntegration : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Output("clickhouseCredentialsUserConfig")]
+        public Output<Outputs.ServiceIntegrationClickhouseCredentialsUserConfig?> ClickhouseCredentialsUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         [Output("clickhouseKafkaUserConfig")]
@@ -253,6 +259,12 @@ namespace Pulumi.Aiven
     public sealed class ServiceIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Input("clickhouseCredentialsUserConfig")]
+        public Input<Inputs.ServiceIntegrationClickhouseCredentialsUserConfigArgs>? ClickhouseCredentialsUserConfig { get; set; }
+
+        /// <summary>
         /// ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         [Input("clickhouseKafkaUserConfig")]
@@ -392,6 +404,12 @@ namespace Pulumi.Aiven
 
     public sealed class ServiceIntegrationState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Input("clickhouseCredentialsUserConfig")]
+        public Input<Inputs.ServiceIntegrationClickhouseCredentialsUserConfigGetArgs>? ClickhouseCredentialsUserConfig { get; set; }
+
         /// <summary>
         /// ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>

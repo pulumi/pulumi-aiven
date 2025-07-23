@@ -14,9 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardResult
     {
         /// <summary>
-        /// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
-        ///                             Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
-        ///                             Default is 0.001.
+        /// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
         /// </summary>
         public readonly double? MinLimit;
 

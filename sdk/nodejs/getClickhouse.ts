@@ -136,7 +136,7 @@ export interface GetClickhouseResult {
      */
     readonly serviceType: string;
     /**
-     * URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+     * The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
      */
     readonly serviceUri: string;
     /**

@@ -83,7 +83,7 @@ type LookupKafkaResult struct {
 	KafkaUserConfigs []GetKafkaKafkaUserConfig `pulumi:"kafkaUserConfigs"`
 	// Kafka server connection details.
 	Kafkas []GetKafkaKafka `pulumi:"kafkas"`
-	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
 	Karapace bool `pulumi:"karapace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
@@ -218,7 +218,7 @@ func (o LookupKafkaResultOutput) Kafkas() GetKafkaKafkaArrayOutput {
 	return o.ApplyT(func(v LookupKafkaResult) []GetKafkaKafka { return v.Kafkas }).(GetKafkaKafkaArrayOutput)
 }
 
-// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
 func (o LookupKafkaResultOutput) Karapace() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKafkaResult) bool { return v.Karapace }).(pulumi.BoolOutput)
 }

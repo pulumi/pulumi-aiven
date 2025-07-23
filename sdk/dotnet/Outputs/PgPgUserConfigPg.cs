@@ -102,6 +102,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogTempFiles;
         /// <summary>
+        /// PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+        /// </summary>
+        public readonly int? MaxConnections;
+        /// <summary>
         /// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
         /// </summary>
         public readonly int? MaxFilesPerProcess;
@@ -149,6 +153,10 @@ namespace Pulumi.Aiven.Outputs
         /// Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
         /// </summary>
         public readonly int? MaxStandbyStreamingDelay;
+        /// <summary>
+        /// Maximum number of synchronization workers per subscription. The default is `2`.
+        /// </summary>
+        public readonly int? MaxSyncWorkersPerSubscription;
         /// <summary>
         /// PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
         /// </summary>
@@ -260,6 +268,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? logTempFiles,
 
+            int? maxConnections,
+
             int? maxFilesPerProcess,
 
             int? maxLocksPerTransaction,
@@ -283,6 +293,8 @@ namespace Pulumi.Aiven.Outputs
             int? maxStandbyArchiveDelay,
 
             int? maxStandbyStreamingDelay,
+
+            int? maxSyncWorkersPerSubscription,
 
             int? maxWalSenders,
 
@@ -338,6 +350,7 @@ namespace Pulumi.Aiven.Outputs
             LogLinePrefix = logLinePrefix;
             LogMinDurationStatement = logMinDurationStatement;
             LogTempFiles = logTempFiles;
+            MaxConnections = maxConnections;
             MaxFilesPerProcess = maxFilesPerProcess;
             MaxLocksPerTransaction = maxLocksPerTransaction;
             MaxLogicalReplicationWorkers = maxLogicalReplicationWorkers;
@@ -350,6 +363,7 @@ namespace Pulumi.Aiven.Outputs
             MaxStackDepth = maxStackDepth;
             MaxStandbyArchiveDelay = maxStandbyArchiveDelay;
             MaxStandbyStreamingDelay = maxStandbyStreamingDelay;
+            MaxSyncWorkersPerSubscription = maxSyncWorkersPerSubscription;
             MaxWalSenders = maxWalSenders;
             MaxWorkerProcesses = maxWorkerProcesses;
             PasswordEncryption = passwordEncryption;

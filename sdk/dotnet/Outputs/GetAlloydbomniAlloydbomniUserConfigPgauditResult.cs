@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? FeatureEnabled;
         /// <summary>
-        /// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+        /// Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         /// </summary>
         public readonly bool? LogCatalog;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? LogRelation;
         /// <summary>
-        /// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+        /// Log Rows. Default: `false`.
         /// </summary>
         public readonly bool? LogRows;
         /// <summary>

@@ -20,7 +20,7 @@ public final class GetPgPgUserConfigPgaudit {
      */
     private @Nullable Boolean featureEnabled;
     /**
-     * @return Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     * @return Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
      * 
      */
     private @Nullable Boolean logCatalog;
@@ -60,7 +60,7 @@ public final class GetPgPgUserConfigPgaudit {
      */
     private @Nullable Boolean logRelation;
     /**
-     * @return Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     * @return Log Rows. Default: `false`.
      * 
      */
     private @Nullable Boolean logRows;
@@ -94,7 +94,7 @@ public final class GetPgPgUserConfigPgaudit {
         return Optional.ofNullable(this.featureEnabled);
     }
     /**
-     * @return Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     * @return Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
      * 
      */
     public Optional<Boolean> logCatalog() {
@@ -150,7 +150,7 @@ public final class GetPgPgUserConfigPgaudit {
         return Optional.ofNullable(this.logRelation);
     }
     /**
-     * @return Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     * @return Log Rows. Default: `false`.
      * 
      */
     public Optional<Boolean> logRows() {

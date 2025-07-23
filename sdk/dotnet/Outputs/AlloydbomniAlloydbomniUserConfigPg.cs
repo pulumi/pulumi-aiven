@@ -150,6 +150,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxStandbyStreamingDelay;
         /// <summary>
+        /// Maximum number of synchronization workers per subscription. The default is `2`.
+        /// </summary>
+        public readonly int? MaxSyncWorkersPerSubscription;
+        /// <summary>
         /// PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
         /// </summary>
         public readonly int? MaxWalSenders;
@@ -276,6 +280,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? maxStandbyStreamingDelay,
 
+            int? maxSyncWorkersPerSubscription,
+
             int? maxWalSenders,
 
             int? maxWorkerProcesses,
@@ -338,6 +344,7 @@ namespace Pulumi.Aiven.Outputs
             MaxStackDepth = maxStackDepth;
             MaxStandbyArchiveDelay = maxStandbyArchiveDelay;
             MaxStandbyStreamingDelay = maxStandbyStreamingDelay;
+            MaxSyncWorkersPerSubscription = maxSyncWorkersPerSubscription;
             MaxWalSenders = maxWalSenders;
             MaxWorkerProcesses = maxWorkerProcesses;
             PasswordEncryption = passwordEncryption;

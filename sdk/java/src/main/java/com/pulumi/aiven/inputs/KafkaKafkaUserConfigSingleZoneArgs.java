@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class KafkaKafkaUserConfigSingleZoneArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final KafkaKafkaUserConfigSingleZoneArgs Empty = new KafkaKafkaUserConfigSingleZoneArgs();
+
+    /**
+     * The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+     * 
+     */
+    @Import(name="availabilityZone")
+    private @Nullable Output<String> availabilityZone;
+
+    /**
+     * @return The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+     * 
+     */
+    public Optional<Output<String>> availabilityZone() {
+        return Optional.ofNullable(this.availabilityZone);
+    }
 
     /**
      * Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
@@ -33,6 +49,7 @@ public final class KafkaKafkaUserConfigSingleZoneArgs extends com.pulumi.resourc
     private KafkaKafkaUserConfigSingleZoneArgs() {}
 
     private KafkaKafkaUserConfigSingleZoneArgs(KafkaKafkaUserConfigSingleZoneArgs $) {
+        this.availabilityZone = $.availabilityZone;
         this.enabled = $.enabled;
     }
 
@@ -52,6 +69,27 @@ public final class KafkaKafkaUserConfigSingleZoneArgs extends com.pulumi.resourc
 
         public Builder(KafkaKafkaUserConfigSingleZoneArgs defaults) {
             $ = new KafkaKafkaUserConfigSingleZoneArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param availabilityZone The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
+            $.availabilityZone = availabilityZone;
+            return this;
+        }
+
+        /**
+         * @param availabilityZone The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(String availabilityZone) {
+            return availabilityZone(Output.of(availabilityZone));
         }
 
         /**

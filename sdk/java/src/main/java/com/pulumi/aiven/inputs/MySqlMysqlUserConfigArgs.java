@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.aiven.inputs.MySqlMysqlUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.MySqlMysqlUserConfigMigrationArgs;
 import com.pulumi.aiven.inputs.MySqlMysqlUserConfigMysqlArgs;
+import com.pulumi.aiven.inputs.MySqlMysqlUserConfigMysqlIncrementalBackupArgs;
 import com.pulumi.aiven.inputs.MySqlMysqlUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.MySqlMysqlUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.MySqlMysqlUserConfigPublicAccessArgs;
@@ -198,6 +199,21 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * MySQL incremental backup configuration
+     * 
+     */
+    @Import(name="mysqlIncrementalBackup")
+    private @Nullable Output<MySqlMysqlUserConfigMysqlIncrementalBackupArgs> mysqlIncrementalBackup;
+
+    /**
+     * @return MySQL incremental backup configuration
+     * 
+     */
+    public Optional<Output<MySqlMysqlUserConfigMysqlIncrementalBackupArgs>> mysqlIncrementalBackup() {
+        return Optional.ofNullable(this.mysqlIncrementalBackup);
+    }
+
+    /**
      * Enum: `8`, and newer. MySQL major version.
      * 
      */
@@ -346,6 +362,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         this.ipFilters = $.ipFilters;
         this.migration = $.migration;
         this.mysql = $.mysql;
+        this.mysqlIncrementalBackup = $.mysqlIncrementalBackup;
         this.mysqlVersion = $.mysqlVersion;
         this.privateAccess = $.privateAccess;
         this.privatelinkAccess = $.privatelinkAccess;
@@ -646,6 +663,27 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder mysql(MySqlMysqlUserConfigMysqlArgs mysql) {
             return mysql(Output.of(mysql));
+        }
+
+        /**
+         * @param mysqlIncrementalBackup MySQL incremental backup configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mysqlIncrementalBackup(@Nullable Output<MySqlMysqlUserConfigMysqlIncrementalBackupArgs> mysqlIncrementalBackup) {
+            $.mysqlIncrementalBackup = mysqlIncrementalBackup;
+            return this;
+        }
+
+        /**
+         * @param mysqlIncrementalBackup MySQL incremental backup configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mysqlIncrementalBackup(MySqlMysqlUserConfigMysqlIncrementalBackupArgs mysqlIncrementalBackup) {
+            return mysqlIncrementalBackup(Output.of(mysqlIncrementalBackup));
         }
 
         /**

@@ -93,7 +93,7 @@ type Kafka struct {
 	KafkaUserConfig KafkaKafkaUserConfigPtrOutput `pulumi:"kafkaUserConfig"`
 	// Kafka server connection details.
 	Kafkas KafkaKafkaArrayOutput `pulumi:"kafkas"`
-	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
 	//
 	// Deprecated: Usage of this field is discouraged.
 	Karapace pulumi.BoolPtrOutput `pulumi:"karapace"`
@@ -208,7 +208,7 @@ type kafkaState struct {
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
 	// Kafka server connection details.
 	Kafkas []KafkaKafka `pulumi:"kafkas"`
-	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
 	//
 	// Deprecated: Usage of this field is discouraged.
 	Karapace *bool `pulumi:"karapace"`
@@ -276,7 +276,7 @@ type KafkaState struct {
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
 	// Kafka server connection details.
 	Kafkas KafkaKafkaArrayInput
-	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
 	//
 	// Deprecated: Usage of this field is discouraged.
 	Karapace pulumi.BoolPtrInput
@@ -336,7 +336,7 @@ type kafkaArgs struct {
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
 	// Kafka server connection details.
 	Kafkas []KafkaKafka `pulumi:"kafkas"`
-	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
 	//
 	// Deprecated: Usage of this field is discouraged.
 	Karapace *bool `pulumi:"karapace"`
@@ -380,7 +380,7 @@ type KafkaArgs struct {
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
 	// Kafka server connection details.
 	Kafkas KafkaKafkaArrayInput
-	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
 	//
 	// Deprecated: Usage of this field is discouraged.
 	Karapace pulumi.BoolPtrInput
@@ -554,7 +554,7 @@ func (o KafkaOutput) Kafkas() KafkaKafkaArrayOutput {
 	return o.ApplyT(func(v *Kafka) KafkaKafkaArrayOutput { return v.Kafkas }).(KafkaKafkaArrayOutput)
 }
 
-// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
 //
 // Deprecated: Usage of this field is discouraged.
 func (o KafkaOutput) Karapace() pulumi.BoolPtrOutput {

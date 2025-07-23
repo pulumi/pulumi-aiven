@@ -148,7 +148,7 @@ export class Clickhouse extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceType!: pulumi.Output<string>;
     /**
-     * URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+     * The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
      */
     public /*out*/ readonly serviceUri!: pulumi.Output<string>;
     /**
@@ -354,7 +354,7 @@ export interface ClickhouseState {
      */
     serviceType?: pulumi.Input<string>;
     /**
-     * URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+     * The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
      */
     serviceUri?: pulumi.Input<string>;
     /**

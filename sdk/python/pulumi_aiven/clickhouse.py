@@ -338,7 +338,7 @@ class _ClickhouseState:
         :param pulumi.Input[builtins.str] service_password: Password used for connecting to the service, if applicable
         :param pulumi.Input[builtins.int] service_port: The port of the service
         :param pulumi.Input[builtins.str] service_type: Aiven internal service type code
-        :param pulumi.Input[builtins.str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        :param pulumi.Input[builtins.str] service_uri: The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
         :param pulumi.Input[builtins.str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
@@ -666,7 +666,7 @@ class _ClickhouseState:
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
         """
         return pulumi.get(self, "service_uri")
 
@@ -982,7 +982,7 @@ class Clickhouse(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] service_password: Password used for connecting to the service, if applicable
         :param pulumi.Input[builtins.int] service_port: The port of the service
         :param pulumi.Input[builtins.str] service_type: Aiven internal service type code
-        :param pulumi.Input[builtins.str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        :param pulumi.Input[builtins.str] service_uri: The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
         :param pulumi.Input[builtins.str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseTagArgs', 'ClickhouseTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize services.
@@ -1197,7 +1197,7 @@ class Clickhouse(pulumi.CustomResource):
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> pulumi.Output[builtins.str]:
         """
-        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
         """
         return pulumi.get(self, "service_uri")
 

@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? IndexIntervalBytes;
         /// <summary>
-        /// Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+        /// Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
         /// </summary>
         public readonly bool? InklessEnable;
         /// <summary>

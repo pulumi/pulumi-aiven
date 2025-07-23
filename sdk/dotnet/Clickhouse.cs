@@ -171,7 +171,7 @@ namespace Pulumi.Aiven
         public Output<string> ServiceType { get; private set; } = null!;
 
         /// <summary>
-        /// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        /// The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
         /// </summary>
         [Output("serviceUri")]
         public Output<string> ServiceUri { get; private set; } = null!;
@@ -561,7 +561,7 @@ namespace Pulumi.Aiven
         private Input<string>? _serviceUri;
 
         /// <summary>
-        /// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        /// The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
         /// </summary>
         public Input<string>? ServiceUri
         {

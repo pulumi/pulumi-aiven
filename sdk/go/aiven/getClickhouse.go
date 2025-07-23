@@ -103,7 +103,7 @@ type LookupClickhouseResult struct {
 	ServicePort int `pulumi:"servicePort"`
 	// Aiven internal service type code
 	ServiceType string `pulumi:"serviceType"`
-	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+	// The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
 	ServiceUri string `pulumi:"serviceUri"`
 	// Username used for connecting to the service, if applicable
 	ServiceUsername string `pulumi:"serviceUsername"`
@@ -264,7 +264,7 @@ func (o LookupClickhouseResultOutput) ServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseResult) string { return v.ServiceType }).(pulumi.StringOutput)
 }
 
-// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+// The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
 func (o LookupClickhouseResultOutput) ServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseResult) string { return v.ServiceUri }).(pulumi.StringOutput)
 }

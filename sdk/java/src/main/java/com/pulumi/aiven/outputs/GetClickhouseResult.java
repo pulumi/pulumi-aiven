@@ -130,7 +130,7 @@ public final class GetClickhouseResult {
      */
     private String serviceType;
     /**
-     * @return URI for connecting to the service. Service specific info is under &#34;kafka&#34;, &#34;pg&#34;, etc.
+     * @return The service URI for the ClickHouse service, which contains the hostname and port (e.g., &#39;service-name.h.aivencloud.com:16539&#39;) used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
      * 
      */
     private String serviceUri;
@@ -317,7 +317,7 @@ public final class GetClickhouseResult {
         return this.serviceType;
     }
     /**
-     * @return URI for connecting to the service. Service specific info is under &#34;kafka&#34;, &#34;pg&#34;, etc.
+     * @return The service URI for the ClickHouse service, which contains the hostname and port (e.g., &#39;service-name.h.aivencloud.com:16539&#39;) used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
      * 
      */
     public String serviceUri() {
