@@ -14,24 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorResult
     {
         /// <summary>
-        /// Specify the lower occupancy limit of the allocated quota of memory for the shard.
-        ///                     If the total memory usage of a shard is below this limit,
-        ///                     shard indexing backpressure decreases the current allocated memory for that shard.
-        ///                     Default is 0.75.
+        /// Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
         /// </summary>
         public readonly double? Lower;
         /// <summary>
-        /// Specify the optimal occupancy of the allocated quota of memory for the shard.
-        ///                     If the total memory usage of a shard is at this level,
-        ///                     shard indexing backpressure doesn’t change the current allocated memory for that shard.
-        ///                     Default is 0.85.
+        /// Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
         /// </summary>
         public readonly double? Optimal;
         /// <summary>
-        /// Specify the upper occupancy limit of the allocated quota of memory for the shard.
-        ///                     If the total memory usage of a shard is above this limit,
-        ///                     shard indexing backpressure increases the current allocated memory for that shard.
-        ///                     Default is 0.95.
+        /// Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
         /// </summary>
         public readonly double? Upper;
 

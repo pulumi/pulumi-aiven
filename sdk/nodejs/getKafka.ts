@@ -96,7 +96,7 @@ export interface GetKafkaResult {
      */
     readonly kafkas: outputs.GetKafkaKafka[];
     /**
-     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
      */
     readonly karapace: boolean;
     /**

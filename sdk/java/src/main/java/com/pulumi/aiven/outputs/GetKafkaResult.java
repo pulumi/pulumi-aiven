@@ -80,7 +80,7 @@ public final class GetKafkaResult {
      */
     private List<GetKafkaKafka> kafkas;
     /**
-     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
      * 
      */
     private Boolean karapace;
@@ -257,7 +257,7 @@ public final class GetKafkaResult {
         return this.kafkas;
     }
     /**
-     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
      * 
      */
     public Boolean karapace() {

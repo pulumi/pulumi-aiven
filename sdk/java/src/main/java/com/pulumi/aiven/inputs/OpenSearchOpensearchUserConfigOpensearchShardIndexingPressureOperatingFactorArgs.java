@@ -16,20 +16,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
     public static final OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs Empty = new OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs();
 
     /**
-     * Specify the lower occupancy limit of the allocated quota of memory for the shard.
-     *                 If the total memory usage of a shard is below this limit,
-     *                 shard indexing backpressure decreases the current allocated memory for that shard.
-     *                 Default is 0.75.
+     * Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.
      * 
      */
     @Import(name="lower")
     private @Nullable Output<Double> lower;
 
     /**
-     * @return Specify the lower occupancy limit of the allocated quota of memory for the shard.
-     *                 If the total memory usage of a shard is below this limit,
-     *                 shard indexing backpressure decreases the current allocated memory for that shard.
-     *                 Default is 0.75.
+     * @return Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.
      * 
      */
     public Optional<Output<Double>> lower() {
@@ -37,20 +31,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
     }
 
     /**
-     * Specify the optimal occupancy of the allocated quota of memory for the shard.
-     *                 If the total memory usage of a shard is at this level,
-     *                 shard indexing backpressure doesn’t change the current allocated memory for that shard.
-     *                 Default is 0.85.
+     * Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.
      * 
      */
     @Import(name="optimal")
     private @Nullable Output<Double> optimal;
 
     /**
-     * @return Specify the optimal occupancy of the allocated quota of memory for the shard.
-     *                 If the total memory usage of a shard is at this level,
-     *                 shard indexing backpressure doesn’t change the current allocated memory for that shard.
-     *                 Default is 0.85.
+     * @return Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.
      * 
      */
     public Optional<Output<Double>> optimal() {
@@ -58,20 +46,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
     }
 
     /**
-     * Specify the upper occupancy limit of the allocated quota of memory for the shard.
-     *                 If the total memory usage of a shard is above this limit,
-     *                 shard indexing backpressure increases the current allocated memory for that shard.
-     *                 Default is 0.95.
+     * Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.
      * 
      */
     @Import(name="upper")
     private @Nullable Output<Double> upper;
 
     /**
-     * @return Specify the upper occupancy limit of the allocated quota of memory for the shard.
-     *                 If the total memory usage of a shard is above this limit,
-     *                 shard indexing backpressure increases the current allocated memory for that shard.
-     *                 Default is 0.95.
+     * @return Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.
      * 
      */
     public Optional<Output<Double>> upper() {
@@ -105,10 +87,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
         }
 
         /**
-         * @param lower Specify the lower occupancy limit of the allocated quota of memory for the shard.
-         *                 If the total memory usage of a shard is below this limit,
-         *                 shard indexing backpressure decreases the current allocated memory for that shard.
-         *                 Default is 0.75.
+         * @param lower Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.
          * 
          * @return builder
          * 
@@ -119,10 +98,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
         }
 
         /**
-         * @param lower Specify the lower occupancy limit of the allocated quota of memory for the shard.
-         *                 If the total memory usage of a shard is below this limit,
-         *                 shard indexing backpressure decreases the current allocated memory for that shard.
-         *                 Default is 0.75.
+         * @param lower Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.
          * 
          * @return builder
          * 
@@ -132,10 +108,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
         }
 
         /**
-         * @param optimal Specify the optimal occupancy of the allocated quota of memory for the shard.
-         *                 If the total memory usage of a shard is at this level,
-         *                 shard indexing backpressure doesn’t change the current allocated memory for that shard.
-         *                 Default is 0.85.
+         * @param optimal Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.
          * 
          * @return builder
          * 
@@ -146,10 +119,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
         }
 
         /**
-         * @param optimal Specify the optimal occupancy of the allocated quota of memory for the shard.
-         *                 If the total memory usage of a shard is at this level,
-         *                 shard indexing backpressure doesn’t change the current allocated memory for that shard.
-         *                 Default is 0.85.
+         * @param optimal Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.
          * 
          * @return builder
          * 
@@ -159,10 +129,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
         }
 
         /**
-         * @param upper Specify the upper occupancy limit of the allocated quota of memory for the shard.
-         *                 If the total memory usage of a shard is above this limit,
-         *                 shard indexing backpressure increases the current allocated memory for that shard.
-         *                 Default is 0.95.
+         * @param upper Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.
          * 
          * @return builder
          * 
@@ -173,10 +140,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
         }
 
         /**
-         * @param upper Specify the upper occupancy limit of the allocated quota of memory for the shard.
-         *                 If the total memory usage of a shard is above this limit,
-         *                 shard indexing backpressure increases the current allocated memory for that shard.
-         *                 Default is 0.95.
+         * @param upper Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.
          * 
          * @return builder
          * 

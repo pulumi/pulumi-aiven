@@ -394,6 +394,10 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      */
     maxStandbyStreamingDelay?: pulumi.Input<number>;
     /**
+     * Maximum number of synchronization workers per subscription. The default is `2`.
+     */
+    maxSyncWorkersPerSubscription?: pulumi.Input<number>;
+    /**
      * PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
      */
     maxWalSenders?: pulumi.Input<number>;
@@ -457,7 +461,7 @@ export interface AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     featureEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     * Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
      */
     logCatalog?: pulumi.Input<boolean>;
     /**
@@ -469,11 +473,11 @@ export interface AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     logLevel?: pulumi.Input<string>;
     /**
-     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+     * Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
      */
     logMaxStringLength?: pulumi.Input<number>;
     /**
-     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+     * This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
      */
     logNestedStatements?: pulumi.Input<boolean>;
     /**
@@ -481,15 +485,15 @@ export interface AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     logParameter?: pulumi.Input<boolean>;
     /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \n\n. Default: `0`.
      */
     logParameterMaxSize?: pulumi.Input<number>;
     /**
-     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     * Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
      */
     logRelation?: pulumi.Input<boolean>;
     /**
-     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     * Log Rows. Default: `false`.
      */
     logRows?: pulumi.Input<boolean>;
     /**
@@ -497,7 +501,7 @@ export interface AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     logStatement?: pulumi.Input<boolean>;
     /**
-     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     * Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
      */
     logStatementOnce?: pulumi.Input<boolean>;
     /**
@@ -3684,6 +3688,10 @@ export interface KafkaKafkaUserConfigSchemaRegistryConfig {
 
 export interface KafkaKafkaUserConfigSingleZone {
     /**
+     * The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
      * Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
      */
     enabled?: pulumi.Input<boolean>;
@@ -3943,7 +3951,7 @@ export interface KafkaTopicConfig {
      */
     indexIntervalBytes?: pulumi.Input<string>;
     /**
-     * Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.
+     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
      */
     inklessEnable?: pulumi.Input<boolean>;
     /**
@@ -4668,6 +4676,10 @@ export interface MySqlMysqlUserConfig {
      */
     mysql?: pulumi.Input<inputs.MySqlMysqlUserConfigMysql>;
     /**
+     * MySQL incremental backup configuration
+     */
+    mysqlIncrementalBackup?: pulumi.Input<inputs.MySqlMysqlUserConfigMysqlIncrementalBackup>;
+    /**
      * Enum: `8`, and newer. MySQL major version.
      */
     mysqlVersion?: pulumi.Input<string>;
@@ -4880,6 +4892,17 @@ export interface MySqlMysqlUserConfigMysql {
      * The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
      */
     waitTimeout?: pulumi.Input<number>;
+}
+
+export interface MySqlMysqlUserConfigMysqlIncrementalBackup {
+    /**
+     * Enable periodic incremental backups. When enabled, full*backup*week_schedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.
+     */
+    fullBackupWeekSchedule?: pulumi.Input<string>;
 }
 
 export interface MySqlMysqlUserConfigPrivateAccess {
@@ -5933,12 +5956,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Run shard indexing backpressure in shadow mode or enforced mode.
-     *         In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
-     *         but it doesn’t actually reject any indexing requests.
-     *         In enforced mode (value set as true),
-     *         shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
-     *         Default is false.
+     * Run shard indexing backpressure in shadow mode or enforced mode.            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,            but it doesn’t actually reject any indexing requests.            In enforced mode (value set as true),            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.            Default is false.
      */
     enforced?: pulumi.Input<boolean>;
     /**
@@ -5953,24 +5971,15 @@ export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
 
 export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor {
     /**
-     * Specify the lower occupancy limit of the allocated quota of memory for the shard.
-     *                 If the total memory usage of a shard is below this limit,
-     *                 shard indexing backpressure decreases the current allocated memory for that shard.
-     *                 Default is 0.75.
+     * Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.
      */
     lower?: pulumi.Input<number>;
     /**
-     * Specify the optimal occupancy of the allocated quota of memory for the shard.
-     *                 If the total memory usage of a shard is at this level,
-     *                 shard indexing backpressure doesn’t change the current allocated memory for that shard.
-     *                 Default is 0.85.
+     * Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.
      */
     optimal?: pulumi.Input<number>;
     /**
-     * Specify the upper occupancy limit of the allocated quota of memory for the shard.
-     *                 If the total memory usage of a shard is above this limit,
-     *                 shard indexing backpressure increases the current allocated memory for that shard.
-     *                 Default is 0.95.
+     * Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.
      */
     upper?: pulumi.Input<number>;
 }
@@ -5982,18 +5991,14 @@ export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePr
 
 export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode {
     /**
-     * Define the percentage of the node-level memory
-     *                         threshold that acts as a soft indicator for strain on a node.
-     *                         Default is 0.7.
+     * Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.
      */
     softLimit?: pulumi.Input<number>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard {
     /**
-     * Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
-     *                         Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
-     *                         Default is 0.001.
+     * Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.
      */
     minLimit?: pulumi.Input<number>;
 }
@@ -6228,7 +6233,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -6715,6 +6720,10 @@ export interface PgPgUserConfigPg {
      */
     logTempFiles?: pulumi.Input<number>;
     /**
+     * PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+     */
+    maxConnections?: pulumi.Input<number>;
+    /**
      * PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
      */
     maxFilesPerProcess?: pulumi.Input<number>;
@@ -6762,6 +6771,10 @@ export interface PgPgUserConfigPg {
      * Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
      */
     maxStandbyStreamingDelay?: pulumi.Input<number>;
+    /**
+     * Maximum number of synchronization workers per subscription. The default is `2`.
+     */
+    maxSyncWorkersPerSubscription?: pulumi.Input<number>;
     /**
      * PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
      */
@@ -6867,7 +6880,7 @@ export interface PgPgUserConfigPgaudit {
      */
     featureEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     * Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
      */
     logCatalog?: pulumi.Input<boolean>;
     /**
@@ -6879,11 +6892,11 @@ export interface PgPgUserConfigPgaudit {
      */
     logLevel?: pulumi.Input<string>;
     /**
-     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+     * Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
      */
     logMaxStringLength?: pulumi.Input<number>;
     /**
-     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+     * This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
      */
     logNestedStatements?: pulumi.Input<boolean>;
     /**
@@ -6891,15 +6904,15 @@ export interface PgPgUserConfigPgaudit {
      */
     logParameter?: pulumi.Input<boolean>;
     /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \n\n. Default: `0`.
      */
     logParameterMaxSize?: pulumi.Input<number>;
     /**
-     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     * Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
      */
     logRelation?: pulumi.Input<boolean>;
     /**
-     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     * Log Rows. Default: `false`.
      */
     logRows?: pulumi.Input<boolean>;
     /**
@@ -6907,7 +6920,7 @@ export interface PgPgUserConfigPgaudit {
      */
     logStatement?: pulumi.Input<boolean>;
     /**
-     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     * Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
      */
     logStatementOnce?: pulumi.Input<boolean>;
     /**
@@ -7343,6 +7356,20 @@ export interface RedisTechEmail {
      * An email address to contact for technical issues
      */
     email: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationClickhouseCredentialsUserConfig {
+    /**
+     * Grants to assign
+     */
+    grants?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseCredentialsUserConfigGrant>[]>;
+}
+
+export interface ServiceIntegrationClickhouseCredentialsUserConfigGrant {
+    /**
+     * User or role to assign the grant to. Example: `alice`.
+     */
+    user: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfig {

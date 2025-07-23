@@ -14,9 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeResult
     {
         /// <summary>
-        /// Define the percentage of the node-level memory
-        ///                             threshold that acts as a soft indicator for strain on a node.
-        ///                             Default is 0.7.
+        /// Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
         /// </summary>
         public readonly double? SoftLimit;
 

@@ -349,6 +349,21 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+     * 
+     */
+    @Import(name="maxConnections")
+    private @Nullable Output<Integer> maxConnections;
+
+    /**
+     * @return PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+     * 
+     */
+    public Optional<Output<Integer>> maxConnections() {
+        return Optional.ofNullable(this.maxConnections);
+    }
+
+    /**
      * PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
      * 
      */
@@ -526,6 +541,21 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Integer>> maxStandbyStreamingDelay() {
         return Optional.ofNullable(this.maxStandbyStreamingDelay);
+    }
+
+    /**
+     * Maximum number of synchronization workers per subscription. The default is `2`.
+     * 
+     */
+    @Import(name="maxSyncWorkersPerSubscription")
+    private @Nullable Output<Integer> maxSyncWorkersPerSubscription;
+
+    /**
+     * @return Maximum number of synchronization workers per subscription. The default is `2`.
+     * 
+     */
+    public Optional<Output<Integer>> maxSyncWorkersPerSubscription() {
+        return Optional.ofNullable(this.maxSyncWorkersPerSubscription);
     }
 
     /**
@@ -793,6 +823,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         this.logLinePrefix = $.logLinePrefix;
         this.logMinDurationStatement = $.logMinDurationStatement;
         this.logTempFiles = $.logTempFiles;
+        this.maxConnections = $.maxConnections;
         this.maxFilesPerProcess = $.maxFilesPerProcess;
         this.maxLocksPerTransaction = $.maxLocksPerTransaction;
         this.maxLogicalReplicationWorkers = $.maxLogicalReplicationWorkers;
@@ -805,6 +836,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         this.maxStackDepth = $.maxStackDepth;
         this.maxStandbyArchiveDelay = $.maxStandbyArchiveDelay;
         this.maxStandbyStreamingDelay = $.maxStandbyStreamingDelay;
+        this.maxSyncWorkersPerSubscription = $.maxSyncWorkersPerSubscription;
         this.maxWalSenders = $.maxWalSenders;
         this.maxWorkerProcesses = $.maxWorkerProcesses;
         this.passwordEncryption = $.passwordEncryption;
@@ -1304,6 +1336,27 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param maxConnections PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConnections(@Nullable Output<Integer> maxConnections) {
+            $.maxConnections = maxConnections;
+            return this;
+        }
+
+        /**
+         * @param maxConnections PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConnections(Integer maxConnections) {
+            return maxConnections(Output.of(maxConnections));
+        }
+
+        /**
          * @param maxFilesPerProcess PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
          * 
          * @return builder
@@ -1553,6 +1606,27 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder maxStandbyStreamingDelay(Integer maxStandbyStreamingDelay) {
             return maxStandbyStreamingDelay(Output.of(maxStandbyStreamingDelay));
+        }
+
+        /**
+         * @param maxSyncWorkersPerSubscription Maximum number of synchronization workers per subscription. The default is `2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSyncWorkersPerSubscription(@Nullable Output<Integer> maxSyncWorkersPerSubscription) {
+            $.maxSyncWorkersPerSubscription = maxSyncWorkersPerSubscription;
+            return this;
+        }
+
+        /**
+         * @param maxSyncWorkersPerSubscription Maximum number of synchronization workers per subscription. The default is `2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSyncWorkersPerSubscription(Integer maxSyncWorkersPerSubscription) {
+            return maxSyncWorkersPerSubscription(Output.of(maxSyncWorkersPerSubscription));
         }
 
         /**

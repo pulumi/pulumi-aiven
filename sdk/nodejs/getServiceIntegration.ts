@@ -60,6 +60,10 @@ export interface GetServiceIntegrationArgs {
  */
 export interface GetServiceIntegrationResult {
     /**
+     * ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    readonly clickhouseCredentialsUserConfigs: outputs.GetServiceIntegrationClickhouseCredentialsUserConfig[];
+    /**
      * ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly clickhouseKafkaUserConfigs: outputs.GetServiceIntegrationClickhouseKafkaUserConfig[];

@@ -145,6 +145,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? LogTempFiles { get; set; }
 
         /// <summary>
+        /// PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+        /// </summary>
+        [Input("maxConnections")]
+        public Input<int>? MaxConnections { get; set; }
+
+        /// <summary>
         /// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
         /// </summary>
         [Input("maxFilesPerProcess")]
@@ -215,6 +221,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("maxStandbyStreamingDelay")]
         public Input<int>? MaxStandbyStreamingDelay { get; set; }
+
+        /// <summary>
+        /// Maximum number of synchronization workers per subscription. The default is `2`.
+        /// </summary>
+        [Input("maxSyncWorkersPerSubscription")]
+        public Input<int>? MaxSyncWorkersPerSubscription { get; set; }
 
         /// <summary>
         /// PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.

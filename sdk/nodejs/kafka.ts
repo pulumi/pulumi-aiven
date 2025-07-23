@@ -122,7 +122,7 @@ export class Kafka extends pulumi.CustomResource {
      */
     public readonly kafkas!: pulumi.Output<outputs.KafkaKafka[]>;
     /**
-     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
      *
      * @deprecated Usage of this field is discouraged.
      */
@@ -342,7 +342,7 @@ export interface KafkaState {
      */
     kafkas?: pulumi.Input<pulumi.Input<inputs.KafkaKafka>[]>;
     /**
-     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
      *
      * @deprecated Usage of this field is discouraged.
      */
@@ -449,7 +449,7 @@ export interface KafkaArgs {
      */
     kafkas?: pulumi.Input<pulumi.Input<inputs.KafkaKafka>[]>;
     /**
-     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
      *
      * @deprecated Usage of this field is discouraged.
      */

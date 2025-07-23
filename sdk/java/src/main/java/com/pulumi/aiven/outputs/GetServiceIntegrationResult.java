@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseCredentialsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseKafkaUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationClickhousePostgresqlUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationDatadogUserConfig;
@@ -25,6 +26,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceIntegrationResult {
+    /**
+     * @return ClickhouseCredentials user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    private List<GetServiceIntegrationClickhouseCredentialsUserConfig> clickhouseCredentialsUserConfigs;
     /**
      * @return ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
@@ -147,6 +153,13 @@ public final class GetServiceIntegrationResult {
     private String sourceServiceProject;
 
     private GetServiceIntegrationResult() {}
+    /**
+     * @return ClickhouseCredentials user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public List<GetServiceIntegrationClickhouseCredentialsUserConfig> clickhouseCredentialsUserConfigs() {
+        return this.clickhouseCredentialsUserConfigs;
+    }
     /**
      * @return ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
@@ -325,6 +338,7 @@ public final class GetServiceIntegrationResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetServiceIntegrationClickhouseCredentialsUserConfig> clickhouseCredentialsUserConfigs;
         private List<GetServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfigs;
         private List<GetServiceIntegrationClickhousePostgresqlUserConfig> clickhousePostgresqlUserConfigs;
         private List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs;
@@ -352,6 +366,7 @@ public final class GetServiceIntegrationResult {
         public Builder() {}
         public Builder(GetServiceIntegrationResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clickhouseCredentialsUserConfigs = defaults.clickhouseCredentialsUserConfigs;
     	      this.clickhouseKafkaUserConfigs = defaults.clickhouseKafkaUserConfigs;
     	      this.clickhousePostgresqlUserConfigs = defaults.clickhousePostgresqlUserConfigs;
     	      this.datadogUserConfigs = defaults.datadogUserConfigs;
@@ -378,6 +393,17 @@ public final class GetServiceIntegrationResult {
     	      this.sourceServiceProject = defaults.sourceServiceProject;
         }
 
+        @CustomType.Setter
+        public Builder clickhouseCredentialsUserConfigs(List<GetServiceIntegrationClickhouseCredentialsUserConfig> clickhouseCredentialsUserConfigs) {
+            if (clickhouseCredentialsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "clickhouseCredentialsUserConfigs");
+            }
+            this.clickhouseCredentialsUserConfigs = clickhouseCredentialsUserConfigs;
+            return this;
+        }
+        public Builder clickhouseCredentialsUserConfigs(GetServiceIntegrationClickhouseCredentialsUserConfig... clickhouseCredentialsUserConfigs) {
+            return clickhouseCredentialsUserConfigs(List.of(clickhouseCredentialsUserConfigs));
+        }
         @CustomType.Setter
         public Builder clickhouseKafkaUserConfigs(List<GetServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfigs) {
             if (clickhouseKafkaUserConfigs == null) {
@@ -614,6 +640,7 @@ public final class GetServiceIntegrationResult {
         }
         public GetServiceIntegrationResult build() {
             final var _resultValue = new GetServiceIntegrationResult();
+            _resultValue.clickhouseCredentialsUserConfigs = clickhouseCredentialsUserConfigs;
             _resultValue.clickhouseKafkaUserConfigs = clickhouseKafkaUserConfigs;
             _resultValue.clickhousePostgresqlUserConfigs = clickhousePostgresqlUserConfigs;
             _resultValue.datadogUserConfigs = datadogUserConfigs;

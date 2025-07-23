@@ -24,6 +24,7 @@ class ServiceIntegrationArgs:
     def __init__(__self__, *,
                  integration_type: pulumi.Input[builtins.str],
                  project: pulumi.Input[builtins.str],
+                 clickhouse_credentials_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']] = None,
                  clickhouse_kafka_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']] = None,
                  clickhouse_postgresql_user_config: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] = None,
                  datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
@@ -48,6 +49,7 @@ class ServiceIntegrationArgs:
         The set of arguments for constructing a ServiceIntegration resource.
         :param pulumi.Input[builtins.str] integration_type: Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
         :param pulumi.Input[builtins.str] project: Project the integration belongs to.
+        :param pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs'] clickhouse_credentials_user_config: ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -71,6 +73,8 @@ class ServiceIntegrationArgs:
         """
         pulumi.set(__self__, "integration_type", integration_type)
         pulumi.set(__self__, "project", project)
+        if clickhouse_credentials_user_config is not None:
+            pulumi.set(__self__, "clickhouse_credentials_user_config", clickhouse_credentials_user_config)
         if clickhouse_kafka_user_config is not None:
             pulumi.set(__self__, "clickhouse_kafka_user_config", clickhouse_kafka_user_config)
         if clickhouse_postgresql_user_config is not None:
@@ -135,6 +139,18 @@ class ServiceIntegrationArgs:
     @project.setter
     def project(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="clickhouseCredentialsUserConfig")
+    def clickhouse_credentials_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]:
+        """
+        ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "clickhouse_credentials_user_config")
+
+    @clickhouse_credentials_user_config.setter
+    def clickhouse_credentials_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]):
+        pulumi.set(self, "clickhouse_credentials_user_config", value)
 
     @property
     @pulumi.getter(name="clickhouseKafkaUserConfig")
@@ -380,6 +396,7 @@ class ServiceIntegrationArgs:
 @pulumi.input_type
 class _ServiceIntegrationState:
     def __init__(__self__, *,
+                 clickhouse_credentials_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']] = None,
                  clickhouse_kafka_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']] = None,
                  clickhouse_postgresql_user_config: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] = None,
                  datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
@@ -405,6 +422,7 @@ class _ServiceIntegrationState:
                  source_service_project: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceIntegration resources.
+        :param pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs'] clickhouse_credentials_user_config: ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -429,6 +447,8 @@ class _ServiceIntegrationState:
         :param pulumi.Input[builtins.str] source_service_name: Source service for the integration (if any)
         :param pulumi.Input[builtins.str] source_service_project: Source service project name
         """
+        if clickhouse_credentials_user_config is not None:
+            pulumi.set(__self__, "clickhouse_credentials_user_config", clickhouse_credentials_user_config)
         if clickhouse_kafka_user_config is not None:
             pulumi.set(__self__, "clickhouse_kafka_user_config", clickhouse_kafka_user_config)
         if clickhouse_postgresql_user_config is not None:
@@ -475,6 +495,18 @@ class _ServiceIntegrationState:
             pulumi.set(__self__, "source_service_name", source_service_name)
         if source_service_project is not None:
             pulumi.set(__self__, "source_service_project", source_service_project)
+
+    @property
+    @pulumi.getter(name="clickhouseCredentialsUserConfig")
+    def clickhouse_credentials_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]:
+        """
+        ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "clickhouse_credentials_user_config")
+
+    @clickhouse_credentials_user_config.setter
+    def clickhouse_credentials_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]):
+        pulumi.set(self, "clickhouse_credentials_user_config", value)
 
     @property
     @pulumi.getter(name="clickhouseKafkaUserConfig")
@@ -759,6 +791,7 @@ class ServiceIntegration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 clickhouse_credentials_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseCredentialsUserConfigArgs', 'ServiceIntegrationClickhouseCredentialsUserConfigArgsDict']]] = None,
                  clickhouse_kafka_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']]] = None,
                  clickhouse_postgresql_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']]] = None,
                  datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
@@ -821,6 +854,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ServiceIntegrationClickhouseCredentialsUserConfigArgs', 'ServiceIntegrationClickhouseCredentialsUserConfigArgsDict']] clickhouse_credentials_user_config: ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -902,6 +936,7 @@ class ServiceIntegration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 clickhouse_credentials_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseCredentialsUserConfigArgs', 'ServiceIntegrationClickhouseCredentialsUserConfigArgsDict']]] = None,
                  clickhouse_kafka_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']]] = None,
                  clickhouse_postgresql_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']]] = None,
                  datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
@@ -933,6 +968,7 @@ class ServiceIntegration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceIntegrationArgs.__new__(ServiceIntegrationArgs)
 
+            __props__.__dict__["clickhouse_credentials_user_config"] = clickhouse_credentials_user_config
             __props__.__dict__["clickhouse_kafka_user_config"] = clickhouse_kafka_user_config
             __props__.__dict__["clickhouse_postgresql_user_config"] = clickhouse_postgresql_user_config
             __props__.__dict__["datadog_user_config"] = datadog_user_config
@@ -970,6 +1006,7 @@ class ServiceIntegration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            clickhouse_credentials_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseCredentialsUserConfigArgs', 'ServiceIntegrationClickhouseCredentialsUserConfigArgsDict']]] = None,
             clickhouse_kafka_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']]] = None,
             clickhouse_postgresql_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']]] = None,
             datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
@@ -1000,6 +1037,7 @@ class ServiceIntegration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ServiceIntegrationClickhouseCredentialsUserConfigArgs', 'ServiceIntegrationClickhouseCredentialsUserConfigArgsDict']] clickhouse_credentials_user_config: ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -1028,6 +1066,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
         __props__ = _ServiceIntegrationState.__new__(_ServiceIntegrationState)
 
+        __props__.__dict__["clickhouse_credentials_user_config"] = clickhouse_credentials_user_config
         __props__.__dict__["clickhouse_kafka_user_config"] = clickhouse_kafka_user_config
         __props__.__dict__["clickhouse_postgresql_user_config"] = clickhouse_postgresql_user_config
         __props__.__dict__["datadog_user_config"] = datadog_user_config
@@ -1052,6 +1091,14 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__.__dict__["source_service_name"] = source_service_name
         __props__.__dict__["source_service_project"] = source_service_project
         return ServiceIntegration(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clickhouseCredentialsUserConfig")
+    def clickhouse_credentials_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationClickhouseCredentialsUserConfig']]:
+        """
+        ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "clickhouse_credentials_user_config")
 
     @property
     @pulumi.getter(name="clickhouseKafkaUserConfig")

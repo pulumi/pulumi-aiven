@@ -57,7 +57,7 @@ type OrganizationApplicationUser struct {
 	Email pulumi.StringOutput `pulumi:"email"`
 	// Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.
 	//
-	// Deprecated: This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
 	IsSuperAdmin pulumi.BoolPtrOutput `pulumi:"isSuperAdmin"`
 	// Name of the application user.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -104,7 +104,7 @@ type organizationApplicationUserState struct {
 	Email *string `pulumi:"email"`
 	// Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.
 	//
-	// Deprecated: This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
 	IsSuperAdmin *bool `pulumi:"isSuperAdmin"`
 	// Name of the application user.
 	Name *string `pulumi:"name"`
@@ -119,7 +119,7 @@ type OrganizationApplicationUserState struct {
 	Email pulumi.StringPtrInput
 	// Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.
 	//
-	// Deprecated: This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
 	IsSuperAdmin pulumi.BoolPtrInput
 	// Name of the application user.
 	Name pulumi.StringPtrInput
@@ -136,7 +136,7 @@ func (OrganizationApplicationUserState) ElementType() reflect.Type {
 type organizationApplicationUserArgs struct {
 	// Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.
 	//
-	// Deprecated: This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
 	IsSuperAdmin *bool `pulumi:"isSuperAdmin"`
 	// Name of the application user.
 	Name *string `pulumi:"name"`
@@ -148,7 +148,7 @@ type organizationApplicationUserArgs struct {
 type OrganizationApplicationUserArgs struct {
 	// Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.
 	//
-	// Deprecated: This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
 	IsSuperAdmin pulumi.BoolPtrInput
 	// Name of the application user.
 	Name pulumi.StringPtrInput
@@ -250,7 +250,7 @@ func (o OrganizationApplicationUserOutput) Email() pulumi.StringOutput {
 
 // Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.
 //
-// Deprecated: This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
 func (o OrganizationApplicationUserOutput) IsSuperAdmin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OrganizationApplicationUser) pulumi.BoolPtrOutput { return v.IsSuperAdmin }).(pulumi.BoolPtrOutput)
 }

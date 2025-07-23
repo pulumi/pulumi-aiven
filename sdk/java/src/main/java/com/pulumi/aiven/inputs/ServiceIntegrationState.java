@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.ServiceIntegrationClickhouseCredentialsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationClickhouseKafkaUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationClickhousePostgresqlUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigArgs;
@@ -28,6 +29,21 @@ import javax.annotation.Nullable;
 public final class ServiceIntegrationState extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceIntegrationState Empty = new ServiceIntegrationState();
+
+    /**
+     * ClickhouseCredentials user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    @Import(name="clickhouseCredentialsUserConfig")
+    private @Nullable Output<ServiceIntegrationClickhouseCredentialsUserConfigArgs> clickhouseCredentialsUserConfig;
+
+    /**
+     * @return ClickhouseCredentials user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public Optional<Output<ServiceIntegrationClickhouseCredentialsUserConfigArgs>> clickhouseCredentialsUserConfig() {
+        return Optional.ofNullable(this.clickhouseCredentialsUserConfig);
+    }
 
     /**
      * ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -377,6 +393,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     private ServiceIntegrationState() {}
 
     private ServiceIntegrationState(ServiceIntegrationState $) {
+        this.clickhouseCredentialsUserConfig = $.clickhouseCredentialsUserConfig;
         this.clickhouseKafkaUserConfig = $.clickhouseKafkaUserConfig;
         this.clickhousePostgresqlUserConfig = $.clickhousePostgresqlUserConfig;
         this.datadogUserConfig = $.datadogUserConfig;
@@ -418,6 +435,27 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
 
         public Builder(ServiceIntegrationState defaults) {
             $ = new ServiceIntegrationState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param clickhouseCredentialsUserConfig ClickhouseCredentials user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseCredentialsUserConfig(@Nullable Output<ServiceIntegrationClickhouseCredentialsUserConfigArgs> clickhouseCredentialsUserConfig) {
+            $.clickhouseCredentialsUserConfig = clickhouseCredentialsUserConfig;
+            return this;
+        }
+
+        /**
+         * @param clickhouseCredentialsUserConfig ClickhouseCredentials user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseCredentialsUserConfig(ServiceIntegrationClickhouseCredentialsUserConfigArgs clickhouseCredentialsUserConfig) {
+            return clickhouseCredentialsUserConfig(Output.of(clickhouseCredentialsUserConfig));
         }
 
         /**

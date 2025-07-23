@@ -206,7 +206,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
      * 
      * @deprecated
      * Usage of this field is discouraged.
@@ -217,7 +217,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> karapace;
 
     /**
-     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
      * 
      * @deprecated
      * Usage of this field is discouraged.
@@ -811,7 +811,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param karapace Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+         * @param karapace Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
          * 
          * @return builder
          * 
@@ -826,7 +826,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param karapace Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
+         * @param karapace Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
          * 
          * @return builder
          * 

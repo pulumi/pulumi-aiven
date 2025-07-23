@@ -125,6 +125,11 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable Integer logTempFiles;
     /**
+     * @return PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+     * 
+     */
+    private @Nullable Integer maxConnections;
+    /**
      * @return PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
      * 
      */
@@ -184,6 +189,11 @@ public final class PgPgUserConfigPg {
      * 
      */
     private @Nullable Integer maxStandbyStreamingDelay;
+    /**
+     * @return Maximum number of synchronization workers per subscription. The default is `2`.
+     * 
+     */
+    private @Nullable Integer maxSyncWorkersPerSubscription;
     /**
      * @return PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
      * 
@@ -421,6 +431,13 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.logTempFiles);
     }
     /**
+     * @return PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+     * 
+     */
+    public Optional<Integer> maxConnections() {
+        return Optional.ofNullable(this.maxConnections);
+    }
+    /**
      * @return PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
      * 
      */
@@ -503,6 +520,13 @@ public final class PgPgUserConfigPg {
      */
     public Optional<Integer> maxStandbyStreamingDelay() {
         return Optional.ofNullable(this.maxStandbyStreamingDelay);
+    }
+    /**
+     * @return Maximum number of synchronization workers per subscription. The default is `2`.
+     * 
+     */
+    public Optional<Integer> maxSyncWorkersPerSubscription() {
+        return Optional.ofNullable(this.maxSyncWorkersPerSubscription);
     }
     /**
      * @return PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
@@ -648,6 +672,7 @@ public final class PgPgUserConfigPg {
         private @Nullable String logLinePrefix;
         private @Nullable Integer logMinDurationStatement;
         private @Nullable Integer logTempFiles;
+        private @Nullable Integer maxConnections;
         private @Nullable Integer maxFilesPerProcess;
         private @Nullable Integer maxLocksPerTransaction;
         private @Nullable Integer maxLogicalReplicationWorkers;
@@ -660,6 +685,7 @@ public final class PgPgUserConfigPg {
         private @Nullable Integer maxStackDepth;
         private @Nullable Integer maxStandbyArchiveDelay;
         private @Nullable Integer maxStandbyStreamingDelay;
+        private @Nullable Integer maxSyncWorkersPerSubscription;
         private @Nullable Integer maxWalSenders;
         private @Nullable Integer maxWorkerProcesses;
         private @Nullable String passwordEncryption;
@@ -701,6 +727,7 @@ public final class PgPgUserConfigPg {
     	      this.logLinePrefix = defaults.logLinePrefix;
     	      this.logMinDurationStatement = defaults.logMinDurationStatement;
     	      this.logTempFiles = defaults.logTempFiles;
+    	      this.maxConnections = defaults.maxConnections;
     	      this.maxFilesPerProcess = defaults.maxFilesPerProcess;
     	      this.maxLocksPerTransaction = defaults.maxLocksPerTransaction;
     	      this.maxLogicalReplicationWorkers = defaults.maxLogicalReplicationWorkers;
@@ -713,6 +740,7 @@ public final class PgPgUserConfigPg {
     	      this.maxStackDepth = defaults.maxStackDepth;
     	      this.maxStandbyArchiveDelay = defaults.maxStandbyArchiveDelay;
     	      this.maxStandbyStreamingDelay = defaults.maxStandbyStreamingDelay;
+    	      this.maxSyncWorkersPerSubscription = defaults.maxSyncWorkersPerSubscription;
     	      this.maxWalSenders = defaults.maxWalSenders;
     	      this.maxWorkerProcesses = defaults.maxWorkerProcesses;
     	      this.passwordEncryption = defaults.passwordEncryption;
@@ -864,6 +892,12 @@ public final class PgPgUserConfigPg {
             return this;
         }
         @CustomType.Setter
+        public Builder maxConnections(@Nullable Integer maxConnections) {
+
+            this.maxConnections = maxConnections;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxFilesPerProcess(@Nullable Integer maxFilesPerProcess) {
 
             this.maxFilesPerProcess = maxFilesPerProcess;
@@ -933,6 +967,12 @@ public final class PgPgUserConfigPg {
         public Builder maxStandbyStreamingDelay(@Nullable Integer maxStandbyStreamingDelay) {
 
             this.maxStandbyStreamingDelay = maxStandbyStreamingDelay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxSyncWorkersPerSubscription(@Nullable Integer maxSyncWorkersPerSubscription) {
+
+            this.maxSyncWorkersPerSubscription = maxSyncWorkersPerSubscription;
             return this;
         }
         @CustomType.Setter
@@ -1055,6 +1095,7 @@ public final class PgPgUserConfigPg {
             _resultValue.logLinePrefix = logLinePrefix;
             _resultValue.logMinDurationStatement = logMinDurationStatement;
             _resultValue.logTempFiles = logTempFiles;
+            _resultValue.maxConnections = maxConnections;
             _resultValue.maxFilesPerProcess = maxFilesPerProcess;
             _resultValue.maxLocksPerTransaction = maxLocksPerTransaction;
             _resultValue.maxLogicalReplicationWorkers = maxLogicalReplicationWorkers;
@@ -1067,6 +1108,7 @@ public final class PgPgUserConfigPg {
             _resultValue.maxStackDepth = maxStackDepth;
             _resultValue.maxStandbyArchiveDelay = maxStandbyArchiveDelay;
             _resultValue.maxStandbyStreamingDelay = maxStandbyStreamingDelay;
+            _resultValue.maxSyncWorkersPerSubscription = maxSyncWorkersPerSubscription;
             _resultValue.maxWalSenders = maxWalSenders;
             _resultValue.maxWorkerProcesses = maxWorkerProcesses;
             _resultValue.passwordEncryption = passwordEncryption;

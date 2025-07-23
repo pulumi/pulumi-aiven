@@ -297,7 +297,7 @@ class GetClickhouseResult:
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> builtins.str:
         """
-        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.
         """
         return pulumi.get(self, "service_uri")
 

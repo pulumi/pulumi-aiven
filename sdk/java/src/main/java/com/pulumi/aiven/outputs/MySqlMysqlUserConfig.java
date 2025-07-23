@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.MySqlMysqlUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.MySqlMysqlUserConfigMigration;
 import com.pulumi.aiven.outputs.MySqlMysqlUserConfigMysql;
+import com.pulumi.aiven.outputs.MySqlMysqlUserConfigMysqlIncrementalBackup;
 import com.pulumi.aiven.outputs.MySqlMysqlUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.MySqlMysqlUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.MySqlMysqlUserConfigPublicAccess;
@@ -79,6 +80,11 @@ public final class MySqlMysqlUserConfig {
      * 
      */
     private @Nullable MySqlMysqlUserConfigMysql mysql;
+    /**
+     * @return MySQL incremental backup configuration
+     * 
+     */
+    private @Nullable MySqlMysqlUserConfigMysqlIncrementalBackup mysqlIncrementalBackup;
     /**
      * @return Enum: `8`, and newer. MySQL major version.
      * 
@@ -208,6 +214,13 @@ public final class MySqlMysqlUserConfig {
         return Optional.ofNullable(this.mysql);
     }
     /**
+     * @return MySQL incremental backup configuration
+     * 
+     */
+    public Optional<MySqlMysqlUserConfigMysqlIncrementalBackup> mysqlIncrementalBackup() {
+        return Optional.ofNullable(this.mysqlIncrementalBackup);
+    }
+    /**
      * @return Enum: `8`, and newer. MySQL major version.
      * 
      */
@@ -291,6 +304,7 @@ public final class MySqlMysqlUserConfig {
         private @Nullable List<String> ipFilters;
         private @Nullable MySqlMysqlUserConfigMigration migration;
         private @Nullable MySqlMysqlUserConfigMysql mysql;
+        private @Nullable MySqlMysqlUserConfigMysqlIncrementalBackup mysqlIncrementalBackup;
         private @Nullable String mysqlVersion;
         private @Nullable MySqlMysqlUserConfigPrivateAccess privateAccess;
         private @Nullable MySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess;
@@ -314,6 +328,7 @@ public final class MySqlMysqlUserConfig {
     	      this.ipFilters = defaults.ipFilters;
     	      this.migration = defaults.migration;
     	      this.mysql = defaults.mysql;
+    	      this.mysqlIncrementalBackup = defaults.mysqlIncrementalBackup;
     	      this.mysqlVersion = defaults.mysqlVersion;
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
@@ -401,6 +416,12 @@ public final class MySqlMysqlUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder mysqlIncrementalBackup(@Nullable MySqlMysqlUserConfigMysqlIncrementalBackup mysqlIncrementalBackup) {
+
+            this.mysqlIncrementalBackup = mysqlIncrementalBackup;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mysqlVersion(@Nullable String mysqlVersion) {
 
             this.mysqlVersion = mysqlVersion;
@@ -467,6 +488,7 @@ public final class MySqlMysqlUserConfig {
             _resultValue.ipFilters = ipFilters;
             _resultValue.migration = migration;
             _resultValue.mysql = mysql;
+            _resultValue.mysqlIncrementalBackup = mysqlIncrementalBackup;
             _resultValue.mysqlVersion = mysqlVersion;
             _resultValue.privateAccess = privateAccess;
             _resultValue.privatelinkAccess = privatelinkAccess;
