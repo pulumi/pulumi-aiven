@@ -540,6 +540,10 @@
                     "type": "integer",
                     "description": "Max standby streaming delay in milliseconds. The default is `30000` (upstream default).\n"
                 },
+                "maxSyncWorkersPerSubscription": {
+                    "type": "integer",
+                    "description": "Maximum number of synchronization workers per subscription. The default is `2`.\n"
+                },
                 "maxWalSenders": {
                     "type": "integer",
                     "description": "PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.\n"
@@ -607,7 +611,7 @@
                 },
                 "logCatalog": {
                     "type": "boolean",
-                    "description": "Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.\n"
+                    "description": "Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.\n"
                 },
                 "logClient": {
                     "type": "boolean",
@@ -619,11 +623,11 @@
                 },
                 "logMaxStringLength": {
                     "type": "integer",
-                    "description": "Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.\n"
+                    "description": "Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.\n"
                 },
                 "logNestedStatements": {
                     "type": "boolean",
-                    "description": "This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.\n"
+                    "description": "This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.\n"
                 },
                 "logParameter": {
                     "type": "boolean",
@@ -631,15 +635,15 @@
                 },
                 "logParameterMaxSize": {
                     "type": "integer",
-                    "description": "Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.\n"
+                    "description": "Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.\n"
                 },
                 "logRelation": {
                     "type": "boolean",
-                    "description": "Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.\n"
+                    "description": "Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.\n"
                 },
                 "logRows": {
                     "type": "boolean",
-                    "description": "Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.\n"
+                    "description": "Log Rows. Default: `false`.\n"
                 },
                 "logStatement": {
                     "type": "boolean",
@@ -647,7 +651,7 @@
                 },
                 "logStatementOnce": {
                     "type": "boolean",
-                    "description": "Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.\n"
+                    "description": "Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.\n"
                 },
                 "logs": {
                     "type": "array",
@@ -4567,6 +4571,10 @@
         },
         "aiven:index/KafkaKafkaUserConfigSingleZone:KafkaKafkaUserConfigSingleZone": {
             "properties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.\n"
@@ -4899,7 +4907,7 @@
                 },
                 "inklessEnable": {
                     "type": "boolean",
-                    "description": "Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.\n"
+                    "description": "Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.\n"
                 },
                 "localRetentionBytes": {
                     "type": "string",
@@ -5906,6 +5914,10 @@
                     "$ref": "#/types/aiven:index/MySqlMysqlUserConfigMysql:MySqlMysqlUserConfigMysql",
                     "description": "mysql.conf configuration values\n"
                 },
+                "mysqlIncrementalBackup": {
+                    "$ref": "#/types/aiven:index/MySqlMysqlUserConfigMysqlIncrementalBackup:MySqlMysqlUserConfigMysqlIncrementalBackup",
+                    "description": "MySQL incremental backup configuration\n"
+                },
                 "mysqlVersion": {
                     "type": "string",
                     "description": "Enum: `8`, and newer. MySQL major version.\n"
@@ -6138,6 +6150,22 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/MySqlMysqlUserConfigMysqlIncrementalBackup:MySqlMysqlUserConfigMysqlIncrementalBackup": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable periodic incremental backups. When enabled, full*backup*week_schedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.\n"
+                },
+                "fullBackupWeekSchedule": {
+                    "type": "string",
+                    "description": "Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
         },
         "aiven:index/MySqlMysqlUserConfigPrivateAccess:MySqlMysqlUserConfigPrivateAccess": {
             "properties": {
@@ -7370,7 +7398,7 @@
                 },
                 "enforced": {
                     "type": "boolean",
-                    "description": "Run shard indexing backpressure in shadow mode or enforced mode.\n        In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,\n        but it doesn’t actually reject any indexing requests.\n        In enforced mode (value set as true),\n        shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.\n        Default is false.\n"
+                    "description": "Run shard indexing backpressure in shadow mode or enforced mode.            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,            but it doesn’t actually reject any indexing requests.            In enforced mode (value set as true),            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.            Default is false.\n"
                 },
                 "operatingFactor": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor",
@@ -7387,15 +7415,15 @@
             "properties": {
                 "lower": {
                     "type": "number",
-                    "description": "Specify the lower occupancy limit of the allocated quota of memory for the shard.\n                If the total memory usage of a shard is below this limit,\n                shard indexing backpressure decreases the current allocated memory for that shard.\n                Default is 0.75.\n"
+                    "description": "Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.\n"
                 },
                 "optimal": {
                     "type": "number",
-                    "description": "Specify the optimal occupancy of the allocated quota of memory for the shard.\n                If the total memory usage of a shard is at this level,\n                shard indexing backpressure doesn’t change the current allocated memory for that shard.\n                Default is 0.85.\n"
+                    "description": "Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.\n"
                 },
                 "upper": {
                     "type": "number",
-                    "description": "Specify the upper occupancy limit of the allocated quota of memory for the shard.\n                If the total memory usage of a shard is above this limit,\n                shard indexing backpressure increases the current allocated memory for that shard.\n                Default is 0.95.\n"
+                    "description": "Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.\n"
                 }
             },
             "type": "object"
@@ -7415,7 +7443,7 @@
             "properties": {
                 "softLimit": {
                     "type": "number",
-                    "description": "Define the percentage of the node-level memory\n                        threshold that acts as a soft indicator for strain on a node.\n                        Default is 0.7.\n"
+                    "description": "Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.\n"
                 }
             },
             "type": "object"
@@ -7424,7 +7452,7 @@
             "properties": {
                 "minLimit": {
                     "type": "number",
-                    "description": "Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).\n                        Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.\n                        Default is 0.001.\n"
+                    "description": "Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.\n"
                 }
             },
             "type": "object"
@@ -7710,7 +7738,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
+                    "description": "List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
                 },
                 "principalId": {
                     "type": "string",
@@ -8337,6 +8365,10 @@
                     "type": "integer",
                     "description": "Log statements for each temporary file created larger than this number of kilobytes, -1 disables.\n"
                 },
+                "maxConnections": {
+                    "type": "integer",
+                    "description": "PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.\n"
+                },
                 "maxFilesPerProcess": {
                     "type": "integer",
                     "description": "PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.\n"
@@ -8384,6 +8416,10 @@
                 "maxStandbyStreamingDelay": {
                     "type": "integer",
                     "description": "Max standby streaming delay in milliseconds. The default is `30000` (upstream default).\n"
+                },
+                "maxSyncWorkersPerSubscription": {
+                    "type": "integer",
+                    "description": "Maximum number of synchronization workers per subscription. The default is `2`.\n"
                 },
                 "maxWalSenders": {
                     "type": "integer",
@@ -8490,7 +8526,7 @@
                 },
                 "logCatalog": {
                     "type": "boolean",
-                    "description": "Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.\n"
+                    "description": "Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.\n"
                 },
                 "logClient": {
                     "type": "boolean",
@@ -8502,11 +8538,11 @@
                 },
                 "logMaxStringLength": {
                     "type": "integer",
-                    "description": "Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.\n"
+                    "description": "Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.\n"
                 },
                 "logNestedStatements": {
                     "type": "boolean",
-                    "description": "This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.\n"
+                    "description": "This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.\n"
                 },
                 "logParameter": {
                     "type": "boolean",
@@ -8514,15 +8550,15 @@
                 },
                 "logParameterMaxSize": {
                     "type": "integer",
-                    "description": "Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.\n"
+                    "description": "Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.\n"
                 },
                 "logRelation": {
                     "type": "boolean",
-                    "description": "Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.\n"
+                    "description": "Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.\n"
                 },
                 "logRows": {
                     "type": "boolean",
-                    "description": "Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.\n"
+                    "description": "Log Rows. Default: `false`.\n"
                 },
                 "logStatement": {
                     "type": "boolean",
@@ -8530,7 +8566,7 @@
                 },
                 "logStatementOnce": {
                     "type": "boolean",
-                    "description": "Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.\n"
+                    "description": "Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.\n"
                 },
                 "logs": {
                     "type": "array",
@@ -9093,6 +9129,30 @@
             "type": "object",
             "required": [
                 "email"
+            ]
+        },
+        "aiven:index/ServiceIntegrationClickhouseCredentialsUserConfig:ServiceIntegrationClickhouseCredentialsUserConfig": {
+            "properties": {
+                "grants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationClickhouseCredentialsUserConfigGrant:ServiceIntegrationClickhouseCredentialsUserConfigGrant"
+                    },
+                    "description": "Grants to assign\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationClickhouseCredentialsUserConfigGrant:ServiceIntegrationClickhouseCredentialsUserConfigGrant": {
+            "properties": {
+                "user": {
+                    "type": "string",
+                    "description": "User or role to assign the grant to. Example: `alice`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "user"
             ]
         },
         "aiven:index/ServiceIntegrationClickhouseKafkaUserConfig:ServiceIntegrationClickhouseKafkaUserConfig": {
@@ -11543,6 +11603,10 @@
                     "type": "integer",
                     "description": "Max standby streaming delay in milliseconds. The default is `30000` (upstream default).\n"
                 },
+                "maxSyncWorkersPerSubscription": {
+                    "type": "integer",
+                    "description": "Maximum number of synchronization workers per subscription. The default is `2`.\n"
+                },
                 "maxWalSenders": {
                     "type": "integer",
                     "description": "PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.\n"
@@ -11610,7 +11674,7 @@
                 },
                 "logCatalog": {
                     "type": "boolean",
-                    "description": "Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.\n"
+                    "description": "Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.\n"
                 },
                 "logClient": {
                     "type": "boolean",
@@ -11642,7 +11706,7 @@
                 },
                 "logRows": {
                     "type": "boolean",
-                    "description": "Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.\n"
+                    "description": "Log Rows. Default: `false`.\n"
                 },
                 "logStatement": {
                     "type": "boolean",
@@ -15750,6 +15814,10 @@
         },
         "aiven:index/getKafkaKafkaUserConfigSingleZone:getKafkaKafkaUserConfigSingleZone": {
             "properties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.\n"
@@ -16118,7 +16186,7 @@
                 },
                 "inklessEnable": {
                     "type": "boolean",
-                    "description": "Indicates whether inkless should be enabled. This is only available for BYOC services with Inkless feature enabled.\n"
+                    "description": "Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.\n"
                 },
                 "localRetentionBytes": {
                     "type": "string",
@@ -17198,6 +17266,10 @@
                     "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigMysql:getMySqlMysqlUserConfigMysql",
                     "description": "mysql.conf configuration values\n"
                 },
+                "mysqlIncrementalBackup": {
+                    "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigMysqlIncrementalBackup:getMySqlMysqlUserConfigMysqlIncrementalBackup",
+                    "description": "MySQL incremental backup configuration\n"
+                },
                 "mysqlVersion": {
                     "type": "string",
                     "description": "Enum: `8`, and newer. MySQL major version.\n"
@@ -17437,6 +17509,27 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/getMySqlMysqlUserConfigMysqlIncrementalBackup:getMySqlMysqlUserConfigMysqlIncrementalBackup": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable periodic incremental backups. When enabled, full_backup_week_schedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.\n"
+                },
+                "fullBackupWeekSchedule": {
+                    "type": "string",
+                    "description": "Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getMySqlMysqlUserConfigPrivateAccess:getMySqlMysqlUserConfigPrivateAccess": {
             "properties": {
@@ -18714,7 +18807,7 @@
                 },
                 "enforced": {
                     "type": "boolean",
-                    "description": "Run shard indexing backpressure in shadow mode or enforced mode.\n            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,\n            but it doesn’t actually reject any indexing requests.\n            In enforced mode (value set as true),\n            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.\n            Default is false.\n"
+                    "description": "Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.\n"
                 },
                 "operatingFactor": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor:getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor",
@@ -18731,15 +18824,15 @@
             "properties": {
                 "lower": {
                     "type": "number",
-                    "description": "Specify the lower occupancy limit of the allocated quota of memory for the shard.\n                    If the total memory usage of a shard is below this limit,\n                    shard indexing backpressure decreases the current allocated memory for that shard.\n                    Default is 0.75.\n"
+                    "description": "Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.\n"
                 },
                 "optimal": {
                     "type": "number",
-                    "description": "Specify the optimal occupancy of the allocated quota of memory for the shard.\n                    If the total memory usage of a shard is at this level,\n                    shard indexing backpressure doesn’t change the current allocated memory for that shard.\n                    Default is 0.85.\n"
+                    "description": "Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.\n"
                 },
                 "upper": {
                     "type": "number",
-                    "description": "Specify the upper occupancy limit of the allocated quota of memory for the shard.\n                    If the total memory usage of a shard is above this limit,\n                    shard indexing backpressure increases the current allocated memory for that shard.\n                    Default is 0.95.\n"
+                    "description": "Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.\n"
                 }
             },
             "type": "object"
@@ -18759,7 +18852,7 @@
             "properties": {
                 "softLimit": {
                     "type": "number",
-                    "description": "Define the percentage of the node-level memory\n                            threshold that acts as a soft indicator for strain on a node.\n                            Default is 0.7.\n"
+                    "description": "Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.\n"
                 }
             },
             "type": "object"
@@ -18768,7 +18861,7 @@
             "properties": {
                 "minLimit": {
                     "type": "number",
-                    "description": "Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).\n                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.\n                            Default is 0.001.\n"
+                    "description": "Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.\n"
                 }
             },
             "type": "object"
@@ -19772,6 +19865,10 @@
                     "type": "integer",
                     "description": "Log statements for each temporary file created larger than this number of kilobytes, -1 disables.\n"
                 },
+                "maxConnections": {
+                    "type": "integer",
+                    "description": "PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.\n"
+                },
                 "maxFilesPerProcess": {
                     "type": "integer",
                     "description": "PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.\n"
@@ -19819,6 +19916,10 @@
                 "maxStandbyStreamingDelay": {
                     "type": "integer",
                     "description": "Max standby streaming delay in milliseconds. The default is `30000` (upstream default).\n"
+                },
+                "maxSyncWorkersPerSubscription": {
+                    "type": "integer",
+                    "description": "Maximum number of synchronization workers per subscription. The default is `2`.\n"
                 },
                 "maxWalSenders": {
                     "type": "integer",
@@ -19925,7 +20026,7 @@
                 },
                 "logCatalog": {
                     "type": "boolean",
-                    "description": "Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.\n"
+                    "description": "Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.\n"
                 },
                 "logClient": {
                     "type": "boolean",
@@ -19957,7 +20058,7 @@
                 },
                 "logRows": {
                     "type": "boolean",
-                    "description": "Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.\n"
+                    "description": "Log Rows. Default: `false`.\n"
                 },
                 "logStatement": {
                     "type": "boolean",
@@ -20568,6 +20669,35 @@
             "type": "object",
             "required": [
                 "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getServiceIntegrationClickhouseCredentialsUserConfig:getServiceIntegrationClickhouseCredentialsUserConfig": {
+            "properties": {
+                "grants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationClickhouseCredentialsUserConfigGrant:getServiceIntegrationClickhouseCredentialsUserConfigGrant"
+                    },
+                    "description": "Grants to assign\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationClickhouseCredentialsUserConfigGrant:getServiceIntegrationClickhouseCredentialsUserConfigGrant": {
+            "properties": {
+                "user": {
+                    "type": "string",
+                    "description": "User or role to assign the grant to. Example: `alice`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "user"
             ],
             "language": {
                 "nodejs": {
@@ -21366,7 +21496,7 @@
                 },
                 "sslMode": {
                     "type": "string",
-                    "description": "Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.\n"
+                    "description": "Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.\n"
                 },
                 "sslRootCert": {
                     "type": "string",
@@ -23244,7 +23374,7 @@
                 },
                 "teamType": {
                     "type": "string",
-                    "description": "The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
+                    "description": "The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
                 }
             },
             "required": [
@@ -23266,7 +23396,7 @@
                 },
                 "teamType": {
                     "type": "string",
-                    "description": "The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
+                    "description": "The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
                 }
             },
             "requiredInputs": [
@@ -23290,7 +23420,7 @@
                     },
                     "teamType": {
                         "type": "string",
-                        "description": "The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
+                        "description": "The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
                     }
                 },
                 "type": "object"
@@ -25563,7 +25693,7 @@
                 },
                 "serviceUri": {
                     "type": "string",
-                    "description": "URI for connecting to the service. Service specific info is under \"kafka\", \"pg\", etc.\n",
+                    "description": "The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.\n",
                     "secret": true
                 },
                 "serviceUsername": {
@@ -25817,7 +25947,7 @@
                     },
                     "serviceUri": {
                         "type": "string",
-                        "description": "URI for connecting to the service. Service specific info is under \"kafka\", \"pg\", etc.\n",
+                        "description": "The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.\n",
                         "secret": true
                     },
                     "serviceUsername": {
@@ -29591,7 +29721,7 @@
                 },
                 "karapace": {
                     "type": "boolean",
-                    "description": "Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.\n",
+                    "description": "Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.\n",
                     "deprecationMessage": "Usage of this field is discouraged."
                 },
                 "maintenanceWindowDow": {
@@ -29738,7 +29868,7 @@
                 },
                 "karapace": {
                     "type": "boolean",
-                    "description": "Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.\n",
+                    "description": "Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.\n",
                     "deprecationMessage": "Usage of this field is discouraged."
                 },
                 "maintenanceWindowDow": {
@@ -29869,7 +29999,7 @@
                     },
                     "karapace": {
                         "type": "boolean",
-                        "description": "Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.\n",
+                        "description": "Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.\n",
                         "deprecationMessage": "Usage of this field is discouraged."
                     },
                     "maintenanceWindowDow": {
@@ -34444,7 +34574,7 @@
                 "isSuperAdmin": {
                     "type": "boolean",
                     "description": "Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource."
+                    "deprecationMessage": "This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource."
                 },
                 "name": {
                     "type": "string",
@@ -34469,7 +34599,7 @@
                 "isSuperAdmin": {
                     "type": "boolean",
                     "description": "Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource."
+                    "deprecationMessage": "This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource."
                 },
                 "name": {
                     "type": "string",
@@ -34494,7 +34624,7 @@
                     "isSuperAdmin": {
                         "type": "boolean",
                         "description": "Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.\n",
-                        "deprecationMessage": "This field is deprecated and will be removed in the next major release. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource."
+                        "deprecationMessage": "This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource."
                     },
                     "name": {
                         "type": "string",
@@ -34942,7 +35072,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
+                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/aiven:index/OrganizationGroupProjectTimeouts:OrganizationGroupProjectTimeouts"
@@ -34964,7 +35094,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
+                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/aiven:index/OrganizationGroupProjectTimeouts:OrganizationGroupProjectTimeouts"
@@ -34988,7 +35118,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
+                        "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
                     },
                     "timeouts": {
                         "$ref": "#/types/aiven:index/OrganizationGroupProjectTimeouts:OrganizationGroupProjectTimeouts"
@@ -36508,7 +36638,7 @@
                 },
                 "memberType": {
                     "type": "string",
-                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
+                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
                 },
                 "project": {
                     "type": "string",
@@ -36529,7 +36659,7 @@
                 },
                 "memberType": {
                     "type": "string",
-                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
+                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
                 },
                 "project": {
                     "type": "string",
@@ -36556,7 +36686,7 @@
                     },
                     "memberType": {
                         "type": "string",
-                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
+                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n"
                     },
                     "project": {
                         "type": "string",
@@ -37223,6 +37353,10 @@
         "aiven:index/serviceIntegration:ServiceIntegration": {
             "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\n// Integrate Kafka and Thanos services for metrics\nconst exampleIntegration = new aiven.ServiceIntegration(\"example_integration\", {\n    project: exampleProject.project,\n    integrationType: \"metrics\",\n    sourceServiceName: exampleKafka.serviceName,\n    destinationServiceName: exampleThanos.serviceName,\n});\n// Use disk autoscaler with a PostgreSQL service\nconst autoscalerEndpoint = new aiven.ServiceIntegrationEndpoint(\"autoscaler_endpoint\", {\n    project: exampleProject.project,\n    endpointName: \"disk-autoscaler-200GiB\",\n    endpointType: \"autoscaler\",\n    autoscalerUserConfig: {\n        autoscalings: [{\n            capGb: 200,\n            type: \"autoscale_disk\",\n        }],\n    },\n});\nconst autoscalerIntegration = new aiven.ServiceIntegration(\"autoscaler_integration\", {\n    project: exampleProject.project,\n    integrationType: \"autoscaler\",\n    sourceServiceName: examplePg.serviceName,\n    destinationEndpointId: autoscalerEndpoint.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\n# Integrate Kafka and Thanos services for metrics\nexample_integration = aiven.ServiceIntegration(\"example_integration\",\n    project=example_project[\"project\"],\n    integration_type=\"metrics\",\n    source_service_name=example_kafka[\"serviceName\"],\n    destination_service_name=example_thanos[\"serviceName\"])\n# Use disk autoscaler with a PostgreSQL service\nautoscaler_endpoint = aiven.ServiceIntegrationEndpoint(\"autoscaler_endpoint\",\n    project=example_project[\"project\"],\n    endpoint_name=\"disk-autoscaler-200GiB\",\n    endpoint_type=\"autoscaler\",\n    autoscaler_user_config={\n        \"autoscalings\": [{\n            \"cap_gb\": 200,\n            \"type\": \"autoscale_disk\",\n        }],\n    })\nautoscaler_integration = aiven.ServiceIntegration(\"autoscaler_integration\",\n    project=example_project[\"project\"],\n    integration_type=\"autoscaler\",\n    source_service_name=example_pg[\"serviceName\"],\n    destination_endpoint_id=autoscaler_endpoint.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Integrate Kafka and Thanos services for metrics\n    var exampleIntegration = new Aiven.ServiceIntegration(\"example_integration\", new()\n    {\n        Project = exampleProject.Project,\n        IntegrationType = \"metrics\",\n        SourceServiceName = exampleKafka.ServiceName,\n        DestinationServiceName = exampleThanos.ServiceName,\n    });\n\n    // Use disk autoscaler with a PostgreSQL service\n    var autoscalerEndpoint = new Aiven.ServiceIntegrationEndpoint(\"autoscaler_endpoint\", new()\n    {\n        Project = exampleProject.Project,\n        EndpointName = \"disk-autoscaler-200GiB\",\n        EndpointType = \"autoscaler\",\n        AutoscalerUserConfig = new Aiven.Inputs.ServiceIntegrationEndpointAutoscalerUserConfigArgs\n        {\n            Autoscalings = new[]\n            {\n                new Aiven.Inputs.ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs\n                {\n                    CapGb = 200,\n                    Type = \"autoscale_disk\",\n                },\n            },\n        },\n    });\n\n    var autoscalerIntegration = new Aiven.ServiceIntegration(\"autoscaler_integration\", new()\n    {\n        Project = exampleProject.Project,\n        IntegrationType = \"autoscaler\",\n        SourceServiceName = examplePg.ServiceName,\n        DestinationEndpointId = autoscalerEndpoint.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Integrate Kafka and Thanos services for metrics\n\t\t_, err := aiven.NewServiceIntegration(ctx, \"example_integration\", \u0026aiven.ServiceIntegrationArgs{\n\t\t\tProject:                pulumi.Any(exampleProject.Project),\n\t\t\tIntegrationType:        pulumi.String(\"metrics\"),\n\t\t\tSourceServiceName:      pulumi.Any(exampleKafka.ServiceName),\n\t\t\tDestinationServiceName: pulumi.Any(exampleThanos.ServiceName),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Use disk autoscaler with a PostgreSQL service\n\t\tautoscalerEndpoint, err := aiven.NewServiceIntegrationEndpoint(ctx, \"autoscaler_endpoint\", \u0026aiven.ServiceIntegrationEndpointArgs{\n\t\t\tProject:      pulumi.Any(exampleProject.Project),\n\t\t\tEndpointName: pulumi.String(\"disk-autoscaler-200GiB\"),\n\t\t\tEndpointType: pulumi.String(\"autoscaler\"),\n\t\t\tAutoscalerUserConfig: \u0026aiven.ServiceIntegrationEndpointAutoscalerUserConfigArgs{\n\t\t\t\tAutoscalings: aiven.ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArray{\n\t\t\t\t\t\u0026aiven.ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs{\n\t\t\t\t\t\tCapGb: pulumi.Int(200),\n\t\t\t\t\t\tType:  pulumi.String(\"autoscale_disk\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewServiceIntegration(ctx, \"autoscaler_integration\", \u0026aiven.ServiceIntegrationArgs{\n\t\t\tProject:               pulumi.Any(exampleProject.Project),\n\t\t\tIntegrationType:       pulumi.String(\"autoscaler\"),\n\t\t\tSourceServiceName:     pulumi.Any(examplePg.ServiceName),\n\t\t\tDestinationEndpointId: autoscalerEndpoint.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.ServiceIntegration;\nimport com.pulumi.aiven.ServiceIntegrationArgs;\nimport com.pulumi.aiven.ServiceIntegrationEndpoint;\nimport com.pulumi.aiven.ServiceIntegrationEndpointArgs;\nimport com.pulumi.aiven.inputs.ServiceIntegrationEndpointAutoscalerUserConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Integrate Kafka and Thanos services for metrics\n        var exampleIntegration = new ServiceIntegration(\"exampleIntegration\", ServiceIntegrationArgs.builder()\n            .project(exampleProject.project())\n            .integrationType(\"metrics\")\n            .sourceServiceName(exampleKafka.serviceName())\n            .destinationServiceName(exampleThanos.serviceName())\n            .build());\n\n        // Use disk autoscaler with a PostgreSQL service\n        var autoscalerEndpoint = new ServiceIntegrationEndpoint(\"autoscalerEndpoint\", ServiceIntegrationEndpointArgs.builder()\n            .project(exampleProject.project())\n            .endpointName(\"disk-autoscaler-200GiB\")\n            .endpointType(\"autoscaler\")\n            .autoscalerUserConfig(ServiceIntegrationEndpointAutoscalerUserConfigArgs.builder()\n                .autoscalings(ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs.builder()\n                    .capGb(200)\n                    .type(\"autoscale_disk\")\n                    .build())\n                .build())\n            .build());\n\n        var autoscalerIntegration = new ServiceIntegration(\"autoscalerIntegration\", ServiceIntegrationArgs.builder()\n            .project(exampleProject.project())\n            .integrationType(\"autoscaler\")\n            .sourceServiceName(examplePg.serviceName())\n            .destinationEndpointId(autoscalerEndpoint.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Integrate Kafka and Thanos services for metrics\n  exampleIntegration:\n    type: aiven:ServiceIntegration\n    name: example_integration\n    properties:\n      project: ${exampleProject.project}\n      integrationType: metrics\n      sourceServiceName: ${exampleKafka.serviceName}\n      destinationServiceName: ${exampleThanos.serviceName}\n  # Use disk autoscaler with a PostgreSQL service\n  autoscalerEndpoint:\n    type: aiven:ServiceIntegrationEndpoint\n    name: autoscaler_endpoint\n    properties:\n      project: ${exampleProject.project}\n      endpointName: disk-autoscaler-200GiB\n      endpointType: autoscaler\n      autoscalerUserConfig:\n        autoscalings:\n          - capGb: 200\n            type: autoscale_disk\n  autoscalerIntegration:\n    type: aiven:ServiceIntegration\n    name: autoscaler_integration\n    properties:\n      project: ${exampleProject.project}\n      integrationType: autoscaler\n      sourceServiceName: ${examplePg.serviceName}\n      destinationEndpointId: ${autoscalerEndpoint.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/serviceIntegration:ServiceIntegration example_integration PROJECT/INTEGRATION_ID\n```\n\n",
             "properties": {
+                "clickhouseCredentialsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationClickhouseCredentialsUserConfig:ServiceIntegrationClickhouseCredentialsUserConfig",
+                    "description": "ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                },
                 "clickhouseKafkaUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationClickhouseKafkaUserConfig:ServiceIntegrationClickhouseKafkaUserConfig",
                     "description": "ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
@@ -37325,6 +37459,10 @@
                 "sourceServiceProject"
             ],
             "inputProperties": {
+                "clickhouseCredentialsUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationClickhouseCredentialsUserConfig:ServiceIntegrationClickhouseCredentialsUserConfig",
+                    "description": "ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                },
                 "clickhouseKafkaUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationClickhouseKafkaUserConfig:ServiceIntegrationClickhouseKafkaUserConfig",
                     "description": "ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
@@ -37429,6 +37567,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ServiceIntegration resources.\n",
                 "properties": {
+                    "clickhouseCredentialsUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationClickhouseCredentialsUserConfig:ServiceIntegrationClickhouseCredentialsUserConfig",
+                        "description": "ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                    },
                     "clickhouseKafkaUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationClickhouseKafkaUserConfig:ServiceIntegrationClickhouseKafkaUserConfig",
                         "description": "ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
@@ -39408,7 +39550,7 @@
                         "type": "string"
                     },
                     "teamType": {
-                        "description": "The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n",
+                        "description": "The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n",
                         "type": "string"
                     }
                 },
@@ -40985,7 +41127,7 @@
                         "type": "string"
                     },
                     "serviceUri": {
-                        "description": "URI for connecting to the service. Service specific info is under \"kafka\", \"pg\", etc.\n",
+                        "description": "The service URI for the ClickHouse service, which contains the hostname and port (e.g., 'service-name.h.aivencloud.com:16539') used to connect to the service. For protocol-specific connections, see the ClickHouse service example.\n",
                         "secret": true,
                         "type": "string"
                     },
@@ -42685,7 +42827,7 @@
                         "type": "array"
                     },
                     "karapace": {
-                        "description": "Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.\n",
+                        "description": "Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.\n",
                         "type": "boolean"
                     },
                     "maintenanceWindowDow": {
@@ -46368,7 +46510,7 @@
                         "type": "string"
                     },
                     "memberType": {
-                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n",
+                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.\n",
                         "type": "string"
                     },
                     "project": {
@@ -46868,6 +47010,13 @@
             "outputs": {
                 "description": "A collection of values returned by getServiceIntegration.\n",
                 "properties": {
+                    "clickhouseCredentialsUserConfigs": {
+                        "description": "ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServiceIntegrationClickhouseCredentialsUserConfig:getServiceIntegrationClickhouseCredentialsUserConfig"
+                        },
+                        "type": "array"
+                    },
                     "clickhouseKafkaUserConfigs": {
                         "description": "ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n",
                         "items": {
@@ -47008,6 +47157,7 @@
                     }
                 },
                 "required": [
+                    "clickhouseCredentialsUserConfigs",
                     "clickhouseKafkaUserConfigs",
                     "clickhousePostgresqlUserConfigs",
                     "datadogUserConfigs",

@@ -1246,6 +1246,9 @@
                                 "mysql": {
                                     "maxItemsOne": true
                                 },
+                                "mysql_incremental_backup": {
+                                    "maxItemsOne": true
+                                },
                                 "private_access": {
                                     "maxItemsOne": true
                                 },
@@ -1793,6 +1796,16 @@
                 "current": "aiven:index/serviceIntegration:ServiceIntegration",
                 "majorVersion": 6,
                 "fields": {
+                    "clickhouse_credentials_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "grants": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "clickhouse_kafka_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -3431,6 +3444,9 @@
                                 "mysql": {
                                     "maxItemsOne": true
                                 },
+                                "mysql_incremental_backup": {
+                                    "maxItemsOne": true
+                                },
                                 "private_access": {
                                     "maxItemsOne": true
                                 },
@@ -3981,6 +3997,16 @@
                 "current": "aiven:index/getServiceIntegration:getServiceIntegration",
                 "majorVersion": 6,
                 "fields": {
+                    "clickhouse_credentials_user_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "grants": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "clickhouse_kafka_user_config": {
                         "maxItemsOne": false,
                         "elem": {
