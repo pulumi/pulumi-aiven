@@ -5999,11 +5999,11 @@ func (o GetOpenSearchOpensearchUserConfigIndexRollupPtrOutput) RollupSearchSearc
 }
 
 type GetOpenSearchOpensearchUserConfigIndexTemplate struct {
-	// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
+	// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.
 	MappingNestedObjectsLimit *int `pulumi:"mappingNestedObjectsLimit"`
-	// The number of replicas each primary shard has. Example: `1`.
+	// The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.
 	NumberOfReplicas *int `pulumi:"numberOfReplicas"`
-	// The number of primary shards that an index should have. Example: `1`.
+	// The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.
 	NumberOfShards *int `pulumi:"numberOfShards"`
 }
 
@@ -6019,11 +6019,11 @@ type GetOpenSearchOpensearchUserConfigIndexTemplateInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigIndexTemplateArgs struct {
-	// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
+	// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.
 	MappingNestedObjectsLimit pulumi.IntPtrInput `pulumi:"mappingNestedObjectsLimit"`
-	// The number of replicas each primary shard has. Example: `1`.
+	// The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.
 	NumberOfReplicas pulumi.IntPtrInput `pulumi:"numberOfReplicas"`
-	// The number of primary shards that an index should have. Example: `1`.
+	// The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.
 	NumberOfShards pulumi.IntPtrInput `pulumi:"numberOfShards"`
 }
 
@@ -6104,17 +6104,17 @@ func (o GetOpenSearchOpensearchUserConfigIndexTemplateOutput) ToGetOpenSearchOpe
 	}).(GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput)
 }
 
-// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
+// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.
 func (o GetOpenSearchOpensearchUserConfigIndexTemplateOutput) MappingNestedObjectsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigIndexTemplate) *int { return v.MappingNestedObjectsLimit }).(pulumi.IntPtrOutput)
 }
 
-// The number of replicas each primary shard has. Example: `1`.
+// The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.
 func (o GetOpenSearchOpensearchUserConfigIndexTemplateOutput) NumberOfReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigIndexTemplate) *int { return v.NumberOfReplicas }).(pulumi.IntPtrOutput)
 }
 
-// The number of primary shards that an index should have. Example: `1`.
+// The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.
 func (o GetOpenSearchOpensearchUserConfigIndexTemplateOutput) NumberOfShards() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigIndexTemplate) *int { return v.NumberOfShards }).(pulumi.IntPtrOutput)
 }
@@ -6143,7 +6143,7 @@ func (o GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput) Elem() GetOpenS
 	}).(GetOpenSearchOpensearchUserConfigIndexTemplateOutput)
 }
 
-// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
+// The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.
 func (o GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput) MappingNestedObjectsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigIndexTemplate) *int {
 		if v == nil {
@@ -6153,7 +6153,7 @@ func (o GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput) MappingNestedOb
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of replicas each primary shard has. Example: `1`.
+// The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.
 func (o GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput) NumberOfReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigIndexTemplate) *int {
 		if v == nil {
@@ -6163,7 +6163,7 @@ func (o GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput) NumberOfReplica
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of primary shards that an index should have. Example: `1`.
+// The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.
 func (o GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput) NumberOfShards() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigIndexTemplate) *int {
 		if v == nil {
@@ -16510,7 +16510,7 @@ type GetPgPgUserConfigPg struct {
 	LogMinDurationStatement *int `pulumi:"logMinDurationStatement"`
 	// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
 	LogTempFiles *int `pulumi:"logTempFiles"`
-	// PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+	// Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
 	MaxConnections *int `pulumi:"maxConnections"`
 	// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 	MaxFilesPerProcess *int `pulumi:"maxFilesPerProcess"`
@@ -16542,7 +16542,7 @@ type GetPgPgUserConfigPg struct {
 	MaxWalSenders *int `pulumi:"maxWalSenders"`
 	// Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
 	MaxWorkerProcesses *int `pulumi:"maxWorkerProcesses"`
-	// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+	// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
 	PasswordEncryption *string `pulumi:"passwordEncryption"`
 	// Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
 	PgPartmanBgwDotInterval *int `pulumi:"pgPartmanBgwDotInterval"`
@@ -16628,7 +16628,7 @@ type GetPgPgUserConfigPgArgs struct {
 	LogMinDurationStatement pulumi.IntPtrInput `pulumi:"logMinDurationStatement"`
 	// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
 	LogTempFiles pulumi.IntPtrInput `pulumi:"logTempFiles"`
-	// PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+	// Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
 	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
 	// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 	MaxFilesPerProcess pulumi.IntPtrInput `pulumi:"maxFilesPerProcess"`
@@ -16660,7 +16660,7 @@ type GetPgPgUserConfigPgArgs struct {
 	MaxWalSenders pulumi.IntPtrInput `pulumi:"maxWalSenders"`
 	// Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
 	MaxWorkerProcesses pulumi.IntPtrInput `pulumi:"maxWorkerProcesses"`
-	// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+	// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
 	PasswordEncryption pulumi.StringPtrInput `pulumi:"passwordEncryption"`
 	// Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
 	PgPartmanBgwDotInterval pulumi.IntPtrInput `pulumi:"pgPartmanBgwDotInterval"`
@@ -16877,7 +16877,7 @@ func (o GetPgPgUserConfigPgOutput) LogTempFiles() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.LogTempFiles }).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+// Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxConnections() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
 }
@@ -16957,7 +16957,7 @@ func (o GetPgPgUserConfigPgOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxWorkerProcesses }).(pulumi.IntPtrOutput)
 }
 
-// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
 func (o GetPgPgUserConfigPgOutput) PasswordEncryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PasswordEncryption }).(pulumi.StringPtrOutput)
 }
@@ -17271,7 +17271,7 @@ func (o GetPgPgUserConfigPgPtrOutput) LogTempFiles() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+// Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxConnections() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -17431,7 +17431,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
 func (o GetPgPgUserConfigPgPtrOutput) PasswordEncryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -21852,6 +21852,22 @@ type GetServiceIntegrationClickhouseKafkaUserConfigTable struct {
 	PollMaxBatchSize *int `pulumi:"pollMaxBatchSize"`
 	// Timeout in milliseconds for a single poll from Kafka. Takes the value of the streamFlushIntervalMs server setting by default (500ms). Default: `0`.
 	PollMaxTimeoutMs *int `pulumi:"pollMaxTimeoutMs"`
+	// The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+	ProducerBatchNumMessages *int `pulumi:"producerBatchNumMessages"`
+	// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+	ProducerBatchSize *int `pulumi:"producerBatchSize"`
+	// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+	ProducerCompressionCodec *string `pulumi:"producerCompressionCodec"`
+	// The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+	ProducerCompressionLevel *int `pulumi:"producerCompressionLevel"`
+	// The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+	ProducerLingerMs *int `pulumi:"producerLingerMs"`
+	// The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+	ProducerQueueBufferingMaxKbytes *int `pulumi:"producerQueueBufferingMaxKbytes"`
+	// The maximum number of messages to buffer before sending. Default: `100000`.
+	ProducerQueueBufferingMaxMessages *int `pulumi:"producerQueueBufferingMaxMessages"`
+	// The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+	ProducerRequestRequiredAcks *int `pulumi:"producerRequestRequiredAcks"`
 	// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
 	SkipBrokenMessages *int `pulumi:"skipBrokenMessages"`
 	// Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
@@ -21896,6 +21912,22 @@ type GetServiceIntegrationClickhouseKafkaUserConfigTableArgs struct {
 	PollMaxBatchSize pulumi.IntPtrInput `pulumi:"pollMaxBatchSize"`
 	// Timeout in milliseconds for a single poll from Kafka. Takes the value of the streamFlushIntervalMs server setting by default (500ms). Default: `0`.
 	PollMaxTimeoutMs pulumi.IntPtrInput `pulumi:"pollMaxTimeoutMs"`
+	// The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+	ProducerBatchNumMessages pulumi.IntPtrInput `pulumi:"producerBatchNumMessages"`
+	// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+	ProducerBatchSize pulumi.IntPtrInput `pulumi:"producerBatchSize"`
+	// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+	ProducerCompressionCodec pulumi.StringPtrInput `pulumi:"producerCompressionCodec"`
+	// The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+	ProducerCompressionLevel pulumi.IntPtrInput `pulumi:"producerCompressionLevel"`
+	// The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+	ProducerLingerMs pulumi.IntPtrInput `pulumi:"producerLingerMs"`
+	// The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+	ProducerQueueBufferingMaxKbytes pulumi.IntPtrInput `pulumi:"producerQueueBufferingMaxKbytes"`
+	// The maximum number of messages to buffer before sending. Default: `100000`.
+	ProducerQueueBufferingMaxMessages pulumi.IntPtrInput `pulumi:"producerQueueBufferingMaxMessages"`
+	// The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+	ProducerRequestRequiredAcks pulumi.IntPtrInput `pulumi:"producerRequestRequiredAcks"`
 	// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
 	SkipBrokenMessages pulumi.IntPtrInput `pulumi:"skipBrokenMessages"`
 	// Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
@@ -22015,6 +22047,50 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) PollMaxBatchS
 // Timeout in milliseconds for a single poll from Kafka. Takes the value of the streamFlushIntervalMs server setting by default (500ms). Default: `0`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) PollMaxTimeoutMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.PollMaxTimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerBatchNumMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.ProducerBatchNumMessages }).(pulumi.IntPtrOutput)
+}
+
+// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerBatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.ProducerBatchSize }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerCompressionCodec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.ProducerCompressionCodec }).(pulumi.StringPtrOutput)
+}
+
+// The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerCompressionLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.ProducerCompressionLevel }).(pulumi.IntPtrOutput)
+}
+
+// The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerLingerMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.ProducerLingerMs }).(pulumi.IntPtrOutput)
+}
+
+// The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerQueueBufferingMaxKbytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int {
+		return v.ProducerQueueBufferingMaxKbytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of messages to buffer before sending. Default: `100000`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerQueueBufferingMaxMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int {
+		return v.ProducerQueueBufferingMaxMessages
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerRequestRequiredAcks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.ProducerRequestRequiredAcks }).(pulumi.IntPtrOutput)
 }
 
 // Skip at least this number of broken messages from Kafka topic per block. Default: `0`.

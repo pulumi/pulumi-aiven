@@ -226,7 +226,11 @@ public class M3Db extends com.pulumi.resources.CustomResource {
     /**
      * M3db user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Export(name="m3dbUserConfig", refs={M3DbM3dbUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ M3DbM3dbUserConfig> m3dbUserConfig;
 

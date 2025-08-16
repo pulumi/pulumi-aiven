@@ -104,6 +104,8 @@ export class M3Aggregator extends pulumi.CustomResource {
     public readonly m3aggregator!: pulumi.Output<outputs.M3AggregatorM3aggregator>;
     /**
      * M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     public readonly m3aggregatorUserConfig!: pulumi.Output<outputs.M3AggregatorM3aggregatorUserConfig | undefined>;
     /**
@@ -310,6 +312,8 @@ export interface M3AggregatorState {
     m3aggregator?: pulumi.Input<inputs.M3AggregatorM3aggregator>;
     /**
      * M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     m3aggregatorUserConfig?: pulumi.Input<inputs.M3AggregatorM3aggregatorUserConfig>;
     /**
@@ -407,6 +411,8 @@ export interface M3AggregatorArgs {
     m3aggregator?: pulumi.Input<inputs.M3AggregatorM3aggregator>;
     /**
      * M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     m3aggregatorUserConfig?: pulumi.Input<inputs.M3AggregatorM3aggregatorUserConfig>;
     /**

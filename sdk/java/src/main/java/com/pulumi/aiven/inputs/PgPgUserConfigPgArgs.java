@@ -349,14 +349,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+     * Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica&#39;s value. After the change is applied to the replica, you can increase the primary service&#39;s value. Changing this parameter causes a service restart.
      * 
      */
     @Import(name="maxConnections")
     private @Nullable Output<Integer> maxConnections;
 
     /**
-     * @return PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+     * @return Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica&#39;s value. After the change is applied to the replica, you can increase the primary service&#39;s value. Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<Integer>> maxConnections() {
@@ -589,14 +589,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
      * 
      */
     @Import(name="passwordEncryption")
     private @Nullable Output<String> passwordEncryption;
 
     /**
-     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
      * 
      */
     public Optional<Output<String>> passwordEncryption() {
@@ -1336,7 +1336,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxConnections PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+         * @param maxConnections Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica&#39;s value. After the change is applied to the replica, you can increase the primary service&#39;s value. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1347,7 +1347,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxConnections PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+         * @param maxConnections Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica&#39;s value. After the change is applied to the replica, you can increase the primary service&#39;s value. Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1672,7 +1672,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param passwordEncryption Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+         * @param passwordEncryption Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
          * 
          * @return builder
          * 
@@ -1683,7 +1683,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param passwordEncryption Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+         * @param passwordEncryption Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
          * 
          * @return builder
          * 

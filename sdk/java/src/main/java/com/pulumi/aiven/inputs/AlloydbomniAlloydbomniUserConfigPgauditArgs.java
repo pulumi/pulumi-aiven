@@ -34,14 +34,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
     }
 
     /**
-     * Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+     * Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
      * 
      */
     @Import(name="logCatalog")
     private @Nullable Output<Boolean> logCatalog;
 
     /**
-     * @return Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+     * @return Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> logCatalog() {
@@ -79,14 +79,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
     }
 
     /**
-     * Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
      * 
      */
     @Import(name="logMaxStringLength")
     private @Nullable Output<Integer> logMaxStringLength;
 
     /**
-     * @return Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+     * @return Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
      * 
      */
     public Optional<Output<Integer>> logMaxStringLength() {
@@ -94,14 +94,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
     }
 
     /**
-     * This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
      * 
      */
     @Import(name="logNestedStatements")
     private @Nullable Output<Boolean> logNestedStatements;
 
     /**
-     * @return This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+     * @return This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> logNestedStatements() {
@@ -124,14 +124,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
     }
 
     /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \n\n. Default: `0`.
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
      * 
      */
     @Import(name="logParameterMaxSize")
     private @Nullable Output<Integer> logParameterMaxSize;
 
     /**
-     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \n\n. Default: `0`.
+     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
      * 
      */
     public Optional<Output<Integer>> logParameterMaxSize() {
@@ -139,14 +139,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
     }
 
     /**
-     * Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
      * 
      */
     @Import(name="logRelation")
     private @Nullable Output<Boolean> logRelation;
 
     /**
-     * @return Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     * @return Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> logRelation() {
@@ -184,14 +184,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
     }
 
     /**
-     * Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
      * 
      */
     @Import(name="logStatementOnce")
     private @Nullable Output<Boolean> logStatementOnce;
 
     /**
-     * @return Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     * @return Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> logStatementOnce() {
@@ -287,7 +287,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logCatalog Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+         * @param logCatalog Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logCatalog Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+         * @param logCatalog Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logMaxStringLength Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+         * @param logMaxStringLength Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logMaxStringLength Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+         * @param logMaxStringLength Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logNestedStatements This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+         * @param logNestedStatements This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logNestedStatements This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+         * @param logNestedStatements This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logParameterMaxSize Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \n\n. Default: `0`.
+         * @param logParameterMaxSize Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logParameterMaxSize Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \n\n. Default: `0`.
+         * @param logParameterMaxSize Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logRelation Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+         * @param logRelation Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logRelation Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+         * @param logRelation Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logStatementOnce Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+         * @param logStatementOnce Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logStatementOnce Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+         * @param logStatementOnce Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
          * 
          * @return builder
          * 

@@ -71,6 +71,9 @@ class M3AggregatorArgs:
         if m3aggregator is not None:
             pulumi.set(__self__, "m3aggregator", m3aggregator)
         if m3aggregator_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""m3aggregator_user_config is deprecated: This property is deprecated.""")
+        if m3aggregator_user_config is not None:
             pulumi.set(__self__, "m3aggregator_user_config", m3aggregator_user_config)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
@@ -176,6 +179,7 @@ class M3AggregatorArgs:
 
     @_builtins.property
     @pulumi.getter(name="m3aggregatorUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def m3aggregator_user_config(self) -> Optional[pulumi.Input['M3AggregatorM3aggregatorUserConfigArgs']]:
         """
         M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -369,6 +373,9 @@ class _M3AggregatorState:
         if m3aggregator is not None:
             pulumi.set(__self__, "m3aggregator", m3aggregator)
         if m3aggregator_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""m3aggregator_user_config is deprecated: This property is deprecated.""")
+        if m3aggregator_user_config is not None:
             pulumi.set(__self__, "m3aggregator_user_config", m3aggregator_user_config)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
@@ -519,6 +526,7 @@ class _M3AggregatorState:
 
     @_builtins.property
     @pulumi.getter(name="m3aggregatorUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def m3aggregator_user_config(self) -> Optional[pulumi.Input['M3AggregatorM3aggregatorUserConfigArgs']]:
         """
         M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -1104,6 +1112,7 @@ class M3Aggregator(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="m3aggregatorUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def m3aggregator_user_config(self) -> pulumi.Output[Optional['outputs.M3AggregatorM3aggregatorUserConfig']]:
         """
         M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

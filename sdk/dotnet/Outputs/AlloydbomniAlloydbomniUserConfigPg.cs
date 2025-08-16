@@ -162,7 +162,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxWorkerProcesses;
         /// <summary>
-        /// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+        /// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
         /// </summary>
         public readonly string? PasswordEncryption;
         /// <summary>

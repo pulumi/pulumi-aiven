@@ -235,7 +235,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxWorkerProcesses { get; set; }
 
         /// <summary>
-        /// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+        /// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
         /// </summary>
         [Input("passwordEncryption")]
         public Input<string>? PasswordEncryption { get; set; }

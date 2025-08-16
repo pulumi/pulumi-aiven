@@ -554,7 +554,7 @@
                 },
                 "passwordEncryption": {
                     "type": "string",
-                    "description": "Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.\n"
+                    "description": "Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.\n"
                 },
                 "pgPartmanBgwDotInterval": {
                     "type": "integer",
@@ -611,7 +611,7 @@
                 },
                 "logCatalog": {
                     "type": "boolean",
-                    "description": "Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.\n"
+                    "description": "Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.\n"
                 },
                 "logClient": {
                     "type": "boolean",
@@ -623,11 +623,11 @@
                 },
                 "logMaxStringLength": {
                     "type": "integer",
-                    "description": "Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.\n"
+                    "description": "Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.\n"
                 },
                 "logNestedStatements": {
                     "type": "boolean",
-                    "description": "This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.\n"
+                    "description": "This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.\n"
                 },
                 "logParameter": {
                     "type": "boolean",
@@ -635,11 +635,11 @@
                 },
                 "logParameterMaxSize": {
                     "type": "integer",
-                    "description": "Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.\n"
+                    "description": "Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.\n"
                 },
                 "logRelation": {
                     "type": "boolean",
-                    "description": "Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.\n"
+                    "description": "Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.\n"
                 },
                 "logRows": {
                     "type": "boolean",
@@ -651,7 +651,7 @@
                 },
                 "logStatementOnce": {
                     "type": "boolean",
-                    "description": "Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.\n"
+                    "description": "Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.\n"
                 },
                 "logs": {
                     "type": "array",
@@ -6662,15 +6662,15 @@
             "properties": {
                 "mappingNestedObjectsLimit": {
                     "type": "integer",
-                    "description": "The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.\n"
+                    "description": "The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.\n"
                 },
                 "numberOfReplicas": {
                     "type": "integer",
-                    "description": "The number of replicas each primary shard has. Example: `1`.\n"
+                    "description": "The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.\n"
                 },
                 "numberOfShards": {
                     "type": "integer",
-                    "description": "The number of primary shards that an index should have. Example: `1`.\n"
+                    "description": "The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.\n"
                 }
             },
             "type": "object"
@@ -7398,7 +7398,7 @@
                 },
                 "enforced": {
                     "type": "boolean",
-                    "description": "Run shard indexing backpressure in shadow mode or enforced mode.            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,            but it doesn’t actually reject any indexing requests.            In enforced mode (value set as true),            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.            Default is false.\n"
+                    "description": "Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.\n"
                 },
                 "operatingFactor": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor",
@@ -7415,15 +7415,15 @@
             "properties": {
                 "lower": {
                     "type": "number",
-                    "description": "Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.\n"
+                    "description": "Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.\n"
                 },
                 "optimal": {
                     "type": "number",
-                    "description": "Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.\n"
+                    "description": "Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.\n"
                 },
                 "upper": {
                     "type": "number",
-                    "description": "Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.\n"
+                    "description": "Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.\n"
                 }
             },
             "type": "object"
@@ -7443,7 +7443,7 @@
             "properties": {
                 "softLimit": {
                     "type": "number",
-                    "description": "Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.\n"
+                    "description": "Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.\n"
                 }
             },
             "type": "object"
@@ -7452,7 +7452,7 @@
             "properties": {
                 "minLimit": {
                     "type": "number",
-                    "description": "Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.\n"
+                    "description": "Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.\n"
                 }
             },
             "type": "object"
@@ -8367,7 +8367,7 @@
                 },
                 "maxConnections": {
                     "type": "integer",
-                    "description": "PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.\n"
+                    "description": "Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.\n"
                 },
                 "maxFilesPerProcess": {
                     "type": "integer",
@@ -8431,7 +8431,7 @@
                 },
                 "passwordEncryption": {
                     "type": "string",
-                    "description": "Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.\n"
+                    "description": "Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.\n"
                 },
                 "pgPartmanBgwDotInterval": {
                     "type": "integer",
@@ -8526,7 +8526,7 @@
                 },
                 "logCatalog": {
                     "type": "boolean",
-                    "description": "Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.\n"
+                    "description": "Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.\n"
                 },
                 "logClient": {
                     "type": "boolean",
@@ -8538,11 +8538,11 @@
                 },
                 "logMaxStringLength": {
                     "type": "integer",
-                    "description": "Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.\n"
+                    "description": "Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.\n"
                 },
                 "logNestedStatements": {
                     "type": "boolean",
-                    "description": "This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.\n"
+                    "description": "This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.\n"
                 },
                 "logParameter": {
                     "type": "boolean",
@@ -8550,11 +8550,11 @@
                 },
                 "logParameterMaxSize": {
                     "type": "integer",
-                    "description": "Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.\n"
+                    "description": "Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.\n"
                 },
                 "logRelation": {
                     "type": "boolean",
-                    "description": "Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.\n"
+                    "description": "Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.\n"
                 },
                 "logRows": {
                     "type": "boolean",
@@ -8566,7 +8566,7 @@
                 },
                 "logStatementOnce": {
                     "type": "boolean",
-                    "description": "Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.\n"
+                    "description": "Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.\n"
                 },
                 "logs": {
                     "type": "array",
@@ -9220,6 +9220,38 @@
                     "type": "integer",
                     "description": "Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.\n"
                 },
+                "producerBatchNumMessages": {
+                    "type": "integer",
+                    "description": "The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.\n"
+                },
+                "producerBatchSize": {
+                    "type": "integer",
+                    "description": "The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.\n"
+                },
+                "producerCompressionCodec": {
+                    "type": "string",
+                    "description": "Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.\n"
+                },
+                "producerCompressionLevel": {
+                    "type": "integer",
+                    "description": "The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.\n"
+                },
+                "producerLingerMs": {
+                    "type": "integer",
+                    "description": "The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.\n"
+                },
+                "producerQueueBufferingMaxKbytes": {
+                    "type": "integer",
+                    "description": "The maximum size of the buffer in kilobytes before sending. Default: `1048576`.\n"
+                },
+                "producerQueueBufferingMaxMessages": {
+                    "type": "integer",
+                    "description": "The maximum number of messages to buffer before sending. Default: `100000`.\n"
+                },
+                "producerRequestRequiredAcks": {
+                    "type": "integer",
+                    "description": "The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.\n"
+                },
                 "skipBrokenMessages": {
                     "type": "integer",
                     "description": "Skip at least this number of broken messages from Kafka topic per block. Default: `0`.\n"
@@ -9851,7 +9883,7 @@
                 },
                 "sslMode": {
                     "type": "string",
-                    "description": "Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.\n"
+                    "description": "Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.\n"
                 },
                 "sslRootCert": {
                     "type": "string",
@@ -11617,7 +11649,7 @@
                 },
                 "passwordEncryption": {
                     "type": "string",
-                    "description": "Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.\n"
+                    "description": "Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.\n"
                 },
                 "pgPartmanBgwDotInterval": {
                     "type": "integer",
@@ -18056,15 +18088,15 @@
             "properties": {
                 "mappingNestedObjectsLimit": {
                     "type": "integer",
-                    "description": "The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.\n"
+                    "description": "The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.\n"
                 },
                 "numberOfReplicas": {
                     "type": "integer",
-                    "description": "The number of replicas each primary shard has. Example: `1`.\n"
+                    "description": "The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.\n"
                 },
                 "numberOfShards": {
                     "type": "integer",
-                    "description": "The number of primary shards that an index should have. Example: `1`.\n"
+                    "description": "The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.\n"
                 }
             },
             "type": "object"
@@ -19867,7 +19899,7 @@
                 },
                 "maxConnections": {
                     "type": "integer",
-                    "description": "PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.\n"
+                    "description": "Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.\n"
                 },
                 "maxFilesPerProcess": {
                     "type": "integer",
@@ -19931,7 +19963,7 @@
                 },
                 "passwordEncryption": {
                     "type": "string",
-                    "description": "Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.\n"
+                    "description": "Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.\n"
                 },
                 "pgPartmanBgwDotInterval": {
                     "type": "integer",
@@ -20769,6 +20801,38 @@
                 "pollMaxTimeoutMs": {
                     "type": "integer",
                     "description": "Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream_flush_interval_ms server setting by default (500ms). Default: `0`.\n"
+                },
+                "producerBatchNumMessages": {
+                    "type": "integer",
+                    "description": "The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.\n"
+                },
+                "producerBatchSize": {
+                    "type": "integer",
+                    "description": "The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.\n"
+                },
+                "producerCompressionCodec": {
+                    "type": "string",
+                    "description": "Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.\n"
+                },
+                "producerCompressionLevel": {
+                    "type": "integer",
+                    "description": "The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.\n"
+                },
+                "producerLingerMs": {
+                    "type": "integer",
+                    "description": "The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.\n"
+                },
+                "producerQueueBufferingMaxKbytes": {
+                    "type": "integer",
+                    "description": "The maximum size of the buffer in kilobytes before sending. Default: `1048576`.\n"
+                },
+                "producerQueueBufferingMaxMessages": {
+                    "type": "integer",
+                    "description": "The maximum number of messages to buffer before sending. Default: `100000`.\n"
+                },
+                "producerRequestRequiredAcks": {
+                    "type": "integer",
+                    "description": "The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.\n"
                 },
                 "skipBrokenMessages": {
                     "type": "integer",
@@ -31960,7 +32024,8 @@
                 },
                 "m3aggregatorUserConfig": {
                     "$ref": "#/types/aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig",
-                    "description": "M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                    "description": "M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n",
+                    "deprecationMessage": "This property is deprecated."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -32089,7 +32154,8 @@
                 },
                 "m3aggregatorUserConfig": {
                     "$ref": "#/types/aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig",
-                    "description": "M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                    "description": "M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n",
+                    "deprecationMessage": "This property is deprecated."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -32202,7 +32268,8 @@
                     },
                     "m3aggregatorUserConfig": {
                         "$ref": "#/types/aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig",
-                        "description": "M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                        "description": "M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n",
+                        "deprecationMessage": "This property is deprecated."
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -32342,7 +32409,8 @@
                 },
                 "m3dbUserConfig": {
                     "$ref": "#/types/aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig",
-                    "description": "M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                    "description": "M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n",
+                    "deprecationMessage": "This property is deprecated."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -32471,7 +32539,8 @@
                 },
                 "m3dbUserConfig": {
                     "$ref": "#/types/aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig",
-                    "description": "M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                    "description": "M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n",
+                    "deprecationMessage": "This property is deprecated."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -32584,7 +32653,8 @@
                     },
                     "m3dbUserConfig": {
                         "$ref": "#/types/aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig",
-                        "description": "M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                        "description": "M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n",
+                        "deprecationMessage": "This property is deprecated."
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
