@@ -91,6 +91,8 @@ type M3Db struct {
 	// Values provided by the M3DB server.
 	M3db M3DbM3dbOutput `pulumi:"m3db"`
 	// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	M3dbUserConfig M3DbM3dbUserConfigPtrOutput `pulumi:"m3dbUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
@@ -200,6 +202,8 @@ type m3dbState struct {
 	// Values provided by the M3DB server.
 	M3db *M3DbM3db `pulumi:"m3db"`
 	// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	M3dbUserConfig *M3DbM3dbUserConfig `pulumi:"m3dbUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -262,6 +266,8 @@ type M3DbState struct {
 	// Values provided by the M3DB server.
 	M3db M3DbM3dbPtrInput
 	// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	M3dbUserConfig M3DbM3dbUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -316,6 +322,8 @@ type m3dbArgs struct {
 	// Values provided by the M3DB server.
 	M3db *M3DbM3db `pulumi:"m3db"`
 	// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	M3dbUserConfig *M3DbM3dbUserConfig `pulumi:"m3dbUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -354,6 +362,8 @@ type M3DbArgs struct {
 	// Values provided by the M3DB server.
 	M3db M3DbM3dbPtrInput
 	// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	M3dbUserConfig M3DbM3dbUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -516,6 +526,8 @@ func (o M3DbOutput) M3db() M3DbM3dbOutput {
 }
 
 // M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+//
+// Deprecated: This property is deprecated.
 func (o M3DbOutput) M3dbUserConfig() M3DbM3dbUserConfigPtrOutput {
 	return o.ApplyT(func(v *M3Db) M3DbM3dbUserConfigPtrOutput { return v.M3dbUserConfig }).(M3DbM3dbUserConfigPtrOutput)
 }

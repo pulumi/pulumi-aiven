@@ -94,14 +94,22 @@ public final class M3DbArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * M3db user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="m3dbUserConfig")
     private @Nullable Output<M3DbM3dbUserConfigArgs> m3dbUserConfig;
 
     /**
      * @return M3db user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<M3DbM3dbUserConfigArgs>> m3dbUserConfig() {
         return Optional.ofNullable(this.m3dbUserConfig);
     }
@@ -407,7 +415,11 @@ public final class M3DbArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder m3dbUserConfig(@Nullable Output<M3DbM3dbUserConfigArgs> m3dbUserConfig) {
             $.m3dbUserConfig = m3dbUserConfig;
             return this;
@@ -418,7 +430,11 @@ public final class M3DbArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder m3dbUserConfig(M3DbM3dbUserConfigArgs m3dbUserConfig) {
             return m3dbUserConfig(Output.of(m3dbUserConfig));
         }

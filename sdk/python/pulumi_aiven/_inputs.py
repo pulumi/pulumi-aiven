@@ -2092,7 +2092,7 @@ if not MYPY:
         """
         password_encryption: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+        Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
         """
         pg_partman_bgw_dot_interval: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -2231,7 +2231,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
         :param pulumi.Input[_builtins.int] max_sync_workers_per_subscription: Maximum number of synchronization workers per subscription. The default is `2`.
         :param pulumi.Input[_builtins.int] max_wal_senders: PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
         :param pulumi.Input[_builtins.int] max_worker_processes: Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.str] password_encryption: Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+        :param pulumi.Input[_builtins.str] password_encryption: Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
         :param pulumi.Input[_builtins.int] pg_partman_bgw_dot_interval: Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
         :param pulumi.Input[_builtins.str] pg_partman_bgw_dot_role: Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
         :param pulumi.Input[_builtins.str] pg_stat_statements_dot_track: Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
@@ -2791,7 +2791,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
     @pulumi.getter(name="passwordEncryption")
     def password_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+        Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
         """
         return pulumi.get(self, "password_encryption")
 
@@ -2940,7 +2940,7 @@ if not MYPY:
         """
         log_catalog: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+        Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         """
         log_client: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -2952,11 +2952,11 @@ if not MYPY:
         """
         log_max_string_length: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
         """
         log_nested_statements: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         """
         log_parameter: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -2964,11 +2964,11 @@ if not MYPY:
         """
         log_parameter_max_size: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.
+        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
         """
         log_relation: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         """
         log_rows: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -2980,7 +2980,7 @@ if not MYPY:
         """
         log_statement_once: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
         """
         logs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -3012,17 +3012,17 @@ class AlloydbomniAlloydbomniUserConfigPgauditArgs:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-        :param pulumi.Input[_builtins.bool] log_catalog: Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+        :param pulumi.Input[_builtins.bool] log_catalog: Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         :param pulumi.Input[_builtins.bool] log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
         :param pulumi.Input[_builtins.str] log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-        :param pulumi.Input[_builtins.int] log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
-        :param pulumi.Input[_builtins.bool] log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+        :param pulumi.Input[_builtins.int] log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+        :param pulumi.Input[_builtins.bool] log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         :param pulumi.Input[_builtins.bool] log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-        :param pulumi.Input[_builtins.int] log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.
-        :param pulumi.Input[_builtins.bool] log_relation: Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        :param pulumi.Input[_builtins.int] log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+        :param pulumi.Input[_builtins.bool] log_relation: Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         :param pulumi.Input[_builtins.bool] log_rows: Log Rows. Default: `false`.
         :param pulumi.Input[_builtins.bool] log_statement: Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-        :param pulumi.Input[_builtins.bool] log_statement_once: Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        :param pulumi.Input[_builtins.bool] log_statement_once: Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] logs: Specifies which classes of statements will be logged by session audit logging.
         :param pulumi.Input[_builtins.str] role: Specifies the master role to use for object audit logging.
         """
@@ -3071,7 +3071,7 @@ class AlloydbomniAlloydbomniUserConfigPgauditArgs:
     @pulumi.getter(name="logCatalog")
     def log_catalog(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+        Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         """
         return pulumi.get(self, "log_catalog")
 
@@ -3107,7 +3107,7 @@ class AlloydbomniAlloydbomniUserConfigPgauditArgs:
     @pulumi.getter(name="logMaxStringLength")
     def log_max_string_length(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
         """
         return pulumi.get(self, "log_max_string_length")
 
@@ -3119,7 +3119,7 @@ class AlloydbomniAlloydbomniUserConfigPgauditArgs:
     @pulumi.getter(name="logNestedStatements")
     def log_nested_statements(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         """
         return pulumi.get(self, "log_nested_statements")
 
@@ -3143,7 +3143,7 @@ class AlloydbomniAlloydbomniUserConfigPgauditArgs:
     @pulumi.getter(name="logParameterMaxSize")
     def log_parameter_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.
+        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
         """
         return pulumi.get(self, "log_parameter_max_size")
 
@@ -3155,7 +3155,7 @@ class AlloydbomniAlloydbomniUserConfigPgauditArgs:
     @pulumi.getter(name="logRelation")
     def log_relation(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         """
         return pulumi.get(self, "log_relation")
 
@@ -3191,7 +3191,7 @@ class AlloydbomniAlloydbomniUserConfigPgauditArgs:
     @pulumi.getter(name="logStatementOnce")
     def log_statement_once(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
         """
         return pulumi.get(self, "log_statement_once")
 
@@ -25365,15 +25365,15 @@ if not MYPY:
     class OpenSearchOpensearchUserConfigIndexTemplateArgsDict(TypedDict):
         mapping_nested_objects_limit: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
+        The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.
         """
         number_of_replicas: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The number of replicas each primary shard has. Example: `1`.
+        The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.
         """
         number_of_shards: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The number of primary shards that an index should have. Example: `1`.
+        The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.
         """
 elif False:
     OpenSearchOpensearchUserConfigIndexTemplateArgsDict: TypeAlias = Mapping[str, Any]
@@ -25385,9 +25385,9 @@ class OpenSearchOpensearchUserConfigIndexTemplateArgs:
                  number_of_replicas: Optional[pulumi.Input[_builtins.int]] = None,
                  number_of_shards: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] mapping_nested_objects_limit: The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
-        :param pulumi.Input[_builtins.int] number_of_replicas: The number of replicas each primary shard has. Example: `1`.
-        :param pulumi.Input[_builtins.int] number_of_shards: The number of primary shards that an index should have. Example: `1`.
+        :param pulumi.Input[_builtins.int] mapping_nested_objects_limit: The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.
+        :param pulumi.Input[_builtins.int] number_of_replicas: The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.
+        :param pulumi.Input[_builtins.int] number_of_shards: The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.
         """
         if mapping_nested_objects_limit is not None:
             pulumi.set(__self__, "mapping_nested_objects_limit", mapping_nested_objects_limit)
@@ -25400,7 +25400,7 @@ class OpenSearchOpensearchUserConfigIndexTemplateArgs:
     @pulumi.getter(name="mappingNestedObjectsLimit")
     def mapping_nested_objects_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
+        The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.
         """
         return pulumi.get(self, "mapping_nested_objects_limit")
 
@@ -25412,7 +25412,7 @@ class OpenSearchOpensearchUserConfigIndexTemplateArgs:
     @pulumi.getter(name="numberOfReplicas")
     def number_of_replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of replicas each primary shard has. Example: `1`.
+        The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.
         """
         return pulumi.get(self, "number_of_replicas")
 
@@ -25424,7 +25424,7 @@ class OpenSearchOpensearchUserConfigIndexTemplateArgs:
     @pulumi.getter(name="numberOfShards")
     def number_of_shards(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of primary shards that an index should have. Example: `1`.
+        The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.
         """
         return pulumi.get(self, "number_of_shards")
 
@@ -28627,7 +28627,7 @@ if not MYPY:
         """
         enforced: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Run shard indexing backpressure in shadow mode or enforced mode.            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,            but it doesn’t actually reject any indexing requests.            In enforced mode (value set as true),            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.            Default is false.
+        Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
         """
         operating_factor: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict']]
         """
@@ -28649,7 +28649,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs:
                  primary_parameter: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable shard indexing backpressure. Default is false.
-        :param pulumi.Input[_builtins.bool] enforced: Run shard indexing backpressure in shadow mode or enforced mode.            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,            but it doesn’t actually reject any indexing requests.            In enforced mode (value set as true),            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.            Default is false.
+        :param pulumi.Input[_builtins.bool] enforced: Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs'] operating_factor: Operating factor
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs'] primary_parameter: Primary parameter
         """
@@ -28678,7 +28678,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs:
     @pulumi.getter
     def enforced(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Run shard indexing backpressure in shadow mode or enforced mode.            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,            but it doesn’t actually reject any indexing requests.            In enforced mode (value set as true),            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.            Default is false.
+        Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
         """
         return pulumi.get(self, "enforced")
 
@@ -28715,15 +28715,15 @@ if not MYPY:
     class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict(TypedDict):
         lower: NotRequired[pulumi.Input[_builtins.float]]
         """
-        Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.
+        Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
         """
         optimal: NotRequired[pulumi.Input[_builtins.float]]
         """
-        Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.
+        Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
         """
         upper: NotRequired[pulumi.Input[_builtins.float]]
         """
-        Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.
+        Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
         """
 elif False:
     OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict: TypeAlias = Mapping[str, Any]
@@ -28735,9 +28735,9 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFact
                  optimal: Optional[pulumi.Input[_builtins.float]] = None,
                  upper: Optional[pulumi.Input[_builtins.float]] = None):
         """
-        :param pulumi.Input[_builtins.float] lower: Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.
-        :param pulumi.Input[_builtins.float] optimal: Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.
-        :param pulumi.Input[_builtins.float] upper: Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.
+        :param pulumi.Input[_builtins.float] lower: Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
+        :param pulumi.Input[_builtins.float] optimal: Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
+        :param pulumi.Input[_builtins.float] upper: Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
         """
         if lower is not None:
             pulumi.set(__self__, "lower", lower)
@@ -28750,7 +28750,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFact
     @pulumi.getter
     def lower(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.
+        Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
         """
         return pulumi.get(self, "lower")
 
@@ -28762,7 +28762,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFact
     @pulumi.getter
     def optimal(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.
+        Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
         """
         return pulumi.get(self, "optimal")
 
@@ -28774,7 +28774,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFact
     @pulumi.getter
     def upper(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.
+        Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
         """
         return pulumi.get(self, "upper")
 
@@ -28823,7 +28823,7 @@ if not MYPY:
     class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict(TypedDict):
         soft_limit: NotRequired[pulumi.Input[_builtins.float]]
         """
-        Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.
+        Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
         """
 elif False:
     OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict: TypeAlias = Mapping[str, Any]
@@ -28833,7 +28833,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParame
     def __init__(__self__, *,
                  soft_limit: Optional[pulumi.Input[_builtins.float]] = None):
         """
-        :param pulumi.Input[_builtins.float] soft_limit: Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.
+        :param pulumi.Input[_builtins.float] soft_limit: Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
         """
         if soft_limit is not None:
             pulumi.set(__self__, "soft_limit", soft_limit)
@@ -28842,7 +28842,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParame
     @pulumi.getter(name="softLimit")
     def soft_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.
+        Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
         """
         return pulumi.get(self, "soft_limit")
 
@@ -28855,7 +28855,7 @@ if not MYPY:
     class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict(TypedDict):
         min_limit: NotRequired[pulumi.Input[_builtins.float]]
         """
-        Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.
+        Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
         """
 elif False:
     OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict: TypeAlias = Mapping[str, Any]
@@ -28865,7 +28865,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParame
     def __init__(__self__, *,
                  min_limit: Optional[pulumi.Input[_builtins.float]] = None):
         """
-        :param pulumi.Input[_builtins.float] min_limit: Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.
+        :param pulumi.Input[_builtins.float] min_limit: Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
         """
         if min_limit is not None:
             pulumi.set(__self__, "min_limit", min_limit)
@@ -28874,7 +28874,7 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParame
     @pulumi.getter(name="minLimit")
     def min_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.
+        Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
         """
         return pulumi.get(self, "min_limit")
 
@@ -31996,7 +31996,7 @@ if not MYPY:
         """
         max_connections: NotRequired[pulumi.Input[_builtins.int]]
         """
-        PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+        Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
         """
         max_files_per_process: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -32060,7 +32060,7 @@ if not MYPY:
         """
         password_encryption: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+        Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
         """
         pg_partman_bgw_dot_interval: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -32195,7 +32195,7 @@ class PgPgUserConfigPgArgs:
         :param pulumi.Input[_builtins.str] log_line_prefix: Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         :param pulumi.Input[_builtins.int] log_min_duration_statement: Log statements that take more than this number of milliseconds to run, -1 disables.
         :param pulumi.Input[_builtins.int] log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
-        :param pulumi.Input[_builtins.int] max_connections: PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+        :param pulumi.Input[_builtins.int] max_connections: Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
         :param pulumi.Input[_builtins.int] max_files_per_process: PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
         :param pulumi.Input[_builtins.int] max_locks_per_transaction: PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
         :param pulumi.Input[_builtins.int] max_logical_replication_workers: PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
@@ -32211,7 +32211,7 @@ class PgPgUserConfigPgArgs:
         :param pulumi.Input[_builtins.int] max_sync_workers_per_subscription: Maximum number of synchronization workers per subscription. The default is `2`.
         :param pulumi.Input[_builtins.int] max_wal_senders: PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
         :param pulumi.Input[_builtins.int] max_worker_processes: Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.str] password_encryption: Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+        :param pulumi.Input[_builtins.str] password_encryption: Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
         :param pulumi.Input[_builtins.int] pg_partman_bgw_dot_interval: Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
         :param pulumi.Input[_builtins.str] pg_partman_bgw_dot_role: Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
         :param pulumi.Input[_builtins.bool] pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
@@ -32599,7 +32599,7 @@ class PgPgUserConfigPgArgs:
     @pulumi.getter(name="maxConnections")
     def max_connections(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+        Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
         """
         return pulumi.get(self, "max_connections")
 
@@ -32791,7 +32791,7 @@ class PgPgUserConfigPgArgs:
     @pulumi.getter(name="passwordEncryption")
     def password_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+        Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
         """
         return pulumi.get(self, "password_encryption")
 
@@ -33096,7 +33096,7 @@ if not MYPY:
         """
         log_catalog: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+        Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         """
         log_client: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -33108,11 +33108,11 @@ if not MYPY:
         """
         log_max_string_length: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
         """
         log_nested_statements: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         """
         log_parameter: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -33120,11 +33120,11 @@ if not MYPY:
         """
         log_parameter_max_size: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.
+        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
         """
         log_relation: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         """
         log_rows: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -33136,7 +33136,7 @@ if not MYPY:
         """
         log_statement_once: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
         """
         logs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -33168,17 +33168,17 @@ class PgPgUserConfigPgauditArgs:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-        :param pulumi.Input[_builtins.bool] log_catalog: Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+        :param pulumi.Input[_builtins.bool] log_catalog: Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         :param pulumi.Input[_builtins.bool] log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
         :param pulumi.Input[_builtins.str] log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-        :param pulumi.Input[_builtins.int] log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
-        :param pulumi.Input[_builtins.bool] log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+        :param pulumi.Input[_builtins.int] log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+        :param pulumi.Input[_builtins.bool] log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         :param pulumi.Input[_builtins.bool] log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-        :param pulumi.Input[_builtins.int] log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.
-        :param pulumi.Input[_builtins.bool] log_relation: Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        :param pulumi.Input[_builtins.int] log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+        :param pulumi.Input[_builtins.bool] log_relation: Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         :param pulumi.Input[_builtins.bool] log_rows: Log Rows. Default: `false`.
         :param pulumi.Input[_builtins.bool] log_statement: Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-        :param pulumi.Input[_builtins.bool] log_statement_once: Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        :param pulumi.Input[_builtins.bool] log_statement_once: Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] logs: Specifies which classes of statements will be logged by session audit logging.
         :param pulumi.Input[_builtins.str] role: Specifies the master role to use for object audit logging.
         """
@@ -33227,7 +33227,7 @@ class PgPgUserConfigPgauditArgs:
     @pulumi.getter(name="logCatalog")
     def log_catalog(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+        Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         """
         return pulumi.get(self, "log_catalog")
 
@@ -33263,7 +33263,7 @@ class PgPgUserConfigPgauditArgs:
     @pulumi.getter(name="logMaxStringLength")
     def log_max_string_length(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
         """
         return pulumi.get(self, "log_max_string_length")
 
@@ -33275,7 +33275,7 @@ class PgPgUserConfigPgauditArgs:
     @pulumi.getter(name="logNestedStatements")
     def log_nested_statements(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         """
         return pulumi.get(self, "log_nested_statements")
 
@@ -33299,7 +33299,7 @@ class PgPgUserConfigPgauditArgs:
     @pulumi.getter(name="logParameterMaxSize")
     def log_parameter_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \\n\\n. Default: `0`.
+        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
         """
         return pulumi.get(self, "log_parameter_max_size")
 
@@ -33311,7 +33311,7 @@ class PgPgUserConfigPgauditArgs:
     @pulumi.getter(name="logRelation")
     def log_relation(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         """
         return pulumi.get(self, "log_relation")
 
@@ -33347,7 +33347,7 @@ class PgPgUserConfigPgauditArgs:
     @pulumi.getter(name="logStatementOnce")
     def log_statement_once(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
         """
         return pulumi.get(self, "log_statement_once")
 
@@ -35570,6 +35570,38 @@ if not MYPY:
         """
         Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
         """
+        producer_batch_num_messages: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+        """
+        producer_batch_size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+        """
+        producer_compression_codec: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+        """
+        producer_compression_level: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+        """
+        producer_linger_ms: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+        """
+        producer_queue_buffering_max_kbytes: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+        """
+        producer_queue_buffering_max_messages: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum number of messages to buffer before sending. Default: `100000`.
+        """
+        producer_request_required_acks: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+        """
         skip_broken_messages: NotRequired[pulumi.Input[_builtins.int]]
         """
         Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
@@ -35597,6 +35629,14 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
                  num_consumers: Optional[pulumi.Input[_builtins.int]] = None,
                  poll_max_batch_size: Optional[pulumi.Input[_builtins.int]] = None,
                  poll_max_timeout_ms: Optional[pulumi.Input[_builtins.int]] = None,
+                 producer_batch_num_messages: Optional[pulumi.Input[_builtins.int]] = None,
+                 producer_batch_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 producer_compression_codec: Optional[pulumi.Input[_builtins.str]] = None,
+                 producer_compression_level: Optional[pulumi.Input[_builtins.int]] = None,
+                 producer_linger_ms: Optional[pulumi.Input[_builtins.int]] = None,
+                 producer_queue_buffering_max_kbytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 producer_queue_buffering_max_messages: Optional[pulumi.Input[_builtins.int]] = None,
+                 producer_request_required_acks: Optional[pulumi.Input[_builtins.int]] = None,
                  skip_broken_messages: Optional[pulumi.Input[_builtins.int]] = None,
                  thread_per_consumer: Optional[pulumi.Input[_builtins.bool]] = None):
         """
@@ -35613,6 +35653,14 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
         :param pulumi.Input[_builtins.int] num_consumers: The number of consumers per table per replica. Default: `1`.
         :param pulumi.Input[_builtins.int] poll_max_batch_size: Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
         :param pulumi.Input[_builtins.int] poll_max_timeout_ms: Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
+        :param pulumi.Input[_builtins.int] producer_batch_num_messages: The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+        :param pulumi.Input[_builtins.int] producer_batch_size: The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+        :param pulumi.Input[_builtins.str] producer_compression_codec: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+        :param pulumi.Input[_builtins.int] producer_compression_level: The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+        :param pulumi.Input[_builtins.int] producer_linger_ms: The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+        :param pulumi.Input[_builtins.int] producer_queue_buffering_max_kbytes: The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+        :param pulumi.Input[_builtins.int] producer_queue_buffering_max_messages: The maximum number of messages to buffer before sending. Default: `100000`.
+        :param pulumi.Input[_builtins.int] producer_request_required_acks: The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
         :param pulumi.Input[_builtins.int] skip_broken_messages: Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
         :param pulumi.Input[_builtins.bool] thread_per_consumer: Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
         """
@@ -35637,6 +35685,22 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
             pulumi.set(__self__, "poll_max_batch_size", poll_max_batch_size)
         if poll_max_timeout_ms is not None:
             pulumi.set(__self__, "poll_max_timeout_ms", poll_max_timeout_ms)
+        if producer_batch_num_messages is not None:
+            pulumi.set(__self__, "producer_batch_num_messages", producer_batch_num_messages)
+        if producer_batch_size is not None:
+            pulumi.set(__self__, "producer_batch_size", producer_batch_size)
+        if producer_compression_codec is not None:
+            pulumi.set(__self__, "producer_compression_codec", producer_compression_codec)
+        if producer_compression_level is not None:
+            pulumi.set(__self__, "producer_compression_level", producer_compression_level)
+        if producer_linger_ms is not None:
+            pulumi.set(__self__, "producer_linger_ms", producer_linger_ms)
+        if producer_queue_buffering_max_kbytes is not None:
+            pulumi.set(__self__, "producer_queue_buffering_max_kbytes", producer_queue_buffering_max_kbytes)
+        if producer_queue_buffering_max_messages is not None:
+            pulumi.set(__self__, "producer_queue_buffering_max_messages", producer_queue_buffering_max_messages)
+        if producer_request_required_acks is not None:
+            pulumi.set(__self__, "producer_request_required_acks", producer_request_required_acks)
         if skip_broken_messages is not None:
             pulumi.set(__self__, "skip_broken_messages", skip_broken_messages)
         if thread_per_consumer is not None:
@@ -35797,6 +35861,102 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
     @poll_max_timeout_ms.setter
     def poll_max_timeout_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "poll_max_timeout_ms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="producerBatchNumMessages")
+    def producer_batch_num_messages(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+        """
+        return pulumi.get(self, "producer_batch_num_messages")
+
+    @producer_batch_num_messages.setter
+    def producer_batch_num_messages(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "producer_batch_num_messages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="producerBatchSize")
+    def producer_batch_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+        """
+        return pulumi.get(self, "producer_batch_size")
+
+    @producer_batch_size.setter
+    def producer_batch_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "producer_batch_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="producerCompressionCodec")
+    def producer_compression_codec(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+        """
+        return pulumi.get(self, "producer_compression_codec")
+
+    @producer_compression_codec.setter
+    def producer_compression_codec(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "producer_compression_codec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="producerCompressionLevel")
+    def producer_compression_level(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+        """
+        return pulumi.get(self, "producer_compression_level")
+
+    @producer_compression_level.setter
+    def producer_compression_level(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "producer_compression_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="producerLingerMs")
+    def producer_linger_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+        """
+        return pulumi.get(self, "producer_linger_ms")
+
+    @producer_linger_ms.setter
+    def producer_linger_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "producer_linger_ms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="producerQueueBufferingMaxKbytes")
+    def producer_queue_buffering_max_kbytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+        """
+        return pulumi.get(self, "producer_queue_buffering_max_kbytes")
+
+    @producer_queue_buffering_max_kbytes.setter
+    def producer_queue_buffering_max_kbytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "producer_queue_buffering_max_kbytes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="producerQueueBufferingMaxMessages")
+    def producer_queue_buffering_max_messages(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of messages to buffer before sending. Default: `100000`.
+        """
+        return pulumi.get(self, "producer_queue_buffering_max_messages")
+
+    @producer_queue_buffering_max_messages.setter
+    def producer_queue_buffering_max_messages(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "producer_queue_buffering_max_messages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="producerRequestRequiredAcks")
+    def producer_request_required_acks(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+        """
+        return pulumi.get(self, "producer_request_required_acks")
+
+    @producer_request_required_acks.setter
+    def producer_request_required_acks(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "producer_request_required_acks", value)
 
     @_builtins.property
     @pulumi.getter(name="skipBrokenMessages")
@@ -37870,7 +38030,7 @@ if not MYPY:
         """
         ssl_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+        Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         """
         ssl_root_cert: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -37907,7 +38067,7 @@ class ServiceIntegrationEndpointExternalPostgresqlArgs:
         :param pulumi.Input[_builtins.str] ssl_client_key: Client key. Example: `-----BEGIN PRIVATE KEY-----
                ...
                -----END PRIVATE KEY-----`.
-        :param pulumi.Input[_builtins.str] ssl_mode: Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+        :param pulumi.Input[_builtins.str] ssl_mode: Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         :param pulumi.Input[_builtins.str] ssl_root_cert: SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
                ...
                -----END CERTIFICATE-----
@@ -38022,7 +38182,7 @@ class ServiceIntegrationEndpointExternalPostgresqlArgs:
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+        Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         """
         return pulumi.get(self, "ssl_mode")
 

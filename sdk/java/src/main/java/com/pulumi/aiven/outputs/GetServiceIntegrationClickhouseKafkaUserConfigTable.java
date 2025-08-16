@@ -78,6 +78,46 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private @Nullable Integer pollMaxTimeoutMs;
     /**
+     * @return The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+     * 
+     */
+    private @Nullable Integer producerBatchNumMessages;
+    /**
+     * @return The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+     * 
+     */
+    private @Nullable Integer producerBatchSize;
+    /**
+     * @return Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+     * 
+     */
+    private @Nullable String producerCompressionCodec;
+    /**
+     * @return The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+     * 
+     */
+    private @Nullable Integer producerCompressionLevel;
+    /**
+     * @return The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+     * 
+     */
+    private @Nullable Integer producerLingerMs;
+    /**
+     * @return The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+     * 
+     */
+    private @Nullable Integer producerQueueBufferingMaxKbytes;
+    /**
+     * @return The maximum number of messages to buffer before sending. Default: `100000`.
+     * 
+     */
+    private @Nullable Integer producerQueueBufferingMaxMessages;
+    /**
+     * @return The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+     * 
+     */
+    private @Nullable Integer producerRequestRequiredAcks;
+    /**
      * @return Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      * 
      */
@@ -179,6 +219,62 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         return Optional.ofNullable(this.pollMaxTimeoutMs);
     }
     /**
+     * @return The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+     * 
+     */
+    public Optional<Integer> producerBatchNumMessages() {
+        return Optional.ofNullable(this.producerBatchNumMessages);
+    }
+    /**
+     * @return The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+     * 
+     */
+    public Optional<Integer> producerBatchSize() {
+        return Optional.ofNullable(this.producerBatchSize);
+    }
+    /**
+     * @return Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+     * 
+     */
+    public Optional<String> producerCompressionCodec() {
+        return Optional.ofNullable(this.producerCompressionCodec);
+    }
+    /**
+     * @return The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+     * 
+     */
+    public Optional<Integer> producerCompressionLevel() {
+        return Optional.ofNullable(this.producerCompressionLevel);
+    }
+    /**
+     * @return The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+     * 
+     */
+    public Optional<Integer> producerLingerMs() {
+        return Optional.ofNullable(this.producerLingerMs);
+    }
+    /**
+     * @return The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+     * 
+     */
+    public Optional<Integer> producerQueueBufferingMaxKbytes() {
+        return Optional.ofNullable(this.producerQueueBufferingMaxKbytes);
+    }
+    /**
+     * @return The maximum number of messages to buffer before sending. Default: `100000`.
+     * 
+     */
+    public Optional<Integer> producerQueueBufferingMaxMessages() {
+        return Optional.ofNullable(this.producerQueueBufferingMaxMessages);
+    }
+    /**
+     * @return The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+     * 
+     */
+    public Optional<Integer> producerRequestRequiredAcks() {
+        return Optional.ofNullable(this.producerRequestRequiredAcks);
+    }
+    /**
      * @return Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      * 
      */
@@ -221,6 +317,14 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         private @Nullable Integer numConsumers;
         private @Nullable Integer pollMaxBatchSize;
         private @Nullable Integer pollMaxTimeoutMs;
+        private @Nullable Integer producerBatchNumMessages;
+        private @Nullable Integer producerBatchSize;
+        private @Nullable String producerCompressionCodec;
+        private @Nullable Integer producerCompressionLevel;
+        private @Nullable Integer producerLingerMs;
+        private @Nullable Integer producerQueueBufferingMaxKbytes;
+        private @Nullable Integer producerQueueBufferingMaxMessages;
+        private @Nullable Integer producerRequestRequiredAcks;
         private @Nullable Integer skipBrokenMessages;
         private @Nullable Boolean threadPerConsumer;
         private List<GetServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
@@ -239,6 +343,14 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
     	      this.numConsumers = defaults.numConsumers;
     	      this.pollMaxBatchSize = defaults.pollMaxBatchSize;
     	      this.pollMaxTimeoutMs = defaults.pollMaxTimeoutMs;
+    	      this.producerBatchNumMessages = defaults.producerBatchNumMessages;
+    	      this.producerBatchSize = defaults.producerBatchSize;
+    	      this.producerCompressionCodec = defaults.producerCompressionCodec;
+    	      this.producerCompressionLevel = defaults.producerCompressionLevel;
+    	      this.producerLingerMs = defaults.producerLingerMs;
+    	      this.producerQueueBufferingMaxKbytes = defaults.producerQueueBufferingMaxKbytes;
+    	      this.producerQueueBufferingMaxMessages = defaults.producerQueueBufferingMaxMessages;
+    	      this.producerRequestRequiredAcks = defaults.producerRequestRequiredAcks;
     	      this.skipBrokenMessages = defaults.skipBrokenMessages;
     	      this.threadPerConsumer = defaults.threadPerConsumer;
     	      this.topics = defaults.topics;
@@ -328,6 +440,54 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
             return this;
         }
         @CustomType.Setter
+        public Builder producerBatchNumMessages(@Nullable Integer producerBatchNumMessages) {
+
+            this.producerBatchNumMessages = producerBatchNumMessages;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder producerBatchSize(@Nullable Integer producerBatchSize) {
+
+            this.producerBatchSize = producerBatchSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder producerCompressionCodec(@Nullable String producerCompressionCodec) {
+
+            this.producerCompressionCodec = producerCompressionCodec;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder producerCompressionLevel(@Nullable Integer producerCompressionLevel) {
+
+            this.producerCompressionLevel = producerCompressionLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder producerLingerMs(@Nullable Integer producerLingerMs) {
+
+            this.producerLingerMs = producerLingerMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder producerQueueBufferingMaxKbytes(@Nullable Integer producerQueueBufferingMaxKbytes) {
+
+            this.producerQueueBufferingMaxKbytes = producerQueueBufferingMaxKbytes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder producerQueueBufferingMaxMessages(@Nullable Integer producerQueueBufferingMaxMessages) {
+
+            this.producerQueueBufferingMaxMessages = producerQueueBufferingMaxMessages;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder producerRequestRequiredAcks(@Nullable Integer producerRequestRequiredAcks) {
+
+            this.producerRequestRequiredAcks = producerRequestRequiredAcks;
+            return this;
+        }
+        @CustomType.Setter
         public Builder skipBrokenMessages(@Nullable Integer skipBrokenMessages) {
 
             this.skipBrokenMessages = skipBrokenMessages;
@@ -364,6 +524,14 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
             _resultValue.numConsumers = numConsumers;
             _resultValue.pollMaxBatchSize = pollMaxBatchSize;
             _resultValue.pollMaxTimeoutMs = pollMaxTimeoutMs;
+            _resultValue.producerBatchNumMessages = producerBatchNumMessages;
+            _resultValue.producerBatchSize = producerBatchSize;
+            _resultValue.producerCompressionCodec = producerCompressionCodec;
+            _resultValue.producerCompressionLevel = producerCompressionLevel;
+            _resultValue.producerLingerMs = producerLingerMs;
+            _resultValue.producerQueueBufferingMaxKbytes = producerQueueBufferingMaxKbytes;
+            _resultValue.producerQueueBufferingMaxMessages = producerQueueBufferingMaxMessages;
+            _resultValue.producerRequestRequiredAcks = producerRequestRequiredAcks;
             _resultValue.skipBrokenMessages = skipBrokenMessages;
             _resultValue.threadPerConsumer = threadPerConsumer;
             _resultValue.topics = topics;

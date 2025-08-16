@@ -71,6 +71,9 @@ class M3DbArgs:
         if m3db is not None:
             pulumi.set(__self__, "m3db", m3db)
         if m3db_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""m3db_user_config is deprecated: This property is deprecated.""")
+        if m3db_user_config is not None:
             pulumi.set(__self__, "m3db_user_config", m3db_user_config)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
@@ -176,6 +179,7 @@ class M3DbArgs:
 
     @_builtins.property
     @pulumi.getter(name="m3dbUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def m3db_user_config(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigArgs']]:
         """
         M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -369,6 +373,9 @@ class _M3DbState:
         if m3db is not None:
             pulumi.set(__self__, "m3db", m3db)
         if m3db_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""m3db_user_config is deprecated: This property is deprecated.""")
+        if m3db_user_config is not None:
             pulumi.set(__self__, "m3db_user_config", m3db_user_config)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
@@ -519,6 +526,7 @@ class _M3DbState:
 
     @_builtins.property
     @pulumi.getter(name="m3dbUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def m3db_user_config(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigArgs']]:
         """
         M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -1124,6 +1132,7 @@ class M3Db(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="m3dbUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def m3db_user_config(self) -> pulumi.Output[Optional['outputs.M3DbM3dbUserConfig']]:
         """
         M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

@@ -574,14 +574,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
     }
 
     /**
-     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
      * 
      */
     @Import(name="passwordEncryption")
     private @Nullable Output<String> passwordEncryption;
 
     /**
-     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
      * 
      */
     public Optional<Output<String>> passwordEncryption() {
@@ -1603,7 +1603,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param passwordEncryption Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+         * @param passwordEncryption Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
          * 
          * @return builder
          * 
@@ -1614,7 +1614,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param passwordEncryption Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+         * @param passwordEncryption Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
          * 
          * @return builder
          * 

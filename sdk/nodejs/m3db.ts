@@ -114,6 +114,8 @@ export class M3Db extends pulumi.CustomResource {
     public readonly m3db!: pulumi.Output<outputs.M3DbM3db>;
     /**
      * M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     public readonly m3dbUserConfig!: pulumi.Output<outputs.M3DbM3dbUserConfig | undefined>;
     /**
@@ -320,6 +322,8 @@ export interface M3DbState {
     m3db?: pulumi.Input<inputs.M3DbM3db>;
     /**
      * M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     m3dbUserConfig?: pulumi.Input<inputs.M3DbM3dbUserConfig>;
     /**
@@ -417,6 +421,8 @@ export interface M3DbArgs {
     m3db?: pulumi.Input<inputs.M3DbM3db>;
     /**
      * M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     m3dbUserConfig?: pulumi.Input<inputs.M3DbM3dbUserConfig>;
     /**

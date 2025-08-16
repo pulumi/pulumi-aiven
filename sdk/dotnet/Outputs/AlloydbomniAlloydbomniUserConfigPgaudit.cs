@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? FeatureEnabled;
         /// <summary>
-        /// Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+        /// Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
         /// </summary>
         public readonly bool? LogCatalog;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? LogLevel;
         /// <summary>
-        /// Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+        /// Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
         /// </summary>
         public readonly int? LogMaxStringLength;
         /// <summary>
-        /// This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+        /// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         /// </summary>
         public readonly bool? LogNestedStatements;
         /// <summary>
@@ -42,11 +42,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? LogParameter;
         /// <summary>
-        /// Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \n\n. Default: `0`.
+        /// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
         /// </summary>
         public readonly int? LogParameterMaxSize;
         /// <summary>
-        /// Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        /// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         /// </summary>
         public readonly bool? LogRelation;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? LogStatement;
         /// <summary>
-        /// Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        /// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
         /// </summary>
         public readonly bool? LogStatementOnce;
         /// <summary>

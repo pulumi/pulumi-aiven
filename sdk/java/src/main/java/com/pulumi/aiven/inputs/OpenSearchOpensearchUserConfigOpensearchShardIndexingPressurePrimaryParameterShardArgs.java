@@ -16,14 +16,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
     public static final OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs Empty = new OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs();
 
     /**
-     * Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.
+     * Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
      * 
      */
     @Import(name="minLimit")
     private @Nullable Output<Double> minLimit;
 
     /**
-     * @return Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.
+     * @return Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
      * 
      */
     public Optional<Output<Double>> minLimit() {
@@ -55,7 +55,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
         }
 
         /**
-         * @param minLimit Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.
+         * @param minLimit Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
         }
 
         /**
-         * @param minLimit Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.
+         * @param minLimit Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
          * 
          * @return builder
          * 

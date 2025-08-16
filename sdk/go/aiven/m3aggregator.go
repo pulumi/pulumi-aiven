@@ -79,6 +79,8 @@ type M3Aggregator struct {
 	// M3 Aggregator server provided values
 	M3aggregator M3AggregatorM3aggregatorOutput `pulumi:"m3aggregator"`
 	// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	M3aggregatorUserConfig M3AggregatorM3aggregatorUserConfigPtrOutput `pulumi:"m3aggregatorUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
@@ -188,6 +190,8 @@ type m3aggregatorState struct {
 	// M3 Aggregator server provided values
 	M3aggregator *M3AggregatorM3aggregator `pulumi:"m3aggregator"`
 	// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	M3aggregatorUserConfig *M3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -250,6 +254,8 @@ type M3AggregatorState struct {
 	// M3 Aggregator server provided values
 	M3aggregator M3AggregatorM3aggregatorPtrInput
 	// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	M3aggregatorUserConfig M3AggregatorM3aggregatorUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -304,6 +310,8 @@ type m3aggregatorArgs struct {
 	// M3 Aggregator server provided values
 	M3aggregator *M3AggregatorM3aggregator `pulumi:"m3aggregator"`
 	// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	M3aggregatorUserConfig *M3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -342,6 +350,8 @@ type M3AggregatorArgs struct {
 	// M3 Aggregator server provided values
 	M3aggregator M3AggregatorM3aggregatorPtrInput
 	// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	M3aggregatorUserConfig M3AggregatorM3aggregatorUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -504,6 +514,8 @@ func (o M3AggregatorOutput) M3aggregator() M3AggregatorM3aggregatorOutput {
 }
 
 // M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+//
+// Deprecated: This property is deprecated.
 func (o M3AggregatorOutput) M3aggregatorUserConfig() M3AggregatorM3aggregatorUserConfigPtrOutput {
 	return o.ApplyT(func(v *M3Aggregator) M3AggregatorM3aggregatorUserConfigPtrOutput { return v.M3aggregatorUserConfig }).(M3AggregatorM3aggregatorUserConfigPtrOutput)
 }

@@ -200,7 +200,7 @@ public final class AlloydbomniAlloydbomniUserConfigPg {
      */
     private @Nullable Integer maxWorkerProcesses;
     /**
-     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
      * 
      */
     private @Nullable String passwordEncryption;
@@ -521,7 +521,7 @@ public final class AlloydbomniAlloydbomniUserConfigPg {
         return Optional.ofNullable(this.maxWorkerProcesses);
     }
     /**
-     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
      * 
      */
     public Optional<String> passwordEncryption() {

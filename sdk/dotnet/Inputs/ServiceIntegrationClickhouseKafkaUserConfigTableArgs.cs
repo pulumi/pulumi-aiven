@@ -91,6 +91,54 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? PollMaxTimeoutMs { get; set; }
 
         /// <summary>
+        /// The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+        /// </summary>
+        [Input("producerBatchNumMessages")]
+        public Input<int>? ProducerBatchNumMessages { get; set; }
+
+        /// <summary>
+        /// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+        /// </summary>
+        [Input("producerBatchSize")]
+        public Input<int>? ProducerBatchSize { get; set; }
+
+        /// <summary>
+        /// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+        /// </summary>
+        [Input("producerCompressionCodec")]
+        public Input<string>? ProducerCompressionCodec { get; set; }
+
+        /// <summary>
+        /// The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+        /// </summary>
+        [Input("producerCompressionLevel")]
+        public Input<int>? ProducerCompressionLevel { get; set; }
+
+        /// <summary>
+        /// The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+        /// </summary>
+        [Input("producerLingerMs")]
+        public Input<int>? ProducerLingerMs { get; set; }
+
+        /// <summary>
+        /// The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+        /// </summary>
+        [Input("producerQueueBufferingMaxKbytes")]
+        public Input<int>? ProducerQueueBufferingMaxKbytes { get; set; }
+
+        /// <summary>
+        /// The maximum number of messages to buffer before sending. Default: `100000`.
+        /// </summary>
+        [Input("producerQueueBufferingMaxMessages")]
+        public Input<int>? ProducerQueueBufferingMaxMessages { get; set; }
+
+        /// <summary>
+        /// The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+        /// </summary>
+        [Input("producerRequestRequiredAcks")]
+        public Input<int>? ProducerRequestRequiredAcks { get; set; }
+
+        /// <summary>
         /// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
         /// </summary>
         [Input("skipBrokenMessages")]

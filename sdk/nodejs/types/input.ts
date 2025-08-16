@@ -406,7 +406,7 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      */
     maxWorkerProcesses?: pulumi.Input<number>;
     /**
-     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
      */
     passwordEncryption?: pulumi.Input<string>;
     /**
@@ -461,7 +461,7 @@ export interface AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     featureEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+     * Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
      */
     logCatalog?: pulumi.Input<boolean>;
     /**
@@ -473,11 +473,11 @@ export interface AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     logLevel?: pulumi.Input<string>;
     /**
-     * Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
      */
     logMaxStringLength?: pulumi.Input<number>;
     /**
-     * This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
      */
     logNestedStatements?: pulumi.Input<boolean>;
     /**
@@ -485,11 +485,11 @@ export interface AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     logParameter?: pulumi.Input<boolean>;
     /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \n\n. Default: `0`.
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
      */
     logParameterMaxSize?: pulumi.Input<number>;
     /**
-     * Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
      */
     logRelation?: pulumi.Input<boolean>;
     /**
@@ -501,7 +501,7 @@ export interface AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     logStatement?: pulumi.Input<boolean>;
     /**
-     * Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
      */
     logStatementOnce?: pulumi.Input<boolean>;
     /**
@@ -5294,15 +5294,15 @@ export interface OpenSearchOpensearchUserConfigIndexRollup {
 
 export interface OpenSearchOpensearchUserConfigIndexTemplate {
     /**
-     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
+     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.
      */
     mappingNestedObjectsLimit?: pulumi.Input<number>;
     /**
-     * The number of replicas each primary shard has. Example: `1`.
+     * The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.
      */
     numberOfReplicas?: pulumi.Input<number>;
     /**
-     * The number of primary shards that an index should have. Example: `1`.
+     * The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.
      */
     numberOfShards?: pulumi.Input<number>;
 }
@@ -5956,7 +5956,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Run shard indexing backpressure in shadow mode or enforced mode.            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,            but it doesn’t actually reject any indexing requests.            In enforced mode (value set as true),            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.            Default is false.
+     * Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
      */
     enforced?: pulumi.Input<boolean>;
     /**
@@ -5971,15 +5971,15 @@ export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
 
 export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor {
     /**
-     * Specify the lower occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is below this limit,                    shard indexing backpressure decreases the current allocated memory for that shard.                    Default is 0.75.
+     * Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
      */
     lower?: pulumi.Input<number>;
     /**
-     * Specify the optimal occupancy of the allocated quota of memory for the shard.                    If the total memory usage of a shard is at this level,                    shard indexing backpressure doesn’t change the current allocated memory for that shard.                    Default is 0.85.
+     * Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
      */
     optimal?: pulumi.Input<number>;
     /**
-     * Specify the upper occupancy limit of the allocated quota of memory for the shard.                    If the total memory usage of a shard is above this limit,                    shard indexing backpressure increases the current allocated memory for that shard.                    Default is 0.95.
+     * Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
      */
     upper?: pulumi.Input<number>;
 }
@@ -5991,14 +5991,14 @@ export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePr
 
 export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode {
     /**
-     * Define the percentage of the node-level memory                            threshold that acts as a soft indicator for strain on a node.                            Default is 0.7.
+     * Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
      */
     softLimit?: pulumi.Input<number>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard {
     /**
-     * Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.                            Default is 0.001.
+     * Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
      */
     minLimit?: pulumi.Input<number>;
 }
@@ -6720,7 +6720,7 @@ export interface PgPgUserConfigPg {
      */
     logTempFiles?: pulumi.Input<number>;
     /**
-     * PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+     * Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
      */
     maxConnections?: pulumi.Input<number>;
     /**
@@ -6784,7 +6784,7 @@ export interface PgPgUserConfigPg {
      */
     maxWorkerProcesses?: pulumi.Input<number>;
     /**
-     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
      */
     passwordEncryption?: pulumi.Input<string>;
     /**
@@ -6880,7 +6880,7 @@ export interface PgPgUserConfigPgaudit {
      */
     featureEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+     * Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
      */
     logCatalog?: pulumi.Input<boolean>;
     /**
@@ -6892,11 +6892,11 @@ export interface PgPgUserConfigPgaudit {
      */
     logLevel?: pulumi.Input<string>;
     /**
-     * Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
      */
     logMaxStringLength?: pulumi.Input<number>;
     /**
-     * This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
      */
     logNestedStatements?: pulumi.Input<boolean>;
     /**
@@ -6904,11 +6904,11 @@ export interface PgPgUserConfigPgaudit {
      */
     logParameter?: pulumi.Input<boolean>;
     /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \n\n. Default: `0`.
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
      */
     logParameterMaxSize?: pulumi.Input<number>;
     /**
-     * Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
      */
     logRelation?: pulumi.Input<boolean>;
     /**
@@ -6920,7 +6920,7 @@ export interface PgPgUserConfigPgaudit {
      */
     logStatement?: pulumi.Input<boolean>;
     /**
-     * Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
      */
     logStatementOnce?: pulumi.Input<boolean>;
     /**
@@ -7429,6 +7429,38 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     pollMaxTimeoutMs?: pulumi.Input<number>;
     /**
+     * The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+     */
+    producerBatchNumMessages?: pulumi.Input<number>;
+    /**
+     * The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+     */
+    producerBatchSize?: pulumi.Input<number>;
+    /**
+     * Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+     */
+    producerCompressionCodec?: pulumi.Input<string>;
+    /**
+     * The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+     */
+    producerCompressionLevel?: pulumi.Input<number>;
+    /**
+     * The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+     */
+    producerLingerMs?: pulumi.Input<number>;
+    /**
+     * The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+     */
+    producerQueueBufferingMaxKbytes?: pulumi.Input<number>;
+    /**
+     * The maximum number of messages to buffer before sending. Default: `100000`.
+     */
+    producerQueueBufferingMaxMessages?: pulumi.Input<number>;
+    /**
+     * The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+     */
+    producerRequestRequiredAcks?: pulumi.Input<number>;
+    /**
      * Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      */
     skipBrokenMessages?: pulumi.Input<number>;
@@ -7904,7 +7936,7 @@ export interface ServiceIntegrationEndpointExternalPostgresql {
      */
     sslClientKey?: pulumi.Input<string>;
     /**
-     * Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+     * Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
      */
     sslMode?: pulumi.Input<string>;
     /**

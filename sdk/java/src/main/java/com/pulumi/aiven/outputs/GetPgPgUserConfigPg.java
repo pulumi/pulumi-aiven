@@ -125,7 +125,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable Integer logTempFiles;
     /**
-     * @return PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+     * @return Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica&#39;s value. After the change is applied to the replica, you can increase the primary service&#39;s value. Changing this parameter causes a service restart.
      * 
      */
     private @Nullable Integer maxConnections;
@@ -205,7 +205,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable Integer maxWorkerProcesses;
     /**
-     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
      * 
      */
     private @Nullable String passwordEncryption;
@@ -431,7 +431,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.logTempFiles);
     }
     /**
-     * @return PostgreSQL maximum number of concurrent connections to the database server. Changing this parameter causes a service restart.
+     * @return Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica&#39;s value. After the change is applied to the replica, you can increase the primary service&#39;s value. Changing this parameter causes a service restart.
      * 
      */
     public Optional<Integer> maxConnections() {
@@ -543,7 +543,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.maxWorkerProcesses);
     }
     /**
-     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
      * 
      */
     public Optional<String> passwordEncryption() {

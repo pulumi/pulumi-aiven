@@ -20,7 +20,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     private @Nullable Boolean featureEnabled;
     /**
-     * @return Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+     * @return Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
      * 
      */
     private @Nullable Boolean logCatalog;
@@ -35,12 +35,12 @@ public final class AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     private @Nullable String logLevel;
     /**
-     * @return Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+     * @return Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
      * 
      */
     private @Nullable Integer logMaxStringLength;
     /**
-     * @return This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+     * @return This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
      * 
      */
     private @Nullable Boolean logNestedStatements;
@@ -50,12 +50,12 @@ public final class AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     private @Nullable Boolean logParameter;
     /**
-     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \n\n. Default: `0`.
+     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
      * 
      */
     private @Nullable Integer logParameterMaxSize;
     /**
-     * @return Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     * @return Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
      * 
      */
     private @Nullable Boolean logRelation;
@@ -70,7 +70,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     private @Nullable Boolean logStatement;
     /**
-     * @return Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     * @return Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
      * 
      */
     private @Nullable Boolean logStatementOnce;
@@ -94,7 +94,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgaudit {
         return Optional.ofNullable(this.featureEnabled);
     }
     /**
-     * @return Specifies that session logging should be enabled in the case where all relationsin a statement are in pg_catalog. Default: `true`.
+     * @return Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
      * 
      */
     public Optional<Boolean> logCatalog() {
@@ -115,14 +115,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgaudit {
         return Optional.ofNullable(this.logLevel);
     }
     /**
-     * @return Crop parameters representation and whole statements if they exceed this threshold.A (default) value of -1 disable the truncation. Default: `-1`.
+     * @return Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
      * 
      */
     public Optional<Integer> logMaxStringLength() {
         return Optional.ofNullable(this.logMaxStringLength);
     }
     /**
-     * @return This GUC allows to turn off logging nested statements, that is, statements that areexecuted as part of another ExecutorRun. Default: `true`.
+     * @return This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
      * 
      */
     public Optional<Boolean> logNestedStatements() {
@@ -136,14 +136,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgaudit {
         return Optional.ofNullable(this.logParameter);
     }
     /**
-     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged,but replaced with \n\n. Default: `0`.
+     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
      * 
      */
     public Optional<Integer> logParameterMaxSize() {
         return Optional.ofNullable(this.logParameterMaxSize);
     }
     /**
-     * @return Specifies whether session audit logging should create a separate log entryfor each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     * @return Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
      * 
      */
     public Optional<Boolean> logRelation() {
@@ -164,7 +164,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgaudit {
         return Optional.ofNullable(this.logStatement);
     }
     /**
-     * @return Specifies whether logging will include the statement text and parameters withthe first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     * @return Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
      * 
      */
     public Optional<Boolean> logStatementOnce() {

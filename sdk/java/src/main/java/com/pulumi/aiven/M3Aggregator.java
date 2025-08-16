@@ -216,7 +216,11 @@ public class M3Aggregator extends com.pulumi.resources.CustomResource {
     /**
      * M3aggregator user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Export(name="m3aggregatorUserConfig", refs={M3AggregatorM3aggregatorUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ M3AggregatorM3aggregatorUserConfig> m3aggregatorUserConfig;
 

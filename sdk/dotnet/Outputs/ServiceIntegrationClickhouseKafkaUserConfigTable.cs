@@ -62,6 +62,38 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? PollMaxTimeoutMs;
         /// <summary>
+        /// The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+        /// </summary>
+        public readonly int? ProducerBatchNumMessages;
+        /// <summary>
+        /// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+        /// </summary>
+        public readonly int? ProducerBatchSize;
+        /// <summary>
+        /// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+        /// </summary>
+        public readonly string? ProducerCompressionCodec;
+        /// <summary>
+        /// The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+        /// </summary>
+        public readonly int? ProducerCompressionLevel;
+        /// <summary>
+        /// The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+        /// </summary>
+        public readonly int? ProducerLingerMs;
+        /// <summary>
+        /// The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+        /// </summary>
+        public readonly int? ProducerQueueBufferingMaxKbytes;
+        /// <summary>
+        /// The maximum number of messages to buffer before sending. Default: `100000`.
+        /// </summary>
+        public readonly int? ProducerQueueBufferingMaxMessages;
+        /// <summary>
+        /// The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+        /// </summary>
+        public readonly int? ProducerRequestRequiredAcks;
+        /// <summary>
         /// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
         /// </summary>
         public readonly int? SkipBrokenMessages;
@@ -100,6 +132,22 @@ namespace Pulumi.Aiven.Outputs
 
             int? pollMaxTimeoutMs,
 
+            int? producerBatchNumMessages,
+
+            int? producerBatchSize,
+
+            string? producerCompressionCodec,
+
+            int? producerCompressionLevel,
+
+            int? producerLingerMs,
+
+            int? producerQueueBufferingMaxKbytes,
+
+            int? producerQueueBufferingMaxMessages,
+
+            int? producerRequestRequiredAcks,
+
             int? skipBrokenMessages,
 
             bool? threadPerConsumer,
@@ -118,6 +166,14 @@ namespace Pulumi.Aiven.Outputs
             NumConsumers = numConsumers;
             PollMaxBatchSize = pollMaxBatchSize;
             PollMaxTimeoutMs = pollMaxTimeoutMs;
+            ProducerBatchNumMessages = producerBatchNumMessages;
+            ProducerBatchSize = producerBatchSize;
+            ProducerCompressionCodec = producerCompressionCodec;
+            ProducerCompressionLevel = producerCompressionLevel;
+            ProducerLingerMs = producerLingerMs;
+            ProducerQueueBufferingMaxKbytes = producerQueueBufferingMaxKbytes;
+            ProducerQueueBufferingMaxMessages = producerQueueBufferingMaxMessages;
+            ProducerRequestRequiredAcks = producerRequestRequiredAcks;
             SkipBrokenMessages = skipBrokenMessages;
             ThreadPerConsumer = threadPerConsumer;
             Topics = topics;

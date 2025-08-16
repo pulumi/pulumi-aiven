@@ -202,6 +202,126 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
+     * The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+     * 
+     */
+    @Import(name="producerBatchNumMessages")
+    private @Nullable Output<Integer> producerBatchNumMessages;
+
+    /**
+     * @return The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+     * 
+     */
+    public Optional<Output<Integer>> producerBatchNumMessages() {
+        return Optional.ofNullable(this.producerBatchNumMessages);
+    }
+
+    /**
+     * The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+     * 
+     */
+    @Import(name="producerBatchSize")
+    private @Nullable Output<Integer> producerBatchSize;
+
+    /**
+     * @return The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+     * 
+     */
+    public Optional<Output<Integer>> producerBatchSize() {
+        return Optional.ofNullable(this.producerBatchSize);
+    }
+
+    /**
+     * Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+     * 
+     */
+    @Import(name="producerCompressionCodec")
+    private @Nullable Output<String> producerCompressionCodec;
+
+    /**
+     * @return Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+     * 
+     */
+    public Optional<Output<String>> producerCompressionCodec() {
+        return Optional.ofNullable(this.producerCompressionCodec);
+    }
+
+    /**
+     * The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+     * 
+     */
+    @Import(name="producerCompressionLevel")
+    private @Nullable Output<Integer> producerCompressionLevel;
+
+    /**
+     * @return The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+     * 
+     */
+    public Optional<Output<Integer>> producerCompressionLevel() {
+        return Optional.ofNullable(this.producerCompressionLevel);
+    }
+
+    /**
+     * The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+     * 
+     */
+    @Import(name="producerLingerMs")
+    private @Nullable Output<Integer> producerLingerMs;
+
+    /**
+     * @return The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+     * 
+     */
+    public Optional<Output<Integer>> producerLingerMs() {
+        return Optional.ofNullable(this.producerLingerMs);
+    }
+
+    /**
+     * The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+     * 
+     */
+    @Import(name="producerQueueBufferingMaxKbytes")
+    private @Nullable Output<Integer> producerQueueBufferingMaxKbytes;
+
+    /**
+     * @return The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+     * 
+     */
+    public Optional<Output<Integer>> producerQueueBufferingMaxKbytes() {
+        return Optional.ofNullable(this.producerQueueBufferingMaxKbytes);
+    }
+
+    /**
+     * The maximum number of messages to buffer before sending. Default: `100000`.
+     * 
+     */
+    @Import(name="producerQueueBufferingMaxMessages")
+    private @Nullable Output<Integer> producerQueueBufferingMaxMessages;
+
+    /**
+     * @return The maximum number of messages to buffer before sending. Default: `100000`.
+     * 
+     */
+    public Optional<Output<Integer>> producerQueueBufferingMaxMessages() {
+        return Optional.ofNullable(this.producerQueueBufferingMaxMessages);
+    }
+
+    /**
+     * The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+     * 
+     */
+    @Import(name="producerRequestRequiredAcks")
+    private @Nullable Output<Integer> producerRequestRequiredAcks;
+
+    /**
+     * @return The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+     * 
+     */
+    public Optional<Output<Integer>> producerRequestRequiredAcks() {
+        return Optional.ofNullable(this.producerRequestRequiredAcks);
+    }
+
+    /**
      * Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      * 
      */
@@ -261,6 +381,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         this.numConsumers = $.numConsumers;
         this.pollMaxBatchSize = $.pollMaxBatchSize;
         this.pollMaxTimeoutMs = $.pollMaxTimeoutMs;
+        this.producerBatchNumMessages = $.producerBatchNumMessages;
+        this.producerBatchSize = $.producerBatchSize;
+        this.producerCompressionCodec = $.producerCompressionCodec;
+        this.producerCompressionLevel = $.producerCompressionLevel;
+        this.producerLingerMs = $.producerLingerMs;
+        this.producerQueueBufferingMaxKbytes = $.producerQueueBufferingMaxKbytes;
+        this.producerQueueBufferingMaxMessages = $.producerQueueBufferingMaxMessages;
+        this.producerRequestRequiredAcks = $.producerRequestRequiredAcks;
         this.skipBrokenMessages = $.skipBrokenMessages;
         this.threadPerConsumer = $.threadPerConsumer;
         this.topics = $.topics;
@@ -544,6 +672,174 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
          */
         public Builder pollMaxTimeoutMs(Integer pollMaxTimeoutMs) {
             return pollMaxTimeoutMs(Output.of(pollMaxTimeoutMs));
+        }
+
+        /**
+         * @param producerBatchNumMessages The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerBatchNumMessages(@Nullable Output<Integer> producerBatchNumMessages) {
+            $.producerBatchNumMessages = producerBatchNumMessages;
+            return this;
+        }
+
+        /**
+         * @param producerBatchNumMessages The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerBatchNumMessages(Integer producerBatchNumMessages) {
+            return producerBatchNumMessages(Output.of(producerBatchNumMessages));
+        }
+
+        /**
+         * @param producerBatchSize The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerBatchSize(@Nullable Output<Integer> producerBatchSize) {
+            $.producerBatchSize = producerBatchSize;
+            return this;
+        }
+
+        /**
+         * @param producerBatchSize The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerBatchSize(Integer producerBatchSize) {
+            return producerBatchSize(Output.of(producerBatchSize));
+        }
+
+        /**
+         * @param producerCompressionCodec Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerCompressionCodec(@Nullable Output<String> producerCompressionCodec) {
+            $.producerCompressionCodec = producerCompressionCodec;
+            return this;
+        }
+
+        /**
+         * @param producerCompressionCodec Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerCompressionCodec(String producerCompressionCodec) {
+            return producerCompressionCodec(Output.of(producerCompressionCodec));
+        }
+
+        /**
+         * @param producerCompressionLevel The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerCompressionLevel(@Nullable Output<Integer> producerCompressionLevel) {
+            $.producerCompressionLevel = producerCompressionLevel;
+            return this;
+        }
+
+        /**
+         * @param producerCompressionLevel The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerCompressionLevel(Integer producerCompressionLevel) {
+            return producerCompressionLevel(Output.of(producerCompressionLevel));
+        }
+
+        /**
+         * @param producerLingerMs The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerLingerMs(@Nullable Output<Integer> producerLingerMs) {
+            $.producerLingerMs = producerLingerMs;
+            return this;
+        }
+
+        /**
+         * @param producerLingerMs The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerLingerMs(Integer producerLingerMs) {
+            return producerLingerMs(Output.of(producerLingerMs));
+        }
+
+        /**
+         * @param producerQueueBufferingMaxKbytes The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerQueueBufferingMaxKbytes(@Nullable Output<Integer> producerQueueBufferingMaxKbytes) {
+            $.producerQueueBufferingMaxKbytes = producerQueueBufferingMaxKbytes;
+            return this;
+        }
+
+        /**
+         * @param producerQueueBufferingMaxKbytes The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerQueueBufferingMaxKbytes(Integer producerQueueBufferingMaxKbytes) {
+            return producerQueueBufferingMaxKbytes(Output.of(producerQueueBufferingMaxKbytes));
+        }
+
+        /**
+         * @param producerQueueBufferingMaxMessages The maximum number of messages to buffer before sending. Default: `100000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerQueueBufferingMaxMessages(@Nullable Output<Integer> producerQueueBufferingMaxMessages) {
+            $.producerQueueBufferingMaxMessages = producerQueueBufferingMaxMessages;
+            return this;
+        }
+
+        /**
+         * @param producerQueueBufferingMaxMessages The maximum number of messages to buffer before sending. Default: `100000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerQueueBufferingMaxMessages(Integer producerQueueBufferingMaxMessages) {
+            return producerQueueBufferingMaxMessages(Output.of(producerQueueBufferingMaxMessages));
+        }
+
+        /**
+         * @param producerRequestRequiredAcks The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerRequestRequiredAcks(@Nullable Output<Integer> producerRequestRequiredAcks) {
+            $.producerRequestRequiredAcks = producerRequestRequiredAcks;
+            return this;
+        }
+
+        /**
+         * @param producerRequestRequiredAcks The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerRequestRequiredAcks(Integer producerRequestRequiredAcks) {
+            return producerRequestRequiredAcks(Output.of(producerRequestRequiredAcks));
         }
 
         /**

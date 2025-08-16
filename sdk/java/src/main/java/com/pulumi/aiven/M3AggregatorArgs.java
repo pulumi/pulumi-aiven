@@ -94,14 +94,22 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * M3aggregator user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="m3aggregatorUserConfig")
     private @Nullable Output<M3AggregatorM3aggregatorUserConfigArgs> m3aggregatorUserConfig;
 
     /**
      * @return M3aggregator user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<M3AggregatorM3aggregatorUserConfigArgs>> m3aggregatorUserConfig() {
         return Optional.ofNullable(this.m3aggregatorUserConfig);
     }
@@ -407,7 +415,11 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder m3aggregatorUserConfig(@Nullable Output<M3AggregatorM3aggregatorUserConfigArgs> m3aggregatorUserConfig) {
             $.m3aggregatorUserConfig = m3aggregatorUserConfig;
             return this;
@@ -418,7 +430,11 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder m3aggregatorUserConfig(M3AggregatorM3aggregatorUserConfigArgs m3aggregatorUserConfig) {
             return m3aggregatorUserConfig(Output.of(m3aggregatorUserConfig));
         }
