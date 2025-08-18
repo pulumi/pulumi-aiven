@@ -48047,7 +48047,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:aiven"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:aiven/terraformConfig",
