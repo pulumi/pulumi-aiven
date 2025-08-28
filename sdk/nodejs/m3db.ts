@@ -75,118 +75,118 @@ export class M3Db extends pulumi.CustomResource {
     /**
      * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      */
-    public readonly additionalDiskSpace!: pulumi.Output<string>;
+    declare public readonly additionalDiskSpace: pulumi.Output<string>;
     /**
      * The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
      */
-    public readonly cloudName!: pulumi.Output<string | undefined>;
+    declare public readonly cloudName: pulumi.Output<string | undefined>;
     /**
      * Service component information objects
      */
-    public /*out*/ readonly components!: pulumi.Output<outputs.M3DbComponent[]>;
+    declare public /*out*/ readonly components: pulumi.Output<outputs.M3DbComponent[]>;
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      *
      * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
-    public readonly diskSpace!: pulumi.Output<string | undefined>;
+    declare public readonly diskSpace: pulumi.Output<string | undefined>;
     /**
      * The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
      */
-    public /*out*/ readonly diskSpaceCap!: pulumi.Output<string>;
+    declare public /*out*/ readonly diskSpaceCap: pulumi.Output<string>;
     /**
      * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
      */
-    public /*out*/ readonly diskSpaceDefault!: pulumi.Output<string>;
+    declare public /*out*/ readonly diskSpaceDefault: pulumi.Output<string>;
     /**
      * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      */
-    public /*out*/ readonly diskSpaceStep!: pulumi.Output<string>;
+    declare public /*out*/ readonly diskSpaceStep: pulumi.Output<string>;
     /**
      * Disk space that service is currently using
      *
      * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
-    public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
+    declare public /*out*/ readonly diskSpaceUsed: pulumi.Output<string>;
     /**
      * Values provided by the M3DB server.
      */
-    public readonly m3db!: pulumi.Output<outputs.M3DbM3db>;
+    declare public readonly m3db: pulumi.Output<outputs.M3DbM3db>;
     /**
      * M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      *
      * @deprecated This property is deprecated.
      */
-    public readonly m3dbUserConfig!: pulumi.Output<outputs.M3DbM3dbUserConfig | undefined>;
+    declare public readonly m3dbUserConfig: pulumi.Output<outputs.M3DbM3dbUserConfig | undefined>;
     /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
-    public readonly maintenanceWindowDow!: pulumi.Output<string | undefined>;
+    declare public readonly maintenanceWindowDow: pulumi.Output<string | undefined>;
     /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
-    public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
+    declare public readonly maintenanceWindowTime: pulumi.Output<string | undefined>;
     /**
      * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
-    public readonly plan!: pulumi.Output<string>;
+    declare public readonly plan: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
      */
-    public readonly projectVpcId!: pulumi.Output<string | undefined>;
+    declare public readonly projectVpcId: pulumi.Output<string | undefined>;
     /**
      * The hostname of the service.
      */
-    public /*out*/ readonly serviceHost!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceHost: pulumi.Output<string>;
     /**
      * Service integrations to specify when creating a service. Not applied after initial service creation
      */
-    public readonly serviceIntegrations!: pulumi.Output<outputs.M3DbServiceIntegration[]>;
+    declare public readonly serviceIntegrations: pulumi.Output<outputs.M3DbServiceIntegration[]>;
     /**
      * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * Password used for connecting to the service, if applicable
      */
-    public /*out*/ readonly servicePassword!: pulumi.Output<string>;
+    declare public /*out*/ readonly servicePassword: pulumi.Output<string>;
     /**
      * The port of the service
      */
-    public /*out*/ readonly servicePort!: pulumi.Output<number>;
+    declare public /*out*/ readonly servicePort: pulumi.Output<number>;
     /**
      * Aiven internal service type code
      */
-    public /*out*/ readonly serviceType!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceType: pulumi.Output<string>;
     /**
      * URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
      */
-    public /*out*/ readonly serviceUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceUri: pulumi.Output<string>;
     /**
      * Username used for connecting to the service, if applicable
      */
-    public /*out*/ readonly serviceUsername!: pulumi.Output<string>;
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceUsername: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    public readonly staticIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly staticIps: pulumi.Output<string[] | undefined>;
     /**
      * Tags are key-value pairs that allow you to categorize services.
      */
-    public readonly tags!: pulumi.Output<outputs.M3DbTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.M3DbTag[] | undefined>;
     /**
      * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
-    public readonly techEmails!: pulumi.Output<outputs.M3DbTechEmail[] | undefined>;
+    declare public readonly techEmails: pulumi.Output<outputs.M3DbTechEmail[] | undefined>;
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
-    public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly terminationProtection: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a M3Db resource with the given unique name, arguments, and options.
@@ -201,61 +201,61 @@ export class M3Db extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as M3DbState | undefined;
-            resourceInputs["additionalDiskSpace"] = state ? state.additionalDiskSpace : undefined;
-            resourceInputs["cloudName"] = state ? state.cloudName : undefined;
-            resourceInputs["components"] = state ? state.components : undefined;
-            resourceInputs["diskSpace"] = state ? state.diskSpace : undefined;
-            resourceInputs["diskSpaceCap"] = state ? state.diskSpaceCap : undefined;
-            resourceInputs["diskSpaceDefault"] = state ? state.diskSpaceDefault : undefined;
-            resourceInputs["diskSpaceStep"] = state ? state.diskSpaceStep : undefined;
-            resourceInputs["diskSpaceUsed"] = state ? state.diskSpaceUsed : undefined;
-            resourceInputs["m3db"] = state ? state.m3db : undefined;
-            resourceInputs["m3dbUserConfig"] = state ? state.m3dbUserConfig : undefined;
-            resourceInputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
-            resourceInputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
-            resourceInputs["plan"] = state ? state.plan : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectVpcId"] = state ? state.projectVpcId : undefined;
-            resourceInputs["serviceHost"] = state ? state.serviceHost : undefined;
-            resourceInputs["serviceIntegrations"] = state ? state.serviceIntegrations : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["servicePassword"] = state ? state.servicePassword : undefined;
-            resourceInputs["servicePort"] = state ? state.servicePort : undefined;
-            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
-            resourceInputs["serviceUri"] = state ? state.serviceUri : undefined;
-            resourceInputs["serviceUsername"] = state ? state.serviceUsername : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["staticIps"] = state ? state.staticIps : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["techEmails"] = state ? state.techEmails : undefined;
-            resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
+            resourceInputs["additionalDiskSpace"] = state?.additionalDiskSpace;
+            resourceInputs["cloudName"] = state?.cloudName;
+            resourceInputs["components"] = state?.components;
+            resourceInputs["diskSpace"] = state?.diskSpace;
+            resourceInputs["diskSpaceCap"] = state?.diskSpaceCap;
+            resourceInputs["diskSpaceDefault"] = state?.diskSpaceDefault;
+            resourceInputs["diskSpaceStep"] = state?.diskSpaceStep;
+            resourceInputs["diskSpaceUsed"] = state?.diskSpaceUsed;
+            resourceInputs["m3db"] = state?.m3db;
+            resourceInputs["m3dbUserConfig"] = state?.m3dbUserConfig;
+            resourceInputs["maintenanceWindowDow"] = state?.maintenanceWindowDow;
+            resourceInputs["maintenanceWindowTime"] = state?.maintenanceWindowTime;
+            resourceInputs["plan"] = state?.plan;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectVpcId"] = state?.projectVpcId;
+            resourceInputs["serviceHost"] = state?.serviceHost;
+            resourceInputs["serviceIntegrations"] = state?.serviceIntegrations;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["servicePassword"] = state?.servicePassword;
+            resourceInputs["servicePort"] = state?.servicePort;
+            resourceInputs["serviceType"] = state?.serviceType;
+            resourceInputs["serviceUri"] = state?.serviceUri;
+            resourceInputs["serviceUsername"] = state?.serviceUsername;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["staticIps"] = state?.staticIps;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["techEmails"] = state?.techEmails;
+            resourceInputs["terminationProtection"] = state?.terminationProtection;
         } else {
             const args = argsOrState as M3DbArgs | undefined;
-            if ((!args || args.plan === undefined) && !opts.urn) {
+            if (args?.plan === undefined && !opts.urn) {
                 throw new Error("Missing required property 'plan'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["additionalDiskSpace"] = args ? args.additionalDiskSpace : undefined;
-            resourceInputs["cloudName"] = args ? args.cloudName : undefined;
-            resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
+            resourceInputs["additionalDiskSpace"] = args?.additionalDiskSpace;
+            resourceInputs["cloudName"] = args?.cloudName;
+            resourceInputs["diskSpace"] = args?.diskSpace;
             resourceInputs["m3db"] = args?.m3db ? pulumi.secret(args.m3db) : undefined;
-            resourceInputs["m3dbUserConfig"] = args ? args.m3dbUserConfig : undefined;
-            resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
-            resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
-            resourceInputs["plan"] = args ? args.plan : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectVpcId"] = args ? args.projectVpcId : undefined;
-            resourceInputs["serviceIntegrations"] = args ? args.serviceIntegrations : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["staticIps"] = args ? args.staticIps : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["techEmails"] = args ? args.techEmails : undefined;
-            resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
+            resourceInputs["m3dbUserConfig"] = args?.m3dbUserConfig;
+            resourceInputs["maintenanceWindowDow"] = args?.maintenanceWindowDow;
+            resourceInputs["maintenanceWindowTime"] = args?.maintenanceWindowTime;
+            resourceInputs["plan"] = args?.plan;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectVpcId"] = args?.projectVpcId;
+            resourceInputs["serviceIntegrations"] = args?.serviceIntegrations;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["staticIps"] = args?.staticIps;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["techEmails"] = args?.techEmails;
+            resourceInputs["terminationProtection"] = args?.terminationProtection;
             resourceInputs["components"] = undefined /*out*/;
             resourceInputs["diskSpaceCap"] = undefined /*out*/;
             resourceInputs["diskSpaceDefault"] = undefined /*out*/;

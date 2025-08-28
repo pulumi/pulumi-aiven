@@ -87,39 +87,39 @@ export class ValkeyUser extends pulumi.CustomResource {
     /**
      * The Valkey service user's password.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * User account type, such as primary or regular account.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
     /**
      * Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
-    public readonly valkeyAclCategories!: pulumi.Output<string[] | undefined>;
+    declare public readonly valkeyAclCategories: pulumi.Output<string[] | undefined>;
     /**
      * Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
      */
-    public readonly valkeyAclChannels!: pulumi.Output<string[] | undefined>;
+    declare public readonly valkeyAclChannels: pulumi.Output<string[] | undefined>;
     /**
      * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
-    public readonly valkeyAclCommands!: pulumi.Output<string[] | undefined>;
+    declare public readonly valkeyAclCommands: pulumi.Output<string[] | undefined>;
     /**
      * Key access rules. Entries are defined as standard glob patterns. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
-    public readonly valkeyAclKeys!: pulumi.Output<string[] | undefined>;
+    declare public readonly valkeyAclKeys: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ValkeyUser resource with the given unique name, arguments, and options.
@@ -134,34 +134,34 @@ export class ValkeyUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ValkeyUserState | undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["valkeyAclCategories"] = state ? state.valkeyAclCategories : undefined;
-            resourceInputs["valkeyAclChannels"] = state ? state.valkeyAclChannels : undefined;
-            resourceInputs["valkeyAclCommands"] = state ? state.valkeyAclCommands : undefined;
-            resourceInputs["valkeyAclKeys"] = state ? state.valkeyAclKeys : undefined;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["valkeyAclCategories"] = state?.valkeyAclCategories;
+            resourceInputs["valkeyAclChannels"] = state?.valkeyAclChannels;
+            resourceInputs["valkeyAclCommands"] = state?.valkeyAclCommands;
+            resourceInputs["valkeyAclKeys"] = state?.valkeyAclKeys;
         } else {
             const args = argsOrState as ValkeyUserArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["valkeyAclCategories"] = args ? args.valkeyAclCategories : undefined;
-            resourceInputs["valkeyAclChannels"] = args ? args.valkeyAclChannels : undefined;
-            resourceInputs["valkeyAclCommands"] = args ? args.valkeyAclCommands : undefined;
-            resourceInputs["valkeyAclKeys"] = args ? args.valkeyAclKeys : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["username"] = args?.username;
+            resourceInputs["valkeyAclCategories"] = args?.valkeyAclCategories;
+            resourceInputs["valkeyAclChannels"] = args?.valkeyAclChannels;
+            resourceInputs["valkeyAclCommands"] = args?.valkeyAclCommands;
+            resourceInputs["valkeyAclKeys"] = args?.valkeyAclKeys;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

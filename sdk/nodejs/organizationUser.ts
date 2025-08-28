@@ -37,29 +37,29 @@ export class OrganizationUser extends pulumi.CustomResource {
      *
      * @deprecated This field is deprecated and will be removed in the next major release. 
      */
-    public /*out*/ readonly accepted!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly accepted: pulumi.Output<boolean>;
     /**
      * Time of creation
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The email address of the user who sent an invitation to the user.
      *
      * @deprecated This field is deprecated and will be removed in the next major release. 
      */
-    public /*out*/ readonly invitedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly invitedBy: pulumi.Output<string>;
     /**
      * The unique organization ID. Changing this property forces recreation of the resource.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
      */
-    public readonly userEmail!: pulumi.Output<string>;
+    declare public readonly userEmail: pulumi.Output<string>;
     /**
      * The unique organization user ID
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
 
     /**
      * Create a OrganizationUser resource with the given unique name, arguments, and options.
@@ -74,22 +74,22 @@ export class OrganizationUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationUserState | undefined;
-            resourceInputs["accepted"] = state ? state.accepted : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["invitedBy"] = state ? state.invitedBy : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["userEmail"] = state ? state.userEmail : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["accepted"] = state?.accepted;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["invitedBy"] = state?.invitedBy;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["userEmail"] = state?.userEmail;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as OrganizationUserArgs | undefined;
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.userEmail === undefined) && !opts.urn) {
+            if (args?.userEmail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userEmail'");
             }
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["userEmail"] = args ? args.userEmail : undefined;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["userEmail"] = args?.userEmail;
             resourceInputs["accepted"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["invitedBy"] = undefined /*out*/;

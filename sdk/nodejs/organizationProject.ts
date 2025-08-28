@@ -49,36 +49,36 @@ export class OrganizationProject extends pulumi.CustomResource {
     /**
      * Valid port number (1-65535) to use as a base for service port allocation.
      */
-    public readonly basePort!: pulumi.Output<number>;
+    declare public readonly basePort: pulumi.Output<number>;
     /**
      * Billing group ID to assign to the project. It's required when moving projects between organizations.
      */
-    public readonly billingGroupId!: pulumi.Output<string>;
+    declare public readonly billingGroupId: pulumi.Output<string>;
     /**
      * PEM encoded certificate.
      */
-    public /*out*/ readonly caCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly caCert: pulumi.Output<string>;
     /**
      * ID of an organization. Maximum length: `36`.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
-    public readonly parentId!: pulumi.Output<string>;
+    declare public readonly parentId: pulumi.Output<string>;
     /**
      * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Tags are key-value pairs that allow you to categorize projects.
      */
-    public readonly tags!: pulumi.Output<outputs.OrganizationProjectTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.OrganizationProjectTag[] | undefined>;
     /**
      * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
-    public readonly technicalEmails!: pulumi.Output<string[] | undefined>;
-    public readonly timeouts!: pulumi.Output<outputs.OrganizationProjectTimeouts | undefined>;
+    declare public readonly technicalEmails: pulumi.Output<string[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.OrganizationProjectTimeouts | undefined>;
 
     /**
      * Create a OrganizationProject resource with the given unique name, arguments, and options.
@@ -93,37 +93,37 @@ export class OrganizationProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationProjectState | undefined;
-            resourceInputs["basePort"] = state ? state.basePort : undefined;
-            resourceInputs["billingGroupId"] = state ? state.billingGroupId : undefined;
-            resourceInputs["caCert"] = state ? state.caCert : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["parentId"] = state ? state.parentId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["technicalEmails"] = state ? state.technicalEmails : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["basePort"] = state?.basePort;
+            resourceInputs["billingGroupId"] = state?.billingGroupId;
+            resourceInputs["caCert"] = state?.caCert;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["parentId"] = state?.parentId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["technicalEmails"] = state?.technicalEmails;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as OrganizationProjectArgs | undefined;
-            if ((!args || args.billingGroupId === undefined) && !opts.urn) {
+            if (args?.billingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'billingGroupId'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.parentId === undefined) && !opts.urn) {
+            if (args?.parentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parentId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["basePort"] = args ? args.basePort : undefined;
-            resourceInputs["billingGroupId"] = args ? args.billingGroupId : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["parentId"] = args ? args.parentId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["technicalEmails"] = args ? args.technicalEmails : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["basePort"] = args?.basePort;
+            resourceInputs["billingGroupId"] = args?.billingGroupId;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["parentId"] = args?.parentId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["technicalEmails"] = args?.technicalEmails;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["caCert"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

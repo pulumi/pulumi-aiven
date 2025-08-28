@@ -73,43 +73,43 @@ export class FlinkJarApplication extends pulumi.CustomResource {
     /**
      * Application ID.
      */
-    public /*out*/ readonly applicationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly applicationId: pulumi.Output<string>;
     /**
      * JarApplicationVersions.
      */
-    public /*out*/ readonly applicationVersions!: pulumi.Output<outputs.FlinkJarApplicationApplicationVersion[]>;
+    declare public /*out*/ readonly applicationVersions: pulumi.Output<outputs.FlinkJarApplicationApplicationVersion[]>;
     /**
      * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The creator of this entity.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * Flink JarApplicationDeployment.
      */
-    public /*out*/ readonly currentDeployments!: pulumi.Output<outputs.FlinkJarApplicationCurrentDeployment[]>;
+    declare public /*out*/ readonly currentDeployments: pulumi.Output<outputs.FlinkJarApplicationCurrentDeployment[]>;
     /**
      * Application name. Maximum length: `128`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The update timestamp of this entity in ISO 8601 format, always in UTC.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The latest updater of this entity.
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
 
     /**
      * Create a FlinkJarApplication resource with the given unique name, arguments, and options.
@@ -124,27 +124,27 @@ export class FlinkJarApplication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlinkJarApplicationState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["applicationVersions"] = state ? state.applicationVersions : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["currentDeployments"] = state ? state.currentDeployments : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["applicationVersions"] = state?.applicationVersions;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["currentDeployments"] = state?.currentDeployments;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["updatedBy"] = state?.updatedBy;
         } else {
             const args = argsOrState as FlinkJarApplicationArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["applicationId"] = undefined /*out*/;
             resourceInputs["applicationVersions"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

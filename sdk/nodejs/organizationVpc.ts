@@ -60,31 +60,31 @@ export class OrganizationVpc extends pulumi.CustomResource {
     /**
      * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
      */
-    public readonly cloudName!: pulumi.Output<string>;
+    declare public readonly cloudName: pulumi.Output<string>;
     /**
      * Time of creation of the VPC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Network address range used by the VPC. For example, `192.168.0.0/24`.
      */
-    public readonly networkCidr!: pulumi.Output<string>;
+    declare public readonly networkCidr: pulumi.Output<string>;
     /**
      * The ID of the organization.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * The ID of the Aiven Organization VPC.
      */
-    public /*out*/ readonly organizationVpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly organizationVpcId: pulumi.Output<string>;
     /**
      * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Time of the last update of the VPC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a OrganizationVpc resource with the given unique name, arguments, and options.
@@ -99,27 +99,27 @@ export class OrganizationVpc extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationVpcState | undefined;
-            resourceInputs["cloudName"] = state ? state.cloudName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["networkCidr"] = state ? state.networkCidr : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["organizationVpcId"] = state ? state.organizationVpcId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["cloudName"] = state?.cloudName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["networkCidr"] = state?.networkCidr;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["organizationVpcId"] = state?.organizationVpcId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as OrganizationVpcArgs | undefined;
-            if ((!args || args.cloudName === undefined) && !opts.urn) {
+            if (args?.cloudName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudName'");
             }
-            if ((!args || args.networkCidr === undefined) && !opts.urn) {
+            if (args?.networkCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkCidr'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            resourceInputs["cloudName"] = args ? args.cloudName : undefined;
-            resourceInputs["networkCidr"] = args ? args.networkCidr : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["cloudName"] = args?.cloudName;
+            resourceInputs["networkCidr"] = args?.networkCidr;
+            resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["organizationVpcId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

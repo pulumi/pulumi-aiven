@@ -58,41 +58,41 @@ export class Account extends pulumi.CustomResource {
      *
      * @deprecated The new aiven.Organization resource won't have it, use the built-in ID field instead.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
      * Time of creation
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * If true, user is part of the owners team for this account
      *
      * @deprecated The new aiven.Organization resource won't have it, and will not have a replacement.
      */
-    public /*out*/ readonly isAccountOwner!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isAccountOwner: pulumi.Output<boolean>;
     /**
      * Account name
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Owner team id
      *
      * @deprecated The new aiven.Organization resource won't have it, and will not have a replacement.
      */
-    public /*out*/ readonly ownerTeamId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ownerTeamId: pulumi.Output<string>;
     /**
      * Billing group id
      *
      * @deprecated The new aiven.Organization resource won't have it, and will not have a replacement.
      */
-    public readonly primaryBillingGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly primaryBillingGroupId: pulumi.Output<string | undefined>;
     /**
      * Tenant id
      */
-    public /*out*/ readonly tenantId!: pulumi.Output<string>;
+    declare public /*out*/ readonly tenantId: pulumi.Output<string>;
     /**
      * Time of last update
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -107,18 +107,18 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["isAccountOwner"] = state ? state.isAccountOwner : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ownerTeamId"] = state ? state.ownerTeamId : undefined;
-            resourceInputs["primaryBillingGroupId"] = state ? state.primaryBillingGroupId : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["isAccountOwner"] = state?.isAccountOwner;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ownerTeamId"] = state?.ownerTeamId;
+            resourceInputs["primaryBillingGroupId"] = state?.primaryBillingGroupId;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["primaryBillingGroupId"] = args ? args.primaryBillingGroupId : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["primaryBillingGroupId"] = args?.primaryBillingGroupId;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["isAccountOwner"] = undefined /*out*/;

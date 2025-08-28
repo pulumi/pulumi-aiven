@@ -25,12 +25,9 @@ class InfluxdbUserArgs:
                  password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InfluxdbUser resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-               Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the InfluxDB User.
         """
         pulumi.set(__self__, "project", project)
@@ -43,8 +40,7 @@ class InfluxdbUserArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -56,8 +52,7 @@ class InfluxdbUserArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -69,8 +64,7 @@ class InfluxdbUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[_builtins.str]:
         """
-        The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-        Changing this property forces recreation of the resource.
+        The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -106,13 +100,10 @@ class _InfluxdbUserState:
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for the user if applicable for the service in question
         :param pulumi.Input[_builtins.str] access_key: Access certificate key for the user if applicable for the service in question
         :param pulumi.Input[_builtins.str] password: The password of the InfluxDB User.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[_builtins.str] username: The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-               Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         if access_cert is not None:
             pulumi.set(__self__, "access_cert", access_cert)
@@ -169,8 +160,7 @@ class _InfluxdbUserState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -182,8 +172,7 @@ class _InfluxdbUserState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -207,8 +196,7 @@ class _InfluxdbUserState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-        Changing this property forces recreation of the resource.
+        The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -233,12 +221,9 @@ class InfluxdbUser(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the InfluxDB User.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-               Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -318,13 +303,10 @@ class InfluxdbUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for the user if applicable for the service in question
         :param pulumi.Input[_builtins.str] access_key: Access certificate key for the user if applicable for the service in question
         :param pulumi.Input[_builtins.str] password: The password of the InfluxDB User.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[_builtins.str] username: The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-               Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -367,8 +349,7 @@ class InfluxdbUser(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -376,8 +357,7 @@ class InfluxdbUser(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -393,8 +373,7 @@ class InfluxdbUser(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[_builtins.str]:
         """
-        The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-        Changing this property forces recreation of the resource.
+        The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 

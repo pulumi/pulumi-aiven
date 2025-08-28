@@ -24,22 +24,14 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     public static final InfluxDbArgs Empty = new InfluxDbArgs();
 
     /**
-     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
-     * service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-     * service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
-     * integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
-     * causing any changes.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     @Import(name="additionalDiskSpace")
     private @Nullable Output<String> additionalDiskSpace;
 
     /**
-     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
-     * service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-     * service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
-     * integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
-     * causing any changes.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     public Optional<Output<String>> additionalDiskSpace() {
@@ -47,24 +39,14 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
-     * `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
-     * per project and service. Changing this value [migrates the service to another cloud provider or
-     * region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
-     * includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
-     * may have a brief interruption during DNS propagation.
+     * The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
      * 
      */
     @Import(name="cloudName")
     private @Nullable Output<String> cloudName;
 
     /**
-     * @return The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
-     * `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
-     * per project and service. Changing this value [migrates the service to another cloud provider or
-     * region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
-     * includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
-     * may have a brief interruption during DNS propagation.
+     * @return The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
      * 
      */
     public Optional<Output<String>> cloudName() {
@@ -72,8 +54,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-     * will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      * @deprecated
      * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
@@ -84,8 +65,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> diskSpace;
 
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-     * will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      * @deprecated
      * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
@@ -97,16 +77,14 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
-     * Options that you add cannot be removed later
+     * Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="influxdbUserConfig")
     private @Nullable Output<InfluxDbInfluxdbUserConfigArgs> influxdbUserConfig;
 
     /**
-     * @return Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
-     * Options that you add cannot be removed later
+     * @return Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<InfluxDbInfluxdbUserConfigArgs>> influxdbUserConfig() {
@@ -159,24 +137,14 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-     * are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-     * store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-     * `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-     * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-     * options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     @Import(name="plan", required=true)
     private Output<String> plan;
 
     /**
-     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-     * are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-     * store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-     * `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-     * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-     * options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     public Output<String> plan() {
@@ -184,16 +152,14 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -201,22 +167,14 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
-     * the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
-     * region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
-     * migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
-     * data.
+     * Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
      * 
      */
     @Import(name="projectVpcId")
     private @Nullable Output<String> projectVpcId;
 
     /**
-     * @return Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
-     * the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
-     * region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
-     * migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
-     * data.
+     * @return Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
      * 
      */
     public Optional<Output<String>> projectVpcId() {
@@ -239,16 +197,14 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-     * service so name should be picked based on intended service usage rather than current attributes.
+     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-     * service so name should be picked based on intended service usage rather than current attributes.
+     * @return Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      * 
      */
     public Output<String> serviceName() {
@@ -256,16 +212,14 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a
-     * static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     @Import(name="staticIps")
     private @Nullable Output<List<String>> staticIps;
 
     /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a
-     * static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     public Optional<Output<List<String>>> staticIps() {
@@ -288,16 +242,14 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
-     * important alerts and updates about this service. You can also set email contacts at the project level.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     @Import(name="techEmails")
     private @Nullable Output<List<InfluxDbTechEmailArgs>> techEmails;
 
     /**
-     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
-     * important alerts and updates about this service. You can also set email contacts at the project level.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public Optional<Output<List<InfluxDbTechEmailArgs>>> techEmails() {
@@ -305,18 +257,14 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-     * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-     * much of the content can at least be restored from backup in case accidental deletion is done.
+     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
     @Import(name="terminationProtection")
     private @Nullable Output<Boolean> terminationProtection;
 
     /**
-     * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-     * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-     * much of the content can at least be restored from backup in case accidental deletion is done.
+     * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
     public Optional<Output<Boolean>> terminationProtection() {
@@ -363,11 +311,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
-         * service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-         * service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
-         * integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
-         * causing any changes.
+         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
          * 
          * @return builder
          * 
@@ -378,11 +322,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
-         * service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-         * service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
-         * integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
-         * causing any changes.
+         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
          * 
          * @return builder
          * 
@@ -392,12 +332,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
-         * `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
-         * per project and service. Changing this value [migrates the service to another cloud provider or
-         * region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
-         * includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
-         * may have a brief interruption during DNS propagation.
+         * @param cloudName The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
          * 
          * @return builder
          * 
@@ -408,12 +343,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
-         * `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
-         * per project and service. Changing this value [migrates the service to another cloud provider or
-         * region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
-         * includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
-         * may have a brief interruption during DNS propagation.
+         * @param cloudName The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
          * 
          * @return builder
          * 
@@ -423,8 +353,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-         * will result in the service rebalancing.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
          * 
          * @return builder
          * 
@@ -439,8 +368,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-         * will result in the service rebalancing.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
          * 
          * @return builder
          * 
@@ -454,8 +382,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxdbUserConfig Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
-         * Options that you add cannot be removed later
+         * @param influxdbUserConfig Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -466,8 +393,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxdbUserConfig Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
-         * Options that you add cannot be removed later
+         * @param influxdbUserConfig Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -550,12 +476,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-         * are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-         * store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-         * `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-         * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-         * options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+         * @param plan Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
          * 
          * @return builder
          * 
@@ -566,12 +487,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-         * are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-         * store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-         * `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-         * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-         * options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+         * @param plan Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
          * 
          * @return builder
          * 
@@ -581,8 +497,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. Changing this property forces recreation of the resource.
+         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -593,8 +508,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. Changing this property forces recreation of the resource.
+         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -604,11 +518,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectVpcId Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
-         * the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
-         * region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
-         * migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
-         * data.
+         * @param projectVpcId Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
          * 
          * @return builder
          * 
@@ -619,11 +529,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectVpcId Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
-         * the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
-         * region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
-         * migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
-         * data.
+         * @param projectVpcId Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
          * 
          * @return builder
          * 
@@ -664,8 +570,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-         * service so name should be picked based on intended service usage rather than current attributes.
+         * @param serviceName Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
          * 
          * @return builder
          * 
@@ -676,8 +581,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-         * service so name should be picked based on intended service usage rather than current attributes.
+         * @param serviceName Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
          * 
          * @return builder
          * 
@@ -687,8 +591,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a
-         * static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
          * 
          * @return builder
          * 
@@ -699,8 +602,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a
-         * static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
          * 
          * @return builder
          * 
@@ -710,8 +612,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a
-         * static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
          * 
          * @return builder
          * 
@@ -752,8 +653,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param techEmails The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
-         * important alerts and updates about this service. You can also set email contacts at the project level.
+         * @param techEmails The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
          * 
          * @return builder
          * 
@@ -764,8 +664,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param techEmails The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
-         * important alerts and updates about this service. You can also set email contacts at the project level.
+         * @param techEmails The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
          * 
          * @return builder
          * 
@@ -775,8 +674,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param techEmails The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
-         * important alerts and updates about this service. You can also set email contacts at the project level.
+         * @param techEmails The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
          * 
          * @return builder
          * 
@@ -786,9 +684,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminationProtection Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-         * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-         * much of the content can at least be restored from backup in case accidental deletion is done.
+         * @param terminationProtection Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
          * 
          * @return builder
          * 
@@ -799,9 +695,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminationProtection Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-         * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-         * much of the content can at least be restored from backup in case accidental deletion is done.
+         * @param terminationProtection Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
          * 
          * @return builder
          * 

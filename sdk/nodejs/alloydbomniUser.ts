@@ -41,35 +41,35 @@ export class AlloydbomniUser extends pulumi.CustomResource {
     /**
      * The access certificate for the servie user.
      */
-    public /*out*/ readonly accessCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessCert: pulumi.Output<string>;
     /**
      * The access certificate key for the service user.
      */
-    public /*out*/ readonly accessKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessKey: pulumi.Output<string>;
     /**
      * The password of the service user.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
-    public readonly pgAllowReplication!: pulumi.Output<boolean | undefined>;
+    declare public readonly pgAllowReplication: pulumi.Output<boolean | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The service user account type, either primary or regular.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a AlloydbomniUser resource with the given unique name, arguments, and options.
@@ -84,30 +84,30 @@ export class AlloydbomniUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlloydbomniUserState | undefined;
-            resourceInputs["accessCert"] = state ? state.accessCert : undefined;
-            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["pgAllowReplication"] = state ? state.pgAllowReplication : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["accessCert"] = state?.accessCert;
+            resourceInputs["accessKey"] = state?.accessKey;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["pgAllowReplication"] = state?.pgAllowReplication;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as AlloydbomniUserArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["pgAllowReplication"] = args ? args.pgAllowReplication : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["pgAllowReplication"] = args?.pgAllowReplication;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["username"] = args?.username;
             resourceInputs["accessCert"] = undefined /*out*/;
             resourceInputs["accessKey"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

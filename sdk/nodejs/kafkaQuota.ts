@@ -79,33 +79,33 @@ export class KafkaQuota extends pulumi.CustomResource {
      * All connections within a quota group share the same quota.
      * It is possible to set default quotas for each (user, client-id), user or client-id group by specifying 'default'
      */
-    public readonly clientId!: pulumi.Output<string | undefined>;
+    declare public readonly clientId: pulumi.Output<string | undefined>;
     /**
      * Defines the bandwidth limit in bytes/sec for each group of clients sharing a quota.
      * Every distinct client group is allocated a specific quota, as defined by the cluster, on a per-broker basis.
      * Exceeding this limit results in client throttling.
      */
-    public readonly consumerByteRate!: pulumi.Output<number | undefined>;
+    declare public readonly consumerByteRate: pulumi.Output<number | undefined>;
     /**
      * Defines the bandwidth limit in bytes/sec for each group of clients sharing a quota.
      * Every distinct client group is allocated a specific quota, as defined by the cluster, on a per-broker basis.
      * Exceeding this limit results in client throttling.
      */
-    public readonly producerByteRate!: pulumi.Output<number | undefined>;
+    declare public readonly producerByteRate: pulumi.Output<number | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Sets the maximum percentage of CPU time that a client group can use on request handler I/O and network threads per broker within a quota window.
      * Exceeding this limit triggers throttling.
      * The quota, expressed as a percentage, also indicates the total allowable CPU usage for the client groups sharing the quota.
      */
-    public readonly requestPercentage!: pulumi.Output<number | undefined>;
+    declare public readonly requestPercentage: pulumi.Output<number | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * Represents a logical group of clients, assigned a unique name by the client application.
      * Quotas can be applied based on user, client-id, or both.
@@ -113,7 +113,7 @@ export class KafkaQuota extends pulumi.CustomResource {
      * All connections within a quota group share the same quota.
      * It is possible to set default quotas for each (user, client-id), user or client-id group by specifying 'default'
      */
-    public readonly user!: pulumi.Output<string | undefined>;
+    declare public readonly user: pulumi.Output<string | undefined>;
 
     /**
      * Create a KafkaQuota resource with the given unique name, arguments, and options.
@@ -128,28 +128,28 @@ export class KafkaQuota extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaQuotaState | undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["consumerByteRate"] = state ? state.consumerByteRate : undefined;
-            resourceInputs["producerByteRate"] = state ? state.producerByteRate : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["requestPercentage"] = state ? state.requestPercentage : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["consumerByteRate"] = state?.consumerByteRate;
+            resourceInputs["producerByteRate"] = state?.producerByteRate;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["requestPercentage"] = state?.requestPercentage;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as KafkaQuotaArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
-            resourceInputs["consumerByteRate"] = args ? args.consumerByteRate : undefined;
-            resourceInputs["producerByteRate"] = args ? args.producerByteRate : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["requestPercentage"] = args ? args.requestPercentage : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["clientId"] = args?.clientId;
+            resourceInputs["consumerByteRate"] = args?.consumerByteRate;
+            resourceInputs["producerByteRate"] = args?.producerByteRate;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["requestPercentage"] = args?.requestPercentage;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["user"] = args?.user;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KafkaQuota.__pulumiType, name, resourceInputs, opts);

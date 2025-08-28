@@ -49,20 +49,20 @@ export class OrganizationUserGroupMember extends pulumi.CustomResource {
     /**
      * The ID of the user group.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * Last activity time of the user group member.
      */
-    public /*out*/ readonly lastActivityTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastActivityTime: pulumi.Output<string>;
     /**
      * The ID of the organization.
      */
-    public readonly organizationId!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.OrganizationUserGroupMemberTimeouts | undefined>;
+    declare public readonly organizationId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.OrganizationUserGroupMemberTimeouts | undefined>;
     /**
      * The ID of the organization user or application user.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a OrganizationUserGroupMember resource with the given unique name, arguments, and options.
@@ -77,26 +77,26 @@ export class OrganizationUserGroupMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationUserGroupMemberState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["lastActivityTime"] = state ? state.lastActivityTime : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["lastActivityTime"] = state?.lastActivityTime;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as OrganizationUserGroupMemberArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["lastActivityTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

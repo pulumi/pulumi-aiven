@@ -43,48 +43,48 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
     /**
      * Billing address ID. Maximum length: `36`.
      */
-    public readonly billingAddressId!: pulumi.Output<string>;
+    declare public readonly billingAddressId: pulumi.Output<string>;
     /**
      * List of billing contact emails.
      */
-    public readonly billingContactEmails!: pulumi.Output<string[]>;
+    declare public readonly billingContactEmails: pulumi.Output<string[]>;
     /**
      * List of billing contact emails.
      */
-    public readonly billingEmails!: pulumi.Output<string[]>;
+    declare public readonly billingEmails: pulumi.Output<string[]>;
     /**
      * Billing group ID.
      */
-    public /*out*/ readonly billingGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly billingGroupId: pulumi.Output<string>;
     /**
      * Billing Group Name. Maximum length: `128`.
      */
-    public readonly billingGroupName!: pulumi.Output<string>;
+    declare public readonly billingGroupName: pulumi.Output<string>;
     /**
      * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
-    public readonly currency!: pulumi.Output<string | undefined>;
+    declare public readonly currency: pulumi.Output<string | undefined>;
     /**
      * Extra billing text. Maximum length: `254`.
      */
-    public readonly customInvoiceText!: pulumi.Output<string | undefined>;
+    declare public readonly customInvoiceText: pulumi.Output<string | undefined>;
     /**
      * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * Payment method ID.
      */
-    public readonly paymentMethodId!: pulumi.Output<string>;
+    declare public readonly paymentMethodId: pulumi.Output<string>;
     /**
      * Shipping address ID. Maximum length: `36`.
      */
-    public readonly shippingAddressId!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.OrganizationBillingGroupTimeouts | undefined>;
+    declare public readonly shippingAddressId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.OrganizationBillingGroupTimeouts | undefined>;
     /**
      * VAT ID.
      */
-    public readonly vatId!: pulumi.Output<string | undefined>;
+    declare public readonly vatId: pulumi.Output<string | undefined>;
 
     /**
      * Create a OrganizationBillingGroup resource with the given unique name, arguments, and options.
@@ -99,52 +99,52 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationBillingGroupState | undefined;
-            resourceInputs["billingAddressId"] = state ? state.billingAddressId : undefined;
-            resourceInputs["billingContactEmails"] = state ? state.billingContactEmails : undefined;
-            resourceInputs["billingEmails"] = state ? state.billingEmails : undefined;
-            resourceInputs["billingGroupId"] = state ? state.billingGroupId : undefined;
-            resourceInputs["billingGroupName"] = state ? state.billingGroupName : undefined;
-            resourceInputs["currency"] = state ? state.currency : undefined;
-            resourceInputs["customInvoiceText"] = state ? state.customInvoiceText : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["paymentMethodId"] = state ? state.paymentMethodId : undefined;
-            resourceInputs["shippingAddressId"] = state ? state.shippingAddressId : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["vatId"] = state ? state.vatId : undefined;
+            resourceInputs["billingAddressId"] = state?.billingAddressId;
+            resourceInputs["billingContactEmails"] = state?.billingContactEmails;
+            resourceInputs["billingEmails"] = state?.billingEmails;
+            resourceInputs["billingGroupId"] = state?.billingGroupId;
+            resourceInputs["billingGroupName"] = state?.billingGroupName;
+            resourceInputs["currency"] = state?.currency;
+            resourceInputs["customInvoiceText"] = state?.customInvoiceText;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["paymentMethodId"] = state?.paymentMethodId;
+            resourceInputs["shippingAddressId"] = state?.shippingAddressId;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["vatId"] = state?.vatId;
         } else {
             const args = argsOrState as OrganizationBillingGroupArgs | undefined;
-            if ((!args || args.billingAddressId === undefined) && !opts.urn) {
+            if (args?.billingAddressId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'billingAddressId'");
             }
-            if ((!args || args.billingContactEmails === undefined) && !opts.urn) {
+            if (args?.billingContactEmails === undefined && !opts.urn) {
                 throw new Error("Missing required property 'billingContactEmails'");
             }
-            if ((!args || args.billingEmails === undefined) && !opts.urn) {
+            if (args?.billingEmails === undefined && !opts.urn) {
                 throw new Error("Missing required property 'billingEmails'");
             }
-            if ((!args || args.billingGroupName === undefined) && !opts.urn) {
+            if (args?.billingGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'billingGroupName'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.paymentMethodId === undefined) && !opts.urn) {
+            if (args?.paymentMethodId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentMethodId'");
             }
-            if ((!args || args.shippingAddressId === undefined) && !opts.urn) {
+            if (args?.shippingAddressId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shippingAddressId'");
             }
-            resourceInputs["billingAddressId"] = args ? args.billingAddressId : undefined;
-            resourceInputs["billingContactEmails"] = args ? args.billingContactEmails : undefined;
-            resourceInputs["billingEmails"] = args ? args.billingEmails : undefined;
-            resourceInputs["billingGroupName"] = args ? args.billingGroupName : undefined;
-            resourceInputs["currency"] = args ? args.currency : undefined;
-            resourceInputs["customInvoiceText"] = args ? args.customInvoiceText : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["paymentMethodId"] = args ? args.paymentMethodId : undefined;
-            resourceInputs["shippingAddressId"] = args ? args.shippingAddressId : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["vatId"] = args ? args.vatId : undefined;
+            resourceInputs["billingAddressId"] = args?.billingAddressId;
+            resourceInputs["billingContactEmails"] = args?.billingContactEmails;
+            resourceInputs["billingEmails"] = args?.billingEmails;
+            resourceInputs["billingGroupName"] = args?.billingGroupName;
+            resourceInputs["currency"] = args?.currency;
+            resourceInputs["customInvoiceText"] = args?.customInvoiceText;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["paymentMethodId"] = args?.paymentMethodId;
+            resourceInputs["shippingAddressId"] = args?.shippingAddressId;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["vatId"] = args?.vatId;
             resourceInputs["billingGroupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

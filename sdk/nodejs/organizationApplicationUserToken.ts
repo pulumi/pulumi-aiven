@@ -61,71 +61,71 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
     /**
      * Time when the token was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * True for tokens explicitly created using the `accessTokens` API. False for tokens created when a user logs in.
      */
-    public /*out*/ readonly createdManually!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly createdManually: pulumi.Output<boolean>;
     /**
      * True if the API request was made with this token.
      */
-    public /*out*/ readonly currentlyActive!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly currentlyActive: pulumi.Output<boolean>;
     /**
      * Description of the token.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Timestamp when the access token will expire unless extended.
      */
-    public /*out*/ readonly expiryTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiryTime: pulumi.Output<string>;
     /**
      * Extends the token session duration when the token is used. Only applicable if a value is set for `maxAgeSeconds`.
      */
-    public readonly extendWhenUsed!: pulumi.Output<boolean | undefined>;
+    declare public readonly extendWhenUsed: pulumi.Output<boolean | undefined>;
     /**
      * Full token.
      */
-    public /*out*/ readonly fullToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly fullToken: pulumi.Output<string>;
     /**
      * List of allowed IP ranges.
      */
-    public readonly ipAllowlists!: pulumi.Output<string[] | undefined>;
+    declare public readonly ipAllowlists: pulumi.Output<string[] | undefined>;
     /**
      * IP address of the last request made with this token.
      */
-    public /*out*/ readonly lastIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastIp: pulumi.Output<string>;
     /**
      * Timestamp when the access token was last used.
      */
-    public /*out*/ readonly lastUsedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUsedTime: pulumi.Output<string>;
     /**
      * User agent of the last request made with this token.
      */
-    public /*out*/ readonly lastUserAgent!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUserAgent: pulumi.Output<string>;
     /**
      * User agent of the last request made with this token in human-readable format.
      */
-    public /*out*/ readonly lastUserAgentHumanReadable!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUserAgentHumanReadable: pulumi.Output<string>;
     /**
      * The number of hours after which a token expires. If not set, it never expires.
      */
-    public readonly maxAgeSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly maxAgeSeconds: pulumi.Output<number | undefined>;
     /**
      * The ID of the organization the application user belongs to.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
      */
-    public readonly scopes!: pulumi.Output<string[] | undefined>;
+    declare public readonly scopes: pulumi.Output<string[] | undefined>;
     /**
      * Prefix of the token.
      */
-    public /*out*/ readonly tokenPrefix!: pulumi.Output<string>;
+    declare public /*out*/ readonly tokenPrefix: pulumi.Output<string>;
     /**
      * The ID of the application user the token is created for.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a OrganizationApplicationUserToken resource with the given unique name, arguments, and options.
@@ -140,38 +140,38 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationApplicationUserTokenState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["createdManually"] = state ? state.createdManually : undefined;
-            resourceInputs["currentlyActive"] = state ? state.currentlyActive : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expiryTime"] = state ? state.expiryTime : undefined;
-            resourceInputs["extendWhenUsed"] = state ? state.extendWhenUsed : undefined;
-            resourceInputs["fullToken"] = state ? state.fullToken : undefined;
-            resourceInputs["ipAllowlists"] = state ? state.ipAllowlists : undefined;
-            resourceInputs["lastIp"] = state ? state.lastIp : undefined;
-            resourceInputs["lastUsedTime"] = state ? state.lastUsedTime : undefined;
-            resourceInputs["lastUserAgent"] = state ? state.lastUserAgent : undefined;
-            resourceInputs["lastUserAgentHumanReadable"] = state ? state.lastUserAgentHumanReadable : undefined;
-            resourceInputs["maxAgeSeconds"] = state ? state.maxAgeSeconds : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
-            resourceInputs["tokenPrefix"] = state ? state.tokenPrefix : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["createdManually"] = state?.createdManually;
+            resourceInputs["currentlyActive"] = state?.currentlyActive;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expiryTime"] = state?.expiryTime;
+            resourceInputs["extendWhenUsed"] = state?.extendWhenUsed;
+            resourceInputs["fullToken"] = state?.fullToken;
+            resourceInputs["ipAllowlists"] = state?.ipAllowlists;
+            resourceInputs["lastIp"] = state?.lastIp;
+            resourceInputs["lastUsedTime"] = state?.lastUsedTime;
+            resourceInputs["lastUserAgent"] = state?.lastUserAgent;
+            resourceInputs["lastUserAgentHumanReadable"] = state?.lastUserAgentHumanReadable;
+            resourceInputs["maxAgeSeconds"] = state?.maxAgeSeconds;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["tokenPrefix"] = state?.tokenPrefix;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as OrganizationApplicationUserTokenArgs | undefined;
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["extendWhenUsed"] = args ? args.extendWhenUsed : undefined;
-            resourceInputs["ipAllowlists"] = args ? args.ipAllowlists : undefined;
-            resourceInputs["maxAgeSeconds"] = args ? args.maxAgeSeconds : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["extendWhenUsed"] = args?.extendWhenUsed;
+            resourceInputs["ipAllowlists"] = args?.ipAllowlists;
+            resourceInputs["maxAgeSeconds"] = args?.maxAgeSeconds;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["scopes"] = args?.scopes;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdManually"] = undefined /*out*/;
             resourceInputs["currentlyActive"] = undefined /*out*/;

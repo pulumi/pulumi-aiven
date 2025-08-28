@@ -28,7 +28,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
      */
-    public readonly apiToken!: pulumi.Output<string | undefined>;
+    declare public readonly apiToken: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.

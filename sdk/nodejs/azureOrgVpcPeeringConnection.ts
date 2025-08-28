@@ -69,39 +69,39 @@ export class AzureOrgVpcPeeringConnection extends pulumi.CustomResource {
     /**
      * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
      */
-    public readonly azureSubscriptionId!: pulumi.Output<string>;
+    declare public readonly azureSubscriptionId: pulumi.Output<string>;
     /**
      * Identifier of the organization.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * Identifier of the organization VPC.
      */
-    public readonly organizationVpcId!: pulumi.Output<string>;
+    declare public readonly organizationVpcId: pulumi.Output<string>;
     /**
      * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
      */
-    public readonly peerAzureAppId!: pulumi.Output<string>;
+    declare public readonly peerAzureAppId: pulumi.Output<string>;
     /**
      * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
      */
-    public readonly peerAzureTenantId!: pulumi.Output<string>;
+    declare public readonly peerAzureTenantId: pulumi.Output<string>;
     /**
      * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
      */
-    public readonly peerResourceGroup!: pulumi.Output<string>;
+    declare public readonly peerResourceGroup: pulumi.Output<string>;
     /**
      * The ID of the cloud provider for the peering connection.
      */
-    public /*out*/ readonly peeringConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly peeringConnectionId: pulumi.Output<string>;
     /**
      * State of the peering connection
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The name of the Azure VNet. Changing this property forces recreation of the resource.
      */
-    public readonly vnetName!: pulumi.Output<string>;
+    declare public readonly vnetName: pulumi.Output<string>;
 
     /**
      * Create a AzureOrgVpcPeeringConnection resource with the given unique name, arguments, and options.
@@ -116,45 +116,45 @@ export class AzureOrgVpcPeeringConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureOrgVpcPeeringConnectionState | undefined;
-            resourceInputs["azureSubscriptionId"] = state ? state.azureSubscriptionId : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["organizationVpcId"] = state ? state.organizationVpcId : undefined;
-            resourceInputs["peerAzureAppId"] = state ? state.peerAzureAppId : undefined;
-            resourceInputs["peerAzureTenantId"] = state ? state.peerAzureTenantId : undefined;
-            resourceInputs["peerResourceGroup"] = state ? state.peerResourceGroup : undefined;
-            resourceInputs["peeringConnectionId"] = state ? state.peeringConnectionId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["vnetName"] = state ? state.vnetName : undefined;
+            resourceInputs["azureSubscriptionId"] = state?.azureSubscriptionId;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["organizationVpcId"] = state?.organizationVpcId;
+            resourceInputs["peerAzureAppId"] = state?.peerAzureAppId;
+            resourceInputs["peerAzureTenantId"] = state?.peerAzureTenantId;
+            resourceInputs["peerResourceGroup"] = state?.peerResourceGroup;
+            resourceInputs["peeringConnectionId"] = state?.peeringConnectionId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["vnetName"] = state?.vnetName;
         } else {
             const args = argsOrState as AzureOrgVpcPeeringConnectionArgs | undefined;
-            if ((!args || args.azureSubscriptionId === undefined) && !opts.urn) {
+            if (args?.azureSubscriptionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'azureSubscriptionId'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.organizationVpcId === undefined) && !opts.urn) {
+            if (args?.organizationVpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationVpcId'");
             }
-            if ((!args || args.peerAzureAppId === undefined) && !opts.urn) {
+            if (args?.peerAzureAppId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerAzureAppId'");
             }
-            if ((!args || args.peerAzureTenantId === undefined) && !opts.urn) {
+            if (args?.peerAzureTenantId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerAzureTenantId'");
             }
-            if ((!args || args.peerResourceGroup === undefined) && !opts.urn) {
+            if (args?.peerResourceGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerResourceGroup'");
             }
-            if ((!args || args.vnetName === undefined) && !opts.urn) {
+            if (args?.vnetName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vnetName'");
             }
-            resourceInputs["azureSubscriptionId"] = args ? args.azureSubscriptionId : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["organizationVpcId"] = args ? args.organizationVpcId : undefined;
-            resourceInputs["peerAzureAppId"] = args ? args.peerAzureAppId : undefined;
-            resourceInputs["peerAzureTenantId"] = args ? args.peerAzureTenantId : undefined;
-            resourceInputs["peerResourceGroup"] = args ? args.peerResourceGroup : undefined;
-            resourceInputs["vnetName"] = args ? args.vnetName : undefined;
+            resourceInputs["azureSubscriptionId"] = args?.azureSubscriptionId;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["organizationVpcId"] = args?.organizationVpcId;
+            resourceInputs["peerAzureAppId"] = args?.peerAzureAppId;
+            resourceInputs["peerAzureTenantId"] = args?.peerAzureTenantId;
+            resourceInputs["peerResourceGroup"] = args?.peerResourceGroup;
+            resourceInputs["vnetName"] = args?.vnetName;
             resourceInputs["peeringConnectionId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

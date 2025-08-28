@@ -77,99 +77,99 @@ export class ServiceIntegration extends pulumi.CustomResource {
     /**
      * ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly clickhouseCredentialsUserConfig!: pulumi.Output<outputs.ServiceIntegrationClickhouseCredentialsUserConfig | undefined>;
+    declare public readonly clickhouseCredentialsUserConfig: pulumi.Output<outputs.ServiceIntegrationClickhouseCredentialsUserConfig | undefined>;
     /**
      * ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly clickhouseKafkaUserConfig!: pulumi.Output<outputs.ServiceIntegrationClickhouseKafkaUserConfig | undefined>;
+    declare public readonly clickhouseKafkaUserConfig: pulumi.Output<outputs.ServiceIntegrationClickhouseKafkaUserConfig | undefined>;
     /**
      * ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly clickhousePostgresqlUserConfig!: pulumi.Output<outputs.ServiceIntegrationClickhousePostgresqlUserConfig | undefined>;
+    declare public readonly clickhousePostgresqlUserConfig: pulumi.Output<outputs.ServiceIntegrationClickhousePostgresqlUserConfig | undefined>;
     /**
      * Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly datadogUserConfig!: pulumi.Output<outputs.ServiceIntegrationDatadogUserConfig | undefined>;
+    declare public readonly datadogUserConfig: pulumi.Output<outputs.ServiceIntegrationDatadogUserConfig | undefined>;
     /**
      * Destination endpoint for the integration.
      */
-    public readonly destinationEndpointId!: pulumi.Output<string | undefined>;
+    declare public readonly destinationEndpointId: pulumi.Output<string | undefined>;
     /**
      * Destination service for the integration.
      */
-    public readonly destinationServiceName!: pulumi.Output<string | undefined>;
+    declare public readonly destinationServiceName: pulumi.Output<string | undefined>;
     /**
      * Destination service project name
      */
-    public readonly destinationServiceProject!: pulumi.Output<string>;
+    declare public readonly destinationServiceProject: pulumi.Output<string>;
     /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalAwsCloudwatchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig | undefined>;
+    declare public readonly externalAwsCloudwatchLogsUserConfig: pulumi.Output<outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig | undefined>;
     /**
      * ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalAwsCloudwatchMetricsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig | undefined>;
+    declare public readonly externalAwsCloudwatchMetricsUserConfig: pulumi.Output<outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig | undefined>;
     /**
      * ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalElasticsearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalElasticsearchLogsUserConfig | undefined>;
+    declare public readonly externalElasticsearchLogsUserConfig: pulumi.Output<outputs.ServiceIntegrationExternalElasticsearchLogsUserConfig | undefined>;
     /**
      * ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalOpensearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalOpensearchLogsUserConfig | undefined>;
+    declare public readonly externalOpensearchLogsUserConfig: pulumi.Output<outputs.ServiceIntegrationExternalOpensearchLogsUserConfig | undefined>;
     /**
      * FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly flinkExternalPostgresqlUserConfig!: pulumi.Output<outputs.ServiceIntegrationFlinkExternalPostgresqlUserConfig | undefined>;
+    declare public readonly flinkExternalPostgresqlUserConfig: pulumi.Output<outputs.ServiceIntegrationFlinkExternalPostgresqlUserConfig | undefined>;
     /**
      * The ID of the Aiven service integration.
      */
-    public /*out*/ readonly integrationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationId: pulumi.Output<string>;
     /**
      * Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      */
-    public readonly integrationType!: pulumi.Output<string>;
+    declare public readonly integrationType: pulumi.Output<string>;
     /**
      * KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly kafkaConnectUserConfig!: pulumi.Output<outputs.ServiceIntegrationKafkaConnectUserConfig | undefined>;
+    declare public readonly kafkaConnectUserConfig: pulumi.Output<outputs.ServiceIntegrationKafkaConnectUserConfig | undefined>;
     /**
      * KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly kafkaLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationKafkaLogsUserConfig | undefined>;
+    declare public readonly kafkaLogsUserConfig: pulumi.Output<outputs.ServiceIntegrationKafkaLogsUserConfig | undefined>;
     /**
      * KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly kafkaMirrormakerUserConfig!: pulumi.Output<outputs.ServiceIntegrationKafkaMirrormakerUserConfig | undefined>;
+    declare public readonly kafkaMirrormakerUserConfig: pulumi.Output<outputs.ServiceIntegrationKafkaMirrormakerUserConfig | undefined>;
     /**
      * Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly logsUserConfig!: pulumi.Output<outputs.ServiceIntegrationLogsUserConfig | undefined>;
+    declare public readonly logsUserConfig: pulumi.Output<outputs.ServiceIntegrationLogsUserConfig | undefined>;
     /**
      * Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly metricsUserConfig!: pulumi.Output<outputs.ServiceIntegrationMetricsUserConfig | undefined>;
+    declare public readonly metricsUserConfig: pulumi.Output<outputs.ServiceIntegrationMetricsUserConfig | undefined>;
     /**
      * Project the integration belongs to.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly prometheusUserConfig!: pulumi.Output<outputs.ServiceIntegrationPrometheusUserConfig | undefined>;
+    declare public readonly prometheusUserConfig: pulumi.Output<outputs.ServiceIntegrationPrometheusUserConfig | undefined>;
     /**
      * Source endpoint for the integration.
      */
-    public readonly sourceEndpointId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointId: pulumi.Output<string | undefined>;
     /**
      * Source service for the integration (if any)
      */
-    public readonly sourceServiceName!: pulumi.Output<string>;
+    declare public readonly sourceServiceName: pulumi.Output<string>;
     /**
      * Source service project name
      */
-    public readonly sourceServiceProject!: pulumi.Output<string>;
+    declare public readonly sourceServiceProject: pulumi.Output<string>;
 
     /**
      * Create a ServiceIntegration resource with the given unique name, arguments, and options.
@@ -184,61 +184,61 @@ export class ServiceIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIntegrationState | undefined;
-            resourceInputs["clickhouseCredentialsUserConfig"] = state ? state.clickhouseCredentialsUserConfig : undefined;
-            resourceInputs["clickhouseKafkaUserConfig"] = state ? state.clickhouseKafkaUserConfig : undefined;
-            resourceInputs["clickhousePostgresqlUserConfig"] = state ? state.clickhousePostgresqlUserConfig : undefined;
-            resourceInputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
-            resourceInputs["destinationEndpointId"] = state ? state.destinationEndpointId : undefined;
-            resourceInputs["destinationServiceName"] = state ? state.destinationServiceName : undefined;
-            resourceInputs["destinationServiceProject"] = state ? state.destinationServiceProject : undefined;
-            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
-            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
-            resourceInputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
-            resourceInputs["externalOpensearchLogsUserConfig"] = state ? state.externalOpensearchLogsUserConfig : undefined;
-            resourceInputs["flinkExternalPostgresqlUserConfig"] = state ? state.flinkExternalPostgresqlUserConfig : undefined;
-            resourceInputs["integrationId"] = state ? state.integrationId : undefined;
-            resourceInputs["integrationType"] = state ? state.integrationType : undefined;
-            resourceInputs["kafkaConnectUserConfig"] = state ? state.kafkaConnectUserConfig : undefined;
-            resourceInputs["kafkaLogsUserConfig"] = state ? state.kafkaLogsUserConfig : undefined;
-            resourceInputs["kafkaMirrormakerUserConfig"] = state ? state.kafkaMirrormakerUserConfig : undefined;
-            resourceInputs["logsUserConfig"] = state ? state.logsUserConfig : undefined;
-            resourceInputs["metricsUserConfig"] = state ? state.metricsUserConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
-            resourceInputs["sourceEndpointId"] = state ? state.sourceEndpointId : undefined;
-            resourceInputs["sourceServiceName"] = state ? state.sourceServiceName : undefined;
-            resourceInputs["sourceServiceProject"] = state ? state.sourceServiceProject : undefined;
+            resourceInputs["clickhouseCredentialsUserConfig"] = state?.clickhouseCredentialsUserConfig;
+            resourceInputs["clickhouseKafkaUserConfig"] = state?.clickhouseKafkaUserConfig;
+            resourceInputs["clickhousePostgresqlUserConfig"] = state?.clickhousePostgresqlUserConfig;
+            resourceInputs["datadogUserConfig"] = state?.datadogUserConfig;
+            resourceInputs["destinationEndpointId"] = state?.destinationEndpointId;
+            resourceInputs["destinationServiceName"] = state?.destinationServiceName;
+            resourceInputs["destinationServiceProject"] = state?.destinationServiceProject;
+            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = state?.externalAwsCloudwatchLogsUserConfig;
+            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state?.externalAwsCloudwatchMetricsUserConfig;
+            resourceInputs["externalElasticsearchLogsUserConfig"] = state?.externalElasticsearchLogsUserConfig;
+            resourceInputs["externalOpensearchLogsUserConfig"] = state?.externalOpensearchLogsUserConfig;
+            resourceInputs["flinkExternalPostgresqlUserConfig"] = state?.flinkExternalPostgresqlUserConfig;
+            resourceInputs["integrationId"] = state?.integrationId;
+            resourceInputs["integrationType"] = state?.integrationType;
+            resourceInputs["kafkaConnectUserConfig"] = state?.kafkaConnectUserConfig;
+            resourceInputs["kafkaLogsUserConfig"] = state?.kafkaLogsUserConfig;
+            resourceInputs["kafkaMirrormakerUserConfig"] = state?.kafkaMirrormakerUserConfig;
+            resourceInputs["logsUserConfig"] = state?.logsUserConfig;
+            resourceInputs["metricsUserConfig"] = state?.metricsUserConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["prometheusUserConfig"] = state?.prometheusUserConfig;
+            resourceInputs["sourceEndpointId"] = state?.sourceEndpointId;
+            resourceInputs["sourceServiceName"] = state?.sourceServiceName;
+            resourceInputs["sourceServiceProject"] = state?.sourceServiceProject;
         } else {
             const args = argsOrState as ServiceIntegrationArgs | undefined;
-            if ((!args || args.integrationType === undefined) && !opts.urn) {
+            if (args?.integrationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'integrationType'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["clickhouseCredentialsUserConfig"] = args ? args.clickhouseCredentialsUserConfig : undefined;
-            resourceInputs["clickhouseKafkaUserConfig"] = args ? args.clickhouseKafkaUserConfig : undefined;
-            resourceInputs["clickhousePostgresqlUserConfig"] = args ? args.clickhousePostgresqlUserConfig : undefined;
-            resourceInputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
-            resourceInputs["destinationEndpointId"] = args ? args.destinationEndpointId : undefined;
-            resourceInputs["destinationServiceName"] = args ? args.destinationServiceName : undefined;
-            resourceInputs["destinationServiceProject"] = args ? args.destinationServiceProject : undefined;
-            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
-            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
-            resourceInputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
-            resourceInputs["externalOpensearchLogsUserConfig"] = args ? args.externalOpensearchLogsUserConfig : undefined;
-            resourceInputs["flinkExternalPostgresqlUserConfig"] = args ? args.flinkExternalPostgresqlUserConfig : undefined;
-            resourceInputs["integrationType"] = args ? args.integrationType : undefined;
-            resourceInputs["kafkaConnectUserConfig"] = args ? args.kafkaConnectUserConfig : undefined;
-            resourceInputs["kafkaLogsUserConfig"] = args ? args.kafkaLogsUserConfig : undefined;
-            resourceInputs["kafkaMirrormakerUserConfig"] = args ? args.kafkaMirrormakerUserConfig : undefined;
-            resourceInputs["logsUserConfig"] = args ? args.logsUserConfig : undefined;
-            resourceInputs["metricsUserConfig"] = args ? args.metricsUserConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
-            resourceInputs["sourceEndpointId"] = args ? args.sourceEndpointId : undefined;
-            resourceInputs["sourceServiceName"] = args ? args.sourceServiceName : undefined;
-            resourceInputs["sourceServiceProject"] = args ? args.sourceServiceProject : undefined;
+            resourceInputs["clickhouseCredentialsUserConfig"] = args?.clickhouseCredentialsUserConfig;
+            resourceInputs["clickhouseKafkaUserConfig"] = args?.clickhouseKafkaUserConfig;
+            resourceInputs["clickhousePostgresqlUserConfig"] = args?.clickhousePostgresqlUserConfig;
+            resourceInputs["datadogUserConfig"] = args?.datadogUserConfig;
+            resourceInputs["destinationEndpointId"] = args?.destinationEndpointId;
+            resourceInputs["destinationServiceName"] = args?.destinationServiceName;
+            resourceInputs["destinationServiceProject"] = args?.destinationServiceProject;
+            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = args?.externalAwsCloudwatchLogsUserConfig;
+            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args?.externalAwsCloudwatchMetricsUserConfig;
+            resourceInputs["externalElasticsearchLogsUserConfig"] = args?.externalElasticsearchLogsUserConfig;
+            resourceInputs["externalOpensearchLogsUserConfig"] = args?.externalOpensearchLogsUserConfig;
+            resourceInputs["flinkExternalPostgresqlUserConfig"] = args?.flinkExternalPostgresqlUserConfig;
+            resourceInputs["integrationType"] = args?.integrationType;
+            resourceInputs["kafkaConnectUserConfig"] = args?.kafkaConnectUserConfig;
+            resourceInputs["kafkaLogsUserConfig"] = args?.kafkaLogsUserConfig;
+            resourceInputs["kafkaMirrormakerUserConfig"] = args?.kafkaMirrormakerUserConfig;
+            resourceInputs["logsUserConfig"] = args?.logsUserConfig;
+            resourceInputs["metricsUserConfig"] = args?.metricsUserConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["prometheusUserConfig"] = args?.prometheusUserConfig;
+            resourceInputs["sourceEndpointId"] = args?.sourceEndpointId;
+            resourceInputs["sourceServiceName"] = args?.sourceServiceName;
+            resourceInputs["sourceServiceProject"] = args?.sourceServiceProject;
             resourceInputs["integrationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

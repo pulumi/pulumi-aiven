@@ -62,19 +62,19 @@ export class ProjectUser extends pulumi.CustomResource {
     /**
      * Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
      */
-    public /*out*/ readonly accepted!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly accepted: pulumi.Output<boolean>;
     /**
      * Email address of the user in lowercase. Changing this property forces recreation of the resource.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * Project membership type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
-    public readonly memberType!: pulumi.Output<string>;
+    declare public readonly memberType: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a ProjectUser resource with the given unique name, arguments, and options.
@@ -89,24 +89,24 @@ export class ProjectUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectUserState | undefined;
-            resourceInputs["accepted"] = state ? state.accepted : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["memberType"] = state ? state.memberType : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["accepted"] = state?.accepted;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["memberType"] = state?.memberType;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectUserArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.memberType === undefined) && !opts.urn) {
+            if (args?.memberType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'memberType'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["memberType"] = args ? args.memberType : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["memberType"] = args?.memberType;
+            resourceInputs["project"] = args?.project;
             resourceInputs["accepted"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

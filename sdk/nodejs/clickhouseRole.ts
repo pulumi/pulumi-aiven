@@ -57,15 +57,15 @@ export class ClickhouseRole extends pulumi.CustomResource {
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of role. Changing this property forces recreation of the resource.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
 
     /**
      * Create a ClickhouseRole resource with the given unique name, arguments, and options.
@@ -80,23 +80,23 @@ export class ClickhouseRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClickhouseRoleState | undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["serviceName"] = state?.serviceName;
         } else {
             const args = argsOrState as ClickhouseRoleArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["serviceName"] = args?.serviceName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClickhouseRole.__pulumiType, name, resourceInputs, opts);

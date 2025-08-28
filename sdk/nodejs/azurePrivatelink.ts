@@ -57,31 +57,31 @@ export class AzurePrivatelink extends pulumi.CustomResource {
     /**
      * The Azure Private Link service alias.
      */
-    public /*out*/ readonly azureServiceAlias!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureServiceAlias: pulumi.Output<string>;
     /**
      * The Azure Private Link service ID.
      */
-    public /*out*/ readonly azureServiceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureServiceId: pulumi.Output<string>;
     /**
      * Printable result of the Azure Private Link request.
      */
-    public /*out*/ readonly message!: pulumi.Output<string>;
+    declare public /*out*/ readonly message: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The state of the Private Link resource.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A list of allowed subscription IDs. Maximum length: `16`.
      */
-    public readonly userSubscriptionIds!: pulumi.Output<string[]>;
+    declare public readonly userSubscriptionIds: pulumi.Output<string[]>;
 
     /**
      * Create a AzurePrivatelink resource with the given unique name, arguments, and options.
@@ -96,27 +96,27 @@ export class AzurePrivatelink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzurePrivatelinkState | undefined;
-            resourceInputs["azureServiceAlias"] = state ? state.azureServiceAlias : undefined;
-            resourceInputs["azureServiceId"] = state ? state.azureServiceId : undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["userSubscriptionIds"] = state ? state.userSubscriptionIds : undefined;
+            resourceInputs["azureServiceAlias"] = state?.azureServiceAlias;
+            resourceInputs["azureServiceId"] = state?.azureServiceId;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["userSubscriptionIds"] = state?.userSubscriptionIds;
         } else {
             const args = argsOrState as AzurePrivatelinkArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.userSubscriptionIds === undefined) && !opts.urn) {
+            if (args?.userSubscriptionIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userSubscriptionIds'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["userSubscriptionIds"] = args ? args.userSubscriptionIds : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["userSubscriptionIds"] = args?.userSubscriptionIds;
             resourceInputs["azureServiceAlias"] = undefined /*out*/;
             resourceInputs["azureServiceId"] = undefined /*out*/;
             resourceInputs["message"] = undefined /*out*/;

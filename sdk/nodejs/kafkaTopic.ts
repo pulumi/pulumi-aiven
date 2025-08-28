@@ -67,40 +67,40 @@ export class KafkaTopic extends pulumi.CustomResource {
     /**
      * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      */
-    public readonly config!: pulumi.Output<outputs.KafkaTopicConfig | undefined>;
+    declare public readonly config: pulumi.Output<outputs.KafkaTopicConfig | undefined>;
     /**
      * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      */
-    public readonly ownerUserGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly ownerUserGroupId: pulumi.Output<string | undefined>;
     /**
      * The number of partitions to create in the topic.
      */
-    public readonly partitions!: pulumi.Output<number>;
+    declare public readonly partitions: pulumi.Output<number>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The replication factor for the topic.
      */
-    public readonly replication!: pulumi.Output<number>;
+    declare public readonly replication: pulumi.Output<number>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * Tags for the topic.
      */
-    public readonly tags!: pulumi.Output<outputs.KafkaTopicTag[] | undefined>;
-    public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.KafkaTopicTag[] | undefined>;
+    declare public readonly terminationProtection: pulumi.Output<boolean | undefined>;
     /**
      * The description of the topic
      */
-    public readonly topicDescription!: pulumi.Output<string | undefined>;
+    declare public readonly topicDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the topic. Changing this property forces recreation of the resource.
      */
-    public readonly topicName!: pulumi.Output<string>;
+    declare public readonly topicName: pulumi.Output<string>;
 
     /**
      * Create a KafkaTopic resource with the given unique name, arguments, and options.
@@ -115,43 +115,43 @@ export class KafkaTopic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaTopicState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["ownerUserGroupId"] = state ? state.ownerUserGroupId : undefined;
-            resourceInputs["partitions"] = state ? state.partitions : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["replication"] = state ? state.replication : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
-            resourceInputs["topicDescription"] = state ? state.topicDescription : undefined;
-            resourceInputs["topicName"] = state ? state.topicName : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["ownerUserGroupId"] = state?.ownerUserGroupId;
+            resourceInputs["partitions"] = state?.partitions;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["replication"] = state?.replication;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["terminationProtection"] = state?.terminationProtection;
+            resourceInputs["topicDescription"] = state?.topicDescription;
+            resourceInputs["topicName"] = state?.topicName;
         } else {
             const args = argsOrState as KafkaTopicArgs | undefined;
-            if ((!args || args.partitions === undefined) && !opts.urn) {
+            if (args?.partitions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'partitions'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.replication === undefined) && !opts.urn) {
+            if (args?.replication === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replication'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.topicName === undefined) && !opts.urn) {
+            if (args?.topicName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["ownerUserGroupId"] = args ? args.ownerUserGroupId : undefined;
-            resourceInputs["partitions"] = args ? args.partitions : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["replication"] = args ? args.replication : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
-            resourceInputs["topicDescription"] = args ? args.topicDescription : undefined;
-            resourceInputs["topicName"] = args ? args.topicName : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["ownerUserGroupId"] = args?.ownerUserGroupId;
+            resourceInputs["partitions"] = args?.partitions;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["replication"] = args?.replication;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["terminationProtection"] = args?.terminationProtection;
+            resourceInputs["topicDescription"] = args?.topicDescription;
+            resourceInputs["topicName"] = args?.topicName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KafkaTopic.__pulumiType, name, resourceInputs, opts);

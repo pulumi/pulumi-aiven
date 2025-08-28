@@ -55,27 +55,27 @@ export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {
     /**
      * Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
      */
-    public /*out*/ readonly adminEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly adminEnabled: pulumi.Output<boolean>;
     /**
      * The password for the os-sec-admin user.
      */
-    public readonly adminPassword!: pulumi.Output<string>;
+    declare public readonly adminPassword: pulumi.Output<string>;
     /**
      * Whether the security plugin is available. This is always true for recently created services.
      */
-    public /*out*/ readonly available!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly available: pulumi.Output<boolean>;
     /**
      * Whether the security plugin is enabled. This is always true for recently created services.
      */
-    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
 
     /**
      * Create a OpensearchSecurityPluginConfig resource with the given unique name, arguments, and options.
@@ -90,26 +90,26 @@ export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OpensearchSecurityPluginConfigState | undefined;
-            resourceInputs["adminEnabled"] = state ? state.adminEnabled : undefined;
-            resourceInputs["adminPassword"] = state ? state.adminPassword : undefined;
-            resourceInputs["available"] = state ? state.available : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["adminEnabled"] = state?.adminEnabled;
+            resourceInputs["adminPassword"] = state?.adminPassword;
+            resourceInputs["available"] = state?.available;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
         } else {
             const args = argsOrState as OpensearchSecurityPluginConfigArgs | undefined;
-            if ((!args || args.adminPassword === undefined) && !opts.urn) {
+            if (args?.adminPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'adminPassword'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["adminPassword"] = args?.adminPassword ? pulumi.secret(args.adminPassword) : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["adminEnabled"] = undefined /*out*/;
             resourceInputs["available"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;

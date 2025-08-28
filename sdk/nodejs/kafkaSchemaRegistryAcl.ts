@@ -59,27 +59,27 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
     /**
      * Kafka Schema Registry ACL ID
      */
-    public /*out*/ readonly aclId!: pulumi.Output<string>;
+    declare public /*out*/ readonly aclId: pulumi.Output<string>;
     /**
      * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      */
-    public readonly permission!: pulumi.Output<string>;
+    declare public readonly permission: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
      */
-    public readonly resource!: pulumi.Output<string>;
+    declare public readonly resource: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a KafkaSchemaRegistryAcl resource with the given unique name, arguments, and options.
@@ -94,34 +94,34 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaSchemaRegistryAclState | undefined;
-            resourceInputs["aclId"] = state ? state.aclId : undefined;
-            resourceInputs["permission"] = state ? state.permission : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resource"] = state ? state.resource : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["aclId"] = state?.aclId;
+            resourceInputs["permission"] = state?.permission;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resource"] = state?.resource;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as KafkaSchemaRegistryAclArgs | undefined;
-            if ((!args || args.permission === undefined) && !opts.urn) {
+            if (args?.permission === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permission'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.resource === undefined) && !opts.urn) {
+            if (args?.resource === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resource'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["permission"] = args ? args.permission : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resource"] = args ? args.resource : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["permission"] = args?.permission;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resource"] = args?.resource;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["username"] = args?.username;
             resourceInputs["aclId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
