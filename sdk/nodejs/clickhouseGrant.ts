@@ -96,27 +96,27 @@ export class ClickhouseGrant extends pulumi.CustomResource {
     /**
      * Grant privileges. Changing this property forces recreation of the resource.
      */
-    public readonly privilegeGrants!: pulumi.Output<outputs.ClickhouseGrantPrivilegeGrant[] | undefined>;
+    declare public readonly privilegeGrants: pulumi.Output<outputs.ClickhouseGrantPrivilegeGrant[] | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * Grant roles. Changing this property forces recreation of the resource.
      */
-    public readonly roleGrants!: pulumi.Output<outputs.ClickhouseGrantRoleGrant[] | undefined>;
+    declare public readonly roleGrants: pulumi.Output<outputs.ClickhouseGrantRoleGrant[] | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly user!: pulumi.Output<string | undefined>;
+    declare public readonly user: pulumi.Output<string | undefined>;
 
     /**
      * Create a ClickhouseGrant resource with the given unique name, arguments, and options.
@@ -131,26 +131,26 @@ export class ClickhouseGrant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClickhouseGrantState | undefined;
-            resourceInputs["privilegeGrants"] = state ? state.privilegeGrants : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["roleGrants"] = state ? state.roleGrants : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["privilegeGrants"] = state?.privilegeGrants;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["roleGrants"] = state?.roleGrants;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as ClickhouseGrantArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["privilegeGrants"] = args ? args.privilegeGrants : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["roleGrants"] = args ? args.roleGrants : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["privilegeGrants"] = args?.privilegeGrants;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["roleGrants"] = args?.roleGrants;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["user"] = args?.user;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClickhouseGrant.__pulumiType, name, resourceInputs, opts);

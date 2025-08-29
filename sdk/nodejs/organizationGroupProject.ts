@@ -77,16 +77,16 @@ export class OrganizationGroupProject extends pulumi.CustomResource {
     /**
      * The ID of the user group.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The project that the users in the group are members of.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
-    public readonly role!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.OrganizationGroupProjectTimeouts | undefined>;
+    declare public readonly role: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.OrganizationGroupProjectTimeouts | undefined>;
 
     /**
      * Create a OrganizationGroupProject resource with the given unique name, arguments, and options.
@@ -101,25 +101,25 @@ export class OrganizationGroupProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationGroupProjectState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as OrganizationGroupProjectArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["timeouts"] = args?.timeouts;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationGroupProject.__pulumiType, name, resourceInputs, opts);

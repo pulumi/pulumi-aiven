@@ -57,27 +57,27 @@ export class ClickhouseUser extends pulumi.CustomResource {
     /**
      * The password of the ClickHouse user.
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Indicates if a ClickHouse user is required.
      */
-    public /*out*/ readonly required!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly required: pulumi.Output<boolean>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The name of the ClickHouse user. Changing this property forces recreation of the resource.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
     /**
      * UUID of the ClickHouse user.
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
 
     /**
      * Create a ClickhouseUser resource with the given unique name, arguments, and options.
@@ -92,26 +92,26 @@ export class ClickhouseUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClickhouseUserState | undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["required"] = state ? state.required : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["required"] = state?.required;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as ClickhouseUserArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["username"] = args?.username;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["required"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;

@@ -76,95 +76,95 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
     /**
      * Autoscaler user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly autoscalerUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointAutoscalerUserConfig | undefined>;
+    declare public readonly autoscalerUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointAutoscalerUserConfig | undefined>;
     /**
      * Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly datadogUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointDatadogUserConfig | undefined>;
+    declare public readonly datadogUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointDatadogUserConfig | undefined>;
     /**
      * Backend configuration for the endpoint.
      */
-    public /*out*/ readonly endpointConfig!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly endpointConfig: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the service integration endpoint.
      */
-    public readonly endpointName!: pulumi.Output<string>;
+    declare public readonly endpointName: pulumi.Output<string>;
     /**
      * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
      */
-    public readonly endpointType!: pulumi.Output<string>;
+    declare public readonly endpointType: pulumi.Output<string>;
     /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalAwsCloudwatchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig | undefined>;
+    declare public readonly externalAwsCloudwatchLogsUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig | undefined>;
     /**
      * ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalAwsCloudwatchMetricsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig | undefined>;
+    declare public readonly externalAwsCloudwatchMetricsUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig | undefined>;
     /**
      * ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalAwsS3UserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsS3UserConfig | undefined>;
+    declare public readonly externalAwsS3UserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsS3UserConfig | undefined>;
     /**
      * ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalAzureBlobStorageUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig | undefined>;
+    declare public readonly externalAzureBlobStorageUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig | undefined>;
     /**
      * ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalClickhouseUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalClickhouseUserConfig | undefined>;
+    declare public readonly externalClickhouseUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalClickhouseUserConfig | undefined>;
     /**
      * ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalElasticsearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig | undefined>;
+    declare public readonly externalElasticsearchLogsUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig | undefined>;
     /**
      * ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalGoogleCloudBigquery!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery | undefined>;
+    declare public readonly externalGoogleCloudBigquery: pulumi.Output<outputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery | undefined>;
     /**
      * ExternalGoogleCloudLogging user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalGoogleCloudLoggingUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig | undefined>;
+    declare public readonly externalGoogleCloudLoggingUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig | undefined>;
     /**
      * ExternalKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalKafkaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalKafkaUserConfig | undefined>;
+    declare public readonly externalKafkaUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalKafkaUserConfig | undefined>;
     /**
      * ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalMysqlUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalMysqlUserConfig | undefined>;
+    declare public readonly externalMysqlUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalMysqlUserConfig | undefined>;
     /**
      * ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalOpensearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig | undefined>;
+    declare public readonly externalOpensearchLogsUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig | undefined>;
     /**
      * ExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalPostgresql!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalPostgresql | undefined>;
+    declare public readonly externalPostgresql: pulumi.Output<outputs.ServiceIntegrationEndpointExternalPostgresql | undefined>;
     /**
      * ExternalPrometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalPrometheusUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalPrometheusUserConfig | undefined>;
+    declare public readonly externalPrometheusUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalPrometheusUserConfig | undefined>;
     /**
      * ExternalSchemaRegistry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly externalSchemaRegistryUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig | undefined>;
+    declare public readonly externalSchemaRegistryUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig | undefined>;
     /**
      * Jolokia user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly jolokiaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
+    declare public readonly jolokiaUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
     /**
      * Project the service integration endpoint is in.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly prometheusUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointPrometheusUserConfig | undefined>;
+    declare public readonly prometheusUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointPrometheusUserConfig | undefined>;
     /**
      * Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    public readonly rsyslogUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointRsyslogUserConfig | undefined>;
+    declare public readonly rsyslogUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointRsyslogUserConfig | undefined>;
 
     /**
      * Create a ServiceIntegrationEndpoint resource with the given unique name, arguments, and options.
@@ -179,62 +179,62 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIntegrationEndpointState | undefined;
-            resourceInputs["autoscalerUserConfig"] = state ? state.autoscalerUserConfig : undefined;
-            resourceInputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
-            resourceInputs["endpointConfig"] = state ? state.endpointConfig : undefined;
-            resourceInputs["endpointName"] = state ? state.endpointName : undefined;
-            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
-            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
-            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
-            resourceInputs["externalAwsS3UserConfig"] = state ? state.externalAwsS3UserConfig : undefined;
-            resourceInputs["externalAzureBlobStorageUserConfig"] = state ? state.externalAzureBlobStorageUserConfig : undefined;
-            resourceInputs["externalClickhouseUserConfig"] = state ? state.externalClickhouseUserConfig : undefined;
-            resourceInputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
-            resourceInputs["externalGoogleCloudBigquery"] = state ? state.externalGoogleCloudBigquery : undefined;
-            resourceInputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
-            resourceInputs["externalKafkaUserConfig"] = state ? state.externalKafkaUserConfig : undefined;
-            resourceInputs["externalMysqlUserConfig"] = state ? state.externalMysqlUserConfig : undefined;
-            resourceInputs["externalOpensearchLogsUserConfig"] = state ? state.externalOpensearchLogsUserConfig : undefined;
-            resourceInputs["externalPostgresql"] = state ? state.externalPostgresql : undefined;
-            resourceInputs["externalPrometheusUserConfig"] = state ? state.externalPrometheusUserConfig : undefined;
-            resourceInputs["externalSchemaRegistryUserConfig"] = state ? state.externalSchemaRegistryUserConfig : undefined;
-            resourceInputs["jolokiaUserConfig"] = state ? state.jolokiaUserConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
-            resourceInputs["rsyslogUserConfig"] = state ? state.rsyslogUserConfig : undefined;
+            resourceInputs["autoscalerUserConfig"] = state?.autoscalerUserConfig;
+            resourceInputs["datadogUserConfig"] = state?.datadogUserConfig;
+            resourceInputs["endpointConfig"] = state?.endpointConfig;
+            resourceInputs["endpointName"] = state?.endpointName;
+            resourceInputs["endpointType"] = state?.endpointType;
+            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = state?.externalAwsCloudwatchLogsUserConfig;
+            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state?.externalAwsCloudwatchMetricsUserConfig;
+            resourceInputs["externalAwsS3UserConfig"] = state?.externalAwsS3UserConfig;
+            resourceInputs["externalAzureBlobStorageUserConfig"] = state?.externalAzureBlobStorageUserConfig;
+            resourceInputs["externalClickhouseUserConfig"] = state?.externalClickhouseUserConfig;
+            resourceInputs["externalElasticsearchLogsUserConfig"] = state?.externalElasticsearchLogsUserConfig;
+            resourceInputs["externalGoogleCloudBigquery"] = state?.externalGoogleCloudBigquery;
+            resourceInputs["externalGoogleCloudLoggingUserConfig"] = state?.externalGoogleCloudLoggingUserConfig;
+            resourceInputs["externalKafkaUserConfig"] = state?.externalKafkaUserConfig;
+            resourceInputs["externalMysqlUserConfig"] = state?.externalMysqlUserConfig;
+            resourceInputs["externalOpensearchLogsUserConfig"] = state?.externalOpensearchLogsUserConfig;
+            resourceInputs["externalPostgresql"] = state?.externalPostgresql;
+            resourceInputs["externalPrometheusUserConfig"] = state?.externalPrometheusUserConfig;
+            resourceInputs["externalSchemaRegistryUserConfig"] = state?.externalSchemaRegistryUserConfig;
+            resourceInputs["jolokiaUserConfig"] = state?.jolokiaUserConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["prometheusUserConfig"] = state?.prometheusUserConfig;
+            resourceInputs["rsyslogUserConfig"] = state?.rsyslogUserConfig;
         } else {
             const args = argsOrState as ServiceIntegrationEndpointArgs | undefined;
-            if ((!args || args.endpointName === undefined) && !opts.urn) {
+            if (args?.endpointName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointName'");
             }
-            if ((!args || args.endpointType === undefined) && !opts.urn) {
+            if (args?.endpointType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointType'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["autoscalerUserConfig"] = args ? args.autoscalerUserConfig : undefined;
-            resourceInputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
-            resourceInputs["endpointName"] = args ? args.endpointName : undefined;
-            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
-            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
-            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
-            resourceInputs["externalAwsS3UserConfig"] = args ? args.externalAwsS3UserConfig : undefined;
-            resourceInputs["externalAzureBlobStorageUserConfig"] = args ? args.externalAzureBlobStorageUserConfig : undefined;
-            resourceInputs["externalClickhouseUserConfig"] = args ? args.externalClickhouseUserConfig : undefined;
-            resourceInputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
-            resourceInputs["externalGoogleCloudBigquery"] = args ? args.externalGoogleCloudBigquery : undefined;
-            resourceInputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
-            resourceInputs["externalKafkaUserConfig"] = args ? args.externalKafkaUserConfig : undefined;
-            resourceInputs["externalMysqlUserConfig"] = args ? args.externalMysqlUserConfig : undefined;
-            resourceInputs["externalOpensearchLogsUserConfig"] = args ? args.externalOpensearchLogsUserConfig : undefined;
-            resourceInputs["externalPostgresql"] = args ? args.externalPostgresql : undefined;
-            resourceInputs["externalPrometheusUserConfig"] = args ? args.externalPrometheusUserConfig : undefined;
-            resourceInputs["externalSchemaRegistryUserConfig"] = args ? args.externalSchemaRegistryUserConfig : undefined;
-            resourceInputs["jolokiaUserConfig"] = args ? args.jolokiaUserConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
-            resourceInputs["rsyslogUserConfig"] = args ? args.rsyslogUserConfig : undefined;
+            resourceInputs["autoscalerUserConfig"] = args?.autoscalerUserConfig;
+            resourceInputs["datadogUserConfig"] = args?.datadogUserConfig;
+            resourceInputs["endpointName"] = args?.endpointName;
+            resourceInputs["endpointType"] = args?.endpointType;
+            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = args?.externalAwsCloudwatchLogsUserConfig;
+            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args?.externalAwsCloudwatchMetricsUserConfig;
+            resourceInputs["externalAwsS3UserConfig"] = args?.externalAwsS3UserConfig;
+            resourceInputs["externalAzureBlobStorageUserConfig"] = args?.externalAzureBlobStorageUserConfig;
+            resourceInputs["externalClickhouseUserConfig"] = args?.externalClickhouseUserConfig;
+            resourceInputs["externalElasticsearchLogsUserConfig"] = args?.externalElasticsearchLogsUserConfig;
+            resourceInputs["externalGoogleCloudBigquery"] = args?.externalGoogleCloudBigquery;
+            resourceInputs["externalGoogleCloudLoggingUserConfig"] = args?.externalGoogleCloudLoggingUserConfig;
+            resourceInputs["externalKafkaUserConfig"] = args?.externalKafkaUserConfig;
+            resourceInputs["externalMysqlUserConfig"] = args?.externalMysqlUserConfig;
+            resourceInputs["externalOpensearchLogsUserConfig"] = args?.externalOpensearchLogsUserConfig;
+            resourceInputs["externalPostgresql"] = args?.externalPostgresql;
+            resourceInputs["externalPrometheusUserConfig"] = args?.externalPrometheusUserConfig;
+            resourceInputs["externalSchemaRegistryUserConfig"] = args?.externalSchemaRegistryUserConfig;
+            resourceInputs["jolokiaUserConfig"] = args?.jolokiaUserConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["prometheusUserConfig"] = args?.prometheusUserConfig;
+            resourceInputs["rsyslogUserConfig"] = args?.rsyslogUserConfig;
             resourceInputs["endpointConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

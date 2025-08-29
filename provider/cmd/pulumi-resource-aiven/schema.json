@@ -54,7 +54,7 @@
         "variables": {
             "apiToken": {
                 "type": "string",
-                "description": "Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.\n",
+                "description": "Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.",
                 "secret": true
             }
         }
@@ -22914,14 +22914,14 @@
         "properties": {
             "apiToken": {
                 "type": "string",
-                "description": "Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.\n",
+                "description": "Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.",
                 "secret": true
             }
         },
         "inputProperties": {
             "apiToken": {
                 "type": "string",
-                "description": "Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.\n",
+                "description": "Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.",
                 "secret": true
             }
         },
@@ -29152,109 +29152,109 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your\nservice. The maximum value depends on the service type and cloud provider. Removing additional storage causes the\nservice nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler\nintegration or high availability capabilities. The field can be safely removed when autoscaler is enabled without\ncausing any changes.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes."
                 },
                 "cloudName": {
                     "type": "string",
-                    "description": "The cloud provider and region the service is hosted in. The format is `provider-region`, for example:\n`google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ\nper project and service. Changing this value [migrates the service to another cloud provider or\nregion](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and\nincludes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases\nmay have a brief interruption during DNS propagation.\n"
+                    "description": "The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation."
                 },
                 "components": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/InfluxDbComponent:InfluxDbComponent"
                     },
-                    "description": "Service component information objects\n"
+                    "description": "Service component information objects"
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.",
                     "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "diskSpaceCap": {
                     "type": "string",
-                    "description": "The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.\n"
+                    "description": "The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project."
                 },
                 "diskSpaceDefault": {
                     "type": "string",
-                    "description": "The default disk space of the service, possible values depend on the service type, the cloud provider and the project.\nIts also the minimum value for `disk_space`\n"
+                    "description": "The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`"
                 },
                 "diskSpaceStep": {
                     "type": "string",
-                    "description": "The default disk space step of the service, possible values depend on the service type, the cloud provider and the\nproject. `disk_space` needs to increment from `disk_space_default` by increments of this size.\n"
+                    "description": "The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size."
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n",
+                    "description": "Disk space that service is currently using",
                     "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "influxdbUserConfig": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
-                    "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.\nOptions that you add cannot be removed later\n"
+                    "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later"
                 },
                 "influxdbs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb"
                     },
-                    "description": "InfluxDB server provided values\n",
+                    "description": "InfluxDB server provided values",
                     "secret": true
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
-                    "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc."
                 },
                 "maintenanceWindowTime": {
                     "type": "string",
-                    "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
+                    "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format."
                 },
                 "plan": {
                     "type": "string",
-                    "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there\nare some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to\nstore all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are\n`hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also\nother attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available\noptions can be seen from the [Aiven pricing page](https://aiven.io/pricing).\n"
+                    "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing)."
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource."
                 },
                 "projectVpcId": {
                     "type": "string",
-                    "description": "Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,\nthe value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and\nregion as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers\nmigration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of\ndata.\n"
+                    "description": "Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data."
                 },
                 "serviceHost": {
                     "type": "string",
-                    "description": "The hostname of the service.\n"
+                    "description": "The hostname of the service."
                 },
                 "serviceIntegrations": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/InfluxDbServiceIntegration:InfluxDbServiceIntegration"
                     },
-                    "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                    "description": "Service integrations to specify when creating a service. Not applied after initial service creation"
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the\nservice so name should be picked based on intended service usage rather than current attributes.\n"
+                    "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes."
                 },
                 "servicePassword": {
                     "type": "string",
-                    "description": "Password used for connecting to the service, if applicable\n",
+                    "description": "Password used for connecting to the service, if applicable",
                     "secret": true
                 },
                 "servicePort": {
                     "type": "integer",
-                    "description": "The port of the service\n"
+                    "description": "The port of the service"
                 },
                 "serviceType": {
                     "type": "string",
-                    "description": "Aiven internal service type code\n"
+                    "description": "Aiven internal service type code"
                 },
                 "serviceUri": {
                     "type": "string",
-                    "description": "URI for connecting to the service. Service specific info is under \"kafka\", \"pg\", etc.\n",
+                    "description": "URI for connecting to the service. Service specific info is under \"kafka\", \"pg\", etc.",
                     "secret": true
                 },
                 "serviceUsername": {
                     "type": "string",
-                    "description": "Username used for connecting to the service, if applicable\n"
+                    "description": "Username used for connecting to the service, if applicable"
                 },
                 "state": {
                     "type": "string"
@@ -29264,25 +29264,25 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a\nstatic ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/InfluxDbTag:InfluxDbTag"
                     },
-                    "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    "description": "Tags are key-value pairs that allow you to categorize services."
                 },
                 "techEmails": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/InfluxDbTechEmail:InfluxDbTechEmail"
                     },
-                    "description": "The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive\nimportant alerts and updates about this service. You can also set email contacts at the project level.\n"
+                    "description": "The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level."
                 },
                 "terminationProtection": {
                     "type": "boolean",
-                    "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
+                    "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done."
                 }
             },
             "required": [
@@ -29308,60 +29308,60 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your\nservice. The maximum value depends on the service type and cloud provider. Removing additional storage causes the\nservice nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler\nintegration or high availability capabilities. The field can be safely removed when autoscaler is enabled without\ncausing any changes.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes."
                 },
                 "cloudName": {
                     "type": "string",
-                    "description": "The cloud provider and region the service is hosted in. The format is `provider-region`, for example:\n`google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ\nper project and service. Changing this value [migrates the service to another cloud provider or\nregion](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and\nincludes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases\nmay have a brief interruption during DNS propagation.\n"
+                    "description": "The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation."
                 },
                 "diskSpace": {
                     "type": "string",
-                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.",
                     "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "influxdbUserConfig": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
-                    "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.\nOptions that you add cannot be removed later\n"
+                    "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later"
                 },
                 "influxdbs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb"
                     },
-                    "description": "InfluxDB server provided values\n",
+                    "description": "InfluxDB server provided values",
                     "secret": true
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
-                    "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc."
                 },
                 "maintenanceWindowTime": {
                     "type": "string",
-                    "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
+                    "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format."
                 },
                 "plan": {
                     "type": "string",
-                    "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there\nare some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to\nstore all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are\n`hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also\nother attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available\noptions can be seen from the [Aiven pricing page](https://aiven.io/pricing).\n"
+                    "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing)."
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                     "willReplaceOnChanges": true
                 },
                 "projectVpcId": {
                     "type": "string",
-                    "description": "Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,\nthe value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and\nregion as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers\nmigration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of\ndata.\n"
+                    "description": "Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data."
                 },
                 "serviceIntegrations": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/InfluxDbServiceIntegration:InfluxDbServiceIntegration"
                     },
-                    "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                    "description": "Service integrations to specify when creating a service. Not applied after initial service creation"
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the\nservice so name should be picked based on intended service usage rather than current attributes.\n",
+                    "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.",
                     "willReplaceOnChanges": true
                 },
                 "staticIps": {
@@ -29369,25 +29369,25 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a\nstatic ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/InfluxDbTag:InfluxDbTag"
                     },
-                    "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    "description": "Tags are key-value pairs that allow you to categorize services."
                 },
                 "techEmails": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/InfluxDbTechEmail:InfluxDbTechEmail"
                     },
-                    "description": "The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive\nimportant alerts and updates about this service. You can also set email contacts at the project level.\n"
+                    "description": "The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level."
                 },
                 "terminationProtection": {
                     "type": "boolean",
-                    "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
+                    "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done."
                 }
             },
             "requiredInputs": [
@@ -29400,111 +29400,111 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your\nservice. The maximum value depends on the service type and cloud provider. Removing additional storage causes the\nservice nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler\nintegration or high availability capabilities. The field can be safely removed when autoscaler is enabled without\ncausing any changes.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes."
                     },
                     "cloudName": {
                         "type": "string",
-                        "description": "The cloud provider and region the service is hosted in. The format is `provider-region`, for example:\n`google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ\nper project and service. Changing this value [migrates the service to another cloud provider or\nregion](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and\nincludes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases\nmay have a brief interruption during DNS propagation.\n"
+                        "description": "The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation."
                     },
                     "components": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/InfluxDbComponent:InfluxDbComponent"
                         },
-                        "description": "Service component information objects\n"
+                        "description": "Service component information objects"
                     },
                     "diskSpace": {
                         "type": "string",
-                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing\nwill result in the service rebalancing.\n",
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.",
                         "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "diskSpaceCap": {
                         "type": "string",
-                        "description": "The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.\n"
+                        "description": "The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project."
                     },
                     "diskSpaceDefault": {
                         "type": "string",
-                        "description": "The default disk space of the service, possible values depend on the service type, the cloud provider and the project.\nIts also the minimum value for `disk_space`\n"
+                        "description": "The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`"
                     },
                     "diskSpaceStep": {
                         "type": "string",
-                        "description": "The default disk space step of the service, possible values depend on the service type, the cloud provider and the\nproject. `disk_space` needs to increment from `disk_space_default` by increments of this size.\n"
+                        "description": "The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size."
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n",
+                        "description": "Disk space that service is currently using",
                         "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "influxdbUserConfig": {
                         "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
-                        "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.\nOptions that you add cannot be removed later\n"
+                        "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later"
                     },
                     "influxdbs": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb"
                         },
-                        "description": "InfluxDB server provided values\n",
+                        "description": "InfluxDB server provided values",
                         "secret": true
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
-                        "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                        "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc."
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
-                        "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
+                        "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format."
                     },
                     "plan": {
                         "type": "string",
-                        "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there\nare some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to\nstore all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are\n`hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also\nother attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available\noptions can be seen from the [Aiven pricing page](https://aiven.io/pricing).\n"
+                        "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing)."
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                         "willReplaceOnChanges": true
                     },
                     "projectVpcId": {
                         "type": "string",
-                        "description": "Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,\nthe value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and\nregion as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers\nmigration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of\ndata.\n"
+                        "description": "Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data."
                     },
                     "serviceHost": {
                         "type": "string",
-                        "description": "The hostname of the service.\n"
+                        "description": "The hostname of the service."
                     },
                     "serviceIntegrations": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/InfluxDbServiceIntegration:InfluxDbServiceIntegration"
                         },
-                        "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                        "description": "Service integrations to specify when creating a service. Not applied after initial service creation"
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the\nservice so name should be picked based on intended service usage rather than current attributes.\n",
+                        "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.",
                         "willReplaceOnChanges": true
                     },
                     "servicePassword": {
                         "type": "string",
-                        "description": "Password used for connecting to the service, if applicable\n",
+                        "description": "Password used for connecting to the service, if applicable",
                         "secret": true
                     },
                     "servicePort": {
                         "type": "integer",
-                        "description": "The port of the service\n"
+                        "description": "The port of the service"
                     },
                     "serviceType": {
                         "type": "string",
-                        "description": "Aiven internal service type code\n"
+                        "description": "Aiven internal service type code"
                     },
                     "serviceUri": {
                         "type": "string",
-                        "description": "URI for connecting to the service. Service specific info is under \"kafka\", \"pg\", etc.\n",
+                        "description": "URI for connecting to the service. Service specific info is under \"kafka\", \"pg\", etc.",
                         "secret": true
                     },
                     "serviceUsername": {
                         "type": "string",
-                        "description": "Username used for connecting to the service, if applicable\n"
+                        "description": "Username used for connecting to the service, if applicable"
                     },
                     "state": {
                         "type": "string"
@@ -29514,25 +29514,25 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a\nstatic ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again"
                     },
                     "tags": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/InfluxDbTag:InfluxDbTag"
                         },
-                        "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                        "description": "Tags are key-value pairs that allow you to categorize services."
                     },
                     "techEmails": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/InfluxDbTechEmail:InfluxDbTechEmail"
                         },
-                        "description": "The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive\nimportant alerts and updates about this service. You can also set email contacts at the project level.\n"
+                        "description": "The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level."
                     },
                     "terminationProtection": {
                         "type": "boolean",
-                        "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
+                        "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done."
                     }
                 },
                 "type": "object"
@@ -29542,15 +29542,15 @@
             "properties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "The name of the service database. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the service database. Changing this property forces recreation of the resource."
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource."
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource."
                 },
                 "terminationProtection": {
                     "type": "boolean"
@@ -29564,17 +29564,17 @@
             "inputProperties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "The name of the service database. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the service database. Changing this property forces recreation of the resource.",
                     "willReplaceOnChanges": true
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                     "willReplaceOnChanges": true
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                     "willReplaceOnChanges": true
                 },
                 "terminationProtection": {
@@ -29591,17 +29591,17 @@
                 "properties": {
                     "databaseName": {
                         "type": "string",
-                        "description": "The name of the service database. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the service database. Changing this property forces recreation of the resource.",
                         "willReplaceOnChanges": true
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                         "willReplaceOnChanges": true
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                         "willReplaceOnChanges": true
                     },
                     "terminationProtection": {
@@ -29615,34 +29615,34 @@
             "properties": {
                 "accessCert": {
                     "type": "string",
-                    "description": "Access certificate for the user if applicable for the service in question\n",
+                    "description": "Access certificate for the user if applicable for the service in question",
                     "secret": true
                 },
                 "accessKey": {
                     "type": "string",
-                    "description": "Access certificate key for the user if applicable for the service in question\n",
+                    "description": "Access certificate key for the user if applicable for the service in question",
                     "secret": true
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password of the InfluxDB User.\n",
+                    "description": "The password of the InfluxDB User.",
                     "secret": true
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource."
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource."
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of the user account. Tells whether the user is the primary account or a regular account.\n"
+                    "description": "Type of the user account. Tells whether the user is the primary account or a regular account."
                 },
                 "username": {
                     "type": "string",
-                    "description": "The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.\nChanging this property forces recreation of the resource.\n"
+                    "description": "The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource."
                 }
             },
             "required": [
@@ -29657,22 +29657,22 @@
             "inputProperties": {
                 "password": {
                     "type": "string",
-                    "description": "The password of the InfluxDB User.\n",
+                    "description": "The password of the InfluxDB User.",
                     "secret": true
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                     "willReplaceOnChanges": true
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                     "willReplaceOnChanges": true
                 },
                 "username": {
                     "type": "string",
-                    "description": "The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.\nChanging this property forces recreation of the resource.\n",
+                    "description": "The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                     "willReplaceOnChanges": true
                 }
             },
@@ -29686,36 +29686,36 @@
                 "properties": {
                     "accessCert": {
                         "type": "string",
-                        "description": "Access certificate for the user if applicable for the service in question\n",
+                        "description": "Access certificate for the user if applicable for the service in question",
                         "secret": true
                     },
                     "accessKey": {
                         "type": "string",
-                        "description": "Access certificate key for the user if applicable for the service in question\n",
+                        "description": "Access certificate key for the user if applicable for the service in question",
                         "secret": true
                     },
                     "password": {
                         "type": "string",
-                        "description": "The password of the InfluxDB User.\n",
+                        "description": "The password of the InfluxDB User.",
                         "secret": true
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                         "willReplaceOnChanges": true
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                         "willReplaceOnChanges": true
                     },
                     "type": {
                         "type": "string",
-                        "description": "Type of the user account. Tells whether the user is the primary account or a regular account.\n"
+                        "description": "Type of the user account. Tells whether the user is the primary account or a regular account."
                     },
                     "username": {
                         "type": "string",
-                        "description": "The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.\nChanging this property forces recreation of the resource.\n",
+                        "description": "The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -39278,7 +39278,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "isAccountOwner": {
@@ -39364,7 +39364,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -39479,7 +39479,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -39547,7 +39547,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "invitedByUserEmail": {
@@ -39608,7 +39608,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "projectName": {
@@ -39708,7 +39708,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -39870,7 +39870,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "lcCollate": {
@@ -39940,7 +39940,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {
@@ -40038,7 +40038,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "organizationId": {
@@ -40104,7 +40104,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "principals": {
@@ -40184,7 +40184,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "state": {
@@ -40259,7 +40259,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "organizationId": {
@@ -40342,7 +40342,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "message": {
@@ -40430,7 +40430,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "peerAzureAppId": {
@@ -40553,7 +40553,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -40674,7 +40674,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -40871,7 +40871,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -41033,7 +41033,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {
@@ -41145,7 +41145,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -41297,7 +41297,7 @@
                 "description": "A collection of values returned by getClickhouseDatabase.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -41355,7 +41355,7 @@
                 "description": "A collection of values returned by getClickhouseUser.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {
@@ -41434,7 +41434,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "poolMode": {
@@ -41550,7 +41550,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -41715,7 +41715,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "internalUserId": {
@@ -41811,7 +41811,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -41975,7 +41975,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -42063,7 +42063,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -42167,7 +42167,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "organizationId": {
@@ -42231,7 +42231,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "message": {
@@ -42295,7 +42295,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "peerVpc": {
@@ -42408,7 +42408,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -42579,7 +42579,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "influxdbUserConfigs": {
@@ -42726,7 +42726,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -42782,7 +42782,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {
@@ -42878,7 +42878,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "kafkaUserConfigs": {
@@ -43065,7 +43065,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "permission": {
@@ -43160,7 +43160,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "kafkaConnectUserConfigs": {
@@ -43329,7 +43329,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "pluginAuthor": {
@@ -43448,7 +43448,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "kafkaMirrormakerUserConfigs": {
@@ -43610,7 +43610,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -43679,7 +43679,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -43763,7 +43763,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "permission": {
@@ -43835,7 +43835,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ownerUserGroupId": {
@@ -43932,7 +43932,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {
@@ -44029,7 +44029,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "m3aggregatorUserConfigs": {
@@ -44226,7 +44226,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "m3dbUserConfigs": {
@@ -44393,7 +44393,7 @@
                 "description": "A collection of values returned by getM3dbUser.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {
@@ -44486,7 +44486,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "offsetSyncsTopicLocation": {
@@ -44621,7 +44621,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -44792,7 +44792,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -44860,7 +44860,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {
@@ -44958,7 +44958,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -45128,7 +45128,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -45189,7 +45189,7 @@
                 "description": "A collection of values returned by getOpenSearchAclRule.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "index": {
@@ -45265,7 +45265,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -45318,7 +45318,7 @@
                 "description": "A collection of values returned by getOpensearchUser.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {
@@ -45530,7 +45530,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "isSuperAdmin": {
@@ -45839,7 +45839,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "organizationId": {
@@ -45899,7 +45899,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -46000,7 +46000,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "networkCidr": {
@@ -46060,7 +46060,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -46150,7 +46150,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -46321,7 +46321,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "lcCollate": {
@@ -46395,7 +46395,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {
@@ -46490,7 +46490,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "parentId": {
@@ -46576,7 +46576,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "memberType": {
@@ -46626,7 +46626,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "networkCidr": {
@@ -46713,7 +46713,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -46880,7 +46880,7 @@
                 "description": "A collection of values returned by getRedisUser.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {
@@ -47000,7 +47000,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "kafkaAuthenticationMethod": {
@@ -47156,7 +47156,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "integrationId": {
@@ -47407,7 +47407,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "jolokiaUserConfigs": {
@@ -47524,7 +47524,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -47691,7 +47691,7 @@
                 "description": "A collection of values returned by getTransitGatewayVpcAttachment.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "peerCloudAccount": {
@@ -47806,7 +47806,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindowDow": {
@@ -47973,7 +47973,7 @@
                 "description": "A collection of values returned by getValkeyUser.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {

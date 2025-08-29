@@ -21,16 +21,13 @@ type InfluxdbUser struct {
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// The password of the InfluxDB User.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-	// Changing this property forces recreation of the resource.
+	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -88,16 +85,13 @@ type influxdbUserState struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// The password of the InfluxDB User.
 	Password *string `pulumi:"password"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type *string `pulumi:"type"`
-	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-	// Changing this property forces recreation of the resource.
+	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
@@ -108,16 +102,13 @@ type InfluxdbUserState struct {
 	AccessKey pulumi.StringPtrInput
 	// The password of the InfluxDB User.
 	Password pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type pulumi.StringPtrInput
-	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-	// Changing this property forces recreation of the resource.
+	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -128,14 +119,11 @@ func (InfluxdbUserState) ElementType() reflect.Type {
 type influxdbUserArgs struct {
 	// The password of the InfluxDB User.
 	Password *string `pulumi:"password"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-	// Changing this property forces recreation of the resource.
+	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
@@ -143,14 +131,11 @@ type influxdbUserArgs struct {
 type InfluxdbUserArgs struct {
 	// The password of the InfluxDB User.
 	Password pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-	// Changing this property forces recreation of the resource.
+	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -256,14 +241,12 @@ func (o InfluxdbUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxdbUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o InfluxdbUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxdbUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o InfluxdbUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxdbUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -273,8 +256,7 @@ func (o InfluxdbUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxdbUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference.
-// Changing this property forces recreation of the resource.
+// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o InfluxdbUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxdbUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

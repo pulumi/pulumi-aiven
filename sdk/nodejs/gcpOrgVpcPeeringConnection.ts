@@ -66,27 +66,27 @@ export class GcpOrgVpcPeeringConnection extends pulumi.CustomResource {
     /**
      * Google Cloud project ID. Changing this property forces recreation of the resource.
      */
-    public readonly gcpProjectId!: pulumi.Output<string>;
+    declare public readonly gcpProjectId: pulumi.Output<string>;
     /**
      * Identifier of the organization.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * Identifier of the organization VPC.
      */
-    public readonly organizationVpcId!: pulumi.Output<string>;
+    declare public readonly organizationVpcId: pulumi.Output<string>;
     /**
      * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      */
-    public readonly peerVpc!: pulumi.Output<string>;
+    declare public readonly peerVpc: pulumi.Output<string>;
     /**
      * Computed Google Cloud network peering link.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * State of the peering connection.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a GcpOrgVpcPeeringConnection resource with the given unique name, arguments, and options.
@@ -101,30 +101,30 @@ export class GcpOrgVpcPeeringConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GcpOrgVpcPeeringConnectionState | undefined;
-            resourceInputs["gcpProjectId"] = state ? state.gcpProjectId : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["organizationVpcId"] = state ? state.organizationVpcId : undefined;
-            resourceInputs["peerVpc"] = state ? state.peerVpc : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["gcpProjectId"] = state?.gcpProjectId;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["organizationVpcId"] = state?.organizationVpcId;
+            resourceInputs["peerVpc"] = state?.peerVpc;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as GcpOrgVpcPeeringConnectionArgs | undefined;
-            if ((!args || args.gcpProjectId === undefined) && !opts.urn) {
+            if (args?.gcpProjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gcpProjectId'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.organizationVpcId === undefined) && !opts.urn) {
+            if (args?.organizationVpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationVpcId'");
             }
-            if ((!args || args.peerVpc === undefined) && !opts.urn) {
+            if (args?.peerVpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerVpc'");
             }
-            resourceInputs["gcpProjectId"] = args ? args.gcpProjectId : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["organizationVpcId"] = args ? args.organizationVpcId : undefined;
-            resourceInputs["peerVpc"] = args ? args.peerVpc : undefined;
+            resourceInputs["gcpProjectId"] = args?.gcpProjectId;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["organizationVpcId"] = args?.organizationVpcId;
+            resourceInputs["peerVpc"] = args?.peerVpc;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

@@ -107,23 +107,23 @@ export class OpenSearchAclRule extends pulumi.CustomResource {
     /**
      * The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
      */
-    public readonly index!: pulumi.Output<string>;
+    declare public readonly index: pulumi.Output<string>;
     /**
      * The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      */
-    public readonly permission!: pulumi.Output<string>;
+    declare public readonly permission: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a OpenSearchAclRule resource with the given unique name, arguments, and options.
@@ -138,33 +138,33 @@ export class OpenSearchAclRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OpenSearchAclRuleState | undefined;
-            resourceInputs["index"] = state ? state.index : undefined;
-            resourceInputs["permission"] = state ? state.permission : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["index"] = state?.index;
+            resourceInputs["permission"] = state?.permission;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as OpenSearchAclRuleArgs | undefined;
-            if ((!args || args.index === undefined) && !opts.urn) {
+            if (args?.index === undefined && !opts.urn) {
                 throw new Error("Missing required property 'index'");
             }
-            if ((!args || args.permission === undefined) && !opts.urn) {
+            if (args?.permission === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permission'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["index"] = args ? args.index : undefined;
-            resourceInputs["permission"] = args ? args.permission : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["index"] = args?.index;
+            resourceInputs["permission"] = args?.permission;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OpenSearchAclRule.__pulumiType, name, resourceInputs, opts);

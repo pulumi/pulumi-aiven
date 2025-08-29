@@ -62,19 +62,19 @@ export class OpenSearchAclConfig extends pulumi.CustomResource {
     /**
      * Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
      */
-    public readonly extendedAcl!: pulumi.Output<boolean | undefined>;
+    declare public readonly extendedAcl: pulumi.Output<boolean | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
 
     /**
      * Create a OpenSearchAclConfig resource with the given unique name, arguments, and options.
@@ -89,22 +89,22 @@ export class OpenSearchAclConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OpenSearchAclConfigState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["extendedAcl"] = state ? state.extendedAcl : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["extendedAcl"] = state?.extendedAcl;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
         } else {
             const args = argsOrState as OpenSearchAclConfigArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["extendedAcl"] = args ? args.extendedAcl : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["extendedAcl"] = args?.extendedAcl;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OpenSearchAclConfig.__pulumiType, name, resourceInputs, opts);

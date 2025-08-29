@@ -64,63 +64,63 @@ export class BillingGroup extends pulumi.CustomResource {
      *
      * @deprecated Use parentId instead. This field will be removed in the next major release.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Address lines 1 and 2. For example, street, PO box, or building.
      */
-    public readonly addressLines!: pulumi.Output<string[] | undefined>;
+    declare public readonly addressLines: pulumi.Output<string[] | undefined>;
     /**
      * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
      */
-    public readonly billingCurrency!: pulumi.Output<string | undefined>;
+    declare public readonly billingCurrency: pulumi.Output<string | undefined>;
     /**
      * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
      */
-    public readonly billingEmails!: pulumi.Output<string[] | undefined>;
+    declare public readonly billingEmails: pulumi.Output<string[] | undefined>;
     /**
      * Additional information to include on your invoice (for example, a reference number).
      */
-    public readonly billingExtraText!: pulumi.Output<string | undefined>;
+    declare public readonly billingExtraText: pulumi.Output<string | undefined>;
     /**
      * Credit card ID.
      */
-    public readonly cardId!: pulumi.Output<string | undefined>;
+    declare public readonly cardId: pulumi.Output<string | undefined>;
     /**
      * City, district, suburb, town, or village.
      */
-    public readonly city!: pulumi.Output<string | undefined>;
+    declare public readonly city: pulumi.Output<string | undefined>;
     /**
      * Your company name.
      */
-    public readonly company!: pulumi.Output<string | undefined>;
+    declare public readonly company: pulumi.Output<string | undefined>;
     /**
      * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
      */
-    public readonly copyFromBillingGroup!: pulumi.Output<string | undefined>;
+    declare public readonly copyFromBillingGroup: pulumi.Output<string | undefined>;
     /**
      * Two-letter country code.
      */
-    public readonly countryCode!: pulumi.Output<string | undefined>;
+    declare public readonly countryCode: pulumi.Output<string | undefined>;
     /**
      * Name of the billing group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
-    public readonly parentId!: pulumi.Output<string | undefined>;
+    declare public readonly parentId: pulumi.Output<string | undefined>;
     /**
      * Address state.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * The VAT identification number for your company.
      */
-    public readonly vatId!: pulumi.Output<string | undefined>;
+    declare public readonly vatId: pulumi.Output<string | undefined>;
     /**
      * Zip or postal code.
      */
-    public readonly zipCode!: pulumi.Output<string | undefined>;
+    declare public readonly zipCode: pulumi.Output<string | undefined>;
 
     /**
      * Create a BillingGroup resource with the given unique name, arguments, and options.
@@ -135,38 +135,38 @@ export class BillingGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BillingGroupState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["addressLines"] = state ? state.addressLines : undefined;
-            resourceInputs["billingCurrency"] = state ? state.billingCurrency : undefined;
-            resourceInputs["billingEmails"] = state ? state.billingEmails : undefined;
-            resourceInputs["billingExtraText"] = state ? state.billingExtraText : undefined;
-            resourceInputs["cardId"] = state ? state.cardId : undefined;
-            resourceInputs["city"] = state ? state.city : undefined;
-            resourceInputs["company"] = state ? state.company : undefined;
-            resourceInputs["copyFromBillingGroup"] = state ? state.copyFromBillingGroup : undefined;
-            resourceInputs["countryCode"] = state ? state.countryCode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentId"] = state ? state.parentId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["vatId"] = state ? state.vatId : undefined;
-            resourceInputs["zipCode"] = state ? state.zipCode : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["addressLines"] = state?.addressLines;
+            resourceInputs["billingCurrency"] = state?.billingCurrency;
+            resourceInputs["billingEmails"] = state?.billingEmails;
+            resourceInputs["billingExtraText"] = state?.billingExtraText;
+            resourceInputs["cardId"] = state?.cardId;
+            resourceInputs["city"] = state?.city;
+            resourceInputs["company"] = state?.company;
+            resourceInputs["copyFromBillingGroup"] = state?.copyFromBillingGroup;
+            resourceInputs["countryCode"] = state?.countryCode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentId"] = state?.parentId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["vatId"] = state?.vatId;
+            resourceInputs["zipCode"] = state?.zipCode;
         } else {
             const args = argsOrState as BillingGroupArgs | undefined;
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["addressLines"] = args ? args.addressLines : undefined;
-            resourceInputs["billingCurrency"] = args ? args.billingCurrency : undefined;
-            resourceInputs["billingEmails"] = args ? args.billingEmails : undefined;
-            resourceInputs["billingExtraText"] = args ? args.billingExtraText : undefined;
-            resourceInputs["cardId"] = args ? args.cardId : undefined;
-            resourceInputs["city"] = args ? args.city : undefined;
-            resourceInputs["company"] = args ? args.company : undefined;
-            resourceInputs["copyFromBillingGroup"] = args ? args.copyFromBillingGroup : undefined;
-            resourceInputs["countryCode"] = args ? args.countryCode : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parentId"] = args ? args.parentId : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["vatId"] = args ? args.vatId : undefined;
-            resourceInputs["zipCode"] = args ? args.zipCode : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["addressLines"] = args?.addressLines;
+            resourceInputs["billingCurrency"] = args?.billingCurrency;
+            resourceInputs["billingEmails"] = args?.billingEmails;
+            resourceInputs["billingExtraText"] = args?.billingExtraText;
+            resourceInputs["cardId"] = args?.cardId;
+            resourceInputs["city"] = args?.city;
+            resourceInputs["company"] = args?.company;
+            resourceInputs["copyFromBillingGroup"] = args?.copyFromBillingGroup;
+            resourceInputs["countryCode"] = args?.countryCode;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parentId"] = args?.parentId;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["vatId"] = args?.vatId;
+            resourceInputs["zipCode"] = args?.zipCode;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BillingGroup.__pulumiType, name, resourceInputs, opts);

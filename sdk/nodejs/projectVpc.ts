@@ -57,19 +57,19 @@ export class ProjectVpc extends pulumi.CustomResource {
     /**
      * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
      */
-    public readonly cloudName!: pulumi.Output<string>;
+    declare public readonly cloudName: pulumi.Output<string>;
     /**
      * Network address range used by the VPC. For example, `192.168.0.0/24`.
      */
-    public readonly networkCidr!: pulumi.Output<string>;
+    declare public readonly networkCidr: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a ProjectVpc resource with the given unique name, arguments, and options.
@@ -84,24 +84,24 @@ export class ProjectVpc extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectVpcState | undefined;
-            resourceInputs["cloudName"] = state ? state.cloudName : undefined;
-            resourceInputs["networkCidr"] = state ? state.networkCidr : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["cloudName"] = state?.cloudName;
+            resourceInputs["networkCidr"] = state?.networkCidr;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as ProjectVpcArgs | undefined;
-            if ((!args || args.cloudName === undefined) && !opts.urn) {
+            if (args?.cloudName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudName'");
             }
-            if ((!args || args.networkCidr === undefined) && !opts.urn) {
+            if (args?.networkCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkCidr'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["cloudName"] = args ? args.cloudName : undefined;
-            resourceInputs["networkCidr"] = args ? args.networkCidr : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["cloudName"] = args?.cloudName;
+            resourceInputs["networkCidr"] = args?.networkCidr;
+            resourceInputs["project"] = args?.project;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

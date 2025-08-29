@@ -61,35 +61,35 @@ export class ConnectionPool extends pulumi.CustomResource {
     /**
      * The URI for connecting to the pool.
      */
-    public /*out*/ readonly connectionUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionUri: pulumi.Output<string>;
     /**
      * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly databaseName!: pulumi.Output<string>;
+    declare public readonly databaseName: pulumi.Output<string>;
     /**
      * The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      */
-    public readonly poolMode!: pulumi.Output<string | undefined>;
+    declare public readonly poolMode: pulumi.Output<string | undefined>;
     /**
      * Name of the pool. Changing this property forces recreation of the resource.
      */
-    public readonly poolName!: pulumi.Output<string>;
+    declare public readonly poolName: pulumi.Output<string>;
     /**
      * The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
      */
-    public readonly poolSize!: pulumi.Output<number | undefined>;
+    declare public readonly poolSize: pulumi.Output<number | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a ConnectionPool resource with the given unique name, arguments, and options.
@@ -104,35 +104,35 @@ export class ConnectionPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionPoolState | undefined;
-            resourceInputs["connectionUri"] = state ? state.connectionUri : undefined;
-            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
-            resourceInputs["poolMode"] = state ? state.poolMode : undefined;
-            resourceInputs["poolName"] = state ? state.poolName : undefined;
-            resourceInputs["poolSize"] = state ? state.poolSize : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["connectionUri"] = state?.connectionUri;
+            resourceInputs["databaseName"] = state?.databaseName;
+            resourceInputs["poolMode"] = state?.poolMode;
+            resourceInputs["poolName"] = state?.poolName;
+            resourceInputs["poolSize"] = state?.poolSize;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as ConnectionPoolArgs | undefined;
-            if ((!args || args.databaseName === undefined) && !opts.urn) {
+            if (args?.databaseName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            if ((!args || args.poolName === undefined) && !opts.urn) {
+            if (args?.poolName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'poolName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
-            resourceInputs["poolMode"] = args ? args.poolMode : undefined;
-            resourceInputs["poolName"] = args ? args.poolName : undefined;
-            resourceInputs["poolSize"] = args ? args.poolSize : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["databaseName"] = args?.databaseName;
+            resourceInputs["poolMode"] = args?.poolMode;
+            resourceInputs["poolName"] = args?.poolName;
+            resourceInputs["poolSize"] = args?.poolSize;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["username"] = args?.username;
             resourceInputs["connectionUri"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

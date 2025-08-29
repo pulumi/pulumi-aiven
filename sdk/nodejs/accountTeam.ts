@@ -67,23 +67,23 @@ export class AccountTeam extends pulumi.CustomResource {
     /**
      * The unique account id
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Time of creation
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The account team name
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The auto-generated unique account team id
      */
-    public /*out*/ readonly teamId!: pulumi.Output<string>;
+    declare public /*out*/ readonly teamId: pulumi.Output<string>;
     /**
      * Time of last update
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AccountTeam resource with the given unique name, arguments, and options.
@@ -98,18 +98,18 @@ export class AccountTeam extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountTeamState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["teamId"] = state ? state.teamId : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["teamId"] = state?.teamId;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AccountTeamArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["teamId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

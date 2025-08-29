@@ -67,35 +67,35 @@ export class AwsOrgVpcPeeringConnection extends pulumi.CustomResource {
     /**
      * AWS account ID. Changing this property forces recreation of the resource.
      */
-    public readonly awsAccountId!: pulumi.Output<string>;
+    declare public readonly awsAccountId: pulumi.Output<string>;
     /**
      * AWS VPC ID. Changing this property forces recreation of the resource.
      */
-    public readonly awsVpcId!: pulumi.Output<string>;
+    declare public readonly awsVpcId: pulumi.Output<string>;
     /**
      * The ID of the AWS VPC peering connection.
      */
-    public /*out*/ readonly awsVpcPeeringConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly awsVpcPeeringConnectionId: pulumi.Output<string>;
     /**
      * The AWS region of the peered VPC. For example, `eu-central-1`.
      */
-    public readonly awsVpcRegion!: pulumi.Output<string>;
+    declare public readonly awsVpcRegion: pulumi.Output<string>;
     /**
      * Identifier of the organization.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * Identifier of the organization VPC.
      */
-    public readonly organizationVpcId!: pulumi.Output<string>;
+    declare public readonly organizationVpcId: pulumi.Output<string>;
     /**
      * The ID of the peering connection.
      */
-    public /*out*/ readonly peeringConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly peeringConnectionId: pulumi.Output<string>;
     /**
      * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a AwsOrgVpcPeeringConnection resource with the given unique name, arguments, and options.
@@ -110,36 +110,36 @@ export class AwsOrgVpcPeeringConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AwsOrgVpcPeeringConnectionState | undefined;
-            resourceInputs["awsAccountId"] = state ? state.awsAccountId : undefined;
-            resourceInputs["awsVpcId"] = state ? state.awsVpcId : undefined;
-            resourceInputs["awsVpcPeeringConnectionId"] = state ? state.awsVpcPeeringConnectionId : undefined;
-            resourceInputs["awsVpcRegion"] = state ? state.awsVpcRegion : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["organizationVpcId"] = state ? state.organizationVpcId : undefined;
-            resourceInputs["peeringConnectionId"] = state ? state.peeringConnectionId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["awsAccountId"] = state?.awsAccountId;
+            resourceInputs["awsVpcId"] = state?.awsVpcId;
+            resourceInputs["awsVpcPeeringConnectionId"] = state?.awsVpcPeeringConnectionId;
+            resourceInputs["awsVpcRegion"] = state?.awsVpcRegion;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["organizationVpcId"] = state?.organizationVpcId;
+            resourceInputs["peeringConnectionId"] = state?.peeringConnectionId;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as AwsOrgVpcPeeringConnectionArgs | undefined;
-            if ((!args || args.awsAccountId === undefined) && !opts.urn) {
+            if (args?.awsAccountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'awsAccountId'");
             }
-            if ((!args || args.awsVpcId === undefined) && !opts.urn) {
+            if (args?.awsVpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'awsVpcId'");
             }
-            if ((!args || args.awsVpcRegion === undefined) && !opts.urn) {
+            if (args?.awsVpcRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'awsVpcRegion'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.organizationVpcId === undefined) && !opts.urn) {
+            if (args?.organizationVpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationVpcId'");
             }
-            resourceInputs["awsAccountId"] = args ? args.awsAccountId : undefined;
-            resourceInputs["awsVpcId"] = args ? args.awsVpcId : undefined;
-            resourceInputs["awsVpcRegion"] = args ? args.awsVpcRegion : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["organizationVpcId"] = args ? args.organizationVpcId : undefined;
+            resourceInputs["awsAccountId"] = args?.awsAccountId;
+            resourceInputs["awsVpcId"] = args?.awsVpcId;
+            resourceInputs["awsVpcRegion"] = args?.awsVpcRegion;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["organizationVpcId"] = args?.organizationVpcId;
             resourceInputs["awsVpcPeeringConnectionId"] = undefined /*out*/;
             resourceInputs["peeringConnectionId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

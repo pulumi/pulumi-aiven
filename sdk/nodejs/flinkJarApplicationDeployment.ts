@@ -83,67 +83,67 @@ export class FlinkJarApplicationDeployment extends pulumi.CustomResource {
     /**
      * Application Id. Changing this property forces recreation of the resource.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The creator of this entity.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * Deployment ID.
      */
-    public /*out*/ readonly deploymentId!: pulumi.Output<string>;
+    declare public /*out*/ readonly deploymentId: pulumi.Output<string>;
     /**
      * The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
      */
-    public readonly entryClass!: pulumi.Output<string>;
+    declare public readonly entryClass: pulumi.Output<string>;
     /**
      * Error message describing what caused deployment to fail.
      */
-    public /*out*/ readonly errorMsg!: pulumi.Output<string>;
+    declare public /*out*/ readonly errorMsg: pulumi.Output<string>;
     /**
      * Job ID.
      */
-    public /*out*/ readonly jobId!: pulumi.Output<string>;
+    declare public /*out*/ readonly jobId: pulumi.Output<string>;
     /**
      * Job savepoint.
      */
-    public /*out*/ readonly lastSavepoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastSavepoint: pulumi.Output<string>;
     /**
      * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      */
-    public readonly parallelism!: pulumi.Output<number>;
+    declare public readonly parallelism: pulumi.Output<number>;
     /**
      * Arguments to pass during Flink job submission through the programArgsList parameter.
      */
-    public readonly programArgs!: pulumi.Output<string[]>;
+    declare public readonly programArgs: pulumi.Output<string[]>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Specifies whether a Flink Job is restarted in case it fails. Changing this property forces recreation of the resource.
      */
-    public readonly restartEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly restartEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * Job savepoint. Maximum length: `2048`.
      */
-    public readonly startingSavepoint!: pulumi.Output<string>;
+    declare public readonly startingSavepoint: pulumi.Output<string>;
     /**
      * Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
-    public readonly versionId!: pulumi.Output<string>;
+    declare public readonly versionId: pulumi.Output<string>;
 
     /**
      * Create a FlinkJarApplicationDeployment resource with the given unique name, arguments, and options.
@@ -158,45 +158,45 @@ export class FlinkJarApplicationDeployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlinkJarApplicationDeploymentState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["deploymentId"] = state ? state.deploymentId : undefined;
-            resourceInputs["entryClass"] = state ? state.entryClass : undefined;
-            resourceInputs["errorMsg"] = state ? state.errorMsg : undefined;
-            resourceInputs["jobId"] = state ? state.jobId : undefined;
-            resourceInputs["lastSavepoint"] = state ? state.lastSavepoint : undefined;
-            resourceInputs["parallelism"] = state ? state.parallelism : undefined;
-            resourceInputs["programArgs"] = state ? state.programArgs : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["restartEnabled"] = state ? state.restartEnabled : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["startingSavepoint"] = state ? state.startingSavepoint : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["deploymentId"] = state?.deploymentId;
+            resourceInputs["entryClass"] = state?.entryClass;
+            resourceInputs["errorMsg"] = state?.errorMsg;
+            resourceInputs["jobId"] = state?.jobId;
+            resourceInputs["lastSavepoint"] = state?.lastSavepoint;
+            resourceInputs["parallelism"] = state?.parallelism;
+            resourceInputs["programArgs"] = state?.programArgs;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["restartEnabled"] = state?.restartEnabled;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["startingSavepoint"] = state?.startingSavepoint;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as FlinkJarApplicationDeploymentArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.versionId === undefined) && !opts.urn) {
+            if (args?.versionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'versionId'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["entryClass"] = args ? args.entryClass : undefined;
-            resourceInputs["parallelism"] = args ? args.parallelism : undefined;
-            resourceInputs["programArgs"] = args ? args.programArgs : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["restartEnabled"] = args ? args.restartEnabled : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["startingSavepoint"] = args ? args.startingSavepoint : undefined;
-            resourceInputs["versionId"] = args ? args.versionId : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["entryClass"] = args?.entryClass;
+            resourceInputs["parallelism"] = args?.parallelism;
+            resourceInputs["programArgs"] = args?.programArgs;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["restartEnabled"] = args?.restartEnabled;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["startingSavepoint"] = args?.startingSavepoint;
+            resourceInputs["versionId"] = args?.versionId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["deploymentId"] = undefined /*out*/;

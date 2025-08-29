@@ -66,39 +66,39 @@ export class KafkaNativeAcl extends pulumi.CustomResource {
     /**
      * The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
-    public readonly host!: pulumi.Output<string>;
+    declare public readonly host: pulumi.Output<string>;
     /**
      * The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
      */
-    public readonly operation!: pulumi.Output<string>;
+    declare public readonly operation: pulumi.Output<string>;
     /**
      * Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
      */
-    public readonly patternType!: pulumi.Output<string>;
+    declare public readonly patternType: pulumi.Output<string>;
     /**
      * Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
      */
-    public readonly permissionType!: pulumi.Output<string>;
+    declare public readonly permissionType: pulumi.Output<string>;
     /**
      * Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
-    public readonly principal!: pulumi.Output<string>;
+    declare public readonly principal: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
-    public readonly resourceName!: pulumi.Output<string>;
+    declare public readonly resourceName: pulumi.Output<string>;
     /**
      * The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
 
     /**
      * Create a KafkaNativeAcl resource with the given unique name, arguments, and options.
@@ -113,50 +113,50 @@ export class KafkaNativeAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaNativeAclState | undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["operation"] = state ? state.operation : undefined;
-            resourceInputs["patternType"] = state ? state.patternType : undefined;
-            resourceInputs["permissionType"] = state ? state.permissionType : undefined;
-            resourceInputs["principal"] = state ? state.principal : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resourceName"] = state ? state.resourceName : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["operation"] = state?.operation;
+            resourceInputs["patternType"] = state?.patternType;
+            resourceInputs["permissionType"] = state?.permissionType;
+            resourceInputs["principal"] = state?.principal;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resourceName"] = state?.resourceName;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["serviceName"] = state?.serviceName;
         } else {
             const args = argsOrState as KafkaNativeAclArgs | undefined;
-            if ((!args || args.operation === undefined) && !opts.urn) {
+            if (args?.operation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operation'");
             }
-            if ((!args || args.patternType === undefined) && !opts.urn) {
+            if (args?.patternType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'patternType'");
             }
-            if ((!args || args.permissionType === undefined) && !opts.urn) {
+            if (args?.permissionType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissionType'");
             }
-            if ((!args || args.principal === undefined) && !opts.urn) {
+            if (args?.principal === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principal'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.resourceName === undefined) && !opts.urn) {
+            if (args?.resourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceName'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["operation"] = args ? args.operation : undefined;
-            resourceInputs["patternType"] = args ? args.patternType : undefined;
-            resourceInputs["permissionType"] = args ? args.permissionType : undefined;
-            resourceInputs["principal"] = args ? args.principal : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["operation"] = args?.operation;
+            resourceInputs["patternType"] = args?.patternType;
+            resourceInputs["permissionType"] = args?.permissionType;
+            resourceInputs["principal"] = args?.principal;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resourceName"] = args?.resourceName;
+            resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["serviceName"] = args?.serviceName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KafkaNativeAcl.__pulumiType, name, resourceInputs, opts);

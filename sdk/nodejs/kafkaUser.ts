@@ -58,31 +58,31 @@ export class KafkaUser extends pulumi.CustomResource {
     /**
      * Access certificate for the user.
      */
-    public /*out*/ readonly accessCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessCert: pulumi.Output<string>;
     /**
      * Access certificate key for the user.
      */
-    public /*out*/ readonly accessKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessKey: pulumi.Output<string>;
     /**
      * The Kafka service user's password.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * User account type, such as primary or regular account.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a KafkaUser resource with the given unique name, arguments, and options.
@@ -97,28 +97,28 @@ export class KafkaUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaUserState | undefined;
-            resourceInputs["accessCert"] = state ? state.accessCert : undefined;
-            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["accessCert"] = state?.accessCert;
+            resourceInputs["accessKey"] = state?.accessKey;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as KafkaUserArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["username"] = args?.username;
             resourceInputs["accessCert"] = undefined /*out*/;
             resourceInputs["accessKey"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

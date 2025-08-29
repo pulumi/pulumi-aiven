@@ -26,46 +26,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/influxDb:InfluxDb")
 public class InfluxDb extends com.pulumi.resources.CustomResource {
     /**
-     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
-     * service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-     * service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
-     * integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
-     * causing any changes.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     @Export(name="additionalDiskSpace", refs={String.class}, tree="[0]")
     private Output<String> additionalDiskSpace;
 
     /**
-     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
-     * service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-     * service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
-     * integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
-     * causing any changes.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     public Output<String> additionalDiskSpace() {
         return this.additionalDiskSpace;
     }
     /**
-     * The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
-     * `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
-     * per project and service. Changing this value [migrates the service to another cloud provider or
-     * region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
-     * includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
-     * may have a brief interruption during DNS propagation.
+     * The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
      * 
      */
     @Export(name="cloudName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudName;
 
     /**
-     * @return The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
-     * `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
-     * per project and service. Changing this value [migrates the service to another cloud provider or
-     * region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
-     * includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
-     * may have a brief interruption during DNS propagation.
+     * @return The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
      * 
      */
     public Output<Optional<String>> cloudName() {
@@ -86,8 +68,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
         return this.components;
     }
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-     * will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      * @deprecated
      * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
@@ -98,8 +79,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> diskSpace;
 
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-     * will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     public Output<Optional<String>> diskSpace() {
@@ -120,32 +100,28 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
         return this.diskSpaceCap;
     }
     /**
-     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-     * Its also the minimum value for `disk_space`
+     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
      * 
      */
     @Export(name="diskSpaceDefault", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceDefault;
 
     /**
-     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-     * Its also the minimum value for `disk_space`
+     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
      * 
      */
     public Output<String> diskSpaceDefault() {
         return this.diskSpaceDefault;
     }
     /**
-     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-     * project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
      * 
      */
     @Export(name="diskSpaceStep", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceStep;
 
     /**
-     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-     * project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
      * 
      */
     public Output<String> diskSpaceStep() {
@@ -170,16 +146,14 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
         return this.diskSpaceUsed;
     }
     /**
-     * Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
-     * Options that you add cannot be removed later
+     * Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="influxdbUserConfig", refs={InfluxDbInfluxdbUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ InfluxDbInfluxdbUserConfig> influxdbUserConfig;
 
     /**
-     * @return Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
-     * Options that you add cannot be removed later
+     * @return Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<InfluxDbInfluxdbUserConfig>> influxdbUserConfig() {
@@ -228,62 +202,42 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceWindowTime);
     }
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-     * are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-     * store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-     * `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-     * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-     * options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     @Export(name="plan", refs={String.class}, tree="[0]")
     private Output<String> plan;
 
     /**
-     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-     * are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-     * store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-     * `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-     * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-     * options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     public Output<String> plan() {
         return this.plan;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
-     * the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
-     * region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
-     * migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
-     * data.
+     * Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
      * 
      */
     @Export(name="projectVpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectVpcId;
 
     /**
-     * @return Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set,
-     * the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and
-     * region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers
-     * migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of
-     * data.
+     * @return Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
      * 
      */
     public Output<Optional<String>> projectVpcId() {
@@ -318,16 +272,14 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
         return this.serviceIntegrations;
     }
     /**
-     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-     * service so name should be picked based on intended service usage rather than current attributes.
+     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-     * service so name should be picked based on intended service usage rather than current attributes.
+     * @return Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      * 
      */
     public Output<String> serviceName() {
@@ -410,16 +362,14 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a
-     * static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     @Export(name="staticIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> staticIps;
 
     /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a
-     * static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     public Output<Optional<List<String>>> staticIps() {
@@ -440,34 +390,28 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
-     * important alerts and updates about this service. You can also set email contacts at the project level.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     @Export(name="techEmails", refs={List.class,InfluxDbTechEmail.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InfluxDbTechEmail>> techEmails;
 
     /**
-     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
-     * important alerts and updates about this service. You can also set email contacts at the project level.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public Output<Optional<List<InfluxDbTechEmail>>> techEmails() {
         return Codegen.optional(this.techEmails);
     }
     /**
-     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-     * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-     * much of the content can at least be restored from backup in case accidental deletion is done.
+     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
     /**
-     * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-     * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-     * much of the content can at least be restored from backup in case accidental deletion is done.
+     * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
     public Output<Optional<Boolean>> terminationProtection() {

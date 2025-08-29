@@ -63,31 +63,31 @@ export class AwsVpcPeeringConnection extends pulumi.CustomResource {
     /**
      * AWS account ID. Changing this property forces recreation of the resource.
      */
-    public readonly awsAccountId!: pulumi.Output<string>;
+    declare public readonly awsAccountId: pulumi.Output<string>;
     /**
      * AWS VPC ID. Changing this property forces recreation of the resource.
      */
-    public readonly awsVpcId!: pulumi.Output<string>;
+    declare public readonly awsVpcId: pulumi.Output<string>;
     /**
      * The ID of the AWS VPC peering connection.
      */
-    public /*out*/ readonly awsVpcPeeringConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly awsVpcPeeringConnectionId: pulumi.Output<string>;
     /**
      * The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
      */
-    public readonly awsVpcRegion!: pulumi.Output<string>;
+    declare public readonly awsVpcRegion: pulumi.Output<string>;
     /**
      * The state of the peering connection.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * State-specific help or error information.
      */
-    public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly stateInfo: pulumi.Output<{[key: string]: string}>;
     /**
      * The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a AwsVpcPeeringConnection resource with the given unique name, arguments, and options.
@@ -102,31 +102,31 @@ export class AwsVpcPeeringConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AwsVpcPeeringConnectionState | undefined;
-            resourceInputs["awsAccountId"] = state ? state.awsAccountId : undefined;
-            resourceInputs["awsVpcId"] = state ? state.awsVpcId : undefined;
-            resourceInputs["awsVpcPeeringConnectionId"] = state ? state.awsVpcPeeringConnectionId : undefined;
-            resourceInputs["awsVpcRegion"] = state ? state.awsVpcRegion : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateInfo"] = state ? state.stateInfo : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["awsAccountId"] = state?.awsAccountId;
+            resourceInputs["awsVpcId"] = state?.awsVpcId;
+            resourceInputs["awsVpcPeeringConnectionId"] = state?.awsVpcPeeringConnectionId;
+            resourceInputs["awsVpcRegion"] = state?.awsVpcRegion;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateInfo"] = state?.stateInfo;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as AwsVpcPeeringConnectionArgs | undefined;
-            if ((!args || args.awsAccountId === undefined) && !opts.urn) {
+            if (args?.awsAccountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'awsAccountId'");
             }
-            if ((!args || args.awsVpcId === undefined) && !opts.urn) {
+            if (args?.awsVpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'awsVpcId'");
             }
-            if ((!args || args.awsVpcRegion === undefined) && !opts.urn) {
+            if (args?.awsVpcRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'awsVpcRegion'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["awsAccountId"] = args ? args.awsAccountId : undefined;
-            resourceInputs["awsVpcId"] = args ? args.awsVpcId : undefined;
-            resourceInputs["awsVpcRegion"] = args ? args.awsVpcRegion : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["awsAccountId"] = args?.awsAccountId;
+            resourceInputs["awsVpcId"] = args?.awsVpcId;
+            resourceInputs["awsVpcRegion"] = args?.awsVpcRegion;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["awsVpcPeeringConnectionId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateInfo"] = undefined /*out*/;

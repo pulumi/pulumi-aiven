@@ -57,23 +57,23 @@ export class AwsPrivatelink extends pulumi.CustomResource {
     /**
      * AWS service ID.
      */
-    public /*out*/ readonly awsServiceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly awsServiceId: pulumi.Output<string>;
     /**
      * AWS service name.
      */
-    public /*out*/ readonly awsServiceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly awsServiceName: pulumi.Output<string>;
     /**
      * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      */
-    public readonly principals!: pulumi.Output<string[]>;
+    declare public readonly principals: pulumi.Output<string[]>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
 
     /**
      * Create a AwsPrivatelink resource with the given unique name, arguments, and options.
@@ -88,25 +88,25 @@ export class AwsPrivatelink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AwsPrivatelinkState | undefined;
-            resourceInputs["awsServiceId"] = state ? state.awsServiceId : undefined;
-            resourceInputs["awsServiceName"] = state ? state.awsServiceName : undefined;
-            resourceInputs["principals"] = state ? state.principals : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["awsServiceId"] = state?.awsServiceId;
+            resourceInputs["awsServiceName"] = state?.awsServiceName;
+            resourceInputs["principals"] = state?.principals;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
         } else {
             const args = argsOrState as AwsPrivatelinkArgs | undefined;
-            if ((!args || args.principals === undefined) && !opts.urn) {
+            if (args?.principals === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principals'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["principals"] = args ? args.principals : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["principals"] = args?.principals;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["awsServiceId"] = undefined /*out*/;
             resourceInputs["awsServiceName"] = undefined /*out*/;
         }

@@ -51,75 +51,75 @@ export class AccountAuthentication extends pulumi.CustomResource {
     /**
      * The unique id of the account.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Account authentication id
      */
-    public /*out*/ readonly authenticationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly authenticationId: pulumi.Output<string>;
     /**
      * Team ID
      */
-    public readonly autoJoinTeamId!: pulumi.Output<string | undefined>;
+    declare public readonly autoJoinTeamId: pulumi.Output<string | undefined>;
     /**
      * Time of creation
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Status of account authentication method. The default value is `false`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The name of the account authentication.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * SAML Assertion Consumer Service URL
      */
-    public /*out*/ readonly samlAcsUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly samlAcsUrl: pulumi.Output<string>;
     /**
      * SAML Certificate
      */
-    public readonly samlCertificate!: pulumi.Output<string | undefined>;
+    declare public readonly samlCertificate: pulumi.Output<string | undefined>;
     /**
      * Digest algorithm. This is an advanced option that typically does not need to be set.
      */
-    public readonly samlDigestAlgorithm!: pulumi.Output<string | undefined>;
+    declare public readonly samlDigestAlgorithm: pulumi.Output<string | undefined>;
     /**
      * SAML Entity id
      */
-    public readonly samlEntityId!: pulumi.Output<string | undefined>;
+    declare public readonly samlEntityId: pulumi.Output<string | undefined>;
     /**
      * Map IdP fields
      */
-    public readonly samlFieldMapping!: pulumi.Output<outputs.AccountAuthenticationSamlFieldMapping | undefined>;
+    declare public readonly samlFieldMapping: pulumi.Output<outputs.AccountAuthenticationSamlFieldMapping | undefined>;
     /**
      * Set to 'true' to enable IdP initiated login
      */
-    public readonly samlIdpLoginAllowed!: pulumi.Output<boolean | undefined>;
+    declare public readonly samlIdpLoginAllowed: pulumi.Output<boolean | undefined>;
     /**
      * SAML Idp URL
      */
-    public readonly samlIdpUrl!: pulumi.Output<string | undefined>;
+    declare public readonly samlIdpUrl: pulumi.Output<string | undefined>;
     /**
      * SAML Metadata URL
      */
-    public /*out*/ readonly samlMetadataUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly samlMetadataUrl: pulumi.Output<string>;
     /**
      * Signature algorithm. This is an advanced option that typically does not need to be set.
      */
-    public readonly samlSignatureAlgorithm!: pulumi.Output<string | undefined>;
+    declare public readonly samlSignatureAlgorithm: pulumi.Output<string | undefined>;
     /**
      * SAML server variant
      */
-    public readonly samlVariant!: pulumi.Output<string | undefined>;
+    declare public readonly samlVariant: pulumi.Output<string | undefined>;
     /**
      * The account authentication type. The possible values are `internal` and `saml`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Time of last update
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AccountAuthentication resource with the given unique name, arguments, and options.
@@ -134,45 +134,45 @@ export class AccountAuthentication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountAuthenticationState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["authenticationId"] = state ? state.authenticationId : undefined;
-            resourceInputs["autoJoinTeamId"] = state ? state.autoJoinTeamId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["samlAcsUrl"] = state ? state.samlAcsUrl : undefined;
-            resourceInputs["samlCertificate"] = state ? state.samlCertificate : undefined;
-            resourceInputs["samlDigestAlgorithm"] = state ? state.samlDigestAlgorithm : undefined;
-            resourceInputs["samlEntityId"] = state ? state.samlEntityId : undefined;
-            resourceInputs["samlFieldMapping"] = state ? state.samlFieldMapping : undefined;
-            resourceInputs["samlIdpLoginAllowed"] = state ? state.samlIdpLoginAllowed : undefined;
-            resourceInputs["samlIdpUrl"] = state ? state.samlIdpUrl : undefined;
-            resourceInputs["samlMetadataUrl"] = state ? state.samlMetadataUrl : undefined;
-            resourceInputs["samlSignatureAlgorithm"] = state ? state.samlSignatureAlgorithm : undefined;
-            resourceInputs["samlVariant"] = state ? state.samlVariant : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["authenticationId"] = state?.authenticationId;
+            resourceInputs["autoJoinTeamId"] = state?.autoJoinTeamId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["samlAcsUrl"] = state?.samlAcsUrl;
+            resourceInputs["samlCertificate"] = state?.samlCertificate;
+            resourceInputs["samlDigestAlgorithm"] = state?.samlDigestAlgorithm;
+            resourceInputs["samlEntityId"] = state?.samlEntityId;
+            resourceInputs["samlFieldMapping"] = state?.samlFieldMapping;
+            resourceInputs["samlIdpLoginAllowed"] = state?.samlIdpLoginAllowed;
+            resourceInputs["samlIdpUrl"] = state?.samlIdpUrl;
+            resourceInputs["samlMetadataUrl"] = state?.samlMetadataUrl;
+            resourceInputs["samlSignatureAlgorithm"] = state?.samlSignatureAlgorithm;
+            resourceInputs["samlVariant"] = state?.samlVariant;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AccountAuthenticationArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["autoJoinTeamId"] = args ? args.autoJoinTeamId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["samlCertificate"] = args ? args.samlCertificate : undefined;
-            resourceInputs["samlDigestAlgorithm"] = args ? args.samlDigestAlgorithm : undefined;
-            resourceInputs["samlEntityId"] = args ? args.samlEntityId : undefined;
-            resourceInputs["samlFieldMapping"] = args ? args.samlFieldMapping : undefined;
-            resourceInputs["samlIdpLoginAllowed"] = args ? args.samlIdpLoginAllowed : undefined;
-            resourceInputs["samlIdpUrl"] = args ? args.samlIdpUrl : undefined;
-            resourceInputs["samlSignatureAlgorithm"] = args ? args.samlSignatureAlgorithm : undefined;
-            resourceInputs["samlVariant"] = args ? args.samlVariant : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["autoJoinTeamId"] = args?.autoJoinTeamId;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["samlCertificate"] = args?.samlCertificate;
+            resourceInputs["samlDigestAlgorithm"] = args?.samlDigestAlgorithm;
+            resourceInputs["samlEntityId"] = args?.samlEntityId;
+            resourceInputs["samlFieldMapping"] = args?.samlFieldMapping;
+            resourceInputs["samlIdpLoginAllowed"] = args?.samlIdpLoginAllowed;
+            resourceInputs["samlIdpUrl"] = args?.samlIdpUrl;
+            resourceInputs["samlSignatureAlgorithm"] = args?.samlSignatureAlgorithm;
+            resourceInputs["samlVariant"] = args?.samlVariant;
+            resourceInputs["type"] = args?.type;
             resourceInputs["authenticationId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["samlAcsUrl"] = undefined /*out*/;

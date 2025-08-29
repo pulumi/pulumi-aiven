@@ -59,35 +59,35 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
     /**
      * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
      */
-    public readonly peerCloudAccount!: pulumi.Output<string>;
+    declare public readonly peerCloudAccount: pulumi.Output<string>;
     /**
      * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
      */
-    public readonly peerRegion!: pulumi.Output<string | undefined>;
+    declare public readonly peerRegion: pulumi.Output<string | undefined>;
     /**
      * Transit gateway ID. Changing this property forces recreation of the resource.
      */
-    public readonly peerVpc!: pulumi.Output<string>;
+    declare public readonly peerVpc: pulumi.Output<string>;
     /**
      * Cloud provider identifier for the peering connection if available
      */
-    public /*out*/ readonly peeringConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly peeringConnectionId: pulumi.Output<string>;
     /**
      * State of the peering connection
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * State-specific help or error information
      */
-    public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly stateInfo: pulumi.Output<{[key: string]: string}>;
     /**
      * List of private IPv4 ranges to route through the peering connection
      */
-    public readonly userPeerNetworkCidrs!: pulumi.Output<string[]>;
+    declare public readonly userPeerNetworkCidrs: pulumi.Output<string[]>;
     /**
      * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a TransitGatewayVpcAttachment resource with the given unique name, arguments, and options.
@@ -102,33 +102,33 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitGatewayVpcAttachmentState | undefined;
-            resourceInputs["peerCloudAccount"] = state ? state.peerCloudAccount : undefined;
-            resourceInputs["peerRegion"] = state ? state.peerRegion : undefined;
-            resourceInputs["peerVpc"] = state ? state.peerVpc : undefined;
-            resourceInputs["peeringConnectionId"] = state ? state.peeringConnectionId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateInfo"] = state ? state.stateInfo : undefined;
-            resourceInputs["userPeerNetworkCidrs"] = state ? state.userPeerNetworkCidrs : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["peerCloudAccount"] = state?.peerCloudAccount;
+            resourceInputs["peerRegion"] = state?.peerRegion;
+            resourceInputs["peerVpc"] = state?.peerVpc;
+            resourceInputs["peeringConnectionId"] = state?.peeringConnectionId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateInfo"] = state?.stateInfo;
+            resourceInputs["userPeerNetworkCidrs"] = state?.userPeerNetworkCidrs;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as TransitGatewayVpcAttachmentArgs | undefined;
-            if ((!args || args.peerCloudAccount === undefined) && !opts.urn) {
+            if (args?.peerCloudAccount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerCloudAccount'");
             }
-            if ((!args || args.peerVpc === undefined) && !opts.urn) {
+            if (args?.peerVpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerVpc'");
             }
-            if ((!args || args.userPeerNetworkCidrs === undefined) && !opts.urn) {
+            if (args?.userPeerNetworkCidrs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userPeerNetworkCidrs'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["peerCloudAccount"] = args ? args.peerCloudAccount : undefined;
-            resourceInputs["peerRegion"] = args ? args.peerRegion : undefined;
-            resourceInputs["peerVpc"] = args ? args.peerVpc : undefined;
-            resourceInputs["userPeerNetworkCidrs"] = args ? args.userPeerNetworkCidrs : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["peerCloudAccount"] = args?.peerCloudAccount;
+            resourceInputs["peerRegion"] = args?.peerRegion;
+            resourceInputs["peerVpc"] = args?.peerVpc;
+            resourceInputs["userPeerNetworkCidrs"] = args?.userPeerNetworkCidrs;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["peeringConnectionId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateInfo"] = undefined /*out*/;

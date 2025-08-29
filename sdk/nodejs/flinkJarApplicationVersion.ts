@@ -79,43 +79,43 @@ export class FlinkJarApplicationVersion extends pulumi.CustomResource {
     /**
      * Application Id. Changing this property forces recreation of the resource.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * ApplicationVersion ID.
      */
-    public /*out*/ readonly applicationVersionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly applicationVersionId: pulumi.Output<string>;
     /**
      * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The creator of this entity.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * Flink JarApplicationVersion FileInfo.
      */
-    public /*out*/ readonly fileInfos!: pulumi.Output<outputs.FlinkJarApplicationVersionFileInfo[]>;
+    declare public /*out*/ readonly fileInfos: pulumi.Output<outputs.FlinkJarApplicationVersionFileInfo[]>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The path to the jar file to upload.
      */
-    public readonly source!: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string>;
     /**
      * The sha256 checksum of the jar file to upload.
      */
-    public /*out*/ readonly sourceChecksum!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceChecksum: pulumi.Output<string>;
     /**
      * Version number.
      */
-    public /*out*/ readonly version!: pulumi.Output<number>;
+    declare public /*out*/ readonly version: pulumi.Output<number>;
 
     /**
      * Create a FlinkJarApplicationVersion resource with the given unique name, arguments, and options.
@@ -130,34 +130,34 @@ export class FlinkJarApplicationVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlinkJarApplicationVersionState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["applicationVersionId"] = state ? state.applicationVersionId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["fileInfos"] = state ? state.fileInfos : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["sourceChecksum"] = state ? state.sourceChecksum : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["applicationVersionId"] = state?.applicationVersionId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["fileInfos"] = state?.fileInfos;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["sourceChecksum"] = state?.sourceChecksum;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as FlinkJarApplicationVersionArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["source"] = args?.source;
             resourceInputs["applicationVersionId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;

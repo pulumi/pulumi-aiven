@@ -56,23 +56,23 @@ export class GcpPrivatelink extends pulumi.CustomResource {
     /**
      * Google Private Service Connect service attachment.
      */
-    public /*out*/ readonly googleServiceAttachment!: pulumi.Output<string>;
+    declare public /*out*/ readonly googleServiceAttachment: pulumi.Output<string>;
     /**
      * Printable result of the Google Cloud Private Service Connect request.
      */
-    public /*out*/ readonly message!: pulumi.Output<string>;
+    declare public /*out*/ readonly message: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The state of the Private Service Connect resource.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a GcpPrivatelink resource with the given unique name, arguments, and options.
@@ -87,21 +87,21 @@ export class GcpPrivatelink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GcpPrivatelinkState | undefined;
-            resourceInputs["googleServiceAttachment"] = state ? state.googleServiceAttachment : undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["googleServiceAttachment"] = state?.googleServiceAttachment;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as GcpPrivatelinkArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["googleServiceAttachment"] = undefined /*out*/;
             resourceInputs["message"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

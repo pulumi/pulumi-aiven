@@ -38,27 +38,27 @@ export class StaticIp extends pulumi.CustomResource {
     /**
      * Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
      */
-    public readonly cloudName!: pulumi.Output<string>;
+    declare public readonly cloudName: pulumi.Output<string>;
     /**
      * The address of the static ip.
      */
-    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipAddress: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The service name the static ip is associated with.
      */
-    public /*out*/ readonly serviceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceName: pulumi.Output<string>;
     /**
      * The state the static ip is in.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The static ip id of the resource. Should be used as a reference elsewhere.
      */
-    public /*out*/ readonly staticIpAddressId!: pulumi.Output<string>;
+    declare public /*out*/ readonly staticIpAddressId: pulumi.Output<string>;
 
     /**
      * Create a StaticIp resource with the given unique name, arguments, and options.
@@ -73,22 +73,22 @@ export class StaticIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StaticIpState | undefined;
-            resourceInputs["cloudName"] = state ? state.cloudName : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["staticIpAddressId"] = state ? state.staticIpAddressId : undefined;
+            resourceInputs["cloudName"] = state?.cloudName;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["staticIpAddressId"] = state?.staticIpAddressId;
         } else {
             const args = argsOrState as StaticIpArgs | undefined;
-            if ((!args || args.cloudName === undefined) && !opts.urn) {
+            if (args?.cloudName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["cloudName"] = args ? args.cloudName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["cloudName"] = args?.cloudName;
+            resourceInputs["project"] = args?.project;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["serviceName"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

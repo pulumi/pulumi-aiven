@@ -72,27 +72,27 @@ export class AccountTeamMember extends pulumi.CustomResource {
     /**
      * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      */
-    public /*out*/ readonly accepted!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly accepted: pulumi.Output<boolean>;
     /**
      * The unique account id. Changing this property forces recreation of the resource.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Time of creation
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The email address that invited this user.
      */
-    public /*out*/ readonly invitedByUserEmail!: pulumi.Output<string>;
+    declare public /*out*/ readonly invitedByUserEmail: pulumi.Output<string>;
     /**
      * An account team id. Changing this property forces recreation of the resource.
      */
-    public readonly teamId!: pulumi.Output<string>;
+    declare public readonly teamId: pulumi.Output<string>;
     /**
      * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      */
-    public readonly userEmail!: pulumi.Output<string>;
+    declare public readonly userEmail: pulumi.Output<string>;
 
     /**
      * Create a AccountTeamMember resource with the given unique name, arguments, and options.
@@ -107,26 +107,26 @@ export class AccountTeamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountTeamMemberState | undefined;
-            resourceInputs["accepted"] = state ? state.accepted : undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["invitedByUserEmail"] = state ? state.invitedByUserEmail : undefined;
-            resourceInputs["teamId"] = state ? state.teamId : undefined;
-            resourceInputs["userEmail"] = state ? state.userEmail : undefined;
+            resourceInputs["accepted"] = state?.accepted;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["invitedByUserEmail"] = state?.invitedByUserEmail;
+            resourceInputs["teamId"] = state?.teamId;
+            resourceInputs["userEmail"] = state?.userEmail;
         } else {
             const args = argsOrState as AccountTeamMemberArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.teamId === undefined) && !opts.urn) {
+            if (args?.teamId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'teamId'");
             }
-            if ((!args || args.userEmail === undefined) && !opts.urn) {
+            if (args?.userEmail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userEmail'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["teamId"] = args ? args.teamId : undefined;
-            resourceInputs["userEmail"] = args ? args.userEmail : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["teamId"] = args?.teamId;
+            resourceInputs["userEmail"] = args?.userEmail;
             resourceInputs["accepted"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["invitedByUserEmail"] = undefined /*out*/;
