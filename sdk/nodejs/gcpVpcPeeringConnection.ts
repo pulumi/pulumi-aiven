@@ -57,27 +57,27 @@ export class GcpVpcPeeringConnection extends pulumi.CustomResource {
     /**
      * Google Cloud project ID. Changing this property forces recreation of the resource.
      */
-    public readonly gcpProjectId!: pulumi.Output<string>;
+    declare public readonly gcpProjectId: pulumi.Output<string>;
     /**
      * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      */
-    public readonly peerVpc!: pulumi.Output<string>;
+    declare public readonly peerVpc: pulumi.Output<string>;
     /**
      * Computed Google Cloud network peering link.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * State of the peering connection.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * State-specific help or error information.
      */
-    public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly stateInfo: pulumi.Output<{[key: string]: string}>;
     /**
      * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a GcpVpcPeeringConnection resource with the given unique name, arguments, and options.
@@ -92,26 +92,26 @@ export class GcpVpcPeeringConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GcpVpcPeeringConnectionState | undefined;
-            resourceInputs["gcpProjectId"] = state ? state.gcpProjectId : undefined;
-            resourceInputs["peerVpc"] = state ? state.peerVpc : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateInfo"] = state ? state.stateInfo : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["gcpProjectId"] = state?.gcpProjectId;
+            resourceInputs["peerVpc"] = state?.peerVpc;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateInfo"] = state?.stateInfo;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as GcpVpcPeeringConnectionArgs | undefined;
-            if ((!args || args.gcpProjectId === undefined) && !opts.urn) {
+            if (args?.gcpProjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gcpProjectId'");
             }
-            if ((!args || args.peerVpc === undefined) && !opts.urn) {
+            if (args?.peerVpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerVpc'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["gcpProjectId"] = args ? args.gcpProjectId : undefined;
-            resourceInputs["peerVpc"] = args ? args.peerVpc : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["gcpProjectId"] = args?.gcpProjectId;
+            resourceInputs["peerVpc"] = args?.peerVpc;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateInfo"] = undefined /*out*/;

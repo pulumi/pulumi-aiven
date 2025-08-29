@@ -41,23 +41,23 @@ export class AlloydbomniDatabase extends pulumi.CustomResource {
     /**
      * The name of the service database. Changing this property forces recreation of the resource.
      */
-    public readonly databaseName!: pulumi.Output<string>;
+    declare public readonly databaseName: pulumi.Output<string>;
     /**
      * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      */
-    public readonly lcCollate!: pulumi.Output<string | undefined>;
+    declare public readonly lcCollate: pulumi.Output<string | undefined>;
     /**
      * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      */
-    public readonly lcCtype!: pulumi.Output<string | undefined>;
+    declare public readonly lcCtype: pulumi.Output<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
 
     /**
      * Create a AlloydbomniDatabase resource with the given unique name, arguments, and options.
@@ -72,27 +72,27 @@ export class AlloydbomniDatabase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlloydbomniDatabaseState | undefined;
-            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
-            resourceInputs["lcCollate"] = state ? state.lcCollate : undefined;
-            resourceInputs["lcCtype"] = state ? state.lcCtype : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["databaseName"] = state?.databaseName;
+            resourceInputs["lcCollate"] = state?.lcCollate;
+            resourceInputs["lcCtype"] = state?.lcCtype;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
         } else {
             const args = argsOrState as AlloydbomniDatabaseArgs | undefined;
-            if ((!args || args.databaseName === undefined) && !opts.urn) {
+            if (args?.databaseName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
-            resourceInputs["lcCollate"] = args ? args.lcCollate : undefined;
-            resourceInputs["lcCtype"] = args ? args.lcCtype : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["databaseName"] = args?.databaseName;
+            resourceInputs["lcCollate"] = args?.lcCollate;
+            resourceInputs["lcCtype"] = args?.lcCtype;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlloydbomniDatabase.__pulumiType, name, resourceInputs, opts);

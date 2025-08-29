@@ -102,19 +102,19 @@ export class OrganizationPermission extends pulumi.CustomResource {
     /**
      * Organization ID.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * Permissions to grant to principals.
      */
-    public readonly permissions!: pulumi.Output<outputs.OrganizationPermissionPermission[]>;
+    declare public readonly permissions: pulumi.Output<outputs.OrganizationPermissionPermission[]>;
     /**
      * Resource ID.
      */
-    public readonly resourceId!: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string>;
     /**
      * Resource type. The possible values are `organization`, `organizationUnit` and `project`.
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
 
     /**
      * Create a OrganizationPermission resource with the given unique name, arguments, and options.
@@ -129,28 +129,28 @@ export class OrganizationPermission extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationPermissionState | undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["resourceType"] = state?.resourceType;
         } else {
             const args = argsOrState as OrganizationPermissionArgs | undefined;
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.permissions === undefined) && !opts.urn) {
+            if (args?.permissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            if ((!args || args.resourceId === undefined) && !opts.urn) {
+            if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["resourceType"] = args?.resourceType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationPermission.__pulumiType, name, resourceInputs, opts);

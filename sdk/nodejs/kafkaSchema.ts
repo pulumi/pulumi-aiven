@@ -74,31 +74,31 @@ export class KafkaSchema extends pulumi.CustomResource {
     /**
      * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      */
-    public readonly compatibilityLevel!: pulumi.Output<string | undefined>;
+    declare public readonly compatibilityLevel: pulumi.Output<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      */
-    public readonly schema!: pulumi.Output<string>;
+    declare public readonly schema: pulumi.Output<string>;
     /**
      * Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
      */
-    public readonly schemaType!: pulumi.Output<string | undefined>;
+    declare public readonly schemaType: pulumi.Output<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The Kafka Schema Subject name. Changing this property forces recreation of the resource.
      */
-    public readonly subjectName!: pulumi.Output<string>;
+    declare public readonly subjectName: pulumi.Output<string>;
     /**
      * Kafka Schema configuration version.
      */
-    public /*out*/ readonly version!: pulumi.Output<number>;
+    declare public /*out*/ readonly version: pulumi.Output<number>;
 
     /**
      * Create a KafkaSchema resource with the given unique name, arguments, and options.
@@ -113,33 +113,33 @@ export class KafkaSchema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaSchemaState | undefined;
-            resourceInputs["compatibilityLevel"] = state ? state.compatibilityLevel : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["schemaType"] = state ? state.schemaType : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["subjectName"] = state ? state.subjectName : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["compatibilityLevel"] = state?.compatibilityLevel;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["schemaType"] = state?.schemaType;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["subjectName"] = state?.subjectName;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as KafkaSchemaArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.schema === undefined) && !opts.urn) {
+            if (args?.schema === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schema'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.subjectName === undefined) && !opts.urn) {
+            if (args?.subjectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subjectName'");
             }
-            resourceInputs["compatibilityLevel"] = args ? args.compatibilityLevel : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["schema"] = args ? args.schema : undefined;
-            resourceInputs["schemaType"] = args ? args.schemaType : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["subjectName"] = args ? args.subjectName : undefined;
+            resourceInputs["compatibilityLevel"] = args?.compatibilityLevel;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["schema"] = args?.schema;
+            resourceInputs["schemaType"] = args?.schemaType;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["subjectName"] = args?.subjectName;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -73,67 +73,67 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
     /**
      * List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
      */
-    public readonly configPropertiesExcludes!: pulumi.Output<string[] | undefined>;
+    declare public readonly configPropertiesExcludes: pulumi.Output<string[] | undefined>;
     /**
      * Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      */
-    public readonly emitBackwardHeartbeatsEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly emitBackwardHeartbeatsEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Enables emitting heartbeats to the target cluster. The default value is `false`.
      */
-    public readonly emitHeartbeatsEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly emitHeartbeatsEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Enables replication flow for a service.
      */
-    public readonly enable!: pulumi.Output<boolean>;
+    declare public readonly enable: pulumi.Output<boolean>;
     /**
      * Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
      */
-    public readonly exactlyOnceDeliveryEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly exactlyOnceDeliveryEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Offset syncs topic location. The possible values are `source` and `target`.
      */
-    public readonly offsetSyncsTopicLocation!: pulumi.Output<string>;
+    declare public readonly offsetSyncsTopicLocation: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Replication factor, `>= 1`.
      */
-    public readonly replicationFactor!: pulumi.Output<number | undefined>;
+    declare public readonly replicationFactor: pulumi.Output<number | undefined>;
     /**
      * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      */
-    public readonly replicationPolicyClass!: pulumi.Output<string>;
+    declare public readonly replicationPolicyClass: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * Source cluster alias. Maximum length: `128`.
      */
-    public readonly sourceCluster!: pulumi.Output<string>;
+    declare public readonly sourceCluster: pulumi.Output<string>;
     /**
      * Sync consumer group offsets. The default value is `false`.
      */
-    public readonly syncGroupOffsetsEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly syncGroupOffsetsEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Frequency of consumer group offset sync. The default value is `1`.
      */
-    public readonly syncGroupOffsetsIntervalSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly syncGroupOffsetsIntervalSeconds: pulumi.Output<number | undefined>;
     /**
      * Target cluster alias. Maximum length: `128`.
      */
-    public readonly targetCluster!: pulumi.Output<string>;
+    declare public readonly targetCluster: pulumi.Output<string>;
     /**
      * The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      */
-    public readonly topics!: pulumi.Output<string[] | undefined>;
+    declare public readonly topics: pulumi.Output<string[] | undefined>;
     /**
      * The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      */
-    public readonly topicsBlacklists!: pulumi.Output<string[] | undefined>;
+    declare public readonly topicsBlacklists: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a MirrorMakerReplicationFlow resource with the given unique name, arguments, and options.
@@ -148,61 +148,61 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MirrorMakerReplicationFlowState | undefined;
-            resourceInputs["configPropertiesExcludes"] = state ? state.configPropertiesExcludes : undefined;
-            resourceInputs["emitBackwardHeartbeatsEnabled"] = state ? state.emitBackwardHeartbeatsEnabled : undefined;
-            resourceInputs["emitHeartbeatsEnabled"] = state ? state.emitHeartbeatsEnabled : undefined;
-            resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["exactlyOnceDeliveryEnabled"] = state ? state.exactlyOnceDeliveryEnabled : undefined;
-            resourceInputs["offsetSyncsTopicLocation"] = state ? state.offsetSyncsTopicLocation : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["replicationFactor"] = state ? state.replicationFactor : undefined;
-            resourceInputs["replicationPolicyClass"] = state ? state.replicationPolicyClass : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["sourceCluster"] = state ? state.sourceCluster : undefined;
-            resourceInputs["syncGroupOffsetsEnabled"] = state ? state.syncGroupOffsetsEnabled : undefined;
-            resourceInputs["syncGroupOffsetsIntervalSeconds"] = state ? state.syncGroupOffsetsIntervalSeconds : undefined;
-            resourceInputs["targetCluster"] = state ? state.targetCluster : undefined;
-            resourceInputs["topics"] = state ? state.topics : undefined;
-            resourceInputs["topicsBlacklists"] = state ? state.topicsBlacklists : undefined;
+            resourceInputs["configPropertiesExcludes"] = state?.configPropertiesExcludes;
+            resourceInputs["emitBackwardHeartbeatsEnabled"] = state?.emitBackwardHeartbeatsEnabled;
+            resourceInputs["emitHeartbeatsEnabled"] = state?.emitHeartbeatsEnabled;
+            resourceInputs["enable"] = state?.enable;
+            resourceInputs["exactlyOnceDeliveryEnabled"] = state?.exactlyOnceDeliveryEnabled;
+            resourceInputs["offsetSyncsTopicLocation"] = state?.offsetSyncsTopicLocation;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["replicationFactor"] = state?.replicationFactor;
+            resourceInputs["replicationPolicyClass"] = state?.replicationPolicyClass;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["sourceCluster"] = state?.sourceCluster;
+            resourceInputs["syncGroupOffsetsEnabled"] = state?.syncGroupOffsetsEnabled;
+            resourceInputs["syncGroupOffsetsIntervalSeconds"] = state?.syncGroupOffsetsIntervalSeconds;
+            resourceInputs["targetCluster"] = state?.targetCluster;
+            resourceInputs["topics"] = state?.topics;
+            resourceInputs["topicsBlacklists"] = state?.topicsBlacklists;
         } else {
             const args = argsOrState as MirrorMakerReplicationFlowArgs | undefined;
-            if ((!args || args.enable === undefined) && !opts.urn) {
+            if (args?.enable === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enable'");
             }
-            if ((!args || args.offsetSyncsTopicLocation === undefined) && !opts.urn) {
+            if (args?.offsetSyncsTopicLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'offsetSyncsTopicLocation'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.replicationPolicyClass === undefined) && !opts.urn) {
+            if (args?.replicationPolicyClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replicationPolicyClass'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.sourceCluster === undefined) && !opts.urn) {
+            if (args?.sourceCluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceCluster'");
             }
-            if ((!args || args.targetCluster === undefined) && !opts.urn) {
+            if (args?.targetCluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetCluster'");
             }
-            resourceInputs["configPropertiesExcludes"] = args ? args.configPropertiesExcludes : undefined;
-            resourceInputs["emitBackwardHeartbeatsEnabled"] = args ? args.emitBackwardHeartbeatsEnabled : undefined;
-            resourceInputs["emitHeartbeatsEnabled"] = args ? args.emitHeartbeatsEnabled : undefined;
-            resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["exactlyOnceDeliveryEnabled"] = args ? args.exactlyOnceDeliveryEnabled : undefined;
-            resourceInputs["offsetSyncsTopicLocation"] = args ? args.offsetSyncsTopicLocation : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
-            resourceInputs["replicationPolicyClass"] = args ? args.replicationPolicyClass : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["sourceCluster"] = args ? args.sourceCluster : undefined;
-            resourceInputs["syncGroupOffsetsEnabled"] = args ? args.syncGroupOffsetsEnabled : undefined;
-            resourceInputs["syncGroupOffsetsIntervalSeconds"] = args ? args.syncGroupOffsetsIntervalSeconds : undefined;
-            resourceInputs["targetCluster"] = args ? args.targetCluster : undefined;
-            resourceInputs["topics"] = args ? args.topics : undefined;
-            resourceInputs["topicsBlacklists"] = args ? args.topicsBlacklists : undefined;
+            resourceInputs["configPropertiesExcludes"] = args?.configPropertiesExcludes;
+            resourceInputs["emitBackwardHeartbeatsEnabled"] = args?.emitBackwardHeartbeatsEnabled;
+            resourceInputs["emitHeartbeatsEnabled"] = args?.emitHeartbeatsEnabled;
+            resourceInputs["enable"] = args?.enable;
+            resourceInputs["exactlyOnceDeliveryEnabled"] = args?.exactlyOnceDeliveryEnabled;
+            resourceInputs["offsetSyncsTopicLocation"] = args?.offsetSyncsTopicLocation;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["replicationFactor"] = args?.replicationFactor;
+            resourceInputs["replicationPolicyClass"] = args?.replicationPolicyClass;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["sourceCluster"] = args?.sourceCluster;
+            resourceInputs["syncGroupOffsetsEnabled"] = args?.syncGroupOffsetsEnabled;
+            resourceInputs["syncGroupOffsetsIntervalSeconds"] = args?.syncGroupOffsetsIntervalSeconds;
+            resourceInputs["targetCluster"] = args?.targetCluster;
+            resourceInputs["topics"] = args?.topics;
+            resourceInputs["topicsBlacklists"] = args?.topicsBlacklists;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MirrorMakerReplicationFlow.__pulumiType, name, resourceInputs, opts);

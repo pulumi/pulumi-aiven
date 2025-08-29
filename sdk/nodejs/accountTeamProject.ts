@@ -77,19 +77,19 @@ export class AccountTeamProject extends pulumi.CustomResource {
     /**
      * The unique account id
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The name of an already existing project
      */
-    public readonly projectName!: pulumi.Output<string | undefined>;
+    declare public readonly projectName: pulumi.Output<string | undefined>;
     /**
      * An account team id
      */
-    public readonly teamId!: pulumi.Output<string>;
+    declare public readonly teamId: pulumi.Output<string>;
     /**
      * The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
-    public readonly teamType!: pulumi.Output<string | undefined>;
+    declare public readonly teamType: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccountTeamProject resource with the given unique name, arguments, and options.
@@ -104,22 +104,22 @@ export class AccountTeamProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountTeamProjectState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["teamId"] = state ? state.teamId : undefined;
-            resourceInputs["teamType"] = state ? state.teamType : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["teamId"] = state?.teamId;
+            resourceInputs["teamType"] = state?.teamType;
         } else {
             const args = argsOrState as AccountTeamProjectArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.teamId === undefined) && !opts.urn) {
+            if (args?.teamId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'teamId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["teamId"] = args ? args.teamId : undefined;
-            resourceInputs["teamType"] = args ? args.teamType : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["teamId"] = args?.teamId;
+            resourceInputs["teamType"] = args?.teamType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountTeamProject.__pulumiType, name, resourceInputs, opts);

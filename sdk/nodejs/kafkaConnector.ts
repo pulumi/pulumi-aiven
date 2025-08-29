@@ -71,47 +71,47 @@ export class KafkaConnector extends pulumi.CustomResource {
     /**
      * The Kafka connector configuration parameters.
      */
-    public readonly config!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly config: pulumi.Output<{[key: string]: string}>;
     /**
      * The Kafka connector name. Changing this property forces recreation of the resource.
      */
-    public readonly connectorName!: pulumi.Output<string>;
+    declare public readonly connectorName: pulumi.Output<string>;
     /**
      * The Kafka connector author.
      */
-    public /*out*/ readonly pluginAuthor!: pulumi.Output<string>;
+    declare public /*out*/ readonly pluginAuthor: pulumi.Output<string>;
     /**
      * The Kafka connector Java class.
      */
-    public /*out*/ readonly pluginClass!: pulumi.Output<string>;
+    declare public /*out*/ readonly pluginClass: pulumi.Output<string>;
     /**
      * The Kafka connector documentation URL.
      */
-    public /*out*/ readonly pluginDocUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly pluginDocUrl: pulumi.Output<string>;
     /**
      * The Kafka connector title.
      */
-    public /*out*/ readonly pluginTitle!: pulumi.Output<string>;
+    declare public /*out*/ readonly pluginTitle: pulumi.Output<string>;
     /**
      * The Kafka connector type.
      */
-    public /*out*/ readonly pluginType!: pulumi.Output<string>;
+    declare public /*out*/ readonly pluginType: pulumi.Output<string>;
     /**
      * The version of the Kafka connector.
      */
-    public /*out*/ readonly pluginVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly pluginVersion: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * List of tasks of a connector.
      */
-    public /*out*/ readonly tasks!: pulumi.Output<outputs.KafkaConnectorTask[]>;
+    declare public /*out*/ readonly tasks: pulumi.Output<outputs.KafkaConnectorTask[]>;
 
     /**
      * Create a KafkaConnector resource with the given unique name, arguments, and options.
@@ -126,35 +126,35 @@ export class KafkaConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaConnectorState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["connectorName"] = state ? state.connectorName : undefined;
-            resourceInputs["pluginAuthor"] = state ? state.pluginAuthor : undefined;
-            resourceInputs["pluginClass"] = state ? state.pluginClass : undefined;
-            resourceInputs["pluginDocUrl"] = state ? state.pluginDocUrl : undefined;
-            resourceInputs["pluginTitle"] = state ? state.pluginTitle : undefined;
-            resourceInputs["pluginType"] = state ? state.pluginType : undefined;
-            resourceInputs["pluginVersion"] = state ? state.pluginVersion : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["tasks"] = state ? state.tasks : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["connectorName"] = state?.connectorName;
+            resourceInputs["pluginAuthor"] = state?.pluginAuthor;
+            resourceInputs["pluginClass"] = state?.pluginClass;
+            resourceInputs["pluginDocUrl"] = state?.pluginDocUrl;
+            resourceInputs["pluginTitle"] = state?.pluginTitle;
+            resourceInputs["pluginType"] = state?.pluginType;
+            resourceInputs["pluginVersion"] = state?.pluginVersion;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["tasks"] = state?.tasks;
         } else {
             const args = argsOrState as KafkaConnectorArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.connectorName === undefined) && !opts.urn) {
+            if (args?.connectorName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectorName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["connectorName"] = args ? args.connectorName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["connectorName"] = args?.connectorName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["pluginAuthor"] = undefined /*out*/;
             resourceInputs["pluginClass"] = undefined /*out*/;
             resourceInputs["pluginDocUrl"] = undefined /*out*/;

@@ -63,28 +63,28 @@ export class GovernanceAccess extends pulumi.CustomResource {
     /**
      * Required property. access type specific data. Changing this property forces recreation of the resource.
      */
-    public readonly accessData!: pulumi.Output<outputs.GovernanceAccessAccessData | undefined>;
+    declare public readonly accessData: pulumi.Output<outputs.GovernanceAccessAccessData | undefined>;
     /**
      * Label to describe the access. Changing this property forces recreation of the resource.
      */
-    public readonly accessName!: pulumi.Output<string>;
+    declare public readonly accessName: pulumi.Output<string>;
     /**
      * An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
      */
-    public readonly accessType!: pulumi.Output<string>;
+    declare public readonly accessType: pulumi.Output<string>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
-    public readonly ownerUserGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly ownerUserGroupId: pulumi.Output<string | undefined>;
     /**
      * The ID of the access.
      */
-    public /*out*/ readonly susbcriptionId!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.GovernanceAccessTimeouts | undefined>;
+    declare public /*out*/ readonly susbcriptionId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.GovernanceAccessTimeouts | undefined>;
 
     /**
      * Create a GovernanceAccess resource with the given unique name, arguments, and options.
@@ -99,30 +99,30 @@ export class GovernanceAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GovernanceAccessState | undefined;
-            resourceInputs["accessData"] = state ? state.accessData : undefined;
-            resourceInputs["accessName"] = state ? state.accessName : undefined;
-            resourceInputs["accessType"] = state ? state.accessType : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["ownerUserGroupId"] = state ? state.ownerUserGroupId : undefined;
-            resourceInputs["susbcriptionId"] = state ? state.susbcriptionId : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["accessData"] = state?.accessData;
+            resourceInputs["accessName"] = state?.accessName;
+            resourceInputs["accessType"] = state?.accessType;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["ownerUserGroupId"] = state?.ownerUserGroupId;
+            resourceInputs["susbcriptionId"] = state?.susbcriptionId;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as GovernanceAccessArgs | undefined;
-            if ((!args || args.accessName === undefined) && !opts.urn) {
+            if (args?.accessName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessName'");
             }
-            if ((!args || args.accessType === undefined) && !opts.urn) {
+            if (args?.accessType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessType'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            resourceInputs["accessData"] = args ? args.accessData : undefined;
-            resourceInputs["accessName"] = args ? args.accessName : undefined;
-            resourceInputs["accessType"] = args ? args.accessType : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["ownerUserGroupId"] = args ? args.ownerUserGroupId : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["accessData"] = args?.accessData;
+            resourceInputs["accessName"] = args?.accessName;
+            resourceInputs["accessType"] = args?.accessType;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["ownerUserGroupId"] = args?.ownerUserGroupId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["susbcriptionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

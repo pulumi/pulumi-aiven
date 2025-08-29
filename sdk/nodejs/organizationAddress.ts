@@ -43,44 +43,44 @@ export class OrganizationAddress extends pulumi.CustomResource {
     /**
      * Address ID.
      */
-    public /*out*/ readonly addressId!: pulumi.Output<string>;
+    declare public /*out*/ readonly addressId: pulumi.Output<string>;
     /**
      * Address Lines.
      */
-    public readonly addressLines!: pulumi.Output<string[]>;
+    declare public readonly addressLines: pulumi.Output<string[]>;
     /**
      * City.
      */
-    public readonly city!: pulumi.Output<string>;
+    declare public readonly city: pulumi.Output<string>;
     /**
      * Country Code.
      */
-    public readonly countryCode!: pulumi.Output<string>;
+    declare public readonly countryCode: pulumi.Output<string>;
     /**
      * Create Time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Name of a company. Maximum length: `128`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * State. Maximum length: `128`.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
-    public readonly timeouts!: pulumi.Output<outputs.OrganizationAddressTimeouts | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.OrganizationAddressTimeouts | undefined>;
     /**
      * Update Time.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Zip Code. Maximum length: `32`.
      */
-    public readonly zipCode!: pulumi.Output<string | undefined>;
+    declare public readonly zipCode: pulumi.Output<string | undefined>;
 
     /**
      * Create a OrganizationAddress resource with the given unique name, arguments, and options.
@@ -95,39 +95,39 @@ export class OrganizationAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationAddressState | undefined;
-            resourceInputs["addressId"] = state ? state.addressId : undefined;
-            resourceInputs["addressLines"] = state ? state.addressLines : undefined;
-            resourceInputs["city"] = state ? state.city : undefined;
-            resourceInputs["countryCode"] = state ? state.countryCode : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["zipCode"] = state ? state.zipCode : undefined;
+            resourceInputs["addressId"] = state?.addressId;
+            resourceInputs["addressLines"] = state?.addressLines;
+            resourceInputs["city"] = state?.city;
+            resourceInputs["countryCode"] = state?.countryCode;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["zipCode"] = state?.zipCode;
         } else {
             const args = argsOrState as OrganizationAddressArgs | undefined;
-            if ((!args || args.addressLines === undefined) && !opts.urn) {
+            if (args?.addressLines === undefined && !opts.urn) {
                 throw new Error("Missing required property 'addressLines'");
             }
-            if ((!args || args.city === undefined) && !opts.urn) {
+            if (args?.city === undefined && !opts.urn) {
                 throw new Error("Missing required property 'city'");
             }
-            if ((!args || args.countryCode === undefined) && !opts.urn) {
+            if (args?.countryCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'countryCode'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            resourceInputs["addressLines"] = args ? args.addressLines : undefined;
-            resourceInputs["city"] = args ? args.city : undefined;
-            resourceInputs["countryCode"] = args ? args.countryCode : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["zipCode"] = args ? args.zipCode : undefined;
+            resourceInputs["addressLines"] = args?.addressLines;
+            resourceInputs["city"] = args?.city;
+            resourceInputs["countryCode"] = args?.countryCode;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["zipCode"] = args?.zipCode;
             resourceInputs["addressId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

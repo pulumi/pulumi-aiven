@@ -57,27 +57,27 @@ export class GcpPrivatelinkConnectionApproval extends pulumi.CustomResource {
     /**
      * Aiven internal ID for the private link connection.
      */
-    public /*out*/ readonly privatelinkConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly privatelinkConnectionId: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Google Private Service Connect connection ID.
      */
-    public /*out*/ readonly pscConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly pscConnectionId: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The state of the connection.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The Private Service Connect connection user IP address.
      */
-    public readonly userIpAddress!: pulumi.Output<string>;
+    declare public readonly userIpAddress: pulumi.Output<string>;
 
     /**
      * Create a GcpPrivatelinkConnectionApproval resource with the given unique name, arguments, and options.
@@ -92,26 +92,26 @@ export class GcpPrivatelinkConnectionApproval extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GcpPrivatelinkConnectionApprovalState | undefined;
-            resourceInputs["privatelinkConnectionId"] = state ? state.privatelinkConnectionId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pscConnectionId"] = state ? state.pscConnectionId : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["userIpAddress"] = state ? state.userIpAddress : undefined;
+            resourceInputs["privatelinkConnectionId"] = state?.privatelinkConnectionId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pscConnectionId"] = state?.pscConnectionId;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["userIpAddress"] = state?.userIpAddress;
         } else {
             const args = argsOrState as GcpPrivatelinkConnectionApprovalArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.userIpAddress === undefined) && !opts.urn) {
+            if (args?.userIpAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userIpAddress'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["userIpAddress"] = args ? args.userIpAddress : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["userIpAddress"] = args?.userIpAddress;
             resourceInputs["privatelinkConnectionId"] = undefined /*out*/;
             resourceInputs["pscConnectionId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

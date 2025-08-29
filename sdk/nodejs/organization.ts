@@ -55,22 +55,22 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Timestamp in ISO 8601 format, always in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Name of the organization. Maximum length: `128`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Tenant identifier.
      *
      * @deprecated This field is deprecated and will be removed in the next major release.
      */
-    public /*out*/ readonly tenantId!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.OrganizationTimeouts | undefined>;
+    declare public /*out*/ readonly tenantId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.OrganizationTimeouts | undefined>;
     /**
      * Timestamp in ISO 8601 format, always in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Organization resource with the given unique name, arguments, and options.
@@ -85,15 +85,15 @@ export class Organization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["tenantId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

@@ -100,23 +100,23 @@ export class AzurePrivatelinkConnectionApproval extends pulumi.CustomResource {
     /**
      * IP address of Azure private endpoint.
      */
-    public readonly endpointIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly endpointIpAddress: pulumi.Output<string | undefined>;
     /**
      * The ID of the Private Link connection.
      */
-    public /*out*/ readonly privatelinkConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly privatelinkConnectionId: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The state of the Private Link connection.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a AzurePrivatelinkConnectionApproval resource with the given unique name, arguments, and options.
@@ -131,22 +131,22 @@ export class AzurePrivatelinkConnectionApproval extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzurePrivatelinkConnectionApprovalState | undefined;
-            resourceInputs["endpointIpAddress"] = state ? state.endpointIpAddress : undefined;
-            resourceInputs["privatelinkConnectionId"] = state ? state.privatelinkConnectionId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["endpointIpAddress"] = state?.endpointIpAddress;
+            resourceInputs["privatelinkConnectionId"] = state?.privatelinkConnectionId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as AzurePrivatelinkConnectionApprovalArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["endpointIpAddress"] = args ? args.endpointIpAddress : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["endpointIpAddress"] = args?.endpointIpAddress;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["privatelinkConnectionId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

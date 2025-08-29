@@ -17,11 +17,9 @@ type InfluxdbDatabase struct {
 
 	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName           pulumi.StringOutput  `pulumi:"serviceName"`
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
@@ -67,11 +65,9 @@ func GetInfluxdbDatabase(ctx *pulumi.Context,
 type influxdbDatabaseState struct {
 	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName *string `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName           *string `pulumi:"serviceName"`
 	TerminationProtection *bool   `pulumi:"terminationProtection"`
 }
@@ -79,11 +75,9 @@ type influxdbDatabaseState struct {
 type InfluxdbDatabaseState struct {
 	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName           pulumi.StringPtrInput
 	TerminationProtection pulumi.BoolPtrInput
 }
@@ -95,11 +89,9 @@ func (InfluxdbDatabaseState) ElementType() reflect.Type {
 type influxdbDatabaseArgs struct {
 	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName           string `pulumi:"serviceName"`
 	TerminationProtection *bool  `pulumi:"terminationProtection"`
 }
@@ -108,11 +100,9 @@ type influxdbDatabaseArgs struct {
 type InfluxdbDatabaseArgs struct {
 	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName           pulumi.StringInput
 	TerminationProtection pulumi.BoolPtrInput
 }
@@ -209,14 +199,12 @@ func (o InfluxdbDatabaseOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxdbDatabase) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o InfluxdbDatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxdbDatabase) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o InfluxdbDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxdbDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

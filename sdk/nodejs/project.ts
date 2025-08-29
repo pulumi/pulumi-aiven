@@ -60,63 +60,63 @@ export class Project extends pulumi.CustomResource {
      *
      * @deprecated Use parentId instead. This field will be removed in the next major release.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      *
      * @deprecated This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
      */
-    public readonly addAccountOwnersAdminAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly addAccountOwnersAdminAccess: pulumi.Output<boolean | undefined>;
     /**
      * The number of trial or promotional credits remaining for this project.
      */
-    public /*out*/ readonly availableCredits!: pulumi.Output<string>;
+    declare public /*out*/ readonly availableCredits: pulumi.Output<string>;
     /**
      * The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
      */
-    public readonly billingGroup!: pulumi.Output<string | undefined>;
+    declare public readonly billingGroup: pulumi.Output<string | undefined>;
     /**
      * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
      */
-    public /*out*/ readonly caCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly caCert: pulumi.Output<string>;
     /**
      * The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
      */
-    public readonly copyFromProject!: pulumi.Output<string | undefined>;
+    declare public readonly copyFromProject: pulumi.Output<string | undefined>;
     /**
      * Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
      */
-    public readonly defaultCloud!: pulumi.Output<string | undefined>;
+    declare public readonly defaultCloud: pulumi.Output<string | undefined>;
     /**
      * The monthly running estimate for this project for the current billing period.
      */
-    public /*out*/ readonly estimatedBalance!: pulumi.Output<string>;
+    declare public /*out*/ readonly estimatedBalance: pulumi.Output<string>;
     /**
      * Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
-    public readonly parentId!: pulumi.Output<string | undefined>;
+    declare public readonly parentId: pulumi.Output<string | undefined>;
     /**
      * The payment type used for this project. For example,`card`.
      */
-    public /*out*/ readonly paymentMethod!: pulumi.Output<string>;
+    declare public /*out*/ readonly paymentMethod: pulumi.Output<string>;
     /**
      * The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Tags are key-value pairs that allow you to categorize projects.
      */
-    public readonly tags!: pulumi.Output<outputs.ProjectTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.ProjectTag[] | undefined>;
     /**
      * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
-    public readonly technicalEmails!: pulumi.Output<string[] | undefined>;
+    declare public readonly technicalEmails: pulumi.Output<string[] | undefined>;
     /**
      * Use the same billing group that is used in source project.
      *
      * @deprecated This field is deprecated and will be removed in the next major release.
      */
-    public readonly useSourceProjectBillingGroup!: pulumi.Output<boolean | undefined>;
+    declare public readonly useSourceProjectBillingGroup: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -131,35 +131,35 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["addAccountOwnersAdminAccess"] = state ? state.addAccountOwnersAdminAccess : undefined;
-            resourceInputs["availableCredits"] = state ? state.availableCredits : undefined;
-            resourceInputs["billingGroup"] = state ? state.billingGroup : undefined;
-            resourceInputs["caCert"] = state ? state.caCert : undefined;
-            resourceInputs["copyFromProject"] = state ? state.copyFromProject : undefined;
-            resourceInputs["defaultCloud"] = state ? state.defaultCloud : undefined;
-            resourceInputs["estimatedBalance"] = state ? state.estimatedBalance : undefined;
-            resourceInputs["parentId"] = state ? state.parentId : undefined;
-            resourceInputs["paymentMethod"] = state ? state.paymentMethod : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["technicalEmails"] = state ? state.technicalEmails : undefined;
-            resourceInputs["useSourceProjectBillingGroup"] = state ? state.useSourceProjectBillingGroup : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["addAccountOwnersAdminAccess"] = state?.addAccountOwnersAdminAccess;
+            resourceInputs["availableCredits"] = state?.availableCredits;
+            resourceInputs["billingGroup"] = state?.billingGroup;
+            resourceInputs["caCert"] = state?.caCert;
+            resourceInputs["copyFromProject"] = state?.copyFromProject;
+            resourceInputs["defaultCloud"] = state?.defaultCloud;
+            resourceInputs["estimatedBalance"] = state?.estimatedBalance;
+            resourceInputs["parentId"] = state?.parentId;
+            resourceInputs["paymentMethod"] = state?.paymentMethod;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["technicalEmails"] = state?.technicalEmails;
+            resourceInputs["useSourceProjectBillingGroup"] = state?.useSourceProjectBillingGroup;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["addAccountOwnersAdminAccess"] = args ? args.addAccountOwnersAdminAccess : undefined;
-            resourceInputs["billingGroup"] = args ? args.billingGroup : undefined;
-            resourceInputs["copyFromProject"] = args ? args.copyFromProject : undefined;
-            resourceInputs["defaultCloud"] = args ? args.defaultCloud : undefined;
-            resourceInputs["parentId"] = args ? args.parentId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["technicalEmails"] = args ? args.technicalEmails : undefined;
-            resourceInputs["useSourceProjectBillingGroup"] = args ? args.useSourceProjectBillingGroup : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["addAccountOwnersAdminAccess"] = args?.addAccountOwnersAdminAccess;
+            resourceInputs["billingGroup"] = args?.billingGroup;
+            resourceInputs["copyFromProject"] = args?.copyFromProject;
+            resourceInputs["defaultCloud"] = args?.defaultCloud;
+            resourceInputs["parentId"] = args?.parentId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["technicalEmails"] = args?.technicalEmails;
+            resourceInputs["useSourceProjectBillingGroup"] = args?.useSourceProjectBillingGroup;
             resourceInputs["availableCredits"] = undefined /*out*/;
             resourceInputs["caCert"] = undefined /*out*/;
             resourceInputs["estimatedBalance"] = undefined /*out*/;

@@ -93,55 +93,55 @@ export class FlinkApplicationVersion extends pulumi.CustomResource {
     /**
      * Application ID.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * Application version ID.
      */
-    public /*out*/ readonly applicationVersionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly applicationVersionId: pulumi.Output<string>;
     /**
      * Application version creation time.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The user who created the application.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The sink table for the application.
      */
-    public readonly sink!: pulumi.Output<outputs.FlinkApplicationVersionSink[] | undefined>;
+    declare public readonly sink: pulumi.Output<outputs.FlinkApplicationVersionSink[] | undefined>;
     /**
      * Application sinks
      *
      * @deprecated This field is deprecated and will be removed in the next major release. Use `sink` instead.
      */
-    public readonly sinks!: pulumi.Output<outputs.FlinkApplicationVersionSink[] | undefined>;
+    declare public readonly sinks: pulumi.Output<outputs.FlinkApplicationVersionSink[] | undefined>;
     /**
      * The source table for the application.
      */
-    public readonly source!: pulumi.Output<outputs.FlinkApplicationVersionSource[] | undefined>;
+    declare public readonly source: pulumi.Output<outputs.FlinkApplicationVersionSource[] | undefined>;
     /**
      * Application sources
      *
      * @deprecated This field is deprecated and will be removed in the next major release. Use `source` instead.
      */
-    public readonly sources!: pulumi.Output<outputs.FlinkApplicationVersionSource[] | undefined>;
+    declare public readonly sources: pulumi.Output<outputs.FlinkApplicationVersionSource[] | undefined>;
     /**
      * Job SQL statement.
      */
-    public readonly statement!: pulumi.Output<string>;
+    declare public readonly statement: pulumi.Output<string>;
     /**
      * Application version number.
      */
-    public /*out*/ readonly version!: pulumi.Output<number>;
+    declare public /*out*/ readonly version: pulumi.Output<number>;
 
     /**
      * Create a FlinkApplicationVersion resource with the given unique name, arguments, and options.
@@ -156,40 +156,40 @@ export class FlinkApplicationVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlinkApplicationVersionState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["applicationVersionId"] = state ? state.applicationVersionId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["sink"] = state ? state.sink : undefined;
-            resourceInputs["sinks"] = state ? state.sinks : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["sources"] = state ? state.sources : undefined;
-            resourceInputs["statement"] = state ? state.statement : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["applicationVersionId"] = state?.applicationVersionId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["sink"] = state?.sink;
+            resourceInputs["sinks"] = state?.sinks;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["sources"] = state?.sources;
+            resourceInputs["statement"] = state?.statement;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as FlinkApplicationVersionArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.statement === undefined) && !opts.urn) {
+            if (args?.statement === undefined && !opts.urn) {
                 throw new Error("Missing required property 'statement'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["sink"] = args ? args.sink : undefined;
-            resourceInputs["sinks"] = args ? args.sinks : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
-            resourceInputs["statement"] = args ? args.statement : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["sink"] = args?.sink;
+            resourceInputs["sinks"] = args?.sinks;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["sources"] = args?.sources;
+            resourceInputs["statement"] = args?.statement;
             resourceInputs["applicationVersionId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
