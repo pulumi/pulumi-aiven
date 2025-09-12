@@ -1,6 +1,8 @@
 provider: aiven
 major-version: 6
 lint: false
+esc:
+  enabled: true
 env:
   AIVEN_TOKEN: ${{ secrets.AIVEN_API_TOKEN }}
   AIVEN_PROJECT_NAME: ${{ secrets.AIVEN_PROJECT_NAME }}
