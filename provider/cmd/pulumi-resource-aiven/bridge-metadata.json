@@ -809,6 +809,9 @@
                                         }
                                     }
                                 },
+                                "kafka_diskless": {
+                                    "maxItemsOne": true
+                                },
                                 "kafka_rest_config": {
                                     "maxItemsOne": true
                                 },
@@ -1309,6 +1312,9 @@
                                 },
                                 "azure_migration": {
                                     "maxItemsOne": true
+                                },
+                                "custom_keystores": {
+                                    "maxItemsOne": false
                                 },
                                 "gcs_migration": {
                                     "maxItemsOne": true
@@ -3015,6 +3021,9 @@
                                         }
                                     }
                                 },
+                                "kafka_diskless": {
+                                    "maxItemsOne": true
+                                },
                                 "kafka_rest_config": {
                                     "maxItemsOne": true
                                 },
@@ -3507,6 +3516,9 @@
                                 },
                                 "azure_migration": {
                                     "maxItemsOne": true
+                                },
+                                "custom_keystores": {
+                                    "maxItemsOne": false
                                 },
                                 "gcs_migration": {
                                     "maxItemsOne": true
@@ -4517,11 +4529,11 @@
             "aiven:index/opensearchUser:OpensearchUser": 0,
             "aiven:index/organization:Organization": 1,
             "aiven:index/organizationAddress:OrganizationAddress": 1,
-            "aiven:index/organizationApplicationUser:OrganizationApplicationUser": 0,
-            "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken": 0,
+            "aiven:index/organizationApplicationUser:OrganizationApplicationUser": 1,
+            "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken": 1,
             "aiven:index/organizationBillingGroup:OrganizationBillingGroup": 1,
             "aiven:index/organizationGroupProject:OrganizationGroupProject": 1,
-            "aiven:index/organizationPermission:OrganizationPermission": 0,
+            "aiven:index/organizationPermission:OrganizationPermission": 1,
             "aiven:index/organizationProject:OrganizationProject": 1,
             "aiven:index/organizationUser:OrganizationUser": 0,
             "aiven:index/organizationUserGroup:OrganizationUserGroup": 0,
@@ -4603,7 +4615,7 @@
             "aiven:index/getOpensearchUser:getOpensearchUser": 0,
             "aiven:index/getOrganization:getOrganization": 1,
             "aiven:index/getOrganizationAddress:getOrganizationAddress": 1,
-            "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser": 0,
+            "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser": 1,
             "aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup": 1,
             "aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList": 1,
             "aiven:index/getOrganizationProject:getOrganizationProject": 1,
