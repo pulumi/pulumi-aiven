@@ -7,19 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const exampleProject = new aiven.Project("example_project", {
- *     project: "example-project",
- *     parentId: main.id,
- * });
- * ```
+ * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects). You should create projects in organizations or organizational units using the `parentId` field. In a future release, this resource will be replaced by `aiven.OrganizationProject` resource, which requires the `parentId` field.
  *
  * ## Import
  *

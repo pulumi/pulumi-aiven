@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ProducerBatchSize;
         /// <summary>
-        /// The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+        /// The amount of bytes producer can use for buffering data before publishing to broker.
         /// </summary>
         public readonly int? ProducerBufferMemory;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ProducerLingerMs;
         /// <summary>
-        /// The maximum request size in bytes. Example: `1048576`.
+        /// The maximum request size in bytes.
         /// </summary>
         public readonly int? ProducerMaxRequestSize;
 

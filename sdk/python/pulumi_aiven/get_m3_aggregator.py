@@ -119,65 +119,41 @@ class GetM3AggregatorResult:
     @_builtins.property
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> _builtins.str:
-        """
-        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
-        """
         return pulumi.get(self, "additional_disk_space")
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> _builtins.str:
-        """
-        The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
-        """
         return pulumi.get(self, "cloud_name")
 
     @_builtins.property
     @pulumi.getter
     def components(self) -> Sequence['outputs.GetM3AggregatorComponentResult']:
-        """
-        Service component information objects
-        """
         return pulumi.get(self, "components")
 
     @_builtins.property
     @pulumi.getter(name="diskSpace")
     def disk_space(self) -> _builtins.str:
-        """
-        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
-        """
         return pulumi.get(self, "disk_space")
 
     @_builtins.property
     @pulumi.getter(name="diskSpaceCap")
     def disk_space_cap(self) -> _builtins.str:
-        """
-        The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
-        """
         return pulumi.get(self, "disk_space_cap")
 
     @_builtins.property
     @pulumi.getter(name="diskSpaceDefault")
     def disk_space_default(self) -> _builtins.str:
-        """
-        The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
-        """
         return pulumi.get(self, "disk_space_default")
 
     @_builtins.property
     @pulumi.getter(name="diskSpaceStep")
     def disk_space_step(self) -> _builtins.str:
-        """
-        The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
-        """
         return pulumi.get(self, "disk_space_step")
 
     @_builtins.property
     @pulumi.getter(name="diskSpaceUsed")
     def disk_space_used(self) -> _builtins.str:
-        """
-        Disk space that service is currently using
-        """
         return pulumi.get(self, "disk_space_used")
 
     @_builtins.property
@@ -191,121 +167,76 @@ class GetM3AggregatorResult:
     @_builtins.property
     @pulumi.getter(name="m3aggregatorUserConfigs")
     def m3aggregator_user_configs(self) -> Sequence['outputs.GetM3AggregatorM3aggregatorUserConfigResult']:
-        """
-        M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
-        """
         return pulumi.get(self, "m3aggregator_user_configs")
 
     @_builtins.property
     @pulumi.getter
     def m3aggregators(self) -> Sequence['outputs.GetM3AggregatorM3aggregatorResult']:
-        """
-        M3 Aggregator server provided values
-        """
         return pulumi.get(self, "m3aggregators")
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> _builtins.str:
-        """
-        Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-        """
         return pulumi.get(self, "maintenance_window_dow")
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> _builtins.str:
-        """
-        Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        """
         return pulumi.get(self, "maintenance_window_time")
 
     @_builtins.property
     @pulumi.getter
     def plan(self) -> _builtins.str:
-        """
-        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
-        """
         return pulumi.get(self, "plan")
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
-        """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @_builtins.property
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> _builtins.str:
-        """
-        Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
-        """
         return pulumi.get(self, "project_vpc_id")
 
     @_builtins.property
     @pulumi.getter(name="serviceHost")
     def service_host(self) -> _builtins.str:
-        """
-        The hostname of the service.
-        """
         return pulumi.get(self, "service_host")
 
     @_builtins.property
     @pulumi.getter(name="serviceIntegrations")
     def service_integrations(self) -> Sequence['outputs.GetM3AggregatorServiceIntegrationResult']:
-        """
-        Service integrations to specify when creating a service. Not applied after initial service creation
-        """
         return pulumi.get(self, "service_integrations")
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
-        """
-        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-        """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter(name="servicePassword")
     def service_password(self) -> _builtins.str:
-        """
-        Password used for connecting to the service, if applicable
-        """
         return pulumi.get(self, "service_password")
 
     @_builtins.property
     @pulumi.getter(name="servicePort")
     def service_port(self) -> _builtins.int:
-        """
-        The port of the service
-        """
         return pulumi.get(self, "service_port")
 
     @_builtins.property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> _builtins.str:
-        """
-        Aiven internal service type code
-        """
         return pulumi.get(self, "service_type")
 
     @_builtins.property
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> _builtins.str:
-        """
-        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
-        """
         return pulumi.get(self, "service_uri")
 
     @_builtins.property
     @pulumi.getter(name="serviceUsername")
     def service_username(self) -> _builtins.str:
-        """
-        Username used for connecting to the service, if applicable
-        """
         return pulumi.get(self, "service_username")
 
     @_builtins.property
@@ -316,33 +247,21 @@ class GetM3AggregatorResult:
     @_builtins.property
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Sequence[_builtins.str]:
-        """
-        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        """
         return pulumi.get(self, "static_ips")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetM3AggregatorTagResult']:
-        """
-        Tags are key-value pairs that allow you to categorize services.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Sequence['outputs.GetM3AggregatorTechEmailResult']:
-        """
-        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
-        """
         return pulumi.get(self, "tech_emails")
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> _builtins.bool:
-        """
-        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
-        """
         return pulumi.get(self, "termination_protection")
 
 
@@ -387,21 +306,7 @@ def get_m3_aggregator(project: Optional[_builtins.str] = None,
                       service_name: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetM3AggregatorResult:
     """
-    The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    m3a = aiven.get_m3_aggregator(project=foo["project"],
-        service_name="my-m3a")
-    ```
-
-
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -443,21 +348,7 @@ def get_m3_aggregator_output(project: Optional[pulumi.Input[_builtins.str]] = No
                              service_name: Optional[pulumi.Input[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetM3AggregatorResult]:
     """
-    The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    m3a = aiven.get_m3_aggregator(project=foo["project"],
-        service_name="my-m3a")
-    ```
-
-
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['project'] = project

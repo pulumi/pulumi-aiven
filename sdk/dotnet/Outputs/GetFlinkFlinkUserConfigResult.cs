@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? PekkoAskTimeoutS;
         /// <summary>
-        /// Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+        /// Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
         /// </summary>
         public readonly int? PekkoFramesizeB;
         /// <summary>

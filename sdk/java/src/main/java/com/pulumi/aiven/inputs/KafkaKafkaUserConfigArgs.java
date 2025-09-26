@@ -10,6 +10,7 @@ import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsArg
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectConfigArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectPluginVersionArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderArgs;
+import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaDisklessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaRestConfigArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaSaslMechanismsArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPrivateAccessArgs;
@@ -236,6 +237,21 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Kafka Diskless configuration values
+     * 
+     */
+    @Import(name="kafkaDiskless")
+    private @Nullable Output<KafkaKafkaUserConfigKafkaDisklessArgs> kafkaDiskless;
+
+    /**
+     * @return Kafka Diskless configuration values
+     * 
+     */
+    public Optional<Output<KafkaKafkaUserConfigKafkaDisklessArgs>> kafkaDiskless() {
+        return Optional.ofNullable(this.kafkaDiskless);
+    }
+
+    /**
      * Enable Kafka-REST service. Default: `false`.
      * 
      */
@@ -296,14 +312,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
      * 
      */
     @Import(name="kafkaVersion")
     private @Nullable Output<String> kafkaVersion;
 
     /**
-     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
      * 
      */
     public Optional<Output<String>> kafkaVersion() {
@@ -476,6 +492,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         this.kafkaConnectConfig = $.kafkaConnectConfig;
         this.kafkaConnectPluginVersions = $.kafkaConnectPluginVersions;
         this.kafkaConnectSecretProviders = $.kafkaConnectSecretProviders;
+        this.kafkaDiskless = $.kafkaDiskless;
         this.kafkaRest = $.kafkaRest;
         this.kafkaRestAuthorization = $.kafkaRestAuthorization;
         this.kafkaRestConfig = $.kafkaRestConfig;
@@ -837,6 +854,27 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param kafkaDiskless Kafka Diskless configuration values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaDiskless(@Nullable Output<KafkaKafkaUserConfigKafkaDisklessArgs> kafkaDiskless) {
+            $.kafkaDiskless = kafkaDiskless;
+            return this;
+        }
+
+        /**
+         * @param kafkaDiskless Kafka Diskless configuration values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaDiskless(KafkaKafkaUserConfigKafkaDisklessArgs kafkaDiskless) {
+            return kafkaDiskless(Output.of(kafkaDiskless));
+        }
+
+        /**
          * @param kafkaRest Enable Kafka-REST service. Default: `false`.
          * 
          * @return builder
@@ -921,7 +959,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaVersion Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+         * @param kafkaVersion Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
          * 
          * @return builder
          * 
@@ -932,7 +970,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaVersion Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+         * @param kafkaVersion Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
          * 
          * @return builder
          * 

@@ -43,7 +43,7 @@ class PgArgs:
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
-        :param pulumi.Input[_builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[_builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input['PgPgArgs'] pg: Values provided by the PostgreSQL server.
@@ -63,8 +63,8 @@ class PgArgs:
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if disk_space is not None:
-            warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
-            pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
+            warnings.warn("""Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.""", DeprecationWarning)
+            pulumi.log.warn("""disk_space is deprecated: Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.""")
         if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
         if maintenance_window_dow is not None:
@@ -140,10 +140,10 @@ class PgArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskSpace")
-    @_utilities.deprecated("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
+    @_utilities.deprecated("""Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.""")
     def disk_space(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         """
         return pulumi.get(self, "disk_space")
 
@@ -320,11 +320,11 @@ class _PgState:
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         :param pulumi.Input[Sequence[pulumi.Input['PgComponentArgs']]] components: Service component information objects
-        :param pulumi.Input[_builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[_builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         :param pulumi.Input[_builtins.str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
         :param pulumi.Input[_builtins.str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[_builtins.str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
-        :param pulumi.Input[_builtins.str] disk_space_used: Disk space that service is currently using
+        :param pulumi.Input[_builtins.str] disk_space_used: The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input['PgPgArgs'] pg: Values provided by the PostgreSQL server.
@@ -352,8 +352,8 @@ class _PgState:
         if components is not None:
             pulumi.set(__self__, "components", components)
         if disk_space is not None:
-            warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
-            pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
+            warnings.warn("""Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.""", DeprecationWarning)
+            pulumi.log.warn("""disk_space is deprecated: Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.""")
         if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
         if disk_space_cap is not None:
@@ -362,9 +362,6 @@ class _PgState:
             pulumi.set(__self__, "disk_space_default", disk_space_default)
         if disk_space_step is not None:
             pulumi.set(__self__, "disk_space_step", disk_space_step)
-        if disk_space_used is not None:
-            warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
-            pulumi.log.warn("""disk_space_used is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
         if disk_space_used is not None:
             pulumi.set(__self__, "disk_space_used", disk_space_used)
         if maintenance_window_dow is not None:
@@ -446,10 +443,10 @@ class _PgState:
 
     @_builtins.property
     @pulumi.getter(name="diskSpace")
-    @_utilities.deprecated("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
+    @_utilities.deprecated("""Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.""")
     def disk_space(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         """
         return pulumi.get(self, "disk_space")
 
@@ -495,10 +492,9 @@ class _PgState:
 
     @_builtins.property
     @pulumi.getter(name="diskSpaceUsed")
-    @_utilities.deprecated("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
     def disk_space_used(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Disk space that service is currently using
+        The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
         """
         return pulumi.get(self, "disk_space_used")
 
@@ -780,7 +776,7 @@ class Pg(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
-        :param pulumi.Input[_builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[_builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[Union['PgPgArgs', 'PgPgArgsDict']] pg: Values provided by the PostgreSQL server.
@@ -932,11 +928,11 @@ class Pg(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PgComponentArgs', 'PgComponentArgsDict']]]] components: Service component information objects
-        :param pulumi.Input[_builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[_builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         :param pulumi.Input[_builtins.str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
         :param pulumi.Input[_builtins.str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[_builtins.str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
-        :param pulumi.Input[_builtins.str] disk_space_used: Disk space that service is currently using
+        :param pulumi.Input[_builtins.str] disk_space_used: The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[Union['PgPgArgs', 'PgPgArgsDict']] pg: Values provided by the PostgreSQL server.
@@ -1017,10 +1013,10 @@ class Pg(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="diskSpace")
-    @_utilities.deprecated("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
+    @_utilities.deprecated("""Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.""")
     def disk_space(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         """
         return pulumi.get(self, "disk_space")
 
@@ -1050,10 +1046,9 @@ class Pg(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="diskSpaceUsed")
-    @_utilities.deprecated("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
     def disk_space_used(self) -> pulumi.Output[_builtins.str]:
         """
-        Disk space that service is currently using
+        The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
         """
         return pulumi.get(self, "disk_space_used")
 

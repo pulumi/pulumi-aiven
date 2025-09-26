@@ -118,6 +118,12 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
+        /// Kafka Diskless configuration values
+        /// </summary>
+        [Input("kafkaDiskless")]
+        public Input<Inputs.KafkaKafkaUserConfigKafkaDisklessGetArgs>? KafkaDiskless { get; set; }
+
+        /// <summary>
         /// Enable Kafka-REST service. Default: `false`.
         /// </summary>
         [Input("kafkaRest")]
@@ -142,7 +148,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigKafkaSaslMechanismsGetArgs>? KafkaSaslMechanisms { get; set; }
 
         /// <summary>
-        /// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+        /// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
         /// </summary>
         [Input("kafkaVersion")]
         public Input<string>? KafkaVersion { get; set; }

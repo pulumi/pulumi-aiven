@@ -27,7 +27,7 @@ public final class GetRedisUserResult {
      */
     private String project;
     /**
-     * @return Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     private List<String> redisAclCategories;
@@ -37,12 +37,12 @@ public final class GetRedisUserResult {
      */
     private List<String> redisAclChannels;
     /**
-     * @return Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     private List<String> redisAclCommands;
     /**
-     * @return Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     private List<String> redisAclKeys;
@@ -85,7 +85,7 @@ public final class GetRedisUserResult {
         return this.project;
     }
     /**
-     * @return Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public List<String> redisAclCategories() {
@@ -99,14 +99,14 @@ public final class GetRedisUserResult {
         return this.redisAclChannels;
     }
     /**
-     * @return Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public List<String> redisAclCommands() {
         return this.redisAclCommands;
     }
     /**
-     * @return Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public List<String> redisAclKeys() {

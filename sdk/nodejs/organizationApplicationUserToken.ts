@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -59,71 +61,72 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
     }
 
     /**
-     * Time when the token was created.
+     * Create Time.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * True for tokens explicitly created using the `accessTokens` API. False for tokens created when a user logs in.
+     * True for tokens explicitly created via the accessTokens API, false for tokens created via login.
      */
     declare public /*out*/ readonly createdManually: pulumi.Output<boolean>;
     /**
-     * True if the API request was made with this token.
+     * true if API request was made with this access token.
      */
     declare public /*out*/ readonly currentlyActive: pulumi.Output<boolean>;
     /**
-     * Description of the token.
+     * Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Timestamp when the access token will expire unless extended.
+     * Timestamp when the access token will expire unless extended, if ever.
      */
     declare public /*out*/ readonly expiryTime: pulumi.Output<string>;
     /**
-     * Extends the token session duration when the token is used. Only applicable if a value is set for `maxAgeSeconds`.
+     * Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
      */
-    declare public readonly extendWhenUsed: pulumi.Output<boolean | undefined>;
+    declare public readonly extendWhenUsed: pulumi.Output<boolean>;
     /**
-     * Full token.
+     * Full Token.
      */
     declare public /*out*/ readonly fullToken: pulumi.Output<string>;
     /**
-     * List of allowed IP ranges.
+     * List of allowed IP ranges. Changing this property forces recreation of the resource.
      */
     declare public readonly ipAllowlists: pulumi.Output<string[] | undefined>;
     /**
-     * IP address of the last request made with this token.
+     * IP address the access token was last used from in case it has ever been used.
      */
     declare public /*out*/ readonly lastIp: pulumi.Output<string>;
     /**
-     * Timestamp when the access token was last used.
+     * Timestamp when the access token was last used, if ever.
      */
     declare public /*out*/ readonly lastUsedTime: pulumi.Output<string>;
     /**
-     * User agent of the last request made with this token.
+     * User agent string of the client that last used the token in case it has ever been used.
      */
     declare public /*out*/ readonly lastUserAgent: pulumi.Output<string>;
     /**
-     * User agent of the last request made with this token in human-readable format.
+     * Human readable user agent string of the client that last used the token in case user agent is known.
      */
     declare public /*out*/ readonly lastUserAgentHumanReadable: pulumi.Output<string>;
     /**
-     * The number of hours after which a token expires. If not set, it never expires.
+     * Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
      */
     declare public readonly maxAgeSeconds: pulumi.Output<number | undefined>;
     /**
-     * The ID of the organization the application user belongs to.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
-     * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
+     * Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
      */
     declare public readonly scopes: pulumi.Output<string[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.OrganizationApplicationUserTokenTimeouts | undefined>;
     /**
-     * Prefix of the token.
+     * First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&gt; %2F, + =&gt; %2B, = =&gt; %3D).
      */
     declare public /*out*/ readonly tokenPrefix: pulumi.Output<string>;
     /**
-     * The ID of the application user the token is created for.
+     * User ID. Changing this property forces recreation of the resource.
      */
     declare public readonly userId: pulumi.Output<string>;
 
@@ -155,6 +158,7 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
             resourceInputs["maxAgeSeconds"] = state?.maxAgeSeconds;
             resourceInputs["organizationId"] = state?.organizationId;
             resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["tokenPrefix"] = state?.tokenPrefix;
             resourceInputs["userId"] = state?.userId;
         } else {
@@ -171,6 +175,7 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
             resourceInputs["maxAgeSeconds"] = args?.maxAgeSeconds;
             resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["scopes"] = args?.scopes;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["userId"] = args?.userId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdManually"] = undefined /*out*/;
@@ -195,71 +200,72 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
  */
 export interface OrganizationApplicationUserTokenState {
     /**
-     * Time when the token was created.
+     * Create Time.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * True for tokens explicitly created using the `accessTokens` API. False for tokens created when a user logs in.
+     * True for tokens explicitly created via the accessTokens API, false for tokens created via login.
      */
     createdManually?: pulumi.Input<boolean>;
     /**
-     * True if the API request was made with this token.
+     * true if API request was made with this access token.
      */
     currentlyActive?: pulumi.Input<boolean>;
     /**
-     * Description of the token.
+     * Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * Timestamp when the access token will expire unless extended.
+     * Timestamp when the access token will expire unless extended, if ever.
      */
     expiryTime?: pulumi.Input<string>;
     /**
-     * Extends the token session duration when the token is used. Only applicable if a value is set for `maxAgeSeconds`.
+     * Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
      */
     extendWhenUsed?: pulumi.Input<boolean>;
     /**
-     * Full token.
+     * Full Token.
      */
     fullToken?: pulumi.Input<string>;
     /**
-     * List of allowed IP ranges.
+     * List of allowed IP ranges. Changing this property forces recreation of the resource.
      */
     ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * IP address of the last request made with this token.
+     * IP address the access token was last used from in case it has ever been used.
      */
     lastIp?: pulumi.Input<string>;
     /**
-     * Timestamp when the access token was last used.
+     * Timestamp when the access token was last used, if ever.
      */
     lastUsedTime?: pulumi.Input<string>;
     /**
-     * User agent of the last request made with this token.
+     * User agent string of the client that last used the token in case it has ever been used.
      */
     lastUserAgent?: pulumi.Input<string>;
     /**
-     * User agent of the last request made with this token in human-readable format.
+     * Human readable user agent string of the client that last used the token in case user agent is known.
      */
     lastUserAgentHumanReadable?: pulumi.Input<string>;
     /**
-     * The number of hours after which a token expires. If not set, it never expires.
+     * Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
      */
     maxAgeSeconds?: pulumi.Input<number>;
     /**
-     * The ID of the organization the application user belongs to.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
+     * Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTokenTimeouts>;
     /**
-     * Prefix of the token.
+     * First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&gt; %2F, + =&gt; %2B, = =&gt; %3D).
      */
     tokenPrefix?: pulumi.Input<string>;
     /**
-     * The ID of the application user the token is created for.
+     * User ID. Changing this property forces recreation of the resource.
      */
     userId?: pulumi.Input<string>;
 }
@@ -269,31 +275,32 @@ export interface OrganizationApplicationUserTokenState {
  */
 export interface OrganizationApplicationUserTokenArgs {
     /**
-     * Description of the token.
+     * Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * Extends the token session duration when the token is used. Only applicable if a value is set for `maxAgeSeconds`.
+     * Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
      */
     extendWhenUsed?: pulumi.Input<boolean>;
     /**
-     * List of allowed IP ranges.
+     * List of allowed IP ranges. Changing this property forces recreation of the resource.
      */
     ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The number of hours after which a token expires. If not set, it never expires.
+     * Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
      */
     maxAgeSeconds?: pulumi.Input<number>;
     /**
-     * The ID of the organization the application user belongs to.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
+     * Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTokenTimeouts>;
     /**
-     * The ID of the application user the token is created for.
+     * User ID. Changing this property forces recreation of the resource.
      */
     userId: pulumi.Input<string>;
 }

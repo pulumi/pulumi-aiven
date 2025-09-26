@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.OrganizationPermissionPermissionArgs;
+import com.pulumi.aiven.inputs.OrganizationPermissionTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -18,14 +19,14 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
     public static final OrganizationPermissionState Empty = new OrganizationPermissionState();
 
     /**
-     * Organization ID.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return Organization ID.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -33,14 +34,14 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Permissions to grant to principals.
+     * Required property. List of roles to set.
      * 
      */
     @Import(name="permissions")
     private @Nullable Output<List<OrganizationPermissionPermissionArgs>> permissions;
 
     /**
-     * @return Permissions to grant to principals.
+     * @return Required property. List of roles to set.
      * 
      */
     public Optional<Output<List<OrganizationPermissionPermissionArgs>>> permissions() {
@@ -48,14 +49,14 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Resource ID.
+     * Resource Id. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
     /**
-     * @return Resource ID.
+     * @return Resource Id. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> resourceId() {
@@ -63,18 +64,25 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Resource type. The possible values are `organization`, `organization_unit` and `project`.
+     * Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return Resource type. The possible values are `organization`, `organization_unit` and `project`.
+     * @return Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> resourceType() {
         return Optional.ofNullable(this.resourceType);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationPermissionTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationPermissionTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private OrganizationPermissionState() {}
@@ -84,6 +92,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         this.permissions = $.permissions;
         this.resourceId = $.resourceId;
         this.resourceType = $.resourceType;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -105,7 +114,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param organizationId Organization ID.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -116,7 +125,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param organizationId Organization ID.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -126,7 +135,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param permissions Permissions to grant to principals.
+         * @param permissions Required property. List of roles to set.
          * 
          * @return builder
          * 
@@ -137,7 +146,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param permissions Permissions to grant to principals.
+         * @param permissions Required property. List of roles to set.
          * 
          * @return builder
          * 
@@ -147,7 +156,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param permissions Permissions to grant to principals.
+         * @param permissions Required property. List of roles to set.
          * 
          * @return builder
          * 
@@ -157,7 +166,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId Resource ID.
+         * @param resourceId Resource Id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -168,7 +177,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId Resource ID.
+         * @param resourceId Resource Id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -178,7 +187,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceType Resource type. The possible values are `organization`, `organization_unit` and `project`.
+         * @param resourceType Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -189,13 +198,22 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceType Resource type. The possible values are `organization`, `organization_unit` and `project`.
+         * @param resourceType Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder resourceType(String resourceType) {
             return resourceType(Output.of(resourceType));
+        }
+
+        public Builder timeouts(@Nullable Output<OrganizationPermissionTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationPermissionTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public OrganizationPermissionState build() {

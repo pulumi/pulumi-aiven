@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.OrganizationApplicationUserTokenTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -19,14 +20,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     public static final OrganizationApplicationUserTokenState Empty = new OrganizationApplicationUserTokenState();
 
     /**
-     * Time when the token was created.
+     * Create Time.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Time when the token was created.
+     * @return Create Time.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -34,14 +35,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * True for tokens explicitly created using the `access_tokens` API. False for tokens created when a user logs in.
+     * True for tokens explicitly created via the access_tokens API, false for tokens created via login.
      * 
      */
     @Import(name="createdManually")
     private @Nullable Output<Boolean> createdManually;
 
     /**
-     * @return True for tokens explicitly created using the `access_tokens` API. False for tokens created when a user logs in.
+     * @return True for tokens explicitly created via the access_tokens API, false for tokens created via login.
      * 
      */
     public Optional<Output<Boolean>> createdManually() {
@@ -49,14 +50,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * True if the API request was made with this token.
+     * true if API request was made with this access token.
      * 
      */
     @Import(name="currentlyActive")
     private @Nullable Output<Boolean> currentlyActive;
 
     /**
-     * @return True if the API request was made with this token.
+     * @return true if API request was made with this access token.
      * 
      */
     public Optional<Output<Boolean>> currentlyActive() {
@@ -64,14 +65,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * Description of the token.
+     * Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the token.
+     * @return Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -79,14 +80,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * Timestamp when the access token will expire unless extended.
+     * Timestamp when the access token will expire unless extended, if ever.
      * 
      */
     @Import(name="expiryTime")
     private @Nullable Output<String> expiryTime;
 
     /**
-     * @return Timestamp when the access token will expire unless extended.
+     * @return Timestamp when the access token will expire unless extended, if ever.
      * 
      */
     public Optional<Output<String>> expiryTime() {
@@ -94,14 +95,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+     * Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="extendWhenUsed")
     private @Nullable Output<Boolean> extendWhenUsed;
 
     /**
-     * @return Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+     * @return Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<Boolean>> extendWhenUsed() {
@@ -109,14 +110,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * Full token.
+     * Full Token.
      * 
      */
     @Import(name="fullToken")
     private @Nullable Output<String> fullToken;
 
     /**
-     * @return Full token.
+     * @return Full Token.
      * 
      */
     public Optional<Output<String>> fullToken() {
@@ -124,14 +125,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * List of allowed IP ranges.
+     * List of allowed IP ranges. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="ipAllowlists")
     private @Nullable Output<List<String>> ipAllowlists;
 
     /**
-     * @return List of allowed IP ranges.
+     * @return List of allowed IP ranges. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> ipAllowlists() {
@@ -139,14 +140,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * IP address of the last request made with this token.
+     * IP address the access token was last used from in case it has ever been used.
      * 
      */
     @Import(name="lastIp")
     private @Nullable Output<String> lastIp;
 
     /**
-     * @return IP address of the last request made with this token.
+     * @return IP address the access token was last used from in case it has ever been used.
      * 
      */
     public Optional<Output<String>> lastIp() {
@@ -154,14 +155,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * Timestamp when the access token was last used.
+     * Timestamp when the access token was last used, if ever.
      * 
      */
     @Import(name="lastUsedTime")
     private @Nullable Output<String> lastUsedTime;
 
     /**
-     * @return Timestamp when the access token was last used.
+     * @return Timestamp when the access token was last used, if ever.
      * 
      */
     public Optional<Output<String>> lastUsedTime() {
@@ -169,14 +170,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * User agent of the last request made with this token.
+     * User agent string of the client that last used the token in case it has ever been used.
      * 
      */
     @Import(name="lastUserAgent")
     private @Nullable Output<String> lastUserAgent;
 
     /**
-     * @return User agent of the last request made with this token.
+     * @return User agent string of the client that last used the token in case it has ever been used.
      * 
      */
     public Optional<Output<String>> lastUserAgent() {
@@ -184,14 +185,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * User agent of the last request made with this token in human-readable format.
+     * Human readable user agent string of the client that last used the token in case user agent is known.
      * 
      */
     @Import(name="lastUserAgentHumanReadable")
     private @Nullable Output<String> lastUserAgentHumanReadable;
 
     /**
-     * @return User agent of the last request made with this token in human-readable format.
+     * @return Human readable user agent string of the client that last used the token in case user agent is known.
      * 
      */
     public Optional<Output<String>> lastUserAgentHumanReadable() {
@@ -199,14 +200,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * The number of hours after which a token expires. If not set, it never expires.
+     * Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="maxAgeSeconds")
     private @Nullable Output<Integer> maxAgeSeconds;
 
     /**
-     * @return The number of hours after which a token expires. If not set, it never expires.
+     * @return Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<Integer>> maxAgeSeconds() {
@@ -214,14 +215,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * The ID of the organization the application user belongs to.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return The ID of the organization the application user belongs to.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -229,29 +230,36 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+     * Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+     * @return Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationApplicationUserTokenTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationApplicationUserTokenTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * Prefix of the token.
+     * First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&amp;gt; %2F, + =&amp;gt; %2B, = =&amp;gt; %3D).
      * 
      */
     @Import(name="tokenPrefix")
     private @Nullable Output<String> tokenPrefix;
 
     /**
-     * @return Prefix of the token.
+     * @return First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&amp;gt; %2F, + =&amp;gt; %2B, = =&amp;gt; %3D).
      * 
      */
     public Optional<Output<String>> tokenPrefix() {
@@ -259,14 +267,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * The ID of the application user the token is created for.
+     * User ID. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<String> userId;
 
     /**
-     * @return The ID of the application user the token is created for.
+     * @return User ID. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> userId() {
@@ -291,6 +299,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         this.maxAgeSeconds = $.maxAgeSeconds;
         this.organizationId = $.organizationId;
         this.scopes = $.scopes;
+        this.timeouts = $.timeouts;
         this.tokenPrefix = $.tokenPrefix;
         this.userId = $.userId;
     }
@@ -314,7 +323,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param createTime Time when the token was created.
+         * @param createTime Create Time.
          * 
          * @return builder
          * 
@@ -325,7 +334,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param createTime Time when the token was created.
+         * @param createTime Create Time.
          * 
          * @return builder
          * 
@@ -335,7 +344,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param createdManually True for tokens explicitly created using the `access_tokens` API. False for tokens created when a user logs in.
+         * @param createdManually True for tokens explicitly created via the access_tokens API, false for tokens created via login.
          * 
          * @return builder
          * 
@@ -346,7 +355,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param createdManually True for tokens explicitly created using the `access_tokens` API. False for tokens created when a user logs in.
+         * @param createdManually True for tokens explicitly created via the access_tokens API, false for tokens created via login.
          * 
          * @return builder
          * 
@@ -356,7 +365,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param currentlyActive True if the API request was made with this token.
+         * @param currentlyActive true if API request was made with this access token.
          * 
          * @return builder
          * 
@@ -367,7 +376,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param currentlyActive True if the API request was made with this token.
+         * @param currentlyActive true if API request was made with this access token.
          * 
          * @return builder
          * 
@@ -377,7 +386,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param description Description of the token.
+         * @param description Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -388,7 +397,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param description Description of the token.
+         * @param description Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -398,7 +407,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param expiryTime Timestamp when the access token will expire unless extended.
+         * @param expiryTime Timestamp when the access token will expire unless extended, if ever.
          * 
          * @return builder
          * 
@@ -409,7 +418,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param expiryTime Timestamp when the access token will expire unless extended.
+         * @param expiryTime Timestamp when the access token will expire unless extended, if ever.
          * 
          * @return builder
          * 
@@ -419,7 +428,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param extendWhenUsed Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+         * @param extendWhenUsed Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -430,7 +439,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param extendWhenUsed Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+         * @param extendWhenUsed Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -440,7 +449,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param fullToken Full token.
+         * @param fullToken Full Token.
          * 
          * @return builder
          * 
@@ -451,7 +460,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param fullToken Full token.
+         * @param fullToken Full Token.
          * 
          * @return builder
          * 
@@ -461,7 +470,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param ipAllowlists List of allowed IP ranges.
+         * @param ipAllowlists List of allowed IP ranges. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -472,7 +481,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param ipAllowlists List of allowed IP ranges.
+         * @param ipAllowlists List of allowed IP ranges. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -482,7 +491,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param ipAllowlists List of allowed IP ranges.
+         * @param ipAllowlists List of allowed IP ranges. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -492,7 +501,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param lastIp IP address of the last request made with this token.
+         * @param lastIp IP address the access token was last used from in case it has ever been used.
          * 
          * @return builder
          * 
@@ -503,7 +512,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param lastIp IP address of the last request made with this token.
+         * @param lastIp IP address the access token was last used from in case it has ever been used.
          * 
          * @return builder
          * 
@@ -513,7 +522,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param lastUsedTime Timestamp when the access token was last used.
+         * @param lastUsedTime Timestamp when the access token was last used, if ever.
          * 
          * @return builder
          * 
@@ -524,7 +533,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param lastUsedTime Timestamp when the access token was last used.
+         * @param lastUsedTime Timestamp when the access token was last used, if ever.
          * 
          * @return builder
          * 
@@ -534,7 +543,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param lastUserAgent User agent of the last request made with this token.
+         * @param lastUserAgent User agent string of the client that last used the token in case it has ever been used.
          * 
          * @return builder
          * 
@@ -545,7 +554,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param lastUserAgent User agent of the last request made with this token.
+         * @param lastUserAgent User agent string of the client that last used the token in case it has ever been used.
          * 
          * @return builder
          * 
@@ -555,7 +564,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param lastUserAgentHumanReadable User agent of the last request made with this token in human-readable format.
+         * @param lastUserAgentHumanReadable Human readable user agent string of the client that last used the token in case user agent is known.
          * 
          * @return builder
          * 
@@ -566,7 +575,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param lastUserAgentHumanReadable User agent of the last request made with this token in human-readable format.
+         * @param lastUserAgentHumanReadable Human readable user agent string of the client that last used the token in case user agent is known.
          * 
          * @return builder
          * 
@@ -576,7 +585,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param maxAgeSeconds The number of hours after which a token expires. If not set, it never expires.
+         * @param maxAgeSeconds Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -587,7 +596,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param maxAgeSeconds The number of hours after which a token expires. If not set, it never expires.
+         * @param maxAgeSeconds Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -597,7 +606,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param organizationId The ID of the organization the application user belongs to.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -608,7 +617,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param organizationId The ID of the organization the application user belongs to.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -618,7 +627,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param scopes Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+         * @param scopes Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -629,7 +638,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param scopes Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+         * @param scopes Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -639,7 +648,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param scopes Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+         * @param scopes Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -648,8 +657,17 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
             return scopes(List.of(scopes));
         }
 
+        public Builder timeouts(@Nullable Output<OrganizationApplicationUserTokenTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationApplicationUserTokenTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param tokenPrefix Prefix of the token.
+         * @param tokenPrefix First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&amp;gt; %2F, + =&amp;gt; %2B, = =&amp;gt; %3D).
          * 
          * @return builder
          * 
@@ -660,7 +678,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param tokenPrefix Prefix of the token.
+         * @param tokenPrefix First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&amp;gt; %2F, + =&amp;gt; %2B, = =&amp;gt; %3D).
          * 
          * @return builder
          * 
@@ -670,7 +688,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param userId The ID of the application user the token is created for.
+         * @param userId User ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -681,7 +699,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param userId The ID of the application user the token is created for.
+         * @param userId User ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

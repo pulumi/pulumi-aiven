@@ -12,34 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewProject(ctx, "example_project", &aiven.ProjectArgs{
-//				Project:  pulumi.String("example-project"),
-//				ParentId: pulumi.Any(main.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects). You should create projects in organizations or organizational units using the `parentId` field. In a future release, this resource will be replaced by `OrganizationProject` resource, which requires the `parentId` field.
 //
 // ## Import
 //

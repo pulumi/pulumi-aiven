@@ -70,14 +70,14 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
     }
 
     /**
-     * OpenSearch request timeout limit. Default: `10.0`.
+     * OpenSearch request timeout limit. Default: `10`.
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Double> timeout;
 
     /**
-     * @return OpenSearch request timeout limit. Default: `10.0`.
+     * @return OpenSearch request timeout limit. Default: `10`.
      * 
      */
     public Optional<Output<Double>> timeout() {
@@ -197,7 +197,7 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
         }
 
         /**
-         * @param timeout OpenSearch request timeout limit. Default: `10.0`.
+         * @param timeout OpenSearch request timeout limit. Default: `10`.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArg
         }
 
         /**
-         * @param timeout OpenSearch request timeout limit. Default: `10.0`.
+         * @param timeout OpenSearch request timeout limit. Default: `10`.
          * 
          * @return builder
          * 

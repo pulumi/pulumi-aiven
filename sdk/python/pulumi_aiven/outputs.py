@@ -139,6 +139,7 @@ __all__ = [
     'KafkaKafkaUserConfigKafkaConnectSecretProvider',
     'KafkaKafkaUserConfigKafkaConnectSecretProviderAws',
     'KafkaKafkaUserConfigKafkaConnectSecretProviderVault',
+    'KafkaKafkaUserConfigKafkaDiskless',
     'KafkaKafkaUserConfigKafkaRestConfig',
     'KafkaKafkaUserConfigKafkaSaslMechanisms',
     'KafkaKafkaUserConfigPrivateAccess',
@@ -204,6 +205,7 @@ __all__ = [
     'OpenSearchOpensearch',
     'OpenSearchOpensearchUserConfig',
     'OpenSearchOpensearchUserConfigAzureMigration',
+    'OpenSearchOpensearchUserConfigCustomKeystore',
     'OpenSearchOpensearchUserConfigGcsMigration',
     'OpenSearchOpensearchUserConfigIndexPattern',
     'OpenSearchOpensearchUserConfigIndexRollup',
@@ -243,9 +245,12 @@ __all__ = [
     'OpenSearchTag',
     'OpenSearchTechEmail',
     'OrganizationAddressTimeouts',
+    'OrganizationApplicationUserTimeouts',
+    'OrganizationApplicationUserTokenTimeouts',
     'OrganizationBillingGroupTimeouts',
     'OrganizationGroupProjectTimeouts',
     'OrganizationPermissionPermission',
+    'OrganizationPermissionTimeouts',
     'OrganizationProjectTag',
     'OrganizationProjectTimeouts',
     'OrganizationTimeouts',
@@ -480,6 +485,7 @@ __all__ = [
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult',
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderAwsResult',
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultResult',
+    'GetKafkaKafkaUserConfigKafkaDisklessResult',
     'GetKafkaKafkaUserConfigKafkaRestConfigResult',
     'GetKafkaKafkaUserConfigKafkaSaslMechanismsResult',
     'GetKafkaKafkaUserConfigPrivateAccessResult',
@@ -545,6 +551,7 @@ __all__ = [
     'GetOpenSearchOpensearchResult',
     'GetOpenSearchOpensearchUserConfigResult',
     'GetOpenSearchOpensearchUserConfigAzureMigrationResult',
+    'GetOpenSearchOpensearchUserConfigCustomKeystoreResult',
     'GetOpenSearchOpensearchUserConfigGcsMigrationResult',
     'GetOpenSearchOpensearchUserConfigIndexPatternResult',
     'GetOpenSearchOpensearchUserConfigIndexRollupResult',
@@ -584,6 +591,7 @@ __all__ = [
     'GetOpenSearchTagResult',
     'GetOpenSearchTechEmailResult',
     'GetOrganizationAddressTimeoutsResult',
+    'GetOrganizationApplicationUserTimeoutsResult',
     'GetOrganizationBillingGroupListBillingGroupResult',
     'GetOrganizationBillingGroupListTimeoutsResult',
     'GetOrganizationBillingGroupTimeoutsResult',
@@ -1724,7 +1732,7 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
         """
         :param _builtins.float autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
         :param _builtins.int autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-        :param _builtins.int autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+        :param _builtins.int autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
         :param _builtins.int autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
         :param _builtins.int autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
         :param _builtins.int autovacuum_vacuum_cost_delay: Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
@@ -1734,7 +1742,7 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
         :param _builtins.int bgwriter_delay: Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
         :param _builtins.int bgwriter_flush_after: Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
         :param _builtins.int bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-        :param _builtins.float bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+        :param _builtins.float bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
         :param _builtins.int deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
         :param _builtins.str default_toast_compression: Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
         :param _builtins.int idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
@@ -1763,7 +1771,7 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
         :param _builtins.int pg_partman_bgw_dot_interval: Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
         :param _builtins.str pg_partman_bgw_dot_role: Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
         :param _builtins.str pg_stat_statements_dot_track: Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-        :param _builtins.int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+        :param _builtins.int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
         :param _builtins.str timezone: PostgreSQL service timezone. Example: `Europe/Helsinki`.
         :param _builtins.int track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
         :param _builtins.str track_commit_timestamp: Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
@@ -1891,7 +1899,7 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
     @pulumi.getter(name="autovacuumFreezeMaxAge")
     def autovacuum_freeze_max_age(self) -> Optional[_builtins.int]:
         """
-        Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+        Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
         """
         return pulumi.get(self, "autovacuum_freeze_max_age")
 
@@ -1971,7 +1979,7 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
     @pulumi.getter(name="bgwriterLruMultiplier")
     def bgwriter_lru_multiplier(self) -> Optional[_builtins.float]:
         """
-        The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+        The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
         """
         return pulumi.get(self, "bgwriter_lru_multiplier")
 
@@ -2203,7 +2211,7 @@ class AlloydbomniAlloydbomniUserConfigPg(dict):
     @pulumi.getter(name="tempFileLimit")
     def temp_file_limit(self) -> Optional[_builtins.int]:
         """
-        PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+        PostgreSQL temporary file limit in KiB, -1 for unlimited.
         """
         return pulumi.get(self, "temp_file_limit")
 
@@ -5654,7 +5662,7 @@ class FlinkFlinkUserConfig(dict):
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param _builtins.int number_of_task_slots: Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
         :param _builtins.int pekko_ask_timeout_s: Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
-        :param _builtins.int pekko_framesize_b: Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+        :param _builtins.int pekko_framesize_b: Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
         :param 'FlinkFlinkUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'FlinkFlinkUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
@@ -5757,7 +5765,7 @@ class FlinkFlinkUserConfig(dict):
     @pulumi.getter(name="pekkoFramesizeB")
     def pekko_framesize_b(self) -> Optional[_builtins.int]:
         """
-        Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+        Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
         """
         return pulumi.get(self, "pekko_framesize_b")
 
@@ -9994,9 +10002,9 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
         """
         :param _builtins.str connector_client_config_override_policy: Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         :param _builtins.str consumer_auto_offset_reset: Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
-        :param _builtins.int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+        :param _builtins.int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
         :param _builtins.str consumer_isolation_level: Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
-        :param _builtins.int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+        :param _builtins.int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         :param _builtins.int consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param _builtins.int consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
         :param _builtins.int offset_flush_interval_ms: The interval at which to try committing offsets for tasks (defaults to 60000).
@@ -10005,7 +10013,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
         :param _builtins.int producer_buffer_memory: The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
         :param _builtins.str producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param _builtins.int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
-        :param _builtins.int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+        :param _builtins.int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         :param _builtins.int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         :param _builtins.int session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
         """
@@ -10062,7 +10070,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
     @pulumi.getter(name="consumerFetchMaxBytes")
     def consumer_fetch_max_bytes(self) -> Optional[_builtins.int]:
         """
-        Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+        Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
         """
         return pulumi.get(self, "consumer_fetch_max_bytes")
 
@@ -10078,7 +10086,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
     @pulumi.getter(name="consumerMaxPartitionFetchBytes")
     def consumer_max_partition_fetch_bytes(self) -> Optional[_builtins.int]:
         """
-        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         """
         return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
@@ -10150,7 +10158,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[_builtins.int]:
         """
-        This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+        This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         """
         return pulumi.get(self, "producer_max_request_size")
 
@@ -10834,6 +10842,8 @@ class KafkaKafkaUserConfig(dict):
             suggest = "kafka_connect_plugin_versions"
         elif key == "kafkaConnectSecretProviders":
             suggest = "kafka_connect_secret_providers"
+        elif key == "kafkaDiskless":
+            suggest = "kafka_diskless"
         elif key == "kafkaRest":
             suggest = "kafka_rest"
         elif key == "kafkaRestAuthorization":
@@ -10890,6 +10900,7 @@ class KafkaKafkaUserConfig(dict):
                  kafka_connect_config: Optional['outputs.KafkaKafkaUserConfigKafkaConnectConfig'] = None,
                  kafka_connect_plugin_versions: Optional[Sequence['outputs.KafkaKafkaUserConfigKafkaConnectPluginVersion']] = None,
                  kafka_connect_secret_providers: Optional[Sequence['outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider']] = None,
+                 kafka_diskless: Optional['outputs.KafkaKafkaUserConfigKafkaDiskless'] = None,
                  kafka_rest: Optional[_builtins.bool] = None,
                  kafka_rest_authorization: Optional[_builtins.bool] = None,
                  kafka_rest_config: Optional['outputs.KafkaKafkaUserConfigKafkaRestConfig'] = None,
@@ -10918,11 +10929,12 @@ class KafkaKafkaUserConfig(dict):
         :param _builtins.bool kafka_connect: Enable Kafka Connect service. Default: `false`.
         :param 'KafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
         :param Sequence['KafkaKafkaUserConfigKafkaConnectPluginVersionArgs'] kafka_connect_plugin_versions: The plugin selected by the user
+        :param 'KafkaKafkaUserConfigKafkaDisklessArgs' kafka_diskless: Kafka Diskless configuration values
         :param _builtins.bool kafka_rest: Enable Kafka-REST service. Default: `false`.
         :param _builtins.bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'KafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
         :param 'KafkaKafkaUserConfigKafkaSaslMechanismsArgs' kafka_sasl_mechanisms: Kafka SASL mechanisms
-        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
         :param _builtins.bool letsencrypt_sasl_privatelink: Use Letsencrypt CA for Kafka SASL via Privatelink.
         :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'KafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
@@ -10960,6 +10972,8 @@ class KafkaKafkaUserConfig(dict):
             pulumi.set(__self__, "kafka_connect_plugin_versions", kafka_connect_plugin_versions)
         if kafka_connect_secret_providers is not None:
             pulumi.set(__self__, "kafka_connect_secret_providers", kafka_connect_secret_providers)
+        if kafka_diskless is not None:
+            pulumi.set(__self__, "kafka_diskless", kafka_diskless)
         if kafka_rest is not None:
             pulumi.set(__self__, "kafka_rest", kafka_rest)
         if kafka_rest_authorization is not None:
@@ -11095,6 +11109,14 @@ class KafkaKafkaUserConfig(dict):
         return pulumi.get(self, "kafka_connect_secret_providers")
 
     @_builtins.property
+    @pulumi.getter(name="kafkaDiskless")
+    def kafka_diskless(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaDiskless']:
+        """
+        Kafka Diskless configuration values
+        """
+        return pulumi.get(self, "kafka_diskless")
+
+    @_builtins.property
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[_builtins.bool]:
         """
@@ -11130,7 +11152,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -11307,6 +11329,10 @@ class KafkaKafkaUserConfigKafka(dict):
             suggest = "log_local_retention_ms"
         elif key == "logMessageDownconversionEnable":
             suggest = "log_message_downconversion_enable"
+        elif key == "logMessageTimestampAfterMaxMs":
+            suggest = "log_message_timestamp_after_max_ms"
+        elif key == "logMessageTimestampBeforeMaxMs":
+            suggest = "log_message_timestamp_before_max_ms"
         elif key == "logMessageTimestampDifferenceMaxMs":
             suggest = "log_message_timestamp_difference_max_ms"
         elif key == "logMessageTimestampType":
@@ -11393,6 +11419,8 @@ class KafkaKafkaUserConfigKafka(dict):
                  log_local_retention_bytes: Optional[_builtins.int] = None,
                  log_local_retention_ms: Optional[_builtins.int] = None,
                  log_message_downconversion_enable: Optional[_builtins.bool] = None,
+                 log_message_timestamp_after_max_ms: Optional[_builtins.int] = None,
+                 log_message_timestamp_before_max_ms: Optional[_builtins.int] = None,
                  log_message_timestamp_difference_max_ms: Optional[_builtins.int] = None,
                  log_message_timestamp_type: Optional[_builtins.str] = None,
                  log_preallocate: Optional[_builtins.bool] = None,
@@ -11426,9 +11454,9 @@ class KafkaKafkaUserConfigKafka(dict):
         :param _builtins.int connections_max_idle_ms: Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.
         :param _builtins.int default_replication_factor: Replication factor for auto-created topics (Default: 3).
         :param _builtins.int group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
-        :param _builtins.int group_max_session_timeout_ms: The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+        :param _builtins.int group_max_session_timeout_ms: The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
         :param _builtins.int group_min_session_timeout_ms: The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
-        :param _builtins.int log_cleaner_delete_retention_ms: How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+        :param _builtins.int log_cleaner_delete_retention_ms: How long are delete records retained? (Default: 86400000 (1 day)).
         :param _builtins.int log_cleaner_max_compaction_lag_ms: The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).
         :param _builtins.float log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.
         :param _builtins.int log_cleaner_min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted. (Default: 0 ms).
@@ -11436,10 +11464,12 @@ class KafkaKafkaUserConfigKafka(dict):
         :param _builtins.int log_flush_interval_messages: The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
         :param _builtins.int log_flush_interval_ms: The maximum time in ms that a message in any topic is kept in memory (page-cache) before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used (Default: null).
         :param _builtins.int log_index_interval_bytes: The interval with which Kafka adds an entry to the offset index (Default: 4096 bytes (4 kibibytes)). Example: `4096`.
-        :param _builtins.int log_index_size_max_bytes: The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+        :param _builtins.int log_index_size_max_bytes: The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
         :param _builtins.int log_local_retention_bytes: The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value. (Default: -2).
         :param _builtins.int log_local_retention_ms: The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value. (Default: -2).
         :param _builtins.bool log_message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).
+        :param _builtins.int log_message_timestamp_after_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+        :param _builtins.int log_message_timestamp_before_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
         :param _builtins.int log_message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
         :param _builtins.str log_message_timestamp_type: Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time. (Default: CreateTime).
         :param _builtins.bool log_preallocate: Should pre allocate file when create new segment? (Default: false).
@@ -11452,7 +11482,7 @@ class KafkaKafkaUserConfigKafka(dict):
         :param _builtins.int log_segment_delete_delay_ms: The amount of time to wait before deleting a file from the filesystem (Default: 60000 ms (1 minute)). Example: `60000`.
         :param _builtins.int max_connections_per_ip: The maximum number of connections allowed from each ip address (Default: 2147483647).
         :param _builtins.int max_incremental_fetch_session_cache_slots: The maximum number of incremental fetch sessions that the broker will maintain. (Default: 1000). Example: `1000`.
-        :param _builtins.int message_max_bytes: The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+        :param _builtins.int message_max_bytes: The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
         :param _builtins.int min_insync_replicas: When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. (Default: 1). Example: `1`.
         :param _builtins.int num_partitions: Number of partitions for auto-created topics (Default: 1).
         :param _builtins.int offsets_retention_minutes: Log retention window in minutes for offsets topic (Default: 10080 minutes (7 days)). Example: `10080`.
@@ -11465,8 +11495,8 @@ class KafkaKafkaUserConfigKafka(dict):
         :param _builtins.str sasl_oauthbearer_sub_claim_name: Name of the scope from which to extract the subject claim from the JWT.(Default: sub).
         :param _builtins.int socket_request_max_bytes: The maximum number of bytes in a socket request (Default: 104857600 bytes).
         :param _builtins.bool transaction_partition_verification_enable: Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
-        :param _builtins.int transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
-        :param _builtins.int transaction_state_log_segment_bytes: The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+        :param _builtins.int transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
+        :param _builtins.int transaction_state_log_segment_bytes: The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
         """
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
@@ -11506,6 +11536,10 @@ class KafkaKafkaUserConfigKafka(dict):
             pulumi.set(__self__, "log_local_retention_ms", log_local_retention_ms)
         if log_message_downconversion_enable is not None:
             pulumi.set(__self__, "log_message_downconversion_enable", log_message_downconversion_enable)
+        if log_message_timestamp_after_max_ms is not None:
+            pulumi.set(__self__, "log_message_timestamp_after_max_ms", log_message_timestamp_after_max_ms)
+        if log_message_timestamp_before_max_ms is not None:
+            pulumi.set(__self__, "log_message_timestamp_before_max_ms", log_message_timestamp_before_max_ms)
         if log_message_timestamp_difference_max_ms is not None:
             pulumi.set(__self__, "log_message_timestamp_difference_max_ms", log_message_timestamp_difference_max_ms)
         if log_message_timestamp_type is not None:
@@ -11605,7 +11639,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="groupMaxSessionTimeoutMs")
     def group_max_session_timeout_ms(self) -> Optional[_builtins.int]:
         """
-        The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+        The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
         """
         return pulumi.get(self, "group_max_session_timeout_ms")
 
@@ -11621,7 +11655,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="logCleanerDeleteRetentionMs")
     def log_cleaner_delete_retention_ms(self) -> Optional[_builtins.int]:
         """
-        How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+        How long are delete records retained? (Default: 86400000 (1 day)).
         """
         return pulumi.get(self, "log_cleaner_delete_retention_ms")
 
@@ -11685,7 +11719,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="logIndexSizeMaxBytes")
     def log_index_size_max_bytes(self) -> Optional[_builtins.int]:
         """
-        The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+        The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
         """
         return pulumi.get(self, "log_index_size_max_bytes")
 
@@ -11712,6 +11746,22 @@ class KafkaKafkaUserConfigKafka(dict):
         This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).
         """
         return pulumi.get(self, "log_message_downconversion_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="logMessageTimestampAfterMaxMs")
+    def log_message_timestamp_after_max_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+        """
+        return pulumi.get(self, "log_message_timestamp_after_max_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="logMessageTimestampBeforeMaxMs")
+    def log_message_timestamp_before_max_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+        """
+        return pulumi.get(self, "log_message_timestamp_before_max_ms")
 
     @_builtins.property
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
@@ -11813,7 +11863,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="messageMaxBytes")
     def message_max_bytes(self) -> Optional[_builtins.int]:
         """
-        The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+        The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
         """
         return pulumi.get(self, "message_max_bytes")
 
@@ -11917,7 +11967,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="transactionRemoveExpiredTransactionCleanupIntervalMs")
     def transaction_remove_expired_transaction_cleanup_interval_ms(self) -> Optional[_builtins.int]:
         """
-        The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+        The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
         """
         return pulumi.get(self, "transaction_remove_expired_transaction_cleanup_interval_ms")
 
@@ -11925,7 +11975,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="transactionStateLogSegmentBytes")
     def transaction_state_log_segment_bytes(self) -> Optional[_builtins.int]:
         """
-        The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+        The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
         """
         return pulumi.get(self, "transaction_state_log_segment_bytes")
 
@@ -12030,9 +12080,9 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
         """
         :param _builtins.str connector_client_config_override_policy: Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         :param _builtins.str consumer_auto_offset_reset: Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
-        :param _builtins.int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+        :param _builtins.int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
         :param _builtins.str consumer_isolation_level: Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
-        :param _builtins.int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+        :param _builtins.int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         :param _builtins.int consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param _builtins.int consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
         :param _builtins.int offset_flush_interval_ms: The interval at which to try committing offsets for tasks (defaults to 60000).
@@ -12041,7 +12091,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
         :param _builtins.int producer_buffer_memory: The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
         :param _builtins.str producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param _builtins.int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
-        :param _builtins.int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+        :param _builtins.int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         :param _builtins.int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         :param _builtins.int session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
         """
@@ -12098,7 +12148,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     @pulumi.getter(name="consumerFetchMaxBytes")
     def consumer_fetch_max_bytes(self) -> Optional[_builtins.int]:
         """
-        Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+        Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
         """
         return pulumi.get(self, "consumer_fetch_max_bytes")
 
@@ -12114,7 +12164,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     @pulumi.getter(name="consumerMaxPartitionFetchBytes")
     def consumer_max_partition_fetch_bytes(self) -> Optional[_builtins.int]:
         """
-        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         """
         return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
@@ -12186,7 +12236,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[_builtins.int]:
         """
-        This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+        This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         """
         return pulumi.get(self, "producer_max_request_size")
 
@@ -12456,6 +12506,24 @@ class KafkaKafkaUserConfigKafkaConnectSecretProviderVault(dict):
 
 
 @pulumi.output_type
+class KafkaKafkaUserConfigKafkaDiskless(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether to enable the Diskless functionality.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether to enable the Diskless functionality.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class KafkaKafkaUserConfigKafkaRestConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -12509,14 +12577,14 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
         """
         :param _builtins.bool consumer_enable_auto_commit: If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
         :param _builtins.int consumer_idle_disconnect_timeout: Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
-        :param _builtins.int consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+        :param _builtins.int consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and values by a single request.
         :param _builtins.int consumer_request_timeout_ms: Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
         :param _builtins.str name_strategy: Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
         :param _builtins.bool name_strategy_validation: If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
         :param _builtins.str producer_acks: Enum: `-1`, `0`, `1`, `all`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
         :param _builtins.str producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param _builtins.int producer_linger_ms: Wait for up to the given delay to allow batching records together. Default: `0`.
-        :param _builtins.int producer_max_request_size: The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+        :param _builtins.int producer_max_request_size: The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
         :param _builtins.int simpleconsumer_pool_size_max: Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
         """
         if consumer_enable_auto_commit is not None:
@@ -12562,7 +12630,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
     @pulumi.getter(name="consumerRequestMaxBytes")
     def consumer_request_max_bytes(self) -> Optional[_builtins.int]:
         """
-        Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+        Maximum number of bytes in unencoded message keys and values by a single request.
         """
         return pulumi.get(self, "consumer_request_max_bytes")
 
@@ -12618,7 +12686,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[_builtins.int]:
         """
-        The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+        The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
         """
         return pulumi.get(self, "producer_max_request_size")
 
@@ -13972,7 +14040,7 @@ class KafkaTopicConfig(dict):
         :param _builtins.str max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         :param _builtins.str max_message_bytes: The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         :param _builtins.bool message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
-        :param _builtins.str message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+        :param _builtins.str message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
         :param _builtins.str message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         :param _builtins.str message_timestamp_type: Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
         :param _builtins.float min_cleanable_dirty_ratio: This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
@@ -14153,7 +14221,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> Optional[_builtins.str]:
         """
-        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -15769,7 +15837,7 @@ class M3DbM3dbUserConfigRulesMapping(dict):
                  namespaces_strings: Optional[Sequence[_builtins.str]] = None,
                  tags: Optional[Sequence['outputs.M3DbM3dbUserConfigRulesMappingTag']] = None):
         """
-        :param _builtins.str filter: Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
+        :param _builtins.str filter: Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
         :param Sequence[_builtins.str] aggregations: List of aggregations to be applied.
         :param _builtins.bool drop: Only store the derived metric (as specified in the roll-up rules), if any.
         :param _builtins.str name: The (optional) name of the rule. Example: `important disk metrics`.
@@ -15798,7 +15866,7 @@ class M3DbM3dbUserConfigRulesMapping(dict):
     @pulumi.getter
     def filter(self) -> _builtins.str:
         """
-        Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
+        Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
         """
         return pulumi.get(self, "filter")
 
@@ -16930,8 +16998,8 @@ class MySqlMysqlUserConfigMysql(dict):
         :param _builtins.int innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
         :param _builtins.str innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
         :param _builtins.int innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
-        :param _builtins.int innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
-        :param _builtins.int innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+        :param _builtins.int innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        :param _builtins.int innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         :param _builtins.bool innodb_print_all_deadlocks: When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
         :param _builtins.int innodb_read_io_threads: The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
         :param _builtins.bool innodb_rollback_on_timeout: When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
@@ -16940,9 +17008,9 @@ class MySqlMysqlUserConfigMysql(dict):
         :param _builtins.int interactive_timeout: The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
         :param _builtins.str internal_tmp_mem_storage_engine: Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
         :param _builtins.str log_output: Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
-        :param _builtins.float long_query_time: The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
-        :param _builtins.int max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
-        :param _builtins.int max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
+        :param _builtins.float long_query_time: The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+        :param _builtins.int max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        :param _builtins.int max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
         :param _builtins.int net_buffer_length: Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
         :param _builtins.int net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
         :param _builtins.int net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
@@ -16950,7 +17018,7 @@ class MySqlMysqlUserConfigMysql(dict):
         :param _builtins.int sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
         :param _builtins.str sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
         :param _builtins.bool sql_require_primary_key: Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
-        :param _builtins.int tmp_table_size: Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
+        :param _builtins.int tmp_table_size: Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
         :param _builtins.int wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
         """
         if connect_timeout is not None:
@@ -17092,7 +17160,7 @@ class MySqlMysqlUserConfigMysql(dict):
     @pulumi.getter(name="innodbLogBufferSize")
     def innodb_log_buffer_size(self) -> Optional[_builtins.int]:
         """
-        The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+        The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
         """
         return pulumi.get(self, "innodb_log_buffer_size")
 
@@ -17100,7 +17168,7 @@ class MySqlMysqlUserConfigMysql(dict):
     @pulumi.getter(name="innodbOnlineAlterLogMaxSize")
     def innodb_online_alter_log_max_size(self) -> Optional[_builtins.int]:
         """
-        The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+        The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         """
         return pulumi.get(self, "innodb_online_alter_log_max_size")
 
@@ -17172,7 +17240,7 @@ class MySqlMysqlUserConfigMysql(dict):
     @pulumi.getter(name="longQueryTime")
     def long_query_time(self) -> Optional[_builtins.float]:
         """
-        The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
+        The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
         """
         return pulumi.get(self, "long_query_time")
 
@@ -17180,7 +17248,7 @@ class MySqlMysqlUserConfigMysql(dict):
     @pulumi.getter(name="maxAllowedPacket")
     def max_allowed_packet(self) -> Optional[_builtins.int]:
         """
-        Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+        Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
         """
         return pulumi.get(self, "max_allowed_packet")
 
@@ -17188,7 +17256,7 @@ class MySqlMysqlUserConfigMysql(dict):
     @pulumi.getter(name="maxHeapTableSize")
     def max_heap_table_size(self) -> Optional[_builtins.int]:
         """
-        Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
+        Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
         """
         return pulumi.get(self, "max_heap_table_size")
 
@@ -17252,7 +17320,7 @@ class MySqlMysqlUserConfigMysql(dict):
     @pulumi.getter(name="tmpTableSize")
     def tmp_table_size(self) -> Optional[_builtins.int]:
         """
-        Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
+        Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
         """
         return pulumi.get(self, "tmp_table_size")
 
@@ -17770,6 +17838,8 @@ class OpenSearchOpensearchUserConfig(dict):
             suggest = "azure_migration"
         elif key == "customDomain":
             suggest = "custom_domain"
+        elif key == "customKeystores":
+            suggest = "custom_keystores"
         elif key == "disableReplicationFactorAdjustment":
             suggest = "disable_replication_factor_adjustment"
         elif key == "gcsMigration":
@@ -17828,6 +17898,7 @@ class OpenSearchOpensearchUserConfig(dict):
                  additional_backup_regions: Optional[_builtins.str] = None,
                  azure_migration: Optional['outputs.OpenSearchOpensearchUserConfigAzureMigration'] = None,
                  custom_domain: Optional[_builtins.str] = None,
+                 custom_keystores: Optional[Sequence['outputs.OpenSearchOpensearchUserConfigCustomKeystore']] = None,
                  disable_replication_factor_adjustment: Optional[_builtins.bool] = None,
                  gcs_migration: Optional['outputs.OpenSearchOpensearchUserConfigGcsMigration'] = None,
                  index_patterns: Optional[Sequence['outputs.OpenSearchOpensearchUserConfigIndexPattern']] = None,
@@ -17856,6 +17927,7 @@ class OpenSearchOpensearchUserConfig(dict):
         :param _builtins.str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param 'OpenSearchOpensearchUserConfigAzureMigrationArgs' azure_migration: Azure migration settings
         :param _builtins.str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        :param Sequence['OpenSearchOpensearchUserConfigCustomKeystoreArgs'] custom_keystores: Allow to register custom keystores in OpenSearch
         :param _builtins.bool disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
         :param 'OpenSearchOpensearchUserConfigGcsMigrationArgs' gcs_migration: Google Cloud Storage migration settings
         :param Sequence['OpenSearchOpensearchUserConfigIndexPatternArgs'] index_patterns: Index patterns
@@ -17869,7 +17941,7 @@ class OpenSearchOpensearchUserConfig(dict):
         :param 'OpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration
         :param 'OpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings
         :param 'OpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings
-        :param _builtins.str opensearch_version: Enum: `1`, `2`, and newer. OpenSearch major version.
+        :param _builtins.str opensearch_version: Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
         :param 'OpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'OpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param _builtins.str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
@@ -17887,6 +17959,8 @@ class OpenSearchOpensearchUserConfig(dict):
             pulumi.set(__self__, "azure_migration", azure_migration)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
+        if custom_keystores is not None:
+            pulumi.set(__self__, "custom_keystores", custom_keystores)
         if disable_replication_factor_adjustment is not None:
             pulumi.set(__self__, "disable_replication_factor_adjustment", disable_replication_factor_adjustment)
         if gcs_migration is not None:
@@ -17959,6 +18033,14 @@ class OpenSearchOpensearchUserConfig(dict):
         Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         """
         return pulumi.get(self, "custom_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="customKeystores")
+    def custom_keystores(self) -> Optional[Sequence['outputs.OpenSearchOpensearchUserConfigCustomKeystore']]:
+        """
+        Allow to register custom keystores in OpenSearch
+        """
+        return pulumi.get(self, "custom_keystores")
 
     @_builtins.property
     @pulumi.getter(name="disableReplicationFactorAdjustment")
@@ -18069,7 +18151,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `1`, `2`, and newer. OpenSearch major version.
+        Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -18339,6 +18421,31 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
         A shared access signatures (SAS) token. One of key or sas_token should be specified.
         """
         return pulumi.get(self, "sas_token")
+
+
+@pulumi.output_type
+class OpenSearchOpensearchUserConfigCustomKeystore(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str type: Enum: `azure`, `gcs`, `s3`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Enum: `azure`, `gcs`, `s3`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -19134,11 +19241,11 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         :param _builtins.bool ism_enabled: Specifies whether ISM is enabled or not.
         :param _builtins.bool ism_history_enabled: Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
         :param _builtins.int ism_history_max_age: The maximum age before rolling over the audit history index in hours. Example: `24`.
-        :param _builtins.int ism_history_max_docs: The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+        :param _builtins.int ism_history_max_docs: The maximum number of documents before rolling over the audit history index.
         :param _builtins.int ism_history_rollover_check_period: The time between rollover checks for the audit history index in hours. Example: `8`.
         :param _builtins.int ism_history_rollover_retention_period: How long audit history indices are kept in days. Example: `30`.
         :param _builtins.bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true.
-        :param _builtins.int knn_memory_circuit_breaker_limit: Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+        :param _builtins.int knn_memory_circuit_breaker_limit: Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
         :param _builtins.str node_search_cache_size: Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
         :param _builtins.bool override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         :param _builtins.bool plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
@@ -19523,7 +19630,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="ismHistoryMaxDocs")
     def ism_history_max_docs(self) -> Optional[_builtins.int]:
         """
-        The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+        The maximum number of documents before rolling over the audit history index.
         """
         return pulumi.get(self, "ism_history_max_docs")
 
@@ -19555,7 +19662,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="knnMemoryCircuitBreakerLimit")
     def knn_memory_circuit_breaker_limit(self) -> Optional[_builtins.int]:
         """
-        Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+        Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
         """
         return pulumi.get(self, "knn_memory_circuit_breaker_limit")
 
@@ -21973,6 +22080,116 @@ class OrganizationAddressTimeouts(dict):
 
 
 @pulumi.output_type
+class OrganizationApplicationUserTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OrganizationApplicationUserTokenTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class OrganizationBillingGroupTimeouts(dict):
     def __init__(__self__, *,
                  create: Optional[_builtins.str] = None,
@@ -22114,11 +22331,11 @@ class OrganizationPermissionPermission(dict):
                  create_time: Optional[_builtins.str] = None,
                  update_time: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        :param Sequence[_builtins.str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         :param _builtins.str principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
-        :param _builtins.str principal_type: The type of principal. The possible values are `user` and `user_group`.
-        :param _builtins.str create_time: Time created.
-        :param _builtins.str update_time: Time updated.
+        :param _builtins.str principal_type: An enumeration. The possible values are `user` and `user_group`.
+        :param _builtins.str create_time: Create Time.
+        :param _builtins.str update_time: Update Time.
         """
         pulumi.set(__self__, "permissions", permissions)
         pulumi.set(__self__, "principal_id", principal_id)
@@ -22132,7 +22349,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter
     def permissions(self) -> Sequence[_builtins.str]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -22148,7 +22365,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter(name="principalType")
     def principal_type(self) -> _builtins.str:
         """
-        The type of principal. The possible values are `user` and `user_group`.
+        An enumeration. The possible values are `user` and `user_group`.
         """
         return pulumi.get(self, "principal_type")
 
@@ -22156,7 +22373,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[_builtins.str]:
         """
-        Time created.
+        Create Time.
         """
         return pulumi.get(self, "create_time")
 
@@ -22164,9 +22381,64 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[_builtins.str]:
         """
-        Time updated.
+        Update Time.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class OrganizationPermissionTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -23587,7 +23859,7 @@ class PgPgUserConfigPg(dict):
         """
         :param _builtins.float autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
         :param _builtins.int autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-        :param _builtins.int autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+        :param _builtins.int autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
         :param _builtins.int autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
         :param _builtins.int autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
         :param _builtins.int autovacuum_vacuum_cost_delay: Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
@@ -23597,7 +23869,7 @@ class PgPgUserConfigPg(dict):
         :param _builtins.int bgwriter_delay: Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
         :param _builtins.int bgwriter_flush_after: Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
         :param _builtins.int bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-        :param _builtins.float bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+        :param _builtins.float bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
         :param _builtins.int deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
         :param _builtins.str default_toast_compression: Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
         :param _builtins.int idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
@@ -23629,7 +23901,7 @@ class PgPgUserConfigPg(dict):
         :param _builtins.bool pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
         :param _builtins.int pg_stat_monitor_dot_pgsm_max_buckets: Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
         :param _builtins.str pg_stat_statements_dot_track: Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-        :param _builtins.int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+        :param _builtins.int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
         :param _builtins.str timezone: PostgreSQL service timezone. Example: `Europe/Helsinki`.
         :param _builtins.int track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
         :param _builtins.str track_commit_timestamp: Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
@@ -23763,7 +24035,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="autovacuumFreezeMaxAge")
     def autovacuum_freeze_max_age(self) -> Optional[_builtins.int]:
         """
-        Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+        Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
         """
         return pulumi.get(self, "autovacuum_freeze_max_age")
 
@@ -23843,7 +24115,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="bgwriterLruMultiplier")
     def bgwriter_lru_multiplier(self) -> Optional[_builtins.float]:
         """
-        The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+        The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
         """
         return pulumi.get(self, "bgwriter_lru_multiplier")
 
@@ -24099,7 +24371,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="tempFileLimit")
     def temp_file_limit(self) -> Optional[_builtins.int]:
         """
-        PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+        PostgreSQL temporary file limit in KiB, -1 for unlimited.
         """
         return pulumi.get(self, "temp_file_limit")
 
@@ -25957,7 +26229,7 @@ class ServiceIntegrationClickhouseKafkaUserConfig(dict):
     def __init__(__self__, *,
                  tables: Optional[Sequence['outputs.ServiceIntegrationClickhouseKafkaUserConfigTable']] = None):
         """
-        :param Sequence['ServiceIntegrationClickhouseKafkaUserConfigTableArgs'] tables: Tables to create
+        :param Sequence['ServiceIntegrationClickhouseKafkaUserConfigTableArgs'] tables: Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
         """
         if tables is not None:
             pulumi.set(__self__, "tables", tables)
@@ -25966,7 +26238,7 @@ class ServiceIntegrationClickhouseKafkaUserConfig(dict):
     @pulumi.getter
     def tables(self) -> Optional[Sequence['outputs.ServiceIntegrationClickhouseKafkaUserConfigTable']]:
         """
-        Tables to create
+        Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
         """
         return pulumi.get(self, "tables")
 
@@ -26053,29 +26325,29 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
                  skip_broken_messages: Optional[_builtins.int] = None,
                  thread_per_consumer: Optional[_builtins.bool] = None):
         """
-        :param Sequence['ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs'] columns: Table columns
-        :param _builtins.str data_format: Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
-        :param _builtins.str group_name: Kafka consumers group. Default: `clickhouse`.
-        :param _builtins.str name: Name of the table. Example: `events`.
-        :param Sequence['ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs'] topics: Kafka topics
-        :param _builtins.str auto_offset_reset: Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
-        :param _builtins.str date_time_input_format: Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
-        :param _builtins.str handle_error_mode: Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
-        :param _builtins.int max_block_size: Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
-        :param _builtins.int max_rows_per_message: The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
-        :param _builtins.int num_consumers: The number of consumers per table per replica. Default: `1`.
-        :param _builtins.int poll_max_batch_size: Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+        :param Sequence['ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs'] columns: Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
+        :param _builtins.str data_format: Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
+        :param _builtins.str group_name: The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
+        :param _builtins.str name: The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
+        :param Sequence['ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs'] topics: Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
+        :param _builtins.str auto_offset_reset: Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
+        :param _builtins.str date_time_input_format: Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+        :param _builtins.str handle_error_mode: Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+        :param _builtins.int max_block_size: Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
+        :param _builtins.int max_rows_per_message: Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
+        :param _builtins.int num_consumers: Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
+        :param _builtins.int poll_max_batch_size: Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
         :param _builtins.int poll_max_timeout_ms: Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
         :param _builtins.int producer_batch_num_messages: The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
-        :param _builtins.int producer_batch_size: The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+        :param _builtins.int producer_batch_size: The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
         :param _builtins.str producer_compression_codec: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
         :param _builtins.int producer_compression_level: The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
         :param _builtins.int producer_linger_ms: The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
-        :param _builtins.int producer_queue_buffering_max_kbytes: The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+        :param _builtins.int producer_queue_buffering_max_kbytes: The maximum size of the buffer in kilobytes before sending.
         :param _builtins.int producer_queue_buffering_max_messages: The maximum number of messages to buffer before sending. Default: `100000`.
         :param _builtins.int producer_request_required_acks: The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
-        :param _builtins.int skip_broken_messages: Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
-        :param _builtins.bool thread_per_consumer: Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+        :param _builtins.int skip_broken_messages: Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
+        :param _builtins.bool thread_per_consumer: When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
         """
         pulumi.set(__self__, "columns", columns)
         pulumi.set(__self__, "data_format", data_format)
@@ -26123,7 +26395,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter
     def columns(self) -> Sequence['outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn']:
         """
-        Table columns
+        Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
         """
         return pulumi.get(self, "columns")
 
@@ -26131,7 +26403,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="dataFormat")
     def data_format(self) -> _builtins.str:
         """
-        Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
+        Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
         """
         return pulumi.get(self, "data_format")
 
@@ -26139,7 +26411,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="groupName")
     def group_name(self) -> _builtins.str:
         """
-        Kafka consumers group. Default: `clickhouse`.
+        The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
         """
         return pulumi.get(self, "group_name")
 
@@ -26147,7 +26419,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the table. Example: `events`.
+        The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
         """
         return pulumi.get(self, "name")
 
@@ -26155,7 +26427,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter
     def topics(self) -> Sequence['outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic']:
         """
-        Kafka topics
+        Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
         """
         return pulumi.get(self, "topics")
 
@@ -26163,7 +26435,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="autoOffsetReset")
     def auto_offset_reset(self) -> Optional[_builtins.str]:
         """
-        Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+        Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
         """
         return pulumi.get(self, "auto_offset_reset")
 
@@ -26171,7 +26443,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="dateTimeInputFormat")
     def date_time_input_format(self) -> Optional[_builtins.str]:
         """
-        Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
+        Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
         """
         return pulumi.get(self, "date_time_input_format")
 
@@ -26179,7 +26451,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="handleErrorMode")
     def handle_error_mode(self) -> Optional[_builtins.str]:
         """
-        Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+        Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
         """
         return pulumi.get(self, "handle_error_mode")
 
@@ -26187,7 +26459,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="maxBlockSize")
     def max_block_size(self) -> Optional[_builtins.int]:
         """
-        Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+        Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
         """
         return pulumi.get(self, "max_block_size")
 
@@ -26195,7 +26467,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="maxRowsPerMessage")
     def max_rows_per_message(self) -> Optional[_builtins.int]:
         """
-        The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+        Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
         """
         return pulumi.get(self, "max_rows_per_message")
 
@@ -26203,7 +26475,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="numConsumers")
     def num_consumers(self) -> Optional[_builtins.int]:
         """
-        The number of consumers per table per replica. Default: `1`.
+        Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
         """
         return pulumi.get(self, "num_consumers")
 
@@ -26211,7 +26483,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="pollMaxBatchSize")
     def poll_max_batch_size(self) -> Optional[_builtins.int]:
         """
-        Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+        Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
         """
         return pulumi.get(self, "poll_max_batch_size")
 
@@ -26235,7 +26507,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="producerBatchSize")
     def producer_batch_size(self) -> Optional[_builtins.int]:
         """
-        The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+        The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
         """
         return pulumi.get(self, "producer_batch_size")
 
@@ -26267,7 +26539,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="producerQueueBufferingMaxKbytes")
     def producer_queue_buffering_max_kbytes(self) -> Optional[_builtins.int]:
         """
-        The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+        The maximum size of the buffer in kilobytes before sending.
         """
         return pulumi.get(self, "producer_queue_buffering_max_kbytes")
 
@@ -26291,7 +26563,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="skipBrokenMessages")
     def skip_broken_messages(self) -> Optional[_builtins.int]:
         """
-        Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+        Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
         """
         return pulumi.get(self, "skip_broken_messages")
 
@@ -26299,7 +26571,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="threadPerConsumer")
     def thread_per_consumer(self) -> Optional[_builtins.bool]:
         """
-        Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+        When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
         """
         return pulumi.get(self, "thread_per_consumer")
 
@@ -26310,8 +26582,8 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableColumn(dict):
                  name: _builtins.str,
                  type: _builtins.str):
         """
-        :param _builtins.str name: Column name. Example: `key`.
-        :param _builtins.str type: Column type. Example: `UInt64`.
+        :param _builtins.str name: The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
+        :param _builtins.str type: The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -26320,7 +26592,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableColumn(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Column name. Example: `key`.
+        The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
         """
         return pulumi.get(self, "name")
 
@@ -26328,7 +26600,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableColumn(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Column type. Example: `UInt64`.
+        The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
         """
         return pulumi.get(self, "type")
 
@@ -26338,7 +26610,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableTopic(dict):
     def __init__(__self__, *,
                  name: _builtins.str):
         """
-        :param _builtins.str name: Name of the topic. Example: `topic_name`.
+        :param _builtins.str name: The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
         """
         pulumi.set(__self__, "name", name)
 
@@ -26346,7 +26618,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableTopic(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the topic. Example: `topic_name`.
+        The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
         """
         return pulumi.get(self, "name")
 
@@ -27304,7 +27576,7 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(dict):
                -----END CERTIFICATE-----
                `.
         :param _builtins.int index_days_max: Maximum number of days of logs to keep. Default: `3`.
-        :param _builtins.float timeout: Elasticsearch request timeout limit. Default: `10.0`.
+        :param _builtins.float timeout: Elasticsearch request timeout limit. Default: `10`.
         """
         pulumi.set(__self__, "index_prefix", index_prefix)
         pulumi.set(__self__, "url", url)
@@ -27354,7 +27626,7 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(dict):
     @pulumi.getter
     def timeout(self) -> Optional[_builtins.float]:
         """
-        Elasticsearch request timeout limit. Default: `10.0`.
+        Elasticsearch request timeout limit. Default: `10`.
         """
         return pulumi.get(self, "timeout")
 
@@ -27767,7 +28039,7 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfig(dict):
                -----END CERTIFICATE-----
                `.
         :param _builtins.int index_days_max: Maximum number of days of logs to keep. Default: `3`.
-        :param _builtins.float timeout: OpenSearch request timeout limit. Default: `10.0`.
+        :param _builtins.float timeout: OpenSearch request timeout limit. Default: `10`.
         """
         pulumi.set(__self__, "index_prefix", index_prefix)
         pulumi.set(__self__, "url", url)
@@ -27817,7 +28089,7 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfig(dict):
     @pulumi.getter
     def timeout(self) -> Optional[_builtins.float]:
         """
-        OpenSearch request timeout limit. Default: `10.0`.
+        OpenSearch request timeout limit. Default: `10`.
         """
         return pulumi.get(self, "timeout")
 
@@ -28864,10 +29136,10 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
         :param _builtins.int consumer_fetch_min_bytes: The minimum amount of data the server should return for a fetch request. Example: `1024`.
         :param _builtins.int consumer_max_poll_records: Set consumer max.poll.records. The default is 500. Example: `500`.
         :param _builtins.int producer_batch_size: The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
-        :param _builtins.int producer_buffer_memory: The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+        :param _builtins.int producer_buffer_memory: The amount of bytes producer can use for buffering data before publishing to broker.
         :param _builtins.str producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param _builtins.int producer_linger_ms: The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
-        :param _builtins.int producer_max_request_size: The maximum request size in bytes. Example: `1048576`.
+        :param _builtins.int producer_max_request_size: The maximum request size in bytes.
         """
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
@@ -28922,7 +29194,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="producerBufferMemory")
     def producer_buffer_memory(self) -> Optional[_builtins.int]:
         """
-        The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+        The amount of bytes producer can use for buffering data before publishing to broker.
         """
         return pulumi.get(self, "producer_buffer_memory")
 
@@ -28946,7 +29218,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[_builtins.int]:
         """
-        The maximum request size in bytes. Example: `1048576`.
+        The maximum request size in bytes.
         """
         return pulumi.get(self, "producer_max_request_size")
 
@@ -32346,7 +32618,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgResult(dict):
         """
         :param _builtins.float autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
         :param _builtins.int autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-        :param _builtins.int autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+        :param _builtins.int autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
         :param _builtins.int autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
         :param _builtins.int autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
         :param _builtins.int autovacuum_vacuum_cost_delay: Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_delay value will be used. The default is `2` (upstream default).
@@ -32356,7 +32628,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgResult(dict):
         :param _builtins.int bgwriter_delay: Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
         :param _builtins.int bgwriter_flush_after: Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
         :param _builtins.int bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-        :param _builtins.float bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+        :param _builtins.float bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
         :param _builtins.int deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
         :param _builtins.str default_toast_compression: Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
         :param _builtins.int idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
@@ -32385,7 +32657,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgResult(dict):
         :param _builtins.int pg_partman_bgw_dot_interval: Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
         :param _builtins.str pg_partman_bgw_dot_role: Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
         :param _builtins.str pg_stat_statements_dot_track: Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-        :param _builtins.int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+        :param _builtins.int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
         :param _builtins.str timezone: PostgreSQL service timezone. Example: `Europe/Helsinki`.
         :param _builtins.int track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
         :param _builtins.str track_commit_timestamp: Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
@@ -32513,7 +32785,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgResult(dict):
     @pulumi.getter(name="autovacuumFreezeMaxAge")
     def autovacuum_freeze_max_age(self) -> Optional[_builtins.int]:
         """
-        Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+        Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
         """
         return pulumi.get(self, "autovacuum_freeze_max_age")
 
@@ -32593,7 +32865,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgResult(dict):
     @pulumi.getter(name="bgwriterLruMultiplier")
     def bgwriter_lru_multiplier(self) -> Optional[_builtins.float]:
         """
-        The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+        The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
         """
         return pulumi.get(self, "bgwriter_lru_multiplier")
 
@@ -32825,7 +33097,7 @@ class GetAlloydbomniAlloydbomniUserConfigPgResult(dict):
     @pulumi.getter(name="tempFileLimit")
     def temp_file_limit(self) -> Optional[_builtins.int]:
         """
-        PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+        PostgreSQL temporary file limit in KiB, -1 for unlimited.
         """
         return pulumi.get(self, "temp_file_limit")
 
@@ -36038,7 +36310,7 @@ class GetFlinkFlinkUserConfigResult(dict):
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param _builtins.int number_of_task_slots: Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
         :param _builtins.int pekko_ask_timeout_s: Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
-        :param _builtins.int pekko_framesize_b: Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+        :param _builtins.int pekko_framesize_b: Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
         :param 'GetFlinkFlinkUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'GetFlinkFlinkUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
@@ -36141,7 +36413,7 @@ class GetFlinkFlinkUserConfigResult(dict):
     @pulumi.getter(name="pekkoFramesizeB")
     def pekko_framesize_b(self) -> Optional[_builtins.int]:
         """
-        Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+        Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
         """
         return pulumi.get(self, "pekko_framesize_b")
 
@@ -38922,9 +39194,9 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
         """
         :param _builtins.str connector_client_config_override_policy: Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         :param _builtins.str consumer_auto_offset_reset: Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
-        :param _builtins.int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+        :param _builtins.int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
         :param _builtins.str consumer_isolation_level: Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
-        :param _builtins.int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+        :param _builtins.int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         :param _builtins.int consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param _builtins.int consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
         :param _builtins.int offset_flush_interval_ms: The interval at which to try committing offsets for tasks (defaults to 60000).
@@ -38933,7 +39205,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
         :param _builtins.int producer_buffer_memory: The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
         :param _builtins.str producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param _builtins.int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
-        :param _builtins.int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+        :param _builtins.int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         :param _builtins.int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         :param _builtins.int session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
         """
@@ -38990,7 +39262,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @pulumi.getter(name="consumerFetchMaxBytes")
     def consumer_fetch_max_bytes(self) -> Optional[_builtins.int]:
         """
-        Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+        Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
         """
         return pulumi.get(self, "consumer_fetch_max_bytes")
 
@@ -39006,7 +39278,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @pulumi.getter(name="consumerMaxPartitionFetchBytes")
     def consumer_max_partition_fetch_bytes(self) -> Optional[_builtins.int]:
         """
-        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         """
         return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
@@ -39078,7 +39350,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[_builtins.int]:
         """
-        This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+        This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         """
         return pulumi.get(self, "producer_max_request_size")
 
@@ -39587,6 +39859,7 @@ class GetKafkaKafkaUserConfigResult(dict):
                  kafka_connect_config: Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectConfigResult'] = None,
                  kafka_connect_plugin_versions: Optional[Sequence['outputs.GetKafkaKafkaUserConfigKafkaConnectPluginVersionResult']] = None,
                  kafka_connect_secret_providers: Optional[Sequence['outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult']] = None,
+                 kafka_diskless: Optional['outputs.GetKafkaKafkaUserConfigKafkaDisklessResult'] = None,
                  kafka_rest: Optional[_builtins.bool] = None,
                  kafka_rest_authorization: Optional[_builtins.bool] = None,
                  kafka_rest_config: Optional['outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult'] = None,
@@ -39615,11 +39888,12 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param _builtins.bool kafka_connect: Enable Kafka Connect service. Default: `false`.
         :param 'GetKafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
         :param Sequence['GetKafkaKafkaUserConfigKafkaConnectPluginVersionArgs'] kafka_connect_plugin_versions: The plugin selected by the user
+        :param 'GetKafkaKafkaUserConfigKafkaDisklessArgs' kafka_diskless: Kafka Diskless configuration values
         :param _builtins.bool kafka_rest: Enable Kafka-REST service. Default: `false`.
         :param _builtins.bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'GetKafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
         :param 'GetKafkaKafkaUserConfigKafkaSaslMechanismsArgs' kafka_sasl_mechanisms: Kafka SASL mechanisms
-        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
         :param _builtins.bool letsencrypt_sasl_privatelink: Use Letsencrypt CA for Kafka SASL via Privatelink.
         :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetKafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
@@ -39657,6 +39931,8 @@ class GetKafkaKafkaUserConfigResult(dict):
             pulumi.set(__self__, "kafka_connect_plugin_versions", kafka_connect_plugin_versions)
         if kafka_connect_secret_providers is not None:
             pulumi.set(__self__, "kafka_connect_secret_providers", kafka_connect_secret_providers)
+        if kafka_diskless is not None:
+            pulumi.set(__self__, "kafka_diskless", kafka_diskless)
         if kafka_rest is not None:
             pulumi.set(__self__, "kafka_rest", kafka_rest)
         if kafka_rest_authorization is not None:
@@ -39792,6 +40068,14 @@ class GetKafkaKafkaUserConfigResult(dict):
         return pulumi.get(self, "kafka_connect_secret_providers")
 
     @_builtins.property
+    @pulumi.getter(name="kafkaDiskless")
+    def kafka_diskless(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaDisklessResult']:
+        """
+        Kafka Diskless configuration values
+        """
+        return pulumi.get(self, "kafka_diskless")
+
+    @_builtins.property
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[_builtins.bool]:
         """
@@ -39827,7 +40111,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -39983,6 +40267,8 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
                  log_local_retention_bytes: Optional[_builtins.int] = None,
                  log_local_retention_ms: Optional[_builtins.int] = None,
                  log_message_downconversion_enable: Optional[_builtins.bool] = None,
+                 log_message_timestamp_after_max_ms: Optional[_builtins.int] = None,
+                 log_message_timestamp_before_max_ms: Optional[_builtins.int] = None,
                  log_message_timestamp_difference_max_ms: Optional[_builtins.int] = None,
                  log_message_timestamp_type: Optional[_builtins.str] = None,
                  log_preallocate: Optional[_builtins.bool] = None,
@@ -40016,9 +40302,9 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         :param _builtins.int connections_max_idle_ms: Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.
         :param _builtins.int default_replication_factor: Replication factor for auto-created topics (Default: 3).
         :param _builtins.int group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
-        :param _builtins.int group_max_session_timeout_ms: The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+        :param _builtins.int group_max_session_timeout_ms: The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
         :param _builtins.int group_min_session_timeout_ms: The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
-        :param _builtins.int log_cleaner_delete_retention_ms: How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+        :param _builtins.int log_cleaner_delete_retention_ms: How long are delete records retained? (Default: 86400000 (1 day)).
         :param _builtins.int log_cleaner_max_compaction_lag_ms: The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).
         :param _builtins.float log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.
         :param _builtins.int log_cleaner_min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted. (Default: 0 ms).
@@ -40026,10 +40312,12 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         :param _builtins.int log_flush_interval_messages: The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
         :param _builtins.int log_flush_interval_ms: The maximum time in ms that a message in any topic is kept in memory (page-cache) before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used (Default: null).
         :param _builtins.int log_index_interval_bytes: The interval with which Kafka adds an entry to the offset index (Default: 4096 bytes (4 kibibytes)). Example: `4096`.
-        :param _builtins.int log_index_size_max_bytes: The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+        :param _builtins.int log_index_size_max_bytes: The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
         :param _builtins.int log_local_retention_bytes: The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value. (Default: -2).
         :param _builtins.int log_local_retention_ms: The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value. (Default: -2).
         :param _builtins.bool log_message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).
+        :param _builtins.int log_message_timestamp_after_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+        :param _builtins.int log_message_timestamp_before_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
         :param _builtins.int log_message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
         :param _builtins.str log_message_timestamp_type: Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time. (Default: CreateTime).
         :param _builtins.bool log_preallocate: Should pre allocate file when create new segment? (Default: false).
@@ -40042,7 +40330,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         :param _builtins.int log_segment_delete_delay_ms: The amount of time to wait before deleting a file from the filesystem (Default: 60000 ms (1 minute)). Example: `60000`.
         :param _builtins.int max_connections_per_ip: The maximum number of connections allowed from each ip address (Default: 2147483647).
         :param _builtins.int max_incremental_fetch_session_cache_slots: The maximum number of incremental fetch sessions that the broker will maintain. (Default: 1000). Example: `1000`.
-        :param _builtins.int message_max_bytes: The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+        :param _builtins.int message_max_bytes: The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
         :param _builtins.int min_insync_replicas: When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. (Default: 1). Example: `1`.
         :param _builtins.int num_partitions: Number of partitions for auto-created topics (Default: 1).
         :param _builtins.int offsets_retention_minutes: Log retention window in minutes for offsets topic (Default: 10080 minutes (7 days)). Example: `10080`.
@@ -40055,8 +40343,8 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         :param _builtins.str sasl_oauthbearer_sub_claim_name: Name of the scope from which to extract the subject claim from the JWT.(Default: sub).
         :param _builtins.int socket_request_max_bytes: The maximum number of bytes in a socket request (Default: 104857600 bytes).
         :param _builtins.bool transaction_partition_verification_enable: Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
-        :param _builtins.int transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
-        :param _builtins.int transaction_state_log_segment_bytes: The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+        :param _builtins.int transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
+        :param _builtins.int transaction_state_log_segment_bytes: The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
         """
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
@@ -40096,6 +40384,10 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
             pulumi.set(__self__, "log_local_retention_ms", log_local_retention_ms)
         if log_message_downconversion_enable is not None:
             pulumi.set(__self__, "log_message_downconversion_enable", log_message_downconversion_enable)
+        if log_message_timestamp_after_max_ms is not None:
+            pulumi.set(__self__, "log_message_timestamp_after_max_ms", log_message_timestamp_after_max_ms)
+        if log_message_timestamp_before_max_ms is not None:
+            pulumi.set(__self__, "log_message_timestamp_before_max_ms", log_message_timestamp_before_max_ms)
         if log_message_timestamp_difference_max_ms is not None:
             pulumi.set(__self__, "log_message_timestamp_difference_max_ms", log_message_timestamp_difference_max_ms)
         if log_message_timestamp_type is not None:
@@ -40195,7 +40487,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="groupMaxSessionTimeoutMs")
     def group_max_session_timeout_ms(self) -> Optional[_builtins.int]:
         """
-        The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+        The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
         """
         return pulumi.get(self, "group_max_session_timeout_ms")
 
@@ -40211,7 +40503,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="logCleanerDeleteRetentionMs")
     def log_cleaner_delete_retention_ms(self) -> Optional[_builtins.int]:
         """
-        How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+        How long are delete records retained? (Default: 86400000 (1 day)).
         """
         return pulumi.get(self, "log_cleaner_delete_retention_ms")
 
@@ -40275,7 +40567,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="logIndexSizeMaxBytes")
     def log_index_size_max_bytes(self) -> Optional[_builtins.int]:
         """
-        The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+        The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
         """
         return pulumi.get(self, "log_index_size_max_bytes")
 
@@ -40302,6 +40594,22 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).
         """
         return pulumi.get(self, "log_message_downconversion_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="logMessageTimestampAfterMaxMs")
+    def log_message_timestamp_after_max_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+        """
+        return pulumi.get(self, "log_message_timestamp_after_max_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="logMessageTimestampBeforeMaxMs")
+    def log_message_timestamp_before_max_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+        """
+        return pulumi.get(self, "log_message_timestamp_before_max_ms")
 
     @_builtins.property
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
@@ -40403,7 +40711,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="messageMaxBytes")
     def message_max_bytes(self) -> Optional[_builtins.int]:
         """
-        The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+        The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
         """
         return pulumi.get(self, "message_max_bytes")
 
@@ -40507,7 +40815,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="transactionRemoveExpiredTransactionCleanupIntervalMs")
     def transaction_remove_expired_transaction_cleanup_interval_ms(self) -> Optional[_builtins.int]:
         """
-        The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+        The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
         """
         return pulumi.get(self, "transaction_remove_expired_transaction_cleanup_interval_ms")
 
@@ -40515,7 +40823,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="transactionStateLogSegmentBytes")
     def transaction_state_log_segment_bytes(self) -> Optional[_builtins.int]:
         """
-        The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+        The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
         """
         return pulumi.get(self, "transaction_state_log_segment_bytes")
 
@@ -40573,9 +40881,9 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
         """
         :param _builtins.str connector_client_config_override_policy: Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         :param _builtins.str consumer_auto_offset_reset: Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
-        :param _builtins.int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+        :param _builtins.int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
         :param _builtins.str consumer_isolation_level: Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
-        :param _builtins.int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+        :param _builtins.int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         :param _builtins.int consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param _builtins.int consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
         :param _builtins.int offset_flush_interval_ms: The interval at which to try committing offsets for tasks (defaults to 60000).
@@ -40584,7 +40892,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
         :param _builtins.int producer_buffer_memory: The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
         :param _builtins.str producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param _builtins.int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
-        :param _builtins.int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+        :param _builtins.int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         :param _builtins.int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         :param _builtins.int session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
         """
@@ -40641,7 +40949,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     @pulumi.getter(name="consumerFetchMaxBytes")
     def consumer_fetch_max_bytes(self) -> Optional[_builtins.int]:
         """
-        Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+        Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
         """
         return pulumi.get(self, "consumer_fetch_max_bytes")
 
@@ -40657,7 +40965,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     @pulumi.getter(name="consumerMaxPartitionFetchBytes")
     def consumer_max_partition_fetch_bytes(self) -> Optional[_builtins.int]:
         """
-        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         """
         return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
@@ -40729,7 +41037,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[_builtins.int]:
         """
-        This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+        This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         """
         return pulumi.get(self, "producer_max_request_size")
 
@@ -40940,6 +41248,24 @@ class GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultResult(dict):
 
 
 @pulumi.output_type
+class GetKafkaKafkaUserConfigKafkaDisklessResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether to enable the Diskless functionality.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether to enable the Diskless functionality.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
     def __init__(__self__, *,
                  consumer_enable_auto_commit: Optional[_builtins.bool] = None,
@@ -40956,14 +41282,14 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
         """
         :param _builtins.bool consumer_enable_auto_commit: If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
         :param _builtins.int consumer_idle_disconnect_timeout: Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
-        :param _builtins.int consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+        :param _builtins.int consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and values by a single request.
         :param _builtins.int consumer_request_timeout_ms: Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
         :param _builtins.str name_strategy: Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
         :param _builtins.bool name_strategy_validation: If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
         :param _builtins.str producer_acks: Enum: `-1`, `0`, `1`, `all`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
         :param _builtins.str producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param _builtins.int producer_linger_ms: Wait for up to the given delay to allow batching records together. Default: `0`.
-        :param _builtins.int producer_max_request_size: The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+        :param _builtins.int producer_max_request_size: The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
         :param _builtins.int simpleconsumer_pool_size_max: Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
         """
         if consumer_enable_auto_commit is not None:
@@ -41009,7 +41335,7 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
     @pulumi.getter(name="consumerRequestMaxBytes")
     def consumer_request_max_bytes(self) -> Optional[_builtins.int]:
         """
-        Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+        Maximum number of bytes in unencoded message keys and values by a single request.
         """
         return pulumi.get(self, "consumer_request_max_bytes")
 
@@ -41065,7 +41391,7 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[_builtins.int]:
         """
-        The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+        The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
         """
         return pulumi.get(self, "producer_max_request_size")
 
@@ -42073,7 +42399,7 @@ class GetKafkaTopicConfigResult(dict):
         :param _builtins.str max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         :param _builtins.str max_message_bytes: The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         :param _builtins.bool message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
-        :param _builtins.str message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+        :param _builtins.str message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
         :param _builtins.str message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         :param _builtins.str message_timestamp_type: Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
         :param _builtins.float min_cleanable_dirty_ratio: This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
@@ -42254,7 +42580,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> Optional[_builtins.str]:
         """
-        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -44453,8 +44779,8 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         :param _builtins.int innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
         :param _builtins.str innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
         :param _builtins.int innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
-        :param _builtins.int innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
-        :param _builtins.int innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+        :param _builtins.int innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        :param _builtins.int innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         :param _builtins.bool innodb_print_all_deadlocks: When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
         :param _builtins.int innodb_read_io_threads: The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
         :param _builtins.bool innodb_rollback_on_timeout: When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
@@ -44463,9 +44789,9 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         :param _builtins.int interactive_timeout: The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
         :param _builtins.str internal_tmp_mem_storage_engine: Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
         :param _builtins.str log_output: Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow_query_log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
-        :param _builtins.float long_query_time: The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Example: `10.0`.
-        :param _builtins.int max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
-        :param _builtins.int max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
+        :param _builtins.float long_query_time: The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Example: `10`.
+        :param _builtins.int max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        :param _builtins.int max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
         :param _builtins.int net_buffer_length: Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
         :param _builtins.int net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
         :param _builtins.int net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
@@ -44473,7 +44799,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         :param _builtins.int sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
         :param _builtins.str sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
         :param _builtins.bool sql_require_primary_key: Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
-        :param _builtins.int tmp_table_size: Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
+        :param _builtins.int tmp_table_size: Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
         :param _builtins.int wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
         """
         if connect_timeout is not None:
@@ -44615,7 +44941,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
     @pulumi.getter(name="innodbLogBufferSize")
     def innodb_log_buffer_size(self) -> Optional[_builtins.int]:
         """
-        The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+        The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
         """
         return pulumi.get(self, "innodb_log_buffer_size")
 
@@ -44623,7 +44949,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
     @pulumi.getter(name="innodbOnlineAlterLogMaxSize")
     def innodb_online_alter_log_max_size(self) -> Optional[_builtins.int]:
         """
-        The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+        The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         """
         return pulumi.get(self, "innodb_online_alter_log_max_size")
 
@@ -44695,7 +45021,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
     @pulumi.getter(name="longQueryTime")
     def long_query_time(self) -> Optional[_builtins.float]:
         """
-        The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Example: `10.0`.
+        The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Example: `10`.
         """
         return pulumi.get(self, "long_query_time")
 
@@ -44703,7 +45029,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
     @pulumi.getter(name="maxAllowedPacket")
     def max_allowed_packet(self) -> Optional[_builtins.int]:
         """
-        Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+        Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
         """
         return pulumi.get(self, "max_allowed_packet")
 
@@ -44711,7 +45037,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
     @pulumi.getter(name="maxHeapTableSize")
     def max_heap_table_size(self) -> Optional[_builtins.int]:
         """
-        Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
+        Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
         """
         return pulumi.get(self, "max_heap_table_size")
 
@@ -44775,7 +45101,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
     @pulumi.getter(name="tmpTableSize")
     def tmp_table_size(self) -> Optional[_builtins.int]:
         """
-        Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
+        Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
         """
         return pulumi.get(self, "tmp_table_size")
 
@@ -45198,6 +45524,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
                  additional_backup_regions: Optional[_builtins.str] = None,
                  azure_migration: Optional['outputs.GetOpenSearchOpensearchUserConfigAzureMigrationResult'] = None,
                  custom_domain: Optional[_builtins.str] = None,
+                 custom_keystores: Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigCustomKeystoreResult']] = None,
                  disable_replication_factor_adjustment: Optional[_builtins.bool] = None,
                  gcs_migration: Optional['outputs.GetOpenSearchOpensearchUserConfigGcsMigrationResult'] = None,
                  index_patterns: Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult']] = None,
@@ -45226,6 +45553,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         :param _builtins.str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param 'GetOpenSearchOpensearchUserConfigAzureMigrationArgs' azure_migration: Azure migration settings
         :param _builtins.str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        :param Sequence['GetOpenSearchOpensearchUserConfigCustomKeystoreArgs'] custom_keystores: Allow to register custom keystores in OpenSearch
         :param _builtins.bool disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
         :param 'GetOpenSearchOpensearchUserConfigGcsMigrationArgs' gcs_migration: Google Cloud Storage migration settings
         :param Sequence['GetOpenSearchOpensearchUserConfigIndexPatternArgs'] index_patterns: Index patterns
@@ -45239,7 +45567,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         :param 'GetOpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration
         :param 'GetOpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings
         :param 'GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings
-        :param _builtins.str opensearch_version: Enum: `1`, `2`, and newer. OpenSearch major version.
+        :param _builtins.str opensearch_version: Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
         :param 'GetOpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param _builtins.str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
@@ -45257,6 +45585,8 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
             pulumi.set(__self__, "azure_migration", azure_migration)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
+        if custom_keystores is not None:
+            pulumi.set(__self__, "custom_keystores", custom_keystores)
         if disable_replication_factor_adjustment is not None:
             pulumi.set(__self__, "disable_replication_factor_adjustment", disable_replication_factor_adjustment)
         if gcs_migration is not None:
@@ -45329,6 +45659,14 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         """
         return pulumi.get(self, "custom_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="customKeystores")
+    def custom_keystores(self) -> Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigCustomKeystoreResult']]:
+        """
+        Allow to register custom keystores in OpenSearch
+        """
+        return pulumi.get(self, "custom_keystores")
 
     @_builtins.property
     @pulumi.getter(name="disableReplicationFactorAdjustment")
@@ -45439,7 +45777,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `1`, `2`, and newer. OpenSearch major version.
+        Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -45680,6 +46018,31 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
         A shared access signatures (SAS) token. One of key or sas_token should be specified.
         """
         return pulumi.get(self, "sas_token")
+
+
+@pulumi.output_type
+class GetOpenSearchOpensearchUserConfigCustomKeystoreResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str type: Enum: `azure`, `gcs`, `s3`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Enum: `azure`, `gcs`, `s3`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -46223,11 +46586,11 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         :param _builtins.bool ism_enabled: Specifies whether ISM is enabled or not.
         :param _builtins.bool ism_history_enabled: Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
         :param _builtins.int ism_history_max_age: The maximum age before rolling over the audit history index in hours. Example: `24`.
-        :param _builtins.int ism_history_max_docs: The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+        :param _builtins.int ism_history_max_docs: The maximum number of documents before rolling over the audit history index.
         :param _builtins.int ism_history_rollover_check_period: The time between rollover checks for the audit history index in hours. Example: `8`.
         :param _builtins.int ism_history_rollover_retention_period: How long audit history indices are kept in days. Example: `30`.
         :param _builtins.bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true.
-        :param _builtins.int knn_memory_circuit_breaker_limit: Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+        :param _builtins.int knn_memory_circuit_breaker_limit: Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
         :param _builtins.str node_search_cache_size: Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
         :param _builtins.bool override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         :param _builtins.bool plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
@@ -46612,7 +46975,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="ismHistoryMaxDocs")
     def ism_history_max_docs(self) -> Optional[_builtins.int]:
         """
-        The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+        The maximum number of documents before rolling over the audit history index.
         """
         return pulumi.get(self, "ism_history_max_docs")
 
@@ -46644,7 +47007,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="knnMemoryCircuitBreakerLimit")
     def knn_memory_circuit_breaker_limit(self) -> Optional[_builtins.int]:
         """
-        Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+        Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
         """
         return pulumi.get(self, "knn_memory_circuit_breaker_limit")
 
@@ -48502,6 +48865,25 @@ class GetOrganizationAddressTimeoutsResult(dict):
 
 
 @pulumi.output_type
+class GetOrganizationApplicationUserTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetOrganizationBillingGroupListBillingGroupResult(dict):
     def __init__(__self__, *,
                  billing_address_id: _builtins.str,
@@ -49855,7 +50237,7 @@ class GetPgPgUserConfigPgResult(dict):
         """
         :param _builtins.float autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
         :param _builtins.int autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-        :param _builtins.int autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+        :param _builtins.int autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
         :param _builtins.int autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
         :param _builtins.int autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
         :param _builtins.int autovacuum_vacuum_cost_delay: Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_delay value will be used. The default is `2` (upstream default).
@@ -49865,7 +50247,7 @@ class GetPgPgUserConfigPgResult(dict):
         :param _builtins.int bgwriter_delay: Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
         :param _builtins.int bgwriter_flush_after: Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
         :param _builtins.int bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-        :param _builtins.float bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+        :param _builtins.float bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
         :param _builtins.int deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
         :param _builtins.str default_toast_compression: Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
         :param _builtins.int idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
@@ -49897,7 +50279,7 @@ class GetPgPgUserConfigPgResult(dict):
         :param _builtins.bool pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
         :param _builtins.int pg_stat_monitor_dot_pgsm_max_buckets: Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
         :param _builtins.str pg_stat_statements_dot_track: Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-        :param _builtins.int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+        :param _builtins.int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
         :param _builtins.str timezone: PostgreSQL service timezone. Example: `Europe/Helsinki`.
         :param _builtins.int track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
         :param _builtins.str track_commit_timestamp: Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
@@ -50031,7 +50413,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="autovacuumFreezeMaxAge")
     def autovacuum_freeze_max_age(self) -> Optional[_builtins.int]:
         """
-        Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+        Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
         """
         return pulumi.get(self, "autovacuum_freeze_max_age")
 
@@ -50111,7 +50493,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="bgwriterLruMultiplier")
     def bgwriter_lru_multiplier(self) -> Optional[_builtins.float]:
         """
-        The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+        The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
         """
         return pulumi.get(self, "bgwriter_lru_multiplier")
 
@@ -50367,7 +50749,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="tempFileLimit")
     def temp_file_limit(self) -> Optional[_builtins.int]:
         """
-        PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+        PostgreSQL temporary file limit in KiB, -1 for unlimited.
         """
         return pulumi.get(self, "temp_file_limit")
 
@@ -51917,7 +52299,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigResult(dict):
     def __init__(__self__, *,
                  tables: Optional[Sequence['outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableResult']] = None):
         """
-        :param Sequence['GetServiceIntegrationClickhouseKafkaUserConfigTableArgs'] tables: Tables to create
+        :param Sequence['GetServiceIntegrationClickhouseKafkaUserConfigTableArgs'] tables: Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
         """
         if tables is not None:
             pulumi.set(__self__, "tables", tables)
@@ -51926,7 +52308,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigResult(dict):
     @pulumi.getter
     def tables(self) -> Optional[Sequence['outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableResult']]:
         """
-        Tables to create
+        Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
         """
         return pulumi.get(self, "tables")
 
@@ -51958,29 +52340,29 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
                  skip_broken_messages: Optional[_builtins.int] = None,
                  thread_per_consumer: Optional[_builtins.bool] = None):
         """
-        :param Sequence['GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs'] columns: Table columns
-        :param _builtins.str data_format: Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
-        :param _builtins.str group_name: Kafka consumers group. Default: `clickhouse`.
-        :param _builtins.str name: Name of the table. Example: `events`.
-        :param Sequence['GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs'] topics: Kafka topics
-        :param _builtins.str auto_offset_reset: Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
-        :param _builtins.str date_time_input_format: Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
-        :param _builtins.str handle_error_mode: Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
-        :param _builtins.int max_block_size: Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
-        :param _builtins.int max_rows_per_message: The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
-        :param _builtins.int num_consumers: The number of consumers per table per replica. Default: `1`.
-        :param _builtins.int poll_max_batch_size: Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+        :param Sequence['GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs'] columns: Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
+        :param _builtins.str data_format: Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
+        :param _builtins.str group_name: The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
+        :param _builtins.str name: The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
+        :param Sequence['GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs'] topics: Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
+        :param _builtins.str auto_offset_reset: Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
+        :param _builtins.str date_time_input_format: Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+        :param _builtins.str handle_error_mode: Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+        :param _builtins.int max_block_size: Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
+        :param _builtins.int max_rows_per_message: Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
+        :param _builtins.int num_consumers: Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
+        :param _builtins.int poll_max_batch_size: Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
         :param _builtins.int poll_max_timeout_ms: Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream_flush_interval_ms server setting by default (500ms). Default: `0`.
         :param _builtins.int producer_batch_num_messages: The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
-        :param _builtins.int producer_batch_size: The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+        :param _builtins.int producer_batch_size: The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
         :param _builtins.str producer_compression_codec: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
         :param _builtins.int producer_compression_level: The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
         :param _builtins.int producer_linger_ms: The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
-        :param _builtins.int producer_queue_buffering_max_kbytes: The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+        :param _builtins.int producer_queue_buffering_max_kbytes: The maximum size of the buffer in kilobytes before sending.
         :param _builtins.int producer_queue_buffering_max_messages: The maximum number of messages to buffer before sending. Default: `100000`.
         :param _builtins.int producer_request_required_acks: The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
-        :param _builtins.int skip_broken_messages: Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
-        :param _builtins.bool thread_per_consumer: Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+        :param _builtins.int skip_broken_messages: Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
+        :param _builtins.bool thread_per_consumer: When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
         """
         pulumi.set(__self__, "columns", columns)
         pulumi.set(__self__, "data_format", data_format)
@@ -52028,7 +52410,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter
     def columns(self) -> Sequence['outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult']:
         """
-        Table columns
+        Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
         """
         return pulumi.get(self, "columns")
 
@@ -52036,7 +52418,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="dataFormat")
     def data_format(self) -> _builtins.str:
         """
-        Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
+        Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
         """
         return pulumi.get(self, "data_format")
 
@@ -52044,7 +52426,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="groupName")
     def group_name(self) -> _builtins.str:
         """
-        Kafka consumers group. Default: `clickhouse`.
+        The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
         """
         return pulumi.get(self, "group_name")
 
@@ -52052,7 +52434,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the table. Example: `events`.
+        The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
         """
         return pulumi.get(self, "name")
 
@@ -52060,7 +52442,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter
     def topics(self) -> Sequence['outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableTopicResult']:
         """
-        Kafka topics
+        Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
         """
         return pulumi.get(self, "topics")
 
@@ -52068,7 +52450,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="autoOffsetReset")
     def auto_offset_reset(self) -> Optional[_builtins.str]:
         """
-        Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+        Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
         """
         return pulumi.get(self, "auto_offset_reset")
 
@@ -52076,7 +52458,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="dateTimeInputFormat")
     def date_time_input_format(self) -> Optional[_builtins.str]:
         """
-        Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
+        Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
         """
         return pulumi.get(self, "date_time_input_format")
 
@@ -52084,7 +52466,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="handleErrorMode")
     def handle_error_mode(self) -> Optional[_builtins.str]:
         """
-        Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+        Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
         """
         return pulumi.get(self, "handle_error_mode")
 
@@ -52092,7 +52474,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="maxBlockSize")
     def max_block_size(self) -> Optional[_builtins.int]:
         """
-        Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+        Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
         """
         return pulumi.get(self, "max_block_size")
 
@@ -52100,7 +52482,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="maxRowsPerMessage")
     def max_rows_per_message(self) -> Optional[_builtins.int]:
         """
-        The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+        Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
         """
         return pulumi.get(self, "max_rows_per_message")
 
@@ -52108,7 +52490,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="numConsumers")
     def num_consumers(self) -> Optional[_builtins.int]:
         """
-        The number of consumers per table per replica. Default: `1`.
+        Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
         """
         return pulumi.get(self, "num_consumers")
 
@@ -52116,7 +52498,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="pollMaxBatchSize")
     def poll_max_batch_size(self) -> Optional[_builtins.int]:
         """
-        Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+        Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
         """
         return pulumi.get(self, "poll_max_batch_size")
 
@@ -52140,7 +52522,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="producerBatchSize")
     def producer_batch_size(self) -> Optional[_builtins.int]:
         """
-        The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+        The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
         """
         return pulumi.get(self, "producer_batch_size")
 
@@ -52172,7 +52554,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="producerQueueBufferingMaxKbytes")
     def producer_queue_buffering_max_kbytes(self) -> Optional[_builtins.int]:
         """
-        The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+        The maximum size of the buffer in kilobytes before sending.
         """
         return pulumi.get(self, "producer_queue_buffering_max_kbytes")
 
@@ -52196,7 +52578,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="skipBrokenMessages")
     def skip_broken_messages(self) -> Optional[_builtins.int]:
         """
-        Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+        Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
         """
         return pulumi.get(self, "skip_broken_messages")
 
@@ -52204,7 +52586,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="threadPerConsumer")
     def thread_per_consumer(self) -> Optional[_builtins.bool]:
         """
-        Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+        When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
         """
         return pulumi.get(self, "thread_per_consumer")
 
@@ -52215,8 +52597,8 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult(dict):
                  name: _builtins.str,
                  type: _builtins.str):
         """
-        :param _builtins.str name: Column name. Example: `key`.
-        :param _builtins.str type: Column type. Example: `UInt64`.
+        :param _builtins.str name: The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
+        :param _builtins.str type: The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -52225,7 +52607,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Column name. Example: `key`.
+        The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
         """
         return pulumi.get(self, "name")
 
@@ -52233,7 +52615,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Column type. Example: `UInt64`.
+        The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
         """
         return pulumi.get(self, "type")
 
@@ -52243,7 +52625,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableTopicResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str):
         """
-        :param _builtins.str name: Name of the topic. Example: `topic_name`.
+        :param _builtins.str name: The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
         """
         pulumi.set(__self__, "name", name)
 
@@ -52251,7 +52633,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableTopicResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the topic. Example: `topic_name`.
+        The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
         """
         return pulumi.get(self, "name")
 
@@ -52991,7 +53373,7 @@ class GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult(dic
                -----END CERTIFICATE-----
                `.
         :param _builtins.int index_days_max: Maximum number of days of logs to keep. Default: `3`.
-        :param _builtins.float timeout: Elasticsearch request timeout limit. Default: `10.0`.
+        :param _builtins.float timeout: Elasticsearch request timeout limit. Default: `10`.
         """
         pulumi.set(__self__, "index_prefix", index_prefix)
         pulumi.set(__self__, "url", url)
@@ -53041,7 +53423,7 @@ class GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult(dic
     @pulumi.getter
     def timeout(self) -> Optional[_builtins.float]:
         """
-        Elasticsearch request timeout limit. Default: `10.0`.
+        Elasticsearch request timeout limit. Default: `10`.
         """
         return pulumi.get(self, "timeout")
 
@@ -53343,7 +53725,7 @@ class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult(dict):
                -----END CERTIFICATE-----
                `.
         :param _builtins.int index_days_max: Maximum number of days of logs to keep. Default: `3`.
-        :param _builtins.float timeout: OpenSearch request timeout limit. Default: `10.0`.
+        :param _builtins.float timeout: OpenSearch request timeout limit. Default: `10`.
         """
         pulumi.set(__self__, "index_prefix", index_prefix)
         pulumi.set(__self__, "url", url)
@@ -53393,7 +53775,7 @@ class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult(dict):
     @pulumi.getter
     def timeout(self) -> Optional[_builtins.float]:
         """
-        OpenSearch request timeout limit. Default: `10.0`.
+        OpenSearch request timeout limit. Default: `10`.
         """
         return pulumi.get(self, "timeout")
 
@@ -54141,10 +54523,10 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
         :param _builtins.int consumer_fetch_min_bytes: The minimum amount of data the server should return for a fetch request. Example: `1024`.
         :param _builtins.int consumer_max_poll_records: Set consumer max.poll.records. The default is 500. Example: `500`.
         :param _builtins.int producer_batch_size: The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
-        :param _builtins.int producer_buffer_memory: The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+        :param _builtins.int producer_buffer_memory: The amount of bytes producer can use for buffering data before publishing to broker.
         :param _builtins.str producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param _builtins.int producer_linger_ms: The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
-        :param _builtins.int producer_max_request_size: The maximum request size in bytes. Example: `1048576`.
+        :param _builtins.int producer_max_request_size: The maximum request size in bytes.
         """
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
@@ -54199,7 +54581,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="producerBufferMemory")
     def producer_buffer_memory(self) -> Optional[_builtins.int]:
         """
-        The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+        The amount of bytes producer can use for buffering data before publishing to broker.
         """
         return pulumi.get(self, "producer_buffer_memory")
 
@@ -54223,7 +54605,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[_builtins.int]:
         """
-        The maximum request size in bytes. Example: `1048576`.
+        The maximum request size in bytes.
         """
         return pulumi.get(self, "producer_max_request_size")
 

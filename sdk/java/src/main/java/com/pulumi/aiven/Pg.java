@@ -78,18 +78,18 @@ public class Pg extends com.pulumi.resources.CustomResource {
         return this.components;
     }
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      * @deprecated
-     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+    @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
     @Export(name="diskSpace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskSpace;
 
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
     public Output<Optional<String>> diskSpace() {
@@ -138,18 +138,14 @@ public class Pg extends com.pulumi.resources.CustomResource {
         return this.diskSpaceStep;
     }
     /**
-     * Disk space that service is currently using
-     * 
-     * @deprecated
-     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     @Export(name="diskSpaceUsed", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceUsed;
 
     /**
-     * @return Disk space that service is currently using
+     * @return The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
      * 
      */
     public Output<String> diskSpaceUsed() {

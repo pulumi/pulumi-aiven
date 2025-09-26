@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.OrganizationApplicationUserTokenTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -20,14 +21,14 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
     public static final OrganizationApplicationUserTokenArgs Empty = new OrganizationApplicationUserTokenArgs();
 
     /**
-     * Description of the token.
+     * Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the token.
+     * @return Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -35,14 +36,14 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
     }
 
     /**
-     * Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+     * Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="extendWhenUsed")
     private @Nullable Output<Boolean> extendWhenUsed;
 
     /**
-     * @return Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+     * @return Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<Boolean>> extendWhenUsed() {
@@ -50,14 +51,14 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
     }
 
     /**
-     * List of allowed IP ranges.
+     * List of allowed IP ranges. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="ipAllowlists")
     private @Nullable Output<List<String>> ipAllowlists;
 
     /**
-     * @return List of allowed IP ranges.
+     * @return List of allowed IP ranges. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> ipAllowlists() {
@@ -65,14 +66,14 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
     }
 
     /**
-     * The number of hours after which a token expires. If not set, it never expires.
+     * Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="maxAgeSeconds")
     private @Nullable Output<Integer> maxAgeSeconds;
 
     /**
-     * @return The number of hours after which a token expires. If not set, it never expires.
+     * @return Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<Integer>> maxAgeSeconds() {
@@ -80,14 +81,14 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
     }
 
     /**
-     * The ID of the organization the application user belongs to.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization the application user belongs to.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -95,29 +96,36 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
     }
 
     /**
-     * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+     * Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+     * @return Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationApplicationUserTokenTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationApplicationUserTokenTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * The ID of the application user the token is created for.
+     * User ID. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="userId", required=true)
     private Output<String> userId;
 
     /**
-     * @return The ID of the application user the token is created for.
+     * @return User ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> userId() {
@@ -133,6 +141,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         this.maxAgeSeconds = $.maxAgeSeconds;
         this.organizationId = $.organizationId;
         this.scopes = $.scopes;
+        this.timeouts = $.timeouts;
         this.userId = $.userId;
     }
 
@@ -155,7 +164,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param description Description of the token.
+         * @param description Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -166,7 +175,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param description Description of the token.
+         * @param description Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -176,7 +185,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param extendWhenUsed Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+         * @param extendWhenUsed Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -187,7 +196,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param extendWhenUsed Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+         * @param extendWhenUsed Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -197,7 +206,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param ipAllowlists List of allowed IP ranges.
+         * @param ipAllowlists List of allowed IP ranges. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -208,7 +217,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param ipAllowlists List of allowed IP ranges.
+         * @param ipAllowlists List of allowed IP ranges. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -218,7 +227,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param ipAllowlists List of allowed IP ranges.
+         * @param ipAllowlists List of allowed IP ranges. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -228,7 +237,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxAgeSeconds The number of hours after which a token expires. If not set, it never expires.
+         * @param maxAgeSeconds Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -239,7 +248,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxAgeSeconds The number of hours after which a token expires. If not set, it never expires.
+         * @param maxAgeSeconds Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -249,7 +258,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param organizationId The ID of the organization the application user belongs to.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -260,7 +269,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param organizationId The ID of the organization the application user belongs to.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -270,7 +279,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param scopes Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+         * @param scopes Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -281,7 +290,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param scopes Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+         * @param scopes Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -291,7 +300,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param scopes Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+         * @param scopes Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -300,8 +309,17 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
             return scopes(List.of(scopes));
         }
 
+        public Builder timeouts(@Nullable Output<OrganizationApplicationUserTokenTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationApplicationUserTokenTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param userId The ID of the application user the token is created for.
+         * @param userId User ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -312,7 +330,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param userId The ID of the application user the token is created for.
+         * @param userId User ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

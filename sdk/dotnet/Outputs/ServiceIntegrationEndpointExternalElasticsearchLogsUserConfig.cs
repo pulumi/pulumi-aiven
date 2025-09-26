@@ -29,7 +29,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string IndexPrefix;
         /// <summary>
-        /// Elasticsearch request timeout limit. Default: `10.0`.
+        /// Elasticsearch request timeout limit. Default: `10`.
         /// </summary>
         public readonly double? Timeout;
         /// <summary>

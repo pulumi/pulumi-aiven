@@ -97,28 +97,31 @@ namespace Pulumi.Aiven
     public partial class OrganizationPermission : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Organization ID.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Permissions to grant to principals.
+        /// Required property. List of roles to set.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.OrganizationPermissionPermission>> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID.
+        /// Resource Id. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// Resource type. The possible values are `organization`, `organization_unit` and `project`.
+        /// Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.OrganizationPermissionTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -167,16 +170,16 @@ namespace Pulumi.Aiven
     public sealed class OrganizationPermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Organization ID.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("permissions", required: true)]
+        [Input("permissions")]
         private InputList<Inputs.OrganizationPermissionPermissionArgs>? _permissions;
 
         /// <summary>
-        /// Permissions to grant to principals.
+        /// Required property. List of roles to set.
         /// </summary>
         public InputList<Inputs.OrganizationPermissionPermissionArgs> Permissions
         {
@@ -185,16 +188,19 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Resource ID.
+        /// Resource Id. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
-        /// Resource type. The possible values are `organization`, `organization_unit` and `project`.
+        /// Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationPermissionTimeoutsArgs>? Timeouts { get; set; }
 
         public OrganizationPermissionArgs()
         {
@@ -205,7 +211,7 @@ namespace Pulumi.Aiven
     public sealed class OrganizationPermissionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Organization ID.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
@@ -214,7 +220,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OrganizationPermissionPermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// Permissions to grant to principals.
+        /// Required property. List of roles to set.
         /// </summary>
         public InputList<Inputs.OrganizationPermissionPermissionGetArgs> Permissions
         {
@@ -223,16 +229,19 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Resource ID.
+        /// Resource Id. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// Resource type. The possible values are `organization`, `organization_unit` and `project`.
+        /// Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationPermissionTimeoutsGetArgs>? Timeouts { get; set; }
 
         public OrganizationPermissionState()
         {

@@ -15,30 +15,10 @@ public final class GetM3dbUserResult {
      * 
      */
     private String id;
-    /**
-     * @return The M3DB service user&#39;s password.
-     * 
-     */
     private String password;
-    /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String project;
-    /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String serviceName;
-    /**
-     * @return User account type, such as primary or regular account.
-     * 
-     */
     private String type;
-    /**
-     * @return Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String username;
 
     private GetM3dbUserResult() {}
@@ -49,38 +29,18 @@ public final class GetM3dbUserResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return The M3DB service user&#39;s password.
-     * 
-     */
     public String password() {
         return this.password;
     }
-    /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String project() {
         return this.project;
     }
-    /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String serviceName() {
         return this.serviceName;
     }
-    /**
-     * @return User account type, such as primary or regular account.
-     * 
-     */
     public String type() {
         return this.type;
     }
-    /**
-     * @return Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String username() {
         return this.username;
     }

@@ -100,21 +100,22 @@ export class OrganizationPermission extends pulumi.CustomResource {
     }
 
     /**
-     * Organization ID.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
-     * Permissions to grant to principals.
+     * Required property. List of roles to set.
      */
-    declare public readonly permissions: pulumi.Output<outputs.OrganizationPermissionPermission[]>;
+    declare public readonly permissions: pulumi.Output<outputs.OrganizationPermissionPermission[] | undefined>;
     /**
-     * Resource ID.
+     * Resource Id. Changing this property forces recreation of the resource.
      */
     declare public readonly resourceId: pulumi.Output<string>;
     /**
-     * Resource type. The possible values are `organization`, `organizationUnit` and `project`.
+     * Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
      */
     declare public readonly resourceType: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.OrganizationPermissionTimeouts | undefined>;
 
     /**
      * Create a OrganizationPermission resource with the given unique name, arguments, and options.
@@ -133,13 +134,11 @@ export class OrganizationPermission extends pulumi.CustomResource {
             resourceInputs["permissions"] = state?.permissions;
             resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as OrganizationPermissionArgs | undefined;
             if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
-            }
-            if (args?.permissions === undefined && !opts.urn) {
-                throw new Error("Missing required property 'permissions'");
             }
             if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
@@ -151,6 +150,7 @@ export class OrganizationPermission extends pulumi.CustomResource {
             resourceInputs["permissions"] = args?.permissions;
             resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["timeouts"] = args?.timeouts;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationPermission.__pulumiType, name, resourceInputs, opts);
@@ -162,21 +162,22 @@ export class OrganizationPermission extends pulumi.CustomResource {
  */
 export interface OrganizationPermissionState {
     /**
-     * Organization ID.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * Permissions to grant to principals.
+     * Required property. List of roles to set.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[]>;
     /**
-     * Resource ID.
+     * Resource Id. Changing this property forces recreation of the resource.
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * Resource type. The possible values are `organization`, `organizationUnit` and `project`.
+     * Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
      */
     resourceType?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.OrganizationPermissionTimeouts>;
 }
 
 /**
@@ -184,19 +185,20 @@ export interface OrganizationPermissionState {
  */
 export interface OrganizationPermissionArgs {
     /**
-     * Organization ID.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Permissions to grant to principals.
+     * Required property. List of roles to set.
      */
-    permissions: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[]>;
     /**
-     * Resource ID.
+     * Resource Id. Changing this property forces recreation of the resource.
      */
     resourceId: pulumi.Input<string>;
     /**
-     * Resource type. The possible values are `organization`, `organizationUnit` and `project`.
+     * Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
      */
     resourceType: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.OrganizationPermissionTimeouts>;
 }

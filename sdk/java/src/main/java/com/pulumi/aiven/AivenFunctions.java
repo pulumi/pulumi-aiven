@@ -526,12 +526,9 @@ public final class AivenFunctions {
     /**
      * The Account Team data source provides information about the existing Account Team.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -544,12 +541,9 @@ public final class AivenFunctions {
     /**
      * The Account Team data source provides information about the existing Account Team.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -562,12 +556,9 @@ public final class AivenFunctions {
     /**
      * The Account Team data source provides information about the existing Account Team.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -580,12 +571,9 @@ public final class AivenFunctions {
     /**
      * The Account Team data source provides information about the existing Account Team.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -598,12 +586,9 @@ public final class AivenFunctions {
     /**
      * The Account Team data source provides information about the existing Account Team.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -616,12 +601,9 @@ public final class AivenFunctions {
     /**
      * The Account Team Member data source provides information about the existing Aiven Account Team Member.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -634,12 +616,9 @@ public final class AivenFunctions {
     /**
      * The Account Team Member data source provides information about the existing Aiven Account Team Member.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -652,12 +631,9 @@ public final class AivenFunctions {
     /**
      * The Account Team Member data source provides information about the existing Aiven Account Team Member.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -670,12 +646,9 @@ public final class AivenFunctions {
     /**
      * The Account Team Member data source provides information about the existing Aiven Account Team Member.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -688,12 +661,9 @@ public final class AivenFunctions {
     /**
      * The Account Team Member data source provides information about the existing Aiven Account Team Member.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -706,12 +676,9 @@ public final class AivenFunctions {
     /**
      * The Account Team Project data source provides information about the existing Account Team Project.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -724,12 +691,9 @@ public final class AivenFunctions {
     /**
      * The Account Team Project data source provides information about the existing Account Team Project.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -742,12 +706,9 @@ public final class AivenFunctions {
     /**
      * The Account Team Project data source provides information about the existing Account Team Project.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -760,12 +721,9 @@ public final class AivenFunctions {
     /**
      * The Account Team Project data source provides information about the existing Account Team Project.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -778,12 +736,9 @@ public final class AivenFunctions {
     /**
      * The Account Team Project data source provides information about the existing Account Team Project.
      * 
-     * !&gt; **Teams have been deprecated and are being migrated to groups**
-     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
-     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
-     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
-     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
-     * migration guide for more information on the changes and migrating to groups.
+     * !&gt; **Teams have been replaced by groups**
+     * To make the transition to groups smoother,
+     * migrate your teams to groups.
      * 
      * &gt; **Important**
      * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
@@ -799,6 +754,19 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
+     * 
      */
     public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args) {
         return getAlloydbomni(args, InvokeOptions.Empty);
@@ -808,6 +776,19 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
      * 
      */
     public static CompletableFuture<GetAlloydbomniResult> getAlloydbomniPlain(GetAlloydbomniPlainArgs args) {
@@ -819,6 +800,19 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
+     * 
      */
     public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAlloydbomni:getAlloydbomni", TypeShape.of(GetAlloydbomniResult.class), args, Utilities.withVersion(options));
@@ -828,6 +822,19 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
      * 
      */
     public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args, InvokeOutputOptions options) {
@@ -839,6 +846,19 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
+     * 
      */
     public static CompletableFuture<GetAlloydbomniResult> getAlloydbomniPlain(GetAlloydbomniPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAlloydbomni:getAlloydbomni", TypeShape.of(GetAlloydbomniResult.class), args, Utilities.withVersion(options));
@@ -848,6 +868,19 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
      * 
      */
     public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args) {
@@ -859,6 +892,19 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
+     * 
      */
     public static CompletableFuture<GetAlloydbomniDatabaseResult> getAlloydbomniDatabasePlain(GetAlloydbomniDatabasePlainArgs args) {
         return getAlloydbomniDatabasePlain(args, InvokeOptions.Empty);
@@ -868,6 +914,19 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
      * 
      */
     public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args, InvokeOptions options) {
@@ -879,6 +938,19 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
+     * 
      */
     public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", TypeShape.of(GetAlloydbomniDatabaseResult.class), args, Utilities.withVersion(options));
@@ -888,6 +960,19 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
      * 
      */
     public static CompletableFuture<GetAlloydbomniDatabaseResult> getAlloydbomniDatabasePlain(GetAlloydbomniDatabasePlainArgs args, InvokeOptions options) {
@@ -899,6 +984,19 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
+     * 
      */
     public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args) {
         return getAlloydbomniUser(args, InvokeOptions.Empty);
@@ -908,6 +1006,19 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
      * 
      */
     public static CompletableFuture<GetAlloydbomniUserResult> getAlloydbomniUserPlain(GetAlloydbomniUserPlainArgs args) {
@@ -919,6 +1030,19 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
+     * 
      */
     public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
@@ -929,6 +1053,19 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
+     * 
      */
     public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
@@ -938,6 +1075,19 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+     * Aiven for PostgreSQL®,
+     * Aiven for ClickHouse®,
+     * and Aiven for MySQL®.
+     * To ensure uninterrupted service, complete your migration before December 5, 2025.
+     * For further assistance, contact the Aiven support team or your
+     * account team.
      * 
      */
     public static CompletableFuture<GetAlloydbomniUserResult> getAlloydbomniUserPlain(GetAlloydbomniUserPlainArgs args, InvokeOptions options) {
@@ -7228,683 +7378,48 @@ public final class AivenFunctions {
     public static CompletableFuture<GetKafkaUserResult> getKafkaUserPlain(GetKafkaUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaUser:getKafkaUser", TypeShape.of(GetKafkaUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3AggregatorArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-m3a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetM3AggregatorResult> getM3Aggregator(GetM3AggregatorArgs args) {
         return getM3Aggregator(args, InvokeOptions.Empty);
     }
-    /**
-     * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3AggregatorArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-m3a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetM3AggregatorResult> getM3AggregatorPlain(GetM3AggregatorPlainArgs args) {
         return getM3AggregatorPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3AggregatorArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-m3a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetM3AggregatorResult> getM3Aggregator(GetM3AggregatorArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getM3Aggregator:getM3Aggregator", TypeShape.of(GetM3AggregatorResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3AggregatorArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-m3a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetM3AggregatorResult> getM3Aggregator(GetM3AggregatorArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getM3Aggregator:getM3Aggregator", TypeShape.of(GetM3AggregatorResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3AggregatorArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-m3a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetM3AggregatorResult> getM3AggregatorPlain(GetM3AggregatorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getM3Aggregator:getM3Aggregator", TypeShape.of(GetM3AggregatorResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for M3DB service.
-     * 
-     * !&gt; **End of life notice**
-     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
-     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-     * before the end of life date.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3DbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleM3db = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-m3db-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetM3DbResult> getM3Db(GetM3DbArgs args) {
         return getM3Db(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for M3DB service.
-     * 
-     * !&gt; **End of life notice**
-     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
-     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-     * before the end of life date.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3DbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleM3db = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-m3db-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetM3DbResult> getM3DbPlain(GetM3DbPlainArgs args) {
         return getM3DbPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for M3DB service.
-     * 
-     * !&gt; **End of life notice**
-     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
-     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-     * before the end of life date.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3DbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleM3db = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-m3db-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetM3DbResult> getM3Db(GetM3DbArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getM3Db:getM3Db", TypeShape.of(GetM3DbResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for M3DB service.
-     * 
-     * !&gt; **End of life notice**
-     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
-     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-     * before the end of life date.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3DbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleM3db = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-m3db-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetM3DbResult> getM3Db(GetM3DbArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getM3Db:getM3Db", TypeShape.of(GetM3DbResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for M3DB service.
-     * 
-     * !&gt; **End of life notice**
-     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
-     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-     * before the end of life date.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3DbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleM3db = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-m3db-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetM3DbResult> getM3DbPlain(GetM3DbPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getM3Db:getM3Db", TypeShape.of(GetM3DbResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for M3DB service user.
-     * 
-     * !&gt; **End of life notice**
-     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
-     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-     * before the end of life date.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3dbUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName(exampleM3db.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-m3db-user")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args) {
         return getM3dbUser(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for M3DB service user.
-     * 
-     * !&gt; **End of life notice**
-     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
-     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-     * before the end of life date.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3dbUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName(exampleM3db.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-m3db-user")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetM3dbUserResult> getM3dbUserPlain(GetM3dbUserPlainArgs args) {
         return getM3dbUserPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for M3DB service user.
-     * 
-     * !&gt; **End of life notice**
-     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
-     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-     * before the end of life date.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3dbUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName(exampleM3db.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-m3db-user")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for M3DB service user.
-     * 
-     * !&gt; **End of life notice**
-     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
-     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-     * before the end of life date.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3dbUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName(exampleM3db.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-m3db-user")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for M3DB service user.
-     * 
-     * !&gt; **End of life notice**
-     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
-     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-     * before the end of life date.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetM3dbUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName(exampleM3db.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-m3db-user")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetM3dbUserResult> getM3dbUserPlain(GetM3dbUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
     }
@@ -10256,9 +9771,6 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven project.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -10299,9 +9811,6 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven project.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -10344,9 +9853,6 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven project.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -10388,9 +9894,6 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven project.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -10431,9 +9934,6 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven project.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 

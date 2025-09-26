@@ -63,7 +63,7 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("redisAclCategories")]
         public Output<ImmutableArray<string>> RedisAclCategories { get; private set; } = null!;
@@ -75,13 +75,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> RedisAclChannels { get; private set; } = null!;
 
         /// <summary>
-        /// Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("redisAclCommands")]
         public Output<ImmutableArray<string>> RedisAclCommands { get; private set; } = null!;
 
         /// <summary>
-        /// Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("redisAclKeys")]
         public Output<ImmutableArray<string>> RedisAclKeys { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCategories;
 
         /// <summary>
-        /// Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclCategories
         {
@@ -204,7 +204,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCommands;
 
         /// <summary>
-        /// Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclCommands
         {
@@ -216,7 +216,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclKeys;
 
         /// <summary>
-        /// Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclKeys
         {
@@ -270,7 +270,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCategories;
 
         /// <summary>
-        /// Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclCategories
         {
@@ -294,7 +294,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCommands;
 
         /// <summary>
-        /// Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclCommands
         {
@@ -306,7 +306,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclKeys;
 
         /// <summary>
-        /// Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclKeys
         {

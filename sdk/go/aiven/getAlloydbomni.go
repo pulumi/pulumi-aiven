@@ -15,6 +15,19 @@ import (
 //
 // **This resource is in the beta stage and may change without notice.** Set
 // the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+//
+// !> **End of life notice**
+// Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+// From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+// services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+// On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+// these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+// Aiven for PostgreSQL®,
+// Aiven for ClickHouse®,
+// and Aiven for MySQL®.
+// To ensure uninterrupted service, complete your migration before December 5, 2025.
+// For further assistance, contact the Aiven support team or your
+// account team.
 func LookupAlloydbomni(ctx *pulumi.Context, args *LookupAlloydbomniArgs, opts ...pulumi.InvokeOption) (*LookupAlloydbomniResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlloydbomniResult
@@ -45,7 +58,7 @@ type LookupAlloydbomniResult struct {
 	CloudName string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []GetAlloydbomniComponent `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap string `pulumi:"diskSpaceCap"`
@@ -53,7 +66,7 @@ type LookupAlloydbomniResult struct {
 	DiskSpaceDefault string `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep string `pulumi:"diskSpaceStep"`
-	// Disk space that service is currently using
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -157,7 +170,7 @@ func (o LookupAlloydbomniResultOutput) Components() GetAlloydbomniComponentArray
 	return o.ApplyT(func(v LookupAlloydbomniResult) []GetAlloydbomniComponent { return v.Components }).(GetAlloydbomniComponentArrayOutput)
 }
 
-// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 func (o LookupAlloydbomniResultOutput) DiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniResult) string { return v.DiskSpace }).(pulumi.StringOutput)
 }
@@ -177,7 +190,7 @@ func (o LookupAlloydbomniResultOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniResult) string { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
 
-// Disk space that service is currently using
+// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 func (o LookupAlloydbomniResultOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }

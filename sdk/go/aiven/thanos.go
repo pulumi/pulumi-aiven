@@ -63,9 +63,9 @@ type Thanos struct {
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components ThanosComponentArrayOutput `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -73,9 +73,7 @@ type Thanos struct {
 	DiskSpaceDefault pulumi.StringOutput `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
-	// Disk space that service is currently using
-	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
@@ -172,9 +170,9 @@ type thanosState struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []ThanosComponent `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -182,9 +180,7 @@ type thanosState struct {
 	DiskSpaceDefault *string `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
-	// Disk space that service is currently using
-	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -234,9 +230,9 @@ type ThanosState struct {
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components ThanosComponentArrayInput
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -244,9 +240,7 @@ type ThanosState struct {
 	DiskSpaceDefault pulumi.StringPtrInput
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
-	// Disk space that service is currently using
-	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -298,9 +292,9 @@ type thanosArgs struct {
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName *string `pulumi:"cloudName"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -336,9 +330,9 @@ type ThanosArgs struct {
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrInput
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -470,9 +464,9 @@ func (o ThanosOutput) Components() ThanosComponentArrayOutput {
 	return o.ApplyT(func(v *Thanos) ThanosComponentArrayOutput { return v.Components }).(ThanosComponentArrayOutput)
 }
 
-// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 //
-// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 func (o ThanosOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Thanos) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }
@@ -492,9 +486,7 @@ func (o ThanosOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v *Thanos) pulumi.StringOutput { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
 
-// Disk space that service is currently using
-//
-// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 func (o ThanosOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Thanos) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }

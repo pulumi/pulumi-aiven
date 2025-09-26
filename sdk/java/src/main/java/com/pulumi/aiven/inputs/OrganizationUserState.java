@@ -23,7 +23,7 @@ public final class OrganizationUserState extends com.pulumi.resources.ResourceAr
      * This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release.  */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     @Import(name="accepted")
     private @Nullable Output<Boolean> accepted;
 
@@ -34,7 +34,7 @@ public final class OrganizationUserState extends com.pulumi.resources.ResourceAr
      * This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release.  */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     public Optional<Output<Boolean>> accepted() {
         return Optional.ofNullable(this.accepted);
     }
@@ -61,7 +61,7 @@ public final class OrganizationUserState extends com.pulumi.resources.ResourceAr
      * This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release.  */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     @Import(name="invitedBy")
     private @Nullable Output<String> invitedBy;
 
@@ -72,7 +72,7 @@ public final class OrganizationUserState extends com.pulumi.resources.ResourceAr
      * This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release.  */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     public Optional<Output<String>> invitedBy() {
         return Optional.ofNullable(this.invitedBy);
     }
@@ -160,7 +160,7 @@ public final class OrganizationUserState extends com.pulumi.resources.ResourceAr
          * This field is deprecated and will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release.  */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. */
         public Builder accepted(@Nullable Output<Boolean> accepted) {
             $.accepted = accepted;
             return this;
@@ -175,7 +175,7 @@ public final class OrganizationUserState extends com.pulumi.resources.ResourceAr
          * This field is deprecated and will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release.  */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. */
         public Builder accepted(Boolean accepted) {
             return accepted(Output.of(accepted));
         }
@@ -210,7 +210,7 @@ public final class OrganizationUserState extends com.pulumi.resources.ResourceAr
          * This field is deprecated and will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release.  */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. */
         public Builder invitedBy(@Nullable Output<String> invitedBy) {
             $.invitedBy = invitedBy;
             return this;
@@ -225,7 +225,7 @@ public final class OrganizationUserState extends com.pulumi.resources.ResourceAr
          * This field is deprecated and will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release.  */
+        @Deprecated /* This field is deprecated and will be removed in the next major release. */
         public Builder invitedBy(String invitedBy) {
             return invitedBy(Output.of(invitedBy));
         }

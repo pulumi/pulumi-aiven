@@ -78,9 +78,9 @@ export class Grafana extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly components: pulumi.Output<outputs.GrafanaComponent[]>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      */
     declare public readonly diskSpace: pulumi.Output<string | undefined>;
     /**
@@ -96,9 +96,7 @@ export class Grafana extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly diskSpaceStep: pulumi.Output<string>;
     /**
-     * Disk space that service is currently using
-     *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      */
     declare public /*out*/ readonly diskSpaceUsed: pulumi.Output<string>;
     /**
@@ -281,9 +279,9 @@ export interface GrafanaState {
      */
     components?: pulumi.Input<pulumi.Input<inputs.GrafanaComponent>[]>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -299,9 +297,7 @@ export interface GrafanaState {
      */
     diskSpaceStep?: pulumi.Input<string>;
     /**
-     * Disk space that service is currently using
-     *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      */
     diskSpaceUsed?: pulumi.Input<string>;
     /**
@@ -396,9 +392,9 @@ export interface GrafanaArgs {
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
     /**

@@ -33,7 +33,7 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
      */
     private String indexPrefix;
     /**
-     * @return OpenSearch request timeout limit. Default: `10.0`.
+     * @return OpenSearch request timeout limit. Default: `10`.
      * 
      */
     private @Nullable Double timeout;
@@ -69,7 +69,7 @@ public final class ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
         return this.indexPrefix;
     }
     /**
-     * @return OpenSearch request timeout limit. Default: `10.0`.
+     * @return OpenSearch request timeout limit. Default: `10`.
      * 
      */
     public Optional<Double> timeout() {

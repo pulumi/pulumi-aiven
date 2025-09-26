@@ -12,48 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an Aiven for M3 service user.
-//
-// !> **End of life notice**
-// **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-// You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
-// To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-// before the end of life date.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewM3dbUser(ctx, "example_service_user", &aiven.M3dbUserArgs{
-//				ServiceName: pulumi.Any(exampleM3db.ServiceName),
-//				Project:     pulumi.Any(exampleProject.Project),
-//				Username:    pulumi.String("example-m3db-user"),
-//				Password:    pulumi.Any(serviceUserPw),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import aiven:index/m3dbUser:M3dbUser example_service_user PROJECT/SERVICE_NAME/USERNAME
-// ```
 type M3dbUser struct {
 	pulumi.CustomResourceState
 

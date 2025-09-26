@@ -80,7 +80,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? PekkoAskTimeoutS { get; set; }
 
         /// <summary>
-        /// Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+        /// Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
         /// </summary>
         [Input("pekkoFramesizeB")]
         public Input<int>? PekkoFramesizeB { get; set; }

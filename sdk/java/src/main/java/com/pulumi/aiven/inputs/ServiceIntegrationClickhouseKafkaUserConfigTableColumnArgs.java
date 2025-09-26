@@ -15,14 +15,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs ex
     public static final ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs Empty = new ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs();
 
     /**
-     * Column name. Example: `key`.
+     * The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Column name. Example: `key`.
+     * @return The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
      * 
      */
     public Output<String> name() {
@@ -30,14 +30,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs ex
     }
 
     /**
-     * Column type. Example: `UInt64`.
+     * The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Column type. Example: `UInt64`.
+     * @return The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
      * 
      */
     public Output<String> type() {
@@ -70,7 +70,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs ex
         }
 
         /**
-         * @param name Column name. Example: `key`.
+         * @param name The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs ex
         }
 
         /**
-         * @param name Column name. Example: `key`.
+         * @param name The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs ex
         }
 
         /**
-         * @param type Column type. Example: `UInt64`.
+         * @param type The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs ex
         }
 
         /**
-         * @param type Column type. Example: `UInt64`.
+         * @param type The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
          * 
          * @return builder
          * 

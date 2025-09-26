@@ -266,7 +266,7 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      */
     autovacuumAnalyzeThreshold?: pulumi.Input<number>;
     /**
-     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
      */
     autovacuumFreezeMaxAge?: pulumi.Input<number>;
     /**
@@ -306,7 +306,7 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      */
     bgwriterLruMaxpages?: pulumi.Input<number>;
     /**
-     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
      */
     bgwriterLruMultiplier?: pulumi.Input<number>;
     /**
@@ -422,7 +422,7 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      */
     pgStatStatementsDotTrack?: pulumi.Input<string>;
     /**
-     * PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
      */
     tempFileLimit?: pulumi.Input<number>;
     /**
@@ -1450,7 +1450,7 @@ export interface FlinkFlinkUserConfig {
      */
     pekkoAskTimeoutS?: pulumi.Input<number>;
     /**
-     * Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     * Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
      */
     pekkoFramesizeB?: pulumi.Input<number>;
     /**
@@ -1665,6 +1665,20 @@ export interface GetOrganizationAddressTimeouts {
 }
 
 export interface GetOrganizationAddressTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationApplicationUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationApplicationUserTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
@@ -2836,7 +2850,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerAutoOffsetReset?: pulumi.Input<string>;
     /**
-     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
      */
     consumerFetchMaxBytes?: pulumi.Input<number>;
     /**
@@ -2844,7 +2858,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerIsolationLevel?: pulumi.Input<string>;
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      */
     consumerMaxPartitionFetchBytes?: pulumi.Input<number>;
     /**
@@ -2880,7 +2894,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     producerLingerMs?: pulumi.Input<number>;
     /**
-     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
      */
     producerMaxRequestSize?: pulumi.Input<number>;
     /**
@@ -3120,6 +3134,10 @@ export interface KafkaKafkaUserConfig {
     kafkaConnectPluginVersions?: pulumi.Input<pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectPluginVersion>[]>;
     kafkaConnectSecretProviders?: pulumi.Input<pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProvider>[]>;
     /**
+     * Kafka Diskless configuration values
+     */
+    kafkaDiskless?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaDiskless>;
+    /**
      * Enable Kafka-REST service. Default: `false`.
      */
     kafkaRest?: pulumi.Input<boolean>;
@@ -3136,7 +3154,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaSaslMechanisms>;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
      */
     kafkaVersion?: pulumi.Input<string>;
     /**
@@ -3221,7 +3239,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     groupInitialRebalanceDelayMs?: pulumi.Input<number>;
     /**
-     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
      */
     groupMaxSessionTimeoutMs?: pulumi.Input<number>;
     /**
@@ -3229,7 +3247,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     groupMinSessionTimeoutMs?: pulumi.Input<number>;
     /**
-     * How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+     * How long are delete records retained? (Default: 86400000 (1 day)).
      */
     logCleanerDeleteRetentionMs?: pulumi.Input<number>;
     /**
@@ -3261,7 +3279,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logIndexIntervalBytes?: pulumi.Input<number>;
     /**
-     * The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+     * The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
      */
     logIndexSizeMaxBytes?: pulumi.Input<number>;
     /**
@@ -3276,6 +3294,14 @@ export interface KafkaKafkaUserConfigKafka {
      * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).
      */
     logMessageDownconversionEnable?: pulumi.Input<boolean>;
+    /**
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+     */
+    logMessageTimestampAfterMaxMs?: pulumi.Input<number>;
+    /**
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+     */
+    logMessageTimestampBeforeMaxMs?: pulumi.Input<number>;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
      */
@@ -3325,7 +3351,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     maxIncrementalFetchSessionCacheSlots?: pulumi.Input<number>;
     /**
-     * The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+     * The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
      */
     messageMaxBytes?: pulumi.Input<number>;
     /**
@@ -3377,11 +3403,11 @@ export interface KafkaKafkaUserConfigKafka {
      */
     transactionPartitionVerificationEnable?: pulumi.Input<boolean>;
     /**
-     * The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+     * The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
      */
     transactionRemoveExpiredTransactionCleanupIntervalMs?: pulumi.Input<number>;
     /**
-     * The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+     * The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
      */
     transactionStateLogSegmentBytes?: pulumi.Input<number>;
 }
@@ -3407,7 +3433,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerAutoOffsetReset?: pulumi.Input<string>;
     /**
-     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
      */
     consumerFetchMaxBytes?: pulumi.Input<number>;
     /**
@@ -3415,7 +3441,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerIsolationLevel?: pulumi.Input<string>;
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      */
     consumerMaxPartitionFetchBytes?: pulumi.Input<number>;
     /**
@@ -3451,7 +3477,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     producerLingerMs?: pulumi.Input<number>;
     /**
-     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
      */
     producerMaxRequestSize?: pulumi.Input<number>;
     /**
@@ -3532,6 +3558,13 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProviderVault {
     token?: pulumi.Input<string>;
 }
 
+export interface KafkaKafkaUserConfigKafkaDiskless {
+    /**
+     * Whether to enable the Diskless functionality.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
 export interface KafkaKafkaUserConfigKafkaRestConfig {
     /**
      * If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
@@ -3542,7 +3575,7 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      */
     consumerIdleDisconnectTimeout?: pulumi.Input<number>;
     /**
-     * Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+     * Maximum number of bytes in unencoded message keys and values by a single request.
      */
     consumerRequestMaxBytes?: pulumi.Input<number>;
     /**
@@ -3570,7 +3603,7 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      */
     producerLingerMs?: pulumi.Input<number>;
     /**
-     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
      */
     producerMaxRequestSize?: pulumi.Input<number>;
     /**
@@ -3975,7 +4008,7 @@ export interface KafkaTopicConfig {
      */
     messageDownconversionEnable?: pulumi.Input<boolean>;
     /**
-     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
      */
     messageFormatVersion?: pulumi.Input<string>;
     /**
@@ -4461,7 +4494,7 @@ export interface M3DbM3dbUserConfigRulesMapping {
      */
     drop?: pulumi.Input<boolean>;
     /**
-     * Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
+     * Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
      */
     filter: pulumi.Input<string>;
     /**
@@ -4805,11 +4838,11 @@ export interface MySqlMysqlUserConfigMysql {
      */
     innodbLockWaitTimeout?: pulumi.Input<number>;
     /**
-     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
      */
     innodbLogBufferSize?: pulumi.Input<number>;
     /**
-     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      */
     innodbOnlineAlterLogMaxSize?: pulumi.Input<number>;
     /**
@@ -4845,15 +4878,15 @@ export interface MySqlMysqlUserConfigMysql {
      */
     logOutput?: pulumi.Input<string>;
     /**
-     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
      */
     longQueryTime?: pulumi.Input<number>;
     /**
-     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      */
     maxAllowedPacket?: pulumi.Input<number>;
     /**
-     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
+     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
      */
     maxHeapTableSize?: pulumi.Input<number>;
     /**
@@ -4885,7 +4918,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     sqlRequirePrimaryKey?: pulumi.Input<boolean>;
     /**
-     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
+     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
      */
     tmpTableSize?: pulumi.Input<number>;
     /**
@@ -5057,6 +5090,10 @@ export interface OpenSearchOpensearchUserConfig {
      */
     customDomain?: pulumi.Input<string>;
     /**
+     * Allow to register custom keystores in OpenSearch
+     */
+    customKeystores?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearchUserConfigCustomKeystore>[]>;
+    /**
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
      */
     disableReplicationFactorAdjustment?: pulumi.Input<boolean>;
@@ -5111,7 +5148,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchDashboards>;
     /**
-     * Enum: `1`, `2`, and newer. OpenSearch major version.
+     * Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
      */
     opensearchVersion?: pulumi.Input<string>;
     /**
@@ -5209,6 +5246,14 @@ export interface OpenSearchOpensearchUserConfigAzureMigration {
      * The snapshot name to restore from.
      */
     snapshotName: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigCustomKeystore {
+    name: pulumi.Input<string>;
+    /**
+     * Enum: `azure`, `gcs`, `s3`.
+     */
+    type: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigGcsMigration {
@@ -5489,7 +5534,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     ismHistoryMaxAge?: pulumi.Input<number>;
     /**
-     * The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+     * The maximum number of documents before rolling over the audit history index.
      */
     ismHistoryMaxDocs?: pulumi.Input<number>;
     /**
@@ -5505,7 +5550,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     knnMemoryCircuitBreakerEnabled?: pulumi.Input<boolean>;
     /**
-     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+     * Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
      */
     knnMemoryCircuitBreakerLimit?: pulumi.Input<number>;
     /**
@@ -6189,6 +6234,44 @@ export interface OrganizationAddressTimeouts {
     update?: pulumi.Input<string>;
 }
 
+export interface OrganizationApplicationUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OrganizationApplicationUserTokenTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface OrganizationBillingGroupTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -6229,11 +6312,11 @@ export interface OrganizationGroupProjectTimeouts {
 
 export interface OrganizationPermissionPermission {
     /**
-     * Time created.
+     * Create Time.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -6241,13 +6324,32 @@ export interface OrganizationPermissionPermission {
      */
     principalId: pulumi.Input<string>;
     /**
-     * The type of principal. The possible values are `user` and `userGroup`.
+     * An enumeration. The possible values are `user` and `userGroup`.
      */
     principalType: pulumi.Input<string>;
     /**
-     * Time updated.
+     * Update Time.
      */
     updateTime?: pulumi.Input<string>;
+}
+
+export interface OrganizationPermissionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface OrganizationProjectTag {
@@ -6640,7 +6742,7 @@ export interface PgPgUserConfigPg {
      */
     autovacuumAnalyzeThreshold?: pulumi.Input<number>;
     /**
-     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
      */
     autovacuumFreezeMaxAge?: pulumi.Input<number>;
     /**
@@ -6680,7 +6782,7 @@ export interface PgPgUserConfigPg {
      */
     bgwriterLruMaxpages?: pulumi.Input<number>;
     /**
-     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
      */
     bgwriterLruMultiplier?: pulumi.Input<number>;
     /**
@@ -6808,7 +6910,7 @@ export interface PgPgUserConfigPg {
      */
     pgStatStatementsDotTrack?: pulumi.Input<string>;
     /**
-     * PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
      */
     tempFileLimit?: pulumi.Input<number>;
     /**
@@ -7374,54 +7476,54 @@ export interface ServiceIntegrationClickhouseCredentialsUserConfigGrant {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfig {
     /**
-     * Tables to create
+     * Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
      */
     tables?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTable>[]>;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+     * Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
      */
     autoOffsetReset?: pulumi.Input<string>;
     /**
-     * Table columns
+     * Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
      */
     columns: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn>[]>;
     /**
-     * Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
+     * Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
      */
     dataFormat: pulumi.Input<string>;
     /**
-     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. Default: `basic`.
+     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
      */
     dateTimeInputFormat?: pulumi.Input<string>;
     /**
-     * Kafka consumers group. Default: `clickhouse`.
+     * The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
      */
     groupName: pulumi.Input<string>;
     /**
-     * Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+     * Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
      */
     handleErrorMode?: pulumi.Input<string>;
     /**
-     * Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+     * Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
      */
     maxBlockSize?: pulumi.Input<number>;
     /**
-     * The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+     * Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
      */
     maxRowsPerMessage?: pulumi.Input<number>;
     /**
-     * Name of the table. Example: `events`.
+     * The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
      */
     name: pulumi.Input<string>;
     /**
-     * The number of consumers per table per replica. Default: `1`.
+     * Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
      */
     numConsumers?: pulumi.Input<number>;
     /**
-     * Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+     * Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
      */
     pollMaxBatchSize?: pulumi.Input<number>;
     /**
@@ -7433,7 +7535,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     producerBatchNumMessages?: pulumi.Input<number>;
     /**
-     * The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+     * The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
      */
     producerBatchSize?: pulumi.Input<number>;
     /**
@@ -7449,7 +7551,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     producerLingerMs?: pulumi.Input<number>;
     /**
-     * The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+     * The maximum size of the buffer in kilobytes before sending.
      */
     producerQueueBufferingMaxKbytes?: pulumi.Input<number>;
     /**
@@ -7461,33 +7563,33 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     producerRequestRequiredAcks?: pulumi.Input<number>;
     /**
-     * Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+     * Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
      */
     skipBrokenMessages?: pulumi.Input<number>;
     /**
-     * Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+     * When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
      */
     threadPerConsumer?: pulumi.Input<boolean>;
     /**
-     * Kafka topics
+     * Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
      */
     topics: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic>[]>;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
     /**
-     * Column name. Example: `key`.
+     * The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
      */
     name: pulumi.Input<string>;
     /**
-     * Column type. Example: `UInt64`.
+     * The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
      */
     type: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
     /**
-     * Name of the topic. Example: `topicName`.
+     * The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topicName`.
      */
     name: pulumi.Input<string>;
 }
@@ -7766,7 +7868,7 @@ export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
      */
     indexPrefix: pulumi.Input<string>;
     /**
-     * Elasticsearch request timeout limit. Default: `10.0`.
+     * Elasticsearch request timeout limit. Default: `10`.
      */
     timeout?: pulumi.Input<number>;
     /**
@@ -7896,7 +7998,7 @@ export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
      */
     indexPrefix: pulumi.Input<string>;
     /**
-     * OpenSearch request timeout limit. Default: `10.0`.
+     * OpenSearch request timeout limit. Default: `10`.
      */
     timeout?: pulumi.Input<number>;
     /**
@@ -8187,7 +8289,7 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     producerBatchSize?: pulumi.Input<number>;
     /**
-     * The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+     * The amount of bytes producer can use for buffering data before publishing to broker.
      */
     producerBufferMemory?: pulumi.Input<number>;
     /**
@@ -8199,7 +8301,7 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     producerLingerMs?: pulumi.Input<number>;
     /**
-     * The maximum request size in bytes. Example: `1048576`.
+     * The maximum request size in bytes.
      */
     producerMaxRequestSize?: pulumi.Input<number>;
 }

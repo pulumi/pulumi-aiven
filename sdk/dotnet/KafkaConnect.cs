@@ -108,7 +108,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.KafkaConnectComponent>> Components { get; private set; } = null!;
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         /// </summary>
         [Output("diskSpace")]
         public Output<string?> DiskSpace { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceStep { get; private set; } = null!;
 
         /// <summary>
-        /// Disk space that service is currently using
+        /// The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
         /// </summary>
         [Output("diskSpaceUsed")]
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
@@ -312,7 +312,7 @@ namespace Pulumi.Aiven
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -446,7 +446,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -470,7 +470,7 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpaceStep { get; set; }
 
         /// <summary>
-        /// Disk space that service is currently using
+        /// The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
         /// </summary>
         [Input("diskSpaceUsed")]
         public Input<string>? DiskSpaceUsed { get; set; }

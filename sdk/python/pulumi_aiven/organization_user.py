@@ -73,15 +73,15 @@ class _OrganizationUserState:
         :param pulumi.Input[_builtins.str] user_id: The unique organization user ID
         """
         if accepted is not None:
-            warnings.warn("""This field is deprecated and will be removed in the next major release. """, DeprecationWarning)
-            pulumi.log.warn("""accepted is deprecated: This field is deprecated and will be removed in the next major release. """)
+            warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""accepted is deprecated: This field is deprecated and will be removed in the next major release.""")
         if accepted is not None:
             pulumi.set(__self__, "accepted", accepted)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if invited_by is not None:
-            warnings.warn("""This field is deprecated and will be removed in the next major release. """, DeprecationWarning)
-            pulumi.log.warn("""invited_by is deprecated: This field is deprecated and will be removed in the next major release. """)
+            warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""invited_by is deprecated: This field is deprecated and will be removed in the next major release.""")
         if invited_by is not None:
             pulumi.set(__self__, "invited_by", invited_by)
         if organization_id is not None:
@@ -93,7 +93,7 @@ class _OrganizationUserState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. """)
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def accepted(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
@@ -118,7 +118,7 @@ class _OrganizationUserState:
 
     @_builtins.property
     @pulumi.getter(name="invitedBy")
-    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. """)
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def invited_by(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The email address of the user who sent an invitation to the user.
@@ -270,7 +270,7 @@ class OrganizationUser(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. """)
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def accepted(self) -> pulumi.Output[_builtins.bool]:
         """
         This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
@@ -287,7 +287,7 @@ class OrganizationUser(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="invitedBy")
-    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. """)
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def invited_by(self) -> pulumi.Output[_builtins.str]:
         """
         The email address of the user who sent an invitation to the user.

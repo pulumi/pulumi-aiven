@@ -116,7 +116,7 @@ namespace Pulumi.Aiven
         public Output<string> Username { get; private set; } = null!;
 
         /// <summary>
-        /// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("valkeyAclCategories")]
         public Output<ImmutableArray<string>> ValkeyAclCategories { get; private set; } = null!;
@@ -128,13 +128,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> ValkeyAclChannels { get; private set; } = null!;
 
         /// <summary>
-        /// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("valkeyAclCommands")]
         public Output<ImmutableArray<string>> ValkeyAclCommands { get; private set; } = null!;
 
         /// <summary>
-        /// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("valkeyAclKeys")]
         public Output<ImmutableArray<string>> ValkeyAclKeys { get; private set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclCategories;
 
         /// <summary>
-        /// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclCategories
         {
@@ -251,7 +251,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclCommands;
 
         /// <summary>
-        /// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclCommands
         {
@@ -263,7 +263,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclKeys;
 
         /// <summary>
-        /// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclKeys
         {
@@ -323,7 +323,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclCategories;
 
         /// <summary>
-        /// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclCategories
         {
@@ -347,7 +347,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclCommands;
 
         /// <summary>
-        /// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclCommands
         {
@@ -359,7 +359,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclKeys;
 
         /// <summary>
-        /// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclKeys
         {

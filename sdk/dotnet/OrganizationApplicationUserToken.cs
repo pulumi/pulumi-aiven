@@ -48,103 +48,106 @@ namespace Pulumi.Aiven
     public partial class OrganizationApplicationUserToken : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Time when the token was created.
+        /// Create Time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// True for tokens explicitly created using the `access_tokens` API. False for tokens created when a user logs in.
+        /// True for tokens explicitly created via the access_tokens API, false for tokens created via login.
         /// </summary>
         [Output("createdManually")]
         public Output<bool> CreatedManually { get; private set; } = null!;
 
         /// <summary>
-        /// True if the API request was made with this token.
+        /// true if API request was made with this access token.
         /// </summary>
         [Output("currentlyActive")]
         public Output<bool> CurrentlyActive { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the token.
+        /// Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp when the access token will expire unless extended.
+        /// Timestamp when the access token will expire unless extended, if ever.
         /// </summary>
         [Output("expiryTime")]
         public Output<string> ExpiryTime { get; private set; } = null!;
 
         /// <summary>
-        /// Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+        /// Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("extendWhenUsed")]
-        public Output<bool?> ExtendWhenUsed { get; private set; } = null!;
+        public Output<bool> ExtendWhenUsed { get; private set; } = null!;
 
         /// <summary>
-        /// Full token.
+        /// Full Token.
         /// </summary>
         [Output("fullToken")]
         public Output<string> FullToken { get; private set; } = null!;
 
         /// <summary>
-        /// List of allowed IP ranges.
+        /// List of allowed IP ranges. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("ipAllowlists")]
         public Output<ImmutableArray<string>> IpAllowlists { get; private set; } = null!;
 
         /// <summary>
-        /// IP address of the last request made with this token.
+        /// IP address the access token was last used from in case it has ever been used.
         /// </summary>
         [Output("lastIp")]
         public Output<string> LastIp { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp when the access token was last used.
+        /// Timestamp when the access token was last used, if ever.
         /// </summary>
         [Output("lastUsedTime")]
         public Output<string> LastUsedTime { get; private set; } = null!;
 
         /// <summary>
-        /// User agent of the last request made with this token.
+        /// User agent string of the client that last used the token in case it has ever been used.
         /// </summary>
         [Output("lastUserAgent")]
         public Output<string> LastUserAgent { get; private set; } = null!;
 
         /// <summary>
-        /// User agent of the last request made with this token in human-readable format.
+        /// Human readable user agent string of the client that last used the token in case user agent is known.
         /// </summary>
         [Output("lastUserAgentHumanReadable")]
         public Output<string> LastUserAgentHumanReadable { get; private set; } = null!;
 
         /// <summary>
-        /// The number of hours after which a token expires. If not set, it never expires.
+        /// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
         /// </summary>
         [Output("maxAgeSeconds")]
         public Output<int?> MaxAgeSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the organization the application user belongs to.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+        /// Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.OrganizationApplicationUserTokenTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// Prefix of the token.
+        /// First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&amp;gt; %2F, + =&amp;gt; %2B, = =&amp;gt; %3D).
         /// </summary>
         [Output("tokenPrefix")]
         public Output<string> TokenPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the application user the token is created for.
+        /// User ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -200,13 +203,13 @@ namespace Pulumi.Aiven
     public sealed class OrganizationApplicationUserTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the token.
+        /// Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+        /// Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("extendWhenUsed")]
         public Input<bool>? ExtendWhenUsed { get; set; }
@@ -215,7 +218,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _ipAllowlists;
 
         /// <summary>
-        /// List of allowed IP ranges.
+        /// List of allowed IP ranges. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> IpAllowlists
         {
@@ -224,13 +227,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The number of hours after which a token expires. If not set, it never expires.
+        /// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
         /// </summary>
         [Input("maxAgeSeconds")]
         public Input<int>? MaxAgeSeconds { get; set; }
 
         /// <summary>
-        /// The ID of the organization the application user belongs to.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -239,7 +242,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+        /// Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -247,8 +250,11 @@ namespace Pulumi.Aiven
             set => _scopes = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationApplicationUserTokenTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The ID of the application user the token is created for.
+        /// User ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
@@ -262,37 +268,37 @@ namespace Pulumi.Aiven
     public sealed class OrganizationApplicationUserTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time when the token was created.
+        /// Create Time.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// True for tokens explicitly created using the `access_tokens` API. False for tokens created when a user logs in.
+        /// True for tokens explicitly created via the access_tokens API, false for tokens created via login.
         /// </summary>
         [Input("createdManually")]
         public Input<bool>? CreatedManually { get; set; }
 
         /// <summary>
-        /// True if the API request was made with this token.
+        /// true if API request was made with this access token.
         /// </summary>
         [Input("currentlyActive")]
         public Input<bool>? CurrentlyActive { get; set; }
 
         /// <summary>
-        /// Description of the token.
+        /// Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Timestamp when the access token will expire unless extended.
+        /// Timestamp when the access token will expire unless extended, if ever.
         /// </summary>
         [Input("expiryTime")]
         public Input<string>? ExpiryTime { get; set; }
 
         /// <summary>
-        /// Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+        /// Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("extendWhenUsed")]
         public Input<bool>? ExtendWhenUsed { get; set; }
@@ -301,7 +307,7 @@ namespace Pulumi.Aiven
         private Input<string>? _fullToken;
 
         /// <summary>
-        /// Full token.
+        /// Full Token.
         /// </summary>
         public Input<string>? FullToken
         {
@@ -317,7 +323,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _ipAllowlists;
 
         /// <summary>
-        /// List of allowed IP ranges.
+        /// List of allowed IP ranges. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> IpAllowlists
         {
@@ -326,37 +332,37 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// IP address of the last request made with this token.
+        /// IP address the access token was last used from in case it has ever been used.
         /// </summary>
         [Input("lastIp")]
         public Input<string>? LastIp { get; set; }
 
         /// <summary>
-        /// Timestamp when the access token was last used.
+        /// Timestamp when the access token was last used, if ever.
         /// </summary>
         [Input("lastUsedTime")]
         public Input<string>? LastUsedTime { get; set; }
 
         /// <summary>
-        /// User agent of the last request made with this token.
+        /// User agent string of the client that last used the token in case it has ever been used.
         /// </summary>
         [Input("lastUserAgent")]
         public Input<string>? LastUserAgent { get; set; }
 
         /// <summary>
-        /// User agent of the last request made with this token in human-readable format.
+        /// Human readable user agent string of the client that last used the token in case user agent is known.
         /// </summary>
         [Input("lastUserAgentHumanReadable")]
         public Input<string>? LastUserAgentHumanReadable { get; set; }
 
         /// <summary>
-        /// The number of hours after which a token expires. If not set, it never expires.
+        /// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
         /// </summary>
         [Input("maxAgeSeconds")]
         public Input<int>? MaxAgeSeconds { get; set; }
 
         /// <summary>
-        /// The ID of the organization the application user belongs to.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
@@ -365,7 +371,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+        /// Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -373,14 +379,17 @@ namespace Pulumi.Aiven
             set => _scopes = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationApplicationUserTokenTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Prefix of the token.
+        /// First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&amp;gt; %2F, + =&amp;gt; %2B, = =&amp;gt; %3D).
         /// </summary>
         [Input("tokenPrefix")]
         public Input<string>? TokenPrefix { get; set; }
 
         /// <summary>
-        /// The ID of the application user the token is created for.
+        /// User ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

@@ -75,9 +75,9 @@ type Kafka struct {
 	Components KafkaComponentArrayOutput `pulumi:"components"`
 	// Create a default wildcard Kafka ACL.
 	DefaultAcl pulumi.BoolPtrOutput `pulumi:"defaultAcl"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -85,9 +85,7 @@ type Kafka struct {
 	DiskSpaceDefault pulumi.StringOutput `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
-	// Disk space that service is currently using
-	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaUserConfig KafkaKafkaUserConfigPtrOutput `pulumi:"kafkaUserConfig"`
@@ -190,9 +188,9 @@ type kafkaState struct {
 	Components []KafkaComponent `pulumi:"components"`
 	// Create a default wildcard Kafka ACL.
 	DefaultAcl *bool `pulumi:"defaultAcl"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -200,9 +198,7 @@ type kafkaState struct {
 	DiskSpaceDefault *string `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
-	// Disk space that service is currently using
-	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
@@ -258,9 +254,9 @@ type KafkaState struct {
 	Components KafkaComponentArrayInput
 	// Create a default wildcard Kafka ACL.
 	DefaultAcl pulumi.BoolPtrInput
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -268,9 +264,7 @@ type KafkaState struct {
 	DiskSpaceDefault pulumi.StringPtrInput
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
-	// Disk space that service is currently using
-	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
@@ -328,9 +322,9 @@ type kafkaArgs struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Create a default wildcard Kafka ACL.
 	DefaultAcl *bool `pulumi:"defaultAcl"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
@@ -372,9 +366,9 @@ type KafkaArgs struct {
 	CloudName pulumi.StringPtrInput
 	// Create a default wildcard Kafka ACL.
 	DefaultAcl pulumi.BoolPtrInput
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
@@ -515,9 +509,9 @@ func (o KafkaOutput) DefaultAcl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.BoolPtrOutput { return v.DefaultAcl }).(pulumi.BoolPtrOutput)
 }
 
-// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 //
-// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 func (o KafkaOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }
@@ -537,9 +531,7 @@ func (o KafkaOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.StringOutput { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
 
-// Disk space that service is currently using
-//
-// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 func (o KafkaOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }

@@ -478,14 +478,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+     * The maximum number of documents before rolling over the audit history index.
      * 
      */
     @Import(name="ismHistoryMaxDocs")
     private @Nullable Output<Integer> ismHistoryMaxDocs;
 
     /**
-     * @return The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+     * @return The maximum number of documents before rolling over the audit history index.
      * 
      */
     public Optional<Output<Integer>> ismHistoryMaxDocs() {
@@ -538,14 +538,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+     * Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
      * 
      */
     @Import(name="knnMemoryCircuitBreakerLimit")
     private @Nullable Output<Integer> knnMemoryCircuitBreakerLimit;
 
     /**
-     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+     * @return Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
      * 
      */
     public Optional<Output<Integer>> knnMemoryCircuitBreakerLimit() {
@@ -1575,7 +1575,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index.
          * 
          * @return builder
          * 
@@ -1586,7 +1586,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index.
          * 
          * @return builder
          * 
@@ -1659,7 +1659,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param knnMemoryCircuitBreakerLimit Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+         * @param knnMemoryCircuitBreakerLimit Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
          * 
          * @return builder
          * 
@@ -1670,7 +1670,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param knnMemoryCircuitBreakerLimit Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+         * @param knnMemoryCircuitBreakerLimit Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
          * 
          * @return builder
          * 

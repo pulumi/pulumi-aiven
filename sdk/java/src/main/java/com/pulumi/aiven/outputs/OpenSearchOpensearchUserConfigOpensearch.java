@@ -172,7 +172,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer ismHistoryMaxAge;
     /**
-     * @return The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+     * @return The maximum number of documents before rolling over the audit history index.
      * 
      */
     private @Nullable Integer ismHistoryMaxDocs;
@@ -192,7 +192,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Boolean knnMemoryCircuitBreakerEnabled;
     /**
-     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+     * @return Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
      * 
      */
     private @Nullable Integer knnMemoryCircuitBreakerLimit;
@@ -510,7 +510,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.ismHistoryMaxAge);
     }
     /**
-     * @return The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+     * @return The maximum number of documents before rolling over the audit history index.
      * 
      */
     public Optional<Integer> ismHistoryMaxDocs() {
@@ -538,7 +538,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.knnMemoryCircuitBreakerEnabled);
     }
     /**
-     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+     * @return Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
      * 
      */
     public Optional<Integer> knnMemoryCircuitBreakerLimit() {

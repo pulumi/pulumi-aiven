@@ -86,7 +86,7 @@ class GetRedisUserResult:
     @pulumi.getter(name="redisAclCategories")
     def redis_acl_categories(self) -> Sequence[_builtins.str]:
         """
-        Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_categories")
 
@@ -102,7 +102,7 @@ class GetRedisUserResult:
     @pulumi.getter(name="redisAclCommands")
     def redis_acl_commands(self) -> Sequence[_builtins.str]:
         """
-        Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_commands")
 
@@ -110,7 +110,7 @@ class GetRedisUserResult:
     @pulumi.getter(name="redisAclKeys")
     def redis_acl_keys(self) -> Sequence[_builtins.str]:
         """
-        Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_keys")
 

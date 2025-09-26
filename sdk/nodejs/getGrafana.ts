@@ -60,7 +60,7 @@ export interface GetGrafanaResult {
      */
     readonly components: outputs.GetGrafanaComponent[];
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      */
     readonly diskSpace: string;
     /**
@@ -76,7 +76,7 @@ export interface GetGrafanaResult {
      */
     readonly diskSpaceStep: string;
     /**
-     * Disk space that service is currently using
+     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      */
     readonly diskSpaceUsed: string;
     /**

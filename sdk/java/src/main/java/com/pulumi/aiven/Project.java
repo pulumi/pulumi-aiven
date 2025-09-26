@@ -18,41 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
- * 
- * ## Example Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aiven.Project;
- * import com.pulumi.aiven.ProjectArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
- *             .project("example-project")
- *             .parentId(main.id())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
+ * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects). You should create projects in organizations or organizational units using the `parent_id` field. In a future release, this resource will be replaced by `aiven.OrganizationProject` resource, which requires the `parent_id` field.
  * 
  * ## Import
  * 

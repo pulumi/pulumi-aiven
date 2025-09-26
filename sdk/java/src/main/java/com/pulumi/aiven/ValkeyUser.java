@@ -161,14 +161,14 @@ public class ValkeyUser extends com.pulumi.resources.CustomResource {
         return this.username;
     }
     /**
-     * Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="valkeyAclCategories", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> valkeyAclCategories;
 
     /**
-     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> valkeyAclCategories() {
@@ -189,28 +189,28 @@ public class ValkeyUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.valkeyAclChannels);
     }
     /**
-     * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="valkeyAclCommands", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> valkeyAclCommands;
 
     /**
-     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> valkeyAclCommands() {
         return Codegen.optional(this.valkeyAclCommands);
     }
     /**
-     * Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="valkeyAclKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> valkeyAclKeys;
 
     /**
-     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> valkeyAclKeys() {

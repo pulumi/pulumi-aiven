@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
     /**
-     * @return Name of the topic. Example: `topic_name`.
+     * @return The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
      * 
      */
     private String name;
 
     private ServiceIntegrationClickhouseKafkaUserConfigTableTopic() {}
     /**
-     * @return Name of the topic. Example: `topic_name`.
+     * @return The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
      * 
      */
     public String name() {

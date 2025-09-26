@@ -158,14 +158,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     * Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
      * 
      */
     @Import(name="pekkoFramesizeB")
     private @Nullable Output<Integer> pekkoFramesizeB;
 
     /**
-     * @return Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     * @return Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
      * 
      */
     public Optional<Output<Integer>> pekkoFramesizeB() {
@@ -487,7 +487,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pekkoFramesizeB Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+         * @param pekkoFramesizeB Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
          * 
          * @return builder
          * 
@@ -498,7 +498,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pekkoFramesizeB Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+         * @param pekkoFramesizeB Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
          * 
          * @return builder
          * 

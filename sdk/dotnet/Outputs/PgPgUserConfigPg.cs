@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? AutovacuumAnalyzeThreshold;
         /// <summary>
-        /// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+        /// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
         /// </summary>
         public readonly int? AutovacuumFreezeMaxAge;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BgwriterLruMaxpages;
         /// <summary>
-        /// The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+        /// The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
         /// </summary>
         public readonly double? BgwriterLruMultiplier;
         /// <summary>
@@ -190,7 +190,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? PgStatStatementsDotTrack;
         /// <summary>
-        /// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+        /// PostgreSQL temporary file limit in KiB, -1 for unlimited.
         /// </summary>
         public readonly int? TempFileLimit;
         /// <summary>

@@ -10,6 +10,7 @@ import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaConnectConfig;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaConnectPluginVersion;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider;
+import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaDiskless;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaRestConfig;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaSaslMechanisms;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPrivateAccess;
@@ -98,6 +99,11 @@ public final class KafkaKafkaUserConfig {
     private @Nullable List<KafkaKafkaUserConfigKafkaConnectPluginVersion> kafkaConnectPluginVersions;
     private @Nullable List<KafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders;
     /**
+     * @return Kafka Diskless configuration values
+     * 
+     */
+    private @Nullable KafkaKafkaUserConfigKafkaDiskless kafkaDiskless;
+    /**
      * @return Enable Kafka-REST service. Default: `false`.
      * 
      */
@@ -118,7 +124,7 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable KafkaKafkaUserConfigKafkaSaslMechanisms kafkaSaslMechanisms;
     /**
-     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
      * 
      */
     private @Nullable String kafkaVersion;
@@ -270,6 +276,13 @@ public final class KafkaKafkaUserConfig {
         return this.kafkaConnectSecretProviders == null ? List.of() : this.kafkaConnectSecretProviders;
     }
     /**
+     * @return Kafka Diskless configuration values
+     * 
+     */
+    public Optional<KafkaKafkaUserConfigKafkaDiskless> kafkaDiskless() {
+        return Optional.ofNullable(this.kafkaDiskless);
+    }
+    /**
      * @return Enable Kafka-REST service. Default: `false`.
      * 
      */
@@ -298,7 +311,7 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.kafkaSaslMechanisms);
     }
     /**
-     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
      * 
      */
     public Optional<String> kafkaVersion() {
@@ -397,6 +410,7 @@ public final class KafkaKafkaUserConfig {
         private @Nullable KafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
         private @Nullable List<KafkaKafkaUserConfigKafkaConnectPluginVersion> kafkaConnectPluginVersions;
         private @Nullable List<KafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders;
+        private @Nullable KafkaKafkaUserConfigKafkaDiskless kafkaDiskless;
         private @Nullable Boolean kafkaRest;
         private @Nullable Boolean kafkaRestAuthorization;
         private @Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
@@ -428,6 +442,7 @@ public final class KafkaKafkaUserConfig {
     	      this.kafkaConnectConfig = defaults.kafkaConnectConfig;
     	      this.kafkaConnectPluginVersions = defaults.kafkaConnectPluginVersions;
     	      this.kafkaConnectSecretProviders = defaults.kafkaConnectSecretProviders;
+    	      this.kafkaDiskless = defaults.kafkaDiskless;
     	      this.kafkaRest = defaults.kafkaRest;
     	      this.kafkaRestAuthorization = defaults.kafkaRestAuthorization;
     	      this.kafkaRestConfig = defaults.kafkaRestConfig;
@@ -539,6 +554,12 @@ public final class KafkaKafkaUserConfig {
             return kafkaConnectSecretProviders(List.of(kafkaConnectSecretProviders));
         }
         @CustomType.Setter
+        public Builder kafkaDiskless(@Nullable KafkaKafkaUserConfigKafkaDiskless kafkaDiskless) {
+
+            this.kafkaDiskless = kafkaDiskless;
+            return this;
+        }
+        @CustomType.Setter
         public Builder kafkaRest(@Nullable Boolean kafkaRest) {
 
             this.kafkaRest = kafkaRest;
@@ -643,6 +664,7 @@ public final class KafkaKafkaUserConfig {
             _resultValue.kafkaConnectConfig = kafkaConnectConfig;
             _resultValue.kafkaConnectPluginVersions = kafkaConnectPluginVersions;
             _resultValue.kafkaConnectSecretProviders = kafkaConnectSecretProviders;
+            _resultValue.kafkaDiskless = kafkaDiskless;
             _resultValue.kafkaRest = kafkaRest;
             _resultValue.kafkaRestAuthorization = kafkaRestAuthorization;
             _resultValue.kafkaRestConfig = kafkaRestConfig;

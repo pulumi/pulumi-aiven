@@ -65,7 +65,7 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      */
     declare public readonly currency: pulumi.Output<string | undefined>;
     /**
-     * Extra billing text. Maximum length: `254`.
+     * Extra billing text. Maximum length: `256`.
      */
     declare public readonly customInvoiceText: pulumi.Output<string | undefined>;
     /**
@@ -181,7 +181,7 @@ export interface OrganizationBillingGroupState {
      */
     currency?: pulumi.Input<string>;
     /**
-     * Extra billing text. Maximum length: `254`.
+     * Extra billing text. Maximum length: `256`.
      */
     customInvoiceText?: pulumi.Input<string>;
     /**
@@ -228,7 +228,7 @@ export interface OrganizationBillingGroupArgs {
      */
     currency?: pulumi.Input<string>;
     /**
-     * Extra billing text. Maximum length: `254`.
+     * Extra billing text. Maximum length: `256`.
      */
     customInvoiceText?: pulumi.Input<string>;
     /**

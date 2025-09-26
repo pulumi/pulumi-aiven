@@ -13,6 +13,1017 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetM3DbM3dbUserConfig struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects []GetM3DbM3dbUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters []string `pulumi:"ipFilters"`
+	// M3 limits
+	Limits *GetM3DbM3dbUserConfigLimits `pulumi:"limits"`
+	// M3 specific configuration options
+	M3 *GetM3DbM3dbUserConfigM3 `pulumi:"m3"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
+	M3Version *string `pulumi:"m3Version"`
+	// Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+	M3coordinatorEnableGraphiteCarbonIngest *bool `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
+	M3dbVersion *string `pulumi:"m3dbVersion"`
+	// List of M3 namespaces
+	Namespaces []GetM3DbM3dbUserConfigNamespace `pulumi:"namespaces"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GetM3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetM3DbM3dbUserConfigPublicAccess `pulumi:"publicAccess"`
+	// M3 rules
+	Rules *GetM3DbM3dbUserConfigRules `pulumi:"rules"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps *bool `pulumi:"staticIps"`
+}
+
+// GetM3DbM3dbUserConfigInput is an input type that accepts GetM3DbM3dbUserConfigArgs and GetM3DbM3dbUserConfigOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigInput` via:
+//
+//	GetM3DbM3dbUserConfigArgs{...}
+type GetM3DbM3dbUserConfigInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput
+	ToGetM3DbM3dbUserConfigOutputWithContext(context.Context) GetM3DbM3dbUserConfigOutput
+}
+
+type GetM3DbM3dbUserConfigArgs struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects GetM3DbM3dbUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// M3 limits
+	Limits GetM3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
+	// M3 specific configuration options
+	M3 GetM3DbM3dbUserConfigM3PtrInput `pulumi:"m3"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
+	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	// Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+	M3coordinatorEnableGraphiteCarbonIngest pulumi.BoolPtrInput `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
+	M3dbVersion pulumi.StringPtrInput `pulumi:"m3dbVersion"`
+	// List of M3 namespaces
+	Namespaces GetM3DbM3dbUserConfigNamespaceArrayInput `pulumi:"namespaces"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GetM3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetM3DbM3dbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// M3 rules
+	Rules GetM3DbM3dbUserConfigRulesPtrInput `pulumi:"rules"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
+}
+
+func (GetM3DbM3dbUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigArgs) ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput {
+	return i.ToGetM3DbM3dbUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigArgs) ToGetM3DbM3dbUserConfigOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigOutput)
+}
+
+// GetM3DbM3dbUserConfigArrayInput is an input type that accepts GetM3DbM3dbUserConfigArray and GetM3DbM3dbUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigArrayInput` via:
+//
+//	GetM3DbM3dbUserConfigArray{ GetM3DbM3dbUserConfigArgs{...} }
+type GetM3DbM3dbUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigArrayOutput() GetM3DbM3dbUserConfigArrayOutput
+	ToGetM3DbM3dbUserConfigArrayOutputWithContext(context.Context) GetM3DbM3dbUserConfigArrayOutput
+}
+
+type GetM3DbM3dbUserConfigArray []GetM3DbM3dbUserConfigInput
+
+func (GetM3DbM3dbUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigArray) ToGetM3DbM3dbUserConfigArrayOutput() GetM3DbM3dbUserConfigArrayOutput {
+	return i.ToGetM3DbM3dbUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigArray) ToGetM3DbM3dbUserConfigArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigOutput) ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigOutput) ToGetM3DbM3dbUserConfigOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigOutput {
+	return o
+}
+
+// Additional Cloud Regions for Backup Replication.
+func (o GetM3DbM3dbUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+func (o GetM3DbM3dbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+func (o GetM3DbM3dbUserConfigOutput) IpFilterObjects() GetM3DbM3dbUserConfigIpFilterObjectArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []GetM3DbM3dbUserConfigIpFilterObject { return v.IpFilterObjects }).(GetM3DbM3dbUserConfigIpFilterObjectArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+func (o GetM3DbM3dbUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+//
+// Deprecated: Deprecated. Use `ipFilterString` instead.
+func (o GetM3DbM3dbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// M3 limits
+func (o GetM3DbM3dbUserConfigOutput) Limits() GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigLimits { return v.Limits }).(GetM3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+// M3 specific configuration options
+func (o GetM3DbM3dbUserConfigOutput) M3() GetM3DbM3dbUserConfigM3PtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigM3 { return v.M3 }).(GetM3DbM3dbUserConfigM3PtrOutput)
+}
+
+// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
+func (o GetM3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
+}
+
+// Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+func (o GetM3DbM3dbUserConfigOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *bool { return v.M3coordinatorEnableGraphiteCarbonIngest }).(pulumi.BoolPtrOutput)
+}
+
+// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
+func (o GetM3DbM3dbUserConfigOutput) M3dbVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3dbVersion }).(pulumi.StringPtrOutput)
+}
+
+// List of M3 namespaces
+func (o GetM3DbM3dbUserConfigOutput) Namespaces() GetM3DbM3dbUserConfigNamespaceArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []GetM3DbM3dbUserConfigNamespace { return v.Namespaces }).(GetM3DbM3dbUserConfigNamespaceArrayOutput)
+}
+
+// Allow access to selected service ports from private networks
+func (o GetM3DbM3dbUserConfigOutput) PrivateAccess() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigPrivateAccess { return v.PrivateAccess }).(GetM3DbM3dbUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+func (o GetM3DbM3dbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Allow access to selected service ports from the public Internet
+func (o GetM3DbM3dbUserConfigOutput) PublicAccess() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigPublicAccess { return v.PublicAccess }).(GetM3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+// M3 rules
+func (o GetM3DbM3dbUserConfigOutput) Rules() GetM3DbM3dbUserConfigRulesPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigRules { return v.Rules }).(GetM3DbM3dbUserConfigRulesPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o GetM3DbM3dbUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
+// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+func (o GetM3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o GetM3DbM3dbUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigArrayOutput) ToGetM3DbM3dbUserConfigArrayOutput() GetM3DbM3dbUserConfigArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigArrayOutput) ToGetM3DbM3dbUserConfigArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3dbUserConfig {
+		return vs[0].([]GetM3DbM3dbUserConfig)[vs[1].(int)]
+	}).(GetM3DbM3dbUserConfigOutput)
+}
+
+type GetM3DbM3dbUserConfigIpFilterObject struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description *string `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network string `pulumi:"network"`
+}
+
+// GetM3DbM3dbUserConfigIpFilterObjectInput is an input type that accepts GetM3DbM3dbUserConfigIpFilterObjectArgs and GetM3DbM3dbUserConfigIpFilterObjectOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigIpFilterObjectInput` via:
+//
+//	GetM3DbM3dbUserConfigIpFilterObjectArgs{...}
+type GetM3DbM3dbUserConfigIpFilterObjectInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigIpFilterObjectOutput() GetM3DbM3dbUserConfigIpFilterObjectOutput
+	ToGetM3DbM3dbUserConfigIpFilterObjectOutputWithContext(context.Context) GetM3DbM3dbUserConfigIpFilterObjectOutput
+}
+
+type GetM3DbM3dbUserConfigIpFilterObjectArgs struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (GetM3DbM3dbUserConfigIpFilterObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigIpFilterObjectArgs) ToGetM3DbM3dbUserConfigIpFilterObjectOutput() GetM3DbM3dbUserConfigIpFilterObjectOutput {
+	return i.ToGetM3DbM3dbUserConfigIpFilterObjectOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigIpFilterObjectArgs) ToGetM3DbM3dbUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigIpFilterObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigIpFilterObjectOutput)
+}
+
+// GetM3DbM3dbUserConfigIpFilterObjectArrayInput is an input type that accepts GetM3DbM3dbUserConfigIpFilterObjectArray and GetM3DbM3dbUserConfigIpFilterObjectArrayOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigIpFilterObjectArrayInput` via:
+//
+//	GetM3DbM3dbUserConfigIpFilterObjectArray{ GetM3DbM3dbUserConfigIpFilterObjectArgs{...} }
+type GetM3DbM3dbUserConfigIpFilterObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigIpFilterObjectArrayOutput() GetM3DbM3dbUserConfigIpFilterObjectArrayOutput
+	ToGetM3DbM3dbUserConfigIpFilterObjectArrayOutputWithContext(context.Context) GetM3DbM3dbUserConfigIpFilterObjectArrayOutput
+}
+
+type GetM3DbM3dbUserConfigIpFilterObjectArray []GetM3DbM3dbUserConfigIpFilterObjectInput
+
+func (GetM3DbM3dbUserConfigIpFilterObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigIpFilterObjectArray) ToGetM3DbM3dbUserConfigIpFilterObjectArrayOutput() GetM3DbM3dbUserConfigIpFilterObjectArrayOutput {
+	return i.ToGetM3DbM3dbUserConfigIpFilterObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigIpFilterObjectArray) ToGetM3DbM3dbUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigIpFilterObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigIpFilterObjectArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigIpFilterObjectOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigIpFilterObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigIpFilterObjectOutput) ToGetM3DbM3dbUserConfigIpFilterObjectOutput() GetM3DbM3dbUserConfigIpFilterObjectOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigIpFilterObjectOutput) ToGetM3DbM3dbUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigIpFilterObjectOutput {
+	return o
+}
+
+// Description for IP filter list entry. Example: `Production service IP range`.
+func (o GetM3DbM3dbUserConfigIpFilterObjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigIpFilterObject) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// CIDR address block. Example: `10.20.0.0/16`.
+func (o GetM3DbM3dbUserConfigIpFilterObjectOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigIpFilterObject) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type GetM3DbM3dbUserConfigIpFilterObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigIpFilterObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigIpFilterObjectArrayOutput) ToGetM3DbM3dbUserConfigIpFilterObjectArrayOutput() GetM3DbM3dbUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigIpFilterObjectArrayOutput) ToGetM3DbM3dbUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigIpFilterObjectArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUserConfigIpFilterObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3dbUserConfigIpFilterObject {
+		return vs[0].([]GetM3DbM3dbUserConfigIpFilterObject)[vs[1].(int)]
+	}).(GetM3DbM3dbUserConfigIpFilterObjectOutput)
+}
+
+type GetM3DbM3dbUserConfigLimits struct {
+	// The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
+	MaxRecentlyQueriedSeriesBlocks *int `pulumi:"maxRecentlyQueriedSeriesBlocks"`
+	// The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
+	MaxRecentlyQueriedSeriesDiskBytesRead *int `pulumi:"maxRecentlyQueriedSeriesDiskBytesRead"`
+	// The lookback period for `maxRecentlyQueriedSeriesBlocks` and `maxRecentlyQueriedSeriesDiskBytesRead`. Example: `15s`.
+	MaxRecentlyQueriedSeriesLookback *string `pulumi:"maxRecentlyQueriedSeriesLookback"`
+	// The maximum number of docs fetched in single query. Example: `100000`.
+	QueryDocs *int `pulumi:"queryDocs"`
+	// When query limits are exceeded, whether to return error or return partial results.
+	QueryRequireExhaustive *bool `pulumi:"queryRequireExhaustive"`
+	// The maximum number of series fetched in single query. Example: `100000`.
+	QuerySeries *int `pulumi:"querySeries"`
+}
+
+// GetM3DbM3dbUserConfigLimitsInput is an input type that accepts GetM3DbM3dbUserConfigLimitsArgs and GetM3DbM3dbUserConfigLimitsOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigLimitsInput` via:
+//
+//	GetM3DbM3dbUserConfigLimitsArgs{...}
+type GetM3DbM3dbUserConfigLimitsInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigLimitsOutput() GetM3DbM3dbUserConfigLimitsOutput
+	ToGetM3DbM3dbUserConfigLimitsOutputWithContext(context.Context) GetM3DbM3dbUserConfigLimitsOutput
+}
+
+type GetM3DbM3dbUserConfigLimitsArgs struct {
+	// The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
+	MaxRecentlyQueriedSeriesBlocks pulumi.IntPtrInput `pulumi:"maxRecentlyQueriedSeriesBlocks"`
+	// The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
+	MaxRecentlyQueriedSeriesDiskBytesRead pulumi.IntPtrInput `pulumi:"maxRecentlyQueriedSeriesDiskBytesRead"`
+	// The lookback period for `maxRecentlyQueriedSeriesBlocks` and `maxRecentlyQueriedSeriesDiskBytesRead`. Example: `15s`.
+	MaxRecentlyQueriedSeriesLookback pulumi.StringPtrInput `pulumi:"maxRecentlyQueriedSeriesLookback"`
+	// The maximum number of docs fetched in single query. Example: `100000`.
+	QueryDocs pulumi.IntPtrInput `pulumi:"queryDocs"`
+	// When query limits are exceeded, whether to return error or return partial results.
+	QueryRequireExhaustive pulumi.BoolPtrInput `pulumi:"queryRequireExhaustive"`
+	// The maximum number of series fetched in single query. Example: `100000`.
+	QuerySeries pulumi.IntPtrInput `pulumi:"querySeries"`
+}
+
+func (GetM3DbM3dbUserConfigLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigLimitsArgs) ToGetM3DbM3dbUserConfigLimitsOutput() GetM3DbM3dbUserConfigLimitsOutput {
+	return i.ToGetM3DbM3dbUserConfigLimitsOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigLimitsArgs) ToGetM3DbM3dbUserConfigLimitsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigLimitsOutput)
+}
+
+func (i GetM3DbM3dbUserConfigLimitsArgs) ToGetM3DbM3dbUserConfigLimitsPtrOutput() GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigLimitsArgs) ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigLimitsOutput).ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigLimitsPtrInput is an input type that accepts GetM3DbM3dbUserConfigLimitsArgs, GetM3DbM3dbUserConfigLimitsPtr and GetM3DbM3dbUserConfigLimitsPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigLimitsPtrInput` via:
+//
+//	        GetM3DbM3dbUserConfigLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetM3DbM3dbUserConfigLimitsPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigLimitsPtrOutput() GetM3DbM3dbUserConfigLimitsPtrOutput
+	ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigLimitsPtrOutput
+}
+
+type getM3DbM3dbUserConfigLimitsPtrType GetM3DbM3dbUserConfigLimitsArgs
+
+func GetM3DbM3dbUserConfigLimitsPtr(v *GetM3DbM3dbUserConfigLimitsArgs) GetM3DbM3dbUserConfigLimitsPtrInput {
+	return (*getM3DbM3dbUserConfigLimitsPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigLimitsPtrType) ToGetM3DbM3dbUserConfigLimitsPtrOutput() GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigLimitsPtrType) ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigLimitsOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigLimitsOutput) ToGetM3DbM3dbUserConfigLimitsOutput() GetM3DbM3dbUserConfigLimitsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigLimitsOutput) ToGetM3DbM3dbUserConfigLimitsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigLimitsOutput) ToGetM3DbM3dbUserConfigLimitsPtrOutput() GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigLimitsOutput) ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetM3DbM3dbUserConfigLimits) *GetM3DbM3dbUserConfigLimits {
+		return &v
+	}).(GetM3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+// The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
+func (o GetM3DbM3dbUserConfigLimitsOutput) MaxRecentlyQueriedSeriesBlocks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *int { return v.MaxRecentlyQueriedSeriesBlocks }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
+func (o GetM3DbM3dbUserConfigLimitsOutput) MaxRecentlyQueriedSeriesDiskBytesRead() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *int { return v.MaxRecentlyQueriedSeriesDiskBytesRead }).(pulumi.IntPtrOutput)
+}
+
+// The lookback period for `maxRecentlyQueriedSeriesBlocks` and `maxRecentlyQueriedSeriesDiskBytesRead`. Example: `15s`.
+func (o GetM3DbM3dbUserConfigLimitsOutput) MaxRecentlyQueriedSeriesLookback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *string { return v.MaxRecentlyQueriedSeriesLookback }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of docs fetched in single query. Example: `100000`.
+func (o GetM3DbM3dbUserConfigLimitsOutput) QueryDocs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *int { return v.QueryDocs }).(pulumi.IntPtrOutput)
+}
+
+// When query limits are exceeded, whether to return error or return partial results.
+func (o GetM3DbM3dbUserConfigLimitsOutput) QueryRequireExhaustive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *bool { return v.QueryRequireExhaustive }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of series fetched in single query. Example: `100000`.
+func (o GetM3DbM3dbUserConfigLimitsOutput) QuerySeries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *int { return v.QuerySeries }).(pulumi.IntPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigLimits)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) ToGetM3DbM3dbUserConfigLimitsPtrOutput() GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) ToGetM3DbM3dbUserConfigLimitsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) Elem() GetM3DbM3dbUserConfigLimitsOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) GetM3DbM3dbUserConfigLimits {
+		if v != nil {
+			return *v
+		}
+		var ret GetM3DbM3dbUserConfigLimits
+		return ret
+	}).(GetM3DbM3dbUserConfigLimitsOutput)
+}
+
+// The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) MaxRecentlyQueriedSeriesBlocks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRecentlyQueriedSeriesBlocks
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) MaxRecentlyQueriedSeriesDiskBytesRead() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRecentlyQueriedSeriesDiskBytesRead
+	}).(pulumi.IntPtrOutput)
+}
+
+// The lookback period for `maxRecentlyQueriedSeriesBlocks` and `maxRecentlyQueriedSeriesDiskBytesRead`. Example: `15s`.
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) MaxRecentlyQueriedSeriesLookback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRecentlyQueriedSeriesLookback
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of docs fetched in single query. Example: `100000`.
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) QueryDocs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueryDocs
+	}).(pulumi.IntPtrOutput)
+}
+
+// When query limits are exceeded, whether to return error or return partial results.
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) QueryRequireExhaustive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QueryRequireExhaustive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of series fetched in single query. Example: `100000`.
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) QuerySeries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QuerySeries
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3 struct {
+	// M3 Tag Options
+	TagOptions *GetM3DbM3dbUserConfigM3TagOptions `pulumi:"tagOptions"`
+}
+
+// GetM3DbM3dbUserConfigM3Input is an input type that accepts GetM3DbM3dbUserConfigM3Args and GetM3DbM3dbUserConfigM3Output values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigM3Input` via:
+//
+//	GetM3DbM3dbUserConfigM3Args{...}
+type GetM3DbM3dbUserConfigM3Input interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigM3Output() GetM3DbM3dbUserConfigM3Output
+	ToGetM3DbM3dbUserConfigM3OutputWithContext(context.Context) GetM3DbM3dbUserConfigM3Output
+}
+
+type GetM3DbM3dbUserConfigM3Args struct {
+	// M3 Tag Options
+	TagOptions GetM3DbM3dbUserConfigM3TagOptionsPtrInput `pulumi:"tagOptions"`
+}
+
+func (GetM3DbM3dbUserConfigM3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigM3Args) ToGetM3DbM3dbUserConfigM3Output() GetM3DbM3dbUserConfigM3Output {
+	return i.ToGetM3DbM3dbUserConfigM3OutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigM3Args) ToGetM3DbM3dbUserConfigM3OutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3Output)
+}
+
+func (i GetM3DbM3dbUserConfigM3Args) ToGetM3DbM3dbUserConfigM3PtrOutput() GetM3DbM3dbUserConfigM3PtrOutput {
+	return i.ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigM3Args) ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3Output).ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigM3PtrInput is an input type that accepts GetM3DbM3dbUserConfigM3Args, GetM3DbM3dbUserConfigM3Ptr and GetM3DbM3dbUserConfigM3PtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigM3PtrInput` via:
+//
+//	        GetM3DbM3dbUserConfigM3Args{...}
+//
+//	or:
+//
+//	        nil
+type GetM3DbM3dbUserConfigM3PtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigM3PtrOutput() GetM3DbM3dbUserConfigM3PtrOutput
+	ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigM3PtrOutput
+}
+
+type getM3DbM3dbUserConfigM3PtrType GetM3DbM3dbUserConfigM3Args
+
+func GetM3DbM3dbUserConfigM3Ptr(v *GetM3DbM3dbUserConfigM3Args) GetM3DbM3dbUserConfigM3PtrInput {
+	return (*getM3DbM3dbUserConfigM3PtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigM3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigM3PtrType) ToGetM3DbM3dbUserConfigM3PtrOutput() GetM3DbM3dbUserConfigM3PtrOutput {
+	return i.ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigM3PtrType) ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3PtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3Output struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigM3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigM3Output) ToGetM3DbM3dbUserConfigM3Output() GetM3DbM3dbUserConfigM3Output {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3Output) ToGetM3DbM3dbUserConfigM3OutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3Output {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3Output) ToGetM3DbM3dbUserConfigM3PtrOutput() GetM3DbM3dbUserConfigM3PtrOutput {
+	return o.ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigM3Output) ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetM3DbM3dbUserConfigM3) *GetM3DbM3dbUserConfigM3 {
+		return &v
+	}).(GetM3DbM3dbUserConfigM3PtrOutput)
+}
+
+// M3 Tag Options
+func (o GetM3DbM3dbUserConfigM3Output) TagOptions() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigM3) *GetM3DbM3dbUserConfigM3TagOptions { return v.TagOptions }).(GetM3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3PtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigM3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigM3)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigM3PtrOutput) ToGetM3DbM3dbUserConfigM3PtrOutput() GetM3DbM3dbUserConfigM3PtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3PtrOutput) ToGetM3DbM3dbUserConfigM3PtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3PtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3PtrOutput) Elem() GetM3DbM3dbUserConfigM3Output {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigM3) GetM3DbM3dbUserConfigM3 {
+		if v != nil {
+			return *v
+		}
+		var ret GetM3DbM3dbUserConfigM3
+		return ret
+	}).(GetM3DbM3dbUserConfigM3Output)
+}
+
+// M3 Tag Options
+func (o GetM3DbM3dbUserConfigM3PtrOutput) TagOptions() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigM3) *GetM3DbM3dbUserConfigM3TagOptions {
+		if v == nil {
+			return nil
+		}
+		return v.TagOptions
+	}).(GetM3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3TagOptions struct {
+	// Allows for duplicate tags to appear on series (not allowed by default).
+	AllowTagNameDuplicates *bool `pulumi:"allowTagNameDuplicates"`
+	// Allows for empty tags to appear on series (not allowed by default).
+	AllowTagValueEmpty *bool `pulumi:"allowTagValueEmpty"`
+}
+
+// GetM3DbM3dbUserConfigM3TagOptionsInput is an input type that accepts GetM3DbM3dbUserConfigM3TagOptionsArgs and GetM3DbM3dbUserConfigM3TagOptionsOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigM3TagOptionsInput` via:
+//
+//	GetM3DbM3dbUserConfigM3TagOptionsArgs{...}
+type GetM3DbM3dbUserConfigM3TagOptionsInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigM3TagOptionsOutput() GetM3DbM3dbUserConfigM3TagOptionsOutput
+	ToGetM3DbM3dbUserConfigM3TagOptionsOutputWithContext(context.Context) GetM3DbM3dbUserConfigM3TagOptionsOutput
+}
+
+type GetM3DbM3dbUserConfigM3TagOptionsArgs struct {
+	// Allows for duplicate tags to appear on series (not allowed by default).
+	AllowTagNameDuplicates pulumi.BoolPtrInput `pulumi:"allowTagNameDuplicates"`
+	// Allows for empty tags to appear on series (not allowed by default).
+	AllowTagValueEmpty pulumi.BoolPtrInput `pulumi:"allowTagValueEmpty"`
+}
+
+func (GetM3DbM3dbUserConfigM3TagOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigM3TagOptionsArgs) ToGetM3DbM3dbUserConfigM3TagOptionsOutput() GetM3DbM3dbUserConfigM3TagOptionsOutput {
+	return i.ToGetM3DbM3dbUserConfigM3TagOptionsOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigM3TagOptionsArgs) ToGetM3DbM3dbUserConfigM3TagOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3TagOptionsOutput)
+}
+
+func (i GetM3DbM3dbUserConfigM3TagOptionsArgs) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutput() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigM3TagOptionsArgs) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3TagOptionsOutput).ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx)
+}
+
+// GetM3DbM3dbUserConfigM3TagOptionsPtrInput is an input type that accepts GetM3DbM3dbUserConfigM3TagOptionsArgs, GetM3DbM3dbUserConfigM3TagOptionsPtr and GetM3DbM3dbUserConfigM3TagOptionsPtrOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigM3TagOptionsPtrInput` via:
+//
+//	        GetM3DbM3dbUserConfigM3TagOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetM3DbM3dbUserConfigM3TagOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutput() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput
+	ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Context) GetM3DbM3dbUserConfigM3TagOptionsPtrOutput
+}
+
+type getM3DbM3dbUserConfigM3TagOptionsPtrType GetM3DbM3dbUserConfigM3TagOptionsArgs
+
+func GetM3DbM3dbUserConfigM3TagOptionsPtr(v *GetM3DbM3dbUserConfigM3TagOptionsArgs) GetM3DbM3dbUserConfigM3TagOptionsPtrInput {
+	return (*getM3DbM3dbUserConfigM3TagOptionsPtrType)(v)
+}
+
+func (*getM3DbM3dbUserConfigM3TagOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (i *getM3DbM3dbUserConfigM3TagOptionsPtrType) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutput() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return i.ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *getM3DbM3dbUserConfigM3TagOptionsPtrType) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3TagOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigM3TagOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) ToGetM3DbM3dbUserConfigM3TagOptionsOutput() GetM3DbM3dbUserConfigM3TagOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) ToGetM3DbM3dbUserConfigM3TagOptionsOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutput() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetM3DbM3dbUserConfigM3TagOptions) *GetM3DbM3dbUserConfigM3TagOptions {
+		return &v
+	}).(GetM3DbM3dbUserConfigM3TagOptionsPtrOutput)
+}
+
+// Allows for duplicate tags to appear on series (not allowed by default).
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) AllowTagNameDuplicates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigM3TagOptions) *bool { return v.AllowTagNameDuplicates }).(pulumi.BoolPtrOutput)
+}
+
+// Allows for empty tags to appear on series (not allowed by default).
+func (o GetM3DbM3dbUserConfigM3TagOptionsOutput) AllowTagValueEmpty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigM3TagOptions) *bool { return v.AllowTagValueEmpty }).(pulumi.BoolPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigM3TagOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetM3DbM3dbUserConfigM3TagOptions)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutput() GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) ToGetM3DbM3dbUserConfigM3TagOptionsPtrOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigM3TagOptionsPtrOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) Elem() GetM3DbM3dbUserConfigM3TagOptionsOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigM3TagOptions) GetM3DbM3dbUserConfigM3TagOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GetM3DbM3dbUserConfigM3TagOptions
+		return ret
+	}).(GetM3DbM3dbUserConfigM3TagOptionsOutput)
+}
+
+// Allows for duplicate tags to appear on series (not allowed by default).
+func (o GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) AllowTagNameDuplicates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigM3TagOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowTagNameDuplicates
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allows for empty tags to appear on series (not allowed by default).
+func (o GetM3DbM3dbUserConfigM3TagOptionsPtrOutput) AllowTagValueEmpty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigM3TagOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowTagValueEmpty
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespace struct {
+	// The name of the namespace. Example: `default`.
+	Name string `pulumi:"name"`
+	// Namespace options
+	Options *GetM3DbM3dbUserConfigNamespaceOptions `pulumi:"options"`
+	// The resolution for an aggregated namespace. Example: `30s`.
+	Resolution *string `pulumi:"resolution"`
+	// Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
+	Type string `pulumi:"type"`
+}
+
+// GetM3DbM3dbUserConfigNamespaceInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceArgs and GetM3DbM3dbUserConfigNamespaceOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceInput` via:
+//
+//	GetM3DbM3dbUserConfigNamespaceArgs{...}
+type GetM3DbM3dbUserConfigNamespaceInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceOutput() GetM3DbM3dbUserConfigNamespaceOutput
+	ToGetM3DbM3dbUserConfigNamespaceOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceOutput
+}
+
+type GetM3DbM3dbUserConfigNamespaceArgs struct {
+	// The name of the namespace. Example: `default`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace options
+	Options GetM3DbM3dbUserConfigNamespaceOptionsPtrInput `pulumi:"options"`
+	// The resolution for an aggregated namespace. Example: `30s`.
+	Resolution pulumi.StringPtrInput `pulumi:"resolution"`
+	// Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetM3DbM3dbUserConfigNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceArgs) ToGetM3DbM3dbUserConfigNamespaceOutput() GetM3DbM3dbUserConfigNamespaceOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceArgs) ToGetM3DbM3dbUserConfigNamespaceOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceOutput)
+}
+
+// GetM3DbM3dbUserConfigNamespaceArrayInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceArray and GetM3DbM3dbUserConfigNamespaceArrayOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceArrayInput` via:
+//
+//	GetM3DbM3dbUserConfigNamespaceArray{ GetM3DbM3dbUserConfigNamespaceArgs{...} }
+type GetM3DbM3dbUserConfigNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigNamespaceArrayOutput() GetM3DbM3dbUserConfigNamespaceArrayOutput
+	ToGetM3DbM3dbUserConfigNamespaceArrayOutputWithContext(context.Context) GetM3DbM3dbUserConfigNamespaceArrayOutput
+}
+
+type GetM3DbM3dbUserConfigNamespaceArray []GetM3DbM3dbUserConfigNamespaceInput
+
+func (GetM3DbM3dbUserConfigNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceArray) ToGetM3DbM3dbUserConfigNamespaceArrayOutput() GetM3DbM3dbUserConfigNamespaceArrayOutput {
+	return i.ToGetM3DbM3dbUserConfigNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigNamespaceArray) ToGetM3DbM3dbUserConfigNamespaceArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigNamespaceArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOutput) ToGetM3DbM3dbUserConfigNamespaceOutput() GetM3DbM3dbUserConfigNamespaceOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceOutput) ToGetM3DbM3dbUserConfigNamespaceOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceOutput {
+	return o
+}
+
+// The name of the namespace. Example: `default`.
+func (o GetM3DbM3dbUserConfigNamespaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespace) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace options
+func (o GetM3DbM3dbUserConfigNamespaceOutput) Options() GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespace) *GetM3DbM3dbUserConfigNamespaceOptions { return v.Options }).(GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput)
+}
+
+// The resolution for an aggregated namespace. Example: `30s`.
+func (o GetM3DbM3dbUserConfigNamespaceOutput) Resolution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespace) *string { return v.Resolution }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
+func (o GetM3DbM3dbUserConfigNamespaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigNamespace) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetM3DbM3dbUserConfigNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfigNamespace)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceArrayOutput) ToGetM3DbM3dbUserConfigNamespaceArrayOutput() GetM3DbM3dbUserConfigNamespaceArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceArrayOutput) ToGetM3DbM3dbUserConfigNamespaceArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigNamespaceArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigNamespaceArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUserConfigNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3dbUserConfigNamespace {
+		return vs[0].([]GetM3DbM3dbUserConfigNamespace)[vs[1].(int)]
+	}).(GetM3DbM3dbUserConfigNamespaceOutput)
+}
+
 type GetM3DbM3dbUserConfigNamespaceOptions struct {
 	// Retention options
 	RetentionOptions GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions `pulumi:"retentionOptions"`
@@ -2650,9 +3661,9 @@ type GetMySqlMysqlUserConfigMysql struct {
 	InnodbFtServerStopwordTable *string `pulumi:"innodbFtServerStopwordTable"`
 	// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
 	InnodbLockWaitTimeout *int `pulumi:"innodbLockWaitTimeout"`
-	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
 	InnodbLogBufferSize *int `pulumi:"innodbLogBufferSize"`
-	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	InnodbOnlineAlterLogMaxSize *int `pulumi:"innodbOnlineAlterLogMaxSize"`
 	// When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
 	InnodbPrintAllDeadlocks *bool `pulumi:"innodbPrintAllDeadlocks"`
@@ -2670,11 +3681,11 @@ type GetMySqlMysqlUserConfigMysql struct {
 	InternalTmpMemStorageEngine *string `pulumi:"internalTmpMemStorageEngine"`
 	// Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slowQueryLog is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
 	LogOutput *string `pulumi:"logOutput"`
-	// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10.0`.
+	// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10`.
 	LongQueryTime *float64 `pulumi:"longQueryTime"`
-	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
 	MaxAllowedPacket *int `pulumi:"maxAllowedPacket"`
-	// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
+	// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
 	MaxHeapTableSize *int `pulumi:"maxHeapTableSize"`
 	// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
 	NetBufferLength *int `pulumi:"netBufferLength"`
@@ -2690,7 +3701,7 @@ type GetMySqlMysqlUserConfigMysql struct {
 	SqlMode *string `pulumi:"sqlMode"`
 	// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
 	SqlRequirePrimaryKey *bool `pulumi:"sqlRequirePrimaryKey"`
-	// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
+	// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
 	TmpTableSize *int `pulumi:"tmpTableSize"`
 	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
 	WaitTimeout *int `pulumi:"waitTimeout"`
@@ -2726,9 +3737,9 @@ type GetMySqlMysqlUserConfigMysqlArgs struct {
 	InnodbFtServerStopwordTable pulumi.StringPtrInput `pulumi:"innodbFtServerStopwordTable"`
 	// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
 	InnodbLockWaitTimeout pulumi.IntPtrInput `pulumi:"innodbLockWaitTimeout"`
-	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
 	InnodbLogBufferSize pulumi.IntPtrInput `pulumi:"innodbLogBufferSize"`
-	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	InnodbOnlineAlterLogMaxSize pulumi.IntPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
 	// When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
 	InnodbPrintAllDeadlocks pulumi.BoolPtrInput `pulumi:"innodbPrintAllDeadlocks"`
@@ -2746,11 +3757,11 @@ type GetMySqlMysqlUserConfigMysqlArgs struct {
 	InternalTmpMemStorageEngine pulumi.StringPtrInput `pulumi:"internalTmpMemStorageEngine"`
 	// Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slowQueryLog is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
 	LogOutput pulumi.StringPtrInput `pulumi:"logOutput"`
-	// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10.0`.
+	// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10`.
 	LongQueryTime pulumi.Float64PtrInput `pulumi:"longQueryTime"`
-	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
 	MaxAllowedPacket pulumi.IntPtrInput `pulumi:"maxAllowedPacket"`
-	// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
+	// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
 	MaxHeapTableSize pulumi.IntPtrInput `pulumi:"maxHeapTableSize"`
 	// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
 	NetBufferLength pulumi.IntPtrInput `pulumi:"netBufferLength"`
@@ -2766,7 +3777,7 @@ type GetMySqlMysqlUserConfigMysqlArgs struct {
 	SqlMode pulumi.StringPtrInput `pulumi:"sqlMode"`
 	// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
 	SqlRequirePrimaryKey pulumi.BoolPtrInput `pulumi:"sqlRequirePrimaryKey"`
-	// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
+	// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
 	TmpTableSize pulumi.IntPtrInput `pulumi:"tmpTableSize"`
 	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
 	WaitTimeout pulumi.IntPtrInput `pulumi:"waitTimeout"`
@@ -2894,12 +3905,12 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.IntPt
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbLockWaitTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbLogBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbLogBufferSize }).(pulumi.IntPtrOutput)
 }
 
-// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbOnlineAlterLogMaxSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbOnlineAlterLogMaxSize }).(pulumi.IntPtrOutput)
 }
@@ -2944,17 +3955,17 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) LogOutput() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.LogOutput }).(pulumi.StringPtrOutput)
 }
 
-// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10.0`.
+// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10`.
 func (o GetMySqlMysqlUserConfigMysqlOutput) LongQueryTime() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *float64 { return v.LongQueryTime }).(pulumi.Float64PtrOutput)
 }
 
-// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
 func (o GetMySqlMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.MaxAllowedPacket }).(pulumi.IntPtrOutput)
 }
 
-// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
+// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
 func (o GetMySqlMysqlUserConfigMysqlOutput) MaxHeapTableSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.MaxHeapTableSize }).(pulumi.IntPtrOutput)
 }
@@ -2994,7 +4005,7 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) SqlRequirePrimaryKey() pulumi.BoolPt
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *bool { return v.SqlRequirePrimaryKey }).(pulumi.BoolPtrOutput)
 }
 
-// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
+// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
 func (o GetMySqlMysqlUserConfigMysqlOutput) TmpTableSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.TmpTableSize }).(pulumi.IntPtrOutput)
 }
@@ -3118,7 +4129,7 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -3128,7 +4139,7 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -3218,7 +4229,7 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) LogOutput() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10.0`.
+// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10`.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) LongQueryTime() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *float64 {
 		if v == nil {
@@ -3228,7 +4239,7 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) LongQueryTime() pulumi.Float64Ptr
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -3238,7 +4249,7 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
+// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) MaxHeapTableSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -3318,7 +4329,7 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SqlRequirePrimaryKey() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
+// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) TmpTableSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -4643,6 +5654,8 @@ type GetOpenSearchOpensearchUserConfig struct {
 	AzureMigration *GetOpenSearchOpensearchUserConfigAzureMigration `pulumi:"azureMigration"`
 	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
 	CustomDomain *string `pulumi:"customDomain"`
+	// Allow to register custom keystores in OpenSearch
+	CustomKeystores []GetOpenSearchOpensearchUserConfigCustomKeystore `pulumi:"customKeystores"`
 	// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
 	DisableReplicationFactorAdjustment *bool `pulumi:"disableReplicationFactorAdjustment"`
 	// Google Cloud Storage migration settings
@@ -4671,7 +5684,7 @@ type GetOpenSearchOpensearchUserConfig struct {
 	Opensearch *GetOpenSearchOpensearchUserConfigOpensearch `pulumi:"opensearch"`
 	// OpenSearch Dashboards settings
 	OpensearchDashboards *GetOpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
-	// Enum: `1`, `2`, and newer. OpenSearch major version.
+	// Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
 	OpensearchVersion *string `pulumi:"opensearchVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *GetOpenSearchOpensearchUserConfigPrivateAccess `pulumi:"privateAccess"`
@@ -4713,6 +5726,8 @@ type GetOpenSearchOpensearchUserConfigArgs struct {
 	AzureMigration GetOpenSearchOpensearchUserConfigAzureMigrationPtrInput `pulumi:"azureMigration"`
 	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
 	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Allow to register custom keystores in OpenSearch
+	CustomKeystores GetOpenSearchOpensearchUserConfigCustomKeystoreArrayInput `pulumi:"customKeystores"`
 	// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
 	DisableReplicationFactorAdjustment pulumi.BoolPtrInput `pulumi:"disableReplicationFactorAdjustment"`
 	// Google Cloud Storage migration settings
@@ -4741,7 +5756,7 @@ type GetOpenSearchOpensearchUserConfigArgs struct {
 	Opensearch GetOpenSearchOpensearchUserConfigOpensearchPtrInput `pulumi:"opensearch"`
 	// OpenSearch Dashboards settings
 	OpensearchDashboards GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
-	// Enum: `1`, `2`, and newer. OpenSearch major version.
+	// Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
 	OpensearchVersion pulumi.StringPtrInput `pulumi:"opensearchVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
@@ -4833,6 +5848,13 @@ func (o GetOpenSearchOpensearchUserConfigOutput) CustomDomain() pulumi.StringPtr
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// Allow to register custom keystores in OpenSearch
+func (o GetOpenSearchOpensearchUserConfigOutput) CustomKeystores() GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) []GetOpenSearchOpensearchUserConfigCustomKeystore {
+		return v.CustomKeystores
+	}).(GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput)
+}
+
 // Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
 func (o GetOpenSearchOpensearchUserConfigOutput) DisableReplicationFactorAdjustment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *bool { return v.DisableReplicationFactorAdjustment }).(pulumi.BoolPtrOutput)
@@ -4914,7 +5936,7 @@ func (o GetOpenSearchOpensearchUserConfigOutput) OpensearchDashboards() GetOpenS
 	}).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
 }
 
-// Enum: `1`, `2`, and newer. OpenSearch major version.
+// Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
 func (o GetOpenSearchOpensearchUserConfigOutput) OpensearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.OpensearchVersion }).(pulumi.StringPtrOutput)
 }
@@ -5360,6 +6382,109 @@ func (o GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput) SnapshotName()
 		}
 		return &v.SnapshotName
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigCustomKeystore struct {
+	Name string `pulumi:"name"`
+	// Enum: `azure`, `gcs`, `s3`.
+	Type string `pulumi:"type"`
+}
+
+// GetOpenSearchOpensearchUserConfigCustomKeystoreInput is an input type that accepts GetOpenSearchOpensearchUserConfigCustomKeystoreArgs and GetOpenSearchOpensearchUserConfigCustomKeystoreOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigCustomKeystoreInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigCustomKeystoreArgs{...}
+type GetOpenSearchOpensearchUserConfigCustomKeystoreInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreOutput
+	ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreOutput
+}
+
+type GetOpenSearchOpensearchUserConfigCustomKeystoreArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+	// Enum: `azure`, `gcs`, `s3`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetOpenSearchOpensearchUserConfigCustomKeystoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigCustomKeystore)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigCustomKeystoreArgs) ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigCustomKeystoreArgs) ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigCustomKeystoreOutput)
+}
+
+// GetOpenSearchOpensearchUserConfigCustomKeystoreArrayInput is an input type that accepts GetOpenSearchOpensearchUserConfigCustomKeystoreArray and GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigCustomKeystoreArrayInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigCustomKeystoreArray{ GetOpenSearchOpensearchUserConfigCustomKeystoreArgs{...} }
+type GetOpenSearchOpensearchUserConfigCustomKeystoreArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput
+	ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput
+}
+
+type GetOpenSearchOpensearchUserConfigCustomKeystoreArray []GetOpenSearchOpensearchUserConfigCustomKeystoreInput
+
+func (GetOpenSearchOpensearchUserConfigCustomKeystoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchOpensearchUserConfigCustomKeystore)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigCustomKeystoreArray) ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigCustomKeystoreArray) ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigCustomKeystoreOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigCustomKeystoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigCustomKeystore)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigCustomKeystoreOutput) ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigCustomKeystoreOutput) ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigCustomKeystoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigCustomKeystore) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Enum: `azure`, `gcs`, `s3`.
+func (o GetOpenSearchOpensearchUserConfigCustomKeystoreOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigCustomKeystore) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchOpensearchUserConfigCustomKeystore)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput) ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput) ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput) Index(i pulumi.IntInput) GetOpenSearchOpensearchUserConfigCustomKeystoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchOpensearchUserConfigCustomKeystore {
+		return vs[0].([]GetOpenSearchOpensearchUserConfigCustomKeystore)[vs[1].(int)]
+	}).(GetOpenSearchOpensearchUserConfigCustomKeystoreOutput)
 }
 
 type GetOpenSearchOpensearchUserConfigGcsMigration struct {
@@ -6686,7 +7811,7 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	IsmHistoryEnabled *bool `pulumi:"ismHistoryEnabled"`
 	// The maximum age before rolling over the audit history index in hours. Example: `24`.
 	IsmHistoryMaxAge *int `pulumi:"ismHistoryMaxAge"`
-	// The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+	// The maximum number of documents before rolling over the audit history index.
 	IsmHistoryMaxDocs *int `pulumi:"ismHistoryMaxDocs"`
 	// The time between rollover checks for the audit history index in hours. Example: `8`.
 	IsmHistoryRolloverCheckPeriod *int `pulumi:"ismHistoryRolloverCheckPeriod"`
@@ -6694,7 +7819,7 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	IsmHistoryRolloverRetentionPeriod *int `pulumi:"ismHistoryRolloverRetentionPeriod"`
 	// Enable or disable KNN memory circuit breaker. Defaults to true.
 	KnnMemoryCircuitBreakerEnabled *bool `pulumi:"knnMemoryCircuitBreakerEnabled"`
-	// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+	// Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
 	KnnMemoryCircuitBreakerLimit *int `pulumi:"knnMemoryCircuitBreakerLimit"`
 	// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
 	NodeSearchCacheSize *string `pulumi:"nodeSearchCacheSize"`
@@ -6812,7 +7937,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	IsmHistoryEnabled pulumi.BoolPtrInput `pulumi:"ismHistoryEnabled"`
 	// The maximum age before rolling over the audit history index in hours. Example: `24`.
 	IsmHistoryMaxAge pulumi.IntPtrInput `pulumi:"ismHistoryMaxAge"`
-	// The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+	// The maximum number of documents before rolling over the audit history index.
 	IsmHistoryMaxDocs pulumi.IntPtrInput `pulumi:"ismHistoryMaxDocs"`
 	// The time between rollover checks for the audit history index in hours. Example: `8`.
 	IsmHistoryRolloverCheckPeriod pulumi.IntPtrInput `pulumi:"ismHistoryRolloverCheckPeriod"`
@@ -6820,7 +7945,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	IsmHistoryRolloverRetentionPeriod pulumi.IntPtrInput `pulumi:"ismHistoryRolloverRetentionPeriod"`
 	// Enable or disable KNN memory circuit breaker. Defaults to true.
 	KnnMemoryCircuitBreakerEnabled pulumi.BoolPtrInput `pulumi:"knnMemoryCircuitBreakerEnabled"`
-	// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+	// Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
 	KnnMemoryCircuitBreakerLimit pulumi.IntPtrInput `pulumi:"knnMemoryCircuitBreakerLimit"`
 	// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
 	NodeSearchCacheSize pulumi.StringPtrInput `pulumi:"nodeSearchCacheSize"`
@@ -7110,7 +8235,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryMaxAge() pu
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryMaxAge }).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+// The maximum number of documents before rolling over the audit history index.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryMaxDocs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryMaxDocs }).(pulumi.IntPtrOutput)
 }
@@ -7130,7 +8255,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) KnnMemoryCircuitBreak
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.KnnMemoryCircuitBreakerEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+// Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) KnnMemoryCircuitBreakerLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.KnnMemoryCircuitBreakerLimit }).(pulumi.IntPtrOutput)
 }
@@ -7587,7 +8712,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryMaxAge()
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+// The maximum number of documents before rolling over the audit history index.
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryMaxDocs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
 		if v == nil {
@@ -7627,7 +8752,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnMemoryCircuitBr
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+// Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnMemoryCircuitBreakerLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
 		if v == nil {
@@ -13993,6 +15118,143 @@ func (o GetOrganizationAddressTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetOrganizationApplicationUserTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationApplicationUserTimeoutsInput is an input type that accepts GetOrganizationApplicationUserTimeoutsArgs and GetOrganizationApplicationUserTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationApplicationUserTimeoutsInput` via:
+//
+//	GetOrganizationApplicationUserTimeoutsArgs{...}
+type GetOrganizationApplicationUserTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationApplicationUserTimeoutsOutput() GetOrganizationApplicationUserTimeoutsOutput
+	ToGetOrganizationApplicationUserTimeoutsOutputWithContext(context.Context) GetOrganizationApplicationUserTimeoutsOutput
+}
+
+type GetOrganizationApplicationUserTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationApplicationUserTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationApplicationUserTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationApplicationUserTimeoutsArgs) ToGetOrganizationApplicationUserTimeoutsOutput() GetOrganizationApplicationUserTimeoutsOutput {
+	return i.ToGetOrganizationApplicationUserTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationApplicationUserTimeoutsArgs) ToGetOrganizationApplicationUserTimeoutsOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationApplicationUserTimeoutsOutput)
+}
+
+func (i GetOrganizationApplicationUserTimeoutsArgs) ToGetOrganizationApplicationUserTimeoutsPtrOutput() GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return i.ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationApplicationUserTimeoutsArgs) ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationApplicationUserTimeoutsOutput).ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationApplicationUserTimeoutsPtrInput is an input type that accepts GetOrganizationApplicationUserTimeoutsArgs, GetOrganizationApplicationUserTimeoutsPtr and GetOrganizationApplicationUserTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationApplicationUserTimeoutsPtrInput` via:
+//
+//	        GetOrganizationApplicationUserTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationApplicationUserTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationApplicationUserTimeoutsPtrOutput() GetOrganizationApplicationUserTimeoutsPtrOutput
+	ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(context.Context) GetOrganizationApplicationUserTimeoutsPtrOutput
+}
+
+type getOrganizationApplicationUserTimeoutsPtrType GetOrganizationApplicationUserTimeoutsArgs
+
+func GetOrganizationApplicationUserTimeoutsPtr(v *GetOrganizationApplicationUserTimeoutsArgs) GetOrganizationApplicationUserTimeoutsPtrInput {
+	return (*getOrganizationApplicationUserTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationApplicationUserTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationApplicationUserTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationApplicationUserTimeoutsPtrType) ToGetOrganizationApplicationUserTimeoutsPtrOutput() GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return i.ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationApplicationUserTimeoutsPtrType) ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationApplicationUserTimeoutsPtrOutput)
+}
+
+type GetOrganizationApplicationUserTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationApplicationUserTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationApplicationUserTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationApplicationUserTimeoutsOutput) ToGetOrganizationApplicationUserTimeoutsOutput() GetOrganizationApplicationUserTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationApplicationUserTimeoutsOutput) ToGetOrganizationApplicationUserTimeoutsOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationApplicationUserTimeoutsOutput) ToGetOrganizationApplicationUserTimeoutsPtrOutput() GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return o.ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationApplicationUserTimeoutsOutput) ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationApplicationUserTimeouts) *GetOrganizationApplicationUserTimeouts {
+		return &v
+	}).(GetOrganizationApplicationUserTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationApplicationUserTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationApplicationUserTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationApplicationUserTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationApplicationUserTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationApplicationUserTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationApplicationUserTimeoutsPtrOutput) ToGetOrganizationApplicationUserTimeoutsPtrOutput() GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationApplicationUserTimeoutsPtrOutput) ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationApplicationUserTimeoutsPtrOutput) Elem() GetOrganizationApplicationUserTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationApplicationUserTimeouts) GetOrganizationApplicationUserTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationApplicationUserTimeouts
+		return ret
+	}).(GetOrganizationApplicationUserTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationApplicationUserTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationApplicationUserTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetOrganizationBillingGroupListBillingGroup struct {
 	// Billing address ID.
 	BillingAddressId string `pulumi:"billingAddressId"`
@@ -16470,7 +17732,7 @@ type GetPgPgUserConfigPg struct {
 	AutovacuumAnalyzeScaleFactor *float64 `pulumi:"autovacuumAnalyzeScaleFactor"`
 	// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
 	AutovacuumAnalyzeThreshold *int `pulumi:"autovacuumAnalyzeThreshold"`
-	// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+	// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
 	AutovacuumFreezeMaxAge *int `pulumi:"autovacuumFreezeMaxAge"`
 	// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
 	AutovacuumMaxWorkers *int `pulumi:"autovacuumMaxWorkers"`
@@ -16490,7 +17752,7 @@ type GetPgPgUserConfigPg struct {
 	BgwriterFlushAfter *int `pulumi:"bgwriterFlushAfter"`
 	// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
 	BgwriterLruMaxpages *int `pulumi:"bgwriterLruMaxpages"`
-	// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+	// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
 	BgwriterLruMultiplier *float64 `pulumi:"bgwriterLruMultiplier"`
 	// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
 	DeadlockTimeout *int `pulumi:"deadlockTimeout"`
@@ -16554,7 +17816,7 @@ type GetPgPgUserConfigPg struct {
 	PgStatMonitorDotPgsmMaxBuckets *int `pulumi:"pgStatMonitorDotPgsmMaxBuckets"`
 	// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
 	PgStatStatementsDotTrack *string `pulumi:"pgStatStatementsDotTrack"`
-	// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+	// PostgreSQL temporary file limit in KiB, -1 for unlimited.
 	TempFileLimit *int `pulumi:"tempFileLimit"`
 	// PostgreSQL service timezone. Example: `Europe/Helsinki`.
 	Timezone *string `pulumi:"timezone"`
@@ -16588,7 +17850,7 @@ type GetPgPgUserConfigPgArgs struct {
 	AutovacuumAnalyzeScaleFactor pulumi.Float64PtrInput `pulumi:"autovacuumAnalyzeScaleFactor"`
 	// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
 	AutovacuumAnalyzeThreshold pulumi.IntPtrInput `pulumi:"autovacuumAnalyzeThreshold"`
-	// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+	// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
 	AutovacuumFreezeMaxAge pulumi.IntPtrInput `pulumi:"autovacuumFreezeMaxAge"`
 	// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
 	AutovacuumMaxWorkers pulumi.IntPtrInput `pulumi:"autovacuumMaxWorkers"`
@@ -16608,7 +17870,7 @@ type GetPgPgUserConfigPgArgs struct {
 	BgwriterFlushAfter pulumi.IntPtrInput `pulumi:"bgwriterFlushAfter"`
 	// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
 	BgwriterLruMaxpages pulumi.IntPtrInput `pulumi:"bgwriterLruMaxpages"`
-	// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+	// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
 	BgwriterLruMultiplier pulumi.Float64PtrInput `pulumi:"bgwriterLruMultiplier"`
 	// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
 	DeadlockTimeout pulumi.IntPtrInput `pulumi:"deadlockTimeout"`
@@ -16672,7 +17934,7 @@ type GetPgPgUserConfigPgArgs struct {
 	PgStatMonitorDotPgsmMaxBuckets pulumi.IntPtrInput `pulumi:"pgStatMonitorDotPgsmMaxBuckets"`
 	// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
 	PgStatStatementsDotTrack pulumi.StringPtrInput `pulumi:"pgStatStatementsDotTrack"`
-	// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+	// PostgreSQL temporary file limit in KiB, -1 for unlimited.
 	TempFileLimit pulumi.IntPtrInput `pulumi:"tempFileLimit"`
 	// PostgreSQL service timezone. Example: `Europe/Helsinki`.
 	Timezone pulumi.StringPtrInput `pulumi:"timezone"`
@@ -16777,7 +18039,7 @@ func (o GetPgPgUserConfigPgOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtrOut
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumAnalyzeThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) AutovacuumFreezeMaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumFreezeMaxAge }).(pulumi.IntPtrOutput)
 }
@@ -16827,7 +18089,7 @@ func (o GetPgPgUserConfigPgOutput) BgwriterLruMaxpages() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.BgwriterLruMaxpages }).(pulumi.IntPtrOutput)
 }
 
-// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
 func (o GetPgPgUserConfigPgOutput) BgwriterLruMultiplier() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *float64 { return v.BgwriterLruMultiplier }).(pulumi.Float64PtrOutput)
 }
@@ -16987,7 +18249,7 @@ func (o GetPgPgUserConfigPgOutput) PgStatStatementsDotTrack() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PgStatStatementsDotTrack }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+// PostgreSQL temporary file limit in KiB, -1 for unlimited.
 func (o GetPgPgUserConfigPgOutput) TempFileLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.TempFileLimit }).(pulumi.IntPtrOutput)
 }
@@ -17071,7 +18333,7 @@ func (o GetPgPgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) AutovacuumFreezeMaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -17171,7 +18433,7 @@ func (o GetPgPgUserConfigPgPtrOutput) BgwriterLruMaxpages() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
 func (o GetPgPgUserConfigPgPtrOutput) BgwriterLruMultiplier() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *float64 {
 		if v == nil {
@@ -17491,7 +18753,7 @@ func (o GetPgPgUserConfigPgPtrOutput) PgStatStatementsDotTrack() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+// PostgreSQL temporary file limit in KiB, -1 for unlimited.
 func (o GetPgPgUserConfigPgPtrOutput) TempFileLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -21729,7 +22991,7 @@ func (o GetServiceIntegrationClickhouseCredentialsUserConfigGrantArrayOutput) In
 }
 
 type GetServiceIntegrationClickhouseKafkaUserConfig struct {
-	// Tables to create
+	// Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
 	Tables []GetServiceIntegrationClickhouseKafkaUserConfigTable `pulumi:"tables"`
 }
 
@@ -21745,7 +23007,7 @@ type GetServiceIntegrationClickhouseKafkaUserConfigInput interface {
 }
 
 type GetServiceIntegrationClickhouseKafkaUserConfigArgs struct {
-	// Tables to create
+	// Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
 	Tables GetServiceIntegrationClickhouseKafkaUserConfigTableArrayInput `pulumi:"tables"`
 }
 
@@ -21800,7 +23062,7 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigOutput) ToGetServiceIntegr
 	return o
 }
 
-// Tables to create
+// Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
 func (o GetServiceIntegrationClickhouseKafkaUserConfigOutput) Tables() GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfig) []GetServiceIntegrationClickhouseKafkaUserConfigTable {
 		return v.Tables
@@ -21828,33 +23090,33 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput) Index(i pulum
 }
 
 type GetServiceIntegrationClickhouseKafkaUserConfigTable struct {
-	// Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+	// Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
 	AutoOffsetReset *string `pulumi:"autoOffsetReset"`
-	// Table columns
+	// Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
 	Columns []GetServiceIntegrationClickhouseKafkaUserConfigTableColumn `pulumi:"columns"`
-	// Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
+	// Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
 	DataFormat string `pulumi:"dataFormat"`
-	// Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. Default: `basic`.
+	// Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
 	DateTimeInputFormat *string `pulumi:"dateTimeInputFormat"`
-	// Kafka consumers group. Default: `clickhouse`.
+	// The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
 	GroupName string `pulumi:"groupName"`
-	// Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+	// Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
 	HandleErrorMode *string `pulumi:"handleErrorMode"`
-	// Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+	// Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
 	MaxBlockSize *int `pulumi:"maxBlockSize"`
-	// The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+	// Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
 	MaxRowsPerMessage *int `pulumi:"maxRowsPerMessage"`
-	// Name of the table. Example: `events`.
+	// The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
 	Name string `pulumi:"name"`
-	// The number of consumers per table per replica. Default: `1`.
+	// Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
 	NumConsumers *int `pulumi:"numConsumers"`
-	// Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+	// Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
 	PollMaxBatchSize *int `pulumi:"pollMaxBatchSize"`
 	// Timeout in milliseconds for a single poll from Kafka. Takes the value of the streamFlushIntervalMs server setting by default (500ms). Default: `0`.
 	PollMaxTimeoutMs *int `pulumi:"pollMaxTimeoutMs"`
 	// The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
 	ProducerBatchNumMessages *int `pulumi:"producerBatchNumMessages"`
-	// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+	// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
 	ProducerBatchSize *int `pulumi:"producerBatchSize"`
 	// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
 	ProducerCompressionCodec *string `pulumi:"producerCompressionCodec"`
@@ -21862,17 +23124,17 @@ type GetServiceIntegrationClickhouseKafkaUserConfigTable struct {
 	ProducerCompressionLevel *int `pulumi:"producerCompressionLevel"`
 	// The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
 	ProducerLingerMs *int `pulumi:"producerLingerMs"`
-	// The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+	// The maximum size of the buffer in kilobytes before sending.
 	ProducerQueueBufferingMaxKbytes *int `pulumi:"producerQueueBufferingMaxKbytes"`
 	// The maximum number of messages to buffer before sending. Default: `100000`.
 	ProducerQueueBufferingMaxMessages *int `pulumi:"producerQueueBufferingMaxMessages"`
 	// The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
 	ProducerRequestRequiredAcks *int `pulumi:"producerRequestRequiredAcks"`
-	// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+	// Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
 	SkipBrokenMessages *int `pulumi:"skipBrokenMessages"`
-	// Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+	// When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
 	ThreadPerConsumer *bool `pulumi:"threadPerConsumer"`
-	// Kafka topics
+	// Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
 	Topics []GetServiceIntegrationClickhouseKafkaUserConfigTableTopic `pulumi:"topics"`
 }
 
@@ -21888,33 +23150,33 @@ type GetServiceIntegrationClickhouseKafkaUserConfigTableInput interface {
 }
 
 type GetServiceIntegrationClickhouseKafkaUserConfigTableArgs struct {
-	// Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+	// Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
 	AutoOffsetReset pulumi.StringPtrInput `pulumi:"autoOffsetReset"`
-	// Table columns
+	// Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
 	Columns GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayInput `pulumi:"columns"`
-	// Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
+	// Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
 	DataFormat pulumi.StringInput `pulumi:"dataFormat"`
-	// Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. Default: `basic`.
+	// Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
 	DateTimeInputFormat pulumi.StringPtrInput `pulumi:"dateTimeInputFormat"`
-	// Kafka consumers group. Default: `clickhouse`.
+	// The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
 	GroupName pulumi.StringInput `pulumi:"groupName"`
-	// Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+	// Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
 	HandleErrorMode pulumi.StringPtrInput `pulumi:"handleErrorMode"`
-	// Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+	// Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
 	MaxBlockSize pulumi.IntPtrInput `pulumi:"maxBlockSize"`
-	// The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+	// Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
 	MaxRowsPerMessage pulumi.IntPtrInput `pulumi:"maxRowsPerMessage"`
-	// Name of the table. Example: `events`.
+	// The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The number of consumers per table per replica. Default: `1`.
+	// Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
 	NumConsumers pulumi.IntPtrInput `pulumi:"numConsumers"`
-	// Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+	// Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
 	PollMaxBatchSize pulumi.IntPtrInput `pulumi:"pollMaxBatchSize"`
 	// Timeout in milliseconds for a single poll from Kafka. Takes the value of the streamFlushIntervalMs server setting by default (500ms). Default: `0`.
 	PollMaxTimeoutMs pulumi.IntPtrInput `pulumi:"pollMaxTimeoutMs"`
 	// The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
 	ProducerBatchNumMessages pulumi.IntPtrInput `pulumi:"producerBatchNumMessages"`
-	// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+	// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
 	ProducerBatchSize pulumi.IntPtrInput `pulumi:"producerBatchSize"`
 	// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
 	ProducerCompressionCodec pulumi.StringPtrInput `pulumi:"producerCompressionCodec"`
@@ -21922,17 +23184,17 @@ type GetServiceIntegrationClickhouseKafkaUserConfigTableArgs struct {
 	ProducerCompressionLevel pulumi.IntPtrInput `pulumi:"producerCompressionLevel"`
 	// The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
 	ProducerLingerMs pulumi.IntPtrInput `pulumi:"producerLingerMs"`
-	// The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+	// The maximum size of the buffer in kilobytes before sending.
 	ProducerQueueBufferingMaxKbytes pulumi.IntPtrInput `pulumi:"producerQueueBufferingMaxKbytes"`
 	// The maximum number of messages to buffer before sending. Default: `100000`.
 	ProducerQueueBufferingMaxMessages pulumi.IntPtrInput `pulumi:"producerQueueBufferingMaxMessages"`
 	// The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
 	ProducerRequestRequiredAcks pulumi.IntPtrInput `pulumi:"producerRequestRequiredAcks"`
-	// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+	// Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
 	SkipBrokenMessages pulumi.IntPtrInput `pulumi:"skipBrokenMessages"`
-	// Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+	// When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
 	ThreadPerConsumer pulumi.BoolPtrInput `pulumi:"threadPerConsumer"`
-	// Kafka topics
+	// Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
 	Topics GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayInput `pulumi:"topics"`
 }
 
@@ -21987,59 +23249,59 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ToGetServiceI
 	return o
 }
 
-// Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+// Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) AutoOffsetReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.AutoOffsetReset }).(pulumi.StringPtrOutput)
 }
 
-// Table columns
+// Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) Columns() GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) []GetServiceIntegrationClickhouseKafkaUserConfigTableColumn {
 		return v.Columns
 	}).(GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput)
 }
 
-// Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
+// Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) DataFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.DataFormat }).(pulumi.StringOutput)
 }
 
-// Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. Default: `basic`.
+// Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) DateTimeInputFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.DateTimeInputFormat }).(pulumi.StringPtrOutput)
 }
 
-// Kafka consumers group. Default: `clickhouse`.
+// The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+// Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) HandleErrorMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.HandleErrorMode }).(pulumi.StringPtrOutput)
 }
 
-// Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+// Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) MaxBlockSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.MaxBlockSize }).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+// Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) MaxRowsPerMessage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.MaxRowsPerMessage }).(pulumi.IntPtrOutput)
 }
 
-// Name of the table. Example: `events`.
+// The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The number of consumers per table per replica. Default: `1`.
+// Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) NumConsumers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.NumConsumers }).(pulumi.IntPtrOutput)
 }
 
-// Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+// Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) PollMaxBatchSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.PollMaxBatchSize }).(pulumi.IntPtrOutput)
 }
@@ -22054,7 +23316,7 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerBatch
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.ProducerBatchNumMessages }).(pulumi.IntPtrOutput)
 }
 
-// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerBatchSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.ProducerBatchSize }).(pulumi.IntPtrOutput)
 }
@@ -22074,7 +23336,7 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerLinge
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.ProducerLingerMs }).(pulumi.IntPtrOutput)
 }
 
-// The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+// The maximum size of the buffer in kilobytes before sending.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerQueueBufferingMaxKbytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int {
 		return v.ProducerQueueBufferingMaxKbytes
@@ -22093,17 +23355,17 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ProducerReque
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.ProducerRequestRequiredAcks }).(pulumi.IntPtrOutput)
 }
 
-// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+// Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) SkipBrokenMessages() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.SkipBrokenMessages }).(pulumi.IntPtrOutput)
 }
 
-// Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+// When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ThreadPerConsumer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *bool { return v.ThreadPerConsumer }).(pulumi.BoolPtrOutput)
 }
 
-// Kafka topics
+// Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) Topics() GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) []GetServiceIntegrationClickhouseKafkaUserConfigTableTopic {
 		return v.Topics
@@ -22131,9 +23393,9 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput) Index(i 
 }
 
 type GetServiceIntegrationClickhouseKafkaUserConfigTableColumn struct {
-	// Column name. Example: `key`.
+	// The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
 	Name string `pulumi:"name"`
-	// Column type. Example: `UInt64`.
+	// The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
 	Type string `pulumi:"type"`
 }
 
@@ -22149,9 +23411,9 @@ type GetServiceIntegrationClickhouseKafkaUserConfigTableColumnInput interface {
 }
 
 type GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs struct {
-	// Column name. Example: `key`.
+	// The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Column type. Example: `UInt64`.
+	// The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -22206,12 +23468,12 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput) ToGetSe
 	return o
 }
 
-// Column name. Example: `key`.
+// The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTableColumn) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Column type. Example: `UInt64`.
+// The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTableColumn) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -22237,7 +23499,7 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput) In
 }
 
 type GetServiceIntegrationClickhouseKafkaUserConfigTableTopic struct {
-	// Name of the topic. Example: `topicName`.
+	// The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topicName`.
 	Name string `pulumi:"name"`
 }
 
@@ -22253,7 +23515,7 @@ type GetServiceIntegrationClickhouseKafkaUserConfigTableTopicInput interface {
 }
 
 type GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs struct {
-	// Name of the topic. Example: `topicName`.
+	// The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topicName`.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -22308,7 +23570,7 @@ func (o GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput) ToGetSer
 	return o
 }
 
-// Name of the topic. Example: `topicName`.
+// The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topicName`.
 func (o GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTableTopic) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -24266,7 +25528,7 @@ type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
 	IndexDaysMax *int `pulumi:"indexDaysMax"`
 	// Elasticsearch index prefix. Default: `logs`.
 	IndexPrefix string `pulumi:"indexPrefix"`
-	// Elasticsearch request timeout limit. Default: `10.0`.
+	// Elasticsearch request timeout limit. Default: `10`.
 	Timeout *float64 `pulumi:"timeout"`
 	// Elasticsearch connection URL. Example: `https://user:passwd@logs.example.com/`.
 	Url string `pulumi:"url"`
@@ -24293,7 +25555,7 @@ type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs struct
 	IndexDaysMax pulumi.IntPtrInput `pulumi:"indexDaysMax"`
 	// Elasticsearch index prefix. Default: `logs`.
 	IndexPrefix pulumi.StringInput `pulumi:"indexPrefix"`
-	// Elasticsearch request timeout limit. Default: `10.0`.
+	// Elasticsearch request timeout limit. Default: `10`.
 	Timeout pulumi.Float64PtrInput `pulumi:"timeout"`
 	// Elasticsearch connection URL. Example: `https://user:passwd@logs.example.com/`.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -24368,7 +25630,7 @@ func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) 
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) string { return v.IndexPrefix }).(pulumi.StringOutput)
 }
 
-// Elasticsearch request timeout limit. Default: `10.0`.
+// Elasticsearch request timeout limit. Default: `10`.
 func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Timeout() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *float64 { return v.Timeout }).(pulumi.Float64PtrOutput)
 }
@@ -24982,7 +26244,7 @@ type GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig struct {
 	IndexDaysMax *int `pulumi:"indexDaysMax"`
 	// OpenSearch index prefix. Default: `logs`.
 	IndexPrefix string `pulumi:"indexPrefix"`
-	// OpenSearch request timeout limit. Default: `10.0`.
+	// OpenSearch request timeout limit. Default: `10`.
 	Timeout *float64 `pulumi:"timeout"`
 	// OpenSearch connection URL. Example: `https://user:passwd@logs.example.com/`.
 	Url string `pulumi:"url"`
@@ -25009,7 +26271,7 @@ type GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs struct {
 	IndexDaysMax pulumi.IntPtrInput `pulumi:"indexDaysMax"`
 	// OpenSearch index prefix. Default: `logs`.
 	IndexPrefix pulumi.StringInput `pulumi:"indexPrefix"`
-	// OpenSearch request timeout limit. Default: `10.0`.
+	// OpenSearch request timeout limit. Default: `10`.
 	Timeout pulumi.Float64PtrInput `pulumi:"timeout"`
 	// OpenSearch connection URL. Example: `https://user:passwd@logs.example.com/`.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -25084,7 +26346,7 @@ func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput) Ind
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig) string { return v.IndexPrefix }).(pulumi.StringOutput)
 }
 
-// OpenSearch request timeout limit. Default: `10.0`.
+// OpenSearch request timeout limit. Default: `10`.
 func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput) Timeout() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig) *float64 { return v.Timeout }).(pulumi.Float64PtrOutput)
 }
@@ -27197,13 +28459,13 @@ type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker struct {
 	ConsumerMaxPollRecords *int `pulumi:"consumerMaxPollRecords"`
 	// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
 	ProducerBatchSize *int `pulumi:"producerBatchSize"`
-	// The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+	// The amount of bytes producer can use for buffering data before publishing to broker.
 	ProducerBufferMemory *int `pulumi:"producerBufferMemory"`
 	// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
 	ProducerCompressionType *string `pulumi:"producerCompressionType"`
 	// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
 	ProducerLingerMs *int `pulumi:"producerLingerMs"`
-	// The maximum request size in bytes. Example: `1048576`.
+	// The maximum request size in bytes.
 	ProducerMaxRequestSize *int `pulumi:"producerMaxRequestSize"`
 }
 
@@ -27227,13 +28489,13 @@ type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct 
 	ConsumerMaxPollRecords pulumi.IntPtrInput `pulumi:"consumerMaxPollRecords"`
 	// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
 	ProducerBatchSize pulumi.IntPtrInput `pulumi:"producerBatchSize"`
-	// The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+	// The amount of bytes producer can use for buffering data before publishing to broker.
 	ProducerBufferMemory pulumi.IntPtrInput `pulumi:"producerBufferMemory"`
 	// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
 	ProducerCompressionType pulumi.StringPtrInput `pulumi:"producerCompressionType"`
 	// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
 	ProducerLingerMs pulumi.IntPtrInput `pulumi:"producerLingerMs"`
-	// The maximum request size in bytes. Example: `1048576`.
+	// The maximum request size in bytes.
 	ProducerMaxRequestSize pulumi.IntPtrInput `pulumi:"producerMaxRequestSize"`
 }
 
@@ -27342,7 +28604,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) P
 	}).(pulumi.IntPtrOutput)
 }
 
-// The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+// The amount of bytes producer can use for buffering data before publishing to broker.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerBufferMemory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ProducerBufferMemory
@@ -27363,7 +28625,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) P
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum request size in bytes. Example: `1048576`.
+// The maximum request size in bytes.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ProducerMaxRequestSize
@@ -27434,7 +28696,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+// The amount of bytes producer can use for buffering data before publishing to broker.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerBufferMemory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -27464,7 +28726,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum request size in bytes. Example: `1048576`.
+// The maximum request size in bytes.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -32756,6 +34018,18 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigInput)(nil)).Elem(), GetM3DbM3dbUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigIpFilterObjectInput)(nil)).Elem(), GetM3DbM3dbUserConfigIpFilterObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigIpFilterObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigLimitsInput)(nil)).Elem(), GetM3DbM3dbUserConfigLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigLimitsPtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigM3Input)(nil)).Elem(), GetM3DbM3dbUserConfigM3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigM3PtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigM3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigM3TagOptionsInput)(nil)).Elem(), GetM3DbM3dbUserConfigM3TagOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigM3TagOptionsPtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigM3TagOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsPtrInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput)(nil)).Elem(), GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{})
@@ -32814,6 +34088,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigArrayInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigAzureMigrationInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigAzureMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigAzureMigrationPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigAzureMigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigCustomKeystoreInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigCustomKeystoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigCustomKeystoreArrayInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigCustomKeystoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigGcsMigrationInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigGcsMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigGcsMigrationPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigGcsMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigIndexPatternInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigIndexPatternArgs{})
@@ -32892,6 +34168,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailArrayInput)(nil)).Elem(), GetOpenSearchTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationAddressTimeoutsInput)(nil)).Elem(), GetOrganizationAddressTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationAddressTimeoutsPtrInput)(nil)).Elem(), GetOrganizationAddressTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationApplicationUserTimeoutsInput)(nil)).Elem(), GetOrganizationApplicationUserTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationApplicationUserTimeoutsPtrInput)(nil)).Elem(), GetOrganizationApplicationUserTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListTimeoutsInput)(nil)).Elem(), GetOrganizationBillingGroupListTimeoutsArgs{})
@@ -33120,6 +34398,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigIpFilterObjectOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigIpFilterObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigLimitsOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigLimitsPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigM3Output{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigM3PtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigM3TagOptionsOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigM3TagOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput{})
@@ -33178,6 +34468,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigAzureMigrationOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigCustomKeystoreOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigGcsMigrationOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigGcsMigrationPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigIndexPatternOutput{})
@@ -33256,6 +34548,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationAddressTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetOrganizationAddressTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationApplicationUserTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationApplicationUserTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListTimeoutsOutput{})

@@ -18,57 +18,57 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * @return Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+     * @return Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
      * 
      */
     private @Nullable String autoOffsetReset;
     /**
-     * @return Table columns
+     * @return Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
      * 
      */
     private List<GetServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
     /**
-     * @return Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
+     * @return Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
      * 
      */
     private String dataFormat;
     /**
-     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
+     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
      * 
      */
     private @Nullable String dateTimeInputFormat;
     /**
-     * @return Kafka consumers group. Default: `clickhouse`.
+     * @return The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
      * 
      */
     private String groupName;
     /**
-     * @return Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+     * @return Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
      * 
      */
     private @Nullable String handleErrorMode;
     /**
-     * @return Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+     * @return Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
      * 
      */
     private @Nullable Integer maxBlockSize;
     /**
-     * @return The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+     * @return Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
      * 
      */
     private @Nullable Integer maxRowsPerMessage;
     /**
-     * @return Name of the table. Example: `events`.
+     * @return The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
      * 
      */
     private String name;
     /**
-     * @return The number of consumers per table per replica. Default: `1`.
+     * @return Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
      * 
      */
     private @Nullable Integer numConsumers;
     /**
-     * @return Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+     * @return Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
      * 
      */
     private @Nullable Integer pollMaxBatchSize;
@@ -83,7 +83,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private @Nullable Integer producerBatchNumMessages;
     /**
-     * @return The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+     * @return The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
      * 
      */
     private @Nullable Integer producerBatchSize;
@@ -103,7 +103,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private @Nullable Integer producerLingerMs;
     /**
-     * @return The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+     * @return The maximum size of the buffer in kilobytes before sending.
      * 
      */
     private @Nullable Integer producerQueueBufferingMaxKbytes;
@@ -118,94 +118,94 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private @Nullable Integer producerRequestRequiredAcks;
     /**
-     * @return Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+     * @return Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
      * 
      */
     private @Nullable Integer skipBrokenMessages;
     /**
-     * @return Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+     * @return When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
      * 
      */
     private @Nullable Boolean threadPerConsumer;
     /**
-     * @return Kafka topics
+     * @return Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
      * 
      */
     private List<GetServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
 
     private GetServiceIntegrationClickhouseKafkaUserConfigTable() {}
     /**
-     * @return Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+     * @return Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
      * 
      */
     public Optional<String> autoOffsetReset() {
         return Optional.ofNullable(this.autoOffsetReset);
     }
     /**
-     * @return Table columns
+     * @return Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
      * 
      */
     public List<GetServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns() {
         return this.columns;
     }
     /**
-     * @return Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
+     * @return Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
      * 
      */
     public String dataFormat() {
         return this.dataFormat;
     }
     /**
-     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
+     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
      * 
      */
     public Optional<String> dateTimeInputFormat() {
         return Optional.ofNullable(this.dateTimeInputFormat);
     }
     /**
-     * @return Kafka consumers group. Default: `clickhouse`.
+     * @return The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
      * 
      */
     public String groupName() {
         return this.groupName;
     }
     /**
-     * @return Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+     * @return Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
      * 
      */
     public Optional<String> handleErrorMode() {
         return Optional.ofNullable(this.handleErrorMode);
     }
     /**
-     * @return Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+     * @return Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
      * 
      */
     public Optional<Integer> maxBlockSize() {
         return Optional.ofNullable(this.maxBlockSize);
     }
     /**
-     * @return The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+     * @return Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
      * 
      */
     public Optional<Integer> maxRowsPerMessage() {
         return Optional.ofNullable(this.maxRowsPerMessage);
     }
     /**
-     * @return Name of the table. Example: `events`.
+     * @return The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The number of consumers per table per replica. Default: `1`.
+     * @return Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
      * 
      */
     public Optional<Integer> numConsumers() {
         return Optional.ofNullable(this.numConsumers);
     }
     /**
-     * @return Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+     * @return Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
      * 
      */
     public Optional<Integer> pollMaxBatchSize() {
@@ -226,7 +226,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         return Optional.ofNullable(this.producerBatchNumMessages);
     }
     /**
-     * @return The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+     * @return The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
      * 
      */
     public Optional<Integer> producerBatchSize() {
@@ -254,7 +254,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         return Optional.ofNullable(this.producerLingerMs);
     }
     /**
-     * @return The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+     * @return The maximum size of the buffer in kilobytes before sending.
      * 
      */
     public Optional<Integer> producerQueueBufferingMaxKbytes() {
@@ -275,21 +275,21 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         return Optional.ofNullable(this.producerRequestRequiredAcks);
     }
     /**
-     * @return Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+     * @return Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
      * 
      */
     public Optional<Integer> skipBrokenMessages() {
         return Optional.ofNullable(this.skipBrokenMessages);
     }
     /**
-     * @return Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+     * @return When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
      * 
      */
     public Optional<Boolean> threadPerConsumer() {
         return Optional.ofNullable(this.threadPerConsumer);
     }
     /**
-     * @return Kafka topics
+     * @return Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
      * 
      */
     public List<GetServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics() {

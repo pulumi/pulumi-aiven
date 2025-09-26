@@ -60,12 +60,12 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer innodbLockWaitTimeout;
     /**
-     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
      * 
      */
     private @Nullable Integer innodbLogBufferSize;
     /**
-     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      * 
      */
     private @Nullable Integer innodbOnlineAlterLogMaxSize;
@@ -110,17 +110,17 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable String logOutput;
     /**
-     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
+     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
      * 
      */
     private @Nullable Double longQueryTime;
     /**
-     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      * 
      */
     private @Nullable Integer maxAllowedPacket;
     /**
-     * @return Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
+     * @return Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
      * 
      */
     private @Nullable Integer maxHeapTableSize;
@@ -160,7 +160,7 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable Boolean sqlRequirePrimaryKey;
     /**
-     * @return Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
+     * @return Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
      * 
      */
     private @Nullable Integer tmpTableSize;
@@ -235,14 +235,14 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.innodbLockWaitTimeout);
     }
     /**
-     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
      * 
      */
     public Optional<Integer> innodbLogBufferSize() {
         return Optional.ofNullable(this.innodbLogBufferSize);
     }
     /**
-     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      * 
      */
     public Optional<Integer> innodbOnlineAlterLogMaxSize() {
@@ -305,21 +305,21 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.logOutput);
     }
     /**
-     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
+     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
      * 
      */
     public Optional<Double> longQueryTime() {
         return Optional.ofNullable(this.longQueryTime);
     }
     /**
-     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      * 
      */
     public Optional<Integer> maxAllowedPacket() {
         return Optional.ofNullable(this.maxAllowedPacket);
     }
     /**
-     * @return Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
+     * @return Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
      * 
      */
     public Optional<Integer> maxHeapTableSize() {
@@ -375,7 +375,7 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.sqlRequirePrimaryKey);
     }
     /**
-     * @return Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
+     * @return Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
      * 
      */
     public Optional<Integer> tmpTableSize() {

@@ -40,7 +40,7 @@ public final class GetKafkaResult {
      */
     private Boolean defaultAcl;
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
     private String diskSpace;
@@ -60,7 +60,7 @@ public final class GetKafkaResult {
      */
     private String diskSpaceStep;
     /**
-     * @return Disk space that service is currently using
+     * @return The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
      * 
      */
     private String diskSpaceUsed;
@@ -201,7 +201,7 @@ public final class GetKafkaResult {
         return this.defaultAcl;
     }
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
     public String diskSpace() {
@@ -229,7 +229,7 @@ public final class GetKafkaResult {
         return this.diskSpaceStep;
     }
     /**
-     * @return Disk space that service is currently using
+     * @return The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
      * 
      */
     public String diskSpaceUsed() {

@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ConsumerAutoOffsetReset { get; set; }
 
         /// <summary>
-        /// Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+        /// Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
         /// </summary>
         [Input("consumerFetchMaxBytes")]
         public Input<int>? ConsumerFetchMaxBytes { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ConsumerIsolationLevel { get; set; }
 
         /// <summary>
-        /// Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+        /// Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         /// </summary>
         [Input("consumerMaxPartitionFetchBytes")]
         public Input<int>? ConsumerMaxPartitionFetchBytes { get; set; }
@@ -91,7 +91,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerLingerMs { get; set; }
 
         /// <summary>
-        /// This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+        /// This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         /// </summary>
         [Input("producerMaxRequestSize")]
         public Input<int>? ProducerMaxRequestSize { get; set; }

@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ConsumerAutoOffsetReset;
         /// <summary>
-        /// Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+        /// Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
         /// </summary>
         public readonly int? ConsumerFetchMaxBytes;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ConsumerIsolationLevel;
         /// <summary>
-        /// Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+        /// Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         /// </summary>
         public readonly int? ConsumerMaxPartitionFetchBytes;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ProducerLingerMs;
         /// <summary>
-        /// This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+        /// This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         /// </summary>
         public readonly int? ProducerMaxRequestSize;
         /// <summary>

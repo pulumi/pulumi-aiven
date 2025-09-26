@@ -164,9 +164,6 @@ def get_organization_project(organization_id: Optional[_builtins.str] = None,
     """
     Gets information about an Aiven project.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
     ## Example Usage
 
     ```python
@@ -208,9 +205,6 @@ def get_organization_project_output(organization_id: Optional[pulumi.Input[_buil
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationProjectResult]:
     """
     Gets information about an Aiven project.
-
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
     ## Example Usage
 

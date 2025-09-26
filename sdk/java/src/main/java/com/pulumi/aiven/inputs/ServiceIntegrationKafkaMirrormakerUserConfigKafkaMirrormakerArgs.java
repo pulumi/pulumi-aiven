@@ -77,14 +77,14 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     }
 
     /**
-     * The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+     * The amount of bytes producer can use for buffering data before publishing to broker.
      * 
      */
     @Import(name="producerBufferMemory")
     private @Nullable Output<Integer> producerBufferMemory;
 
     /**
-     * @return The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+     * @return The amount of bytes producer can use for buffering data before publishing to broker.
      * 
      */
     public Optional<Output<Integer>> producerBufferMemory() {
@@ -122,14 +122,14 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     }
 
     /**
-     * The maximum request size in bytes. Example: `1048576`.
+     * The maximum request size in bytes.
      * 
      */
     @Import(name="producerMaxRequestSize")
     private @Nullable Output<Integer> producerMaxRequestSize;
 
     /**
-     * @return The maximum request size in bytes. Example: `1048576`.
+     * @return The maximum request size in bytes.
      * 
      */
     public Optional<Output<Integer>> producerMaxRequestSize() {
@@ -252,7 +252,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerBufferMemory The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+         * @param producerBufferMemory The amount of bytes producer can use for buffering data before publishing to broker.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerBufferMemory The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+         * @param producerBufferMemory The amount of bytes producer can use for buffering data before publishing to broker.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerMaxRequestSize The maximum request size in bytes. Example: `1048576`.
+         * @param producerMaxRequestSize The maximum request size in bytes.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerMaxRequestSize The maximum request size in bytes. Example: `1048576`.
+         * @param producerMaxRequestSize The maximum request size in bytes.
          * 
          * @return builder
          * 

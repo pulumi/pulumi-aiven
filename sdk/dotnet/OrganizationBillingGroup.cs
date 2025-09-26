@@ -55,7 +55,7 @@ namespace Pulumi.Aiven
         public Output<string?> Currency { get; private set; } = null!;
 
         /// <summary>
-        /// Extra billing text. Maximum length: `254`.
+        /// Extra billing text. Maximum length: `256`.
         /// </summary>
         [Output("customInvoiceText")]
         public Output<string?> CustomInvoiceText { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.Aiven
         public Input<string>? Currency { get; set; }
 
         /// <summary>
-        /// Extra billing text. Maximum length: `254`.
+        /// Extra billing text. Maximum length: `256`.
         /// </summary>
         [Input("customInvoiceText")]
         public Input<string>? CustomInvoiceText { get; set; }
@@ -265,7 +265,7 @@ namespace Pulumi.Aiven
         public Input<string>? Currency { get; set; }
 
         /// <summary>
-        /// Extra billing text. Maximum length: `254`.
+        /// Extra billing text. Maximum length: `256`.
         /// </summary>
         [Input("customInvoiceText")]
         public Input<string>? CustomInvoiceText { get; set; }

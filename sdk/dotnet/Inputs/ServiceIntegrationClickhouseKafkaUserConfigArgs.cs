@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableArgs>? _tables;
 
         /// <summary>
-        /// Tables to create
+        /// Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
         /// </summary>
         public InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableArgs> Tables
         {

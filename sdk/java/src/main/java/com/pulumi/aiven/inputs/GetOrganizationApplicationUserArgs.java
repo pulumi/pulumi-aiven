@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationApplicationUserTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationApplicationUserArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,29 +18,36 @@ public final class GetOrganizationApplicationUserArgs extends com.pulumi.resourc
     public static final GetOrganizationApplicationUserArgs Empty = new GetOrganizationApplicationUserArgs();
 
     /**
-     * The ID of the organization the application user belongs to.
+     * ID of an organization.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization the application user belongs to.
+     * @return ID of an organization.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<GetOrganizationApplicationUserTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetOrganizationApplicationUserTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * The ID of the application user.
+     * User ID.
      * 
      */
     @Import(name="userId", required=true)
     private Output<String> userId;
 
     /**
-     * @return The ID of the application user.
+     * @return User ID.
      * 
      */
     public Output<String> userId() {
@@ -48,6 +58,7 @@ public final class GetOrganizationApplicationUserArgs extends com.pulumi.resourc
 
     private GetOrganizationApplicationUserArgs(GetOrganizationApplicationUserArgs $) {
         this.organizationId = $.organizationId;
+        this.timeouts = $.timeouts;
         this.userId = $.userId;
     }
 
@@ -70,7 +81,7 @@ public final class GetOrganizationApplicationUserArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param organizationId The ID of the organization the application user belongs to.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -81,7 +92,7 @@ public final class GetOrganizationApplicationUserArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param organizationId The ID of the organization the application user belongs to.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -90,8 +101,17 @@ public final class GetOrganizationApplicationUserArgs extends com.pulumi.resourc
             return organizationId(Output.of(organizationId));
         }
 
+        public Builder timeouts(@Nullable Output<GetOrganizationApplicationUserTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetOrganizationApplicationUserTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param userId The ID of the application user.
+         * @param userId User ID.
          * 
          * @return builder
          * 
@@ -102,7 +122,7 @@ public final class GetOrganizationApplicationUserArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userId The ID of the application user.
+         * @param userId User ID.
          * 
          * @return builder
          * 

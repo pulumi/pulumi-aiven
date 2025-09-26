@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
     /**
-     * @return Column name. Example: `key`.
+     * @return The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
      * 
      */
     private String name;
     /**
-     * @return Column type. Example: `UInt64`.
+     * @return The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
      * 
      */
     private String type;
 
     private ServiceIntegrationClickhouseKafkaUserConfigTableColumn() {}
     /**
-     * @return Column name. Example: `key`.
+     * @return The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Column type. Example: `UInt64`.
+     * @return The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
      * 
      */
     public String type() {

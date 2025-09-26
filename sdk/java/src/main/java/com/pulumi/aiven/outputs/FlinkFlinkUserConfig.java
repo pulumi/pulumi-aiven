@@ -66,7 +66,7 @@ public final class FlinkFlinkUserConfig {
      */
     private @Nullable Integer pekkoAskTimeoutS;
     /**
-     * @return Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     * @return Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
      * 
      */
     private @Nullable Integer pekkoFramesizeB;
@@ -157,7 +157,7 @@ public final class FlinkFlinkUserConfig {
         return Optional.ofNullable(this.pekkoAskTimeoutS);
     }
     /**
-     * @return Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     * @return Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
      * 
      */
     public Optional<Integer> pekkoFramesizeB() {

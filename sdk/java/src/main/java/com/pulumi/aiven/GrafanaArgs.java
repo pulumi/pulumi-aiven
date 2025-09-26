@@ -54,24 +54,24 @@ public final class GrafanaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      * @deprecated
-     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+    @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
     @Import(name="diskSpace")
     private @Nullable Output<String> diskSpace;
 
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      * @deprecated
-     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+    @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
     public Optional<Output<String>> diskSpace() {
         return Optional.ofNullable(this.diskSpace);
     }
@@ -353,30 +353,30 @@ public final class GrafanaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
          * 
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+         * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+        @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
         public Builder diskSpace(@Nullable Output<String> diskSpace) {
             $.diskSpace = diskSpace;
             return this;
         }
 
         /**
-         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
          * 
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+         * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+        @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
         public Builder diskSpace(String diskSpace) {
             return diskSpace(Output.of(diskSpace));
         }

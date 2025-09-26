@@ -12,59 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [Aiven for M3](https://aiven.io/docs/products/m3db) service.
-//
-// !> **End of life notice**
-// **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-// You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
-// To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-// before the end of life date.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewM3Db(ctx, "example_m3db", &aiven.M3DbArgs{
-//				Project:               pulumi.Any(exampleProject.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("business-8"),
-//				ServiceName:           pulumi.String("example-m3db-service"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				M3dbUserConfig: &aiven.M3DbM3dbUserConfigArgs{
-//					M3dbVersion: pulumi.String("1.1"),
-//					Namespaces: aiven.M3DbM3dbUserConfigNamespaceArray{
-//						&aiven.M3DbM3dbUserConfigNamespaceArgs{
-//							Name: pulumi.String("example-namespace"),
-//							Type: pulumi.String("unaggregated"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import aiven:index/m3Db:M3Db example_m3db PROJECT/SERVICE_NAME
-// ```
 type M3Db struct {
 	pulumi.CustomResourceState
 
@@ -74,9 +21,9 @@ type M3Db struct {
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components M3DbComponentArrayOutput `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -84,9 +31,7 @@ type M3Db struct {
 	DiskSpaceDefault pulumi.StringOutput `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
-	// Disk space that service is currently using
-	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Values provided by the M3DB server.
 	M3db M3DbM3dbOutput `pulumi:"m3db"`
@@ -185,9 +130,9 @@ type m3dbState struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []M3DbComponent `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -195,9 +140,7 @@ type m3dbState struct {
 	DiskSpaceDefault *string `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
-	// Disk space that service is currently using
-	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Values provided by the M3DB server.
 	M3db *M3DbM3db `pulumi:"m3db"`
@@ -249,9 +192,9 @@ type M3DbState struct {
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components M3DbComponentArrayInput
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -259,9 +202,7 @@ type M3DbState struct {
 	DiskSpaceDefault pulumi.StringPtrInput
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
-	// Disk space that service is currently using
-	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Values provided by the M3DB server.
 	M3db M3DbM3dbPtrInput
@@ -315,9 +256,9 @@ type m3dbArgs struct {
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName *string `pulumi:"cloudName"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Values provided by the M3DB server.
 	M3db *M3DbM3db `pulumi:"m3db"`
@@ -355,9 +296,9 @@ type M3DbArgs struct {
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrInput
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// Values provided by the M3DB server.
 	M3db M3DbM3dbPtrInput
@@ -491,9 +432,9 @@ func (o M3DbOutput) Components() M3DbComponentArrayOutput {
 	return o.ApplyT(func(v *M3Db) M3DbComponentArrayOutput { return v.Components }).(M3DbComponentArrayOutput)
 }
 
-// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 //
-// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 func (o M3DbOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3Db) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }
@@ -513,9 +454,7 @@ func (o M3DbOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3Db) pulumi.StringOutput { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
 
-// Disk space that service is currently using
-//
-// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 func (o M3DbOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3Db) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
