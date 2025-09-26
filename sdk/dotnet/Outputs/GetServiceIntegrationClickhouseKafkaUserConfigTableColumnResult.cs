@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult
     {
         /// <summary>
-        /// Column name. Example: `key`.
+        /// The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Column type. Example: `UInt64`.
+        /// The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
         /// </summary>
         public readonly string Type;
 

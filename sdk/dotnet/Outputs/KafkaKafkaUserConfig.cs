@@ -63,6 +63,10 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<Outputs.KafkaKafkaUserConfigKafkaConnectPluginVersion> KafkaConnectPluginVersions;
         public readonly ImmutableArray<Outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider> KafkaConnectSecretProviders;
         /// <summary>
+        /// Kafka Diskless configuration values
+        /// </summary>
+        public readonly Outputs.KafkaKafkaUserConfigKafkaDiskless? KafkaDiskless;
+        /// <summary>
         /// Enable Kafka-REST service. Default: `false`.
         /// </summary>
         public readonly bool? KafkaRest;
@@ -79,7 +83,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaSaslMechanisms? KafkaSaslMechanisms;
         /// <summary>
-        /// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
+        /// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
         /// </summary>
         public readonly string? KafkaVersion;
         /// <summary>
@@ -151,6 +155,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<Outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders,
 
+            Outputs.KafkaKafkaUserConfigKafkaDiskless? kafkaDiskless,
+
             bool? kafkaRest,
 
             bool? kafkaRestAuthorization,
@@ -194,6 +200,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaConnectConfig = kafkaConnectConfig;
             KafkaConnectPluginVersions = kafkaConnectPluginVersions;
             KafkaConnectSecretProviders = kafkaConnectSecretProviders;
+            KafkaDiskless = kafkaDiskless;
             KafkaRest = kafkaRest;
             KafkaRestAuthorization = kafkaRestAuthorization;
             KafkaRestConfig = kafkaRestConfig;

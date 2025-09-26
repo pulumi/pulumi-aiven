@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
+        /// Allow to register custom keystores in OpenSearch
+        /// </summary>
+        public readonly ImmutableArray<Outputs.OpenSearchOpensearchUserConfigCustomKeystore> CustomKeystores;
+        /// <summary>
         /// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
         /// </summary>
         public readonly bool? DisableReplicationFactorAdjustment;
@@ -78,7 +82,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchDashboards? OpensearchDashboards;
         /// <summary>
-        /// Enum: `1`, `2`, and newer. OpenSearch major version.
+        /// Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
         /// </summary>
         public readonly string? OpensearchVersion;
         /// <summary>
@@ -129,6 +133,8 @@ namespace Pulumi.Aiven.Outputs
             Outputs.OpenSearchOpensearchUserConfigAzureMigration? azureMigration,
 
             string? customDomain,
+
+            ImmutableArray<Outputs.OpenSearchOpensearchUserConfigCustomKeystore> customKeystores,
 
             bool? disableReplicationFactorAdjustment,
 
@@ -181,6 +187,7 @@ namespace Pulumi.Aiven.Outputs
             AdditionalBackupRegions = additionalBackupRegions;
             AzureMigration = azureMigration;
             CustomDomain = customDomain;
+            CustomKeystores = customKeystores;
             DisableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
             GcsMigration = gcsMigration;
             IndexPatterns = indexPatterns;

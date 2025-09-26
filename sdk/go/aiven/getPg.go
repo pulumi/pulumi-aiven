@@ -65,7 +65,7 @@ type LookupPgResult struct {
 	CloudName string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []GetPgComponent `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap string `pulumi:"diskSpaceCap"`
@@ -73,7 +73,7 @@ type LookupPgResult struct {
 	DiskSpaceDefault string `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep string `pulumi:"diskSpaceStep"`
-	// Disk space that service is currently using
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -169,7 +169,7 @@ func (o LookupPgResultOutput) Components() GetPgComponentArrayOutput {
 	return o.ApplyT(func(v LookupPgResult) []GetPgComponent { return v.Components }).(GetPgComponentArrayOutput)
 }
 
-// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 func (o LookupPgResultOutput) DiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgResult) string { return v.DiskSpace }).(pulumi.StringOutput)
 }
@@ -189,7 +189,7 @@ func (o LookupPgResultOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgResult) string { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
 
-// Disk space that service is currently using
+// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 func (o LookupPgResultOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }

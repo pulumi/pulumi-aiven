@@ -12,6 +12,19 @@ import * as utilities from "./utilities";
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  *
+ * !> **End of life notice**
+ * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+ * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+ * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+ * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+ * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+ * Aiven for PostgreSQL®,
+ * Aiven for ClickHouse®,
+ * and Aiven for MySQL®.
+ * To ensure uninterrupted service, complete your migration before December 5, 2025.
+ * For further assistance, contact the Aiven support team or your
+ * account team.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -97,9 +110,9 @@ export class Alloydbomni extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly components: pulumi.Output<outputs.AlloydbomniComponent[]>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      */
     declare public readonly diskSpace: pulumi.Output<string | undefined>;
     /**
@@ -115,9 +128,7 @@ export class Alloydbomni extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly diskSpaceStep: pulumi.Output<string>;
     /**
-     * Disk space that service is currently using
-     *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      */
     declare public /*out*/ readonly diskSpaceUsed: pulumi.Output<string>;
     /**
@@ -309,9 +320,9 @@ export interface AlloydbomniState {
      */
     components?: pulumi.Input<pulumi.Input<inputs.AlloydbomniComponent>[]>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -327,9 +338,7 @@ export interface AlloydbomniState {
      */
     diskSpaceStep?: pulumi.Input<string>;
     /**
-     * Disk space that service is currently using
-     *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      */
     diskSpaceUsed?: pulumi.Input<string>;
     /**
@@ -428,9 +437,9 @@ export interface AlloydbomniArgs {
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
     /**

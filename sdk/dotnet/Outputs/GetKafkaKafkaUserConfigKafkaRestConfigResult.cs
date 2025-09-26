@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ConsumerIdleDisconnectTimeout;
         /// <summary>
-        /// Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+        /// Maximum number of bytes in unencoded message keys and values by a single request.
         /// </summary>
         public readonly int? ConsumerRequestMaxBytes;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ProducerLingerMs;
         /// <summary>
-        /// The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+        /// The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
         /// </summary>
         public readonly int? ProducerMaxRequestSize;
         /// <summary>

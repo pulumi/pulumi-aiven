@@ -24,7 +24,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
      */
     private @Nullable Integer consumerIdleDisconnectTimeout;
     /**
-     * @return Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+     * @return Maximum number of bytes in unencoded message keys and values by a single request.
      * 
      */
     private @Nullable Integer consumerRequestMaxBytes;
@@ -59,7 +59,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
      */
     private @Nullable Integer producerLingerMs;
     /**
-     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
      * 
      */
     private @Nullable Integer producerMaxRequestSize;
@@ -85,7 +85,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
         return Optional.ofNullable(this.consumerIdleDisconnectTimeout);
     }
     /**
-     * @return Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+     * @return Maximum number of bytes in unencoded message keys and values by a single request.
      * 
      */
     public Optional<Integer> consumerRequestMaxBytes() {
@@ -134,7 +134,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
         return Optional.ofNullable(this.producerLingerMs);
     }
     /**
-     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
      * 
      */
     public Optional<Integer> producerMaxRequestSize() {

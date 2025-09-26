@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerBatchSize { get; set; }
 
         /// <summary>
-        /// The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+        /// The amount of bytes producer can use for buffering data before publishing to broker.
         /// </summary>
         [Input("producerBufferMemory")]
         public Input<int>? ProducerBufferMemory { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerLingerMs { get; set; }
 
         /// <summary>
-        /// The maximum request size in bytes. Example: `1048576`.
+        /// The maximum request size in bytes.
         /// </summary>
         [Input("producerMaxRequestSize")]
         public Input<int>? ProducerMaxRequestSize { get; set; }

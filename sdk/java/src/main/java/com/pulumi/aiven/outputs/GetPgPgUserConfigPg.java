@@ -25,7 +25,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable Integer autovacuumAnalyzeThreshold;
     /**
-     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
      * 
      */
     private @Nullable Integer autovacuumFreezeMaxAge;
@@ -75,7 +75,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable Integer bgwriterLruMaxpages;
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
      * 
      */
     private @Nullable Double bgwriterLruMultiplier;
@@ -235,7 +235,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable String pgStatStatementsDotTrack;
     /**
-     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
      * 
      */
     private @Nullable Integer tempFileLimit;
@@ -291,7 +291,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.autovacuumAnalyzeThreshold);
     }
     /**
-     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart. Example: `200000000`.
+     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
      * 
      */
     public Optional<Integer> autovacuumFreezeMaxAge() {
@@ -361,7 +361,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.bgwriterLruMaxpages);
     }
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2.0`.
+     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
      * 
      */
     public Optional<Double> bgwriterLruMultiplier() {
@@ -585,7 +585,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.pgStatStatementsDotTrack);
     }
     /**
-     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
      * 
      */
     public Optional<Integer> tempFileLimit() {

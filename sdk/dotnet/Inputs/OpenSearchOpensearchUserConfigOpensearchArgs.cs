@@ -203,7 +203,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? IsmHistoryMaxAge { get; set; }
 
         /// <summary>
-        /// The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+        /// The maximum number of documents before rolling over the audit history index.
         /// </summary>
         [Input("ismHistoryMaxDocs")]
         public Input<int>? IsmHistoryMaxDocs { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? KnnMemoryCircuitBreakerEnabled { get; set; }
 
         /// <summary>
-        /// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
+        /// Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
         /// </summary>
         [Input("knnMemoryCircuitBreakerLimit")]
         public Input<int>? KnnMemoryCircuitBreakerLimit { get; set; }

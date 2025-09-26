@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? GroupInitialRebalanceDelayMs;
         /// <summary>
-        /// The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+        /// The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
         /// </summary>
         public readonly int? GroupMaxSessionTimeoutMs;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? GroupMinSessionTimeoutMs;
         /// <summary>
-        /// How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+        /// How long are delete records retained? (Default: 86400000 (1 day)).
         /// </summary>
         public readonly int? LogCleanerDeleteRetentionMs;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogIndexIntervalBytes;
         /// <summary>
-        /// The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+        /// The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
         /// </summary>
         public readonly int? LogIndexSizeMaxBytes;
         /// <summary>
@@ -89,6 +89,14 @@ namespace Pulumi.Aiven.Outputs
         /// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).
         /// </summary>
         public readonly bool? LogMessageDownconversionEnable;
+        /// <summary>
+        /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+        /// </summary>
+        public readonly int? LogMessageTimestampAfterMaxMs;
+        /// <summary>
+        /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+        /// </summary>
+        public readonly int? LogMessageTimestampBeforeMaxMs;
         /// <summary>
         /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
         /// </summary>
@@ -138,7 +146,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxIncrementalFetchSessionCacheSlots;
         /// <summary>
-        /// The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+        /// The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
         /// </summary>
         public readonly int? MessageMaxBytes;
         /// <summary>
@@ -190,11 +198,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? TransactionPartitionVerificationEnable;
         /// <summary>
-        /// The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+        /// The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
         /// </summary>
         public readonly int? TransactionRemoveExpiredTransactionCleanupIntervalMs;
         /// <summary>
-        /// The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+        /// The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
         /// </summary>
         public readonly int? TransactionStateLogSegmentBytes;
 
@@ -237,6 +245,10 @@ namespace Pulumi.Aiven.Outputs
             int? logLocalRetentionMs,
 
             bool? logMessageDownconversionEnable,
+
+            int? logMessageTimestampAfterMaxMs,
+
+            int? logMessageTimestampBeforeMaxMs,
 
             int? logMessageTimestampDifferenceMaxMs,
 
@@ -311,6 +323,8 @@ namespace Pulumi.Aiven.Outputs
             LogLocalRetentionBytes = logLocalRetentionBytes;
             LogLocalRetentionMs = logLocalRetentionMs;
             LogMessageDownconversionEnable = logMessageDownconversionEnable;
+            LogMessageTimestampAfterMaxMs = logMessageTimestampAfterMaxMs;
+            LogMessageTimestampBeforeMaxMs = logMessageTimestampBeforeMaxMs;
             LogMessageTimestampDifferenceMaxMs = logMessageTimestampDifferenceMaxMs;
             LogMessageTimestampType = logMessageTimestampType;
             LogPreallocate = logPreallocate;

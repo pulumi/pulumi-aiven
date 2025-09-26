@@ -14,58 +14,6 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
-/**
- * Creates and manages an Aiven for M3 service user.
- * 
- * !&gt; **End of life notice**
- * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
- * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
- * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
- * before the end of life date.
- * 
- * ## Example Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aiven.M3dbUser;
- * import com.pulumi.aiven.M3dbUserArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleServiceUser = new M3dbUser("exampleServiceUser", M3dbUserArgs.builder()
- *             .serviceName(exampleM3db.serviceName())
- *             .project(exampleProject.project())
- *             .username("example-m3db-user")
- *             .password(serviceUserPw)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import aiven:index/m3dbUser:M3dbUser example_service_user PROJECT/SERVICE_NAME/USERNAME
- * ```
- * 
- */
 @ResourceType(type="aiven:index/m3dbUser:M3dbUser")
 public class M3dbUser extends com.pulumi.resources.CustomResource {
     /**

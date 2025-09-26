@@ -31,7 +31,7 @@ type OrganizationBillingGroup struct {
 	BillingGroupName pulumi.StringOutput `pulumi:"billingGroupName"`
 	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	Currency pulumi.StringPtrOutput `pulumi:"currency"`
-	// Extra billing text. Maximum length: `254`.
+	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText pulumi.StringPtrOutput `pulumi:"customInvoiceText"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
@@ -107,7 +107,7 @@ type organizationBillingGroupState struct {
 	BillingGroupName *string `pulumi:"billingGroupName"`
 	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	Currency *string `pulumi:"currency"`
-	// Extra billing text. Maximum length: `254`.
+	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText *string `pulumi:"customInvoiceText"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
@@ -133,7 +133,7 @@ type OrganizationBillingGroupState struct {
 	BillingGroupName pulumi.StringPtrInput
 	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	Currency pulumi.StringPtrInput
-	// Extra billing text. Maximum length: `254`.
+	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText pulumi.StringPtrInput
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
@@ -161,7 +161,7 @@ type organizationBillingGroupArgs struct {
 	BillingGroupName string `pulumi:"billingGroupName"`
 	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	Currency *string `pulumi:"currency"`
-	// Extra billing text. Maximum length: `254`.
+	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText *string `pulumi:"customInvoiceText"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
@@ -186,7 +186,7 @@ type OrganizationBillingGroupArgs struct {
 	BillingGroupName pulumi.StringInput
 	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	Currency pulumi.StringPtrInput
-	// Extra billing text. Maximum length: `254`.
+	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText pulumi.StringPtrInput
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
@@ -316,7 +316,7 @@ func (o OrganizationBillingGroupOutput) Currency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringPtrOutput { return v.Currency }).(pulumi.StringPtrOutput)
 }
 
-// Extra billing text. Maximum length: `254`.
+// Extra billing text. Maximum length: `256`.
 func (o OrganizationBillingGroupOutput) CustomInvoiceText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringPtrOutput { return v.CustomInvoiceText }).(pulumi.StringPtrOutput)
 }

@@ -72,7 +72,7 @@ export interface GetRedisUserResult {
      */
     readonly project: string;
     /**
-     * Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     readonly redisAclCategories: string[];
     /**
@@ -80,11 +80,11 @@ export interface GetRedisUserResult {
      */
     readonly redisAclChannels: string[];
     /**
-     * Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     readonly redisAclCommands: string[];
     /**
-     * Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     readonly redisAclKeys: string[];
     /**

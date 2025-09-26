@@ -63,7 +63,7 @@ export interface GetValkeyUserResult {
      */
     readonly username: string;
     /**
-     * Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     readonly valkeyAclCategories: string[];
     /**
@@ -71,11 +71,11 @@ export interface GetValkeyUserResult {
      */
     readonly valkeyAclChannels: string[];
     /**
-     * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     readonly valkeyAclCommands: string[];
     /**
-     * Key access rules. Entries are defined as standard glob patterns. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     readonly valkeyAclKeys: string[];
 }

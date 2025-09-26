@@ -94,14 +94,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
      * 
      */
     @Import(name="groupMaxSessionTimeoutMs")
     private @Nullable Output<Integer> groupMaxSessionTimeoutMs;
 
     /**
-     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
      * 
      */
     public Optional<Output<Integer>> groupMaxSessionTimeoutMs() {
@@ -124,14 +124,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+     * How long are delete records retained? (Default: 86400000 (1 day)).
      * 
      */
     @Import(name="logCleanerDeleteRetentionMs")
     private @Nullable Output<Integer> logCleanerDeleteRetentionMs;
 
     /**
-     * @return How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+     * @return How long are delete records retained? (Default: 86400000 (1 day)).
      * 
      */
     public Optional<Output<Integer>> logCleanerDeleteRetentionMs() {
@@ -244,14 +244,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+     * The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
      * 
      */
     @Import(name="logIndexSizeMaxBytes")
     private @Nullable Output<Integer> logIndexSizeMaxBytes;
 
     /**
-     * @return The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+     * @return The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
      * 
      */
     public Optional<Output<Integer>> logIndexSizeMaxBytes() {
@@ -301,6 +301,36 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<Boolean>> logMessageDownconversionEnable() {
         return Optional.ofNullable(this.logMessageDownconversionEnable);
+    }
+
+    /**
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+     * 
+     */
+    @Import(name="logMessageTimestampAfterMaxMs")
+    private @Nullable Output<Integer> logMessageTimestampAfterMaxMs;
+
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+     * 
+     */
+    public Optional<Output<Integer>> logMessageTimestampAfterMaxMs() {
+        return Optional.ofNullable(this.logMessageTimestampAfterMaxMs);
+    }
+
+    /**
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+     * 
+     */
+    @Import(name="logMessageTimestampBeforeMaxMs")
+    private @Nullable Output<Integer> logMessageTimestampBeforeMaxMs;
+
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+     * 
+     */
+    public Optional<Output<Integer>> logMessageTimestampBeforeMaxMs() {
+        return Optional.ofNullable(this.logMessageTimestampBeforeMaxMs);
     }
 
     /**
@@ -484,14 +514,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+     * The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
      * 
      */
     @Import(name="messageMaxBytes")
     private @Nullable Output<Integer> messageMaxBytes;
 
     /**
-     * @return The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+     * @return The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
      * 
      */
     public Optional<Output<Integer>> messageMaxBytes() {
@@ -679,14 +709,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+     * The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
      * 
      */
     @Import(name="transactionRemoveExpiredTransactionCleanupIntervalMs")
     private @Nullable Output<Integer> transactionRemoveExpiredTransactionCleanupIntervalMs;
 
     /**
-     * @return The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+     * @return The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
      * 
      */
     public Optional<Output<Integer>> transactionRemoveExpiredTransactionCleanupIntervalMs() {
@@ -694,14 +724,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+     * The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
      * 
      */
     @Import(name="transactionStateLogSegmentBytes")
     private @Nullable Output<Integer> transactionStateLogSegmentBytes;
 
     /**
-     * @return The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+     * @return The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
      * 
      */
     public Optional<Output<Integer>> transactionStateLogSegmentBytes() {
@@ -730,6 +760,8 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         this.logLocalRetentionBytes = $.logLocalRetentionBytes;
         this.logLocalRetentionMs = $.logLocalRetentionMs;
         this.logMessageDownconversionEnable = $.logMessageDownconversionEnable;
+        this.logMessageTimestampAfterMaxMs = $.logMessageTimestampAfterMaxMs;
+        this.logMessageTimestampBeforeMaxMs = $.logMessageTimestampBeforeMaxMs;
         this.logMessageTimestampDifferenceMaxMs = $.logMessageTimestampDifferenceMaxMs;
         this.logMessageTimestampType = $.logMessageTimestampType;
         this.logPreallocate = $.logPreallocate;
@@ -883,7 +915,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupMaxSessionTimeoutMs The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+         * @param groupMaxSessionTimeoutMs The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
          * 
          * @return builder
          * 
@@ -894,7 +926,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupMaxSessionTimeoutMs The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+         * @param groupMaxSessionTimeoutMs The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
          * 
          * @return builder
          * 
@@ -925,7 +957,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanerDeleteRetentionMs How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+         * @param logCleanerDeleteRetentionMs How long are delete records retained? (Default: 86400000 (1 day)).
          * 
          * @return builder
          * 
@@ -936,7 +968,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanerDeleteRetentionMs How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+         * @param logCleanerDeleteRetentionMs How long are delete records retained? (Default: 86400000 (1 day)).
          * 
          * @return builder
          * 
@@ -1093,7 +1125,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logIndexSizeMaxBytes The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+         * @param logIndexSizeMaxBytes The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
          * 
          * @return builder
          * 
@@ -1104,7 +1136,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logIndexSizeMaxBytes The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+         * @param logIndexSizeMaxBytes The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
          * 
          * @return builder
          * 
@@ -1174,6 +1206,48 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
          */
         public Builder logMessageDownconversionEnable(Boolean logMessageDownconversionEnable) {
             return logMessageDownconversionEnable(Output.of(logMessageDownconversionEnable));
+        }
+
+        /**
+         * @param logMessageTimestampAfterMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logMessageTimestampAfterMaxMs(@Nullable Output<Integer> logMessageTimestampAfterMaxMs) {
+            $.logMessageTimestampAfterMaxMs = logMessageTimestampAfterMaxMs;
+            return this;
+        }
+
+        /**
+         * @param logMessageTimestampAfterMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logMessageTimestampAfterMaxMs(Integer logMessageTimestampAfterMaxMs) {
+            return logMessageTimestampAfterMaxMs(Output.of(logMessageTimestampAfterMaxMs));
+        }
+
+        /**
+         * @param logMessageTimestampBeforeMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logMessageTimestampBeforeMaxMs(@Nullable Output<Integer> logMessageTimestampBeforeMaxMs) {
+            $.logMessageTimestampBeforeMaxMs = logMessageTimestampBeforeMaxMs;
+            return this;
+        }
+
+        /**
+         * @param logMessageTimestampBeforeMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logMessageTimestampBeforeMaxMs(Integer logMessageTimestampBeforeMaxMs) {
+            return logMessageTimestampBeforeMaxMs(Output.of(logMessageTimestampBeforeMaxMs));
         }
 
         /**
@@ -1429,7 +1503,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param messageMaxBytes The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+         * @param messageMaxBytes The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
          * 
          * @return builder
          * 
@@ -1440,7 +1514,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param messageMaxBytes The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+         * @param messageMaxBytes The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
          * 
          * @return builder
          * 
@@ -1702,7 +1776,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param transactionRemoveExpiredTransactionCleanupIntervalMs The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+         * @param transactionRemoveExpiredTransactionCleanupIntervalMs The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
          * 
          * @return builder
          * 
@@ -1713,7 +1787,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param transactionRemoveExpiredTransactionCleanupIntervalMs The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+         * @param transactionRemoveExpiredTransactionCleanupIntervalMs The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
          * 
          * @return builder
          * 
@@ -1723,7 +1797,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param transactionStateLogSegmentBytes The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+         * @param transactionStateLogSegmentBytes The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
          * 
          * @return builder
          * 
@@ -1734,7 +1808,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param transactionStateLogSegmentBytes The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+         * @param transactionStateLogSegmentBytes The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
          * 
          * @return builder
          * 

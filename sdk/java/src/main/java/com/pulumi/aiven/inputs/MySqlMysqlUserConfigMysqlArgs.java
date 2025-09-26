@@ -154,14 +154,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
      * 
      */
     @Import(name="innodbLogBufferSize")
     private @Nullable Output<Integer> innodbLogBufferSize;
 
     /**
-     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
      * 
      */
     public Optional<Output<Integer>> innodbLogBufferSize() {
@@ -169,14 +169,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      * 
      */
     @Import(name="innodbOnlineAlterLogMaxSize")
     private @Nullable Output<Integer> innodbOnlineAlterLogMaxSize;
 
     /**
-     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      * 
      */
     public Optional<Output<Integer>> innodbOnlineAlterLogMaxSize() {
@@ -304,14 +304,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
      * 
      */
     @Import(name="longQueryTime")
     private @Nullable Output<Double> longQueryTime;
 
     /**
-     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
+     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
      * 
      */
     public Optional<Output<Double>> longQueryTime() {
@@ -319,14 +319,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      * 
      */
     @Import(name="maxAllowedPacket")
     private @Nullable Output<Integer> maxAllowedPacket;
 
     /**
-     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      * 
      */
     public Optional<Output<Integer>> maxAllowedPacket() {
@@ -334,14 +334,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
+     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
      * 
      */
     @Import(name="maxHeapTableSize")
     private @Nullable Output<Integer> maxHeapTableSize;
 
     /**
-     * @return Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
+     * @return Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
      * 
      */
     public Optional<Output<Integer>> maxHeapTableSize() {
@@ -454,14 +454,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
+     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
      * 
      */
     @Import(name="tmpTableSize")
     private @Nullable Output<Integer> tmpTableSize;
 
     /**
-     * @return Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
+     * @return Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
      * 
      */
     public Optional<Output<Integer>> tmpTableSize() {
@@ -727,7 +727,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
          * 
          * @return builder
          * 
@@ -738,7 +738,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
          * 
          * @return builder
          * 
@@ -748,7 +748,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbOnlineAlterLogMaxSize The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+         * @param innodbOnlineAlterLogMaxSize The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
          * 
          * @return builder
          * 
@@ -759,7 +759,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbOnlineAlterLogMaxSize The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+         * @param innodbOnlineAlterLogMaxSize The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
          * 
          * @return builder
          * 
@@ -937,7 +937,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
+         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
          * 
          * @return builder
          * 
@@ -948,7 +948,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
+         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
          * 
          * @return builder
          * 
@@ -958,7 +958,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
          * 
          * @return builder
          * 
@@ -969,7 +969,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
          * 
          * @return builder
          * 
@@ -979,7 +979,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
+         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
          * 
          * @return builder
          * 
@@ -990,7 +990,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
+         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
          * 
          * @return builder
          * 
@@ -1147,7 +1147,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
+         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
          * 
          * @return builder
          * 
@@ -1158,7 +1158,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
+         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
          * 
          * @return builder
          * 

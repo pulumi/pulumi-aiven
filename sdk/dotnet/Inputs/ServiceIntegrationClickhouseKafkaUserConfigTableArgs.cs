@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+        /// Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
         /// </summary>
         [Input("autoOffsetReset")]
         public Input<string>? AutoOffsetReset { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>? _columns;
 
         /// <summary>
-        /// Table columns
+        /// Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
         /// </summary>
         public InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs> Columns
         {
@@ -31,55 +31,55 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
+        /// Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
         /// </summary>
         [Input("dataFormat", required: true)]
         public Input<string> DataFormat { get; set; } = null!;
 
         /// <summary>
-        /// Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
+        /// Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
         /// </summary>
         [Input("dateTimeInputFormat")]
         public Input<string>? DateTimeInputFormat { get; set; }
 
         /// <summary>
-        /// Kafka consumers group. Default: `clickhouse`.
+        /// The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
         /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+        /// Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
         /// </summary>
         [Input("handleErrorMode")]
         public Input<string>? HandleErrorMode { get; set; }
 
         /// <summary>
-        /// Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+        /// Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
         /// </summary>
         [Input("maxBlockSize")]
         public Input<int>? MaxBlockSize { get; set; }
 
         /// <summary>
-        /// The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+        /// Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
         /// </summary>
         [Input("maxRowsPerMessage")]
         public Input<int>? MaxRowsPerMessage { get; set; }
 
         /// <summary>
-        /// Name of the table. Example: `events`.
+        /// The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The number of consumers per table per replica. Default: `1`.
+        /// Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
         /// </summary>
         [Input("numConsumers")]
         public Input<int>? NumConsumers { get; set; }
 
         /// <summary>
-        /// Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+        /// Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
         /// </summary>
         [Input("pollMaxBatchSize")]
         public Input<int>? PollMaxBatchSize { get; set; }
@@ -97,7 +97,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerBatchNumMessages { get; set; }
 
         /// <summary>
-        /// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent. Default: `1000000`.
+        /// The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
         /// </summary>
         [Input("producerBatchSize")]
         public Input<int>? ProducerBatchSize { get; set; }
@@ -121,7 +121,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerLingerMs { get; set; }
 
         /// <summary>
-        /// The maximum size of the buffer in kilobytes before sending. Default: `1048576`.
+        /// The maximum size of the buffer in kilobytes before sending.
         /// </summary>
         [Input("producerQueueBufferingMaxKbytes")]
         public Input<int>? ProducerQueueBufferingMaxKbytes { get; set; }
@@ -139,13 +139,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerRequestRequiredAcks { get; set; }
 
         /// <summary>
-        /// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+        /// Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
         /// </summary>
         [Input("skipBrokenMessages")]
         public Input<int>? SkipBrokenMessages { get; set; }
 
         /// <summary>
-        /// Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+        /// When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
         /// </summary>
         [Input("threadPerConsumer")]
         public Input<bool>? ThreadPerConsumer { get; set; }
@@ -154,7 +154,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>? _topics;
 
         /// <summary>
-        /// Kafka topics
+        /// Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
         /// </summary>
         public InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs> Topics
         {

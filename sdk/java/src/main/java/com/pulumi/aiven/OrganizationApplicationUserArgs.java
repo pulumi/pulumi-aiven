@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.OrganizationApplicationUserTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -18,7 +19,7 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
     public static final OrganizationApplicationUserArgs Empty = new OrganizationApplicationUserArgs();
 
     /**
-     * Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+     * Alters super admin state of the organization application user. The default value is `false`.
      * 
      * @deprecated
      * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
@@ -29,7 +30,7 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
     private @Nullable Output<Boolean> isSuperAdmin;
 
     /**
-     * @return Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+     * @return Alters super admin state of the organization application user. The default value is `false`.
      * 
      * @deprecated
      * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
@@ -41,14 +42,14 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
     }
 
     /**
-     * Name of the application user.
+     * Name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the application user.
+     * @return Name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -56,18 +57,25 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the organization the application user belongs to.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization the application user belongs to.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationApplicationUserTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationApplicationUserTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private OrganizationApplicationUserArgs() {}
@@ -76,6 +84,7 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
         this.isSuperAdmin = $.isSuperAdmin;
         this.name = $.name;
         this.organizationId = $.organizationId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -97,7 +106,7 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param isSuperAdmin Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+         * @param isSuperAdmin Alters super admin state of the organization application user. The default value is `false`.
          * 
          * @return builder
          * 
@@ -112,7 +121,7 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param isSuperAdmin Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+         * @param isSuperAdmin Alters super admin state of the organization application user. The default value is `false`.
          * 
          * @return builder
          * 
@@ -126,7 +135,7 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of the application user.
+         * @param name Name.
          * 
          * @return builder
          * 
@@ -137,7 +146,7 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of the application user.
+         * @param name Name.
          * 
          * @return builder
          * 
@@ -147,7 +156,7 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param organizationId The ID of the organization the application user belongs to.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -158,13 +167,22 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param organizationId The ID of the organization the application user belongs to.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder organizationId(String organizationId) {
             return organizationId(Output.of(organizationId));
+        }
+
+        public Builder timeouts(@Nullable Output<OrganizationApplicationUserTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationApplicationUserTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public OrganizationApplicationUserArgs build() {

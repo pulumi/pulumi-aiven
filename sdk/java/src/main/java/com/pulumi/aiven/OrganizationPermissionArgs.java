@@ -4,12 +4,15 @@
 package com.pulumi.aiven;
 
 import com.pulumi.aiven.inputs.OrganizationPermissionPermissionArgs;
+import com.pulumi.aiven.inputs.OrganizationPermissionTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class OrganizationPermissionArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,14 +20,14 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
     public static final OrganizationPermissionArgs Empty = new OrganizationPermissionArgs();
 
     /**
-     * Organization ID.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return Organization ID.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -32,29 +35,29 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Permissions to grant to principals.
+     * Required property. List of roles to set.
      * 
      */
-    @Import(name="permissions", required=true)
-    private Output<List<OrganizationPermissionPermissionArgs>> permissions;
+    @Import(name="permissions")
+    private @Nullable Output<List<OrganizationPermissionPermissionArgs>> permissions;
 
     /**
-     * @return Permissions to grant to principals.
+     * @return Required property. List of roles to set.
      * 
      */
-    public Output<List<OrganizationPermissionPermissionArgs>> permissions() {
-        return this.permissions;
+    public Optional<Output<List<OrganizationPermissionPermissionArgs>>> permissions() {
+        return Optional.ofNullable(this.permissions);
     }
 
     /**
-     * Resource ID.
+     * Resource Id. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceId", required=true)
     private Output<String> resourceId;
 
     /**
-     * @return Resource ID.
+     * @return Resource Id. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceId() {
@@ -62,18 +65,25 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Resource type. The possible values are `organization`, `organization_unit` and `project`.
+     * Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
     /**
-     * @return Resource type. The possible values are `organization`, `organization_unit` and `project`.
+     * @return Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceType() {
         return this.resourceType;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationPermissionTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationPermissionTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private OrganizationPermissionArgs() {}
@@ -83,6 +93,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         this.permissions = $.permissions;
         this.resourceId = $.resourceId;
         this.resourceType = $.resourceType;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -104,7 +115,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param organizationId Organization ID.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -115,7 +126,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param organizationId Organization ID.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -125,18 +136,18 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permissions Permissions to grant to principals.
+         * @param permissions Required property. List of roles to set.
          * 
          * @return builder
          * 
          */
-        public Builder permissions(Output<List<OrganizationPermissionPermissionArgs>> permissions) {
+        public Builder permissions(@Nullable Output<List<OrganizationPermissionPermissionArgs>> permissions) {
             $.permissions = permissions;
             return this;
         }
 
         /**
-         * @param permissions Permissions to grant to principals.
+         * @param permissions Required property. List of roles to set.
          * 
          * @return builder
          * 
@@ -146,7 +157,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permissions Permissions to grant to principals.
+         * @param permissions Required property. List of roles to set.
          * 
          * @return builder
          * 
@@ -156,7 +167,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceId Resource ID.
+         * @param resourceId Resource Id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -167,7 +178,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceId Resource ID.
+         * @param resourceId Resource Id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -177,7 +188,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceType Resource type. The possible values are `organization`, `organization_unit` and `project`.
+         * @param resourceType Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -188,7 +199,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceType Resource type. The possible values are `organization`, `organization_unit` and `project`.
+         * @param resourceType Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -197,12 +208,18 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
             return resourceType(Output.of(resourceType));
         }
 
+        public Builder timeouts(@Nullable Output<OrganizationPermissionTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationPermissionTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         public OrganizationPermissionArgs build() {
             if ($.organizationId == null) {
                 throw new MissingRequiredPropertyException("OrganizationPermissionArgs", "organizationId");
-            }
-            if ($.permissions == null) {
-                throw new MissingRequiredPropertyException("OrganizationPermissionArgs", "permissions");
             }
             if ($.resourceId == null) {
                 throw new MissingRequiredPropertyException("OrganizationPermissionArgs", "resourceId");

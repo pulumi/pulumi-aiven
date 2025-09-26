@@ -11,41 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about an Aiven for M3DB service user.
-//
-// !> **End of life notice**
-// **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-// You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
-// To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-// before the end of life date.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupM3dbUser(ctx, &aiven.LookupM3dbUserArgs{
-//				ServiceName: exampleM3db.ServiceName,
-//				Project:     exampleProject.Project,
-//				Username:    "example-m3db-user",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupM3dbUser(ctx *pulumi.Context, args *LookupM3dbUserArgs, opts ...pulumi.InvokeOption) (*LookupM3dbUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupM3dbUserResult
@@ -58,28 +23,20 @@ func LookupM3dbUser(ctx *pulumi.Context, args *LookupM3dbUserArgs, opts ...pulum
 
 // A collection of arguments for invoking getM3dbUser.
 type LookupM3dbUserArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
-	// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Username string `pulumi:"username"`
+	Username    string `pulumi:"username"`
 }
 
 // A collection of values returned by getM3dbUser.
 type LookupM3dbUserResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The M3DB service user's password.
-	Password string `pulumi:"password"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Id          string `pulumi:"id"`
+	Password    string `pulumi:"password"`
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
-	// User account type, such as primary or regular account.
-	Type string `pulumi:"type"`
-	// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Username string `pulumi:"username"`
+	Type        string `pulumi:"type"`
+	Username    string `pulumi:"username"`
 }
 
 func LookupM3dbUserOutput(ctx *pulumi.Context, args LookupM3dbUserOutputArgs, opts ...pulumi.InvokeOption) LookupM3dbUserResultOutput {
@@ -93,12 +50,9 @@ func LookupM3dbUserOutput(ctx *pulumi.Context, args LookupM3dbUserOutputArgs, op
 
 // A collection of arguments for invoking getM3dbUser.
 type LookupM3dbUserOutputArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Project     pulumi.StringInput `pulumi:"project"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Username pulumi.StringInput `pulumi:"username"`
+	Username    pulumi.StringInput `pulumi:"username"`
 }
 
 func (LookupM3dbUserOutputArgs) ElementType() reflect.Type {
@@ -125,27 +79,22 @@ func (o LookupM3dbUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3dbUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The M3DB service user's password.
 func (o LookupM3dbUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3dbUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupM3dbUserResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3dbUserResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupM3dbUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3dbUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// User account type, such as primary or regular account.
 func (o LookupM3dbUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3dbUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupM3dbUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3dbUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

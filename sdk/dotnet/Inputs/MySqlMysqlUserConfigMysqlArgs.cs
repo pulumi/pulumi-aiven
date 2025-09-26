@@ -67,13 +67,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? InnodbLockWaitTimeout { get; set; }
 
         /// <summary>
-        /// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+        /// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
         /// </summary>
         [Input("innodbLogBufferSize")]
         public Input<int>? InnodbLogBufferSize { get; set; }
 
         /// <summary>
-        /// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+        /// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         /// </summary>
         [Input("innodbOnlineAlterLogMaxSize")]
         public Input<int>? InnodbOnlineAlterLogMaxSize { get; set; }
@@ -127,19 +127,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? LogOutput { get; set; }
 
         /// <summary>
-        /// The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
+        /// The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
         /// </summary>
         [Input("longQueryTime")]
         public Input<double>? LongQueryTime { get; set; }
 
         /// <summary>
-        /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+        /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
         /// </summary>
         [Input("maxAllowedPacket")]
         public Input<int>? MaxAllowedPacket { get; set; }
 
         /// <summary>
-        /// Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
+        /// Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
         /// </summary>
         [Input("maxHeapTableSize")]
         public Input<int>? MaxHeapTableSize { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? SqlRequirePrimaryKey { get; set; }
 
         /// <summary>
-        /// Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
+        /// Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
         /// </summary>
         [Input("tmpTableSize")]
         public Input<int>? TmpTableSize { get; set; }

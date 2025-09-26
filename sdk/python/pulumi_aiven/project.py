@@ -459,18 +459,7 @@ class Project(pulumi.CustomResource):
                  use_source_project_billing_group: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        example_project = aiven.Project("example_project",
-            project="example-project",
-            parent_id=main["id"])
-        ```
+        Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects). You should create projects in organizations or organizational units using the `parent_id` field. In a future release, this resource will be replaced by `OrganizationProject` resource, which requires the `parent_id` field.
 
         ## Import
 
@@ -498,18 +487,7 @@ class Project(pulumi.CustomResource):
                  args: ProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        example_project = aiven.Project("example_project",
-            project="example-project",
-            parent_id=main["id"])
-        ```
+        Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects). You should create projects in organizations or organizational units using the `parent_id` field. In a future release, this resource will be replaced by `OrganizationProject` resource, which requires the `parent_id` field.
 
         ## Import
 

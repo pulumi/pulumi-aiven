@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? GroupInitialRebalanceDelayMs { get; set; }
 
         /// <summary>
-        /// The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+        /// The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
         /// </summary>
         [Input("groupMaxSessionTimeoutMs")]
         public Input<int>? GroupMaxSessionTimeoutMs { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? GroupMinSessionTimeoutMs { get; set; }
 
         /// <summary>
-        /// How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+        /// How long are delete records retained? (Default: 86400000 (1 day)).
         /// </summary>
         [Input("logCleanerDeleteRetentionMs")]
         public Input<int>? LogCleanerDeleteRetentionMs { get; set; }
@@ -103,7 +103,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? LogIndexIntervalBytes { get; set; }
 
         /// <summary>
-        /// The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+        /// The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
         /// </summary>
         [Input("logIndexSizeMaxBytes")]
         public Input<int>? LogIndexSizeMaxBytes { get; set; }
@@ -125,6 +125,18 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("logMessageDownconversionEnable")]
         public Input<bool>? LogMessageDownconversionEnable { get; set; }
+
+        /// <summary>
+        /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+        /// </summary>
+        [Input("logMessageTimestampAfterMaxMs")]
+        public Input<int>? LogMessageTimestampAfterMaxMs { get; set; }
+
+        /// <summary>
+        /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+        /// </summary>
+        [Input("logMessageTimestampBeforeMaxMs")]
+        public Input<int>? LogMessageTimestampBeforeMaxMs { get; set; }
 
         /// <summary>
         /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
@@ -199,7 +211,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxIncrementalFetchSessionCacheSlots { get; set; }
 
         /// <summary>
-        /// The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+        /// The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
         /// </summary>
         [Input("messageMaxBytes")]
         public Input<int>? MessageMaxBytes { get; set; }
@@ -277,13 +289,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? TransactionPartitionVerificationEnable { get; set; }
 
         /// <summary>
-        /// The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+        /// The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
         /// </summary>
         [Input("transactionRemoveExpiredTransactionCleanupIntervalMs")]
         public Input<int>? TransactionRemoveExpiredTransactionCleanupIntervalMs { get; set; }
 
         /// <summary>
-        /// The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+        /// The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
         /// </summary>
         [Input("transactionStateLogSegmentBytes")]
         public Input<int>? TransactionStateLogSegmentBytes { get; set; }

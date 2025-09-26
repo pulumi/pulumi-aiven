@@ -155,6 +155,19 @@ def get_alloydbomni_user(project: Optional[_builtins.str] = None,
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
+    !> **End of life notice**
+    Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+    From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+    services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+    On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+    these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+    Aiven for PostgreSQL®,
+    Aiven for ClickHouse®,
+    and Aiven for MySQL®.
+    To ensure uninterrupted service, complete your migration before December 5, 2025.
+    For further assistance, contact the Aiven support team or your
+    account team.
+
 
     :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -186,6 +199,19 @@ def get_alloydbomni_user_output(project: Optional[pulumi.Input[_builtins.str]] =
 
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+
+    !> **End of life notice**
+    Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+    From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
+    services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
+    On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
+    these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
+    Aiven for PostgreSQL®,
+    Aiven for ClickHouse®,
+    and Aiven for MySQL®.
+    To ensure uninterrupted service, complete your migration before December 5, 2025.
+    For further assistance, contact the Aiven support team or your
+    account team.
 
 
     :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.

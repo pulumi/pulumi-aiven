@@ -72,7 +72,7 @@ export class RedisUser extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     declare public readonly redisAclCategories: pulumi.Output<string[] | undefined>;
     /**
@@ -80,11 +80,11 @@ export class RedisUser extends pulumi.CustomResource {
      */
     declare public readonly redisAclChannels: pulumi.Output<string[] | undefined>;
     /**
-     * Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     declare public readonly redisAclCommands: pulumi.Output<string[] | undefined>;
     /**
-     * Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     declare public readonly redisAclKeys: pulumi.Output<string[] | undefined>;
     /**
@@ -163,7 +163,7 @@ export interface RedisUserState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -171,11 +171,11 @@ export interface RedisUserState {
      */
     redisAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -205,7 +205,7 @@ export interface RedisUserArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -213,11 +213,11 @@ export interface RedisUserArgs {
      */
     redisAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+     * Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**

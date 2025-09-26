@@ -70,24 +70,24 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      * @deprecated
-     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+    @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
     @Import(name="diskSpace")
     private @Nullable Output<String> diskSpace;
 
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      * @deprecated
-     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+    @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
     public Optional<Output<String>> diskSpace() {
         return Optional.ofNullable(this.diskSpace);
     }
@@ -138,24 +138,16 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Disk space that service is currently using
-     * 
-     * @deprecated
-     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     @Import(name="diskSpaceUsed")
     private @Nullable Output<String> diskSpaceUsed;
 
     /**
-     * @return Disk space that service is currently using
-     * 
-     * @deprecated
-     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * @return The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     public Optional<Output<String>> diskSpaceUsed() {
         return Optional.ofNullable(this.diskSpaceUsed);
     }
@@ -577,30 +569,30 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
          * 
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+         * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+        @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
         public Builder diskSpace(@Nullable Output<String> diskSpace) {
             $.diskSpace = diskSpace;
             return this;
         }
 
         /**
-         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
          * 
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+         * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+        @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
         public Builder diskSpace(String diskSpace) {
             return diskSpace(Output.of(diskSpace));
         }
@@ -669,30 +661,22 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpaceUsed Disk space that service is currently using
+         * @param diskSpaceUsed The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
          * 
          * @return builder
          * 
-         * @deprecated
-         * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
-         * 
          */
-        @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
         public Builder diskSpaceUsed(@Nullable Output<String> diskSpaceUsed) {
             $.diskSpaceUsed = diskSpaceUsed;
             return this;
         }
 
         /**
-         * @param diskSpaceUsed Disk space that service is currently using
+         * @param diskSpaceUsed The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
          * 
          * @return builder
          * 
-         * @deprecated
-         * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
-         * 
          */
-        @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
         public Builder diskSpaceUsed(String diskSpaceUsed) {
             return diskSpaceUsed(Output.of(diskSpaceUsed));
         }

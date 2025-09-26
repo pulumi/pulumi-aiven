@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OrganizationPermissionPermission
     {
         /// <summary>
-        /// Time created.
+        /// Create Time.
         /// </summary>
         public readonly string? CreateTime;
         /// <summary>
-        /// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        /// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         /// </summary>
         public readonly ImmutableArray<string> Permissions;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string PrincipalId;
         /// <summary>
-        /// The type of principal. The possible values are `user` and `user_group`.
+        /// An enumeration. The possible values are `user` and `user_group`.
         /// </summary>
         public readonly string PrincipalType;
         /// <summary>
-        /// Time updated.
+        /// Update Time.
         /// </summary>
         public readonly string? UpdateTime;
 

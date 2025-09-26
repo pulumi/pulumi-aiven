@@ -17,14 +17,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigArgs extends com.p
     public static final ServiceIntegrationClickhouseKafkaUserConfigArgs Empty = new ServiceIntegrationClickhouseKafkaUserConfigArgs();
 
     /**
-     * Tables to create
+     * Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
      * 
      */
     @Import(name="tables")
     private @Nullable Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableArgs>> tables;
 
     /**
-     * @return Tables to create
+     * @return Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
      * 
      */
     public Optional<Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableArgs>>> tables() {
@@ -56,7 +56,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigArgs extends com.p
         }
 
         /**
-         * @param tables Tables to create
+         * @param tables Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigArgs extends com.p
         }
 
         /**
-         * @param tables Tables to create
+         * @param tables Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigArgs extends com.p
         }
 
         /**
-         * @param tables Tables to create
+         * @param tables Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
          * 
          * @return builder
          * 

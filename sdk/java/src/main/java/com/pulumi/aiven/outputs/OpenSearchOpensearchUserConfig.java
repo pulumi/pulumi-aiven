@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigAzureMigration;
+import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigCustomKeystore;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigGcsMigration;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIndexPattern;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIndexRollup;
@@ -43,6 +44,11 @@ public final class OpenSearchOpensearchUserConfig {
      * 
      */
     private @Nullable String customDomain;
+    /**
+     * @return Allow to register custom keystores in OpenSearch
+     * 
+     */
+    private @Nullable List<OpenSearchOpensearchUserConfigCustomKeystore> customKeystores;
     /**
      * @return Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
      * 
@@ -113,7 +119,7 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable OpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
     /**
-     * @return Enum: `1`, `2`, and newer. OpenSearch major version.
+     * @return Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
      * 
      */
     private @Nullable String opensearchVersion;
@@ -189,6 +195,13 @@ public final class OpenSearchOpensearchUserConfig {
      */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
+    }
+    /**
+     * @return Allow to register custom keystores in OpenSearch
+     * 
+     */
+    public List<OpenSearchOpensearchUserConfigCustomKeystore> customKeystores() {
+        return this.customKeystores == null ? List.of() : this.customKeystores;
     }
     /**
      * @return Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
@@ -286,7 +299,7 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.opensearchDashboards);
     }
     /**
-     * @return Enum: `1`, `2`, and newer. OpenSearch major version.
+     * @return Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
      * 
      */
     public Optional<String> opensearchVersion() {
@@ -375,6 +388,7 @@ public final class OpenSearchOpensearchUserConfig {
         private @Nullable String additionalBackupRegions;
         private @Nullable OpenSearchOpensearchUserConfigAzureMigration azureMigration;
         private @Nullable String customDomain;
+        private @Nullable List<OpenSearchOpensearchUserConfigCustomKeystore> customKeystores;
         private @Nullable Boolean disableReplicationFactorAdjustment;
         private @Nullable OpenSearchOpensearchUserConfigGcsMigration gcsMigration;
         private @Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
@@ -405,6 +419,7 @@ public final class OpenSearchOpensearchUserConfig {
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.azureMigration = defaults.azureMigration;
     	      this.customDomain = defaults.customDomain;
+    	      this.customKeystores = defaults.customKeystores;
     	      this.disableReplicationFactorAdjustment = defaults.disableReplicationFactorAdjustment;
     	      this.gcsMigration = defaults.gcsMigration;
     	      this.indexPatterns = defaults.indexPatterns;
@@ -448,6 +463,15 @@ public final class OpenSearchOpensearchUserConfig {
 
             this.customDomain = customDomain;
             return this;
+        }
+        @CustomType.Setter
+        public Builder customKeystores(@Nullable List<OpenSearchOpensearchUserConfigCustomKeystore> customKeystores) {
+
+            this.customKeystores = customKeystores;
+            return this;
+        }
+        public Builder customKeystores(OpenSearchOpensearchUserConfigCustomKeystore... customKeystores) {
+            return customKeystores(List.of(customKeystores));
         }
         @CustomType.Setter
         public Builder disableReplicationFactorAdjustment(@Nullable Boolean disableReplicationFactorAdjustment) {
@@ -610,6 +634,7 @@ public final class OpenSearchOpensearchUserConfig {
             _resultValue.additionalBackupRegions = additionalBackupRegions;
             _resultValue.azureMigration = azureMigration;
             _resultValue.customDomain = customDomain;
+            _resultValue.customKeystores = customKeystores;
             _resultValue.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
             _resultValue.gcsMigration = gcsMigration;
             _resultValue.indexPatterns = indexPatterns;

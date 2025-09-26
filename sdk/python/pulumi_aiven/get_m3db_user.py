@@ -57,41 +57,26 @@ class GetM3dbUserResult:
     @_builtins.property
     @pulumi.getter
     def password(self) -> _builtins.str:
-        """
-        The M3DB service user's password.
-        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
-        """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
-        """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        User account type, such as primary or regular account.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def username(self) -> _builtins.str:
-        """
-        Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "username")
 
 
@@ -114,29 +99,7 @@ def get_m3db_user(project: Optional[_builtins.str] = None,
                   username: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetM3dbUserResult:
     """
-    Gets information about an Aiven for M3DB service user.
-
-    !> **End of life notice**
-    **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-    You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
-    To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-    before the end of life date.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    example_service_user = aiven.get_m3db_user(service_name=example_m3db["serviceName"],
-        project=example_project["project"],
-        username="example-m3db-user")
-    ```
-
-
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -157,29 +120,7 @@ def get_m3db_user_output(project: Optional[pulumi.Input[_builtins.str]] = None,
                          username: Optional[pulumi.Input[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetM3dbUserResult]:
     """
-    Gets information about an Aiven for M3DB service user.
-
-    !> **End of life notice**
-    **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-    You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
-    To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-    before the end of life date.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    example_service_user = aiven.get_m3db_user(service_name=example_m3db["serviceName"],
-        project=example_project["project"],
-        username="example-m3db-user")
-    ```
-
-
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['project'] = project

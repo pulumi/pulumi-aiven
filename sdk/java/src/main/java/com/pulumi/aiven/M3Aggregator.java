@@ -23,58 +23,6 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * The M3 Aggregator resource allows the creation and management of Aiven M3 Aggregator services.
- * 
- * ## Example Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aiven.M3Aggregator;
- * import com.pulumi.aiven.M3AggregatorArgs;
- * import com.pulumi.aiven.inputs.M3AggregatorM3aggregatorUserConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var m3a = new M3Aggregator("m3a", M3AggregatorArgs.builder()
- *             .project(foo.project())
- *             .cloudName("google-europe-west1")
- *             .plan("business-8")
- *             .serviceName("my-m3a")
- *             .maintenanceWindowDow("monday")
- *             .maintenanceWindowTime("10:00:00")
- *             .m3aggregatorUserConfig(M3AggregatorM3aggregatorUserConfigArgs.builder()
- *                 .m3aggregatorVersion("0.15")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import aiven:index/m3Aggregator:M3Aggregator m3a project/service_name
- * ```
- * 
- */
 @ResourceType(type="aiven:index/m3Aggregator:M3Aggregator")
 public class M3Aggregator extends com.pulumi.resources.CustomResource {
     /**
@@ -120,18 +68,18 @@ public class M3Aggregator extends com.pulumi.resources.CustomResource {
         return this.components;
     }
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      * @deprecated
-     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
+    @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
     @Export(name="diskSpace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskSpace;
 
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
     public Output<Optional<String>> diskSpace() {
@@ -180,18 +128,14 @@ public class M3Aggregator extends com.pulumi.resources.CustomResource {
         return this.diskSpaceStep;
     }
     /**
-     * Disk space that service is currently using
-     * 
-     * @deprecated
-     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     @Export(name="diskSpaceUsed", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceUsed;
 
     /**
-     * @return Disk space that service is currently using
+     * @return The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
      * 
      */
     public Output<String> diskSpaceUsed() {

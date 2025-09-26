@@ -6,34 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * The M3 Aggregator resource allows the creation and management of Aiven M3 Aggregator services.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const m3a = new aiven.M3Aggregator("m3a", {
- *     project: foo.project,
- *     cloudName: "google-europe-west1",
- *     plan: "business-8",
- *     serviceName: "my-m3a",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- *     m3aggregatorUserConfig: {
- *         m3aggregatorVersion: "0.15",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import aiven:index/m3Aggregator:M3Aggregator m3a project/service_name
- * ```
- */
 export class M3Aggregator extends pulumi.CustomResource {
     /**
      * Get an existing M3Aggregator resource's state with the given name, ID, and optional extra
@@ -75,9 +47,9 @@ export class M3Aggregator extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly components: pulumi.Output<outputs.M3AggregatorComponent[]>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      */
     declare public readonly diskSpace: pulumi.Output<string | undefined>;
     /**
@@ -93,9 +65,7 @@ export class M3Aggregator extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly diskSpaceStep: pulumi.Output<string>;
     /**
-     * Disk space that service is currently using
-     *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      */
     declare public /*out*/ readonly diskSpaceUsed: pulumi.Output<string>;
     /**
@@ -283,9 +253,9 @@ export interface M3AggregatorState {
      */
     components?: pulumi.Input<pulumi.Input<inputs.M3AggregatorComponent>[]>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -301,9 +271,7 @@ export interface M3AggregatorState {
      */
     diskSpaceStep?: pulumi.Input<string>;
     /**
-     * Disk space that service is currently using
-     *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      */
     diskSpaceUsed?: pulumi.Input<string>;
     /**
@@ -400,9 +368,9 @@ export interface M3AggregatorArgs {
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
     /**

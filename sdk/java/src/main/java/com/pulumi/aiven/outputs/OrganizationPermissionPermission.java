@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OrganizationPermissionPermission {
     /**
-     * @return Time created.
+     * @return Create Time.
      * 
      */
     private @Nullable String createTime;
     /**
-     * @return List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * @return List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      * 
      */
     private List<String> permissions;
@@ -29,26 +29,26 @@ public final class OrganizationPermissionPermission {
      */
     private String principalId;
     /**
-     * @return The type of principal. The possible values are `user` and `user_group`.
+     * @return An enumeration. The possible values are `user` and `user_group`.
      * 
      */
     private String principalType;
     /**
-     * @return Time updated.
+     * @return Update Time.
      * 
      */
     private @Nullable String updateTime;
 
     private OrganizationPermissionPermission() {}
     /**
-     * @return Time created.
+     * @return Create Time.
      * 
      */
     public Optional<String> createTime() {
         return Optional.ofNullable(this.createTime);
     }
     /**
-     * @return List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * @return List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      * 
      */
     public List<String> permissions() {
@@ -62,14 +62,14 @@ public final class OrganizationPermissionPermission {
         return this.principalId;
     }
     /**
-     * @return The type of principal. The possible values are `user` and `user_group`.
+     * @return An enumeration. The possible values are `user` and `user_group`.
      * 
      */
     public String principalType() {
         return this.principalType;
     }
     /**
-     * @return Time updated.
+     * @return Update Time.
      * 
      */
     public Optional<String> updateTime() {

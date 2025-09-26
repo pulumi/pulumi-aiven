@@ -23,7 +23,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     private @Nullable String consumerAutoOffsetReset;
     /**
-     * @return Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+     * @return Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
      * 
      */
     private @Nullable Integer consumerFetchMaxBytes;
@@ -33,7 +33,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     private @Nullable String consumerIsolationLevel;
     /**
-     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      * 
      */
     private @Nullable Integer consumerMaxPartitionFetchBytes;
@@ -78,7 +78,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     private @Nullable Integer producerLingerMs;
     /**
-     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
      * 
      */
     private @Nullable Integer producerMaxRequestSize;
@@ -109,7 +109,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
         return Optional.ofNullable(this.consumerAutoOffsetReset);
     }
     /**
-     * @return Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
+     * @return Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
      * 
      */
     public Optional<Integer> consumerFetchMaxBytes() {
@@ -123,7 +123,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
         return Optional.ofNullable(this.consumerIsolationLevel);
     }
     /**
-     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      * 
      */
     public Optional<Integer> consumerMaxPartitionFetchBytes() {
@@ -186,7 +186,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
         return Optional.ofNullable(this.producerLingerMs);
     }
     /**
-     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
+     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
      * 
      */
     public Optional<Integer> producerMaxRequestSize() {

@@ -63,13 +63,13 @@ type RedisUser struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclCategories pulumi.StringArrayOutput `pulumi:"redisAclCategories"`
 	// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
 	RedisAclChannels pulumi.StringArrayOutput `pulumi:"redisAclChannels"`
-	// Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclCommands pulumi.StringArrayOutput `pulumi:"redisAclCommands"`
-	// Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclKeys pulumi.StringArrayOutput `pulumi:"redisAclKeys"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -129,13 +129,13 @@ type redisUserState struct {
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
 	// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
 	RedisAclChannels []string `pulumi:"redisAclChannels"`
-	// Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclCommands []string `pulumi:"redisAclCommands"`
-	// Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclKeys []string `pulumi:"redisAclKeys"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
@@ -150,13 +150,13 @@ type RedisUserState struct {
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclCategories pulumi.StringArrayInput
 	// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
 	RedisAclChannels pulumi.StringArrayInput
-	// Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclCommands pulumi.StringArrayInput
-	// Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclKeys pulumi.StringArrayInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
@@ -175,13 +175,13 @@ type redisUserArgs struct {
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
 	// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
 	RedisAclChannels []string `pulumi:"redisAclChannels"`
-	// Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclCommands []string `pulumi:"redisAclCommands"`
-	// Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclKeys []string `pulumi:"redisAclKeys"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
@@ -195,13 +195,13 @@ type RedisUserArgs struct {
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclCategories pulumi.StringArrayInput
 	// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
 	RedisAclChannels pulumi.StringArrayInput
-	// Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclCommands pulumi.StringArrayInput
-	// Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+	// Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclKeys pulumi.StringArrayInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
@@ -306,7 +306,7 @@ func (o RedisUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
+// Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
 func (o RedisUserOutput) RedisAclCategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringArrayOutput { return v.RedisAclCategories }).(pulumi.StringArrayOutput)
 }
@@ -316,12 +316,12 @@ func (o RedisUserOutput) RedisAclChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringArrayOutput { return v.RedisAclChannels }).(pulumi.StringArrayOutput)
 }
 
-// Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+// Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 func (o RedisUserOutput) RedisAclCommands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringArrayOutput { return v.RedisAclCommands }).(pulumi.StringArrayOutput)
 }
 
-// Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
+// Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 func (o RedisUserOutput) RedisAclKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringArrayOutput { return v.RedisAclKeys }).(pulumi.StringArrayOutput)
 }

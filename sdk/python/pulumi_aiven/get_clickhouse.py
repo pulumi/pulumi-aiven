@@ -160,7 +160,7 @@ class GetClickhouseResult:
     @pulumi.getter(name="diskSpace")
     def disk_space(self) -> _builtins.str:
         """
-        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         """
         return pulumi.get(self, "disk_space")
 
@@ -192,7 +192,7 @@ class GetClickhouseResult:
     @pulumi.getter(name="diskSpaceUsed")
     def disk_space_used(self) -> _builtins.str:
         """
-        Disk space that service is currently using
+        The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
         """
         return pulumi.get(self, "disk_space_used")
 

@@ -33,7 +33,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
      */
     private @Nullable Integer producerBatchSize;
     /**
-     * @return The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+     * @return The amount of bytes producer can use for buffering data before publishing to broker.
      * 
      */
     private @Nullable Integer producerBufferMemory;
@@ -48,7 +48,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
      */
     private @Nullable Integer producerLingerMs;
     /**
-     * @return The maximum request size in bytes. Example: `1048576`.
+     * @return The maximum request size in bytes.
      * 
      */
     private @Nullable Integer producerMaxRequestSize;
@@ -83,7 +83,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
         return Optional.ofNullable(this.producerBatchSize);
     }
     /**
-     * @return The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+     * @return The amount of bytes producer can use for buffering data before publishing to broker.
      * 
      */
     public Optional<Integer> producerBufferMemory() {
@@ -104,7 +104,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
         return Optional.ofNullable(this.producerLingerMs);
     }
     /**
-     * @return The maximum request size in bytes. Example: `1048576`.
+     * @return The maximum request size in bytes.
      * 
      */
     public Optional<Integer> producerMaxRequestSize() {

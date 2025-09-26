@@ -9,56 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
-    /// <summary>
-    /// Creates and manages an [Aiven for M3](https://aiven.io/docs/products/m3db) service.
-    /// 
-    /// !&gt; **End of life notice**
-    /// **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-    /// You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
-    /// To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-    /// before the end of life date.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleM3db = new Aiven.M3Db("example_m3db", new()
-    ///     {
-    ///         Project = exampleProject.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "business-8",
-    ///         ServiceName = "example-m3db-service",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///         M3dbUserConfig = new Aiven.Inputs.M3DbM3dbUserConfigArgs
-    ///         {
-    ///             M3dbVersion = "1.1",
-    ///             Namespaces = new[]
-    ///             {
-    ///                 new Aiven.Inputs.M3DbM3dbUserConfigNamespaceArgs
-    ///                 {
-    ///                     Name = "example-namespace",
-    ///                     Type = "unaggregated",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import aiven:index/m3Db:M3Db example_m3db PROJECT/SERVICE_NAME
-    /// ```
-    /// </summary>
     [AivenResourceType("aiven:index/m3Db:M3Db")]
     public partial class M3Db : global::Pulumi.CustomResource
     {
@@ -81,7 +31,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.M3DbComponent>> Components { get; private set; } = null!;
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         /// </summary>
         [Output("diskSpace")]
         public Output<string?> DiskSpace { get; private set; } = null!;
@@ -105,7 +55,7 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceStep { get; private set; } = null!;
 
         /// <summary>
-        /// Disk space that service is currently using
+        /// The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
         /// </summary>
         [Output("diskSpaceUsed")]
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
@@ -292,7 +242,7 @@ namespace Pulumi.Aiven
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -442,7 +392,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -466,7 +416,7 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpaceStep { get; set; }
 
         /// <summary>
-        /// Disk space that service is currently using
+        /// The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
         /// </summary>
         [Input("diskSpaceUsed")]
         public Input<string>? DiskSpaceUsed { get; set; }

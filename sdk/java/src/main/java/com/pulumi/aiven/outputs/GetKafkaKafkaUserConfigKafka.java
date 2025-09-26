@@ -40,7 +40,7 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer groupInitialRebalanceDelayMs;
     /**
-     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
      * 
      */
     private @Nullable Integer groupMaxSessionTimeoutMs;
@@ -50,7 +50,7 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer groupMinSessionTimeoutMs;
     /**
-     * @return How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+     * @return How long are delete records retained? (Default: 86400000 (1 day)).
      * 
      */
     private @Nullable Integer logCleanerDeleteRetentionMs;
@@ -90,7 +90,7 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer logIndexIntervalBytes;
     /**
-     * @return The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+     * @return The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
      * 
      */
     private @Nullable Integer logIndexSizeMaxBytes;
@@ -109,6 +109,16 @@ public final class GetKafkaKafkaUserConfigKafka {
      * 
      */
     private @Nullable Boolean logMessageDownconversionEnable;
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+     * 
+     */
+    private @Nullable Integer logMessageTimestampAfterMaxMs;
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+     * 
+     */
+    private @Nullable Integer logMessageTimestampBeforeMaxMs;
     /**
      * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
      * 
@@ -170,7 +180,7 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer maxIncrementalFetchSessionCacheSlots;
     /**
-     * @return The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+     * @return The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
      * 
      */
     private @Nullable Integer messageMaxBytes;
@@ -235,12 +245,12 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     private @Nullable Boolean transactionPartitionVerificationEnable;
     /**
-     * @return The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+     * @return The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
      * 
      */
     private @Nullable Integer transactionRemoveExpiredTransactionCleanupIntervalMs;
     /**
-     * @return The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+     * @return The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
      * 
      */
     private @Nullable Integer transactionStateLogSegmentBytes;
@@ -282,7 +292,7 @@ public final class GetKafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.groupInitialRebalanceDelayMs);
     }
     /**
-     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
      * 
      */
     public Optional<Integer> groupMaxSessionTimeoutMs() {
@@ -296,7 +306,7 @@ public final class GetKafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.groupMinSessionTimeoutMs);
     }
     /**
-     * @return How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+     * @return How long are delete records retained? (Default: 86400000 (1 day)).
      * 
      */
     public Optional<Integer> logCleanerDeleteRetentionMs() {
@@ -352,7 +362,7 @@ public final class GetKafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.logIndexIntervalBytes);
     }
     /**
-     * @return The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+     * @return The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
      * 
      */
     public Optional<Integer> logIndexSizeMaxBytes() {
@@ -378,6 +388,20 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     public Optional<Boolean> logMessageDownconversionEnable() {
         return Optional.ofNullable(this.logMessageDownconversionEnable);
+    }
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+     * 
+     */
+    public Optional<Integer> logMessageTimestampAfterMaxMs() {
+        return Optional.ofNullable(this.logMessageTimestampAfterMaxMs);
+    }
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+     * 
+     */
+    public Optional<Integer> logMessageTimestampBeforeMaxMs() {
+        return Optional.ofNullable(this.logMessageTimestampBeforeMaxMs);
     }
     /**
      * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
@@ -464,7 +488,7 @@ public final class GetKafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.maxIncrementalFetchSessionCacheSlots);
     }
     /**
-     * @return The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+     * @return The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
      * 
      */
     public Optional<Integer> messageMaxBytes() {
@@ -555,14 +579,14 @@ public final class GetKafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.transactionPartitionVerificationEnable);
     }
     /**
-     * @return The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+     * @return The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
      * 
      */
     public Optional<Integer> transactionRemoveExpiredTransactionCleanupIntervalMs() {
         return Optional.ofNullable(this.transactionRemoveExpiredTransactionCleanupIntervalMs);
     }
     /**
-     * @return The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
+     * @return The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
      * 
      */
     public Optional<Integer> transactionStateLogSegmentBytes() {
@@ -597,6 +621,8 @@ public final class GetKafkaKafkaUserConfigKafka {
         private @Nullable Integer logLocalRetentionBytes;
         private @Nullable Integer logLocalRetentionMs;
         private @Nullable Boolean logMessageDownconversionEnable;
+        private @Nullable Integer logMessageTimestampAfterMaxMs;
+        private @Nullable Integer logMessageTimestampBeforeMaxMs;
         private @Nullable Integer logMessageTimestampDifferenceMaxMs;
         private @Nullable String logMessageTimestampType;
         private @Nullable Boolean logPreallocate;
@@ -646,6 +672,8 @@ public final class GetKafkaKafkaUserConfigKafka {
     	      this.logLocalRetentionBytes = defaults.logLocalRetentionBytes;
     	      this.logLocalRetentionMs = defaults.logLocalRetentionMs;
     	      this.logMessageDownconversionEnable = defaults.logMessageDownconversionEnable;
+    	      this.logMessageTimestampAfterMaxMs = defaults.logMessageTimestampAfterMaxMs;
+    	      this.logMessageTimestampBeforeMaxMs = defaults.logMessageTimestampBeforeMaxMs;
     	      this.logMessageTimestampDifferenceMaxMs = defaults.logMessageTimestampDifferenceMaxMs;
     	      this.logMessageTimestampType = defaults.logMessageTimestampType;
     	      this.logPreallocate = defaults.logPreallocate;
@@ -787,6 +815,18 @@ public final class GetKafkaKafkaUserConfigKafka {
         public Builder logMessageDownconversionEnable(@Nullable Boolean logMessageDownconversionEnable) {
 
             this.logMessageDownconversionEnable = logMessageDownconversionEnable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder logMessageTimestampAfterMaxMs(@Nullable Integer logMessageTimestampAfterMaxMs) {
+
+            this.logMessageTimestampAfterMaxMs = logMessageTimestampAfterMaxMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder logMessageTimestampBeforeMaxMs(@Nullable Integer logMessageTimestampBeforeMaxMs) {
+
+            this.logMessageTimestampBeforeMaxMs = logMessageTimestampBeforeMaxMs;
             return this;
         }
         @CustomType.Setter
@@ -972,6 +1012,8 @@ public final class GetKafkaKafkaUserConfigKafka {
             _resultValue.logLocalRetentionBytes = logLocalRetentionBytes;
             _resultValue.logLocalRetentionMs = logLocalRetentionMs;
             _resultValue.logMessageDownconversionEnable = logMessageDownconversionEnable;
+            _resultValue.logMessageTimestampAfterMaxMs = logMessageTimestampAfterMaxMs;
+            _resultValue.logMessageTimestampBeforeMaxMs = logMessageTimestampBeforeMaxMs;
             _resultValue.logMessageTimestampDifferenceMaxMs = logMessageTimestampDifferenceMaxMs;
             _resultValue.logMessageTimestampType = logMessageTimestampType;
             _resultValue.logPreallocate = logPreallocate;

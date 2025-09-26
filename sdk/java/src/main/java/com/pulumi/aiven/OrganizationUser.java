@@ -23,7 +23,7 @@ public class OrganizationUser extends com.pulumi.resources.CustomResource {
      * This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release.  */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     @Export(name="accepted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> accepted;
 
@@ -55,7 +55,7 @@ public class OrganizationUser extends com.pulumi.resources.CustomResource {
      * This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release.  */
+    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     @Export(name="invitedBy", refs={String.class}, tree="[0]")
     private Output<String> invitedBy;
 

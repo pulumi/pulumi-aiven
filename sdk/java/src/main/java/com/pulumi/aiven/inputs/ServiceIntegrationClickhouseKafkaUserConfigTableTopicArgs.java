@@ -15,14 +15,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs ext
     public static final ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs Empty = new ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs();
 
     /**
-     * Name of the topic. Example: `topic_name`.
+     * The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the topic. Example: `topic_name`.
+     * @return The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
      * 
      */
     public Output<String> name() {
@@ -54,7 +54,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs ext
         }
 
         /**
-         * @param name Name of the topic. Example: `topic_name`.
+         * @param name The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs ext
         }
 
         /**
-         * @param name Name of the topic. Example: `topic_name`.
+         * @param name The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
          * 
          * @return builder
          * 

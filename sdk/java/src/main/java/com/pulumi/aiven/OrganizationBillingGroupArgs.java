@@ -94,14 +94,14 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Extra billing text. Maximum length: `254`.
+     * Extra billing text. Maximum length: `256`.
      * 
      */
     @Import(name="customInvoiceText")
     private @Nullable Output<String> customInvoiceText;
 
     /**
-     * @return Extra billing text. Maximum length: `254`.
+     * @return Extra billing text. Maximum length: `256`.
      * 
      */
     public Optional<Output<String>> customInvoiceText() {
@@ -335,7 +335,7 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customInvoiceText Extra billing text. Maximum length: `254`.
+         * @param customInvoiceText Extra billing text. Maximum length: `256`.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customInvoiceText Extra billing text. Maximum length: `254`.
+         * @param customInvoiceText Extra billing text. Maximum length: `256`.
          * 
          * @return builder
          * 

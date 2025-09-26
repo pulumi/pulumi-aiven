@@ -22,26 +22,30 @@ __all__ = ['OrganizationPermissionArgs', 'OrganizationPermission']
 class OrganizationPermissionArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[_builtins.str],
-                 permissions: pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]],
                  resource_id: pulumi.Input[_builtins.str],
-                 resource_type: pulumi.Input[_builtins.str]):
+                 resource_type: pulumi.Input[_builtins.str],
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['OrganizationPermissionTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationPermission resource.
-        :param pulumi.Input[_builtins.str] organization_id: Organization ID.
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Permissions to grant to principals.
-        :param pulumi.Input[_builtins.str] resource_id: Resource ID.
-        :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_id: Resource Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Required property. List of roles to set.
         """
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "permissions", permissions)
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Organization ID.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -50,22 +54,10 @@ class OrganizationPermissionArgs:
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
-    @pulumi.getter
-    def permissions(self) -> pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]:
-        """
-        Permissions to grant to principals.
-        """
-        return pulumi.get(self, "permissions")
-
-    @permissions.setter
-    def permissions(self, value: pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]):
-        pulumi.set(self, "permissions", value)
-
-    @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Resource ID.
+        Resource Id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_id")
 
@@ -77,13 +69,34 @@ class OrganizationPermissionArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Resource type. The possible values are `organization`, `organization_unit` and `project`.
+        Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
     def resource_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "resource_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]]:
+        """
+        Required property. List of roles to set.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]]):
+        pulumi.set(self, "permissions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['OrganizationPermissionTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['OrganizationPermissionTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -92,13 +105,14 @@ class _OrganizationPermissionState:
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['OrganizationPermissionTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OrganizationPermission resources.
-        :param pulumi.Input[_builtins.str] organization_id: Organization ID.
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Permissions to grant to principals.
-        :param pulumi.Input[_builtins.str] resource_id: Resource ID.
-        :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Required property. List of roles to set.
+        :param pulumi.Input[_builtins.str] resource_id: Resource Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         """
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
@@ -108,12 +122,14 @@ class _OrganizationPermissionState:
             pulumi.set(__self__, "resource_id", resource_id)
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Organization ID.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -125,7 +141,7 @@ class _OrganizationPermissionState:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]]:
         """
-        Permissions to grant to principals.
+        Required property. List of roles to set.
         """
         return pulumi.get(self, "permissions")
 
@@ -137,7 +153,7 @@ class _OrganizationPermissionState:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource ID.
+        Resource Id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_id")
 
@@ -149,13 +165,22 @@ class _OrganizationPermissionState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource type. The possible values are `organization`, `organization_unit` and `project`.
+        Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
     def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['OrganizationPermissionTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['OrganizationPermissionTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.type_token("aiven:index/organizationPermission:OrganizationPermission")
@@ -168,6 +193,7 @@ class OrganizationPermission(pulumi.CustomResource):
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['OrganizationPermissionTimeoutsArgs', 'OrganizationPermissionTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -234,10 +260,10 @@ class OrganizationPermission(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] organization_id: Organization ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]] permissions: Permissions to grant to principals.
-        :param pulumi.Input[_builtins.str] resource_id: Resource ID.
-        :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]] permissions: Required property. List of roles to set.
+        :param pulumi.Input[_builtins.str] resource_id: Resource Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -327,6 +353,7 @@ class OrganizationPermission(pulumi.CustomResource):
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['OrganizationPermissionTimeoutsArgs', 'OrganizationPermissionTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -339,8 +366,6 @@ class OrganizationPermission(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
-            if permissions is None and not opts.urn:
-                raise TypeError("Missing required property 'permissions'")
             __props__.__dict__["permissions"] = permissions
             if resource_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_id'")
@@ -348,6 +373,7 @@ class OrganizationPermission(pulumi.CustomResource):
             if resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_type'")
             __props__.__dict__["resource_type"] = resource_type
+            __props__.__dict__["timeouts"] = timeouts
         super(OrganizationPermission, __self__).__init__(
             'aiven:index/organizationPermission:OrganizationPermission',
             resource_name,
@@ -361,7 +387,8 @@ class OrganizationPermission(pulumi.CustomResource):
             organization_id: Optional[pulumi.Input[_builtins.str]] = None,
             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]]] = None,
             resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationPermission':
+            resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['OrganizationPermissionTimeoutsArgs', 'OrganizationPermissionTimeoutsArgsDict']]] = None) -> 'OrganizationPermission':
         """
         Get an existing OrganizationPermission resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -369,10 +396,10 @@ class OrganizationPermission(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] organization_id: Organization ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]] permissions: Permissions to grant to principals.
-        :param pulumi.Input[_builtins.str] resource_id: Resource ID.
-        :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]] permissions: Required property. List of roles to set.
+        :param pulumi.Input[_builtins.str] resource_id: Resource Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -382,21 +409,22 @@ class OrganizationPermission(pulumi.CustomResource):
         __props__.__dict__["permissions"] = permissions
         __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["resource_type"] = resource_type
+        __props__.__dict__["timeouts"] = timeouts
         return OrganizationPermission(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Organization ID.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> pulumi.Output[Sequence['outputs.OrganizationPermissionPermission']]:
+    def permissions(self) -> pulumi.Output[Optional[Sequence['outputs.OrganizationPermissionPermission']]]:
         """
-        Permissions to grant to principals.
+        Required property. List of roles to set.
         """
         return pulumi.get(self, "permissions")
 
@@ -404,7 +432,7 @@ class OrganizationPermission(pulumi.CustomResource):
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource ID.
+        Resource Id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_id")
 
@@ -412,7 +440,12 @@ class OrganizationPermission(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource type. The possible values are `organization`, `organization_unit` and `project`.
+        Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.OrganizationPermissionTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

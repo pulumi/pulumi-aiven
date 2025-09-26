@@ -35,7 +35,7 @@ export class OrganizationUser extends pulumi.CustomResource {
     /**
      * This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
      *
-     * @deprecated This field is deprecated and will be removed in the next major release. 
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
     declare public /*out*/ readonly accepted: pulumi.Output<boolean>;
     /**
@@ -45,7 +45,7 @@ export class OrganizationUser extends pulumi.CustomResource {
     /**
      * The email address of the user who sent an invitation to the user.
      *
-     * @deprecated This field is deprecated and will be removed in the next major release. 
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
     declare public /*out*/ readonly invitedBy: pulumi.Output<string>;
     /**
@@ -107,7 +107,7 @@ export interface OrganizationUserState {
     /**
      * This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
      *
-     * @deprecated This field is deprecated and will be removed in the next major release. 
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
     accepted?: pulumi.Input<boolean>;
     /**
@@ -117,7 +117,7 @@ export interface OrganizationUserState {
     /**
      * The email address of the user who sent an invitation to the user.
      *
-     * @deprecated This field is deprecated and will be removed in the next major release. 
+     * @deprecated This field is deprecated and will be removed in the next major release.
      */
     invitedBy?: pulumi.Input<string>;
     /**

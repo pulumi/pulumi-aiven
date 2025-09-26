@@ -110,14 +110,14 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.currency);
     }
     /**
-     * Extra billing text. Maximum length: `254`.
+     * Extra billing text. Maximum length: `256`.
      * 
      */
     @Export(name="customInvoiceText", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customInvoiceText;
 
     /**
-     * @return Extra billing text. Maximum length: `254`.
+     * @return Extra billing text. Maximum length: `256`.
      * 
      */
     public Output<Optional<String>> customInvoiceText() {

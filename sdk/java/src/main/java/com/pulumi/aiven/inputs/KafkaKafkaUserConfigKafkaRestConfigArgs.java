@@ -48,14 +48,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+     * Maximum number of bytes in unencoded message keys and values by a single request.
      * 
      */
     @Import(name="consumerRequestMaxBytes")
     private @Nullable Output<Integer> consumerRequestMaxBytes;
 
     /**
-     * @return Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+     * @return Maximum number of bytes in unencoded message keys and values by a single request.
      * 
      */
     public Optional<Output<Integer>> consumerRequestMaxBytes() {
@@ -153,14 +153,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
      * 
      */
     @Import(name="producerMaxRequestSize")
     private @Nullable Output<Integer> producerMaxRequestSize;
 
     /**
-     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
      * 
      */
     public Optional<Output<Integer>> producerMaxRequestSize() {
@@ -259,7 +259,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param consumerRequestMaxBytes Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+         * @param consumerRequestMaxBytes Maximum number of bytes in unencoded message keys and values by a single request.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param consumerRequestMaxBytes Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
+         * @param consumerRequestMaxBytes Maximum number of bytes in unencoded message keys and values by a single request.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerMaxRequestSize The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+         * @param producerMaxRequestSize The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerMaxRequestSize The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
+         * @param producerMaxRequestSize The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
          * 
          * @return builder
          * 

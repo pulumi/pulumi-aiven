@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfig {
     /**
-     * @return Tables to create
+     * @return Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
      * 
      */
     private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTable> tables;
 
     private ServiceIntegrationClickhouseKafkaUserConfig() {}
     /**
-     * @return Tables to create
+     * @return Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
      * 
      */
     public List<ServiceIntegrationClickhouseKafkaUserConfigTable> tables() {

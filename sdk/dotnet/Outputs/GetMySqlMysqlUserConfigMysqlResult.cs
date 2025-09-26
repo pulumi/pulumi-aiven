@@ -50,11 +50,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? InnodbLockWaitTimeout;
         /// <summary>
-        /// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+        /// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
         /// </summary>
         public readonly int? InnodbLogBufferSize;
         /// <summary>
-        /// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+        /// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         /// </summary>
         public readonly int? InnodbOnlineAlterLogMaxSize;
         /// <summary>
@@ -90,15 +90,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? LogOutput;
         /// <summary>
-        /// The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Example: `10.0`.
+        /// The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Example: `10`.
         /// </summary>
         public readonly double? LongQueryTime;
         /// <summary>
-        /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+        /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
         /// </summary>
         public readonly int? MaxAllowedPacket;
         /// <summary>
-        /// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
+        /// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
         /// </summary>
         public readonly int? MaxHeapTableSize;
         /// <summary>
@@ -130,7 +130,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? SqlRequirePrimaryKey;
         /// <summary>
-        /// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
+        /// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
         /// </summary>
         public readonly int? TmpTableSize;
         /// <summary>

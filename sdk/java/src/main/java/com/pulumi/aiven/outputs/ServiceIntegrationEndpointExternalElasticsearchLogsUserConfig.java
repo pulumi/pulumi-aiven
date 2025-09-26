@@ -33,7 +33,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
      */
     private String indexPrefix;
     /**
-     * @return Elasticsearch request timeout limit. Default: `10.0`.
+     * @return Elasticsearch request timeout limit. Default: `10`.
      * 
      */
     private @Nullable Double timeout;
@@ -69,7 +69,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         return this.indexPrefix;
     }
     /**
-     * @return Elasticsearch request timeout limit. Default: `10.0`.
+     * @return Elasticsearch request timeout limit. Default: `10`.
      * 
      */
     public Optional<Double> timeout() {

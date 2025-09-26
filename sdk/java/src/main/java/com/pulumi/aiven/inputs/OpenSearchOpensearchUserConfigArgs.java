@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigAzureMigrationArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigCustomKeystoreArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigGcsMigrationArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexPatternArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexRollupArgs;
@@ -75,6 +76,21 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
      */
     public Optional<Output<String>> customDomain() {
         return Optional.ofNullable(this.customDomain);
+    }
+
+    /**
+     * Allow to register custom keystores in OpenSearch
+     * 
+     */
+    @Import(name="customKeystores")
+    private @Nullable Output<List<OpenSearchOpensearchUserConfigCustomKeystoreArgs>> customKeystores;
+
+    /**
+     * @return Allow to register custom keystores in OpenSearch
+     * 
+     */
+    public Optional<Output<List<OpenSearchOpensearchUserConfigCustomKeystoreArgs>>> customKeystores() {
+        return Optional.ofNullable(this.customKeystores);
     }
 
     /**
@@ -281,14 +297,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Enum: `1`, `2`, and newer. OpenSearch major version.
+     * Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
      * 
      */
     @Import(name="opensearchVersion")
     private @Nullable Output<String> opensearchVersion;
 
     /**
-     * @return Enum: `1`, `2`, and newer. OpenSearch major version.
+     * @return Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
      * 
      */
     public Optional<Output<String>> opensearchVersion() {
@@ -451,6 +467,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         this.additionalBackupRegions = $.additionalBackupRegions;
         this.azureMigration = $.azureMigration;
         this.customDomain = $.customDomain;
+        this.customKeystores = $.customKeystores;
         this.disableReplicationFactorAdjustment = $.disableReplicationFactorAdjustment;
         this.gcsMigration = $.gcsMigration;
         this.indexPatterns = $.indexPatterns;
@@ -556,6 +573,37 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          */
         public Builder customDomain(String customDomain) {
             return customDomain(Output.of(customDomain));
+        }
+
+        /**
+         * @param customKeystores Allow to register custom keystores in OpenSearch
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customKeystores(@Nullable Output<List<OpenSearchOpensearchUserConfigCustomKeystoreArgs>> customKeystores) {
+            $.customKeystores = customKeystores;
+            return this;
+        }
+
+        /**
+         * @param customKeystores Allow to register custom keystores in OpenSearch
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customKeystores(List<OpenSearchOpensearchUserConfigCustomKeystoreArgs> customKeystores) {
+            return customKeystores(Output.of(customKeystores));
+        }
+
+        /**
+         * @param customKeystores Allow to register custom keystores in OpenSearch
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customKeystores(OpenSearchOpensearchUserConfigCustomKeystoreArgs... customKeystores) {
+            return customKeystores(List.of(customKeystores));
         }
 
         /**
@@ -884,7 +932,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param opensearchVersion Enum: `1`, `2`, and newer. OpenSearch major version.
+         * @param opensearchVersion Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
          * 
          * @return builder
          * 
@@ -895,7 +943,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param opensearchVersion Enum: `1`, `2`, and newer. OpenSearch major version.
+         * @param opensearchVersion Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
          * 
          * @return builder
          * 

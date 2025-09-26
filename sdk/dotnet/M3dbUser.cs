@@ -9,42 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
-    /// <summary>
-    /// Creates and manages an Aiven for M3 service user.
-    /// 
-    /// !&gt; **End of life notice**
-    /// **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
-    /// You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
-    /// To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
-    /// before the end of life date.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleServiceUser = new Aiven.M3dbUser("example_service_user", new()
-    ///     {
-    ///         ServiceName = exampleM3db.ServiceName,
-    ///         Project = exampleProject.Project,
-    ///         Username = "example-m3db-user",
-    ///         Password = serviceUserPw,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import aiven:index/m3dbUser:M3dbUser example_service_user PROJECT/SERVICE_NAME/USERNAME
-    /// ```
-    /// </summary>
     [AivenResourceType("aiven:index/m3dbUser:M3dbUser")]
     public partial class M3dbUser : global::Pulumi.CustomResource
     {

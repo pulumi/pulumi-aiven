@@ -30,6 +30,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
+        [Input("customKeystores")]
+        private InputList<Inputs.OpenSearchOpensearchUserConfigCustomKeystoreGetArgs>? _customKeystores;
+
+        /// <summary>
+        /// Allow to register custom keystores in OpenSearch
+        /// </summary>
+        public InputList<Inputs.OpenSearchOpensearchUserConfigCustomKeystoreGetArgs> CustomKeystores
+        {
+            get => _customKeystores ?? (_customKeystores = new InputList<Inputs.OpenSearchOpensearchUserConfigCustomKeystoreGetArgs>());
+            set => _customKeystores = value;
+        }
+
         /// <summary>
         /// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
         /// </summary>
@@ -134,7 +146,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs>? OpensearchDashboards { get; set; }
 
         /// <summary>
-        /// Enum: `1`, `2`, and newer. OpenSearch major version.
+        /// Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
         /// </summary>
         [Input("opensearchVersion")]
         public Input<string>? OpensearchVersion { get; set; }

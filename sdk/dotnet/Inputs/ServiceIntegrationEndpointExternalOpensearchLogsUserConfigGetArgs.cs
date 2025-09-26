@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> IndexPrefix { get; set; } = null!;
 
         /// <summary>
-        /// OpenSearch request timeout limit. Default: `10.0`.
+        /// OpenSearch request timeout limit. Default: `10`.
         /// </summary>
         [Input("timeout")]
         public Input<double>? Timeout { get; set; }

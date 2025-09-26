@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.OrganizationApplicationUserTokenArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.OrganizationApplicationUserTokenState;
+import com.pulumi.aiven.outputs.OrganizationApplicationUserTokenTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -72,238 +73,244 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken")
 public class OrganizationApplicationUserToken extends com.pulumi.resources.CustomResource {
     /**
-     * Time when the token was created.
+     * Create Time.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Time when the token was created.
+     * @return Create Time.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * True for tokens explicitly created using the `access_tokens` API. False for tokens created when a user logs in.
+     * True for tokens explicitly created via the access_tokens API, false for tokens created via login.
      * 
      */
     @Export(name="createdManually", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> createdManually;
 
     /**
-     * @return True for tokens explicitly created using the `access_tokens` API. False for tokens created when a user logs in.
+     * @return True for tokens explicitly created via the access_tokens API, false for tokens created via login.
      * 
      */
     public Output<Boolean> createdManually() {
         return this.createdManually;
     }
     /**
-     * True if the API request was made with this token.
+     * true if API request was made with this access token.
      * 
      */
     @Export(name="currentlyActive", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> currentlyActive;
 
     /**
-     * @return True if the API request was made with this token.
+     * @return true if API request was made with this access token.
      * 
      */
     public Output<Boolean> currentlyActive() {
         return this.currentlyActive;
     }
     /**
-     * Description of the token.
+     * Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the token.
+     * @return Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Timestamp when the access token will expire unless extended.
+     * Timestamp when the access token will expire unless extended, if ever.
      * 
      */
     @Export(name="expiryTime", refs={String.class}, tree="[0]")
     private Output<String> expiryTime;
 
     /**
-     * @return Timestamp when the access token will expire unless extended.
+     * @return Timestamp when the access token will expire unless extended, if ever.
      * 
      */
     public Output<String> expiryTime() {
         return this.expiryTime;
     }
     /**
-     * Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+     * Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="extendWhenUsed", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> extendWhenUsed;
+    private Output<Boolean> extendWhenUsed;
 
     /**
-     * @return Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+     * @return Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<Optional<Boolean>> extendWhenUsed() {
-        return Codegen.optional(this.extendWhenUsed);
+    public Output<Boolean> extendWhenUsed() {
+        return this.extendWhenUsed;
     }
     /**
-     * Full token.
+     * Full Token.
      * 
      */
     @Export(name="fullToken", refs={String.class}, tree="[0]")
     private Output<String> fullToken;
 
     /**
-     * @return Full token.
+     * @return Full Token.
      * 
      */
     public Output<String> fullToken() {
         return this.fullToken;
     }
     /**
-     * List of allowed IP ranges.
+     * List of allowed IP ranges. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="ipAllowlists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ipAllowlists;
 
     /**
-     * @return List of allowed IP ranges.
+     * @return List of allowed IP ranges. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> ipAllowlists() {
         return Codegen.optional(this.ipAllowlists);
     }
     /**
-     * IP address of the last request made with this token.
+     * IP address the access token was last used from in case it has ever been used.
      * 
      */
     @Export(name="lastIp", refs={String.class}, tree="[0]")
     private Output<String> lastIp;
 
     /**
-     * @return IP address of the last request made with this token.
+     * @return IP address the access token was last used from in case it has ever been used.
      * 
      */
     public Output<String> lastIp() {
         return this.lastIp;
     }
     /**
-     * Timestamp when the access token was last used.
+     * Timestamp when the access token was last used, if ever.
      * 
      */
     @Export(name="lastUsedTime", refs={String.class}, tree="[0]")
     private Output<String> lastUsedTime;
 
     /**
-     * @return Timestamp when the access token was last used.
+     * @return Timestamp when the access token was last used, if ever.
      * 
      */
     public Output<String> lastUsedTime() {
         return this.lastUsedTime;
     }
     /**
-     * User agent of the last request made with this token.
+     * User agent string of the client that last used the token in case it has ever been used.
      * 
      */
     @Export(name="lastUserAgent", refs={String.class}, tree="[0]")
     private Output<String> lastUserAgent;
 
     /**
-     * @return User agent of the last request made with this token.
+     * @return User agent string of the client that last used the token in case it has ever been used.
      * 
      */
     public Output<String> lastUserAgent() {
         return this.lastUserAgent;
     }
     /**
-     * User agent of the last request made with this token in human-readable format.
+     * Human readable user agent string of the client that last used the token in case user agent is known.
      * 
      */
     @Export(name="lastUserAgentHumanReadable", refs={String.class}, tree="[0]")
     private Output<String> lastUserAgentHumanReadable;
 
     /**
-     * @return User agent of the last request made with this token in human-readable format.
+     * @return Human readable user agent string of the client that last used the token in case user agent is known.
      * 
      */
     public Output<String> lastUserAgentHumanReadable() {
         return this.lastUserAgentHumanReadable;
     }
     /**
-     * The number of hours after which a token expires. If not set, it never expires.
+     * Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="maxAgeSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxAgeSeconds;
 
     /**
-     * @return The number of hours after which a token expires. If not set, it never expires.
+     * @return Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<Integer>> maxAgeSeconds() {
         return Codegen.optional(this.maxAgeSeconds);
     }
     /**
-     * The ID of the organization the application user belongs to.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization the application user belongs to.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+     * Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> scopes;
 
     /**
-     * @return Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
+     * @return Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> scopes() {
         return Codegen.optional(this.scopes);
     }
+    @Export(name="timeouts", refs={OrganizationApplicationUserTokenTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationApplicationUserTokenTimeouts> timeouts;
+
+    public Output<Optional<OrganizationApplicationUserTokenTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * Prefix of the token.
+     * First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&amp;gt; %2F, + =&amp;gt; %2B, = =&amp;gt; %3D).
      * 
      */
     @Export(name="tokenPrefix", refs={String.class}, tree="[0]")
     private Output<String> tokenPrefix;
 
     /**
-     * @return Prefix of the token.
+     * @return First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&amp;gt; %2F, + =&amp;gt; %2B, = =&amp;gt; %3D).
      * 
      */
     public Output<String> tokenPrefix() {
         return this.tokenPrefix;
     }
     /**
-     * The ID of the application user the token is created for.
+     * User ID. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
-     * @return The ID of the application user the token is created for.
+     * @return User ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> userId() {

@@ -4,28 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Gets information about an Aiven for M3DB service user.
- *
- * !> **End of life notice**
- * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
- * You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
- * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
- * before the end of life date.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const exampleServiceUser = aiven.getM3dbUser({
- *     serviceName: exampleM3db.serviceName,
- *     project: exampleProject.project,
- *     username: "example-m3db-user",
- * });
- * ```
- */
 export function getM3dbUser(args: GetM3dbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetM3dbUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getM3dbUser:getM3dbUser", {
@@ -39,17 +17,8 @@ export function getM3dbUser(args: GetM3dbUserArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getM3dbUser.
  */
 export interface GetM3dbUserArgs {
-    /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     project: string;
-    /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     serviceName: string;
-    /**
-     * Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     username: string;
 }
 
@@ -61,49 +30,12 @@ export interface GetM3dbUserResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The M3DB service user's password.
-     */
     readonly password: string;
-    /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     readonly project: string;
-    /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     readonly serviceName: string;
-    /**
-     * User account type, such as primary or regular account.
-     */
     readonly type: string;
-    /**
-     * Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     readonly username: string;
 }
-/**
- * Gets information about an Aiven for M3DB service user.
- *
- * !> **End of life notice**
- * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
- * You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
- * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
- * before the end of life date.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const exampleServiceUser = aiven.getM3dbUser({
- *     serviceName: exampleM3db.serviceName,
- *     project: exampleProject.project,
- *     username: "example-m3db-user",
- * });
- * ```
- */
 export function getM3dbUserOutput(args: GetM3dbUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetM3dbUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getM3dbUser:getM3dbUser", {
@@ -117,16 +49,7 @@ export function getM3dbUserOutput(args: GetM3dbUserOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getM3dbUser.
  */
 export interface GetM3dbUserOutputArgs {
-    /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     project: pulumi.Input<string>;
-    /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     username: pulumi.Input<string>;
 }

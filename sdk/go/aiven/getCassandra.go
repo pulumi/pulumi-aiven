@@ -76,7 +76,7 @@ type LookupCassandraResult struct {
 	CloudName string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []GetCassandraComponent `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap string `pulumi:"diskSpaceCap"`
@@ -84,7 +84,7 @@ type LookupCassandraResult struct {
 	DiskSpaceDefault string `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep string `pulumi:"diskSpaceStep"`
-	// Disk space that service is currently using
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -186,7 +186,7 @@ func (o LookupCassandraResultOutput) Components() GetCassandraComponentArrayOutp
 	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraComponent { return v.Components }).(GetCassandraComponentArrayOutput)
 }
 
-// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 func (o LookupCassandraResultOutput) DiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.DiskSpace }).(pulumi.StringOutput)
 }
@@ -206,7 +206,7 @@ func (o LookupCassandraResultOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
 
-// Disk space that service is currently using
+// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 func (o LookupCassandraResultOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }

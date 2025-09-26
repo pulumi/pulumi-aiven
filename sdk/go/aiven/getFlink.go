@@ -65,7 +65,7 @@ type LookupFlinkResult struct {
 	CloudName string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []GetFlinkComponent `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap string `pulumi:"diskSpaceCap"`
@@ -73,7 +73,7 @@ type LookupFlinkResult struct {
 	DiskSpaceDefault string `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep string `pulumi:"diskSpaceStep"`
-	// Disk space that service is currently using
+	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// Flink user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	FlinkUserConfigs []GetFlinkFlinkUserConfig `pulumi:"flinkUserConfigs"`
@@ -169,7 +169,7 @@ func (o LookupFlinkResultOutput) Components() GetFlinkComponentArrayOutput {
 	return o.ApplyT(func(v LookupFlinkResult) []GetFlinkComponent { return v.Components }).(GetFlinkComponentArrayOutput)
 }
 
-// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 func (o LookupFlinkResultOutput) DiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkResult) string { return v.DiskSpace }).(pulumi.StringOutput)
 }
@@ -189,7 +189,7 @@ func (o LookupFlinkResultOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkResult) string { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
 
-// Disk space that service is currently using
+// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 func (o LookupFlinkResultOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }

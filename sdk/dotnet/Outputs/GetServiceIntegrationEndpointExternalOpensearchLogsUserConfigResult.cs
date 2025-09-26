@@ -29,7 +29,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string IndexPrefix;
         /// <summary>
-        /// OpenSearch request timeout limit. Default: `10.0`.
+        /// OpenSearch request timeout limit. Default: `10`.
         /// </summary>
         public readonly double? Timeout;
         /// <summary>

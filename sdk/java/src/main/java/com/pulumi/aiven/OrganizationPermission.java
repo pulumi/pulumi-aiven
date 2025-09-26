@@ -7,12 +7,14 @@ import com.pulumi.aiven.OrganizationPermissionArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.OrganizationPermissionState;
 import com.pulumi.aiven.outputs.OrganizationPermissionPermission;
+import com.pulumi.aiven.outputs.OrganizationPermissionTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -102,60 +104,66 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/organizationPermission:OrganizationPermission")
 public class OrganizationPermission extends com.pulumi.resources.CustomResource {
     /**
-     * Organization ID.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return Organization ID.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * Permissions to grant to principals.
+     * Required property. List of roles to set.
      * 
      */
     @Export(name="permissions", refs={List.class,OrganizationPermissionPermission.class}, tree="[0,1]")
-    private Output<List<OrganizationPermissionPermission>> permissions;
+    private Output</* @Nullable */ List<OrganizationPermissionPermission>> permissions;
 
     /**
-     * @return Permissions to grant to principals.
+     * @return Required property. List of roles to set.
      * 
      */
-    public Output<List<OrganizationPermissionPermission>> permissions() {
-        return this.permissions;
+    public Output<Optional<List<OrganizationPermissionPermission>>> permissions() {
+        return Codegen.optional(this.permissions);
     }
     /**
-     * Resource ID.
+     * Resource Id. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
-     * @return Resource ID.
+     * @return Resource Id. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceId() {
         return this.resourceId;
     }
     /**
-     * Resource type. The possible values are `organization`, `organization_unit` and `project`.
+     * Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
-     * @return Resource type. The possible values are `organization`, `organization_unit` and `project`.
+     * @return Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceType() {
         return this.resourceType;
+    }
+    @Export(name="timeouts", refs={OrganizationPermissionTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationPermissionTimeouts> timeouts;
+
+    public Output<Optional<OrganizationPermissionTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**
