@@ -2,15 +2,15 @@ provider: aiven
 major-version: 6
 lint: false
 esc:
-  enabled: true
+    enabled: true
 env:
-  AIVEN_TOKEN: ${{ secrets.AIVEN_API_TOKEN }}
-  AIVEN_PROJECT_NAME: ${{ secrets.AIVEN_PROJECT_NAME }}
+    AIVEN_TOKEN: ${{ secrets.AIVEN_API_TOKEN }}
+    AIVEN_PROJECT_NAME: ${{ secrets.AIVEN_PROJECT_NAME }}
 makeTemplate: bridged
 team: ecosystem
 plugins:
-  - name: terraform
-    version: "1.0.16"
-    kind: converter
+    - name: terraform
+      version: "1.0.16"
+      kind: converter
 pulumiConvert: 1
 registryDocs: true
