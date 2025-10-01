@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .project(exampleProject.project())
  *             .serviceName("example-kafka-service")
  *             .cloudName("google-europe-west1")
- *             .plan("startup-2")
+ *             .plan("startup-4")
  *             .build());
  * 
  *         // Create a Kafka Connect service.

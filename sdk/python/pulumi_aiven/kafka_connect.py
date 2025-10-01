@@ -751,7 +751,7 @@ class KafkaConnect(pulumi.CustomResource):
             project=example_project["project"],
             service_name="example-kafka-service",
             cloud_name="google-europe-west1",
-            plan="startup-2")
+            plan="startup-4")
         # Create a Kafka Connect service.
         example_kafka_connect = aiven.KafkaConnect("example_kafka_connect",
             project=example_project["project"],
@@ -833,7 +833,7 @@ class KafkaConnect(pulumi.CustomResource):
             project=example_project["project"],
             service_name="example-kafka-service",
             cloud_name="google-europe-west1",
-            plan="startup-2")
+            plan="startup-4")
         # Create a Kafka Connect service.
         example_kafka_connect = aiven.KafkaConnect("example_kafka_connect",
             project=example_project["project"],

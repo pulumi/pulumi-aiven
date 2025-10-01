@@ -272,14 +272,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
      * 
      */
     @Import(name="pgVersion")
     private @Nullable Output<String> pgVersion;
 
     /**
-     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
      * 
      */
     public Optional<Output<String>> pgVersion() {
@@ -947,7 +947,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgVersion Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+         * @param pgVersion Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
          * 
          * @return builder
          * 
@@ -958,7 +958,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgVersion Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+         * @param pgVersion Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
          * 
          * @return builder
          * 
