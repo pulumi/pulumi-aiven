@@ -6613,7 +6613,7 @@ export interface PgPgUserConfig {
      */
     pgStatMonitorEnable?: pulumi.Input<boolean>;
     /**
-     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
      */
     pgVersion?: pulumi.Input<string>;
     /**

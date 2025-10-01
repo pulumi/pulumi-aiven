@@ -23182,7 +23182,7 @@ class PgPgUserConfig(dict):
         :param _builtins.bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param _builtins.str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         :param _builtins.bool pg_stat_monitor_enable: Enable the pg*stat*monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
-        :param _builtins.str pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+        :param _builtins.str pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         :param 'PgPgUserConfigPgauditArgs' pgaudit: System-wide settings for the pgaudit extension
         :param 'PgPgUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings
         :param 'PgPgUserConfigPglookoutArgs' pglookout: System-wide settings for pglookout
@@ -23391,7 +23391,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         """
         return pulumi.get(self, "pg_version")
 
@@ -49694,7 +49694,7 @@ class GetPgPgUserConfigResult(dict):
         :param _builtins.bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param _builtins.str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         :param _builtins.bool pg_stat_monitor_enable: Enable the pg_stat_monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. Default: `false`.
-        :param _builtins.str pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+        :param _builtins.str pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         :param 'GetPgPgUserConfigPgauditArgs' pgaudit: System-wide settings for the pgaudit extension
         :param 'GetPgPgUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings
         :param 'GetPgPgUserConfigPglookoutArgs' pglookout: System-wide settings for pglookout
@@ -49903,7 +49903,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         """
         return pulumi.get(self, "pg_version")
 

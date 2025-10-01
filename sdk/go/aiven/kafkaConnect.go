@@ -41,7 +41,7 @@ import (
 //				Project:     pulumi.Any(exampleProject.Project),
 //				ServiceName: pulumi.String("example-kafka-service"),
 //				CloudName:   pulumi.String("google-europe-west1"),
-//				Plan:        pulumi.String("startup-2"),
+//				Plan:        pulumi.String("startup-4"),
 //			})
 //			if err != nil {
 //				return err

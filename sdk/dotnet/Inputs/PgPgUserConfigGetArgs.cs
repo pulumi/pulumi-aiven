@@ -132,7 +132,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? PgStatMonitorEnable { get; set; }
 
         /// <summary>
-        /// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+        /// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         /// </summary>
         [Input("pgVersion")]
         public Input<string>? PgVersion { get; set; }

@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *     project: exampleProject.project,
  *     serviceName: "example-kafka-service",
  *     cloudName: "google-europe-west1",
- *     plan: "startup-2",
+ *     plan: "startup-4",
  * });
  * // Create a Kafka Connect service.
  * const exampleKafkaConnect = new aiven.KafkaConnect("example_kafka_connect", {

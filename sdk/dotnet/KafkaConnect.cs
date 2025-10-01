@@ -36,7 +36,7 @@ namespace Pulumi.Aiven
     ///         Project = exampleProject.Project,
     ///         ServiceName = "example-kafka-service",
     ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-2",
+    ///         Plan = "startup-4",
     ///     });
     /// 
     ///     // Create a Kafka Connect service.

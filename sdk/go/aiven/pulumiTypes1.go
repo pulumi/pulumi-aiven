@@ -16979,7 +16979,7 @@ type GetPgPgUserConfig struct {
 	PgServiceToForkFrom *string `pulumi:"pgServiceToForkFrom"`
 	// Enable the pgStatMonitor extension. Changing this parameter causes a service restart. When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
 	PgStatMonitorEnable *bool `pulumi:"pgStatMonitorEnable"`
-	// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+	// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
 	PgVersion *string `pulumi:"pgVersion"`
 	// System-wide settings for the pgaudit extension
 	Pgaudit *GetPgPgUserConfigPgaudit `pulumi:"pgaudit"`
@@ -17061,7 +17061,7 @@ type GetPgPgUserConfigArgs struct {
 	PgServiceToForkFrom pulumi.StringPtrInput `pulumi:"pgServiceToForkFrom"`
 	// Enable the pgStatMonitor extension. Changing this parameter causes a service restart. When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
 	PgStatMonitorEnable pulumi.BoolPtrInput `pulumi:"pgStatMonitorEnable"`
-	// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+	// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
 	PgVersion pulumi.StringPtrInput `pulumi:"pgVersion"`
 	// System-wide settings for the pgaudit extension
 	Pgaudit GetPgPgUserConfigPgauditPtrInput `pulumi:"pgaudit"`
@@ -17227,7 +17227,7 @@ func (o GetPgPgUserConfigOutput) PgStatMonitorEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *bool { return v.PgStatMonitorEnable }).(pulumi.BoolPtrOutput)
 }
 
-// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
 func (o GetPgPgUserConfigOutput) PgVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.PgVersion }).(pulumi.StringPtrOutput)
 }

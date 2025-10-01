@@ -31509,7 +31509,7 @@ if not MYPY:
         """
         pg_version: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         """
         pgaudit: NotRequired[pulumi.Input['PgPgUserConfigPgauditArgsDict']]
         """
@@ -31629,7 +31629,7 @@ class PgPgUserConfigArgs:
         :param pulumi.Input[_builtins.bool] pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param pulumi.Input[_builtins.str] pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         :param pulumi.Input[_builtins.bool] pg_stat_monitor_enable: Enable the pg*stat*monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
-        :param pulumi.Input[_builtins.str] pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+        :param pulumi.Input[_builtins.str] pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         :param pulumi.Input['PgPgUserConfigPgauditArgs'] pgaudit: System-wide settings for the pgaudit extension
         :param pulumi.Input['PgPgUserConfigPgbouncerArgs'] pgbouncer: PGBouncer connection pooling settings
         :param pulumi.Input['PgPgUserConfigPglookoutArgs'] pglookout: System-wide settings for pglookout
@@ -31904,7 +31904,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
+        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         """
         return pulumi.get(self, "pg_version")
 
