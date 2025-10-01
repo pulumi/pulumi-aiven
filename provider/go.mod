@@ -102,8 +102,8 @@ require (
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.23.1 // indirect
-	github.com/hashicorp/terraform-json v0.27.1 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.16.0 // indirect
+	github.com/hashicorp/terraform-json v0.27.2 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.16.1 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timeouts v0.6.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.18.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.29.0 // indirect
@@ -137,7 +137,7 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
-	github.com/modern-go/reflect2 v1.0.2 // indirect
+	github.com/modern-go/reflect2 v1.0.3-0.20250322232337-35a7c28c31ee // indirect
 	github.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6 // indirect
 	github.com/muesli/cancelreader v0.2.2 // indirect
 	github.com/muesli/reflow v0.3.0 // indirect
