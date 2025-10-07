@@ -17,7 +17,7 @@ public final class GetInfluxDbInfluxdbUserConfigPublicAccess {
      */
     private @Nullable Boolean influxdb;
     /**
-     * @return Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to userBackup from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean userBackup;
@@ -31,7 +31,7 @@ public final class GetInfluxDbInfluxdbUserConfigPublicAccess {
         return Optional.ofNullable(this.influxdb);
     }
     /**
-     * @return Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to userBackup from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> userBackup() {

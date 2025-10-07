@@ -15,14 +15,14 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
     public static final KafkaSchemaRegistryAclArgs Empty = new KafkaSchemaRegistryAclArgs();
 
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+     * @return Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> permission() {
@@ -118,7 +118,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permission Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+         * @param permission Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permission Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+         * @param permission Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -33,12 +33,12 @@ public final class FlinkJarApplicationApplicationVersionFileInfo {
      */
     private @Nullable String url;
     /**
-     * @return In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * @return In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
      * 
      */
     private @Nullable Integer verifyErrorCode;
     /**
-     * @return In the case file_status is FAILED, may contain details about the failure.
+     * @return In the case fileStatus is FAILED, may contain details about the failure.
      * 
      */
     private @Nullable String verifyErrorMessage;
@@ -73,14 +73,14 @@ public final class FlinkJarApplicationApplicationVersionFileInfo {
         return Optional.ofNullable(this.url);
     }
     /**
-     * @return In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * @return In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
      * 
      */
     public Optional<Integer> verifyErrorCode() {
         return Optional.ofNullable(this.verifyErrorCode);
     }
     /**
-     * @return In the case file_status is FAILED, may contain details about the failure.
+     * @return In the case fileStatus is FAILED, may contain details about the failure.
      * 
      */
     public Optional<String> verifyErrorMessage() {

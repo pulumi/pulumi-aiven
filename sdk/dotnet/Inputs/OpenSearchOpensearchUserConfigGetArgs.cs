@@ -108,7 +108,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
-        [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
+        [Obsolete(@"Deprecated. Use `IpFilterString` instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -122,7 +122,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? KeepIndexRefreshInterval { get; set; }
 
         /// <summary>
-        /// Use index_patterns instead. Default: `0`.
+        /// Use IndexPatterns instead. Default: `0`.
         /// </summary>
         [Input("maxIndexCount")]
         public Input<int>? MaxIndexCount { get; set; }
@@ -164,7 +164,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.OpenSearchOpensearchUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `Anotherprojectname`.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ServiceLog { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }

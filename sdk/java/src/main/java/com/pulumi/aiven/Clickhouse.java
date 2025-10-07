@@ -144,18 +144,18 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
         return this.components;
     }
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      * 
      * @deprecated
-     * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+     * Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
-    @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
+    @Deprecated /* Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan. */
     @Export(name="diskSpace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskSpace;
 
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
     public Output<Optional<String>> diskSpace() {
@@ -176,42 +176,42 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
         return this.diskSpaceCap;
     }
     /**
-     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
      * 
      */
     @Export(name="diskSpaceDefault", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceDefault;
 
     /**
-     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
      * 
      */
     public Output<String> diskSpaceDefault() {
         return this.diskSpaceDefault;
     }
     /**
-     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      * 
      */
     @Export(name="diskSpaceStep", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceStep;
 
     /**
-     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      * 
      */
     public Output<String> diskSpaceStep() {
         return this.diskSpaceStep;
     }
     /**
-     * The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
+     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      * 
      */
     @Export(name="diskSpaceUsed", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceUsed;
 
     /**
-     * @return The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
+     * @return The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      * 
      */
     public Output<String> diskSpaceUsed() {

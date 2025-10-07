@@ -41,7 +41,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
-        /// User name. Example: `default`.
+        /// User name. Example: `Default`.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;

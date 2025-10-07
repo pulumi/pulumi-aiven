@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdminPassword;
         /// <summary>
-        /// Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
+        /// Custom username for admin user. This must be set only when a new service is being created. Example: `Avnadmin`.
         /// </summary>
         public readonly string? AdminUsername;
         /// <summary>
@@ -58,19 +58,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPgResult? Pg;
         /// <summary>
-        /// System-wide settings for the pg_qualstats extension
+        /// System-wide settings for the PgQualstats extension
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPgQualstatsResult? PgQualstats;
         /// <summary>
-        /// Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+        /// Should the service which is being forked be a read replica (deprecated, use ReadReplica service integration instead).
         /// </summary>
         public readonly bool? PgReadReplica;
         /// <summary>
-        /// Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+        /// Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         public readonly string? PgServiceToForkFrom;
         /// <summary>
-        /// Enable the pg_stat_monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. Default: `false`.
+        /// Enable the PgStatMonitor extension. Changing this parameter causes a service restart. When this extension is enabled, PgStatStatements results for utility commands are unreliable. Default: `False`.
         /// </summary>
         public readonly bool? PgStatMonitorEnable;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `Anotherprojectname`.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -114,11 +114,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ServiceLog;
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
-        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the SharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
         /// </summary>
         public readonly double? SharedBuffersPercentage;
         /// <summary>
@@ -126,7 +126,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? StaticIps;
         /// <summary>
-        /// Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        /// Enum: `Off`, `Quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         /// </summary>
         public readonly string? SynchronousReplication;
         /// <summary>
@@ -134,7 +134,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigTimescaledbResult? Timescaledb;
         /// <summary>
-        /// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        /// Enum: `Aiven`, `Timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         /// </summary>
         public readonly string? Variant;
         /// <summary>

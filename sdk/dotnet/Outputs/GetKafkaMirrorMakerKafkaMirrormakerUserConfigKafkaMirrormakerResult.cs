@@ -38,7 +38,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? OffsetLagMax;
         /// <summary>
-        /// Whether to periodically check for new consumer groups. Defaults to `true`.
+        /// Whether to periodically check for new consumer groups. Defaults to `True`.
         /// </summary>
         public readonly bool? RefreshGroupsEnabled;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? RefreshGroupsIntervalSeconds;
         /// <summary>
-        /// Whether to periodically check for new topics and partitions. Defaults to `true`.
+        /// Whether to periodically check for new topics and partitions. Defaults to `True`.
         /// </summary>
         public readonly bool? RefreshTopicsEnabled;
         /// <summary>

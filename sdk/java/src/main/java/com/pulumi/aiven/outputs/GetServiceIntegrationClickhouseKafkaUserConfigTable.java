@@ -33,7 +33,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private String dataFormat;
     /**
-     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+     * @return Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
      * 
      */
     private @Nullable String dateTimeInputFormat;
@@ -73,7 +73,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private @Nullable Integer pollMaxBatchSize;
     /**
-     * @return Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream_flush_interval_ms server setting by default (500ms). Default: `0`.
+     * @return Timeout in milliseconds for a single poll from Kafka. Takes the value of the streamFlushIntervalMs server setting by default (500ms). Default: `0`.
      * 
      */
     private @Nullable Integer pollMaxTimeoutMs;
@@ -156,7 +156,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         return this.dataFormat;
     }
     /**
-     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+     * @return Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
      * 
      */
     public Optional<String> dateTimeInputFormat() {
@@ -212,7 +212,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         return Optional.ofNullable(this.pollMaxBatchSize);
     }
     /**
-     * @return Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream_flush_interval_ms server setting by default (500ms). Default: `0`.
+     * @return Timeout in milliseconds for a single poll from Kafka. Takes the value of the streamFlushIntervalMs server setting by default (500ms). Default: `0`.
      * 
      */
     public Optional<Integer> pollMaxTimeoutMs() {

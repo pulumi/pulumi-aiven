@@ -85,24 +85,24 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      * 
      * @deprecated
-     * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+     * Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
-    @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
+    @Deprecated /* Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan. */
     @Import(name="diskSpace")
     private @Nullable Output<String> diskSpace;
 
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      * 
      * @deprecated
-     * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+     * Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
-    @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
+    @Deprecated /* Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan. */
     public Optional<Output<String>> diskSpace() {
         return Optional.ofNullable(this.diskSpace);
     }
@@ -123,14 +123,14 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
      * 
      */
     @Import(name="diskSpaceDefault")
     private @Nullable Output<String> diskSpaceDefault;
 
     /**
-     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
      * 
      */
     public Optional<Output<String>> diskSpaceDefault() {
@@ -138,14 +138,14 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      * 
      */
     @Import(name="diskSpaceStep")
     private @Nullable Output<String> diskSpaceStep;
 
     /**
-     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      * 
      */
     public Optional<Output<String>> diskSpaceStep() {
@@ -153,14 +153,14 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
+     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      * 
      */
     @Import(name="diskSpaceUsed")
     private @Nullable Output<String> diskSpaceUsed;
 
     /**
-     * @return The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
+     * @return The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      * 
      */
     public Optional<Output<String>> diskSpaceUsed() {
@@ -198,7 +198,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
      * 
      * @deprecated
      * Usage of this field is discouraged.
@@ -209,7 +209,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> karapace;
 
     /**
-     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
+     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
      * 
      * @deprecated
      * Usage of this field is discouraged.
@@ -630,30 +630,30 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
          * 
          * @return builder
          * 
          * @deprecated
-         * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+         * Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
          * 
          */
-        @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
+        @Deprecated /* Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan. */
         public Builder diskSpace(@Nullable Output<String> diskSpace) {
             $.diskSpace = diskSpace;
             return this;
         }
 
         /**
-         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
          * 
          * @return builder
          * 
          * @deprecated
-         * Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+         * Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
          * 
          */
-        @Deprecated /* Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan. */
+        @Deprecated /* Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan. */
         public Builder diskSpace(String diskSpace) {
             return diskSpace(Output.of(diskSpace));
         }
@@ -680,7 +680,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpaceDefault The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+         * @param diskSpaceDefault The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
          * 
          * @return builder
          * 
@@ -691,7 +691,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpaceDefault The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+         * @param diskSpaceDefault The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
          * 
          * @return builder
          * 
@@ -701,7 +701,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpaceStep The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+         * @param diskSpaceStep The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
          * 
          * @return builder
          * 
@@ -712,7 +712,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpaceStep The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+         * @param diskSpaceStep The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
          * 
          * @return builder
          * 
@@ -722,7 +722,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpaceUsed The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
+         * @param diskSpaceUsed The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
          * 
          * @return builder
          * 
@@ -733,7 +733,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpaceUsed The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
+         * @param diskSpaceUsed The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
          * 
          * @return builder
          * 
@@ -795,7 +795,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param karapace Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
+         * @param karapace Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
          * 
          * @return builder
          * 
@@ -810,7 +810,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param karapace Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schema_registry` and `kafka_rest` instead.
+         * @param karapace Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
          * 
          * @return builder
          * 

@@ -51,7 +51,7 @@ namespace Pulumi.Aiven
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Status of account authentication method. The default value is `false`.
+        /// Status of account authentication method. The default value is `False`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Aiven
         public Output<string?> SamlVariant { get; private set; } = null!;
 
         /// <summary>
-        /// The account authentication type. The possible values are `internal` and `saml`.
+        /// The account authentication type. The possible values are `Internal` and `Saml`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Aiven
         public Input<string>? AutoJoinTeamId { get; set; }
 
         /// <summary>
-        /// Status of account authentication method. The default value is `false`.
+        /// Status of account authentication method. The default value is `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -253,7 +253,7 @@ namespace Pulumi.Aiven
         public Input<string>? SamlVariant { get; set; }
 
         /// <summary>
-        /// The account authentication type. The possible values are `internal` and `saml`.
+        /// The account authentication type. The possible values are `Internal` and `Saml`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.Aiven
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Status of account authentication method. The default value is `false`.
+        /// Status of account authentication method. The default value is `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -363,7 +363,7 @@ namespace Pulumi.Aiven
         public Input<string>? SamlVariant { get; set; }
 
         /// <summary>
-        /// The account authentication type. The possible values are `internal` and `saml`.
+        /// The account authentication type. The possible values are `Internal` and `Saml`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class M3DbM3dbUserConfigRulesMappingTag {
     /**
-     * @return Name of the tag. Example: `my_tag`.
+     * @return Name of the tag. Example: `myTag`.
      * 
      */
     private String name;
     /**
-     * @return Value of the tag. Example: `my_value`.
+     * @return Value of the tag. Example: `myValue`.
      * 
      */
     private String value;
 
     private M3DbM3dbUserConfigRulesMappingTag() {}
     /**
-     * @return Name of the tag. Example: `my_tag`.
+     * @return Name of the tag. Example: `myTag`.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Value of the tag. Example: `my_value`.
+     * @return Value of the tag. Example: `myValue`.
      * 
      */
     public String value() {

@@ -19,13 +19,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Clickhouse { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to ClickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("clickhouseHttps")]
         public Input<bool>? ClickhouseHttps { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to ClickhouseMysql from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("clickhouseMysql")]
         public Input<bool>? ClickhouseMysql { get; set; }

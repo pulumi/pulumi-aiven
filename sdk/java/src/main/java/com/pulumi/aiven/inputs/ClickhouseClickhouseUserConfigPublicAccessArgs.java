@@ -31,14 +31,14 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
     }
 
     /**
-     * Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
+     * Allow clients to connect to clickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="clickhouseHttps")
     private @Nullable Output<Boolean> clickhouseHttps;
 
     /**
-     * @return Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to clickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> clickhouseHttps() {
@@ -46,14 +46,14 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
     }
 
     /**
-     * Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+     * Allow clients to connect to clickhouseMysql from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="clickhouseMysql")
     private @Nullable Output<Boolean> clickhouseMysql;
 
     /**
-     * @return Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to clickhouseMysql from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> clickhouseMysql() {
@@ -124,7 +124,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouseHttps Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param clickhouseHttps Allow clients to connect to clickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouseHttps Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param clickhouseHttps Allow clients to connect to clickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param clickhouseMysql Allow clients to connect to clickhouseMysql from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param clickhouseMysql Allow clients to connect to clickhouseMysql from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 

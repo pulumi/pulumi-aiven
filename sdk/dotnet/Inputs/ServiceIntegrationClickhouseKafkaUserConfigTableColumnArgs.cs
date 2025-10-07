@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
+        /// The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `Key`.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

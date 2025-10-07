@@ -24,7 +24,7 @@ public final class GetOpenSearchOpensearchUserConfigIndexPattern {
      */
     private String pattern;
     /**
-     * @return Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
+     * @return Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. Default: `creationDate`.
      * 
      */
     private @Nullable String sortingAlgorithm;
@@ -45,7 +45,7 @@ public final class GetOpenSearchOpensearchUserConfigIndexPattern {
         return this.pattern;
     }
     /**
-     * @return Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
+     * @return Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. Default: `creationDate`.
      * 
      */
     public Optional<String> sortingAlgorithm() {

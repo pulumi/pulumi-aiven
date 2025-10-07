@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Enum: `azure`, `gcs`, `s3`.
+        /// Enum: `Azure`, `Gcs`, `S3`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

@@ -16,14 +16,14 @@ public final class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs extends c
     public static final KafkaConnectKafkaConnectUserConfigPrivateAccessArgs Empty = new KafkaConnectKafkaConnectUserConfigPrivateAccessArgs();
 
     /**
-     * Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="kafkaConnect")
     private @Nullable Output<Boolean> kafkaConnect;
 
     /**
-     * @return Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> kafkaConnect() {
@@ -71,7 +71,7 @@ public final class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs extends c
         }
 
         /**
-         * @param kafkaConnect Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param kafkaConnect Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs extends c
         }
 
         /**
-         * @param kafkaConnect Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param kafkaConnect Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 

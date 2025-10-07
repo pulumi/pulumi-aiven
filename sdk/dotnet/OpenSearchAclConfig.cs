@@ -47,13 +47,13 @@ namespace Pulumi.Aiven
     public partial class OpenSearchAclConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
+        /// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `True`.
         /// </summary>
         [Output("extendedAcl")]
         public Output<bool?> ExtendedAcl { get; private set; } = null!;
@@ -117,13 +117,13 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchAclConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
+        /// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `True`.
         /// </summary>
         [Input("extendedAcl")]
         public Input<bool>? ExtendedAcl { get; set; }
@@ -149,13 +149,13 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchAclConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
+        /// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `True`.
         /// </summary>
         [Input("extendedAcl")]
         public Input<bool>? ExtendedAcl { get; set; }

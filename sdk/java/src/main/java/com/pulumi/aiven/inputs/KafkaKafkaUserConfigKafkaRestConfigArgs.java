@@ -78,14 +78,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+     * Enum: `recordName`, `topicName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `topicName`.
      * 
      */
     @Import(name="nameStrategy")
     private @Nullable Output<String> nameStrategy;
 
     /**
-     * @return Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+     * @return Enum: `recordName`, `topicName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `topicName`.
      * 
      */
     public Optional<Output<String>> nameStrategy() {
@@ -301,7 +301,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param nameStrategy Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+         * @param nameStrategy Enum: `recordName`, `topicName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `topicName`.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param nameStrategy Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+         * @param nameStrategy Enum: `recordName`, `topicName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `topicName`.
          * 
          * @return builder
          * 
