@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationFlinkExternalPostgresqlUserConfig
     {
         /// <summary>
-        /// Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
+        /// Enum: `Unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
         /// </summary>
         public readonly string? Stringtype;
 

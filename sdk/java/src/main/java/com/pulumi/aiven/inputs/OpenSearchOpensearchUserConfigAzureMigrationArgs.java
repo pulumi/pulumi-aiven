@@ -138,14 +138,14 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
     }
 
     /**
-     * Azure account secret key. One of key or sas_token should be specified.
+     * Azure account secret key. One of key or sasToken should be specified.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Azure account secret key. One of key or sas_token should be specified.
+     * @return Azure account secret key. One of key or sasToken should be specified.
      * 
      */
     public Optional<Output<String>> key() {
@@ -183,14 +183,14 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
     }
 
     /**
-     * A shared access signatures (SAS) token. One of key or sas_token should be specified.
+     * A shared access signatures (SAS) token. One of key or sasToken should be specified.
      * 
      */
     @Import(name="sasToken")
     private @Nullable Output<String> sasToken;
 
     /**
-     * @return A shared access signatures (SAS) token. One of key or sas_token should be specified.
+     * @return A shared access signatures (SAS) token. One of key or sasToken should be specified.
      * 
      */
     public Optional<Output<String>> sasToken() {
@@ -417,7 +417,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
         }
 
         /**
-         * @param key Azure account secret key. One of key or sas_token should be specified.
+         * @param key Azure account secret key. One of key or sasToken should be specified.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
         }
 
         /**
-         * @param key Azure account secret key. One of key or sas_token should be specified.
+         * @param key Azure account secret key. One of key or sasToken should be specified.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
         }
 
         /**
-         * @param sasToken A shared access signatures (SAS) token. One of key or sas_token should be specified.
+         * @param sasToken A shared access signatures (SAS) token. One of key or sasToken should be specified.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
         }
 
         /**
-         * @param sasToken A shared access signatures (SAS) token. One of key or sas_token should be specified.
+         * @param sasToken A shared access signatures (SAS) token. One of key or sasToken should be specified.
          * 
          * @return builder
          * 

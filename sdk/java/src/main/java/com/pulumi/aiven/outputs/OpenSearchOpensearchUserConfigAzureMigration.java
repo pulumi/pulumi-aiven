@@ -54,7 +54,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
      */
     private String indices;
     /**
-     * @return Azure account secret key. One of key or sas_token should be specified.
+     * @return Azure account secret key. One of key or sasToken should be specified.
      * 
      */
     private @Nullable String key;
@@ -69,7 +69,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
      */
     private @Nullable Boolean restoreGlobalState;
     /**
-     * @return A shared access signatures (SAS) token. One of key or sas_token should be specified.
+     * @return A shared access signatures (SAS) token. One of key or sasToken should be specified.
      * 
      */
     private @Nullable String sasToken;
@@ -137,7 +137,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
         return this.indices;
     }
     /**
-     * @return Azure account secret key. One of key or sas_token should be specified.
+     * @return Azure account secret key. One of key or sasToken should be specified.
      * 
      */
     public Optional<String> key() {
@@ -158,7 +158,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
         return Optional.ofNullable(this.restoreGlobalState);
     }
     /**
-     * @return A shared access signatures (SAS) token. One of key or sas_token should be specified.
+     * @return A shared access signatures (SAS) token. One of key or sasToken should be specified.
      * 
      */
     public Optional<String> sasToken() {

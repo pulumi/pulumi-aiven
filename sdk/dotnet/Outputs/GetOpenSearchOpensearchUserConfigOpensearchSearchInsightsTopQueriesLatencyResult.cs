@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyResult
     {
         /// <summary>
-        /// Enable or disable top N query monitoring by the metric. Default: `false`.
+        /// Enable or disable top N query monitoring by the metric. Default: `False`.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

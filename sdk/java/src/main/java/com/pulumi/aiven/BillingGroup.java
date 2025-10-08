@@ -74,10 +74,10 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * Account ID.
      * 
      * @deprecated
-     * Use parent_id instead. This field will be removed in the next major release.
+     * Use parentId instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
+    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 

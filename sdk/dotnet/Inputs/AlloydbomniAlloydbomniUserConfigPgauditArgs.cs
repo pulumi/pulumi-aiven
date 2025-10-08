@@ -13,25 +13,25 @@ namespace Pulumi.Aiven.Inputs
     public sealed class AlloydbomniAlloydbomniUserConfigPgauditArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+        /// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `False`.
         /// </summary>
         [Input("featureEnabled")]
         public Input<bool>? FeatureEnabled { get; set; }
 
         /// <summary>
-        /// Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
+        /// Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `True`.
         /// </summary>
         [Input("logCatalog")]
         public Input<bool>? LogCatalog { get; set; }
 
         /// <summary>
-        /// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+        /// Specifies whether log messages will be visible to a client process such as psql. Default: `False`.
         /// </summary>
         [Input("logClient")]
         public Input<bool>? LogClient { get; set; }
 
         /// <summary>
-        /// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+        /// Enum: `Debug1`, `Debug2`, `Debug3`, `Debug4`, `Debug5`, `Info`, `Log`, `Notice`, `Warning`. Specifies the log level that will be used for log entries. Default: `Log`.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
@@ -43,13 +43,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? LogMaxStringLength { get; set; }
 
         /// <summary>
-        /// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        /// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `True`.
         /// </summary>
         [Input("logNestedStatements")]
         public Input<bool>? LogNestedStatements { get; set; }
 
         /// <summary>
-        /// Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+        /// Specifies that audit logging should include the parameters that were passed with the statement. Default: `False`.
         /// </summary>
         [Input("logParameter")]
         public Input<bool>? LogParameter { get; set; }
@@ -61,25 +61,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? LogParameterMaxSize { get; set; }
 
         /// <summary>
-        /// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        /// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `False`.
         /// </summary>
         [Input("logRelation")]
         public Input<bool>? LogRelation { get; set; }
 
         /// <summary>
-        /// Log Rows. Default: `false`.
+        /// Log Rows. Default: `False`.
         /// </summary>
         [Input("logRows")]
         public Input<bool>? LogRows { get; set; }
 
         /// <summary>
-        /// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+        /// Specifies whether logging will include the statement text and parameters (if enabled). Default: `True`.
         /// </summary>
         [Input("logStatement")]
         public Input<bool>? LogStatement { get; set; }
 
         /// <summary>
-        /// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        /// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `False`.
         /// </summary>
         [Input("logStatementOnce")]
         public Input<bool>? LogStatementOnce { get; set; }

@@ -20,10 +20,10 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
      * Account ID.
      * 
      * @deprecated
-     * Use parent_id instead. This field will be removed in the next major release.
+     * Use parentId instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
+    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
@@ -31,10 +31,10 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
      * @return Account ID.
      * 
      * @deprecated
-     * Use parent_id instead. This field will be removed in the next major release.
+     * Use parentId instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
+    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -293,10 +293,10 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use parent_id instead. This field will be removed in the next major release.
+         * Use parentId instead. This field will be removed in the next major release.
          * 
          */
-        @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
+        @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -308,10 +308,10 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use parent_id instead. This field will be removed in the next major release.
+         * Use parentId instead. This field will be removed in the next major release.
          * 
          */
-        @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
+        @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

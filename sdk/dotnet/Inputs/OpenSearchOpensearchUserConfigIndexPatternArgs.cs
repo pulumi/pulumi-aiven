@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> Pattern { get; set; } = null!;
 
         /// <summary>
-        /// Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
+        /// Enum: `Alphabetical`, `CreationDate`. Deletion sorting algorithm. Default: `CreationDate`.
         /// </summary>
         [Input("sortingAlgorithm")]
         public Input<string>? SortingAlgorithm { get; set; }

@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? IndexDaysMax { get; set; }
 
         /// <summary>
-        /// Elasticsearch index prefix. Default: `logs`.
+        /// Elasticsearch index prefix. Default: `Logs`.
         /// </summary>
         [Input("indexPrefix", required: true)]
         public Input<string> IndexPrefix { get; set; } = null!;

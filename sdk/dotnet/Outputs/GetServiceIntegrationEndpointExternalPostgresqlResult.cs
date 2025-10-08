@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationEndpointExternalPostgresqlResult
     {
         /// <summary>
-        /// Default database. Example: `testdb`.
+        /// Default database. Example: `Testdb`.
         /// </summary>
         public readonly string? DefaultDatabase;
         /// <summary>
@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SslClientKey;
         /// <summary>
-        /// Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+        /// Enum: `Allow`, `Disable`, `Prefer`, `Require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         /// </summary>
         public readonly string? SslMode;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SslRootCert;
         /// <summary>
-        /// User name. Example: `myname`.
+        /// User name. Example: `Myname`.
         /// </summary>
         public readonly string Username;
 

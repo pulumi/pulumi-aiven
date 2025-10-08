@@ -14,6 +14,8 @@ import (
 
 // Create an access control list (ACL) rule for indexes in an Aiven for OpenSearch® service. ACLs apply only to indexes and don't control access to other OpenSearch APIs such as OpenSearch Dashboards.
 //
+// ## Example Usage
+//
 // ## Import
 //
 // ```sh

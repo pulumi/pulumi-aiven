@@ -28,7 +28,7 @@ public final class GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf 
      */
     private @Nullable Boolean gatherIndexIoWaits;
     /**
-     * @return Gather auto_increment columns and max values from information schema.
+     * @return Gather autoIncrement columns and max values from information schema.
      * 
      */
     private @Nullable Boolean gatherInfoSchemaAutoInc;
@@ -68,7 +68,7 @@ public final class GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf 
      */
     private @Nullable Boolean gatherTableSchema;
     /**
-     * @return Truncates digest text from perf_events_statements into this many characters. Example: `120`.
+     * @return Truncates digest text from perfEventsStatements into this many characters. Example: `120`.
      * 
      */
     private @Nullable Integer perfEventsStatementsDigestTextLimit;
@@ -78,7 +78,7 @@ public final class GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf 
      */
     private @Nullable Integer perfEventsStatementsLimit;
     /**
-     * @return Only include perf_events_statements whose last seen is less than this many seconds. Example: `86400`.
+     * @return Only include perfEventsStatements whose last seen is less than this many seconds. Example: `86400`.
      * 
      */
     private @Nullable Integer perfEventsStatementsTimeLimit;
@@ -106,7 +106,7 @@ public final class GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf 
         return Optional.ofNullable(this.gatherIndexIoWaits);
     }
     /**
-     * @return Gather auto_increment columns and max values from information schema.
+     * @return Gather autoIncrement columns and max values from information schema.
      * 
      */
     public Optional<Boolean> gatherInfoSchemaAutoInc() {
@@ -162,7 +162,7 @@ public final class GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf 
         return Optional.ofNullable(this.gatherTableSchema);
     }
     /**
-     * @return Truncates digest text from perf_events_statements into this many characters. Example: `120`.
+     * @return Truncates digest text from perfEventsStatements into this many characters. Example: `120`.
      * 
      */
     public Optional<Integer> perfEventsStatementsDigestTextLimit() {
@@ -176,7 +176,7 @@ public final class GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf 
         return Optional.ofNullable(this.perfEventsStatementsLimit);
     }
     /**
-     * @return Only include perf_events_statements whose last seen is less than this many seconds. Example: `86400`.
+     * @return Only include perfEventsStatements whose last seen is less than this many seconds. Example: `86400`.
      * 
      */
     public Optional<Integer> perfEventsStatementsTimeLimit() {

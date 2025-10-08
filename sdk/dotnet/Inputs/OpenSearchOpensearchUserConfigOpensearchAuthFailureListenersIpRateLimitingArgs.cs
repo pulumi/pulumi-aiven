@@ -37,13 +37,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxTrackedClients { get; set; }
 
         /// <summary>
-        /// The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+        /// The window of time in which the value for `AllowedTries` is enforced. Example: `3600`.
         /// </summary>
         [Input("timeWindowSeconds")]
         public Input<int>? TimeWindowSeconds { get; set; }
 
         /// <summary>
-        /// Enum: `ip`. The type of rate limiting.
+        /// Enum: `Ip`. The type of rate limiting.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

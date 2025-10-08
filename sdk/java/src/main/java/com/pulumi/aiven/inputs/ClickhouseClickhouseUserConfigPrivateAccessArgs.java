@@ -31,14 +31,14 @@ public final class ClickhouseClickhouseUserConfigPrivateAccessArgs extends com.p
     }
 
     /**
-     * Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="clickhouseHttps")
     private @Nullable Output<Boolean> clickhouseHttps;
 
     /**
-     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> clickhouseHttps() {
@@ -46,14 +46,14 @@ public final class ClickhouseClickhouseUserConfigPrivateAccessArgs extends com.p
     }
 
     /**
-     * Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="clickhouseMysql")
     private @Nullable Output<Boolean> clickhouseMysql;
 
     /**
-     * @return Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> clickhouseMysql() {
@@ -124,7 +124,7 @@ public final class ClickhouseClickhouseUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param clickhouseHttps Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseHttps Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ClickhouseClickhouseUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param clickhouseHttps Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseHttps Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ClickhouseClickhouseUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseMysql Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ClickhouseClickhouseUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseMysql Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 

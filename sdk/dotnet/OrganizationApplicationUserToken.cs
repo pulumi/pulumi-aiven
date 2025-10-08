@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// True for tokens explicitly created via the access_tokens API, false for tokens created via login.
+        /// True for tokens explicitly created via the AccessTokens API, false for tokens created via login.
         /// </summary>
         [Output("createdManually")]
         public Output<bool> CreatedManually { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.Aiven
         public Output<string> ExpiryTime { get; private set; } = null!;
 
         /// <summary>
-        /// Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
+        /// Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `False`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("extendWhenUsed")]
         public Output<bool> ExtendWhenUsed { get; private set; } = null!;
@@ -209,7 +209,7 @@ namespace Pulumi.Aiven
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
+        /// Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `False`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("extendWhenUsed")]
         public Input<bool>? ExtendWhenUsed { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.Aiven
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// True for tokens explicitly created via the access_tokens API, false for tokens created via login.
+        /// True for tokens explicitly created via the AccessTokens API, false for tokens created via login.
         /// </summary>
         [Input("createdManually")]
         public Input<bool>? CreatedManually { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.Aiven
         public Input<string>? ExpiryTime { get; set; }
 
         /// <summary>
-        /// Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
+        /// Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `False`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("extendWhenUsed")]
         public Input<bool>? ExtendWhenUsed { get; set; }

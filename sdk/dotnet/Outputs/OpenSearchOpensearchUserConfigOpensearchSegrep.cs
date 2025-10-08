@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? PressureCheckpointLimit;
         /// <summary>
-        /// Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+        /// Enables the segment replication backpressure mechanism. Default is false. Default: `False`.
         /// </summary>
         public readonly bool? PressureEnabled;
         /// <summary>

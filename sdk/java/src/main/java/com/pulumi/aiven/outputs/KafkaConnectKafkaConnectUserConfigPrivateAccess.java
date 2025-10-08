@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaConnectKafkaConnectUserConfigPrivateAccess {
     /**
-     * @return Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean kafkaConnect;
@@ -24,7 +24,7 @@ public final class KafkaConnectKafkaConnectUserConfigPrivateAccess {
 
     private KafkaConnectKafkaConnectUserConfigPrivateAccess() {}
     /**
-     * @return Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> kafkaConnect() {

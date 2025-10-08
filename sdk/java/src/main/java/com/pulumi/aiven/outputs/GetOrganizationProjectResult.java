@@ -32,7 +32,7 @@ public final class GetOrganizationProjectResult {
      */
     private String caCert;
     /**
-     * @return Resource ID, a composite of `organization_id` and `project_id` IDs.
+     * @return Resource ID, a composite of `organizationId` and `projectId` IDs.
      * 
      */
     private String id;
@@ -86,7 +86,7 @@ public final class GetOrganizationProjectResult {
         return this.caCert;
     }
     /**
-     * @return Resource ID, a composite of `organization_id` and `project_id` IDs.
+     * @return Resource ID, a composite of `organizationId` and `projectId` IDs.
      * 
      */
     public String id() {

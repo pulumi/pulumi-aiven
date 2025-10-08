@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class M3DbM3dbUserConfigRulesMappingTag
     {
         /// <summary>
-        /// Name of the tag. Example: `my_tag`.
+        /// Name of the tag. Example: `MyTag`.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Value of the tag. Example: `my_value`.
+        /// Value of the tag. Example: `MyValue`.
         /// </summary>
         public readonly string Value;
 

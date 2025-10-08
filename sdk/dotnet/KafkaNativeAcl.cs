@@ -75,7 +75,7 @@ namespace Pulumi.Aiven
         public Output<string> PermissionType { get; private set; } = null!;
 
         /// <summary>
-        /// Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// Identities in `user:name` format that the permissions apply to. The `Name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("principal")]
         public Output<string> Principal { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.Aiven
         public Input<string> PermissionType { get; set; } = null!;
 
         /// <summary>
-        /// Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// Identities in `user:name` format that the permissions apply to. The `Name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("principal", required: true)]
         public Input<string> Principal { get; set; } = null!;
@@ -237,7 +237,7 @@ namespace Pulumi.Aiven
         public Input<string>? PermissionType { get; set; }
 
         /// <summary>
-        /// Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// Identities in `user:name` format that the permissions apply to. The `Name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }
