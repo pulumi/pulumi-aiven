@@ -14,15 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class DragonflyDragonflyUserConfig
     {
         /// <summary>
-        /// Evict entries when getting close to maxmemory limit. Default: `false`.
+        /// Evict entries when getting close to maxmemory limit. Default: `False`.
         /// </summary>
         public readonly bool? CacheMode;
         /// <summary>
-        /// Enum: `dfs`, `off`, `rdb`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+        /// Enum: `Dfs`, `Off`, `Rdb`. When persistence is `Rdb` or `Dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `Off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         /// </summary>
         public readonly string? DragonflyPersistence;
         /// <summary>
-        /// Require SSL to access Dragonfly. Default: `true`.
+        /// Require SSL to access Dragonfly. Default: `True`.
         /// </summary>
         public readonly bool? DragonflySsl;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.DragonflyDragonflyUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `Anotherprojectname`.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ServiceLog;
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>

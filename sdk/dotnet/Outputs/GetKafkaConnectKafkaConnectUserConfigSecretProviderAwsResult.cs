@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AccessKey;
         /// <summary>
-        /// Enum: `credentials`. Auth method of the vault secret provider.
+        /// Enum: `Credentials`. Auth method of the vault secret provider.
         /// </summary>
         public readonly string AuthMethod;
         /// <summary>

@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationClickhouseCredentialsUserConfigGrant
     {
         /// <summary>
-        /// User or role to assign the grant to. Example: `alice`.
+        /// User or role to assign the grant to. Example: `Alice`.
         /// </summary>
         public readonly string User;
 

@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Indices;
         /// <summary>
-        /// Whether the repository is read-only. Default: `true`.
+        /// Whether the repository is read-only. Default: `True`.
         /// </summary>
         public readonly bool? Readonly;
         /// <summary>

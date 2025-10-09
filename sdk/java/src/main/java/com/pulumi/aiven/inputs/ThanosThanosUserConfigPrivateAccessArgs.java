@@ -16,14 +16,14 @@ public final class ThanosThanosUserConfigPrivateAccessArgs extends com.pulumi.re
     public static final ThanosThanosUserConfigPrivateAccessArgs Empty = new ThanosThanosUserConfigPrivateAccessArgs();
 
     /**
-     * Allow clients to connect to query_frontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to queryFrontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="queryFrontend")
     private @Nullable Output<Boolean> queryFrontend;
 
     /**
-     * @return Allow clients to connect to query_frontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to queryFrontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> queryFrontend() {
@@ -31,14 +31,14 @@ public final class ThanosThanosUserConfigPrivateAccessArgs extends com.pulumi.re
     }
 
     /**
-     * Allow clients to connect to receiver_routing with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to receiverRouting with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="receiverRouting")
     private @Nullable Output<Boolean> receiverRouting;
 
     /**
-     * @return Allow clients to connect to receiver_routing with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to receiverRouting with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> receiverRouting() {
@@ -71,7 +71,7 @@ public final class ThanosThanosUserConfigPrivateAccessArgs extends com.pulumi.re
         }
 
         /**
-         * @param queryFrontend Allow clients to connect to query_frontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param queryFrontend Allow clients to connect to queryFrontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ThanosThanosUserConfigPrivateAccessArgs extends com.pulumi.re
         }
 
         /**
-         * @param queryFrontend Allow clients to connect to query_frontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param queryFrontend Allow clients to connect to queryFrontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ThanosThanosUserConfigPrivateAccessArgs extends com.pulumi.re
         }
 
         /**
-         * @param receiverRouting Allow clients to connect to receiver_routing with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param receiverRouting Allow clients to connect to receiverRouting with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ThanosThanosUserConfigPrivateAccessArgs extends com.pulumi.re
         }
 
         /**
-         * @param receiverRouting Allow clients to connect to receiver_routing with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param receiverRouting Allow clients to connect to receiverRouting with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 

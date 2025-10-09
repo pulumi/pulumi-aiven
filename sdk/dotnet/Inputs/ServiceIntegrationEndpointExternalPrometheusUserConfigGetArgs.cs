@@ -29,7 +29,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Prometheus basic authentication username. Example: `prom4851`.
+        /// Prometheus basic authentication username. Example: `Prom4851`.
         /// </summary>
         [Input("basicAuthUsername")]
         public Input<string>? BasicAuthUsername { get; set; }

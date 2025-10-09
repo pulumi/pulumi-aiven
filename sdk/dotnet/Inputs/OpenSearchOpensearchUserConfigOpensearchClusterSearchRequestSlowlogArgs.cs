@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+        /// Enum: `Debug`, `Info`, `Trace`, `Warn`. Log level. Default: `Trace`.
         /// </summary>
         [Input("level")]
         public Input<string>? Level { get; set; }

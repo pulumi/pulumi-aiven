@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearchUserConfigOpensearchDashboards
     {
         /// <summary>
-        /// Enable or disable OpenSearch Dashboards. Default: `true`.
+        /// Enable or disable OpenSearch Dashboards. Default: `True`.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxOldSpaceSize;
         /// <summary>
-        /// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+        /// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `True`.
         /// </summary>
         public readonly bool? MultipleDataSourceEnabled;
         /// <summary>

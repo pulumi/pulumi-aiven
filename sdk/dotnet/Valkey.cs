@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.ValkeyComponent>> Components { get; private set; } = null!;
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `AdditionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
         /// </summary>
         [Output("diskSpace")]
         public Output<string?> DiskSpace { get; private set; } = null!;
@@ -77,19 +77,19 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceCap { get; private set; } = null!;
 
         /// <summary>
-        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `DiskSpace`
         /// </summary>
         [Output("diskSpaceDefault")]
         public Output<string> DiskSpaceDefault { get; private set; } = null!;
 
         /// <summary>
-        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `DiskSpace` needs to increment from `DiskSpaceDefault` by increments of this size.
         /// </summary>
         [Output("diskSpaceStep")]
         public Output<string> DiskSpaceStep { get; private set; } = null!;
 
         /// <summary>
-        /// The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
+        /// The disk space that the service is currently using. This is the sum of `DiskSpace` and `AdditionalDiskSpace` in human-readable format (for example: `90GiB`).
         /// </summary>
         [Output("diskSpaceUsed")]
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `Hobbyist`, `startup-x`, `business-x` and `premium-x` where `X` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.ValkeyTechEmail>> TechEmails { get; private set; } = null!;
 
         /// <summary>
-        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+        /// Prevents the service from being deleted. It is recommended to set this to `True` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Output("terminationProtection")]
         public Output<bool?> TerminationProtection { get; private set; } = null!;
@@ -276,7 +276,7 @@ namespace Pulumi.Aiven
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `AdditionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -294,7 +294,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `Hobbyist`, `startup-x`, `business-x` and `premium-x` where `X` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+        /// Prevents the service from being deleted. It is recommended to set this to `True` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
@@ -426,7 +426,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `AdditionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -438,19 +438,19 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpaceCap { get; set; }
 
         /// <summary>
-        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `DiskSpace`
         /// </summary>
         [Input("diskSpaceDefault")]
         public Input<string>? DiskSpaceDefault { get; set; }
 
         /// <summary>
-        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `DiskSpace` needs to increment from `DiskSpaceDefault` by increments of this size.
         /// </summary>
         [Input("diskSpaceStep")]
         public Input<string>? DiskSpaceStep { get; set; }
 
         /// <summary>
-        /// The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
+        /// The disk space that the service is currently using. This is the sum of `DiskSpace` and `AdditionalDiskSpace` in human-readable format (for example: `90GiB`).
         /// </summary>
         [Input("diskSpaceUsed")]
         public Input<string>? DiskSpaceUsed { get; set; }
@@ -468,7 +468,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `Hobbyist`, `startup-x`, `business-x` and `premium-x` where `X` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
@@ -599,7 +599,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+        /// Prevents the service from being deleted. It is recommended to set this to `True` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }

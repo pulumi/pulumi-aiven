@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+        /// Enum: `Earliest`, `Latest`. Set where consumer starts to consume data. Value `Earliest`: Start replication from the earliest offset. Value `Latest`: Start replication from the latest offset. Default is `Earliest`.
         /// </summary>
         [Input("consumerAutoOffsetReset")]
         public Input<string>? ConsumerAutoOffsetReset { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerBufferMemory { get; set; }
 
         /// <summary>
-        /// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        /// Enum: `Gzip`, `Lz4`, `None`, `Snappy`, `Zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`Gzip`, `Snappy`, `Lz4`, `Zstd`). It additionally accepts `None` which is the default and equivalent to no compression.
         /// </summary>
         [Input("producerCompressionType")]
         public Input<string>? ProducerCompressionType { get; set; }

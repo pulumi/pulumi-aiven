@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _serviceAccountCredentials;
 
         /// <summary>
-        /// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "service_account", ...`.
+        /// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "ServiceAccount", ...`.
         /// </summary>
         public Input<string>? ServiceAccountCredentials
         {

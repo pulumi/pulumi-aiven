@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRedisServiceIntegration {
     /**
-     * @return Type of the service integration. The possible value is `read_replica`.
+     * @return Type of the service integration. The possible value is `readReplica`.
      * 
      */
     private String integrationType;
@@ -23,7 +23,7 @@ public final class GetRedisServiceIntegration {
 
     private GetRedisServiceIntegration() {}
     /**
-     * @return Type of the service integration. The possible value is `read_replica`.
+     * @return Type of the service integration. The possible value is `readReplica`.
      * 
      */
     public String integrationType() {

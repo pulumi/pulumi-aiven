@@ -17,12 +17,12 @@ public final class GetClickhouseClickhouseUserConfigPublicAccess {
      */
     private @Nullable Boolean clickhouse;
     /**
-     * @return Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to clickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean clickhouseHttps;
     /**
-     * @return Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to clickhouseMysql from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean clickhouseMysql;
@@ -41,14 +41,14 @@ public final class GetClickhouseClickhouseUserConfigPublicAccess {
         return Optional.ofNullable(this.clickhouse);
     }
     /**
-     * @return Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to clickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> clickhouseHttps() {
         return Optional.ofNullable(this.clickhouseHttps);
     }
     /**
-     * @return Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to clickhouseMysql from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> clickhouseMysql() {

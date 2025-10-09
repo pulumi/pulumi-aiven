@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `Anotherprojectname`.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
-        /// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+        /// Enum: `Allchannels`, `Resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, AllChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
         /// </summary>
         public readonly string? RedisAclChannelsDefault;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? RedisLfuLogFactor;
         /// <summary>
-        /// Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
+        /// Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `Noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `Noeviction`.
         /// </summary>
         public readonly string? RedisMaxmemoryPolicy;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? RedisNumberOfDatabases;
         /// <summary>
-        /// Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+        /// Enum: `Off`, `Rdb`. When persistence is `Rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `Off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         /// </summary>
         public readonly string? RedisPersistence;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? RedisPubsubClientOutputBufferLimit;
         /// <summary>
-        /// Require SSL to access Redis. Default: `true`.
+        /// Require SSL to access Redis. Default: `True`.
         /// </summary>
         public readonly bool? RedisSsl;
         /// <summary>
@@ -114,7 +114,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ServiceLog;
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>

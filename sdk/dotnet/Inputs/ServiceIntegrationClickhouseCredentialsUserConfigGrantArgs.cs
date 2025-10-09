@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationClickhouseCredentialsUserConfigGrantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// User or role to assign the grant to. Example: `alice`.
+        /// User or role to assign the grant to. Example: `Alice`.
         /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;

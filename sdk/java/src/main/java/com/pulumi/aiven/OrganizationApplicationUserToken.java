@@ -87,14 +87,14 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
         return this.createTime;
     }
     /**
-     * True for tokens explicitly created via the access_tokens API, false for tokens created via login.
+     * True for tokens explicitly created via the accessTokens API, false for tokens created via login.
      * 
      */
     @Export(name="createdManually", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> createdManually;
 
     /**
-     * @return True for tokens explicitly created via the access_tokens API, false for tokens created via login.
+     * @return True for tokens explicitly created via the accessTokens API, false for tokens created via login.
      * 
      */
     public Output<Boolean> createdManually() {

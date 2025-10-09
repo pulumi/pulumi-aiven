@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? GatherIndexIoWaits;
         /// <summary>
-        /// Gather auto_increment columns and max values from information schema.
+        /// Gather AutoIncrement columns and max values from information schema.
         /// </summary>
         public readonly bool? GatherInfoSchemaAutoInc;
         /// <summary>

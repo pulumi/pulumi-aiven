@@ -107,14 +107,14 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
+     * DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
      * 
      */
     @Import(name="usage")
     private @Nullable String usage;
 
     /**
-     * @return DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
+     * @return DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
      * 
      */
     public Optional<String> usage() {
@@ -218,7 +218,7 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param usage DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
+         * @param usage DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
          * 
          * @return builder
          * 

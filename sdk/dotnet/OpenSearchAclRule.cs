@@ -109,7 +109,7 @@ namespace Pulumi.Aiven
         public Output<string> Index { get; private set; } = null!;
 
         /// <summary>
-        /// The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+        /// The permissions for this ACL rule. The possible values are `Admin`, `Deny`, `Read`, `Readwrite` and `Write`.
         /// </summary>
         [Output("permission")]
         public Output<string> Permission { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.Aiven
         public Input<string> Index { get; set; } = null!;
 
         /// <summary>
-        /// The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+        /// The permissions for this ACL rule. The possible values are `Admin`, `Deny`, `Read`, `Readwrite` and `Write`.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
@@ -223,7 +223,7 @@ namespace Pulumi.Aiven
         public Input<string>? Index { get; set; }
 
         /// <summary>
-        /// The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
+        /// The permissions for this ACL rule. The possible values are `Admin`, `Deny`, `Read`, `Readwrite` and `Write`.
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }

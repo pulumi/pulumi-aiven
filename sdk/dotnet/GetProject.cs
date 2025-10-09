@@ -118,11 +118,11 @@ namespace Pulumi.Aiven
     public sealed class GetProjectResult
     {
         /// <summary>
-        /// Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an existing account using its account ID. This field is deprecated. Use `ParentId` instead. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+        /// If ParentId is set, grant account owner team admin access to the new project. The default value is `True`.
         /// </summary>
         public readonly bool AddAccountOwnersAdminAccess;
         /// <summary>
@@ -158,7 +158,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ParentId;
         /// <summary>
-        /// The payment type used for this project. For example,`card`.
+        /// The payment type used for this project. For example,`Card`.
         /// </summary>
         public readonly string PaymentMethod;
         /// <summary>

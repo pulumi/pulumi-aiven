@@ -31,14 +31,14 @@ public final class InfluxDbInfluxdbUserConfigPublicAccessArgs extends com.pulumi
     }
 
     /**
-     * Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+     * Allow clients to connect to userBackup from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="userBackup")
     private @Nullable Output<Boolean> userBackup;
 
     /**
-     * @return Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to userBackup from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> userBackup() {
@@ -92,7 +92,7 @@ public final class InfluxDbInfluxdbUserConfigPublicAccessArgs extends com.pulumi
         }
 
         /**
-         * @param userBackup Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param userBackup Allow clients to connect to userBackup from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class InfluxDbInfluxdbUserConfigPublicAccessArgs extends com.pulumi
         }
 
         /**
-         * @param userBackup Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param userBackup Allow clients to connect to userBackup from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 

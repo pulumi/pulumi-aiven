@@ -71,7 +71,7 @@ namespace Pulumi.Aiven
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
+        /// Allows replication. For the default avnadmin user this attribute is required and is always `True`.
         /// </summary>
         [Output("pgAllowReplication")]
         public Output<bool?> PgAllowReplication { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
+        /// Allows replication. For the default avnadmin user this attribute is required and is always `True`.
         /// </summary>
         [Input("pgAllowReplication")]
         public Input<bool>? PgAllowReplication { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
+        /// Allows replication. For the default avnadmin user this attribute is required and is always `True`.
         /// </summary>
         [Input("pgAllowReplication")]
         public Input<bool>? PgAllowReplication { get; set; }

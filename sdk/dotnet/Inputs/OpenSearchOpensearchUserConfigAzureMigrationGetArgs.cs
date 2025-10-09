@@ -64,7 +64,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _key;
 
         /// <summary>
-        /// Azure account secret key. One of key or sas_token should be specified.
+        /// Azure account secret key. One of key or SasToken should be specified.
         /// </summary>
         public Input<string>? Key
         {
@@ -77,7 +77,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Whether the repository is read-only. Default: `true`.
+        /// Whether the repository is read-only. Default: `True`.
         /// </summary>
         [Input("readonly")]
         public Input<bool>? Readonly { get; set; }
@@ -92,7 +92,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _sasToken;
 
         /// <summary>
-        /// A shared access signatures (SAS) token. One of key or sas_token should be specified.
+        /// A shared access signatures (SAS) token. One of key or SasToken should be specified.
         /// </summary>
         public Input<string>? SasToken
         {

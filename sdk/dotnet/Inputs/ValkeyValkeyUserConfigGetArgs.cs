@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? EnableIpv6 { get; set; }
 
         /// <summary>
-        /// When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+        /// When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `ValkeyPersistence` is set to `Off`. Default: `True`.
         /// </summary>
         [Input("frequentSnapshots")]
         public Input<bool>? FrequentSnapshots { get; set; }
@@ -72,7 +72,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
-        [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
+        [Obsolete(@"Deprecated. Use `IpFilterString` instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -98,7 +98,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.ValkeyValkeyUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `Anotherprojectname`.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
@@ -122,7 +122,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ServiceLog { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
@@ -134,7 +134,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? StaticIps { get; set; }
 
         /// <summary>
-        /// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+        /// Enum: `Allchannels`, `Resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, AllChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
         /// </summary>
         [Input("valkeyAclChannelsDefault")]
         public Input<string>? ValkeyAclChannelsDefault { get; set; }
@@ -164,7 +164,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ValkeyLfuLogFactor { get; set; }
 
         /// <summary>
-        /// Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
+        /// Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `Noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `Noeviction`.
         /// </summary>
         [Input("valkeyMaxmemoryPolicy")]
         public Input<string>? ValkeyMaxmemoryPolicy { get; set; }
@@ -182,7 +182,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ValkeyNumberOfDatabases { get; set; }
 
         /// <summary>
-        /// Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        /// Enum: `Off`, `Rdb`. When persistence is `Rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `Off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         /// </summary>
         [Input("valkeyPersistence")]
         public Input<string>? ValkeyPersistence { get; set; }
@@ -194,7 +194,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ValkeyPubsubClientOutputBufferLimit { get; set; }
 
         /// <summary>
-        /// Require SSL to access Valkey. Default: `true`.
+        /// Require SSL to access Valkey. Default: `True`.
         /// </summary>
         [Input("valkeySsl")]
         public Input<bool>? ValkeySsl { get; set; }

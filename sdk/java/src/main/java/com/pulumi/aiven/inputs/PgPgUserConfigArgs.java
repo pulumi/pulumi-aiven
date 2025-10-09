@@ -154,10 +154,10 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
@@ -165,10 +165,10 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -227,14 +227,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
      * 
      */
     @Import(name="pgReadReplica")
     private @Nullable Output<Boolean> pgReadReplica;
 
     /**
-     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * @return Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
      * 
      */
     public Optional<Output<Boolean>> pgReadReplica() {
@@ -437,14 +437,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
      * 
      */
     @Import(name="sharedBuffersPercentage")
     private @Nullable Output<Double> sharedBuffersPercentage;
 
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
      * 
      */
     public Optional<Output<Double>> sharedBuffersPercentage() {
@@ -775,10 +775,10 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -790,10 +790,10 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -804,10 +804,10 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
@@ -884,7 +884,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgReadReplica Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+         * @param pgReadReplica Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
          * 
          * @return builder
          * 
@@ -895,7 +895,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgReadReplica Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+         * @param pgReadReplica Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
          * 
          * @return builder
          * 
@@ -1178,7 +1178,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
          * 
          * @return builder
          * 
@@ -1189,7 +1189,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
          * 
          * @return builder
          * 

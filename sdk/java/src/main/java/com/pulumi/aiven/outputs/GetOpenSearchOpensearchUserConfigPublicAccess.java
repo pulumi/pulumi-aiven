@@ -17,7 +17,7 @@ public final class GetOpenSearchOpensearchUserConfigPublicAccess {
      */
     private @Nullable Boolean opensearch;
     /**
-     * @return Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to opensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean opensearchDashboards;
@@ -36,7 +36,7 @@ public final class GetOpenSearchOpensearchUserConfigPublicAccess {
         return Optional.ofNullable(this.opensearch);
     }
     /**
-     * @return Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to opensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> opensearchDashboards() {

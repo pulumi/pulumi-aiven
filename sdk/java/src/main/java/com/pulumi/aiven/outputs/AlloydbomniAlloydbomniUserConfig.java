@@ -82,10 +82,10 @@ public final class AlloydbomniAlloydbomniUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return postgresql.conf configuration values
@@ -93,7 +93,7 @@ public final class AlloydbomniAlloydbomniUserConfig {
      */
     private @Nullable AlloydbomniAlloydbomniUserConfigPg pg;
     /**
-     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * @return Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
      * 
      */
     private @Nullable Boolean pgReadReplica;
@@ -158,7 +158,7 @@ public final class AlloydbomniAlloydbomniUserConfig {
      */
     private @Nullable String serviceToForkFrom;
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
      * 
      */
     private @Nullable Double sharedBuffersPercentage;
@@ -265,10 +265,10 @@ public final class AlloydbomniAlloydbomniUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -280,7 +280,7 @@ public final class AlloydbomniAlloydbomniUserConfig {
         return Optional.ofNullable(this.pg);
     }
     /**
-     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * @return Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
      * 
      */
     public Optional<Boolean> pgReadReplica() {
@@ -371,7 +371,7 @@ public final class AlloydbomniAlloydbomniUserConfig {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
      * 
      */
     public Optional<Double> sharedBuffersPercentage() {

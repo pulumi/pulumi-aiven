@@ -30,11 +30,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxTrackedClients;
         /// <summary>
-        /// The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+        /// The window of time in which the value for `AllowedTries` is enforced. Example: `3600`.
         /// </summary>
         public readonly int? TimeWindowSeconds;
         /// <summary>
-        /// Enum: `ip`. The type of rate limiting.
+        /// Enum: `Ip`. The type of rate limiting.
         /// </summary>
         public readonly string? Type;
 

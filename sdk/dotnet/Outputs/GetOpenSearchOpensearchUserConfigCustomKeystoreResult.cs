@@ -15,7 +15,7 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string Name;
         /// <summary>
-        /// Enum: `azure`, `gcs`, `s3`.
+        /// Enum: `Azure`, `Gcs`, `S3`.
         /// </summary>
         public readonly string Type;
 

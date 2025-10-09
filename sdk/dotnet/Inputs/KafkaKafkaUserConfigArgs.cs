@@ -66,7 +66,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
-        [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
+        [Obsolete(@"Deprecated. Use `IpFilterString` instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs>? KafkaAuthenticationMethods { get; set; }
 
         /// <summary>
-        /// Enable Kafka Connect service. Default: `false`.
+        /// Enable Kafka Connect service. Default: `False`.
         /// </summary>
         [Input("kafkaConnect")]
         public Input<bool>? KafkaConnect { get; set; }
@@ -124,7 +124,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigKafkaDisklessArgs>? KafkaDiskless { get; set; }
 
         /// <summary>
-        /// Enable Kafka-REST service. Default: `false`.
+        /// Enable Kafka-REST service. Default: `False`.
         /// </summary>
         [Input("kafkaRest")]
         public Input<bool>? KafkaRest { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Enable Schema-Registry service. Default: `false`.
+        /// Enable Schema-Registry service. Default: `False`.
         /// </summary>
         [Input("schemaRegistry")]
         public Input<bool>? SchemaRegistry { get; set; }

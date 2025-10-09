@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
+        /// The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `TopicName`.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
