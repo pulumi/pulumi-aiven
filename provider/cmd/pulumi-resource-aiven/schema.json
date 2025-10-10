@@ -303,6 +303,10 @@
                     "description": "Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.\n",
                     "deprecationMessage": "Deprecated. Use `ip_filter_string` instead."
                 },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "Number of nodes for the service. Example: `3`.\n"
+                },
                 "pg": {
                     "$ref": "#/types/aiven:index/AlloydbomniAlloydbomniUserConfigPg:AlloydbomniAlloydbomniUserConfigPg",
                     "description": "postgresql.conf configuration values\n"
@@ -4914,6 +4918,10 @@
                     "type": "string",
                     "description": "The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).\n"
                 },
+                "disklessEnable": {
+                    "type": "boolean",
+                    "description": "Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.\n"
+                },
                 "fileDeleteDelayMs": {
                     "type": "string",
                     "description": "The time to wait before deleting a file from the filesystem.\n"
@@ -4929,10 +4937,6 @@
                 "indexIntervalBytes": {
                     "type": "string",
                     "description": "This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.\n"
-                },
-                "inklessEnable": {
-                    "type": "boolean",
-                    "description": "Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.\n"
                 },
                 "localRetentionBytes": {
                     "type": "string",
@@ -6404,13 +6408,6 @@
                     "type": "string",
                     "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
                 },
-                "customKeystores": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigCustomKeystore:OpenSearchOpensearchUserConfigCustomKeystore"
-                    },
-                    "description": "Allow to register custom keystores in OpenSearch\n"
-                },
                 "disableReplicationFactorAdjustment": {
                     "type": "boolean",
                     "description": "Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.\n"
@@ -6589,22 +6586,6 @@
                 "container",
                 "indices",
                 "snapshotName"
-            ]
-        },
-        "aiven:index/OpenSearchOpensearchUserConfigCustomKeystore:OpenSearchOpensearchUserConfigCustomKeystore": {
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Enum: `azure`, `gcs`, `s3`.\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "name",
-                "type"
             ]
         },
         "aiven:index/OpenSearchOpensearchUserConfigGcsMigration:OpenSearchOpensearchUserConfigGcsMigration": {
@@ -8227,6 +8208,10 @@
                 "migration": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigMigration:PgPgUserConfigMigration",
                     "description": "Migrate data from existing server\n"
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "Number of nodes for the service. Example: `3`.\n"
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigPg:PgPgUserConfigPg",
@@ -11507,6 +11492,10 @@
                     },
                     "description": "Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.\n",
                     "deprecationMessage": "Deprecated. Use `ip_filter_string` instead."
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "Number of nodes for the service. Example: `3`.\n"
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/getAlloydbomniAlloydbomniUserConfigPg:getAlloydbomniAlloydbomniUserConfigPg",
@@ -16340,6 +16329,10 @@
                     "type": "string",
                     "description": "The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).\n"
                 },
+                "disklessEnable": {
+                    "type": "boolean",
+                    "description": "Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.\n"
+                },
                 "fileDeleteDelayMs": {
                     "type": "string",
                     "description": "The time to wait before deleting a file from the filesystem.\n"
@@ -16355,10 +16348,6 @@
                 "indexIntervalBytes": {
                     "type": "string",
                     "description": "This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.\n"
-                },
-                "inklessEnable": {
-                    "type": "boolean",
-                    "description": "Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.\n"
                 },
                 "localRetentionBytes": {
                     "type": "string",
@@ -17932,13 +17921,6 @@
                     "type": "string",
                     "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
                 },
-                "customKeystores": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigCustomKeystore:getOpenSearchOpensearchUserConfigCustomKeystore"
-                    },
-                    "description": "Allow to register custom keystores in OpenSearch\n"
-                },
                 "disableReplicationFactorAdjustment": {
                     "type": "boolean",
                     "description": "Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.\n"
@@ -18115,27 +18097,6 @@
                 "container",
                 "indices",
                 "snapshotName"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
-        "aiven:index/getOpenSearchOpensearchUserConfigCustomKeystore:getOpenSearchOpensearchUserConfigCustomKeystore": {
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Enum: `azure`, `gcs`, `s3`.\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "name",
-                "type"
             ],
             "language": {
                 "nodejs": {
@@ -19819,6 +19780,10 @@
                 "migration": {
                     "$ref": "#/types/aiven:index/getPgPgUserConfigMigration:getPgPgUserConfigMigration",
                     "description": "Migrate data from existing server\n"
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "Number of nodes for the service. Example: `3`.\n"
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/getPgPgUserConfigPg:getPgPgUserConfigPg",
@@ -23724,6 +23689,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -23819,6 +23788,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -23984,6 +23954,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -25376,6 +25350,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -25466,6 +25444,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -25626,6 +25605,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -25883,6 +25866,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -25973,6 +25960,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -26133,6 +26121,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -26761,6 +26753,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -26851,6 +26847,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "dragonfly",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -27012,6 +27009,10 @@
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                     },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                    },
                     "maintenanceWindowTime": {
                         "type": "string",
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -27156,6 +27157,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -27246,6 +27251,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "flink",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -27406,6 +27412,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -28976,6 +28986,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -29066,6 +29080,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "grafana",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -29226,6 +29241,10 @@
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                     },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                    },
                     "maintenanceWindowTime": {
                         "type": "string",
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -29367,6 +29386,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc."
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service."
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format."
@@ -29457,6 +29480,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "influxdbs",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -29613,6 +29637,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc."
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service."
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -29954,6 +29982,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -30044,6 +30076,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "kafkas",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -30230,6 +30263,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -30471,6 +30508,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -30560,6 +30601,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -30700,6 +30742,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -30992,6 +31038,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -31081,6 +31131,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -31221,6 +31272,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -32186,6 +32241,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc."
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service."
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format."
@@ -32276,6 +32335,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "m3aggregator",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -32429,6 +32489,10 @@
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc."
                     },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service."
+                    },
                     "maintenanceWindowTime": {
                         "type": "string",
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format."
@@ -32568,6 +32632,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc."
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service."
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format."
@@ -32658,6 +32726,7 @@
                 "diskSpaceStep",
                 "diskSpaceUsed",
                 "m3db",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -32810,6 +32879,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc."
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service."
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -33284,6 +33357,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -33382,6 +33459,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "maintenanceWindowEnabled",
                 "mysql",
                 "plan",
                 "project",
@@ -33524,6 +33602,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -33862,6 +33944,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -33963,6 +34049,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "maintenanceWindowEnabled",
                 "opensearches",
                 "plan",
                 "project",
@@ -34108,6 +34195,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -36053,6 +36144,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -36156,6 +36251,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "maintenanceWindowEnabled",
                 "pg",
                 "plan",
                 "project",
@@ -36302,6 +36398,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -37039,6 +37139,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -37142,6 +37246,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "redis",
@@ -37289,6 +37394,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -38334,6 +38443,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -38437,6 +38550,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -38584,6 +38698,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -38864,6 +38982,10 @@
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                 },
+                "maintenanceWindowEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
+                },
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
@@ -38967,6 +39089,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "maintenanceWindowEnabled",
                 "plan",
                 "project",
                 "serviceHost",
@@ -39114,6 +39237,10 @@
                     "maintenanceWindowDow": {
                         "type": "string",
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
@@ -39864,6 +39991,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -39963,6 +40094,7 @@
                     "diskSpaceStep",
                     "diskSpaceUsed",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -40830,6 +40962,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -40924,6 +41060,7 @@
                     "diskSpaceStep",
                     "diskSpaceUsed",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -41027,6 +41164,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -41121,6 +41262,7 @@
                     "diskSpaceStep",
                     "diskSpaceUsed",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -41301,6 +41443,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -41395,6 +41541,7 @@
                     "diskSpaceStep",
                     "diskSpaceUsed",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -41706,6 +41853,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -41800,6 +41951,7 @@
                     "dragonflies",
                     "dragonflyUserConfigs",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -41967,6 +42119,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -42061,6 +42217,7 @@
                     "flinks",
                     "flinkUserConfigs",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -42564,6 +42721,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -42658,6 +42819,7 @@
                     "grafanas",
                     "grafanaUserConfigs",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -42747,6 +42909,9 @@
                     "maintenanceWindowDow": {
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "type": "string"
                     },
@@ -42825,6 +42990,7 @@
                     "influxdbs",
                     "influxdbUserConfigs",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -43053,6 +43219,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -43149,6 +43319,7 @@
                     "kafkaUserConfigs",
                     "karapace",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -43323,6 +43494,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -43416,6 +43591,7 @@
                     "diskSpaceUsed",
                     "kafkaConnectUserConfigs",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -43611,6 +43787,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -43704,6 +43884,7 @@
                     "diskSpaceUsed",
                     "kafkaMirrormakerUserConfigs",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -44186,6 +44367,9 @@
                     "maintenanceWindowDow": {
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "type": "string"
                     },
@@ -44264,6 +44448,7 @@
                     "m3aggregators",
                     "m3aggregatorUserConfigs",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -44353,6 +44538,9 @@
                     "maintenanceWindowDow": {
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "type": "string"
                     },
@@ -44431,6 +44619,7 @@
                     "m3dbs",
                     "m3dbUserConfigs",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -44708,6 +44897,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -44815,6 +45008,7 @@
                     "diskSpaceStep",
                     "diskSpaceUsed",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "mysqls",
                     "mysqlUserConfigs",
@@ -45045,6 +45239,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -45152,6 +45350,7 @@
                     "diskSpaceStep",
                     "diskSpaceUsed",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "opensearches",
                     "opensearchUserConfigs",
@@ -46244,6 +46443,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -46351,6 +46554,7 @@
                     "diskSpaceStep",
                     "diskSpaceUsed",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "pgs",
                     "pgUserConfigs",
@@ -46807,6 +47011,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -46914,6 +47122,7 @@
                     "diskSpaceStep",
                     "diskSpaceUsed",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -47618,6 +47827,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -47725,6 +47938,7 @@
                     "diskSpaceStep",
                     "diskSpaceUsed",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
@@ -47900,6 +48114,10 @@
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
                     },
+                    "maintenanceWindowEnabled": {
+                        "description": "Indicates whether the maintenance window is currently enabled for this service.\n",
+                        "type": "boolean"
+                    },
                     "maintenanceWindowTime": {
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
                         "type": "string"
@@ -48007,6 +48225,7 @@
                     "diskSpaceStep",
                     "diskSpaceUsed",
                     "maintenanceWindowDow",
+                    "maintenanceWindowEnabled",
                     "maintenanceWindowTime",
                     "plan",
                     "project",
