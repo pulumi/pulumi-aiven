@@ -108,6 +108,10 @@ export class MySql extends pulumi.CustomResource {
      */
     declare public readonly maintenanceWindowDow: pulumi.Output<string | undefined>;
     /**
+     * Indicates whether the maintenance window is currently enabled for this service.
+     */
+    declare public /*out*/ readonly maintenanceWindowEnabled: pulumi.Output<boolean>;
+    /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
     declare public readonly maintenanceWindowTime: pulumi.Output<string | undefined>;
@@ -203,6 +207,7 @@ export class MySql extends pulumi.CustomResource {
             resourceInputs["diskSpaceStep"] = state?.diskSpaceStep;
             resourceInputs["diskSpaceUsed"] = state?.diskSpaceUsed;
             resourceInputs["maintenanceWindowDow"] = state?.maintenanceWindowDow;
+            resourceInputs["maintenanceWindowEnabled"] = state?.maintenanceWindowEnabled;
             resourceInputs["maintenanceWindowTime"] = state?.maintenanceWindowTime;
             resourceInputs["mysql"] = state?.mysql;
             resourceInputs["mysqlUserConfig"] = state?.mysqlUserConfig;
@@ -254,6 +259,7 @@ export class MySql extends pulumi.CustomResource {
             resourceInputs["diskSpaceDefault"] = undefined /*out*/;
             resourceInputs["diskSpaceStep"] = undefined /*out*/;
             resourceInputs["diskSpaceUsed"] = undefined /*out*/;
+            resourceInputs["maintenanceWindowEnabled"] = undefined /*out*/;
             resourceInputs["serviceHost"] = undefined /*out*/;
             resourceInputs["servicePassword"] = undefined /*out*/;
             resourceInputs["servicePort"] = undefined /*out*/;
@@ -311,6 +317,10 @@ export interface MySqlState {
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     maintenanceWindowDow?: pulumi.Input<string>;
+    /**
+     * Indicates whether the maintenance window is currently enabled for this service.
+     */
+    maintenanceWindowEnabled?: pulumi.Input<boolean>;
     /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */

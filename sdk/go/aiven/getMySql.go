@@ -79,6 +79,8 @@ type LookupMySqlResult struct {
 	Id string `pulumi:"id"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
+	// Indicates whether the maintenance window is currently enabled for this service.
+	MaintenanceWindowEnabled bool `pulumi:"maintenanceWindowEnabled"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -202,6 +204,11 @@ func (o LookupMySqlResultOutput) Id() pulumi.StringOutput {
 // Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 func (o LookupMySqlResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMySqlResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
+}
+
+// Indicates whether the maintenance window is currently enabled for this service.
+func (o LookupMySqlResultOutput) MaintenanceWindowEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMySqlResult) bool { return v.MaintenanceWindowEnabled }).(pulumi.BoolOutput)
 }
 
 // Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.

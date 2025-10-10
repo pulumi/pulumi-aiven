@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? DeleteRetentionMs;
         /// <summary>
+        /// Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+        /// </summary>
+        public readonly bool? DisklessEnable;
+        /// <summary>
         /// The time to wait before deleting a file from the filesystem.
         /// </summary>
         public readonly string? FileDeleteDelayMs;
@@ -41,10 +45,6 @@ namespace Pulumi.Aiven.Outputs
         /// This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
         /// </summary>
         public readonly string? IndexIntervalBytes;
-        /// <summary>
-        /// Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-        /// </summary>
-        public readonly bool? InklessEnable;
         /// <summary>
         /// This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         /// </summary>
@@ -134,6 +134,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? deleteRetentionMs,
 
+            bool? disklessEnable,
+
             string? fileDeleteDelayMs,
 
             string? flushMessages,
@@ -141,8 +143,6 @@ namespace Pulumi.Aiven.Outputs
             string? flushMs,
 
             string? indexIntervalBytes,
-
-            bool? inklessEnable,
 
             string? localRetentionBytes,
 
@@ -187,11 +187,11 @@ namespace Pulumi.Aiven.Outputs
             CleanupPolicy = cleanupPolicy;
             CompressionType = compressionType;
             DeleteRetentionMs = deleteRetentionMs;
+            DisklessEnable = disklessEnable;
             FileDeleteDelayMs = fileDeleteDelayMs;
             FlushMessages = flushMessages;
             FlushMs = flushMs;
             IndexIntervalBytes = indexIntervalBytes;
-            InklessEnable = inklessEnable;
             LocalRetentionBytes = localRetentionBytes;
             LocalRetentionMs = localRetentionMs;
             MaxCompactionLagMs = maxCompactionLagMs;

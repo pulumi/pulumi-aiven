@@ -63,6 +63,21 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+     * 
+     */
+    @Import(name="disklessEnable")
+    private @Nullable Output<Boolean> disklessEnable;
+
+    /**
+     * @return Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> disklessEnable() {
+        return Optional.ofNullable(this.disklessEnable);
+    }
+
+    /**
      * The time to wait before deleting a file from the filesystem.
      * 
      */
@@ -120,21 +135,6 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> indexIntervalBytes() {
         return Optional.ofNullable(this.indexIntervalBytes);
-    }
-
-    /**
-     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-     * 
-     */
-    @Import(name="inklessEnable")
-    private @Nullable Output<Boolean> inklessEnable;
-
-    /**
-     * @return Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-     * 
-     */
-    public Optional<Output<Boolean>> inklessEnable() {
-        return Optional.ofNullable(this.inklessEnable);
     }
 
     /**
@@ -443,11 +443,11 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         this.cleanupPolicy = $.cleanupPolicy;
         this.compressionType = $.compressionType;
         this.deleteRetentionMs = $.deleteRetentionMs;
+        this.disklessEnable = $.disklessEnable;
         this.fileDeleteDelayMs = $.fileDeleteDelayMs;
         this.flushMessages = $.flushMessages;
         this.flushMs = $.flushMs;
         this.indexIntervalBytes = $.indexIntervalBytes;
-        this.inklessEnable = $.inklessEnable;
         this.localRetentionBytes = $.localRetentionBytes;
         this.localRetentionMs = $.localRetentionMs;
         this.maxCompactionLagMs = $.maxCompactionLagMs;
@@ -552,6 +552,27 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param disklessEnable Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disklessEnable(@Nullable Output<Boolean> disklessEnable) {
+            $.disklessEnable = disklessEnable;
+            return this;
+        }
+
+        /**
+         * @param disklessEnable Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disklessEnable(Boolean disklessEnable) {
+            return disklessEnable(Output.of(disklessEnable));
+        }
+
+        /**
          * @param fileDeleteDelayMs The time to wait before deleting a file from the filesystem.
          * 
          * @return builder
@@ -633,27 +654,6 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder indexIntervalBytes(String indexIntervalBytes) {
             return indexIntervalBytes(Output.of(indexIntervalBytes));
-        }
-
-        /**
-         * @param inklessEnable Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder inklessEnable(@Nullable Output<Boolean> inklessEnable) {
-            $.inklessEnable = inklessEnable;
-            return this;
-        }
-
-        /**
-         * @param inklessEnable Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder inklessEnable(Boolean inklessEnable) {
-            return inklessEnable(Output.of(inklessEnable));
         }
 
         /**

@@ -38,27 +38,28 @@ type LookupM3AggregatorResult struct {
 	DiskSpaceStep       string                     `pulumi:"diskSpaceStep"`
 	DiskSpaceUsed       string                     `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                      string                                  `pulumi:"id"`
-	M3aggregatorUserConfigs []GetM3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfigs"`
-	M3aggregators           []GetM3AggregatorM3aggregator           `pulumi:"m3aggregators"`
-	MaintenanceWindowDow    string                                  `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime   string                                  `pulumi:"maintenanceWindowTime"`
-	Plan                    string                                  `pulumi:"plan"`
-	Project                 string                                  `pulumi:"project"`
-	ProjectVpcId            string                                  `pulumi:"projectVpcId"`
-	ServiceHost             string                                  `pulumi:"serviceHost"`
-	ServiceIntegrations     []GetM3AggregatorServiceIntegration     `pulumi:"serviceIntegrations"`
-	ServiceName             string                                  `pulumi:"serviceName"`
-	ServicePassword         string                                  `pulumi:"servicePassword"`
-	ServicePort             int                                     `pulumi:"servicePort"`
-	ServiceType             string                                  `pulumi:"serviceType"`
-	ServiceUri              string                                  `pulumi:"serviceUri"`
-	ServiceUsername         string                                  `pulumi:"serviceUsername"`
-	State                   string                                  `pulumi:"state"`
-	StaticIps               []string                                `pulumi:"staticIps"`
-	Tags                    []GetM3AggregatorTag                    `pulumi:"tags"`
-	TechEmails              []GetM3AggregatorTechEmail              `pulumi:"techEmails"`
-	TerminationProtection   bool                                    `pulumi:"terminationProtection"`
+	Id                       string                                  `pulumi:"id"`
+	M3aggregatorUserConfigs  []GetM3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfigs"`
+	M3aggregators            []GetM3AggregatorM3aggregator           `pulumi:"m3aggregators"`
+	MaintenanceWindowDow     string                                  `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowEnabled bool                                    `pulumi:"maintenanceWindowEnabled"`
+	MaintenanceWindowTime    string                                  `pulumi:"maintenanceWindowTime"`
+	Plan                     string                                  `pulumi:"plan"`
+	Project                  string                                  `pulumi:"project"`
+	ProjectVpcId             string                                  `pulumi:"projectVpcId"`
+	ServiceHost              string                                  `pulumi:"serviceHost"`
+	ServiceIntegrations      []GetM3AggregatorServiceIntegration     `pulumi:"serviceIntegrations"`
+	ServiceName              string                                  `pulumi:"serviceName"`
+	ServicePassword          string                                  `pulumi:"servicePassword"`
+	ServicePort              int                                     `pulumi:"servicePort"`
+	ServiceType              string                                  `pulumi:"serviceType"`
+	ServiceUri               string                                  `pulumi:"serviceUri"`
+	ServiceUsername          string                                  `pulumi:"serviceUsername"`
+	State                    string                                  `pulumi:"state"`
+	StaticIps                []string                                `pulumi:"staticIps"`
+	Tags                     []GetM3AggregatorTag                    `pulumi:"tags"`
+	TechEmails               []GetM3AggregatorTechEmail              `pulumi:"techEmails"`
+	TerminationProtection    bool                                    `pulumi:"terminationProtection"`
 }
 
 func LookupM3AggregatorOutput(ctx *pulumi.Context, args LookupM3AggregatorOutputArgs, opts ...pulumi.InvokeOption) LookupM3AggregatorResultOutput {
@@ -144,6 +145,10 @@ func (o LookupM3AggregatorResultOutput) M3aggregators() GetM3AggregatorM3aggrega
 
 func (o LookupM3AggregatorResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
+}
+
+func (o LookupM3AggregatorResultOutput) MaintenanceWindowEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupM3AggregatorResult) bool { return v.MaintenanceWindowEnabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupM3AggregatorResultOutput) MaintenanceWindowTime() pulumi.StringOutput {

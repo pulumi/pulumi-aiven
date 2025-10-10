@@ -197,6 +197,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string MaintenanceWindowDow;
         /// <summary>
+        /// Indicates whether the maintenance window is currently enabled for this service.
+        /// </summary>
+        public readonly bool MaintenanceWindowEnabled;
+        /// <summary>
         /// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         /// </summary>
         public readonly string MaintenanceWindowTime;
@@ -292,6 +296,8 @@ namespace Pulumi.Aiven
 
             string maintenanceWindowDow,
 
+            bool maintenanceWindowEnabled,
+
             string maintenanceWindowTime,
 
             string plan,
@@ -340,6 +346,7 @@ namespace Pulumi.Aiven
             DiskSpaceUsed = diskSpaceUsed;
             Id = id;
             MaintenanceWindowDow = maintenanceWindowDow;
+            MaintenanceWindowEnabled = maintenanceWindowEnabled;
             MaintenanceWindowTime = maintenanceWindowTime;
             Plan = plan;
             Project = project;

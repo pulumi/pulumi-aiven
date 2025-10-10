@@ -295,6 +295,7 @@ class _MySqlState:
                  disk_space_step: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_space_used: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[_builtins.str]] = None,
+                 maintenance_window_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  maintenance_window_time: Optional[pulumi.Input[_builtins.str]] = None,
                  mysql: Optional[pulumi.Input['MySqlMysqlArgs']] = None,
                  mysql_user_config: Optional[pulumi.Input['MySqlMysqlUserConfigArgs']] = None,
@@ -325,6 +326,7 @@ class _MySqlState:
         :param pulumi.Input[_builtins.str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[_builtins.str] disk_space_used: The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[_builtins.bool] maintenance_window_enabled: Indicates whether the maintenance window is currently enabled for this service.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input['MySqlMysqlArgs'] mysql: MySQL server-provided values.
         :param pulumi.Input['MySqlMysqlUserConfigArgs'] mysql_user_config: Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -365,6 +367,8 @@ class _MySqlState:
             pulumi.set(__self__, "disk_space_used", disk_space_used)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
+        if maintenance_window_enabled is not None:
+            pulumi.set(__self__, "maintenance_window_enabled", maintenance_window_enabled)
         if maintenance_window_time is not None:
             pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
         if mysql is not None:
@@ -512,6 +516,18 @@ class _MySqlState:
     @maintenance_window_dow.setter
     def maintenance_window_dow(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "maintenance_window_dow", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindowEnabled")
+    def maintenance_window_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether the maintenance window is currently enabled for this service.
+        """
+        return pulumi.get(self, "maintenance_window_enabled")
+
+    @maintenance_window_enabled.setter
+    def maintenance_window_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "maintenance_window_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowTime")
@@ -922,6 +938,7 @@ class MySql(pulumi.CustomResource):
             __props__.__dict__["disk_space_default"] = None
             __props__.__dict__["disk_space_step"] = None
             __props__.__dict__["disk_space_used"] = None
+            __props__.__dict__["maintenance_window_enabled"] = None
             __props__.__dict__["service_host"] = None
             __props__.__dict__["service_password"] = None
             __props__.__dict__["service_port"] = None
@@ -950,6 +967,7 @@ class MySql(pulumi.CustomResource):
             disk_space_step: Optional[pulumi.Input[_builtins.str]] = None,
             disk_space_used: Optional[pulumi.Input[_builtins.str]] = None,
             maintenance_window_dow: Optional[pulumi.Input[_builtins.str]] = None,
+            maintenance_window_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             maintenance_window_time: Optional[pulumi.Input[_builtins.str]] = None,
             mysql: Optional[pulumi.Input[Union['MySqlMysqlArgs', 'MySqlMysqlArgsDict']]] = None,
             mysql_user_config: Optional[pulumi.Input[Union['MySqlMysqlUserConfigArgs', 'MySqlMysqlUserConfigArgsDict']]] = None,
@@ -985,6 +1003,7 @@ class MySql(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[_builtins.str] disk_space_used: The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[_builtins.bool] maintenance_window_enabled: Indicates whether the maintenance window is currently enabled for this service.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[Union['MySqlMysqlArgs', 'MySqlMysqlArgsDict']] mysql: MySQL server-provided values.
         :param pulumi.Input[Union['MySqlMysqlUserConfigArgs', 'MySqlMysqlUserConfigArgsDict']] mysql_user_config: Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -1017,6 +1036,7 @@ class MySql(pulumi.CustomResource):
         __props__.__dict__["disk_space_step"] = disk_space_step
         __props__.__dict__["disk_space_used"] = disk_space_used
         __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
+        __props__.__dict__["maintenance_window_enabled"] = maintenance_window_enabled
         __props__.__dict__["maintenance_window_time"] = maintenance_window_time
         __props__.__dict__["mysql"] = mysql
         __props__.__dict__["mysql_user_config"] = mysql_user_config
@@ -1110,6 +1130,14 @@ class MySql(pulumi.CustomResource):
         Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindowEnabled")
+    def maintenance_window_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates whether the maintenance window is currently enabled for this service.
+        """
+        return pulumi.get(self, "maintenance_window_enabled")
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowTime")

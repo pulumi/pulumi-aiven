@@ -79,6 +79,8 @@ type LookupOpenSearchResult struct {
 	Id string `pulumi:"id"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
+	// Indicates whether the maintenance window is currently enabled for this service.
+	MaintenanceWindowEnabled bool `pulumi:"maintenanceWindowEnabled"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -202,6 +204,11 @@ func (o LookupOpenSearchResultOutput) Id() pulumi.StringOutput {
 // Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 func (o LookupOpenSearchResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
+}
+
+// Indicates whether the maintenance window is currently enabled for this service.
+func (o LookupOpenSearchResultOutput) MaintenanceWindowEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) bool { return v.MaintenanceWindowEnabled }).(pulumi.BoolOutput)
 }
 
 // Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.

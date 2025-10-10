@@ -225,6 +225,20 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceWindowDow);
     }
     /**
+     * Indicates whether the maintenance window is currently enabled for this service.
+     * 
+     */
+    @Export(name="maintenanceWindowEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> maintenanceWindowEnabled;
+
+    /**
+     * @return Indicates whether the maintenance window is currently enabled for this service.
+     * 
+     */
+    public Output<Boolean> maintenanceWindowEnabled() {
+        return this.maintenanceWindowEnabled;
+    }
+    /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      * 
      */

@@ -62,6 +62,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
+        /// Number of nodes for the service. Example: `3`.
+        /// </summary>
+        public readonly int? NodeCount;
+        /// <summary>
         /// postgresql.conf configuration values
         /// </summary>
         public readonly Outputs.GetAlloydbomniAlloydbomniUserConfigPgResult? Pg;
@@ -164,6 +168,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
+            int? nodeCount,
+
             Outputs.GetAlloydbomniAlloydbomniUserConfigPgResult? pg,
 
             bool? pgReadReplica,
@@ -214,6 +220,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
+            NodeCount = nodeCount;
             Pg = pg;
             PgReadReplica = pgReadReplica;
             PgServiceToForkFrom = pgServiceToForkFrom;

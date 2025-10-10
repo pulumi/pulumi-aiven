@@ -41,6 +41,7 @@ export interface GetM3AggregatorResult {
     readonly m3aggregatorUserConfigs: outputs.GetM3AggregatorM3aggregatorUserConfig[];
     readonly m3aggregators: outputs.GetM3AggregatorM3aggregator[];
     readonly maintenanceWindowDow: string;
+    readonly maintenanceWindowEnabled: boolean;
     readonly maintenanceWindowTime: string;
     readonly plan: string;
     readonly project: string;

@@ -41,6 +41,7 @@ export interface GetInfluxDbResult {
     readonly influxdbUserConfigs: outputs.GetInfluxDbInfluxdbUserConfig[];
     readonly influxdbs: outputs.GetInfluxDbInfluxdb[];
     readonly maintenanceWindowDow: string;
+    readonly maintenanceWindowEnabled: boolean;
     readonly maintenanceWindowTime: string;
     readonly plan: string;
     readonly project: string;

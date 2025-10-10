@@ -27,7 +27,7 @@ class GetAlloydbomniResult:
     """
     A collection of values returned by getAlloydbomni.
     """
-    def __init__(__self__, additional_disk_space=None, alloydbomni_user_configs=None, alloydbomnis=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_account_credentials=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, alloydbomni_user_configs=None, alloydbomnis=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_enabled=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_account_credentials=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
@@ -64,6 +64,9 @@ class GetAlloydbomniResult:
         if maintenance_window_dow and not isinstance(maintenance_window_dow, str):
             raise TypeError("Expected argument 'maintenance_window_dow' to be a str")
         pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
+        if maintenance_window_enabled and not isinstance(maintenance_window_enabled, bool):
+            raise TypeError("Expected argument 'maintenance_window_enabled' to be a bool")
+        pulumi.set(__self__, "maintenance_window_enabled", maintenance_window_enabled)
         if maintenance_window_time and not isinstance(maintenance_window_time, str):
             raise TypeError("Expected argument 'maintenance_window_time' to be a str")
         pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
@@ -214,6 +217,14 @@ class GetAlloydbomniResult:
         Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindowEnabled")
+    def maintenance_window_enabled(self) -> _builtins.bool:
+        """
+        Indicates whether the maintenance window is currently enabled for this service.
+        """
+        return pulumi.get(self, "maintenance_window_enabled")
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowTime")
@@ -375,6 +386,7 @@ class AwaitableGetAlloydbomniResult(GetAlloydbomniResult):
             disk_space_used=self.disk_space_used,
             id=self.id,
             maintenance_window_dow=self.maintenance_window_dow,
+            maintenance_window_enabled=self.maintenance_window_enabled,
             maintenance_window_time=self.maintenance_window_time,
             plan=self.plan,
             project=self.project,
@@ -440,6 +452,7 @@ def get_alloydbomni(project: Optional[_builtins.str] = None,
         disk_space_used=pulumi.get(__ret__, 'disk_space_used'),
         id=pulumi.get(__ret__, 'id'),
         maintenance_window_dow=pulumi.get(__ret__, 'maintenance_window_dow'),
+        maintenance_window_enabled=pulumi.get(__ret__, 'maintenance_window_enabled'),
         maintenance_window_time=pulumi.get(__ret__, 'maintenance_window_time'),
         plan=pulumi.get(__ret__, 'plan'),
         project=pulumi.get(__ret__, 'project'),
@@ -502,6 +515,7 @@ def get_alloydbomni_output(project: Optional[pulumi.Input[_builtins.str]] = None
         disk_space_used=pulumi.get(__response__, 'disk_space_used'),
         id=pulumi.get(__response__, 'id'),
         maintenance_window_dow=pulumi.get(__response__, 'maintenance_window_dow'),
+        maintenance_window_enabled=pulumi.get(__response__, 'maintenance_window_enabled'),
         maintenance_window_time=pulumi.get(__response__, 'maintenance_window_time'),
         plan=pulumi.get(__response__, 'plan'),
         project=pulumi.get(__response__, 'project'),

@@ -83,6 +83,8 @@ type OpenSearch struct {
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
+	// Indicates whether the maintenance window is currently enabled for this service.
+	MaintenanceWindowEnabled pulumi.BoolOutput `pulumi:"maintenanceWindowEnabled"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
 	// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -190,6 +192,8 @@ type openSearchState struct {
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
+	// Indicates whether the maintenance window is currently enabled for this service.
+	MaintenanceWindowEnabled *bool `pulumi:"maintenanceWindowEnabled"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
 	// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -250,6 +254,8 @@ type OpenSearchState struct {
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
+	// Indicates whether the maintenance window is currently enabled for this service.
+	MaintenanceWindowEnabled pulumi.BoolPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
 	// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -500,6 +506,11 @@ func (o OpenSearchOutput) DiskSpaceUsed() pulumi.StringOutput {
 // Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 func (o OpenSearchOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearch) pulumi.StringPtrOutput { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the maintenance window is currently enabled for this service.
+func (o OpenSearchOutput) MaintenanceWindowEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OpenSearch) pulumi.BoolOutput { return v.MaintenanceWindowEnabled }).(pulumi.BoolOutput)
 }
 
 // Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.

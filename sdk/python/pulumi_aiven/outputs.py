@@ -205,7 +205,6 @@ __all__ = [
     'OpenSearchOpensearch',
     'OpenSearchOpensearchUserConfig',
     'OpenSearchOpensearchUserConfigAzureMigration',
-    'OpenSearchOpensearchUserConfigCustomKeystore',
     'OpenSearchOpensearchUserConfigGcsMigration',
     'OpenSearchOpensearchUserConfigIndexPattern',
     'OpenSearchOpensearchUserConfigIndexRollup',
@@ -551,7 +550,6 @@ __all__ = [
     'GetOpenSearchOpensearchResult',
     'GetOpenSearchOpensearchUserConfigResult',
     'GetOpenSearchOpensearchUserConfigAzureMigrationResult',
-    'GetOpenSearchOpensearchUserConfigCustomKeystoreResult',
     'GetOpenSearchOpensearchUserConfigGcsMigrationResult',
     'GetOpenSearchOpensearchUserConfigIndexPatternResult',
     'GetOpenSearchOpensearchUserConfigIndexRollupResult',
@@ -1120,6 +1118,8 @@ class AlloydbomniAlloydbomniUserConfig(dict):
             suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
+        elif key == "nodeCount":
+            suggest = "node_count"
         elif key == "pgReadReplica":
             suggest = "pg_read_replica"
         elif key == "pgServiceToForkFrom":
@@ -1173,6 +1173,7 @@ class AlloydbomniAlloydbomniUserConfig(dict):
                  ip_filter_objects: Optional[Sequence['outputs.AlloydbomniAlloydbomniUserConfigIpFilterObject']] = None,
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
+                 node_count: Optional[_builtins.int] = None,
                  pg: Optional['outputs.AlloydbomniAlloydbomniUserConfigPg'] = None,
                  pg_read_replica: Optional[_builtins.bool] = None,
                  pg_service_to_fork_from: Optional[_builtins.str] = None,
@@ -1205,6 +1206,7 @@ class AlloydbomniAlloydbomniUserConfig(dict):
         :param Sequence['AlloydbomniAlloydbomniUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        :param _builtins.int node_count: Number of nodes for the service. Example: `3`.
         :param 'AlloydbomniAlloydbomniUserConfigPgArgs' pg: postgresql.conf configuration values
         :param _builtins.bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param _builtins.str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
@@ -1249,6 +1251,8 @@ class AlloydbomniAlloydbomniUserConfig(dict):
             pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pg_read_replica is not None:
@@ -1384,6 +1388,14 @@ class AlloydbomniAlloydbomniUserConfig(dict):
         Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         """
         return pulumi.get(self, "ip_filters")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[_builtins.int]:
+        """
+        Number of nodes for the service. Example: `3`.
+        """
+        return pulumi.get(self, "node_count")
 
     @_builtins.property
     @pulumi.getter
@@ -13937,6 +13949,8 @@ class KafkaTopicConfig(dict):
             suggest = "compression_type"
         elif key == "deleteRetentionMs":
             suggest = "delete_retention_ms"
+        elif key == "disklessEnable":
+            suggest = "diskless_enable"
         elif key == "fileDeleteDelayMs":
             suggest = "file_delete_delay_ms"
         elif key == "flushMessages":
@@ -13945,8 +13959,6 @@ class KafkaTopicConfig(dict):
             suggest = "flush_ms"
         elif key == "indexIntervalBytes":
             suggest = "index_interval_bytes"
-        elif key == "inklessEnable":
-            suggest = "inkless_enable"
         elif key == "localRetentionBytes":
             suggest = "local_retention_bytes"
         elif key == "localRetentionMs":
@@ -14001,11 +14013,11 @@ class KafkaTopicConfig(dict):
                  cleanup_policy: Optional[_builtins.str] = None,
                  compression_type: Optional[_builtins.str] = None,
                  delete_retention_ms: Optional[_builtins.str] = None,
+                 diskless_enable: Optional[_builtins.bool] = None,
                  file_delete_delay_ms: Optional[_builtins.str] = None,
                  flush_messages: Optional[_builtins.str] = None,
                  flush_ms: Optional[_builtins.str] = None,
                  index_interval_bytes: Optional[_builtins.str] = None,
-                 inkless_enable: Optional[_builtins.bool] = None,
                  local_retention_bytes: Optional[_builtins.str] = None,
                  local_retention_ms: Optional[_builtins.str] = None,
                  max_compaction_lag_ms: Optional[_builtins.str] = None,
@@ -14030,11 +14042,11 @@ class KafkaTopicConfig(dict):
         :param _builtins.str cleanup_policy: The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
         :param _builtins.str compression_type: Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         :param _builtins.str delete_retention_ms: The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
+        :param _builtins.bool diskless_enable: Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
         :param _builtins.str file_delete_delay_ms: The time to wait before deleting a file from the filesystem.
         :param _builtins.str flush_messages: This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param _builtins.str flush_ms: This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param _builtins.str index_interval_bytes: This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
-        :param _builtins.bool inkless_enable: Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
         :param _builtins.str local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         :param _builtins.str local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
         :param _builtins.str max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
@@ -14062,6 +14074,8 @@ class KafkaTopicConfig(dict):
             pulumi.set(__self__, "compression_type", compression_type)
         if delete_retention_ms is not None:
             pulumi.set(__self__, "delete_retention_ms", delete_retention_ms)
+        if diskless_enable is not None:
+            pulumi.set(__self__, "diskless_enable", diskless_enable)
         if file_delete_delay_ms is not None:
             pulumi.set(__self__, "file_delete_delay_ms", file_delete_delay_ms)
         if flush_messages is not None:
@@ -14070,8 +14084,6 @@ class KafkaTopicConfig(dict):
             pulumi.set(__self__, "flush_ms", flush_ms)
         if index_interval_bytes is not None:
             pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
-        if inkless_enable is not None:
-            pulumi.set(__self__, "inkless_enable", inkless_enable)
         if local_retention_bytes is not None:
             pulumi.set(__self__, "local_retention_bytes", local_retention_bytes)
         if local_retention_ms is not None:
@@ -14138,6 +14150,14 @@ class KafkaTopicConfig(dict):
         return pulumi.get(self, "delete_retention_ms")
 
     @_builtins.property
+    @pulumi.getter(name="disklessEnable")
+    def diskless_enable(self) -> Optional[_builtins.bool]:
+        """
+        Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+        """
+        return pulumi.get(self, "diskless_enable")
+
+    @_builtins.property
     @pulumi.getter(name="fileDeleteDelayMs")
     def file_delete_delay_ms(self) -> Optional[_builtins.str]:
         """
@@ -14168,14 +14188,6 @@ class KafkaTopicConfig(dict):
         This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
         """
         return pulumi.get(self, "index_interval_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="inklessEnable")
-    def inkless_enable(self) -> Optional[_builtins.bool]:
-        """
-        Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-        """
-        return pulumi.get(self, "inkless_enable")
 
     @_builtins.property
     @pulumi.getter(name="localRetentionBytes")
@@ -17838,8 +17850,6 @@ class OpenSearchOpensearchUserConfig(dict):
             suggest = "azure_migration"
         elif key == "customDomain":
             suggest = "custom_domain"
-        elif key == "customKeystores":
-            suggest = "custom_keystores"
         elif key == "disableReplicationFactorAdjustment":
             suggest = "disable_replication_factor_adjustment"
         elif key == "gcsMigration":
@@ -17898,7 +17908,6 @@ class OpenSearchOpensearchUserConfig(dict):
                  additional_backup_regions: Optional[_builtins.str] = None,
                  azure_migration: Optional['outputs.OpenSearchOpensearchUserConfigAzureMigration'] = None,
                  custom_domain: Optional[_builtins.str] = None,
-                 custom_keystores: Optional[Sequence['outputs.OpenSearchOpensearchUserConfigCustomKeystore']] = None,
                  disable_replication_factor_adjustment: Optional[_builtins.bool] = None,
                  gcs_migration: Optional['outputs.OpenSearchOpensearchUserConfigGcsMigration'] = None,
                  index_patterns: Optional[Sequence['outputs.OpenSearchOpensearchUserConfigIndexPattern']] = None,
@@ -17927,7 +17936,6 @@ class OpenSearchOpensearchUserConfig(dict):
         :param _builtins.str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param 'OpenSearchOpensearchUserConfigAzureMigrationArgs' azure_migration: Azure migration settings
         :param _builtins.str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-        :param Sequence['OpenSearchOpensearchUserConfigCustomKeystoreArgs'] custom_keystores: Allow to register custom keystores in OpenSearch
         :param _builtins.bool disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
         :param 'OpenSearchOpensearchUserConfigGcsMigrationArgs' gcs_migration: Google Cloud Storage migration settings
         :param Sequence['OpenSearchOpensearchUserConfigIndexPatternArgs'] index_patterns: Index patterns
@@ -17959,8 +17967,6 @@ class OpenSearchOpensearchUserConfig(dict):
             pulumi.set(__self__, "azure_migration", azure_migration)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
-        if custom_keystores is not None:
-            pulumi.set(__self__, "custom_keystores", custom_keystores)
         if disable_replication_factor_adjustment is not None:
             pulumi.set(__self__, "disable_replication_factor_adjustment", disable_replication_factor_adjustment)
         if gcs_migration is not None:
@@ -18033,14 +18039,6 @@ class OpenSearchOpensearchUserConfig(dict):
         Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         """
         return pulumi.get(self, "custom_domain")
-
-    @_builtins.property
-    @pulumi.getter(name="customKeystores")
-    def custom_keystores(self) -> Optional[Sequence['outputs.OpenSearchOpensearchUserConfigCustomKeystore']]:
-        """
-        Allow to register custom keystores in OpenSearch
-        """
-        return pulumi.get(self, "custom_keystores")
 
     @_builtins.property
     @pulumi.getter(name="disableReplicationFactorAdjustment")
@@ -18421,31 +18419,6 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
         A shared access signatures (SAS) token. One of key or sas_token should be specified.
         """
         return pulumi.get(self, "sas_token")
-
-
-@pulumi.output_type
-class OpenSearchOpensearchUserConfigCustomKeystore(dict):
-    def __init__(__self__, *,
-                 name: _builtins.str,
-                 type: _builtins.str):
-        """
-        :param _builtins.str type: Enum: `azure`, `gcs`, `s3`.
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        Enum: `azure`, `gcs`, `s3`.
-        """
-        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -23089,6 +23062,8 @@ class PgPgUserConfig(dict):
             suggest = "ip_filter_strings"
         elif key == "ipFilters":
             suggest = "ip_filters"
+        elif key == "nodeCount":
+            suggest = "node_count"
         elif key == "pgQualstats":
             suggest = "pg_qualstats"
         elif key == "pgReadReplica":
@@ -23144,6 +23119,7 @@ class PgPgUserConfig(dict):
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
                  migration: Optional['outputs.PgPgUserConfigMigration'] = None,
+                 node_count: Optional[_builtins.int] = None,
                  pg: Optional['outputs.PgPgUserConfigPg'] = None,
                  pg_qualstats: Optional['outputs.PgPgUserConfigPgQualstats'] = None,
                  pg_read_replica: Optional[_builtins.bool] = None,
@@ -23177,6 +23153,7 @@ class PgPgUserConfig(dict):
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param 'PgPgUserConfigMigrationArgs' migration: Migrate data from existing server
+        :param _builtins.int node_count: Number of nodes for the service. Example: `3`.
         :param 'PgPgUserConfigPgArgs' pg: postgresql.conf configuration values
         :param 'PgPgUserConfigPgQualstatsArgs' pg_qualstats: System-wide settings for the pg*qualstats extension
         :param _builtins.bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
@@ -23220,6 +23197,8 @@ class PgPgUserConfig(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
             pulumi.set(__self__, "migration", migration)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pg_qualstats is not None:
@@ -23345,6 +23324,14 @@ class PgPgUserConfig(dict):
         Migrate data from existing server
         """
         return pulumi.get(self, "migration")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[_builtins.int]:
+        """
+        Number of nodes for the service. Example: `3`.
+        """
+        return pulumi.get(self, "node_count")
 
     @_builtins.property
     @pulumi.getter
@@ -32168,6 +32155,7 @@ class GetAlloydbomniAlloydbomniUserConfigResult(dict):
                  ip_filter_objects: Optional[Sequence['outputs.GetAlloydbomniAlloydbomniUserConfigIpFilterObjectResult']] = None,
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
+                 node_count: Optional[_builtins.int] = None,
                  pg: Optional['outputs.GetAlloydbomniAlloydbomniUserConfigPgResult'] = None,
                  pg_read_replica: Optional[_builtins.bool] = None,
                  pg_service_to_fork_from: Optional[_builtins.str] = None,
@@ -32200,6 +32188,7 @@ class GetAlloydbomniAlloydbomniUserConfigResult(dict):
         :param Sequence['GetAlloydbomniAlloydbomniUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        :param _builtins.int node_count: Number of nodes for the service. Example: `3`.
         :param 'GetAlloydbomniAlloydbomniUserConfigPgArgs' pg: postgresql.conf configuration values
         :param _builtins.bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param _builtins.str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
@@ -32244,6 +32233,8 @@ class GetAlloydbomniAlloydbomniUserConfigResult(dict):
             pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pg_read_replica is not None:
@@ -32379,6 +32370,14 @@ class GetAlloydbomniAlloydbomniUserConfigResult(dict):
         Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         """
         return pulumi.get(self, "ip_filters")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[_builtins.int]:
+        """
+        Number of nodes for the service. Example: `3`.
+        """
+        return pulumi.get(self, "node_count")
 
     @_builtins.property
     @pulumi.getter
@@ -42360,11 +42359,11 @@ class GetKafkaTopicConfigResult(dict):
                  cleanup_policy: Optional[_builtins.str] = None,
                  compression_type: Optional[_builtins.str] = None,
                  delete_retention_ms: Optional[_builtins.str] = None,
+                 diskless_enable: Optional[_builtins.bool] = None,
                  file_delete_delay_ms: Optional[_builtins.str] = None,
                  flush_messages: Optional[_builtins.str] = None,
                  flush_ms: Optional[_builtins.str] = None,
                  index_interval_bytes: Optional[_builtins.str] = None,
-                 inkless_enable: Optional[_builtins.bool] = None,
                  local_retention_bytes: Optional[_builtins.str] = None,
                  local_retention_ms: Optional[_builtins.str] = None,
                  max_compaction_lag_ms: Optional[_builtins.str] = None,
@@ -42389,11 +42388,11 @@ class GetKafkaTopicConfigResult(dict):
         :param _builtins.str cleanup_policy: The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
         :param _builtins.str compression_type: Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         :param _builtins.str delete_retention_ms: The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
+        :param _builtins.bool diskless_enable: Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
         :param _builtins.str file_delete_delay_ms: The time to wait before deleting a file from the filesystem.
         :param _builtins.str flush_messages: This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param _builtins.str flush_ms: This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param _builtins.str index_interval_bytes: This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
-        :param _builtins.bool inkless_enable: Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
         :param _builtins.str local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
         :param _builtins.str local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
         :param _builtins.str max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
@@ -42421,6 +42420,8 @@ class GetKafkaTopicConfigResult(dict):
             pulumi.set(__self__, "compression_type", compression_type)
         if delete_retention_ms is not None:
             pulumi.set(__self__, "delete_retention_ms", delete_retention_ms)
+        if diskless_enable is not None:
+            pulumi.set(__self__, "diskless_enable", diskless_enable)
         if file_delete_delay_ms is not None:
             pulumi.set(__self__, "file_delete_delay_ms", file_delete_delay_ms)
         if flush_messages is not None:
@@ -42429,8 +42430,6 @@ class GetKafkaTopicConfigResult(dict):
             pulumi.set(__self__, "flush_ms", flush_ms)
         if index_interval_bytes is not None:
             pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
-        if inkless_enable is not None:
-            pulumi.set(__self__, "inkless_enable", inkless_enable)
         if local_retention_bytes is not None:
             pulumi.set(__self__, "local_retention_bytes", local_retention_bytes)
         if local_retention_ms is not None:
@@ -42497,6 +42496,14 @@ class GetKafkaTopicConfigResult(dict):
         return pulumi.get(self, "delete_retention_ms")
 
     @_builtins.property
+    @pulumi.getter(name="disklessEnable")
+    def diskless_enable(self) -> Optional[_builtins.bool]:
+        """
+        Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+        """
+        return pulumi.get(self, "diskless_enable")
+
+    @_builtins.property
     @pulumi.getter(name="fileDeleteDelayMs")
     def file_delete_delay_ms(self) -> Optional[_builtins.str]:
         """
@@ -42527,14 +42534,6 @@ class GetKafkaTopicConfigResult(dict):
         This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
         """
         return pulumi.get(self, "index_interval_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="inklessEnable")
-    def inkless_enable(self) -> Optional[_builtins.bool]:
-        """
-        Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-        """
-        return pulumi.get(self, "inkless_enable")
 
     @_builtins.property
     @pulumi.getter(name="localRetentionBytes")
@@ -45524,7 +45523,6 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
                  additional_backup_regions: Optional[_builtins.str] = None,
                  azure_migration: Optional['outputs.GetOpenSearchOpensearchUserConfigAzureMigrationResult'] = None,
                  custom_domain: Optional[_builtins.str] = None,
-                 custom_keystores: Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigCustomKeystoreResult']] = None,
                  disable_replication_factor_adjustment: Optional[_builtins.bool] = None,
                  gcs_migration: Optional['outputs.GetOpenSearchOpensearchUserConfigGcsMigrationResult'] = None,
                  index_patterns: Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult']] = None,
@@ -45553,7 +45551,6 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         :param _builtins.str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param 'GetOpenSearchOpensearchUserConfigAzureMigrationArgs' azure_migration: Azure migration settings
         :param _builtins.str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-        :param Sequence['GetOpenSearchOpensearchUserConfigCustomKeystoreArgs'] custom_keystores: Allow to register custom keystores in OpenSearch
         :param _builtins.bool disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
         :param 'GetOpenSearchOpensearchUserConfigGcsMigrationArgs' gcs_migration: Google Cloud Storage migration settings
         :param Sequence['GetOpenSearchOpensearchUserConfigIndexPatternArgs'] index_patterns: Index patterns
@@ -45585,8 +45582,6 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
             pulumi.set(__self__, "azure_migration", azure_migration)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
-        if custom_keystores is not None:
-            pulumi.set(__self__, "custom_keystores", custom_keystores)
         if disable_replication_factor_adjustment is not None:
             pulumi.set(__self__, "disable_replication_factor_adjustment", disable_replication_factor_adjustment)
         if gcs_migration is not None:
@@ -45659,14 +45654,6 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         """
         return pulumi.get(self, "custom_domain")
-
-    @_builtins.property
-    @pulumi.getter(name="customKeystores")
-    def custom_keystores(self) -> Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigCustomKeystoreResult']]:
-        """
-        Allow to register custom keystores in OpenSearch
-        """
-        return pulumi.get(self, "custom_keystores")
 
     @_builtins.property
     @pulumi.getter(name="disableReplicationFactorAdjustment")
@@ -46018,31 +46005,6 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
         A shared access signatures (SAS) token. One of key or sas_token should be specified.
         """
         return pulumi.get(self, "sas_token")
-
-
-@pulumi.output_type
-class GetOpenSearchOpensearchUserConfigCustomKeystoreResult(dict):
-    def __init__(__self__, *,
-                 name: _builtins.str,
-                 type: _builtins.str):
-        """
-        :param _builtins.str type: Enum: `azure`, `gcs`, `s3`.
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        Enum: `azure`, `gcs`, `s3`.
-        """
-        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -49656,6 +49618,7 @@ class GetPgPgUserConfigResult(dict):
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
                  migration: Optional['outputs.GetPgPgUserConfigMigrationResult'] = None,
+                 node_count: Optional[_builtins.int] = None,
                  pg: Optional['outputs.GetPgPgUserConfigPgResult'] = None,
                  pg_qualstats: Optional['outputs.GetPgPgUserConfigPgQualstatsResult'] = None,
                  pg_read_replica: Optional[_builtins.bool] = None,
@@ -49689,6 +49652,7 @@ class GetPgPgUserConfigResult(dict):
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param 'GetPgPgUserConfigMigrationArgs' migration: Migrate data from existing server
+        :param _builtins.int node_count: Number of nodes for the service. Example: `3`.
         :param 'GetPgPgUserConfigPgArgs' pg: postgresql.conf configuration values
         :param 'GetPgPgUserConfigPgQualstatsArgs' pg_qualstats: System-wide settings for the pg_qualstats extension
         :param _builtins.bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
@@ -49732,6 +49696,8 @@ class GetPgPgUserConfigResult(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
             pulumi.set(__self__, "migration", migration)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pg_qualstats is not None:
@@ -49857,6 +49823,14 @@ class GetPgPgUserConfigResult(dict):
         Migrate data from existing server
         """
         return pulumi.get(self, "migration")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[_builtins.int]:
+        """
+        Number of nodes for the service. Example: `3`.
+        """
+        return pulumi.get(self, "node_count")
 
     @_builtins.property
     @pulumi.getter

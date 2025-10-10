@@ -102,6 +102,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.PgPgUserConfigMigrationGetArgs>? Migration { get; set; }
 
         /// <summary>
+        /// Number of nodes for the service. Example: `3`.
+        /// </summary>
+        [Input("nodeCount")]
+        public Input<int>? NodeCount { get; set; }
+
+        /// <summary>
         /// postgresql.conf configuration values
         /// </summary>
         [Input("pg")]

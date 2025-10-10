@@ -81,6 +81,11 @@ public final class GetPgPgUserConfig {
      */
     private @Nullable GetPgPgUserConfigMigration migration;
     /**
+     * @return Number of nodes for the service. Example: `3`.
+     * 
+     */
+    private @Nullable Integer nodeCount;
+    /**
      * @return postgresql.conf configuration values
      * 
      */
@@ -271,6 +276,13 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.migration);
     }
     /**
+     * @return Number of nodes for the service. Example: `3`.
+     * 
+     */
+    public Optional<Integer> nodeCount() {
+        return Optional.ofNullable(this.nodeCount);
+    }
+    /**
      * @return postgresql.conf configuration values
      * 
      */
@@ -448,6 +460,7 @@ public final class GetPgPgUserConfig {
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable GetPgPgUserConfigMigration migration;
+        private @Nullable Integer nodeCount;
         private @Nullable GetPgPgUserConfigPg pg;
         private @Nullable GetPgPgUserConfigPgQualstats pgQualstats;
         private @Nullable Boolean pgReadReplica;
@@ -483,6 +496,7 @@ public final class GetPgPgUserConfig {
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.migration = defaults.migration;
+    	      this.nodeCount = defaults.nodeCount;
     	      this.pg = defaults.pg;
     	      this.pgQualstats = defaults.pgQualstats;
     	      this.pgReadReplica = defaults.pgReadReplica;
@@ -574,6 +588,12 @@ public final class GetPgPgUserConfig {
         public Builder migration(@Nullable GetPgPgUserConfigMigration migration) {
 
             this.migration = migration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nodeCount(@Nullable Integer nodeCount) {
+
+            this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
@@ -720,6 +740,7 @@ public final class GetPgPgUserConfig {
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;
             _resultValue.migration = migration;
+            _resultValue.nodeCount = nodeCount;
             _resultValue.pg = pg;
             _resultValue.pgQualstats = pgQualstats;
             _resultValue.pgReadReplica = pgReadReplica;

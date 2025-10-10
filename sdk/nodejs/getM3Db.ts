@@ -41,6 +41,7 @@ export interface GetM3DbResult {
     readonly m3dbUserConfigs: outputs.GetM3DbM3dbUserConfig[];
     readonly m3dbs: outputs.GetM3DbM3db[];
     readonly maintenanceWindowDow: string;
+    readonly maintenanceWindowEnabled: boolean;
     readonly maintenanceWindowTime: string;
     readonly plan: string;
     readonly project: string;

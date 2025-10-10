@@ -189,6 +189,21 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Number of nodes for the service. Example: `3`.
+     * 
+     */
+    @Import(name="nodeCount")
+    private @Nullable Output<Integer> nodeCount;
+
+    /**
+     * @return Number of nodes for the service. Example: `3`.
+     * 
+     */
+    public Optional<Output<Integer>> nodeCount() {
+        return Optional.ofNullable(this.nodeCount);
+    }
+
+    /**
      * postgresql.conf configuration values
      * 
      */
@@ -539,6 +554,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
         this.migration = $.migration;
+        this.nodeCount = $.nodeCount;
         this.pg = $.pg;
         this.pgQualstats = $.pgQualstats;
         this.pgReadReplica = $.pgReadReplica;
@@ -831,6 +847,27 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder migration(PgPgUserConfigMigrationArgs migration) {
             return migration(Output.of(migration));
+        }
+
+        /**
+         * @param nodeCount Number of nodes for the service. Example: `3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(@Nullable Output<Integer> nodeCount) {
+            $.nodeCount = nodeCount;
+            return this;
+        }
+
+        /**
+         * @param nodeCount Number of nodes for the service. Example: `3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(Integer nodeCount) {
+            return nodeCount(Output.of(nodeCount));
         }
 
         /**
