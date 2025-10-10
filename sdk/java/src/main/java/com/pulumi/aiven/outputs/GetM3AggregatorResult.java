@@ -35,6 +35,7 @@ public final class GetM3AggregatorResult {
     private List<GetM3AggregatorM3aggregatorUserConfig> m3aggregatorUserConfigs;
     private List<GetM3AggregatorM3aggregator> m3aggregators;
     private String maintenanceWindowDow;
+    private Boolean maintenanceWindowEnabled;
     private String maintenanceWindowTime;
     private String plan;
     private String project;
@@ -93,6 +94,9 @@ public final class GetM3AggregatorResult {
     }
     public String maintenanceWindowDow() {
         return this.maintenanceWindowDow;
+    }
+    public Boolean maintenanceWindowEnabled() {
+        return this.maintenanceWindowEnabled;
     }
     public String maintenanceWindowTime() {
         return this.maintenanceWindowTime;
@@ -167,6 +171,7 @@ public final class GetM3AggregatorResult {
         private List<GetM3AggregatorM3aggregatorUserConfig> m3aggregatorUserConfigs;
         private List<GetM3AggregatorM3aggregator> m3aggregators;
         private String maintenanceWindowDow;
+        private Boolean maintenanceWindowEnabled;
         private String maintenanceWindowTime;
         private String plan;
         private String project;
@@ -199,6 +204,7 @@ public final class GetM3AggregatorResult {
     	      this.m3aggregatorUserConfigs = defaults.m3aggregatorUserConfigs;
     	      this.m3aggregators = defaults.m3aggregators;
     	      this.maintenanceWindowDow = defaults.maintenanceWindowDow;
+    	      this.maintenanceWindowEnabled = defaults.maintenanceWindowEnabled;
     	      this.maintenanceWindowTime = defaults.maintenanceWindowTime;
     	      this.plan = defaults.plan;
     	      this.project = defaults.project;
@@ -321,6 +327,14 @@ public final class GetM3AggregatorResult {
               throw new MissingRequiredPropertyException("GetM3AggregatorResult", "maintenanceWindowDow");
             }
             this.maintenanceWindowDow = maintenanceWindowDow;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maintenanceWindowEnabled(Boolean maintenanceWindowEnabled) {
+            if (maintenanceWindowEnabled == null) {
+              throw new MissingRequiredPropertyException("GetM3AggregatorResult", "maintenanceWindowEnabled");
+            }
+            this.maintenanceWindowEnabled = maintenanceWindowEnabled;
             return this;
         }
         @CustomType.Setter
@@ -485,6 +499,7 @@ public final class GetM3AggregatorResult {
             _resultValue.m3aggregatorUserConfigs = m3aggregatorUserConfigs;
             _resultValue.m3aggregators = m3aggregators;
             _resultValue.maintenanceWindowDow = maintenanceWindowDow;
+            _resultValue.maintenanceWindowEnabled = maintenanceWindowEnabled;
             _resultValue.maintenanceWindowTime = maintenanceWindowTime;
             _resultValue.plan = plan;
             _resultValue.project = project;

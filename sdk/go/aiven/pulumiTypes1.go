@@ -13,262 +13,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type GetM3DbM3dbUserConfig struct {
-	// Additional Cloud Regions for Backup Replication.
-	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
-	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-	CustomDomain *string `pulumi:"customDomain"`
-	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-	IpFilterObjects []GetM3DbM3dbUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
-	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-	IpFilterStrings []string `pulumi:"ipFilterStrings"`
-	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-	//
-	// Deprecated: Deprecated. Use `ipFilterString` instead.
-	IpFilters []string `pulumi:"ipFilters"`
-	// M3 limits
-	Limits *GetM3DbM3dbUserConfigLimits `pulumi:"limits"`
-	// M3 specific configuration options
-	M3 *GetM3DbM3dbUserConfigM3 `pulumi:"m3"`
-	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
-	M3Version *string `pulumi:"m3Version"`
-	// Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-	M3coordinatorEnableGraphiteCarbonIngest *bool `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
-	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-	M3dbVersion *string `pulumi:"m3dbVersion"`
-	// List of M3 namespaces
-	Namespaces []GetM3DbM3dbUserConfigNamespace `pulumi:"namespaces"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess *GetM3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess *GetM3DbM3dbUserConfigPublicAccess `pulumi:"publicAccess"`
-	// M3 rules
-	Rules *GetM3DbM3dbUserConfigRules `pulumi:"rules"`
-	// Store logs for the service so that they are available in the HTTP API and console.
-	ServiceLog *bool `pulumi:"serviceLog"`
-	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
-	// Use static public IP addresses.
-	StaticIps *bool `pulumi:"staticIps"`
-}
-
-// GetM3DbM3dbUserConfigInput is an input type that accepts GetM3DbM3dbUserConfigArgs and GetM3DbM3dbUserConfigOutput values.
-// You can construct a concrete instance of `GetM3DbM3dbUserConfigInput` via:
-//
-//	GetM3DbM3dbUserConfigArgs{...}
-type GetM3DbM3dbUserConfigInput interface {
-	pulumi.Input
-
-	ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput
-	ToGetM3DbM3dbUserConfigOutputWithContext(context.Context) GetM3DbM3dbUserConfigOutput
-}
-
-type GetM3DbM3dbUserConfigArgs struct {
-	// Additional Cloud Regions for Backup Replication.
-	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
-	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
-	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-	IpFilterObjects GetM3DbM3dbUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
-	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
-	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-	//
-	// Deprecated: Deprecated. Use `ipFilterString` instead.
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// M3 limits
-	Limits GetM3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
-	// M3 specific configuration options
-	M3 GetM3DbM3dbUserConfigM3PtrInput `pulumi:"m3"`
-	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
-	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
-	// Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-	M3coordinatorEnableGraphiteCarbonIngest pulumi.BoolPtrInput `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
-	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-	M3dbVersion pulumi.StringPtrInput `pulumi:"m3dbVersion"`
-	// List of M3 namespaces
-	Namespaces GetM3DbM3dbUserConfigNamespaceArrayInput `pulumi:"namespaces"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess GetM3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess GetM3DbM3dbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// M3 rules
-	Rules GetM3DbM3dbUserConfigRulesPtrInput `pulumi:"rules"`
-	// Store logs for the service so that they are available in the HTTP API and console.
-	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
-	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
-	// Use static public IP addresses.
-	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
-}
-
-func (GetM3DbM3dbUserConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetM3DbM3dbUserConfig)(nil)).Elem()
-}
-
-func (i GetM3DbM3dbUserConfigArgs) ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput {
-	return i.ToGetM3DbM3dbUserConfigOutputWithContext(context.Background())
-}
-
-func (i GetM3DbM3dbUserConfigArgs) ToGetM3DbM3dbUserConfigOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigOutput)
-}
-
-// GetM3DbM3dbUserConfigArrayInput is an input type that accepts GetM3DbM3dbUserConfigArray and GetM3DbM3dbUserConfigArrayOutput values.
-// You can construct a concrete instance of `GetM3DbM3dbUserConfigArrayInput` via:
-//
-//	GetM3DbM3dbUserConfigArray{ GetM3DbM3dbUserConfigArgs{...} }
-type GetM3DbM3dbUserConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetM3DbM3dbUserConfigArrayOutput() GetM3DbM3dbUserConfigArrayOutput
-	ToGetM3DbM3dbUserConfigArrayOutputWithContext(context.Context) GetM3DbM3dbUserConfigArrayOutput
-}
-
-type GetM3DbM3dbUserConfigArray []GetM3DbM3dbUserConfigInput
-
-func (GetM3DbM3dbUserConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetM3DbM3dbUserConfig)(nil)).Elem()
-}
-
-func (i GetM3DbM3dbUserConfigArray) ToGetM3DbM3dbUserConfigArrayOutput() GetM3DbM3dbUserConfigArrayOutput {
-	return i.ToGetM3DbM3dbUserConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetM3DbM3dbUserConfigArray) ToGetM3DbM3dbUserConfigArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigArrayOutput)
-}
-
-type GetM3DbM3dbUserConfigOutput struct{ *pulumi.OutputState }
-
-func (GetM3DbM3dbUserConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetM3DbM3dbUserConfig)(nil)).Elem()
-}
-
-func (o GetM3DbM3dbUserConfigOutput) ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput {
-	return o
-}
-
-func (o GetM3DbM3dbUserConfigOutput) ToGetM3DbM3dbUserConfigOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigOutput {
-	return o
-}
-
-// Additional Cloud Regions for Backup Replication.
-func (o GetM3DbM3dbUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
-}
-
-// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-func (o GetM3DbM3dbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
-}
-
-// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-func (o GetM3DbM3dbUserConfigOutput) IpFilterObjects() GetM3DbM3dbUserConfigIpFilterObjectArrayOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []GetM3DbM3dbUserConfigIpFilterObject { return v.IpFilterObjects }).(GetM3DbM3dbUserConfigIpFilterObjectArrayOutput)
-}
-
-// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-func (o GetM3DbM3dbUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
-}
-
-// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-//
-// Deprecated: Deprecated. Use `ipFilterString` instead.
-func (o GetM3DbM3dbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
-}
-
-// M3 limits
-func (o GetM3DbM3dbUserConfigOutput) Limits() GetM3DbM3dbUserConfigLimitsPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigLimits { return v.Limits }).(GetM3DbM3dbUserConfigLimitsPtrOutput)
-}
-
-// M3 specific configuration options
-func (o GetM3DbM3dbUserConfigOutput) M3() GetM3DbM3dbUserConfigM3PtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigM3 { return v.M3 }).(GetM3DbM3dbUserConfigM3PtrOutput)
-}
-
-// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
-func (o GetM3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
-}
-
-// Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-func (o GetM3DbM3dbUserConfigOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *bool { return v.M3coordinatorEnableGraphiteCarbonIngest }).(pulumi.BoolPtrOutput)
-}
-
-// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-func (o GetM3DbM3dbUserConfigOutput) M3dbVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3dbVersion }).(pulumi.StringPtrOutput)
-}
-
-// List of M3 namespaces
-func (o GetM3DbM3dbUserConfigOutput) Namespaces() GetM3DbM3dbUserConfigNamespaceArrayOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []GetM3DbM3dbUserConfigNamespace { return v.Namespaces }).(GetM3DbM3dbUserConfigNamespaceArrayOutput)
-}
-
-// Allow access to selected service ports from private networks
-func (o GetM3DbM3dbUserConfigOutput) PrivateAccess() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigPrivateAccess { return v.PrivateAccess }).(GetM3DbM3dbUserConfigPrivateAccessPtrOutput)
-}
-
-// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-func (o GetM3DbM3dbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
-}
-
-// Allow access to selected service ports from the public Internet
-func (o GetM3DbM3dbUserConfigOutput) PublicAccess() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigPublicAccess { return v.PublicAccess }).(GetM3DbM3dbUserConfigPublicAccessPtrOutput)
-}
-
-// M3 rules
-func (o GetM3DbM3dbUserConfigOutput) Rules() GetM3DbM3dbUserConfigRulesPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigRules { return v.Rules }).(GetM3DbM3dbUserConfigRulesPtrOutput)
-}
-
-// Store logs for the service so that they are available in the HTTP API and console.
-func (o GetM3DbM3dbUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
-}
-
-// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-func (o GetM3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
-}
-
-// Use static public IP addresses.
-func (o GetM3DbM3dbUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
-}
-
-type GetM3DbM3dbUserConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetM3DbM3dbUserConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetM3DbM3dbUserConfig)(nil)).Elem()
-}
-
-func (o GetM3DbM3dbUserConfigArrayOutput) ToGetM3DbM3dbUserConfigArrayOutput() GetM3DbM3dbUserConfigArrayOutput {
-	return o
-}
-
-func (o GetM3DbM3dbUserConfigArrayOutput) ToGetM3DbM3dbUserConfigArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigArrayOutput {
-	return o
-}
-
-func (o GetM3DbM3dbUserConfigArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUserConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3dbUserConfig {
-		return vs[0].([]GetM3DbM3dbUserConfig)[vs[1].(int)]
-	}).(GetM3DbM3dbUserConfigOutput)
-}
-
 type GetM3DbM3dbUserConfigIpFilterObject struct {
 	// Description for IP filter list entry. Example: `Production service IP range`.
 	Description *string `pulumi:"description"`
@@ -5654,8 +5398,6 @@ type GetOpenSearchOpensearchUserConfig struct {
 	AzureMigration *GetOpenSearchOpensearchUserConfigAzureMigration `pulumi:"azureMigration"`
 	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
 	CustomDomain *string `pulumi:"customDomain"`
-	// Allow to register custom keystores in OpenSearch
-	CustomKeystores []GetOpenSearchOpensearchUserConfigCustomKeystore `pulumi:"customKeystores"`
 	// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
 	DisableReplicationFactorAdjustment *bool `pulumi:"disableReplicationFactorAdjustment"`
 	// Google Cloud Storage migration settings
@@ -5726,8 +5468,6 @@ type GetOpenSearchOpensearchUserConfigArgs struct {
 	AzureMigration GetOpenSearchOpensearchUserConfigAzureMigrationPtrInput `pulumi:"azureMigration"`
 	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
 	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
-	// Allow to register custom keystores in OpenSearch
-	CustomKeystores GetOpenSearchOpensearchUserConfigCustomKeystoreArrayInput `pulumi:"customKeystores"`
 	// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
 	DisableReplicationFactorAdjustment pulumi.BoolPtrInput `pulumi:"disableReplicationFactorAdjustment"`
 	// Google Cloud Storage migration settings
@@ -5846,13 +5586,6 @@ func (o GetOpenSearchOpensearchUserConfigOutput) AzureMigration() GetOpenSearchO
 // Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
 func (o GetOpenSearchOpensearchUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
-}
-
-// Allow to register custom keystores in OpenSearch
-func (o GetOpenSearchOpensearchUserConfigOutput) CustomKeystores() GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) []GetOpenSearchOpensearchUserConfigCustomKeystore {
-		return v.CustomKeystores
-	}).(GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput)
 }
 
 // Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
@@ -6382,109 +6115,6 @@ func (o GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput) SnapshotName()
 		}
 		return &v.SnapshotName
 	}).(pulumi.StringPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigCustomKeystore struct {
-	Name string `pulumi:"name"`
-	// Enum: `azure`, `gcs`, `s3`.
-	Type string `pulumi:"type"`
-}
-
-// GetOpenSearchOpensearchUserConfigCustomKeystoreInput is an input type that accepts GetOpenSearchOpensearchUserConfigCustomKeystoreArgs and GetOpenSearchOpensearchUserConfigCustomKeystoreOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigCustomKeystoreInput` via:
-//
-//	GetOpenSearchOpensearchUserConfigCustomKeystoreArgs{...}
-type GetOpenSearchOpensearchUserConfigCustomKeystoreInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreOutput
-	ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreOutput
-}
-
-type GetOpenSearchOpensearchUserConfigCustomKeystoreArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
-	// Enum: `azure`, `gcs`, `s3`.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetOpenSearchOpensearchUserConfigCustomKeystoreArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigCustomKeystore)(nil)).Elem()
-}
-
-func (i GetOpenSearchOpensearchUserConfigCustomKeystoreArgs) ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigCustomKeystoreArgs) ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigCustomKeystoreOutput)
-}
-
-// GetOpenSearchOpensearchUserConfigCustomKeystoreArrayInput is an input type that accepts GetOpenSearchOpensearchUserConfigCustomKeystoreArray and GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigCustomKeystoreArrayInput` via:
-//
-//	GetOpenSearchOpensearchUserConfigCustomKeystoreArray{ GetOpenSearchOpensearchUserConfigCustomKeystoreArgs{...} }
-type GetOpenSearchOpensearchUserConfigCustomKeystoreArrayInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput
-	ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput
-}
-
-type GetOpenSearchOpensearchUserConfigCustomKeystoreArray []GetOpenSearchOpensearchUserConfigCustomKeystoreInput
-
-func (GetOpenSearchOpensearchUserConfigCustomKeystoreArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOpenSearchOpensearchUserConfigCustomKeystore)(nil)).Elem()
-}
-
-func (i GetOpenSearchOpensearchUserConfigCustomKeystoreArray) ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigCustomKeystoreArray) ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigCustomKeystoreOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigCustomKeystoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigCustomKeystore)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigCustomKeystoreOutput) ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigCustomKeystoreOutput) ToGetOpenSearchOpensearchUserConfigCustomKeystoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigCustomKeystoreOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigCustomKeystore) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Enum: `azure`, `gcs`, `s3`.
-func (o GetOpenSearchOpensearchUserConfigCustomKeystoreOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigCustomKeystore) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOpenSearchOpensearchUserConfigCustomKeystore)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput) ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput() GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput) ToGetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput) Index(i pulumi.IntInput) GetOpenSearchOpensearchUserConfigCustomKeystoreOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchOpensearchUserConfigCustomKeystore {
-		return vs[0].([]GetOpenSearchOpensearchUserConfigCustomKeystore)[vs[1].(int)]
-	}).(GetOpenSearchOpensearchUserConfigCustomKeystoreOutput)
 }
 
 type GetOpenSearchOpensearchUserConfigGcsMigration struct {
@@ -16967,6 +16597,8 @@ type GetPgPgUserConfig struct {
 	IpFilters []string `pulumi:"ipFilters"`
 	// Migrate data from existing server
 	Migration *GetPgPgUserConfigMigration `pulumi:"migration"`
+	// Number of nodes for the service. Example: `3`.
+	NodeCount *int `pulumi:"nodeCount"`
 	// postgresql.conf configuration values
 	Pg *GetPgPgUserConfigPg `pulumi:"pg"`
 	// System-wide settings for the pgQualstats extension
@@ -17049,6 +16681,8 @@ type GetPgPgUserConfigArgs struct {
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Migrate data from existing server
 	Migration GetPgPgUserConfigMigrationPtrInput `pulumi:"migration"`
+	// Number of nodes for the service. Example: `3`.
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
 	// postgresql.conf configuration values
 	Pg GetPgPgUserConfigPgPtrInput `pulumi:"pg"`
 	// System-wide settings for the pgQualstats extension
@@ -17198,6 +16832,11 @@ func (o GetPgPgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 // Migrate data from existing server
 func (o GetPgPgUserConfigOutput) Migration() GetPgPgUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigMigration { return v.Migration }).(GetPgPgUserConfigMigrationPtrOutput)
+}
+
+// Number of nodes for the service. Example: `3`.
+func (o GetPgPgUserConfigOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
 // postgresql.conf configuration values
@@ -34018,8 +33657,6 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigInput)(nil)).Elem(), GetM3DbM3dbUserConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigIpFilterObjectInput)(nil)).Elem(), GetM3DbM3dbUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigIpFilterObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigLimitsInput)(nil)).Elem(), GetM3DbM3dbUserConfigLimitsArgs{})
@@ -34088,8 +33725,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigArrayInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigAzureMigrationInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigAzureMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigAzureMigrationPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigAzureMigrationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigCustomKeystoreInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigCustomKeystoreArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigCustomKeystoreArrayInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigCustomKeystoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigGcsMigrationInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigGcsMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigGcsMigrationPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigGcsMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigIndexPatternInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigIndexPatternArgs{})
@@ -34398,8 +34033,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
-	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigOutput{})
-	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigIpFilterObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigLimitsOutput{})
@@ -34468,8 +34101,6 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigAzureMigrationOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigCustomKeystoreOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigCustomKeystoreArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigGcsMigrationOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigGcsMigrationPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigIndexPatternOutput{})

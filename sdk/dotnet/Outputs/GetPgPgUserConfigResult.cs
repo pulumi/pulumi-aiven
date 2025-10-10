@@ -54,6 +54,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigMigrationResult? Migration;
         /// <summary>
+        /// Number of nodes for the service. Example: `3`.
+        /// </summary>
+        public readonly int? NodeCount;
+        /// <summary>
         /// postgresql.conf configuration values
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPgResult? Pg;
@@ -164,6 +168,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetPgPgUserConfigMigrationResult? migration,
 
+            int? nodeCount,
+
             Outputs.GetPgPgUserConfigPgResult? pg,
 
             Outputs.GetPgPgUserConfigPgQualstatsResult? pgQualstats,
@@ -218,6 +224,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             Migration = migration;
+            NodeCount = nodeCount;
             Pg = pg;
             PgQualstats = pgQualstats;
             PgReadReplica = pgReadReplica;

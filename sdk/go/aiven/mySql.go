@@ -83,6 +83,8 @@ type MySql struct {
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
+	// Indicates whether the maintenance window is currently enabled for this service.
+	MaintenanceWindowEnabled pulumi.BoolOutput `pulumi:"maintenanceWindowEnabled"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
 	// MySQL server-provided values.
@@ -190,6 +192,8 @@ type mySqlState struct {
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
+	// Indicates whether the maintenance window is currently enabled for this service.
+	MaintenanceWindowEnabled *bool `pulumi:"maintenanceWindowEnabled"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
 	// MySQL server-provided values.
@@ -250,6 +254,8 @@ type MySqlState struct {
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
+	// Indicates whether the maintenance window is currently enabled for this service.
+	MaintenanceWindowEnabled pulumi.BoolPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
 	// MySQL server-provided values.
@@ -500,6 +506,11 @@ func (o MySqlOutput) DiskSpaceUsed() pulumi.StringOutput {
 // Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 func (o MySqlOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringPtrOutput { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the maintenance window is currently enabled for this service.
+func (o MySqlOutput) MaintenanceWindowEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MySql) pulumi.BoolOutput { return v.MaintenanceWindowEnabled }).(pulumi.BoolOutput)
 }
 
 // Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.

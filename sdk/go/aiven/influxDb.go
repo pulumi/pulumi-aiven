@@ -39,6 +39,8 @@ type InfluxDb struct {
 	Influxdbs InfluxDbInfluxdbArrayOutput `pulumi:"influxdbs"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
+	// Indicates whether the maintenance window is currently enabled for this service.
+	MaintenanceWindowEnabled pulumi.BoolOutput `pulumi:"maintenanceWindowEnabled"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
@@ -146,6 +148,8 @@ type influxDbState struct {
 	Influxdbs []InfluxDbInfluxdb `pulumi:"influxdbs"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
+	// Indicates whether the maintenance window is currently enabled for this service.
+	MaintenanceWindowEnabled *bool `pulumi:"maintenanceWindowEnabled"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
@@ -206,6 +210,8 @@ type InfluxDbState struct {
 	Influxdbs InfluxDbInfluxdbArrayInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
+	// Indicates whether the maintenance window is currently enabled for this service.
+	MaintenanceWindowEnabled pulumi.BoolPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
@@ -462,6 +468,11 @@ func (o InfluxDbOutput) Influxdbs() InfluxDbInfluxdbArrayOutput {
 // Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 func (o InfluxDbOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringPtrOutput { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the maintenance window is currently enabled for this service.
+func (o InfluxDbOutput) MaintenanceWindowEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *InfluxDb) pulumi.BoolOutput { return v.MaintenanceWindowEnabled }).(pulumi.BoolOutput)
 }
 
 // Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.

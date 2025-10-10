@@ -31,6 +31,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? DeleteRetentionMs { get; set; }
 
         /// <summary>
+        /// Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+        /// </summary>
+        [Input("disklessEnable")]
+        public Input<bool>? DisklessEnable { get; set; }
+
+        /// <summary>
         /// The time to wait before deleting a file from the filesystem.
         /// </summary>
         [Input("fileDeleteDelayMs")]
@@ -53,12 +59,6 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("indexIntervalBytes")]
         public Input<string>? IndexIntervalBytes { get; set; }
-
-        /// <summary>
-        /// Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-        /// </summary>
-        [Input("inklessEnable")]
-        public Input<bool>? InklessEnable { get; set; }
 
         /// <summary>
         /// This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.

@@ -35,6 +35,7 @@ public final class GetM3DbResult {
     private List<GetM3DbM3dbUserConfig> m3dbUserConfigs;
     private List<GetM3DbM3db> m3dbs;
     private String maintenanceWindowDow;
+    private Boolean maintenanceWindowEnabled;
     private String maintenanceWindowTime;
     private String plan;
     private String project;
@@ -93,6 +94,9 @@ public final class GetM3DbResult {
     }
     public String maintenanceWindowDow() {
         return this.maintenanceWindowDow;
+    }
+    public Boolean maintenanceWindowEnabled() {
+        return this.maintenanceWindowEnabled;
     }
     public String maintenanceWindowTime() {
         return this.maintenanceWindowTime;
@@ -167,6 +171,7 @@ public final class GetM3DbResult {
         private List<GetM3DbM3dbUserConfig> m3dbUserConfigs;
         private List<GetM3DbM3db> m3dbs;
         private String maintenanceWindowDow;
+        private Boolean maintenanceWindowEnabled;
         private String maintenanceWindowTime;
         private String plan;
         private String project;
@@ -199,6 +204,7 @@ public final class GetM3DbResult {
     	      this.m3dbUserConfigs = defaults.m3dbUserConfigs;
     	      this.m3dbs = defaults.m3dbs;
     	      this.maintenanceWindowDow = defaults.maintenanceWindowDow;
+    	      this.maintenanceWindowEnabled = defaults.maintenanceWindowEnabled;
     	      this.maintenanceWindowTime = defaults.maintenanceWindowTime;
     	      this.plan = defaults.plan;
     	      this.project = defaults.project;
@@ -321,6 +327,14 @@ public final class GetM3DbResult {
               throw new MissingRequiredPropertyException("GetM3DbResult", "maintenanceWindowDow");
             }
             this.maintenanceWindowDow = maintenanceWindowDow;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maintenanceWindowEnabled(Boolean maintenanceWindowEnabled) {
+            if (maintenanceWindowEnabled == null) {
+              throw new MissingRequiredPropertyException("GetM3DbResult", "maintenanceWindowEnabled");
+            }
+            this.maintenanceWindowEnabled = maintenanceWindowEnabled;
             return this;
         }
         @CustomType.Setter
@@ -485,6 +499,7 @@ public final class GetM3DbResult {
             _resultValue.m3dbUserConfigs = m3dbUserConfigs;
             _resultValue.m3dbs = m3dbs;
             _resultValue.maintenanceWindowDow = maintenanceWindowDow;
+            _resultValue.maintenanceWindowEnabled = maintenanceWindowEnabled;
             _resultValue.maintenanceWindowTime = maintenanceWindowTime;
             _resultValue.plan = plan;
             _resultValue.project = project;

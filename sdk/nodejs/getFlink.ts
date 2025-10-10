@@ -96,6 +96,10 @@ export interface GetFlinkResult {
      */
     readonly maintenanceWindowDow: string;
     /**
+     * Indicates whether the maintenance window is currently enabled for this service.
+     */
+    readonly maintenanceWindowEnabled: boolean;
+    /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
     readonly maintenanceWindowTime: string;

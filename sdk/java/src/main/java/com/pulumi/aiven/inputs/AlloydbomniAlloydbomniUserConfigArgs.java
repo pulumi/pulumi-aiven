@@ -216,6 +216,21 @@ public final class AlloydbomniAlloydbomniUserConfigArgs extends com.pulumi.resou
     }
 
     /**
+     * Number of nodes for the service. Example: `3`.
+     * 
+     */
+    @Import(name="nodeCount")
+    private @Nullable Output<Integer> nodeCount;
+
+    /**
+     * @return Number of nodes for the service. Example: `3`.
+     * 
+     */
+    public Optional<Output<Integer>> nodeCount() {
+        return Optional.ofNullable(this.nodeCount);
+    }
+
+    /**
      * postgresql.conf configuration values
      * 
      */
@@ -515,6 +530,7 @@ public final class AlloydbomniAlloydbomniUserConfigArgs extends com.pulumi.resou
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
+        this.nodeCount = $.nodeCount;
         this.pg = $.pg;
         this.pgReadReplica = $.pgReadReplica;
         this.pgServiceToForkFrom = $.pgServiceToForkFrom;
@@ -846,6 +862,27 @@ public final class AlloydbomniAlloydbomniUserConfigArgs extends com.pulumi.resou
         @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
+        }
+
+        /**
+         * @param nodeCount Number of nodes for the service. Example: `3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(@Nullable Output<Integer> nodeCount) {
+            $.nodeCount = nodeCount;
+            return this;
+        }
+
+        /**
+         * @param nodeCount Number of nodes for the service. Example: `3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(Integer nodeCount) {
+            return nodeCount(Output.of(nodeCount));
         }
 
         /**

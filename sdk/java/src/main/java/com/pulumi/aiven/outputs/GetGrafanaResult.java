@@ -80,6 +80,11 @@ public final class GetGrafanaResult {
      */
     private String maintenanceWindowDow;
     /**
+     * @return Indicates whether the maintenance window is currently enabled for this service.
+     * 
+     */
+    private Boolean maintenanceWindowEnabled;
+    /**
      * @return Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      * 
      */
@@ -247,6 +252,13 @@ public final class GetGrafanaResult {
         return this.maintenanceWindowDow;
     }
     /**
+     * @return Indicates whether the maintenance window is currently enabled for this service.
+     * 
+     */
+    public Boolean maintenanceWindowEnabled() {
+        return this.maintenanceWindowEnabled;
+    }
+    /**
      * @return Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      * 
      */
@@ -383,6 +395,7 @@ public final class GetGrafanaResult {
         private List<GetGrafanaGrafana> grafanas;
         private String id;
         private String maintenanceWindowDow;
+        private Boolean maintenanceWindowEnabled;
         private String maintenanceWindowTime;
         private String plan;
         private String project;
@@ -415,6 +428,7 @@ public final class GetGrafanaResult {
     	      this.grafanas = defaults.grafanas;
     	      this.id = defaults.id;
     	      this.maintenanceWindowDow = defaults.maintenanceWindowDow;
+    	      this.maintenanceWindowEnabled = defaults.maintenanceWindowEnabled;
     	      this.maintenanceWindowTime = defaults.maintenanceWindowTime;
     	      this.plan = defaults.plan;
     	      this.project = defaults.project;
@@ -537,6 +551,14 @@ public final class GetGrafanaResult {
               throw new MissingRequiredPropertyException("GetGrafanaResult", "maintenanceWindowDow");
             }
             this.maintenanceWindowDow = maintenanceWindowDow;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maintenanceWindowEnabled(Boolean maintenanceWindowEnabled) {
+            if (maintenanceWindowEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "maintenanceWindowEnabled");
+            }
+            this.maintenanceWindowEnabled = maintenanceWindowEnabled;
             return this;
         }
         @CustomType.Setter
@@ -701,6 +723,7 @@ public final class GetGrafanaResult {
             _resultValue.grafanas = grafanas;
             _resultValue.id = id;
             _resultValue.maintenanceWindowDow = maintenanceWindowDow;
+            _resultValue.maintenanceWindowEnabled = maintenanceWindowEnabled;
             _resultValue.maintenanceWindowTime = maintenanceWindowTime;
             _resultValue.plan = plan;
             _resultValue.project = project;

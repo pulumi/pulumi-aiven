@@ -69,6 +69,7 @@ namespace Pulumi.Aiven
         public readonly ImmutableArray<Outputs.GetInfluxDbInfluxdbUserConfigResult> InfluxdbUserConfigs;
         public readonly ImmutableArray<Outputs.GetInfluxDbInfluxdbResult> Influxdbs;
         public readonly string MaintenanceWindowDow;
+        public readonly bool MaintenanceWindowEnabled;
         public readonly string MaintenanceWindowTime;
         public readonly string Plan;
         public readonly string Project;
@@ -112,6 +113,8 @@ namespace Pulumi.Aiven
             ImmutableArray<Outputs.GetInfluxDbInfluxdbResult> influxdbs,
 
             string maintenanceWindowDow,
+
+            bool maintenanceWindowEnabled,
 
             string maintenanceWindowTime,
 
@@ -159,6 +162,7 @@ namespace Pulumi.Aiven
             InfluxdbUserConfigs = influxdbUserConfigs;
             Influxdbs = influxdbs;
             MaintenanceWindowDow = maintenanceWindowDow;
+            MaintenanceWindowEnabled = maintenanceWindowEnabled;
             MaintenanceWindowTime = maintenanceWindowTime;
             Plan = plan;
             Project = project;

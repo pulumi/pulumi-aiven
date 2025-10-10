@@ -69,6 +69,7 @@ namespace Pulumi.Aiven
         public readonly ImmutableArray<Outputs.GetM3DbM3dbUserConfigResult> M3dbUserConfigs;
         public readonly ImmutableArray<Outputs.GetM3DbM3dbResult> M3dbs;
         public readonly string MaintenanceWindowDow;
+        public readonly bool MaintenanceWindowEnabled;
         public readonly string MaintenanceWindowTime;
         public readonly string Plan;
         public readonly string Project;
@@ -112,6 +113,8 @@ namespace Pulumi.Aiven
             ImmutableArray<Outputs.GetM3DbM3dbResult> m3dbs,
 
             string maintenanceWindowDow,
+
+            bool maintenanceWindowEnabled,
 
             string maintenanceWindowTime,
 
@@ -159,6 +162,7 @@ namespace Pulumi.Aiven
             M3dbUserConfigs = m3dbUserConfigs;
             M3dbs = m3dbs;
             MaintenanceWindowDow = maintenanceWindowDow;
+            MaintenanceWindowEnabled = maintenanceWindowEnabled;
             MaintenanceWindowTime = maintenanceWindowTime;
             Plan = plan;
             Project = project;

@@ -69,6 +69,7 @@ namespace Pulumi.Aiven
         public readonly ImmutableArray<Outputs.GetM3AggregatorM3aggregatorUserConfigResult> M3aggregatorUserConfigs;
         public readonly ImmutableArray<Outputs.GetM3AggregatorM3aggregatorResult> M3aggregators;
         public readonly string MaintenanceWindowDow;
+        public readonly bool MaintenanceWindowEnabled;
         public readonly string MaintenanceWindowTime;
         public readonly string Plan;
         public readonly string Project;
@@ -112,6 +113,8 @@ namespace Pulumi.Aiven
             ImmutableArray<Outputs.GetM3AggregatorM3aggregatorResult> m3aggregators,
 
             string maintenanceWindowDow,
+
+            bool maintenanceWindowEnabled,
 
             string maintenanceWindowTime,
 
@@ -159,6 +162,7 @@ namespace Pulumi.Aiven
             M3aggregatorUserConfigs = m3aggregatorUserConfigs;
             M3aggregators = m3aggregators;
             MaintenanceWindowDow = maintenanceWindowDow;
+            MaintenanceWindowEnabled = maintenanceWindowEnabled;
             MaintenanceWindowTime = maintenanceWindowTime;
             Plan = plan;
             Project = project;

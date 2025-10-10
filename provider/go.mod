@@ -34,8 +34,9 @@ require (
 	github.com/ProtonMail/go-crypto v1.1.6 // indirect
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
-	github.com/aiven/aiven-go-client/v2 v2.34.0 // indirect
-	github.com/aiven/go-client-codegen v0.122.0 // indirect
+	github.com/agnivade/levenshtein v1.2.1 // indirect
+	github.com/aiven/aiven-go-client/v2 v2.36.0 // indirect
+	github.com/aiven/go-client-codegen v0.126.0 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect

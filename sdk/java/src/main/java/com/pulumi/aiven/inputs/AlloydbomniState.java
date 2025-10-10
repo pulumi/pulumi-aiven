@@ -198,6 +198,21 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether the maintenance window is currently enabled for this service.
+     * 
+     */
+    @Import(name="maintenanceWindowEnabled")
+    private @Nullable Output<Boolean> maintenanceWindowEnabled;
+
+    /**
+     * @return Indicates whether the maintenance window is currently enabled for this service.
+     * 
+     */
+    public Optional<Output<Boolean>> maintenanceWindowEnabled() {
+        return Optional.ofNullable(this.maintenanceWindowEnabled);
+    }
+
+    /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      * 
      */
@@ -473,6 +488,7 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
         this.diskSpaceStep = $.diskSpaceStep;
         this.diskSpaceUsed = $.diskSpaceUsed;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
+        this.maintenanceWindowEnabled = $.maintenanceWindowEnabled;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
         this.plan = $.plan;
         this.project = $.project;
@@ -758,6 +774,27 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenanceWindowDow(String maintenanceWindowDow) {
             return maintenanceWindowDow(Output.of(maintenanceWindowDow));
+        }
+
+        /**
+         * @param maintenanceWindowEnabled Indicates whether the maintenance window is currently enabled for this service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceWindowEnabled(@Nullable Output<Boolean> maintenanceWindowEnabled) {
+            $.maintenanceWindowEnabled = maintenanceWindowEnabled;
+            return this;
+        }
+
+        /**
+         * @param maintenanceWindowEnabled Indicates whether the maintenance window is currently enabled for this service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceWindowEnabled(Boolean maintenanceWindowEnabled) {
+            return maintenanceWindowEnabled(Output.of(maintenanceWindowEnabled));
         }
 
         /**

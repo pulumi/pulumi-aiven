@@ -168,6 +168,10 @@ export interface AlloydbomniAlloydbomniUserConfig {
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Number of nodes for the service. Example: `3`.
+     */
+    nodeCount?: pulumi.Input<number>;
+    /**
      * postgresql.conf configuration values
      */
     pg?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfigPg>;
@@ -3968,6 +3972,10 @@ export interface KafkaTopicConfig {
      */
     deleteRetentionMs?: pulumi.Input<string>;
     /**
+     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+     */
+    disklessEnable?: pulumi.Input<boolean>;
+    /**
      * The time to wait before deleting a file from the filesystem.
      */
     fileDeleteDelayMs?: pulumi.Input<string>;
@@ -3983,10 +3991,6 @@ export interface KafkaTopicConfig {
      * This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
      */
     indexIntervalBytes?: pulumi.Input<string>;
-    /**
-     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-     */
-    inklessEnable?: pulumi.Input<boolean>;
     /**
      * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
      */
@@ -5090,10 +5094,6 @@ export interface OpenSearchOpensearchUserConfig {
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * Allow to register custom keystores in OpenSearch
-     */
-    customKeystores?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearchUserConfigCustomKeystore>[]>;
-    /**
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
      */
     disableReplicationFactorAdjustment?: pulumi.Input<boolean>;
@@ -5246,14 +5246,6 @@ export interface OpenSearchOpensearchUserConfigAzureMigration {
      * The snapshot name to restore from.
      */
     snapshotName: pulumi.Input<string>;
-}
-
-export interface OpenSearchOpensearchUserConfigCustomKeystore {
-    name: pulumi.Input<string>;
-    /**
-     * Enum: `azure`, `gcs`, `s3`.
-     */
-    type: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigGcsMigration {
@@ -6590,6 +6582,10 @@ export interface PgPgUserConfig {
      * Migrate data from existing server
      */
     migration?: pulumi.Input<inputs.PgPgUserConfigMigration>;
+    /**
+     * Number of nodes for the service. Example: `3`.
+     */
+    nodeCount?: pulumi.Input<number>;
     /**
      * postgresql.conf configuration values
      */

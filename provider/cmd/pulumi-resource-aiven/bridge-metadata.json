@@ -1313,9 +1313,6 @@
                                 "azure_migration": {
                                     "maxItemsOne": true
                                 },
-                                "custom_keystores": {
-                                    "maxItemsOne": false
-                                },
                                 "gcs_migration": {
                                     "maxItemsOne": true
                                 },
@@ -3516,9 +3513,6 @@
                                 },
                                 "azure_migration": {
                                     "maxItemsOne": true
-                                },
-                                "custom_keystores": {
-                                    "maxItemsOne": false
                                 },
                                 "gcs_migration": {
                                     "maxItemsOne": true

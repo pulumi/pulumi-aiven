@@ -83,6 +83,10 @@ export class M3Db extends pulumi.CustomResource {
      */
     declare public readonly maintenanceWindowDow: pulumi.Output<string | undefined>;
     /**
+     * Indicates whether the maintenance window is currently enabled for this service.
+     */
+    declare public /*out*/ readonly maintenanceWindowEnabled: pulumi.Output<boolean>;
+    /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
     declare public readonly maintenanceWindowTime: pulumi.Output<string | undefined>;
@@ -172,6 +176,7 @@ export class M3Db extends pulumi.CustomResource {
             resourceInputs["m3db"] = state?.m3db;
             resourceInputs["m3dbUserConfig"] = state?.m3dbUserConfig;
             resourceInputs["maintenanceWindowDow"] = state?.maintenanceWindowDow;
+            resourceInputs["maintenanceWindowEnabled"] = state?.maintenanceWindowEnabled;
             resourceInputs["maintenanceWindowTime"] = state?.maintenanceWindowTime;
             resourceInputs["plan"] = state?.plan;
             resourceInputs["project"] = state?.project;
@@ -221,6 +226,7 @@ export class M3Db extends pulumi.CustomResource {
             resourceInputs["diskSpaceDefault"] = undefined /*out*/;
             resourceInputs["diskSpaceStep"] = undefined /*out*/;
             resourceInputs["diskSpaceUsed"] = undefined /*out*/;
+            resourceInputs["maintenanceWindowEnabled"] = undefined /*out*/;
             resourceInputs["serviceHost"] = undefined /*out*/;
             resourceInputs["servicePassword"] = undefined /*out*/;
             resourceInputs["servicePort"] = undefined /*out*/;
@@ -288,6 +294,10 @@ export interface M3DbState {
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     maintenanceWindowDow?: pulumi.Input<string>;
+    /**
+     * Indicates whether the maintenance window is currently enabled for this service.
+     */
+    maintenanceWindowEnabled?: pulumi.Input<boolean>;
     /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */

@@ -38,27 +38,28 @@ type LookupInfluxDbResult struct {
 	DiskSpaceStep       string                 `pulumi:"diskSpaceStep"`
 	DiskSpaceUsed       string                 `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string                          `pulumi:"id"`
-	InfluxdbUserConfigs   []GetInfluxDbInfluxdbUserConfig `pulumi:"influxdbUserConfigs"`
-	Influxdbs             []GetInfluxDbInfluxdb           `pulumi:"influxdbs"`
-	MaintenanceWindowDow  string                          `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime string                          `pulumi:"maintenanceWindowTime"`
-	Plan                  string                          `pulumi:"plan"`
-	Project               string                          `pulumi:"project"`
-	ProjectVpcId          string                          `pulumi:"projectVpcId"`
-	ServiceHost           string                          `pulumi:"serviceHost"`
-	ServiceIntegrations   []GetInfluxDbServiceIntegration `pulumi:"serviceIntegrations"`
-	ServiceName           string                          `pulumi:"serviceName"`
-	ServicePassword       string                          `pulumi:"servicePassword"`
-	ServicePort           int                             `pulumi:"servicePort"`
-	ServiceType           string                          `pulumi:"serviceType"`
-	ServiceUri            string                          `pulumi:"serviceUri"`
-	ServiceUsername       string                          `pulumi:"serviceUsername"`
-	State                 string                          `pulumi:"state"`
-	StaticIps             []string                        `pulumi:"staticIps"`
-	Tags                  []GetInfluxDbTag                `pulumi:"tags"`
-	TechEmails            []GetInfluxDbTechEmail          `pulumi:"techEmails"`
-	TerminationProtection bool                            `pulumi:"terminationProtection"`
+	Id                       string                          `pulumi:"id"`
+	InfluxdbUserConfigs      []GetInfluxDbInfluxdbUserConfig `pulumi:"influxdbUserConfigs"`
+	Influxdbs                []GetInfluxDbInfluxdb           `pulumi:"influxdbs"`
+	MaintenanceWindowDow     string                          `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowEnabled bool                            `pulumi:"maintenanceWindowEnabled"`
+	MaintenanceWindowTime    string                          `pulumi:"maintenanceWindowTime"`
+	Plan                     string                          `pulumi:"plan"`
+	Project                  string                          `pulumi:"project"`
+	ProjectVpcId             string                          `pulumi:"projectVpcId"`
+	ServiceHost              string                          `pulumi:"serviceHost"`
+	ServiceIntegrations      []GetInfluxDbServiceIntegration `pulumi:"serviceIntegrations"`
+	ServiceName              string                          `pulumi:"serviceName"`
+	ServicePassword          string                          `pulumi:"servicePassword"`
+	ServicePort              int                             `pulumi:"servicePort"`
+	ServiceType              string                          `pulumi:"serviceType"`
+	ServiceUri               string                          `pulumi:"serviceUri"`
+	ServiceUsername          string                          `pulumi:"serviceUsername"`
+	State                    string                          `pulumi:"state"`
+	StaticIps                []string                        `pulumi:"staticIps"`
+	Tags                     []GetInfluxDbTag                `pulumi:"tags"`
+	TechEmails               []GetInfluxDbTechEmail          `pulumi:"techEmails"`
+	TerminationProtection    bool                            `pulumi:"terminationProtection"`
 }
 
 func LookupInfluxDbOutput(ctx *pulumi.Context, args LookupInfluxDbOutputArgs, opts ...pulumi.InvokeOption) LookupInfluxDbResultOutput {
@@ -142,6 +143,10 @@ func (o LookupInfluxDbResultOutput) Influxdbs() GetInfluxDbInfluxdbArrayOutput {
 
 func (o LookupInfluxDbResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfluxDbResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
+}
+
+func (o LookupInfluxDbResultOutput) MaintenanceWindowEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInfluxDbResult) bool { return v.MaintenanceWindowEnabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupInfluxDbResultOutput) MaintenanceWindowTime() pulumi.StringOutput {

@@ -115,6 +115,12 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowDow { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether the maintenance window is currently enabled for this service.
+        /// </summary>
+        [Output("maintenanceWindowEnabled")]
+        public Output<bool> MaintenanceWindowEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         /// </summary>
         [Output("maintenanceWindowTime")]
@@ -484,6 +490,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("maintenanceWindowDow")]
         public Input<string>? MaintenanceWindowDow { get; set; }
+
+        /// <summary>
+        /// Indicates whether the maintenance window is currently enabled for this service.
+        /// </summary>
+        [Input("maintenanceWindowEnabled")]
+        public Input<bool>? MaintenanceWindowEnabled { get; set; }
 
         /// <summary>
         /// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.

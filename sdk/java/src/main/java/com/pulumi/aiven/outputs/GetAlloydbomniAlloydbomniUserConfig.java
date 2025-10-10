@@ -88,6 +88,11 @@ public final class GetAlloydbomniAlloydbomniUserConfig {
     @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
+     * @return Number of nodes for the service. Example: `3`.
+     * 
+     */
+    private @Nullable Integer nodeCount;
+    /**
      * @return postgresql.conf configuration values
      * 
      */
@@ -273,6 +278,13 @@ public final class GetAlloydbomniAlloydbomniUserConfig {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
+     * @return Number of nodes for the service. Example: `3`.
+     * 
+     */
+    public Optional<Integer> nodeCount() {
+        return Optional.ofNullable(this.nodeCount);
+    }
+    /**
      * @return postgresql.conf configuration values
      * 
      */
@@ -427,6 +439,7 @@ public final class GetAlloydbomniAlloydbomniUserConfig {
         private @Nullable List<GetAlloydbomniAlloydbomniUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
+        private @Nullable Integer nodeCount;
         private @Nullable GetAlloydbomniAlloydbomniUserConfigPg pg;
         private @Nullable Boolean pgReadReplica;
         private @Nullable String pgServiceToForkFrom;
@@ -461,6 +474,7 @@ public final class GetAlloydbomniAlloydbomniUserConfig {
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
+    	      this.nodeCount = defaults.nodeCount;
     	      this.pg = defaults.pg;
     	      this.pgReadReplica = defaults.pgReadReplica;
     	      this.pgServiceToForkFrom = defaults.pgServiceToForkFrom;
@@ -562,6 +576,12 @@ public final class GetAlloydbomniAlloydbomniUserConfig {
         }
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
+        }
+        @CustomType.Setter
+        public Builder nodeCount(@Nullable Integer nodeCount) {
+
+            this.nodeCount = nodeCount;
+            return this;
         }
         @CustomType.Setter
         public Builder pg(@Nullable GetAlloydbomniAlloydbomniUserConfigPg pg) {
@@ -691,6 +711,7 @@ public final class GetAlloydbomniAlloydbomniUserConfig {
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;
+            _resultValue.nodeCount = nodeCount;
             _resultValue.pg = pg;
             _resultValue.pgReadReplica = pgReadReplica;
             _resultValue.pgServiceToForkFrom = pgServiceToForkFrom;

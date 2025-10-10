@@ -38,27 +38,28 @@ type LookupM3DbResult struct {
 	DiskSpaceStep       string             `pulumi:"diskSpaceStep"`
 	DiskSpaceUsed       string             `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string                      `pulumi:"id"`
-	M3dbUserConfigs       []GetM3DbM3dbUserConfig     `pulumi:"m3dbUserConfigs"`
-	M3dbs                 []GetM3DbM3db               `pulumi:"m3dbs"`
-	MaintenanceWindowDow  string                      `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime string                      `pulumi:"maintenanceWindowTime"`
-	Plan                  string                      `pulumi:"plan"`
-	Project               string                      `pulumi:"project"`
-	ProjectVpcId          string                      `pulumi:"projectVpcId"`
-	ServiceHost           string                      `pulumi:"serviceHost"`
-	ServiceIntegrations   []GetM3DbServiceIntegration `pulumi:"serviceIntegrations"`
-	ServiceName           string                      `pulumi:"serviceName"`
-	ServicePassword       string                      `pulumi:"servicePassword"`
-	ServicePort           int                         `pulumi:"servicePort"`
-	ServiceType           string                      `pulumi:"serviceType"`
-	ServiceUri            string                      `pulumi:"serviceUri"`
-	ServiceUsername       string                      `pulumi:"serviceUsername"`
-	State                 string                      `pulumi:"state"`
-	StaticIps             []string                    `pulumi:"staticIps"`
-	Tags                  []GetM3DbTag                `pulumi:"tags"`
-	TechEmails            []GetM3DbTechEmail          `pulumi:"techEmails"`
-	TerminationProtection bool                        `pulumi:"terminationProtection"`
+	Id                       string                      `pulumi:"id"`
+	M3dbUserConfigs          []GetM3DbM3dbUserConfig     `pulumi:"m3dbUserConfigs"`
+	M3dbs                    []GetM3DbM3db               `pulumi:"m3dbs"`
+	MaintenanceWindowDow     string                      `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowEnabled bool                        `pulumi:"maintenanceWindowEnabled"`
+	MaintenanceWindowTime    string                      `pulumi:"maintenanceWindowTime"`
+	Plan                     string                      `pulumi:"plan"`
+	Project                  string                      `pulumi:"project"`
+	ProjectVpcId             string                      `pulumi:"projectVpcId"`
+	ServiceHost              string                      `pulumi:"serviceHost"`
+	ServiceIntegrations      []GetM3DbServiceIntegration `pulumi:"serviceIntegrations"`
+	ServiceName              string                      `pulumi:"serviceName"`
+	ServicePassword          string                      `pulumi:"servicePassword"`
+	ServicePort              int                         `pulumi:"servicePort"`
+	ServiceType              string                      `pulumi:"serviceType"`
+	ServiceUri               string                      `pulumi:"serviceUri"`
+	ServiceUsername          string                      `pulumi:"serviceUsername"`
+	State                    string                      `pulumi:"state"`
+	StaticIps                []string                    `pulumi:"staticIps"`
+	Tags                     []GetM3DbTag                `pulumi:"tags"`
+	TechEmails               []GetM3DbTechEmail          `pulumi:"techEmails"`
+	TerminationProtection    bool                        `pulumi:"terminationProtection"`
 }
 
 func LookupM3DbOutput(ctx *pulumi.Context, args LookupM3DbOutputArgs, opts ...pulumi.InvokeOption) LookupM3DbResultOutput {
@@ -142,6 +143,10 @@ func (o LookupM3DbResultOutput) M3dbs() GetM3DbM3dbArrayOutput {
 
 func (o LookupM3DbResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3DbResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
+}
+
+func (o LookupM3DbResultOutput) MaintenanceWindowEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupM3DbResult) bool { return v.MaintenanceWindowEnabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupM3DbResultOutput) MaintenanceWindowTime() pulumi.StringOutput {

@@ -297,6 +297,7 @@ class _InfluxDbState:
                  influxdb_user_config: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigArgs']] = None,
                  influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbArgs']]]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[_builtins.str]] = None,
+                 maintenance_window_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  maintenance_window_time: Optional[pulumi.Input[_builtins.str]] = None,
                  plan: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -327,6 +328,7 @@ class _InfluxDbState:
         :param pulumi.Input['InfluxDbInfluxdbUserConfigArgs'] influxdb_user_config: Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbArgs']]] influxdbs: InfluxDB server provided values
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[_builtins.bool] maintenance_window_enabled: Indicates whether the maintenance window is currently enabled for this service.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[_builtins.str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -369,6 +371,8 @@ class _InfluxDbState:
             pulumi.set(__self__, "influxdbs", influxdbs)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
+        if maintenance_window_enabled is not None:
+            pulumi.set(__self__, "maintenance_window_enabled", maintenance_window_enabled)
         if maintenance_window_time is not None:
             pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
         if plan is not None:
@@ -536,6 +540,18 @@ class _InfluxDbState:
     @maintenance_window_dow.setter
     def maintenance_window_dow(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "maintenance_window_dow", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindowEnabled")
+    def maintenance_window_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether the maintenance window is currently enabled for this service.
+        """
+        return pulumi.get(self, "maintenance_window_enabled")
+
+    @maintenance_window_enabled.setter
+    def maintenance_window_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "maintenance_window_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowTime")
@@ -858,6 +874,7 @@ class InfluxDb(pulumi.CustomResource):
             __props__.__dict__["disk_space_default"] = None
             __props__.__dict__["disk_space_step"] = None
             __props__.__dict__["disk_space_used"] = None
+            __props__.__dict__["maintenance_window_enabled"] = None
             __props__.__dict__["service_host"] = None
             __props__.__dict__["service_password"] = None
             __props__.__dict__["service_port"] = None
@@ -888,6 +905,7 @@ class InfluxDb(pulumi.CustomResource):
             influxdb_user_config: Optional[pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']]] = None,
             influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbInfluxdbArgs', 'InfluxDbInfluxdbArgsDict']]]]] = None,
             maintenance_window_dow: Optional[pulumi.Input[_builtins.str]] = None,
+            maintenance_window_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             maintenance_window_time: Optional[pulumi.Input[_builtins.str]] = None,
             plan: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -923,6 +941,7 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']] influxdb_user_config: Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbInfluxdbArgs', 'InfluxDbInfluxdbArgsDict']]]] influxdbs: InfluxDB server provided values
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[_builtins.bool] maintenance_window_enabled: Indicates whether the maintenance window is currently enabled for this service.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[_builtins.str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -955,6 +974,7 @@ class InfluxDb(pulumi.CustomResource):
         __props__.__dict__["influxdb_user_config"] = influxdb_user_config
         __props__.__dict__["influxdbs"] = influxdbs
         __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
+        __props__.__dict__["maintenance_window_enabled"] = maintenance_window_enabled
         __props__.__dict__["maintenance_window_time"] = maintenance_window_time
         __props__.__dict__["plan"] = plan
         __props__.__dict__["project"] = project
@@ -1062,6 +1082,14 @@ class InfluxDb(pulumi.CustomResource):
         Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindowEnabled")
+    def maintenance_window_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates whether the maintenance window is currently enabled for this service.
+        """
+        return pulumi.get(self, "maintenance_window_enabled")
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowTime")

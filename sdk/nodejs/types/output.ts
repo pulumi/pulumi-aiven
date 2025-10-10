@@ -168,6 +168,10 @@ export interface AlloydbomniAlloydbomniUserConfig {
      */
     ipFilters?: string[];
     /**
+     * Number of nodes for the service. Example: `3`.
+     */
+    nodeCount?: number;
+    /**
      * postgresql.conf configuration values
      */
     pg?: outputs.AlloydbomniAlloydbomniUserConfigPg;
@@ -1819,6 +1823,10 @@ export interface GetAlloydbomniAlloydbomniUserConfig {
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
+    /**
+     * Number of nodes for the service. Example: `3`.
+     */
+    nodeCount?: number;
     /**
      * postgresql.conf configuration values
      */
@@ -5381,6 +5389,10 @@ export interface GetKafkaTopicConfig {
      */
     deleteRetentionMs?: string;
     /**
+     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+     */
+    disklessEnable?: boolean;
+    /**
      * The time to wait before deleting a file from the filesystem.
      */
     fileDeleteDelayMs?: string;
@@ -5396,10 +5408,6 @@ export interface GetKafkaTopicConfig {
      * This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
      */
     indexIntervalBytes?: string;
-    /**
-     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-     */
-    inklessEnable?: boolean;
     /**
      * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
      */
@@ -6503,10 +6511,6 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     customDomain?: string;
     /**
-     * Allow to register custom keystores in OpenSearch
-     */
-    customKeystores?: outputs.GetOpenSearchOpensearchUserConfigCustomKeystore[];
-    /**
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
      */
     disableReplicationFactorAdjustment?: boolean;
@@ -6659,14 +6663,6 @@ export interface GetOpenSearchOpensearchUserConfigAzureMigration {
      * The snapshot name to restore from.
      */
     snapshotName: string;
-}
-
-export interface GetOpenSearchOpensearchUserConfigCustomKeystore {
-    name: string;
-    /**
-     * Enum: `azure`, `gcs`, `s3`.
-     */
-    type: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigGcsMigration {
@@ -7965,6 +7961,10 @@ export interface GetPgPgUserConfig {
      * Migrate data from existing server
      */
     migration?: outputs.GetPgPgUserConfigMigration;
+    /**
+     * Number of nodes for the service. Example: `3`.
+     */
+    nodeCount?: number;
     /**
      * postgresql.conf configuration values
      */
@@ -12527,6 +12527,10 @@ export interface KafkaTopicConfig {
      */
     deleteRetentionMs?: string;
     /**
+     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+     */
+    disklessEnable?: boolean;
+    /**
      * The time to wait before deleting a file from the filesystem.
      */
     fileDeleteDelayMs?: string;
@@ -12542,10 +12546,6 @@ export interface KafkaTopicConfig {
      * This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
      */
     indexIntervalBytes?: string;
-    /**
-     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-     */
-    inklessEnable?: boolean;
     /**
      * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
      */
@@ -13649,10 +13649,6 @@ export interface OpenSearchOpensearchUserConfig {
      */
     customDomain?: string;
     /**
-     * Allow to register custom keystores in OpenSearch
-     */
-    customKeystores?: outputs.OpenSearchOpensearchUserConfigCustomKeystore[];
-    /**
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
      */
     disableReplicationFactorAdjustment?: boolean;
@@ -13805,14 +13801,6 @@ export interface OpenSearchOpensearchUserConfigAzureMigration {
      * The snapshot name to restore from.
      */
     snapshotName: string;
-}
-
-export interface OpenSearchOpensearchUserConfigCustomKeystore {
-    name: string;
-    /**
-     * Enum: `azure`, `gcs`, `s3`.
-     */
-    type: string;
 }
 
 export interface OpenSearchOpensearchUserConfigGcsMigration {
@@ -15149,6 +15137,10 @@ export interface PgPgUserConfig {
      * Migrate data from existing server
      */
     migration?: outputs.PgPgUserConfigMigration;
+    /**
+     * Number of nodes for the service. Example: `3`.
+     */
+    nodeCount?: number;
     /**
      * postgresql.conf configuration values
      */
