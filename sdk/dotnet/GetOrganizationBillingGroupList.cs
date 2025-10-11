@@ -107,7 +107,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOrganizationBillingGroupListBillingGroupResult> BillingGroups;
         /// <summary>
-        /// Resource ID, equal to `organization_id`.
+        /// Resource ID, equal to `OrganizationId`.
         /// </summary>
         public readonly string Id;
         /// <summary>

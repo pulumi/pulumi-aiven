@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetKafkaTopicConfigResult
     {
         /// <summary>
-        /// The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
+        /// The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `Compact`, `compact,delete` and `Delete`.
         /// </summary>
         public readonly string? CleanupPolicy;
         /// <summary>
-        /// Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+        /// Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `Gzip`, `Lz4`, `Producer`, `Snappy`, `Uncompressed` and `Zstd`.
         /// </summary>
         public readonly string? CompressionType;
         /// <summary>

@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string ConnectUrl;
         /// <summary>
-        /// Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
+        /// Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `True`.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Header;
         /// <summary>
-        /// The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferred_username`.
+        /// The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `PreferredUsername`.
         /// </summary>
         public readonly string? JwtHeader;
         /// <summary>
-        /// If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
+        /// If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `PreferredUsername`.
         /// </summary>
         public readonly string? JwtUrlParameter;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? RefreshRateLimitTimeWindowMs;
         /// <summary>
-        /// The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
+        /// The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `Roles`.
         /// </summary>
         public readonly string? RolesKey;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Scope;
         /// <summary>
-        /// The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
+        /// The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the PreferredUsername claim. Optional. Example: `PreferredUsername`.
         /// </summary>
         public readonly string? SubjectKey;
 

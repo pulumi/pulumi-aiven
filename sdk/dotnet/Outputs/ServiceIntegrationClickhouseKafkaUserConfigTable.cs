@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTable
     {
         /// <summary>
-        /// Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
+        /// Enum: `Beginning`, `Earliest`, `End`, `Largest`, `Latest`, `Smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `Earliest` starts from the beginning, `Latest` starts from the end. Default: `Earliest`.
         /// </summary>
         public readonly string? AutoOffsetReset;
         /// <summary>
@@ -26,15 +26,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string DataFormat;
         /// <summary>
-        /// Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+        /// Enum: `Basic`, `BestEffort`, `BestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `Basic` uses simple parsing, `BestEffort` attempts more flexible parsing. Default: `Basic`.
         /// </summary>
         public readonly string? DateTimeInputFormat;
         /// <summary>
-        /// The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
+        /// The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `Clickhouse`.
         /// </summary>
         public readonly string GroupName;
         /// <summary>
-        /// Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+        /// Enum: `Default`, `Stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `Default` stops on errors, `Stream` continues processing and logs errors. Default: `Default`.
         /// </summary>
         public readonly string? HandleErrorMode;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxRowsPerMessage;
         /// <summary>
-        /// The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
+        /// The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `Events`.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ProducerBatchSize;
         /// <summary>
-        /// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+        /// Enum: `Gzip`, `Lz4`, `None`, `Snappy`, `Zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `None`.
         /// </summary>
         public readonly string? ProducerCompressionCodec;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? SkipBrokenMessages;
         /// <summary>
-        /// When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
+        /// When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `False`.
         /// </summary>
         public readonly bool? ThreadPerConsumer;
         /// <summary>

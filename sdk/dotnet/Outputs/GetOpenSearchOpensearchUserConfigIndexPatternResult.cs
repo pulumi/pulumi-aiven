@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Pattern;
         /// <summary>
-        /// Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
+        /// Enum: `Alphabetical`, `CreationDate`. Deletion sorting algorithm. Default: `CreationDate`.
         /// </summary>
         public readonly string? SortingAlgorithm;
 

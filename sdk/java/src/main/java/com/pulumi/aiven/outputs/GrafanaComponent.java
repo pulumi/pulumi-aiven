@@ -34,7 +34,7 @@ public final class GrafanaComponent {
      */
     private @Nullable String kafkaAuthenticationMethod;
     /**
-     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
      * 
      */
     private @Nullable String kafkaSslCa;
@@ -89,7 +89,7 @@ public final class GrafanaComponent {
         return Optional.ofNullable(this.kafkaAuthenticationMethod);
     }
     /**
-     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
      * 
      */
     public Optional<String> kafkaSslCa() {

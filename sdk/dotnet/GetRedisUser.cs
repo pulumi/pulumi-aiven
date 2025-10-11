@@ -184,7 +184,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines command category rules. The field is required with `RedisAclCommands` and `RedisAclKeys`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<string> RedisAclCategories;
         /// <summary>
@@ -192,11 +192,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<string> RedisAclChannels;
         /// <summary>
-        /// Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines rules for individual commands. The field is required with `RedisAclCategories` and `RedisAclKeys`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<string> RedisAclCommands;
         /// <summary>
-        /// Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines key access rules. The field is required with `RedisAclCategories` and `RedisAclKeys`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<string> RedisAclKeys;
         /// <summary>

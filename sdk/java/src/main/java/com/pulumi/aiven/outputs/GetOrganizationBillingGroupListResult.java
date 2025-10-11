@@ -21,7 +21,7 @@ public final class GetOrganizationBillingGroupListResult {
      */
     private @Nullable List<GetOrganizationBillingGroupListBillingGroup> billingGroups;
     /**
-     * @return Resource ID, equal to `organization_id`.
+     * @return Resource ID, equal to `organizationId`.
      * 
      */
     private String id;
@@ -41,7 +41,7 @@ public final class GetOrganizationBillingGroupListResult {
         return this.billingGroups == null ? List.of() : this.billingGroups;
     }
     /**
-     * @return Resource ID, equal to `organization_id`.
+     * @return Resource ID, equal to `organizationId`.
      * 
      */
     public String id() {

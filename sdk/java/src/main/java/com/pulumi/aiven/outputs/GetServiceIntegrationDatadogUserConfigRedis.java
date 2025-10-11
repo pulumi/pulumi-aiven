@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationDatadogUserConfigRedis {
     /**
-     * @return Enable command_stats option in the agent&#39;s configuration. Default: `false`.
+     * @return Enable commandStats option in the agent&#39;s configuration. Default: `false`.
      * 
      */
     private @Nullable Boolean commandStatsEnabled;
 
     private GetServiceIntegrationDatadogUserConfigRedis() {}
     /**
-     * @return Enable command_stats option in the agent&#39;s configuration. Default: `false`.
+     * @return Enable commandStats option in the agent&#39;s configuration. Default: `false`.
      * 
      */
     public Optional<Boolean> commandStatsEnabled() {

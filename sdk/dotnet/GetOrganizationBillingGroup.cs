@@ -119,7 +119,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CustomInvoiceText;
         /// <summary>
-        /// Resource ID, a composite of `organization_id` and `billing_group_id` IDs.
+        /// Resource ID, a composite of `OrganizationId` and `BillingGroupId` IDs.
         /// </summary>
         public readonly string Id;
         /// <summary>

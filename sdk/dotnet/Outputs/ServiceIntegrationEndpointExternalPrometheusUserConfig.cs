@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? BasicAuthPassword;
         /// <summary>
-        /// Prometheus basic authentication username. Example: `prom4851`.
+        /// Prometheus basic authentication username. Example: `Prom4851`.
         /// </summary>
         public readonly string? BasicAuthUsername;
         /// <summary>

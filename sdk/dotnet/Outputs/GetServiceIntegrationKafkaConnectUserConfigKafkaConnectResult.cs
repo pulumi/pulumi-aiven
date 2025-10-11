@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ConfigStorageTopic;
         /// <summary>
-        /// A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
+        /// A unique string that identifies the Connect cluster group this worker belongs to. Example: `Connect`.
         /// </summary>
         public readonly string? GroupId;
         /// <summary>

@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPgQualstatsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable / Disable pg_qualstats. Default: `false`.
+        /// Enable / Disable pg_qualstats. Default: `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -31,13 +31,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MinErrEstimateRatio { get; set; }
 
         /// <summary>
-        /// Enable / Disable pg_qualstats constants tracking. Default: `true`.
+        /// Enable / Disable PgQualstats constants tracking. Default: `True`.
         /// </summary>
         [Input("trackConstants")]
         public Input<bool>? TrackConstants { get; set; }
 
         /// <summary>
-        /// Track quals on system catalogs too. Default: `false`.
+        /// Track quals on system catalogs too. Default: `False`.
         /// </summary>
         [Input("trackPgCatalog")]
         public Input<bool>? TrackPgCatalog { get; set; }

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetMySqlMysqlUserConfigMysqlIncrementalBackup {
     /**
-     * @return Enable periodic incremental backups. When enabled, full_backup_week_schedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+     * @return Enable periodic incremental backups. When enabled, fullBackupWeekSchedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
      * 
      */
     private Boolean enabled;
@@ -26,7 +26,7 @@ public final class GetMySqlMysqlUserConfigMysqlIncrementalBackup {
 
     private GetMySqlMysqlUserConfigMysqlIncrementalBackup() {}
     /**
-     * @return Enable periodic incremental backups. When enabled, full_backup_week_schedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+     * @return Enable periodic incremental backups. When enabled, fullBackupWeekSchedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
      * 
      */
     public Boolean enabled() {

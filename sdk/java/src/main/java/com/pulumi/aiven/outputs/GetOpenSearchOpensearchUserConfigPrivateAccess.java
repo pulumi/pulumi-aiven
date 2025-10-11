@@ -17,7 +17,7 @@ public final class GetOpenSearchOpensearchUserConfigPrivateAccess {
      */
     private @Nullable Boolean opensearch;
     /**
-     * @return Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to opensearchDashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean opensearchDashboards;
@@ -36,7 +36,7 @@ public final class GetOpenSearchOpensearchUserConfigPrivateAccess {
         return Optional.ofNullable(this.opensearch);
     }
     /**
-     * @return Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to opensearchDashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> opensearchDashboards() {

@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearchUserConfigSaml
     {
         /// <summary>
-        /// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
+        /// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `True`.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

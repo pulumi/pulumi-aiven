@@ -21,7 +21,7 @@ public final class GetKafkaSchemaRegistryAclResult {
      */
     private String id;
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+     * @return Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      * 
      */
     private String permission;
@@ -62,7 +62,7 @@ public final class GetKafkaSchemaRegistryAclResult {
         return this.id;
     }
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+     * @return Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      * 
      */
     public String permission() {

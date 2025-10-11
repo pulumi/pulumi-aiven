@@ -40,10 +40,10 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
      * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      * 
      * @deprecated
-     * Deprecated. Use `namespaces_string` instead.
+     * Deprecated. Use `namespacesString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `namespaces_string` instead. */
+    @Deprecated /* Deprecated. Use `namespacesString` instead. */
     private @Nullable List<String> namespaces;
     /**
      * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
@@ -94,10 +94,10 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
      * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      * 
      * @deprecated
-     * Deprecated. Use `namespaces_string` instead.
+     * Deprecated. Use `namespacesString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `namespaces_string` instead. */
+    @Deprecated /* Deprecated. Use `namespacesString` instead. */
     public List<String> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
     }

@@ -100,14 +100,14 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="redisAclCategories", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> redisAclCategories;
 
     /**
-     * @return Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> redisAclCategories() {
@@ -128,28 +128,28 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.redisAclChannels);
     }
     /**
-     * Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="redisAclCommands", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> redisAclCommands;
 
     /**
-     * @return Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> redisAclCommands() {
         return Codegen.optional(this.redisAclCommands);
     }
     /**
-     * Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="redisAclKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> redisAclKeys;
 
     /**
-     * @return Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> redisAclKeys() {

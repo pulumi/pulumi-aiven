@@ -92,14 +92,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
     }
 
     /**
-     * The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+     * The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
      * 
      */
     @Import(name="timeWindowSeconds")
     private @Nullable Output<Integer> timeWindowSeconds;
 
     /**
-     * @return The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+     * @return The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
      * 
      */
     public Optional<Output<Integer>> timeWindowSeconds() {
@@ -257,7 +257,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param timeWindowSeconds The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+         * @param timeWindowSeconds The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param timeWindowSeconds The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+         * @param timeWindowSeconds The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
          * 
          * @return builder
          * 

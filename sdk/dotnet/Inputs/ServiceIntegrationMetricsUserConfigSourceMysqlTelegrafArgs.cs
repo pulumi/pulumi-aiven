@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? GatherIndexIoWaits { get; set; }
 
         /// <summary>
-        /// Gather auto_increment columns and max values from information schema.
+        /// Gather AutoIncrement columns and max values from information schema.
         /// </summary>
         [Input("gatherInfoSchemaAutoInc")]
         public Input<bool>? GatherInfoSchemaAutoInc { get; set; }

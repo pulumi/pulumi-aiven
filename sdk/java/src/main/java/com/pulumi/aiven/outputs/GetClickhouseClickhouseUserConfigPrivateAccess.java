@@ -17,12 +17,12 @@ public final class GetClickhouseClickhouseUserConfigPrivateAccess {
      */
     private @Nullable Boolean clickhouse;
     /**
-     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean clickhouseHttps;
     /**
-     * @return Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean clickhouseMysql;
@@ -41,14 +41,14 @@ public final class GetClickhouseClickhouseUserConfigPrivateAccess {
         return Optional.ofNullable(this.clickhouse);
     }
     /**
-     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> clickhouseHttps() {
         return Optional.ofNullable(this.clickhouseHttps);
     }
     /**
-     * @return Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> clickhouseMysql() {

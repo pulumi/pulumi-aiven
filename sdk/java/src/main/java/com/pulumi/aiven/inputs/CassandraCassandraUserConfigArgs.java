@@ -131,10 +131,10 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
@@ -142,10 +142,10 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -482,10 +482,10 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -497,10 +497,10 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -511,10 +511,10 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
