@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enum: `basic`, `none`. Authentication method.
+        /// Enum: `Basic`, `None`. Authentication method.
         /// </summary>
         [Input("authentication", required: true)]
         public Input<string> Authentication { get; set; } = null!;
@@ -35,7 +35,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Basic authentication user name. Example: `avnadmin`.
+        /// Basic authentication user name. Example: `Avnadmin`.
         /// </summary>
         [Input("basicAuthUsername")]
         public Input<string>? BasicAuthUsername { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier of a value in the metric. Example: `used`.
+        /// Identifier of a value in the metric. Example: `Used`.
         /// </summary>
         [Input("field", required: true)]
         public Input<string> Field { get; set; } = null!;

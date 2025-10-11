@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects). You should create projects in organizations or organizational units using the `parent_id` field. In a future release, this resource will be replaced by `aiven.OrganizationProject` resource, which requires the `parent_id` field.
+    /// Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects). You should create projects in organizations or organizational units using the `ParentId` field. In a future release, this resource will be replaced by `aiven.OrganizationProject` resource, which requires the `ParentId` field.
     /// 
     /// ## Import
     /// 
@@ -22,13 +22,13 @@ namespace Pulumi.Aiven
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an existing account using its account ID. This field is deprecated. Use `ParentId` instead. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+        /// If ParentId is set, grant account owner team admin access to the new project. The default value is `True`.
         /// </summary>
         [Output("addAccountOwnersAdminAccess")]
         public Output<bool?> AddAccountOwnersAdminAccess { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         public Output<string?> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type used for this project. For example,`card`.
+        /// The payment type used for this project. For example,`Card`.
         /// </summary>
         [Output("paymentMethod")]
         public Output<string> PaymentMethod { get; private set; } = null!;
@@ -156,13 +156,13 @@ namespace Pulumi.Aiven
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an existing account using its account ID. This field is deprecated. Use `ParentId` instead. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+        /// If ParentId is set, grant account owner team admin access to the new project. The default value is `True`.
         /// </summary>
         [Input("addAccountOwnersAdminAccess")]
         public Input<bool>? AddAccountOwnersAdminAccess { get; set; }
@@ -236,13 +236,13 @@ namespace Pulumi.Aiven
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an existing account using its account ID. This field is deprecated. Use `ParentId` instead. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+        /// If ParentId is set, grant account owner team admin access to the new project. The default value is `True`.
         /// </summary>
         [Input("addAccountOwnersAdminAccess")]
         public Input<bool>? AddAccountOwnersAdminAccess { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.Aiven
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// The payment type used for this project. For example,`card`.
+        /// The payment type used for this project. For example,`Card`.
         /// </summary>
         [Input("paymentMethod")]
         public Input<string>? PaymentMethod { get; set; }

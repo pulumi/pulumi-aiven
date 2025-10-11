@@ -65,7 +65,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> Indices { get; set; } = null!;
 
         /// <summary>
-        /// Whether the repository is read-only. Default: `true`.
+        /// Whether the repository is read-only. Default: `True`.
         /// </summary>
         [Input("readonly")]
         public Input<bool>? Readonly { get; set; }

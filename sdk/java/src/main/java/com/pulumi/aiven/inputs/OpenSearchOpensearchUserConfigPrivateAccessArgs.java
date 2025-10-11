@@ -31,14 +31,14 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
     }
 
     /**
-     * Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to opensearchDashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="opensearchDashboards")
     private @Nullable Output<Boolean> opensearchDashboards;
 
     /**
-     * @return Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to opensearchDashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> opensearchDashboards() {
@@ -108,7 +108,7 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param opensearchDashboards Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param opensearchDashboards Allow clients to connect to opensearchDashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param opensearchDashboards Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param opensearchDashboards Allow clients to connect to opensearchDashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 

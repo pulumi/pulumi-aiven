@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationClickhousePostgresqlUserConfigDatabase
     {
         /// <summary>
-        /// PostgreSQL database to expose. Default: `defaultdb`.
+        /// PostgreSQL database to expose. Default: `Defaultdb`.
         /// </summary>
         public readonly string? Database;
         /// <summary>
-        /// PostgreSQL schema to expose. Default: `public`.
+        /// PostgreSQL schema to expose. Default: `Public`.
         /// </summary>
         public readonly string? Schema;
 

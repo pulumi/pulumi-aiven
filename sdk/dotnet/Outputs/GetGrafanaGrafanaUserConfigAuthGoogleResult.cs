@@ -22,11 +22,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedDomains;
         /// <summary>
-        /// Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
+        /// Client ID from provider. Example: `B1ba0bf54a4c2c0a1c29`.
         /// </summary>
         public readonly string ClientId;
         /// <summary>
-        /// Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
+        /// Client secret from provider. Example: `Bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
         /// </summary>
         public readonly string ClientSecret;
 

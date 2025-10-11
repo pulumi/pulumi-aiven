@@ -67,14 +67,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
      * 
      */
     @Import(name="dateTimeInputFormat")
     private @Nullable Output<String> dateTimeInputFormat;
 
     /**
-     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+     * @return Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
      * 
      */
     public Optional<Output<String>> dateTimeInputFormat() {
@@ -486,7 +486,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param dateTimeInputFormat Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+         * @param dateTimeInputFormat Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param dateTimeInputFormat Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+         * @param dateTimeInputFormat Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
          * 
          * @return builder
          * 

@@ -105,12 +105,12 @@ public final class GetMySqlMysqlUserConfigMysql {
      */
     private @Nullable String internalTmpMemStorageEngine;
     /**
-     * @return Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow_query_log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
+     * @return Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slowQueryLog is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
      * 
      */
     private @Nullable String logOutput;
     /**
-     * @return The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Example: `10`.
+     * @return The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10`.
      * 
      */
     private @Nullable Double longQueryTime;
@@ -140,7 +140,7 @@ public final class GetMySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer netWriteTimeout;
     /**
-     * @return Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table.
+     * @return Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
      * 
      */
     private @Nullable Boolean slowQueryLog;
@@ -298,14 +298,14 @@ public final class GetMySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.internalTmpMemStorageEngine);
     }
     /**
-     * @return Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow_query_log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
+     * @return Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slowQueryLog is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
      * 
      */
     public Optional<String> logOutput() {
         return Optional.ofNullable(this.logOutput);
     }
     /**
-     * @return The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Example: `10`.
+     * @return The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10`.
      * 
      */
     public Optional<Double> longQueryTime() {
@@ -347,7 +347,7 @@ public final class GetMySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.netWriteTimeout);
     }
     /**
-     * @return Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table.
+     * @return Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
      * 
      */
     public Optional<Boolean> slowQueryLog() {

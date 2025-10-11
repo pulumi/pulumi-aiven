@@ -15,14 +15,14 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
     public static final M3DbM3dbUserConfigRulesMappingTagArgs Empty = new M3DbM3dbUserConfigRulesMappingTagArgs();
 
     /**
-     * Name of the tag. Example: `my_tag`.
+     * Name of the tag. Example: `myTag`.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the tag. Example: `my_tag`.
+     * @return Name of the tag. Example: `myTag`.
      * 
      */
     public Output<String> name() {
@@ -30,14 +30,14 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
     }
 
     /**
-     * Value of the tag. Example: `my_value`.
+     * Value of the tag. Example: `myValue`.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Value of the tag. Example: `my_value`.
+     * @return Value of the tag. Example: `myValue`.
      * 
      */
     public Output<String> value() {
@@ -70,7 +70,7 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Name of the tag. Example: `my_tag`.
+         * @param name Name of the tag. Example: `myTag`.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Name of the tag. Example: `my_tag`.
+         * @param name Name of the tag. Example: `myTag`.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
         }
 
         /**
-         * @param value Value of the tag. Example: `my_value`.
+         * @param value Value of the tag. Example: `myValue`.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
         }
 
         /**
-         * @param value Value of the tag. Example: `my_value`.
+         * @param value Value of the tag. Example: `myValue`.
          * 
          * @return builder
          * 

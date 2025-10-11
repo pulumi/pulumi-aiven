@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Opensearch { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to OpensearchDashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("opensearchDashboards")]
         public Input<bool>? OpensearchDashboards { get; set; }

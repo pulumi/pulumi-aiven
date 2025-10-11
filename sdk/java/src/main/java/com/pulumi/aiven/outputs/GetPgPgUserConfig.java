@@ -70,10 +70,10 @@ public final class GetPgPgUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Migrate data from existing server
@@ -91,7 +91,7 @@ public final class GetPgPgUserConfig {
      */
     private @Nullable GetPgPgUserConfigPg pg;
     /**
-     * @return System-wide settings for the pg_qualstats extension
+     * @return System-wide settings for the pgQualstats extension
      * 
      * @deprecated
      * This property is deprecated.
@@ -100,7 +100,7 @@ public final class GetPgPgUserConfig {
     @Deprecated /* This property is deprecated. */
     private @Nullable GetPgPgUserConfigPgQualstats pgQualstats;
     /**
-     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * @return Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
      * 
      */
     private @Nullable Boolean pgReadReplica;
@@ -110,7 +110,7 @@ public final class GetPgPgUserConfig {
      */
     private @Nullable String pgServiceToForkFrom;
     /**
-     * @return Enable the pg_stat_monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. Default: `false`.
+     * @return Enable the pgStatMonitor extension. Changing this parameter causes a service restart. When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
      * 
      */
     private @Nullable Boolean pgStatMonitorEnable;
@@ -170,7 +170,7 @@ public final class GetPgPgUserConfig {
      */
     private @Nullable String serviceToForkFrom;
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
      * 
      */
     private @Nullable Double sharedBuffersPercentage;
@@ -261,10 +261,10 @@ public final class GetPgPgUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -290,7 +290,7 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.pg);
     }
     /**
-     * @return System-wide settings for the pg_qualstats extension
+     * @return System-wide settings for the pgQualstats extension
      * 
      * @deprecated
      * This property is deprecated.
@@ -301,7 +301,7 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.pgQualstats);
     }
     /**
-     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * @return Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
      * 
      */
     public Optional<Boolean> pgReadReplica() {
@@ -315,7 +315,7 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.pgServiceToForkFrom);
     }
     /**
-     * @return Enable the pg_stat_monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. Default: `false`.
+     * @return Enable the pgStatMonitor extension. Changing this parameter causes a service restart. When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
      * 
      */
     public Optional<Boolean> pgStatMonitorEnable() {
@@ -399,7 +399,7 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
      * 
      */
     public Optional<Double> sharedBuffersPercentage() {

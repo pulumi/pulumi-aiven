@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Adds a user as a team member.
     /// 
-    /// During the creation of this resource, an invite is sent to the address specified in `user_email`.
+    /// During the creation of this resource, an invite is sent to the address specified in `UserEmail`.
     /// The user is added to the team after they accept the invite. Deleting `aiven.AccountTeamMember`
     /// deletes the pending invite if not accepted or removes the user from the team if they already accepted the invite.
     /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
     public partial class AccountTeamMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+        /// is a boolean flag that determines whether an invitation was accepted or not by the user. `False` value means that the invitation was sent to the user but not yet accepted. `True` means that the user accepted the invitation and now a member of an account team.
         /// </summary>
         [Output("accepted")]
         public Output<bool> Accepted { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Aiven
     public sealed class AccountTeamMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+        /// is a boolean flag that determines whether an invitation was accepted or not by the user. `False` value means that the invitation was sent to the user but not yet accepted. `True` means that the user accepted the invitation and now a member of an account team.
         /// </summary>
         [Input("accepted")]
         public Input<bool>? Accepted { get; set; }

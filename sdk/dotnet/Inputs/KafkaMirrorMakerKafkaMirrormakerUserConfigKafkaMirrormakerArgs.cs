@@ -49,7 +49,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? OffsetLagMax { get; set; }
 
         /// <summary>
-        /// Whether to periodically check for new consumer groups. Defaults to `true`.
+        /// Whether to periodically check for new consumer groups. Defaults to `True`.
         /// </summary>
         [Input("refreshGroupsEnabled")]
         public Input<bool>? RefreshGroupsEnabled { get; set; }
@@ -61,7 +61,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? RefreshGroupsIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Whether to periodically check for new topics and partitions. Defaults to `true`.
+        /// Whether to periodically check for new topics and partitions. Defaults to `True`.
         /// </summary>
         [Input("refreshTopicsEnabled")]
         public Input<bool>? RefreshTopicsEnabled { get; set; }

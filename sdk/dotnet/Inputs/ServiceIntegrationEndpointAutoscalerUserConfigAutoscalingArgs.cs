@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int> CapGb { get; set; } = null!;
 
         /// <summary>
-        /// Enum: `autoscale_disk`. Type of autoscale event.
+        /// Enum: `AutoscaleDisk`. Type of autoscale event.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

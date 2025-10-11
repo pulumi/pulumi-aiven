@@ -31,14 +31,14 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccessArgs extends com.pulum
     }
 
     /**
-     * Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to userBackup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="userBackup")
     private @Nullable Output<Boolean> userBackup;
 
     /**
-     * @return Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to userBackup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> userBackup() {
@@ -92,7 +92,7 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccessArgs extends com.pulum
         }
 
         /**
-         * @param userBackup Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param userBackup Allow clients to connect to userBackup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccessArgs extends com.pulum
         }
 
         /**
-         * @param userBackup Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param userBackup Allow clients to connect to userBackup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 

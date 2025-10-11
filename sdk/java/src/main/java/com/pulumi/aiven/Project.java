@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects). You should create projects in organizations or organizational units using the `parent_id` field. In a future release, this resource will be replaced by `aiven.OrganizationProject` resource, which requires the `parent_id` field.
+ * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects). You should create projects in organizations or organizational units using the `parentId` field. In a future release, this resource will be replaced by `aiven.OrganizationProject` resource, which requires the `parentId` field.
  * 
  * ## Import
  * 
@@ -30,25 +30,25 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
     /**
-     * Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      * @deprecated
-     * Use parent_id instead. This field will be removed in the next major release.
+     * Use parentId instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
+    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      * @deprecated
      * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
@@ -59,7 +59,7 @@ public class Project extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> addAccountOwnersAdminAccess;
 
     /**
-     * @return If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * @return If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      */
     public Output<Optional<Boolean>> addAccountOwnersAdminAccess() {

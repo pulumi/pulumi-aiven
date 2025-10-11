@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> Address { get; set; } = null!;
 
         /// <summary>
-        /// Enum: `token`. Auth method of the vault secret provider.
+        /// Enum: `Token`. Auth method of the vault secret provider.
         /// </summary>
         [Input("authMethod", required: true)]
         public Input<string> AuthMethod { get; set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _token;
 
         /// <summary>
-        /// Token used to authenticate with vault and auth method `token`.
+        /// Token used to authenticate with vault and auth method `Token`.
         /// </summary>
         public Input<string>? Token
         {

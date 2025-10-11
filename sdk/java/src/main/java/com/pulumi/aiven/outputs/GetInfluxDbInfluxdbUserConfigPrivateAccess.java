@@ -17,7 +17,7 @@ public final class GetInfluxDbInfluxdbUserConfigPrivateAccess {
      */
     private @Nullable Boolean influxdb;
     /**
-     * @return Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to userBackup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean userBackup;
@@ -31,7 +31,7 @@ public final class GetInfluxDbInfluxdbUserConfigPrivateAccess {
         return Optional.ofNullable(this.influxdb);
     }
     /**
-     * @return Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to userBackup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> userBackup() {

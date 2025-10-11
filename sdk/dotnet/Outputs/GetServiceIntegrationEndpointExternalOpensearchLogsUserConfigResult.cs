@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? IndexDaysMax;
         /// <summary>
-        /// OpenSearch index prefix. Default: `logs`.
+        /// OpenSearch index prefix. Default: `Logs`.
         /// </summary>
         public readonly string IndexPrefix;
         /// <summary>

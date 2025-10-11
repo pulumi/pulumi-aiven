@@ -65,7 +65,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? StarttlsPolicy { get; set; }
 
         /// <summary>
-        /// Username for SMTP authentication. Example: `smtpuser`.
+        /// Username for SMTP authentication. Example: `Smtpuser`.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

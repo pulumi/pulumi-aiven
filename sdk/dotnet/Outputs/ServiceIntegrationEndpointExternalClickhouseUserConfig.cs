@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// User name. Example: `default`.
+        /// User name. Example: `Default`.
         /// </summary>
         public readonly string Username;
 

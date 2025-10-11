@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetThanosThanosUserConfigPrivateAccess {
     /**
-     * @return Allow clients to connect to query_frontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to queryFrontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean queryFrontend;
     /**
-     * @return Allow clients to connect to receiver_routing with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to receiverRouting with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean receiverRouting;
 
     private GetThanosThanosUserConfigPrivateAccess() {}
     /**
-     * @return Allow clients to connect to query_frontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to queryFrontend with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> queryFrontend() {
         return Optional.ofNullable(this.queryFrontend);
     }
     /**
-     * @return Allow clients to connect to receiver_routing with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to receiverRouting with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> receiverRouting() {

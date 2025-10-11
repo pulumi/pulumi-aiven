@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetThanosThanosUserConfigPrivateAccessResult
     {
         /// <summary>
-        /// Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to QueryFrontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? QueryFrontend;
         /// <summary>
-        /// Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to ReceiverRouting with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? ReceiverRouting;
 

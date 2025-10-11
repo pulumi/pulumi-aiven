@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureResult
     {
         /// <summary>
-        /// Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
+        /// Enum: `Disabled`, `Enforced`, `MonitorOnly`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
         /// </summary>
         public readonly string? Mode;
         /// <summary>

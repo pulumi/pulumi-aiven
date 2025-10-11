@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationMetricsUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+        /// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `Metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? RetentionDays { get; set; }
 
         /// <summary>
-        /// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metrics_reader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+        /// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `MetricsReader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
         /// </summary>
         [Input("roUsername")]
         public Input<string>? RoUsername { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.ServiceIntegrationMetricsUserConfigSourceMysqlArgs>? SourceMysql { get; set; }
 
         /// <summary>
-        /// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metrics_writer`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+        /// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `MetricsWriter`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

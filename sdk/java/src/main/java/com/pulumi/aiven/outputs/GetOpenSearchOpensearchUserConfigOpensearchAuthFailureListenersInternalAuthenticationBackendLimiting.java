@@ -38,7 +38,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListene
      */
     private @Nullable Integer maxTrackedClients;
     /**
-     * @return The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+     * @return The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
      * 
      */
     private @Nullable Integer timeWindowSeconds;
@@ -85,7 +85,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListene
         return Optional.ofNullable(this.maxTrackedClients);
     }
     /**
-     * @return The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+     * @return The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
      * 
      */
     public Optional<Integer> timeWindowSeconds() {

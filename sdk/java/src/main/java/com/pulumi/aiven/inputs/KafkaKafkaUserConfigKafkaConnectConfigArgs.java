@@ -62,14 +62,14 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
     }
 
     /**
-     * Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * Enum: `readCommitted`, `readUncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     @Import(name="consumerIsolationLevel")
     private @Nullable Output<String> consumerIsolationLevel;
 
     /**
-     * @return Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * @return Enum: `readCommitted`, `readUncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     public Optional<Output<String>> consumerIsolationLevel() {
@@ -359,7 +359,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
         }
 
         /**
-         * @param consumerIsolationLevel Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+         * @param consumerIsolationLevel Enum: `readCommitted`, `readUncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
         }
 
         /**
-         * @param consumerIsolationLevel Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+         * @param consumerIsolationLevel Enum: `readCommitted`, `readUncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
          * 
          * @return builder
          * 

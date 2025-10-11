@@ -48,10 +48,10 @@ public final class GetRedisRedisUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Migrate data from existing server
@@ -84,7 +84,7 @@ public final class GetRedisRedisUserConfig {
      */
     private @Nullable String recoveryBasebackupName;
     /**
-     * @return Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
+     * @return Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
      * 
      */
     private @Nullable String redisAclChannelsDefault;
@@ -199,10 +199,10 @@ public final class GetRedisRedisUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -249,7 +249,7 @@ public final class GetRedisRedisUserConfig {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
     /**
-     * @return Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
+     * @return Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
      * 
      */
     public Optional<String> redisAclChannelsDefault() {

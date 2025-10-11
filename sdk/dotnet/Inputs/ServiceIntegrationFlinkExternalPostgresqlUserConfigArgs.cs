@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
+        /// Enum: `Unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
         /// </summary>
         [Input("stringtype")]
         public Input<string>? Stringtype { get; set; }

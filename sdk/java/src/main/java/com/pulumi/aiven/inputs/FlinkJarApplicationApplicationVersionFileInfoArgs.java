@@ -77,14 +77,14 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
     }
 
     /**
-     * In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
      * 
      */
     @Import(name="verifyErrorCode")
     private @Nullable Output<Integer> verifyErrorCode;
 
     /**
-     * @return In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * @return In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
      * 
      */
     public Optional<Output<Integer>> verifyErrorCode() {
@@ -92,14 +92,14 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
     }
 
     /**
-     * In the case file_status is FAILED, may contain details about the failure.
+     * In the case fileStatus is FAILED, may contain details about the failure.
      * 
      */
     @Import(name="verifyErrorMessage")
     private @Nullable Output<String> verifyErrorMessage;
 
     /**
-     * @return In the case file_status is FAILED, may contain details about the failure.
+     * @return In the case fileStatus is FAILED, may contain details about the failure.
      * 
      */
     public Optional<Output<String>> verifyErrorMessage() {
@@ -220,7 +220,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
         }
 
         /**
-         * @param verifyErrorCode In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+         * @param verifyErrorCode In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
         }
 
         /**
-         * @param verifyErrorCode In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+         * @param verifyErrorCode In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
         }
 
         /**
-         * @param verifyErrorMessage In the case file_status is FAILED, may contain details about the failure.
+         * @param verifyErrorMessage In the case fileStatus is FAILED, may contain details about the failure.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
         }
 
         /**
-         * @param verifyErrorMessage In the case file_status is FAILED, may contain details about the failure.
+         * @param verifyErrorMessage In the case fileStatus is FAILED, may contain details about the failure.
          * 
          * @return builder
          * 

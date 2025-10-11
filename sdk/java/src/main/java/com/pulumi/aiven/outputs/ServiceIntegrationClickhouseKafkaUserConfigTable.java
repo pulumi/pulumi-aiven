@@ -33,7 +33,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private String dataFormat;
     /**
-     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+     * @return Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
      * 
      */
     private @Nullable String dateTimeInputFormat;
@@ -156,7 +156,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
         return this.dataFormat;
     }
     /**
-     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+     * @return Enum: `basic`, `bestEffort`, `bestEffortUs`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `bestEffort` attempts more flexible parsing. Default: `basic`.
      * 
      */
     public Optional<String> dateTimeInputFormat() {

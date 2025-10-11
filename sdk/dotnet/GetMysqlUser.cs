@@ -156,7 +156,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
+        /// Authentication details. The possible values are `CachingSha2Password`, `MysqlNativePassword` and `Null`.
         /// </summary>
         public readonly string Authentication;
         /// <summary>

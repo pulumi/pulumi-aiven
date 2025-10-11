@@ -160,7 +160,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `Session`, `Statement` and `Transaction`. The default value is `Transaction`.
         /// </summary>
         public readonly string PoolMode;
         /// <summary>

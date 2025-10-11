@@ -40,7 +40,7 @@ public final class GetOrganizationAddressResult {
      */
     private String createTime;
     /**
-     * @return Resource ID, a composite of `organization_id` and `address_id` IDs.
+     * @return Resource ID, a composite of `organizationId` and `addressId` IDs.
      * 
      */
     private String id;
@@ -108,7 +108,7 @@ public final class GetOrganizationAddressResult {
         return this.createTime;
     }
     /**
-     * @return Resource ID, a composite of `organization_id` and `address_id` IDs.
+     * @return Resource ID, a composite of `organizationId` and `addressId` IDs.
      * 
      */
     public String id() {

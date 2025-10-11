@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable or disable top N query monitoring by the metric. Default: `false`.
+        /// Enable or disable top N query monitoring by the metric. Default: `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

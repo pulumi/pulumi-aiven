@@ -32,7 +32,7 @@ public final class GetAccountAuthenticationSamlFieldMapping {
      */
     private @Nullable String lastName;
     /**
-     * @return Field name for user&#39;s full name. If specified, first_name and last_name mappings are ignored
+     * @return Field name for user&#39;s full name. If specified, firstName and lastName mappings are ignored
      * 
      */
     private @Nullable String realName;
@@ -67,7 +67,7 @@ public final class GetAccountAuthenticationSamlFieldMapping {
         return Optional.ofNullable(this.lastName);
     }
     /**
-     * @return Field name for user&#39;s full name. If specified, first_name and last_name mappings are ignored
+     * @return Field name for user&#39;s full name. If specified, firstName and lastName mappings are ignored
      * 
      */
     public Optional<String> realName() {

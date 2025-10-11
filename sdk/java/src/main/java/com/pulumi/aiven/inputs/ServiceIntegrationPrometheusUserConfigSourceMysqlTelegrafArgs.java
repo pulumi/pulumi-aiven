@@ -62,14 +62,14 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
     }
 
     /**
-     * Gather auto_increment columns and max values from information schema.
+     * Gather autoIncrement columns and max values from information schema.
      * 
      */
     @Import(name="gatherInfoSchemaAutoInc")
     private @Nullable Output<Boolean> gatherInfoSchemaAutoInc;
 
     /**
-     * @return Gather auto_increment columns and max values from information schema.
+     * @return Gather autoIncrement columns and max values from information schema.
      * 
      */
     public Optional<Output<Boolean>> gatherInfoSchemaAutoInc() {
@@ -327,7 +327,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
         }
 
         /**
-         * @param gatherInfoSchemaAutoInc Gather auto_increment columns and max values from information schema.
+         * @param gatherInfoSchemaAutoInc Gather autoIncrement columns and max values from information schema.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
         }
 
         /**
-         * @param gatherInfoSchemaAutoInc Gather auto_increment columns and max values from information schema.
+         * @param gatherInfoSchemaAutoInc Gather autoIncrement columns and max values from information schema.
          * 
          * @return builder
          * 

@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods? KafkaAuthenticationMethods;
         /// <summary>
-        /// Enable Kafka Connect service. Default: `false`.
+        /// Enable Kafka Connect service. Default: `False`.
         /// </summary>
         public readonly bool? KafkaConnect;
         /// <summary>
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaDiskless? KafkaDiskless;
         /// <summary>
-        /// Enable Kafka-REST service. Default: `false`.
+        /// Enable Kafka-REST service. Default: `False`.
         /// </summary>
         public readonly bool? KafkaRest;
         /// <summary>
@@ -103,7 +103,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// Enable Schema-Registry service. Default: `false`.
+        /// Enable Schema-Registry service. Default: `False`.
         /// </summary>
         public readonly bool? SchemaRegistry;
         /// <summary>

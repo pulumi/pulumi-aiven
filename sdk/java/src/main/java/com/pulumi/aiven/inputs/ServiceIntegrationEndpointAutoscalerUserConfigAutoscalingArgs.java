@@ -31,14 +31,14 @@ public final class ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs
     }
 
     /**
-     * Enum: `autoscale_disk`. Type of autoscale event.
+     * Enum: `autoscaleDisk`. Type of autoscale event.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Enum: `autoscale_disk`. Type of autoscale event.
+     * @return Enum: `autoscaleDisk`. Type of autoscale event.
      * 
      */
     public Output<String> type() {
@@ -92,7 +92,7 @@ public final class ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs
         }
 
         /**
-         * @param type Enum: `autoscale_disk`. Type of autoscale event.
+         * @param type Enum: `autoscaleDisk`. Type of autoscale event.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs
         }
 
         /**
-         * @param type Enum: `autoscale_disk`. Type of autoscale event.
+         * @param type Enum: `autoscaleDisk`. Type of autoscale event.
          * 
          * @return builder
          * 

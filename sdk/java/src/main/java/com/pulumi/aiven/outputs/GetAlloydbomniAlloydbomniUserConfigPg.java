@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAlloydbomniAlloydbomniUserConfigPg {
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+     * @return Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     private @Nullable Double autovacuumAnalyzeScaleFactor;
@@ -40,17 +40,17 @@ public final class GetAlloydbomniAlloydbomniUserConfigPg {
      */
     private @Nullable Integer autovacuumNaptime;
     /**
-     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_delay value will be used. The default is `2` (upstream default).
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
      * 
      */
     private @Nullable Integer autovacuumVacuumCostDelay;
     /**
-     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_limit value will be used. The default is `-1` (upstream default).
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
      * 
      */
     private @Nullable Integer autovacuumVacuumCostLimit;
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+     * @return Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     private @Nullable Double autovacuumVacuumScaleFactor;
@@ -65,7 +65,7 @@ public final class GetAlloydbomniAlloydbomniUserConfigPg {
      */
     private @Nullable Integer bgwriterDelay;
     /**
-     * @return Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+     * @return Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
      * 
      */
     private @Nullable Integer bgwriterFlushAfter;
@@ -75,7 +75,7 @@ public final class GetAlloydbomniAlloydbomniUserConfigPg {
      */
     private @Nullable Integer bgwriterLruMaxpages;
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+     * @return The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
      * 
      */
     private @Nullable Double bgwriterLruMultiplier;
@@ -165,7 +165,7 @@ public final class GetAlloydbomniAlloydbomniUserConfigPg {
      */
     private @Nullable Integer maxReplicationSlots;
     /**
-     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal_keep_size minimum WAL size setting takes precedence over this.
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
      * 
      */
     private @Nullable Integer maxSlotWalKeepSize;
@@ -262,7 +262,7 @@ public final class GetAlloydbomniAlloydbomniUserConfigPg {
 
     private GetAlloydbomniAlloydbomniUserConfigPg() {}
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+     * @return Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     public Optional<Double> autovacuumAnalyzeScaleFactor() {
@@ -297,21 +297,21 @@ public final class GetAlloydbomniAlloydbomniUserConfigPg {
         return Optional.ofNullable(this.autovacuumNaptime);
     }
     /**
-     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_delay value will be used. The default is `2` (upstream default).
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
      * 
      */
     public Optional<Integer> autovacuumVacuumCostDelay() {
         return Optional.ofNullable(this.autovacuumVacuumCostDelay);
     }
     /**
-     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_limit value will be used. The default is `-1` (upstream default).
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
      * 
      */
     public Optional<Integer> autovacuumVacuumCostLimit() {
         return Optional.ofNullable(this.autovacuumVacuumCostLimit);
     }
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+     * @return Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     public Optional<Double> autovacuumVacuumScaleFactor() {
@@ -332,7 +332,7 @@ public final class GetAlloydbomniAlloydbomniUserConfigPg {
         return Optional.ofNullable(this.bgwriterDelay);
     }
     /**
-     * @return Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+     * @return Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
      * 
      */
     public Optional<Integer> bgwriterFlushAfter() {
@@ -346,7 +346,7 @@ public final class GetAlloydbomniAlloydbomniUserConfigPg {
         return Optional.ofNullable(this.bgwriterLruMaxpages);
     }
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+     * @return The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
      * 
      */
     public Optional<Double> bgwriterLruMultiplier() {
@@ -472,7 +472,7 @@ public final class GetAlloydbomniAlloydbomniUserConfigPg {
         return Optional.ofNullable(this.maxReplicationSlots);
     }
     /**
-     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal_keep_size minimum WAL size setting takes precedence over this.
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
      * 
      */
     public Optional<Integer> maxSlotWalKeepSize() {

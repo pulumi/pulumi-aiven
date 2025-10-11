@@ -28,7 +28,7 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
      */
     private @Nullable Boolean gatherIndexIoWaits;
     /**
-     * @return Gather auto_increment columns and max values from information schema.
+     * @return Gather autoIncrement columns and max values from information schema.
      * 
      */
     private @Nullable Boolean gatherInfoSchemaAutoInc;
@@ -106,7 +106,7 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
         return Optional.ofNullable(this.gatherIndexIoWaits);
     }
     /**
-     * @return Gather auto_increment columns and max values from information schema.
+     * @return Gather autoIncrement columns and max values from information schema.
      * 
      */
     public Optional<Boolean> gatherInfoSchemaAutoInc() {

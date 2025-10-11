@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Opensearch;
         /// <summary>
-        /// Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to OpensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? OpensearchDashboards;
         /// <summary>

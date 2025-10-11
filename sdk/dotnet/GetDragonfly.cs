@@ -145,7 +145,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDragonflyComponentResult> Components;
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `AdditionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
         /// </summary>
         public readonly string DiskSpace;
         /// <summary>
@@ -153,15 +153,15 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string DiskSpaceCap;
         /// <summary>
-        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `DiskSpace`
         /// </summary>
         public readonly string DiskSpaceDefault;
         /// <summary>
-        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `DiskSpace` needs to increment from `DiskSpaceDefault` by increments of this size.
         /// </summary>
         public readonly string DiskSpaceStep;
         /// <summary>
-        /// The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
+        /// The disk space that the service is currently using. This is the sum of `DiskSpace` and `AdditionalDiskSpace` in human-readable format (for example: `90GiB`).
         /// </summary>
         public readonly string DiskSpaceUsed;
         /// <summary>
@@ -189,7 +189,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string MaintenanceWindowTime;
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `Hobbyist`, `startup-x`, `business-x` and `premium-x` where `X` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         public readonly string Plan;
         /// <summary>
@@ -246,7 +246,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDragonflyTechEmailResult> TechEmails;
         /// <summary>
-        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+        /// Prevents the service from being deleted. It is recommended to set this to `True` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         public readonly bool TerminationProtection;
 

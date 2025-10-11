@@ -10526,12 +10526,16 @@ public final class AivenFunctions {
     /**
      * Gets information about an organizational unit.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetOrganizationalUnitResult> getOrganizationalUnit(GetOrganizationalUnitArgs args) {
         return getOrganizationalUnit(args, InvokeOptions.Empty);
     }
     /**
      * Gets information about an organizational unit.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetOrganizationalUnitResult> getOrganizationalUnitPlain(GetOrganizationalUnitPlainArgs args) {
@@ -10540,6 +10544,8 @@ public final class AivenFunctions {
     /**
      * Gets information about an organizational unit.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetOrganizationalUnitResult> getOrganizationalUnit(GetOrganizationalUnitArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationalUnit:getOrganizationalUnit", TypeShape.of(GetOrganizationalUnitResult.class), args, Utilities.withVersion(options));
@@ -10547,12 +10553,16 @@ public final class AivenFunctions {
     /**
      * Gets information about an organizational unit.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetOrganizationalUnitResult> getOrganizationalUnit(GetOrganizationalUnitArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationalUnit:getOrganizationalUnit", TypeShape.of(GetOrganizationalUnitResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an organizational unit.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetOrganizationalUnitResult> getOrganizationalUnitPlain(GetOrganizationalUnitPlainArgs args, InvokeOptions options) {

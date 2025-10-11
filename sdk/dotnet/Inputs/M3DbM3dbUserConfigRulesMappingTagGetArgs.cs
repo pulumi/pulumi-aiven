@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class M3DbM3dbUserConfigRulesMappingTagGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the tag. Example: `my_tag`.
+        /// Name of the tag. Example: `MyTag`.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Value of the tag. Example: `my_value`.
+        /// Value of the tag. Example: `MyValue`.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

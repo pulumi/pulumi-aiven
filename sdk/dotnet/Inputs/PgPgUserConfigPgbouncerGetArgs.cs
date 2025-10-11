@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? AutodbMaxDbConnections { get; set; }
 
         /// <summary>
-        /// Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
+        /// Enum: `Session`, `Statement`, `Transaction`. PGBouncer pool mode. Default: `Transaction`.
         /// </summary>
         [Input("autodbPoolMode")]
         public Input<string>? AutodbPoolMode { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ServerLifetime { get; set; }
 
         /// <summary>
-        /// Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+        /// Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `False`.
         /// </summary>
         [Input("serverResetQueryAlways")]
         public Input<bool>? ServerResetQueryAlways { get; set; }

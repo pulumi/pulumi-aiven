@@ -101,7 +101,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Status of account authentication method. The default value is `false`.
+        /// Status of account authentication method. The default value is `False`.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
@@ -153,7 +153,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string SamlVariant;
         /// <summary>
-        /// The account authentication type. The possible values are `internal` and `saml`.
+        /// The account authentication type. The possible values are `Internal` and `Saml`.
         /// </summary>
         public readonly string Type;
         /// <summary>

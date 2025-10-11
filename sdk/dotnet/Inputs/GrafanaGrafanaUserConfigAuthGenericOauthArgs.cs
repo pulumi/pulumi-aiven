@@ -61,7 +61,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? AutoLogin { get; set; }
 
         /// <summary>
-        /// Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
+        /// Client ID from provider. Example: `B1ba0bf54a4c2c0a1c29`.
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _clientSecret;
 
         /// <summary>
-        /// Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
+        /// Client secret from provider. Example: `Bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
         /// </summary>
         public Input<string>? ClientSecret
         {

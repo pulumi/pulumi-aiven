@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable or disable OpenSearch Dashboards. Default: `true`.
+        /// Enable or disable OpenSearch Dashboards. Default: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxOldSpaceSize { get; set; }
 
         /// <summary>
-        /// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+        /// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `True`.
         /// </summary>
         [Input("multipleDataSourceEnabled")]
         public Input<bool>? MultipleDataSourceEnabled { get; set; }

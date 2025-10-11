@@ -48,14 +48,14 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="redisAclCategories")
     private @Nullable Output<List<String>> redisAclCategories;
 
     /**
-     * @return Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> redisAclCategories() {
@@ -78,14 +78,14 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="redisAclCommands")
     private @Nullable Output<List<String>> redisAclCommands;
 
     /**
-     * @return Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> redisAclCommands() {
@@ -93,14 +93,14 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="redisAclKeys")
     private @Nullable Output<List<String>> redisAclKeys;
 
     /**
-     * @return Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> redisAclKeys() {
@@ -211,7 +211,7 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCategories Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+         * @param redisAclCategories Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCategories Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+         * @param redisAclCategories Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCategories Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+         * @param redisAclCategories Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCommands Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+         * @param redisAclCommands Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCommands Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+         * @param redisAclCommands Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCommands Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+         * @param redisAclCommands Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclKeys Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+         * @param redisAclKeys Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclKeys Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+         * @param redisAclKeys Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class RedisUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclKeys Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
+         * @param redisAclKeys Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? AutoCreateTopicsEnable;
         /// <summary>
-        /// Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+        /// Enum: `Gzip`, `Lz4`, `Producer`, `Snappy`, `Uncompressed`, `Zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`Gzip`, `Snappy`, `Lz4`, `Zstd`). It additionally accepts `Uncompressed` which is equivalent to no compression; and `Producer` which means retain the original compression codec set by the producer.(Default: producer).
         /// </summary>
         public readonly string? CompressionType;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogCleanerMinCompactionLagMs;
         /// <summary>
-        /// Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+        /// Enum: `Compact`, `compact,delete`, `Delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
         /// </summary>
         public readonly string? LogCleanupPolicy;
         /// <summary>
@@ -150,7 +150,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MessageMaxBytes;
         /// <summary>
-        /// When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. (Default: 1). Example: `1`.
+        /// When a producer sets acks to `All` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. (Default: 1). Example: `1`.
         /// </summary>
         public readonly int? MinInsyncReplicas;
         /// <summary>

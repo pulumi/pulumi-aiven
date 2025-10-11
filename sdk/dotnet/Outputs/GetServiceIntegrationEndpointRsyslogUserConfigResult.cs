@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Cert;
         /// <summary>
-        /// Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
+        /// Enum: `Custom`, `Rfc3164`, `Rfc5424`. Message format. Default: `Rfc5424`.
         /// </summary>
         public readonly string Format;
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Server;
         /// <summary>
-        /// Require TLS. Default: `true`.
+        /// Require TLS. Default: `True`.
         /// </summary>
         public readonly bool Tls;
 

@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric
     {
         /// <summary>
-        /// Identifier of a value in the metric. Example: `used`.
+        /// Identifier of a value in the metric. Example: `Used`.
         /// </summary>
         public readonly string Field;
         /// <summary>

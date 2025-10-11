@@ -19,13 +19,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Clickhouse { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to ClickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("clickhouseHttps")]
         public Input<bool>? ClickhouseHttps { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to ClickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("clickhouseMysql")]
         public Input<bool>? ClickhouseMysql { get; set; }

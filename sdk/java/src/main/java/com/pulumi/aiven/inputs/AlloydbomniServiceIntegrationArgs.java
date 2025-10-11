@@ -15,14 +15,14 @@ public final class AlloydbomniServiceIntegrationArgs extends com.pulumi.resource
     public static final AlloydbomniServiceIntegrationArgs Empty = new AlloydbomniServiceIntegrationArgs();
 
     /**
-     * Type of the service integration. The possible value is `read_replica`.
+     * Type of the service integration. The possible value is `readReplica`.
      * 
      */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration. The possible value is `read_replica`.
+     * @return Type of the service integration. The possible value is `readReplica`.
      * 
      */
     public Output<String> integrationType() {
@@ -70,7 +70,7 @@ public final class AlloydbomniServiceIntegrationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param integrationType Type of the service integration. The possible value is `read_replica`.
+         * @param integrationType Type of the service integration. The possible value is `readReplica`.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class AlloydbomniServiceIntegrationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param integrationType Type of the service integration. The possible value is `read_replica`.
+         * @param integrationType Type of the service integration. The possible value is `readReplica`.
          * 
          * @return builder
          * 

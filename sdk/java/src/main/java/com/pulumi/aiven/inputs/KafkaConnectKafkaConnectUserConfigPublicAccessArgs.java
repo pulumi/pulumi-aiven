@@ -16,14 +16,14 @@ public final class KafkaConnectKafkaConnectUserConfigPublicAccessArgs extends co
     public static final KafkaConnectKafkaConnectUserConfigPublicAccessArgs Empty = new KafkaConnectKafkaConnectUserConfigPublicAccessArgs();
 
     /**
-     * Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+     * Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="kafkaConnect")
     private @Nullable Output<Boolean> kafkaConnect;
 
     /**
-     * @return Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> kafkaConnect() {
@@ -71,7 +71,7 @@ public final class KafkaConnectKafkaConnectUserConfigPublicAccessArgs extends co
         }
 
         /**
-         * @param kafkaConnect Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param kafkaConnect Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class KafkaConnectKafkaConnectUserConfigPublicAccessArgs extends co
         }
 
         /**
-         * @param kafkaConnect Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param kafkaConnect Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 

@@ -97,7 +97,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? DeadlockTimeout { get; set; }
 
         /// <summary>
-        /// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
+        /// Enum: `Lz4`, `Pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `Lz4`.
         /// </summary>
         [Input("defaultToastCompression")]
         public Input<string>? DefaultToastCompression { get; set; }
@@ -235,7 +235,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxWorkerProcesses { get; set; }
 
         /// <summary>
-        /// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
+        /// Enum: `Md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
         /// </summary>
         [Input("passwordEncryption")]
         public Input<string>? PasswordEncryption { get; set; }
@@ -247,13 +247,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? PgPartmanBgwDotInterval { get; set; }
 
         /// <summary>
-        /// Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
+        /// Controls which role to use for pg_partman's scheduled background tasks. Example: `Myrolename`.
         /// </summary>
         [Input("pgPartmanBgwDotRole")]
         public Input<string>? PgPartmanBgwDotRole { get; set; }
 
         /// <summary>
-        /// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
+        /// Enum: `All`, `None`, `Top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `Top`.
         /// </summary>
         [Input("pgStatStatementsDotTrack")]
         public Input<string>? PgStatStatementsDotTrack { get; set; }
@@ -277,19 +277,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? TrackActivityQuerySize { get; set; }
 
         /// <summary>
-        /// Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
+        /// Enum: `Off`, `On`. Record commit time of transactions. Changing this parameter causes a service restart.
         /// </summary>
         [Input("trackCommitTimestamp")]
         public Input<string>? TrackCommitTimestamp { get; set; }
 
         /// <summary>
-        /// Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
+        /// Enum: `All`, `None`, `Pl`. Enables tracking of function call counts and time used.
         /// </summary>
         [Input("trackFunctions")]
         public Input<string>? TrackFunctions { get; set; }
 
         /// <summary>
-        /// Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        /// Enum: `Off`, `On`. Enables timing of database I/O calls. The default is `Off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
         /// </summary>
         [Input("trackIoTiming")]
         public Input<string>? TrackIoTiming { get; set; }

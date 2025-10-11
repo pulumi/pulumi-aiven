@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointExternalPostgresqlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default database. Example: `testdb`.
+        /// Default database. Example: `Testdb`.
         /// </summary>
         [Input("defaultDatabase")]
         public Input<string>? DefaultDatabase { get; set; }
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+        /// Enum: `Allow`, `Disable`, `Prefer`, `Require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         /// </summary>
         [Input("sslMode")]
         public Input<string>? SslMode { get; set; }
@@ -89,7 +89,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SslRootCert { get; set; }
 
         /// <summary>
-        /// User name. Example: `myname`.
+        /// User name. Example: `Myname`.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;

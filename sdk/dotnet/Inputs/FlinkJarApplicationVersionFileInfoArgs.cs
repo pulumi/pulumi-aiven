@@ -37,13 +37,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        /// In the case FileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
         /// </summary>
         [Input("verifyErrorCode")]
         public Input<int>? VerifyErrorCode { get; set; }
 
         /// <summary>
-        /// In the case file_status is FAILED, may contain details about the failure.
+        /// In the case FileStatus is FAILED, may contain details about the failure.
         /// </summary>
         [Input("verifyErrorMessage")]
         public Input<string>? VerifyErrorMessage { get; set; }

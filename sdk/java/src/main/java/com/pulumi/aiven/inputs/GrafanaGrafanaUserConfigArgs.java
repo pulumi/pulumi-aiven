@@ -61,14 +61,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
+     * Enum: `alerting`, `keepState`. Default error or timeout setting for new alerting rules.
      * 
      */
     @Import(name="alertingErrorOrTimeout")
     private @Nullable Output<String> alertingErrorOrTimeout;
 
     /**
-     * @return Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
+     * @return Enum: `alerting`, `keepState`. Default error or timeout setting for new alerting rules.
      * 
      */
     public Optional<Output<String>> alertingErrorOrTimeout() {
@@ -91,14 +91,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+     * Enum: `alerting`, `keepState`, `noData`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     @Import(name="alertingNodataOrNullvalues")
     private @Nullable Output<String> alertingNodataOrNullvalues;
 
     /**
-     * @return Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+     * @return Enum: `alerting`, `keepState`, `noData`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     public Optional<Output<String>> alertingNodataOrNullvalues() {
@@ -439,10 +439,10 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
@@ -450,10 +450,10 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -624,14 +624,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
+     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
      * 
      */
     @Import(name="unifiedAlertingEnabled")
     private @Nullable Output<Boolean> unifiedAlertingEnabled;
 
     /**
-     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
+     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
      * 
      */
     public Optional<Output<Boolean>> unifiedAlertingEnabled() {
@@ -808,7 +808,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingErrorOrTimeout Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
+         * @param alertingErrorOrTimeout Enum: `alerting`, `keepState`. Default error or timeout setting for new alerting rules.
          * 
          * @return builder
          * 
@@ -819,7 +819,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingErrorOrTimeout Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
+         * @param alertingErrorOrTimeout Enum: `alerting`, `keepState`. Default error or timeout setting for new alerting rules.
          * 
          * @return builder
          * 
@@ -850,7 +850,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingNodataOrNullvalues Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+         * @param alertingNodataOrNullvalues Enum: `alerting`, `keepState`, `noData`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
          * 
          * @return builder
          * 
@@ -861,7 +861,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingNodataOrNullvalues Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+         * @param alertingNodataOrNullvalues Enum: `alerting`, `keepState`, `noData`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
          * 
          * @return builder
          * 
@@ -1358,10 +1358,10 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -1373,10 +1373,10 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -1387,10 +1387,10 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
@@ -1627,7 +1627,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
+         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
          * 
          * @return builder
          * 
@@ -1638,7 +1638,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
+         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
          * 
          * @return builder
          * 

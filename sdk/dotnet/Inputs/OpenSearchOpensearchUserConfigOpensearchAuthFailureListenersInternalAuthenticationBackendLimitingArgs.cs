@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? AllowedTries { get; set; }
 
         /// <summary>
-        /// Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
+        /// Enum: `Internal`. internal*authentication*backend*limiting.authentication*backend.
         /// </summary>
         [Input("authenticationBackend")]
         public Input<string>? AuthenticationBackend { get; set; }
@@ -43,13 +43,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxTrackedClients { get; set; }
 
         /// <summary>
-        /// The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+        /// The window of time in which the value for `AllowedTries` is enforced. Example: `3600`.
         /// </summary>
         [Input("timeWindowSeconds")]
         public Input<int>? TimeWindowSeconds { get; set; }
 
         /// <summary>
-        /// Enum: `username`. internal*authentication*backend_limiting.type.
+        /// Enum: `Username`. internal*authentication*backend_limiting.type.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

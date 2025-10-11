@@ -14,19 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class AlloydbomniAlloydbomniUserConfigPgaudit
     {
         /// <summary>
-        /// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+        /// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `False`.
         /// </summary>
         public readonly bool? FeatureEnabled;
         /// <summary>
-        /// Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
+        /// Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `True`.
         /// </summary>
         public readonly bool? LogCatalog;
         /// <summary>
-        /// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+        /// Specifies whether log messages will be visible to a client process such as psql. Default: `False`.
         /// </summary>
         public readonly bool? LogClient;
         /// <summary>
-        /// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+        /// Enum: `Debug1`, `Debug2`, `Debug3`, `Debug4`, `Debug5`, `Info`, `Log`, `Notice`, `Warning`. Specifies the log level that will be used for log entries. Default: `Log`.
         /// </summary>
         public readonly string? LogLevel;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogMaxStringLength;
         /// <summary>
-        /// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+        /// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `True`.
         /// </summary>
         public readonly bool? LogNestedStatements;
         /// <summary>
-        /// Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+        /// Specifies that audit logging should include the parameters that were passed with the statement. Default: `False`.
         /// </summary>
         public readonly bool? LogParameter;
         /// <summary>
@@ -46,19 +46,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogParameterMaxSize;
         /// <summary>
-        /// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+        /// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `False`.
         /// </summary>
         public readonly bool? LogRelation;
         /// <summary>
-        /// Log Rows. Default: `false`.
+        /// Log Rows. Default: `False`.
         /// </summary>
         public readonly bool? LogRows;
         /// <summary>
-        /// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+        /// Specifies whether logging will include the statement text and parameters (if enabled). Default: `True`.
         /// </summary>
         public readonly bool? LogStatement;
         /// <summary>
-        /// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+        /// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `False`.
         /// </summary>
         public readonly bool? LogStatementOnce;
         /// <summary>

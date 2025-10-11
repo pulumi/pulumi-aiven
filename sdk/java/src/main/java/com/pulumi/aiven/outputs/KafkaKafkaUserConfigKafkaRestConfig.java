@@ -34,7 +34,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
      */
     private @Nullable Integer consumerRequestTimeoutMs;
     /**
-     * @return Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+     * @return Enum: `recordName`, `topicName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `topicName`.
      * 
      */
     private @Nullable String nameStrategy;
@@ -99,7 +99,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
         return Optional.ofNullable(this.consumerRequestTimeoutMs);
     }
     /**
-     * @return Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+     * @return Enum: `recordName`, `topicName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `topicName`.
      * 
      */
     public Optional<String> nameStrategy() {

@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxRecentlyQueriedSeriesDiskBytesRead;
         /// <summary>
-        /// The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
+        /// The lookback period for `MaxRecentlyQueriedSeriesBlocks` and `MaxRecentlyQueriedSeriesDiskBytesRead`. Example: `15s`.
         /// </summary>
         public readonly string? MaxRecentlyQueriedSeriesLookback;
         /// <summary>

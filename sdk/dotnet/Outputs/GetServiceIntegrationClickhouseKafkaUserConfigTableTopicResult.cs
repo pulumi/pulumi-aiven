@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationClickhouseKafkaUserConfigTableTopicResult
     {
         /// <summary>
-        /// The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
+        /// The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `TopicName`.
         /// </summary>
         public readonly string Name;
 

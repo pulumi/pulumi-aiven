@@ -78,14 +78,14 @@ public final class KafkaConnectComponentArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
      * 
      */
     @Import(name="kafkaSslCa")
     private @Nullable Output<String> kafkaSslCa;
 
     /**
-     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
      * 
      */
     public Optional<Output<String>> kafkaSslCa() {
@@ -269,7 +269,7 @@ public final class KafkaConnectComponentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param kafkaSslCa Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+         * @param kafkaSslCa Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class KafkaConnectComponentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param kafkaSslCa Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+         * @param kafkaSslCa Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
          * 
          * @return builder
          * 

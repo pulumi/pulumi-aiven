@@ -22,15 +22,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Query;
         /// <summary>
-        /// Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to QueryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? QueryFrontend;
         /// <summary>
-        /// Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to ReceiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? ReceiverIngesting;
         /// <summary>
-        /// Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to ReceiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? ReceiverRouting;
         /// <summary>

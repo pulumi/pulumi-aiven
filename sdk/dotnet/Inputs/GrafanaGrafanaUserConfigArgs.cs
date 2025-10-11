@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? AlertingEnabled { get; set; }
 
         /// <summary>
-        /// Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
+        /// Enum: `Alerting`, `KeepState`. Default error or timeout setting for new alerting rules.
         /// </summary>
         [Input("alertingErrorOrTimeout")]
         public Input<string>? AlertingErrorOrTimeout { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? AlertingMaxAnnotationsToKeep { get; set; }
 
         /// <summary>
-        /// Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for 'no data or null values' for new alerting rules.
+        /// Enum: `Alerting`, `KeepState`, `NoData`, `Ok`. Default value for 'no data or null values' for new alerting rules.
         /// </summary>
         [Input("alertingNodataOrNullvalues")]
         public Input<string>? AlertingNodataOrNullvalues { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.GrafanaGrafanaUserConfigAuthGoogleArgs>? AuthGoogle { get; set; }
 
         /// <summary>
-        /// Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+        /// Enum: `Lax`, `None`, `Strict`. Cookie SameSite attribute: `Strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `Lax` is the default value.
         /// </summary>
         [Input("cookieSamesite")]
         public Input<string>? CookieSamesite { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
-        [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
+        [Obsolete(@"Deprecated. Use `IpFilterString` instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -224,7 +224,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.GrafanaGrafanaUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `Anotherprojectname`.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ServiceLog { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
@@ -266,7 +266,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? StaticIps { get; set; }
 
         /// <summary>
-        /// Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
+        /// Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and AlertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
         /// </summary>
         [Input("unifiedAlertingEnabled")]
         public Input<bool>? UnifiedAlertingEnabled { get; set; }

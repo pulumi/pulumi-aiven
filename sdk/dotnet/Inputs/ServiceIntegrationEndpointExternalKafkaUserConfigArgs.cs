@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _saslPlainPassword;
 
         /// <summary>
-        /// Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+        /// Password for SASL PLAIN mechanism in the Kafka server. Example: `Admin`.
         /// </summary>
         public Input<string>? SaslPlainPassword
         {
@@ -41,7 +41,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+        /// Username for SASL PLAIN mechanism in the Kafka server. Example: `Admin`.
         /// </summary>
         [Input("saslPlainUsername")]
         public Input<string>? SaslPlainUsername { get; set; }
@@ -90,7 +90,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
+        /// Enum: `Https`. The endpoint identification algorithm to validate server hostname using server certificate.
         /// </summary>
         [Input("sslEndpointIdentificationAlgorithm")]
         public Input<string>? SslEndpointIdentificationAlgorithm { get; set; }

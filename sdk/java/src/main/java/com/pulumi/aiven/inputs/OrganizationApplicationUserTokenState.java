@@ -35,14 +35,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * True for tokens explicitly created via the access_tokens API, false for tokens created via login.
+     * True for tokens explicitly created via the accessTokens API, false for tokens created via login.
      * 
      */
     @Import(name="createdManually")
     private @Nullable Output<Boolean> createdManually;
 
     /**
-     * @return True for tokens explicitly created via the access_tokens API, false for tokens created via login.
+     * @return True for tokens explicitly created via the accessTokens API, false for tokens created via login.
      * 
      */
     public Optional<Output<Boolean>> createdManually() {
@@ -344,7 +344,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param createdManually True for tokens explicitly created via the access_tokens API, false for tokens created via login.
+         * @param createdManually True for tokens explicitly created via the accessTokens API, false for tokens created via login.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param createdManually True for tokens explicitly created via the access_tokens API, false for tokens created via login.
+         * @param createdManually True for tokens explicitly created via the accessTokens API, false for tokens created via login.
          * 
          * @return builder
          * 

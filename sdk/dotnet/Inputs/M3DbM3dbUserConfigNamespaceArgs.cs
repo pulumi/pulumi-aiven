@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class M3DbM3dbUserConfigNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the namespace. Example: `default`.
+        /// The name of the namespace. Example: `Default`.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Resolution { get; set; }
 
         /// <summary>
-        /// Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
+        /// Enum: `Aggregated`, `Unaggregated`. The type of aggregation (aggregated/unaggregated).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

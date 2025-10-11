@@ -58,7 +58,7 @@ namespace Pulumi.Aiven
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `Session`, `Statement` and `Transaction`. The default value is `Transaction`.
         /// </summary>
         [Output("poolMode")]
         public Output<string?> PoolMode { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Aiven
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `Session`, `Statement` and `Transaction`. The default value is `Transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.Aiven
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `Session`, `Statement` and `Transaction`. The default value is `Transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }

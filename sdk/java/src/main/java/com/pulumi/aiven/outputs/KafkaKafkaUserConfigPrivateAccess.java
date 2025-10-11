@@ -17,12 +17,12 @@ public final class KafkaKafkaUserConfigPrivateAccess {
      */
     private @Nullable Boolean kafka;
     /**
-     * @return Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean kafkaConnect;
     /**
-     * @return Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to kafkaRest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean kafkaRest;
@@ -32,7 +32,7 @@ public final class KafkaKafkaUserConfigPrivateAccess {
      */
     private @Nullable Boolean prometheus;
     /**
-     * @return Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to schemaRegistry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean schemaRegistry;
@@ -46,14 +46,14 @@ public final class KafkaKafkaUserConfigPrivateAccess {
         return Optional.ofNullable(this.kafka);
     }
     /**
-     * @return Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
     /**
-     * @return Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to kafkaRest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> kafkaRest() {
@@ -67,7 +67,7 @@ public final class KafkaKafkaUserConfigPrivateAccess {
         return Optional.ofNullable(this.prometheus);
     }
     /**
-     * @return Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to schemaRegistry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> schemaRegistry() {

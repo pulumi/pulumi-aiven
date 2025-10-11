@@ -37,7 +37,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean alertingEnabled;
     /**
-     * @return Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
+     * @return Enum: `alerting`, `keepState`. Default error or timeout setting for new alerting rules.
      * 
      */
     private @Nullable String alertingErrorOrTimeout;
@@ -47,7 +47,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Integer alertingMaxAnnotationsToKeep;
     /**
-     * @return Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+     * @return Enum: `alerting`, `keepState`, `noData`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     private @Nullable String alertingNodataOrNullvalues;
@@ -165,10 +165,10 @@ public final class GrafanaGrafanaUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Enable Grafana&#39;s /metrics endpoint.
@@ -226,7 +226,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean staticIps;
     /**
-     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
+     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
      * 
      */
     private @Nullable Boolean unifiedAlertingEnabled;
@@ -267,7 +267,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.alertingEnabled);
     }
     /**
-     * @return Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
+     * @return Enum: `alerting`, `keepState`. Default error or timeout setting for new alerting rules.
      * 
      */
     public Optional<String> alertingErrorOrTimeout() {
@@ -281,7 +281,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.alertingMaxAnnotationsToKeep);
     }
     /**
-     * @return Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+     * @return Enum: `alerting`, `keepState`, `noData`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     public Optional<String> alertingNodataOrNullvalues() {
@@ -445,10 +445,10 @@ public final class GrafanaGrafanaUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -530,7 +530,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.staticIps);
     }
     /**
-     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
+     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
      * 
      */
     public Optional<Boolean> unifiedAlertingEnabled() {

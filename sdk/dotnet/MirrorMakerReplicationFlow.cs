@@ -69,13 +69,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> ConfigPropertiesExcludes { get; private set; } = null!;
 
         /// <summary>
-        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `False`.
         /// </summary>
         [Output("emitBackwardHeartbeatsEnabled")]
         public Output<bool?> EmitBackwardHeartbeatsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Enables emitting heartbeats to the target cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the target cluster. The default value is `False`.
         /// </summary>
         [Output("emitHeartbeatsEnabled")]
         public Output<bool?> EmitHeartbeatsEnabled { get; private set; } = null!;
@@ -87,13 +87,13 @@ namespace Pulumi.Aiven
         public Output<bool> Enable { get; private set; } = null!;
 
         /// <summary>
-        /// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+        /// Enables exactly-once message delivery. Set this to `Enabled` for new replications. The default value is `False`.
         /// </summary>
         [Output("exactlyOnceDeliveryEnabled")]
         public Output<bool?> ExactlyOnceDeliveryEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Offset syncs topic location. The possible values are `source` and `target`.
+        /// Offset syncs topic location. The possible values are `Source` and `Target`.
         /// </summary>
         [Output("offsetSyncsTopicLocation")]
         public Output<string> OffsetSyncsTopicLocation { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Aiven
         public Output<string> SourceCluster { get; private set; } = null!;
 
         /// <summary>
-        /// Sync consumer group offsets. The default value is `false`.
+        /// Sync consumer group offsets. The default value is `False`.
         /// </summary>
         [Output("syncGroupOffsetsEnabled")]
         public Output<bool?> SyncGroupOffsetsEnabled { get; private set; } = null!;
@@ -217,13 +217,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `False`.
         /// </summary>
         [Input("emitBackwardHeartbeatsEnabled")]
         public Input<bool>? EmitBackwardHeartbeatsEnabled { get; set; }
 
         /// <summary>
-        /// Enables emitting heartbeats to the target cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the target cluster. The default value is `False`.
         /// </summary>
         [Input("emitHeartbeatsEnabled")]
         public Input<bool>? EmitHeartbeatsEnabled { get; set; }
@@ -235,13 +235,13 @@ namespace Pulumi.Aiven
         public Input<bool> Enable { get; set; } = null!;
 
         /// <summary>
-        /// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+        /// Enables exactly-once message delivery. Set this to `Enabled` for new replications. The default value is `False`.
         /// </summary>
         [Input("exactlyOnceDeliveryEnabled")]
         public Input<bool>? ExactlyOnceDeliveryEnabled { get; set; }
 
         /// <summary>
-        /// Offset syncs topic location. The possible values are `source` and `target`.
+        /// Offset syncs topic location. The possible values are `Source` and `Target`.
         /// </summary>
         [Input("offsetSyncsTopicLocation", required: true)]
         public Input<string> OffsetSyncsTopicLocation { get; set; } = null!;
@@ -277,7 +277,7 @@ namespace Pulumi.Aiven
         public Input<string> SourceCluster { get; set; } = null!;
 
         /// <summary>
-        /// Sync consumer group offsets. The default value is `false`.
+        /// Sync consumer group offsets. The default value is `False`.
         /// </summary>
         [Input("syncGroupOffsetsEnabled")]
         public Input<bool>? SyncGroupOffsetsEnabled { get; set; }
@@ -339,13 +339,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `False`.
         /// </summary>
         [Input("emitBackwardHeartbeatsEnabled")]
         public Input<bool>? EmitBackwardHeartbeatsEnabled { get; set; }
 
         /// <summary>
-        /// Enables emitting heartbeats to the target cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the target cluster. The default value is `False`.
         /// </summary>
         [Input("emitHeartbeatsEnabled")]
         public Input<bool>? EmitHeartbeatsEnabled { get; set; }
@@ -357,13 +357,13 @@ namespace Pulumi.Aiven
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+        /// Enables exactly-once message delivery. Set this to `Enabled` for new replications. The default value is `False`.
         /// </summary>
         [Input("exactlyOnceDeliveryEnabled")]
         public Input<bool>? ExactlyOnceDeliveryEnabled { get; set; }
 
         /// <summary>
-        /// Offset syncs topic location. The possible values are `source` and `target`.
+        /// Offset syncs topic location. The possible values are `Source` and `Target`.
         /// </summary>
         [Input("offsetSyncsTopicLocation")]
         public Input<string>? OffsetSyncsTopicLocation { get; set; }
@@ -399,7 +399,7 @@ namespace Pulumi.Aiven
         public Input<string>? SourceCluster { get; set; }
 
         /// <summary>
-        /// Sync consumer group offsets. The default value is `false`.
+        /// Sync consumer group offsets. The default value is `False`.
         /// </summary>
         [Input("syncGroupOffsetsEnabled")]
         public Input<bool>? SyncGroupOffsetsEnabled { get; set; }

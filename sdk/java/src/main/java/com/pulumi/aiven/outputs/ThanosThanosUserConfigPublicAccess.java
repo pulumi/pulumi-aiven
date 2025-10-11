@@ -22,17 +22,17 @@ public final class ThanosThanosUserConfigPublicAccess {
      */
     private @Nullable Boolean query;
     /**
-     * @return Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean queryFrontend;
     /**
-     * @return Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean receiverIngesting;
     /**
-     * @return Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean receiverRouting;
@@ -63,21 +63,21 @@ public final class ThanosThanosUserConfigPublicAccess {
         return Optional.ofNullable(this.query);
     }
     /**
-     * @return Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> queryFrontend() {
         return Optional.ofNullable(this.queryFrontend);
     }
     /**
-     * @return Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> receiverIngesting() {
         return Optional.ofNullable(this.receiverIngesting);
     }
     /**
-     * @return Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> receiverRouting() {

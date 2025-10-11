@@ -21,7 +21,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
      */
     private String projectId;
     /**
-     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;serviceAccount&#34;, ...`.
      * 
      */
     private String serviceAccountCredentials;
@@ -42,7 +42,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         return this.projectId;
     }
     /**
-     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;serviceAccount&#34;, ...`.
      * 
      */
     public String serviceAccountCredentials() {

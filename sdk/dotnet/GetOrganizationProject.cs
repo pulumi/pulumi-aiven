@@ -175,7 +175,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CaCert;
         /// <summary>
-        /// Resource ID, a composite of `organization_id` and `project_id` IDs.
+        /// Resource ID, a composite of `OrganizationId` and `ProjectId` IDs.
         /// </summary>
         public readonly string Id;
         /// <summary>

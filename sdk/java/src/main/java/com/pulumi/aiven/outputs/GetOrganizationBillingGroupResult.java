@@ -50,7 +50,7 @@ public final class GetOrganizationBillingGroupResult {
      */
     private String customInvoiceText;
     /**
-     * @return Resource ID, a composite of `organization_id` and `billing_group_id` IDs.
+     * @return Resource ID, a composite of `organizationId` and `billingGroupId` IDs.
      * 
      */
     private String id;
@@ -127,7 +127,7 @@ public final class GetOrganizationBillingGroupResult {
         return this.customInvoiceText;
     }
     /**
-     * @return Resource ID, a composite of `organization_id` and `billing_group_id` IDs.
+     * @return Resource ID, a composite of `organizationId` and `billingGroupId` IDs.
      * 
      */
     public String id() {

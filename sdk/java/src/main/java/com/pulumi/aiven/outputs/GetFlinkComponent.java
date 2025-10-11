@@ -33,7 +33,7 @@ public final class GetFlinkComponent {
      */
     private String kafkaAuthenticationMethod;
     /**
-     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
      * 
      */
     private String kafkaSslCa;
@@ -88,7 +88,7 @@ public final class GetFlinkComponent {
         return this.kafkaAuthenticationMethod;
     }
     /**
-     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
      * 
      */
     public String kafkaSslCa() {

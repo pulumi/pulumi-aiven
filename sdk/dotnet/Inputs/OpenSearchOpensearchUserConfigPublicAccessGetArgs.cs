@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Opensearch { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to OpensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("opensearchDashboards")]
         public Input<bool>? OpensearchDashboards { get; set; }

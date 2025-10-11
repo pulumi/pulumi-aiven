@@ -6,6 +6,8 @@ import * as utilities from "./utilities";
 
 /**
  * Gets information about an organizational unit.
+ *
+ * ## Example Usage
  */
 export function getOrganizationalUnit(args: GetOrganizationalUnitArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationalUnitResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,6 +57,8 @@ export interface GetOrganizationalUnitResult {
 }
 /**
  * Gets information about an organizational unit.
+ *
+ * ## Example Usage
  */
 export function getOrganizationalUnitOutput(args: GetOrganizationalUnitOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationalUnitResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

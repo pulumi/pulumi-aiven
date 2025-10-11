@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ElasticsearchIndexDaysMax;
         /// <summary>
-        /// Elasticsearch index prefix. Default: `logs`.
+        /// Elasticsearch index prefix. Default: `Logs`.
         /// </summary>
         public readonly string? ElasticsearchIndexPrefix;
         /// <summary>

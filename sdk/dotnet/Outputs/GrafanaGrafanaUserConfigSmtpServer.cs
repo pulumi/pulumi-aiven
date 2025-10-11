@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? StarttlsPolicy;
         /// <summary>
-        /// Username for SMTP authentication. Example: `smtpuser`.
+        /// Username for SMTP authentication. Example: `Smtpuser`.
         /// </summary>
         public readonly string? Username;
 

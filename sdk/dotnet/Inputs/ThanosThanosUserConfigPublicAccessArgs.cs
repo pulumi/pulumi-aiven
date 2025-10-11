@@ -25,19 +25,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Query { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to QueryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("queryFrontend")]
         public Input<bool>? QueryFrontend { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to ReceiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("receiverIngesting")]
         public Input<bool>? ReceiverIngesting { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to ReceiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("receiverRouting")]
         public Input<bool>? ReceiverRouting { get; set; }

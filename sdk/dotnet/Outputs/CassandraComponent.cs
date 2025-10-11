@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? KafkaAuthenticationMethod;
         /// <summary>
-        /// Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        /// Kafka certificate used. The possible values are `Letsencrypt` and `ProjectCa`.
         /// </summary>
         public readonly string? KafkaSslCa;
         /// <summary>

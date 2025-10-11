@@ -112,7 +112,7 @@ namespace Pulumi.Aiven
         public string Component { get; set; } = null!;
 
         /// <summary>
-        /// Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
+        /// Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `Certificate` and `Sasl`.
         /// </summary>
         [Input("kafkaAuthenticationMethod")]
         public string? KafkaAuthenticationMethod { get; set; }
@@ -124,7 +124,7 @@ namespace Pulumi.Aiven
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
+        /// Network access route. The possible values are `Dynamic`, `Private`, `Privatelink` and `Public`.
         /// </summary>
         [Input("route")]
         public string? Route { get; set; }
@@ -142,7 +142,7 @@ namespace Pulumi.Aiven
         public bool? Ssl { get; set; }
 
         /// <summary>
-        /// DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
+        /// DNS usage name. The possible values are `DisasterRecovery`, `Primary` and `Replica`.
         /// </summary>
         [Input("usage")]
         public string? Usage { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.Aiven
         public Input<string> Component { get; set; } = null!;
 
         /// <summary>
-        /// Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
+        /// Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `Certificate` and `Sasl`.
         /// </summary>
         [Input("kafkaAuthenticationMethod")]
         public Input<string>? KafkaAuthenticationMethod { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
+        /// Network access route. The possible values are `Dynamic`, `Private`, `Privatelink` and `Public`.
         /// </summary>
         [Input("route")]
         public Input<string>? Route { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.Aiven
         public Input<bool>? Ssl { get; set; }
 
         /// <summary>
-        /// DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
+        /// DNS usage name. The possible values are `DisasterRecovery`, `Primary` and `Replica`.
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }
@@ -220,11 +220,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
+        /// Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `Certificate` and `Sasl`.
         /// </summary>
         public readonly string? KafkaAuthenticationMethod;
         /// <summary>
-        /// Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        /// Kafka certificate used. The possible values are `Letsencrypt` and `ProjectCa`.
         /// </summary>
         public readonly string KafkaSslCa;
         /// <summary>
@@ -236,7 +236,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
+        /// Network access route. The possible values are `Dynamic`, `Private`, `Privatelink` and `Public`.
         /// </summary>
         public readonly string? Route;
         /// <summary>
@@ -248,7 +248,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly bool? Ssl;
         /// <summary>
-        /// DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
+        /// DNS usage name. The possible values are `DisasterRecovery`, `Primary` and `Replica`.
         /// </summary>
         public readonly string? Usage;
 

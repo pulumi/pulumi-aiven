@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Creates and manages an integration endpoint.
     /// 
-    /// Integration endpoints let you send data like metrics and logs from Aiven services to external systems. The `autoscaler` endpoint lets you automatically scale the disk space on your services.
+    /// Integration endpoints let you send data like metrics and logs from Aiven services to external systems. The `Autoscaler` endpoint lets you automatically scale the disk space on your services.
     /// 
     /// After creating an endpoint, use the service integration resource to connect it to a service.
     /// 
@@ -90,7 +90,7 @@ namespace Pulumi.Aiven
         public Output<string> EndpointName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_azure_blob_storage`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
+        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -268,7 +268,7 @@ namespace Pulumi.Aiven
         public Input<string> EndpointName { get; set; } = null!;
 
         /// <summary>
-        /// The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_azure_blob_storage`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
+        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
@@ -420,7 +420,7 @@ namespace Pulumi.Aiven
         public Input<string>? EndpointName { get; set; }
 
         /// <summary>
-        /// The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_azure_blob_storage`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
+        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }

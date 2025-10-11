@@ -44,10 +44,10 @@ public final class GetM3DbM3dbUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return M3 limits
@@ -148,10 +148,10 @@ public final class GetM3DbM3dbUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }

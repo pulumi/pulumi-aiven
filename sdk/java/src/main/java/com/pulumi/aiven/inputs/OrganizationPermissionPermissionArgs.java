@@ -33,14 +33,14 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
     }
 
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      * 
      */
     @Import(name="permissions", required=true)
     private Output<List<String>> permissions;
 
     /**
-     * @return List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * @return List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      * 
      */
     public Output<List<String>> permissions() {
@@ -63,14 +63,14 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
     }
 
     /**
-     * An enumeration. The possible values are `user` and `user_group`.
+     * An enumeration. The possible values are `user` and `userGroup`.
      * 
      */
     @Import(name="principalType", required=true)
     private Output<String> principalType;
 
     /**
-     * @return An enumeration. The possible values are `user` and `user_group`.
+     * @return An enumeration. The possible values are `user` and `userGroup`.
      * 
      */
     public Output<String> principalType() {
@@ -142,7 +142,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param permissions List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+         * @param permissions List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param permissions List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+         * @param permissions List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param permissions List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+         * @param permissions List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant&#34;. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principalType An enumeration. The possible values are `user` and `user_group`.
+         * @param principalType An enumeration. The possible values are `user` and `userGroup`.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principalType An enumeration. The possible values are `user` and `user_group`.
+         * @param principalType An enumeration. The possible values are `user` and `userGroup`.
          * 
          * @return builder
          * 

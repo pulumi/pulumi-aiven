@@ -40,7 +40,7 @@ public final class GetAlloydbomniAlloydbomniUserConfigPgbouncer {
      */
     private @Nullable List<String> ignoreStartupParameters;
     /**
-     * @return PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max_prepared_statements is set to a non-zero value. Setting it to 0 disables prepared statements. max_prepared_statements defaults to 100, and its maximum is 3000. Default: `100`.
+     * @return PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
      * 
      */
     private @Nullable Integer maxPreparedStatements;
@@ -60,7 +60,7 @@ public final class GetAlloydbomniAlloydbomniUserConfigPgbouncer {
      */
     private @Nullable Integer serverLifetime;
     /**
-     * @return Run server_reset_query (DISCARD ALL) in all pooling modes. Default: `false`.
+     * @return Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
      * 
      */
     private @Nullable Boolean serverResetQueryAlways;
@@ -102,7 +102,7 @@ public final class GetAlloydbomniAlloydbomniUserConfigPgbouncer {
         return this.ignoreStartupParameters == null ? List.of() : this.ignoreStartupParameters;
     }
     /**
-     * @return PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max_prepared_statements is set to a non-zero value. Setting it to 0 disables prepared statements. max_prepared_statements defaults to 100, and its maximum is 3000. Default: `100`.
+     * @return PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
      * 
      */
     public Optional<Integer> maxPreparedStatements() {
@@ -130,7 +130,7 @@ public final class GetAlloydbomniAlloydbomniUserConfigPgbouncer {
         return Optional.ofNullable(this.serverLifetime);
     }
     /**
-     * @return Run server_reset_query (DISCARD ALL) in all pooling modes. Default: `false`.
+     * @return Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
      * 
      */
     public Optional<Boolean> serverResetQueryAlways() {

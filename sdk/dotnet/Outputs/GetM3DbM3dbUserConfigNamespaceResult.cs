@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetM3DbM3dbUserConfigNamespaceResult
     {
         /// <summary>
-        /// The name of the namespace. Example: `default`.
+        /// The name of the namespace. Example: `Default`.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Resolution;
         /// <summary>
-        /// Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
+        /// Enum: `Aggregated`, `Unaggregated`. The type of aggregation (aggregated/unaggregated).
         /// </summary>
         public readonly string Type;
 

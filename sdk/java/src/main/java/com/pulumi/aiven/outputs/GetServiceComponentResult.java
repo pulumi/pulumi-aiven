@@ -35,7 +35,7 @@ public final class GetServiceComponentResult {
      */
     private @Nullable String kafkaAuthenticationMethod;
     /**
-     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
      * 
      */
     private String kafkaSslCa;
@@ -65,7 +65,7 @@ public final class GetServiceComponentResult {
      */
     private @Nullable Boolean ssl;
     /**
-     * @return DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
+     * @return DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
      * 
      */
     private @Nullable String usage;
@@ -100,7 +100,7 @@ public final class GetServiceComponentResult {
         return Optional.ofNullable(this.kafkaAuthenticationMethod);
     }
     /**
-     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
      * 
      */
     public String kafkaSslCa() {
@@ -142,7 +142,7 @@ public final class GetServiceComponentResult {
         return Optional.ofNullable(this.ssl);
     }
     /**
-     * @return DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
+     * @return DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
      * 
      */
     public Optional<String> usage() {

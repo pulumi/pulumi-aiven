@@ -18,11 +18,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Kafka;
         /// <summary>
-        /// Allow clients to connect to kafka_connect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to KafkaConnect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? KafkaConnect;
         /// <summary>
-        /// Allow clients to connect to kafka_rest with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to KafkaRest with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? KafkaRest;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Prometheus;
         /// <summary>
-        /// Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to SchemaRegistry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? SchemaRegistry;
 

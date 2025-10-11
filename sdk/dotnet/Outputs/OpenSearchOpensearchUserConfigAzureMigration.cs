@@ -46,11 +46,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Indices;
         /// <summary>
-        /// Azure account secret key. One of key or sas_token should be specified.
+        /// Azure account secret key. One of key or SasToken should be specified.
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// Whether the repository is read-only. Default: `true`.
+        /// Whether the repository is read-only. Default: `True`.
         /// </summary>
         public readonly bool? Readonly;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? RestoreGlobalState;
         /// <summary>
-        /// A shared access signatures (SAS) token. One of key or sas_token should be specified.
+        /// A shared access signatures (SAS) token. One of key or SasToken should be specified.
         /// </summary>
         public readonly string? SasToken;
         /// <summary>

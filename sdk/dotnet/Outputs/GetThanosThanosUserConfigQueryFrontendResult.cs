@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetThanosThanosUserConfigQueryFrontendResult
     {
         /// <summary>
-        /// Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+        /// Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `True`.
         /// </summary>
         public readonly bool? QueryRangeAlignRangeWithStep;
 

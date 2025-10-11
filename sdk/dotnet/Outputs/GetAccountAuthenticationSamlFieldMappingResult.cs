@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? LastName;
         /// <summary>
-        /// Field name for user's full name. If specified, first_name and last_name mappings are ignored
+        /// Field name for user's full name. If specified, FirstName and LastName mappings are ignored
         /// </summary>
         public readonly string? RealName;
 

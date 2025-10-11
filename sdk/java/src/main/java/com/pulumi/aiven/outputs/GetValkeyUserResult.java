@@ -42,7 +42,7 @@ public final class GetValkeyUserResult {
      */
     private String username;
     /**
-     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     private List<String> valkeyAclCategories;
@@ -52,12 +52,12 @@ public final class GetValkeyUserResult {
      */
     private List<String> valkeyAclChannels;
     /**
-     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     private List<String> valkeyAclCommands;
     /**
-     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     private List<String> valkeyAclKeys;
@@ -106,7 +106,7 @@ public final class GetValkeyUserResult {
         return this.username;
     }
     /**
-     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     public List<String> valkeyAclCategories() {
@@ -120,14 +120,14 @@ public final class GetValkeyUserResult {
         return this.valkeyAclChannels;
     }
     /**
-     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     public List<String> valkeyAclCommands() {
         return this.valkeyAclCommands;
     }
     /**
-     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      * 
      */
     public List<String> valkeyAclKeys() {

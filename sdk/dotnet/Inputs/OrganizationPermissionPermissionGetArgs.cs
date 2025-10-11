@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _permissions;
 
         /// <summary>
-        /// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        /// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `Admin`, `Developer`, `Operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `ReadOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         /// </summary>
         public InputList<string> Permissions
         {
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> PrincipalId { get; set; } = null!;
 
         /// <summary>
-        /// An enumeration. The possible values are `user` and `user_group`.
+        /// An enumeration. The possible values are `User` and `UserGroup`.
         /// </summary>
         [Input("principalType", required: true)]
         public Input<string> PrincipalType { get; set; } = null!;

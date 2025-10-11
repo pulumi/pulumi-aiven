@@ -86,11 +86,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Email;
         /// <summary>
-        /// Resource ID, a composite of `organization_id` and `user_id` IDs.
+        /// Resource ID, a composite of `OrganizationId` and `UserId` IDs.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Alters super admin state of the organization application user. The default value is `false`.
+        /// Alters super admin state of the organization application user. The default value is `False`.
         /// </summary>
         public readonly bool IsSuperAdmin;
         /// <summary>

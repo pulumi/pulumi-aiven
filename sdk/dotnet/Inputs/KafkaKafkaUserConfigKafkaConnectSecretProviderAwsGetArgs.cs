@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// Enum: `credentials`. Auth method of the vault secret provider.
+        /// Enum: `Credentials`. Auth method of the vault secret provider.
         /// </summary>
         [Input("authMethod", required: true)]
         public Input<string> AuthMethod { get; set; } = null!;

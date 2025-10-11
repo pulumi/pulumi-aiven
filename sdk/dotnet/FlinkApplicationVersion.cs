@@ -240,7 +240,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Application sinks
         /// </summary>
-        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `sink` instead.")]
+        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `Sink` instead.")]
         public InputList<Inputs.FlinkApplicationVersionSinkArgs> Sinks
         {
             get => _sinks ?? (_sinks = new InputList<Inputs.FlinkApplicationVersionSinkArgs>());
@@ -265,7 +265,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Application sources
         /// </summary>
-        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `source` instead.")]
+        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `Source` instead.")]
         public InputList<Inputs.FlinkApplicationVersionSourceArgs> Sources
         {
             get => _sources ?? (_sources = new InputList<Inputs.FlinkApplicationVersionSourceArgs>());
@@ -340,7 +340,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Application sinks
         /// </summary>
-        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `sink` instead.")]
+        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `Sink` instead.")]
         public InputList<Inputs.FlinkApplicationVersionSinkGetArgs> Sinks
         {
             get => _sinks ?? (_sinks = new InputList<Inputs.FlinkApplicationVersionSinkGetArgs>());
@@ -365,7 +365,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Application sources
         /// </summary>
-        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `source` instead.")]
+        [Obsolete(@"This field is deprecated and will be removed in the next major release. Use `Source` instead.")]
         public InputList<Inputs.FlinkApplicationVersionSourceGetArgs> Sources
         {
             get => _sources ?? (_sources = new InputList<Inputs.FlinkApplicationVersionSourceGetArgs>());

@@ -56,7 +56,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SslRootCert { get; set; }
 
         /// <summary>
-        /// User name. Example: `myname`.
+        /// User name. Example: `Myname`.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;

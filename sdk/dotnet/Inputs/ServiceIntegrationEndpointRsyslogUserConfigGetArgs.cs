@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Cert { get; set; }
 
         /// <summary>
-        /// Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
+        /// Enum: `Custom`, `Rfc3164`, `Rfc5424`. Message format. Default: `Rfc5424`.
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> Server { get; set; } = null!;
 
         /// <summary>
-        /// Require TLS. Default: `true`.
+        /// Require TLS. Default: `True`.
         /// </summary>
         [Input("tls", required: true)]
         public Input<bool> Tls { get; set; } = null!;

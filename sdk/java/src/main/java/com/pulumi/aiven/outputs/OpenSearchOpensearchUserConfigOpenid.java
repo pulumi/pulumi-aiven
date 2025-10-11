@@ -40,12 +40,12 @@ public final class OpenSearchOpensearchUserConfigOpenid {
      */
     private @Nullable String header;
     /**
-     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferred_username`.
+     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
      * 
      */
     private @Nullable String jwtHeader;
     /**
-     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
+     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferredUsername`.
      * 
      */
     private @Nullable String jwtUrlParameter;
@@ -70,7 +70,7 @@ public final class OpenSearchOpensearchUserConfigOpenid {
      */
     private @Nullable String scope;
     /**
-     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
+     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional. Example: `preferredUsername`.
      * 
      */
     private @Nullable String subjectKey;
@@ -112,14 +112,14 @@ public final class OpenSearchOpensearchUserConfigOpenid {
         return Optional.ofNullable(this.header);
     }
     /**
-     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferred_username`.
+     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
      * 
      */
     public Optional<String> jwtHeader() {
         return Optional.ofNullable(this.jwtHeader);
     }
     /**
-     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
+     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferredUsername`.
      * 
      */
     public Optional<String> jwtUrlParameter() {
@@ -154,7 +154,7 @@ public final class OpenSearchOpensearchUserConfigOpenid {
         return Optional.ofNullable(this.scope);
     }
     /**
-     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
+     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional. Example: `preferredUsername`.
      * 
      */
     public Optional<String> subjectKey() {

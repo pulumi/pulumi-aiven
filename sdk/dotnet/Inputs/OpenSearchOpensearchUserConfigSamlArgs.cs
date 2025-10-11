@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigSamlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
+        /// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `True`.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

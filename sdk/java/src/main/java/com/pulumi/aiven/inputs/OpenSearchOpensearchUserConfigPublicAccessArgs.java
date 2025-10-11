@@ -31,14 +31,14 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
     }
 
     /**
-     * Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+     * Allow clients to connect to opensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="opensearchDashboards")
     private @Nullable Output<Boolean> opensearchDashboards;
 
     /**
-     * @return Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to opensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> opensearchDashboards() {
@@ -108,7 +108,7 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param opensearchDashboards Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param opensearchDashboards Allow clients to connect to opensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param opensearchDashboards Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param opensearchDashboards Allow clients to connect to opensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 

@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? GatherIndexIoWaits;
         /// <summary>
-        /// Gather auto_increment columns and max values from information schema.
+        /// Gather AutoIncrement columns and max values from information schema.
         /// </summary>
         public readonly bool? GatherInfoSchemaAutoInc;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? GatherTableSchema;
         /// <summary>
-        /// Truncates digest text from perf_events_statements into this many characters. Example: `120`.
+        /// Truncates digest text from PerfEventsStatements into this many characters. Example: `120`.
         /// </summary>
         public readonly int? PerfEventsStatementsDigestTextLimit;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? PerfEventsStatementsLimit;
         /// <summary>
-        /// Only include perf_events_statements whose last seen is less than this many seconds. Example: `86400`.
+        /// Only include PerfEventsStatements whose last seen is less than this many seconds. Example: `86400`.
         /// </summary>
         public readonly int? PerfEventsStatementsTimeLimit;
 

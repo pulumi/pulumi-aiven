@@ -94,14 +94,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferred_username`.
+     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
      * 
      */
     @Import(name="jwtHeader")
     private @Nullable Output<String> jwtHeader;
 
     /**
-     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferred_username`.
+     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
      * 
      */
     public Optional<Output<String>> jwtHeader() {
@@ -109,14 +109,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
+     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferredUsername`.
      * 
      */
     @Import(name="jwtUrlParameter")
     private @Nullable Output<String> jwtUrlParameter;
 
     /**
-     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
+     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferredUsername`.
      * 
      */
     public Optional<Output<String>> jwtUrlParameter() {
@@ -184,14 +184,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
+     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional. Example: `preferredUsername`.
      * 
      */
     @Import(name="subjectKey")
     private @Nullable Output<String> subjectKey;
 
     /**
-     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
+     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional. Example: `preferredUsername`.
      * 
      */
     public Optional<Output<String>> subjectKey() {
@@ -339,7 +339,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferred_username`.
+         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferred_username`.
+         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param jwtUrlParameter If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
+         * @param jwtUrlParameter If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferredUsername`.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param jwtUrlParameter If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
+         * @param jwtUrlParameter If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferredUsername`.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
+         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional. Example: `preferredUsername`.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
+         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional. Example: `preferredUsername`.
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GrafanaGrafanaUserConfigDateFormatsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
+        /// Default time zone for user preferences. Value `Browser` uses browser local time zone. Example: `Europe/Helsinki`.
         /// </summary>
         [Input("defaultTimezone")]
         public Input<string>? DefaultTimezone { get; set; }

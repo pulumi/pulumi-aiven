@@ -20,7 +20,7 @@ public final class GetOrganizationApplicationUserResult {
      */
     private String email;
     /**
-     * @return Resource ID, a composite of `organization_id` and `user_id` IDs.
+     * @return Resource ID, a composite of `organizationId` and `userId` IDs.
      * 
      */
     private String id;
@@ -59,7 +59,7 @@ public final class GetOrganizationApplicationUserResult {
         return this.email;
     }
     /**
-     * @return Resource ID, a composite of `organization_id` and `user_id` IDs.
+     * @return Resource ID, a composite of `organizationId` and `userId` IDs.
      * 
      */
     public String id() {

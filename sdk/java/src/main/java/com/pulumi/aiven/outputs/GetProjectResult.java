@@ -14,12 +14,12 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectResult {
     /**
-     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     private String accountId;
     /**
-     * @return If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * @return If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      */
     private Boolean addAccountOwnersAdminAccess;
@@ -91,14 +91,14 @@ public final class GetProjectResult {
 
     private GetProjectResult() {}
     /**
-     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * @return If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      */
     public Boolean addAccountOwnersAdminAccess() {

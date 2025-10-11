@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigSchemaRegistryConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+        /// If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `True`.
         /// </summary>
         [Input("leaderEligibility")]
         public Input<bool>? LeaderEligibility { get; set; }
 
         /// <summary>
-        /// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+        /// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `True`.
         /// </summary>
         [Input("retriableErrorsSilenced")]
         public Input<bool>? RetriableErrorsSilenced { get; set; }
 
         /// <summary>
-        /// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+        /// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `False`.
         /// </summary>
         [Input("schemaReaderStrictMode")]
         public Input<bool>? SchemaReaderStrictMode { get; set; }

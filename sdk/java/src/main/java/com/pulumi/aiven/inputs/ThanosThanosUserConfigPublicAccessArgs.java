@@ -46,14 +46,14 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
     }
 
     /**
-     * Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
+     * Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="queryFrontend")
     private @Nullable Output<Boolean> queryFrontend;
 
     /**
-     * @return Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> queryFrontend() {
@@ -61,14 +61,14 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
     }
 
     /**
-     * Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
+     * Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="receiverIngesting")
     private @Nullable Output<Boolean> receiverIngesting;
 
     /**
-     * @return Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> receiverIngesting() {
@@ -76,14 +76,14 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
     }
 
     /**
-     * Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+     * Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="receiverRouting")
     private @Nullable Output<Boolean> receiverRouting;
 
     /**
-     * @return Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> receiverRouting() {
@@ -193,7 +193,7 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
         }
 
         /**
-         * @param queryFrontend Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param queryFrontend Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
         }
 
         /**
-         * @param queryFrontend Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param queryFrontend Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
         }
 
         /**
-         * @param receiverIngesting Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param receiverIngesting Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
         }
 
         /**
-         * @param receiverIngesting Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param receiverIngesting Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
         }
 
         /**
-         * @param receiverRouting Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param receiverRouting Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
         }
 
         /**
-         * @param receiverRouting Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param receiverRouting Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 

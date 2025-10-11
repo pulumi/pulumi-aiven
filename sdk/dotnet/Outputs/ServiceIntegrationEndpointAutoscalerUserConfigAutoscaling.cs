@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int CapGb;
         /// <summary>
-        /// Enum: `autoscale_disk`. Type of autoscale event.
+        /// Enum: `AutoscaleDisk`. Type of autoscale event.
         /// </summary>
         public readonly string Type;
 

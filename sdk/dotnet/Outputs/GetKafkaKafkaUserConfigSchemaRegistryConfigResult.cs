@@ -14,15 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetKafkaKafkaUserConfigSchemaRegistryConfigResult
     {
         /// <summary>
-        /// If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+        /// If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `True`.
         /// </summary>
         public readonly bool? LeaderEligibility;
         /// <summary>
-        /// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+        /// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `True`.
         /// </summary>
         public readonly bool? RetriableErrorsSilenced;
         /// <summary>
-        /// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+        /// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `False`.
         /// </summary>
         public readonly bool? SchemaReaderStrictMode;
         /// <summary>

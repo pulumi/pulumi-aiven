@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SslRootCert;
         /// <summary>
-        /// User name. Example: `myname`.
+        /// User name. Example: `Myname`.
         /// </summary>
         public readonly string Username;
 

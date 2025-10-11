@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPgUserConfigMigration
     {
         /// <summary>
-        /// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+        /// Database name for bootstrapping the initial connection. Example: `Defaultdb`.
         /// </summary>
         public readonly string? Dbname;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? IgnoreRoles;
         /// <summary>
-        /// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        /// Enum: `Dump`, `Replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         /// </summary>
         public readonly string? Method;
         /// <summary>
@@ -42,11 +42,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// The server where to migrate data from is secured with SSL. Default: `true`.
+        /// The server where to migrate data from is secured with SSL. Default: `True`.
         /// </summary>
         public readonly bool? Ssl;
         /// <summary>
-        /// User name for authentication with the server where to migrate data from. Example: `myname`.
+        /// User name for authentication with the server where to migrate data from. Example: `Myname`.
         /// </summary>
         public readonly string? Username;
 

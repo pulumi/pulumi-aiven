@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult
     {
         /// <summary>
-        /// Allow clients to connect to kafka_connect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to KafkaConnect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? KafkaConnect;
         /// <summary>

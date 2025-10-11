@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaConnectKafkaConnectUserConfigPublicAccess {
     /**
-     * @return Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean kafkaConnect;
@@ -24,7 +24,7 @@ public final class KafkaConnectKafkaConnectUserConfigPublicAccess {
 
     private KafkaConnectKafkaConnectUserConfigPublicAccess() {}
     /**
-     * @return Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> kafkaConnect() {

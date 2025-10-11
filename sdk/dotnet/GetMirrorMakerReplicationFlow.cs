@@ -167,11 +167,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<string> ConfigPropertiesExcludes;
         /// <summary>
-        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `False`.
         /// </summary>
         public readonly bool EmitBackwardHeartbeatsEnabled;
         /// <summary>
-        /// Enables emitting heartbeats to the target cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the target cluster. The default value is `False`.
         /// </summary>
         public readonly bool EmitHeartbeatsEnabled;
         /// <summary>
@@ -179,7 +179,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly bool Enable;
         /// <summary>
-        /// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+        /// Enables exactly-once message delivery. Set this to `Enabled` for new replications. The default value is `False`.
         /// </summary>
         public readonly bool ExactlyOnceDeliveryEnabled;
         /// <summary>
@@ -187,7 +187,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Offset syncs topic location. The possible values are `source` and `target`.
+        /// Offset syncs topic location. The possible values are `Source` and `Target`.
         /// </summary>
         public readonly string OffsetSyncsTopicLocation;
         /// <summary>
@@ -211,7 +211,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string SourceCluster;
         /// <summary>
-        /// Sync consumer group offsets. The default value is `false`.
+        /// Sync consumer group offsets. The default value is `False`.
         /// </summary>
         public readonly bool SyncGroupOffsetsEnabled;
         /// <summary>

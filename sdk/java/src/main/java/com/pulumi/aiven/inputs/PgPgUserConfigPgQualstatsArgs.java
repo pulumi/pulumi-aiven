@@ -86,7 +86,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Enable / Disable pg_qualstats constants tracking. Default: `true`.
+     * Enable / Disable pgQualstats constants tracking. Default: `true`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -97,7 +97,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     private @Nullable Output<Boolean> trackConstants;
 
     /**
-     * @return Enable / Disable pg_qualstats constants tracking. Default: `true`.
+     * @return Enable / Disable pgQualstats constants tracking. Default: `true`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -247,7 +247,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param trackConstants Enable / Disable pg_qualstats constants tracking. Default: `true`.
+         * @param trackConstants Enable / Disable pgQualstats constants tracking. Default: `true`.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param trackConstants Enable / Disable pg_qualstats constants tracking. Default: `true`.
+         * @param trackConstants Enable / Disable pgQualstats constants tracking. Default: `true`.
          * 
          * @return builder
          * 

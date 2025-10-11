@@ -18,11 +18,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Kafka;
         /// <summary>
-        /// Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to KafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? KafkaConnect;
         /// <summary>
-        /// Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to KafkaRest from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? KafkaRest;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Prometheus;
         /// <summary>
-        /// Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to SchemaRegistry from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? SchemaRegistry;
 

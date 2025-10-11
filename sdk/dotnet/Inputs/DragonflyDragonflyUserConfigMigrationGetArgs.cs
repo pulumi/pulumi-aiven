@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class DragonflyDragonflyUserConfigMigrationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+        /// Database name for bootstrapping the initial connection. Example: `Defaultdb`.
         /// </summary>
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? IgnoreRoles { get; set; }
 
         /// <summary>
-        /// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        /// Enum: `Dump`, `Replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
@@ -65,13 +65,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
-        /// The server where to migrate data from is secured with SSL. Default: `true`.
+        /// The server where to migrate data from is secured with SSL. Default: `True`.
         /// </summary>
         [Input("ssl")]
         public Input<bool>? Ssl { get; set; }
 
         /// <summary>
-        /// User name for authentication with the server where to migrate data from. Example: `myname`.
+        /// User name for authentication with the server where to migrate data from. Example: `Myname`.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

@@ -18,11 +18,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Clickhouse;
         /// <summary>
-        /// Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to ClickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? ClickhouseHttps;
         /// <summary>
-        /// Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to ClickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? ClickhouseMysql;
         /// <summary>
