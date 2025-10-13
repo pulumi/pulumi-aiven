@@ -22,11 +22,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SaslMechanism;
         /// <summary>
-        /// Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+        /// Password for SASL PLAIN mechanism in the Kafka server. Example: `Admin`.
         /// </summary>
         public readonly string? SaslPlainPassword;
         /// <summary>
-        /// Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+        /// Username for SASL PLAIN mechanism in the Kafka server. Example: `Admin`.
         /// </summary>
         public readonly string? SaslPlainUsername;
         /// <summary>
@@ -55,7 +55,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SslClientKey;
         /// <summary>
-        /// Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
+        /// Enum: `Https`. The endpoint identification algorithm to validate server hostname using server certificate.
         /// </summary>
         public readonly string? SslEndpointIdentificationAlgorithm;
 

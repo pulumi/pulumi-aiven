@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigKafkaRestConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
+        /// If true the consumer's offset will be periodically committed to Kafka in the background. Default: `True`.
         /// </summary>
         [Input("consumerEnableAutoCommit")]
         public Input<bool>? ConsumerEnableAutoCommit { get; set; }
@@ -37,25 +37,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ConsumerRequestTimeoutMs { get; set; }
 
         /// <summary>
-        /// Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+        /// Enum: `RecordName`, `TopicName`, `TopicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `TopicName`.
         /// </summary>
         [Input("nameStrategy")]
         public Input<string>? NameStrategy { get; set; }
 
         /// <summary>
-        /// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
+        /// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `True`.
         /// </summary>
         [Input("nameStrategyValidation")]
         public Input<bool>? NameStrategyValidation { get; set; }
 
         /// <summary>
-        /// Enum: `-1`, `0`, `1`, `all`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
+        /// Enum: `-1`, `0`, `1`, `All`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `All` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
         /// </summary>
         [Input("producerAcks")]
         public Input<string>? ProducerAcks { get; set; }
 
         /// <summary>
-        /// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        /// Enum: `Gzip`, `Lz4`, `None`, `Snappy`, `Zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`Gzip`, `Snappy`, `Lz4`, `Zstd`). It additionally accepts `None` which is the default and equivalent to no compression.
         /// </summary>
         [Input("producerCompressionType")]
         public Input<string>? ProducerCompressionType { get; set; }

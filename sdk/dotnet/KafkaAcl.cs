@@ -53,7 +53,7 @@ namespace Pulumi.Aiven
         public Output<string> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("permission")]
         public Output<string> Permission { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Aiven
     public sealed class KafkaAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.Aiven
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }

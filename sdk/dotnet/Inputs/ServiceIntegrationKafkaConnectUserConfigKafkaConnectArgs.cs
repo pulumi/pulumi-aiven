@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ConfigStorageTopic { get; set; }
 
         /// <summary>
-        /// A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
+        /// A unique string that identifies the Connect cluster group this worker belongs to. Example: `Connect`.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }

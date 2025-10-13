@@ -50,7 +50,7 @@ namespace Pulumi.Aiven
         public Output<string> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+        /// Kafka Schema Registry permission to grant. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("permission")]
         public Output<string> Permission { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Aiven
     public sealed class KafkaSchemaRegistryAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+        /// Kafka Schema Registry permission to grant. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.Aiven
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+        /// Kafka Schema Registry permission to grant. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }

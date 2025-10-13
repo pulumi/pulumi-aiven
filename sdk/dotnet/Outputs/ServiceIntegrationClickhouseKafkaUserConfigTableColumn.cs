@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTableColumn
     {
         /// <summary>
-        /// The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
+        /// The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `Key`.
         /// </summary>
         public readonly string Name;
         /// <summary>

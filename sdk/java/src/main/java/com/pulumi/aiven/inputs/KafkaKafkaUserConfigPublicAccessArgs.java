@@ -31,14 +31,14 @@ public final class KafkaKafkaUserConfigPublicAccessArgs extends com.pulumi.resou
     }
 
     /**
-     * Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+     * Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="kafkaConnect")
     private @Nullable Output<Boolean> kafkaConnect;
 
     /**
-     * @return Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> kafkaConnect() {
@@ -46,14 +46,14 @@ public final class KafkaKafkaUserConfigPublicAccessArgs extends com.pulumi.resou
     }
 
     /**
-     * Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
+     * Allow clients to connect to kafkaRest from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="kafkaRest")
     private @Nullable Output<Boolean> kafkaRest;
 
     /**
-     * @return Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to kafkaRest from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> kafkaRest() {
@@ -76,14 +76,14 @@ public final class KafkaKafkaUserConfigPublicAccessArgs extends com.pulumi.resou
     }
 
     /**
-     * Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
+     * Allow clients to connect to schemaRegistry from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="schemaRegistry")
     private @Nullable Output<Boolean> schemaRegistry;
 
     /**
-     * @return Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
+     * @return Allow clients to connect to schemaRegistry from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> schemaRegistry() {
@@ -140,7 +140,7 @@ public final class KafkaKafkaUserConfigPublicAccessArgs extends com.pulumi.resou
         }
 
         /**
-         * @param kafkaConnect Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param kafkaConnect Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class KafkaKafkaUserConfigPublicAccessArgs extends com.pulumi.resou
         }
 
         /**
-         * @param kafkaConnect Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param kafkaConnect Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class KafkaKafkaUserConfigPublicAccessArgs extends com.pulumi.resou
         }
 
         /**
-         * @param kafkaRest Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param kafkaRest Allow clients to connect to kafkaRest from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class KafkaKafkaUserConfigPublicAccessArgs extends com.pulumi.resou
         }
 
         /**
-         * @param kafkaRest Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param kafkaRest Allow clients to connect to kafkaRest from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class KafkaKafkaUserConfigPublicAccessArgs extends com.pulumi.resou
         }
 
         /**
-         * @param schemaRegistry Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param schemaRegistry Allow clients to connect to schemaRegistry from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class KafkaKafkaUserConfigPublicAccessArgs extends com.pulumi.resou
         }
 
         /**
-         * @param schemaRegistry Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
+         * @param schemaRegistry Allow clients to connect to schemaRegistry from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 

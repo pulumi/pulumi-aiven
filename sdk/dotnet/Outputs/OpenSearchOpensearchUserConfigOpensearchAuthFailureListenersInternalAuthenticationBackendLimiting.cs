@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? AllowedTries;
         /// <summary>
-        /// Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
+        /// Enum: `Internal`. internal*authentication*backend*limiting.authentication*backend.
         /// </summary>
         public readonly string? AuthenticationBackend;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxTrackedClients;
         /// <summary>
-        /// The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+        /// The window of time in which the value for `AllowedTries` is enforced. Example: `3600`.
         /// </summary>
         public readonly int? TimeWindowSeconds;
         /// <summary>
-        /// Enum: `username`. internal*authentication*backend_limiting.type.
+        /// Enum: `Username`. internal*authentication*backend_limiting.type.
         /// </summary>
         public readonly string? Type;
 

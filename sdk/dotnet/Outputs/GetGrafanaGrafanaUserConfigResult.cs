@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? AlertingEnabled;
         /// <summary>
-        /// Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
+        /// Enum: `Alerting`, `KeepState`. Default error or timeout setting for new alerting rules.
         /// </summary>
         public readonly string? AlertingErrorOrTimeout;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? AlertingMaxAnnotationsToKeep;
         /// <summary>
-        /// Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for 'no data or null values' for new alerting rules.
+        /// Enum: `Alerting`, `KeepState`, `NoData`, `Ok`. Default value for 'no data or null values' for new alerting rules.
         /// </summary>
         public readonly string? AlertingNodataOrNullvalues;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthGoogleResult? AuthGoogle;
         /// <summary>
-        /// Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+        /// Enum: `Lax`, `None`, `Strict`. Cookie SameSite attribute: `Strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `Lax` is the default value.
         /// </summary>
         public readonly string? CookieSamesite;
         /// <summary>
@@ -142,7 +142,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `Anotherprojectname`.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -158,7 +158,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ServiceLog;
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
@@ -170,7 +170,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? StaticIps;
         /// <summary>
-        /// Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
+        /// Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set UnifiedAlertingEnabled to false and AlertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
         /// </summary>
         public readonly bool? UnifiedAlertingEnabled;
         /// <summary>

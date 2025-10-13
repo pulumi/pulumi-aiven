@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ConnectorClientConfigOverridePolicy { get; set; }
 
         /// <summary>
-        /// Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+        /// Enum: `Earliest`, `Latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         /// </summary>
         [Input("consumerAutoOffsetReset")]
         public Input<string>? ConsumerAutoOffsetReset { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ConsumerFetchMaxBytes { get; set; }
 
         /// <summary>
-        /// Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        /// Enum: `ReadCommitted`, `ReadUncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         /// </summary>
         [Input("consumerIsolationLevel")]
         public Input<string>? ConsumerIsolationLevel { get; set; }
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? OffsetFlushTimeoutMs { get; set; }
 
         /// <summary>
-        /// This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+        /// This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `Linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
         /// </summary>
         [Input("producerBatchSize")]
         public Input<int>? ProducerBatchSize { get; set; }
@@ -79,13 +79,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerBufferMemory { get; set; }
 
         /// <summary>
-        /// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        /// Enum: `Gzip`, `Lz4`, `None`, `Snappy`, `Zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`Gzip`, `Snappy`, `Lz4`, `Zstd`). It additionally accepts `None` which is the default and equivalent to no compression.
         /// </summary>
         [Input("producerCompressionType")]
         public Input<string>? ProducerCompressionType { get; set; }
 
         /// <summary>
-        /// This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
+        /// This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `Linger` for the specified time waiting for more records to show up. Defaults to 0.
         /// </summary>
         [Input("producerLingerMs")]
         public Input<int>? ProducerLingerMs { get; set; }

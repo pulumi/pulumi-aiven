@@ -115,7 +115,7 @@ namespace Pulumi.Aiven
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
+        /// Resource type. The possible values are `Organization`, `OrganizationUnit` and `Project`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.Aiven
         public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
-        /// Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
+        /// Resource type. The possible values are `Organization`, `OrganizationUnit` and `Project`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.Aiven
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
+        /// Resource type. The possible values are `Organization`, `OrganizationUnit` and `Project`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }

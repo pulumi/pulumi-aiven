@@ -84,10 +84,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
      * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      * 
      * @deprecated
-     * Deprecated. Use `namespaces_string` instead.
+     * Deprecated. Use `namespacesString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `namespaces_string` instead. */
+    @Deprecated /* Deprecated. Use `namespacesString` instead. */
     @Import(name="namespaces")
     private @Nullable Output<List<String>> namespaces;
 
@@ -95,10 +95,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
      * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      * 
      * @deprecated
-     * Deprecated. Use `namespaces_string` instead.
+     * Deprecated. Use `namespacesString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `namespaces_string` instead. */
+    @Deprecated /* Deprecated. Use `namespacesString` instead. */
     public Optional<Output<List<String>>> namespaces() {
         return Optional.ofNullable(this.namespaces);
     }
@@ -279,10 +279,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `namespaces_string` instead.
+         * Deprecated. Use `namespacesString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `namespaces_string` instead. */
+        @Deprecated /* Deprecated. Use `namespacesString` instead. */
         public Builder namespaces(@Nullable Output<List<String>> namespaces) {
             $.namespaces = namespaces;
             return this;
@@ -294,10 +294,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `namespaces_string` instead.
+         * Deprecated. Use `namespacesString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `namespaces_string` instead. */
+        @Deprecated /* Deprecated. Use `namespacesString` instead. */
         public Builder namespaces(List<String> namespaces) {
             return namespaces(Output.of(namespaces));
         }
@@ -308,10 +308,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `namespaces_string` instead.
+         * Deprecated. Use `namespacesString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `namespaces_string` instead. */
+        @Deprecated /* Deprecated. Use `namespacesString` instead. */
         public Builder namespaces(String... namespaces) {
             return namespaces(List.of(namespaces));
         }

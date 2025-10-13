@@ -28,7 +28,7 @@ public final class GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     private @Nullable Integer consumerFetchMaxBytes;
     /**
-     * @return Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * @return Enum: `readCommitted`, `readUncommitted`. Transaction read isolation level. readUncommitted is the default, but readCommitted can be used if consume-exactly-once behavior is desired.
      * 
      */
     private @Nullable String consumerIsolationLevel;
@@ -116,7 +116,7 @@ public final class GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
         return Optional.ofNullable(this.consumerFetchMaxBytes);
     }
     /**
-     * @return Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * @return Enum: `readCommitted`, `readUncommitted`. Transaction read isolation level. readUncommitted is the default, but readCommitted can be used if consume-exactly-once behavior is desired.
      * 
      */
     public Optional<String> consumerIsolationLevel() {

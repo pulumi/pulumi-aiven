@@ -84,14 +84,14 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+     * When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
      * 
      */
     @Import(name="frequentSnapshots")
     private @Nullable Output<Boolean> frequentSnapshots;
 
     /**
-     * @return When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+     * @return When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> frequentSnapshots() {
@@ -132,10 +132,10 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
@@ -143,10 +143,10 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -287,14 +287,14 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Valkey configuration acl-pubsub-default.
+     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn&#39;t affect Valkey configuration acl-pubsub-default.
      * 
      */
     @Import(name="valkeyAclChannelsDefault")
     private @Nullable Output<String> valkeyAclChannelsDefault;
 
     /**
-     * @return Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Valkey configuration acl-pubsub-default.
+     * @return Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn&#39;t affect Valkey configuration acl-pubsub-default.
      * 
      */
     public Optional<Output<String>> valkeyAclChannelsDefault() {
@@ -603,7 +603,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param frequentSnapshots When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+         * @param frequentSnapshots When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
          * 
          * @return builder
          * 
@@ -614,7 +614,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param frequentSnapshots When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+         * @param frequentSnapshots When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
          * 
          * @return builder
          * 
@@ -691,10 +691,10 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -706,10 +706,10 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -720,10 +720,10 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          * @deprecated
-         * Deprecated. Use `ip_filter_string` instead.
+         * Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
@@ -918,7 +918,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param valkeyAclChannelsDefault Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Valkey configuration acl-pubsub-default.
+         * @param valkeyAclChannelsDefault Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn&#39;t affect Valkey configuration acl-pubsub-default.
          * 
          * @return builder
          * 
@@ -929,7 +929,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param valkeyAclChannelsDefault Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Valkey configuration acl-pubsub-default.
+         * @param valkeyAclChannelsDefault Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn&#39;t affect Valkey configuration acl-pubsub-default.
          * 
          * @return builder
          * 

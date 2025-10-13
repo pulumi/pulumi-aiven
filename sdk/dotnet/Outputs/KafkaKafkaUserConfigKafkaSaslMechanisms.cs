@@ -14,15 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigKafkaSaslMechanisms
     {
         /// <summary>
-        /// Enable PLAIN mechanism. Default: `true`.
+        /// Enable PLAIN mechanism. Default: `True`.
         /// </summary>
         public readonly bool? Plain;
         /// <summary>
-        /// Enable SCRAM-SHA-256 mechanism. Default: `true`.
+        /// Enable SCRAM-SHA-256 mechanism. Default: `True`.
         /// </summary>
         public readonly bool? ScramSha256;
         /// <summary>
-        /// Enable SCRAM-SHA-512 mechanism. Default: `true`.
+        /// Enable SCRAM-SHA-512 mechanism. Default: `True`.
         /// </summary>
         public readonly bool? ScramSha512;
 

@@ -82,10 +82,10 @@ public final class GetOpenSearchOpensearchUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
@@ -93,7 +93,7 @@ public final class GetOpenSearchOpensearchUserConfig {
      */
     private @Nullable Boolean keepIndexRefreshInterval;
     /**
-     * @return Use index_patterns instead. Default: `0`.
+     * @return Use indexPatterns instead. Default: `0`.
      * 
      */
     private @Nullable Integer maxIndexCount;
@@ -243,10 +243,10 @@ public final class GetOpenSearchOpensearchUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
-     * Deprecated. Use `ip_filter_string` instead.
+     * Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
+    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -258,7 +258,7 @@ public final class GetOpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.keepIndexRefreshInterval);
     }
     /**
-     * @return Use index_patterns instead. Default: `0`.
+     * @return Use indexPatterns instead. Default: `0`.
      * 
      */
     public Optional<Integer> maxIndexCount() {

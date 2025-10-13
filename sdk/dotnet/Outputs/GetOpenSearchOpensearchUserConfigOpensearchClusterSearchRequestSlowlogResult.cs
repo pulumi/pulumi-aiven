@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogResult
     {
         /// <summary>
-        /// Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+        /// Enum: `Debug`, `Info`, `Trace`, `Warn`. Log level. Default: `Trace`.
         /// </summary>
         public readonly string? Level;
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdResult? Threshold;

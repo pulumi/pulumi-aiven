@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigKafkaSaslMechanismsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable PLAIN mechanism. Default: `true`.
+        /// Enable PLAIN mechanism. Default: `True`.
         /// </summary>
         [Input("plain")]
         public Input<bool>? Plain { get; set; }
 
         /// <summary>
-        /// Enable SCRAM-SHA-256 mechanism. Default: `true`.
+        /// Enable SCRAM-SHA-256 mechanism. Default: `True`.
         /// </summary>
         [Input("scramSha256")]
         public Input<bool>? ScramSha256 { get; set; }
 
         /// <summary>
-        /// Enable SCRAM-SHA-512 mechanism. Default: `true`.
+        /// Enable SCRAM-SHA-512 mechanism. Default: `True`.
         /// </summary>
         [Input("scramSha512")]
         public Input<bool>? ScramSha512 { get; set; }

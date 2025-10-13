@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigKafkaAuthenticationMethods
     {
         /// <summary>
-        /// Enable certificate/SSL authentication. Default: `true`.
+        /// Enable certificate/SSL authentication. Default: `True`.
         /// </summary>
         public readonly bool? Certificate;
         /// <summary>
-        /// Enable SASL authentication. Default: `false`.
+        /// Enable SASL authentication. Default: `False`.
         /// </summary>
         public readonly bool? Sasl;
 

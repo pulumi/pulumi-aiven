@@ -100,7 +100,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaAclArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
         public string Permission { get; set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaAclInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Permission;
         /// <summary>

@@ -35,7 +35,7 @@ public final class GetDragonflyResult {
      */
     private List<GetDragonflyComponent> components;
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
     private String diskSpace;
@@ -45,17 +45,17 @@ public final class GetDragonflyResult {
      */
     private String diskSpaceCap;
     /**
-     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
      * 
      */
     private String diskSpaceDefault;
     /**
-     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      * 
      */
     private String diskSpaceStep;
     /**
-     * @return The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
+     * @return The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      * 
      */
     private String diskSpaceUsed;
@@ -189,7 +189,7 @@ public final class GetDragonflyResult {
         return this.components;
     }
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additional_disk_space` to specify the space to be added to the default disk space defined by the plan.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
      * 
      */
     public String diskSpace() {
@@ -203,21 +203,21 @@ public final class GetDragonflyResult {
         return this.diskSpaceCap;
     }
     /**
-     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
      * 
      */
     public String diskSpaceDefault() {
         return this.diskSpaceDefault;
     }
     /**
-     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      * 
      */
     public String diskSpaceStep() {
         return this.diskSpaceStep;
     }
     /**
-     * @return The disk space that the service is currently using. This is the sum of `disk_space` and `additional_disk_space` in human-readable format (for example: `90GiB`).
+     * @return The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      * 
      */
     public String diskSpaceUsed() {

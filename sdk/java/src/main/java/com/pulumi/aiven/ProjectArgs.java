@@ -20,30 +20,30 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProjectArgs Empty = new ProjectArgs();
 
     /**
-     * Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      * @deprecated
-     * Use parent_id instead. This field will be removed in the next major release.
+     * Use parentId instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
+    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      * @deprecated
-     * Use parent_id instead. This field will be removed in the next major release.
+     * Use parentId instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
+    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      * @deprecated
      * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
@@ -54,7 +54,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> addAccountOwnersAdminAccess;
 
     /**
-     * @return If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * @return If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
      * @deprecated
      * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
@@ -227,36 +227,36 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+         * @param accountId Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use parent_id instead. This field will be removed in the next major release.
+         * Use parentId instead. This field will be removed in the next major release.
          * 
          */
-        @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
+        @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
+         * @param accountId Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use parent_id instead. This field will be removed in the next major release.
+         * Use parentId instead. This field will be removed in the next major release.
          * 
          */
-        @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
+        @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param addAccountOwnersAdminAccess If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+         * @param addAccountOwnersAdminAccess If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addAccountOwnersAdminAccess If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
+         * @param addAccountOwnersAdminAccess If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
          * 
          * @return builder
          * 
