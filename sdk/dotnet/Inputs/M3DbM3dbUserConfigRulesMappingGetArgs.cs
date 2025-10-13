@@ -48,7 +48,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
         /// </summary>
-        [Obsolete(@"Deprecated. Use `namespaces_string` instead.")]
+        [Obsolete(@"Deprecated. Use `NamespacesString` instead.")]
         public InputList<string> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<string>());

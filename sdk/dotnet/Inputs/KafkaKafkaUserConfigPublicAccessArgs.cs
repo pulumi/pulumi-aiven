@@ -19,13 +19,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Kafka { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to KafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("kafkaConnect")]
         public Input<bool>? KafkaConnect { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to KafkaRest from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("kafkaRest")]
         public Input<bool>? KafkaRest { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Prometheus { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to SchemaRegistry from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("schemaRegistry")]
         public Input<bool>? SchemaRegistry { get; set; }

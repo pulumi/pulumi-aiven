@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaConnectKafkaConnectUserConfigPublicAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// Allow clients to connect to KafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("kafkaConnect")]
         public Input<bool>? KafkaConnect { get; set; }

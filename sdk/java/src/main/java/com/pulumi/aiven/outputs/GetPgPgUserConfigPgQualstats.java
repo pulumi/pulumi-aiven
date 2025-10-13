@@ -40,7 +40,7 @@ public final class GetPgPgUserConfigPgQualstats {
     @Deprecated /* This property is deprecated. */
     private @Nullable Integer minErrEstimateRatio;
     /**
-     * @return Enable / Disable pg_qualstats constants tracking. Default: `true`.
+     * @return Enable / Disable pgQualstats constants tracking. Default: `true`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -93,7 +93,7 @@ public final class GetPgPgUserConfigPgQualstats {
         return Optional.ofNullable(this.minErrEstimateRatio);
     }
     /**
-     * @return Enable / Disable pg_qualstats constants tracking. Default: `true`.
+     * @return Enable / Disable pgQualstats constants tracking. Default: `true`.
      * 
      * @deprecated
      * This property is deprecated.

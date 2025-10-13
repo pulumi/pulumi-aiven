@@ -14,14 +14,14 @@ public final class GetKafkaSchemaRegistryAclPlainArgs extends com.pulumi.resourc
     public static final GetKafkaSchemaRegistryAclPlainArgs Empty = new GetKafkaSchemaRegistryAclPlainArgs();
 
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="permission", required=true)
     private String permission;
 
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+     * @return Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      * 
      */
     public String permission() {
@@ -117,7 +117,7 @@ public final class GetKafkaSchemaRegistryAclPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param permission Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+         * @param permission Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

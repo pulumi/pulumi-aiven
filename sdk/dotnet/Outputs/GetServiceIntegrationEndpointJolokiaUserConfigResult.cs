@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? BasicAuthPassword;
         /// <summary>
-        /// Jolokia basic authentication username. Example: `jol48k51`.
+        /// Jolokia basic authentication username. Example: `Jol48k51`.
         /// </summary>
         public readonly string? BasicAuthUsername;
 

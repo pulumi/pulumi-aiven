@@ -31,14 +31,14 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
     }
 
     /**
-     * Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="kafkaConnect")
     private @Nullable Output<Boolean> kafkaConnect;
 
     /**
-     * @return Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> kafkaConnect() {
@@ -46,14 +46,14 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
     }
 
     /**
-     * Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to kafkaRest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="kafkaRest")
     private @Nullable Output<Boolean> kafkaRest;
 
     /**
-     * @return Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to kafkaRest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> kafkaRest() {
@@ -76,14 +76,14 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
     }
 
     /**
-     * Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to schemaRegistry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="schemaRegistry")
     private @Nullable Output<Boolean> schemaRegistry;
 
     /**
-     * @return Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to schemaRegistry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> schemaRegistry() {
@@ -140,7 +140,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafkaConnect Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param kafkaConnect Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafkaConnect Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param kafkaConnect Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafkaRest Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param kafkaRest Allow clients to connect to kafkaRest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafkaRest Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param kafkaRest Allow clients to connect to kafkaRest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param schemaRegistry Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param schemaRegistry Allow clients to connect to schemaRegistry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param schemaRegistry Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param schemaRegistry Allow clients to connect to schemaRegistry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 

@@ -35,7 +35,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
+        /// Custom username for admin user. This must be set only when a new service is being created. Example: `Avnadmin`.
         /// </summary>
         [Input("adminUsername")]
         public Input<string>? AdminUsername { get; set; }
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? EnableIpv6 { get; set; }
 
         /// <summary>
-        /// Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `true`.
+        /// Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `True`.
         /// </summary>
         [Input("googleColumnarEngineEnabled")]
         public Input<bool>? GoogleColumnarEngineEnabled { get; set; }
@@ -106,7 +106,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
-        [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
+        [Obsolete(@"Deprecated. Use `IpFilterString` instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -126,13 +126,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.AlloydbomniAlloydbomniUserConfigPgGetArgs>? Pg { get; set; }
 
         /// <summary>
-        /// Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+        /// Should the service which is being forked be a read replica (deprecated, use ReadReplica service integration instead).
         /// </summary>
         [Input("pgReadReplica")]
         public Input<bool>? PgReadReplica { get; set; }
 
         /// <summary>
-        /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+        /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         [Input("pgServiceToForkFrom")]
         public Input<string>? PgServiceToForkFrom { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.AlloydbomniAlloydbomniUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `Anotherprojectname`.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
@@ -198,13 +198,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ServiceLog { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the SharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
         /// </summary>
         [Input("sharedBuffersPercentage")]
         public Input<double>? SharedBuffersPercentage { get; set; }
@@ -216,13 +216,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? StaticIps { get; set; }
 
         /// <summary>
-        /// Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        /// Enum: `Off`, `Quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         /// </summary>
         [Input("synchronousReplication")]
         public Input<string>? SynchronousReplication { get; set; }
 
         /// <summary>
-        /// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        /// Enum: `Aiven`, `Timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         /// </summary>
         [Input("variant")]
         public Input<string>? Variant { get; set; }

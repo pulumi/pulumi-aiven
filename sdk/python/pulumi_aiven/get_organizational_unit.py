@@ -114,6 +114,8 @@ def get_organizational_unit(name: Optional[_builtins.str] = None,
     """
     Gets information about an organizational unit.
 
+    ## Example Usage
+
 
     :param _builtins.str name: The name of the organizational unit.
     """
@@ -133,6 +135,8 @@ def get_organizational_unit_output(name: Optional[pulumi.Input[_builtins.str]] =
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationalUnitResult]:
     """
     Gets information about an organizational unit.
+
+    ## Example Usage
 
 
     :param _builtins.str name: The name of the organizational unit.

@@ -164,7 +164,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
+        /// Allows replication. For the default avnadmin user this attribute is required and is always `True`.
         /// </summary>
         public readonly bool PgAllowReplication;
         /// <summary>

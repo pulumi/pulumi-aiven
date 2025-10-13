@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? PressureCheckpointLimit { get; set; }
 
         /// <summary>
-        /// Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+        /// Enables the segment replication backpressure mechanism. Default is false. Default: `False`.
         /// </summary>
         [Input("pressureEnabled")]
         public Input<bool>? PressureEnabled { get; set; }

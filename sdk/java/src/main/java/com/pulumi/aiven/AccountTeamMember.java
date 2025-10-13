@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Adds a user as a team member.
  * 
- * During the creation of this resource, an invite is sent to the address specified in `user_email`.
+ * During the creation of this resource, an invite is sent to the address specified in `userEmail`.
  * The user is added to the team after they accept the invite. Deleting `aiven.AccountTeamMember`
  * deletes the pending invite if not accepted or removes the user from the team if they already accepted the invite.
  * 

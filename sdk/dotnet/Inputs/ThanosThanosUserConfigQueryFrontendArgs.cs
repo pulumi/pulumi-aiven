@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ThanosThanosUserConfigQueryFrontendArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+        /// Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `True`.
         /// </summary>
         [Input("queryRangeAlignRangeWithStep")]
         public Input<bool>? QueryRangeAlignRangeWithStep { get; set; }

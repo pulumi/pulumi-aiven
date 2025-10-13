@@ -17,7 +17,7 @@ public final class ServiceIntegrationEndpointAutoscalerUserConfigAutoscaling {
      */
     private Integer capGb;
     /**
-     * @return Enum: `autoscale_disk`. Type of autoscale event.
+     * @return Enum: `autoscaleDisk`. Type of autoscale event.
      * 
      */
     private String type;
@@ -31,7 +31,7 @@ public final class ServiceIntegrationEndpointAutoscalerUserConfigAutoscaling {
         return this.capGb;
     }
     /**
-     * @return Enum: `autoscale_disk`. Type of autoscale event.
+     * @return Enum: `autoscaleDisk`. Type of autoscale event.
      * 
      */
     public String type() {

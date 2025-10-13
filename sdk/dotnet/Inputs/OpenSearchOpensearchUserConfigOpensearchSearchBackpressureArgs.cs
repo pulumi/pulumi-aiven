@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+        /// Enum: `Disabled`, `Enforced`, `MonitorOnly`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

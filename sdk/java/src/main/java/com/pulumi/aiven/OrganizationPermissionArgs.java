@@ -65,14 +65,14 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
+     * Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
     /**
-     * @return Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
+     * @return Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceType() {
@@ -188,7 +188,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceType Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
+         * @param resourceType Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceType Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
+         * @param resourceType Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

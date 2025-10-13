@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GrafanaGrafanaUserConfigDateFormats
     {
         /// <summary>
-        /// Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
+        /// Default time zone for user preferences. Value `Browser` uses browser local time zone. Example: `Europe/Helsinki`.
         /// </summary>
         public readonly string? DefaultTimezone;
         /// <summary>

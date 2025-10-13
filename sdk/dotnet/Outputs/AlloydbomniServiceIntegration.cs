@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class AlloydbomniServiceIntegration
     {
         /// <summary>
-        /// Type of the service integration. The possible value is `read_replica`.
+        /// Type of the service integration. The possible value is `ReadReplica`.
         /// </summary>
         public readonly string IntegrationType;
         /// <summary>

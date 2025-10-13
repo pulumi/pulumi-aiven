@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Address;
         /// <summary>
-        /// Enum: `token`. Auth method of the vault secret provider.
+        /// Enum: `Token`. Auth method of the vault secret provider.
         /// </summary>
         public readonly string AuthMethod;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? PrefixPathDepth;
         /// <summary>
-        /// Token used to authenticate with vault and auth method `token`.
+        /// Token used to authenticate with vault and auth method `Token`.
         /// </summary>
         public readonly string? Token;
 
