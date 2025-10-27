@@ -8,9 +8,5 @@ env:
     AIVEN_PROJECT_NAME: ${{ secrets.AIVEN_PROJECT_NAME }}
 makeTemplate: bridged
 team: ecosystem
-plugins:
-    - name: terraform
-      version: "1.0.16"
-      kind: converter
 pulumiConvert: 1
 registryDocs: true
