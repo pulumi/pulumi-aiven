@@ -49,19 +49,19 @@ import javax.annotation.Nullable;
  *             .compatibilityLevel("FORWARD")
  *             .schema("""
  *     {
- *       "doc": "example",
- *       "fields": [
+ *       \"doc\": \"example\",
+ *       \"fields\": [
  *         {
- *           "default": 5,
- *           "doc": "my test number",
- *           "name": "test",
- *           "namespace": "test",
- *           "type": "int"
+ *           \"default\": 5,
+ *           \"doc\": \"my test number\",
+ *           \"name\": \"test\",
+ *           \"namespace\": \"test\",
+ *           \"type\": \"int\"
  *         }
  *       ],
- *       "name": "example",
- *       "namespace": "example",
- *       "type": "record"
+ *       \"name\": \"example\",
+ *       \"namespace\": \"example\",
+ *       \"type\": \"record\"
  *     }
  *             """)
  *             .build());
