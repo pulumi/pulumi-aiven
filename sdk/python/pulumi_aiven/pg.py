@@ -782,6 +782,39 @@ class Pg(pulumi.CustomResource):
         """
         Creates and manages an Aiven for PostgreSQL® service.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+        import pulumi_std as std
+
+        example_postgres = aiven.Pg("example_postgres",
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example-postgres-service",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            static_ips=std.index.toset(input=[
+                ips[0]["staticIpAddressId"],
+                ips[1]["staticIpAddressId"],
+                ips[2]["staticIpAddressId"],
+                ips[3]["staticIpAddressId"],
+            ])["result"],
+            pg_user_config={
+                "static_ips": True,
+                "public_access": {
+                    "pg": True,
+                    "prometheus": False,
+                },
+                "pg": {
+                    "idle_in_transaction_session_timeout": 900,
+                    "log_min_duration_statement": -1,
+                },
+            })
+        ```
+
         ## Import
 
         ```sh
@@ -815,6 +848,39 @@ class Pg(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates and manages an Aiven for PostgreSQL® service.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+        import pulumi_std as std
+
+        example_postgres = aiven.Pg("example_postgres",
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example-postgres-service",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00",
+            static_ips=std.index.toset(input=[
+                ips[0]["staticIpAddressId"],
+                ips[1]["staticIpAddressId"],
+                ips[2]["staticIpAddressId"],
+                ips[3]["staticIpAddressId"],
+            ])["result"],
+            pg_user_config={
+                "static_ips": True,
+                "public_access": {
+                    "pg": True,
+                    "prometheus": False,
+                },
+                "pg": {
+                    "idle_in_transaction_session_timeout": 900,
+                    "log_min_duration_statement": -1,
+                },
+            })
+        ```
 
         ## Import
 

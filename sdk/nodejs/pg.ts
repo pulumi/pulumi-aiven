@@ -9,6 +9,42 @@ import * as utilities from "./utilities";
 /**
  * Creates and manages an Aiven for PostgreSQL® service.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ * import * as std from "@pulumi/std";
+ *
+ * const examplePostgres = new aiven.Pg("example_postgres", {
+ *     project: exampleProject.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-4",
+ *     serviceName: "example-postgres-service",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ *     staticIps: std.index.toset({
+ *         input: [
+ *             ips[0].staticIpAddressId,
+ *             ips[1].staticIpAddressId,
+ *             ips[2].staticIpAddressId,
+ *             ips[3].staticIpAddressId,
+ *         ],
+ *     }).result,
+ *     pgUserConfig: {
+ *         staticIps: true,
+ *         publicAccess: {
+ *             pg: true,
+ *             prometheus: false,
+ *         },
+ *         pg: {
+ *             idleInTransactionSessionTimeout: 900,
+ *             logMinDurationStatement: -1,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
