@@ -26,6 +26,64 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages an Aiven for PostgreSQL® service.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Pg;
+ * import com.pulumi.aiven.PgArgs;
+ * import com.pulumi.aiven.inputs.PgPgUserConfigArgs;
+ * import com.pulumi.aiven.inputs.PgPgUserConfigPublicAccessArgs;
+ * import com.pulumi.aiven.inputs.PgPgUserConfigPgArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var examplePostgres = new Pg("examplePostgres", PgArgs.builder()
+ *             .project(exampleProject.project())
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-4")
+ *             .serviceName("example-postgres-service")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
+ *             .staticIps(StdFunctions.toset(Map.of("input",             
+ *                 ips[0].staticIpAddressId(),
+ *                 ips[1].staticIpAddressId(),
+ *                 ips[2].staticIpAddressId(),
+ *                 ips[3].staticIpAddressId())).result())
+ *             .pgUserConfig(PgPgUserConfigArgs.builder()
+ *                 .staticIps(true)
+ *                 .publicAccess(PgPgUserConfigPublicAccessArgs.builder()
+ *                     .pg(true)
+ *                     .prometheus(false)
+ *                     .build())
+ *                 .pg(PgPgUserConfigPgArgs.builder()
+ *                     .idleInTransactionSessionTimeout(900)
+ *                     .logMinDurationStatement(-1)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh
