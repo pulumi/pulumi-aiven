@@ -13,6 +13,262 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetM3DbM3dbUserConfig struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects []GetM3DbM3dbUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters []string `pulumi:"ipFilters"`
+	// M3 limits
+	Limits *GetM3DbM3dbUserConfigLimits `pulumi:"limits"`
+	// M3 specific configuration options
+	M3 *GetM3DbM3dbUserConfigM3 `pulumi:"m3"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
+	M3Version *string `pulumi:"m3Version"`
+	// Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+	M3coordinatorEnableGraphiteCarbonIngest *bool `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
+	M3dbVersion *string `pulumi:"m3dbVersion"`
+	// List of M3 namespaces
+	Namespaces []GetM3DbM3dbUserConfigNamespace `pulumi:"namespaces"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GetM3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetM3DbM3dbUserConfigPublicAccess `pulumi:"publicAccess"`
+	// M3 rules
+	Rules *GetM3DbM3dbUserConfigRules `pulumi:"rules"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps *bool `pulumi:"staticIps"`
+}
+
+// GetM3DbM3dbUserConfigInput is an input type that accepts GetM3DbM3dbUserConfigArgs and GetM3DbM3dbUserConfigOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigInput` via:
+//
+//	GetM3DbM3dbUserConfigArgs{...}
+type GetM3DbM3dbUserConfigInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput
+	ToGetM3DbM3dbUserConfigOutputWithContext(context.Context) GetM3DbM3dbUserConfigOutput
+}
+
+type GetM3DbM3dbUserConfigArgs struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects GetM3DbM3dbUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// M3 limits
+	Limits GetM3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
+	// M3 specific configuration options
+	M3 GetM3DbM3dbUserConfigM3PtrInput `pulumi:"m3"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
+	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	// Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+	M3coordinatorEnableGraphiteCarbonIngest pulumi.BoolPtrInput `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
+	M3dbVersion pulumi.StringPtrInput `pulumi:"m3dbVersion"`
+	// List of M3 namespaces
+	Namespaces GetM3DbM3dbUserConfigNamespaceArrayInput `pulumi:"namespaces"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GetM3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetM3DbM3dbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// M3 rules
+	Rules GetM3DbM3dbUserConfigRulesPtrInput `pulumi:"rules"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
+}
+
+func (GetM3DbM3dbUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigArgs) ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput {
+	return i.ToGetM3DbM3dbUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigArgs) ToGetM3DbM3dbUserConfigOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigOutput)
+}
+
+// GetM3DbM3dbUserConfigArrayInput is an input type that accepts GetM3DbM3dbUserConfigArray and GetM3DbM3dbUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbUserConfigArrayInput` via:
+//
+//	GetM3DbM3dbUserConfigArray{ GetM3DbM3dbUserConfigArgs{...} }
+type GetM3DbM3dbUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbUserConfigArrayOutput() GetM3DbM3dbUserConfigArrayOutput
+	ToGetM3DbM3dbUserConfigArrayOutputWithContext(context.Context) GetM3DbM3dbUserConfigArrayOutput
+}
+
+type GetM3DbM3dbUserConfigArray []GetM3DbM3dbUserConfigInput
+
+func (GetM3DbM3dbUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbUserConfigArray) ToGetM3DbM3dbUserConfigArrayOutput() GetM3DbM3dbUserConfigArrayOutput {
+	return i.ToGetM3DbM3dbUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbUserConfigArray) ToGetM3DbM3dbUserConfigArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbUserConfigArrayOutput)
+}
+
+type GetM3DbM3dbUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigOutput) ToGetM3DbM3dbUserConfigOutput() GetM3DbM3dbUserConfigOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigOutput) ToGetM3DbM3dbUserConfigOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigOutput {
+	return o
+}
+
+// Additional Cloud Regions for Backup Replication.
+func (o GetM3DbM3dbUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+func (o GetM3DbM3dbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+func (o GetM3DbM3dbUserConfigOutput) IpFilterObjects() GetM3DbM3dbUserConfigIpFilterObjectArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []GetM3DbM3dbUserConfigIpFilterObject { return v.IpFilterObjects }).(GetM3DbM3dbUserConfigIpFilterObjectArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+func (o GetM3DbM3dbUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+//
+// Deprecated: Deprecated. Use `ipFilterString` instead.
+func (o GetM3DbM3dbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// M3 limits
+func (o GetM3DbM3dbUserConfigOutput) Limits() GetM3DbM3dbUserConfigLimitsPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigLimits { return v.Limits }).(GetM3DbM3dbUserConfigLimitsPtrOutput)
+}
+
+// M3 specific configuration options
+func (o GetM3DbM3dbUserConfigOutput) M3() GetM3DbM3dbUserConfigM3PtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigM3 { return v.M3 }).(GetM3DbM3dbUserConfigM3PtrOutput)
+}
+
+// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
+func (o GetM3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
+}
+
+// Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+func (o GetM3DbM3dbUserConfigOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *bool { return v.M3coordinatorEnableGraphiteCarbonIngest }).(pulumi.BoolPtrOutput)
+}
+
+// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
+func (o GetM3DbM3dbUserConfigOutput) M3dbVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.M3dbVersion }).(pulumi.StringPtrOutput)
+}
+
+// List of M3 namespaces
+func (o GetM3DbM3dbUserConfigOutput) Namespaces() GetM3DbM3dbUserConfigNamespaceArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) []GetM3DbM3dbUserConfigNamespace { return v.Namespaces }).(GetM3DbM3dbUserConfigNamespaceArrayOutput)
+}
+
+// Allow access to selected service ports from private networks
+func (o GetM3DbM3dbUserConfigOutput) PrivateAccess() GetM3DbM3dbUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigPrivateAccess { return v.PrivateAccess }).(GetM3DbM3dbUserConfigPrivateAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+func (o GetM3DbM3dbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Allow access to selected service ports from the public Internet
+func (o GetM3DbM3dbUserConfigOutput) PublicAccess() GetM3DbM3dbUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigPublicAccess { return v.PublicAccess }).(GetM3DbM3dbUserConfigPublicAccessPtrOutput)
+}
+
+// M3 rules
+func (o GetM3DbM3dbUserConfigOutput) Rules() GetM3DbM3dbUserConfigRulesPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *GetM3DbM3dbUserConfigRules { return v.Rules }).(GetM3DbM3dbUserConfigRulesPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o GetM3DbM3dbUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
+// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+func (o GetM3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o GetM3DbM3dbUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+type GetM3DbM3dbUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3dbUserConfig)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbUserConfigArrayOutput) ToGetM3DbM3dbUserConfigArrayOutput() GetM3DbM3dbUserConfigArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigArrayOutput) ToGetM3DbM3dbUserConfigArrayOutputWithContext(ctx context.Context) GetM3DbM3dbUserConfigArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbUserConfigArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3dbUserConfig {
+		return vs[0].([]GetM3DbM3dbUserConfig)[vs[1].(int)]
+	}).(GetM3DbM3dbUserConfigOutput)
+}
+
 type GetM3DbM3dbUserConfigIpFilterObject struct {
 	// Description for IP filter list entry. Example: `Production service IP range`.
 	Description *string `pulumi:"description"`
@@ -5396,7 +5652,7 @@ type GetOpenSearchOpensearchUserConfig struct {
 	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
 	// Azure migration settings
 	AzureMigration *GetOpenSearchOpensearchUserConfigAzureMigration `pulumi:"azureMigration"`
-	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
 	CustomDomain *string `pulumi:"customDomain"`
 	// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
 	DisableReplicationFactorAdjustment *bool `pulumi:"disableReplicationFactorAdjustment"`
@@ -5416,6 +5672,8 @@ type GetOpenSearchOpensearchUserConfig struct {
 	//
 	// Deprecated: Deprecated. Use `ipFilterString` instead.
 	IpFilters []string `pulumi:"ipFilters"`
+	// OpenSearch JWT Configuration
+	Jwt *GetOpenSearchOpensearchUserConfigJwt `pulumi:"jwt"`
 	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval *bool `pulumi:"keepIndexRefreshInterval"`
 	// Use indexPatterns instead. Default: `0`.
@@ -5466,7 +5724,7 @@ type GetOpenSearchOpensearchUserConfigArgs struct {
 	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
 	// Azure migration settings
 	AzureMigration GetOpenSearchOpensearchUserConfigAzureMigrationPtrInput `pulumi:"azureMigration"`
-	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
 	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
 	// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
 	DisableReplicationFactorAdjustment pulumi.BoolPtrInput `pulumi:"disableReplicationFactorAdjustment"`
@@ -5486,6 +5744,8 @@ type GetOpenSearchOpensearchUserConfigArgs struct {
 	//
 	// Deprecated: Deprecated. Use `ipFilterString` instead.
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// OpenSearch JWT Configuration
+	Jwt GetOpenSearchOpensearchUserConfigJwtPtrInput `pulumi:"jwt"`
 	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
 	KeepIndexRefreshInterval pulumi.BoolPtrInput `pulumi:"keepIndexRefreshInterval"`
 	// Use indexPatterns instead. Default: `0`.
@@ -5583,7 +5843,7 @@ func (o GetOpenSearchOpensearchUserConfigOutput) AzureMigration() GetOpenSearchO
 	}).(GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput)
 }
 
-// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
 func (o GetOpenSearchOpensearchUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
@@ -5638,6 +5898,11 @@ func (o GetOpenSearchOpensearchUserConfigOutput) IpFilterStrings() pulumi.String
 // Deprecated: Deprecated. Use `ipFilterString` instead.
 func (o GetOpenSearchOpensearchUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// OpenSearch JWT Configuration
+func (o GetOpenSearchOpensearchUserConfigOutput) Jwt() GetOpenSearchOpensearchUserConfigJwtPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigJwt { return v.Jwt }).(GetOpenSearchOpensearchUserConfigJwtPtrOutput)
 }
 
 // Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
@@ -7032,6 +7297,303 @@ func (o GetOpenSearchOpensearchUserConfigIpFilterObjectArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchOpensearchUserConfigIpFilterObject {
 		return vs[0].([]GetOpenSearchOpensearchUserConfigIpFilterObject)[vs[1].(int)]
 	}).(GetOpenSearchOpensearchUserConfigIpFilterObjectOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigJwt struct {
+	// Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: `false`.
+	Enabled bool `pulumi:"enabled"`
+	// The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: `20`.
+	JwtClockSkewToleranceSeconds *int `pulumi:"jwtClockSkewToleranceSeconds"`
+	// The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.
+	JwtHeader *string `pulumi:"jwtHeader"`
+	// If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: `token`.
+	JwtUrlParameter *string `pulumi:"jwtUrlParameter"`
+	// If specified, the JWT must contain an `aud` claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.
+	RequiredAudience *string `pulumi:"requiredAudience"`
+	// If specified, the JWT must contain an `iss` claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.
+	RequiredIssuer *string `pulumi:"requiredIssuer"`
+	// The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: `roles`.
+	RolesKey *string `pulumi:"rolesKey"`
+	// The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----
+	// MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+	// -----END PUBLIC KEY----- (PEM)`.
+	SigningKey string `pulumi:"signingKey"`
+	// The key in the JWT payload that contains the user's subject identifier. If not specified, the `sub` claim is used by default. Example: `sub`.
+	SubjectKey *string `pulumi:"subjectKey"`
+}
+
+// GetOpenSearchOpensearchUserConfigJwtInput is an input type that accepts GetOpenSearchOpensearchUserConfigJwtArgs and GetOpenSearchOpensearchUserConfigJwtOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigJwtInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigJwtArgs{...}
+type GetOpenSearchOpensearchUserConfigJwtInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigJwtOutput() GetOpenSearchOpensearchUserConfigJwtOutput
+	ToGetOpenSearchOpensearchUserConfigJwtOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigJwtOutput
+}
+
+type GetOpenSearchOpensearchUserConfigJwtArgs struct {
+	// Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: `false`.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: `20`.
+	JwtClockSkewToleranceSeconds pulumi.IntPtrInput `pulumi:"jwtClockSkewToleranceSeconds"`
+	// The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.
+	JwtHeader pulumi.StringPtrInput `pulumi:"jwtHeader"`
+	// If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: `token`.
+	JwtUrlParameter pulumi.StringPtrInput `pulumi:"jwtUrlParameter"`
+	// If specified, the JWT must contain an `aud` claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.
+	RequiredAudience pulumi.StringPtrInput `pulumi:"requiredAudience"`
+	// If specified, the JWT must contain an `iss` claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.
+	RequiredIssuer pulumi.StringPtrInput `pulumi:"requiredIssuer"`
+	// The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: `roles`.
+	RolesKey pulumi.StringPtrInput `pulumi:"rolesKey"`
+	// The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----
+	// MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+	// -----END PUBLIC KEY----- (PEM)`.
+	SigningKey pulumi.StringInput `pulumi:"signingKey"`
+	// The key in the JWT payload that contains the user's subject identifier. If not specified, the `sub` claim is used by default. Example: `sub`.
+	SubjectKey pulumi.StringPtrInput `pulumi:"subjectKey"`
+}
+
+func (GetOpenSearchOpensearchUserConfigJwtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigJwt)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigJwtArgs) ToGetOpenSearchOpensearchUserConfigJwtOutput() GetOpenSearchOpensearchUserConfigJwtOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigJwtOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigJwtArgs) ToGetOpenSearchOpensearchUserConfigJwtOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigJwtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigJwtOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigJwtArgs) ToGetOpenSearchOpensearchUserConfigJwtPtrOutput() GetOpenSearchOpensearchUserConfigJwtPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigJwtPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigJwtArgs) ToGetOpenSearchOpensearchUserConfigJwtPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigJwtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigJwtOutput).ToGetOpenSearchOpensearchUserConfigJwtPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigJwtPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigJwtArgs, GetOpenSearchOpensearchUserConfigJwtPtr and GetOpenSearchOpensearchUserConfigJwtPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigJwtPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigJwtArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigJwtPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigJwtPtrOutput() GetOpenSearchOpensearchUserConfigJwtPtrOutput
+	ToGetOpenSearchOpensearchUserConfigJwtPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigJwtPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigJwtPtrType GetOpenSearchOpensearchUserConfigJwtArgs
+
+func GetOpenSearchOpensearchUserConfigJwtPtr(v *GetOpenSearchOpensearchUserConfigJwtArgs) GetOpenSearchOpensearchUserConfigJwtPtrInput {
+	return (*getOpenSearchOpensearchUserConfigJwtPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigJwtPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigJwt)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigJwtPtrType) ToGetOpenSearchOpensearchUserConfigJwtPtrOutput() GetOpenSearchOpensearchUserConfigJwtPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigJwtPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigJwtPtrType) ToGetOpenSearchOpensearchUserConfigJwtPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigJwtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigJwtPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigJwtOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigJwtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigJwt)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) ToGetOpenSearchOpensearchUserConfigJwtOutput() GetOpenSearchOpensearchUserConfigJwtOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) ToGetOpenSearchOpensearchUserConfigJwtOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigJwtOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) ToGetOpenSearchOpensearchUserConfigJwtPtrOutput() GetOpenSearchOpensearchUserConfigJwtPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigJwtPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) ToGetOpenSearchOpensearchUserConfigJwtPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigJwtPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigJwt) *GetOpenSearchOpensearchUserConfigJwt {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigJwtPtrOutput)
+}
+
+// Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigJwt) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: `20`.
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) JwtClockSkewToleranceSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigJwt) *int { return v.JwtClockSkewToleranceSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) JwtHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigJwt) *string { return v.JwtHeader }).(pulumi.StringPtrOutput)
+}
+
+// If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: `token`.
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) JwtUrlParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigJwt) *string { return v.JwtUrlParameter }).(pulumi.StringPtrOutput)
+}
+
+// If specified, the JWT must contain an `aud` claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) RequiredAudience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigJwt) *string { return v.RequiredAudience }).(pulumi.StringPtrOutput)
+}
+
+// If specified, the JWT must contain an `iss` claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) RequiredIssuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigJwt) *string { return v.RequiredIssuer }).(pulumi.StringPtrOutput)
+}
+
+// The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: `roles`.
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) RolesKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigJwt) *string { return v.RolesKey }).(pulumi.StringPtrOutput)
+}
+
+// The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----
+// MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+// -----END PUBLIC KEY----- (PEM)`.
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) SigningKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigJwt) string { return v.SigningKey }).(pulumi.StringOutput)
+}
+
+// The key in the JWT payload that contains the user's subject identifier. If not specified, the `sub` claim is used by default. Example: `sub`.
+func (o GetOpenSearchOpensearchUserConfigJwtOutput) SubjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigJwt) *string { return v.SubjectKey }).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigJwtPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigJwtPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigJwt)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) ToGetOpenSearchOpensearchUserConfigJwtPtrOutput() GetOpenSearchOpensearchUserConfigJwtPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) ToGetOpenSearchOpensearchUserConfigJwtPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigJwtPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) Elem() GetOpenSearchOpensearchUserConfigJwtOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigJwt) GetOpenSearchOpensearchUserConfigJwt {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigJwt
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigJwtOutput)
+}
+
+// Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigJwt) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: `20`.
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) JwtClockSkewToleranceSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigJwt) *int {
+		if v == nil {
+			return nil
+		}
+		return v.JwtClockSkewToleranceSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) JwtHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwtHeader
+	}).(pulumi.StringPtrOutput)
+}
+
+// If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: `token`.
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) JwtUrlParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwtUrlParameter
+	}).(pulumi.StringPtrOutput)
+}
+
+// If specified, the JWT must contain an `aud` claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) RequiredAudience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredAudience
+	}).(pulumi.StringPtrOutput)
+}
+
+// If specified, the JWT must contain an `iss` claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) RequiredIssuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredIssuer
+	}).(pulumi.StringPtrOutput)
+}
+
+// The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: `roles`.
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) RolesKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RolesKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----
+// MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+// -----END PUBLIC KEY----- (PEM)`.
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) SigningKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SigningKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The key in the JWT payload that contains the user's subject identifier. If not specified, the `sub` claim is used by default. Example: `sub`.
+func (o GetOpenSearchOpensearchUserConfigJwtPtrOutput) SubjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetOpenSearchOpensearchUserConfigOpenid struct {
@@ -15726,6 +16288,294 @@ func (o GetOrganizationTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetOrganizationUserGroupListTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationUserGroupListTimeoutsInput is an input type that accepts GetOrganizationUserGroupListTimeoutsArgs and GetOrganizationUserGroupListTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupListTimeoutsInput` via:
+//
+//	GetOrganizationUserGroupListTimeoutsArgs{...}
+type GetOrganizationUserGroupListTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupListTimeoutsOutput() GetOrganizationUserGroupListTimeoutsOutput
+	ToGetOrganizationUserGroupListTimeoutsOutputWithContext(context.Context) GetOrganizationUserGroupListTimeoutsOutput
+}
+
+type GetOrganizationUserGroupListTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationUserGroupListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupListTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationUserGroupListTimeoutsArgs) ToGetOrganizationUserGroupListTimeoutsOutput() GetOrganizationUserGroupListTimeoutsOutput {
+	return i.ToGetOrganizationUserGroupListTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupListTimeoutsArgs) ToGetOrganizationUserGroupListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationUserGroupListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupListTimeoutsOutput)
+}
+
+func (i GetOrganizationUserGroupListTimeoutsArgs) ToGetOrganizationUserGroupListTimeoutsPtrOutput() GetOrganizationUserGroupListTimeoutsPtrOutput {
+	return i.ToGetOrganizationUserGroupListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupListTimeoutsArgs) ToGetOrganizationUserGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupListTimeoutsOutput).ToGetOrganizationUserGroupListTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationUserGroupListTimeoutsPtrInput is an input type that accepts GetOrganizationUserGroupListTimeoutsArgs, GetOrganizationUserGroupListTimeoutsPtr and GetOrganizationUserGroupListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupListTimeoutsPtrInput` via:
+//
+//	        GetOrganizationUserGroupListTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationUserGroupListTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupListTimeoutsPtrOutput() GetOrganizationUserGroupListTimeoutsPtrOutput
+	ToGetOrganizationUserGroupListTimeoutsPtrOutputWithContext(context.Context) GetOrganizationUserGroupListTimeoutsPtrOutput
+}
+
+type getOrganizationUserGroupListTimeoutsPtrType GetOrganizationUserGroupListTimeoutsArgs
+
+func GetOrganizationUserGroupListTimeoutsPtr(v *GetOrganizationUserGroupListTimeoutsArgs) GetOrganizationUserGroupListTimeoutsPtrInput {
+	return (*getOrganizationUserGroupListTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationUserGroupListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationUserGroupListTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationUserGroupListTimeoutsPtrType) ToGetOrganizationUserGroupListTimeoutsPtrOutput() GetOrganizationUserGroupListTimeoutsPtrOutput {
+	return i.ToGetOrganizationUserGroupListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationUserGroupListTimeoutsPtrType) ToGetOrganizationUserGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupListTimeoutsPtrOutput)
+}
+
+type GetOrganizationUserGroupListTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupListTimeoutsOutput) ToGetOrganizationUserGroupListTimeoutsOutput() GetOrganizationUserGroupListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupListTimeoutsOutput) ToGetOrganizationUserGroupListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationUserGroupListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupListTimeoutsOutput) ToGetOrganizationUserGroupListTimeoutsPtrOutput() GetOrganizationUserGroupListTimeoutsPtrOutput {
+	return o.ToGetOrganizationUserGroupListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationUserGroupListTimeoutsOutput) ToGetOrganizationUserGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationUserGroupListTimeouts) *GetOrganizationUserGroupListTimeouts {
+		return &v
+	}).(GetOrganizationUserGroupListTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationUserGroupListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationUserGroupListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationUserGroupListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupListTimeoutsPtrOutput) ToGetOrganizationUserGroupListTimeoutsPtrOutput() GetOrganizationUserGroupListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupListTimeoutsPtrOutput) ToGetOrganizationUserGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupListTimeoutsPtrOutput) Elem() GetOrganizationUserGroupListTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationUserGroupListTimeouts) GetOrganizationUserGroupListTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationUserGroupListTimeouts
+		return ret
+	}).(GetOrganizationUserGroupListTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationUserGroupListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationUserGroupListTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationUserGroupListUserGroup struct {
+	// User group creation time.
+	CreateTime string `pulumi:"createTime"`
+	// Description.
+	Description string `pulumi:"description"`
+	// Managed By Scim.
+	ManagedByScim bool `pulumi:"managedByScim"`
+	// Member Count.
+	MemberCount int `pulumi:"memberCount"`
+	// User group last update time.
+	UpdateTime string `pulumi:"updateTime"`
+	// User Group ID.
+	UserGroupId string `pulumi:"userGroupId"`
+	// User Group Name.
+	UserGroupName string `pulumi:"userGroupName"`
+}
+
+// GetOrganizationUserGroupListUserGroupInput is an input type that accepts GetOrganizationUserGroupListUserGroupArgs and GetOrganizationUserGroupListUserGroupOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupListUserGroupInput` via:
+//
+//	GetOrganizationUserGroupListUserGroupArgs{...}
+type GetOrganizationUserGroupListUserGroupInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupListUserGroupOutput() GetOrganizationUserGroupListUserGroupOutput
+	ToGetOrganizationUserGroupListUserGroupOutputWithContext(context.Context) GetOrganizationUserGroupListUserGroupOutput
+}
+
+type GetOrganizationUserGroupListUserGroupArgs struct {
+	// User group creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Managed By Scim.
+	ManagedByScim pulumi.BoolInput `pulumi:"managedByScim"`
+	// Member Count.
+	MemberCount pulumi.IntInput `pulumi:"memberCount"`
+	// User group last update time.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// User Group ID.
+	UserGroupId pulumi.StringInput `pulumi:"userGroupId"`
+	// User Group Name.
+	UserGroupName pulumi.StringInput `pulumi:"userGroupName"`
+}
+
+func (GetOrganizationUserGroupListUserGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupListUserGroup)(nil)).Elem()
+}
+
+func (i GetOrganizationUserGroupListUserGroupArgs) ToGetOrganizationUserGroupListUserGroupOutput() GetOrganizationUserGroupListUserGroupOutput {
+	return i.ToGetOrganizationUserGroupListUserGroupOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupListUserGroupArgs) ToGetOrganizationUserGroupListUserGroupOutputWithContext(ctx context.Context) GetOrganizationUserGroupListUserGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupListUserGroupOutput)
+}
+
+// GetOrganizationUserGroupListUserGroupArrayInput is an input type that accepts GetOrganizationUserGroupListUserGroupArray and GetOrganizationUserGroupListUserGroupArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupListUserGroupArrayInput` via:
+//
+//	GetOrganizationUserGroupListUserGroupArray{ GetOrganizationUserGroupListUserGroupArgs{...} }
+type GetOrganizationUserGroupListUserGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupListUserGroupArrayOutput() GetOrganizationUserGroupListUserGroupArrayOutput
+	ToGetOrganizationUserGroupListUserGroupArrayOutputWithContext(context.Context) GetOrganizationUserGroupListUserGroupArrayOutput
+}
+
+type GetOrganizationUserGroupListUserGroupArray []GetOrganizationUserGroupListUserGroupInput
+
+func (GetOrganizationUserGroupListUserGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationUserGroupListUserGroup)(nil)).Elem()
+}
+
+func (i GetOrganizationUserGroupListUserGroupArray) ToGetOrganizationUserGroupListUserGroupArrayOutput() GetOrganizationUserGroupListUserGroupArrayOutput {
+	return i.ToGetOrganizationUserGroupListUserGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupListUserGroupArray) ToGetOrganizationUserGroupListUserGroupArrayOutputWithContext(ctx context.Context) GetOrganizationUserGroupListUserGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupListUserGroupArrayOutput)
+}
+
+type GetOrganizationUserGroupListUserGroupOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupListUserGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupListUserGroup)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupListUserGroupOutput) ToGetOrganizationUserGroupListUserGroupOutput() GetOrganizationUserGroupListUserGroupOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupListUserGroupOutput) ToGetOrganizationUserGroupListUserGroupOutputWithContext(ctx context.Context) GetOrganizationUserGroupListUserGroupOutput {
+	return o
+}
+
+// User group creation time.
+func (o GetOrganizationUserGroupListUserGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupListUserGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description.
+func (o GetOrganizationUserGroupListUserGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupListUserGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Managed By Scim.
+func (o GetOrganizationUserGroupListUserGroupOutput) ManagedByScim() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupListUserGroup) bool { return v.ManagedByScim }).(pulumi.BoolOutput)
+}
+
+// Member Count.
+func (o GetOrganizationUserGroupListUserGroupOutput) MemberCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupListUserGroup) int { return v.MemberCount }).(pulumi.IntOutput)
+}
+
+// User group last update time.
+func (o GetOrganizationUserGroupListUserGroupOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupListUserGroup) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// User Group ID.
+func (o GetOrganizationUserGroupListUserGroupOutput) UserGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupListUserGroup) string { return v.UserGroupId }).(pulumi.StringOutput)
+}
+
+// User Group Name.
+func (o GetOrganizationUserGroupListUserGroupOutput) UserGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupListUserGroup) string { return v.UserGroupName }).(pulumi.StringOutput)
+}
+
+type GetOrganizationUserGroupListUserGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupListUserGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationUserGroupListUserGroup)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupListUserGroupArrayOutput) ToGetOrganizationUserGroupListUserGroupArrayOutput() GetOrganizationUserGroupListUserGroupArrayOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupListUserGroupArrayOutput) ToGetOrganizationUserGroupListUserGroupArrayOutputWithContext(ctx context.Context) GetOrganizationUserGroupListUserGroupArrayOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupListUserGroupArrayOutput) Index(i pulumi.IntInput) GetOrganizationUserGroupListUserGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationUserGroupListUserGroup {
+		return vs[0].([]GetOrganizationUserGroupListUserGroup)[vs[1].(int)]
+	}).(GetOrganizationUserGroupListUserGroupOutput)
+}
+
 type GetOrganizationUserListUser struct {
 	// Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
 	IsSuperAdmin bool `pulumi:"isSuperAdmin"`
@@ -17399,6 +18249,16 @@ type GetPgPgUserConfigPg struct {
 	DefaultToastCompression *string `pulumi:"defaultToastCompression"`
 	// Time out sessions with open transactions after this number of milliseconds.
 	IdleInTransactionSessionTimeout *int `pulumi:"idleInTransactionSessionTimeout"`
+	// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+	IoCombineLimit *int `pulumi:"ioCombineLimit"`
+	// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io_combine_limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+	IoMaxCombineLimit *int `pulumi:"ioMaxCombineLimit"`
+	// EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+	IoMaxConcurrency *int `pulumi:"ioMaxConcurrency"`
+	// Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+	IoMethod *string `pulumi:"ioMethod"`
+	// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+	IoWorkers *int `pulumi:"ioWorkers"`
 	// Controls system-wide use of Just-in-Time Compilation (JIT).
 	Jit *bool `pulumi:"jit"`
 	// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
@@ -17517,6 +18377,16 @@ type GetPgPgUserConfigPgArgs struct {
 	DefaultToastCompression pulumi.StringPtrInput `pulumi:"defaultToastCompression"`
 	// Time out sessions with open transactions after this number of milliseconds.
 	IdleInTransactionSessionTimeout pulumi.IntPtrInput `pulumi:"idleInTransactionSessionTimeout"`
+	// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+	IoCombineLimit pulumi.IntPtrInput `pulumi:"ioCombineLimit"`
+	// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io_combine_limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+	IoMaxCombineLimit pulumi.IntPtrInput `pulumi:"ioMaxCombineLimit"`
+	// EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+	IoMaxConcurrency pulumi.IntPtrInput `pulumi:"ioMaxConcurrency"`
+	// Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+	IoMethod pulumi.StringPtrInput `pulumi:"ioMethod"`
+	// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+	IoWorkers pulumi.IntPtrInput `pulumi:"ioWorkers"`
 	// Controls system-wide use of Just-in-Time Compilation (JIT).
 	Jit pulumi.BoolPtrInput `pulumi:"jit"`
 	// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
@@ -17746,6 +18616,31 @@ func (o GetPgPgUserConfigPgOutput) DefaultToastCompression() pulumi.StringPtrOut
 // Time out sessions with open transactions after this number of milliseconds.
 func (o GetPgPgUserConfigPgOutput) IdleInTransactionSessionTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.IdleInTransactionSessionTimeout }).(pulumi.IntPtrOutput)
+}
+
+// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+func (o GetPgPgUserConfigPgOutput) IoCombineLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.IoCombineLimit }).(pulumi.IntPtrOutput)
+}
+
+// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io_combine_limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+func (o GetPgPgUserConfigPgOutput) IoMaxCombineLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.IoMaxCombineLimit }).(pulumi.IntPtrOutput)
+}
+
+// EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+func (o GetPgPgUserConfigPgOutput) IoMaxConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.IoMaxConcurrency }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+func (o GetPgPgUserConfigPgOutput) IoMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.IoMethod }).(pulumi.StringPtrOutput)
+}
+
+// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+func (o GetPgPgUserConfigPgOutput) IoWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.IoWorkers }).(pulumi.IntPtrOutput)
 }
 
 // Controls system-wide use of Just-in-Time Compilation (JIT).
@@ -18109,6 +19004,56 @@ func (o GetPgPgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.I
 			return nil
 		}
 		return v.IdleInTransactionSessionTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+func (o GetPgPgUserConfigPgPtrOutput) IoCombineLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IoCombineLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io_combine_limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+func (o GetPgPgUserConfigPgPtrOutput) IoMaxCombineLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IoMaxCombineLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+func (o GetPgPgUserConfigPgPtrOutput) IoMaxConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IoMaxConcurrency
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+func (o GetPgPgUserConfigPgPtrOutput) IoMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IoMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+func (o GetPgPgUserConfigPgPtrOutput) IoWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IoWorkers
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -29802,6 +30747,735 @@ func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) P
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetServicePlanBackupConfig struct {
+	// Interval of taking a frequent backup in service types supporting different backup schedules.
+	FrequentIntervalMinutes int `pulumi:"frequentIntervalMinutes"`
+	// Maximum age of the oldest frequent backup in service types supporting different backup schedules.
+	FrequentOldestAgeMinutes int `pulumi:"frequentOldestAgeMinutes"`
+	// Interval of taking an infrequent backup in service types supporting different backup schedules.
+	InfrequentIntervalMinutes int `pulumi:"infrequentIntervalMinutes"`
+	// Maximum age of the oldest infrequent backup in service types supporting different backup schedules.
+	InfrequentOldestAgeMinutes int `pulumi:"infrequentOldestAgeMinutes"`
+	// The interval, in hours, at which backups are generated. For some services, like PostgreSQL, this is the interval at which full snapshots are taken and continuous incremental backup stream is maintained in addition to that.
+	Interval int `pulumi:"interval"`
+	// Maximum number of backups to keep. Zero when no backups are created.
+	MaxCount int `pulumi:"maxCount"`
+	// Mechanism how backups can be restored. 'basic' means a backup is restored as is so that the system is restored to the state it was when the backup was generated. 'pitr' means point-in-time-recovery, which allows restoring the system to any state since the first available full snapshot. The possible values are `basic` and `pitr`.
+	RecoveryMode string `pulumi:"recoveryMode"`
+}
+
+// GetServicePlanBackupConfigInput is an input type that accepts GetServicePlanBackupConfigArgs and GetServicePlanBackupConfigOutput values.
+// You can construct a concrete instance of `GetServicePlanBackupConfigInput` via:
+//
+//	GetServicePlanBackupConfigArgs{...}
+type GetServicePlanBackupConfigInput interface {
+	pulumi.Input
+
+	ToGetServicePlanBackupConfigOutput() GetServicePlanBackupConfigOutput
+	ToGetServicePlanBackupConfigOutputWithContext(context.Context) GetServicePlanBackupConfigOutput
+}
+
+type GetServicePlanBackupConfigArgs struct {
+	// Interval of taking a frequent backup in service types supporting different backup schedules.
+	FrequentIntervalMinutes pulumi.IntInput `pulumi:"frequentIntervalMinutes"`
+	// Maximum age of the oldest frequent backup in service types supporting different backup schedules.
+	FrequentOldestAgeMinutes pulumi.IntInput `pulumi:"frequentOldestAgeMinutes"`
+	// Interval of taking an infrequent backup in service types supporting different backup schedules.
+	InfrequentIntervalMinutes pulumi.IntInput `pulumi:"infrequentIntervalMinutes"`
+	// Maximum age of the oldest infrequent backup in service types supporting different backup schedules.
+	InfrequentOldestAgeMinutes pulumi.IntInput `pulumi:"infrequentOldestAgeMinutes"`
+	// The interval, in hours, at which backups are generated. For some services, like PostgreSQL, this is the interval at which full snapshots are taken and continuous incremental backup stream is maintained in addition to that.
+	Interval pulumi.IntInput `pulumi:"interval"`
+	// Maximum number of backups to keep. Zero when no backups are created.
+	MaxCount pulumi.IntInput `pulumi:"maxCount"`
+	// Mechanism how backups can be restored. 'basic' means a backup is restored as is so that the system is restored to the state it was when the backup was generated. 'pitr' means point-in-time-recovery, which allows restoring the system to any state since the first available full snapshot. The possible values are `basic` and `pitr`.
+	RecoveryMode pulumi.StringInput `pulumi:"recoveryMode"`
+}
+
+func (GetServicePlanBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePlanBackupConfig)(nil)).Elem()
+}
+
+func (i GetServicePlanBackupConfigArgs) ToGetServicePlanBackupConfigOutput() GetServicePlanBackupConfigOutput {
+	return i.ToGetServicePlanBackupConfigOutputWithContext(context.Background())
+}
+
+func (i GetServicePlanBackupConfigArgs) ToGetServicePlanBackupConfigOutputWithContext(ctx context.Context) GetServicePlanBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanBackupConfigOutput)
+}
+
+// GetServicePlanBackupConfigArrayInput is an input type that accepts GetServicePlanBackupConfigArray and GetServicePlanBackupConfigArrayOutput values.
+// You can construct a concrete instance of `GetServicePlanBackupConfigArrayInput` via:
+//
+//	GetServicePlanBackupConfigArray{ GetServicePlanBackupConfigArgs{...} }
+type GetServicePlanBackupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServicePlanBackupConfigArrayOutput() GetServicePlanBackupConfigArrayOutput
+	ToGetServicePlanBackupConfigArrayOutputWithContext(context.Context) GetServicePlanBackupConfigArrayOutput
+}
+
+type GetServicePlanBackupConfigArray []GetServicePlanBackupConfigInput
+
+func (GetServicePlanBackupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePlanBackupConfig)(nil)).Elem()
+}
+
+func (i GetServicePlanBackupConfigArray) ToGetServicePlanBackupConfigArrayOutput() GetServicePlanBackupConfigArrayOutput {
+	return i.ToGetServicePlanBackupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicePlanBackupConfigArray) ToGetServicePlanBackupConfigArrayOutputWithContext(ctx context.Context) GetServicePlanBackupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanBackupConfigArrayOutput)
+}
+
+type GetServicePlanBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServicePlanBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePlanBackupConfig)(nil)).Elem()
+}
+
+func (o GetServicePlanBackupConfigOutput) ToGetServicePlanBackupConfigOutput() GetServicePlanBackupConfigOutput {
+	return o
+}
+
+func (o GetServicePlanBackupConfigOutput) ToGetServicePlanBackupConfigOutputWithContext(ctx context.Context) GetServicePlanBackupConfigOutput {
+	return o
+}
+
+// Interval of taking a frequent backup in service types supporting different backup schedules.
+func (o GetServicePlanBackupConfigOutput) FrequentIntervalMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanBackupConfig) int { return v.FrequentIntervalMinutes }).(pulumi.IntOutput)
+}
+
+// Maximum age of the oldest frequent backup in service types supporting different backup schedules.
+func (o GetServicePlanBackupConfigOutput) FrequentOldestAgeMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanBackupConfig) int { return v.FrequentOldestAgeMinutes }).(pulumi.IntOutput)
+}
+
+// Interval of taking an infrequent backup in service types supporting different backup schedules.
+func (o GetServicePlanBackupConfigOutput) InfrequentIntervalMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanBackupConfig) int { return v.InfrequentIntervalMinutes }).(pulumi.IntOutput)
+}
+
+// Maximum age of the oldest infrequent backup in service types supporting different backup schedules.
+func (o GetServicePlanBackupConfigOutput) InfrequentOldestAgeMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanBackupConfig) int { return v.InfrequentOldestAgeMinutes }).(pulumi.IntOutput)
+}
+
+// The interval, in hours, at which backups are generated. For some services, like PostgreSQL, this is the interval at which full snapshots are taken and continuous incremental backup stream is maintained in addition to that.
+func (o GetServicePlanBackupConfigOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanBackupConfig) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+// Maximum number of backups to keep. Zero when no backups are created.
+func (o GetServicePlanBackupConfigOutput) MaxCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanBackupConfig) int { return v.MaxCount }).(pulumi.IntOutput)
+}
+
+// Mechanism how backups can be restored. 'basic' means a backup is restored as is so that the system is restored to the state it was when the backup was generated. 'pitr' means point-in-time-recovery, which allows restoring the system to any state since the first available full snapshot. The possible values are `basic` and `pitr`.
+func (o GetServicePlanBackupConfigOutput) RecoveryMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePlanBackupConfig) string { return v.RecoveryMode }).(pulumi.StringOutput)
+}
+
+type GetServicePlanBackupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicePlanBackupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePlanBackupConfig)(nil)).Elem()
+}
+
+func (o GetServicePlanBackupConfigArrayOutput) ToGetServicePlanBackupConfigArrayOutput() GetServicePlanBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetServicePlanBackupConfigArrayOutput) ToGetServicePlanBackupConfigArrayOutputWithContext(ctx context.Context) GetServicePlanBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetServicePlanBackupConfigArrayOutput) Index(i pulumi.IntInput) GetServicePlanBackupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicePlanBackupConfig {
+		return vs[0].([]GetServicePlanBackupConfig)[vs[1].(int)]
+	}).(GetServicePlanBackupConfigOutput)
+}
+
+type GetServicePlanListServicePlan struct {
+	// Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
+	MaxMemoryPercent int `pulumi:"maxMemoryPercent"`
+	// Number of nodes in this service plan.
+	NodeCount int `pulumi:"nodeCount"`
+	// Service plan hourly price per cloud region.
+	Regions map[string]GetServicePlanListServicePlanRegions `pulumi:"regions"`
+	// Subscription plan.
+	ServicePlan string `pulumi:"servicePlan"`
+	// Service type code.
+	ServiceType string `pulumi:"serviceType"`
+	// Number of shards in this service plan.
+	ShardCount int `pulumi:"shardCount"`
+}
+
+// GetServicePlanListServicePlanInput is an input type that accepts GetServicePlanListServicePlanArgs and GetServicePlanListServicePlanOutput values.
+// You can construct a concrete instance of `GetServicePlanListServicePlanInput` via:
+//
+//	GetServicePlanListServicePlanArgs{...}
+type GetServicePlanListServicePlanInput interface {
+	pulumi.Input
+
+	ToGetServicePlanListServicePlanOutput() GetServicePlanListServicePlanOutput
+	ToGetServicePlanListServicePlanOutputWithContext(context.Context) GetServicePlanListServicePlanOutput
+}
+
+type GetServicePlanListServicePlanArgs struct {
+	// Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
+	MaxMemoryPercent pulumi.IntInput `pulumi:"maxMemoryPercent"`
+	// Number of nodes in this service plan.
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+	// Service plan hourly price per cloud region.
+	Regions GetServicePlanListServicePlanRegionsMapInput `pulumi:"regions"`
+	// Subscription plan.
+	ServicePlan pulumi.StringInput `pulumi:"servicePlan"`
+	// Service type code.
+	ServiceType pulumi.StringInput `pulumi:"serviceType"`
+	// Number of shards in this service plan.
+	ShardCount pulumi.IntInput `pulumi:"shardCount"`
+}
+
+func (GetServicePlanListServicePlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePlanListServicePlan)(nil)).Elem()
+}
+
+func (i GetServicePlanListServicePlanArgs) ToGetServicePlanListServicePlanOutput() GetServicePlanListServicePlanOutput {
+	return i.ToGetServicePlanListServicePlanOutputWithContext(context.Background())
+}
+
+func (i GetServicePlanListServicePlanArgs) ToGetServicePlanListServicePlanOutputWithContext(ctx context.Context) GetServicePlanListServicePlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanListServicePlanOutput)
+}
+
+// GetServicePlanListServicePlanArrayInput is an input type that accepts GetServicePlanListServicePlanArray and GetServicePlanListServicePlanArrayOutput values.
+// You can construct a concrete instance of `GetServicePlanListServicePlanArrayInput` via:
+//
+//	GetServicePlanListServicePlanArray{ GetServicePlanListServicePlanArgs{...} }
+type GetServicePlanListServicePlanArrayInput interface {
+	pulumi.Input
+
+	ToGetServicePlanListServicePlanArrayOutput() GetServicePlanListServicePlanArrayOutput
+	ToGetServicePlanListServicePlanArrayOutputWithContext(context.Context) GetServicePlanListServicePlanArrayOutput
+}
+
+type GetServicePlanListServicePlanArray []GetServicePlanListServicePlanInput
+
+func (GetServicePlanListServicePlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePlanListServicePlan)(nil)).Elem()
+}
+
+func (i GetServicePlanListServicePlanArray) ToGetServicePlanListServicePlanArrayOutput() GetServicePlanListServicePlanArrayOutput {
+	return i.ToGetServicePlanListServicePlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicePlanListServicePlanArray) ToGetServicePlanListServicePlanArrayOutputWithContext(ctx context.Context) GetServicePlanListServicePlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanListServicePlanArrayOutput)
+}
+
+type GetServicePlanListServicePlanOutput struct{ *pulumi.OutputState }
+
+func (GetServicePlanListServicePlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePlanListServicePlan)(nil)).Elem()
+}
+
+func (o GetServicePlanListServicePlanOutput) ToGetServicePlanListServicePlanOutput() GetServicePlanListServicePlanOutput {
+	return o
+}
+
+func (o GetServicePlanListServicePlanOutput) ToGetServicePlanListServicePlanOutputWithContext(ctx context.Context) GetServicePlanListServicePlanOutput {
+	return o
+}
+
+// Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
+func (o GetServicePlanListServicePlanOutput) MaxMemoryPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlan) int { return v.MaxMemoryPercent }).(pulumi.IntOutput)
+}
+
+// Number of nodes in this service plan.
+func (o GetServicePlanListServicePlanOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlan) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Service plan hourly price per cloud region.
+func (o GetServicePlanListServicePlanOutput) Regions() GetServicePlanListServicePlanRegionsMapOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlan) map[string]GetServicePlanListServicePlanRegions {
+		return v.Regions
+	}).(GetServicePlanListServicePlanRegionsMapOutput)
+}
+
+// Subscription plan.
+func (o GetServicePlanListServicePlanOutput) ServicePlan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlan) string { return v.ServicePlan }).(pulumi.StringOutput)
+}
+
+// Service type code.
+func (o GetServicePlanListServicePlanOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlan) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// Number of shards in this service plan.
+func (o GetServicePlanListServicePlanOutput) ShardCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlan) int { return v.ShardCount }).(pulumi.IntOutput)
+}
+
+type GetServicePlanListServicePlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicePlanListServicePlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePlanListServicePlan)(nil)).Elem()
+}
+
+func (o GetServicePlanListServicePlanArrayOutput) ToGetServicePlanListServicePlanArrayOutput() GetServicePlanListServicePlanArrayOutput {
+	return o
+}
+
+func (o GetServicePlanListServicePlanArrayOutput) ToGetServicePlanListServicePlanArrayOutputWithContext(ctx context.Context) GetServicePlanListServicePlanArrayOutput {
+	return o
+}
+
+func (o GetServicePlanListServicePlanArrayOutput) Index(i pulumi.IntInput) GetServicePlanListServicePlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicePlanListServicePlan {
+		return vs[0].([]GetServicePlanListServicePlan)[vs[1].(int)]
+	}).(GetServicePlanListServicePlanOutput)
+}
+
+type GetServicePlanListServicePlanRegions struct {
+	// Maximum amount of disk space possible for the plan in the given region.
+	DiskSpaceCapMb int `pulumi:"diskSpaceCapMb"`
+	// Hourly additional disk space price per GiB in this region.
+	DiskSpaceGbPriceUsd string `pulumi:"diskSpaceGbPriceUsd"`
+	// Combined amount of service disk space of all service nodes in megabytes.
+	DiskSpaceMb int `pulumi:"diskSpaceMb"`
+	// Disk space change step size.
+	DiskSpaceStepMb int `pulumi:"diskSpaceStepMb"`
+	// Number of CPU cores on each service node.
+	NodeCpuCount int `pulumi:"nodeCpuCount"`
+	// Amount of memory on each service node in megabytes.
+	NodeMemoryMb int `pulumi:"nodeMemoryMb"`
+	// Hourly object storage price per GiB in this region.
+	ObjectStorageGbPriceUsd string `pulumi:"objectStorageGbPriceUsd"`
+	// Hourly service price in this region.
+	PriceUsd string `pulumi:"priceUsd"`
+}
+
+// GetServicePlanListServicePlanRegionsInput is an input type that accepts GetServicePlanListServicePlanRegionsArgs and GetServicePlanListServicePlanRegionsOutput values.
+// You can construct a concrete instance of `GetServicePlanListServicePlanRegionsInput` via:
+//
+//	GetServicePlanListServicePlanRegionsArgs{...}
+type GetServicePlanListServicePlanRegionsInput interface {
+	pulumi.Input
+
+	ToGetServicePlanListServicePlanRegionsOutput() GetServicePlanListServicePlanRegionsOutput
+	ToGetServicePlanListServicePlanRegionsOutputWithContext(context.Context) GetServicePlanListServicePlanRegionsOutput
+}
+
+type GetServicePlanListServicePlanRegionsArgs struct {
+	// Maximum amount of disk space possible for the plan in the given region.
+	DiskSpaceCapMb pulumi.IntInput `pulumi:"diskSpaceCapMb"`
+	// Hourly additional disk space price per GiB in this region.
+	DiskSpaceGbPriceUsd pulumi.StringInput `pulumi:"diskSpaceGbPriceUsd"`
+	// Combined amount of service disk space of all service nodes in megabytes.
+	DiskSpaceMb pulumi.IntInput `pulumi:"diskSpaceMb"`
+	// Disk space change step size.
+	DiskSpaceStepMb pulumi.IntInput `pulumi:"diskSpaceStepMb"`
+	// Number of CPU cores on each service node.
+	NodeCpuCount pulumi.IntInput `pulumi:"nodeCpuCount"`
+	// Amount of memory on each service node in megabytes.
+	NodeMemoryMb pulumi.IntInput `pulumi:"nodeMemoryMb"`
+	// Hourly object storage price per GiB in this region.
+	ObjectStorageGbPriceUsd pulumi.StringInput `pulumi:"objectStorageGbPriceUsd"`
+	// Hourly service price in this region.
+	PriceUsd pulumi.StringInput `pulumi:"priceUsd"`
+}
+
+func (GetServicePlanListServicePlanRegionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePlanListServicePlanRegions)(nil)).Elem()
+}
+
+func (i GetServicePlanListServicePlanRegionsArgs) ToGetServicePlanListServicePlanRegionsOutput() GetServicePlanListServicePlanRegionsOutput {
+	return i.ToGetServicePlanListServicePlanRegionsOutputWithContext(context.Background())
+}
+
+func (i GetServicePlanListServicePlanRegionsArgs) ToGetServicePlanListServicePlanRegionsOutputWithContext(ctx context.Context) GetServicePlanListServicePlanRegionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanListServicePlanRegionsOutput)
+}
+
+// GetServicePlanListServicePlanRegionsMapInput is an input type that accepts GetServicePlanListServicePlanRegionsMap and GetServicePlanListServicePlanRegionsMapOutput values.
+// You can construct a concrete instance of `GetServicePlanListServicePlanRegionsMapInput` via:
+//
+//	GetServicePlanListServicePlanRegionsMap{ "key": GetServicePlanListServicePlanRegionsArgs{...} }
+type GetServicePlanListServicePlanRegionsMapInput interface {
+	pulumi.Input
+
+	ToGetServicePlanListServicePlanRegionsMapOutput() GetServicePlanListServicePlanRegionsMapOutput
+	ToGetServicePlanListServicePlanRegionsMapOutputWithContext(context.Context) GetServicePlanListServicePlanRegionsMapOutput
+}
+
+type GetServicePlanListServicePlanRegionsMap map[string]GetServicePlanListServicePlanRegionsInput
+
+func (GetServicePlanListServicePlanRegionsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetServicePlanListServicePlanRegions)(nil)).Elem()
+}
+
+func (i GetServicePlanListServicePlanRegionsMap) ToGetServicePlanListServicePlanRegionsMapOutput() GetServicePlanListServicePlanRegionsMapOutput {
+	return i.ToGetServicePlanListServicePlanRegionsMapOutputWithContext(context.Background())
+}
+
+func (i GetServicePlanListServicePlanRegionsMap) ToGetServicePlanListServicePlanRegionsMapOutputWithContext(ctx context.Context) GetServicePlanListServicePlanRegionsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanListServicePlanRegionsMapOutput)
+}
+
+type GetServicePlanListServicePlanRegionsOutput struct{ *pulumi.OutputState }
+
+func (GetServicePlanListServicePlanRegionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePlanListServicePlanRegions)(nil)).Elem()
+}
+
+func (o GetServicePlanListServicePlanRegionsOutput) ToGetServicePlanListServicePlanRegionsOutput() GetServicePlanListServicePlanRegionsOutput {
+	return o
+}
+
+func (o GetServicePlanListServicePlanRegionsOutput) ToGetServicePlanListServicePlanRegionsOutputWithContext(ctx context.Context) GetServicePlanListServicePlanRegionsOutput {
+	return o
+}
+
+// Maximum amount of disk space possible for the plan in the given region.
+func (o GetServicePlanListServicePlanRegionsOutput) DiskSpaceCapMb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlanRegions) int { return v.DiskSpaceCapMb }).(pulumi.IntOutput)
+}
+
+// Hourly additional disk space price per GiB in this region.
+func (o GetServicePlanListServicePlanRegionsOutput) DiskSpaceGbPriceUsd() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlanRegions) string { return v.DiskSpaceGbPriceUsd }).(pulumi.StringOutput)
+}
+
+// Combined amount of service disk space of all service nodes in megabytes.
+func (o GetServicePlanListServicePlanRegionsOutput) DiskSpaceMb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlanRegions) int { return v.DiskSpaceMb }).(pulumi.IntOutput)
+}
+
+// Disk space change step size.
+func (o GetServicePlanListServicePlanRegionsOutput) DiskSpaceStepMb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlanRegions) int { return v.DiskSpaceStepMb }).(pulumi.IntOutput)
+}
+
+// Number of CPU cores on each service node.
+func (o GetServicePlanListServicePlanRegionsOutput) NodeCpuCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlanRegions) int { return v.NodeCpuCount }).(pulumi.IntOutput)
+}
+
+// Amount of memory on each service node in megabytes.
+func (o GetServicePlanListServicePlanRegionsOutput) NodeMemoryMb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlanRegions) int { return v.NodeMemoryMb }).(pulumi.IntOutput)
+}
+
+// Hourly object storage price per GiB in this region.
+func (o GetServicePlanListServicePlanRegionsOutput) ObjectStorageGbPriceUsd() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlanRegions) string { return v.ObjectStorageGbPriceUsd }).(pulumi.StringOutput)
+}
+
+// Hourly service price in this region.
+func (o GetServicePlanListServicePlanRegionsOutput) PriceUsd() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlanRegions) string { return v.PriceUsd }).(pulumi.StringOutput)
+}
+
+type GetServicePlanListServicePlanRegionsMapOutput struct{ *pulumi.OutputState }
+
+func (GetServicePlanListServicePlanRegionsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetServicePlanListServicePlanRegions)(nil)).Elem()
+}
+
+func (o GetServicePlanListServicePlanRegionsMapOutput) ToGetServicePlanListServicePlanRegionsMapOutput() GetServicePlanListServicePlanRegionsMapOutput {
+	return o
+}
+
+func (o GetServicePlanListServicePlanRegionsMapOutput) ToGetServicePlanListServicePlanRegionsMapOutputWithContext(ctx context.Context) GetServicePlanListServicePlanRegionsMapOutput {
+	return o
+}
+
+func (o GetServicePlanListServicePlanRegionsMapOutput) MapIndex(k pulumi.StringInput) GetServicePlanListServicePlanRegionsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetServicePlanListServicePlanRegions {
+		return vs[0].(map[string]GetServicePlanListServicePlanRegions)[vs[1].(string)]
+	}).(GetServicePlanListServicePlanRegionsOutput)
+}
+
+type GetServicePlanListTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetServicePlanListTimeoutsInput is an input type that accepts GetServicePlanListTimeoutsArgs and GetServicePlanListTimeoutsOutput values.
+// You can construct a concrete instance of `GetServicePlanListTimeoutsInput` via:
+//
+//	GetServicePlanListTimeoutsArgs{...}
+type GetServicePlanListTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetServicePlanListTimeoutsOutput() GetServicePlanListTimeoutsOutput
+	ToGetServicePlanListTimeoutsOutputWithContext(context.Context) GetServicePlanListTimeoutsOutput
+}
+
+type GetServicePlanListTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetServicePlanListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePlanListTimeouts)(nil)).Elem()
+}
+
+func (i GetServicePlanListTimeoutsArgs) ToGetServicePlanListTimeoutsOutput() GetServicePlanListTimeoutsOutput {
+	return i.ToGetServicePlanListTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetServicePlanListTimeoutsArgs) ToGetServicePlanListTimeoutsOutputWithContext(ctx context.Context) GetServicePlanListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanListTimeoutsOutput)
+}
+
+func (i GetServicePlanListTimeoutsArgs) ToGetServicePlanListTimeoutsPtrOutput() GetServicePlanListTimeoutsPtrOutput {
+	return i.ToGetServicePlanListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetServicePlanListTimeoutsArgs) ToGetServicePlanListTimeoutsPtrOutputWithContext(ctx context.Context) GetServicePlanListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanListTimeoutsOutput).ToGetServicePlanListTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetServicePlanListTimeoutsPtrInput is an input type that accepts GetServicePlanListTimeoutsArgs, GetServicePlanListTimeoutsPtr and GetServicePlanListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetServicePlanListTimeoutsPtrInput` via:
+//
+//	        GetServicePlanListTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServicePlanListTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetServicePlanListTimeoutsPtrOutput() GetServicePlanListTimeoutsPtrOutput
+	ToGetServicePlanListTimeoutsPtrOutputWithContext(context.Context) GetServicePlanListTimeoutsPtrOutput
+}
+
+type getServicePlanListTimeoutsPtrType GetServicePlanListTimeoutsArgs
+
+func GetServicePlanListTimeoutsPtr(v *GetServicePlanListTimeoutsArgs) GetServicePlanListTimeoutsPtrInput {
+	return (*getServicePlanListTimeoutsPtrType)(v)
+}
+
+func (*getServicePlanListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePlanListTimeouts)(nil)).Elem()
+}
+
+func (i *getServicePlanListTimeoutsPtrType) ToGetServicePlanListTimeoutsPtrOutput() GetServicePlanListTimeoutsPtrOutput {
+	return i.ToGetServicePlanListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getServicePlanListTimeoutsPtrType) ToGetServicePlanListTimeoutsPtrOutputWithContext(ctx context.Context) GetServicePlanListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanListTimeoutsPtrOutput)
+}
+
+type GetServicePlanListTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetServicePlanListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePlanListTimeouts)(nil)).Elem()
+}
+
+func (o GetServicePlanListTimeoutsOutput) ToGetServicePlanListTimeoutsOutput() GetServicePlanListTimeoutsOutput {
+	return o
+}
+
+func (o GetServicePlanListTimeoutsOutput) ToGetServicePlanListTimeoutsOutputWithContext(ctx context.Context) GetServicePlanListTimeoutsOutput {
+	return o
+}
+
+func (o GetServicePlanListTimeoutsOutput) ToGetServicePlanListTimeoutsPtrOutput() GetServicePlanListTimeoutsPtrOutput {
+	return o.ToGetServicePlanListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetServicePlanListTimeoutsOutput) ToGetServicePlanListTimeoutsPtrOutputWithContext(ctx context.Context) GetServicePlanListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServicePlanListTimeouts) *GetServicePlanListTimeouts {
+		return &v
+	}).(GetServicePlanListTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetServicePlanListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePlanListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetServicePlanListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServicePlanListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePlanListTimeouts)(nil)).Elem()
+}
+
+func (o GetServicePlanListTimeoutsPtrOutput) ToGetServicePlanListTimeoutsPtrOutput() GetServicePlanListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetServicePlanListTimeoutsPtrOutput) ToGetServicePlanListTimeoutsPtrOutputWithContext(ctx context.Context) GetServicePlanListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetServicePlanListTimeoutsPtrOutput) Elem() GetServicePlanListTimeoutsOutput {
+	return o.ApplyT(func(v *GetServicePlanListTimeouts) GetServicePlanListTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetServicePlanListTimeouts
+		return ret
+	}).(GetServicePlanListTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetServicePlanListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePlanListTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServicePlanTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetServicePlanTimeoutsInput is an input type that accepts GetServicePlanTimeoutsArgs and GetServicePlanTimeoutsOutput values.
+// You can construct a concrete instance of `GetServicePlanTimeoutsInput` via:
+//
+//	GetServicePlanTimeoutsArgs{...}
+type GetServicePlanTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetServicePlanTimeoutsOutput() GetServicePlanTimeoutsOutput
+	ToGetServicePlanTimeoutsOutputWithContext(context.Context) GetServicePlanTimeoutsOutput
+}
+
+type GetServicePlanTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetServicePlanTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePlanTimeouts)(nil)).Elem()
+}
+
+func (i GetServicePlanTimeoutsArgs) ToGetServicePlanTimeoutsOutput() GetServicePlanTimeoutsOutput {
+	return i.ToGetServicePlanTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetServicePlanTimeoutsArgs) ToGetServicePlanTimeoutsOutputWithContext(ctx context.Context) GetServicePlanTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanTimeoutsOutput)
+}
+
+func (i GetServicePlanTimeoutsArgs) ToGetServicePlanTimeoutsPtrOutput() GetServicePlanTimeoutsPtrOutput {
+	return i.ToGetServicePlanTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetServicePlanTimeoutsArgs) ToGetServicePlanTimeoutsPtrOutputWithContext(ctx context.Context) GetServicePlanTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanTimeoutsOutput).ToGetServicePlanTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetServicePlanTimeoutsPtrInput is an input type that accepts GetServicePlanTimeoutsArgs, GetServicePlanTimeoutsPtr and GetServicePlanTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetServicePlanTimeoutsPtrInput` via:
+//
+//	        GetServicePlanTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServicePlanTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetServicePlanTimeoutsPtrOutput() GetServicePlanTimeoutsPtrOutput
+	ToGetServicePlanTimeoutsPtrOutputWithContext(context.Context) GetServicePlanTimeoutsPtrOutput
+}
+
+type getServicePlanTimeoutsPtrType GetServicePlanTimeoutsArgs
+
+func GetServicePlanTimeoutsPtr(v *GetServicePlanTimeoutsArgs) GetServicePlanTimeoutsPtrInput {
+	return (*getServicePlanTimeoutsPtrType)(v)
+}
+
+func (*getServicePlanTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePlanTimeouts)(nil)).Elem()
+}
+
+func (i *getServicePlanTimeoutsPtrType) ToGetServicePlanTimeoutsPtrOutput() GetServicePlanTimeoutsPtrOutput {
+	return i.ToGetServicePlanTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getServicePlanTimeoutsPtrType) ToGetServicePlanTimeoutsPtrOutputWithContext(ctx context.Context) GetServicePlanTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePlanTimeoutsPtrOutput)
+}
+
+type GetServicePlanTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetServicePlanTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePlanTimeouts)(nil)).Elem()
+}
+
+func (o GetServicePlanTimeoutsOutput) ToGetServicePlanTimeoutsOutput() GetServicePlanTimeoutsOutput {
+	return o
+}
+
+func (o GetServicePlanTimeoutsOutput) ToGetServicePlanTimeoutsOutputWithContext(ctx context.Context) GetServicePlanTimeoutsOutput {
+	return o
+}
+
+func (o GetServicePlanTimeoutsOutput) ToGetServicePlanTimeoutsPtrOutput() GetServicePlanTimeoutsPtrOutput {
+	return o.ToGetServicePlanTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetServicePlanTimeoutsOutput) ToGetServicePlanTimeoutsPtrOutputWithContext(ctx context.Context) GetServicePlanTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServicePlanTimeouts) *GetServicePlanTimeouts {
+		return &v
+	}).(GetServicePlanTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetServicePlanTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePlanTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetServicePlanTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServicePlanTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePlanTimeouts)(nil)).Elem()
+}
+
+func (o GetServicePlanTimeoutsPtrOutput) ToGetServicePlanTimeoutsPtrOutput() GetServicePlanTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetServicePlanTimeoutsPtrOutput) ToGetServicePlanTimeoutsPtrOutputWithContext(ctx context.Context) GetServicePlanTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetServicePlanTimeoutsPtrOutput) Elem() GetServicePlanTimeoutsOutput {
+	return o.ApplyT(func(v *GetServicePlanTimeouts) GetServicePlanTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetServicePlanTimeouts
+		return ret
+	}).(GetServicePlanTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetServicePlanTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePlanTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetThanosComponent struct {
 	// Service component name
 	Component string `pulumi:"component"`
@@ -33657,6 +35331,8 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigInput)(nil)).Elem(), GetM3DbM3dbUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigIpFilterObjectInput)(nil)).Elem(), GetM3DbM3dbUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigIpFilterObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigLimitsInput)(nil)).Elem(), GetM3DbM3dbUserConfigLimitsArgs{})
@@ -33735,6 +35411,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigIndexTemplatePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigIndexTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigIpFilterObjectInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigIpFilterObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigJwtInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigJwtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigJwtPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigJwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpenidInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpenidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpenidPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpenidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchArgs{})
@@ -33817,6 +35495,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTimeoutsPtrInput)(nil)).Elem(), GetOrganizationProjectTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTimeoutsInput)(nil)).Elem(), GetOrganizationTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTimeoutsPtrInput)(nil)).Elem(), GetOrganizationTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupListTimeoutsInput)(nil)).Elem(), GetOrganizationUserGroupListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationUserGroupListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupListUserGroupInput)(nil)).Elem(), GetOrganizationUserGroupListUserGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupListUserGroupArrayInput)(nil)).Elem(), GetOrganizationUserGroupListUserGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserInput)(nil)).Elem(), GetOrganizationUserListUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserArrayInput)(nil)).Elem(), GetOrganizationUserListUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserUserInfoInput)(nil)).Elem(), GetOrganizationUserListUserUserInfoArgs{})
@@ -33985,6 +35667,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePlanBackupConfigInput)(nil)).Elem(), GetServicePlanBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePlanBackupConfigArrayInput)(nil)).Elem(), GetServicePlanBackupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePlanListServicePlanInput)(nil)).Elem(), GetServicePlanListServicePlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePlanListServicePlanArrayInput)(nil)).Elem(), GetServicePlanListServicePlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePlanListServicePlanRegionsInput)(nil)).Elem(), GetServicePlanListServicePlanRegionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePlanListServicePlanRegionsMapInput)(nil)).Elem(), GetServicePlanListServicePlanRegionsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePlanListTimeoutsInput)(nil)).Elem(), GetServicePlanListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePlanListTimeoutsPtrInput)(nil)).Elem(), GetServicePlanListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePlanTimeoutsInput)(nil)).Elem(), GetServicePlanTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePlanTimeoutsPtrInput)(nil)).Elem(), GetServicePlanTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosComponentInput)(nil)).Elem(), GetThanosComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosComponentArrayInput)(nil)).Elem(), GetThanosComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosServiceIntegrationInput)(nil)).Elem(), GetThanosServiceIntegrationArgs{})
@@ -34033,6 +35725,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigIpFilterObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigLimitsOutput{})
@@ -34111,6 +35805,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigIpFilterObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigJwtOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigJwtPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpenidOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpenidPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchOutput{})
@@ -34193,6 +35889,10 @@ func init() {
 	pulumi.RegisterOutputType(GetOrganizationProjectTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetOrganizationTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupListTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupListUserGroupOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupListUserGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserUserInfoOutput{})
@@ -34361,6 +36061,16 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput{})
+	pulumi.RegisterOutputType(GetServicePlanBackupConfigOutput{})
+	pulumi.RegisterOutputType(GetServicePlanBackupConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServicePlanListServicePlanOutput{})
+	pulumi.RegisterOutputType(GetServicePlanListServicePlanArrayOutput{})
+	pulumi.RegisterOutputType(GetServicePlanListServicePlanRegionsOutput{})
+	pulumi.RegisterOutputType(GetServicePlanListServicePlanRegionsMapOutput{})
+	pulumi.RegisterOutputType(GetServicePlanListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetServicePlanListTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetServicePlanTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetServicePlanTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetThanosComponentOutput{})
 	pulumi.RegisterOutputType(GetThanosComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetThanosServiceIntegrationOutput{})

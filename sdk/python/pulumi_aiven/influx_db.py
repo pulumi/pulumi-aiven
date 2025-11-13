@@ -69,6 +69,9 @@ class InfluxDbArgs:
         if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
         if influxdb_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""influxdb_user_config is deprecated: This property is deprecated.""")
+        if influxdb_user_config is not None:
             pulumi.set(__self__, "influxdb_user_config", influxdb_user_config)
         if influxdbs is not None:
             pulumi.set(__self__, "influxdbs", influxdbs)
@@ -164,6 +167,7 @@ class InfluxDbArgs:
 
     @_builtins.property
     @pulumi.getter(name="influxdbUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def influxdb_user_config(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigArgs']]:
         """
         Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -366,6 +370,9 @@ class _InfluxDbState:
         if disk_space_used is not None:
             pulumi.set(__self__, "disk_space_used", disk_space_used)
         if influxdb_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""influxdb_user_config is deprecated: This property is deprecated.""")
+        if influxdb_user_config is not None:
             pulumi.set(__self__, "influxdb_user_config", influxdb_user_config)
         if influxdbs is not None:
             pulumi.set(__self__, "influxdbs", influxdbs)
@@ -507,6 +514,7 @@ class _InfluxDbState:
 
     @_builtins.property
     @pulumi.getter(name="influxdbUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def influxdb_user_config(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigArgs']]:
         """
         Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -1061,6 +1069,7 @@ class InfluxDb(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="influxdbUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def influxdb_user_config(self) -> pulumi.Output[Optional['outputs.InfluxDbInfluxdbUserConfig']]:
         """
         Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

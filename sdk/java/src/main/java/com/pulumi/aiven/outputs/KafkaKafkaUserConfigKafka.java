@@ -140,7 +140,7 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer logRetentionBytes;
     /**
-     * @return The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
+     * @return The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
      * 
      */
     private @Nullable Integer logRetentionHours;
@@ -432,7 +432,7 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.logRetentionBytes);
     }
     /**
-     * @return The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
+     * @return The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
      * 
      */
     public Optional<Integer> logRetentionHours() {

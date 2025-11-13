@@ -259,6 +259,81 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+     * 
+     */
+    @Import(name="ioCombineLimit")
+    private @Nullable Output<Integer> ioCombineLimit;
+
+    /**
+     * @return EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+     * 
+     */
+    public Optional<Output<Integer>> ioCombineLimit() {
+        return Optional.ofNullable(this.ioCombineLimit);
+    }
+
+    /**
+     * EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+     * 
+     */
+    @Import(name="ioMaxCombineLimit")
+    private @Nullable Output<Integer> ioMaxCombineLimit;
+
+    /**
+     * @return EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+     * 
+     */
+    public Optional<Output<Integer>> ioMaxCombineLimit() {
+        return Optional.ofNullable(this.ioMaxCombineLimit);
+    }
+
+    /**
+     * EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+     * 
+     */
+    @Import(name="ioMaxConcurrency")
+    private @Nullable Output<Integer> ioMaxConcurrency;
+
+    /**
+     * @return EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+     * 
+     */
+    public Optional<Output<Integer>> ioMaxConcurrency() {
+        return Optional.ofNullable(this.ioMaxConcurrency);
+    }
+
+    /**
+     * Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+     * 
+     */
+    @Import(name="ioMethod")
+    private @Nullable Output<String> ioMethod;
+
+    /**
+     * @return Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+     * 
+     */
+    public Optional<Output<String>> ioMethod() {
+        return Optional.ofNullable(this.ioMethod);
+    }
+
+    /**
+     * EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+     * 
+     */
+    @Import(name="ioWorkers")
+    private @Nullable Output<Integer> ioWorkers;
+
+    /**
+     * @return EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+     * 
+     */
+    public Optional<Output<Integer>> ioWorkers() {
+        return Optional.ofNullable(this.ioWorkers);
+    }
+
+    /**
      * Controls system-wide use of Just-in-Time Compilation (JIT).
      * 
      */
@@ -817,6 +892,11 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         this.deadlockTimeout = $.deadlockTimeout;
         this.defaultToastCompression = $.defaultToastCompression;
         this.idleInTransactionSessionTimeout = $.idleInTransactionSessionTimeout;
+        this.ioCombineLimit = $.ioCombineLimit;
+        this.ioMaxCombineLimit = $.ioMaxCombineLimit;
+        this.ioMaxConcurrency = $.ioMaxConcurrency;
+        this.ioMethod = $.ioMethod;
+        this.ioWorkers = $.ioWorkers;
         this.jit = $.jit;
         this.logAutovacuumMinDuration = $.logAutovacuumMinDuration;
         this.logErrorVerbosity = $.logErrorVerbosity;
@@ -1207,6 +1287,111 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder idleInTransactionSessionTimeout(Integer idleInTransactionSessionTimeout) {
             return idleInTransactionSessionTimeout(Output.of(idleInTransactionSessionTimeout));
+        }
+
+        /**
+         * @param ioCombineLimit EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioCombineLimit(@Nullable Output<Integer> ioCombineLimit) {
+            $.ioCombineLimit = ioCombineLimit;
+            return this;
+        }
+
+        /**
+         * @param ioCombineLimit EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioCombineLimit(Integer ioCombineLimit) {
+            return ioCombineLimit(Output.of(ioCombineLimit));
+        }
+
+        /**
+         * @param ioMaxCombineLimit EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioMaxCombineLimit(@Nullable Output<Integer> ioMaxCombineLimit) {
+            $.ioMaxCombineLimit = ioMaxCombineLimit;
+            return this;
+        }
+
+        /**
+         * @param ioMaxCombineLimit EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioMaxCombineLimit(Integer ioMaxCombineLimit) {
+            return ioMaxCombineLimit(Output.of(ioMaxCombineLimit));
+        }
+
+        /**
+         * @param ioMaxConcurrency EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioMaxConcurrency(@Nullable Output<Integer> ioMaxConcurrency) {
+            $.ioMaxConcurrency = ioMaxConcurrency;
+            return this;
+        }
+
+        /**
+         * @param ioMaxConcurrency EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioMaxConcurrency(Integer ioMaxConcurrency) {
+            return ioMaxConcurrency(Output.of(ioMaxConcurrency));
+        }
+
+        /**
+         * @param ioMethod Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioMethod(@Nullable Output<String> ioMethod) {
+            $.ioMethod = ioMethod;
+            return this;
+        }
+
+        /**
+         * @param ioMethod Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioMethod(String ioMethod) {
+            return ioMethod(Output.of(ioMethod));
+        }
+
+        /**
+         * @param ioWorkers EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioWorkers(@Nullable Output<Integer> ioWorkers) {
+            $.ioWorkers = ioWorkers;
+            return this;
+        }
+
+        /**
+         * @param ioWorkers EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioWorkers(Integer ioWorkers) {
+            return ioWorkers(Output.of(ioWorkers));
         }
 
         /**

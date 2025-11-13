@@ -35,7 +35,7 @@ class OrganizationProjectArgs:
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.int] base_port: Valid port number (1-65535) to use as a base for service port allocation.
+        :param pulumi.Input[_builtins.int] base_port: Valid port number (10000-30000) to use as a base for service port allocation.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
@@ -104,7 +104,7 @@ class OrganizationProjectArgs:
     @pulumi.getter(name="basePort")
     def base_port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Valid port number (1-65535) to use as a base for service port allocation.
+        Valid port number (10000-30000) to use as a base for service port allocation.
         """
         return pulumi.get(self, "base_port")
 
@@ -160,7 +160,7 @@ class _OrganizationProjectState:
                  timeouts: Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OrganizationProject resources.
-        :param pulumi.Input[_builtins.int] base_port: Valid port number (1-65535) to use as a base for service port allocation.
+        :param pulumi.Input[_builtins.int] base_port: Valid port number (10000-30000) to use as a base for service port allocation.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
         :param pulumi.Input[_builtins.str] ca_cert: PEM encoded certificate.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
@@ -192,7 +192,7 @@ class _OrganizationProjectState:
     @pulumi.getter(name="basePort")
     def base_port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Valid port number (1-65535) to use as a base for service port allocation.
+        Valid port number (10000-30000) to use as a base for service port allocation.
         """
         return pulumi.get(self, "base_port")
 
@@ -320,7 +320,7 @@ class OrganizationProject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] base_port: Valid port number (1-65535) to use as a base for service port allocation.
+        :param pulumi.Input[_builtins.int] base_port: Valid port number (10000-30000) to use as a base for service port allocation.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
@@ -420,7 +420,7 @@ class OrganizationProject(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] base_port: Valid port number (1-65535) to use as a base for service port allocation.
+        :param pulumi.Input[_builtins.int] base_port: Valid port number (10000-30000) to use as a base for service port allocation.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
         :param pulumi.Input[_builtins.str] ca_cert: PEM encoded certificate.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
@@ -448,7 +448,7 @@ class OrganizationProject(pulumi.CustomResource):
     @pulumi.getter(name="basePort")
     def base_port(self) -> pulumi.Output[_builtins.int]:
         """
-        Valid port number (1-65535) to use as a base for service port allocation.
+        Valid port number (10000-30000) to use as a base for service port allocation.
         """
         return pulumi.get(self, "base_port")
 

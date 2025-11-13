@@ -145,7 +145,7 @@ class GetServiceComponentResult:
     @pulumi.getter
     def usage(self) -> Optional[_builtins.str]:
         """
-        DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
+        DNS usage name. The possible values are `disaster_recovery`, `ha_replica`, `primary` and `replica`.
         """
         return pulumi.get(self, "usage")
 
@@ -202,7 +202,7 @@ def get_service_component(component: Optional[_builtins.str] = None,
     :param _builtins.str route: Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
     :param _builtins.str service_name: Service name
     :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
-    :param _builtins.str usage: DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
+    :param _builtins.str usage: DNS usage name. The possible values are `disaster_recovery`, `ha_replica`, `primary` and `replica`.
     """
     __args__ = dict()
     __args__['component'] = component
@@ -260,7 +260,7 @@ def get_service_component_output(component: Optional[pulumi.Input[_builtins.str]
     :param _builtins.str route: Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
     :param _builtins.str service_name: Service name
     :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
-    :param _builtins.str usage: DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
+    :param _builtins.str usage: DNS usage name. The possible values are `disaster_recovery`, `ha_replica`, `primary` and `replica`.
     """
     __args__ = dict()
     __args__['component'] = component

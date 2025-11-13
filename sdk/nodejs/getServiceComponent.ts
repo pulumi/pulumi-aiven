@@ -66,7 +66,7 @@ export interface GetServiceComponentArgs {
      */
     ssl?: boolean;
     /**
-     * DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
+     * DNS usage name. The possible values are `disasterRecovery`, `haReplica`, `primary` and `replica`.
      */
     usage?: string;
 }
@@ -116,7 +116,7 @@ export interface GetServiceComponentResult {
      */
     readonly ssl?: boolean;
     /**
-     * DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
+     * DNS usage name. The possible values are `disasterRecovery`, `haReplica`, `primary` and `replica`.
      */
     readonly usage?: string;
 }
@@ -182,7 +182,7 @@ export interface GetServiceComponentOutputArgs {
      */
     ssl?: pulumi.Input<boolean>;
     /**
-     * DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
+     * DNS usage name. The possible values are `disasterRecovery`, `haReplica`, `primary` and `replica`.
      */
     usage?: pulumi.Input<string>;
 }

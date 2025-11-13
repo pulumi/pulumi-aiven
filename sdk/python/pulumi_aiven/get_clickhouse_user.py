@@ -61,7 +61,7 @@ class GetClickhouseUserResult:
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
-        The password of the ClickHouse user.
+        The password of the ClickHouse user (generated). Empty when using `password_wo`.
         """
         return pulumi.get(self, "password")
 

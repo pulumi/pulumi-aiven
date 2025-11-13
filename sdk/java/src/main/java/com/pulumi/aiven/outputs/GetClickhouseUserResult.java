@@ -17,7 +17,7 @@ public final class GetClickhouseUserResult {
      */
     private String id;
     /**
-     * @return The password of the ClickHouse user.
+     * @return The password of the ClickHouse user (generated). Empty when using `passwordWo`.
      * 
      */
     private String password;
@@ -56,7 +56,7 @@ public final class GetClickhouseUserResult {
         return this.id;
     }
     /**
-     * @return The password of the ClickHouse user.
+     * @return The password of the ClickHouse user (generated). Empty when using `passwordWo`.
      * 
      */
     public String password() {

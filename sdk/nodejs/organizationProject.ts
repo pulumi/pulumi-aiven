@@ -44,7 +44,7 @@ export class OrganizationProject extends pulumi.CustomResource {
     }
 
     /**
-     * Valid port number (1-65535) to use as a base for service port allocation.
+     * Valid port number (10000-30000) to use as a base for service port allocation.
      */
     declare public readonly basePort: pulumi.Output<number>;
     /**
@@ -135,7 +135,7 @@ export class OrganizationProject extends pulumi.CustomResource {
  */
 export interface OrganizationProjectState {
     /**
-     * Valid port number (1-65535) to use as a base for service port allocation.
+     * Valid port number (10000-30000) to use as a base for service port allocation.
      */
     basePort?: pulumi.Input<number>;
     /**
@@ -174,7 +174,7 @@ export interface OrganizationProjectState {
  */
 export interface OrganizationProjectArgs {
     /**
-     * Valid port number (1-65535) to use as a base for service port allocation.
+     * Valid port number (10000-30000) to use as a base for service port allocation.
      */
     basePort?: pulumi.Input<number>;
     /**

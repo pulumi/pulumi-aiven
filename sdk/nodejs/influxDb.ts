@@ -70,6 +70,8 @@ export class InfluxDb extends pulumi.CustomResource {
     declare public /*out*/ readonly diskSpaceUsed: pulumi.Output<string>;
     /**
      * Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     declare public readonly influxdbUserConfig: pulumi.Output<outputs.InfluxDbInfluxdbUserConfig | undefined>;
     /**
@@ -280,6 +282,8 @@ export interface InfluxDbState {
     diskSpaceUsed?: pulumi.Input<string>;
     /**
      * Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     influxdbUserConfig?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfig>;
     /**
@@ -381,6 +385,8 @@ export interface InfluxDbArgs {
     diskSpace?: pulumi.Input<string>;
     /**
      * Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     influxdbUserConfig?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfig>;
     /**

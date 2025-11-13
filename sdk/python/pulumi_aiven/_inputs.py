@@ -403,6 +403,8 @@ __all__ = [
     'OpenSearchOpensearchUserConfigIndexTemplateArgsDict',
     'OpenSearchOpensearchUserConfigIpFilterObjectArgs',
     'OpenSearchOpensearchUserConfigIpFilterObjectArgsDict',
+    'OpenSearchOpensearchUserConfigJwtArgs',
+    'OpenSearchOpensearchUserConfigJwtArgsDict',
     'OpenSearchOpensearchUserConfigOpenidArgs',
     'OpenSearchOpensearchUserConfigOpenidArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchArgs',
@@ -719,6 +721,20 @@ __all__ = [
     'GetOrganizationProjectTimeoutsArgsDict',
     'GetOrganizationTimeoutsArgs',
     'GetOrganizationTimeoutsArgsDict',
+    'GetOrganizationUserGroupListTimeoutsArgs',
+    'GetOrganizationUserGroupListTimeoutsArgsDict',
+    'GetOrganizationUserGroupListUserGroupArgs',
+    'GetOrganizationUserGroupListUserGroupArgsDict',
+    'GetServicePlanBackupConfigArgs',
+    'GetServicePlanBackupConfigArgsDict',
+    'GetServicePlanListServicePlanArgs',
+    'GetServicePlanListServicePlanArgsDict',
+    'GetServicePlanListServicePlanRegionsArgs',
+    'GetServicePlanListServicePlanRegionsArgsDict',
+    'GetServicePlanListTimeoutsArgs',
+    'GetServicePlanListTimeoutsArgsDict',
+    'GetServicePlanTimeoutsArgs',
+    'GetServicePlanTimeoutsArgsDict',
 ]
 
 MYPY = False
@@ -9358,7 +9374,7 @@ if not MYPY:
         """
         custom_domain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         """
         dashboard_previews_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -9544,7 +9560,7 @@ class GrafanaGrafanaUserConfigArgs:
         :param pulumi.Input['GrafanaGrafanaUserConfigAuthGitlabArgs'] auth_gitlab: GitLab Auth integration
         :param pulumi.Input['GrafanaGrafanaUserConfigAuthGoogleArgs'] auth_google: Google Auth integration
         :param pulumi.Input[_builtins.str] cookie_samesite: Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
-        :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         :param pulumi.Input[_builtins.bool] dashboard_previews_enabled: Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
         :param pulumi.Input[_builtins.bool] dashboard_scenes_enabled: Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
         :param pulumi.Input[_builtins.str] dashboards_min_refresh_interval: Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
@@ -9828,7 +9844,7 @@ class GrafanaGrafanaUserConfigArgs:
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         """
         return pulumi.get(self, "custom_domain")
 
@@ -11980,7 +11996,7 @@ if not MYPY:
         """
         custom_domain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         """
         influxdb: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgsDict']]
         """
@@ -12057,7 +12073,7 @@ class InfluxDbInfluxdbUserConfigArgs:
                  static_ips: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         :param pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs'] influxdb: influxdb.conf configuration values
         :param pulumi.Input[_builtins.str] influxdb_version: Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -12126,7 +12142,7 @@ class InfluxDbInfluxdbUserConfigArgs:
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         """
         return pulumi.get(self, "custom_domain")
 
@@ -14626,7 +14642,7 @@ if not MYPY:
         """
         custom_domain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         """
         follower_fetching: NotRequired[pulumi.Input['KafkaKafkaUserConfigFollowerFetchingArgsDict']]
         """
@@ -14767,7 +14783,7 @@ class KafkaKafkaUserConfigArgs:
         """
         :param pulumi.Input[_builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[_builtins.bool] aiven_kafka_topic_messages: Allow access to read Kafka topic messages in the Aiven Console and REST API.
-        :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         :param pulumi.Input['KafkaKafkaUserConfigFollowerFetchingArgs'] follower_fetching: Enable follower fetching
         :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -14888,7 +14904,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         """
         return pulumi.get(self, "custom_domain")
 
@@ -15394,7 +15410,7 @@ if not MYPY:
         """
         log_retention_hours: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
+        The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
         """
         log_retention_ms: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -15564,7 +15580,7 @@ class KafkaKafkaUserConfigKafkaArgs:
         :param pulumi.Input[_builtins.str] log_message_timestamp_type: Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time. (Default: CreateTime).
         :param pulumi.Input[_builtins.bool] log_preallocate: Should pre allocate file when create new segment? (Default: false).
         :param pulumi.Input[_builtins.int] log_retention_bytes: The maximum size of the log before deleting messages (Default: -1).
-        :param pulumi.Input[_builtins.int] log_retention_hours: The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
+        :param pulumi.Input[_builtins.int] log_retention_hours: The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
         :param pulumi.Input[_builtins.int] log_retention_ms: The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied. (Default: null, log.retention.hours applies).
         :param pulumi.Input[_builtins.int] log_roll_jitter_ms: The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used (Default: null).
         :param pulumi.Input[_builtins.int] log_roll_ms: The maximum time before a new log segment is rolled out (in milliseconds). (Default: null, log.roll.hours applies (Default: 168, 7 days)).
@@ -15989,7 +16005,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logRetentionHours")
     def log_retention_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
+        The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
         """
         return pulumi.get(self, "log_retention_hours")
 
@@ -24282,7 +24298,7 @@ if not MYPY:
         """
         custom_domain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         """
         disable_replication_factor_adjustment: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -24315,6 +24331,10 @@ if not MYPY:
         ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        """
+        jwt: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigJwtArgsDict']]
+        """
+        OpenSearch JWT Configuration
         """
         keep_index_refresh_interval: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -24397,6 +24417,7 @@ class OpenSearchOpensearchUserConfigArgs:
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 jwt: Optional[pulumi.Input['OpenSearchOpensearchUserConfigJwtArgs']] = None,
                  keep_index_refresh_interval: Optional[pulumi.Input[_builtins.bool]] = None,
                  max_index_count: Optional[pulumi.Input[_builtins.int]] = None,
                  openid: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgs']] = None,
@@ -24416,7 +24437,7 @@ class OpenSearchOpensearchUserConfigArgs:
         """
         :param pulumi.Input[_builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input['OpenSearchOpensearchUserConfigAzureMigrationArgs'] azure_migration: Azure migration settings
-        :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         :param pulumi.Input[_builtins.bool] disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
         :param pulumi.Input['OpenSearchOpensearchUserConfigGcsMigrationArgs'] gcs_migration: Google Cloud Storage migration settings
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgs']]] index_patterns: Index patterns
@@ -24425,6 +24446,7 @@ class OpenSearchOpensearchUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigJwtArgs'] jwt: OpenSearch JWT Configuration
         :param pulumi.Input[_builtins.bool] keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         :param pulumi.Input[_builtins.int] max_index_count: Use index_patterns instead. Default: `0`.
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgs'] openid: OpenSearch OpenID Connect Configuration
@@ -24467,6 +24489,8 @@ class OpenSearchOpensearchUserConfigArgs:
             pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
+        if jwt is not None:
+            pulumi.set(__self__, "jwt", jwt)
         if keep_index_refresh_interval is not None:
             pulumi.set(__self__, "keep_index_refresh_interval", keep_index_refresh_interval)
         if max_index_count is not None:
@@ -24528,7 +24552,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         """
         return pulumi.get(self, "custom_domain")
 
@@ -24632,6 +24656,18 @@ class OpenSearchOpensearchUserConfigArgs:
     @ip_filters.setter
     def ip_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_filters", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def jwt(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigJwtArgs']]:
+        """
+        OpenSearch JWT Configuration
+        """
+        return pulumi.get(self, "jwt")
+
+    @jwt.setter
+    def jwt(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigJwtArgs']]):
+        pulumi.set(self, "jwt", value)
 
     @_builtins.property
     @pulumi.getter(name="keepIndexRefreshInterval")
@@ -25603,6 +25639,202 @@ class OpenSearchOpensearchUserConfigIpFilterObjectArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigJwtArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: `false`.
+        """
+        signing_key: pulumi.Input[_builtins.str]
+        """
+        The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+        -----END PUBLIC KEY----- (PEM)`.
+        """
+        jwt_clock_skew_tolerance_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: `20`.
+        """
+        jwt_header: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.
+        """
+        jwt_url_parameter: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: `token`.
+        """
+        required_audience: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        If specified, the JWT must contain an `aud` claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.
+        """
+        required_issuer: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        If specified, the JWT must contain an `iss` claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.
+        """
+        roles_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: `roles`.
+        """
+        subject_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The key in the JWT payload that contains the user's subject identifier. If not specified, the `sub` claim is used by default. Example: `sub`.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigJwtArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigJwtArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 signing_key: pulumi.Input[_builtins.str],
+                 jwt_clock_skew_tolerance_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 jwt_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 jwt_url_parameter: Optional[pulumi.Input[_builtins.str]] = None,
+                 required_audience: Optional[pulumi.Input[_builtins.str]] = None,
+                 required_issuer: Optional[pulumi.Input[_builtins.str]] = None,
+                 roles_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 subject_key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: `false`.
+        :param pulumi.Input[_builtins.str] signing_key: The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----
+               MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+               -----END PUBLIC KEY----- (PEM)`.
+        :param pulumi.Input[_builtins.int] jwt_clock_skew_tolerance_seconds: The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: `20`.
+        :param pulumi.Input[_builtins.str] jwt_header: The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.
+        :param pulumi.Input[_builtins.str] jwt_url_parameter: If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: `token`.
+        :param pulumi.Input[_builtins.str] required_audience: If specified, the JWT must contain an `aud` claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.
+        :param pulumi.Input[_builtins.str] required_issuer: If specified, the JWT must contain an `iss` claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.
+        :param pulumi.Input[_builtins.str] roles_key: The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: `roles`.
+        :param pulumi.Input[_builtins.str] subject_key: The key in the JWT payload that contains the user's subject identifier. If not specified, the `sub` claim is used by default. Example: `sub`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "signing_key", signing_key)
+        if jwt_clock_skew_tolerance_seconds is not None:
+            pulumi.set(__self__, "jwt_clock_skew_tolerance_seconds", jwt_clock_skew_tolerance_seconds)
+        if jwt_header is not None:
+            pulumi.set(__self__, "jwt_header", jwt_header)
+        if jwt_url_parameter is not None:
+            pulumi.set(__self__, "jwt_url_parameter", jwt_url_parameter)
+        if required_audience is not None:
+            pulumi.set(__self__, "required_audience", required_audience)
+        if required_issuer is not None:
+            pulumi.set(__self__, "required_issuer", required_issuer)
+        if roles_key is not None:
+            pulumi.set(__self__, "roles_key", roles_key)
+        if subject_key is not None:
+            pulumi.set(__self__, "subject_key", subject_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingKey")
+    def signing_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+        -----END PUBLIC KEY----- (PEM)`.
+        """
+        return pulumi.get(self, "signing_key")
+
+    @signing_key.setter
+    def signing_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "signing_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jwtClockSkewToleranceSeconds")
+    def jwt_clock_skew_tolerance_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: `20`.
+        """
+        return pulumi.get(self, "jwt_clock_skew_tolerance_seconds")
+
+    @jwt_clock_skew_tolerance_seconds.setter
+    def jwt_clock_skew_tolerance_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "jwt_clock_skew_tolerance_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jwtHeader")
+    def jwt_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.
+        """
+        return pulumi.get(self, "jwt_header")
+
+    @jwt_header.setter
+    def jwt_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "jwt_header", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jwtUrlParameter")
+    def jwt_url_parameter(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: `token`.
+        """
+        return pulumi.get(self, "jwt_url_parameter")
+
+    @jwt_url_parameter.setter
+    def jwt_url_parameter(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "jwt_url_parameter", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requiredAudience")
+    def required_audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        If specified, the JWT must contain an `aud` claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.
+        """
+        return pulumi.get(self, "required_audience")
+
+    @required_audience.setter
+    def required_audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "required_audience", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requiredIssuer")
+    def required_issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        If specified, the JWT must contain an `iss` claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.
+        """
+        return pulumi.get(self, "required_issuer")
+
+    @required_issuer.setter
+    def required_issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "required_issuer", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rolesKey")
+    def roles_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: `roles`.
+        """
+        return pulumi.get(self, "roles_key")
+
+    @roles_key.setter
+    def roles_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "roles_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subjectKey")
+    def subject_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key in the JWT payload that contains the user's subject identifier. If not specified, the `sub` claim is used by default. Example: `sub`.
+        """
+        return pulumi.get(self, "subject_key")
+
+    @subject_key.setter
+    def subject_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subject_key", value)
 
 
 if not MYPY:
@@ -32387,6 +32619,26 @@ if not MYPY:
         """
         Time out sessions with open transactions after this number of milliseconds.
         """
+        io_combine_limit: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+        """
+        io_max_combine_limit: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+        """
+        io_max_concurrency: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+        """
+        io_method: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Enum: `io_uring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+        """
+        io_workers: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+        """
         jit: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Controls system-wide use of Just-in-Time Compilation (JIT).
@@ -32553,6 +32805,11 @@ class PgPgUserConfigPgArgs:
                  deadlock_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  default_toast_compression: Optional[pulumi.Input[_builtins.str]] = None,
                  idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 io_combine_limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 io_max_combine_limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 io_max_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
+                 io_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 io_workers: Optional[pulumi.Input[_builtins.int]] = None,
                  jit: Optional[pulumi.Input[_builtins.bool]] = None,
                  log_autovacuum_min_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  log_error_verbosity: Optional[pulumi.Input[_builtins.str]] = None,
@@ -32606,6 +32863,11 @@ class PgPgUserConfigPgArgs:
         :param pulumi.Input[_builtins.int] deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
         :param pulumi.Input[_builtins.str] default_toast_compression: Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
         :param pulumi.Input[_builtins.int] idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
+        :param pulumi.Input[_builtins.int] io_combine_limit: EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+        :param pulumi.Input[_builtins.int] io_max_combine_limit: EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+        :param pulumi.Input[_builtins.int] io_max_concurrency: EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+        :param pulumi.Input[_builtins.str] io_method: Enum: `io_uring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+        :param pulumi.Input[_builtins.int] io_workers: EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
         :param pulumi.Input[_builtins.bool] jit: Controls system-wide use of Just-in-Time Compilation (JIT).
         :param pulumi.Input[_builtins.int] log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
         :param pulumi.Input[_builtins.str] log_error_verbosity: Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
@@ -32675,6 +32937,16 @@ class PgPgUserConfigPgArgs:
             pulumi.set(__self__, "default_toast_compression", default_toast_compression)
         if idle_in_transaction_session_timeout is not None:
             pulumi.set(__self__, "idle_in_transaction_session_timeout", idle_in_transaction_session_timeout)
+        if io_combine_limit is not None:
+            pulumi.set(__self__, "io_combine_limit", io_combine_limit)
+        if io_max_combine_limit is not None:
+            pulumi.set(__self__, "io_max_combine_limit", io_max_combine_limit)
+        if io_max_concurrency is not None:
+            pulumi.set(__self__, "io_max_concurrency", io_max_concurrency)
+        if io_method is not None:
+            pulumi.set(__self__, "io_method", io_method)
+        if io_workers is not None:
+            pulumi.set(__self__, "io_workers", io_workers)
         if jit is not None:
             pulumi.set(__self__, "jit", jit)
         if log_autovacuum_min_duration is not None:
@@ -32939,6 +33211,66 @@ class PgPgUserConfigPgArgs:
     @idle_in_transaction_session_timeout.setter
     def idle_in_transaction_session_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "idle_in_transaction_session_timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ioCombineLimit")
+    def io_combine_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+        """
+        return pulumi.get(self, "io_combine_limit")
+
+    @io_combine_limit.setter
+    def io_combine_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "io_combine_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ioMaxCombineLimit")
+    def io_max_combine_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+        """
+        return pulumi.get(self, "io_max_combine_limit")
+
+    @io_max_combine_limit.setter
+    def io_max_combine_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "io_max_combine_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ioMaxConcurrency")
+    def io_max_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+        """
+        return pulumi.get(self, "io_max_concurrency")
+
+    @io_max_concurrency.setter
+    def io_max_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "io_max_concurrency", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ioMethod")
+    def io_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Enum: `io_uring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+        """
+        return pulumi.get(self, "io_method")
+
+    @io_method.setter
+    def io_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "io_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ioWorkers")
+    def io_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+        """
+        return pulumi.get(self, "io_workers")
+
+    @io_workers.setter
+    def io_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "io_workers", value)
 
     @_builtins.property
     @pulumi.getter
@@ -43795,6 +44127,682 @@ elif False:
 
 @pulumi.input_type
 class GetOrganizationTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
+    class GetOrganizationUserGroupListTimeoutsArgsDict(TypedDict):
+        read: NotRequired[_builtins.str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    GetOrganizationUserGroupListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationUserGroupListTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
+    class GetOrganizationUserGroupListUserGroupArgsDict(TypedDict):
+        create_time: _builtins.str
+        """
+        User group creation time.
+        """
+        description: _builtins.str
+        """
+        Description.
+        """
+        managed_by_scim: _builtins.bool
+        """
+        Managed By Scim.
+        """
+        member_count: _builtins.int
+        """
+        Member Count.
+        """
+        update_time: _builtins.str
+        """
+        User group last update time.
+        """
+        user_group_id: _builtins.str
+        """
+        User Group ID.
+        """
+        user_group_name: _builtins.str
+        """
+        User Group Name.
+        """
+elif False:
+    GetOrganizationUserGroupListUserGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationUserGroupListUserGroupArgs:
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 managed_by_scim: _builtins.bool,
+                 member_count: _builtins.int,
+                 update_time: _builtins.str,
+                 user_group_id: _builtins.str,
+                 user_group_name: _builtins.str):
+        """
+        :param _builtins.str create_time: User group creation time.
+        :param _builtins.str description: Description.
+        :param _builtins.bool managed_by_scim: Managed By Scim.
+        :param _builtins.int member_count: Member Count.
+        :param _builtins.str update_time: User group last update time.
+        :param _builtins.str user_group_id: User Group ID.
+        :param _builtins.str user_group_name: User Group Name.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "managed_by_scim", managed_by_scim)
+        pulumi.set(__self__, "member_count", member_count)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "user_group_id", user_group_id)
+        pulumi.set(__self__, "user_group_name", user_group_name)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        User group creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: _builtins.str):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: _builtins.str):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedByScim")
+    def managed_by_scim(self) -> _builtins.bool:
+        """
+        Managed By Scim.
+        """
+        return pulumi.get(self, "managed_by_scim")
+
+    @managed_by_scim.setter
+    def managed_by_scim(self, value: _builtins.bool):
+        pulumi.set(self, "managed_by_scim", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memberCount")
+    def member_count(self) -> _builtins.int:
+        """
+        Member Count.
+        """
+        return pulumi.get(self, "member_count")
+
+    @member_count.setter
+    def member_count(self, value: _builtins.int):
+        pulumi.set(self, "member_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        User group last update time.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: _builtins.str):
+        pulumi.set(self, "update_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userGroupId")
+    def user_group_id(self) -> _builtins.str:
+        """
+        User Group ID.
+        """
+        return pulumi.get(self, "user_group_id")
+
+    @user_group_id.setter
+    def user_group_id(self, value: _builtins.str):
+        pulumi.set(self, "user_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userGroupName")
+    def user_group_name(self) -> _builtins.str:
+        """
+        User Group Name.
+        """
+        return pulumi.get(self, "user_group_name")
+
+    @user_group_name.setter
+    def user_group_name(self, value: _builtins.str):
+        pulumi.set(self, "user_group_name", value)
+
+
+if not MYPY:
+    class GetServicePlanBackupConfigArgsDict(TypedDict):
+        frequent_interval_minutes: _builtins.int
+        """
+        Interval of taking a frequent backup in service types supporting different backup schedules.
+        """
+        frequent_oldest_age_minutes: _builtins.int
+        """
+        Maximum age of the oldest frequent backup in service types supporting different backup schedules.
+        """
+        infrequent_interval_minutes: _builtins.int
+        """
+        Interval of taking an infrequent backup in service types supporting different backup schedules.
+        """
+        infrequent_oldest_age_minutes: _builtins.int
+        """
+        Maximum age of the oldest infrequent backup in service types supporting different backup schedules.
+        """
+        interval: _builtins.int
+        """
+        The interval, in hours, at which backups are generated. For some services, like PostgreSQL, this is the interval at which full snapshots are taken and continuous incremental backup stream is maintained in addition to that.
+        """
+        max_count: _builtins.int
+        """
+        Maximum number of backups to keep. Zero when no backups are created.
+        """
+        recovery_mode: _builtins.str
+        """
+        Mechanism how backups can be restored. 'basic' means a backup is restored as is so that the system is restored to the state it was when the backup was generated. 'pitr' means point-in-time-recovery, which allows restoring the system to any state since the first available full snapshot. The possible values are `basic` and `pitr`.
+        """
+elif False:
+    GetServicePlanBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServicePlanBackupConfigArgs:
+    def __init__(__self__, *,
+                 frequent_interval_minutes: _builtins.int,
+                 frequent_oldest_age_minutes: _builtins.int,
+                 infrequent_interval_minutes: _builtins.int,
+                 infrequent_oldest_age_minutes: _builtins.int,
+                 interval: _builtins.int,
+                 max_count: _builtins.int,
+                 recovery_mode: _builtins.str):
+        """
+        :param _builtins.int frequent_interval_minutes: Interval of taking a frequent backup in service types supporting different backup schedules.
+        :param _builtins.int frequent_oldest_age_minutes: Maximum age of the oldest frequent backup in service types supporting different backup schedules.
+        :param _builtins.int infrequent_interval_minutes: Interval of taking an infrequent backup in service types supporting different backup schedules.
+        :param _builtins.int infrequent_oldest_age_minutes: Maximum age of the oldest infrequent backup in service types supporting different backup schedules.
+        :param _builtins.int interval: The interval, in hours, at which backups are generated. For some services, like PostgreSQL, this is the interval at which full snapshots are taken and continuous incremental backup stream is maintained in addition to that.
+        :param _builtins.int max_count: Maximum number of backups to keep. Zero when no backups are created.
+        :param _builtins.str recovery_mode: Mechanism how backups can be restored. 'basic' means a backup is restored as is so that the system is restored to the state it was when the backup was generated. 'pitr' means point-in-time-recovery, which allows restoring the system to any state since the first available full snapshot. The possible values are `basic` and `pitr`.
+        """
+        pulumi.set(__self__, "frequent_interval_minutes", frequent_interval_minutes)
+        pulumi.set(__self__, "frequent_oldest_age_minutes", frequent_oldest_age_minutes)
+        pulumi.set(__self__, "infrequent_interval_minutes", infrequent_interval_minutes)
+        pulumi.set(__self__, "infrequent_oldest_age_minutes", infrequent_oldest_age_minutes)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "max_count", max_count)
+        pulumi.set(__self__, "recovery_mode", recovery_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="frequentIntervalMinutes")
+    def frequent_interval_minutes(self) -> _builtins.int:
+        """
+        Interval of taking a frequent backup in service types supporting different backup schedules.
+        """
+        return pulumi.get(self, "frequent_interval_minutes")
+
+    @frequent_interval_minutes.setter
+    def frequent_interval_minutes(self, value: _builtins.int):
+        pulumi.set(self, "frequent_interval_minutes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="frequentOldestAgeMinutes")
+    def frequent_oldest_age_minutes(self) -> _builtins.int:
+        """
+        Maximum age of the oldest frequent backup in service types supporting different backup schedules.
+        """
+        return pulumi.get(self, "frequent_oldest_age_minutes")
+
+    @frequent_oldest_age_minutes.setter
+    def frequent_oldest_age_minutes(self, value: _builtins.int):
+        pulumi.set(self, "frequent_oldest_age_minutes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="infrequentIntervalMinutes")
+    def infrequent_interval_minutes(self) -> _builtins.int:
+        """
+        Interval of taking an infrequent backup in service types supporting different backup schedules.
+        """
+        return pulumi.get(self, "infrequent_interval_minutes")
+
+    @infrequent_interval_minutes.setter
+    def infrequent_interval_minutes(self, value: _builtins.int):
+        pulumi.set(self, "infrequent_interval_minutes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="infrequentOldestAgeMinutes")
+    def infrequent_oldest_age_minutes(self) -> _builtins.int:
+        """
+        Maximum age of the oldest infrequent backup in service types supporting different backup schedules.
+        """
+        return pulumi.get(self, "infrequent_oldest_age_minutes")
+
+    @infrequent_oldest_age_minutes.setter
+    def infrequent_oldest_age_minutes(self, value: _builtins.int):
+        pulumi.set(self, "infrequent_oldest_age_minutes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> _builtins.int:
+        """
+        The interval, in hours, at which backups are generated. For some services, like PostgreSQL, this is the interval at which full snapshots are taken and continuous incremental backup stream is maintained in addition to that.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: _builtins.int):
+        pulumi.set(self, "interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxCount")
+    def max_count(self) -> _builtins.int:
+        """
+        Maximum number of backups to keep. Zero when no backups are created.
+        """
+        return pulumi.get(self, "max_count")
+
+    @max_count.setter
+    def max_count(self, value: _builtins.int):
+        pulumi.set(self, "max_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="recoveryMode")
+    def recovery_mode(self) -> _builtins.str:
+        """
+        Mechanism how backups can be restored. 'basic' means a backup is restored as is so that the system is restored to the state it was when the backup was generated. 'pitr' means point-in-time-recovery, which allows restoring the system to any state since the first available full snapshot. The possible values are `basic` and `pitr`.
+        """
+        return pulumi.get(self, "recovery_mode")
+
+    @recovery_mode.setter
+    def recovery_mode(self, value: _builtins.str):
+        pulumi.set(self, "recovery_mode", value)
+
+
+if not MYPY:
+    class GetServicePlanListServicePlanArgsDict(TypedDict):
+        max_memory_percent: _builtins.int
+        """
+        Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
+        """
+        node_count: _builtins.int
+        """
+        Number of nodes in this service plan.
+        """
+        regions: Mapping[str, 'GetServicePlanListServicePlanRegionsArgsDict']
+        """
+        Service plan hourly price per cloud region.
+        """
+        service_plan: _builtins.str
+        """
+        Subscription plan.
+        """
+        service_type: _builtins.str
+        """
+        Service type code.
+        """
+        shard_count: _builtins.int
+        """
+        Number of shards in this service plan.
+        """
+elif False:
+    GetServicePlanListServicePlanArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServicePlanListServicePlanArgs:
+    def __init__(__self__, *,
+                 max_memory_percent: _builtins.int,
+                 node_count: _builtins.int,
+                 regions: Mapping[str, 'GetServicePlanListServicePlanRegionsArgs'],
+                 service_plan: _builtins.str,
+                 service_type: _builtins.str,
+                 shard_count: _builtins.int):
+        """
+        :param _builtins.int max_memory_percent: Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
+        :param _builtins.int node_count: Number of nodes in this service plan.
+        :param Mapping[str, 'GetServicePlanListServicePlanRegionsArgs'] regions: Service plan hourly price per cloud region.
+        :param _builtins.str service_plan: Subscription plan.
+        :param _builtins.str service_type: Service type code.
+        :param _builtins.int shard_count: Number of shards in this service plan.
+        """
+        pulumi.set(__self__, "max_memory_percent", max_memory_percent)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "regions", regions)
+        pulumi.set(__self__, "service_plan", service_plan)
+        pulumi.set(__self__, "service_type", service_type)
+        pulumi.set(__self__, "shard_count", shard_count)
+
+    @_builtins.property
+    @pulumi.getter(name="maxMemoryPercent")
+    def max_memory_percent(self) -> _builtins.int:
+        """
+        Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
+        """
+        return pulumi.get(self, "max_memory_percent")
+
+    @max_memory_percent.setter
+    def max_memory_percent(self, value: _builtins.int):
+        pulumi.set(self, "max_memory_percent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> _builtins.int:
+        """
+        Number of nodes in this service plan.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: _builtins.int):
+        pulumi.set(self, "node_count", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Mapping[str, 'GetServicePlanListServicePlanRegionsArgs']:
+        """
+        Service plan hourly price per cloud region.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Mapping[str, 'GetServicePlanListServicePlanRegionsArgs']):
+        pulumi.set(self, "regions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="servicePlan")
+    def service_plan(self) -> _builtins.str:
+        """
+        Subscription plan.
+        """
+        return pulumi.get(self, "service_plan")
+
+    @service_plan.setter
+    def service_plan(self, value: _builtins.str):
+        pulumi.set(self, "service_plan", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> _builtins.str:
+        """
+        Service type code.
+        """
+        return pulumi.get(self, "service_type")
+
+    @service_type.setter
+    def service_type(self, value: _builtins.str):
+        pulumi.set(self, "service_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="shardCount")
+    def shard_count(self) -> _builtins.int:
+        """
+        Number of shards in this service plan.
+        """
+        return pulumi.get(self, "shard_count")
+
+    @shard_count.setter
+    def shard_count(self, value: _builtins.int):
+        pulumi.set(self, "shard_count", value)
+
+
+if not MYPY:
+    class GetServicePlanListServicePlanRegionsArgsDict(TypedDict):
+        disk_space_cap_mb: _builtins.int
+        """
+        Maximum amount of disk space possible for the plan in the given region.
+        """
+        disk_space_gb_price_usd: _builtins.str
+        """
+        Hourly additional disk space price per GiB in this region.
+        """
+        disk_space_mb: _builtins.int
+        """
+        Combined amount of service disk space of all service nodes in megabytes.
+        """
+        disk_space_step_mb: _builtins.int
+        """
+        Disk space change step size.
+        """
+        node_cpu_count: _builtins.int
+        """
+        Number of CPU cores on each service node.
+        """
+        node_memory_mb: _builtins.int
+        """
+        Amount of memory on each service node in megabytes.
+        """
+        object_storage_gb_price_usd: _builtins.str
+        """
+        Hourly object storage price per GiB in this region.
+        """
+        price_usd: _builtins.str
+        """
+        Hourly service price in this region.
+        """
+elif False:
+    GetServicePlanListServicePlanRegionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServicePlanListServicePlanRegionsArgs:
+    def __init__(__self__, *,
+                 disk_space_cap_mb: _builtins.int,
+                 disk_space_gb_price_usd: _builtins.str,
+                 disk_space_mb: _builtins.int,
+                 disk_space_step_mb: _builtins.int,
+                 node_cpu_count: _builtins.int,
+                 node_memory_mb: _builtins.int,
+                 object_storage_gb_price_usd: _builtins.str,
+                 price_usd: _builtins.str):
+        """
+        :param _builtins.int disk_space_cap_mb: Maximum amount of disk space possible for the plan in the given region.
+        :param _builtins.str disk_space_gb_price_usd: Hourly additional disk space price per GiB in this region.
+        :param _builtins.int disk_space_mb: Combined amount of service disk space of all service nodes in megabytes.
+        :param _builtins.int disk_space_step_mb: Disk space change step size.
+        :param _builtins.int node_cpu_count: Number of CPU cores on each service node.
+        :param _builtins.int node_memory_mb: Amount of memory on each service node in megabytes.
+        :param _builtins.str object_storage_gb_price_usd: Hourly object storage price per GiB in this region.
+        :param _builtins.str price_usd: Hourly service price in this region.
+        """
+        pulumi.set(__self__, "disk_space_cap_mb", disk_space_cap_mb)
+        pulumi.set(__self__, "disk_space_gb_price_usd", disk_space_gb_price_usd)
+        pulumi.set(__self__, "disk_space_mb", disk_space_mb)
+        pulumi.set(__self__, "disk_space_step_mb", disk_space_step_mb)
+        pulumi.set(__self__, "node_cpu_count", node_cpu_count)
+        pulumi.set(__self__, "node_memory_mb", node_memory_mb)
+        pulumi.set(__self__, "object_storage_gb_price_usd", object_storage_gb_price_usd)
+        pulumi.set(__self__, "price_usd", price_usd)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSpaceCapMb")
+    def disk_space_cap_mb(self) -> _builtins.int:
+        """
+        Maximum amount of disk space possible for the plan in the given region.
+        """
+        return pulumi.get(self, "disk_space_cap_mb")
+
+    @disk_space_cap_mb.setter
+    def disk_space_cap_mb(self, value: _builtins.int):
+        pulumi.set(self, "disk_space_cap_mb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSpaceGbPriceUsd")
+    def disk_space_gb_price_usd(self) -> _builtins.str:
+        """
+        Hourly additional disk space price per GiB in this region.
+        """
+        return pulumi.get(self, "disk_space_gb_price_usd")
+
+    @disk_space_gb_price_usd.setter
+    def disk_space_gb_price_usd(self, value: _builtins.str):
+        pulumi.set(self, "disk_space_gb_price_usd", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSpaceMb")
+    def disk_space_mb(self) -> _builtins.int:
+        """
+        Combined amount of service disk space of all service nodes in megabytes.
+        """
+        return pulumi.get(self, "disk_space_mb")
+
+    @disk_space_mb.setter
+    def disk_space_mb(self, value: _builtins.int):
+        pulumi.set(self, "disk_space_mb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSpaceStepMb")
+    def disk_space_step_mb(self) -> _builtins.int:
+        """
+        Disk space change step size.
+        """
+        return pulumi.get(self, "disk_space_step_mb")
+
+    @disk_space_step_mb.setter
+    def disk_space_step_mb(self, value: _builtins.int):
+        pulumi.set(self, "disk_space_step_mb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCpuCount")
+    def node_cpu_count(self) -> _builtins.int:
+        """
+        Number of CPU cores on each service node.
+        """
+        return pulumi.get(self, "node_cpu_count")
+
+    @node_cpu_count.setter
+    def node_cpu_count(self, value: _builtins.int):
+        pulumi.set(self, "node_cpu_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeMemoryMb")
+    def node_memory_mb(self) -> _builtins.int:
+        """
+        Amount of memory on each service node in megabytes.
+        """
+        return pulumi.get(self, "node_memory_mb")
+
+    @node_memory_mb.setter
+    def node_memory_mb(self, value: _builtins.int):
+        pulumi.set(self, "node_memory_mb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="objectStorageGbPriceUsd")
+    def object_storage_gb_price_usd(self) -> _builtins.str:
+        """
+        Hourly object storage price per GiB in this region.
+        """
+        return pulumi.get(self, "object_storage_gb_price_usd")
+
+    @object_storage_gb_price_usd.setter
+    def object_storage_gb_price_usd(self, value: _builtins.str):
+        pulumi.set(self, "object_storage_gb_price_usd", value)
+
+    @_builtins.property
+    @pulumi.getter(name="priceUsd")
+    def price_usd(self) -> _builtins.str:
+        """
+        Hourly service price in this region.
+        """
+        return pulumi.get(self, "price_usd")
+
+    @price_usd.setter
+    def price_usd(self, value: _builtins.str):
+        pulumi.set(self, "price_usd", value)
+
+
+if not MYPY:
+    class GetServicePlanListTimeoutsArgsDict(TypedDict):
+        read: NotRequired[_builtins.str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    GetServicePlanListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServicePlanListTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
+    class GetServicePlanTimeoutsArgsDict(TypedDict):
+        read: NotRequired[_builtins.str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    GetServicePlanTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServicePlanTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[_builtins.str] = None):
         """

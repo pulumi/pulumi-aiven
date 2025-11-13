@@ -394,14 +394,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
+     * The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
      * 
      */
     @Import(name="logRetentionHours")
     private @Nullable Output<Integer> logRetentionHours;
 
     /**
-     * @return The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
+     * @return The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
      * 
      */
     public Optional<Output<Integer>> logRetentionHours() {
@@ -1335,7 +1335,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logRetentionHours The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
+         * @param logRetentionHours The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
          * 
          * @return builder
          * 
@@ -1346,7 +1346,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logRetentionHours The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
+         * @param logRetentionHours The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
          * 
          * @return builder
          * 

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOrganizationProjectResult {
     /**
-     * @return Valid port number (1-65535) to use as a base for service port allocation.
+     * @return Valid port number (10000-30000) to use as a base for service port allocation.
      * 
      */
     private Integer basePort;
@@ -65,7 +65,7 @@ public final class GetOrganizationProjectResult {
 
     private GetOrganizationProjectResult() {}
     /**
-     * @return Valid port number (1-65535) to use as a base for service port allocation.
+     * @return Valid port number (10000-30000) to use as a base for service port allocation.
      * 
      */
     public Integer basePort() {

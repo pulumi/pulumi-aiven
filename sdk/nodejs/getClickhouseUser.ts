@@ -56,7 +56,7 @@ export interface GetClickhouseUserResult {
      */
     readonly id: string;
     /**
-     * The password of the ClickHouse user.
+     * The password of the ClickHouse user (generated). Empty when using `passwordWo`.
      */
     readonly password: string;
     /**

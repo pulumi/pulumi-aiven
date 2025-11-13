@@ -79,14 +79,22 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="influxdbUserConfig")
     private @Nullable Output<InfluxDbInfluxdbUserConfigArgs> influxdbUserConfig;
 
     /**
      * @return Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<InfluxDbInfluxdbUserConfigArgs>> influxdbUserConfig() {
         return Optional.ofNullable(this.influxdbUserConfig);
     }
@@ -386,7 +394,11 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder influxdbUserConfig(@Nullable Output<InfluxDbInfluxdbUserConfigArgs> influxdbUserConfig) {
             $.influxdbUserConfig = influxdbUserConfig;
             return this;
@@ -397,7 +409,11 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder influxdbUserConfig(InfluxDbInfluxdbUserConfigArgs influxdbUserConfig) {
             return influxdbUserConfig(Output.of(influxdbUserConfig));
         }

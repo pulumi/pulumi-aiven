@@ -142,7 +142,7 @@ namespace Pulumi.Aiven
         public bool? Ssl { get; set; }
 
         /// <summary>
-        /// DNS usage name. The possible values are `DisasterRecovery`, `Primary` and `Replica`.
+        /// DNS usage name. The possible values are `DisasterRecovery`, `HaReplica`, `Primary` and `Replica`.
         /// </summary>
         [Input("usage")]
         public string? Usage { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.Aiven
         public Input<bool>? Ssl { get; set; }
 
         /// <summary>
-        /// DNS usage name. The possible values are `DisasterRecovery`, `Primary` and `Replica`.
+        /// DNS usage name. The possible values are `DisasterRecovery`, `HaReplica`, `Primary` and `Replica`.
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly bool? Ssl;
         /// <summary>
-        /// DNS usage name. The possible values are `DisasterRecovery`, `Primary` and `Replica`.
+        /// DNS usage name. The possible values are `DisasterRecovery`, `HaReplica`, `Primary` and `Replica`.
         /// </summary>
         public readonly string? Usage;
 

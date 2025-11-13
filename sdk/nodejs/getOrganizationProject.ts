@@ -55,7 +55,7 @@ export interface GetOrganizationProjectArgs {
  */
 export interface GetOrganizationProjectResult {
     /**
-     * Valid port number (1-65535) to use as a base for service port allocation.
+     * Valid port number (10000-30000) to use as a base for service port allocation.
      */
     readonly basePort: number;
     /**

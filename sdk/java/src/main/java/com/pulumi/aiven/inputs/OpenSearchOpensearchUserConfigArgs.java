@@ -9,6 +9,7 @@ import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexPatternArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexRollupArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexTemplateArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIpFilterObjectArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigJwtArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpenidArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs;
@@ -63,14 +64,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      * 
      */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      * 
      */
     public Optional<Output<String>> customDomain() {
@@ -203,6 +204,21 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
+    }
+
+    /**
+     * OpenSearch JWT Configuration
+     * 
+     */
+    @Import(name="jwt")
+    private @Nullable Output<OpenSearchOpensearchUserConfigJwtArgs> jwt;
+
+    /**
+     * @return OpenSearch JWT Configuration
+     * 
+     */
+    public Optional<Output<OpenSearchOpensearchUserConfigJwtArgs>> jwt() {
+        return Optional.ofNullable(this.jwt);
     }
 
     /**
@@ -459,6 +475,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
+        this.jwt = $.jwt;
         this.keepIndexRefreshInterval = $.keepIndexRefreshInterval;
         this.maxIndexCount = $.maxIndexCount;
         this.openid = $.openid;
@@ -538,7 +555,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
          * 
          * @return builder
          * 
@@ -549,7 +566,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
          * 
          * @return builder
          * 
@@ -776,6 +793,27 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         @Deprecated /* Deprecated. Use `ipFilterString` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
+        }
+
+        /**
+         * @param jwt OpenSearch JWT Configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jwt(@Nullable Output<OpenSearchOpensearchUserConfigJwtArgs> jwt) {
+            $.jwt = jwt;
+            return this;
+        }
+
+        /**
+         * @param jwt OpenSearch JWT Configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jwt(OpenSearchOpensearchUserConfigJwtArgs jwt) {
+            return jwt(Output.of(jwt));
         }
 
         /**
