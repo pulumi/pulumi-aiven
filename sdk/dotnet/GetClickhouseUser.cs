@@ -152,7 +152,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the ClickHouse user.
+        /// The password of the ClickHouse user (generated). Empty when using `PasswordWo`.
         /// </summary>
         public readonly string Password;
         /// <summary>

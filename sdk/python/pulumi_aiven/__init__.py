@@ -106,6 +106,7 @@ from .get_organization_billing_group_list import *
 from .get_organization_project import *
 from .get_organization_user import *
 from .get_organization_user_group import *
+from .get_organization_user_group_list import *
 from .get_organization_user_list import *
 from .get_organization_vpc import *
 from .get_organizational_unit import *
@@ -120,6 +121,8 @@ from .get_redis_user import *
 from .get_service_component import *
 from .get_service_integration import *
 from .get_service_integration_endpoint import *
+from .get_service_plan import *
+from .get_service_plan_list import *
 from .get_thanos import *
 from .get_transit_gateway_vpc_attachment import *
 from .get_valkey import *

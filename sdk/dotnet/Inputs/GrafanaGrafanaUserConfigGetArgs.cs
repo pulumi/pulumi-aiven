@@ -91,7 +91,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? CookieSamesite { get; set; }
 
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }

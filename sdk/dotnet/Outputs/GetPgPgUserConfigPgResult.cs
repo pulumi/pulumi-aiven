@@ -78,6 +78,26 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? IdleInTransactionSessionTimeout;
         /// <summary>
+        /// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+        /// </summary>
+        public readonly int? IoCombineLimit;
+        /// <summary>
+        /// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io_combine_limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+        /// </summary>
+        public readonly int? IoMaxCombineLimit;
+        /// <summary>
+        /// EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+        /// </summary>
+        public readonly int? IoMaxConcurrency;
+        /// <summary>
+        /// Enum: `IoUring`, `Sync`, `Worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `Worker`.
+        /// </summary>
+        public readonly string? IoMethod;
+        /// <summary>
+        /// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+        /// </summary>
+        public readonly int? IoWorkers;
+        /// <summary>
         /// Controls system-wide use of Just-in-Time Compilation (JIT).
         /// </summary>
         public readonly bool? Jit;
@@ -256,6 +276,16 @@ namespace Pulumi.Aiven.Outputs
 
             int? idleInTransactionSessionTimeout,
 
+            int? ioCombineLimit,
+
+            int? ioMaxCombineLimit,
+
+            int? ioMaxConcurrency,
+
+            string? ioMethod,
+
+            int? ioWorkers,
+
             bool? jit,
 
             int? logAutovacuumMinDuration,
@@ -344,6 +374,11 @@ namespace Pulumi.Aiven.Outputs
             DeadlockTimeout = deadlockTimeout;
             DefaultToastCompression = defaultToastCompression;
             IdleInTransactionSessionTimeout = idleInTransactionSessionTimeout;
+            IoCombineLimit = ioCombineLimit;
+            IoMaxCombineLimit = ioMaxCombineLimit;
+            IoMaxConcurrency = ioMaxConcurrency;
+            IoMethod = ioMethod;
+            IoWorkers = ioWorkers;
             Jit = jit;
             LogAutovacuumMinDuration = logAutovacuumMinDuration;
             LogErrorVerbosity = logErrorVerbosity;

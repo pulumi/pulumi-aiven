@@ -62,7 +62,7 @@ type LookupOrganizationProjectArgs struct {
 
 // A collection of values returned by getOrganizationProject.
 type LookupOrganizationProjectResult struct {
-	// Valid port number (1-65535) to use as a base for service port allocation.
+	// Valid port number (10000-30000) to use as a base for service port allocation.
 	BasePort int `pulumi:"basePort"`
 	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId string `pulumi:"billingGroupId"`
@@ -122,7 +122,7 @@ func (o LookupOrganizationProjectResultOutput) ToLookupOrganizationProjectResult
 	return o
 }
 
-// Valid port number (1-65535) to use as a base for service port allocation.
+// Valid port number (10000-30000) to use as a base for service port allocation.
 func (o LookupOrganizationProjectResultOutput) BasePort() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) int { return v.BasePort }).(pulumi.IntOutput)
 }

@@ -55,9 +55,18 @@ export class ClickhouseUser extends pulumi.CustomResource {
     }
 
     /**
-     * The password of the ClickHouse user.
+     * The password of the ClickHouse user (generated). Empty when using `passwordWo`.
      */
     declare public /*out*/ readonly password: pulumi.Output<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     */
+    declare public readonly passwordWo: pulumi.Output<string | undefined>;
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     */
+    declare public readonly passwordWoVersion: pulumi.Output<number | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
@@ -93,6 +102,8 @@ export class ClickhouseUser extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClickhouseUserState | undefined;
             resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWo"] = state?.passwordWo;
+            resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["project"] = state?.project;
             resourceInputs["required"] = state?.required;
             resourceInputs["serviceName"] = state?.serviceName;
@@ -109,6 +120,8 @@ export class ClickhouseUser extends pulumi.CustomResource {
             if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
+            resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
+            resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["username"] = args?.username;
@@ -117,7 +130,7 @@ export class ClickhouseUser extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password"] };
+        const secretOpts = { additionalSecretOutputs: ["password", "passwordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ClickhouseUser.__pulumiType, name, resourceInputs, opts);
     }
@@ -128,9 +141,18 @@ export class ClickhouseUser extends pulumi.CustomResource {
  */
 export interface ClickhouseUserState {
     /**
-     * The password of the ClickHouse user.
+     * The password of the ClickHouse user (generated). Empty when using `passwordWo`.
      */
     password?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     */
+    passwordWo?: pulumi.Input<string>;
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     */
+    passwordWoVersion?: pulumi.Input<number>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
@@ -157,6 +179,15 @@ export interface ClickhouseUserState {
  * The set of arguments for constructing a ClickhouseUser resource.
  */
 export interface ClickhouseUserArgs {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     */
+    passwordWo?: pulumi.Input<string>;
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     */
+    passwordWoVersion?: pulumi.Input<number>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */

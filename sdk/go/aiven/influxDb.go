@@ -34,6 +34,8 @@ type InfluxDb struct {
 	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrOutput `pulumi:"influxdbUserConfig"`
 	// InfluxDB server provided values
 	Influxdbs InfluxDbInfluxdbArrayOutput `pulumi:"influxdbs"`
@@ -143,6 +145,8 @@ type influxDbState struct {
 	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	InfluxdbUserConfig *InfluxDbInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
 	// InfluxDB server provided values
 	Influxdbs []InfluxDbInfluxdb `pulumi:"influxdbs"`
@@ -205,6 +209,8 @@ type InfluxDbState struct {
 	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrInput
 	// InfluxDB server provided values
 	Influxdbs InfluxDbInfluxdbArrayInput
@@ -261,6 +267,8 @@ type influxDbArgs struct {
 	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	InfluxdbUserConfig *InfluxDbInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
 	// InfluxDB server provided values
 	Influxdbs []InfluxDbInfluxdb `pulumi:"influxdbs"`
@@ -299,6 +307,8 @@ type InfluxDbArgs struct {
 	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrInput
 	// InfluxDB server provided values
 	Influxdbs InfluxDbInfluxdbArrayInput
@@ -456,6 +466,8 @@ func (o InfluxDbOutput) DiskSpaceUsed() pulumi.StringOutput {
 }
 
 // Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+//
+// Deprecated: This property is deprecated.
 func (o InfluxDbOutput) InfluxdbUserConfig() InfluxDbInfluxdbUserConfigPtrOutput {
 	return o.ApplyT(func(v *InfluxDb) InfluxDbInfluxdbUserConfigPtrOutput { return v.InfluxdbUserConfig }).(InfluxDbInfluxdbUserConfigPtrOutput)
 }

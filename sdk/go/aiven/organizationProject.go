@@ -22,7 +22,7 @@ import (
 type OrganizationProject struct {
 	pulumi.CustomResourceState
 
-	// Valid port number (1-65535) to use as a base for service port allocation.
+	// Valid port number (10000-30000) to use as a base for service port allocation.
 	BasePort pulumi.IntOutput `pulumi:"basePort"`
 	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
@@ -87,7 +87,7 @@ func GetOrganizationProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationProject resources.
 type organizationProjectState struct {
-	// Valid port number (1-65535) to use as a base for service port allocation.
+	// Valid port number (10000-30000) to use as a base for service port allocation.
 	BasePort *int `pulumi:"basePort"`
 	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId *string `pulumi:"billingGroupId"`
@@ -107,7 +107,7 @@ type organizationProjectState struct {
 }
 
 type OrganizationProjectState struct {
-	// Valid port number (1-65535) to use as a base for service port allocation.
+	// Valid port number (10000-30000) to use as a base for service port allocation.
 	BasePort pulumi.IntPtrInput
 	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId pulumi.StringPtrInput
@@ -131,7 +131,7 @@ func (OrganizationProjectState) ElementType() reflect.Type {
 }
 
 type organizationProjectArgs struct {
-	// Valid port number (1-65535) to use as a base for service port allocation.
+	// Valid port number (10000-30000) to use as a base for service port allocation.
 	BasePort *int `pulumi:"basePort"`
 	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId string `pulumi:"billingGroupId"`
@@ -150,7 +150,7 @@ type organizationProjectArgs struct {
 
 // The set of arguments for constructing a OrganizationProject resource.
 type OrganizationProjectArgs struct {
-	// Valid port number (1-65535) to use as a base for service port allocation.
+	// Valid port number (10000-30000) to use as a base for service port allocation.
 	BasePort pulumi.IntPtrInput
 	// Billing group ID to assign to the project. It's required when moving projects between organizations.
 	BillingGroupId pulumi.StringInput
@@ -254,7 +254,7 @@ func (o OrganizationProjectOutput) ToOrganizationProjectOutputWithContext(ctx co
 	return o
 }
 
-// Valid port number (1-65535) to use as a base for service port allocation.
+// Valid port number (10000-30000) to use as a base for service port allocation.
 func (o OrganizationProjectOutput) BasePort() pulumi.IntOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.IntOutput { return v.BasePort }).(pulumi.IntOutput)
 }

@@ -50,8 +50,13 @@ import (
 type ClickhouseUser struct {
 	pulumi.CustomResourceState
 
-	// The password of the ClickHouse user.
+	// The password of the ClickHouse user (generated). Empty when using `passwordWo`.
 	Password pulumi.StringOutput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Indicates if a ClickHouse user is required.
@@ -80,8 +85,12 @@ func NewClickhouseUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.PasswordWo != nil {
+		args.PasswordWo = pulumi.ToSecret(args.PasswordWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"password",
+		"passwordWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -107,8 +116,13 @@ func GetClickhouseUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClickhouseUser resources.
 type clickhouseUserState struct {
-	// The password of the ClickHouse user.
+	// The password of the ClickHouse user (generated). Empty when using `passwordWo`.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// Indicates if a ClickHouse user is required.
@@ -122,8 +136,13 @@ type clickhouseUserState struct {
 }
 
 type ClickhouseUserState struct {
-	// The password of the ClickHouse user.
+	// The password of the ClickHouse user (generated). Empty when using `passwordWo`.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+	PasswordWo pulumi.StringPtrInput
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion pulumi.IntPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// Indicates if a ClickHouse user is required.
@@ -141,6 +160,11 @@ func (ClickhouseUserState) ElementType() reflect.Type {
 }
 
 type clickhouseUserArgs struct {
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -151,6 +175,11 @@ type clickhouseUserArgs struct {
 
 // The set of arguments for constructing a ClickhouseUser resource.
 type ClickhouseUserArgs struct {
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+	PasswordWo pulumi.StringPtrInput
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion pulumi.IntPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -246,9 +275,20 @@ func (o ClickhouseUserOutput) ToClickhouseUserOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The password of the ClickHouse user.
+// The password of the ClickHouse user (generated). Empty when using `passwordWo`.
 func (o ClickhouseUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+func (o ClickhouseUserOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+func (o ClickhouseUserOutput) PasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClickhouseUser) pulumi.IntPtrOutput { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.

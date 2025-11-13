@@ -65,7 +65,7 @@ public final class GetServiceComponentResult {
      */
     private @Nullable Boolean ssl;
     /**
-     * @return DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
+     * @return DNS usage name. The possible values are `disasterRecovery`, `haReplica`, `primary` and `replica`.
      * 
      */
     private @Nullable String usage;
@@ -142,7 +142,7 @@ public final class GetServiceComponentResult {
         return Optional.ofNullable(this.ssl);
     }
     /**
-     * @return DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
+     * @return DNS usage name. The possible values are `disasterRecovery`, `haReplica`, `primary` and `replica`.
      * 
      */
     public Optional<String> usage() {

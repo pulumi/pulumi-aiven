@@ -109,6 +109,36 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? IdleInTransactionSessionTimeout { get; set; }
 
         /// <summary>
+        /// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+        /// </summary>
+        [Input("ioCombineLimit")]
+        public Input<int>? IoCombineLimit { get; set; }
+
+        /// <summary>
+        /// EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+        /// </summary>
+        [Input("ioMaxCombineLimit")]
+        public Input<int>? IoMaxCombineLimit { get; set; }
+
+        /// <summary>
+        /// EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+        /// </summary>
+        [Input("ioMaxConcurrency")]
+        public Input<int>? IoMaxConcurrency { get; set; }
+
+        /// <summary>
+        /// Enum: `IoUring`, `Sync`, `Worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `Worker`.
+        /// </summary>
+        [Input("ioMethod")]
+        public Input<string>? IoMethod { get; set; }
+
+        /// <summary>
+        /// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+        /// </summary>
+        [Input("ioWorkers")]
+        public Input<int>? IoWorkers { get; set; }
+
+        /// <summary>
         /// Controls system-wide use of Just-in-Time Compilation (JIT).
         /// </summary>
         [Input("jit")]

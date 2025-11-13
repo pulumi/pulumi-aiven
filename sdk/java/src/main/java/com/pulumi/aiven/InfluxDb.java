@@ -144,7 +144,11 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
     /**
      * Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Export(name="influxdbUserConfig", refs={InfluxDbInfluxdbUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ InfluxDbInfluxdbUserConfig> influxdbUserConfig;
 

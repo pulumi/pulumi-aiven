@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,18 +18,50 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     public static final ClickhouseUserState Empty = new ClickhouseUserState();
 
     /**
-     * The password of the ClickHouse user.
+     * The password of the ClickHouse user (generated). Empty when using `passwordWo`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the ClickHouse user.
+     * @return The password of the ClickHouse user (generated). Empty when using `passwordWo`.
      * 
      */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     * 
+     */
+    @Import(name="passwordWo")
+    private @Nullable Output<String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     * 
+     */
+    public Optional<Output<String>> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<Integer> passwordWoVersion;
+
+    /**
+     * @return Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * 
+     */
+    public Optional<Output<Integer>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
     }
 
     /**
@@ -110,6 +143,8 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
 
     private ClickhouseUserState(ClickhouseUserState $) {
         this.password = $.password;
+        this.passwordWo = $.passwordWo;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.project = $.project;
         this.required = $.required;
         this.serviceName = $.serviceName;
@@ -136,7 +171,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of the ClickHouse user.
+         * @param password The password of the ClickHouse user (generated). Empty when using `passwordWo`.
          * 
          * @return builder
          * 
@@ -147,13 +182,57 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of the ClickHouse user.
+         * @param password The password of the ClickHouse user (generated). Empty when using `passwordWo`.
          * 
          * @return builder
          * 
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(@Nullable Output<String> passwordWo) {
+            $.passwordWo = passwordWo;
+            return this;
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(String passwordWo) {
+            return passwordWo(Output.of(passwordWo));
+        }
+
+        /**
+         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<Integer> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(Integer passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
         }
 
         /**

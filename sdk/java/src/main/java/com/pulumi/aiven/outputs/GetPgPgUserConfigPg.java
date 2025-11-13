@@ -95,6 +95,31 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable Integer idleInTransactionSessionTimeout;
     /**
+     * @return EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+     * 
+     */
+    private @Nullable Integer ioCombineLimit;
+    /**
+     * @return EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io_combine_limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+     * 
+     */
+    private @Nullable Integer ioMaxCombineLimit;
+    /**
+     * @return EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+     * 
+     */
+    private @Nullable Integer ioMaxConcurrency;
+    /**
+     * @return Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+     * 
+     */
+    private @Nullable String ioMethod;
+    /**
+     * @return EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+     * 
+     */
+    private @Nullable Integer ioWorkers;
+    /**
      * @return Controls system-wide use of Just-in-Time Compilation (JIT).
      * 
      */
@@ -389,6 +414,41 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.idleInTransactionSessionTimeout);
     }
     /**
+     * @return EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+     * 
+     */
+    public Optional<Integer> ioCombineLimit() {
+        return Optional.ofNullable(this.ioCombineLimit);
+    }
+    /**
+     * @return EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io_combine_limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+     * 
+     */
+    public Optional<Integer> ioMaxCombineLimit() {
+        return Optional.ofNullable(this.ioMaxCombineLimit);
+    }
+    /**
+     * @return EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+     * 
+     */
+    public Optional<Integer> ioMaxConcurrency() {
+        return Optional.ofNullable(this.ioMaxConcurrency);
+    }
+    /**
+     * @return Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+     * 
+     */
+    public Optional<String> ioMethod() {
+        return Optional.ofNullable(this.ioMethod);
+    }
+    /**
+     * @return EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+     * 
+     */
+    public Optional<Integer> ioWorkers() {
+        return Optional.ofNullable(this.ioWorkers);
+    }
+    /**
      * @return Controls system-wide use of Just-in-Time Compilation (JIT).
      * 
      */
@@ -666,6 +726,11 @@ public final class GetPgPgUserConfigPg {
         private @Nullable Integer deadlockTimeout;
         private @Nullable String defaultToastCompression;
         private @Nullable Integer idleInTransactionSessionTimeout;
+        private @Nullable Integer ioCombineLimit;
+        private @Nullable Integer ioMaxCombineLimit;
+        private @Nullable Integer ioMaxConcurrency;
+        private @Nullable String ioMethod;
+        private @Nullable Integer ioWorkers;
         private @Nullable Boolean jit;
         private @Nullable Integer logAutovacuumMinDuration;
         private @Nullable String logErrorVerbosity;
@@ -721,6 +786,11 @@ public final class GetPgPgUserConfigPg {
     	      this.deadlockTimeout = defaults.deadlockTimeout;
     	      this.defaultToastCompression = defaults.defaultToastCompression;
     	      this.idleInTransactionSessionTimeout = defaults.idleInTransactionSessionTimeout;
+    	      this.ioCombineLimit = defaults.ioCombineLimit;
+    	      this.ioMaxCombineLimit = defaults.ioMaxCombineLimit;
+    	      this.ioMaxConcurrency = defaults.ioMaxConcurrency;
+    	      this.ioMethod = defaults.ioMethod;
+    	      this.ioWorkers = defaults.ioWorkers;
     	      this.jit = defaults.jit;
     	      this.logAutovacuumMinDuration = defaults.logAutovacuumMinDuration;
     	      this.logErrorVerbosity = defaults.logErrorVerbosity;
@@ -853,6 +923,36 @@ public final class GetPgPgUserConfigPg {
         public Builder idleInTransactionSessionTimeout(@Nullable Integer idleInTransactionSessionTimeout) {
 
             this.idleInTransactionSessionTimeout = idleInTransactionSessionTimeout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ioCombineLimit(@Nullable Integer ioCombineLimit) {
+
+            this.ioCombineLimit = ioCombineLimit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ioMaxCombineLimit(@Nullable Integer ioMaxCombineLimit) {
+
+            this.ioMaxCombineLimit = ioMaxCombineLimit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ioMaxConcurrency(@Nullable Integer ioMaxConcurrency) {
+
+            this.ioMaxConcurrency = ioMaxConcurrency;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ioMethod(@Nullable String ioMethod) {
+
+            this.ioMethod = ioMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ioWorkers(@Nullable Integer ioWorkers) {
+
+            this.ioWorkers = ioWorkers;
             return this;
         }
         @CustomType.Setter
@@ -1089,6 +1189,11 @@ public final class GetPgPgUserConfigPg {
             _resultValue.deadlockTimeout = deadlockTimeout;
             _resultValue.defaultToastCompression = defaultToastCompression;
             _resultValue.idleInTransactionSessionTimeout = idleInTransactionSessionTimeout;
+            _resultValue.ioCombineLimit = ioCombineLimit;
+            _resultValue.ioMaxCombineLimit = ioMaxCombineLimit;
+            _resultValue.ioMaxConcurrency = ioMaxConcurrency;
+            _resultValue.ioMethod = ioMethod;
+            _resultValue.ioWorkers = ioWorkers;
             _resultValue.jit = jit;
             _resultValue.logAutovacuumMinDuration = logAutovacuumMinDuration;
             _resultValue.logErrorVerbosity = logErrorVerbosity;

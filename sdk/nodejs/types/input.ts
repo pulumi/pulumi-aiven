@@ -1861,6 +1861,296 @@ export interface GetOrganizationTimeoutsArgs {
     read?: pulumi.Input<string>;
 }
 
+export interface GetOrganizationUserGroupListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationUserGroupListTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationUserGroupListUserGroup {
+    /**
+     * User group creation time.
+     */
+    createTime?: string;
+    /**
+     * Description.
+     */
+    description?: string;
+    /**
+     * Managed By Scim.
+     */
+    managedByScim?: boolean;
+    /**
+     * Member Count.
+     */
+    memberCount?: number;
+    /**
+     * User group last update time.
+     */
+    updateTime?: string;
+    /**
+     * User Group ID.
+     */
+    userGroupId?: string;
+    /**
+     * User Group Name.
+     */
+    userGroupName?: string;
+}
+
+export interface GetOrganizationUserGroupListUserGroupArgs {
+    /**
+     * User group creation time.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Managed By Scim.
+     */
+    managedByScim?: pulumi.Input<boolean>;
+    /**
+     * Member Count.
+     */
+    memberCount?: pulumi.Input<number>;
+    /**
+     * User group last update time.
+     */
+    updateTime?: pulumi.Input<string>;
+    /**
+     * User Group ID.
+     */
+    userGroupId?: pulumi.Input<string>;
+    /**
+     * User Group Name.
+     */
+    userGroupName?: pulumi.Input<string>;
+}
+
+export interface GetServicePlanBackupConfig {
+    /**
+     * Interval of taking a frequent backup in service types supporting different backup schedules.
+     */
+    frequentIntervalMinutes?: number;
+    /**
+     * Maximum age of the oldest frequent backup in service types supporting different backup schedules.
+     */
+    frequentOldestAgeMinutes?: number;
+    /**
+     * Interval of taking an infrequent backup in service types supporting different backup schedules.
+     */
+    infrequentIntervalMinutes?: number;
+    /**
+     * Maximum age of the oldest infrequent backup in service types supporting different backup schedules.
+     */
+    infrequentOldestAgeMinutes?: number;
+    /**
+     * The interval, in hours, at which backups are generated. For some services, like PostgreSQL, this is the interval at which full snapshots are taken and continuous incremental backup stream is maintained in addition to that.
+     */
+    interval?: number;
+    /**
+     * Maximum number of backups to keep. Zero when no backups are created.
+     */
+    maxCount?: number;
+    /**
+     * Mechanism how backups can be restored. 'basic' means a backup is restored as is so that the system is restored to the state it was when the backup was generated. 'pitr' means point-in-time-recovery, which allows restoring the system to any state since the first available full snapshot. The possible values are `basic` and `pitr`.
+     */
+    recoveryMode?: string;
+}
+
+export interface GetServicePlanBackupConfigArgs {
+    /**
+     * Interval of taking a frequent backup in service types supporting different backup schedules.
+     */
+    frequentIntervalMinutes?: pulumi.Input<number>;
+    /**
+     * Maximum age of the oldest frequent backup in service types supporting different backup schedules.
+     */
+    frequentOldestAgeMinutes?: pulumi.Input<number>;
+    /**
+     * Interval of taking an infrequent backup in service types supporting different backup schedules.
+     */
+    infrequentIntervalMinutes?: pulumi.Input<number>;
+    /**
+     * Maximum age of the oldest infrequent backup in service types supporting different backup schedules.
+     */
+    infrequentOldestAgeMinutes?: pulumi.Input<number>;
+    /**
+     * The interval, in hours, at which backups are generated. For some services, like PostgreSQL, this is the interval at which full snapshots are taken and continuous incremental backup stream is maintained in addition to that.
+     */
+    interval?: pulumi.Input<number>;
+    /**
+     * Maximum number of backups to keep. Zero when no backups are created.
+     */
+    maxCount?: pulumi.Input<number>;
+    /**
+     * Mechanism how backups can be restored. 'basic' means a backup is restored as is so that the system is restored to the state it was when the backup was generated. 'pitr' means point-in-time-recovery, which allows restoring the system to any state since the first available full snapshot. The possible values are `basic` and `pitr`.
+     */
+    recoveryMode?: pulumi.Input<string>;
+}
+
+export interface GetServicePlanListServicePlan {
+    /**
+     * Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
+     */
+    maxMemoryPercent?: number;
+    /**
+     * Number of nodes in this service plan.
+     */
+    nodeCount?: number;
+    /**
+     * Service plan hourly price per cloud region.
+     */
+    regions?: {[key: string]: inputs.GetServicePlanListServicePlanRegions};
+    /**
+     * Subscription plan.
+     */
+    servicePlan?: string;
+    /**
+     * Service type code.
+     */
+    serviceType?: string;
+    /**
+     * Number of shards in this service plan.
+     */
+    shardCount?: number;
+}
+
+export interface GetServicePlanListServicePlanArgs {
+    /**
+     * Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
+     */
+    maxMemoryPercent?: pulumi.Input<number>;
+    /**
+     * Number of nodes in this service plan.
+     */
+    nodeCount?: pulumi.Input<number>;
+    /**
+     * Service plan hourly price per cloud region.
+     */
+    regions?: pulumi.Input<{[key: string]: pulumi.Input<inputs.GetServicePlanListServicePlanRegionsArgs>}>;
+    /**
+     * Subscription plan.
+     */
+    servicePlan?: pulumi.Input<string>;
+    /**
+     * Service type code.
+     */
+    serviceType?: pulumi.Input<string>;
+    /**
+     * Number of shards in this service plan.
+     */
+    shardCount?: pulumi.Input<number>;
+}
+
+export interface GetServicePlanListServicePlanRegions {
+    /**
+     * Maximum amount of disk space possible for the plan in the given region.
+     */
+    diskSpaceCapMb?: number;
+    /**
+     * Hourly additional disk space price per GiB in this region.
+     */
+    diskSpaceGbPriceUsd?: string;
+    /**
+     * Combined amount of service disk space of all service nodes in megabytes.
+     */
+    diskSpaceMb?: number;
+    /**
+     * Disk space change step size.
+     */
+    diskSpaceStepMb?: number;
+    /**
+     * Number of CPU cores on each service node.
+     */
+    nodeCpuCount?: number;
+    /**
+     * Amount of memory on each service node in megabytes.
+     */
+    nodeMemoryMb?: number;
+    /**
+     * Hourly object storage price per GiB in this region.
+     */
+    objectStorageGbPriceUsd?: string;
+    /**
+     * Hourly service price in this region.
+     */
+    priceUsd?: string;
+}
+
+export interface GetServicePlanListServicePlanRegionsArgs {
+    /**
+     * Maximum amount of disk space possible for the plan in the given region.
+     */
+    diskSpaceCapMb?: pulumi.Input<number>;
+    /**
+     * Hourly additional disk space price per GiB in this region.
+     */
+    diskSpaceGbPriceUsd?: pulumi.Input<string>;
+    /**
+     * Combined amount of service disk space of all service nodes in megabytes.
+     */
+    diskSpaceMb?: pulumi.Input<number>;
+    /**
+     * Disk space change step size.
+     */
+    diskSpaceStepMb?: pulumi.Input<number>;
+    /**
+     * Number of CPU cores on each service node.
+     */
+    nodeCpuCount?: pulumi.Input<number>;
+    /**
+     * Amount of memory on each service node in megabytes.
+     */
+    nodeMemoryMb?: pulumi.Input<number>;
+    /**
+     * Hourly object storage price per GiB in this region.
+     */
+    objectStorageGbPriceUsd?: pulumi.Input<string>;
+    /**
+     * Hourly service price in this region.
+     */
+    priceUsd?: pulumi.Input<string>;
+}
+
+export interface GetServicePlanListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetServicePlanListTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetServicePlanTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetServicePlanTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface GovernanceAccessAccessData {
     /**
      * Required property. Acls. Changing this property forces recreation of the resource.
@@ -2034,7 +2324,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     cookieSamesite?: pulumi.Input<string>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      */
     customDomain?: pulumi.Input<string>;
     /**
@@ -2540,7 +2830,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      */
     customDomain?: pulumi.Input<string>;
     /**
@@ -3095,7 +3385,7 @@ export interface KafkaKafkaUserConfig {
      */
     aivenKafkaTopicMessages?: pulumi.Input<boolean>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      */
     customDomain?: pulumi.Input<string>;
     /**
@@ -3323,7 +3613,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logRetentionBytes?: pulumi.Input<number>;
     /**
-     * The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
+     * The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
      */
     logRetentionHours?: pulumi.Input<number>;
     /**
@@ -5090,7 +5380,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     azureMigration?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigAzureMigration>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      */
     customDomain?: pulumi.Input<string>;
     /**
@@ -5127,6 +5417,10 @@ export interface OpenSearchOpensearchUserConfig {
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * OpenSearch JWT Configuration
+     */
+    jwt?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigJwt>;
     /**
      * Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
      */
@@ -5353,6 +5647,47 @@ export interface OpenSearchOpensearchUserConfigIpFilterObject {
      * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigJwt {
+    /**
+     * Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: `false`.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: `20`.
+     */
+    jwtClockSkewToleranceSeconds?: pulumi.Input<number>;
+    /**
+     * The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.
+     */
+    jwtHeader?: pulumi.Input<string>;
+    /**
+     * If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: `token`.
+     */
+    jwtUrlParameter?: pulumi.Input<string>;
+    /**
+     * If specified, the JWT must contain an `aud` claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.
+     */
+    requiredAudience?: pulumi.Input<string>;
+    /**
+     * If specified, the JWT must contain an `iss` claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.
+     */
+    requiredIssuer?: pulumi.Input<string>;
+    /**
+     * The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: `roles`.
+     */
+    rolesKey?: pulumi.Input<string>;
+    /**
+     * The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----
+     * MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+     * -----END PUBLIC KEY----- (PEM)`.
+     */
+    signingKey: pulumi.Input<string>;
+    /**
+     * The key in the JWT payload that contains the user's subject identifier. If not specified, the `sub` claim is used by default. Example: `sub`.
+     */
+    subjectKey?: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpenid {
@@ -6793,6 +7128,26 @@ export interface PgPgUserConfigPg {
      * Time out sessions with open transactions after this number of milliseconds.
      */
     idleInTransactionSessionTimeout?: pulumi.Input<number>;
+    /**
+     * EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+     */
+    ioCombineLimit?: pulumi.Input<number>;
+    /**
+     * EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+     */
+    ioMaxCombineLimit?: pulumi.Input<number>;
+    /**
+     * EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+     */
+    ioMaxConcurrency?: pulumi.Input<number>;
+    /**
+     * Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+     */
+    ioMethod?: pulumi.Input<string>;
+    /**
+     * EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+     */
+    ioWorkers?: pulumi.Input<number>;
     /**
      * Controls system-wide use of Just-in-Time Compilation (JIT).
      */

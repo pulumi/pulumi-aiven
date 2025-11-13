@@ -130,6 +130,8 @@ import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
 import com.pulumi.aiven.inputs.GetOrganizationProjectPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserGroupArgs;
+import com.pulumi.aiven.inputs.GetOrganizationUserGroupListArgs;
+import com.pulumi.aiven.inputs.GetOrganizationUserGroupListPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserGroupPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserListPlainArgs;
@@ -160,6 +162,10 @@ import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.GetServiceIntegrationEndpointArgs;
 import com.pulumi.aiven.inputs.GetServiceIntegrationEndpointPlainArgs;
 import com.pulumi.aiven.inputs.GetServiceIntegrationPlainArgs;
+import com.pulumi.aiven.inputs.GetServicePlanArgs;
+import com.pulumi.aiven.inputs.GetServicePlanListArgs;
+import com.pulumi.aiven.inputs.GetServicePlanListPlainArgs;
+import com.pulumi.aiven.inputs.GetServicePlanPlainArgs;
 import com.pulumi.aiven.inputs.GetThanosArgs;
 import com.pulumi.aiven.inputs.GetThanosPlainArgs;
 import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentArgs;
@@ -230,6 +236,7 @@ import com.pulumi.aiven.outputs.GetOrganizationBillingGroupListResult;
 import com.pulumi.aiven.outputs.GetOrganizationBillingGroupResult;
 import com.pulumi.aiven.outputs.GetOrganizationProjectResult;
 import com.pulumi.aiven.outputs.GetOrganizationResult;
+import com.pulumi.aiven.outputs.GetOrganizationUserGroupListResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserGroupResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserListResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserResult;
@@ -246,6 +253,8 @@ import com.pulumi.aiven.outputs.GetRedisUserResult;
 import com.pulumi.aiven.outputs.GetServiceComponentResult;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointResult;
 import com.pulumi.aiven.outputs.GetServiceIntegrationResult;
+import com.pulumi.aiven.outputs.GetServicePlanListResult;
+import com.pulumi.aiven.outputs.GetServicePlanResult;
 import com.pulumi.aiven.outputs.GetThanosResult;
 import com.pulumi.aiven.outputs.GetTransitGatewayVpcAttachmentResult;
 import com.pulumi.aiven.outputs.GetValkeyResult;
@@ -10194,6 +10203,41 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", TypeShape.of(GetOrganizationUserGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * List all user groups within an organization.
+     * 
+     */
+    public static Output<GetOrganizationUserGroupListResult> getOrganizationUserGroupList(GetOrganizationUserGroupListArgs args) {
+        return getOrganizationUserGroupList(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all user groups within an organization.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationUserGroupListResult> getOrganizationUserGroupListPlain(GetOrganizationUserGroupListPlainArgs args) {
+        return getOrganizationUserGroupListPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all user groups within an organization.
+     * 
+     */
+    public static Output<GetOrganizationUserGroupListResult> getOrganizationUserGroupList(GetOrganizationUserGroupListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList", TypeShape.of(GetOrganizationUserGroupListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all user groups within an organization.
+     * 
+     */
+    public static Output<GetOrganizationUserGroupListResult> getOrganizationUserGroupList(GetOrganizationUserGroupListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList", TypeShape.of(GetOrganizationUserGroupListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all user groups within an organization.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationUserGroupListResult> getOrganizationUserGroupListPlain(GetOrganizationUserGroupListPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList", TypeShape.of(GetOrganizationUserGroupListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
      * 
      * ## Example Usage
@@ -13054,6 +13098,91 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetServiceIntegrationEndpointResult> getServiceIntegrationEndpointPlain(GetServiceIntegrationEndpointPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", TypeShape.of(GetServiceIntegrationEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetServicePlanResult> getServicePlan(GetServicePlanArgs args) {
+        return getServicePlan(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetServicePlanResult> getServicePlanPlain(GetServicePlanPlainArgs args) {
+        return getServicePlanPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetServicePlanResult> getServicePlan(GetServicePlanArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getServicePlan:getServicePlan", TypeShape.of(GetServicePlanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetServicePlanResult> getServicePlan(GetServicePlanArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getServicePlan:getServicePlan", TypeShape.of(GetServicePlanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetServicePlanResult> getServicePlanPlain(GetServicePlanPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getServicePlan:getServicePlan", TypeShape.of(GetServicePlanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A list of service plans for a given project and service type.
+     * 
+     */
+    public static Output<GetServicePlanListResult> getServicePlanList(GetServicePlanListArgs args) {
+        return getServicePlanList(args, InvokeOptions.Empty);
+    }
+    /**
+     * A list of service plans for a given project and service type.
+     * 
+     */
+    public static CompletableFuture<GetServicePlanListResult> getServicePlanListPlain(GetServicePlanListPlainArgs args) {
+        return getServicePlanListPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * A list of service plans for a given project and service type.
+     * 
+     */
+    public static Output<GetServicePlanListResult> getServicePlanList(GetServicePlanListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getServicePlanList:getServicePlanList", TypeShape.of(GetServicePlanListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A list of service plans for a given project and service type.
+     * 
+     */
+    public static Output<GetServicePlanListResult> getServicePlanList(GetServicePlanListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getServicePlanList:getServicePlanList", TypeShape.of(GetServicePlanListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A list of service plans for a given project and service type.
+     * 
+     */
+    public static CompletableFuture<GetServicePlanListResult> getServicePlanListPlain(GetServicePlanListPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getServicePlanList:getServicePlanList", TypeShape.of(GetServicePlanListResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an Aiven for Thanos® service.

@@ -64,7 +64,7 @@ class GetOrganizationProjectResult:
     @pulumi.getter(name="basePort")
     def base_port(self) -> _builtins.int:
         """
-        Valid port number (1-65535) to use as a base for service port allocation.
+        Valid port number (10000-30000) to use as a base for service port allocation.
         """
         return pulumi.get(self, "base_port")
 

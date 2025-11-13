@@ -163,7 +163,7 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationProjectResult
     {
         /// <summary>
-        /// Valid port number (1-65535) to use as a base for service port allocation.
+        /// Valid port number (10000-30000) to use as a base for service port allocation.
         /// </summary>
         public readonly int BasePort;
         /// <summary>

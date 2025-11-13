@@ -68,7 +68,7 @@ type GetServiceComponentArgs struct {
 	ServiceName *string `pulumi:"serviceName"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
 	Ssl *bool `pulumi:"ssl"`
-	// DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
+	// DNS usage name. The possible values are `disasterRecovery`, `haReplica`, `primary` and `replica`.
 	Usage *string `pulumi:"usage"`
 }
 
@@ -94,7 +94,7 @@ type GetServiceComponentResult struct {
 	ServiceName *string `pulumi:"serviceName"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
 	Ssl *bool `pulumi:"ssl"`
-	// DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
+	// DNS usage name. The possible values are `disasterRecovery`, `haReplica`, `primary` and `replica`.
 	Usage *string `pulumi:"usage"`
 }
 
@@ -121,7 +121,7 @@ type GetServiceComponentOutputArgs struct {
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
 	Ssl pulumi.BoolPtrInput `pulumi:"ssl"`
-	// DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
+	// DNS usage name. The possible values are `disasterRecovery`, `haReplica`, `primary` and `replica`.
 	Usage pulumi.StringPtrInput `pulumi:"usage"`
 }
 
@@ -194,7 +194,7 @@ func (o GetServiceComponentResultOutput) Ssl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
 }
 
-// DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
+// DNS usage name. The possible values are `disasterRecovery`, `haReplica`, `primary` and `replica`.
 func (o GetServiceComponentResultOutput) Usage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) *string { return v.Usage }).(pulumi.StringPtrOutput)
 }

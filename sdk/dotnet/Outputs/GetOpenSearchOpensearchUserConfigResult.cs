@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigAzureMigrationResult? AzureMigration;
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
@@ -57,6 +57,10 @@ namespace Pulumi.Aiven.Outputs
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// OpenSearch JWT Configuration
+        /// </summary>
+        public readonly Outputs.GetOpenSearchOpensearchUserConfigJwtResult? Jwt;
         /// <summary>
         /// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
         /// </summary>
@@ -146,6 +150,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
+            Outputs.GetOpenSearchOpensearchUserConfigJwtResult? jwt,
+
             bool? keepIndexRefreshInterval,
 
             int? maxIndexCount,
@@ -189,6 +195,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
+            Jwt = jwt;
             KeepIndexRefreshInterval = keepIndexRefreshInterval;
             MaxIndexCount = maxIndexCount;
             Openid = openid;

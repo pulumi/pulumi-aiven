@@ -92,7 +92,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable String cookieSamesite;
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      * 
      */
     private @Nullable String customDomain;
@@ -344,7 +344,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.cookieSamesite);
     }
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      * 
      */
     public Optional<String> customDomain() {

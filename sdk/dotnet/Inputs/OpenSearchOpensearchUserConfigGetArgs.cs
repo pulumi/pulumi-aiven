@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.OpenSearchOpensearchUserConfigAzureMigrationGetArgs>? AzureMigration { get; set; }
 
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
@@ -102,6 +102,12 @@ namespace Pulumi.Aiven.Inputs
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
+
+        /// <summary>
+        /// OpenSearch JWT Configuration
+        /// </summary>
+        [Input("jwt")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigJwtGetArgs>? Jwt { get; set; }
 
         /// <summary>
         /// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.

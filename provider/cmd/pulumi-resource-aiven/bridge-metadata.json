@@ -1334,6 +1334,9 @@
                                 "ip_filter_string": {
                                     "maxItemsOne": false
                                 },
+                                "jwt": {
+                                    "maxItemsOne": true
+                                },
                                 "openid": {
                                     "maxItemsOne": true
                                 },
@@ -3535,6 +3538,9 @@
                                 "ip_filter_string": {
                                     "maxItemsOne": false
                                 },
+                                "jwt": {
+                                    "maxItemsOne": true
+                                },
                                 "openid": {
                                     "maxItemsOne": true
                                 },
@@ -3756,6 +3762,15 @@
             "aiven_organization_user_group": {
                 "current": "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup",
                 "majorVersion": 6
+            },
+            "aiven_organization_user_group_list": {
+                "current": "aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList",
+                "majorVersion": 6,
+                "fields": {
+                    "user_groups": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_organization_user_list": {
                 "current": "aiven:index/getOrganizationUserList:getOrganizationUserList",
@@ -4276,6 +4291,24 @@
                     }
                 }
             },
+            "aiven_service_plan": {
+                "current": "aiven:index/getServicePlan:getServicePlan",
+                "majorVersion": 6,
+                "fields": {
+                    "backup_config": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aiven_service_plan_list": {
+                "current": "aiven:index/getServicePlanList:getServicePlanList",
+                "majorVersion": 6,
+                "fields": {
+                    "service_plans": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "aiven_thanos": {
                 "current": "aiven:index/getThanos:getThanos",
                 "majorVersion": 6,
@@ -4615,6 +4648,7 @@
             "aiven:index/getOrganizationProject:getOrganizationProject": 1,
             "aiven:index/getOrganizationUser:getOrganizationUser": 0,
             "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 0,
+            "aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList": 1,
             "aiven:index/getOrganizationUserList:getOrganizationUserList": 0,
             "aiven:index/getOrganizationVpc:getOrganizationVpc": 0,
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": 0,
@@ -4629,6 +4663,8 @@
             "aiven:index/getServiceComponent:getServiceComponent": 0,
             "aiven:index/getServiceIntegration:getServiceIntegration": 0,
             "aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint": 0,
+            "aiven:index/getServicePlan:getServicePlan": 1,
+            "aiven:index/getServicePlanList:getServicePlanList": 1,
             "aiven:index/getThanos:getThanos": 0,
             "aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment": 0,
             "aiven:index/getValkey:getValkey": 0,

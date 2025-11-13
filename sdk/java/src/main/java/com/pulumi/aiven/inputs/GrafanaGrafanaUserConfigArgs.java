@@ -226,14 +226,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      * 
      */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      * 
      */
     public Optional<Output<String>> customDomain() {
@@ -1039,7 +1039,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
          * 
          * @return builder
          * 
@@ -1050,7 +1050,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
          * 
          * @return builder
          * 

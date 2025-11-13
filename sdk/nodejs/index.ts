@@ -505,6 +505,11 @@ export const getOrganizationUserGroup: typeof import("./getOrganizationUserGroup
 export const getOrganizationUserGroupOutput: typeof import("./getOrganizationUserGroup").getOrganizationUserGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganizationUserGroup","getOrganizationUserGroupOutput"], () => require("./getOrganizationUserGroup"));
 
+export { GetOrganizationUserGroupListArgs, GetOrganizationUserGroupListResult, GetOrganizationUserGroupListOutputArgs } from "./getOrganizationUserGroupList";
+export const getOrganizationUserGroupList: typeof import("./getOrganizationUserGroupList").getOrganizationUserGroupList = null as any;
+export const getOrganizationUserGroupListOutput: typeof import("./getOrganizationUserGroupList").getOrganizationUserGroupListOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationUserGroupList","getOrganizationUserGroupListOutput"], () => require("./getOrganizationUserGroupList"));
+
 export { GetOrganizationUserListArgs, GetOrganizationUserListResult, GetOrganizationUserListOutputArgs } from "./getOrganizationUserList";
 export const getOrganizationUserList: typeof import("./getOrganizationUserList").getOrganizationUserList = null as any;
 export const getOrganizationUserListOutput: typeof import("./getOrganizationUserList").getOrganizationUserListOutput = null as any;
@@ -574,6 +579,16 @@ export { GetServiceIntegrationEndpointArgs, GetServiceIntegrationEndpointResult,
 export const getServiceIntegrationEndpoint: typeof import("./getServiceIntegrationEndpoint").getServiceIntegrationEndpoint = null as any;
 export const getServiceIntegrationEndpointOutput: typeof import("./getServiceIntegrationEndpoint").getServiceIntegrationEndpointOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceIntegrationEndpoint","getServiceIntegrationEndpointOutput"], () => require("./getServiceIntegrationEndpoint"));
+
+export { GetServicePlanArgs, GetServicePlanResult, GetServicePlanOutputArgs } from "./getServicePlan";
+export const getServicePlan: typeof import("./getServicePlan").getServicePlan = null as any;
+export const getServicePlanOutput: typeof import("./getServicePlan").getServicePlanOutput = null as any;
+utilities.lazyLoad(exports, ["getServicePlan","getServicePlanOutput"], () => require("./getServicePlan"));
+
+export { GetServicePlanListArgs, GetServicePlanListResult, GetServicePlanListOutputArgs } from "./getServicePlanList";
+export const getServicePlanList: typeof import("./getServicePlanList").getServicePlanList = null as any;
+export const getServicePlanListOutput: typeof import("./getServicePlanList").getServicePlanListOutput = null as any;
+utilities.lazyLoad(exports, ["getServicePlanList","getServicePlanListOutput"], () => require("./getServicePlanList"));
 
 export { GetThanosArgs, GetThanosResult, GetThanosOutputArgs } from "./getThanos";
 export const getThanos: typeof import("./getThanos").getThanos = null as any;

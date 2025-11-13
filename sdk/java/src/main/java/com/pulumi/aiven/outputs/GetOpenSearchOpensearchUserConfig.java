@@ -9,6 +9,7 @@ import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigIndexPattern;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigIndexRollup;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigIndexTemplate;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigIpFilterObject;
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigJwt;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpenid;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearch;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
@@ -39,7 +40,7 @@ public final class GetOpenSearchOpensearchUserConfig {
      */
     private @Nullable GetOpenSearchOpensearchUserConfigAzureMigration azureMigration;
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      * 
      */
     private @Nullable String customDomain;
@@ -87,6 +88,11 @@ public final class GetOpenSearchOpensearchUserConfig {
      */
     @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     private @Nullable List<String> ipFilters;
+    /**
+     * @return OpenSearch JWT Configuration
+     * 
+     */
+    private @Nullable GetOpenSearchOpensearchUserConfigJwt jwt;
     /**
      * @return Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
      * 
@@ -184,7 +190,7 @@ public final class GetOpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.azureMigration);
     }
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      * 
      */
     public Optional<String> customDomain() {
@@ -249,6 +255,13 @@ public final class GetOpenSearchOpensearchUserConfig {
     @Deprecated /* Deprecated. Use `ipFilterString` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
+    }
+    /**
+     * @return OpenSearch JWT Configuration
+     * 
+     */
+    public Optional<GetOpenSearchOpensearchUserConfigJwt> jwt() {
+        return Optional.ofNullable(this.jwt);
     }
     /**
      * @return Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
@@ -383,6 +396,7 @@ public final class GetOpenSearchOpensearchUserConfig {
         private @Nullable List<GetOpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
+        private @Nullable GetOpenSearchOpensearchUserConfigJwt jwt;
         private @Nullable Boolean keepIndexRefreshInterval;
         private @Nullable Integer maxIndexCount;
         private @Nullable GetOpenSearchOpensearchUserConfigOpenid openid;
@@ -413,6 +427,7 @@ public final class GetOpenSearchOpensearchUserConfig {
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
+    	      this.jwt = defaults.jwt;
     	      this.keepIndexRefreshInterval = defaults.keepIndexRefreshInterval;
     	      this.maxIndexCount = defaults.maxIndexCount;
     	      this.openid = defaults.openid;
@@ -508,6 +523,12 @@ public final class GetOpenSearchOpensearchUserConfig {
         }
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
+        }
+        @CustomType.Setter
+        public Builder jwt(@Nullable GetOpenSearchOpensearchUserConfigJwt jwt) {
+
+            this.jwt = jwt;
+            return this;
         }
         @CustomType.Setter
         public Builder keepIndexRefreshInterval(@Nullable Boolean keepIndexRefreshInterval) {
@@ -618,6 +639,7 @@ public final class GetOpenSearchOpensearchUserConfig {
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;
+            _resultValue.jwt = jwt;
             _resultValue.keepIndexRefreshInterval = keepIndexRefreshInterval;
             _resultValue.maxIndexCount = maxIndexCount;
             _resultValue.openid = openid;
