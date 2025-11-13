@@ -12,6 +12,54 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Creates and manages an Aiven for PostgreSQL® service.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var examplePostgres = new Aiven.Pg("example_postgres", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "example-postgres-service",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
+    ///         StaticIps = Std.Index.Toset.Invoke(new()
+    ///         {
+    ///             Input = new[]
+    ///             {
+    ///                 ips[0].StaticIpAddressId,
+    ///                 ips[1].StaticIpAddressId,
+    ///                 ips[2].StaticIpAddressId,
+    ///                 ips[3].StaticIpAddressId,
+    ///             },
+    ///         }).Result,
+    ///         PgUserConfig = new Aiven.Inputs.PgPgUserConfigArgs
+    ///         {
+    ///             StaticIps = true,
+    ///             PublicAccess = new Aiven.Inputs.PgPgUserConfigPublicAccessArgs
+    ///             {
+    ///                 Pg = true,
+    ///                 Prometheus = false,
+    ///             },
+    ///             Pg = new Aiven.Inputs.PgPgUserConfigPgArgs
+    ///             {
+    ///                 IdleInTransactionSessionTimeout = 900,
+    ///                 LogMinDurationStatement = -1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -14,6 +14,61 @@ import (
 
 // Creates and manages an Aiven for PostgreSQL® service.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeToset, err := std.Toset(ctx, map[string]interface{}{
+//				"input": []interface{}{
+//					ips[0].StaticIpAddressId,
+//					ips[1].StaticIpAddressId,
+//					ips[2].StaticIpAddressId,
+//					ips[3].StaticIpAddressId,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewPg(ctx, "example_postgres", &aiven.PgArgs{
+//				Project:               pulumi.Any(exampleProject.Project),
+//				CloudName:             pulumi.String("google-europe-west1"),
+//				Plan:                  pulumi.String("startup-4"),
+//				ServiceName:           pulumi.String("example-postgres-service"),
+//				MaintenanceWindowDow:  pulumi.String("monday"),
+//				MaintenanceWindowTime: pulumi.String("10:00:00"),
+//				StaticIps:             []pulumi.String(invokeToset.Result),
+//				PgUserConfig: &aiven.PgPgUserConfigArgs{
+//					StaticIps: pulumi.Bool(true),
+//					PublicAccess: &aiven.PgPgUserConfigPublicAccessArgs{
+//						Pg:         pulumi.Bool(true),
+//						Prometheus: pulumi.Bool(false),
+//					},
+//					Pg: &aiven.PgPgUserConfigPgArgs{
+//						IdleInTransactionSessionTimeout: pulumi.Int(900),
+//						LogMinDurationStatement:         pulumi.Int(-1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
