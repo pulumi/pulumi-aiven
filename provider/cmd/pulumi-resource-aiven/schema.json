@@ -2494,7 +2494,7 @@
                 },
                 "customDomain": {
                     "type": "string",
-                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.\n"
                 },
                 "dashboardPreviewsEnabled": {
                     "type": "boolean",
@@ -3163,7 +3163,7 @@
                 },
                 "customDomain": {
                     "type": "string",
-                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.\n"
                 },
                 "influxdb": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfigInfluxdb:InfluxDbInfluxdbUserConfigInfluxdb",
@@ -3898,7 +3898,7 @@
                 },
                 "customDomain": {
                     "type": "string",
-                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.\n"
                 },
                 "followerFetching": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigFollowerFetching:KafkaKafkaUserConfigFollowerFetching",
@@ -4151,7 +4151,7 @@
                 },
                 "logRetentionHours": {
                     "type": "integer",
-                    "description": "The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).\n"
+                    "description": "The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).\n"
                 },
                 "logRetentionMs": {
                     "type": "integer",
@@ -6406,7 +6406,7 @@
                 },
                 "customDomain": {
                     "type": "string",
-                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.\n"
                 },
                 "disableReplicationFactorAdjustment": {
                     "type": "boolean",
@@ -6452,6 +6452,10 @@
                     },
                     "description": "Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.\n",
                     "deprecationMessage": "Deprecated. Use \u003cspan pulumi-lang-nodejs=\"`ipFilterString`\" pulumi-lang-dotnet=\"`IpFilterString`\" pulumi-lang-go=\"`ipFilterString`\" pulumi-lang-python=\"`ip_filter_string`\" pulumi-lang-yaml=\"`ipFilterString`\" pulumi-lang-java=\"`ipFilterString`\"\u003e`ip_filter_string`\u003c/span\u003e instead."
+                },
+                "jwt": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigJwt:OpenSearchOpensearchUserConfigJwt",
+                    "description": "OpenSearch JWT Configuration\n"
                 },
                 "keepIndexRefreshInterval": {
                     "type": "boolean",
@@ -6718,6 +6722,52 @@
             "type": "object",
             "required": [
                 "network"
+            ]
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigJwt:OpenSearchOpensearchUserConfigJwt": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                },
+                "jwtClockSkewToleranceSeconds": {
+                    "type": "integer",
+                    "description": "The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: \u003cspan pulumi-lang-nodejs=\"`20`\" pulumi-lang-dotnet=\"`20`\" pulumi-lang-go=\"`20`\" pulumi-lang-python=\"`20`\" pulumi-lang-yaml=\"`20`\" pulumi-lang-java=\"`20`\"\u003e`20`\u003c/span\u003e.\n"
+                },
+                "jwtHeader": {
+                    "type": "string",
+                    "description": "The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.\n"
+                },
+                "jwtUrlParameter": {
+                    "type": "string",
+                    "description": "If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e.\n"
+                },
+                "requiredAudience": {
+                    "type": "string",
+                    "description": "If specified, the JWT must contain an \u003cspan pulumi-lang-nodejs=\"`aud`\" pulumi-lang-dotnet=\"`Aud`\" pulumi-lang-go=\"`aud`\" pulumi-lang-python=\"`aud`\" pulumi-lang-yaml=\"`aud`\" pulumi-lang-java=\"`aud`\"\u003e`aud`\u003c/span\u003e claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.\n"
+                },
+                "requiredIssuer": {
+                    "type": "string",
+                    "description": "If specified, the JWT must contain an \u003cspan pulumi-lang-nodejs=\"`iss`\" pulumi-lang-dotnet=\"`Iss`\" pulumi-lang-go=\"`iss`\" pulumi-lang-python=\"`iss`\" pulumi-lang-yaml=\"`iss`\" pulumi-lang-java=\"`iss`\"\u003e`iss`\u003c/span\u003e claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.\n"
+                },
+                "rolesKey": {
+                    "type": "string",
+                    "description": "The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: \u003cspan pulumi-lang-nodejs=\"`roles`\" pulumi-lang-dotnet=\"`Roles`\" pulumi-lang-go=\"`roles`\" pulumi-lang-python=\"`roles`\" pulumi-lang-yaml=\"`roles`\" pulumi-lang-java=\"`roles`\"\u003e`roles`\u003c/span\u003e.\n"
+                },
+                "signingKey": {
+                    "type": "string",
+                    "description": "The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...\n-----END PUBLIC KEY----- (PEM)`.\n",
+                    "secret": true
+                },
+                "subjectKey": {
+                    "type": "string",
+                    "description": "The key in the JWT payload that contains the user's subject identifier. If not specified, the \u003cspan pulumi-lang-nodejs=\"`sub`\" pulumi-lang-dotnet=\"`Sub`\" pulumi-lang-go=\"`sub`\" pulumi-lang-python=\"`sub`\" pulumi-lang-yaml=\"`sub`\" pulumi-lang-java=\"`sub`\"\u003e`sub`\u003c/span\u003e claim is used by default. Example: \u003cspan pulumi-lang-nodejs=\"`sub`\" pulumi-lang-dotnet=\"`Sub`\" pulumi-lang-go=\"`sub`\" pulumi-lang-python=\"`sub`\" pulumi-lang-yaml=\"`sub`\" pulumi-lang-java=\"`sub`\"\u003e`sub`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "signingKey"
             ]
         },
         "aiven:index/OpenSearchOpensearchUserConfigOpenid:OpenSearchOpensearchUserConfigOpenid": {
@@ -8436,6 +8486,26 @@
                 "idleInTransactionSessionTimeout": {
                     "type": "integer",
                     "description": "Time out sessions with open transactions after this number of milliseconds.\n"
+                },
+                "ioCombineLimit": {
+                    "type": "integer",
+                    "description": "EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: \u003cspan pulumi-lang-nodejs=\"`16`\" pulumi-lang-dotnet=\"`16`\" pulumi-lang-go=\"`16`\" pulumi-lang-python=\"`16`\" pulumi-lang-yaml=\"`16`\" pulumi-lang-java=\"`16`\"\u003e`16`\u003c/span\u003e.\n"
+                },
+                "ioMaxCombineLimit": {
+                    "type": "integer",
+                    "description": "EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: \u003cspan pulumi-lang-nodejs=\"`16`\" pulumi-lang-dotnet=\"`16`\" pulumi-lang-go=\"`16`\" pulumi-lang-python=\"`16`\" pulumi-lang-yaml=\"`16`\" pulumi-lang-java=\"`16`\"\u003e`16`\u003c/span\u003e.\n"
+                },
+                "ioMaxConcurrency": {
+                    "type": "integer",
+                    "description": "EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.\n"
+                },
+                "ioMethod": {
+                    "type": "string",
+                    "description": "Enum: \u003cspan pulumi-lang-nodejs=\"`ioUring`\" pulumi-lang-dotnet=\"`IoUring`\" pulumi-lang-go=\"`ioUring`\" pulumi-lang-python=\"`io_uring`\" pulumi-lang-yaml=\"`ioUring`\" pulumi-lang-java=\"`ioUring`\"\u003e`io_uring`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sync`\" pulumi-lang-dotnet=\"`Sync`\" pulumi-lang-go=\"`sync`\" pulumi-lang-python=\"`sync`\" pulumi-lang-yaml=\"`sync`\" pulumi-lang-java=\"`sync`\"\u003e`sync`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`worker`\" pulumi-lang-dotnet=\"`Worker`\" pulumi-lang-go=\"`worker`\" pulumi-lang-python=\"`worker`\" pulumi-lang-yaml=\"`worker`\" pulumi-lang-java=\"`worker`\"\u003e`worker`\u003c/span\u003e. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: \u003cspan pulumi-lang-nodejs=\"`worker`\" pulumi-lang-dotnet=\"`Worker`\" pulumi-lang-go=\"`worker`\" pulumi-lang-python=\"`worker`\" pulumi-lang-yaml=\"`worker`\" pulumi-lang-java=\"`worker`\"\u003e`worker`\u003c/span\u003e.\n"
+                },
+                "ioWorkers": {
+                    "type": "integer",
+                    "description": "EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: \u003cspan pulumi-lang-nodejs=\"`3`\" pulumi-lang-dotnet=\"`3`\" pulumi-lang-go=\"`3`\" pulumi-lang-python=\"`3`\" pulumi-lang-yaml=\"`3`\" pulumi-lang-java=\"`3`\"\u003e`3`\u003c/span\u003e.\n"
                 },
                 "jit": {
                     "type": "boolean",
@@ -13723,7 +13793,7 @@
                 },
                 "customDomain": {
                     "type": "string",
-                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.\n"
                 },
                 "dashboardPreviewsEnabled": {
                     "type": "boolean",
@@ -14447,7 +14517,7 @@
                 },
                 "customDomain": {
                     "type": "string",
-                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.\n"
                 },
                 "influxdb": {
                     "$ref": "#/types/aiven:index/getInfluxDbInfluxdbUserConfigInfluxdb:getInfluxDbInfluxdbUserConfigInfluxdb",
@@ -15244,7 +15314,7 @@
                 },
                 "customDomain": {
                     "type": "string",
-                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.\n"
                 },
                 "followerFetching": {
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigFollowerFetching:getKafkaKafkaUserConfigFollowerFetching",
@@ -15502,7 +15572,7 @@
                 },
                 "logRetentionHours": {
                     "type": "integer",
-                    "description": "The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).\n"
+                    "description": "The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).\n"
                 },
                 "logRetentionMs": {
                     "type": "integer",
@@ -17919,7 +17989,7 @@
                 },
                 "customDomain": {
                     "type": "string",
-                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
+                    "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.\n"
                 },
                 "disableReplicationFactorAdjustment": {
                     "type": "boolean",
@@ -17965,6 +18035,10 @@
                     },
                     "description": "Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.\n",
                     "deprecationMessage": "Deprecated. Use \u003cspan pulumi-lang-nodejs=\"`ipFilterString`\" pulumi-lang-dotnet=\"`IpFilterString`\" pulumi-lang-go=\"`ipFilterString`\" pulumi-lang-python=\"`ip_filter_string`\" pulumi-lang-yaml=\"`ipFilterString`\" pulumi-lang-java=\"`ipFilterString`\"\u003e`ip_filter_string`\u003c/span\u003e instead."
+                },
+                "jwt": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigJwt:getOpenSearchOpensearchUserConfigJwt",
+                    "description": "OpenSearch JWT Configuration\n"
                 },
                 "keepIndexRefreshInterval": {
                     "type": "boolean",
@@ -18244,6 +18318,57 @@
             "type": "object",
             "required": [
                 "network"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigJwt:getOpenSearchOpensearchUserConfigJwt": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                },
+                "jwtClockSkewToleranceSeconds": {
+                    "type": "integer",
+                    "description": "The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: \u003cspan pulumi-lang-nodejs=\"`20`\" pulumi-lang-dotnet=\"`20`\" pulumi-lang-go=\"`20`\" pulumi-lang-python=\"`20`\" pulumi-lang-yaml=\"`20`\" pulumi-lang-java=\"`20`\"\u003e`20`\u003c/span\u003e.\n"
+                },
+                "jwtHeader": {
+                    "type": "string",
+                    "description": "The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.\n"
+                },
+                "jwtUrlParameter": {
+                    "type": "string",
+                    "description": "If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e.\n"
+                },
+                "requiredAudience": {
+                    "type": "string",
+                    "description": "If specified, the JWT must contain an \u003cspan pulumi-lang-nodejs=\"`aud`\" pulumi-lang-dotnet=\"`Aud`\" pulumi-lang-go=\"`aud`\" pulumi-lang-python=\"`aud`\" pulumi-lang-yaml=\"`aud`\" pulumi-lang-java=\"`aud`\"\u003e`aud`\u003c/span\u003e claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.\n"
+                },
+                "requiredIssuer": {
+                    "type": "string",
+                    "description": "If specified, the JWT must contain an \u003cspan pulumi-lang-nodejs=\"`iss`\" pulumi-lang-dotnet=\"`Iss`\" pulumi-lang-go=\"`iss`\" pulumi-lang-python=\"`iss`\" pulumi-lang-yaml=\"`iss`\" pulumi-lang-java=\"`iss`\"\u003e`iss`\u003c/span\u003e claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.\n"
+                },
+                "rolesKey": {
+                    "type": "string",
+                    "description": "The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: \u003cspan pulumi-lang-nodejs=\"`roles`\" pulumi-lang-dotnet=\"`Roles`\" pulumi-lang-go=\"`roles`\" pulumi-lang-python=\"`roles`\" pulumi-lang-yaml=\"`roles`\" pulumi-lang-java=\"`roles`\"\u003e`roles`\u003c/span\u003e.\n"
+                },
+                "signingKey": {
+                    "type": "string",
+                    "description": "The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...\n-----END PUBLIC KEY----- (PEM)`.\n",
+                    "secret": true
+                },
+                "subjectKey": {
+                    "type": "string",
+                    "description": "The key in the JWT payload that contains the user's subject identifier. If not specified, the \u003cspan pulumi-lang-nodejs=\"`sub`\" pulumi-lang-dotnet=\"`Sub`\" pulumi-lang-go=\"`sub`\" pulumi-lang-python=\"`sub`\" pulumi-lang-yaml=\"`sub`\" pulumi-lang-java=\"`sub`\"\u003e`sub`\u003c/span\u003e claim is used by default. Example: \u003cspan pulumi-lang-nodejs=\"`sub`\" pulumi-lang-dotnet=\"`Sub`\" pulumi-lang-go=\"`sub`\" pulumi-lang-python=\"`sub`\" pulumi-lang-yaml=\"`sub`\" pulumi-lang-java=\"`sub`\"\u003e`sub`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "signingKey"
             ],
             "language": {
                 "nodejs": {
@@ -19408,6 +19533,62 @@
             },
             "type": "object"
         },
+        "aiven:index/getOrganizationUserGroupListTimeouts:getOrganizationUserGroupListTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOrganizationUserGroupListUserGroup:getOrganizationUserGroupListUserGroup": {
+            "properties": {
+                "createTime": {
+                    "type": "string",
+                    "description": "User group creation time.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description.\n"
+                },
+                "managedByScim": {
+                    "type": "boolean",
+                    "description": "Managed By Scim.\n"
+                },
+                "memberCount": {
+                    "type": "integer",
+                    "description": "Member Count.\n"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "User group last update time.\n"
+                },
+                "userGroupId": {
+                    "type": "string",
+                    "description": "User Group ID.\n"
+                },
+                "userGroupName": {
+                    "type": "string",
+                    "description": "User Group Name.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createTime",
+                "description",
+                "managedByScim",
+                "memberCount",
+                "updateTime",
+                "userGroupId",
+                "userGroupName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getOrganizationUserListUser:getOrganizationUserListUser": {
             "properties": {
                 "isSuperAdmin": {
@@ -20014,6 +20195,26 @@
                 "idleInTransactionSessionTimeout": {
                     "type": "integer",
                     "description": "Time out sessions with open transactions after this number of milliseconds.\n"
+                },
+                "ioCombineLimit": {
+                    "type": "integer",
+                    "description": "EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: \u003cspan pulumi-lang-nodejs=\"`16`\" pulumi-lang-dotnet=\"`16`\" pulumi-lang-go=\"`16`\" pulumi-lang-python=\"`16`\" pulumi-lang-yaml=\"`16`\" pulumi-lang-java=\"`16`\"\u003e`16`\u003c/span\u003e.\n"
+                },
+                "ioMaxCombineLimit": {
+                    "type": "integer",
+                    "description": "EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io_combine_limit. Version 18 and up only. Changing this parameter causes a service restart. Default: \u003cspan pulumi-lang-nodejs=\"`16`\" pulumi-lang-dotnet=\"`16`\" pulumi-lang-go=\"`16`\" pulumi-lang-python=\"`16`\" pulumi-lang-yaml=\"`16`\" pulumi-lang-java=\"`16`\"\u003e`16`\u003c/span\u003e.\n"
+                },
+                "ioMaxConcurrency": {
+                    "type": "integer",
+                    "description": "EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.\n"
+                },
+                "ioMethod": {
+                    "type": "string",
+                    "description": "Enum: \u003cspan pulumi-lang-nodejs=\"`ioUring`\" pulumi-lang-dotnet=\"`IoUring`\" pulumi-lang-go=\"`ioUring`\" pulumi-lang-python=\"`io_uring`\" pulumi-lang-yaml=\"`ioUring`\" pulumi-lang-java=\"`ioUring`\"\u003e`io_uring`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sync`\" pulumi-lang-dotnet=\"`Sync`\" pulumi-lang-go=\"`sync`\" pulumi-lang-python=\"`sync`\" pulumi-lang-yaml=\"`sync`\" pulumi-lang-java=\"`sync`\"\u003e`sync`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`worker`\" pulumi-lang-dotnet=\"`Worker`\" pulumi-lang-go=\"`worker`\" pulumi-lang-python=\"`worker`\" pulumi-lang-yaml=\"`worker`\" pulumi-lang-java=\"`worker`\"\u003e`worker`\u003c/span\u003e. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: \u003cspan pulumi-lang-nodejs=\"`worker`\" pulumi-lang-dotnet=\"`Worker`\" pulumi-lang-go=\"`worker`\" pulumi-lang-python=\"`worker`\" pulumi-lang-yaml=\"`worker`\" pulumi-lang-java=\"`worker`\"\u003e`worker`\u003c/span\u003e.\n"
+                },
+                "ioWorkers": {
+                    "type": "integer",
+                    "description": "EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: \u003cspan pulumi-lang-nodejs=\"`3`\" pulumi-lang-dotnet=\"`3`\" pulumi-lang-go=\"`3`\" pulumi-lang-python=\"`3`\" pulumi-lang-yaml=\"`3`\" pulumi-lang-java=\"`3`\"\u003e`3`\u003c/span\u003e.\n"
                 },
                 "jit": {
                     "type": "boolean",
@@ -22261,6 +22462,168 @@
                 "perfEventsStatementsTimeLimit": {
                     "type": "integer",
                     "description": "Only include\u003cspan pulumi-lang-nodejs=\" perfEventsStatements \" pulumi-lang-dotnet=\" PerfEventsStatements \" pulumi-lang-go=\" perfEventsStatements \" pulumi-lang-python=\" perf_events_statements \" pulumi-lang-yaml=\" perfEventsStatements \" pulumi-lang-java=\" perfEventsStatements \"\u003e perf_events_statements \u003c/span\u003ewhose last seen is less than this many seconds. Example: \u003cspan pulumi-lang-nodejs=\"`86400`\" pulumi-lang-dotnet=\"`86400`\" pulumi-lang-go=\"`86400`\" pulumi-lang-python=\"`86400`\" pulumi-lang-yaml=\"`86400`\" pulumi-lang-java=\"`86400`\"\u003e`86400`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServicePlanBackupConfig:getServicePlanBackupConfig": {
+            "properties": {
+                "frequentIntervalMinutes": {
+                    "type": "integer",
+                    "description": "Interval of taking a frequent backup in service types supporting different backup schedules.\n"
+                },
+                "frequentOldestAgeMinutes": {
+                    "type": "integer",
+                    "description": "Maximum age of the oldest frequent backup in service types supporting different backup schedules.\n"
+                },
+                "infrequentIntervalMinutes": {
+                    "type": "integer",
+                    "description": "Interval of taking an infrequent backup in service types supporting different backup schedules.\n"
+                },
+                "infrequentOldestAgeMinutes": {
+                    "type": "integer",
+                    "description": "Maximum age of the oldest infrequent backup in service types supporting different backup schedules.\n"
+                },
+                "interval": {
+                    "type": "integer",
+                    "description": "The interval, in hours, at which backups are generated. For some services, like PostgreSQL, this is the interval at which full snapshots are taken and continuous incremental backup stream is maintained in addition to that.\n"
+                },
+                "maxCount": {
+                    "type": "integer",
+                    "description": "Maximum number of backups to keep. Zero when no backups are created.\n"
+                },
+                "recoveryMode": {
+                    "type": "string",
+                    "description": "Mechanism how backups can be restored. 'basic' means a backup is restored as is so that the system is restored to the state it was when the backup was generated. 'pitr' means point-in-time-recovery, which allows restoring the system to any state since the first available full snapshot. The possible values are \u003cspan pulumi-lang-nodejs=\"`basic`\" pulumi-lang-dotnet=\"`Basic`\" pulumi-lang-go=\"`basic`\" pulumi-lang-python=\"`basic`\" pulumi-lang-yaml=\"`basic`\" pulumi-lang-java=\"`basic`\"\u003e`basic`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`pitr`\" pulumi-lang-dotnet=\"`Pitr`\" pulumi-lang-go=\"`pitr`\" pulumi-lang-python=\"`pitr`\" pulumi-lang-yaml=\"`pitr`\" pulumi-lang-java=\"`pitr`\"\u003e`pitr`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "frequentIntervalMinutes",
+                "frequentOldestAgeMinutes",
+                "infrequentIntervalMinutes",
+                "infrequentOldestAgeMinutes",
+                "interval",
+                "maxCount",
+                "recoveryMode"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getServicePlanListServicePlan:getServicePlanListServicePlan": {
+            "properties": {
+                "maxMemoryPercent": {
+                    "type": "integer",
+                    "description": "Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.\n"
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "Number of nodes in this service plan.\n"
+                },
+                "regions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/aiven:index/getServicePlanListServicePlanRegions:getServicePlanListServicePlanRegions"
+                    },
+                    "description": "Service plan hourly price per cloud region.\n"
+                },
+                "servicePlan": {
+                    "type": "string",
+                    "description": "Subscription plan.\n"
+                },
+                "serviceType": {
+                    "type": "string",
+                    "description": "Service type code.\n"
+                },
+                "shardCount": {
+                    "type": "integer",
+                    "description": "Number of shards in this service plan.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxMemoryPercent",
+                "nodeCount",
+                "regions",
+                "servicePlan",
+                "serviceType",
+                "shardCount"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getServicePlanListServicePlanRegions:getServicePlanListServicePlanRegions": {
+            "properties": {
+                "diskSpaceCapMb": {
+                    "type": "integer",
+                    "description": "Maximum amount of disk space possible for the plan in the given region.\n"
+                },
+                "diskSpaceGbPriceUsd": {
+                    "type": "string",
+                    "description": "Hourly additional disk space price per GiB in this region.\n"
+                },
+                "diskSpaceMb": {
+                    "type": "integer",
+                    "description": "Combined amount of service disk space of all service nodes in megabytes.\n"
+                },
+                "diskSpaceStepMb": {
+                    "type": "integer",
+                    "description": "Disk space change step size.\n"
+                },
+                "nodeCpuCount": {
+                    "type": "integer",
+                    "description": "Number of CPU cores on each service node.\n"
+                },
+                "nodeMemoryMb": {
+                    "type": "integer",
+                    "description": "Amount of memory on each service node in megabytes.\n"
+                },
+                "objectStorageGbPriceUsd": {
+                    "type": "string",
+                    "description": "Hourly object storage price per GiB in this region.\n"
+                },
+                "priceUsd": {
+                    "type": "string",
+                    "description": "Hourly service price in this region.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "diskSpaceCapMb",
+                "diskSpaceGbPriceUsd",
+                "diskSpaceMb",
+                "diskSpaceStepMb",
+                "nodeCpuCount",
+                "nodeMemoryMb",
+                "objectStorageGbPriceUsd",
+                "priceUsd"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getServicePlanListTimeouts:getServicePlanListTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServicePlanTimeouts:getServicePlanTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
                 }
             },
             "type": "object"
@@ -26479,8 +26842,17 @@
             "properties": {
                 "password": {
                     "type": "string",
-                    "description": "The password of the ClickHouse user.\n",
+                    "description": "The password of the ClickHouse user (generated). Empty when using \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e.",
                     "secret": true
+                },
+                "passwordWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe password of the ClickHouse user (write-only, not stored in state). Must be used with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e. Cannot be empty.",
+                    "secret": true
+                },
+                "passwordWoVersion": {
+                    "type": "integer",
+                    "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Increment this to rotate the password. Must be \u003e= 1."
                 },
                 "project": {
                     "type": "string",
@@ -26488,7 +26860,7 @@
                 },
                 "required": {
                     "type": "boolean",
-                    "description": "Indicates if a ClickHouse user is required.\n"
+                    "description": "Indicates if a ClickHouse user is required."
                 },
                 "serviceName": {
                     "type": "string",
@@ -26500,7 +26872,7 @@
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "UUID of the ClickHouse user.\n"
+                    "description": "UUID of the ClickHouse user."
                 }
             },
             "required": [
@@ -26512,6 +26884,15 @@
                 "uuid"
             ],
             "inputProperties": {
+                "passwordWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe password of the ClickHouse user (write-only, not stored in state). Must be used with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e. Cannot be empty.",
+                    "secret": true
+                },
+                "passwordWoVersion": {
+                    "type": "integer",
+                    "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Increment this to rotate the password. Must be \u003e= 1."
+                },
                 "project": {
                     "type": "string",
                     "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
@@ -26538,8 +26919,17 @@
                 "properties": {
                     "password": {
                         "type": "string",
-                        "description": "The password of the ClickHouse user.\n",
+                        "description": "The password of the ClickHouse user (generated). Empty when using \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e.",
                         "secret": true
+                    },
+                    "passwordWo": {
+                        "type": "string",
+                        "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe password of the ClickHouse user (write-only, not stored in state). Must be used with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e. Cannot be empty.",
+                        "secret": true
+                    },
+                    "passwordWoVersion": {
+                        "type": "integer",
+                        "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Increment this to rotate the password. Must be \u003e= 1."
                     },
                     "project": {
                         "type": "string",
@@ -26548,7 +26938,7 @@
                     },
                     "required": {
                         "type": "boolean",
-                        "description": "Indicates if a ClickHouse user is required.\n"
+                        "description": "Indicates if a ClickHouse user is required."
                     },
                     "serviceName": {
                         "type": "string",
@@ -26562,7 +26952,7 @@
                     },
                     "uuid": {
                         "type": "string",
-                        "description": "UUID of the ClickHouse user.\n"
+                        "description": "UUID of the ClickHouse user."
                     }
                 },
                 "type": "object"
@@ -29372,7 +29762,8 @@
                 },
                 "influxdbUserConfig": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
-                    "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later"
+                    "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later",
+                    "deprecationMessage": "This property is deprecated."
                 },
                 "influxdbs": {
                     "type": "array",
@@ -29509,7 +29900,8 @@
                 },
                 "influxdbUserConfig": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
-                    "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later"
+                    "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later",
+                    "deprecationMessage": "This property is deprecated."
                 },
                 "influxdbs": {
                     "type": "array",
@@ -29624,7 +30016,8 @@
                     },
                     "influxdbUserConfig": {
                         "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
-                        "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later"
+                        "description": "Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later",
+                        "deprecationMessage": "This property is deprecated."
                     },
                     "influxdbs": {
                         "type": "array",
@@ -35532,7 +35925,7 @@
             "properties": {
                 "basePort": {
                     "type": "integer",
-                    "description": "Valid port number (1-65535) to use as a base for service port allocation.\n"
+                    "description": "Valid port number (10000-30000) to use as a base for service port allocation.\n"
                 },
                 "billingGroupId": {
                     "type": "string",
@@ -35584,7 +35977,7 @@
             "inputProperties": {
                 "basePort": {
                     "type": "integer",
-                    "description": "Valid port number (1-65535) to use as a base for service port allocation.\n"
+                    "description": "Valid port number (10000-30000) to use as a base for service port allocation.\n"
                 },
                 "billingGroupId": {
                     "type": "string",
@@ -35631,7 +36024,7 @@
                 "properties": {
                     "basePort": {
                         "type": "integer",
-                        "description": "Valid port number (1-65535) to use as a base for service port allocation.\n"
+                        "description": "Valid port number (10000-30000) to use as a base for service port allocation.\n"
                     },
                     "billingGroupId": {
                         "type": "string",
@@ -41655,7 +42048,7 @@
                         "type": "string"
                     },
                     "password": {
-                        "description": "The password of the ClickHouse user.\n",
+                        "description": "The password of the ClickHouse user (generated). Empty when using \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e.\n",
                         "secret": true,
                         "type": "string"
                     },
@@ -46036,7 +46429,7 @@
                 "description": "A collection of values returned by getOrganizationProject.\n",
                 "properties": {
                     "basePort": {
-                        "description": "Valid port number (1-65535) to use as a base for service port allocation.\n",
+                        "description": "Valid port number (10000-30000) to use as a base for service port allocation.\n",
                         "type": "integer"
                     },
                     "billingGroupId": {
@@ -46209,6 +46602,60 @@
                     "organizationId",
                     "updateTime",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList": {
+            "description": "List all user groups within an organization.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrganizationUserGroupList.\n",
+                "properties": {
+                    "organizationId": {
+                        "type": "string",
+                        "description": "ID of an organization.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getOrganizationUserGroupListTimeouts:getOrganizationUserGroupListTimeouts"
+                    },
+                    "userGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getOrganizationUserGroupListUserGroup:getOrganizationUserGroupListUserGroup"
+                        },
+                        "description": "User Groups.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "organizationId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrganizationUserGroupList.\n",
+                "properties": {
+                    "id": {
+                        "description": "Resource ID, equal to \u003cspan pulumi-lang-nodejs=\"`organizationId`\" pulumi-lang-dotnet=\"`OrganizationId`\" pulumi-lang-go=\"`organizationId`\" pulumi-lang-python=\"`organization_id`\" pulumi-lang-yaml=\"`organizationId`\" pulumi-lang-java=\"`organizationId`\"\u003e`organization_id`\u003c/span\u003e.\n",
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "description": "ID of an organization.\n",
+                        "type": "string"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getOrganizationUserGroupListTimeouts:getOrganizationUserGroupListTimeouts"
+                    },
+                    "userGroups": {
+                        "description": "User Groups.\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getOrganizationUserGroupListUserGroup:getOrganizationUserGroupListUserGroup"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id",
+                    "organizationId"
                 ],
                 "type": "object"
             }
@@ -47275,7 +47722,7 @@
                     },
                     "usage": {
                         "type": "string",
-                        "description": "DNS usage name. The possible values are \u003cspan pulumi-lang-nodejs=\"`disasterRecovery`\" pulumi-lang-dotnet=\"`DisasterRecovery`\" pulumi-lang-go=\"`disasterRecovery`\" pulumi-lang-python=\"`disaster_recovery`\" pulumi-lang-yaml=\"`disasterRecovery`\" pulumi-lang-java=\"`disasterRecovery`\"\u003e`disaster_recovery`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`replica`\" pulumi-lang-dotnet=\"`Replica`\" pulumi-lang-go=\"`replica`\" pulumi-lang-python=\"`replica`\" pulumi-lang-yaml=\"`replica`\" pulumi-lang-java=\"`replica`\"\u003e`replica`\u003c/span\u003e.\n"
+                        "description": "DNS usage name. The possible values are \u003cspan pulumi-lang-nodejs=\"`disasterRecovery`\" pulumi-lang-dotnet=\"`DisasterRecovery`\" pulumi-lang-go=\"`disasterRecovery`\" pulumi-lang-python=\"`disaster_recovery`\" pulumi-lang-yaml=\"`disasterRecovery`\" pulumi-lang-java=\"`disasterRecovery`\"\u003e`disaster_recovery`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`haReplica`\" pulumi-lang-dotnet=\"`HaReplica`\" pulumi-lang-go=\"`haReplica`\" pulumi-lang-python=\"`ha_replica`\" pulumi-lang-yaml=\"`haReplica`\" pulumi-lang-java=\"`haReplica`\"\u003e`ha_replica`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`replica`\" pulumi-lang-dotnet=\"`Replica`\" pulumi-lang-go=\"`replica`\" pulumi-lang-python=\"`replica`\" pulumi-lang-yaml=\"`replica`\" pulumi-lang-java=\"`replica`\"\u003e`replica`\u003c/span\u003e.\n"
                     }
                 },
                 "type": "object",
@@ -47328,7 +47775,7 @@
                         "type": "boolean"
                     },
                     "usage": {
-                        "description": "DNS usage name. The possible values are \u003cspan pulumi-lang-nodejs=\"`disasterRecovery`\" pulumi-lang-dotnet=\"`DisasterRecovery`\" pulumi-lang-go=\"`disasterRecovery`\" pulumi-lang-python=\"`disaster_recovery`\" pulumi-lang-yaml=\"`disasterRecovery`\" pulumi-lang-java=\"`disasterRecovery`\"\u003e`disaster_recovery`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`replica`\" pulumi-lang-dotnet=\"`Replica`\" pulumi-lang-go=\"`replica`\" pulumi-lang-python=\"`replica`\" pulumi-lang-yaml=\"`replica`\" pulumi-lang-java=\"`replica`\"\u003e`replica`\u003c/span\u003e.\n",
+                        "description": "DNS usage name. The possible values are \u003cspan pulumi-lang-nodejs=\"`disasterRecovery`\" pulumi-lang-dotnet=\"`DisasterRecovery`\" pulumi-lang-go=\"`disasterRecovery`\" pulumi-lang-python=\"`disaster_recovery`\" pulumi-lang-yaml=\"`disasterRecovery`\" pulumi-lang-java=\"`disasterRecovery`\"\u003e`disaster_recovery`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`haReplica`\" pulumi-lang-dotnet=\"`HaReplica`\" pulumi-lang-go=\"`haReplica`\" pulumi-lang-python=\"`ha_replica`\" pulumi-lang-yaml=\"`haReplica`\" pulumi-lang-java=\"`haReplica`\"\u003e`ha_replica`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`replica`\" pulumi-lang-dotnet=\"`Replica`\" pulumi-lang-go=\"`replica`\" pulumi-lang-python=\"`replica`\" pulumi-lang-yaml=\"`replica`\" pulumi-lang-java=\"`replica`\"\u003e`replica`\u003c/span\u003e.\n",
                         "type": "string"
                     }
                 },
@@ -47757,6 +48204,194 @@
                     "prometheusUserConfigs",
                     "rsyslogUserConfigs",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "aiven:index/getServicePlan:getServicePlan": {
+            "description": "Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.\n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServicePlan.\n",
+                "properties": {
+                    "backupConfigs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServicePlanBackupConfig:getServicePlanBackupConfig"
+                        },
+                        "description": "Backup configuration for this service plan.\n"
+                    },
+                    "cloudName": {
+                        "type": "string",
+                        "description": "Cloud region name.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "Project name.\n"
+                    },
+                    "servicePlan": {
+                        "type": "string",
+                        "description": "Service plan name.\n"
+                    },
+                    "serviceType": {
+                        "type": "string",
+                        "description": "Service type code.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getServicePlanTimeouts:getServicePlanTimeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cloudName",
+                    "project",
+                    "servicePlan",
+                    "serviceType"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServicePlan.\n",
+                "properties": {
+                    "backupConfigs": {
+                        "description": "Backup configuration for this service plan.\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServicePlanBackupConfig:getServicePlanBackupConfig"
+                        },
+                        "type": "array"
+                    },
+                    "basePriceUsd": {
+                        "description": "Hourly service price in this region in USD.\n",
+                        "type": "string"
+                    },
+                    "cloudName": {
+                        "description": "Cloud region name.\n",
+                        "type": "string"
+                    },
+                    "diskSpaceCapMb": {
+                        "description": "Maximum amount of disk space possible for the plan in the given region.\n",
+                        "type": "integer"
+                    },
+                    "diskSpaceMb": {
+                        "description": "Combined amount of service disk space of all service nodes in megabytes.\n",
+                        "type": "integer"
+                    },
+                    "diskSpaceStepMb": {
+                        "description": "Disk space change step size.\n",
+                        "type": "integer"
+                    },
+                    "id": {
+                        "description": "Resource ID, a composite of \u003cspan pulumi-lang-nodejs=\"`project`\" pulumi-lang-dotnet=\"`Project`\" pulumi-lang-go=\"`project`\" pulumi-lang-python=\"`project`\" pulumi-lang-yaml=\"`project`\" pulumi-lang-java=\"`project`\"\u003e`project`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`serviceType`\" pulumi-lang-dotnet=\"`ServiceType`\" pulumi-lang-go=\"`serviceType`\" pulumi-lang-python=\"`service_type`\" pulumi-lang-yaml=\"`serviceType`\" pulumi-lang-java=\"`serviceType`\"\u003e`service_type`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`servicePlan`\" pulumi-lang-dotnet=\"`ServicePlan`\" pulumi-lang-go=\"`servicePlan`\" pulumi-lang-python=\"`service_plan`\" pulumi-lang-yaml=\"`servicePlan`\" pulumi-lang-java=\"`servicePlan`\"\u003e`service_plan`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`cloudName`\" pulumi-lang-dotnet=\"`CloudName`\" pulumi-lang-go=\"`cloudName`\" pulumi-lang-python=\"`cloud_name`\" pulumi-lang-yaml=\"`cloudName`\" pulumi-lang-java=\"`cloudName`\"\u003e`cloud_name`\u003c/span\u003e IDs.\n",
+                        "type": "string"
+                    },
+                    "maxMemoryPercent": {
+                        "description": "Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.\n",
+                        "type": "integer"
+                    },
+                    "nodeCount": {
+                        "description": "Number of nodes in this service plan.\n",
+                        "type": "integer"
+                    },
+                    "objectStorageGbPriceUsd": {
+                        "description": "Hourly object storage price per GiB in this region in USD.\n",
+                        "type": "string"
+                    },
+                    "project": {
+                        "description": "Project name.\n",
+                        "type": "string"
+                    },
+                    "servicePlan": {
+                        "description": "Service plan name.\n",
+                        "type": "string"
+                    },
+                    "serviceType": {
+                        "description": "Service type code.\n",
+                        "type": "string"
+                    },
+                    "shardCount": {
+                        "description": "Number of shards in this service plan.\n",
+                        "type": "integer"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getServicePlanTimeouts:getServicePlanTimeouts"
+                    }
+                },
+                "required": [
+                    "basePriceUsd",
+                    "cloudName",
+                    "diskSpaceCapMb",
+                    "diskSpaceMb",
+                    "diskSpaceStepMb",
+                    "id",
+                    "maxMemoryPercent",
+                    "nodeCount",
+                    "objectStorageGbPriceUsd",
+                    "project",
+                    "servicePlan",
+                    "serviceType",
+                    "shardCount"
+                ],
+                "type": "object"
+            }
+        },
+        "aiven:index/getServicePlanList:getServicePlanList": {
+            "description": "A list of service plans for a given project and service type.\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServicePlanList.\n",
+                "properties": {
+                    "project": {
+                        "type": "string",
+                        "description": "Project name.\n"
+                    },
+                    "servicePlans": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServicePlanListServicePlan:getServicePlanListServicePlan"
+                        },
+                        "description": "List of plans available for this type of service.\n"
+                    },
+                    "serviceType": {
+                        "type": "string",
+                        "description": "Service type.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getServicePlanListTimeouts:getServicePlanListTimeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project",
+                    "serviceType"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServicePlanList.\n",
+                "properties": {
+                    "id": {
+                        "description": "Resource ID, a composite of \u003cspan pulumi-lang-nodejs=\"`project`\" pulumi-lang-dotnet=\"`Project`\" pulumi-lang-go=\"`project`\" pulumi-lang-python=\"`project`\" pulumi-lang-yaml=\"`project`\" pulumi-lang-java=\"`project`\"\u003e`project`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`serviceType`\" pulumi-lang-dotnet=\"`ServiceType`\" pulumi-lang-go=\"`serviceType`\" pulumi-lang-python=\"`service_type`\" pulumi-lang-yaml=\"`serviceType`\" pulumi-lang-java=\"`serviceType`\"\u003e`service_type`\u003c/span\u003e IDs.\n",
+                        "type": "string"
+                    },
+                    "project": {
+                        "description": "Project name.\n",
+                        "type": "string"
+                    },
+                    "servicePlans": {
+                        "description": "List of plans available for this type of service.\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServicePlanListServicePlan:getServicePlanListServicePlan"
+                        },
+                        "type": "array"
+                    },
+                    "serviceType": {
+                        "description": "Service type.\n",
+                        "type": "string"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getServicePlanListTimeouts:getServicePlanListTimeouts"
+                    }
+                },
+                "required": [
+                    "id",
+                    "project",
+                    "serviceType"
                 ],
                 "type": "object"
             }
