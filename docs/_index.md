@@ -35,10 +35,12 @@ config:
         value: 'TODO: var.aiven_api_token'
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -50,10 +52,12 @@ config:
         value: 'TODO: var.aiven_api_token'
 
 ```
+
 ```python
 import pulumi
 
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -65,6 +69,7 @@ config:
         value: 'TODO: var.aiven_api_token'
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -75,6 +80,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -86,6 +92,7 @@ config:
         value: 'TODO: var.aiven_api_token'
 
 ```
+
 ```go
 package main
 
@@ -99,6 +106,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -110,9 +118,11 @@ config:
         value: 'TODO: var.aiven_api_token'
 
 ```
+
 ```yaml
 {}
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -124,6 +134,7 @@ config:
         value: 'TODO: var.aiven_api_token'
 
 ```
+
 ```java
 package generated_program;
 
@@ -146,6 +157,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## Environment variables
