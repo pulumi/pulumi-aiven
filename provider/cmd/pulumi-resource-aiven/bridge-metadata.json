@@ -173,6 +173,9 @@
                     "address_lines": {
                         "maxItemsOne": false
                     },
+                    "billing_contact_emails": {
+                        "maxItemsOne": false
+                    },
                     "billing_emails": {
                         "maxItemsOne": false
                     }
@@ -827,6 +830,9 @@
                                 "public_access": {
                                     "maxItemsOne": true
                                 },
+                                "sasl_oauthbearer_allowed_urls": {
+                                    "maxItemsOne": false
+                                },
                                 "schema_registry_config": {
                                     "maxItemsOne": true
                                 },
@@ -902,6 +908,9 @@
                                 "public_access": {
                                     "maxItemsOne": true
                                 },
+                                "sasl_oauthbearer_allowed_urls": {
+                                    "maxItemsOne": false
+                                },
                                 "secret_providers": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -966,6 +975,9 @@
                                 },
                                 "kafka_mirrormaker": {
                                     "maxItemsOne": true
+                                },
+                                "sasl_oauthbearer_allowed_urls": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -2406,6 +2418,9 @@
                     "address_lines": {
                         "maxItemsOne": false
                     },
+                    "billing_contact_emails": {
+                        "maxItemsOne": false
+                    },
                     "billing_emails": {
                         "maxItemsOne": false
                     }
@@ -3039,6 +3054,9 @@
                                 "public_access": {
                                     "maxItemsOne": true
                                 },
+                                "sasl_oauthbearer_allowed_urls": {
+                                    "maxItemsOne": false
+                                },
                                 "schema_registry_config": {
                                     "maxItemsOne": true
                                 },
@@ -3114,6 +3132,9 @@
                                 "public_access": {
                                     "maxItemsOne": true
                                 },
+                                "sasl_oauthbearer_allowed_urls": {
+                                    "maxItemsOne": false
+                                },
                                 "secret_providers": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -3178,6 +3199,9 @@
                                 },
                                 "kafka_mirrormaker": {
                                     "maxItemsOne": true
+                                },
+                                "sasl_oauthbearer_allowed_urls": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -3769,6 +3793,22 @@
                 "fields": {
                     "user_groups": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "aiven_organization_user_group_member_list": {
+                "current": "aiven:index/getOrganizationUserGroupMemberList:getOrganizationUserGroupMemberList",
+                "majorVersion": 6,
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "user_info": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -4504,7 +4544,7 @@
             "aiven:index/azurePrivatelink:AzurePrivatelink": 0,
             "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval": 0,
             "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection": 0,
-            "aiven:index/billingGroup:BillingGroup": 0,
+            "aiven:index/billingGroup:BillingGroup": 1,
             "aiven:index/cassandra:Cassandra": 0,
             "aiven:index/cassandraUser:CassandraUser": 0,
             "aiven:index/clickhouse:Clickhouse": 0,
@@ -4598,7 +4638,7 @@
             "aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection": 0,
             "aiven:index/getAzurePrivatelink:getAzurePrivatelink": 0,
             "aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection": 0,
-            "aiven:index/getBillingGroup:getBillingGroup": 0,
+            "aiven:index/getBillingGroup:getBillingGroup": 1,
             "aiven:index/getCassanda:getCassanda": 0,
             "aiven:index/getCassandra:getCassandra": 0,
             "aiven:index/getCassandraUser:getCassandraUser": 0,
@@ -4649,7 +4689,8 @@
             "aiven:index/getOrganizationUser:getOrganizationUser": 0,
             "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 0,
             "aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList": 1,
-            "aiven:index/getOrganizationUserList:getOrganizationUserList": 0,
+            "aiven:index/getOrganizationUserGroupMemberList:getOrganizationUserGroupMemberList": 1,
+            "aiven:index/getOrganizationUserList:getOrganizationUserList": 1,
             "aiven:index/getOrganizationVpc:getOrganizationVpc": 0,
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": 0,
             "aiven:index/getPg:getPg": 0,
