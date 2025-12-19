@@ -88,7 +88,7 @@ class GetOrganizationProjectResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Resource ID, a composite of `organization_id` and `project_id` IDs.
+        Resource ID composed as: `organization_id/project_id`.
         """
         return pulumi.get(self, "id")
 

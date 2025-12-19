@@ -13,6 +13,317 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetM3DbComponent struct {
+	// Service component name
+	Component string `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri string `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host string `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa string `pulumi:"kafkaSslCa"`
+	// Port number for connecting to the service component
+	Port int `pulumi:"port"`
+	// Network access route
+	Route string `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl bool `pulumi:"ssl"`
+	// DNS usage name
+	Usage string `pulumi:"usage"`
+}
+
+// GetM3DbComponentInput is an input type that accepts GetM3DbComponentArgs and GetM3DbComponentOutput values.
+// You can construct a concrete instance of `GetM3DbComponentInput` via:
+//
+//	GetM3DbComponentArgs{...}
+type GetM3DbComponentInput interface {
+	pulumi.Input
+
+	ToGetM3DbComponentOutput() GetM3DbComponentOutput
+	ToGetM3DbComponentOutputWithContext(context.Context) GetM3DbComponentOutput
+}
+
+type GetM3DbComponentArgs struct {
+	// Service component name
+	Component pulumi.StringInput `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri pulumi.StringInput `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host pulumi.StringInput `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
+	// Port number for connecting to the service component
+	Port pulumi.IntInput `pulumi:"port"`
+	// Network access route
+	Route pulumi.StringInput `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl pulumi.BoolInput `pulumi:"ssl"`
+	// DNS usage name
+	Usage pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetM3DbComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbComponent)(nil)).Elem()
+}
+
+func (i GetM3DbComponentArgs) ToGetM3DbComponentOutput() GetM3DbComponentOutput {
+	return i.ToGetM3DbComponentOutputWithContext(context.Background())
+}
+
+func (i GetM3DbComponentArgs) ToGetM3DbComponentOutputWithContext(ctx context.Context) GetM3DbComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbComponentOutput)
+}
+
+// GetM3DbComponentArrayInput is an input type that accepts GetM3DbComponentArray and GetM3DbComponentArrayOutput values.
+// You can construct a concrete instance of `GetM3DbComponentArrayInput` via:
+//
+//	GetM3DbComponentArray{ GetM3DbComponentArgs{...} }
+type GetM3DbComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbComponentArrayOutput() GetM3DbComponentArrayOutput
+	ToGetM3DbComponentArrayOutputWithContext(context.Context) GetM3DbComponentArrayOutput
+}
+
+type GetM3DbComponentArray []GetM3DbComponentInput
+
+func (GetM3DbComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbComponent)(nil)).Elem()
+}
+
+func (i GetM3DbComponentArray) ToGetM3DbComponentArrayOutput() GetM3DbComponentArrayOutput {
+	return i.ToGetM3DbComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbComponentArray) ToGetM3DbComponentArrayOutputWithContext(ctx context.Context) GetM3DbComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbComponentArrayOutput)
+}
+
+type GetM3DbComponentOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbComponent)(nil)).Elem()
+}
+
+func (o GetM3DbComponentOutput) ToGetM3DbComponentOutput() GetM3DbComponentOutput {
+	return o
+}
+
+func (o GetM3DbComponentOutput) ToGetM3DbComponentOutputWithContext(ctx context.Context) GetM3DbComponentOutput {
+	return o
+}
+
+// Service component name
+func (o GetM3DbComponentOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+// Connection info for connecting to the service component. This is a combination of host and port.
+func (o GetM3DbComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
+// Host name for connecting to the service component
+func (o GetM3DbComponentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Kafka authentication method. This is a value specific to the 'kafka' service component
+func (o GetM3DbComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+func (o GetM3DbComponentOutput) KafkaSslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.KafkaSslCa }).(pulumi.StringOutput)
+}
+
+// Port number for connecting to the service component
+func (o GetM3DbComponentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetM3DbComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Network access route
+func (o GetM3DbComponentOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.Route }).(pulumi.StringOutput)
+}
+
+// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+func (o GetM3DbComponentOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetM3DbComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+}
+
+// DNS usage name
+func (o GetM3DbComponentOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetM3DbComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbComponent)(nil)).Elem()
+}
+
+func (o GetM3DbComponentArrayOutput) ToGetM3DbComponentArrayOutput() GetM3DbComponentArrayOutput {
+	return o
+}
+
+func (o GetM3DbComponentArrayOutput) ToGetM3DbComponentArrayOutputWithContext(ctx context.Context) GetM3DbComponentArrayOutput {
+	return o
+}
+
+func (o GetM3DbComponentArrayOutput) Index(i pulumi.IntInput) GetM3DbComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbComponent {
+		return vs[0].([]GetM3DbComponent)[vs[1].(int)]
+	}).(GetM3DbComponentOutput)
+}
+
+type GetM3DbM3db struct {
+	// M3DB cluster URI.
+	HttpClusterUri string `pulumi:"httpClusterUri"`
+	// M3DB node URI.
+	HttpNodeUri string `pulumi:"httpNodeUri"`
+	// InfluxDB URI.
+	InfluxdbUri string `pulumi:"influxdbUri"`
+	// Prometheus remote read URI.
+	PrometheusRemoteReadUri string `pulumi:"prometheusRemoteReadUri"`
+	// Prometheus remote write URI.
+	PrometheusRemoteWriteUri string `pulumi:"prometheusRemoteWriteUri"`
+	// M3DB server URIs.
+	Uris []string `pulumi:"uris"`
+}
+
+// GetM3DbM3dbInput is an input type that accepts GetM3DbM3dbArgs and GetM3DbM3dbOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbInput` via:
+//
+//	GetM3DbM3dbArgs{...}
+type GetM3DbM3dbInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbOutput() GetM3DbM3dbOutput
+	ToGetM3DbM3dbOutputWithContext(context.Context) GetM3DbM3dbOutput
+}
+
+type GetM3DbM3dbArgs struct {
+	// M3DB cluster URI.
+	HttpClusterUri pulumi.StringInput `pulumi:"httpClusterUri"`
+	// M3DB node URI.
+	HttpNodeUri pulumi.StringInput `pulumi:"httpNodeUri"`
+	// InfluxDB URI.
+	InfluxdbUri pulumi.StringInput `pulumi:"influxdbUri"`
+	// Prometheus remote read URI.
+	PrometheusRemoteReadUri pulumi.StringInput `pulumi:"prometheusRemoteReadUri"`
+	// Prometheus remote write URI.
+	PrometheusRemoteWriteUri pulumi.StringInput `pulumi:"prometheusRemoteWriteUri"`
+	// M3DB server URIs.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (GetM3DbM3dbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3db)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbArgs) ToGetM3DbM3dbOutput() GetM3DbM3dbOutput {
+	return i.ToGetM3DbM3dbOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbArgs) ToGetM3DbM3dbOutputWithContext(ctx context.Context) GetM3DbM3dbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbOutput)
+}
+
+// GetM3DbM3dbArrayInput is an input type that accepts GetM3DbM3dbArray and GetM3DbM3dbArrayOutput values.
+// You can construct a concrete instance of `GetM3DbM3dbArrayInput` via:
+//
+//	GetM3DbM3dbArray{ GetM3DbM3dbArgs{...} }
+type GetM3DbM3dbArrayInput interface {
+	pulumi.Input
+
+	ToGetM3DbM3dbArrayOutput() GetM3DbM3dbArrayOutput
+	ToGetM3DbM3dbArrayOutputWithContext(context.Context) GetM3DbM3dbArrayOutput
+}
+
+type GetM3DbM3dbArray []GetM3DbM3dbInput
+
+func (GetM3DbM3dbArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3db)(nil)).Elem()
+}
+
+func (i GetM3DbM3dbArray) ToGetM3DbM3dbArrayOutput() GetM3DbM3dbArrayOutput {
+	return i.ToGetM3DbM3dbArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3DbM3dbArray) ToGetM3DbM3dbArrayOutputWithContext(ctx context.Context) GetM3DbM3dbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3DbM3dbArrayOutput)
+}
+
+type GetM3DbM3dbOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3DbM3db)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbOutput) ToGetM3DbM3dbOutput() GetM3DbM3dbOutput {
+	return o
+}
+
+func (o GetM3DbM3dbOutput) ToGetM3DbM3dbOutputWithContext(ctx context.Context) GetM3DbM3dbOutput {
+	return o
+}
+
+// M3DB cluster URI.
+func (o GetM3DbM3dbOutput) HttpClusterUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3db) string { return v.HttpClusterUri }).(pulumi.StringOutput)
+}
+
+// M3DB node URI.
+func (o GetM3DbM3dbOutput) HttpNodeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3db) string { return v.HttpNodeUri }).(pulumi.StringOutput)
+}
+
+// InfluxDB URI.
+func (o GetM3DbM3dbOutput) InfluxdbUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3db) string { return v.InfluxdbUri }).(pulumi.StringOutput)
+}
+
+// Prometheus remote read URI.
+func (o GetM3DbM3dbOutput) PrometheusRemoteReadUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3db) string { return v.PrometheusRemoteReadUri }).(pulumi.StringOutput)
+}
+
+// Prometheus remote write URI.
+func (o GetM3DbM3dbOutput) PrometheusRemoteWriteUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbM3db) string { return v.PrometheusRemoteWriteUri }).(pulumi.StringOutput)
+}
+
+// M3DB server URIs.
+func (o GetM3DbM3dbOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3DbM3db) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type GetM3DbM3dbArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3DbM3dbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3DbM3db)(nil)).Elem()
+}
+
+func (o GetM3DbM3dbArrayOutput) ToGetM3DbM3dbArrayOutput() GetM3DbM3dbArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbArrayOutput) ToGetM3DbM3dbArrayOutputWithContext(ctx context.Context) GetM3DbM3dbArrayOutput {
+	return o
+}
+
+func (o GetM3DbM3dbArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3DbM3db {
+		return vs[0].([]GetM3DbM3db)[vs[1].(int)]
+	}).(GetM3DbM3dbOutput)
+}
+
 type GetM3DbM3dbUserConfig struct {
 	// Additional Cloud Regions for Backup Replication.
 	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
@@ -2969,9 +3280,9 @@ type GetMySqlMysqlUserConfig struct {
 	AdminPassword *string `pulumi:"adminPassword"`
 	// Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
 	AdminUsername *string `pulumi:"adminUsername"`
-	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
 	BackupHour *int `pulumi:"backupHour"`
-	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
 	BackupMinute *int `pulumi:"backupMinute"`
 	// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
 	BinlogRetentionPeriod *int `pulumi:"binlogRetentionPeriod"`
@@ -3027,9 +3338,9 @@ type GetMySqlMysqlUserConfigArgs struct {
 	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
 	// Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
 	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
-	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
 	BackupHour pulumi.IntPtrInput `pulumi:"backupHour"`
-	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
 	BackupMinute pulumi.IntPtrInput `pulumi:"backupMinute"`
 	// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
 	BinlogRetentionPeriod pulumi.IntPtrInput `pulumi:"binlogRetentionPeriod"`
@@ -3133,12 +3444,12 @@ func (o GetMySqlMysqlUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
-// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
 func (o GetMySqlMysqlUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
 }
 
-// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
 func (o GetMySqlMysqlUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
 }
@@ -3356,6 +3667,8 @@ func (o GetMySqlMysqlUserConfigIpFilterObjectArrayOutput) Index(i pulumi.IntInpu
 type GetMySqlMysqlUserConfigMigration struct {
 	// Database name for bootstrapping the initial connection. Example: `defaultdb`.
 	Dbname *string `pulumi:"dbname"`
+	// Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+	DumpTool *string `pulumi:"dumpTool"`
 	// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
 	Host string `pulumi:"host"`
 	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
@@ -3388,6 +3701,8 @@ type GetMySqlMysqlUserConfigMigrationInput interface {
 type GetMySqlMysqlUserConfigMigrationArgs struct {
 	// Database name for bootstrapping the initial connection. Example: `defaultdb`.
 	Dbname pulumi.StringPtrInput `pulumi:"dbname"`
+	// Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+	DumpTool pulumi.StringPtrInput `pulumi:"dumpTool"`
 	// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
 	Host pulumi.StringInput `pulumi:"host"`
 	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
@@ -3488,6 +3803,11 @@ func (o GetMySqlMysqlUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
 }
 
+// Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+func (o GetMySqlMysqlUserConfigMigrationOutput) DumpTool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) *string { return v.DumpTool }).(pulumi.StringPtrOutput)
+}
+
 // Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
 func (o GetMySqlMysqlUserConfigMigrationOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) string { return v.Host }).(pulumi.StringOutput)
@@ -3559,6 +3879,16 @@ func (o GetMySqlMysqlUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.Dbname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) DumpTool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DumpTool
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8013,6 +8343,12 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	KnnMemoryCircuitBreakerEnabled *bool `pulumi:"knnMemoryCircuitBreakerEnabled"`
 	// Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
 	KnnMemoryCircuitBreakerLimit *int `pulumi:"knnMemoryCircuitBreakerLimit"`
+	// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+	MlCommonsModelAccessControlEnabled *bool `pulumi:"mlCommonsModelAccessControlEnabled"`
+	// Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+	MlCommonsNativeMemoryThreshold *int `pulumi:"mlCommonsNativeMemoryThreshold"`
+	// Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+	MlCommonsOnlyRunOnMlNode *bool `pulumi:"mlCommonsOnlyRunOnMlNode"`
 	// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
 	NodeSearchCacheSize *string `pulumi:"nodeSearchCacheSize"`
 	// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
@@ -8139,6 +8475,12 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	KnnMemoryCircuitBreakerEnabled pulumi.BoolPtrInput `pulumi:"knnMemoryCircuitBreakerEnabled"`
 	// Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
 	KnnMemoryCircuitBreakerLimit pulumi.IntPtrInput `pulumi:"knnMemoryCircuitBreakerLimit"`
+	// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+	MlCommonsModelAccessControlEnabled pulumi.BoolPtrInput `pulumi:"mlCommonsModelAccessControlEnabled"`
+	// Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+	MlCommonsNativeMemoryThreshold pulumi.IntPtrInput `pulumi:"mlCommonsNativeMemoryThreshold"`
+	// Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+	MlCommonsOnlyRunOnMlNode pulumi.BoolPtrInput `pulumi:"mlCommonsOnlyRunOnMlNode"`
 	// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
 	NodeSearchCacheSize pulumi.StringPtrInput `pulumi:"nodeSearchCacheSize"`
 	// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
@@ -8450,6 +8792,21 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) KnnMemoryCircuitBreak
 // Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) KnnMemoryCircuitBreakerLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.KnnMemoryCircuitBreakerLimit }).(pulumi.IntPtrOutput)
+}
+
+// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsModelAccessControlEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.MlCommonsModelAccessControlEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsNativeMemoryThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.MlCommonsNativeMemoryThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsOnlyRunOnMlNode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.MlCommonsOnlyRunOnMlNode }).(pulumi.BoolPtrOutput)
 }
 
 // Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
@@ -8952,6 +9309,36 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnMemoryCircuitBr
 		}
 		return v.KnnMemoryCircuitBreakerLimit
 	}).(pulumi.IntPtrOutput)
+}
+
+// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsModelAccessControlEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MlCommonsModelAccessControlEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsNativeMemoryThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MlCommonsNativeMemoryThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsOnlyRunOnMlNode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MlCommonsOnlyRunOnMlNode
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
@@ -16576,15 +16963,594 @@ func (o GetOrganizationUserGroupListUserGroupArrayOutput) Index(i pulumi.IntInpu
 	}).(GetOrganizationUserGroupListUserGroupOutput)
 }
 
+type GetOrganizationUserGroupMemberListMember struct {
+	// Last Activity Time.
+	LastActivityTime string `pulumi:"lastActivityTime"`
+	// User ID.
+	UserId string `pulumi:"userId"`
+	// OrganizationUserInfo.
+	UserInfos []GetOrganizationUserGroupMemberListMemberUserInfo `pulumi:"userInfos"`
+}
+
+// GetOrganizationUserGroupMemberListMemberInput is an input type that accepts GetOrganizationUserGroupMemberListMemberArgs and GetOrganizationUserGroupMemberListMemberOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupMemberListMemberInput` via:
+//
+//	GetOrganizationUserGroupMemberListMemberArgs{...}
+type GetOrganizationUserGroupMemberListMemberInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupMemberListMemberOutput() GetOrganizationUserGroupMemberListMemberOutput
+	ToGetOrganizationUserGroupMemberListMemberOutputWithContext(context.Context) GetOrganizationUserGroupMemberListMemberOutput
+}
+
+type GetOrganizationUserGroupMemberListMemberArgs struct {
+	// Last Activity Time.
+	LastActivityTime pulumi.StringInput `pulumi:"lastActivityTime"`
+	// User ID.
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// OrganizationUserInfo.
+	UserInfos GetOrganizationUserGroupMemberListMemberUserInfoArrayInput `pulumi:"userInfos"`
+}
+
+func (GetOrganizationUserGroupMemberListMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupMemberListMember)(nil)).Elem()
+}
+
+func (i GetOrganizationUserGroupMemberListMemberArgs) ToGetOrganizationUserGroupMemberListMemberOutput() GetOrganizationUserGroupMemberListMemberOutput {
+	return i.ToGetOrganizationUserGroupMemberListMemberOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupMemberListMemberArgs) ToGetOrganizationUserGroupMemberListMemberOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupMemberListMemberOutput)
+}
+
+// GetOrganizationUserGroupMemberListMemberArrayInput is an input type that accepts GetOrganizationUserGroupMemberListMemberArray and GetOrganizationUserGroupMemberListMemberArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupMemberListMemberArrayInput` via:
+//
+//	GetOrganizationUserGroupMemberListMemberArray{ GetOrganizationUserGroupMemberListMemberArgs{...} }
+type GetOrganizationUserGroupMemberListMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupMemberListMemberArrayOutput() GetOrganizationUserGroupMemberListMemberArrayOutput
+	ToGetOrganizationUserGroupMemberListMemberArrayOutputWithContext(context.Context) GetOrganizationUserGroupMemberListMemberArrayOutput
+}
+
+type GetOrganizationUserGroupMemberListMemberArray []GetOrganizationUserGroupMemberListMemberInput
+
+func (GetOrganizationUserGroupMemberListMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationUserGroupMemberListMember)(nil)).Elem()
+}
+
+func (i GetOrganizationUserGroupMemberListMemberArray) ToGetOrganizationUserGroupMemberListMemberArrayOutput() GetOrganizationUserGroupMemberListMemberArrayOutput {
+	return i.ToGetOrganizationUserGroupMemberListMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupMemberListMemberArray) ToGetOrganizationUserGroupMemberListMemberArrayOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupMemberListMemberArrayOutput)
+}
+
+type GetOrganizationUserGroupMemberListMemberOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupMemberListMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupMemberListMember)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupMemberListMemberOutput) ToGetOrganizationUserGroupMemberListMemberOutput() GetOrganizationUserGroupMemberListMemberOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupMemberListMemberOutput) ToGetOrganizationUserGroupMemberListMemberOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListMemberOutput {
+	return o
+}
+
+// Last Activity Time.
+func (o GetOrganizationUserGroupMemberListMemberOutput) LastActivityTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMember) string { return v.LastActivityTime }).(pulumi.StringOutput)
+}
+
+// User ID.
+func (o GetOrganizationUserGroupMemberListMemberOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMember) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// OrganizationUserInfo.
+func (o GetOrganizationUserGroupMemberListMemberOutput) UserInfos() GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMember) []GetOrganizationUserGroupMemberListMemberUserInfo {
+		return v.UserInfos
+	}).(GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput)
+}
+
+type GetOrganizationUserGroupMemberListMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupMemberListMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationUserGroupMemberListMember)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupMemberListMemberArrayOutput) ToGetOrganizationUserGroupMemberListMemberArrayOutput() GetOrganizationUserGroupMemberListMemberArrayOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupMemberListMemberArrayOutput) ToGetOrganizationUserGroupMemberListMemberArrayOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListMemberArrayOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupMemberListMemberArrayOutput) Index(i pulumi.IntInput) GetOrganizationUserGroupMemberListMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationUserGroupMemberListMember {
+		return vs[0].([]GetOrganizationUserGroupMemberListMember)[vs[1].(int)]
+	}).(GetOrganizationUserGroupMemberListMemberOutput)
+}
+
+type GetOrganizationUserGroupMemberListMemberUserInfo struct {
+	// City.
+	City string `pulumi:"city"`
+	// Country.
+	Country string `pulumi:"country"`
+	// Creation time.
+	CreateTime string `pulumi:"createTime"`
+	// Department.
+	Department string `pulumi:"department"`
+	// Is Application User.
+	IsApplicationUser bool `pulumi:"isApplicationUser"`
+	// Job Title.
+	JobTitle string `pulumi:"jobTitle"`
+	// Managed By Scim.
+	ManagedByScim bool `pulumi:"managedByScim"`
+	// Managing Organization ID.
+	ManagingOrganizationId string `pulumi:"managingOrganizationId"`
+	// Real Name.
+	RealName string `pulumi:"realName"`
+	// State.
+	State string `pulumi:"state"`
+	// User Email.
+	UserEmail string `pulumi:"userEmail"`
+}
+
+// GetOrganizationUserGroupMemberListMemberUserInfoInput is an input type that accepts GetOrganizationUserGroupMemberListMemberUserInfoArgs and GetOrganizationUserGroupMemberListMemberUserInfoOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupMemberListMemberUserInfoInput` via:
+//
+//	GetOrganizationUserGroupMemberListMemberUserInfoArgs{...}
+type GetOrganizationUserGroupMemberListMemberUserInfoInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupMemberListMemberUserInfoOutput() GetOrganizationUserGroupMemberListMemberUserInfoOutput
+	ToGetOrganizationUserGroupMemberListMemberUserInfoOutputWithContext(context.Context) GetOrganizationUserGroupMemberListMemberUserInfoOutput
+}
+
+type GetOrganizationUserGroupMemberListMemberUserInfoArgs struct {
+	// City.
+	City pulumi.StringInput `pulumi:"city"`
+	// Country.
+	Country pulumi.StringInput `pulumi:"country"`
+	// Creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Department.
+	Department pulumi.StringInput `pulumi:"department"`
+	// Is Application User.
+	IsApplicationUser pulumi.BoolInput `pulumi:"isApplicationUser"`
+	// Job Title.
+	JobTitle pulumi.StringInput `pulumi:"jobTitle"`
+	// Managed By Scim.
+	ManagedByScim pulumi.BoolInput `pulumi:"managedByScim"`
+	// Managing Organization ID.
+	ManagingOrganizationId pulumi.StringInput `pulumi:"managingOrganizationId"`
+	// Real Name.
+	RealName pulumi.StringInput `pulumi:"realName"`
+	// State.
+	State pulumi.StringInput `pulumi:"state"`
+	// User Email.
+	UserEmail pulumi.StringInput `pulumi:"userEmail"`
+}
+
+func (GetOrganizationUserGroupMemberListMemberUserInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupMemberListMemberUserInfo)(nil)).Elem()
+}
+
+func (i GetOrganizationUserGroupMemberListMemberUserInfoArgs) ToGetOrganizationUserGroupMemberListMemberUserInfoOutput() GetOrganizationUserGroupMemberListMemberUserInfoOutput {
+	return i.ToGetOrganizationUserGroupMemberListMemberUserInfoOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupMemberListMemberUserInfoArgs) ToGetOrganizationUserGroupMemberListMemberUserInfoOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListMemberUserInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupMemberListMemberUserInfoOutput)
+}
+
+// GetOrganizationUserGroupMemberListMemberUserInfoArrayInput is an input type that accepts GetOrganizationUserGroupMemberListMemberUserInfoArray and GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupMemberListMemberUserInfoArrayInput` via:
+//
+//	GetOrganizationUserGroupMemberListMemberUserInfoArray{ GetOrganizationUserGroupMemberListMemberUserInfoArgs{...} }
+type GetOrganizationUserGroupMemberListMemberUserInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupMemberListMemberUserInfoArrayOutput() GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput
+	ToGetOrganizationUserGroupMemberListMemberUserInfoArrayOutputWithContext(context.Context) GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput
+}
+
+type GetOrganizationUserGroupMemberListMemberUserInfoArray []GetOrganizationUserGroupMemberListMemberUserInfoInput
+
+func (GetOrganizationUserGroupMemberListMemberUserInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationUserGroupMemberListMemberUserInfo)(nil)).Elem()
+}
+
+func (i GetOrganizationUserGroupMemberListMemberUserInfoArray) ToGetOrganizationUserGroupMemberListMemberUserInfoArrayOutput() GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput {
+	return i.ToGetOrganizationUserGroupMemberListMemberUserInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupMemberListMemberUserInfoArray) ToGetOrganizationUserGroupMemberListMemberUserInfoArrayOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput)
+}
+
+type GetOrganizationUserGroupMemberListMemberUserInfoOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupMemberListMemberUserInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupMemberListMemberUserInfo)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) ToGetOrganizationUserGroupMemberListMemberUserInfoOutput() GetOrganizationUserGroupMemberListMemberUserInfoOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) ToGetOrganizationUserGroupMemberListMemberUserInfoOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListMemberUserInfoOutput {
+	return o
+}
+
+// City.
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) City() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMemberUserInfo) string { return v.City }).(pulumi.StringOutput)
+}
+
+// Country.
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMemberUserInfo) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// Creation time.
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMemberUserInfo) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Department.
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) Department() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMemberUserInfo) string { return v.Department }).(pulumi.StringOutput)
+}
+
+// Is Application User.
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) IsApplicationUser() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMemberUserInfo) bool { return v.IsApplicationUser }).(pulumi.BoolOutput)
+}
+
+// Job Title.
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) JobTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMemberUserInfo) string { return v.JobTitle }).(pulumi.StringOutput)
+}
+
+// Managed By Scim.
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) ManagedByScim() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMemberUserInfo) bool { return v.ManagedByScim }).(pulumi.BoolOutput)
+}
+
+// Managing Organization ID.
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) ManagingOrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMemberUserInfo) string { return v.ManagingOrganizationId }).(pulumi.StringOutput)
+}
+
+// Real Name.
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) RealName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMemberUserInfo) string { return v.RealName }).(pulumi.StringOutput)
+}
+
+// State.
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMemberUserInfo) string { return v.State }).(pulumi.StringOutput)
+}
+
+// User Email.
+func (o GetOrganizationUserGroupMemberListMemberUserInfoOutput) UserEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListMemberUserInfo) string { return v.UserEmail }).(pulumi.StringOutput)
+}
+
+type GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationUserGroupMemberListMemberUserInfo)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput) ToGetOrganizationUserGroupMemberListMemberUserInfoArrayOutput() GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput) ToGetOrganizationUserGroupMemberListMemberUserInfoArrayOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput) Index(i pulumi.IntInput) GetOrganizationUserGroupMemberListMemberUserInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationUserGroupMemberListMemberUserInfo {
+		return vs[0].([]GetOrganizationUserGroupMemberListMemberUserInfo)[vs[1].(int)]
+	}).(GetOrganizationUserGroupMemberListMemberUserInfoOutput)
+}
+
+type GetOrganizationUserGroupMemberListTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationUserGroupMemberListTimeoutsInput is an input type that accepts GetOrganizationUserGroupMemberListTimeoutsArgs and GetOrganizationUserGroupMemberListTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupMemberListTimeoutsInput` via:
+//
+//	GetOrganizationUserGroupMemberListTimeoutsArgs{...}
+type GetOrganizationUserGroupMemberListTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupMemberListTimeoutsOutput() GetOrganizationUserGroupMemberListTimeoutsOutput
+	ToGetOrganizationUserGroupMemberListTimeoutsOutputWithContext(context.Context) GetOrganizationUserGroupMemberListTimeoutsOutput
+}
+
+type GetOrganizationUserGroupMemberListTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationUserGroupMemberListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupMemberListTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationUserGroupMemberListTimeoutsArgs) ToGetOrganizationUserGroupMemberListTimeoutsOutput() GetOrganizationUserGroupMemberListTimeoutsOutput {
+	return i.ToGetOrganizationUserGroupMemberListTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupMemberListTimeoutsArgs) ToGetOrganizationUserGroupMemberListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupMemberListTimeoutsOutput)
+}
+
+func (i GetOrganizationUserGroupMemberListTimeoutsArgs) ToGetOrganizationUserGroupMemberListTimeoutsPtrOutput() GetOrganizationUserGroupMemberListTimeoutsPtrOutput {
+	return i.ToGetOrganizationUserGroupMemberListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupMemberListTimeoutsArgs) ToGetOrganizationUserGroupMemberListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupMemberListTimeoutsOutput).ToGetOrganizationUserGroupMemberListTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationUserGroupMemberListTimeoutsPtrInput is an input type that accepts GetOrganizationUserGroupMemberListTimeoutsArgs, GetOrganizationUserGroupMemberListTimeoutsPtr and GetOrganizationUserGroupMemberListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupMemberListTimeoutsPtrInput` via:
+//
+//	        GetOrganizationUserGroupMemberListTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationUserGroupMemberListTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupMemberListTimeoutsPtrOutput() GetOrganizationUserGroupMemberListTimeoutsPtrOutput
+	ToGetOrganizationUserGroupMemberListTimeoutsPtrOutputWithContext(context.Context) GetOrganizationUserGroupMemberListTimeoutsPtrOutput
+}
+
+type getOrganizationUserGroupMemberListTimeoutsPtrType GetOrganizationUserGroupMemberListTimeoutsArgs
+
+func GetOrganizationUserGroupMemberListTimeoutsPtr(v *GetOrganizationUserGroupMemberListTimeoutsArgs) GetOrganizationUserGroupMemberListTimeoutsPtrInput {
+	return (*getOrganizationUserGroupMemberListTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationUserGroupMemberListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationUserGroupMemberListTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationUserGroupMemberListTimeoutsPtrType) ToGetOrganizationUserGroupMemberListTimeoutsPtrOutput() GetOrganizationUserGroupMemberListTimeoutsPtrOutput {
+	return i.ToGetOrganizationUserGroupMemberListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationUserGroupMemberListTimeoutsPtrType) ToGetOrganizationUserGroupMemberListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupMemberListTimeoutsPtrOutput)
+}
+
+type GetOrganizationUserGroupMemberListTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupMemberListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupMemberListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupMemberListTimeoutsOutput) ToGetOrganizationUserGroupMemberListTimeoutsOutput() GetOrganizationUserGroupMemberListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupMemberListTimeoutsOutput) ToGetOrganizationUserGroupMemberListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupMemberListTimeoutsOutput) ToGetOrganizationUserGroupMemberListTimeoutsPtrOutput() GetOrganizationUserGroupMemberListTimeoutsPtrOutput {
+	return o.ToGetOrganizationUserGroupMemberListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationUserGroupMemberListTimeoutsOutput) ToGetOrganizationUserGroupMemberListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationUserGroupMemberListTimeouts) *GetOrganizationUserGroupMemberListTimeouts {
+		return &v
+	}).(GetOrganizationUserGroupMemberListTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationUserGroupMemberListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupMemberListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationUserGroupMemberListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupMemberListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationUserGroupMemberListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupMemberListTimeoutsPtrOutput) ToGetOrganizationUserGroupMemberListTimeoutsPtrOutput() GetOrganizationUserGroupMemberListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupMemberListTimeoutsPtrOutput) ToGetOrganizationUserGroupMemberListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupMemberListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupMemberListTimeoutsPtrOutput) Elem() GetOrganizationUserGroupMemberListTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationUserGroupMemberListTimeouts) GetOrganizationUserGroupMemberListTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationUserGroupMemberListTimeouts
+		return ret
+	}).(GetOrganizationUserGroupMemberListTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationUserGroupMemberListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationUserGroupMemberListTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationUserListTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationUserListTimeoutsInput is an input type that accepts GetOrganizationUserListTimeoutsArgs and GetOrganizationUserListTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationUserListTimeoutsInput` via:
+//
+//	GetOrganizationUserListTimeoutsArgs{...}
+type GetOrganizationUserListTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserListTimeoutsOutput() GetOrganizationUserListTimeoutsOutput
+	ToGetOrganizationUserListTimeoutsOutputWithContext(context.Context) GetOrganizationUserListTimeoutsOutput
+}
+
+type GetOrganizationUserListTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationUserListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserListTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationUserListTimeoutsArgs) ToGetOrganizationUserListTimeoutsOutput() GetOrganizationUserListTimeoutsOutput {
+	return i.ToGetOrganizationUserListTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserListTimeoutsArgs) ToGetOrganizationUserListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationUserListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserListTimeoutsOutput)
+}
+
+func (i GetOrganizationUserListTimeoutsArgs) ToGetOrganizationUserListTimeoutsPtrOutput() GetOrganizationUserListTimeoutsPtrOutput {
+	return i.ToGetOrganizationUserListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserListTimeoutsArgs) ToGetOrganizationUserListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserListTimeoutsOutput).ToGetOrganizationUserListTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationUserListTimeoutsPtrInput is an input type that accepts GetOrganizationUserListTimeoutsArgs, GetOrganizationUserListTimeoutsPtr and GetOrganizationUserListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationUserListTimeoutsPtrInput` via:
+//
+//	        GetOrganizationUserListTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationUserListTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserListTimeoutsPtrOutput() GetOrganizationUserListTimeoutsPtrOutput
+	ToGetOrganizationUserListTimeoutsPtrOutputWithContext(context.Context) GetOrganizationUserListTimeoutsPtrOutput
+}
+
+type getOrganizationUserListTimeoutsPtrType GetOrganizationUserListTimeoutsArgs
+
+func GetOrganizationUserListTimeoutsPtr(v *GetOrganizationUserListTimeoutsArgs) GetOrganizationUserListTimeoutsPtrInput {
+	return (*getOrganizationUserListTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationUserListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationUserListTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationUserListTimeoutsPtrType) ToGetOrganizationUserListTimeoutsPtrOutput() GetOrganizationUserListTimeoutsPtrOutput {
+	return i.ToGetOrganizationUserListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationUserListTimeoutsPtrType) ToGetOrganizationUserListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserListTimeoutsPtrOutput)
+}
+
+type GetOrganizationUserListTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationUserListTimeoutsOutput) ToGetOrganizationUserListTimeoutsOutput() GetOrganizationUserListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationUserListTimeoutsOutput) ToGetOrganizationUserListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationUserListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationUserListTimeoutsOutput) ToGetOrganizationUserListTimeoutsPtrOutput() GetOrganizationUserListTimeoutsPtrOutput {
+	return o.ToGetOrganizationUserListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationUserListTimeoutsOutput) ToGetOrganizationUserListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationUserListTimeouts) *GetOrganizationUserListTimeouts {
+		return &v
+	}).(GetOrganizationUserListTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationUserListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationUserListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationUserListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationUserListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationUserListTimeoutsPtrOutput) ToGetOrganizationUserListTimeoutsPtrOutput() GetOrganizationUserListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationUserListTimeoutsPtrOutput) ToGetOrganizationUserListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationUserListTimeoutsPtrOutput) Elem() GetOrganizationUserListTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationUserListTimeouts) GetOrganizationUserListTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationUserListTimeouts
+		return ret
+	}).(GetOrganizationUserListTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationUserListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationUserListTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetOrganizationUserListUser struct {
-	// Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
+	// Super admin state of the organization user.
 	IsSuperAdmin bool `pulumi:"isSuperAdmin"`
-	// Date and time when the user joined the organization.
+	// Join time.
 	JoinTime string `pulumi:"joinTime"`
 	// Last activity time.
 	LastActivityTime string `pulumi:"lastActivityTime"`
 	// User ID.
-	UserId    string                                `pulumi:"userId"`
+	UserId string `pulumi:"userId"`
+	// OrganizationUserInfo.
 	UserInfos []GetOrganizationUserListUserUserInfo `pulumi:"userInfos"`
 }
 
@@ -16600,14 +17566,15 @@ type GetOrganizationUserListUserInput interface {
 }
 
 type GetOrganizationUserListUserArgs struct {
-	// Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
+	// Super admin state of the organization user.
 	IsSuperAdmin pulumi.BoolInput `pulumi:"isSuperAdmin"`
-	// Date and time when the user joined the organization.
+	// Join time.
 	JoinTime pulumi.StringInput `pulumi:"joinTime"`
 	// Last activity time.
 	LastActivityTime pulumi.StringInput `pulumi:"lastActivityTime"`
 	// User ID.
-	UserId    pulumi.StringInput                            `pulumi:"userId"`
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// OrganizationUserInfo.
 	UserInfos GetOrganizationUserListUserUserInfoArrayInput `pulumi:"userInfos"`
 }
 
@@ -16662,12 +17629,12 @@ func (o GetOrganizationUserListUserOutput) ToGetOrganizationUserListUserOutputWi
 	return o
 }
 
-// Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
+// Super admin state of the organization user.
 func (o GetOrganizationUserListUserOutput) IsSuperAdmin() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUser) bool { return v.IsSuperAdmin }).(pulumi.BoolOutput)
 }
 
-// Date and time when the user joined the organization.
+// Join time.
 func (o GetOrganizationUserListUserOutput) JoinTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUser) string { return v.JoinTime }).(pulumi.StringOutput)
 }
@@ -16682,6 +17649,7 @@ func (o GetOrganizationUserListUserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUser) string { return v.UserId }).(pulumi.StringOutput)
 }
 
+// OrganizationUserInfo.
 func (o GetOrganizationUserListUserOutput) UserInfos() GetOrganizationUserListUserUserInfoArrayOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUser) []GetOrganizationUserListUserUserInfo { return v.UserInfos }).(GetOrganizationUserListUserUserInfoArrayOutput)
 }
@@ -16707,27 +17675,27 @@ func (o GetOrganizationUserListUserArrayOutput) Index(i pulumi.IntInput) GetOrga
 }
 
 type GetOrganizationUserListUserUserInfo struct {
-	// City
+	// City.
 	City string `pulumi:"city"`
-	// Country
+	// Country.
 	Country string `pulumi:"country"`
-	// Date and time when the user was created.
+	// Creation time.
 	CreateTime string `pulumi:"createTime"`
-	// Department
+	// Department.
 	Department string `pulumi:"department"`
-	// Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
+	// Is Application User.
 	IsApplicationUser bool `pulumi:"isApplicationUser"`
-	// Job title
+	// Job Title.
 	JobTitle string `pulumi:"jobTitle"`
-	// Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
+	// Managed By Scim.
 	ManagedByScim bool `pulumi:"managedByScim"`
-	// The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
+	// Managing Organization ID.
 	ManagingOrganizationId string `pulumi:"managingOrganizationId"`
-	// Full name of the user.
+	// Real Name.
 	RealName string `pulumi:"realName"`
-	// State
+	// State.
 	State string `pulumi:"state"`
-	// Email address.
+	// User Email.
 	UserEmail string `pulumi:"userEmail"`
 }
 
@@ -16743,27 +17711,27 @@ type GetOrganizationUserListUserUserInfoInput interface {
 }
 
 type GetOrganizationUserListUserUserInfoArgs struct {
-	// City
+	// City.
 	City pulumi.StringInput `pulumi:"city"`
-	// Country
+	// Country.
 	Country pulumi.StringInput `pulumi:"country"`
-	// Date and time when the user was created.
+	// Creation time.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Department
+	// Department.
 	Department pulumi.StringInput `pulumi:"department"`
-	// Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
+	// Is Application User.
 	IsApplicationUser pulumi.BoolInput `pulumi:"isApplicationUser"`
-	// Job title
+	// Job Title.
 	JobTitle pulumi.StringInput `pulumi:"jobTitle"`
-	// Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
+	// Managed By Scim.
 	ManagedByScim pulumi.BoolInput `pulumi:"managedByScim"`
-	// The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
+	// Managing Organization ID.
 	ManagingOrganizationId pulumi.StringInput `pulumi:"managingOrganizationId"`
-	// Full name of the user.
+	// Real Name.
 	RealName pulumi.StringInput `pulumi:"realName"`
-	// State
+	// State.
 	State pulumi.StringInput `pulumi:"state"`
-	// Email address.
+	// User Email.
 	UserEmail pulumi.StringInput `pulumi:"userEmail"`
 }
 
@@ -16818,57 +17786,57 @@ func (o GetOrganizationUserListUserUserInfoOutput) ToGetOrganizationUserListUser
 	return o
 }
 
-// City
+// City.
 func (o GetOrganizationUserListUserUserInfoOutput) City() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.City }).(pulumi.StringOutput)
 }
 
-// Country
+// Country.
 func (o GetOrganizationUserListUserUserInfoOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.Country }).(pulumi.StringOutput)
 }
 
-// Date and time when the user was created.
+// Creation time.
 func (o GetOrganizationUserListUserUserInfoOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Department
+// Department.
 func (o GetOrganizationUserListUserUserInfoOutput) Department() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.Department }).(pulumi.StringOutput)
 }
 
-// Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
+// Is Application User.
 func (o GetOrganizationUserListUserUserInfoOutput) IsApplicationUser() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) bool { return v.IsApplicationUser }).(pulumi.BoolOutput)
 }
 
-// Job title
+// Job Title.
 func (o GetOrganizationUserListUserUserInfoOutput) JobTitle() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.JobTitle }).(pulumi.StringOutput)
 }
 
-// Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
+// Managed By Scim.
 func (o GetOrganizationUserListUserUserInfoOutput) ManagedByScim() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) bool { return v.ManagedByScim }).(pulumi.BoolOutput)
 }
 
-// The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
+// Managing Organization ID.
 func (o GetOrganizationUserListUserUserInfoOutput) ManagingOrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.ManagingOrganizationId }).(pulumi.StringOutput)
 }
 
-// Full name of the user.
+// Real Name.
 func (o GetOrganizationUserListUserUserInfoOutput) RealName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.RealName }).(pulumi.StringOutput)
 }
 
-// State
+// State.
 func (o GetOrganizationUserListUserUserInfoOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Email address.
+// User Email.
 func (o GetOrganizationUserListUserUserInfoOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.UserEmail }).(pulumi.StringOutput)
 }
@@ -17435,6 +18403,8 @@ type GetPgPgUserConfig struct {
 	BackupHour *int `pulumi:"backupHour"`
 	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
 	BackupMinute *int `pulumi:"backupMinute"`
+	// Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+	EnableHaReplicaDns *bool `pulumi:"enableHaReplicaDns"`
 	// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -17519,6 +18489,8 @@ type GetPgPgUserConfigArgs struct {
 	BackupHour pulumi.IntPtrInput `pulumi:"backupHour"`
 	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
 	BackupMinute pulumi.IntPtrInput `pulumi:"backupMinute"`
+	// Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+	EnableHaReplicaDns pulumi.BoolPtrInput `pulumi:"enableHaReplicaDns"`
 	// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
 	EnableIpv6 pulumi.BoolPtrInput `pulumi:"enableIpv6"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -17655,6 +18627,11 @@ func (o GetPgPgUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
 // The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
 func (o GetPgPgUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+}
+
+// Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+func (o GetPgPgUserConfigOutput) EnableHaReplicaDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) *bool { return v.EnableHaReplicaDns }).(pulumi.BoolPtrOutput)
 }
 
 // Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
@@ -35331,6 +36308,10 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbComponentInput)(nil)).Elem(), GetM3DbComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbComponentArrayInput)(nil)).Elem(), GetM3DbComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbInput)(nil)).Elem(), GetM3DbM3dbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbArrayInput)(nil)).Elem(), GetM3DbM3dbArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigInput)(nil)).Elem(), GetM3DbM3dbUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigArrayInput)(nil)).Elem(), GetM3DbM3dbUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3DbM3dbUserConfigIpFilterObjectInput)(nil)).Elem(), GetM3DbM3dbUserConfigIpFilterObjectArgs{})
@@ -35499,6 +36480,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationUserGroupListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupListUserGroupInput)(nil)).Elem(), GetOrganizationUserGroupListUserGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupListUserGroupArrayInput)(nil)).Elem(), GetOrganizationUserGroupListUserGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupMemberListMemberInput)(nil)).Elem(), GetOrganizationUserGroupMemberListMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupMemberListMemberArrayInput)(nil)).Elem(), GetOrganizationUserGroupMemberListMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupMemberListMemberUserInfoInput)(nil)).Elem(), GetOrganizationUserGroupMemberListMemberUserInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupMemberListMemberUserInfoArrayInput)(nil)).Elem(), GetOrganizationUserGroupMemberListMemberUserInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupMemberListTimeoutsInput)(nil)).Elem(), GetOrganizationUserGroupMemberListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupMemberListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationUserGroupMemberListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListTimeoutsInput)(nil)).Elem(), GetOrganizationUserListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationUserListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserInput)(nil)).Elem(), GetOrganizationUserListUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserArrayInput)(nil)).Elem(), GetOrganizationUserListUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserUserInfoInput)(nil)).Elem(), GetOrganizationUserListUserUserInfoArgs{})
@@ -35725,6 +36714,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetM3DbComponentOutput{})
+	pulumi.RegisterOutputType(GetM3DbComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbOutput{})
+	pulumi.RegisterOutputType(GetM3DbM3dbArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetM3DbM3dbUserConfigIpFilterObjectOutput{})
@@ -35893,6 +36886,14 @@ func init() {
 	pulumi.RegisterOutputType(GetOrganizationUserGroupListTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserGroupListUserGroupOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserGroupListUserGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupMemberListMemberOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupMemberListMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupMemberListMemberUserInfoOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupMemberListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupMemberListTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserListTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserUserInfoOutput{})

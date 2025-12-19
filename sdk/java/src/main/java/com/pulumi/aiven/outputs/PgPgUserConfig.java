@@ -52,6 +52,11 @@ public final class PgPgUserConfig {
      */
     private @Nullable Integer backupMinute;
     /**
+     * @return Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+     * 
+     */
+    private @Nullable Boolean enableHaReplicaDns;
+    /**
      * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
      * 
      */
@@ -235,6 +240,13 @@ public final class PgPgUserConfig {
      */
     public Optional<Integer> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
+    }
+    /**
+     * @return Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+     * 
+     */
+    public Optional<Boolean> enableHaReplicaDns() {
+        return Optional.ofNullable(this.enableHaReplicaDns);
     }
     /**
      * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
@@ -455,6 +467,7 @@ public final class PgPgUserConfig {
         private @Nullable String adminUsername;
         private @Nullable Integer backupHour;
         private @Nullable Integer backupMinute;
+        private @Nullable Boolean enableHaReplicaDns;
         private @Nullable Boolean enableIpv6;
         private @Nullable List<PgPgUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
@@ -491,6 +504,7 @@ public final class PgPgUserConfig {
     	      this.adminUsername = defaults.adminUsername;
     	      this.backupHour = defaults.backupHour;
     	      this.backupMinute = defaults.backupMinute;
+    	      this.enableHaReplicaDns = defaults.enableHaReplicaDns;
     	      this.enableIpv6 = defaults.enableIpv6;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
@@ -549,6 +563,12 @@ public final class PgPgUserConfig {
         public Builder backupMinute(@Nullable Integer backupMinute) {
 
             this.backupMinute = backupMinute;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableHaReplicaDns(@Nullable Boolean enableHaReplicaDns) {
+
+            this.enableHaReplicaDns = enableHaReplicaDns;
             return this;
         }
         @CustomType.Setter
@@ -735,6 +755,7 @@ public final class PgPgUserConfig {
             _resultValue.adminUsername = adminUsername;
             _resultValue.backupHour = backupHour;
             _resultValue.backupMinute = backupMinute;
+            _resultValue.enableHaReplicaDns = enableHaReplicaDns;
             _resultValue.enableIpv6 = enableIpv6;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;

@@ -106,7 +106,7 @@ namespace Pulumi.Aiven
     public sealed class GetServicePlanListResult
     {
         /// <summary>
-        /// Resource ID, a composite of `Project` and `ServiceType` IDs.
+        /// Resource ID composed as: `project/service_type`.
         /// </summary>
         public readonly string Id;
         /// <summary>

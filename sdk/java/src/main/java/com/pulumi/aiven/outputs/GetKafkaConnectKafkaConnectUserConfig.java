@@ -73,6 +73,11 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
      * 
      */
     private @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+    /**
+     * @return List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    private @Nullable List<String> saslOauthbearerAllowedUrls;
     private @Nullable List<GetKafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders;
     /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
@@ -157,6 +162,13 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     public Optional<GetKafkaConnectKafkaConnectUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    public List<String> saslOauthbearerAllowedUrls() {
+        return this.saslOauthbearerAllowedUrls == null ? List.of() : this.saslOauthbearerAllowedUrls;
+    }
     public List<GetKafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders() {
         return this.secretProviders == null ? List.of() : this.secretProviders;
     }
@@ -193,6 +205,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+        private @Nullable List<String> saslOauthbearerAllowedUrls;
         private @Nullable List<GetKafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders;
         private @Nullable Boolean serviceLog;
         private @Nullable Boolean staticIps;
@@ -208,6 +221,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.publicAccess = defaults.publicAccess;
+    	      this.saslOauthbearerAllowedUrls = defaults.saslOauthbearerAllowedUrls;
     	      this.secretProviders = defaults.secretProviders;
     	      this.serviceLog = defaults.serviceLog;
     	      this.staticIps = defaults.staticIps;
@@ -280,6 +294,15 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder saslOauthbearerAllowedUrls(@Nullable List<String> saslOauthbearerAllowedUrls) {
+
+            this.saslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
+            return this;
+        }
+        public Builder saslOauthbearerAllowedUrls(String... saslOauthbearerAllowedUrls) {
+            return saslOauthbearerAllowedUrls(List.of(saslOauthbearerAllowedUrls));
+        }
+        @CustomType.Setter
         public Builder secretProviders(@Nullable List<GetKafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders) {
 
             this.secretProviders = secretProviders;
@@ -311,6 +334,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
             _resultValue.privateAccess = privateAccess;
             _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.publicAccess = publicAccess;
+            _resultValue.saslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
             _resultValue.secretProviders = secretProviders;
             _resultValue.serviceLog = serviceLog;
             _resultValue.staticIps = staticIps;

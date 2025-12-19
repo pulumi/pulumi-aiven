@@ -107,6 +107,7 @@ from .get_organization_project import *
 from .get_organization_user import *
 from .get_organization_user_group import *
 from .get_organization_user_group_list import *
+from .get_organization_user_group_member_list import *
 from .get_organization_user_list import *
 from .get_organization_vpc import *
 from .get_organizational_unit import *

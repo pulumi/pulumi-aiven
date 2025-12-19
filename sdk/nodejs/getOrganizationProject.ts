@@ -67,7 +67,7 @@ export interface GetOrganizationProjectResult {
      */
     readonly caCert: string;
     /**
-     * Resource ID, a composite of `organizationId` and `projectId` IDs.
+     * Resource ID composed as: `organization_id/project_id`.
      */
     readonly id: string;
     /**

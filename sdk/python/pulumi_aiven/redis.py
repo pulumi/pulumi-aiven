@@ -77,6 +77,9 @@ class RedisArgs:
         if redis is not None:
             pulumi.set(__self__, "redis", redis)
         if redis_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""redis_user_config is deprecated: This property is deprecated.""")
+        if redis_user_config is not None:
             pulumi.set(__self__, "redis_user_config", redis_user_config)
         if service_integrations is not None:
             pulumi.set(__self__, "service_integrations", service_integrations)
@@ -212,6 +215,7 @@ class RedisArgs:
 
     @_builtins.property
     @pulumi.getter(name="redisUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def redis_user_config(self) -> Optional[pulumi.Input['RedisRedisUserConfigArgs']]:
         """
         Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -379,6 +383,9 @@ class _RedisState:
             pulumi.set(__self__, "project_vpc_id", project_vpc_id)
         if redis is not None:
             pulumi.set(__self__, "redis", redis)
+        if redis_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""redis_user_config is deprecated: This property is deprecated.""")
         if redis_user_config is not None:
             pulumi.set(__self__, "redis_user_config", redis_user_config)
         if service_host is not None:
@@ -591,6 +598,7 @@ class _RedisState:
 
     @_builtins.property
     @pulumi.getter(name="redisUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def redis_user_config(self) -> Optional[pulumi.Input['RedisRedisUserConfigArgs']]:
         """
         Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -779,43 +787,7 @@ class Redis(pulumi.CustomResource):
                  termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Creates and manages and [Aiven for Caching](https://aiven.io/docs/products/caching) (formerly known as Aiven for Redis®) service.
-
-        !> **End of life notice**
-        In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-        Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
-        From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-        From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-        You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-        and update your existing `Redis` resources.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        redis1 = aiven.Redis("redis1",
-            project=pr1["project"],
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            service_name="my-redis1",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
-            redis_user_config={
-                "redis_maxmemory_policy": "allkeys-random",
-                "public_access": {
-                    "redis": True,
-                },
-            })
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import aiven:index/redis:Redis redis1 project/service_name
-        ```
-
+        Create a Redis resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
@@ -842,43 +814,7 @@ class Redis(pulumi.CustomResource):
                  args: RedisArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages and [Aiven for Caching](https://aiven.io/docs/products/caching) (formerly known as Aiven for Redis®) service.
-
-        !> **End of life notice**
-        In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-        Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
-        From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-        From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-        You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-        and update your existing `Redis` resources.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        redis1 = aiven.Redis("redis1",
-            project=pr1["project"],
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            service_name="my-redis1",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
-            redis_user_config={
-                "redis_maxmemory_policy": "allkeys-random",
-                "public_access": {
-                    "redis": True,
-                },
-            })
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import aiven:index/redis:Redis redis1 project/service_name
-        ```
-
+        Create a Redis resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RedisArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1189,6 +1125,7 @@ class Redis(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="redisUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def redis_user_config(self) -> pulumi.Output[Optional['outputs.RedisRedisUserConfig']]:
         """
         Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

@@ -11,6 +11,12 @@ import * as utilities from "./utilities";
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import aiven:index/organizationBillingGroup:OrganizationBillingGroup example ORGANIZATION_ID/BILLING_GROUP_ID
+ * ```
  */
 export class OrganizationBillingGroup extends pulumi.CustomResource {
     /**
@@ -45,11 +51,11 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      */
     declare public readonly billingAddressId: pulumi.Output<string>;
     /**
-     * List of billing contact emails.
+     * Aiven contacts these email addresses when there are billing issues or questions.
      */
     declare public readonly billingContactEmails: pulumi.Output<string[]>;
     /**
-     * List of billing contact emails.
+     * PDF invoices are sent to these email addresses.
      */
     declare public readonly billingEmails: pulumi.Output<string[]>;
     /**
@@ -161,11 +167,11 @@ export interface OrganizationBillingGroupState {
      */
     billingAddressId?: pulumi.Input<string>;
     /**
-     * List of billing contact emails.
+     * Aiven contacts these email addresses when there are billing issues or questions.
      */
     billingContactEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of billing contact emails.
+     * PDF invoices are sent to these email addresses.
      */
     billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -212,11 +218,11 @@ export interface OrganizationBillingGroupArgs {
      */
     billingAddressId: pulumi.Input<string>;
     /**
-     * List of billing contact emails.
+     * Aiven contacts these email addresses when there are billing issues or questions.
      */
     billingContactEmails: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of billing contact emails.
+     * PDF invoices are sent to these email addresses.
      */
     billingEmails: pulumi.Input<pulumi.Input<string>[]>;
     /**

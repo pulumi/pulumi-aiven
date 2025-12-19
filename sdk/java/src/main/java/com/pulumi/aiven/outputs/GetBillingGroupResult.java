@@ -3,18 +3,25 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetBillingGroupTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBillingGroupResult {
     /**
-     * @return Account ID.
+     * @return Account ID. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
+     * 
+     * @deprecated
+     * Use `parentId` instead. This field will be removed in the next major release.
      * 
      */
+    @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
     private String accountId;
     /**
      * @return Address lines 1 and 2. For example, street, PO box, or building.
@@ -22,17 +29,22 @@ public final class GetBillingGroupResult {
      */
     private List<String> addressLines;
     /**
-     * @return Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+     * @return List of billing groups contact email addresses.
+     * 
+     */
+    private List<String> billingContactEmails;
+    /**
+     * @return Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     private String billingCurrency;
     /**
-     * @return Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+     * @return List of project billing email addresses.
      * 
      */
     private List<String> billingEmails;
     /**
-     * @return Additional information to include on your invoice (for example, a reference number).
+     * @return Extra text to be included in all project invoices, e.g. purchase order or cost center number.
      * 
      */
     private String billingExtraText;
@@ -47,61 +59,66 @@ public final class GetBillingGroupResult {
      */
     private String cardId;
     /**
-     * @return City, district, suburb, town, or village.
+     * @return Address city.
      * 
      */
     private String city;
     /**
-     * @return Your company name.
+     * @return Name of a company.
      * 
      */
     private String company;
     /**
-     * @return ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+     * @return Billing group ID.
      * 
      */
     private String copyFromBillingGroup;
     /**
-     * @return Two-letter country code.
+     * @return Two letter country code for billing country.
      * 
      */
     private String countryCode;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID, equal to `billingGroupId`.
      * 
      */
     private String id;
     /**
-     * @return Name of the billing group.
+     * @return Billing group name.
      * 
      */
     private String name;
     /**
-     * @return Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization by using its ID.
      * 
      */
     private String parentId;
     /**
-     * @return Address state.
+     * @return Address state or province.
      * 
      */
     private String state;
+    private @Nullable GetBillingGroupTimeouts timeouts;
     /**
-     * @return The VAT identification number for your company.
+     * @return EU VAT Identification Number.
      * 
      */
     private String vatId;
     /**
-     * @return Zip or postal code.
+     * @return Address zip code.
      * 
      */
     private String zipCode;
 
     private GetBillingGroupResult() {}
     /**
-     * @return Account ID.
+     * @return Account ID. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
+     * 
+     * @deprecated
+     * Use `parentId` instead. This field will be removed in the next major release.
      * 
      */
+    @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
     public String accountId() {
         return this.accountId;
     }
@@ -113,21 +130,28 @@ public final class GetBillingGroupResult {
         return this.addressLines;
     }
     /**
-     * @return Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+     * @return List of billing groups contact email addresses.
+     * 
+     */
+    public List<String> billingContactEmails() {
+        return this.billingContactEmails;
+    }
+    /**
+     * @return Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     public String billingCurrency() {
         return this.billingCurrency;
     }
     /**
-     * @return Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+     * @return List of project billing email addresses.
      * 
      */
     public List<String> billingEmails() {
         return this.billingEmails;
     }
     /**
-     * @return Additional information to include on your invoice (for example, a reference number).
+     * @return Extra text to be included in all project invoices, e.g. purchase order or cost center number.
      * 
      */
     public String billingExtraText() {
@@ -148,70 +172,73 @@ public final class GetBillingGroupResult {
         return this.cardId;
     }
     /**
-     * @return City, district, suburb, town, or village.
+     * @return Address city.
      * 
      */
     public String city() {
         return this.city;
     }
     /**
-     * @return Your company name.
+     * @return Name of a company.
      * 
      */
     public String company() {
         return this.company;
     }
     /**
-     * @return ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+     * @return Billing group ID.
      * 
      */
     public String copyFromBillingGroup() {
         return this.copyFromBillingGroup;
     }
     /**
-     * @return Two-letter country code.
+     * @return Two letter country code for billing country.
      * 
      */
     public String countryCode() {
         return this.countryCode;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID, equal to `billingGroupId`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Name of the billing group.
+     * @return Billing group name.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization by using its ID.
      * 
      */
     public String parentId() {
         return this.parentId;
     }
     /**
-     * @return Address state.
+     * @return Address state or province.
      * 
      */
     public String state() {
         return this.state;
     }
+    public Optional<GetBillingGroupTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return The VAT identification number for your company.
+     * @return EU VAT Identification Number.
      * 
      */
     public String vatId() {
         return this.vatId;
     }
     /**
-     * @return Zip or postal code.
+     * @return Address zip code.
      * 
      */
     public String zipCode() {
@@ -229,6 +256,7 @@ public final class GetBillingGroupResult {
     public static final class Builder {
         private String accountId;
         private List<String> addressLines;
+        private List<String> billingContactEmails;
         private String billingCurrency;
         private List<String> billingEmails;
         private String billingExtraText;
@@ -242,6 +270,7 @@ public final class GetBillingGroupResult {
         private String name;
         private String parentId;
         private String state;
+        private @Nullable GetBillingGroupTimeouts timeouts;
         private String vatId;
         private String zipCode;
         public Builder() {}
@@ -249,6 +278,7 @@ public final class GetBillingGroupResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.addressLines = defaults.addressLines;
+    	      this.billingContactEmails = defaults.billingContactEmails;
     	      this.billingCurrency = defaults.billingCurrency;
     	      this.billingEmails = defaults.billingEmails;
     	      this.billingExtraText = defaults.billingExtraText;
@@ -262,6 +292,7 @@ public final class GetBillingGroupResult {
     	      this.name = defaults.name;
     	      this.parentId = defaults.parentId;
     	      this.state = defaults.state;
+    	      this.timeouts = defaults.timeouts;
     	      this.vatId = defaults.vatId;
     	      this.zipCode = defaults.zipCode;
         }
@@ -284,6 +315,17 @@ public final class GetBillingGroupResult {
         }
         public Builder addressLines(String... addressLines) {
             return addressLines(List.of(addressLines));
+        }
+        @CustomType.Setter
+        public Builder billingContactEmails(List<String> billingContactEmails) {
+            if (billingContactEmails == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "billingContactEmails");
+            }
+            this.billingContactEmails = billingContactEmails;
+            return this;
+        }
+        public Builder billingContactEmails(String... billingContactEmails) {
+            return billingContactEmails(List.of(billingContactEmails));
         }
         @CustomType.Setter
         public Builder billingCurrency(String billingCurrency) {
@@ -393,6 +435,12 @@ public final class GetBillingGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetBillingGroupTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vatId(String vatId) {
             if (vatId == null) {
               throw new MissingRequiredPropertyException("GetBillingGroupResult", "vatId");
@@ -412,6 +460,7 @@ public final class GetBillingGroupResult {
             final var _resultValue = new GetBillingGroupResult();
             _resultValue.accountId = accountId;
             _resultValue.addressLines = addressLines;
+            _resultValue.billingContactEmails = billingContactEmails;
             _resultValue.billingCurrency = billingCurrency;
             _resultValue.billingEmails = billingEmails;
             _resultValue.billingExtraText = billingExtraText;
@@ -425,6 +474,7 @@ public final class GetBillingGroupResult {
             _resultValue.name = name;
             _resultValue.parentId = parentId;
             _resultValue.state = state;
+            _resultValue.timeouts = timeouts;
             _resultValue.vatId = vatId;
             _resultValue.zipCode = zipCode;
             return _resultValue;

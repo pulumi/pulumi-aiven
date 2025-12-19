@@ -43,7 +43,7 @@ export interface GetServicePlanListArgs {
  */
 export interface GetServicePlanListResult {
     /**
-     * Resource ID, a composite of `project` and `serviceType` IDs.
+     * Resource ID composed as: `project/service_type`.
      */
     readonly id: string;
     /**

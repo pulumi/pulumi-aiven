@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.BillingGroupArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.BillingGroupState;
+import com.pulumi.aiven.outputs.BillingGroupTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -64,29 +65,29 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
+ * $ pulumi import aiven:index/billingGroup:BillingGroup example BILLING_GROUP_ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/billingGroup:BillingGroup")
 public class BillingGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Account ID.
+     * Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      * 
      * @deprecated
-     * Use parentId instead. This field will be removed in the next major release.
+     * Use `parentId` instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
+    @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return Account ID.
+     * @return Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * Address lines 1 and 2. For example, street, PO box, or building.
@@ -103,182 +104,216 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.addressLines);
     }
     /**
-     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+     * List of billing groups contact email addresses.
+     * 
+     */
+    @Export(name="billingContactEmails", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> billingContactEmails;
+
+    /**
+     * @return List of billing groups contact email addresses.
+     * 
+     */
+    public Output<Optional<List<String>>> billingContactEmails() {
+        return Codegen.optional(this.billingContactEmails);
+    }
+    /**
+     * Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     @Export(name="billingCurrency", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> billingCurrency;
+    private Output<String> billingCurrency;
 
     /**
-     * @return Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+     * @return Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
-    public Output<Optional<String>> billingCurrency() {
-        return Codegen.optional(this.billingCurrency);
+    public Output<String> billingCurrency() {
+        return this.billingCurrency;
     }
     /**
-     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+     * List of project billing email addresses.
      * 
      */
     @Export(name="billingEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> billingEmails;
 
     /**
-     * @return Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+     * @return List of project billing email addresses.
      * 
      */
     public Output<Optional<List<String>>> billingEmails() {
         return Codegen.optional(this.billingEmails);
     }
     /**
-     * Additional information to include on your invoice (for example, a reference number).
+     * Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
      * 
      */
     @Export(name="billingExtraText", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingExtraText;
 
     /**
-     * @return Additional information to include on your invoice (for example, a reference number).
+     * @return Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
      * 
      */
     public Output<Optional<String>> billingExtraText() {
         return Codegen.optional(this.billingExtraText);
     }
     /**
-     * Credit card ID.
+     * The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    @Export(name="billingGroupId", refs={String.class}, tree="[0]")
+    private Output<String> billingGroupId;
+
+    /**
+     * @return The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    public Output<String> billingGroupId() {
+        return this.billingGroupId;
+    }
+    /**
+     * Credit card ID. Maximum length: `64`.
      * 
      */
     @Export(name="cardId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cardId;
 
     /**
-     * @return Credit card ID.
+     * @return Credit card ID. Maximum length: `64`.
      * 
      */
     public Output<Optional<String>> cardId() {
         return Codegen.optional(this.cardId);
     }
     /**
-     * City, district, suburb, town, or village.
+     * Address city. Maximum length: `512`.
      * 
      */
     @Export(name="city", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> city;
+    private Output<String> city;
 
     /**
-     * @return City, district, suburb, town, or village.
+     * @return Address city. Maximum length: `512`.
      * 
      */
-    public Output<Optional<String>> city() {
-        return Codegen.optional(this.city);
+    public Output<String> city() {
+        return this.city;
     }
     /**
-     * Your company name.
+     * Name of a company. Maximum length: `128`.
      * 
      */
     @Export(name="company", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> company;
+    private Output<String> company;
 
     /**
-     * @return Your company name.
+     * @return Name of a company. Maximum length: `128`.
      * 
      */
-    public Output<Optional<String>> company() {
-        return Codegen.optional(this.company);
+    public Output<String> company() {
+        return this.company;
     }
     /**
-     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+     * Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="copyFromBillingGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> copyFromBillingGroup;
 
     /**
-     * @return ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+     * @return Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> copyFromBillingGroup() {
         return Codegen.optional(this.copyFromBillingGroup);
     }
     /**
-     * Two-letter country code.
+     * Two letter country code for billing country. Maximum length: `2`.
      * 
      */
     @Export(name="countryCode", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> countryCode;
+    private Output<String> countryCode;
 
     /**
-     * @return Two-letter country code.
+     * @return Two letter country code for billing country. Maximum length: `2`.
      * 
      */
-    public Output<Optional<String>> countryCode() {
-        return Codegen.optional(this.countryCode);
+    public Output<String> countryCode() {
+        return this.countryCode;
     }
     /**
-     * Name of the billing group.
+     * Billing group name. Maximum length: `128`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the billing group.
+     * @return Billing group name. Maximum length: `128`.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID.
      * 
      */
     @Export(name="parentId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> parentId;
+    private Output<String> parentId;
 
     /**
-     * @return Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization by using its ID.
      * 
      */
-    public Output<Optional<String>> parentId() {
-        return Codegen.optional(this.parentId);
+    public Output<String> parentId() {
+        return this.parentId;
     }
     /**
-     * Address state.
+     * Address state or province. Maximum length: `128`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
-     * @return Address state.
+     * @return Address state or province. Maximum length: `128`.
      * 
      */
     public Output<Optional<String>> state() {
         return Codegen.optional(this.state);
     }
+    @Export(name="timeouts", refs={BillingGroupTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ BillingGroupTimeouts> timeouts;
+
+    public Output<Optional<BillingGroupTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * The VAT identification number for your company.
+     * EU VAT Identification Number. Maximum length: `64`.
      * 
      */
     @Export(name="vatId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> vatId;
+    private Output<String> vatId;
 
     /**
-     * @return The VAT identification number for your company.
+     * @return EU VAT Identification Number. Maximum length: `64`.
      * 
      */
-    public Output<Optional<String>> vatId() {
-        return Codegen.optional(this.vatId);
+    public Output<String> vatId() {
+        return this.vatId;
     }
     /**
-     * Zip or postal code.
+     * Address zip code. Maximum length: `32`.
      * 
      */
     @Export(name="zipCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zipCode;
 
     /**
-     * @return Zip or postal code.
+     * @return Address zip code. Maximum length: `32`.
      * 
      */
     public Output<Optional<String>> zipCode() {

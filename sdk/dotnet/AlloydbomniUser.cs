@@ -44,10 +44,23 @@ namespace Pulumi.Aiven
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the service user.
+        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// </summary>
+        [Output("passwordWo")]
+        public Output<string?> PasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// </summary>
+        [Output("passwordWoVersion")]
+        public Output<int?> PasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// Allows replication. For the default avnadmin user this attribute is required and is always `True`.
@@ -107,6 +120,7 @@ namespace Pulumi.Aiven
                     "accessCert",
                     "accessKey",
                     "password",
+                    "passwordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -135,7 +149,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the service user.
+        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
         /// </summary>
         public Input<string>? Password
         {
@@ -146,6 +160,29 @@ namespace Pulumi.Aiven
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// Allows replication. For the default avnadmin user this attribute is required and is always `True`.
@@ -215,7 +252,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the service user.
+        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
         /// </summary>
         public Input<string>? Password
         {
@@ -226,6 +263,29 @@ namespace Pulumi.Aiven
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// Allows replication. For the default avnadmin user this attribute is required and is always `True`.

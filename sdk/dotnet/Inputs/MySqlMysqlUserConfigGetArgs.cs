@@ -41,13 +41,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AdminUsername { get; set; }
 
         /// <summary>
-        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         /// </summary>
         [Input("backupHour")]
         public Input<int>? BackupHour { get; set; }
 
         /// <summary>
-        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         /// </summary>
         [Input("backupMinute")]
         public Input<int>? BackupMinute { get; set; }

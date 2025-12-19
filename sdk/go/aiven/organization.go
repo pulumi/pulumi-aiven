@@ -42,7 +42,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID # (e.g. a1234567890 or org123456)
+// $ pulumi import aiven:index/organization:Organization example ORGANIZATION_ID
 // ```
 type Organization struct {
 	pulumi.CustomResourceState
@@ -51,7 +51,7 @@ type Organization struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Name of the organization. Maximum length: `128`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Tenant identifier.
+	// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
 	//
 	// Deprecated: This field is deprecated and will be removed in the next major release.
 	TenantId pulumi.StringOutput           `pulumi:"tenantId"`
@@ -94,7 +94,7 @@ type organizationState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Name of the organization. Maximum length: `128`.
 	Name *string `pulumi:"name"`
-	// Tenant identifier.
+	// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
 	//
 	// Deprecated: This field is deprecated and will be removed in the next major release.
 	TenantId *string               `pulumi:"tenantId"`
@@ -108,7 +108,7 @@ type OrganizationState struct {
 	CreateTime pulumi.StringPtrInput
 	// Name of the organization. Maximum length: `128`.
 	Name pulumi.StringPtrInput
-	// Tenant identifier.
+	// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
 	//
 	// Deprecated: This field is deprecated and will be removed in the next major release.
 	TenantId pulumi.StringPtrInput
@@ -231,7 +231,7 @@ func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Tenant identifier.
+// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
 //
 // Deprecated: This field is deprecated and will be removed in the next major release.
 func (o OrganizationOutput) TenantId() pulumi.StringOutput {

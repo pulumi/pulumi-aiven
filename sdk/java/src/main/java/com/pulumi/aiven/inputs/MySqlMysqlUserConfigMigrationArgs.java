@@ -34,6 +34,21 @@ public final class MySqlMysqlUserConfigMigrationArgs extends com.pulumi.resource
     }
 
     /**
+     * Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+     * 
+     */
+    @Import(name="dumpTool")
+    private @Nullable Output<String> dumpTool;
+
+    /**
+     * @return Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+     * 
+     */
+    public Optional<Output<String>> dumpTool() {
+        return Optional.ofNullable(this.dumpTool);
+    }
+
+    /**
      * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      * 
      */
@@ -157,6 +172,7 @@ public final class MySqlMysqlUserConfigMigrationArgs extends com.pulumi.resource
 
     private MySqlMysqlUserConfigMigrationArgs(MySqlMysqlUserConfigMigrationArgs $) {
         this.dbname = $.dbname;
+        this.dumpTool = $.dumpTool;
         this.host = $.host;
         this.ignoreDbs = $.ignoreDbs;
         this.ignoreRoles = $.ignoreRoles;
@@ -204,6 +220,27 @@ public final class MySqlMysqlUserConfigMigrationArgs extends com.pulumi.resource
          */
         public Builder dbname(String dbname) {
             return dbname(Output.of(dbname));
+        }
+
+        /**
+         * @param dumpTool Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dumpTool(@Nullable Output<String> dumpTool) {
+            $.dumpTool = dumpTool;
+            return this;
+        }
+
+        /**
+         * @param dumpTool Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dumpTool(String dumpTool) {
+            return dumpTool(Output.of(dumpTool));
         }
 
         /**

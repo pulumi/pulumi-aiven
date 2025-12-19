@@ -33,7 +33,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID # (e.g. a1234567890 or org123456)
+    /// $ pulumi import aiven:index/organization:Organization example ORGANIZATION_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organization:Organization")]
@@ -52,7 +52,7 @@ namespace Pulumi.Aiven
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Tenant identifier.
+        /// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Aiven
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Tenant identifier.
+        /// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

@@ -47,7 +47,7 @@ public final class GetServicePlanResult {
      */
     private Integer diskSpaceStepMb;
     /**
-     * @return Resource ID, a composite of `project`, `serviceType`, `servicePlan` and `cloudName` IDs.
+     * @return Resource ID composed as: `project/service_type/service_plan/cloud_name`.
      * 
      */
     private String id;
@@ -132,7 +132,7 @@ public final class GetServicePlanResult {
         return this.diskSpaceStepMb;
     }
     /**
-     * @return Resource ID, a composite of `project`, `serviceType`, `servicePlan` and `cloudName` IDs.
+     * @return Resource ID composed as: `project/service_type/service_plan/cloud_name`.
      * 
      */
     public String id() {

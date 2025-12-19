@@ -69,73 +69,46 @@ class GetRedisUserResult:
     @_builtins.property
     @pulumi.getter
     def password(self) -> _builtins.str:
-        """
-        The password of the Redis User.
-        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
-        """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @_builtins.property
     @pulumi.getter(name="redisAclCategories")
     def redis_acl_categories(self) -> Sequence[_builtins.str]:
-        """
-        Defines command category rules. The field is required with `redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "redis_acl_categories")
 
     @_builtins.property
     @pulumi.getter(name="redisAclChannels")
     def redis_acl_channels(self) -> Sequence[_builtins.str]:
-        """
-        Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "redis_acl_channels")
 
     @_builtins.property
     @pulumi.getter(name="redisAclCommands")
     def redis_acl_commands(self) -> Sequence[_builtins.str]:
-        """
-        Defines rules for individual commands. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "redis_acl_commands")
 
     @_builtins.property
     @pulumi.getter(name="redisAclKeys")
     def redis_acl_keys(self) -> Sequence[_builtins.str]:
-        """
-        Defines key access rules. The field is required with `redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "redis_acl_keys")
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
-        """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def username(self) -> _builtins.str:
-        """
-        The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "username")
 
 
@@ -162,31 +135,7 @@ def get_redis_user(project: Optional[_builtins.str] = None,
                    username: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRedisUserResult:
     """
-    The Redis User data source provides information about the existing Aiven Redis User.
-
-    !> **End of life notice**
-    In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-    Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
-    From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-    From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-    You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-    and update your existing `Redis` resources.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    user = aiven.get_redis_user(service_name="my-service",
-        project="my-project",
-        username="user1")
-    ```
-
-
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -211,31 +160,7 @@ def get_redis_user_output(project: Optional[pulumi.Input[_builtins.str]] = None,
                           username: Optional[pulumi.Input[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRedisUserResult]:
     """
-    The Redis User data source provides information about the existing Aiven Redis User.
-
-    !> **End of life notice**
-    In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-    Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
-    From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-    From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-    You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-    and update your existing `Redis` resources.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    user = aiven.get_redis_user(service_name="my-service",
-        project="my-project",
-        username="user1")
-    ```
-
-
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['project'] = project

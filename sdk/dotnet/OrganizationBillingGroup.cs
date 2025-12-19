@@ -14,6 +14,12 @@ namespace Pulumi.Aiven
     /// 
     /// **This resource is in the beta stage and may change without notice.** Set
     /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import aiven:index/organizationBillingGroup:OrganizationBillingGroup example ORGANIZATION_ID/BILLING_GROUP_ID
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organizationBillingGroup:OrganizationBillingGroup")]
     public partial class OrganizationBillingGroup : global::Pulumi.CustomResource
@@ -25,13 +31,13 @@ namespace Pulumi.Aiven
         public Output<string> BillingAddressId { get; private set; } = null!;
 
         /// <summary>
-        /// List of billing contact emails.
+        /// Aiven contacts these email addresses when there are billing issues or questions.
         /// </summary>
         [Output("billingContactEmails")]
         public Output<ImmutableArray<string>> BillingContactEmails { get; private set; } = null!;
 
         /// <summary>
-        /// List of billing contact emails.
+        /// PDF invoices are sent to these email addresses.
         /// </summary>
         [Output("billingEmails")]
         public Output<ImmutableArray<string>> BillingEmails { get; private set; } = null!;
@@ -143,7 +149,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _billingContactEmails;
 
         /// <summary>
-        /// List of billing contact emails.
+        /// Aiven contacts these email addresses when there are billing issues or questions.
         /// </summary>
         public InputList<string> BillingContactEmails
         {
@@ -155,7 +161,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _billingEmails;
 
         /// <summary>
-        /// List of billing contact emails.
+        /// PDF invoices are sent to these email addresses.
         /// </summary>
         public InputList<string> BillingEmails
         {
@@ -226,7 +232,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _billingContactEmails;
 
         /// <summary>
-        /// List of billing contact emails.
+        /// Aiven contacts these email addresses when there are billing issues or questions.
         /// </summary>
         public InputList<string> BillingContactEmails
         {
@@ -238,7 +244,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _billingEmails;
 
         /// <summary>
-        /// List of billing contact emails.
+        /// PDF invoices are sent to these email addresses.
         /// </summary>
         public InputList<string> BillingEmails
         {

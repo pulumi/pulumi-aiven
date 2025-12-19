@@ -93,6 +93,9 @@ namespace Pulumi.Aiven
         [Input("billingGroupId", required: true)]
         public string BillingGroupId { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetBillingGroupTimeoutsArgs? Timeouts { get; set; }
+
         public GetBillingGroupArgs()
         {
         }
@@ -107,6 +110,9 @@ namespace Pulumi.Aiven
         [Input("billingGroupId", required: true)]
         public Input<string> BillingGroupId { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GetBillingGroupTimeoutsInputArgs>? Timeouts { get; set; }
+
         public GetBillingGroupInvokeArgs()
         {
         }
@@ -118,7 +124,7 @@ namespace Pulumi.Aiven
     public sealed class GetBillingGroupResult
     {
         /// <summary>
-        /// Account ID.
+        /// Account ID. **Deprecated**: Use `ParentId` instead. This field will be removed in the next major release.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -126,15 +132,19 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<string> AddressLines;
         /// <summary>
-        /// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        /// List of billing groups contact email addresses.
+        /// </summary>
+        public readonly ImmutableArray<string> BillingContactEmails;
+        /// <summary>
+        /// Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         /// </summary>
         public readonly string BillingCurrency;
         /// <summary>
-        /// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        /// List of project billing email addresses.
         /// </summary>
         public readonly ImmutableArray<string> BillingEmails;
         /// <summary>
-        /// Additional information to include on your invoice (for example, a reference number).
+        /// Extra text to be included in all project invoices, e.g. purchase order or cost center number.
         /// </summary>
         public readonly string BillingExtraText;
         /// <summary>
@@ -146,43 +156,44 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CardId;
         /// <summary>
-        /// City, district, suburb, town, or village.
+        /// Address city.
         /// </summary>
         public readonly string City;
         /// <summary>
-        /// Your company name.
+        /// Name of a company.
         /// </summary>
         public readonly string Company;
         /// <summary>
-        /// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        /// Billing group ID.
         /// </summary>
         public readonly string CopyFromBillingGroup;
         /// <summary>
-        /// Two-letter country code.
+        /// Two letter country code for billing country.
         /// </summary>
         public readonly string CountryCode;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID, equal to `BillingGroupId`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Name of the billing group.
+        /// Billing group name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a billing group to an existing organization by using its ID.
         /// </summary>
         public readonly string ParentId;
         /// <summary>
-        /// Address state.
+        /// Address state or province.
         /// </summary>
         public readonly string State;
+        public readonly Outputs.GetBillingGroupTimeoutsResult? Timeouts;
         /// <summary>
-        /// The VAT identification number for your company.
+        /// EU VAT Identification Number.
         /// </summary>
         public readonly string VatId;
         /// <summary>
-        /// Zip or postal code.
+        /// Address zip code.
         /// </summary>
         public readonly string ZipCode;
 
@@ -191,6 +202,8 @@ namespace Pulumi.Aiven
             string accountId,
 
             ImmutableArray<string> addressLines,
+
+            ImmutableArray<string> billingContactEmails,
 
             string billingCurrency,
 
@@ -218,12 +231,15 @@ namespace Pulumi.Aiven
 
             string state,
 
+            Outputs.GetBillingGroupTimeoutsResult? timeouts,
+
             string vatId,
 
             string zipCode)
         {
             AccountId = accountId;
             AddressLines = addressLines;
+            BillingContactEmails = billingContactEmails;
             BillingCurrency = billingCurrency;
             BillingEmails = billingEmails;
             BillingExtraText = billingExtraText;
@@ -237,6 +253,7 @@ namespace Pulumi.Aiven
             Name = name;
             ParentId = parentId;
             State = state;
+            Timeouts = timeouts;
             VatId = vatId;
             ZipCode = zipCode;
         }

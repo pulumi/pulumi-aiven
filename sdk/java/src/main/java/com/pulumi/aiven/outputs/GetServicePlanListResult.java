@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServicePlanListResult {
     /**
-     * @return Resource ID, a composite of `project` and `serviceType` IDs.
+     * @return Resource ID composed as: `project/service_type`.
      * 
      */
     private String id;
@@ -39,7 +39,7 @@ public final class GetServicePlanListResult {
 
     private GetServicePlanListResult() {}
     /**
-     * @return Resource ID, a composite of `project` and `serviceType` IDs.
+     * @return Resource ID composed as: `project/service_type`.
      * 
      */
     public String id() {

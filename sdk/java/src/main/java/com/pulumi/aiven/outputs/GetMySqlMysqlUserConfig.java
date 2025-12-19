@@ -37,12 +37,12 @@ public final class GetMySqlMysqlUserConfig {
      */
     private @Nullable String adminUsername;
     /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      * 
      */
     private @Nullable Integer backupHour;
     /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      * 
      */
     private @Nullable Integer backupMinute;
@@ -154,14 +154,14 @@ public final class GetMySqlMysqlUserConfig {
         return Optional.ofNullable(this.adminUsername);
     }
     /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      * 
      */
     public Optional<Integer> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
     /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      * 
      */
     public Optional<Integer> backupMinute() {

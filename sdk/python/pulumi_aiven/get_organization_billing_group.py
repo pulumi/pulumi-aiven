@@ -81,7 +81,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter(name="billingContactEmails")
     def billing_contact_emails(self) -> Sequence[_builtins.str]:
         """
-        List of billing contact emails.
+        Aiven contacts these email addresses when there are billing issues or questions.
         """
         return pulumi.get(self, "billing_contact_emails")
 
@@ -89,7 +89,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Sequence[_builtins.str]:
         """
-        List of billing contact emails.
+        PDF invoices are sent to these email addresses.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -129,7 +129,7 @@ class GetOrganizationBillingGroupResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Resource ID, a composite of `organization_id` and `billing_group_id` IDs.
+        Resource ID composed as: `organization_id/billing_group_id`.
         """
         return pulumi.get(self, "id")
 

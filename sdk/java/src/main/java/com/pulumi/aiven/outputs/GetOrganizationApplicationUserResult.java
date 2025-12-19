@@ -20,18 +20,18 @@ public final class GetOrganizationApplicationUserResult {
      */
     private String email;
     /**
-     * @return Resource ID, a composite of `organizationId` and `userId` IDs.
+     * @return Resource ID composed as: `organization_id/user_id`.
      * 
      */
     private String id;
     /**
-     * @return Alters super admin state of the organization application user. The default value is `false`.
+     * @return Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      * @deprecated
-     * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
+     * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      */
-    @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource. */
+    @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource. */
     private Boolean isSuperAdmin;
     /**
      * @return Name.
@@ -59,20 +59,20 @@ public final class GetOrganizationApplicationUserResult {
         return this.email;
     }
     /**
-     * @return Resource ID, a composite of `organizationId` and `userId` IDs.
+     * @return Resource ID composed as: `organization_id/user_id`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Alters super admin state of the organization application user. The default value is `false`.
+     * @return Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      * @deprecated
-     * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
+     * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      */
-    @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource. */
+    @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource. */
     public Boolean isSuperAdmin() {
         return this.isSuperAdmin;
     }

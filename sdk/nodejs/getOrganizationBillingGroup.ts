@@ -45,11 +45,11 @@ export interface GetOrganizationBillingGroupResult {
      */
     readonly billingAddressId: string;
     /**
-     * List of billing contact emails.
+     * Aiven contacts these email addresses when there are billing issues or questions.
      */
     readonly billingContactEmails: string[];
     /**
-     * List of billing contact emails.
+     * PDF invoices are sent to these email addresses.
      */
     readonly billingEmails: string[];
     /**
@@ -69,7 +69,7 @@ export interface GetOrganizationBillingGroupResult {
      */
     readonly customInvoiceText: string;
     /**
-     * Resource ID, a composite of `organizationId` and `billingGroupId` IDs.
+     * Resource ID composed as: `organization_id/billing_group_id`.
      */
     readonly id: string;
     /**

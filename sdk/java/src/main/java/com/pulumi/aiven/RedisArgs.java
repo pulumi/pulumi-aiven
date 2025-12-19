@@ -169,14 +169,22 @@ public final class RedisArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Redis user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="redisUserConfig")
     private @Nullable Output<RedisRedisUserConfigArgs> redisUserConfig;
 
     /**
      * @return Redis user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<RedisRedisUserConfigArgs>> redisUserConfig() {
         return Optional.ofNullable(this.redisUserConfig);
     }
@@ -512,7 +520,11 @@ public final class RedisArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder redisUserConfig(@Nullable Output<RedisRedisUserConfigArgs> redisUserConfig) {
             $.redisUserConfig = redisUserConfig;
             return this;
@@ -523,7 +535,11 @@ public final class RedisArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder redisUserConfig(RedisRedisUserConfigArgs redisUserConfig) {
             return redisUserConfig(Output.of(redisUserConfig));
         }

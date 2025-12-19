@@ -35,7 +35,7 @@ type GetServicePlanListArgs struct {
 
 // A collection of values returned by getServicePlanList.
 type GetServicePlanListResult struct {
-	// Resource ID, a composite of `project` and `serviceType` IDs.
+	// Resource ID composed as: `project/service_type`.
 	Id string `pulumi:"id"`
 	// Project name.
 	Project string `pulumi:"project"`
@@ -85,7 +85,7 @@ func (o GetServicePlanListResultOutput) ToGetServicePlanListResultOutputWithCont
 	return o
 }
 
-// Resource ID, a composite of `project` and `serviceType` IDs.
+// Resource ID composed as: `project/service_type`.
 func (o GetServicePlanListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePlanListResult) string { return v.Id }).(pulumi.StringOutput)
 }

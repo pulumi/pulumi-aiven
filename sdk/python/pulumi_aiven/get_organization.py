@@ -77,7 +77,7 @@ class GetOrganizationResult:
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def tenant_id(self) -> _builtins.str:
         """
-        Tenant identifier.
+        Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
         """
         return pulumi.get(self, "tenant_id")
 

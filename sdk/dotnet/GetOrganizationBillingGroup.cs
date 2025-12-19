@@ -95,11 +95,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string BillingAddressId;
         /// <summary>
-        /// List of billing contact emails.
+        /// Aiven contacts these email addresses when there are billing issues or questions.
         /// </summary>
         public readonly ImmutableArray<string> BillingContactEmails;
         /// <summary>
-        /// List of billing contact emails.
+        /// PDF invoices are sent to these email addresses.
         /// </summary>
         public readonly ImmutableArray<string> BillingEmails;
         /// <summary>
@@ -119,7 +119,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CustomInvoiceText;
         /// <summary>
-        /// Resource ID, a composite of `OrganizationId` and `BillingGroupId` IDs.
+        /// Resource ID composed as: `organization_id/billing_group_id`.
         /// </summary>
         public readonly string Id;
         /// <summary>

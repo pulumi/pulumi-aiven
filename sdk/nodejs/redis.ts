@@ -6,45 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Creates and manages and [Aiven for Caching](https://aiven.io/docs/products/caching) (formerly known as Aiven for Redis®) service.
- *
- * !> **End of life notice**
- * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
- * Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
- * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
- * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
- * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
- * and update your existing `aiven.Redis` resources.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const redis1 = new aiven.Redis("redis1", {
- *     project: pr1.project,
- *     cloudName: "google-europe-west1",
- *     plan: "business-4",
- *     serviceName: "my-redis1",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- *     redisUserConfig: {
- *         redisMaxmemoryPolicy: "allkeys-random",
- *         publicAccess: {
- *             redis: true,
- *         },
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import aiven:index/redis:Redis redis1 project/service_name
- * ```
- */
 export class Redis extends pulumi.CustomResource {
     /**
      * Get an existing Redis resource's state with the given name, ID, and optional extra
@@ -137,6 +98,8 @@ export class Redis extends pulumi.CustomResource {
     declare public readonly redis: pulumi.Output<outputs.RedisRedis>;
     /**
      * Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     declare public readonly redisUserConfig: pulumi.Output<outputs.RedisRedisUserConfig | undefined>;
     /**
@@ -347,6 +310,8 @@ export interface RedisState {
     redis?: pulumi.Input<inputs.RedisRedis>;
     /**
      * Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     redisUserConfig?: pulumi.Input<inputs.RedisRedisUserConfig>;
     /**
@@ -444,6 +409,8 @@ export interface RedisArgs {
     redis?: pulumi.Input<inputs.RedisRedis>;
     /**
      * Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     redisUserConfig?: pulumi.Input<inputs.RedisRedisUserConfig>;
     /**

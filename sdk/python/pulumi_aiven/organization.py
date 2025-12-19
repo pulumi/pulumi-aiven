@@ -66,7 +66,7 @@ class _OrganizationState:
         Input properties used for looking up and filtering Organization resources.
         :param pulumi.Input[_builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
         :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] tenant_id: Tenant identifier.
+        :param pulumi.Input[_builtins.str] tenant_id: Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
         :param pulumi.Input[_builtins.str] update_time: Timestamp in ISO 8601 format, always in UTC.
         """
         if create_time is not None:
@@ -112,7 +112,7 @@ class _OrganizationState:
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Tenant identifier.
+        Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -166,7 +166,7 @@ class Organization(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID # (e.g. a1234567890 or org123456)
+        $ pulumi import aiven:index/organization:Organization example ORGANIZATION_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -194,7 +194,7 @@ class Organization(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID # (e.g. a1234567890 or org123456)
+        $ pulumi import aiven:index/organization:Organization example ORGANIZATION_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -252,7 +252,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
         :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] tenant_id: Tenant identifier.
+        :param pulumi.Input[_builtins.str] tenant_id: Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
         :param pulumi.Input[_builtins.str] update_time: Timestamp in ISO 8601 format, always in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -287,7 +287,7 @@ class Organization(pulumi.CustomResource):
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def tenant_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Tenant identifier.
+        Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
         """
         return pulumi.get(self, "tenant_id")
 

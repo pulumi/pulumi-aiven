@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -22,6 +24,7 @@ export function getBillingGroup(args: GetBillingGroupArgs, opts?: pulumi.InvokeO
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getBillingGroup:getBillingGroup", {
         "billingGroupId": args.billingGroupId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -33,6 +36,7 @@ export interface GetBillingGroupArgs {
      * The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
      */
     billingGroupId: string;
+    timeouts?: inputs.GetBillingGroupTimeouts;
 }
 
 /**
@@ -40,7 +44,9 @@ export interface GetBillingGroupArgs {
  */
 export interface GetBillingGroupResult {
     /**
-     * Account ID.
+     * Account ID. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
+     *
+     * @deprecated Use `parentId` instead. This field will be removed in the next major release.
      */
     readonly accountId: string;
     /**
@@ -48,15 +54,19 @@ export interface GetBillingGroupResult {
      */
     readonly addressLines: string[];
     /**
-     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+     * List of billing groups contact email addresses.
+     */
+    readonly billingContactEmails: string[];
+    /**
+     * Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
     readonly billingCurrency: string;
     /**
-     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+     * List of project billing email addresses.
      */
     readonly billingEmails: string[];
     /**
-     * Additional information to include on your invoice (for example, a reference number).
+     * Extra text to be included in all project invoices, e.g. purchase order or cost center number.
      */
     readonly billingExtraText: string;
     /**
@@ -68,43 +78,44 @@ export interface GetBillingGroupResult {
      */
     readonly cardId: string;
     /**
-     * City, district, suburb, town, or village.
+     * Address city.
      */
     readonly city: string;
     /**
-     * Your company name.
+     * Name of a company.
      */
     readonly company: string;
     /**
-     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+     * Billing group ID.
      */
     readonly copyFromBillingGroup: string;
     /**
-     * Two-letter country code.
+     * Two letter country code for billing country.
      */
     readonly countryCode: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID, equal to `billingGroupId`.
      */
     readonly id: string;
     /**
-     * Name of the billing group.
+     * Billing group name.
      */
     readonly name: string;
     /**
-     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID.
      */
     readonly parentId: string;
     /**
-     * Address state.
+     * Address state or province.
      */
     readonly state: string;
+    readonly timeouts?: outputs.GetBillingGroupTimeouts;
     /**
-     * The VAT identification number for your company.
+     * EU VAT Identification Number.
      */
     readonly vatId: string;
     /**
-     * Zip or postal code.
+     * Address zip code.
      */
     readonly zipCode: string;
 }
@@ -126,6 +137,7 @@ export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getBillingGroup:getBillingGroup", {
         "billingGroupId": args.billingGroupId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -137,4 +149,5 @@ export interface GetBillingGroupOutputArgs {
      * The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
      */
     billingGroupId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetBillingGroupTimeoutsArgs>;
 }

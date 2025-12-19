@@ -68,7 +68,7 @@ type LookupOrganizationProjectResult struct {
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// PEM encoded certificate.
 	CaCert string `pulumi:"caCert"`
-	// Resource ID, a composite of `organizationId` and `projectId` IDs.
+	// Resource ID composed as: `organization_id/project_id`.
 	Id string `pulumi:"id"`
 	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
@@ -137,7 +137,7 @@ func (o LookupOrganizationProjectResultOutput) CaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.CaCert }).(pulumi.StringOutput)
 }
 
-// Resource ID, a composite of `organizationId` and `projectId` IDs.
+// Resource ID composed as: `organization_id/project_id`.
 func (o LookupOrganizationProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }

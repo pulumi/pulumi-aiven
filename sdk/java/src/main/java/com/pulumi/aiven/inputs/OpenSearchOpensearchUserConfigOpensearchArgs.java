@@ -553,6 +553,51 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+     * 
+     */
+    @Import(name="mlCommonsModelAccessControlEnabled")
+    private @Nullable Output<Boolean> mlCommonsModelAccessControlEnabled;
+
+    /**
+     * @return Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> mlCommonsModelAccessControlEnabled() {
+        return Optional.ofNullable(this.mlCommonsModelAccessControlEnabled);
+    }
+
+    /**
+     * Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+     * 
+     */
+    @Import(name="mlCommonsNativeMemoryThreshold")
+    private @Nullable Output<Integer> mlCommonsNativeMemoryThreshold;
+
+    /**
+     * @return Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+     * 
+     */
+    public Optional<Output<Integer>> mlCommonsNativeMemoryThreshold() {
+        return Optional.ofNullable(this.mlCommonsNativeMemoryThreshold);
+    }
+
+    /**
+     * Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+     * 
+     */
+    @Import(name="mlCommonsOnlyRunOnMlNode")
+    private @Nullable Output<Boolean> mlCommonsOnlyRunOnMlNode;
+
+    /**
+     * @return Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+     * 
+     */
+    public Optional<Output<Boolean>> mlCommonsOnlyRunOnMlNode() {
+        return Optional.ofNullable(this.mlCommonsOnlyRunOnMlNode);
+    }
+
+    /**
      * Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
      * 
      */
@@ -905,6 +950,9 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.ismHistoryRolloverRetentionPeriod = $.ismHistoryRolloverRetentionPeriod;
         this.knnMemoryCircuitBreakerEnabled = $.knnMemoryCircuitBreakerEnabled;
         this.knnMemoryCircuitBreakerLimit = $.knnMemoryCircuitBreakerLimit;
+        this.mlCommonsModelAccessControlEnabled = $.mlCommonsModelAccessControlEnabled;
+        this.mlCommonsNativeMemoryThreshold = $.mlCommonsNativeMemoryThreshold;
+        this.mlCommonsOnlyRunOnMlNode = $.mlCommonsOnlyRunOnMlNode;
         this.nodeSearchCacheSize = $.nodeSearchCacheSize;
         this.overrideMainResponseVersion = $.overrideMainResponseVersion;
         this.pluginsAlertingFilterByBackendRoles = $.pluginsAlertingFilterByBackendRoles;
@@ -1677,6 +1725,69 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder knnMemoryCircuitBreakerLimit(Integer knnMemoryCircuitBreakerLimit) {
             return knnMemoryCircuitBreakerLimit(Output.of(knnMemoryCircuitBreakerLimit));
+        }
+
+        /**
+         * @param mlCommonsModelAccessControlEnabled Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsModelAccessControlEnabled(@Nullable Output<Boolean> mlCommonsModelAccessControlEnabled) {
+            $.mlCommonsModelAccessControlEnabled = mlCommonsModelAccessControlEnabled;
+            return this;
+        }
+
+        /**
+         * @param mlCommonsModelAccessControlEnabled Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsModelAccessControlEnabled(Boolean mlCommonsModelAccessControlEnabled) {
+            return mlCommonsModelAccessControlEnabled(Output.of(mlCommonsModelAccessControlEnabled));
+        }
+
+        /**
+         * @param mlCommonsNativeMemoryThreshold Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsNativeMemoryThreshold(@Nullable Output<Integer> mlCommonsNativeMemoryThreshold) {
+            $.mlCommonsNativeMemoryThreshold = mlCommonsNativeMemoryThreshold;
+            return this;
+        }
+
+        /**
+         * @param mlCommonsNativeMemoryThreshold Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsNativeMemoryThreshold(Integer mlCommonsNativeMemoryThreshold) {
+            return mlCommonsNativeMemoryThreshold(Output.of(mlCommonsNativeMemoryThreshold));
+        }
+
+        /**
+         * @param mlCommonsOnlyRunOnMlNode Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsOnlyRunOnMlNode(@Nullable Output<Boolean> mlCommonsOnlyRunOnMlNode) {
+            $.mlCommonsOnlyRunOnMlNode = mlCommonsOnlyRunOnMlNode;
+            return this;
+        }
+
+        /**
+         * @param mlCommonsOnlyRunOnMlNode Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsOnlyRunOnMlNode(Boolean mlCommonsOnlyRunOnMlNode) {
+            return mlCommonsOnlyRunOnMlNode(Output.of(mlCommonsOnlyRunOnMlNode));
         }
 
         /**

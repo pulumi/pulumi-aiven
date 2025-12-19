@@ -15,60 +15,6 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * Creates and manages an [Aiven for Caching](https://aiven.io/docs/products/caching) (formerly known as Aiven for Redis®) service user.
- * 
- * !&gt; **End of life notice**
- * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
- * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
- * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
- * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
- * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
- * and update your existing `aiven.Redis` resources.
- * 
- * ## Example Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aiven.RedisUser;
- * import com.pulumi.aiven.RedisUserArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foo = new RedisUser("foo", RedisUserArgs.builder()
- *             .serviceName(bar.serviceName())
- *             .project("my-project")
- *             .username("user-1")
- *             .password("Test$1234")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import aiven:index/redisUser:RedisUser foo PROJECT/SERVICE_NAME/USERNAME
- * ```
- * 
- */
 @ResourceType(type="aiven:index/redisUser:RedisUser")
 public class RedisUser extends com.pulumi.resources.CustomResource {
     /**

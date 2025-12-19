@@ -65,7 +65,7 @@ type LookupOrganizationResult struct {
 	Id *string `pulumi:"id"`
 	// Name of the organization.
 	Name *string `pulumi:"name"`
-	// Tenant identifier.
+	// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
 	//
 	// Deprecated: This field is deprecated and will be removed in the next major release.
 	TenantId string                   `pulumi:"tenantId"`
@@ -126,7 +126,7 @@ func (o LookupOrganizationResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Tenant identifier.
+// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
 //
 // Deprecated: This field is deprecated and will be removed in the next major release.
 func (o LookupOrganizationResultOutput) TenantId() pulumi.StringOutput {

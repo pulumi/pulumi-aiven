@@ -20,6 +20,11 @@ public final class GetMySqlMysqlUserConfigMigration {
      */
     private @Nullable String dbname;
     /**
+     * @return Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+     * 
+     */
+    private @Nullable String dumpTool;
+    /**
      * @return Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      * 
      */
@@ -67,6 +72,13 @@ public final class GetMySqlMysqlUserConfigMigration {
      */
     public Optional<String> dbname() {
         return Optional.ofNullable(this.dbname);
+    }
+    /**
+     * @return Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+     * 
+     */
+    public Optional<String> dumpTool() {
+        return Optional.ofNullable(this.dumpTool);
     }
     /**
      * @return Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
@@ -135,6 +147,7 @@ public final class GetMySqlMysqlUserConfigMigration {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String dbname;
+        private @Nullable String dumpTool;
         private String host;
         private @Nullable String ignoreDbs;
         private @Nullable String ignoreRoles;
@@ -147,6 +160,7 @@ public final class GetMySqlMysqlUserConfigMigration {
         public Builder(GetMySqlMysqlUserConfigMigration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbname = defaults.dbname;
+    	      this.dumpTool = defaults.dumpTool;
     	      this.host = defaults.host;
     	      this.ignoreDbs = defaults.ignoreDbs;
     	      this.ignoreRoles = defaults.ignoreRoles;
@@ -161,6 +175,12 @@ public final class GetMySqlMysqlUserConfigMigration {
         public Builder dbname(@Nullable String dbname) {
 
             this.dbname = dbname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dumpTool(@Nullable String dumpTool) {
+
+            this.dumpTool = dumpTool;
             return this;
         }
         @CustomType.Setter
@@ -218,6 +238,7 @@ public final class GetMySqlMysqlUserConfigMigration {
         public GetMySqlMysqlUserConfigMigration build() {
             final var _resultValue = new GetMySqlMysqlUserConfigMigration();
             _resultValue.dbname = dbname;
+            _resultValue.dumpTool = dumpTool;
             _resultValue.host = host;
             _resultValue.ignoreDbs = ignoreDbs;
             _resultValue.ignoreRoles = ignoreRoles;

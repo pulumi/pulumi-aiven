@@ -86,11 +86,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Email;
         /// <summary>
-        /// Resource ID, a composite of `OrganizationId` and `UserId` IDs.
+        /// Resource ID composed as: `organization_id/user_id`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Alters super admin state of the organization application user. The default value is `False`.
+        /// Alters super admin state of the organization application user. The default value is `False`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
         /// </summary>
         public readonly bool IsSuperAdmin;
         /// <summary>

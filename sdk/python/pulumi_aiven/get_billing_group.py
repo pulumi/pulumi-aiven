@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetBillingGroupResult',
@@ -26,13 +28,16 @@ class GetBillingGroupResult:
     """
     A collection of values returned by getBillingGroup.
     """
-    def __init__(__self__, account_id=None, address_lines=None, billing_currency=None, billing_emails=None, billing_extra_text=None, billing_group_id=None, card_id=None, city=None, company=None, copy_from_billing_group=None, country_code=None, id=None, name=None, parent_id=None, state=None, vat_id=None, zip_code=None):
+    def __init__(__self__, account_id=None, address_lines=None, billing_contact_emails=None, billing_currency=None, billing_emails=None, billing_extra_text=None, billing_group_id=None, card_id=None, city=None, company=None, copy_from_billing_group=None, country_code=None, id=None, name=None, parent_id=None, state=None, timeouts=None, vat_id=None, zip_code=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if address_lines and not isinstance(address_lines, list):
             raise TypeError("Expected argument 'address_lines' to be a list")
         pulumi.set(__self__, "address_lines", address_lines)
+        if billing_contact_emails and not isinstance(billing_contact_emails, list):
+            raise TypeError("Expected argument 'billing_contact_emails' to be a list")
+        pulumi.set(__self__, "billing_contact_emails", billing_contact_emails)
         if billing_currency and not isinstance(billing_currency, str):
             raise TypeError("Expected argument 'billing_currency' to be a str")
         pulumi.set(__self__, "billing_currency", billing_currency)
@@ -72,6 +77,9 @@ class GetBillingGroupResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if vat_id and not isinstance(vat_id, str):
             raise TypeError("Expected argument 'vat_id' to be a str")
         pulumi.set(__self__, "vat_id", vat_id)
@@ -81,9 +89,10 @@ class GetBillingGroupResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""Use `parent_id` instead. This field will be removed in the next major release.""")
     def account_id(self) -> _builtins.str:
         """
-        Account ID.
+        Account ID. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         """
         return pulumi.get(self, "account_id")
 
@@ -96,10 +105,18 @@ class GetBillingGroupResult:
         return pulumi.get(self, "address_lines")
 
     @_builtins.property
+    @pulumi.getter(name="billingContactEmails")
+    def billing_contact_emails(self) -> Sequence[_builtins.str]:
+        """
+        List of billing groups contact email addresses.
+        """
+        return pulumi.get(self, "billing_contact_emails")
+
+    @_builtins.property
     @pulumi.getter(name="billingCurrency")
     def billing_currency(self) -> _builtins.str:
         """
-        Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         """
         return pulumi.get(self, "billing_currency")
 
@@ -107,7 +124,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Sequence[_builtins.str]:
         """
-        Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        List of project billing email addresses.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -115,7 +132,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="billingExtraText")
     def billing_extra_text(self) -> _builtins.str:
         """
-        Additional information to include on your invoice (for example, a reference number).
+        Extra text to be included in all project invoices, e.g. purchase order or cost center number.
         """
         return pulumi.get(self, "billing_extra_text")
 
@@ -139,7 +156,7 @@ class GetBillingGroupResult:
     @pulumi.getter
     def city(self) -> _builtins.str:
         """
-        City, district, suburb, town, or village.
+        Address city.
         """
         return pulumi.get(self, "city")
 
@@ -147,7 +164,7 @@ class GetBillingGroupResult:
     @pulumi.getter
     def company(self) -> _builtins.str:
         """
-        Your company name.
+        Name of a company.
         """
         return pulumi.get(self, "company")
 
@@ -155,7 +172,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> _builtins.str:
         """
-        ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        Billing group ID.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
@@ -163,7 +180,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> _builtins.str:
         """
-        Two-letter country code.
+        Two letter country code for billing country.
         """
         return pulumi.get(self, "country_code")
 
@@ -171,7 +188,7 @@ class GetBillingGroupResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID, equal to `billing_group_id`.
         """
         return pulumi.get(self, "id")
 
@@ -179,7 +196,7 @@ class GetBillingGroupResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the billing group.
+        Billing group name.
         """
         return pulumi.get(self, "name")
 
@@ -187,7 +204,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> _builtins.str:
         """
-        Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization by using its ID.
         """
         return pulumi.get(self, "parent_id")
 
@@ -195,15 +212,20 @@ class GetBillingGroupResult:
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        Address state.
+        Address state or province.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetBillingGroupTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="vatId")
     def vat_id(self) -> _builtins.str:
         """
-        The VAT identification number for your company.
+        EU VAT Identification Number.
         """
         return pulumi.get(self, "vat_id")
 
@@ -211,7 +233,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> _builtins.str:
         """
-        Zip or postal code.
+        Address zip code.
         """
         return pulumi.get(self, "zip_code")
 
@@ -224,6 +246,7 @@ class AwaitableGetBillingGroupResult(GetBillingGroupResult):
         return GetBillingGroupResult(
             account_id=self.account_id,
             address_lines=self.address_lines,
+            billing_contact_emails=self.billing_contact_emails,
             billing_currency=self.billing_currency,
             billing_emails=self.billing_emails,
             billing_extra_text=self.billing_extra_text,
@@ -237,11 +260,13 @@ class AwaitableGetBillingGroupResult(GetBillingGroupResult):
             name=self.name,
             parent_id=self.parent_id,
             state=self.state,
+            timeouts=self.timeouts,
             vat_id=self.vat_id,
             zip_code=self.zip_code)
 
 
 def get_billing_group(billing_group_id: Optional[_builtins.str] = None,
+                      timeouts: Optional[Union['GetBillingGroupTimeoutsArgs', 'GetBillingGroupTimeoutsArgsDict']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingGroupResult:
     """
     Gets information about a billing group.
@@ -260,12 +285,14 @@ def get_billing_group(billing_group_id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['billingGroupId'] = billing_group_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getBillingGroup:getBillingGroup', __args__, opts=opts, typ=GetBillingGroupResult).value
 
     return AwaitableGetBillingGroupResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         address_lines=pulumi.get(__ret__, 'address_lines'),
+        billing_contact_emails=pulumi.get(__ret__, 'billing_contact_emails'),
         billing_currency=pulumi.get(__ret__, 'billing_currency'),
         billing_emails=pulumi.get(__ret__, 'billing_emails'),
         billing_extra_text=pulumi.get(__ret__, 'billing_extra_text'),
@@ -279,9 +306,11 @@ def get_billing_group(billing_group_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         parent_id=pulumi.get(__ret__, 'parent_id'),
         state=pulumi.get(__ret__, 'state'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         vat_id=pulumi.get(__ret__, 'vat_id'),
         zip_code=pulumi.get(__ret__, 'zip_code'))
 def get_billing_group_output(billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                             timeouts: Optional[pulumi.Input[Optional[Union['GetBillingGroupTimeoutsArgs', 'GetBillingGroupTimeoutsArgsDict']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBillingGroupResult]:
     """
     Gets information about a billing group.
@@ -300,11 +329,13 @@ def get_billing_group_output(billing_group_id: Optional[pulumi.Input[_builtins.s
     """
     __args__ = dict()
     __args__['billingGroupId'] = billing_group_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getBillingGroup:getBillingGroup', __args__, opts=opts, typ=GetBillingGroupResult)
     return __ret__.apply(lambda __response__: GetBillingGroupResult(
         account_id=pulumi.get(__response__, 'account_id'),
         address_lines=pulumi.get(__response__, 'address_lines'),
+        billing_contact_emails=pulumi.get(__response__, 'billing_contact_emails'),
         billing_currency=pulumi.get(__response__, 'billing_currency'),
         billing_emails=pulumi.get(__response__, 'billing_emails'),
         billing_extra_text=pulumi.get(__response__, 'billing_extra_text'),
@@ -318,5 +349,6 @@ def get_billing_group_output(billing_group_id: Optional[pulumi.Input[_builtins.s
         name=pulumi.get(__response__, 'name'),
         parent_id=pulumi.get(__response__, 'parent_id'),
         state=pulumi.get(__response__, 'state'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         vat_id=pulumi.get(__response__, 'vat_id'),
         zip_code=pulumi.get(__response__, 'zip_code')))

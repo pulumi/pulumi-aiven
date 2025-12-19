@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetOrganizationUserListTimeouts;
 import com.pulumi.aiven.outputs.GetOrganizationUserListUser;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -15,42 +16,46 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOrganizationUserListResult {
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
-    private @Nullable String id;
+    private String id;
     /**
-     * @return The name of the organization.
+     * @return The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
-    private @Nullable String name;
+    private String name;
+    private @Nullable GetOrganizationUserListTimeouts timeouts;
     /**
-     * @return List of the users, their profile information, and other data.
+     * @return List of users of the organization.
      * 
      */
-    private List<GetOrganizationUserListUser> users;
+    private @Nullable List<GetOrganizationUserListUser> users;
 
     private GetOrganizationUserListResult() {}
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
     /**
-     * @return The name of the organization.
+     * @return The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
+    }
+    public Optional<GetOrganizationUserListTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
     /**
-     * @return List of the users, their profile information, and other data.
+     * @return List of users of the organization.
      * 
      */
     public List<GetOrganizationUserListUser> users() {
-        return this.users;
+        return this.users == null ? List.of() : this.users;
     }
 
     public static Builder builder() {
@@ -62,34 +67,44 @@ public final class GetOrganizationUserListResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String id;
-        private @Nullable String name;
-        private List<GetOrganizationUserListUser> users;
+        private String id;
+        private String name;
+        private @Nullable GetOrganizationUserListTimeouts timeouts;
+        private @Nullable List<GetOrganizationUserListUser> users;
         public Builder() {}
         public Builder(GetOrganizationUserListResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.timeouts = defaults.timeouts;
     	      this.users = defaults.users;
         }
 
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserListResult", "id");
+            }
             this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserListResult", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder users(List<GetOrganizationUserListUser> users) {
-            if (users == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationUserListResult", "users");
-            }
+        public Builder timeouts(@Nullable GetOrganizationUserListTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder users(@Nullable List<GetOrganizationUserListUser> users) {
+
             this.users = users;
             return this;
         }
@@ -100,6 +115,7 @@ public final class GetOrganizationUserListResult {
             final var _resultValue = new GetOrganizationUserListResult();
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.timeouts = timeouts;
             _resultValue.users = users;
             return _resultValue;
         }

@@ -35,11 +35,11 @@ type LookupOrganizationApplicationUserArgs struct {
 type LookupOrganizationApplicationUserResult struct {
 	// User Email.
 	Email string `pulumi:"email"`
-	// Resource ID, a composite of `organizationId` and `userId` IDs.
+	// Resource ID composed as: `organization_id/user_id`.
 	Id string `pulumi:"id"`
-	// Alters super admin state of the organization application user. The default value is `false`.
+	// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	//
-	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	IsSuperAdmin bool `pulumi:"isSuperAdmin"`
 	// Name.
 	Name string `pulumi:"name"`
@@ -92,14 +92,14 @@ func (o LookupOrganizationApplicationUserResultOutput) Email() pulumi.StringOutp
 	return o.ApplyT(func(v LookupOrganizationApplicationUserResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
-// Resource ID, a composite of `organizationId` and `userId` IDs.
+// Resource ID composed as: `organization_id/user_id`.
 func (o LookupOrganizationApplicationUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationApplicationUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Alters super admin state of the organization application user. The default value is `false`.
+// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 //
-// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 func (o LookupOrganizationApplicationUserResultOutput) IsSuperAdmin() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupOrganizationApplicationUserResult) bool { return v.IsSuperAdmin }).(pulumi.BoolOutput)
 }

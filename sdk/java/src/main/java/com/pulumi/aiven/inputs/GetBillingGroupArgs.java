@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetBillingGroupTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetBillingGroupArgs extends com.pulumi.resources.InvokeArgs {
@@ -29,10 +32,18 @@ public final class GetBillingGroupArgs extends com.pulumi.resources.InvokeArgs {
         return this.billingGroupId;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<GetBillingGroupTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetBillingGroupTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private GetBillingGroupArgs() {}
 
     private GetBillingGroupArgs(GetBillingGroupArgs $) {
         this.billingGroupId = $.billingGroupId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -72,6 +83,15 @@ public final class GetBillingGroupArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder billingGroupId(String billingGroupId) {
             return billingGroupId(Output.of(billingGroupId));
+        }
+
+        public Builder timeouts(@Nullable Output<GetBillingGroupTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetBillingGroupTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public GetBillingGroupArgs build() {

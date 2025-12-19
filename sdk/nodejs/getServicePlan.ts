@@ -80,7 +80,7 @@ export interface GetServicePlanResult {
      */
     readonly diskSpaceStepMb: number;
     /**
-     * Resource ID, a composite of `project`, `serviceType`, `servicePlan` and `cloudName` IDs.
+     * Resource ID composed as: `project/service_type/service_plan/cloud_name`.
      */
     readonly id: string;
     /**

@@ -80,7 +80,7 @@ class GetCassandraUserResult:
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
-        The Cassandra service user's password.
+        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
         """
         return pulumi.get(self, "password")
 

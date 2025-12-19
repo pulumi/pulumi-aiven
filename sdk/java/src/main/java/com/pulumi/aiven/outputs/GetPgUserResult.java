@@ -27,7 +27,7 @@ public final class GetPgUserResult {
      */
     private String id;
     /**
-     * @return The password of the service user.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     private String password;
@@ -80,7 +80,7 @@ public final class GetPgUserResult {
         return this.id;
     }
     /**
-     * @return The password of the service user.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     public String password() {

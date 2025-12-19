@@ -17,7 +17,7 @@ public final class GetValkeyUserResult {
      */
     private String id;
     /**
-     * @return The Valkey service user&#39;s password.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     private String password;
@@ -71,7 +71,7 @@ public final class GetValkeyUserResult {
         return this.id;
     }
     /**
-     * @return The Valkey service user&#39;s password.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     public String password() {

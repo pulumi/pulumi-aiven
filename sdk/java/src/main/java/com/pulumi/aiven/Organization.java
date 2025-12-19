@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID # (e.g. a1234567890 or org123456)
+ * $ pulumi import aiven:index/organization:Organization example ORGANIZATION_ID
  * ```
  * 
  */
@@ -89,7 +89,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Tenant identifier.
+     * Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
      * @deprecated
      * This field is deprecated and will be removed in the next major release.
@@ -100,7 +100,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
     private Output<String> tenantId;
 
     /**
-     * @return Tenant identifier.
+     * @return Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
      */
     public Output<String> tenantId() {

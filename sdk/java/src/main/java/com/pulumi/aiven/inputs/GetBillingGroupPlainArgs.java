@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetBillingGroupTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetBillingGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +31,18 @@ public final class GetBillingGroupPlainArgs extends com.pulumi.resources.InvokeA
         return this.billingGroupId;
     }
 
+    @Import(name="timeouts")
+    private @Nullable GetBillingGroupTimeouts timeouts;
+
+    public Optional<GetBillingGroupTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private GetBillingGroupPlainArgs() {}
 
     private GetBillingGroupPlainArgs(GetBillingGroupPlainArgs $) {
         this.billingGroupId = $.billingGroupId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -60,6 +71,11 @@ public final class GetBillingGroupPlainArgs extends com.pulumi.resources.InvokeA
          */
         public Builder billingGroupId(String billingGroupId) {
             $.billingGroupId = billingGroupId;
+            return this;
+        }
+
+        public Builder timeouts(@Nullable GetBillingGroupTimeouts timeouts) {
+            $.timeouts = timeouts;
             return this;
         }
 

@@ -47,7 +47,7 @@ namespace Pulumi.Aiven
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Alters super admin state of the organization application user. The default value is `False`.
+        /// Alters super admin state of the organization application user. The default value is `False`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
         /// </summary>
         [Output("isSuperAdmin")]
         public Output<bool> IsSuperAdmin { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Aiven
     public sealed class OrganizationApplicationUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Alters super admin state of the organization application user. The default value is `False`.
+        /// Alters super admin state of the organization application user. The default value is `False`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
         /// </summary>
         [Input("isSuperAdmin")]
         public Input<bool>? IsSuperAdmin { get; set; }
@@ -155,7 +155,7 @@ namespace Pulumi.Aiven
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Alters super admin state of the organization application user. The default value is `False`.
+        /// Alters super admin state of the organization application user. The default value is `False`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
         /// </summary>
         [Input("isSuperAdmin")]
         public Input<bool>? IsSuperAdmin { get; set; }

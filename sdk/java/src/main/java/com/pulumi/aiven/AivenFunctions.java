@@ -132,6 +132,8 @@ import com.pulumi.aiven.inputs.GetOrganizationUserArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserGroupArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserGroupListArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserGroupListPlainArgs;
+import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListArgs;
+import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserGroupPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserListPlainArgs;
@@ -237,6 +239,7 @@ import com.pulumi.aiven.outputs.GetOrganizationBillingGroupResult;
 import com.pulumi.aiven.outputs.GetOrganizationProjectResult;
 import com.pulumi.aiven.outputs.GetOrganizationResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserGroupListResult;
+import com.pulumi.aiven.outputs.GetOrganizationUserGroupMemberListResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserGroupResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserListResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserResult;
@@ -10238,6 +10241,211 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList", TypeShape.of(GetOrganizationUserGroupListResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * List members of a user group.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
+     *             .organizationId(organizationId)
+     *             .userGroupId(userGroupId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationUserGroupMemberListResult> getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs args) {
+        return getOrganizationUserGroupMemberList(args, InvokeOptions.Empty);
+    }
+    /**
+     * List members of a user group.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
+     *             .organizationId(organizationId)
+     *             .userGroupId(userGroupId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationUserGroupMemberListResult> getOrganizationUserGroupMemberListPlain(GetOrganizationUserGroupMemberListPlainArgs args) {
+        return getOrganizationUserGroupMemberListPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List members of a user group.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
+     *             .organizationId(organizationId)
+     *             .userGroupId(userGroupId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationUserGroupMemberListResult> getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationUserGroupMemberList:getOrganizationUserGroupMemberList", TypeShape.of(GetOrganizationUserGroupMemberListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List members of a user group.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
+     *             .organizationId(organizationId)
+     *             .userGroupId(userGroupId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationUserGroupMemberListResult> getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationUserGroupMemberList:getOrganizationUserGroupMemberList", TypeShape.of(GetOrganizationUserGroupMemberListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List members of a user group.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
+     *             .organizationId(organizationId)
+     *             .userGroupId(userGroupId)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationUserGroupMemberListResult> getOrganizationUserGroupMemberListPlain(GetOrganizationUserGroupMemberListPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUserGroupMemberList:getOrganizationUserGroupMemberList", TypeShape.of(GetOrganizationUserGroupMemberListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
      * 
      * ## Example Usage
@@ -11954,498 +12162,33 @@ public final class AivenFunctions {
     public static CompletableFuture<GetProjectVpcResult> getProjectVpcPlain(GetProjectVpcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getProjectVpc:getProjectVpc", TypeShape.of(GetProjectVpcResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The Redis data source provides information about the existing Aiven Redis service.
-     * 
-     * !&gt; **End of life notice**
-     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
-     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-     * and update your existing `aiven.Redis` resources.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetRedisArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-redis1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetRedisResult> getRedis(GetRedisArgs args) {
         return getRedis(args, InvokeOptions.Empty);
     }
-    /**
-     * The Redis data source provides information about the existing Aiven Redis service.
-     * 
-     * !&gt; **End of life notice**
-     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
-     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-     * and update your existing `aiven.Redis` resources.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetRedisArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-redis1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetRedisResult> getRedisPlain(GetRedisPlainArgs args) {
         return getRedisPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * The Redis data source provides information about the existing Aiven Redis service.
-     * 
-     * !&gt; **End of life notice**
-     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
-     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-     * and update your existing `aiven.Redis` resources.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetRedisArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-redis1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetRedisResult> getRedis(GetRedisArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getRedis:getRedis", TypeShape.of(GetRedisResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The Redis data source provides information about the existing Aiven Redis service.
-     * 
-     * !&gt; **End of life notice**
-     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
-     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-     * and update your existing `aiven.Redis` resources.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetRedisArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-redis1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetRedisResult> getRedis(GetRedisArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getRedis:getRedis", TypeShape.of(GetRedisResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The Redis data source provides information about the existing Aiven Redis service.
-     * 
-     * !&gt; **End of life notice**
-     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
-     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-     * and update your existing `aiven.Redis` resources.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetRedisArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-redis1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetRedisResult> getRedisPlain(GetRedisPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getRedis:getRedis", TypeShape.of(GetRedisResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The Redis User data source provides information about the existing Aiven Redis User.
-     * 
-     * !&gt; **End of life notice**
-     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
-     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-     * and update your existing `aiven.Redis` resources.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetRedisUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args) {
         return getRedisUser(args, InvokeOptions.Empty);
     }
-    /**
-     * The Redis User data source provides information about the existing Aiven Redis User.
-     * 
-     * !&gt; **End of life notice**
-     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
-     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-     * and update your existing `aiven.Redis` resources.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetRedisUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetRedisUserResult> getRedisUserPlain(GetRedisUserPlainArgs args) {
         return getRedisUserPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * The Redis User data source provides information about the existing Aiven Redis User.
-     * 
-     * !&gt; **End of life notice**
-     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
-     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-     * and update your existing `aiven.Redis` resources.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetRedisUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getRedisUser:getRedisUser", TypeShape.of(GetRedisUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The Redis User data source provides information about the existing Aiven Redis User.
-     * 
-     * !&gt; **End of life notice**
-     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
-     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-     * and update your existing `aiven.Redis` resources.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetRedisUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getRedisUser:getRedisUser", TypeShape.of(GetRedisUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The Redis User data source provides information about the existing Aiven Redis User.
-     * 
-     * !&gt; **End of life notice**
-     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
-     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-     * and update your existing `aiven.Redis` resources.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetRedisUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetRedisUserResult> getRedisUserPlain(GetRedisUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getRedisUser:getRedisUser", TypeShape.of(GetRedisUserResult.class), args, Utilities.withVersion(options));
     }

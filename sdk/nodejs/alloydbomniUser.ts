@@ -60,9 +60,18 @@ export class AlloydbomniUser extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly accessKey: pulumi.Output<string>;
     /**
-     * The password of the service user.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
     declare public readonly password: pulumi.Output<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     */
+    declare public readonly passwordWo: pulumi.Output<string | undefined>;
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     */
+    declare public readonly passwordWoVersion: pulumi.Output<number | undefined>;
     /**
      * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
@@ -100,6 +109,8 @@ export class AlloydbomniUser extends pulumi.CustomResource {
             resourceInputs["accessCert"] = state?.accessCert;
             resourceInputs["accessKey"] = state?.accessKey;
             resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWo"] = state?.passwordWo;
+            resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["pgAllowReplication"] = state?.pgAllowReplication;
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
@@ -117,6 +128,8 @@ export class AlloydbomniUser extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
+            resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["pgAllowReplication"] = args?.pgAllowReplication;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
@@ -126,7 +139,7 @@ export class AlloydbomniUser extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["accessCert", "accessKey", "password"] };
+        const secretOpts = { additionalSecretOutputs: ["accessCert", "accessKey", "password", "passwordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(AlloydbomniUser.__pulumiType, name, resourceInputs, opts);
     }
@@ -145,9 +158,18 @@ export interface AlloydbomniUserState {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The password of the service user.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
     password?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     */
+    passwordWo?: pulumi.Input<string>;
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     */
+    passwordWoVersion?: pulumi.Input<number>;
     /**
      * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
@@ -175,9 +197,18 @@ export interface AlloydbomniUserState {
  */
 export interface AlloydbomniUserArgs {
     /**
-     * The password of the service user.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
     password?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     */
+    passwordWo?: pulumi.Input<string>;
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     */
+    passwordWoVersion?: pulumi.Input<number>;
     /**
      * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */

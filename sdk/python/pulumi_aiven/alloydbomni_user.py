@@ -23,13 +23,18 @@ class AlloydbomniUserArgs:
                  service_name: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
                  pg_allow_replication: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AlloydbomniUser resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the service user.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
         :param pulumi.Input[_builtins.bool] pg_allow_replication: Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         """
         pulumi.set(__self__, "project", project)
@@ -37,6 +42,10 @@ class AlloydbomniUserArgs:
         pulumi.set(__self__, "username", username)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if pg_allow_replication is not None:
             pulumi.set(__self__, "pg_allow_replication", pg_allow_replication)
 
@@ -80,13 +89,38 @@ class AlloydbomniUserArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The password of the service user.
+        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
         """
         return pulumi.get(self, "password")
 
     @password.setter
     def password(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="pgAllowReplication")
@@ -107,6 +141,8 @@ class _AlloydbomniUserState:
                  access_cert: Optional[pulumi.Input[_builtins.str]] = None,
                  access_key: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
                  pg_allow_replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -116,7 +152,10 @@ class _AlloydbomniUserState:
         Input properties used for looking up and filtering AlloydbomniUser resources.
         :param pulumi.Input[_builtins.str] access_cert: The access certificate for the servie user.
         :param pulumi.Input[_builtins.str] access_key: The access certificate key for the service user.
-        :param pulumi.Input[_builtins.str] password: The password of the service user.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
         :param pulumi.Input[_builtins.bool] pg_allow_replication: Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -129,6 +168,10 @@ class _AlloydbomniUserState:
             pulumi.set(__self__, "access_key", access_key)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if pg_allow_replication is not None:
             pulumi.set(__self__, "pg_allow_replication", pg_allow_replication)
         if project is not None:
@@ -168,13 +211,38 @@ class _AlloydbomniUserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The password of the service user.
+        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
         """
         return pulumi.get(self, "password")
 
     @password.setter
     def password(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="pgAllowReplication")
@@ -244,6 +312,8 @@ class AlloydbomniUser(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
                  pg_allow_replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -270,7 +340,10 @@ class AlloydbomniUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the service user.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
         :param pulumi.Input[_builtins.bool] pg_allow_replication: Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -317,6 +390,8 @@ class AlloydbomniUser(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
                  pg_allow_replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -331,6 +406,8 @@ class AlloydbomniUser(pulumi.CustomResource):
             __props__ = AlloydbomniUserArgs.__new__(AlloydbomniUserArgs)
 
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["password_wo"] = None if password_wo is None else pulumi.Output.secret(password_wo)
+            __props__.__dict__["password_wo_version"] = password_wo_version
             __props__.__dict__["pg_allow_replication"] = pg_allow_replication
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -344,7 +421,7 @@ class AlloydbomniUser(pulumi.CustomResource):
             __props__.__dict__["access_cert"] = None
             __props__.__dict__["access_key"] = None
             __props__.__dict__["type"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessCert", "accessKey", "password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessCert", "accessKey", "password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AlloydbomniUser, __self__).__init__(
             'aiven:index/alloydbomniUser:AlloydbomniUser',
@@ -359,6 +436,8 @@ class AlloydbomniUser(pulumi.CustomResource):
             access_cert: Optional[pulumi.Input[_builtins.str]] = None,
             access_key: Optional[pulumi.Input[_builtins.str]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
+            password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+            password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
             pg_allow_replication: Optional[pulumi.Input[_builtins.bool]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             service_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -373,7 +452,10 @@ class AlloydbomniUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_cert: The access certificate for the servie user.
         :param pulumi.Input[_builtins.str] access_key: The access certificate key for the service user.
-        :param pulumi.Input[_builtins.str] password: The password of the service user.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
         :param pulumi.Input[_builtins.bool] pg_allow_replication: Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -387,6 +469,8 @@ class AlloydbomniUser(pulumi.CustomResource):
         __props__.__dict__["access_cert"] = access_cert
         __props__.__dict__["access_key"] = access_key
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_wo"] = password_wo
+        __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["pg_allow_replication"] = pg_allow_replication
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
@@ -414,9 +498,26 @@ class AlloydbomniUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
         """
-        The password of the service user.
+        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        """
+        return pulumi.get(self, "password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="pgAllowReplication")

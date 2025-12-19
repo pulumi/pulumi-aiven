@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -106,18 +107,48 @@ public class MysqlUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authentication);
     }
     /**
-     * The password of the MySQL service user.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the MySQL service user.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     public Output<String> password() {
         return this.password;
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * 
+     */
+    @Export(name="passwordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * 
+     */
+    public Output<Optional<String>> passwordWo() {
+        return Codegen.optional(this.passwordWo);
+    }
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * 
+     */
+    @Export(name="passwordWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> passwordWoVersion;
+
+    /**
+     * @return Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * 
+     */
+    public Output<Optional<Integer>> passwordWoVersion() {
+        return Codegen.optional(this.passwordWoVersion);
     }
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -218,7 +249,8 @@ public class MysqlUser extends com.pulumi.resources.CustomResource {
             .additionalSecretOutputs(List.of(
                 "accessCert",
                 "accessKey",
-                "password"
+                "password",
+                "passwordWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

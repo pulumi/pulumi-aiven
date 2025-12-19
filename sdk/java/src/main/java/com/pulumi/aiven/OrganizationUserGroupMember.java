@@ -16,57 +16,54 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Adds and manages users in a user group. You can add organization users and application users to groups.
- * Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `aiven.OrganizationApplicationUser` resource.
- * 
- * Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
+ * Adds and manages users in a user group. You can add organization users and application users to groups. Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `aiven.OrganizationApplicationUser` resource. Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember project_admin ORGANIZATION_ID/USER_GROUP_ID/USER_ID
+ * $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember example ORGANIZATION_ID/GROUP_ID/USER_ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/organizationUserGroupMember:OrganizationUserGroupMember")
 public class OrganizationUserGroupMember extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the user group.
+     * ID of the user group. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
-     * @return The ID of the user group.
+     * @return ID of the user group. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> groupId() {
         return this.groupId;
     }
     /**
-     * Last activity time of the user group member.
+     * Last Activity Time.
      * 
      */
     @Export(name="lastActivityTime", refs={String.class}, tree="[0]")
     private Output<String> lastActivityTime;
 
     /**
-     * @return Last activity time of the user group member.
+     * @return Last Activity Time.
      * 
      */
     public Output<String> lastActivityTime() {
         return this.lastActivityTime;
     }
     /**
-     * The ID of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -79,14 +76,14 @@ public class OrganizationUserGroupMember extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.timeouts);
     }
     /**
-     * The ID of the organization user or application user.
+     * User ID. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
-     * @return The ID of the organization user or application user.
+     * @return User ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> userId() {

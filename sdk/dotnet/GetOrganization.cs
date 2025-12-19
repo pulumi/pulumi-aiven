@@ -148,7 +148,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Tenant identifier.
+        /// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
         /// </summary>
         public readonly string TenantId;
         public readonly Outputs.GetOrganizationTimeoutsResult? Timeouts;

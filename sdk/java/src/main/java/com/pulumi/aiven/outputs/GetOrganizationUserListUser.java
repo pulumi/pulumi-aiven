@@ -10,16 +10,17 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationUserListUser {
     /**
-     * @return Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
+     * @return Super admin state of the organization user.
      * 
      */
     private Boolean isSuperAdmin;
     /**
-     * @return Date and time when the user joined the organization.
+     * @return Join time.
      * 
      */
     private String joinTime;
@@ -33,18 +34,22 @@ public final class GetOrganizationUserListUser {
      * 
      */
     private String userId;
-    private List<GetOrganizationUserListUserUserInfo> userInfos;
+    /**
+     * @return OrganizationUserInfo.
+     * 
+     */
+    private @Nullable List<GetOrganizationUserListUserUserInfo> userInfos;
 
     private GetOrganizationUserListUser() {}
     /**
-     * @return Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
+     * @return Super admin state of the organization user.
      * 
      */
     public Boolean isSuperAdmin() {
         return this.isSuperAdmin;
     }
     /**
-     * @return Date and time when the user joined the organization.
+     * @return Join time.
      * 
      */
     public String joinTime() {
@@ -64,8 +69,12 @@ public final class GetOrganizationUserListUser {
     public String userId() {
         return this.userId;
     }
+    /**
+     * @return OrganizationUserInfo.
+     * 
+     */
     public List<GetOrganizationUserListUserUserInfo> userInfos() {
-        return this.userInfos;
+        return this.userInfos == null ? List.of() : this.userInfos;
     }
 
     public static Builder builder() {
@@ -81,7 +90,7 @@ public final class GetOrganizationUserListUser {
         private String joinTime;
         private String lastActivityTime;
         private String userId;
-        private List<GetOrganizationUserListUserUserInfo> userInfos;
+        private @Nullable List<GetOrganizationUserListUserUserInfo> userInfos;
         public Builder() {}
         public Builder(GetOrganizationUserListUser defaults) {
     	      Objects.requireNonNull(defaults);
@@ -125,10 +134,8 @@ public final class GetOrganizationUserListUser {
             return this;
         }
         @CustomType.Setter
-        public Builder userInfos(List<GetOrganizationUserListUserUserInfo> userInfos) {
-            if (userInfos == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationUserListUser", "userInfos");
-            }
+        public Builder userInfos(@Nullable List<GetOrganizationUserListUserUserInfo> userInfos) {
+
             this.userInfos = userInfos;
             return this;
         }

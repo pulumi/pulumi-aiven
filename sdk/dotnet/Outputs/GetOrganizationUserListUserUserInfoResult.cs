@@ -14,47 +14,47 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOrganizationUserListUserUserInfoResult
     {
         /// <summary>
-        /// City
+        /// City.
         /// </summary>
         public readonly string City;
         /// <summary>
-        /// Country
+        /// Country.
         /// </summary>
         public readonly string Country;
         /// <summary>
-        /// Date and time when the user was created.
+        /// Creation time.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Department
+        /// Department.
         /// </summary>
         public readonly string Department;
         /// <summary>
-        /// Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
+        /// Is Application User.
         /// </summary>
         public readonly bool IsApplicationUser;
         /// <summary>
-        /// Job title
+        /// Job Title.
         /// </summary>
         public readonly string JobTitle;
         /// <summary>
-        /// Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
+        /// Managed By Scim.
         /// </summary>
         public readonly bool ManagedByScim;
         /// <summary>
-        /// The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
+        /// Managing Organization ID.
         /// </summary>
         public readonly string ManagingOrganizationId;
         /// <summary>
-        /// Full name of the user.
+        /// Real Name.
         /// </summary>
         public readonly string RealName;
         /// <summary>
-        /// State
+        /// State.
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Email address.
+        /// User Email.
         /// </summary>
         public readonly string UserEmail;
 

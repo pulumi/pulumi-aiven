@@ -36,8 +36,13 @@ type AlloydbomniUser struct {
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
 	// The access certificate key for the service user.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// The password of the service user.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password pulumi.StringOutput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
 	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication pulumi.BoolPtrOutput `pulumi:"pgAllowReplication"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -69,10 +74,14 @@ func NewAlloydbomniUser(ctx *pulumi.Context,
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
+	if args.PasswordWo != nil {
+		args.PasswordWo = pulumi.ToSecret(args.PasswordWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accessCert",
 		"accessKey",
 		"password",
+		"passwordWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -102,8 +111,13 @@ type alloydbomniUserState struct {
 	AccessCert *string `pulumi:"accessCert"`
 	// The access certificate key for the service user.
 	AccessKey *string `pulumi:"accessKey"`
-	// The password of the service user.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
 	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -121,8 +135,13 @@ type AlloydbomniUserState struct {
 	AccessCert pulumi.StringPtrInput
 	// The access certificate key for the service user.
 	AccessKey pulumi.StringPtrInput
-	// The password of the service user.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	PasswordWo pulumi.StringPtrInput
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion pulumi.IntPtrInput
 	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication pulumi.BoolPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -140,8 +159,13 @@ func (AlloydbomniUserState) ElementType() reflect.Type {
 }
 
 type alloydbomniUserArgs struct {
-	// The password of the service user.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
 	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -154,8 +178,13 @@ type alloydbomniUserArgs struct {
 
 // The set of arguments for constructing a AlloydbomniUser resource.
 type AlloydbomniUserArgs struct {
-	// The password of the service user.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	PasswordWo pulumi.StringPtrInput
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion pulumi.IntPtrInput
 	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication pulumi.BoolPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -263,9 +292,20 @@ func (o AlloydbomniUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlloydbomniUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// The password of the service user.
+// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 func (o AlloydbomniUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlloydbomniUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+func (o AlloydbomniUserOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlloydbomniUser) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+func (o AlloydbomniUserOutput) PasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlloydbomniUser) pulumi.IntPtrOutput { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // Allows replication. For the default avnadmin user this attribute is required and is always `true`.

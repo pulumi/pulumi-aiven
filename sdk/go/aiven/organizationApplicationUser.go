@@ -51,9 +51,9 @@ type OrganizationApplicationUser struct {
 
 	// User Email.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// Alters super admin state of the organization application user. The default value is `false`.
+	// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	//
-	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	IsSuperAdmin pulumi.BoolOutput `pulumi:"isSuperAdmin"`
 	// Name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -99,9 +99,9 @@ func GetOrganizationApplicationUser(ctx *pulumi.Context,
 type organizationApplicationUserState struct {
 	// User Email.
 	Email *string `pulumi:"email"`
-	// Alters super admin state of the organization application user. The default value is `false`.
+	// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	//
-	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	IsSuperAdmin *bool `pulumi:"isSuperAdmin"`
 	// Name.
 	Name *string `pulumi:"name"`
@@ -115,9 +115,9 @@ type organizationApplicationUserState struct {
 type OrganizationApplicationUserState struct {
 	// User Email.
 	Email pulumi.StringPtrInput
-	// Alters super admin state of the organization application user. The default value is `false`.
+	// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	//
-	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	IsSuperAdmin pulumi.BoolPtrInput
 	// Name.
 	Name pulumi.StringPtrInput
@@ -133,9 +133,9 @@ func (OrganizationApplicationUserState) ElementType() reflect.Type {
 }
 
 type organizationApplicationUserArgs struct {
-	// Alters super admin state of the organization application user. The default value is `false`.
+	// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	//
-	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	IsSuperAdmin *bool `pulumi:"isSuperAdmin"`
 	// Name.
 	Name *string `pulumi:"name"`
@@ -146,9 +146,9 @@ type organizationApplicationUserArgs struct {
 
 // The set of arguments for constructing a OrganizationApplicationUser resource.
 type OrganizationApplicationUserArgs struct {
-	// Alters super admin state of the organization application user. The default value is `false`.
+	// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	//
-	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+	// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	IsSuperAdmin pulumi.BoolPtrInput
 	// Name.
 	Name pulumi.StringPtrInput
@@ -249,9 +249,9 @@ func (o OrganizationApplicationUserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationApplicationUser) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// Alters super admin state of the organization application user. The default value is `false`.
+// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 //
-// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.
+// Deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 func (o OrganizationApplicationUserOutput) IsSuperAdmin() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OrganizationApplicationUser) pulumi.BoolOutput { return v.IsSuperAdmin }).(pulumi.BoolOutput)
 }

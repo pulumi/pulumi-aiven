@@ -49,6 +49,10 @@ namespace Pulumi.Aiven.Outputs
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        /// </summary>
+        public readonly ImmutableArray<string> SaslOauthbearerAllowedUrls;
         public readonly ImmutableArray<Outputs.KafkaConnectKafkaConnectUserConfigSecretProvider> SecretProviders;
         /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
@@ -79,6 +83,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? publicAccess,
 
+            ImmutableArray<string> saslOauthbearerAllowedUrls,
+
             ImmutableArray<Outputs.KafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders,
 
             bool? serviceLog,
@@ -94,6 +100,7 @@ namespace Pulumi.Aiven.Outputs
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
+            SaslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
             SecretProviders = secretProviders;
             ServiceLog = serviceLog;
             StaticIps = staticIps;

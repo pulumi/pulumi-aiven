@@ -42,14 +42,14 @@ namespace Pulumi.Aiven
     public partial class ClickhouseUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The password of the ClickHouse user (generated). Empty when using `PasswordWo`.
+        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the ClickHouse user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Cannot be empty.
+        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
         /// </summary>
         [Output("passwordWo")]
         public Output<string?> PasswordWo { get; private set; } = null!;
@@ -141,12 +141,28 @@ namespace Pulumi.Aiven
 
     public sealed class ClickhouseUserArgs : global::Pulumi.ResourceArgs
     {
+        [Input("password")]
+        private Input<string>? _password;
+
+        /// <summary>
+        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// </summary>
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("passwordWo")]
         private Input<string>? _passwordWo;
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the ClickHouse user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Cannot be empty.
+        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
         /// </summary>
         public Input<string>? PasswordWo
         {
@@ -194,7 +210,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the ClickHouse user (generated). Empty when using `PasswordWo`.
+        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
         /// </summary>
         public Input<string>? Password
         {
@@ -211,7 +227,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the ClickHouse user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Cannot be empty.
+        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
         /// </summary>
         public Input<string>? PasswordWo
         {

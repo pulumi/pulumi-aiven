@@ -38,9 +38,9 @@ type LookupOrganizationBillingGroupArgs struct {
 type LookupOrganizationBillingGroupResult struct {
 	// Billing address ID.
 	BillingAddressId string `pulumi:"billingAddressId"`
-	// List of billing contact emails.
+	// Aiven contacts these email addresses when there are billing issues or questions.
 	BillingContactEmails []string `pulumi:"billingContactEmails"`
-	// List of billing contact emails.
+	// PDF invoices are sent to these email addresses.
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId string `pulumi:"billingGroupId"`
@@ -50,7 +50,7 @@ type LookupOrganizationBillingGroupResult struct {
 	Currency string `pulumi:"currency"`
 	// Extra billing text.
 	CustomInvoiceText string `pulumi:"customInvoiceText"`
-	// Resource ID, a composite of `organizationId` and `billingGroupId` IDs.
+	// Resource ID composed as: `organization_id/billing_group_id`.
 	Id string `pulumi:"id"`
 	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
@@ -105,12 +105,12 @@ func (o LookupOrganizationBillingGroupResultOutput) BillingAddressId() pulumi.St
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.BillingAddressId }).(pulumi.StringOutput)
 }
 
-// List of billing contact emails.
+// Aiven contacts these email addresses when there are billing issues or questions.
 func (o LookupOrganizationBillingGroupResultOutput) BillingContactEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) []string { return v.BillingContactEmails }).(pulumi.StringArrayOutput)
 }
 
-// List of billing contact emails.
+// PDF invoices are sent to these email addresses.
 func (o LookupOrganizationBillingGroupResultOutput) BillingEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
 }
@@ -135,7 +135,7 @@ func (o LookupOrganizationBillingGroupResultOutput) CustomInvoiceText() pulumi.S
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.CustomInvoiceText }).(pulumi.StringOutput)
 }
 
-// Resource ID, a composite of `organizationId` and `billingGroupId` IDs.
+// Resource ID composed as: `organization_id/billing_group_id`.
 func (o LookupOrganizationBillingGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -110,7 +110,7 @@ class GetOrganizationAddressResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Resource ID, a composite of `organization_id` and `address_id` IDs.
+        Resource ID composed as: `organization_id/address_id`.
         """
         return pulumi.get(self, "id")
 

@@ -43,7 +43,7 @@ export interface GetValkeyUserResult {
      */
     readonly id: string;
     /**
-     * The Valkey service user's password.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
     readonly password: string;
     /**

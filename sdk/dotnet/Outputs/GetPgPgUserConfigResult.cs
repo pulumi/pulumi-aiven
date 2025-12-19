@@ -34,6 +34,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BackupMinute;
         /// <summary>
+        /// Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `False`.
+        /// </summary>
+        public readonly bool? EnableHaReplicaDns;
+        /// <summary>
         /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         /// </summary>
         public readonly bool? EnableIpv6;
@@ -158,6 +162,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? backupMinute,
 
+            bool? enableHaReplicaDns,
+
             bool? enableIpv6,
 
             ImmutableArray<Outputs.GetPgPgUserConfigIpFilterObjectResult> ipFilterObjects,
@@ -219,6 +225,7 @@ namespace Pulumi.Aiven.Outputs
             AdminUsername = adminUsername;
             BackupHour = backupHour;
             BackupMinute = backupMinute;
+            EnableHaReplicaDns = enableHaReplicaDns;
             EnableIpv6 = enableIpv6;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;

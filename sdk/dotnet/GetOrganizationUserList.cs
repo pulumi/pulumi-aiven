@@ -88,16 +88,31 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserListArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The name of the organization.
+        /// The name of the organization. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
+
+        [Input("timeouts")]
+        public Inputs.GetOrganizationUserListTimeoutsArgs? Timeouts { get; set; }
+
+        [Input("users")]
+        private List<Inputs.GetOrganizationUserListUserArgs>? _users;
+
+        /// <summary>
+        /// List of users of the organization.
+        /// </summary>
+        public List<Inputs.GetOrganizationUserListUserArgs> Users
+        {
+            get => _users ?? (_users = new List<Inputs.GetOrganizationUserListUserArgs>());
+            set => _users = value;
+        }
 
         public GetOrganizationUserListArgs()
         {
@@ -108,16 +123,31 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserListInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The name of the organization.
+        /// The name of the organization. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.GetOrganizationUserListTimeoutsInputArgs>? Timeouts { get; set; }
+
+        [Input("users")]
+        private InputList<Inputs.GetOrganizationUserListUserInputArgs>? _users;
+
+        /// <summary>
+        /// List of users of the organization.
+        /// </summary>
+        public InputList<Inputs.GetOrganizationUserListUserInputArgs> Users
+        {
+            get => _users ?? (_users = new InputList<Inputs.GetOrganizationUserListUserInputArgs>());
+            set => _users = value;
+        }
 
         public GetOrganizationUserListInvokeArgs()
         {
@@ -130,28 +160,32 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserListResult
     {
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
-        public readonly string? Id;
+        public readonly string Id;
         /// <summary>
-        /// The name of the organization.
+        /// The name of the organization. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
+        public readonly Outputs.GetOrganizationUserListTimeoutsResult? Timeouts;
         /// <summary>
-        /// List of the users, their profile information, and other data.
+        /// List of users of the organization.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOrganizationUserListUserResult> Users;
 
         [OutputConstructor]
         private GetOrganizationUserListResult(
-            string? id,
+            string id,
 
-            string? name,
+            string name,
+
+            Outputs.GetOrganizationUserListTimeoutsResult? timeouts,
 
             ImmutableArray<Outputs.GetOrganizationUserListUserResult> users)
         {
             Id = id;
             Name = name;
+            Timeouts = timeouts;
             Users = users;
         }
     }

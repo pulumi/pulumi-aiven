@@ -62,8 +62,13 @@ type CassandraUser struct {
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
 	// Access certificate key for the user.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// The Cassandra service user's password.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password pulumi.StringOutput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -93,10 +98,14 @@ func NewCassandraUser(ctx *pulumi.Context,
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
+	if args.PasswordWo != nil {
+		args.PasswordWo = pulumi.ToSecret(args.PasswordWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accessCert",
 		"accessKey",
 		"password",
+		"passwordWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -126,8 +135,13 @@ type cassandraUserState struct {
 	AccessCert *string `pulumi:"accessCert"`
 	// Access certificate key for the user.
 	AccessKey *string `pulumi:"accessKey"`
-	// The Cassandra service user's password.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -143,8 +157,13 @@ type CassandraUserState struct {
 	AccessCert pulumi.StringPtrInput
 	// Access certificate key for the user.
 	AccessKey pulumi.StringPtrInput
-	// The Cassandra service user's password.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	PasswordWo pulumi.StringPtrInput
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion pulumi.IntPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -160,8 +179,13 @@ func (CassandraUserState) ElementType() reflect.Type {
 }
 
 type cassandraUserArgs struct {
-	// The Cassandra service user's password.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -172,8 +196,13 @@ type cassandraUserArgs struct {
 
 // The set of arguments for constructing a CassandraUser resource.
 type CassandraUserArgs struct {
-	// The Cassandra service user's password.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	PasswordWo pulumi.StringPtrInput
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	PasswordWoVersion pulumi.IntPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -279,9 +308,20 @@ func (o CassandraUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *CassandraUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// The Cassandra service user's password.
+// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 func (o CassandraUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *CassandraUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+func (o CassandraUserOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CassandraUser) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+func (o CassandraUserOutput) PasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CassandraUser) pulumi.IntPtrOutput { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.

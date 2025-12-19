@@ -148,13 +148,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigKafkaSaslMechanismsArgs>? KafkaSaslMechanisms { get; set; }
 
         /// <summary>
-        /// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+        /// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
         /// </summary>
         [Input("kafkaVersion")]
         public Input<string>? KafkaVersion { get; set; }
 
         /// <summary>
-        /// Use Letsencrypt CA for Kafka SASL via Privatelink.
+        /// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+        /// </summary>
+        [Input("letsencryptSasl")]
+        public Input<bool>? LetsencryptSasl { get; set; }
+
+        /// <summary>
+        /// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         /// </summary>
         [Input("letsencryptSaslPrivatelink")]
         public Input<bool>? LetsencryptSaslPrivatelink { get; set; }
@@ -176,6 +182,18 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.KafkaKafkaUserConfigPublicAccessArgs>? PublicAccess { get; set; }
+
+        [Input("saslOauthbearerAllowedUrls")]
+        private InputList<string>? _saslOauthbearerAllowedUrls;
+
+        /// <summary>
+        /// List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        /// </summary>
+        public InputList<string> SaslOauthbearerAllowedUrls
+        {
+            get => _saslOauthbearerAllowedUrls ?? (_saslOauthbearerAllowedUrls = new InputList<string>());
+            set => _saslOauthbearerAllowedUrls = value;
+        }
 
         /// <summary>
         /// Enable Schema-Registry service. Default: `False`.

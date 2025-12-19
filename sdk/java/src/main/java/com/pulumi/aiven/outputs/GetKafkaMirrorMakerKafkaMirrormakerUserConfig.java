@@ -49,6 +49,11 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
      */
     private @Nullable GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
     /**
+     * @return List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    private @Nullable List<String> saslOauthbearerAllowedUrls;
+    /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -104,6 +109,13 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
         return Optional.ofNullable(this.kafkaMirrormaker);
     }
     /**
+     * @return List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    public List<String> saslOauthbearerAllowedUrls() {
+        return this.saslOauthbearerAllowedUrls == null ? List.of() : this.saslOauthbearerAllowedUrls;
+    }
+    /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -132,6 +144,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
+        private @Nullable List<String> saslOauthbearerAllowedUrls;
         private @Nullable Boolean serviceLog;
         private @Nullable Boolean staticIps;
         public Builder() {}
@@ -142,6 +155,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.kafkaMirrormaker = defaults.kafkaMirrormaker;
+    	      this.saslOauthbearerAllowedUrls = defaults.saslOauthbearerAllowedUrls;
     	      this.serviceLog = defaults.serviceLog;
     	      this.staticIps = defaults.staticIps;
         }
@@ -186,6 +200,15 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder saslOauthbearerAllowedUrls(@Nullable List<String> saslOauthbearerAllowedUrls) {
+
+            this.saslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
+            return this;
+        }
+        public Builder saslOauthbearerAllowedUrls(String... saslOauthbearerAllowedUrls) {
+            return saslOauthbearerAllowedUrls(List.of(saslOauthbearerAllowedUrls));
+        }
+        @CustomType.Setter
         public Builder serviceLog(@Nullable Boolean serviceLog) {
 
             this.serviceLog = serviceLog;
@@ -204,6 +227,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;
             _resultValue.kafkaMirrormaker = kafkaMirrormaker;
+            _resultValue.saslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
             _resultValue.serviceLog = serviceLog;
             _resultValue.staticIps = staticIps;
             return _resultValue;

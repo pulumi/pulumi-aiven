@@ -116,6 +116,7 @@
         "getOrganizationUser.ts",
         "getOrganizationUserGroup.ts",
         "getOrganizationUserGroupList.ts",
+        "getOrganizationUserGroupMemberList.ts",
         "getOrganizationUserList.ts",
         "getOrganizationVpc.ts",
         "getOrganizationalUnit.ts",

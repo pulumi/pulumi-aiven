@@ -269,6 +269,12 @@ class GovernanceAccess(pulumi.CustomResource):
             owner_user_group_id=example["groupId"])
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']] access_data: Required property. access type specific data. Changing this property forces recreation of the resource.
@@ -306,6 +312,12 @@ class GovernanceAccess(pulumi.CustomResource):
                 }],
             },
             owner_user_group_id=example["groupId"])
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
         ```
 
         :param str resource_name: The name of the resource.

@@ -197,6 +197,21 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer knnMemoryCircuitBreakerLimit;
     /**
+     * @return Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+     * 
+     */
+    private @Nullable Boolean mlCommonsModelAccessControlEnabled;
+    /**
+     * @return Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+     * 
+     */
+    private @Nullable Integer mlCommonsNativeMemoryThreshold;
+    /**
+     * @return Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+     * 
+     */
+    private @Nullable Boolean mlCommonsOnlyRunOnMlNode;
+    /**
      * @return Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
      * 
      */
@@ -545,6 +560,27 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.knnMemoryCircuitBreakerLimit);
     }
     /**
+     * @return Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+     * 
+     */
+    public Optional<Boolean> mlCommonsModelAccessControlEnabled() {
+        return Optional.ofNullable(this.mlCommonsModelAccessControlEnabled);
+    }
+    /**
+     * @return Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+     * 
+     */
+    public Optional<Integer> mlCommonsNativeMemoryThreshold() {
+        return Optional.ofNullable(this.mlCommonsNativeMemoryThreshold);
+    }
+    /**
+     * @return Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+     * 
+     */
+    public Optional<Boolean> mlCommonsOnlyRunOnMlNode() {
+        return Optional.ofNullable(this.mlCommonsOnlyRunOnMlNode);
+    }
+    /**
      * @return Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
      * 
      */
@@ -736,6 +772,9 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Integer ismHistoryRolloverRetentionPeriod;
         private @Nullable Boolean knnMemoryCircuitBreakerEnabled;
         private @Nullable Integer knnMemoryCircuitBreakerLimit;
+        private @Nullable Boolean mlCommonsModelAccessControlEnabled;
+        private @Nullable Integer mlCommonsNativeMemoryThreshold;
+        private @Nullable Boolean mlCommonsOnlyRunOnMlNode;
         private @Nullable String nodeSearchCacheSize;
         private @Nullable Boolean overrideMainResponseVersion;
         private @Nullable Boolean pluginsAlertingFilterByBackendRoles;
@@ -797,6 +836,9 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     	      this.ismHistoryRolloverRetentionPeriod = defaults.ismHistoryRolloverRetentionPeriod;
     	      this.knnMemoryCircuitBreakerEnabled = defaults.knnMemoryCircuitBreakerEnabled;
     	      this.knnMemoryCircuitBreakerLimit = defaults.knnMemoryCircuitBreakerLimit;
+    	      this.mlCommonsModelAccessControlEnabled = defaults.mlCommonsModelAccessControlEnabled;
+    	      this.mlCommonsNativeMemoryThreshold = defaults.mlCommonsNativeMemoryThreshold;
+    	      this.mlCommonsOnlyRunOnMlNode = defaults.mlCommonsOnlyRunOnMlNode;
     	      this.nodeSearchCacheSize = defaults.nodeSearchCacheSize;
     	      this.overrideMainResponseVersion = defaults.overrideMainResponseVersion;
     	      this.pluginsAlertingFilterByBackendRoles = defaults.pluginsAlertingFilterByBackendRoles;
@@ -1038,6 +1080,24 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder mlCommonsModelAccessControlEnabled(@Nullable Boolean mlCommonsModelAccessControlEnabled) {
+
+            this.mlCommonsModelAccessControlEnabled = mlCommonsModelAccessControlEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mlCommonsNativeMemoryThreshold(@Nullable Integer mlCommonsNativeMemoryThreshold) {
+
+            this.mlCommonsNativeMemoryThreshold = mlCommonsNativeMemoryThreshold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mlCommonsOnlyRunOnMlNode(@Nullable Boolean mlCommonsOnlyRunOnMlNode) {
+
+            this.mlCommonsOnlyRunOnMlNode = mlCommonsOnlyRunOnMlNode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder nodeSearchCacheSize(@Nullable String nodeSearchCacheSize) {
 
             this.nodeSearchCacheSize = nodeSearchCacheSize;
@@ -1210,6 +1270,9 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             _resultValue.ismHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
             _resultValue.knnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
             _resultValue.knnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
+            _resultValue.mlCommonsModelAccessControlEnabled = mlCommonsModelAccessControlEnabled;
+            _resultValue.mlCommonsNativeMemoryThreshold = mlCommonsNativeMemoryThreshold;
+            _resultValue.mlCommonsOnlyRunOnMlNode = mlCommonsOnlyRunOnMlNode;
             _resultValue.nodeSearchCacheSize = nodeSearchCacheSize;
             _resultValue.overrideMainResponseVersion = overrideMainResponseVersion;
             _resultValue.pluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;

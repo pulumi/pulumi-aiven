@@ -54,7 +54,7 @@ type GetServicePlanResult struct {
 	DiskSpaceMb int `pulumi:"diskSpaceMb"`
 	// Disk space change step size.
 	DiskSpaceStepMb int `pulumi:"diskSpaceStepMb"`
-	// Resource ID, a composite of `project`, `serviceType`, `servicePlan` and `cloudName` IDs.
+	// Resource ID composed as: `project/service_type/service_plan/cloud_name`.
 	Id string `pulumi:"id"`
 	// Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
 	MaxMemoryPercent int `pulumi:"maxMemoryPercent"`
@@ -146,7 +146,7 @@ func (o GetServicePlanResultOutput) DiskSpaceStepMb() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServicePlanResult) int { return v.DiskSpaceStepMb }).(pulumi.IntOutput)
 }
 
-// Resource ID, a composite of `project`, `serviceType`, `servicePlan` and `cloudName` IDs.
+// Resource ID composed as: `project/service_type/service_plan/cloud_name`.
 func (o GetServicePlanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePlanResult) string { return v.Id }).(pulumi.StringOutput)
 }
