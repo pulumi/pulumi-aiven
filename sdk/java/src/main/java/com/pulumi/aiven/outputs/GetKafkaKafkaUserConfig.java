@@ -124,12 +124,17 @@ public final class GetKafkaKafkaUserConfig {
      */
     private @Nullable GetKafkaKafkaUserConfigKafkaSaslMechanisms kafkaSaslMechanisms;
     /**
-     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
      * 
      */
     private @Nullable String kafkaVersion;
     /**
-     * @return Use Letsencrypt CA for Kafka SASL via Privatelink.
+     * @return Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+     * 
+     */
+    private @Nullable Boolean letsencryptSasl;
+    /**
+     * @return Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
      * 
      */
     private @Nullable Boolean letsencryptSaslPrivatelink;
@@ -148,6 +153,11 @@ public final class GetKafkaKafkaUserConfig {
      * 
      */
     private @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess;
+    /**
+     * @return List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    private @Nullable List<String> saslOauthbearerAllowedUrls;
     /**
      * @return Enable Schema-Registry service. Default: `false`.
      * 
@@ -311,14 +321,21 @@ public final class GetKafkaKafkaUserConfig {
         return Optional.ofNullable(this.kafkaSaslMechanisms);
     }
     /**
-     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
      * 
      */
     public Optional<String> kafkaVersion() {
         return Optional.ofNullable(this.kafkaVersion);
     }
     /**
-     * @return Use Letsencrypt CA for Kafka SASL via Privatelink.
+     * @return Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+     * 
+     */
+    public Optional<Boolean> letsencryptSasl() {
+        return Optional.ofNullable(this.letsencryptSasl);
+    }
+    /**
+     * @return Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
      * 
      */
     public Optional<Boolean> letsencryptSaslPrivatelink() {
@@ -344,6 +361,13 @@ public final class GetKafkaKafkaUserConfig {
      */
     public Optional<GetKafkaKafkaUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
+    }
+    /**
+     * @return List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    public List<String> saslOauthbearerAllowedUrls() {
+        return this.saslOauthbearerAllowedUrls == null ? List.of() : this.saslOauthbearerAllowedUrls;
     }
     /**
      * @return Enable Schema-Registry service. Default: `false`.
@@ -416,10 +440,12 @@ public final class GetKafkaKafkaUserConfig {
         private @Nullable GetKafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
         private @Nullable GetKafkaKafkaUserConfigKafkaSaslMechanisms kafkaSaslMechanisms;
         private @Nullable String kafkaVersion;
+        private @Nullable Boolean letsencryptSasl;
         private @Nullable Boolean letsencryptSaslPrivatelink;
         private @Nullable GetKafkaKafkaUserConfigPrivateAccess privateAccess;
         private @Nullable GetKafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess;
+        private @Nullable List<String> saslOauthbearerAllowedUrls;
         private @Nullable Boolean schemaRegistry;
         private @Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
         private @Nullable Boolean serviceLog;
@@ -448,10 +474,12 @@ public final class GetKafkaKafkaUserConfig {
     	      this.kafkaRestConfig = defaults.kafkaRestConfig;
     	      this.kafkaSaslMechanisms = defaults.kafkaSaslMechanisms;
     	      this.kafkaVersion = defaults.kafkaVersion;
+    	      this.letsencryptSasl = defaults.letsencryptSasl;
     	      this.letsencryptSaslPrivatelink = defaults.letsencryptSaslPrivatelink;
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.publicAccess = defaults.publicAccess;
+    	      this.saslOauthbearerAllowedUrls = defaults.saslOauthbearerAllowedUrls;
     	      this.schemaRegistry = defaults.schemaRegistry;
     	      this.schemaRegistryConfig = defaults.schemaRegistryConfig;
     	      this.serviceLog = defaults.serviceLog;
@@ -590,6 +618,12 @@ public final class GetKafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder letsencryptSasl(@Nullable Boolean letsencryptSasl) {
+
+            this.letsencryptSasl = letsencryptSasl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder letsencryptSaslPrivatelink(@Nullable Boolean letsencryptSaslPrivatelink) {
 
             this.letsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
@@ -612,6 +646,15 @@ public final class GetKafkaKafkaUserConfig {
 
             this.publicAccess = publicAccess;
             return this;
+        }
+        @CustomType.Setter
+        public Builder saslOauthbearerAllowedUrls(@Nullable List<String> saslOauthbearerAllowedUrls) {
+
+            this.saslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
+            return this;
+        }
+        public Builder saslOauthbearerAllowedUrls(String... saslOauthbearerAllowedUrls) {
+            return saslOauthbearerAllowedUrls(List.of(saslOauthbearerAllowedUrls));
         }
         @CustomType.Setter
         public Builder schemaRegistry(@Nullable Boolean schemaRegistry) {
@@ -670,10 +713,12 @@ public final class GetKafkaKafkaUserConfig {
             _resultValue.kafkaRestConfig = kafkaRestConfig;
             _resultValue.kafkaSaslMechanisms = kafkaSaslMechanisms;
             _resultValue.kafkaVersion = kafkaVersion;
+            _resultValue.letsencryptSasl = letsencryptSasl;
             _resultValue.letsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
             _resultValue.privateAccess = privateAccess;
             _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.publicAccess = publicAccess;
+            _resultValue.saslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
             _resultValue.schemaRegistry = schemaRegistry;
             _resultValue.schemaRegistryConfig = schemaRegistryConfig;
             _resultValue.serviceLog = serviceLog;

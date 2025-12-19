@@ -33,14 +33,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * List of billing contact emails.
+     * Aiven contacts these email addresses when there are billing issues or questions.
      * 
      */
     @Import(name="billingContactEmails")
     private @Nullable Output<List<String>> billingContactEmails;
 
     /**
-     * @return List of billing contact emails.
+     * @return Aiven contacts these email addresses when there are billing issues or questions.
      * 
      */
     public Optional<Output<List<String>>> billingContactEmails() {
@@ -48,14 +48,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * List of billing contact emails.
+     * PDF invoices are sent to these email addresses.
      * 
      */
     @Import(name="billingEmails")
     private @Nullable Output<List<String>> billingEmails;
 
     /**
-     * @return List of billing contact emails.
+     * @return PDF invoices are sent to these email addresses.
      * 
      */
     public Optional<Output<List<String>>> billingEmails() {
@@ -246,7 +246,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingContactEmails List of billing contact emails.
+         * @param billingContactEmails Aiven contacts these email addresses when there are billing issues or questions.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingContactEmails List of billing contact emails.
+         * @param billingContactEmails Aiven contacts these email addresses when there are billing issues or questions.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingContactEmails List of billing contact emails.
+         * @param billingContactEmails Aiven contacts these email addresses when there are billing issues or questions.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingEmails List of billing contact emails.
+         * @param billingEmails PDF invoices are sent to these email addresses.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingEmails List of billing contact emails.
+         * @param billingEmails PDF invoices are sent to these email addresses.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingEmails List of billing contact emails.
+         * @param billingEmails PDF invoices are sent to these email addresses.
          * 
          * @return builder
          * 

@@ -312,14 +312,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
      * 
      */
     @Import(name="kafkaVersion")
     private @Nullable Output<String> kafkaVersion;
 
     /**
-     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
      * 
      */
     public Optional<Output<String>> kafkaVersion() {
@@ -327,14 +327,29 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Use Letsencrypt CA for Kafka SASL via Privatelink.
+     * Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+     * 
+     */
+    @Import(name="letsencryptSasl")
+    private @Nullable Output<Boolean> letsencryptSasl;
+
+    /**
+     * @return Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+     * 
+     */
+    public Optional<Output<Boolean>> letsencryptSasl() {
+        return Optional.ofNullable(this.letsencryptSasl);
+    }
+
+    /**
+     * Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
      * 
      */
     @Import(name="letsencryptSaslPrivatelink")
     private @Nullable Output<Boolean> letsencryptSaslPrivatelink;
 
     /**
-     * @return Use Letsencrypt CA for Kafka SASL via Privatelink.
+     * @return Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
      * 
      */
     public Optional<Output<Boolean>> letsencryptSaslPrivatelink() {
@@ -384,6 +399,21 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<KafkaKafkaUserConfigPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
+    }
+
+    /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    @Import(name="saslOauthbearerAllowedUrls")
+    private @Nullable Output<List<String>> saslOauthbearerAllowedUrls;
+
+    /**
+     * @return List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    public Optional<Output<List<String>>> saslOauthbearerAllowedUrls() {
+        return Optional.ofNullable(this.saslOauthbearerAllowedUrls);
     }
 
     /**
@@ -498,10 +528,12 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         this.kafkaRestConfig = $.kafkaRestConfig;
         this.kafkaSaslMechanisms = $.kafkaSaslMechanisms;
         this.kafkaVersion = $.kafkaVersion;
+        this.letsencryptSasl = $.letsencryptSasl;
         this.letsencryptSaslPrivatelink = $.letsencryptSaslPrivatelink;
         this.privateAccess = $.privateAccess;
         this.privatelinkAccess = $.privatelinkAccess;
         this.publicAccess = $.publicAccess;
+        this.saslOauthbearerAllowedUrls = $.saslOauthbearerAllowedUrls;
         this.schemaRegistry = $.schemaRegistry;
         this.schemaRegistryConfig = $.schemaRegistryConfig;
         this.serviceLog = $.serviceLog;
@@ -959,7 +991,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaVersion Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+         * @param kafkaVersion Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
          * 
          * @return builder
          * 
@@ -970,7 +1002,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaVersion Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+         * @param kafkaVersion Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
          * 
          * @return builder
          * 
@@ -980,7 +1012,28 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param letsencryptSaslPrivatelink Use Letsencrypt CA for Kafka SASL via Privatelink.
+         * @param letsencryptSasl Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder letsencryptSasl(@Nullable Output<Boolean> letsencryptSasl) {
+            $.letsencryptSasl = letsencryptSasl;
+            return this;
+        }
+
+        /**
+         * @param letsencryptSasl Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder letsencryptSasl(Boolean letsencryptSasl) {
+            return letsencryptSasl(Output.of(letsencryptSasl));
+        }
+
+        /**
+         * @param letsencryptSaslPrivatelink Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
          * 
          * @return builder
          * 
@@ -991,7 +1044,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param letsencryptSaslPrivatelink Use Letsencrypt CA for Kafka SASL via Privatelink.
+         * @param letsencryptSaslPrivatelink Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
          * 
          * @return builder
          * 
@@ -1061,6 +1114,37 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder publicAccess(KafkaKafkaUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
+        }
+
+        /**
+         * @param saslOauthbearerAllowedUrls List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAllowedUrls(@Nullable Output<List<String>> saslOauthbearerAllowedUrls) {
+            $.saslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
+            return this;
+        }
+
+        /**
+         * @param saslOauthbearerAllowedUrls List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAllowedUrls(List<String> saslOauthbearerAllowedUrls) {
+            return saslOauthbearerAllowedUrls(Output.of(saslOauthbearerAllowedUrls));
+        }
+
+        /**
+         * @param saslOauthbearerAllowedUrls List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAllowedUrls(String... saslOauthbearerAllowedUrls) {
+            return saslOauthbearerAllowedUrls(List.of(saslOauthbearerAllowedUrls));
         }
 
         /**

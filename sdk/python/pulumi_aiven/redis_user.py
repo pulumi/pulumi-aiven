@@ -317,35 +317,7 @@ class RedisUser(pulumi.CustomResource):
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Creates and manages an [Aiven for Caching](https://aiven.io/docs/products/caching) (formerly known as Aiven for Redis®) service user.
-
-        !> **End of life notice**
-        In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-        Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
-        From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-        From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-        You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-        and update your existing `Redis` resources.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo = aiven.RedisUser("foo",
-            service_name=bar["serviceName"],
-            project="my-project",
-            username="user-1",
-            password="Test$1234")
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import aiven:index/redisUser:RedisUser foo PROJECT/SERVICE_NAME/USERNAME
-        ```
-
+        Create a RedisUser resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the Redis User.
@@ -364,35 +336,7 @@ class RedisUser(pulumi.CustomResource):
                  args: RedisUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an [Aiven for Caching](https://aiven.io/docs/products/caching) (formerly known as Aiven for Redis®) service user.
-
-        !> **End of life notice**
-        In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-        Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
-        From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-        From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-        You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-        and update your existing `Redis` resources.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        foo = aiven.RedisUser("foo",
-            service_name=bar["serviceName"],
-            project="my-project",
-            username="user-1",
-            password="Test$1234")
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import aiven:index/redisUser:RedisUser foo PROJECT/SERVICE_NAME/USERNAME
-        ```
-
+        Create a RedisUser resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RedisUserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

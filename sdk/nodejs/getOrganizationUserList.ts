@@ -26,6 +26,8 @@ export function getOrganizationUserList(args?: GetOrganizationUserListArgs, opts
     return pulumi.runtime.invoke("aiven:index/getOrganizationUserList:getOrganizationUserList", {
         "id": args.id,
         "name": args.name,
+        "timeouts": args.timeouts,
+        "users": args.users,
     }, opts);
 }
 
@@ -34,13 +36,18 @@ export function getOrganizationUserList(args?: GetOrganizationUserListArgs, opts
  */
 export interface GetOrganizationUserListArgs {
     /**
-     * The ID of the organization.
+     * ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
      */
     id?: string;
     /**
-     * The name of the organization.
+     * The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      */
     name?: string;
+    timeouts?: inputs.GetOrganizationUserListTimeouts;
+    /**
+     * List of users of the organization.
+     */
+    users?: inputs.GetOrganizationUserListUser[];
 }
 
 /**
@@ -48,17 +55,18 @@ export interface GetOrganizationUserListArgs {
  */
 export interface GetOrganizationUserListResult {
     /**
-     * The ID of the organization.
+     * ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
      */
-    readonly id?: string;
+    readonly id: string;
     /**
-     * The name of the organization.
+     * The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      */
-    readonly name?: string;
+    readonly name: string;
+    readonly timeouts?: outputs.GetOrganizationUserListTimeouts;
     /**
-     * List of the users, their profile information, and other data.
+     * List of users of the organization.
      */
-    readonly users: outputs.GetOrganizationUserListUser[];
+    readonly users?: outputs.GetOrganizationUserListUser[];
 }
 /**
  * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
@@ -80,6 +88,8 @@ export function getOrganizationUserListOutput(args?: GetOrganizationUserListOutp
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationUserList:getOrganizationUserList", {
         "id": args.id,
         "name": args.name,
+        "timeouts": args.timeouts,
+        "users": args.users,
     }, opts);
 }
 
@@ -88,11 +98,16 @@ export function getOrganizationUserListOutput(args?: GetOrganizationUserListOutp
  */
 export interface GetOrganizationUserListOutputArgs {
     /**
-     * The ID of the organization.
+     * ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
      */
     id?: pulumi.Input<string>;
     /**
-     * The name of the organization.
+     * The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      */
     name?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationUserListTimeoutsArgs>;
+    /**
+     * List of users of the organization.
+     */
+    users?: pulumi.Input<pulumi.Input<inputs.GetOrganizationUserListUserArgs>[]>;
 }

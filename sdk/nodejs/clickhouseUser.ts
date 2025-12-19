@@ -55,12 +55,12 @@ export class ClickhouseUser extends pulumi.CustomResource {
     }
 
     /**
-     * The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
-    declare public /*out*/ readonly password: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
      */
     declare public readonly passwordWo: pulumi.Output<string | undefined>;
     /**
@@ -120,12 +120,12 @@ export class ClickhouseUser extends pulumi.CustomResource {
             if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
             resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["username"] = args?.username;
-            resourceInputs["password"] = undefined /*out*/;
             resourceInputs["required"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         }
@@ -141,12 +141,12 @@ export class ClickhouseUser extends pulumi.CustomResource {
  */
 export interface ClickhouseUserState {
     /**
-     * The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
     password?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
      */
     passwordWo?: pulumi.Input<string>;
     /**
@@ -180,8 +180,12 @@ export interface ClickhouseUserState {
  */
 export interface ClickhouseUserArgs {
     /**
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     */
+    password?: pulumi.Input<string>;
+    /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
      */
     passwordWo?: pulumi.Input<string>;
     /**

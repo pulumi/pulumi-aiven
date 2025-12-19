@@ -681,6 +681,31 @@ export interface AlloydbomniTechEmail {
     email: pulumi.Input<string>;
 }
 
+export interface BillingGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface CassandraCassandra {
     /**
      * Cassandra server URIs.
@@ -1661,6 +1686,20 @@ export interface FlinkTechEmail {
     email: pulumi.Input<string>;
 }
 
+export interface GetBillingGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetBillingGroupTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface GetOrganizationAddressTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -1935,6 +1974,298 @@ export interface GetOrganizationUserGroupListUserGroupArgs {
      * User Group Name.
      */
     userGroupName?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationUserGroupMemberListMember {
+    /**
+     * Last Activity Time.
+     */
+    lastActivityTime?: string;
+    /**
+     * User ID.
+     */
+    userId?: string;
+    /**
+     * OrganizationUserInfo.
+     */
+    userInfos?: inputs.GetOrganizationUserGroupMemberListMemberUserInfo[];
+}
+
+export interface GetOrganizationUserGroupMemberListMemberArgs {
+    /**
+     * Last Activity Time.
+     */
+    lastActivityTime?: pulumi.Input<string>;
+    /**
+     * User ID.
+     */
+    userId?: pulumi.Input<string>;
+    /**
+     * OrganizationUserInfo.
+     */
+    userInfos?: pulumi.Input<pulumi.Input<inputs.GetOrganizationUserGroupMemberListMemberUserInfoArgs>[]>;
+}
+
+export interface GetOrganizationUserGroupMemberListMemberUserInfo {
+    /**
+     * City.
+     */
+    city?: string;
+    /**
+     * Country.
+     */
+    country?: string;
+    /**
+     * Creation time.
+     */
+    createTime?: string;
+    /**
+     * Department.
+     */
+    department?: string;
+    /**
+     * Is Application User.
+     */
+    isApplicationUser?: boolean;
+    /**
+     * Job Title.
+     */
+    jobTitle?: string;
+    /**
+     * Managed By Scim.
+     */
+    managedByScim?: boolean;
+    /**
+     * Managing Organization ID.
+     */
+    managingOrganizationId?: string;
+    /**
+     * Real Name.
+     */
+    realName?: string;
+    /**
+     * State.
+     */
+    state?: string;
+    /**
+     * User Email.
+     */
+    userEmail?: string;
+}
+
+export interface GetOrganizationUserGroupMemberListMemberUserInfoArgs {
+    /**
+     * City.
+     */
+    city?: pulumi.Input<string>;
+    /**
+     * Country.
+     */
+    country?: pulumi.Input<string>;
+    /**
+     * Creation time.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Department.
+     */
+    department?: pulumi.Input<string>;
+    /**
+     * Is Application User.
+     */
+    isApplicationUser?: pulumi.Input<boolean>;
+    /**
+     * Job Title.
+     */
+    jobTitle?: pulumi.Input<string>;
+    /**
+     * Managed By Scim.
+     */
+    managedByScim?: pulumi.Input<boolean>;
+    /**
+     * Managing Organization ID.
+     */
+    managingOrganizationId?: pulumi.Input<string>;
+    /**
+     * Real Name.
+     */
+    realName?: pulumi.Input<string>;
+    /**
+     * State.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * User Email.
+     */
+    userEmail?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationUserGroupMemberListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationUserGroupMemberListTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationUserListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationUserListTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationUserListUser {
+    /**
+     * Super admin state of the organization user.
+     */
+    isSuperAdmin?: boolean;
+    /**
+     * Join time.
+     */
+    joinTime?: string;
+    /**
+     * Last activity time.
+     */
+    lastActivityTime?: string;
+    /**
+     * User ID.
+     */
+    userId?: string;
+    /**
+     * OrganizationUserInfo.
+     */
+    userInfos?: inputs.GetOrganizationUserListUserUserInfo[];
+}
+
+export interface GetOrganizationUserListUserArgs {
+    /**
+     * Super admin state of the organization user.
+     */
+    isSuperAdmin?: pulumi.Input<boolean>;
+    /**
+     * Join time.
+     */
+    joinTime?: pulumi.Input<string>;
+    /**
+     * Last activity time.
+     */
+    lastActivityTime?: pulumi.Input<string>;
+    /**
+     * User ID.
+     */
+    userId?: pulumi.Input<string>;
+    /**
+     * OrganizationUserInfo.
+     */
+    userInfos?: pulumi.Input<pulumi.Input<inputs.GetOrganizationUserListUserUserInfoArgs>[]>;
+}
+
+export interface GetOrganizationUserListUserUserInfo {
+    /**
+     * City.
+     */
+    city?: string;
+    /**
+     * Country.
+     */
+    country?: string;
+    /**
+     * Creation time.
+     */
+    createTime?: string;
+    /**
+     * Department.
+     */
+    department?: string;
+    /**
+     * Is Application User.
+     */
+    isApplicationUser?: boolean;
+    /**
+     * Job Title.
+     */
+    jobTitle?: string;
+    /**
+     * Managed By Scim.
+     */
+    managedByScim?: boolean;
+    /**
+     * Managing Organization ID.
+     */
+    managingOrganizationId?: string;
+    /**
+     * Real Name.
+     */
+    realName?: string;
+    /**
+     * State.
+     */
+    state?: string;
+    /**
+     * User Email.
+     */
+    userEmail?: string;
+}
+
+export interface GetOrganizationUserListUserUserInfoArgs {
+    /**
+     * City.
+     */
+    city?: pulumi.Input<string>;
+    /**
+     * Country.
+     */
+    country?: pulumi.Input<string>;
+    /**
+     * Creation time.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Department.
+     */
+    department?: pulumi.Input<string>;
+    /**
+     * Is Application User.
+     */
+    isApplicationUser?: pulumi.Input<boolean>;
+    /**
+     * Job Title.
+     */
+    jobTitle?: pulumi.Input<string>;
+    /**
+     * Managed By Scim.
+     */
+    managedByScim?: pulumi.Input<boolean>;
+    /**
+     * Managing Organization ID.
+     */
+    managingOrganizationId?: pulumi.Input<string>;
+    /**
+     * Real Name.
+     */
+    realName?: pulumi.Input<string>;
+    /**
+     * State.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * User Email.
+     */
+    userEmail?: pulumi.Input<string>;
 }
 
 export interface GetServicePlanBackupConfig {
@@ -3112,6 +3443,10 @@ export interface KafkaConnectKafkaConnectUserConfig {
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPublicAccess>;
+    /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     */
+    saslOauthbearerAllowedUrls?: pulumi.Input<pulumi.Input<string>[]>;
     secretProviders?: pulumi.Input<pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProvider>[]>;
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
@@ -3448,11 +3783,15 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaSaslMechanisms>;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
      */
     kafkaVersion?: pulumi.Input<string>;
     /**
-     * Use Letsencrypt CA for Kafka SASL via Privatelink.
+     * Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+     */
+    letsencryptSasl?: pulumi.Input<boolean>;
+    /**
+     * Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
      */
     letsencryptSaslPrivatelink?: pulumi.Input<boolean>;
     /**
@@ -3467,6 +3806,10 @@ export interface KafkaKafkaUserConfig {
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.KafkaKafkaUserConfigPublicAccess>;
+    /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     */
+    saslOauthbearerAllowedUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enable Schema-Registry service. Default: `false`.
      */
@@ -4110,6 +4453,10 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
      * Kafka MirrorMaker configuration values
      */
     kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker>;
+    /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     */
+    saslOauthbearerAllowedUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
@@ -4969,11 +5316,11 @@ export interface MySqlMysqlUserConfig {
      */
     adminUsername?: pulumi.Input<string>;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      */
     backupHour?: pulumi.Input<number>;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      */
     backupMinute?: pulumi.Input<number>;
     /**
@@ -5060,6 +5407,10 @@ export interface MySqlMysqlUserConfigMigration {
      * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: pulumi.Input<string>;
+    /**
+     * Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+     */
+    dumpTool?: pulumi.Input<string>;
     /**
      * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
@@ -5880,6 +6231,18 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
      */
     knnMemoryCircuitBreakerLimit?: pulumi.Input<number>;
+    /**
+     * Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+     */
+    mlCommonsModelAccessControlEnabled?: pulumi.Input<boolean>;
+    /**
+     * Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+     */
+    mlCommonsNativeMemoryThreshold?: pulumi.Input<number>;
+    /**
+     * Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+     */
+    mlCommonsOnlyRunOnMlNode?: pulumi.Input<boolean>;
     /**
      * Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
      */
@@ -6895,6 +7258,10 @@ export interface PgPgUserConfig {
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: pulumi.Input<number>;
+    /**
+     * Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+     */
+    enableHaReplicaDns?: pulumi.Input<boolean>;
     /**
      * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
      */

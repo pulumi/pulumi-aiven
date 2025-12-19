@@ -90,7 +90,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/organizationPermission:OrganizationPermission operator ORGANIZATION_ID/ID
+    /// $ pulumi import aiven:index/organizationPermission:OrganizationPermission example ORGANIZATION_ID/RESOURCE_TYPE/RESOURCE_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organizationPermission:OrganizationPermission")]

@@ -111,6 +111,21 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
     }
 
     /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    @Import(name="saslOauthbearerAllowedUrls")
+    private @Nullable Output<List<String>> saslOauthbearerAllowedUrls;
+
+    /**
+     * @return List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    public Optional<Output<List<String>>> saslOauthbearerAllowedUrls() {
+        return Optional.ofNullable(this.saslOauthbearerAllowedUrls);
+    }
+
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -148,6 +163,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
         this.kafkaMirrormaker = $.kafkaMirrormaker;
+        this.saslOauthbearerAllowedUrls = $.saslOauthbearerAllowedUrls;
         this.serviceLog = $.serviceLog;
         this.staticIps = $.staticIps;
     }
@@ -323,6 +339,37 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
          */
         public Builder kafkaMirrormaker(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs kafkaMirrormaker) {
             return kafkaMirrormaker(Output.of(kafkaMirrormaker));
+        }
+
+        /**
+         * @param saslOauthbearerAllowedUrls List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAllowedUrls(@Nullable Output<List<String>> saslOauthbearerAllowedUrls) {
+            $.saslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
+            return this;
+        }
+
+        /**
+         * @param saslOauthbearerAllowedUrls List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAllowedUrls(List<String> saslOauthbearerAllowedUrls) {
+            return saslOauthbearerAllowedUrls(Output.of(saslOauthbearerAllowedUrls));
+        }
+
+        /**
+         * @param saslOauthbearerAllowedUrls List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAllowedUrls(String... saslOauthbearerAllowedUrls) {
+            return saslOauthbearerAllowedUrls(List.of(saslOauthbearerAllowedUrls));
         }
 
         /**

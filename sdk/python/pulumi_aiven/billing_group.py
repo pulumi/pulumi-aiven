@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['BillingGroupArgs', 'BillingGroup']
 
@@ -21,6 +23,7 @@ class BillingGroupArgs:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  billing_currency: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  billing_extra_text: Optional[pulumi.Input[_builtins.str]] = None,
@@ -32,33 +35,37 @@ class BillingGroupArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['BillingGroupTimeoutsArgs']] = None,
                  vat_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zip_code: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BillingGroup resource.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address lines 1 and 2. For example, street, PO box, or building.
-        :param pulumi.Input[_builtins.str] billing_currency: Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
-        :param pulumi.Input[_builtins.str] billing_extra_text: Additional information to include on your invoice (for example, a reference number).
-        :param pulumi.Input[_builtins.str] card_id: Credit card ID.
-        :param pulumi.Input[_builtins.str] city: City, district, suburb, town, or village.
-        :param pulumi.Input[_builtins.str] company: Your company name.
-        :param pulumi.Input[_builtins.str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
-        :param pulumi.Input[_builtins.str] country_code: Two-letter country code.
-        :param pulumi.Input[_builtins.str] name: Name of the billing group.
-        :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[_builtins.str] state: Address state.
-        :param pulumi.Input[_builtins.str] vat_id: The VAT identification number for your company.
-        :param pulumi.Input[_builtins.str] zip_code: Zip or postal code.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: List of billing groups contact email addresses.
+        :param pulumi.Input[_builtins.str] billing_currency: Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: List of project billing email addresses.
+        :param pulumi.Input[_builtins.str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
+        :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
+        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
+        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
+        :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
+        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] vat_id: EU VAT Identification Number. Maximum length: `64`.
+        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `32`.
         """
         if account_id is not None:
-            warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
-            pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
+            warnings.warn("""Use `parent_id` instead. This field will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: Use `parent_id` instead. This field will be removed in the next major release.""")
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if address_lines is not None:
             pulumi.set(__self__, "address_lines", address_lines)
+        if billing_contact_emails is not None:
+            pulumi.set(__self__, "billing_contact_emails", billing_contact_emails)
         if billing_currency is not None:
             pulumi.set(__self__, "billing_currency", billing_currency)
         if billing_emails is not None:
@@ -81,6 +88,8 @@ class BillingGroupArgs:
             pulumi.set(__self__, "parent_id", parent_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if vat_id is not None:
             pulumi.set(__self__, "vat_id", vat_id)
         if zip_code is not None:
@@ -88,10 +97,10 @@ class BillingGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
+    @_utilities.deprecated("""Use `parent_id` instead. This field will be removed in the next major release.""")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Account ID.
+        Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         """
         return pulumi.get(self, "account_id")
 
@@ -112,10 +121,22 @@ class BillingGroupArgs:
         pulumi.set(self, "address_lines", value)
 
     @_builtins.property
+    @pulumi.getter(name="billingContactEmails")
+    def billing_contact_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of billing groups contact email addresses.
+        """
+        return pulumi.get(self, "billing_contact_emails")
+
+    @billing_contact_emails.setter
+    def billing_contact_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "billing_contact_emails", value)
+
+    @_builtins.property
     @pulumi.getter(name="billingCurrency")
     def billing_currency(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         """
         return pulumi.get(self, "billing_currency")
 
@@ -127,7 +148,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        List of project billing email addresses.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -139,7 +160,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="billingExtraText")
     def billing_extra_text(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Additional information to include on your invoice (for example, a reference number).
+        Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         """
         return pulumi.get(self, "billing_extra_text")
 
@@ -151,7 +172,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="cardId")
     def card_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Credit card ID.
+        Credit card ID. Maximum length: `64`.
         """
         return pulumi.get(self, "card_id")
 
@@ -163,7 +184,7 @@ class BillingGroupArgs:
     @pulumi.getter
     def city(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        City, district, suburb, town, or village.
+        Address city. Maximum length: `512`.
         """
         return pulumi.get(self, "city")
 
@@ -175,7 +196,7 @@ class BillingGroupArgs:
     @pulumi.getter
     def company(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Your company name.
+        Name of a company. Maximum length: `128`.
         """
         return pulumi.get(self, "company")
 
@@ -187,7 +208,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
@@ -199,7 +220,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Two-letter country code.
+        Two letter country code for billing country. Maximum length: `2`.
         """
         return pulumi.get(self, "country_code")
 
@@ -211,7 +232,7 @@ class BillingGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the billing group.
+        Billing group name. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
@@ -223,7 +244,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization by using its ID.
         """
         return pulumi.get(self, "parent_id")
 
@@ -235,7 +256,7 @@ class BillingGroupArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Address state.
+        Address state or province. Maximum length: `128`.
         """
         return pulumi.get(self, "state")
 
@@ -244,10 +265,19 @@ class BillingGroupArgs:
         pulumi.set(self, "state", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['BillingGroupTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['BillingGroupTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="vatId")
     def vat_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The VAT identification number for your company.
+        EU VAT Identification Number. Maximum length: `64`.
         """
         return pulumi.get(self, "vat_id")
 
@@ -259,7 +289,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Zip or postal code.
+        Address zip code. Maximum length: `32`.
         """
         return pulumi.get(self, "zip_code")
 
@@ -273,9 +303,11 @@ class _BillingGroupState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  billing_currency: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  billing_extra_text: Optional[pulumi.Input[_builtins.str]] = None,
+                 billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  card_id: Optional[pulumi.Input[_builtins.str]] = None,
                  city: Optional[pulumi.Input[_builtins.str]] = None,
                  company: Optional[pulumi.Input[_builtins.str]] = None,
@@ -284,39 +316,46 @@ class _BillingGroupState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['BillingGroupTimeoutsArgs']] = None,
                  vat_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zip_code: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BillingGroup resources.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address lines 1 and 2. For example, street, PO box, or building.
-        :param pulumi.Input[_builtins.str] billing_currency: Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
-        :param pulumi.Input[_builtins.str] billing_extra_text: Additional information to include on your invoice (for example, a reference number).
-        :param pulumi.Input[_builtins.str] card_id: Credit card ID.
-        :param pulumi.Input[_builtins.str] city: City, district, suburb, town, or village.
-        :param pulumi.Input[_builtins.str] company: Your company name.
-        :param pulumi.Input[_builtins.str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
-        :param pulumi.Input[_builtins.str] country_code: Two-letter country code.
-        :param pulumi.Input[_builtins.str] name: Name of the billing group.
-        :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[_builtins.str] state: Address state.
-        :param pulumi.Input[_builtins.str] vat_id: The VAT identification number for your company.
-        :param pulumi.Input[_builtins.str] zip_code: Zip or postal code.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: List of billing groups contact email addresses.
+        :param pulumi.Input[_builtins.str] billing_currency: Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: List of project billing email addresses.
+        :param pulumi.Input[_builtins.str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
+        :param pulumi.Input[_builtins.str] billing_group_id: The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
+        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
+        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
+        :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
+        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] vat_id: EU VAT Identification Number. Maximum length: `64`.
+        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `32`.
         """
         if account_id is not None:
-            warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
-            pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
+            warnings.warn("""Use `parent_id` instead. This field will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: Use `parent_id` instead. This field will be removed in the next major release.""")
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if address_lines is not None:
             pulumi.set(__self__, "address_lines", address_lines)
+        if billing_contact_emails is not None:
+            pulumi.set(__self__, "billing_contact_emails", billing_contact_emails)
         if billing_currency is not None:
             pulumi.set(__self__, "billing_currency", billing_currency)
         if billing_emails is not None:
             pulumi.set(__self__, "billing_emails", billing_emails)
         if billing_extra_text is not None:
             pulumi.set(__self__, "billing_extra_text", billing_extra_text)
+        if billing_group_id is not None:
+            pulumi.set(__self__, "billing_group_id", billing_group_id)
         if card_id is not None:
             pulumi.set(__self__, "card_id", card_id)
         if city is not None:
@@ -333,6 +372,8 @@ class _BillingGroupState:
             pulumi.set(__self__, "parent_id", parent_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if vat_id is not None:
             pulumi.set(__self__, "vat_id", vat_id)
         if zip_code is not None:
@@ -340,10 +381,10 @@ class _BillingGroupState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
+    @_utilities.deprecated("""Use `parent_id` instead. This field will be removed in the next major release.""")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Account ID.
+        Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         """
         return pulumi.get(self, "account_id")
 
@@ -364,10 +405,22 @@ class _BillingGroupState:
         pulumi.set(self, "address_lines", value)
 
     @_builtins.property
+    @pulumi.getter(name="billingContactEmails")
+    def billing_contact_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of billing groups contact email addresses.
+        """
+        return pulumi.get(self, "billing_contact_emails")
+
+    @billing_contact_emails.setter
+    def billing_contact_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "billing_contact_emails", value)
+
+    @_builtins.property
     @pulumi.getter(name="billingCurrency")
     def billing_currency(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         """
         return pulumi.get(self, "billing_currency")
 
@@ -379,7 +432,7 @@ class _BillingGroupState:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        List of project billing email addresses.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -391,7 +444,7 @@ class _BillingGroupState:
     @pulumi.getter(name="billingExtraText")
     def billing_extra_text(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Additional information to include on your invoice (for example, a reference number).
+        Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         """
         return pulumi.get(self, "billing_extra_text")
 
@@ -400,10 +453,22 @@ class _BillingGroupState:
         pulumi.set(self, "billing_extra_text", value)
 
     @_builtins.property
+    @pulumi.getter(name="billingGroupId")
+    def billing_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+        """
+        return pulumi.get(self, "billing_group_id")
+
+    @billing_group_id.setter
+    def billing_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "billing_group_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="cardId")
     def card_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Credit card ID.
+        Credit card ID. Maximum length: `64`.
         """
         return pulumi.get(self, "card_id")
 
@@ -415,7 +480,7 @@ class _BillingGroupState:
     @pulumi.getter
     def city(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        City, district, suburb, town, or village.
+        Address city. Maximum length: `512`.
         """
         return pulumi.get(self, "city")
 
@@ -427,7 +492,7 @@ class _BillingGroupState:
     @pulumi.getter
     def company(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Your company name.
+        Name of a company. Maximum length: `128`.
         """
         return pulumi.get(self, "company")
 
@@ -439,7 +504,7 @@ class _BillingGroupState:
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
@@ -451,7 +516,7 @@ class _BillingGroupState:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Two-letter country code.
+        Two letter country code for billing country. Maximum length: `2`.
         """
         return pulumi.get(self, "country_code")
 
@@ -463,7 +528,7 @@ class _BillingGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the billing group.
+        Billing group name. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
@@ -475,7 +540,7 @@ class _BillingGroupState:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization by using its ID.
         """
         return pulumi.get(self, "parent_id")
 
@@ -487,7 +552,7 @@ class _BillingGroupState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Address state.
+        Address state or province. Maximum length: `128`.
         """
         return pulumi.get(self, "state")
 
@@ -496,10 +561,19 @@ class _BillingGroupState:
         pulumi.set(self, "state", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['BillingGroupTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['BillingGroupTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="vatId")
     def vat_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The VAT identification number for your company.
+        EU VAT Identification Number. Maximum length: `64`.
         """
         return pulumi.get(self, "vat_id")
 
@@ -511,7 +585,7 @@ class _BillingGroupState:
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Zip or postal code.
+        Address zip code. Maximum length: `32`.
         """
         return pulumi.get(self, "zip_code")
 
@@ -528,6 +602,7 @@ class BillingGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  billing_currency: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  billing_extra_text: Optional[pulumi.Input[_builtins.str]] = None,
@@ -539,6 +614,7 @@ class BillingGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
                  vat_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zip_code: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -564,26 +640,27 @@ class BillingGroup(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
+        $ pulumi import aiven:index/billingGroup:BillingGroup example BILLING_GROUP_ID
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address lines 1 and 2. For example, street, PO box, or building.
-        :param pulumi.Input[_builtins.str] billing_currency: Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
-        :param pulumi.Input[_builtins.str] billing_extra_text: Additional information to include on your invoice (for example, a reference number).
-        :param pulumi.Input[_builtins.str] card_id: Credit card ID.
-        :param pulumi.Input[_builtins.str] city: City, district, suburb, town, or village.
-        :param pulumi.Input[_builtins.str] company: Your company name.
-        :param pulumi.Input[_builtins.str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
-        :param pulumi.Input[_builtins.str] country_code: Two-letter country code.
-        :param pulumi.Input[_builtins.str] name: Name of the billing group.
-        :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[_builtins.str] state: Address state.
-        :param pulumi.Input[_builtins.str] vat_id: The VAT identification number for your company.
-        :param pulumi.Input[_builtins.str] zip_code: Zip or postal code.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: List of billing groups contact email addresses.
+        :param pulumi.Input[_builtins.str] billing_currency: Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: List of project billing email addresses.
+        :param pulumi.Input[_builtins.str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
+        :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
+        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
+        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
+        :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
+        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] vat_id: EU VAT Identification Number. Maximum length: `64`.
+        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `32`.
         """
         ...
     @overload
@@ -613,7 +690,7 @@ class BillingGroup(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
+        $ pulumi import aiven:index/billingGroup:BillingGroup example BILLING_GROUP_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -633,6 +710,7 @@ class BillingGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  billing_currency: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  billing_extra_text: Optional[pulumi.Input[_builtins.str]] = None,
@@ -644,6 +722,7 @@ class BillingGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
                  vat_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zip_code: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -657,6 +736,7 @@ class BillingGroup(pulumi.CustomResource):
 
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["address_lines"] = address_lines
+            __props__.__dict__["billing_contact_emails"] = billing_contact_emails
             __props__.__dict__["billing_currency"] = billing_currency
             __props__.__dict__["billing_emails"] = billing_emails
             __props__.__dict__["billing_extra_text"] = billing_extra_text
@@ -668,8 +748,10 @@ class BillingGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["parent_id"] = parent_id
             __props__.__dict__["state"] = state
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["vat_id"] = vat_id
             __props__.__dict__["zip_code"] = zip_code
+            __props__.__dict__["billing_group_id"] = None
         super(BillingGroup, __self__).__init__(
             'aiven:index/billingGroup:BillingGroup',
             resource_name,
@@ -682,9 +764,11 @@ class BillingGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             billing_currency: Optional[pulumi.Input[_builtins.str]] = None,
             billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             billing_extra_text: Optional[pulumi.Input[_builtins.str]] = None,
+            billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             card_id: Optional[pulumi.Input[_builtins.str]] = None,
             city: Optional[pulumi.Input[_builtins.str]] = None,
             company: Optional[pulumi.Input[_builtins.str]] = None,
@@ -693,6 +777,7 @@ class BillingGroup(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             parent_id: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
             vat_id: Optional[pulumi.Input[_builtins.str]] = None,
             zip_code: Optional[pulumi.Input[_builtins.str]] = None) -> 'BillingGroup':
         """
@@ -702,21 +787,23 @@ class BillingGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address lines 1 and 2. For example, street, PO box, or building.
-        :param pulumi.Input[_builtins.str] billing_currency: Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
-        :param pulumi.Input[_builtins.str] billing_extra_text: Additional information to include on your invoice (for example, a reference number).
-        :param pulumi.Input[_builtins.str] card_id: Credit card ID.
-        :param pulumi.Input[_builtins.str] city: City, district, suburb, town, or village.
-        :param pulumi.Input[_builtins.str] company: Your company name.
-        :param pulumi.Input[_builtins.str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
-        :param pulumi.Input[_builtins.str] country_code: Two-letter country code.
-        :param pulumi.Input[_builtins.str] name: Name of the billing group.
-        :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[_builtins.str] state: Address state.
-        :param pulumi.Input[_builtins.str] vat_id: The VAT identification number for your company.
-        :param pulumi.Input[_builtins.str] zip_code: Zip or postal code.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: List of billing groups contact email addresses.
+        :param pulumi.Input[_builtins.str] billing_currency: Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: List of project billing email addresses.
+        :param pulumi.Input[_builtins.str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
+        :param pulumi.Input[_builtins.str] billing_group_id: The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
+        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
+        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
+        :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
+        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] vat_id: EU VAT Identification Number. Maximum length: `64`.
+        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `32`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -724,9 +811,11 @@ class BillingGroup(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["address_lines"] = address_lines
+        __props__.__dict__["billing_contact_emails"] = billing_contact_emails
         __props__.__dict__["billing_currency"] = billing_currency
         __props__.__dict__["billing_emails"] = billing_emails
         __props__.__dict__["billing_extra_text"] = billing_extra_text
+        __props__.__dict__["billing_group_id"] = billing_group_id
         __props__.__dict__["card_id"] = card_id
         __props__.__dict__["city"] = city
         __props__.__dict__["company"] = company
@@ -735,16 +824,17 @@ class BillingGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parent_id"] = parent_id
         __props__.__dict__["state"] = state
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["vat_id"] = vat_id
         __props__.__dict__["zip_code"] = zip_code
         return BillingGroup(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Use `parent_id` instead. This field will be removed in the next major release.""")
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Account ID.
+        Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         """
         return pulumi.get(self, "account_id")
 
@@ -757,10 +847,18 @@ class BillingGroup(pulumi.CustomResource):
         return pulumi.get(self, "address_lines")
 
     @_builtins.property
-    @pulumi.getter(name="billingCurrency")
-    def billing_currency(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter(name="billingContactEmails")
+    def billing_contact_emails(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        List of billing groups contact email addresses.
+        """
+        return pulumi.get(self, "billing_contact_emails")
+
+    @_builtins.property
+    @pulumi.getter(name="billingCurrency")
+    def billing_currency(self) -> pulumi.Output[_builtins.str]:
+        """
+        Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         """
         return pulumi.get(self, "billing_currency")
 
@@ -768,7 +866,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        List of project billing email addresses.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -776,31 +874,39 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="billingExtraText")
     def billing_extra_text(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Additional information to include on your invoice (for example, a reference number).
+        Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         """
         return pulumi.get(self, "billing_extra_text")
+
+    @_builtins.property
+    @pulumi.getter(name="billingGroupId")
+    def billing_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+        """
+        return pulumi.get(self, "billing_group_id")
 
     @_builtins.property
     @pulumi.getter(name="cardId")
     def card_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Credit card ID.
+        Credit card ID. Maximum length: `64`.
         """
         return pulumi.get(self, "card_id")
 
     @_builtins.property
     @pulumi.getter
-    def city(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def city(self) -> pulumi.Output[_builtins.str]:
         """
-        City, district, suburb, town, or village.
+        Address city. Maximum length: `512`.
         """
         return pulumi.get(self, "city")
 
     @_builtins.property
     @pulumi.getter
-    def company(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def company(self) -> pulumi.Output[_builtins.str]:
         """
-        Your company name.
+        Name of a company. Maximum length: `128`.
         """
         return pulumi.get(self, "company")
 
@@ -808,15 +914,15 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
     @_builtins.property
     @pulumi.getter(name="countryCode")
-    def country_code(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def country_code(self) -> pulumi.Output[_builtins.str]:
         """
-        Two-letter country code.
+        Two letter country code for billing country. Maximum length: `2`.
         """
         return pulumi.get(self, "country_code")
 
@@ -824,15 +930,15 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the billing group.
+        Billing group name. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def parent_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization by using its ID.
         """
         return pulumi.get(self, "parent_id")
 
@@ -840,15 +946,20 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Address state.
+        Address state or province. Maximum length: `128`.
         """
         return pulumi.get(self, "state")
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.BillingGroupTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
     @pulumi.getter(name="vatId")
-    def vat_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def vat_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The VAT identification number for your company.
+        EU VAT Identification Number. Maximum length: `64`.
         """
         return pulumi.get(self, "vat_id")
 
@@ -856,7 +967,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Zip or postal code.
+        Address zip code. Maximum length: `32`.
         """
         return pulumi.get(self, "zip_code")
 

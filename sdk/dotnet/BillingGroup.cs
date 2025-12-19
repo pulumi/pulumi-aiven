@@ -42,17 +42,17 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
+    /// $ pulumi import aiven:index/billingGroup:BillingGroup example BILLING_GROUP_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/billingGroup:BillingGroup")]
     public partial class BillingGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account ID.
+        /// Account ID. Maximum length: `36`. **Deprecated**: Use `ParentId` instead. This field will be removed in the next major release.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Address lines 1 and 2. For example, street, PO box, or building.
@@ -61,79 +61,94 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> AddressLines { get; private set; } = null!;
 
         /// <summary>
-        /// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        /// List of billing groups contact email addresses.
         /// </summary>
-        [Output("billingCurrency")]
-        public Output<string?> BillingCurrency { get; private set; } = null!;
+        [Output("billingContactEmails")]
+        public Output<ImmutableArray<string>> BillingContactEmails { get; private set; } = null!;
 
         /// <summary>
-        /// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        /// Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+        /// </summary>
+        [Output("billingCurrency")]
+        public Output<string> BillingCurrency { get; private set; } = null!;
+
+        /// <summary>
+        /// List of project billing email addresses.
         /// </summary>
         [Output("billingEmails")]
         public Output<ImmutableArray<string>> BillingEmails { get; private set; } = null!;
 
         /// <summary>
-        /// Additional information to include on your invoice (for example, a reference number).
+        /// Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         /// </summary>
         [Output("billingExtraText")]
         public Output<string?> BillingExtraText { get; private set; } = null!;
 
         /// <summary>
-        /// Credit card ID.
+        /// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
+        [Output("billingGroupId")]
+        public Output<string> BillingGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Credit card ID. Maximum length: `64`.
         /// </summary>
         [Output("cardId")]
         public Output<string?> CardId { get; private set; } = null!;
 
         /// <summary>
-        /// City, district, suburb, town, or village.
+        /// Address city. Maximum length: `512`.
         /// </summary>
         [Output("city")]
-        public Output<string?> City { get; private set; } = null!;
+        public Output<string> City { get; private set; } = null!;
 
         /// <summary>
-        /// Your company name.
+        /// Name of a company. Maximum length: `128`.
         /// </summary>
         [Output("company")]
-        public Output<string?> Company { get; private set; } = null!;
+        public Output<string> Company { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        /// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("copyFromBillingGroup")]
         public Output<string?> CopyFromBillingGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Two-letter country code.
+        /// Two letter country code for billing country. Maximum length: `2`.
         /// </summary>
         [Output("countryCode")]
-        public Output<string?> CountryCode { get; private set; } = null!;
+        public Output<string> CountryCode { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the billing group.
+        /// Billing group name. Maximum length: `128`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a billing group to an existing organization by using its ID.
         /// </summary>
         [Output("parentId")]
-        public Output<string?> ParentId { get; private set; } = null!;
+        public Output<string> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// Address state.
+        /// Address state or province. Maximum length: `128`.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
 
-        /// <summary>
-        /// The VAT identification number for your company.
-        /// </summary>
-        [Output("vatId")]
-        public Output<string?> VatId { get; private set; } = null!;
+        [Output("timeouts")]
+        public Output<Outputs.BillingGroupTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// Zip or postal code.
+        /// EU VAT Identification Number. Maximum length: `64`.
+        /// </summary>
+        [Output("vatId")]
+        public Output<string> VatId { get; private set; } = null!;
+
+        /// <summary>
+        /// Address zip code. Maximum length: `32`.
         /// </summary>
         [Output("zipCode")]
         public Output<string?> ZipCode { get; private set; } = null!;
@@ -185,7 +200,7 @@ namespace Pulumi.Aiven
     public sealed class BillingGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Account ID. Maximum length: `36`. **Deprecated**: Use `ParentId` instead. This field will be removed in the next major release.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -202,8 +217,20 @@ namespace Pulumi.Aiven
             set => _addressLines = value;
         }
 
+        [Input("billingContactEmails")]
+        private InputList<string>? _billingContactEmails;
+
         /// <summary>
-        /// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        /// List of billing groups contact email addresses.
+        /// </summary>
+        public InputList<string> BillingContactEmails
+        {
+            get => _billingContactEmails ?? (_billingContactEmails = new InputList<string>());
+            set => _billingContactEmails = value;
+        }
+
+        /// <summary>
+        /// Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         /// </summary>
         [Input("billingCurrency")]
         public Input<string>? BillingCurrency { get; set; }
@@ -212,7 +239,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _billingEmails;
 
         /// <summary>
-        /// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        /// List of project billing email addresses.
         /// </summary>
         public InputList<string> BillingEmails
         {
@@ -221,67 +248,70 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Additional information to include on your invoice (for example, a reference number).
+        /// Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         /// </summary>
         [Input("billingExtraText")]
         public Input<string>? BillingExtraText { get; set; }
 
         /// <summary>
-        /// Credit card ID.
+        /// Credit card ID. Maximum length: `64`.
         /// </summary>
         [Input("cardId")]
         public Input<string>? CardId { get; set; }
 
         /// <summary>
-        /// City, district, suburb, town, or village.
+        /// Address city. Maximum length: `512`.
         /// </summary>
         [Input("city")]
         public Input<string>? City { get; set; }
 
         /// <summary>
-        /// Your company name.
+        /// Name of a company. Maximum length: `128`.
         /// </summary>
         [Input("company")]
         public Input<string>? Company { get; set; }
 
         /// <summary>
-        /// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        /// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("copyFromBillingGroup")]
         public Input<string>? CopyFromBillingGroup { get; set; }
 
         /// <summary>
-        /// Two-letter country code.
+        /// Two letter country code for billing country. Maximum length: `2`.
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// Name of the billing group.
+        /// Billing group name. Maximum length: `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a billing group to an existing organization by using its ID.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// Address state.
+        /// Address state or province. Maximum length: `128`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.BillingGroupTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The VAT identification number for your company.
+        /// EU VAT Identification Number. Maximum length: `64`.
         /// </summary>
         [Input("vatId")]
         public Input<string>? VatId { get; set; }
 
         /// <summary>
-        /// Zip or postal code.
+        /// Address zip code. Maximum length: `32`.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }
@@ -295,7 +325,7 @@ namespace Pulumi.Aiven
     public sealed class BillingGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Account ID. Maximum length: `36`. **Deprecated**: Use `ParentId` instead. This field will be removed in the next major release.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -312,8 +342,20 @@ namespace Pulumi.Aiven
             set => _addressLines = value;
         }
 
+        [Input("billingContactEmails")]
+        private InputList<string>? _billingContactEmails;
+
         /// <summary>
-        /// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        /// List of billing groups contact email addresses.
+        /// </summary>
+        public InputList<string> BillingContactEmails
+        {
+            get => _billingContactEmails ?? (_billingContactEmails = new InputList<string>());
+            set => _billingContactEmails = value;
+        }
+
+        /// <summary>
+        /// Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         /// </summary>
         [Input("billingCurrency")]
         public Input<string>? BillingCurrency { get; set; }
@@ -322,7 +364,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _billingEmails;
 
         /// <summary>
-        /// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        /// List of project billing email addresses.
         /// </summary>
         public InputList<string> BillingEmails
         {
@@ -331,67 +373,76 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Additional information to include on your invoice (for example, a reference number).
+        /// Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         /// </summary>
         [Input("billingExtraText")]
         public Input<string>? BillingExtraText { get; set; }
 
         /// <summary>
-        /// Credit card ID.
+        /// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
+        [Input("billingGroupId")]
+        public Input<string>? BillingGroupId { get; set; }
+
+        /// <summary>
+        /// Credit card ID. Maximum length: `64`.
         /// </summary>
         [Input("cardId")]
         public Input<string>? CardId { get; set; }
 
         /// <summary>
-        /// City, district, suburb, town, or village.
+        /// Address city. Maximum length: `512`.
         /// </summary>
         [Input("city")]
         public Input<string>? City { get; set; }
 
         /// <summary>
-        /// Your company name.
+        /// Name of a company. Maximum length: `128`.
         /// </summary>
         [Input("company")]
         public Input<string>? Company { get; set; }
 
         /// <summary>
-        /// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        /// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("copyFromBillingGroup")]
         public Input<string>? CopyFromBillingGroup { get; set; }
 
         /// <summary>
-        /// Two-letter country code.
+        /// Two letter country code for billing country. Maximum length: `2`.
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// Name of the billing group.
+        /// Billing group name. Maximum length: `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a billing group to an existing organization by using its ID.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// Address state.
+        /// Address state or province. Maximum length: `128`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.BillingGroupTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The VAT identification number for your company.
+        /// EU VAT Identification Number. Maximum length: `64`.
         /// </summary>
         [Input("vatId")]
         public Input<string>? VatId { get; set; }
 
         /// <summary>
-        /// Zip or postal code.
+        /// Address zip code. Maximum length: `32`.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }

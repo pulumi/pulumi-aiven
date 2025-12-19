@@ -14,6 +14,12 @@ namespace Pulumi.Aiven
     /// 
     /// **This resource is in the beta stage and may change without notice.** Set
     /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import aiven:index/organizationAddress:OrganizationAddress example ORGANIZATION_ID/ADDRESS_ID
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organizationAddress:OrganizationAddress")]
     public partial class OrganizationAddress : global::Pulumi.CustomResource

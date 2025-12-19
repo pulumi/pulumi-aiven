@@ -49,7 +49,7 @@ class GetServicePlanListResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Resource ID, a composite of `project` and `service_type` IDs.
+        Resource ID composed as: `project/service_type`.
         """
         return pulumi.get(self, "id")
 

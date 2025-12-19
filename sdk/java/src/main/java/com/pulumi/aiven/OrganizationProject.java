@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/organizationProject:OrganizationProject example_project ORGANIZATION_ID/PROJECT_ID
+ * $ pulumi import aiven:index/organizationProject:OrganizationProject example ORGANIZATION_ID/PROJECT_ID
  * ```
  * 
  */

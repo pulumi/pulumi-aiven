@@ -31,7 +31,7 @@ public final class GetMysqlUserResult {
      */
     private String id;
     /**
-     * @return The password of the MySQL service user.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     private String password;
@@ -86,7 +86,7 @@ public final class GetMysqlUserResult {
         return this.id;
     }
     /**
-     * @return The password of the MySQL service user.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     public String password() {

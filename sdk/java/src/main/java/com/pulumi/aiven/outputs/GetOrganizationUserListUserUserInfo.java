@@ -12,134 +12,134 @@ import java.util.Objects;
 @CustomType
 public final class GetOrganizationUserListUserUserInfo {
     /**
-     * @return City
+     * @return City.
      * 
      */
     private String city;
     /**
-     * @return Country
+     * @return Country.
      * 
      */
     private String country;
     /**
-     * @return Date and time when the user was created.
+     * @return Creation time.
      * 
      */
     private String createTime;
     /**
-     * @return Department
+     * @return Department.
      * 
      */
     private String department;
     /**
-     * @return Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
+     * @return Is Application User.
      * 
      */
     private Boolean isApplicationUser;
     /**
-     * @return Job title
+     * @return Job Title.
      * 
      */
     private String jobTitle;
     /**
-     * @return Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
+     * @return Managed By Scim.
      * 
      */
     private Boolean managedByScim;
     /**
-     * @return The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
+     * @return Managing Organization ID.
      * 
      */
     private String managingOrganizationId;
     /**
-     * @return Full name of the user.
+     * @return Real Name.
      * 
      */
     private String realName;
     /**
-     * @return State
+     * @return State.
      * 
      */
     private String state;
     /**
-     * @return Email address.
+     * @return User Email.
      * 
      */
     private String userEmail;
 
     private GetOrganizationUserListUserUserInfo() {}
     /**
-     * @return City
+     * @return City.
      * 
      */
     public String city() {
         return this.city;
     }
     /**
-     * @return Country
+     * @return Country.
      * 
      */
     public String country() {
         return this.country;
     }
     /**
-     * @return Date and time when the user was created.
+     * @return Creation time.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return Department
+     * @return Department.
      * 
      */
     public String department() {
         return this.department;
     }
     /**
-     * @return Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
+     * @return Is Application User.
      * 
      */
     public Boolean isApplicationUser() {
         return this.isApplicationUser;
     }
     /**
-     * @return Job title
+     * @return Job Title.
      * 
      */
     public String jobTitle() {
         return this.jobTitle;
     }
     /**
-     * @return Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
+     * @return Managed By Scim.
      * 
      */
     public Boolean managedByScim() {
         return this.managedByScim;
     }
     /**
-     * @return The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
+     * @return Managing Organization ID.
      * 
      */
     public String managingOrganizationId() {
         return this.managingOrganizationId;
     }
     /**
-     * @return Full name of the user.
+     * @return Real Name.
      * 
      */
     public String realName() {
         return this.realName;
     }
     /**
-     * @return State
+     * @return State.
      * 
      */
     public String state() {
         return this.state;
     }
     /**
-     * @return Email address.
+     * @return User Email.
      * 
      */
     public String userEmail() {

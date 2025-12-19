@@ -68,7 +68,7 @@ export interface GetMysqlUserResult {
      */
     readonly id: string;
     /**
-     * The password of the MySQL service user.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
     readonly password: string;
     /**

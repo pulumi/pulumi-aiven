@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOrganizationUserListUserResult
     {
         /// <summary>
-        /// Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
+        /// Super admin state of the organization user.
         /// </summary>
         public readonly bool IsSuperAdmin;
         /// <summary>
-        /// Date and time when the user joined the organization.
+        /// Join time.
         /// </summary>
         public readonly string JoinTime;
         /// <summary>
@@ -29,6 +29,9 @@ namespace Pulumi.Aiven.Outputs
         /// User ID.
         /// </summary>
         public readonly string UserId;
+        /// <summary>
+        /// OrganizationUserInfo.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOrganizationUserListUserUserInfoResult> UserInfos;
 
         [OutputConstructor]

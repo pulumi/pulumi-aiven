@@ -12,50 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [Aiven for Caching](https://aiven.io/docs/products/caching) (formerly known as Aiven for Redis®) service user.
-//
-// !> **End of life notice**
-// In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-// Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
-// From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-// From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-// You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-// and update your existing `Redis` resources.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewRedisUser(ctx, "foo", &aiven.RedisUserArgs{
-//				ServiceName: pulumi.Any(bar.ServiceName),
-//				Project:     pulumi.String("my-project"),
-//				Username:    pulumi.String("user-1"),
-//				Password:    pulumi.String("Test$1234"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import aiven:index/redisUser:RedisUser foo PROJECT/SERVICE_NAME/USERNAME
-// ```
 type RedisUser struct {
 	pulumi.CustomResourceState
 

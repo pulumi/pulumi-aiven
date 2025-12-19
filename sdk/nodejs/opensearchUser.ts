@@ -56,9 +56,18 @@ export class OpensearchUser extends pulumi.CustomResource {
     }
 
     /**
-     * The OpenSearch service user's password.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
     declare public readonly password: pulumi.Output<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     */
+    declare public readonly passwordWo: pulumi.Output<string | undefined>;
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     */
+    declare public readonly passwordWoVersion: pulumi.Output<number | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
@@ -90,6 +99,8 @@ export class OpensearchUser extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OpensearchUserState | undefined;
             resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWo"] = state?.passwordWo;
+            resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
             resourceInputs["type"] = state?.type;
@@ -106,13 +117,15 @@ export class OpensearchUser extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
+            resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["username"] = args?.username;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password"] };
+        const secretOpts = { additionalSecretOutputs: ["password", "passwordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(OpensearchUser.__pulumiType, name, resourceInputs, opts);
     }
@@ -123,9 +136,18 @@ export class OpensearchUser extends pulumi.CustomResource {
  */
 export interface OpensearchUserState {
     /**
-     * The OpenSearch service user's password.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
     password?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     */
+    passwordWo?: pulumi.Input<string>;
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     */
+    passwordWoVersion?: pulumi.Input<number>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
@@ -149,9 +171,18 @@ export interface OpensearchUserState {
  */
 export interface OpensearchUserArgs {
     /**
-     * The OpenSearch service user's password.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
     password?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     */
+    passwordWo?: pulumi.Input<string>;
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     */
+    passwordWoVersion?: pulumi.Input<number>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */

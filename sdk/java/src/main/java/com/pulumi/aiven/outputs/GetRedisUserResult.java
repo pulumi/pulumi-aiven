@@ -16,50 +16,14 @@ public final class GetRedisUserResult {
      * 
      */
     private String id;
-    /**
-     * @return The password of the Redis User.
-     * 
-     */
     private String password;
-    /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String project;
-    /**
-     * @return Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
-     * 
-     */
     private List<String> redisAclCategories;
-    /**
-     * @return Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
-     * 
-     */
     private List<String> redisAclChannels;
-    /**
-     * @return Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
-     * 
-     */
     private List<String> redisAclCommands;
-    /**
-     * @return Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
-     * 
-     */
     private List<String> redisAclKeys;
-    /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String serviceName;
-    /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
-     * 
-     */
     private String type;
-    /**
-     * @return The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String username;
 
     private GetRedisUserResult() {}
@@ -70,66 +34,30 @@ public final class GetRedisUserResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return The password of the Redis User.
-     * 
-     */
     public String password() {
         return this.password;
     }
-    /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String project() {
         return this.project;
     }
-    /**
-     * @return Defines command category rules. The field is required with `redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
-     * 
-     */
     public List<String> redisAclCategories() {
         return this.redisAclCategories;
     }
-    /**
-     * @return Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
-     * 
-     */
     public List<String> redisAclChannels() {
         return this.redisAclChannels;
     }
-    /**
-     * @return Defines rules for individual commands. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
-     * 
-     */
     public List<String> redisAclCommands() {
         return this.redisAclCommands;
     }
-    /**
-     * @return Defines key access rules. The field is required with `redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
-     * 
-     */
     public List<String> redisAclKeys() {
         return this.redisAclKeys;
     }
-    /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String serviceName() {
         return this.serviceName;
     }
-    /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
-     * 
-     */
     public String type() {
         return this.type;
     }
-    /**
-     * @return The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String username() {
         return this.username;
     }

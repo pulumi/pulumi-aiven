@@ -47,7 +47,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tenant identifier.
+     * Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
      * @deprecated
      * This field is deprecated and will be removed in the next major release.
@@ -58,7 +58,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Tenant identifier.
+     * @return Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
      * @deprecated
      * This field is deprecated and will be removed in the next major release.
@@ -162,7 +162,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId Tenant identifier.
+         * @param tenantId Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId Tenant identifier.
+         * @param tenantId Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
          * 
          * @return builder
          * 

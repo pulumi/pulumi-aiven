@@ -152,6 +152,18 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? KnnMemoryCircuitBreakerLimit;
         /// <summary>
+        /// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+        /// </summary>
+        public readonly bool? MlCommonsModelAccessControlEnabled;
+        /// <summary>
+        /// Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+        /// </summary>
+        public readonly int? MlCommonsNativeMemoryThreshold;
+        /// <summary>
+        /// Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+        /// </summary>
+        public readonly bool? MlCommonsOnlyRunOnMlNode;
+        /// <summary>
         /// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
         /// </summary>
         public readonly string? NodeSearchCacheSize;
@@ -308,6 +320,12 @@ namespace Pulumi.Aiven.Outputs
 
             int? knnMemoryCircuitBreakerLimit,
 
+            bool? mlCommonsModelAccessControlEnabled,
+
+            int? mlCommonsNativeMemoryThreshold,
+
+            bool? mlCommonsOnlyRunOnMlNode,
+
             string? nodeSearchCacheSize,
 
             bool? overrideMainResponseVersion,
@@ -388,6 +406,9 @@ namespace Pulumi.Aiven.Outputs
             IsmHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
             KnnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
             KnnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
+            MlCommonsModelAccessControlEnabled = mlCommonsModelAccessControlEnabled;
+            MlCommonsNativeMemoryThreshold = mlCommonsNativeMemoryThreshold;
+            MlCommonsOnlyRunOnMlNode = mlCommonsOnlyRunOnMlNode;
             NodeSearchCacheSize = nodeSearchCacheSize;
             OverrideMainResponseVersion = overrideMainResponseVersion;
             PluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;

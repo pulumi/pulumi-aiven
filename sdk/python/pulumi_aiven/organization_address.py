@@ -347,6 +347,12 @@ class OrganizationAddress(pulumi.CustomResource):
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/organizationAddress:OrganizationAddress example ORGANIZATION_ID/ADDRESS_ID
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address Lines.
@@ -368,6 +374,12 @@ class OrganizationAddress(pulumi.CustomResource):
 
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/organizationAddress:OrganizationAddress example ORGANIZATION_ID/ADDRESS_ID
+        ```
 
         :param str resource_name: The name of the resource.
         :param OrganizationAddressArgs args: The arguments to use to populate this resource's properties.

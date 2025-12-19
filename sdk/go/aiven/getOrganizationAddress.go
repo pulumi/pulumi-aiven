@@ -46,7 +46,7 @@ type LookupOrganizationAddressResult struct {
 	CountryCode string `pulumi:"countryCode"`
 	// Create Time.
 	CreateTime string `pulumi:"createTime"`
-	// Resource ID, a composite of `organizationId` and `addressId` IDs.
+	// Resource ID composed as: `organization_id/address_id`.
 	Id string `pulumi:"id"`
 	// Name of a company.
 	Name string `pulumi:"name"`
@@ -123,7 +123,7 @@ func (o LookupOrganizationAddressResultOutput) CreateTime() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Resource ID, a composite of `organizationId` and `addressId` IDs.
+// Resource ID composed as: `organization_id/address_id`.
 func (o LookupOrganizationAddressResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.Id }).(pulumi.StringOutput)
 }

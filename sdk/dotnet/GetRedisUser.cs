@@ -11,105 +11,12 @@ namespace Pulumi.Aiven
 {
     public static class GetRedisUser
     {
-        /// <summary>
-        /// The Redis User data source provides information about the existing Aiven Redis User.
-        /// 
-        /// !&gt; **End of life notice**
-        /// In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-        /// Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
-        /// From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-        /// From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-        /// You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-        /// and update your existing `aiven.Redis` resources.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Aiven.GetRedisUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetRedisUserResult> InvokeAsync(GetRedisUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRedisUserResult>("aiven:index/getRedisUser:getRedisUser", args ?? new GetRedisUserArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// The Redis User data source provides information about the existing Aiven Redis User.
-        /// 
-        /// !&gt; **End of life notice**
-        /// In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-        /// Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
-        /// From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-        /// From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-        /// You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-        /// and update your existing `aiven.Redis` resources.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Aiven.GetRedisUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetRedisUserResult> Invoke(GetRedisUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRedisUserResult>("aiven:index/getRedisUser:getRedisUser", args ?? new GetRedisUserInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// The Redis User data source provides information about the existing Aiven Redis User.
-        /// 
-        /// !&gt; **End of life notice**
-        /// In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-        /// Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
-        /// From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-        /// From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-        /// You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-        /// and update your existing `aiven.Redis` resources.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Aiven.GetRedisUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetRedisUserResult> Invoke(GetRedisUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRedisUserResult>("aiven:index/getRedisUser:getRedisUser", args ?? new GetRedisUserInvokeArgs(), options.WithDefaults());
     }
@@ -117,21 +24,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetRedisUserArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
@@ -143,21 +41,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetRedisUserInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
@@ -175,41 +64,14 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The password of the Redis User.
-        /// </summary>
         public readonly string Password;
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// Defines command category rules. The field is required with `RedisAclCommands` and `RedisAclKeys`. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly ImmutableArray<string> RedisAclCategories;
-        /// <summary>
-        /// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly ImmutableArray<string> RedisAclChannels;
-        /// <summary>
-        /// Defines rules for individual commands. The field is required with `RedisAclCategories` and `RedisAclKeys`. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly ImmutableArray<string> RedisAclCommands;
-        /// <summary>
-        /// Defines key access rules. The field is required with `RedisAclCategories` and `RedisAclKeys`. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly ImmutableArray<string> RedisAclKeys;
-        /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
-        /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

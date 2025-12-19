@@ -26,7 +26,7 @@ public final class GetCassandraUserResult {
      */
     private String id;
     /**
-     * @return The Cassandra service user&#39;s password.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     private String password;
@@ -74,7 +74,7 @@ public final class GetCassandraUserResult {
         return this.id;
     }
     /**
-     * @return The Cassandra service user&#39;s password.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     public String password() {

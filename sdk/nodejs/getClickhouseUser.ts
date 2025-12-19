@@ -56,7 +56,7 @@ export interface GetClickhouseUserResult {
      */
     readonly id: string;
     /**
-     * The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
     readonly password: string;
     /**

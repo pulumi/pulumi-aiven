@@ -12,27 +12,24 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Adds and manages users in a user group. You can add organization users and application users to groups.
-// Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `OrganizationApplicationUser` resource.
-//
-// Groups are granted roles and permissions using the `OrganizationPermission` resource.
+// Adds and manages users in a user group. You can add organization users and application users to groups. Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `OrganizationApplicationUser` resource. Groups are granted roles and permissions using the `OrganizationPermission` resource.
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember project_admin ORGANIZATION_ID/USER_GROUP_ID/USER_ID
+// $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember example ORGANIZATION_ID/GROUP_ID/USER_ID
 // ```
 type OrganizationUserGroupMember struct {
 	pulumi.CustomResourceState
 
-	// The ID of the user group.
+	// ID of the user group. Changing this property forces recreation of the resource.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// Last activity time of the user group member.
+	// Last Activity Time.
 	LastActivityTime pulumi.StringOutput `pulumi:"lastActivityTime"`
-	// The ID of the organization.
+	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput                          `pulumi:"organizationId"`
 	Timeouts       OrganizationUserGroupMemberTimeoutsPtrOutput `pulumi:"timeouts"`
-	// The ID of the organization user or application user.
+	// User ID. Changing this property forces recreation of the resource.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -75,26 +72,26 @@ func GetOrganizationUserGroupMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationUserGroupMember resources.
 type organizationUserGroupMemberState struct {
-	// The ID of the user group.
+	// ID of the user group. Changing this property forces recreation of the resource.
 	GroupId *string `pulumi:"groupId"`
-	// Last activity time of the user group member.
+	// Last Activity Time.
 	LastActivityTime *string `pulumi:"lastActivityTime"`
-	// The ID of the organization.
+	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId *string                              `pulumi:"organizationId"`
 	Timeouts       *OrganizationUserGroupMemberTimeouts `pulumi:"timeouts"`
-	// The ID of the organization user or application user.
+	// User ID. Changing this property forces recreation of the resource.
 	UserId *string `pulumi:"userId"`
 }
 
 type OrganizationUserGroupMemberState struct {
-	// The ID of the user group.
+	// ID of the user group. Changing this property forces recreation of the resource.
 	GroupId pulumi.StringPtrInput
-	// Last activity time of the user group member.
+	// Last Activity Time.
 	LastActivityTime pulumi.StringPtrInput
-	// The ID of the organization.
+	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
 	Timeouts       OrganizationUserGroupMemberTimeoutsPtrInput
-	// The ID of the organization user or application user.
+	// User ID. Changing this property forces recreation of the resource.
 	UserId pulumi.StringPtrInput
 }
 
@@ -103,23 +100,23 @@ func (OrganizationUserGroupMemberState) ElementType() reflect.Type {
 }
 
 type organizationUserGroupMemberArgs struct {
-	// The ID of the user group.
+	// ID of the user group. Changing this property forces recreation of the resource.
 	GroupId string `pulumi:"groupId"`
-	// The ID of the organization.
+	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId string                               `pulumi:"organizationId"`
 	Timeouts       *OrganizationUserGroupMemberTimeouts `pulumi:"timeouts"`
-	// The ID of the organization user or application user.
+	// User ID. Changing this property forces recreation of the resource.
 	UserId string `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a OrganizationUserGroupMember resource.
 type OrganizationUserGroupMemberArgs struct {
-	// The ID of the user group.
+	// ID of the user group. Changing this property forces recreation of the resource.
 	GroupId pulumi.StringInput
-	// The ID of the organization.
+	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
 	Timeouts       OrganizationUserGroupMemberTimeoutsPtrInput
-	// The ID of the organization user or application user.
+	// User ID. Changing this property forces recreation of the resource.
 	UserId pulumi.StringInput
 }
 
@@ -210,17 +207,17 @@ func (o OrganizationUserGroupMemberOutput) ToOrganizationUserGroupMemberOutputWi
 	return o
 }
 
-// The ID of the user group.
+// ID of the user group. Changing this property forces recreation of the resource.
 func (o OrganizationUserGroupMemberOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUserGroupMember) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// Last activity time of the user group member.
+// Last Activity Time.
 func (o OrganizationUserGroupMemberOutput) LastActivityTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUserGroupMember) pulumi.StringOutput { return v.LastActivityTime }).(pulumi.StringOutput)
 }
 
-// The ID of the organization.
+// ID of an organization. Changing this property forces recreation of the resource.
 func (o OrganizationUserGroupMemberOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUserGroupMember) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
@@ -229,7 +226,7 @@ func (o OrganizationUserGroupMemberOutput) Timeouts() OrganizationUserGroupMembe
 	return o.ApplyT(func(v *OrganizationUserGroupMember) OrganizationUserGroupMemberTimeoutsPtrOutput { return v.Timeouts }).(OrganizationUserGroupMemberTimeoutsPtrOutput)
 }
 
-// The ID of the organization user or application user.
+// User ID. Changing this property forces recreation of the resource.
 func (o OrganizationUserGroupMemberOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUserGroupMember) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }

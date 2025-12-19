@@ -3,8 +3,11 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationUserListTimeouts;
+import com.pulumi.aiven.inputs.GetOrganizationUserListUser;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,14 +18,14 @@ public final class GetOrganizationUserListPlainArgs extends com.pulumi.resources
     public static final GetOrganizationUserListPlainArgs Empty = new GetOrganizationUserListPlainArgs();
 
     /**
-     * The ID of the organization.
+     * ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     public Optional<String> id() {
@@ -30,18 +33,40 @@ public final class GetOrganizationUserListPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The name of the organization.
+     * The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the organization.
+     * @return The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable GetOrganizationUserListTimeouts timeouts;
+
+    public Optional<GetOrganizationUserListTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
+    /**
+     * List of users of the organization.
+     * 
+     */
+    @Import(name="users")
+    private @Nullable List<GetOrganizationUserListUser> users;
+
+    /**
+     * @return List of users of the organization.
+     * 
+     */
+    public Optional<List<GetOrganizationUserListUser>> users() {
+        return Optional.ofNullable(this.users);
     }
 
     private GetOrganizationUserListPlainArgs() {}
@@ -49,6 +74,8 @@ public final class GetOrganizationUserListPlainArgs extends com.pulumi.resources
     private GetOrganizationUserListPlainArgs(GetOrganizationUserListPlainArgs $) {
         this.id = $.id;
         this.name = $.name;
+        this.timeouts = $.timeouts;
+        this.users = $.users;
     }
 
     public static Builder builder() {
@@ -70,7 +97,7 @@ public final class GetOrganizationUserListPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param id The ID of the organization.
+         * @param id ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
          * 
          * @return builder
          * 
@@ -81,7 +108,7 @@ public final class GetOrganizationUserListPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name The name of the organization.
+         * @param name The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
          * 
          * @return builder
          * 
@@ -89,6 +116,32 @@ public final class GetOrganizationUserListPlainArgs extends com.pulumi.resources
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
+        }
+
+        public Builder timeouts(@Nullable GetOrganizationUserListTimeouts timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        /**
+         * @param users List of users of the organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder users(@Nullable List<GetOrganizationUserListUser> users) {
+            $.users = users;
+            return this;
+        }
+
+        /**
+         * @param users List of users of the organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder users(GetOrganizationUserListUser... users) {
+            return users(List.of(users));
         }
 
         public GetOrganizationUserListPlainArgs build() {

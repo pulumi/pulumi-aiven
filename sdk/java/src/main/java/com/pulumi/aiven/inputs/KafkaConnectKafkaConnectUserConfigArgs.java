@@ -175,6 +175,21 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.publicAccess);
     }
 
+    /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    @Import(name="saslOauthbearerAllowedUrls")
+    private @Nullable Output<List<String>> saslOauthbearerAllowedUrls;
+
+    /**
+     * @return List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     * 
+     */
+    public Optional<Output<List<String>>> saslOauthbearerAllowedUrls() {
+        return Optional.ofNullable(this.saslOauthbearerAllowedUrls);
+    }
+
     @Import(name="secretProviders")
     private @Nullable Output<List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs>> secretProviders;
 
@@ -224,6 +239,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         this.privateAccess = $.privateAccess;
         this.privatelinkAccess = $.privatelinkAccess;
         this.publicAccess = $.publicAccess;
+        this.saslOauthbearerAllowedUrls = $.saslOauthbearerAllowedUrls;
         this.secretProviders = $.secretProviders;
         this.serviceLog = $.serviceLog;
         this.staticIps = $.staticIps;
@@ -494,6 +510,37 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
          */
         public Builder publicAccess(KafkaConnectKafkaConnectUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
+        }
+
+        /**
+         * @param saslOauthbearerAllowedUrls List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAllowedUrls(@Nullable Output<List<String>> saslOauthbearerAllowedUrls) {
+            $.saslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
+            return this;
+        }
+
+        /**
+         * @param saslOauthbearerAllowedUrls List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAllowedUrls(List<String> saslOauthbearerAllowedUrls) {
+            return saslOauthbearerAllowedUrls(Output.of(saslOauthbearerAllowedUrls));
+        }
+
+        /**
+         * @param saslOauthbearerAllowedUrls List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAllowedUrls(String... saslOauthbearerAllowedUrls) {
+            return saslOauthbearerAllowedUrls(List.of(saslOauthbearerAllowedUrls));
         }
 
         public Builder secretProviders(@Nullable Output<List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs>> secretProviders) {

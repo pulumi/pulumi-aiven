@@ -47,6 +47,8 @@ __all__ = [
     'AlloydbomniTagArgsDict',
     'AlloydbomniTechEmailArgs',
     'AlloydbomniTechEmailArgsDict',
+    'BillingGroupTimeoutsArgs',
+    'BillingGroupTimeoutsArgsDict',
     'CassandraCassandraArgs',
     'CassandraCassandraArgsDict',
     'CassandraCassandraUserConfigArgs',
@@ -705,6 +707,8 @@ __all__ = [
     'ValkeyValkeyUserConfigPrivatelinkAccessArgsDict',
     'ValkeyValkeyUserConfigPublicAccessArgs',
     'ValkeyValkeyUserConfigPublicAccessArgsDict',
+    'GetBillingGroupTimeoutsArgs',
+    'GetBillingGroupTimeoutsArgsDict',
     'GetOrganizationAddressTimeoutsArgs',
     'GetOrganizationAddressTimeoutsArgsDict',
     'GetOrganizationApplicationUserTimeoutsArgs',
@@ -725,6 +729,18 @@ __all__ = [
     'GetOrganizationUserGroupListTimeoutsArgsDict',
     'GetOrganizationUserGroupListUserGroupArgs',
     'GetOrganizationUserGroupListUserGroupArgsDict',
+    'GetOrganizationUserGroupMemberListMemberArgs',
+    'GetOrganizationUserGroupMemberListMemberArgsDict',
+    'GetOrganizationUserGroupMemberListMemberUserInfoArgs',
+    'GetOrganizationUserGroupMemberListMemberUserInfoArgsDict',
+    'GetOrganizationUserGroupMemberListTimeoutsArgs',
+    'GetOrganizationUserGroupMemberListTimeoutsArgsDict',
+    'GetOrganizationUserListTimeoutsArgs',
+    'GetOrganizationUserListTimeoutsArgsDict',
+    'GetOrganizationUserListUserArgs',
+    'GetOrganizationUserListUserArgsDict',
+    'GetOrganizationUserListUserUserInfoArgs',
+    'GetOrganizationUserListUserUserInfoArgsDict',
     'GetServicePlanBackupConfigArgs',
     'GetServicePlanBackupConfigArgsDict',
     'GetServicePlanListServicePlanArgs',
@@ -4051,6 +4067,122 @@ class AlloydbomniTechEmailArgs:
     @email.setter
     def email(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class BillingGroupTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        default: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    BillingGroupTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BillingGroupTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 default: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 if not MYPY:
@@ -13220,6 +13352,10 @@ if not MYPY:
         """
         Allow access to selected service ports from the public Internet
         """
+        sasl_oauthbearer_allowed_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        """
         secret_providers: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderArgsDict']]]]
         service_log: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -13244,6 +13380,7 @@ class KafkaConnectKafkaConnectUserConfigArgs:
                  private_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivateAccessArgs']] = None,
                  privatelink_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPublicAccessArgs']] = None,
+                 sasl_oauthbearer_allowed_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  secret_providers: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderArgs']]]] = None,
                  service_log: Optional[pulumi.Input[_builtins.bool]] = None,
                  static_ips: Optional[pulumi.Input[_builtins.bool]] = None):
@@ -13257,6 +13394,7 @@ class KafkaConnectKafkaConnectUserConfigArgs:
         :param pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input['KafkaConnectKafkaConnectUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         :param pulumi.Input[_builtins.bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param pulumi.Input[_builtins.bool] static_ips: Use static public IP addresses.
         """
@@ -13284,6 +13422,8 @@ class KafkaConnectKafkaConnectUserConfigArgs:
             pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if sasl_oauthbearer_allowed_urls is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_allowed_urls", sasl_oauthbearer_allowed_urls)
         if secret_providers is not None:
             pulumi.set(__self__, "secret_providers", secret_providers)
         if service_log is not None:
@@ -13400,6 +13540,18 @@ class KafkaConnectKafkaConnectUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPublicAccessArgs']]):
         pulumi.set(self, "public_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAllowedUrls")
+    def sasl_oauthbearer_allowed_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_allowed_urls")
+
+    @sasl_oauthbearer_allowed_urls.setter
+    def sasl_oauthbearer_allowed_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "sasl_oauthbearer_allowed_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="secretProviders")
@@ -14703,11 +14855,15 @@ if not MYPY:
         """
         kafka_version: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
+        """
+        letsencrypt_sasl: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
         """
         letsencrypt_sasl_privatelink: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Use Letsencrypt CA for Kafka SASL via Privatelink.
+        Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         """
         private_access: NotRequired[pulumi.Input['KafkaKafkaUserConfigPrivateAccessArgsDict']]
         """
@@ -14720,6 +14876,10 @@ if not MYPY:
         public_access: NotRequired[pulumi.Input['KafkaKafkaUserConfigPublicAccessArgsDict']]
         """
         Allow access to selected service ports from the public Internet
+        """
+        sasl_oauthbearer_allowed_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         """
         schema_registry: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -14770,10 +14930,12 @@ class KafkaKafkaUserConfigArgs:
                  kafka_rest_config: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgs']] = None,
                  kafka_sasl_mechanisms: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaSaslMechanismsArgs']] = None,
                  kafka_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 letsencrypt_sasl: Optional[pulumi.Input[_builtins.bool]] = None,
                  letsencrypt_sasl_privatelink: Optional[pulumi.Input[_builtins.bool]] = None,
                  private_access: Optional[pulumi.Input['KafkaKafkaUserConfigPrivateAccessArgs']] = None,
                  privatelink_access: Optional[pulumi.Input['KafkaKafkaUserConfigPrivatelinkAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['KafkaKafkaUserConfigPublicAccessArgs']] = None,
+                 sasl_oauthbearer_allowed_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  schema_registry: Optional[pulumi.Input[_builtins.bool]] = None,
                  schema_registry_config: Optional[pulumi.Input['KafkaKafkaUserConfigSchemaRegistryConfigArgs']] = None,
                  service_log: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -14798,11 +14960,13 @@ class KafkaKafkaUserConfigArgs:
         :param pulumi.Input[_builtins.bool] kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgs'] kafka_rest_config: Kafka REST configuration
         :param pulumi.Input['KafkaKafkaUserConfigKafkaSaslMechanismsArgs'] kafka_sasl_mechanisms: Kafka SASL mechanisms
-        :param pulumi.Input[_builtins.str] kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
-        :param pulumi.Input[_builtins.bool] letsencrypt_sasl_privatelink: Use Letsencrypt CA for Kafka SASL via Privatelink.
+        :param pulumi.Input[_builtins.str] kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
+        :param pulumi.Input[_builtins.bool] letsencrypt_sasl: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+        :param pulumi.Input[_builtins.bool] letsencrypt_sasl_privatelink: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         :param pulumi.Input['KafkaKafkaUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['KafkaKafkaUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input['KafkaKafkaUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         :param pulumi.Input[_builtins.bool] schema_registry: Enable Schema-Registry service. Default: `false`.
         :param pulumi.Input['KafkaKafkaUserConfigSchemaRegistryConfigArgs'] schema_registry_config: Schema Registry configuration
         :param pulumi.Input[_builtins.bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
@@ -14854,6 +15018,8 @@ class KafkaKafkaUserConfigArgs:
             pulumi.set(__self__, "kafka_sasl_mechanisms", kafka_sasl_mechanisms)
         if kafka_version is not None:
             pulumi.set(__self__, "kafka_version", kafka_version)
+        if letsencrypt_sasl is not None:
+            pulumi.set(__self__, "letsencrypt_sasl", letsencrypt_sasl)
         if letsencrypt_sasl_privatelink is not None:
             pulumi.set(__self__, "letsencrypt_sasl_privatelink", letsencrypt_sasl_privatelink)
         if private_access is not None:
@@ -14862,6 +15028,8 @@ class KafkaKafkaUserConfigArgs:
             pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if sasl_oauthbearer_allowed_urls is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_allowed_urls", sasl_oauthbearer_allowed_urls)
         if schema_registry is not None:
             pulumi.set(__self__, "schema_registry", schema_registry)
         if schema_registry_config is not None:
@@ -15094,7 +15262,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -15103,10 +15271,22 @@ class KafkaKafkaUserConfigArgs:
         pulumi.set(self, "kafka_version", value)
 
     @_builtins.property
+    @pulumi.getter(name="letsencryptSasl")
+    def letsencrypt_sasl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+        """
+        return pulumi.get(self, "letsencrypt_sasl")
+
+    @letsencrypt_sasl.setter
+    def letsencrypt_sasl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "letsencrypt_sasl", value)
+
+    @_builtins.property
     @pulumi.getter(name="letsencryptSaslPrivatelink")
     def letsencrypt_sasl_privatelink(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Use Letsencrypt CA for Kafka SASL via Privatelink.
+        Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         """
         return pulumi.get(self, "letsencrypt_sasl_privatelink")
 
@@ -15149,6 +15329,18 @@ class KafkaKafkaUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional[pulumi.Input['KafkaKafkaUserConfigPublicAccessArgs']]):
         pulumi.set(self, "public_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAllowedUrls")
+    def sasl_oauthbearer_allowed_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_allowed_urls")
+
+    @sasl_oauthbearer_allowed_urls.setter
+    def sasl_oauthbearer_allowed_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "sasl_oauthbearer_allowed_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaRegistry")
@@ -18124,6 +18316,10 @@ if not MYPY:
         """
         Kafka MirrorMaker configuration values
         """
+        sasl_oauthbearer_allowed_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        """
         service_log: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Store logs for the service so that they are available in the HTTP API and console.
@@ -18143,6 +18339,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kafka_mirrormaker: Optional[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs']] = None,
+                 sasl_oauthbearer_allowed_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  service_log: Optional[pulumi.Input[_builtins.bool]] = None,
                  static_ips: Optional[pulumi.Input[_builtins.bool]] = None):
         """
@@ -18151,6 +18348,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs'] kafka_mirrormaker: Kafka MirrorMaker configuration values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         :param pulumi.Input[_builtins.bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param pulumi.Input[_builtins.bool] static_ips: Use static public IP addresses.
         """
@@ -18170,6 +18368,8 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_mirrormaker is not None:
             pulumi.set(__self__, "kafka_mirrormaker", kafka_mirrormaker)
+        if sasl_oauthbearer_allowed_urls is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_allowed_urls", sasl_oauthbearer_allowed_urls)
         if service_log is not None:
             pulumi.set(__self__, "service_log", service_log)
         if static_ips is not None:
@@ -18236,6 +18436,18 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
     @kafka_mirrormaker.setter
     def kafka_mirrormaker(self, value: Optional[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs']]):
         pulumi.set(self, "kafka_mirrormaker", value)
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAllowedUrls")
+    def sasl_oauthbearer_allowed_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_allowed_urls")
+
+    @sasl_oauthbearer_allowed_urls.setter
+    def sasl_oauthbearer_allowed_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "sasl_oauthbearer_allowed_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceLog")
@@ -22287,11 +22499,11 @@ if not MYPY:
         """
         backup_hour: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         """
         backup_minute: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         """
         binlog_retention_period: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -22388,8 +22600,8 @@ class MySqlMysqlUserConfigArgs:
         :param pulumi.Input[_builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[_builtins.str] admin_password: Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         :param pulumi.Input[_builtins.str] admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-        :param pulumi.Input[_builtins.int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        :param pulumi.Input[_builtins.int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param pulumi.Input[_builtins.int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
+        :param pulumi.Input[_builtins.int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         :param pulumi.Input[_builtins.int] binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
         :param pulumi.Input[Sequence[pulumi.Input['MySqlMysqlUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -22493,7 +22705,7 @@ class MySqlMysqlUserConfigArgs:
     @pulumi.getter(name="backupHour")
     def backup_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         """
         return pulumi.get(self, "backup_hour")
 
@@ -22505,7 +22717,7 @@ class MySqlMysqlUserConfigArgs:
     @pulumi.getter(name="backupMinute")
     def backup_minute(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         """
         return pulumi.get(self, "backup_minute")
 
@@ -22772,6 +22984,10 @@ if not MYPY:
         """
         Database name for bootstrapping the initial connection. Example: `defaultdb`.
         """
+        dump_tool: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+        """
         ignore_dbs: NotRequired[pulumi.Input[_builtins.str]]
         """
         Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
@@ -22805,6 +23021,7 @@ class MySqlMysqlUserConfigMigrationArgs:
                  host: pulumi.Input[_builtins.str],
                  port: pulumi.Input[_builtins.int],
                  dbname: Optional[pulumi.Input[_builtins.str]] = None,
+                 dump_tool: Optional[pulumi.Input[_builtins.str]] = None,
                  ignore_dbs: Optional[pulumi.Input[_builtins.str]] = None,
                  ignore_roles: Optional[pulumi.Input[_builtins.str]] = None,
                  method: Optional[pulumi.Input[_builtins.str]] = None,
@@ -22815,6 +23032,7 @@ class MySqlMysqlUserConfigMigrationArgs:
         :param pulumi.Input[_builtins.str] host: Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
         :param pulumi.Input[_builtins.int] port: Port number of the server where to migrate data from. Example: `1234`.
         :param pulumi.Input[_builtins.str] dbname: Database name for bootstrapping the initial connection. Example: `defaultdb`.
+        :param pulumi.Input[_builtins.str] dump_tool: Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
         :param pulumi.Input[_builtins.str] ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
         :param pulumi.Input[_builtins.str] ignore_roles: Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
         :param pulumi.Input[_builtins.str] method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
@@ -22826,6 +23044,8 @@ class MySqlMysqlUserConfigMigrationArgs:
         pulumi.set(__self__, "port", port)
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
+        if dump_tool is not None:
+            pulumi.set(__self__, "dump_tool", dump_tool)
         if ignore_dbs is not None:
             pulumi.set(__self__, "ignore_dbs", ignore_dbs)
         if ignore_roles is not None:
@@ -22874,6 +23094,18 @@ class MySqlMysqlUserConfigMigrationArgs:
     @dbname.setter
     def dbname(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "dbname", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dumpTool")
+    def dump_tool(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+        """
+        return pulumi.get(self, "dump_tool")
+
+    @dump_tool.setter
+    def dump_tool(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dump_tool", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreDbs")
@@ -26225,6 +26457,18 @@ if not MYPY:
         """
         Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
         """
+        ml_commons_model_access_control_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+        """
+        ml_commons_native_memory_threshold: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+        """
+        ml_commons_only_run_on_ml_node: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+        """
         node_search_cache_size: NotRequired[pulumi.Input[_builtins.str]]
         """
         Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
@@ -26349,6 +26593,9 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  ism_history_rollover_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
                  knn_memory_circuit_breaker_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  knn_memory_circuit_breaker_limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 ml_commons_model_access_control_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ml_commons_native_memory_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 ml_commons_only_run_on_ml_node: Optional[pulumi.Input[_builtins.bool]] = None,
                  node_search_cache_size: Optional[pulumi.Input[_builtins.str]] = None,
                  override_main_response_version: Optional[pulumi.Input[_builtins.bool]] = None,
                  plugins_alerting_filter_by_backend_roles: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -26406,6 +26653,9 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         :param pulumi.Input[_builtins.int] ism_history_rollover_retention_period: How long audit history indices are kept in days. Example: `30`.
         :param pulumi.Input[_builtins.bool] knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true.
         :param pulumi.Input[_builtins.int] knn_memory_circuit_breaker_limit: Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
+        :param pulumi.Input[_builtins.bool] ml_commons_model_access_control_enabled: Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+        :param pulumi.Input[_builtins.int] ml_commons_native_memory_threshold: Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+        :param pulumi.Input[_builtins.bool] ml_commons_only_run_on_ml_node: Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
         :param pulumi.Input[_builtins.str] node_search_cache_size: Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
         :param pulumi.Input[_builtins.bool] override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         :param pulumi.Input[_builtins.bool] plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
@@ -26499,6 +26749,12 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "knn_memory_circuit_breaker_enabled", knn_memory_circuit_breaker_enabled)
         if knn_memory_circuit_breaker_limit is not None:
             pulumi.set(__self__, "knn_memory_circuit_breaker_limit", knn_memory_circuit_breaker_limit)
+        if ml_commons_model_access_control_enabled is not None:
+            pulumi.set(__self__, "ml_commons_model_access_control_enabled", ml_commons_model_access_control_enabled)
+        if ml_commons_native_memory_threshold is not None:
+            pulumi.set(__self__, "ml_commons_native_memory_threshold", ml_commons_native_memory_threshold)
+        if ml_commons_only_run_on_ml_node is not None:
+            pulumi.set(__self__, "ml_commons_only_run_on_ml_node", ml_commons_only_run_on_ml_node)
         if node_search_cache_size is not None:
             pulumi.set(__self__, "node_search_cache_size", node_search_cache_size)
         if override_main_response_version is not None:
@@ -26969,6 +27225,42 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
     @knn_memory_circuit_breaker_limit.setter
     def knn_memory_circuit_breaker_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "knn_memory_circuit_breaker_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsModelAccessControlEnabled")
+    def ml_commons_model_access_control_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+        """
+        return pulumi.get(self, "ml_commons_model_access_control_enabled")
+
+    @ml_commons_model_access_control_enabled.setter
+    def ml_commons_model_access_control_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ml_commons_model_access_control_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsNativeMemoryThreshold")
+    def ml_commons_native_memory_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+        """
+        return pulumi.get(self, "ml_commons_native_memory_threshold")
+
+    @ml_commons_native_memory_threshold.setter
+    def ml_commons_native_memory_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "ml_commons_native_memory_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsOnlyRunOnMlNode")
+    def ml_commons_only_run_on_ml_node(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+        """
+        return pulumi.get(self, "ml_commons_only_run_on_ml_node")
+
+    @ml_commons_only_run_on_ml_node.setter
+    def ml_commons_only_run_on_ml_node(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ml_commons_only_run_on_ml_node", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeSearchCacheSize")
@@ -31654,6 +31946,10 @@ if not MYPY:
         """
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
+        enable_ha_replica_dns: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+        """
         enable_ipv6: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
@@ -31777,6 +32073,7 @@ class PgPgUserConfigArgs:
                  admin_username: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
+                 enable_ha_replica_dns: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -31811,6 +32108,7 @@ class PgPgUserConfigArgs:
         :param pulumi.Input[_builtins.str] admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
         :param pulumi.Input[_builtins.int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param pulumi.Input[_builtins.int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param pulumi.Input[_builtins.bool] enable_ha_replica_dns: Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -31850,6 +32148,8 @@ class PgPgUserConfigArgs:
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if enable_ha_replica_dns is not None:
+            pulumi.set(__self__, "enable_ha_replica_dns", enable_ha_replica_dns)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_filter_objects is not None:
@@ -31972,6 +32272,18 @@ class PgPgUserConfigArgs:
     @backup_minute.setter
     def backup_minute(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "backup_minute", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableHaReplicaDns")
+    def enable_ha_replica_dns(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+        """
+        return pulumi.get(self, "enable_ha_replica_dns")
+
+    @enable_ha_replica_dns.setter
+    def enable_ha_replica_dns(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_ha_replica_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")
@@ -43686,6 +43998,38 @@ class ValkeyValkeyUserConfigPublicAccessArgs:
 
 
 if not MYPY:
+    class GetBillingGroupTimeoutsArgsDict(TypedDict):
+        read: NotRequired[_builtins.str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    GetBillingGroupTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetBillingGroupTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
     class GetOrganizationAddressTimeoutsArgsDict(TypedDict):
         read: NotRequired[_builtins.str]
         """
@@ -44323,6 +44667,690 @@ class GetOrganizationUserGroupListUserGroupArgs:
     @user_group_name.setter
     def user_group_name(self, value: _builtins.str):
         pulumi.set(self, "user_group_name", value)
+
+
+if not MYPY:
+    class GetOrganizationUserGroupMemberListMemberArgsDict(TypedDict):
+        last_activity_time: _builtins.str
+        """
+        Last Activity Time.
+        """
+        user_id: _builtins.str
+        """
+        User ID.
+        """
+        user_infos: NotRequired[Sequence['GetOrganizationUserGroupMemberListMemberUserInfoArgsDict']]
+        """
+        OrganizationUserInfo.
+        """
+elif False:
+    GetOrganizationUserGroupMemberListMemberArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationUserGroupMemberListMemberArgs:
+    def __init__(__self__, *,
+                 last_activity_time: _builtins.str,
+                 user_id: _builtins.str,
+                 user_infos: Optional[Sequence['GetOrganizationUserGroupMemberListMemberUserInfoArgs']] = None):
+        """
+        :param _builtins.str last_activity_time: Last Activity Time.
+        :param _builtins.str user_id: User ID.
+        :param Sequence['GetOrganizationUserGroupMemberListMemberUserInfoArgs'] user_infos: OrganizationUserInfo.
+        """
+        pulumi.set(__self__, "last_activity_time", last_activity_time)
+        pulumi.set(__self__, "user_id", user_id)
+        if user_infos is not None:
+            pulumi.set(__self__, "user_infos", user_infos)
+
+    @_builtins.property
+    @pulumi.getter(name="lastActivityTime")
+    def last_activity_time(self) -> _builtins.str:
+        """
+        Last Activity Time.
+        """
+        return pulumi.get(self, "last_activity_time")
+
+    @last_activity_time.setter
+    def last_activity_time(self, value: _builtins.str):
+        pulumi.set(self, "last_activity_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.str:
+        """
+        User ID.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: _builtins.str):
+        pulumi.set(self, "user_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userInfos")
+    def user_infos(self) -> Optional[Sequence['GetOrganizationUserGroupMemberListMemberUserInfoArgs']]:
+        """
+        OrganizationUserInfo.
+        """
+        return pulumi.get(self, "user_infos")
+
+    @user_infos.setter
+    def user_infos(self, value: Optional[Sequence['GetOrganizationUserGroupMemberListMemberUserInfoArgs']]):
+        pulumi.set(self, "user_infos", value)
+
+
+if not MYPY:
+    class GetOrganizationUserGroupMemberListMemberUserInfoArgsDict(TypedDict):
+        city: _builtins.str
+        """
+        City.
+        """
+        country: _builtins.str
+        """
+        Country.
+        """
+        create_time: _builtins.str
+        """
+        Creation time.
+        """
+        department: _builtins.str
+        """
+        Department.
+        """
+        is_application_user: _builtins.bool
+        """
+        Is Application User.
+        """
+        job_title: _builtins.str
+        """
+        Job Title.
+        """
+        managed_by_scim: _builtins.bool
+        """
+        Managed By Scim.
+        """
+        managing_organization_id: _builtins.str
+        """
+        Managing Organization ID.
+        """
+        real_name: _builtins.str
+        """
+        Real Name.
+        """
+        state: _builtins.str
+        """
+        State.
+        """
+        user_email: _builtins.str
+        """
+        User Email.
+        """
+elif False:
+    GetOrganizationUserGroupMemberListMemberUserInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationUserGroupMemberListMemberUserInfoArgs:
+    def __init__(__self__, *,
+                 city: _builtins.str,
+                 country: _builtins.str,
+                 create_time: _builtins.str,
+                 department: _builtins.str,
+                 is_application_user: _builtins.bool,
+                 job_title: _builtins.str,
+                 managed_by_scim: _builtins.bool,
+                 managing_organization_id: _builtins.str,
+                 real_name: _builtins.str,
+                 state: _builtins.str,
+                 user_email: _builtins.str):
+        """
+        :param _builtins.str city: City.
+        :param _builtins.str country: Country.
+        :param _builtins.str create_time: Creation time.
+        :param _builtins.str department: Department.
+        :param _builtins.bool is_application_user: Is Application User.
+        :param _builtins.str job_title: Job Title.
+        :param _builtins.bool managed_by_scim: Managed By Scim.
+        :param _builtins.str managing_organization_id: Managing Organization ID.
+        :param _builtins.str real_name: Real Name.
+        :param _builtins.str state: State.
+        :param _builtins.str user_email: User Email.
+        """
+        pulumi.set(__self__, "city", city)
+        pulumi.set(__self__, "country", country)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "department", department)
+        pulumi.set(__self__, "is_application_user", is_application_user)
+        pulumi.set(__self__, "job_title", job_title)
+        pulumi.set(__self__, "managed_by_scim", managed_by_scim)
+        pulumi.set(__self__, "managing_organization_id", managing_organization_id)
+        pulumi.set(__self__, "real_name", real_name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "user_email", user_email)
+
+    @_builtins.property
+    @pulumi.getter
+    def city(self) -> _builtins.str:
+        """
+        City.
+        """
+        return pulumi.get(self, "city")
+
+    @city.setter
+    def city(self, value: _builtins.str):
+        pulumi.set(self, "city", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def country(self) -> _builtins.str:
+        """
+        Country.
+        """
+        return pulumi.get(self, "country")
+
+    @country.setter
+    def country(self, value: _builtins.str):
+        pulumi.set(self, "country", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: _builtins.str):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def department(self) -> _builtins.str:
+        """
+        Department.
+        """
+        return pulumi.get(self, "department")
+
+    @department.setter
+    def department(self, value: _builtins.str):
+        pulumi.set(self, "department", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isApplicationUser")
+    def is_application_user(self) -> _builtins.bool:
+        """
+        Is Application User.
+        """
+        return pulumi.get(self, "is_application_user")
+
+    @is_application_user.setter
+    def is_application_user(self, value: _builtins.bool):
+        pulumi.set(self, "is_application_user", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobTitle")
+    def job_title(self) -> _builtins.str:
+        """
+        Job Title.
+        """
+        return pulumi.get(self, "job_title")
+
+    @job_title.setter
+    def job_title(self, value: _builtins.str):
+        pulumi.set(self, "job_title", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedByScim")
+    def managed_by_scim(self) -> _builtins.bool:
+        """
+        Managed By Scim.
+        """
+        return pulumi.get(self, "managed_by_scim")
+
+    @managed_by_scim.setter
+    def managed_by_scim(self, value: _builtins.bool):
+        pulumi.set(self, "managed_by_scim", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managingOrganizationId")
+    def managing_organization_id(self) -> _builtins.str:
+        """
+        Managing Organization ID.
+        """
+        return pulumi.get(self, "managing_organization_id")
+
+    @managing_organization_id.setter
+    def managing_organization_id(self, value: _builtins.str):
+        pulumi.set(self, "managing_organization_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="realName")
+    def real_name(self) -> _builtins.str:
+        """
+        Real Name.
+        """
+        return pulumi.get(self, "real_name")
+
+    @real_name.setter
+    def real_name(self, value: _builtins.str):
+        pulumi.set(self, "real_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        State.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: _builtins.str):
+        pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> _builtins.str:
+        """
+        User Email.
+        """
+        return pulumi.get(self, "user_email")
+
+    @user_email.setter
+    def user_email(self, value: _builtins.str):
+        pulumi.set(self, "user_email", value)
+
+
+if not MYPY:
+    class GetOrganizationUserGroupMemberListTimeoutsArgsDict(TypedDict):
+        read: NotRequired[_builtins.str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    GetOrganizationUserGroupMemberListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationUserGroupMemberListTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
+    class GetOrganizationUserListTimeoutsArgsDict(TypedDict):
+        read: NotRequired[_builtins.str]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    GetOrganizationUserListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationUserListTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
+    class GetOrganizationUserListUserArgsDict(TypedDict):
+        is_super_admin: _builtins.bool
+        """
+        Super admin state of the organization user.
+        """
+        join_time: _builtins.str
+        """
+        Join time.
+        """
+        last_activity_time: _builtins.str
+        """
+        Last activity time.
+        """
+        user_id: _builtins.str
+        """
+        User ID.
+        """
+        user_infos: NotRequired[Sequence['GetOrganizationUserListUserUserInfoArgsDict']]
+        """
+        OrganizationUserInfo.
+        """
+elif False:
+    GetOrganizationUserListUserArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationUserListUserArgs:
+    def __init__(__self__, *,
+                 is_super_admin: _builtins.bool,
+                 join_time: _builtins.str,
+                 last_activity_time: _builtins.str,
+                 user_id: _builtins.str,
+                 user_infos: Optional[Sequence['GetOrganizationUserListUserUserInfoArgs']] = None):
+        """
+        :param _builtins.bool is_super_admin: Super admin state of the organization user.
+        :param _builtins.str join_time: Join time.
+        :param _builtins.str last_activity_time: Last activity time.
+        :param _builtins.str user_id: User ID.
+        :param Sequence['GetOrganizationUserListUserUserInfoArgs'] user_infos: OrganizationUserInfo.
+        """
+        pulumi.set(__self__, "is_super_admin", is_super_admin)
+        pulumi.set(__self__, "join_time", join_time)
+        pulumi.set(__self__, "last_activity_time", last_activity_time)
+        pulumi.set(__self__, "user_id", user_id)
+        if user_infos is not None:
+            pulumi.set(__self__, "user_infos", user_infos)
+
+    @_builtins.property
+    @pulumi.getter(name="isSuperAdmin")
+    def is_super_admin(self) -> _builtins.bool:
+        """
+        Super admin state of the organization user.
+        """
+        return pulumi.get(self, "is_super_admin")
+
+    @is_super_admin.setter
+    def is_super_admin(self, value: _builtins.bool):
+        pulumi.set(self, "is_super_admin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="joinTime")
+    def join_time(self) -> _builtins.str:
+        """
+        Join time.
+        """
+        return pulumi.get(self, "join_time")
+
+    @join_time.setter
+    def join_time(self, value: _builtins.str):
+        pulumi.set(self, "join_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastActivityTime")
+    def last_activity_time(self) -> _builtins.str:
+        """
+        Last activity time.
+        """
+        return pulumi.get(self, "last_activity_time")
+
+    @last_activity_time.setter
+    def last_activity_time(self, value: _builtins.str):
+        pulumi.set(self, "last_activity_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.str:
+        """
+        User ID.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: _builtins.str):
+        pulumi.set(self, "user_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userInfos")
+    def user_infos(self) -> Optional[Sequence['GetOrganizationUserListUserUserInfoArgs']]:
+        """
+        OrganizationUserInfo.
+        """
+        return pulumi.get(self, "user_infos")
+
+    @user_infos.setter
+    def user_infos(self, value: Optional[Sequence['GetOrganizationUserListUserUserInfoArgs']]):
+        pulumi.set(self, "user_infos", value)
+
+
+if not MYPY:
+    class GetOrganizationUserListUserUserInfoArgsDict(TypedDict):
+        city: _builtins.str
+        """
+        City.
+        """
+        country: _builtins.str
+        """
+        Country.
+        """
+        create_time: _builtins.str
+        """
+        Creation time.
+        """
+        department: _builtins.str
+        """
+        Department.
+        """
+        is_application_user: _builtins.bool
+        """
+        Is Application User.
+        """
+        job_title: _builtins.str
+        """
+        Job Title.
+        """
+        managed_by_scim: _builtins.bool
+        """
+        Managed By Scim.
+        """
+        managing_organization_id: _builtins.str
+        """
+        Managing Organization ID.
+        """
+        real_name: _builtins.str
+        """
+        Real Name.
+        """
+        state: _builtins.str
+        """
+        State.
+        """
+        user_email: _builtins.str
+        """
+        User Email.
+        """
+elif False:
+    GetOrganizationUserListUserUserInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrganizationUserListUserUserInfoArgs:
+    def __init__(__self__, *,
+                 city: _builtins.str,
+                 country: _builtins.str,
+                 create_time: _builtins.str,
+                 department: _builtins.str,
+                 is_application_user: _builtins.bool,
+                 job_title: _builtins.str,
+                 managed_by_scim: _builtins.bool,
+                 managing_organization_id: _builtins.str,
+                 real_name: _builtins.str,
+                 state: _builtins.str,
+                 user_email: _builtins.str):
+        """
+        :param _builtins.str city: City.
+        :param _builtins.str country: Country.
+        :param _builtins.str create_time: Creation time.
+        :param _builtins.str department: Department.
+        :param _builtins.bool is_application_user: Is Application User.
+        :param _builtins.str job_title: Job Title.
+        :param _builtins.bool managed_by_scim: Managed By Scim.
+        :param _builtins.str managing_organization_id: Managing Organization ID.
+        :param _builtins.str real_name: Real Name.
+        :param _builtins.str state: State.
+        :param _builtins.str user_email: User Email.
+        """
+        pulumi.set(__self__, "city", city)
+        pulumi.set(__self__, "country", country)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "department", department)
+        pulumi.set(__self__, "is_application_user", is_application_user)
+        pulumi.set(__self__, "job_title", job_title)
+        pulumi.set(__self__, "managed_by_scim", managed_by_scim)
+        pulumi.set(__self__, "managing_organization_id", managing_organization_id)
+        pulumi.set(__self__, "real_name", real_name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "user_email", user_email)
+
+    @_builtins.property
+    @pulumi.getter
+    def city(self) -> _builtins.str:
+        """
+        City.
+        """
+        return pulumi.get(self, "city")
+
+    @city.setter
+    def city(self, value: _builtins.str):
+        pulumi.set(self, "city", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def country(self) -> _builtins.str:
+        """
+        Country.
+        """
+        return pulumi.get(self, "country")
+
+    @country.setter
+    def country(self, value: _builtins.str):
+        pulumi.set(self, "country", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: _builtins.str):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def department(self) -> _builtins.str:
+        """
+        Department.
+        """
+        return pulumi.get(self, "department")
+
+    @department.setter
+    def department(self, value: _builtins.str):
+        pulumi.set(self, "department", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isApplicationUser")
+    def is_application_user(self) -> _builtins.bool:
+        """
+        Is Application User.
+        """
+        return pulumi.get(self, "is_application_user")
+
+    @is_application_user.setter
+    def is_application_user(self, value: _builtins.bool):
+        pulumi.set(self, "is_application_user", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobTitle")
+    def job_title(self) -> _builtins.str:
+        """
+        Job Title.
+        """
+        return pulumi.get(self, "job_title")
+
+    @job_title.setter
+    def job_title(self, value: _builtins.str):
+        pulumi.set(self, "job_title", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedByScim")
+    def managed_by_scim(self) -> _builtins.bool:
+        """
+        Managed By Scim.
+        """
+        return pulumi.get(self, "managed_by_scim")
+
+    @managed_by_scim.setter
+    def managed_by_scim(self, value: _builtins.bool):
+        pulumi.set(self, "managed_by_scim", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managingOrganizationId")
+    def managing_organization_id(self) -> _builtins.str:
+        """
+        Managing Organization ID.
+        """
+        return pulumi.get(self, "managing_organization_id")
+
+    @managing_organization_id.setter
+    def managing_organization_id(self, value: _builtins.str):
+        pulumi.set(self, "managing_organization_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="realName")
+    def real_name(self) -> _builtins.str:
+        """
+        Real Name.
+        """
+        return pulumi.get(self, "real_name")
+
+    @real_name.setter
+    def real_name(self, value: _builtins.str):
+        pulumi.set(self, "real_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        State.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: _builtins.str):
+        pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> _builtins.str:
+        """
+        User Email.
+        """
+        return pulumi.get(self, "user_email")
+
+    @user_email.setter
+    def user_email(self, value: _builtins.str):
+        pulumi.set(self, "user_email", value)
 
 
 if not MYPY:

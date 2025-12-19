@@ -71,14 +71,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      * 
      */
     @Import(name="backupHour")
     private @Nullable Output<Integer> backupHour;
 
     /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      * 
      */
     public Optional<Output<Integer>> backupHour() {
@@ -86,14 +86,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      * 
      */
     @Import(name="backupMinute")
     private @Nullable Output<Integer> backupMinute;
 
     /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      * 
      */
     public Optional<Output<Integer>> backupMinute() {
@@ -456,7 +456,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
          * 
          * @return builder
          * 
@@ -477,7 +477,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
          * 
          * @return builder
          * 
@@ -488,7 +488,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
          * 
          * @return builder
          * 

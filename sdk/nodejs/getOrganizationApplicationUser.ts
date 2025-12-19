@@ -42,13 +42,13 @@ export interface GetOrganizationApplicationUserResult {
      */
     readonly email: string;
     /**
-     * Resource ID, a composite of `organizationId` and `userId` IDs.
+     * Resource ID composed as: `organization_id/user_id`.
      */
     readonly id: string;
     /**
-     * Alters super admin state of the organization application user. The default value is `false`.
+     * Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      *
-     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
+     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      */
     readonly isSuperAdmin: boolean;
     /**

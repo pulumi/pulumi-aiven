@@ -61,6 +61,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("kafkaMirrormaker")]
         public Input<Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs>? KafkaMirrormaker { get; set; }
 
+        [Input("saslOauthbearerAllowedUrls")]
+        private InputList<string>? _saslOauthbearerAllowedUrls;
+
+        /// <summary>
+        /// List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        /// </summary>
+        public InputList<string> SaslOauthbearerAllowedUrls
+        {
+            get => _saslOauthbearerAllowedUrls ?? (_saslOauthbearerAllowedUrls = new InputList<string>());
+            set => _saslOauthbearerAllowedUrls = value;
+        }
+
         /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>

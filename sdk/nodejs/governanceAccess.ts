@@ -31,6 +31,12 @@ import * as utilities from "./utilities";
  *     ownerUserGroupId: example.groupId,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
+ * ```
  */
 export class GovernanceAccess extends pulumi.CustomResource {
     /**

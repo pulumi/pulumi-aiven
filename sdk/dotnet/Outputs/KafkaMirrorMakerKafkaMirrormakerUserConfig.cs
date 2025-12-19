@@ -34,6 +34,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker? KafkaMirrormaker;
         /// <summary>
+        /// List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        /// </summary>
+        public readonly ImmutableArray<string> SaslOauthbearerAllowedUrls;
+        /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>
         public readonly bool? ServiceLog;
@@ -54,6 +58,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker? kafkaMirrormaker,
 
+            ImmutableArray<string> saslOauthbearerAllowedUrls,
+
             bool? serviceLog,
 
             bool? staticIps)
@@ -63,6 +69,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             KafkaMirrormaker = kafkaMirrormaker;
+            SaslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
             ServiceLog = serviceLog;
             StaticIps = staticIps;
         }

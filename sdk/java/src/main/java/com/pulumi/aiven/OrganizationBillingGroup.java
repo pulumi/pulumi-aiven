@@ -22,6 +22,12 @@ import javax.annotation.Nullable;
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/organizationBillingGroup:OrganizationBillingGroup example ORGANIZATION_ID/BILLING_GROUP_ID
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/organizationBillingGroup:OrganizationBillingGroup")
 public class OrganizationBillingGroup extends com.pulumi.resources.CustomResource {
@@ -40,28 +46,28 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
         return this.billingAddressId;
     }
     /**
-     * List of billing contact emails.
+     * Aiven contacts these email addresses when there are billing issues or questions.
      * 
      */
     @Export(name="billingContactEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> billingContactEmails;
 
     /**
-     * @return List of billing contact emails.
+     * @return Aiven contacts these email addresses when there are billing issues or questions.
      * 
      */
     public Output<List<String>> billingContactEmails() {
         return this.billingContactEmails;
     }
     /**
-     * List of billing contact emails.
+     * PDF invoices are sent to these email addresses.
      * 
      */
     @Export(name="billingEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> billingEmails;
 
     /**
-     * @return List of billing contact emails.
+     * @return PDF invoices are sent to these email addresses.
      * 
      */
     public Output<List<String>> billingEmails() {

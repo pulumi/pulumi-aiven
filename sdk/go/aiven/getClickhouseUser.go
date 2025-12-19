@@ -64,7 +64,7 @@ type LookupClickhouseUserArgs struct {
 type LookupClickhouseUserResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -121,7 +121,7 @@ func (o LookupClickhouseUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 func (o LookupClickhouseUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseUserResult) string { return v.Password }).(pulumi.StringOutput)
 }

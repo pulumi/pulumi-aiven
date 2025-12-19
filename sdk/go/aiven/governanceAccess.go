@@ -53,6 +53,12 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
+// ```
 type GovernanceAccess struct {
 	pulumi.CustomResourceState
 

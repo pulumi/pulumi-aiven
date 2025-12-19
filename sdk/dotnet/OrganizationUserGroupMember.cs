@@ -10,34 +10,31 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Adds and manages users in a user group. You can add organization users and application users to groups.
-    /// Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `aiven.OrganizationApplicationUser` resource.
-    /// 
-    /// Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
+    /// Adds and manages users in a user group. You can add organization users and application users to groups. Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `aiven.OrganizationApplicationUser` resource. Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember project_admin ORGANIZATION_ID/USER_GROUP_ID/USER_ID
+    /// $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember example ORGANIZATION_ID/GROUP_ID/USER_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organizationUserGroupMember:OrganizationUserGroupMember")]
     public partial class OrganizationUserGroupMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the user group.
+        /// ID of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Last activity time of the user group member.
+        /// Last Activity Time.
         /// </summary>
         [Output("lastActivityTime")]
         public Output<string> LastActivityTime { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
@@ -46,7 +43,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.OrganizationUserGroupMemberTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the organization user or application user.
+        /// User ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -98,13 +95,13 @@ namespace Pulumi.Aiven
     public sealed class OrganizationUserGroupMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the user group.
+        /// ID of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -113,7 +110,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.OrganizationUserGroupMemberTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The ID of the organization user or application user.
+        /// User ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
@@ -127,19 +124,19 @@ namespace Pulumi.Aiven
     public sealed class OrganizationUserGroupMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the user group.
+        /// ID of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// Last activity time of the user group member.
+        /// Last Activity Time.
         /// </summary>
         [Input("lastActivityTime")]
         public Input<string>? LastActivityTime { get; set; }
 
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
@@ -148,7 +145,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.OrganizationUserGroupMemberTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The ID of the organization user or application user.
+        /// User ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

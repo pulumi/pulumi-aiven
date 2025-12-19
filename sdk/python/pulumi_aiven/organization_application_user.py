@@ -28,13 +28,13 @@ class OrganizationApplicationUserArgs:
         """
         The set of arguments for constructing a OrganizationApplicationUser resource.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`.
+        :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         :param pulumi.Input[_builtins.str] name: Name.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         if is_super_admin is not None:
-            warnings.warn("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""", DeprecationWarning)
-            pulumi.log.warn("""is_super_admin is deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""")
+            warnings.warn("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.""", DeprecationWarning)
+            pulumi.log.warn("""is_super_admin is deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.""")
         if is_super_admin is not None:
             pulumi.set(__self__, "is_super_admin", is_super_admin)
         if name is not None:
@@ -56,10 +56,10 @@ class OrganizationApplicationUserArgs:
 
     @_builtins.property
     @pulumi.getter(name="isSuperAdmin")
-    @_utilities.deprecated("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""")
+    @_utilities.deprecated("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.""")
     def is_super_admin(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Alters super admin state of the organization application user. The default value is `false`.
+        Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         """
         return pulumi.get(self, "is_super_admin")
 
@@ -101,7 +101,7 @@ class _OrganizationApplicationUserState:
         """
         Input properties used for looking up and filtering OrganizationApplicationUser resources.
         :param pulumi.Input[_builtins.str] email: User Email.
-        :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`.
+        :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         :param pulumi.Input[_builtins.str] name: Name.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] user_id: User ID.
@@ -109,8 +109,8 @@ class _OrganizationApplicationUserState:
         if email is not None:
             pulumi.set(__self__, "email", email)
         if is_super_admin is not None:
-            warnings.warn("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""", DeprecationWarning)
-            pulumi.log.warn("""is_super_admin is deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""")
+            warnings.warn("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.""", DeprecationWarning)
+            pulumi.log.warn("""is_super_admin is deprecated: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.""")
         if is_super_admin is not None:
             pulumi.set(__self__, "is_super_admin", is_super_admin)
         if name is not None:
@@ -136,10 +136,10 @@ class _OrganizationApplicationUserState:
 
     @_builtins.property
     @pulumi.getter(name="isSuperAdmin")
-    @_utilities.deprecated("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""")
+    @_utilities.deprecated("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.""")
     def is_super_admin(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Alters super admin state of the organization application user. The default value is `false`.
+        Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         """
         return pulumi.get(self, "is_super_admin")
 
@@ -226,7 +226,7 @@ class OrganizationApplicationUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`.
+        :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         :param pulumi.Input[_builtins.str] name: Name.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         """
@@ -316,7 +316,7 @@ class OrganizationApplicationUser(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: User Email.
-        :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`.
+        :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         :param pulumi.Input[_builtins.str] name: Name.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] user_id: User ID.
@@ -343,10 +343,10 @@ class OrganizationApplicationUser(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="isSuperAdmin")
-    @_utilities.deprecated("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""")
+    @_utilities.deprecated("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.""")
     def is_super_admin(self) -> pulumi.Output[_builtins.bool]:
         """
-        Alters super admin state of the organization application user. The default value is `false`.
+        Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         """
         return pulumi.get(self, "is_super_admin")
 

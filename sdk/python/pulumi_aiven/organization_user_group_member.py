@@ -27,9 +27,9 @@ class OrganizationUserGroupMemberArgs:
                  timeouts: Optional[pulumi.Input['OrganizationUserGroupMemberTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationUserGroupMember resource.
-        :param pulumi.Input[_builtins.str] group_id: The ID of the user group.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
-        :param pulumi.Input[_builtins.str] user_id: The ID of the organization user or application user.
+        :param pulumi.Input[_builtins.str] group_id: ID of the user group. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] user_id: User ID. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "organization_id", organization_id)
@@ -41,7 +41,7 @@ class OrganizationUserGroupMemberArgs:
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the user group.
+        ID of the user group. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -53,7 +53,7 @@ class OrganizationUserGroupMemberArgs:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the organization.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -65,7 +65,7 @@ class OrganizationUserGroupMemberArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the organization user or application user.
+        User ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user_id")
 
@@ -93,10 +93,10 @@ class _OrganizationUserGroupMemberState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationUserGroupMember resources.
-        :param pulumi.Input[_builtins.str] group_id: The ID of the user group.
-        :param pulumi.Input[_builtins.str] last_activity_time: Last activity time of the user group member.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
-        :param pulumi.Input[_builtins.str] user_id: The ID of the organization user or application user.
+        :param pulumi.Input[_builtins.str] group_id: ID of the user group. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] last_activity_time: Last Activity Time.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] user_id: User ID. Changing this property forces recreation of the resource.
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -113,7 +113,7 @@ class _OrganizationUserGroupMemberState:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the user group.
+        ID of the user group. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -125,7 +125,7 @@ class _OrganizationUserGroupMemberState:
     @pulumi.getter(name="lastActivityTime")
     def last_activity_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Last activity time of the user group member.
+        Last Activity Time.
         """
         return pulumi.get(self, "last_activity_time")
 
@@ -137,7 +137,7 @@ class _OrganizationUserGroupMemberState:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the organization.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -158,7 +158,7 @@ class _OrganizationUserGroupMemberState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the organization user or application user.
+        User ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user_id")
 
@@ -179,22 +179,19 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Adds and manages users in a user group. You can add organization users and application users to groups.
-        Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `OrganizationApplicationUser` resource.
-
-        Groups are granted roles and permissions using the `OrganizationPermission` resource.
+        Adds and manages users in a user group. You can add organization users and application users to groups. Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `OrganizationApplicationUser` resource. Groups are granted roles and permissions using the `OrganizationPermission` resource.
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember project_admin ORGANIZATION_ID/USER_GROUP_ID/USER_ID
+        $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember example ORGANIZATION_ID/GROUP_ID/USER_ID
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] group_id: The ID of the user group.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
-        :param pulumi.Input[_builtins.str] user_id: The ID of the organization user or application user.
+        :param pulumi.Input[_builtins.str] group_id: ID of the user group. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] user_id: User ID. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -203,15 +200,12 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
                  args: OrganizationUserGroupMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Adds and manages users in a user group. You can add organization users and application users to groups.
-        Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `OrganizationApplicationUser` resource.
-
-        Groups are granted roles and permissions using the `OrganizationPermission` resource.
+        Adds and manages users in a user group. You can add organization users and application users to groups. Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `OrganizationApplicationUser` resource. Groups are granted roles and permissions using the `OrganizationPermission` resource.
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember project_admin ORGANIZATION_ID/USER_GROUP_ID/USER_ID
+        $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember example ORGANIZATION_ID/GROUP_ID/USER_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -275,10 +269,10 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] group_id: The ID of the user group.
-        :param pulumi.Input[_builtins.str] last_activity_time: Last activity time of the user group member.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
-        :param pulumi.Input[_builtins.str] user_id: The ID of the organization user or application user.
+        :param pulumi.Input[_builtins.str] group_id: ID of the user group. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] last_activity_time: Last Activity Time.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] user_id: User ID. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -295,7 +289,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the user group.
+        ID of the user group. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -303,7 +297,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
     @pulumi.getter(name="lastActivityTime")
     def last_activity_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Last activity time of the user group member.
+        Last Activity Time.
         """
         return pulumi.get(self, "last_activity_time")
 
@@ -311,7 +305,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the organization.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -324,7 +318,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the organization user or application user.
+        User ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user_id")
 

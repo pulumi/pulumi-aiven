@@ -18,14 +18,14 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     public static final ClickhouseUserState Empty = new ClickhouseUserState();
 
     /**
-     * The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     public Optional<Output<String>> password() {
@@ -34,7 +34,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
      * 
      */
     @Import(name="passwordWo")
@@ -42,7 +42,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
      * 
      */
     public Optional<Output<String>> passwordWo() {
@@ -171,7 +171,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+         * @param password The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+         * @param password The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+         * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+         * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
          * 
          * @return builder
          * 

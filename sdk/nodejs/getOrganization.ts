@@ -62,7 +62,7 @@ export interface GetOrganizationResult {
      */
     readonly name?: string;
     /**
-     * Tenant identifier.
+     * Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      *
      * @deprecated This field is deprecated and will be removed in the next major release.
      */

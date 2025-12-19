@@ -35,8 +35,8 @@ class OrganizationBillingGroupArgs:
         """
         The set of arguments for constructing a OrganizationBillingGroup resource.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: List of billing contact emails.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: Aiven contacts these email addresses when there are billing issues or questions.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: PDF invoices are sent to these email addresses.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] payment_method_id: Payment method ID.
@@ -77,7 +77,7 @@ class OrganizationBillingGroupArgs:
     @pulumi.getter(name="billingContactEmails")
     def billing_contact_emails(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        List of billing contact emails.
+        Aiven contacts these email addresses when there are billing issues or questions.
         """
         return pulumi.get(self, "billing_contact_emails")
 
@@ -89,7 +89,7 @@ class OrganizationBillingGroupArgs:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        List of billing contact emails.
+        PDF invoices are sent to these email addresses.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -209,8 +209,8 @@ class _OrganizationBillingGroupState:
         """
         Input properties used for looking up and filtering OrganizationBillingGroup resources.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: List of billing contact emails.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: Aiven contacts these email addresses when there are billing issues or questions.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: PDF invoices are sent to these email addresses.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
@@ -261,7 +261,7 @@ class _OrganizationBillingGroupState:
     @pulumi.getter(name="billingContactEmails")
     def billing_contact_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of billing contact emails.
+        Aiven contacts these email addresses when there are billing issues or questions.
         """
         return pulumi.get(self, "billing_contact_emails")
 
@@ -273,7 +273,7 @@ class _OrganizationBillingGroupState:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of billing contact emails.
+        PDF invoices are sent to these email addresses.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -411,11 +411,17 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/organizationBillingGroup:OrganizationBillingGroup example ORGANIZATION_ID/BILLING_GROUP_ID
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: List of billing contact emails.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: Aiven contacts these email addresses when there are billing issues or questions.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: PDF invoices are sent to these email addresses.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
@@ -435,6 +441,12 @@ class OrganizationBillingGroup(pulumi.CustomResource):
 
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/organizationBillingGroup:OrganizationBillingGroup example ORGANIZATION_ID/BILLING_GROUP_ID
+        ```
 
         :param str resource_name: The name of the resource.
         :param OrganizationBillingGroupArgs args: The arguments to use to populate this resource's properties.
@@ -527,8 +539,8 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: List of billing contact emails.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: Aiven contacts these email addresses when there are billing issues or questions.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: PDF invoices are sent to these email addresses.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
@@ -568,7 +580,7 @@ class OrganizationBillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="billingContactEmails")
     def billing_contact_emails(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of billing contact emails.
+        Aiven contacts these email addresses when there are billing issues or questions.
         """
         return pulumi.get(self, "billing_contact_emails")
 
@@ -576,7 +588,7 @@ class OrganizationBillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of billing contact emails.
+        PDF invoices are sent to these email addresses.
         """
         return pulumi.get(self, "billing_emails")
 

@@ -68,7 +68,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/organizationPermission:OrganizationPermission operator ORGANIZATION_ID/ID
+ * $ pulumi import aiven:index/organizationPermission:OrganizationPermission example ORGANIZATION_ID/RESOURCE_TYPE/RESOURCE_ID
  * ```
  */
 export class OrganizationPermission extends pulumi.CustomResource {

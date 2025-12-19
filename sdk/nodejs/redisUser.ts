@@ -4,37 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Creates and manages an [Aiven for Caching](https://aiven.io/docs/products/caching) (formerly known as Aiven for Redis®) service user.
- *
- * !> **End of life notice**
- * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
- * Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
- * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
- * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
- * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
- * and update your existing `aiven.Redis` resources.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const foo = new aiven.RedisUser("foo", {
- *     serviceName: bar.serviceName,
- *     project: "my-project",
- *     username: "user-1",
- *     password: "Test$1234",
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import aiven:index/redisUser:RedisUser foo PROJECT/SERVICE_NAME/USERNAME
- * ```
- */
 export class RedisUser extends pulumi.CustomResource {
     /**
      * Get an existing RedisUser resource's state with the given name, ID, and optional extra

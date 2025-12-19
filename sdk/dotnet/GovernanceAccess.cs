@@ -46,6 +46,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/governanceAccess:GovernanceAccess")]
     public partial class GovernanceAccess : global::Pulumi.CustomResource

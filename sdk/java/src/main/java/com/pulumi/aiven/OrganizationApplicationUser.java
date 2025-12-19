@@ -77,18 +77,18 @@ public class OrganizationApplicationUser extends com.pulumi.resources.CustomReso
         return this.email;
     }
     /**
-     * Alters super admin state of the organization application user. The default value is `false`.
+     * Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      * @deprecated
-     * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
+     * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      */
-    @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource. */
+    @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource. */
     @Export(name="isSuperAdmin", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isSuperAdmin;
 
     /**
-     * @return Alters super admin state of the organization application user. The default value is `false`.
+     * @return Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      */
     public Output<Boolean> isSuperAdmin() {

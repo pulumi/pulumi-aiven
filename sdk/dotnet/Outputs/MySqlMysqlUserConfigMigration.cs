@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Dbname;
         /// <summary>
+        /// Enum: `Mydumper`, `Mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+        /// </summary>
+        public readonly string? DumpTool;
+        /// <summary>
         /// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
         /// </summary>
         public readonly string Host;
@@ -54,6 +58,8 @@ namespace Pulumi.Aiven.Outputs
         private MySqlMysqlUserConfigMigration(
             string? dbname,
 
+            string? dumpTool,
+
             string host,
 
             string? ignoreDbs,
@@ -71,6 +77,7 @@ namespace Pulumi.Aiven.Outputs
             string? username)
         {
             Dbname = dbname;
+            DumpTool = dumpTool;
             Host = host;
             IgnoreDbs = ignoreDbs;
             IgnoreRoles = ignoreRoles;

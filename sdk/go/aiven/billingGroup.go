@@ -52,42 +52,47 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
+// $ pulumi import aiven:index/billingGroup:BillingGroup example BILLING_GROUP_ID
 // ```
 type BillingGroup struct {
 	pulumi.CustomResourceState
 
-	// Account ID.
+	// Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
 	//
-	// Deprecated: Use parentId instead. This field will be removed in the next major release.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Deprecated: Use `parentId` instead. This field will be removed in the next major release.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines pulumi.StringArrayOutput `pulumi:"addressLines"`
-	// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
-	BillingCurrency pulumi.StringPtrOutput `pulumi:"billingCurrency"`
-	// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+	// List of billing groups contact email addresses.
+	BillingContactEmails pulumi.StringArrayOutput `pulumi:"billingContactEmails"`
+	// Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+	BillingCurrency pulumi.StringOutput `pulumi:"billingCurrency"`
+	// List of project billing email addresses.
 	BillingEmails pulumi.StringArrayOutput `pulumi:"billingEmails"`
-	// Additional information to include on your invoice (for example, a reference number).
+	// Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
 	BillingExtraText pulumi.StringPtrOutput `pulumi:"billingExtraText"`
-	// Credit card ID.
+	// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
+	// Credit card ID. Maximum length: `64`.
 	CardId pulumi.StringPtrOutput `pulumi:"cardId"`
-	// City, district, suburb, town, or village.
-	City pulumi.StringPtrOutput `pulumi:"city"`
-	// Your company name.
-	Company pulumi.StringPtrOutput `pulumi:"company"`
-	// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+	// Address city. Maximum length: `512`.
+	City pulumi.StringOutput `pulumi:"city"`
+	// Name of a company. Maximum length: `128`.
+	Company pulumi.StringOutput `pulumi:"company"`
+	// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup pulumi.StringPtrOutput `pulumi:"copyFromBillingGroup"`
-	// Two-letter country code.
-	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
-	// Name of the billing group.
+	// Two letter country code for billing country. Maximum length: `2`.
+	CountryCode pulumi.StringOutput `pulumi:"countryCode"`
+	// Billing group name. Maximum length: `128`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
-	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
-	// Address state.
-	State pulumi.StringPtrOutput `pulumi:"state"`
-	// The VAT identification number for your company.
-	VatId pulumi.StringPtrOutput `pulumi:"vatId"`
-	// Zip or postal code.
+	// Link a billing group to an existing organization by using its ID.
+	ParentId pulumi.StringOutput `pulumi:"parentId"`
+	// Address state or province. Maximum length: `128`.
+	State    pulumi.StringPtrOutput        `pulumi:"state"`
+	Timeouts BillingGroupTimeoutsPtrOutput `pulumi:"timeouts"`
+	// EU VAT Identification Number. Maximum length: `64`.
+	VatId pulumi.StringOutput `pulumi:"vatId"`
+	// Address zip code. Maximum length: `32`.
 	ZipCode pulumi.StringPtrOutput `pulumi:"zipCode"`
 }
 
@@ -121,72 +126,82 @@ func GetBillingGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BillingGroup resources.
 type billingGroupState struct {
-	// Account ID.
+	// Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
 	//
-	// Deprecated: Use parentId instead. This field will be removed in the next major release.
+	// Deprecated: Use `parentId` instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
 	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines []string `pulumi:"addressLines"`
-	// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+	// List of billing groups contact email addresses.
+	BillingContactEmails []string `pulumi:"billingContactEmails"`
+	// Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency *string `pulumi:"billingCurrency"`
-	// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+	// List of project billing email addresses.
 	BillingEmails []string `pulumi:"billingEmails"`
-	// Additional information to include on your invoice (for example, a reference number).
+	// Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
 	BillingExtraText *string `pulumi:"billingExtraText"`
-	// Credit card ID.
+	// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+	BillingGroupId *string `pulumi:"billingGroupId"`
+	// Credit card ID. Maximum length: `64`.
 	CardId *string `pulumi:"cardId"`
-	// City, district, suburb, town, or village.
+	// Address city. Maximum length: `512`.
 	City *string `pulumi:"city"`
-	// Your company name.
+	// Name of a company. Maximum length: `128`.
 	Company *string `pulumi:"company"`
-	// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+	// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup *string `pulumi:"copyFromBillingGroup"`
-	// Two-letter country code.
+	// Two letter country code for billing country. Maximum length: `2`.
 	CountryCode *string `pulumi:"countryCode"`
-	// Name of the billing group.
+	// Billing group name. Maximum length: `128`.
 	Name *string `pulumi:"name"`
-	// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization by using its ID.
 	ParentId *string `pulumi:"parentId"`
-	// Address state.
-	State *string `pulumi:"state"`
-	// The VAT identification number for your company.
+	// Address state or province. Maximum length: `128`.
+	State    *string               `pulumi:"state"`
+	Timeouts *BillingGroupTimeouts `pulumi:"timeouts"`
+	// EU VAT Identification Number. Maximum length: `64`.
 	VatId *string `pulumi:"vatId"`
-	// Zip or postal code.
+	// Address zip code. Maximum length: `32`.
 	ZipCode *string `pulumi:"zipCode"`
 }
 
 type BillingGroupState struct {
-	// Account ID.
+	// Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
 	//
-	// Deprecated: Use parentId instead. This field will be removed in the next major release.
+	// Deprecated: Use `parentId` instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
 	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines pulumi.StringArrayInput
-	// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+	// List of billing groups contact email addresses.
+	BillingContactEmails pulumi.StringArrayInput
+	// Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency pulumi.StringPtrInput
-	// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+	// List of project billing email addresses.
 	BillingEmails pulumi.StringArrayInput
-	// Additional information to include on your invoice (for example, a reference number).
+	// Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
 	BillingExtraText pulumi.StringPtrInput
-	// Credit card ID.
+	// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+	BillingGroupId pulumi.StringPtrInput
+	// Credit card ID. Maximum length: `64`.
 	CardId pulumi.StringPtrInput
-	// City, district, suburb, town, or village.
+	// Address city. Maximum length: `512`.
 	City pulumi.StringPtrInput
-	// Your company name.
+	// Name of a company. Maximum length: `128`.
 	Company pulumi.StringPtrInput
-	// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+	// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup pulumi.StringPtrInput
-	// Two-letter country code.
+	// Two letter country code for billing country. Maximum length: `2`.
 	CountryCode pulumi.StringPtrInput
-	// Name of the billing group.
+	// Billing group name. Maximum length: `128`.
 	Name pulumi.StringPtrInput
-	// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization by using its ID.
 	ParentId pulumi.StringPtrInput
-	// Address state.
-	State pulumi.StringPtrInput
-	// The VAT identification number for your company.
+	// Address state or province. Maximum length: `128`.
+	State    pulumi.StringPtrInput
+	Timeouts BillingGroupTimeoutsPtrInput
+	// EU VAT Identification Number. Maximum length: `64`.
 	VatId pulumi.StringPtrInput
-	// Zip or postal code.
+	// Address zip code. Maximum length: `32`.
 	ZipCode pulumi.StringPtrInput
 }
 
@@ -195,73 +210,79 @@ func (BillingGroupState) ElementType() reflect.Type {
 }
 
 type billingGroupArgs struct {
-	// Account ID.
+	// Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
 	//
-	// Deprecated: Use parentId instead. This field will be removed in the next major release.
+	// Deprecated: Use `parentId` instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
 	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines []string `pulumi:"addressLines"`
-	// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+	// List of billing groups contact email addresses.
+	BillingContactEmails []string `pulumi:"billingContactEmails"`
+	// Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency *string `pulumi:"billingCurrency"`
-	// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+	// List of project billing email addresses.
 	BillingEmails []string `pulumi:"billingEmails"`
-	// Additional information to include on your invoice (for example, a reference number).
+	// Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
 	BillingExtraText *string `pulumi:"billingExtraText"`
-	// Credit card ID.
+	// Credit card ID. Maximum length: `64`.
 	CardId *string `pulumi:"cardId"`
-	// City, district, suburb, town, or village.
+	// Address city. Maximum length: `512`.
 	City *string `pulumi:"city"`
-	// Your company name.
+	// Name of a company. Maximum length: `128`.
 	Company *string `pulumi:"company"`
-	// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+	// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup *string `pulumi:"copyFromBillingGroup"`
-	// Two-letter country code.
+	// Two letter country code for billing country. Maximum length: `2`.
 	CountryCode *string `pulumi:"countryCode"`
-	// Name of the billing group.
+	// Billing group name. Maximum length: `128`.
 	Name *string `pulumi:"name"`
-	// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization by using its ID.
 	ParentId *string `pulumi:"parentId"`
-	// Address state.
-	State *string `pulumi:"state"`
-	// The VAT identification number for your company.
+	// Address state or province. Maximum length: `128`.
+	State    *string               `pulumi:"state"`
+	Timeouts *BillingGroupTimeouts `pulumi:"timeouts"`
+	// EU VAT Identification Number. Maximum length: `64`.
 	VatId *string `pulumi:"vatId"`
-	// Zip or postal code.
+	// Address zip code. Maximum length: `32`.
 	ZipCode *string `pulumi:"zipCode"`
 }
 
 // The set of arguments for constructing a BillingGroup resource.
 type BillingGroupArgs struct {
-	// Account ID.
+	// Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
 	//
-	// Deprecated: Use parentId instead. This field will be removed in the next major release.
+	// Deprecated: Use `parentId` instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
 	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines pulumi.StringArrayInput
-	// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+	// List of billing groups contact email addresses.
+	BillingContactEmails pulumi.StringArrayInput
+	// Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
 	BillingCurrency pulumi.StringPtrInput
-	// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+	// List of project billing email addresses.
 	BillingEmails pulumi.StringArrayInput
-	// Additional information to include on your invoice (for example, a reference number).
+	// Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
 	BillingExtraText pulumi.StringPtrInput
-	// Credit card ID.
+	// Credit card ID. Maximum length: `64`.
 	CardId pulumi.StringPtrInput
-	// City, district, suburb, town, or village.
+	// Address city. Maximum length: `512`.
 	City pulumi.StringPtrInput
-	// Your company name.
+	// Name of a company. Maximum length: `128`.
 	Company pulumi.StringPtrInput
-	// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+	// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup pulumi.StringPtrInput
-	// Two-letter country code.
+	// Two letter country code for billing country. Maximum length: `2`.
 	CountryCode pulumi.StringPtrInput
-	// Name of the billing group.
+	// Billing group name. Maximum length: `128`.
 	Name pulumi.StringPtrInput
-	// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization by using its ID.
 	ParentId pulumi.StringPtrInput
-	// Address state.
-	State pulumi.StringPtrInput
-	// The VAT identification number for your company.
+	// Address state or province. Maximum length: `128`.
+	State    pulumi.StringPtrInput
+	Timeouts BillingGroupTimeoutsPtrInput
+	// EU VAT Identification Number. Maximum length: `64`.
 	VatId pulumi.StringPtrInput
-	// Zip or postal code.
+	// Address zip code. Maximum length: `32`.
 	ZipCode pulumi.StringPtrInput
 }
 
@@ -352,11 +373,11 @@ func (o BillingGroupOutput) ToBillingGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Account ID.
+// Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
 //
-// Deprecated: Use parentId instead. This field will be removed in the next major release.
-func (o BillingGroupOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+// Deprecated: Use `parentId` instead. This field will be removed in the next major release.
+func (o BillingGroupOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Address lines 1 and 2. For example, street, PO box, or building.
@@ -364,67 +385,81 @@ func (o BillingGroupOutput) AddressLines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringArrayOutput { return v.AddressLines }).(pulumi.StringArrayOutput)
 }
 
-// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
-func (o BillingGroupOutput) BillingCurrency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.BillingCurrency }).(pulumi.StringPtrOutput)
+// List of billing groups contact email addresses.
+func (o BillingGroupOutput) BillingContactEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringArrayOutput { return v.BillingContactEmails }).(pulumi.StringArrayOutput)
 }
 
-// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+// Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+func (o BillingGroupOutput) BillingCurrency() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.BillingCurrency }).(pulumi.StringOutput)
+}
+
+// List of project billing email addresses.
 func (o BillingGroupOutput) BillingEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringArrayOutput { return v.BillingEmails }).(pulumi.StringArrayOutput)
 }
 
-// Additional information to include on your invoice (for example, a reference number).
+// Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
 func (o BillingGroupOutput) BillingExtraText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.BillingExtraText }).(pulumi.StringPtrOutput)
 }
 
-// Credit card ID.
+// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+func (o BillingGroupOutput) BillingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.BillingGroupId }).(pulumi.StringOutput)
+}
+
+// Credit card ID. Maximum length: `64`.
 func (o BillingGroupOutput) CardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.CardId }).(pulumi.StringPtrOutput)
 }
 
-// City, district, suburb, town, or village.
-func (o BillingGroupOutput) City() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.City }).(pulumi.StringPtrOutput)
+// Address city. Maximum length: `512`.
+func (o BillingGroupOutput) City() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.City }).(pulumi.StringOutput)
 }
 
-// Your company name.
-func (o BillingGroupOutput) Company() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.Company }).(pulumi.StringPtrOutput)
+// Name of a company. Maximum length: `128`.
+func (o BillingGroupOutput) Company() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.Company }).(pulumi.StringOutput)
 }
 
-// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 func (o BillingGroupOutput) CopyFromBillingGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.CopyFromBillingGroup }).(pulumi.StringPtrOutput)
 }
 
-// Two-letter country code.
-func (o BillingGroupOutput) CountryCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.CountryCode }).(pulumi.StringPtrOutput)
+// Two letter country code for billing country. Maximum length: `2`.
+func (o BillingGroupOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.CountryCode }).(pulumi.StringOutput)
 }
 
-// Name of the billing group.
+// Billing group name. Maximum length: `128`.
 func (o BillingGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
-func (o BillingGroupOutput) ParentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
+// Link a billing group to an existing organization by using its ID.
+func (o BillingGroupOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Address state.
+// Address state or province. Maximum length: `128`.
 func (o BillingGroupOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// The VAT identification number for your company.
-func (o BillingGroupOutput) VatId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.VatId }).(pulumi.StringPtrOutput)
+func (o BillingGroupOutput) Timeouts() BillingGroupTimeoutsPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) BillingGroupTimeoutsPtrOutput { return v.Timeouts }).(BillingGroupTimeoutsPtrOutput)
 }
 
-// Zip or postal code.
+// EU VAT Identification Number. Maximum length: `64`.
+func (o BillingGroupOutput) VatId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.VatId }).(pulumi.StringOutput)
+}
+
+// Address zip code. Maximum length: `32`.
 func (o BillingGroupOutput) ZipCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.ZipCode }).(pulumi.StringPtrOutput)
 }

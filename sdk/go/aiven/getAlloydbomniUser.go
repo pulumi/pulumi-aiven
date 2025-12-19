@@ -56,7 +56,7 @@ type LookupAlloydbomniUserResult struct {
 	AccessKey string `pulumi:"accessKey"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The password of the service user.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password string `pulumi:"password"`
 	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication bool `pulumi:"pgAllowReplication"`
@@ -123,7 +123,7 @@ func (o LookupAlloydbomniUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the service user.
+// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 func (o LookupAlloydbomniUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniUserResult) string { return v.Password }).(pulumi.StringOutput)
 }

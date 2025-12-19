@@ -65,14 +65,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/clickhouseUser:ClickhouseUser")
 public class ClickhouseUser extends com.pulumi.resources.CustomResource {
     /**
-     * The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     public Output<String> password() {
@@ -80,7 +80,7 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
     }
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
      * 
      */
     @Export(name="passwordWo", refs={String.class}, tree="[0]")
@@ -88,7 +88,7 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
      * 
      */
     public Output<Optional<String>> passwordWo() {

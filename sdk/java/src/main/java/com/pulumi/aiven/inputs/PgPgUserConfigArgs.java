@@ -106,6 +106,21 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+     * 
+     */
+    @Import(name="enableHaReplicaDns")
+    private @Nullable Output<Boolean> enableHaReplicaDns;
+
+    /**
+     * @return Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> enableHaReplicaDns() {
+        return Optional.ofNullable(this.enableHaReplicaDns);
+    }
+
+    /**
      * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
      * 
      */
@@ -549,6 +564,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         this.adminUsername = $.adminUsername;
         this.backupHour = $.backupHour;
         this.backupMinute = $.backupMinute;
+        this.enableHaReplicaDns = $.enableHaReplicaDns;
         this.enableIpv6 = $.enableIpv6;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
@@ -700,6 +716,27 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder backupMinute(Integer backupMinute) {
             return backupMinute(Output.of(backupMinute));
+        }
+
+        /**
+         * @param enableHaReplicaDns Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHaReplicaDns(@Nullable Output<Boolean> enableHaReplicaDns) {
+            $.enableHaReplicaDns = enableHaReplicaDns;
+            return this;
+        }
+
+        /**
+         * @param enableHaReplicaDns Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHaReplicaDns(Boolean enableHaReplicaDns) {
+            return enableHaReplicaDns(Output.of(enableHaReplicaDns));
         }
 
         /**

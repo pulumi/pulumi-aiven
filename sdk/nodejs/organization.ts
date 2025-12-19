@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID # (e.g. a1234567890 or org123456)
+ * $ pulumi import aiven:index/organization:Organization example ORGANIZATION_ID
  * ```
  */
 export class Organization extends pulumi.CustomResource {
@@ -61,7 +61,7 @@ export class Organization extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Tenant identifier.
+     * Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      *
      * @deprecated This field is deprecated and will be removed in the next major release.
      */
@@ -116,7 +116,7 @@ export interface OrganizationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Tenant identifier.
+     * Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      *
      * @deprecated This field is deprecated and will be removed in the next major release.
      */

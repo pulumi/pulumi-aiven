@@ -19,6 +19,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Dbname { get; set; }
 
         /// <summary>
+        /// Enum: `Mydumper`, `Mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+        /// </summary>
+        [Input("dumpTool")]
+        public Input<string>? DumpTool { get; set; }
+
+        /// <summary>
         /// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
         /// </summary>
         [Input("host", required: true)]

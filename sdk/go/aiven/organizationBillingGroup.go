@@ -16,14 +16,20 @@ import (
 //
 // **This resource is in the beta stage and may change without notice.** Set
 // the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import aiven:index/organizationBillingGroup:OrganizationBillingGroup example ORGANIZATION_ID/BILLING_GROUP_ID
+// ```
 type OrganizationBillingGroup struct {
 	pulumi.CustomResourceState
 
 	// Billing address ID. Maximum length: `36`.
 	BillingAddressId pulumi.StringOutput `pulumi:"billingAddressId"`
-	// List of billing contact emails.
+	// Aiven contacts these email addresses when there are billing issues or questions.
 	BillingContactEmails pulumi.StringArrayOutput `pulumi:"billingContactEmails"`
-	// List of billing contact emails.
+	// PDF invoices are sent to these email addresses.
 	BillingEmails pulumi.StringArrayOutput `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
@@ -97,9 +103,9 @@ func GetOrganizationBillingGroup(ctx *pulumi.Context,
 type organizationBillingGroupState struct {
 	// Billing address ID. Maximum length: `36`.
 	BillingAddressId *string `pulumi:"billingAddressId"`
-	// List of billing contact emails.
+	// Aiven contacts these email addresses when there are billing issues or questions.
 	BillingContactEmails []string `pulumi:"billingContactEmails"`
-	// List of billing contact emails.
+	// PDF invoices are sent to these email addresses.
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId *string `pulumi:"billingGroupId"`
@@ -123,9 +129,9 @@ type organizationBillingGroupState struct {
 type OrganizationBillingGroupState struct {
 	// Billing address ID. Maximum length: `36`.
 	BillingAddressId pulumi.StringPtrInput
-	// List of billing contact emails.
+	// Aiven contacts these email addresses when there are billing issues or questions.
 	BillingContactEmails pulumi.StringArrayInput
-	// List of billing contact emails.
+	// PDF invoices are sent to these email addresses.
 	BillingEmails pulumi.StringArrayInput
 	// Billing group ID.
 	BillingGroupId pulumi.StringPtrInput
@@ -153,9 +159,9 @@ func (OrganizationBillingGroupState) ElementType() reflect.Type {
 type organizationBillingGroupArgs struct {
 	// Billing address ID. Maximum length: `36`.
 	BillingAddressId string `pulumi:"billingAddressId"`
-	// List of billing contact emails.
+	// Aiven contacts these email addresses when there are billing issues or questions.
 	BillingContactEmails []string `pulumi:"billingContactEmails"`
-	// List of billing contact emails.
+	// PDF invoices are sent to these email addresses.
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Billing Group Name. Maximum length: `128`.
 	BillingGroupName string `pulumi:"billingGroupName"`
@@ -178,9 +184,9 @@ type organizationBillingGroupArgs struct {
 type OrganizationBillingGroupArgs struct {
 	// Billing address ID. Maximum length: `36`.
 	BillingAddressId pulumi.StringInput
-	// List of billing contact emails.
+	// Aiven contacts these email addresses when there are billing issues or questions.
 	BillingContactEmails pulumi.StringArrayInput
-	// List of billing contact emails.
+	// PDF invoices are sent to these email addresses.
 	BillingEmails pulumi.StringArrayInput
 	// Billing Group Name. Maximum length: `128`.
 	BillingGroupName pulumi.StringInput
@@ -291,12 +297,12 @@ func (o OrganizationBillingGroupOutput) BillingAddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.BillingAddressId }).(pulumi.StringOutput)
 }
 
-// List of billing contact emails.
+// Aiven contacts these email addresses when there are billing issues or questions.
 func (o OrganizationBillingGroupOutput) BillingContactEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringArrayOutput { return v.BillingContactEmails }).(pulumi.StringArrayOutput)
 }
 
-// List of billing contact emails.
+// PDF invoices are sent to these email addresses.
 func (o OrganizationBillingGroupOutput) BillingEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringArrayOutput { return v.BillingEmails }).(pulumi.StringArrayOutput)
 }

@@ -29,7 +29,7 @@ public final class GetOrganizationResult {
      */
     private @Nullable String name;
     /**
-     * @return Tenant identifier.
+     * @return Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
      * @deprecated
      * This field is deprecated and will be removed in the next major release.
@@ -67,7 +67,7 @@ public final class GetOrganizationResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Tenant identifier.
+     * @return Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
      * @deprecated
      * This field is deprecated and will be removed in the next major release.

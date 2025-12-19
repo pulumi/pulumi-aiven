@@ -7,15 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Adds and manages users in a user group. You can add organization users and application users to groups.
- * Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `aiven.OrganizationApplicationUser` resource.
- *
- * Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
+ * Adds and manages users in a user group. You can add organization users and application users to groups. Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `aiven.OrganizationApplicationUser` resource. Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember project_admin ORGANIZATION_ID/USER_GROUP_ID/USER_ID
+ * $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember example ORGANIZATION_ID/GROUP_ID/USER_ID
  * ```
  */
 export class OrganizationUserGroupMember extends pulumi.CustomResource {
@@ -47,20 +44,20 @@ export class OrganizationUserGroupMember extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the user group.
+     * ID of the user group. Changing this property forces recreation of the resource.
      */
     declare public readonly groupId: pulumi.Output<string>;
     /**
-     * Last activity time of the user group member.
+     * Last Activity Time.
      */
     declare public /*out*/ readonly lastActivityTime: pulumi.Output<string>;
     /**
-     * The ID of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.OrganizationUserGroupMemberTimeouts | undefined>;
     /**
-     * The ID of the organization user or application user.
+     * User ID. Changing this property forces recreation of the resource.
      */
     declare public readonly userId: pulumi.Output<string>;
 
@@ -109,20 +106,20 @@ export class OrganizationUserGroupMember extends pulumi.CustomResource {
  */
 export interface OrganizationUserGroupMemberState {
     /**
-     * The ID of the user group.
+     * ID of the user group. Changing this property forces recreation of the resource.
      */
     groupId?: pulumi.Input<string>;
     /**
-     * Last activity time of the user group member.
+     * Last Activity Time.
      */
     lastActivityTime?: pulumi.Input<string>;
     /**
-     * The ID of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationUserGroupMemberTimeouts>;
     /**
-     * The ID of the organization user or application user.
+     * User ID. Changing this property forces recreation of the resource.
      */
     userId?: pulumi.Input<string>;
 }
@@ -132,16 +129,16 @@ export interface OrganizationUserGroupMemberState {
  */
 export interface OrganizationUserGroupMemberArgs {
     /**
-     * The ID of the user group.
+     * ID of the user group. Changing this property forces recreation of the resource.
      */
     groupId: pulumi.Input<string>;
     /**
-     * The ID of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationUserGroupMemberTimeouts>;
     /**
-     * The ID of the organization user or application user.
+     * User ID. Changing this property forces recreation of the resource.
      */
     userId: pulumi.Input<string>;
 }

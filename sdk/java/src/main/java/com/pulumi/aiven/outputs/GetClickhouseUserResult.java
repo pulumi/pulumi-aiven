@@ -17,7 +17,7 @@ public final class GetClickhouseUserResult {
      */
     private String id;
     /**
-     * @return The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     private String password;
@@ -56,7 +56,7 @@ public final class GetClickhouseUserResult {
         return this.id;
     }
     /**
-     * @return The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      * 
      */
     public String password() {

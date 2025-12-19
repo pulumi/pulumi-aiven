@@ -163,7 +163,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly int DiskSpaceStepMb;
         /// <summary>
-        /// Resource ID, a composite of `Project`, `ServiceType`, `ServicePlan` and `CloudName` IDs.
+        /// Resource ID composed as: `project/service_type/service_plan/cloud_name`.
         /// </summary>
         public readonly string Id;
         /// <summary>

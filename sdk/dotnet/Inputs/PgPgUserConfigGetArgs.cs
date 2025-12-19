@@ -53,6 +53,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? BackupMinute { get; set; }
 
         /// <summary>
+        /// Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `False`.
+        /// </summary>
+        [Input("enableHaReplicaDns")]
+        public Input<bool>? EnableHaReplicaDns { get; set; }
+
+        /// <summary>
         /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         /// </summary>
         [Input("enableIpv6")]

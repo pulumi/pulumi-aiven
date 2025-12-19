@@ -83,11 +83,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaSaslMechanisms? KafkaSaslMechanisms;
         /// <summary>
-        /// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+        /// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
         /// </summary>
         public readonly string? KafkaVersion;
         /// <summary>
-        /// Use Letsencrypt CA for Kafka SASL via Privatelink.
+        /// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+        /// </summary>
+        public readonly bool? LetsencryptSasl;
+        /// <summary>
+        /// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         /// </summary>
         public readonly bool? LetsencryptSaslPrivatelink;
         /// <summary>
@@ -102,6 +106,10 @@ namespace Pulumi.Aiven.Outputs
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        /// </summary>
+        public readonly ImmutableArray<string> SaslOauthbearerAllowedUrls;
         /// <summary>
         /// Enable Schema-Registry service. Default: `False`.
         /// </summary>
@@ -167,6 +175,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? kafkaVersion,
 
+            bool? letsencryptSasl,
+
             bool? letsencryptSaslPrivatelink,
 
             Outputs.KafkaKafkaUserConfigPrivateAccess? privateAccess,
@@ -174,6 +184,8 @@ namespace Pulumi.Aiven.Outputs
             Outputs.KafkaKafkaUserConfigPrivatelinkAccess? privatelinkAccess,
 
             Outputs.KafkaKafkaUserConfigPublicAccess? publicAccess,
+
+            ImmutableArray<string> saslOauthbearerAllowedUrls,
 
             bool? schemaRegistry,
 
@@ -206,10 +218,12 @@ namespace Pulumi.Aiven.Outputs
             KafkaRestConfig = kafkaRestConfig;
             KafkaSaslMechanisms = kafkaSaslMechanisms;
             KafkaVersion = kafkaVersion;
+            LetsencryptSasl = letsencryptSasl;
             LetsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
+            SaslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
             SchemaRegistry = schemaRegistry;
             SchemaRegistryConfig = schemaRegistryConfig;
             ServiceLog = serviceLog;

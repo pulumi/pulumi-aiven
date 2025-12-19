@@ -32,6 +32,7 @@ __all__ = [
     'AlloydbomniServiceIntegration',
     'AlloydbomniTag',
     'AlloydbomniTechEmail',
+    'BillingGroupTimeouts',
     'CassandraCassandra',
     'CassandraCassandraUserConfig',
     'CassandraCassandraUserConfigCassandra',
@@ -377,6 +378,7 @@ __all__ = [
     'GetAlloydbomniServiceIntegrationResult',
     'GetAlloydbomniTagResult',
     'GetAlloydbomniTechEmailResult',
+    'GetBillingGroupTimeoutsResult',
     'GetCassandaCassandraResult',
     'GetCassandaCassandraUserConfigResult',
     'GetCassandaCassandraUserConfigCassandraResult',
@@ -600,6 +602,10 @@ __all__ = [
     'GetOrganizationTimeoutsResult',
     'GetOrganizationUserGroupListTimeoutsResult',
     'GetOrganizationUserGroupListUserGroupResult',
+    'GetOrganizationUserGroupMemberListMemberResult',
+    'GetOrganizationUserGroupMemberListMemberUserInfoResult',
+    'GetOrganizationUserGroupMemberListTimeoutsResult',
+    'GetOrganizationUserListTimeoutsResult',
     'GetOrganizationUserListUserResult',
     'GetOrganizationUserListUserUserInfoResult',
     'GetPgComponentResult',
@@ -3063,6 +3069,74 @@ class AlloydbomniTechEmail(dict):
         An email address to contact for technical issues
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class BillingGroupTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -9759,6 +9833,8 @@ class KafkaConnectKafkaConnectUserConfig(dict):
             suggest = "privatelink_access"
         elif key == "publicAccess":
             suggest = "public_access"
+        elif key == "saslOauthbearerAllowedUrls":
+            suggest = "sasl_oauthbearer_allowed_urls"
         elif key == "secretProviders":
             suggest = "secret_providers"
         elif key == "serviceLog":
@@ -9787,6 +9863,7 @@ class KafkaConnectKafkaConnectUserConfig(dict):
                  private_access: Optional['outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess'] = None,
                  privatelink_access: Optional['outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess'] = None,
                  public_access: Optional['outputs.KafkaConnectKafkaConnectUserConfigPublicAccess'] = None,
+                 sasl_oauthbearer_allowed_urls: Optional[Sequence[_builtins.str]] = None,
                  secret_providers: Optional[Sequence['outputs.KafkaConnectKafkaConnectUserConfigSecretProvider']] = None,
                  service_log: Optional[_builtins.bool] = None,
                  static_ips: Optional[_builtins.bool] = None):
@@ -9800,6 +9877,7 @@ class KafkaConnectKafkaConnectUserConfig(dict):
         :param 'KafkaConnectKafkaConnectUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'KafkaConnectKafkaConnectUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param Sequence[_builtins.str] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param _builtins.bool static_ips: Use static public IP addresses.
         """
@@ -9821,6 +9899,8 @@ class KafkaConnectKafkaConnectUserConfig(dict):
             pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if sasl_oauthbearer_allowed_urls is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_allowed_urls", sasl_oauthbearer_allowed_urls)
         if secret_providers is not None:
             pulumi.set(__self__, "secret_providers", secret_providers)
         if service_log is not None:
@@ -9901,6 +9981,14 @@ class KafkaConnectKafkaConnectUserConfig(dict):
         Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAllowedUrls")
+    def sasl_oauthbearer_allowed_urls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_allowed_urls")
 
     @_builtins.property
     @pulumi.getter(name="secretProviders")
@@ -10875,6 +10963,8 @@ class KafkaKafkaUserConfig(dict):
             suggest = "kafka_sasl_mechanisms"
         elif key == "kafkaVersion":
             suggest = "kafka_version"
+        elif key == "letsencryptSasl":
+            suggest = "letsencrypt_sasl"
         elif key == "letsencryptSaslPrivatelink":
             suggest = "letsencrypt_sasl_privatelink"
         elif key == "privateAccess":
@@ -10883,6 +10973,8 @@ class KafkaKafkaUserConfig(dict):
             suggest = "privatelink_access"
         elif key == "publicAccess":
             suggest = "public_access"
+        elif key == "saslOauthbearerAllowedUrls":
+            suggest = "sasl_oauthbearer_allowed_urls"
         elif key == "schemaRegistry":
             suggest = "schema_registry"
         elif key == "schemaRegistryConfig":
@@ -10927,10 +11019,12 @@ class KafkaKafkaUserConfig(dict):
                  kafka_rest_config: Optional['outputs.KafkaKafkaUserConfigKafkaRestConfig'] = None,
                  kafka_sasl_mechanisms: Optional['outputs.KafkaKafkaUserConfigKafkaSaslMechanisms'] = None,
                  kafka_version: Optional[_builtins.str] = None,
+                 letsencrypt_sasl: Optional[_builtins.bool] = None,
                  letsencrypt_sasl_privatelink: Optional[_builtins.bool] = None,
                  private_access: Optional['outputs.KafkaKafkaUserConfigPrivateAccess'] = None,
                  privatelink_access: Optional['outputs.KafkaKafkaUserConfigPrivatelinkAccess'] = None,
                  public_access: Optional['outputs.KafkaKafkaUserConfigPublicAccess'] = None,
+                 sasl_oauthbearer_allowed_urls: Optional[Sequence[_builtins.str]] = None,
                  schema_registry: Optional[_builtins.bool] = None,
                  schema_registry_config: Optional['outputs.KafkaKafkaUserConfigSchemaRegistryConfig'] = None,
                  service_log: Optional[_builtins.bool] = None,
@@ -10955,11 +11049,13 @@ class KafkaKafkaUserConfig(dict):
         :param _builtins.bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'KafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
         :param 'KafkaKafkaUserConfigKafkaSaslMechanismsArgs' kafka_sasl_mechanisms: Kafka SASL mechanisms
-        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
-        :param _builtins.bool letsencrypt_sasl_privatelink: Use Letsencrypt CA for Kafka SASL via Privatelink.
+        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
+        :param _builtins.bool letsencrypt_sasl: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+        :param _builtins.bool letsencrypt_sasl_privatelink: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'KafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'KafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param Sequence[_builtins.str] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         :param _builtins.bool schema_registry: Enable Schema-Registry service. Default: `false`.
         :param 'KafkaKafkaUserConfigSchemaRegistryConfigArgs' schema_registry_config: Schema Registry configuration
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
@@ -11005,6 +11101,8 @@ class KafkaKafkaUserConfig(dict):
             pulumi.set(__self__, "kafka_sasl_mechanisms", kafka_sasl_mechanisms)
         if kafka_version is not None:
             pulumi.set(__self__, "kafka_version", kafka_version)
+        if letsencrypt_sasl is not None:
+            pulumi.set(__self__, "letsencrypt_sasl", letsencrypt_sasl)
         if letsencrypt_sasl_privatelink is not None:
             pulumi.set(__self__, "letsencrypt_sasl_privatelink", letsencrypt_sasl_privatelink)
         if private_access is not None:
@@ -11013,6 +11111,8 @@ class KafkaKafkaUserConfig(dict):
             pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if sasl_oauthbearer_allowed_urls is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_allowed_urls", sasl_oauthbearer_allowed_urls)
         if schema_registry is not None:
             pulumi.set(__self__, "schema_registry", schema_registry)
         if schema_registry_config is not None:
@@ -11173,15 +11273,23 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
+
+    @_builtins.property
+    @pulumi.getter(name="letsencryptSasl")
+    def letsencrypt_sasl(self) -> Optional[_builtins.bool]:
+        """
+        Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+        """
+        return pulumi.get(self, "letsencrypt_sasl")
 
     @_builtins.property
     @pulumi.getter(name="letsencryptSaslPrivatelink")
     def letsencrypt_sasl_privatelink(self) -> Optional[_builtins.bool]:
         """
-        Use Letsencrypt CA for Kafka SASL via Privatelink.
+        Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         """
         return pulumi.get(self, "letsencrypt_sasl_privatelink")
 
@@ -11208,6 +11316,14 @@ class KafkaKafkaUserConfig(dict):
         Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAllowedUrls")
+    def sasl_oauthbearer_allowed_urls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_allowed_urls")
 
     @_builtins.property
     @pulumi.getter(name="schemaRegistry")
@@ -13404,6 +13520,8 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
             suggest = "ip_filters"
         elif key == "kafkaMirrormaker":
             suggest = "kafka_mirrormaker"
+        elif key == "saslOauthbearerAllowedUrls":
+            suggest = "sasl_oauthbearer_allowed_urls"
         elif key == "serviceLog":
             suggest = "service_log"
         elif key == "staticIps":
@@ -13426,6 +13544,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
                  kafka_mirrormaker: Optional['outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker'] = None,
+                 sasl_oauthbearer_allowed_urls: Optional[Sequence[_builtins.str]] = None,
                  service_log: Optional[_builtins.bool] = None,
                  static_ips: Optional[_builtins.bool] = None):
         """
@@ -13434,6 +13553,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param 'KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka MirrorMaker configuration values
+        :param Sequence[_builtins.str] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param _builtins.bool static_ips: Use static public IP addresses.
         """
@@ -13447,6 +13567,8 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_mirrormaker is not None:
             pulumi.set(__self__, "kafka_mirrormaker", kafka_mirrormaker)
+        if sasl_oauthbearer_allowed_urls is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_allowed_urls", sasl_oauthbearer_allowed_urls)
         if service_log is not None:
             pulumi.set(__self__, "service_log", service_log)
         if static_ips is not None:
@@ -13493,6 +13615,14 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
         Kafka MirrorMaker configuration values
         """
         return pulumi.get(self, "kafka_mirrormaker")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAllowedUrls")
+    def sasl_oauthbearer_allowed_urls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_allowed_urls")
 
     @_builtins.property
     @pulumi.getter(name="serviceLog")
@@ -16504,8 +16634,8 @@ class MySqlMysqlUserConfig(dict):
         :param _builtins.str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param _builtins.str admin_password: Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         :param _builtins.str admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-        :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
+        :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         :param _builtins.int binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
         :param Sequence['MySqlMysqlUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -16594,7 +16724,7 @@ class MySqlMysqlUserConfig(dict):
     @pulumi.getter(name="backupHour")
     def backup_hour(self) -> Optional[_builtins.int]:
         """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         """
         return pulumi.get(self, "backup_hour")
 
@@ -16602,7 +16732,7 @@ class MySqlMysqlUserConfig(dict):
     @pulumi.getter(name="backupMinute")
     def backup_minute(self) -> Optional[_builtins.int]:
         """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         """
         return pulumi.get(self, "backup_minute")
 
@@ -16771,7 +16901,9 @@ class MySqlMysqlUserConfigMigration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "ignoreDbs":
+        if key == "dumpTool":
+            suggest = "dump_tool"
+        elif key == "ignoreDbs":
             suggest = "ignore_dbs"
         elif key == "ignoreRoles":
             suggest = "ignore_roles"
@@ -16791,6 +16923,7 @@ class MySqlMysqlUserConfigMigration(dict):
                  host: _builtins.str,
                  port: _builtins.int,
                  dbname: Optional[_builtins.str] = None,
+                 dump_tool: Optional[_builtins.str] = None,
                  ignore_dbs: Optional[_builtins.str] = None,
                  ignore_roles: Optional[_builtins.str] = None,
                  method: Optional[_builtins.str] = None,
@@ -16801,6 +16934,7 @@ class MySqlMysqlUserConfigMigration(dict):
         :param _builtins.str host: Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
         :param _builtins.int port: Port number of the server where to migrate data from. Example: `1234`.
         :param _builtins.str dbname: Database name for bootstrapping the initial connection. Example: `defaultdb`.
+        :param _builtins.str dump_tool: Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
         :param _builtins.str ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
         :param _builtins.str ignore_roles: Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
         :param _builtins.str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
@@ -16812,6 +16946,8 @@ class MySqlMysqlUserConfigMigration(dict):
         pulumi.set(__self__, "port", port)
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
+        if dump_tool is not None:
+            pulumi.set(__self__, "dump_tool", dump_tool)
         if ignore_dbs is not None:
             pulumi.set(__self__, "ignore_dbs", ignore_dbs)
         if ignore_roles is not None:
@@ -16848,6 +16984,14 @@ class MySqlMysqlUserConfigMigration(dict):
         Database name for bootstrapping the initial connection. Example: `defaultdb`.
         """
         return pulumi.get(self, "dbname")
+
+    @_builtins.property
+    @pulumi.getter(name="dumpTool")
+    def dump_tool(self) -> Optional[_builtins.str]:
+        """
+        Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+        """
+        return pulumi.get(self, "dump_tool")
 
     @_builtins.property
     @pulumi.getter(name="ignoreDbs")
@@ -19240,6 +19384,12 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             suggest = "knn_memory_circuit_breaker_enabled"
         elif key == "knnMemoryCircuitBreakerLimit":
             suggest = "knn_memory_circuit_breaker_limit"
+        elif key == "mlCommonsModelAccessControlEnabled":
+            suggest = "ml_commons_model_access_control_enabled"
+        elif key == "mlCommonsNativeMemoryThreshold":
+            suggest = "ml_commons_native_memory_threshold"
+        elif key == "mlCommonsOnlyRunOnMlNode":
+            suggest = "ml_commons_only_run_on_ml_node"
         elif key == "nodeSearchCacheSize":
             suggest = "node_search_cache_size"
         elif key == "overrideMainResponseVersion":
@@ -19331,6 +19481,9 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
                  ism_history_rollover_retention_period: Optional[_builtins.int] = None,
                  knn_memory_circuit_breaker_enabled: Optional[_builtins.bool] = None,
                  knn_memory_circuit_breaker_limit: Optional[_builtins.int] = None,
+                 ml_commons_model_access_control_enabled: Optional[_builtins.bool] = None,
+                 ml_commons_native_memory_threshold: Optional[_builtins.int] = None,
+                 ml_commons_only_run_on_ml_node: Optional[_builtins.bool] = None,
                  node_search_cache_size: Optional[_builtins.str] = None,
                  override_main_response_version: Optional[_builtins.bool] = None,
                  plugins_alerting_filter_by_backend_roles: Optional[_builtins.bool] = None,
@@ -19388,6 +19541,9 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         :param _builtins.int ism_history_rollover_retention_period: How long audit history indices are kept in days. Example: `30`.
         :param _builtins.bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true.
         :param _builtins.int knn_memory_circuit_breaker_limit: Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
+        :param _builtins.bool ml_commons_model_access_control_enabled: Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+        :param _builtins.int ml_commons_native_memory_threshold: Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+        :param _builtins.bool ml_commons_only_run_on_ml_node: Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
         :param _builtins.str node_search_cache_size: Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
         :param _builtins.bool override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         :param _builtins.bool plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
@@ -19481,6 +19637,12 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             pulumi.set(__self__, "knn_memory_circuit_breaker_enabled", knn_memory_circuit_breaker_enabled)
         if knn_memory_circuit_breaker_limit is not None:
             pulumi.set(__self__, "knn_memory_circuit_breaker_limit", knn_memory_circuit_breaker_limit)
+        if ml_commons_model_access_control_enabled is not None:
+            pulumi.set(__self__, "ml_commons_model_access_control_enabled", ml_commons_model_access_control_enabled)
+        if ml_commons_native_memory_threshold is not None:
+            pulumi.set(__self__, "ml_commons_native_memory_threshold", ml_commons_native_memory_threshold)
+        if ml_commons_only_run_on_ml_node is not None:
+            pulumi.set(__self__, "ml_commons_only_run_on_ml_node", ml_commons_only_run_on_ml_node)
         if node_search_cache_size is not None:
             pulumi.set(__self__, "node_search_cache_size", node_search_cache_size)
         if override_main_response_version is not None:
@@ -19807,6 +19969,30 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
         """
         return pulumi.get(self, "knn_memory_circuit_breaker_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsModelAccessControlEnabled")
+    def ml_commons_model_access_control_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+        """
+        return pulumi.get(self, "ml_commons_model_access_control_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsNativeMemoryThreshold")
+    def ml_commons_native_memory_threshold(self) -> Optional[_builtins.int]:
+        """
+        Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+        """
+        return pulumi.get(self, "ml_commons_native_memory_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsOnlyRunOnMlNode")
+    def ml_commons_only_run_on_ml_node(self) -> Optional[_builtins.bool]:
+        """
+        Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+        """
+        return pulumi.get(self, "ml_commons_only_run_on_ml_node")
 
     @_builtins.property
     @pulumi.getter(name="nodeSearchCacheSize")
@@ -23223,6 +23409,8 @@ class PgPgUserConfig(dict):
             suggest = "backup_hour"
         elif key == "backupMinute":
             suggest = "backup_minute"
+        elif key == "enableHaReplicaDns":
+            suggest = "enable_ha_replica_dns"
         elif key == "enableIpv6":
             suggest = "enable_ipv6"
         elif key == "ipFilterObjects":
@@ -23283,6 +23471,7 @@ class PgPgUserConfig(dict):
                  admin_username: Optional[_builtins.str] = None,
                  backup_hour: Optional[_builtins.int] = None,
                  backup_minute: Optional[_builtins.int] = None,
+                 enable_ha_replica_dns: Optional[_builtins.bool] = None,
                  enable_ipv6: Optional[_builtins.bool] = None,
                  ip_filter_objects: Optional[Sequence['outputs.PgPgUserConfigIpFilterObject']] = None,
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
@@ -23317,6 +23506,7 @@ class PgPgUserConfig(dict):
         :param _builtins.str admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
         :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param _builtins.bool enable_ha_replica_dns: Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
         :param _builtins.bool enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param Sequence['PgPgUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -23356,6 +23546,8 @@ class PgPgUserConfig(dict):
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if enable_ha_replica_dns is not None:
+            pulumi.set(__self__, "enable_ha_replica_dns", enable_ha_replica_dns)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_filter_objects is not None:
@@ -23452,6 +23644,14 @@ class PgPgUserConfig(dict):
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
         return pulumi.get(self, "backup_minute")
+
+    @_builtins.property
+    @pulumi.getter(name="enableHaReplicaDns")
+    def enable_ha_replica_dns(self) -> Optional[_builtins.bool]:
+        """
+        Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+        """
+        return pulumi.get(self, "enable_ha_replica_dns")
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")
@@ -34029,6 +34229,25 @@ class GetAlloydbomniTechEmailResult(dict):
 
 
 @pulumi.output_type
+class GetBillingGroupTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetCassandaCassandraResult(dict):
     def __init__(__self__, *,
                  uris: Sequence[_builtins.str]):
@@ -39243,6 +39462,7 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
                  private_access: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult'] = None,
                  privatelink_access: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult'] = None,
                  public_access: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccessResult'] = None,
+                 sasl_oauthbearer_allowed_urls: Optional[Sequence[_builtins.str]] = None,
                  secret_providers: Optional[Sequence['outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderResult']] = None,
                  service_log: Optional[_builtins.bool] = None,
                  static_ips: Optional[_builtins.bool] = None):
@@ -39256,6 +39476,7 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
         :param 'GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param Sequence[_builtins.str] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param _builtins.bool static_ips: Use static public IP addresses.
         """
@@ -39277,6 +39498,8 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
             pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if sasl_oauthbearer_allowed_urls is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_allowed_urls", sasl_oauthbearer_allowed_urls)
         if secret_providers is not None:
             pulumi.set(__self__, "secret_providers", secret_providers)
         if service_log is not None:
@@ -39357,6 +39580,14 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
         Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAllowedUrls")
+    def sasl_oauthbearer_allowed_urls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_allowed_urls")
 
     @_builtins.property
     @pulumi.getter(name="secretProviders")
@@ -40103,10 +40334,12 @@ class GetKafkaKafkaUserConfigResult(dict):
                  kafka_rest_config: Optional['outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult'] = None,
                  kafka_sasl_mechanisms: Optional['outputs.GetKafkaKafkaUserConfigKafkaSaslMechanismsResult'] = None,
                  kafka_version: Optional[_builtins.str] = None,
+                 letsencrypt_sasl: Optional[_builtins.bool] = None,
                  letsencrypt_sasl_privatelink: Optional[_builtins.bool] = None,
                  private_access: Optional['outputs.GetKafkaKafkaUserConfigPrivateAccessResult'] = None,
                  privatelink_access: Optional['outputs.GetKafkaKafkaUserConfigPrivatelinkAccessResult'] = None,
                  public_access: Optional['outputs.GetKafkaKafkaUserConfigPublicAccessResult'] = None,
+                 sasl_oauthbearer_allowed_urls: Optional[Sequence[_builtins.str]] = None,
                  schema_registry: Optional[_builtins.bool] = None,
                  schema_registry_config: Optional['outputs.GetKafkaKafkaUserConfigSchemaRegistryConfigResult'] = None,
                  service_log: Optional[_builtins.bool] = None,
@@ -40131,11 +40364,13 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param _builtins.bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'GetKafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
         :param 'GetKafkaKafkaUserConfigKafkaSaslMechanismsArgs' kafka_sasl_mechanisms: Kafka SASL mechanisms
-        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
-        :param _builtins.bool letsencrypt_sasl_privatelink: Use Letsencrypt CA for Kafka SASL via Privatelink.
+        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
+        :param _builtins.bool letsencrypt_sasl: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+        :param _builtins.bool letsencrypt_sasl_privatelink: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetKafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'GetKafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param Sequence[_builtins.str] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         :param _builtins.bool schema_registry: Enable Schema-Registry service. Default: `false`.
         :param 'GetKafkaKafkaUserConfigSchemaRegistryConfigArgs' schema_registry_config: Schema Registry configuration
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
@@ -40181,6 +40416,8 @@ class GetKafkaKafkaUserConfigResult(dict):
             pulumi.set(__self__, "kafka_sasl_mechanisms", kafka_sasl_mechanisms)
         if kafka_version is not None:
             pulumi.set(__self__, "kafka_version", kafka_version)
+        if letsencrypt_sasl is not None:
+            pulumi.set(__self__, "letsencrypt_sasl", letsencrypt_sasl)
         if letsencrypt_sasl_privatelink is not None:
             pulumi.set(__self__, "letsencrypt_sasl_privatelink", letsencrypt_sasl_privatelink)
         if private_access is not None:
@@ -40189,6 +40426,8 @@ class GetKafkaKafkaUserConfigResult(dict):
             pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if sasl_oauthbearer_allowed_urls is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_allowed_urls", sasl_oauthbearer_allowed_urls)
         if schema_registry is not None:
             pulumi.set(__self__, "schema_registry", schema_registry)
         if schema_registry_config is not None:
@@ -40349,15 +40588,23 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
+
+    @_builtins.property
+    @pulumi.getter(name="letsencryptSasl")
+    def letsencrypt_sasl(self) -> Optional[_builtins.bool]:
+        """
+        Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+        """
+        return pulumi.get(self, "letsencrypt_sasl")
 
     @_builtins.property
     @pulumi.getter(name="letsencryptSaslPrivatelink")
     def letsencrypt_sasl_privatelink(self) -> Optional[_builtins.bool]:
         """
-        Use Letsencrypt CA for Kafka SASL via Privatelink.
+        Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         """
         return pulumi.get(self, "letsencrypt_sasl_privatelink")
 
@@ -40384,6 +40631,14 @@ class GetKafkaKafkaUserConfigResult(dict):
         Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAllowedUrls")
+    def sasl_oauthbearer_allowed_urls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_allowed_urls")
 
     @_builtins.property
     @pulumi.getter(name="schemaRegistry")
@@ -42150,6 +42405,7 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
                  kafka_mirrormaker: Optional['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult'] = None,
+                 sasl_oauthbearer_allowed_urls: Optional[Sequence[_builtins.str]] = None,
                  service_log: Optional[_builtins.bool] = None,
                  static_ips: Optional[_builtins.bool] = None):
         """
@@ -42158,6 +42414,7 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param 'GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka MirrorMaker configuration values
+        :param Sequence[_builtins.str] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param _builtins.bool static_ips: Use static public IP addresses.
         """
@@ -42171,6 +42428,8 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_mirrormaker is not None:
             pulumi.set(__self__, "kafka_mirrormaker", kafka_mirrormaker)
+        if sasl_oauthbearer_allowed_urls is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_allowed_urls", sasl_oauthbearer_allowed_urls)
         if service_log is not None:
             pulumi.set(__self__, "service_log", service_log)
         if static_ips is not None:
@@ -42217,6 +42476,14 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
         Kafka MirrorMaker configuration values
         """
         return pulumi.get(self, "kafka_mirrormaker")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAllowedUrls")
+    def sasl_oauthbearer_allowed_urls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_allowed_urls")
 
     @_builtins.property
     @pulumi.getter(name="serviceLog")
@@ -44598,8 +44865,8 @@ class GetMySqlMysqlUserConfigResult(dict):
         :param _builtins.str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param _builtins.str admin_password: Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         :param _builtins.str admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-        :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
+        :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         :param _builtins.int binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
         :param Sequence['GetMySqlMysqlUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -44688,7 +44955,7 @@ class GetMySqlMysqlUserConfigResult(dict):
     @pulumi.getter(name="backupHour")
     def backup_hour(self) -> Optional[_builtins.int]:
         """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         """
         return pulumi.get(self, "backup_hour")
 
@@ -44696,7 +44963,7 @@ class GetMySqlMysqlUserConfigResult(dict):
     @pulumi.getter(name="backupMinute")
     def backup_minute(self) -> Optional[_builtins.int]:
         """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         """
         return pulumi.get(self, "backup_minute")
 
@@ -44866,6 +45133,7 @@ class GetMySqlMysqlUserConfigMigrationResult(dict):
                  host: _builtins.str,
                  port: _builtins.int,
                  dbname: Optional[_builtins.str] = None,
+                 dump_tool: Optional[_builtins.str] = None,
                  ignore_dbs: Optional[_builtins.str] = None,
                  ignore_roles: Optional[_builtins.str] = None,
                  method: Optional[_builtins.str] = None,
@@ -44876,6 +45144,7 @@ class GetMySqlMysqlUserConfigMigrationResult(dict):
         :param _builtins.str host: Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
         :param _builtins.int port: Port number of the server where to migrate data from. Example: `1234`.
         :param _builtins.str dbname: Database name for bootstrapping the initial connection. Example: `defaultdb`.
+        :param _builtins.str dump_tool: Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
         :param _builtins.str ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
         :param _builtins.str ignore_roles: Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
         :param _builtins.str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
@@ -44887,6 +45156,8 @@ class GetMySqlMysqlUserConfigMigrationResult(dict):
         pulumi.set(__self__, "port", port)
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
+        if dump_tool is not None:
+            pulumi.set(__self__, "dump_tool", dump_tool)
         if ignore_dbs is not None:
             pulumi.set(__self__, "ignore_dbs", ignore_dbs)
         if ignore_roles is not None:
@@ -44923,6 +45194,14 @@ class GetMySqlMysqlUserConfigMigrationResult(dict):
         Database name for bootstrapping the initial connection. Example: `defaultdb`.
         """
         return pulumi.get(self, "dbname")
+
+    @_builtins.property
+    @pulumi.getter(name="dumpTool")
+    def dump_tool(self) -> Optional[_builtins.str]:
+        """
+        Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+        """
+        return pulumi.get(self, "dump_tool")
 
     @_builtins.property
     @pulumi.getter(name="ignoreDbs")
@@ -46864,6 +47143,9 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
                  ism_history_rollover_retention_period: Optional[_builtins.int] = None,
                  knn_memory_circuit_breaker_enabled: Optional[_builtins.bool] = None,
                  knn_memory_circuit_breaker_limit: Optional[_builtins.int] = None,
+                 ml_commons_model_access_control_enabled: Optional[_builtins.bool] = None,
+                 ml_commons_native_memory_threshold: Optional[_builtins.int] = None,
+                 ml_commons_only_run_on_ml_node: Optional[_builtins.bool] = None,
                  node_search_cache_size: Optional[_builtins.str] = None,
                  override_main_response_version: Optional[_builtins.bool] = None,
                  plugins_alerting_filter_by_backend_roles: Optional[_builtins.bool] = None,
@@ -46921,6 +47203,9 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         :param _builtins.int ism_history_rollover_retention_period: How long audit history indices are kept in days. Example: `30`.
         :param _builtins.bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true.
         :param _builtins.int knn_memory_circuit_breaker_limit: Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
+        :param _builtins.bool ml_commons_model_access_control_enabled: Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+        :param _builtins.int ml_commons_native_memory_threshold: Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+        :param _builtins.bool ml_commons_only_run_on_ml_node: Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
         :param _builtins.str node_search_cache_size: Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
         :param _builtins.bool override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         :param _builtins.bool plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
@@ -47014,6 +47299,12 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
             pulumi.set(__self__, "knn_memory_circuit_breaker_enabled", knn_memory_circuit_breaker_enabled)
         if knn_memory_circuit_breaker_limit is not None:
             pulumi.set(__self__, "knn_memory_circuit_breaker_limit", knn_memory_circuit_breaker_limit)
+        if ml_commons_model_access_control_enabled is not None:
+            pulumi.set(__self__, "ml_commons_model_access_control_enabled", ml_commons_model_access_control_enabled)
+        if ml_commons_native_memory_threshold is not None:
+            pulumi.set(__self__, "ml_commons_native_memory_threshold", ml_commons_native_memory_threshold)
+        if ml_commons_only_run_on_ml_node is not None:
+            pulumi.set(__self__, "ml_commons_only_run_on_ml_node", ml_commons_only_run_on_ml_node)
         if node_search_cache_size is not None:
             pulumi.set(__self__, "node_search_cache_size", node_search_cache_size)
         if override_main_response_version is not None:
@@ -47340,6 +47631,30 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
         """
         return pulumi.get(self, "knn_memory_circuit_breaker_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsModelAccessControlEnabled")
+    def ml_commons_model_access_control_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+        """
+        return pulumi.get(self, "ml_commons_model_access_control_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsNativeMemoryThreshold")
+    def ml_commons_native_memory_threshold(self) -> Optional[_builtins.int]:
+        """
+        Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+        """
+        return pulumi.get(self, "ml_commons_native_memory_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsOnlyRunOnMlNode")
+    def ml_commons_only_run_on_ml_node(self) -> Optional[_builtins.bool]:
+        """
+        Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+        """
+        return pulumi.get(self, "ml_commons_only_run_on_ml_node")
 
     @_builtins.property
     @pulumi.getter(name="nodeSearchCacheSize")
@@ -49550,30 +49865,239 @@ class GetOrganizationUserGroupListUserGroupResult(dict):
 
 
 @pulumi.output_type
+class GetOrganizationUserGroupMemberListMemberResult(dict):
+    def __init__(__self__, *,
+                 last_activity_time: _builtins.str,
+                 user_id: _builtins.str,
+                 user_infos: Optional[Sequence['outputs.GetOrganizationUserGroupMemberListMemberUserInfoResult']] = None):
+        """
+        :param _builtins.str last_activity_time: Last Activity Time.
+        :param _builtins.str user_id: User ID.
+        :param Sequence['GetOrganizationUserGroupMemberListMemberUserInfoArgs'] user_infos: OrganizationUserInfo.
+        """
+        pulumi.set(__self__, "last_activity_time", last_activity_time)
+        pulumi.set(__self__, "user_id", user_id)
+        if user_infos is not None:
+            pulumi.set(__self__, "user_infos", user_infos)
+
+    @_builtins.property
+    @pulumi.getter(name="lastActivityTime")
+    def last_activity_time(self) -> _builtins.str:
+        """
+        Last Activity Time.
+        """
+        return pulumi.get(self, "last_activity_time")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.str:
+        """
+        User ID.
+        """
+        return pulumi.get(self, "user_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userInfos")
+    def user_infos(self) -> Optional[Sequence['outputs.GetOrganizationUserGroupMemberListMemberUserInfoResult']]:
+        """
+        OrganizationUserInfo.
+        """
+        return pulumi.get(self, "user_infos")
+
+
+@pulumi.output_type
+class GetOrganizationUserGroupMemberListMemberUserInfoResult(dict):
+    def __init__(__self__, *,
+                 city: _builtins.str,
+                 country: _builtins.str,
+                 create_time: _builtins.str,
+                 department: _builtins.str,
+                 is_application_user: _builtins.bool,
+                 job_title: _builtins.str,
+                 managed_by_scim: _builtins.bool,
+                 managing_organization_id: _builtins.str,
+                 real_name: _builtins.str,
+                 state: _builtins.str,
+                 user_email: _builtins.str):
+        """
+        :param _builtins.str city: City.
+        :param _builtins.str country: Country.
+        :param _builtins.str create_time: Creation time.
+        :param _builtins.str department: Department.
+        :param _builtins.bool is_application_user: Is Application User.
+        :param _builtins.str job_title: Job Title.
+        :param _builtins.bool managed_by_scim: Managed By Scim.
+        :param _builtins.str managing_organization_id: Managing Organization ID.
+        :param _builtins.str real_name: Real Name.
+        :param _builtins.str state: State.
+        :param _builtins.str user_email: User Email.
+        """
+        pulumi.set(__self__, "city", city)
+        pulumi.set(__self__, "country", country)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "department", department)
+        pulumi.set(__self__, "is_application_user", is_application_user)
+        pulumi.set(__self__, "job_title", job_title)
+        pulumi.set(__self__, "managed_by_scim", managed_by_scim)
+        pulumi.set(__self__, "managing_organization_id", managing_organization_id)
+        pulumi.set(__self__, "real_name", real_name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "user_email", user_email)
+
+    @_builtins.property
+    @pulumi.getter
+    def city(self) -> _builtins.str:
+        """
+        City.
+        """
+        return pulumi.get(self, "city")
+
+    @_builtins.property
+    @pulumi.getter
+    def country(self) -> _builtins.str:
+        """
+        Country.
+        """
+        return pulumi.get(self, "country")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def department(self) -> _builtins.str:
+        """
+        Department.
+        """
+        return pulumi.get(self, "department")
+
+    @_builtins.property
+    @pulumi.getter(name="isApplicationUser")
+    def is_application_user(self) -> _builtins.bool:
+        """
+        Is Application User.
+        """
+        return pulumi.get(self, "is_application_user")
+
+    @_builtins.property
+    @pulumi.getter(name="jobTitle")
+    def job_title(self) -> _builtins.str:
+        """
+        Job Title.
+        """
+        return pulumi.get(self, "job_title")
+
+    @_builtins.property
+    @pulumi.getter(name="managedByScim")
+    def managed_by_scim(self) -> _builtins.bool:
+        """
+        Managed By Scim.
+        """
+        return pulumi.get(self, "managed_by_scim")
+
+    @_builtins.property
+    @pulumi.getter(name="managingOrganizationId")
+    def managing_organization_id(self) -> _builtins.str:
+        """
+        Managing Organization ID.
+        """
+        return pulumi.get(self, "managing_organization_id")
+
+    @_builtins.property
+    @pulumi.getter(name="realName")
+    def real_name(self) -> _builtins.str:
+        """
+        Real Name.
+        """
+        return pulumi.get(self, "real_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        State.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> _builtins.str:
+        """
+        User Email.
+        """
+        return pulumi.get(self, "user_email")
+
+
+@pulumi.output_type
+class GetOrganizationUserGroupMemberListTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetOrganizationUserListTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetOrganizationUserListUserResult(dict):
     def __init__(__self__, *,
                  is_super_admin: _builtins.bool,
                  join_time: _builtins.str,
                  last_activity_time: _builtins.str,
                  user_id: _builtins.str,
-                 user_infos: Sequence['outputs.GetOrganizationUserListUserUserInfoResult']):
+                 user_infos: Optional[Sequence['outputs.GetOrganizationUserListUserUserInfoResult']] = None):
         """
-        :param _builtins.bool is_super_admin: Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
-        :param _builtins.str join_time: Date and time when the user joined the organization.
+        :param _builtins.bool is_super_admin: Super admin state of the organization user.
+        :param _builtins.str join_time: Join time.
         :param _builtins.str last_activity_time: Last activity time.
         :param _builtins.str user_id: User ID.
+        :param Sequence['GetOrganizationUserListUserUserInfoArgs'] user_infos: OrganizationUserInfo.
         """
         pulumi.set(__self__, "is_super_admin", is_super_admin)
         pulumi.set(__self__, "join_time", join_time)
         pulumi.set(__self__, "last_activity_time", last_activity_time)
         pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "user_infos", user_infos)
+        if user_infos is not None:
+            pulumi.set(__self__, "user_infos", user_infos)
 
     @_builtins.property
     @pulumi.getter(name="isSuperAdmin")
     def is_super_admin(self) -> _builtins.bool:
         """
-        Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
+        Super admin state of the organization user.
         """
         return pulumi.get(self, "is_super_admin")
 
@@ -49581,7 +50105,7 @@ class GetOrganizationUserListUserResult(dict):
     @pulumi.getter(name="joinTime")
     def join_time(self) -> _builtins.str:
         """
-        Date and time when the user joined the organization.
+        Join time.
         """
         return pulumi.get(self, "join_time")
 
@@ -49603,7 +50127,10 @@ class GetOrganizationUserListUserResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="userInfos")
-    def user_infos(self) -> Sequence['outputs.GetOrganizationUserListUserUserInfoResult']:
+    def user_infos(self) -> Optional[Sequence['outputs.GetOrganizationUserListUserUserInfoResult']]:
+        """
+        OrganizationUserInfo.
+        """
         return pulumi.get(self, "user_infos")
 
 
@@ -49622,17 +50149,17 @@ class GetOrganizationUserListUserUserInfoResult(dict):
                  state: _builtins.str,
                  user_email: _builtins.str):
         """
-        :param _builtins.str city: City
-        :param _builtins.str country: Country
-        :param _builtins.str create_time: Date and time when the user was created.
-        :param _builtins.str department: Department
-        :param _builtins.bool is_application_user: Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
-        :param _builtins.str job_title: Job title
-        :param _builtins.bool managed_by_scim: Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
-        :param _builtins.str managing_organization_id: The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
-        :param _builtins.str real_name: Full name of the user.
-        :param _builtins.str state: State
-        :param _builtins.str user_email: Email address.
+        :param _builtins.str city: City.
+        :param _builtins.str country: Country.
+        :param _builtins.str create_time: Creation time.
+        :param _builtins.str department: Department.
+        :param _builtins.bool is_application_user: Is Application User.
+        :param _builtins.str job_title: Job Title.
+        :param _builtins.bool managed_by_scim: Managed By Scim.
+        :param _builtins.str managing_organization_id: Managing Organization ID.
+        :param _builtins.str real_name: Real Name.
+        :param _builtins.str state: State.
+        :param _builtins.str user_email: User Email.
         """
         pulumi.set(__self__, "city", city)
         pulumi.set(__self__, "country", country)
@@ -49650,7 +50177,7 @@ class GetOrganizationUserListUserUserInfoResult(dict):
     @pulumi.getter
     def city(self) -> _builtins.str:
         """
-        City
+        City.
         """
         return pulumi.get(self, "city")
 
@@ -49658,7 +50185,7 @@ class GetOrganizationUserListUserUserInfoResult(dict):
     @pulumi.getter
     def country(self) -> _builtins.str:
         """
-        Country
+        Country.
         """
         return pulumi.get(self, "country")
 
@@ -49666,7 +50193,7 @@ class GetOrganizationUserListUserUserInfoResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        Date and time when the user was created.
+        Creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -49674,7 +50201,7 @@ class GetOrganizationUserListUserUserInfoResult(dict):
     @pulumi.getter
     def department(self) -> _builtins.str:
         """
-        Department
+        Department.
         """
         return pulumi.get(self, "department")
 
@@ -49682,7 +50209,7 @@ class GetOrganizationUserListUserUserInfoResult(dict):
     @pulumi.getter(name="isApplicationUser")
     def is_application_user(self) -> _builtins.bool:
         """
-        Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
+        Is Application User.
         """
         return pulumi.get(self, "is_application_user")
 
@@ -49690,7 +50217,7 @@ class GetOrganizationUserListUserUserInfoResult(dict):
     @pulumi.getter(name="jobTitle")
     def job_title(self) -> _builtins.str:
         """
-        Job title
+        Job Title.
         """
         return pulumi.get(self, "job_title")
 
@@ -49698,7 +50225,7 @@ class GetOrganizationUserListUserUserInfoResult(dict):
     @pulumi.getter(name="managedByScim")
     def managed_by_scim(self) -> _builtins.bool:
         """
-        Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
+        Managed By Scim.
         """
         return pulumi.get(self, "managed_by_scim")
 
@@ -49706,7 +50233,7 @@ class GetOrganizationUserListUserUserInfoResult(dict):
     @pulumi.getter(name="managingOrganizationId")
     def managing_organization_id(self) -> _builtins.str:
         """
-        The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
+        Managing Organization ID.
         """
         return pulumi.get(self, "managing_organization_id")
 
@@ -49714,7 +50241,7 @@ class GetOrganizationUserListUserUserInfoResult(dict):
     @pulumi.getter(name="realName")
     def real_name(self) -> _builtins.str:
         """
-        Full name of the user.
+        Real Name.
         """
         return pulumi.get(self, "real_name")
 
@@ -49722,7 +50249,7 @@ class GetOrganizationUserListUserUserInfoResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        State
+        State.
         """
         return pulumi.get(self, "state")
 
@@ -49730,7 +50257,7 @@ class GetOrganizationUserListUserUserInfoResult(dict):
     @pulumi.getter(name="userEmail")
     def user_email(self) -> _builtins.str:
         """
-        Email address.
+        User Email.
         """
         return pulumi.get(self, "user_email")
 
@@ -50084,6 +50611,7 @@ class GetPgPgUserConfigResult(dict):
                  admin_username: Optional[_builtins.str] = None,
                  backup_hour: Optional[_builtins.int] = None,
                  backup_minute: Optional[_builtins.int] = None,
+                 enable_ha_replica_dns: Optional[_builtins.bool] = None,
                  enable_ipv6: Optional[_builtins.bool] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetPgPgUserConfigIpFilterObjectResult']] = None,
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
@@ -50118,6 +50646,7 @@ class GetPgPgUserConfigResult(dict):
         :param _builtins.str admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
         :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param _builtins.bool enable_ha_replica_dns: Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
         :param _builtins.bool enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param Sequence['GetPgPgUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -50157,6 +50686,8 @@ class GetPgPgUserConfigResult(dict):
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if enable_ha_replica_dns is not None:
+            pulumi.set(__self__, "enable_ha_replica_dns", enable_ha_replica_dns)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_filter_objects is not None:
@@ -50253,6 +50784,14 @@ class GetPgPgUserConfigResult(dict):
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
         return pulumi.get(self, "backup_minute")
+
+    @_builtins.property
+    @pulumi.getter(name="enableHaReplicaDns")
+    def enable_ha_replica_dns(self) -> Optional[_builtins.bool]:
+        """
+        Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+        """
+        return pulumi.get(self, "enable_ha_replica_dns")
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")

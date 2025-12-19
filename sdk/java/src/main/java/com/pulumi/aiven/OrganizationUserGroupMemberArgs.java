@@ -18,14 +18,14 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
     public static final OrganizationUserGroupMemberArgs Empty = new OrganizationUserGroupMemberArgs();
 
     /**
-     * The ID of the user group.
+     * ID of the user group. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="groupId", required=true)
     private Output<String> groupId;
 
     /**
-     * @return The ID of the user group.
+     * @return ID of the user group. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> groupId() {
@@ -33,14 +33,14 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -55,14 +55,14 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the organization user or application user.
+     * User ID. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="userId", required=true)
     private Output<String> userId;
 
     /**
-     * @return The ID of the organization user or application user.
+     * @return User ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> userId() {
@@ -97,7 +97,7 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param groupId The ID of the user group.
+         * @param groupId ID of the user group. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param groupId The ID of the user group.
+         * @param groupId ID of the user group. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param organizationId The ID of the organization.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param organizationId The ID of the organization.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userId The ID of the organization user or application user.
+         * @param userId User ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userId The ID of the organization user or application user.
+         * @param userId User ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

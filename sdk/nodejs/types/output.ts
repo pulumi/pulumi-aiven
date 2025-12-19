@@ -681,6 +681,31 @@ export interface AlloydbomniTechEmail {
     email: string;
 }
 
+export interface BillingGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface CassandraCassandra {
     /**
      * Cassandra server URIs.
@@ -2335,6 +2360,13 @@ export interface GetAlloydbomniTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface GetBillingGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetCassandaCassandra {
@@ -4239,6 +4271,10 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
+    /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     */
+    saslOauthbearerAllowedUrls?: string[];
     secretProviders?: outputs.GetKafkaConnectKafkaConnectUserConfigSecretProvider[];
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
@@ -4575,11 +4611,15 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: outputs.GetKafkaKafkaUserConfigKafkaSaslMechanisms;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
-     * Use Letsencrypt CA for Kafka SASL via Privatelink.
+     * Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+     */
+    letsencryptSasl?: boolean;
+    /**
+     * Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
      */
     letsencryptSaslPrivatelink?: boolean;
     /**
@@ -4594,6 +4634,10 @@ export interface GetKafkaKafkaUserConfig {
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetKafkaKafkaUserConfigPublicAccess;
+    /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     */
+    saslOauthbearerAllowedUrls?: string[];
     /**
      * Enable Schema-Registry service. Default: `false`.
      */
@@ -5237,6 +5281,10 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
      * Kafka MirrorMaker configuration values
      */
     kafkaMirrormaker?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
+    /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     */
+    saslOauthbearerAllowedUrls?: string[];
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
@@ -6096,11 +6144,11 @@ export interface GetMySqlMysqlUserConfig {
      */
     adminUsername?: string;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      */
     backupHour?: number;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      */
     backupMinute?: number;
     /**
@@ -6187,6 +6235,10 @@ export interface GetMySqlMysqlUserConfigMigration {
      * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: string;
+    /**
+     * Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+     */
+    dumpTool?: string;
     /**
      * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
@@ -7008,6 +7060,18 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     knnMemoryCircuitBreakerLimit?: number;
     /**
+     * Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+     */
+    mlCommonsModelAccessControlEnabled?: boolean;
+    /**
+     * Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+     */
+    mlCommonsNativeMemoryThreshold?: number;
+    /**
+     * Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+     */
+    mlCommonsOnlyRunOnMlNode?: boolean;
+    /**
      * Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
      */
     nodeSearchCacheSize?: string;
@@ -7807,13 +7871,89 @@ export interface GetOrganizationUserGroupListUserGroup {
     userGroupName: string;
 }
 
+export interface GetOrganizationUserGroupMemberListMember {
+    /**
+     * Last Activity Time.
+     */
+    lastActivityTime: string;
+    /**
+     * User ID.
+     */
+    userId: string;
+    /**
+     * OrganizationUserInfo.
+     */
+    userInfos?: outputs.GetOrganizationUserGroupMemberListMemberUserInfo[];
+}
+
+export interface GetOrganizationUserGroupMemberListMemberUserInfo {
+    /**
+     * City.
+     */
+    city: string;
+    /**
+     * Country.
+     */
+    country: string;
+    /**
+     * Creation time.
+     */
+    createTime: string;
+    /**
+     * Department.
+     */
+    department: string;
+    /**
+     * Is Application User.
+     */
+    isApplicationUser: boolean;
+    /**
+     * Job Title.
+     */
+    jobTitle: string;
+    /**
+     * Managed By Scim.
+     */
+    managedByScim: boolean;
+    /**
+     * Managing Organization ID.
+     */
+    managingOrganizationId: string;
+    /**
+     * Real Name.
+     */
+    realName: string;
+    /**
+     * State.
+     */
+    state: string;
+    /**
+     * User Email.
+     */
+    userEmail: string;
+}
+
+export interface GetOrganizationUserGroupMemberListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationUserListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
 export interface GetOrganizationUserListUser {
     /**
-     * Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
+     * Super admin state of the organization user.
      */
     isSuperAdmin: boolean;
     /**
-     * Date and time when the user joined the organization.
+     * Join time.
      */
     joinTime: string;
     /**
@@ -7824,52 +7964,55 @@ export interface GetOrganizationUserListUser {
      * User ID.
      */
     userId: string;
-    userInfos: outputs.GetOrganizationUserListUserUserInfo[];
+    /**
+     * OrganizationUserInfo.
+     */
+    userInfos?: outputs.GetOrganizationUserListUserUserInfo[];
 }
 
 export interface GetOrganizationUserListUserUserInfo {
     /**
-     * City
+     * City.
      */
     city: string;
     /**
-     * Country
+     * Country.
      */
     country: string;
     /**
-     * Date and time when the user was created.
+     * Creation time.
      */
     createTime: string;
     /**
-     * Department
+     * Department.
      */
     department: string;
     /**
-     * Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
+     * Is Application User.
      */
     isApplicationUser: boolean;
     /**
-     * Job title
+     * Job Title.
      */
     jobTitle: string;
     /**
-     * Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
+     * Managed By Scim.
      */
     managedByScim: boolean;
     /**
-     * The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
+     * Managing Organization ID.
      */
     managingOrganizationId: string;
     /**
-     * Full name of the user.
+     * Real Name.
      */
     realName: string;
     /**
-     * State
+     * State.
      */
     state: string;
     /**
-     * Email address.
+     * User Email.
      */
     userEmail: string;
 }
@@ -8022,6 +8165,10 @@ export interface GetPgPgUserConfig {
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
+    /**
+     * Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+     */
+    enableHaReplicaDns?: boolean;
     /**
      * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
      */
@@ -11587,6 +11734,10 @@ export interface KafkaConnectKafkaConnectUserConfig {
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.KafkaConnectKafkaConnectUserConfigPublicAccess;
+    /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     */
+    saslOauthbearerAllowedUrls?: string[];
     secretProviders?: outputs.KafkaConnectKafkaConnectUserConfigSecretProvider[];
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
@@ -11923,11 +12074,15 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: outputs.KafkaKafkaUserConfigKafkaSaslMechanisms;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
-     * Use Letsencrypt CA for Kafka SASL via Privatelink.
+     * Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+     */
+    letsencryptSasl?: boolean;
+    /**
+     * Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
      */
     letsencryptSaslPrivatelink?: boolean;
     /**
@@ -11942,6 +12097,10 @@ export interface KafkaKafkaUserConfig {
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.KafkaKafkaUserConfigPublicAccess;
+    /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     */
+    saslOauthbearerAllowedUrls?: string[];
     /**
      * Enable Schema-Registry service. Default: `false`.
      */
@@ -12585,6 +12744,10 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
      * Kafka MirrorMaker configuration values
      */
     kafkaMirrormaker?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
+    /**
+     * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+     */
+    saslOauthbearerAllowedUrls?: string[];
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
@@ -13444,11 +13607,11 @@ export interface MySqlMysqlUserConfig {
      */
     adminUsername?: string;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      */
     backupHour?: number;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
      */
     backupMinute?: number;
     /**
@@ -13535,6 +13698,10 @@ export interface MySqlMysqlUserConfigMigration {
      * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: string;
+    /**
+     * Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+     */
+    dumpTool?: string;
     /**
      * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
@@ -14355,6 +14522,18 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
      */
     knnMemoryCircuitBreakerLimit?: number;
+    /**
+     * Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+     */
+    mlCommonsModelAccessControlEnabled?: boolean;
+    /**
+     * Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+     */
+    mlCommonsNativeMemoryThreshold?: number;
+    /**
+     * Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+     */
+    mlCommonsOnlyRunOnMlNode?: boolean;
     /**
      * Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
      */
@@ -15370,6 +15549,10 @@ export interface PgPgUserConfig {
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
+    /**
+     * Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+     */
+    enableHaReplicaDns?: boolean;
     /**
      * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
      */

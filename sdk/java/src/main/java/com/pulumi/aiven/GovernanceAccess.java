@@ -65,6 +65,12 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/governanceAccess:GovernanceAccess")
 public class GovernanceAccess extends com.pulumi.resources.CustomResource {

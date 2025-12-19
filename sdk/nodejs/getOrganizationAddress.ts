@@ -61,7 +61,7 @@ export interface GetOrganizationAddressResult {
      */
     readonly createTime: string;
     /**
-     * Resource ID, a composite of `organizationId` and `addressId` IDs.
+     * Resource ID composed as: `organization_id/address_id`.
      */
     readonly id: string;
     /**

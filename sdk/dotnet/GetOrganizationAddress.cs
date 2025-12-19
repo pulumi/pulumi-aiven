@@ -111,7 +111,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Resource ID, a composite of `OrganizationId` and `AddressId` IDs.
+        /// Resource ID composed as: `organization_id/address_id`.
         /// </summary>
         public readonly string Id;
         /// <summary>

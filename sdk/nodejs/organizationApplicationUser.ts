@@ -60,9 +60,9 @@ export class OrganizationApplicationUser extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly email: pulumi.Output<string>;
     /**
-     * Alters super admin state of the organization application user. The default value is `false`.
+     * Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      *
-     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
+     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      */
     declare public readonly isSuperAdmin: pulumi.Output<boolean>;
     /**
@@ -124,9 +124,9 @@ export interface OrganizationApplicationUserState {
      */
     email?: pulumi.Input<string>;
     /**
-     * Alters super admin state of the organization application user. The default value is `false`.
+     * Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      *
-     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
+     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      */
     isSuperAdmin?: pulumi.Input<boolean>;
     /**
@@ -149,9 +149,9 @@ export interface OrganizationApplicationUserState {
  */
 export interface OrganizationApplicationUserArgs {
     /**
-     * Alters super admin state of the organization application user. The default value is `false`.
+     * Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      *
-     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the aiven.OrganizationPermission resource.
+     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      */
     isSuperAdmin?: pulumi.Input<boolean>;
     /**

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -28,7 +30,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
+ * $ pulumi import aiven:index/billingGroup:BillingGroup example BILLING_GROUP_ID
  * ```
  */
 export class BillingGroup extends pulumi.CustomResource {
@@ -60,65 +62,74 @@ export class BillingGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID.
+     * Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      *
-     * @deprecated Use parentId instead. This field will be removed in the next major release.
+     * @deprecated Use `parentId` instead. This field will be removed in the next major release.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Address lines 1 and 2. For example, street, PO box, or building.
      */
     declare public readonly addressLines: pulumi.Output<string[] | undefined>;
     /**
-     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+     * List of billing groups contact email addresses.
      */
-    declare public readonly billingCurrency: pulumi.Output<string | undefined>;
+    declare public readonly billingContactEmails: pulumi.Output<string[] | undefined>;
     /**
-     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+     * Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+     */
+    declare public readonly billingCurrency: pulumi.Output<string>;
+    /**
+     * List of project billing email addresses.
      */
     declare public readonly billingEmails: pulumi.Output<string[] | undefined>;
     /**
-     * Additional information to include on your invoice (for example, a reference number).
+     * Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
      */
     declare public readonly billingExtraText: pulumi.Output<string | undefined>;
     /**
-     * Credit card ID.
+     * The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+     */
+    declare public /*out*/ readonly billingGroupId: pulumi.Output<string>;
+    /**
+     * Credit card ID. Maximum length: `64`.
      */
     declare public readonly cardId: pulumi.Output<string | undefined>;
     /**
-     * City, district, suburb, town, or village.
+     * Address city. Maximum length: `512`.
      */
-    declare public readonly city: pulumi.Output<string | undefined>;
+    declare public readonly city: pulumi.Output<string>;
     /**
-     * Your company name.
+     * Name of a company. Maximum length: `128`.
      */
-    declare public readonly company: pulumi.Output<string | undefined>;
+    declare public readonly company: pulumi.Output<string>;
     /**
-     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+     * Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     declare public readonly copyFromBillingGroup: pulumi.Output<string | undefined>;
     /**
-     * Two-letter country code.
+     * Two letter country code for billing country. Maximum length: `2`.
      */
-    declare public readonly countryCode: pulumi.Output<string | undefined>;
+    declare public readonly countryCode: pulumi.Output<string>;
     /**
-     * Name of the billing group.
+     * Billing group name. Maximum length: `128`.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID.
      */
-    declare public readonly parentId: pulumi.Output<string | undefined>;
+    declare public readonly parentId: pulumi.Output<string>;
     /**
-     * Address state.
+     * Address state or province. Maximum length: `128`.
      */
     declare public readonly state: pulumi.Output<string | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.BillingGroupTimeouts | undefined>;
     /**
-     * The VAT identification number for your company.
+     * EU VAT Identification Number. Maximum length: `64`.
      */
-    declare public readonly vatId: pulumi.Output<string | undefined>;
+    declare public readonly vatId: pulumi.Output<string>;
     /**
-     * Zip or postal code.
+     * Address zip code. Maximum length: `32`.
      */
     declare public readonly zipCode: pulumi.Output<string | undefined>;
 
@@ -137,9 +148,11 @@ export class BillingGroup extends pulumi.CustomResource {
             const state = argsOrState as BillingGroupState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["addressLines"] = state?.addressLines;
+            resourceInputs["billingContactEmails"] = state?.billingContactEmails;
             resourceInputs["billingCurrency"] = state?.billingCurrency;
             resourceInputs["billingEmails"] = state?.billingEmails;
             resourceInputs["billingExtraText"] = state?.billingExtraText;
+            resourceInputs["billingGroupId"] = state?.billingGroupId;
             resourceInputs["cardId"] = state?.cardId;
             resourceInputs["city"] = state?.city;
             resourceInputs["company"] = state?.company;
@@ -148,12 +161,14 @@ export class BillingGroup extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["parentId"] = state?.parentId;
             resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["vatId"] = state?.vatId;
             resourceInputs["zipCode"] = state?.zipCode;
         } else {
             const args = argsOrState as BillingGroupArgs | undefined;
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["addressLines"] = args?.addressLines;
+            resourceInputs["billingContactEmails"] = args?.billingContactEmails;
             resourceInputs["billingCurrency"] = args?.billingCurrency;
             resourceInputs["billingEmails"] = args?.billingEmails;
             resourceInputs["billingExtraText"] = args?.billingExtraText;
@@ -165,8 +180,10 @@ export class BillingGroup extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["parentId"] = args?.parentId;
             resourceInputs["state"] = args?.state;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["vatId"] = args?.vatId;
             resourceInputs["zipCode"] = args?.zipCode;
+            resourceInputs["billingGroupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BillingGroup.__pulumiType, name, resourceInputs, opts);
@@ -178,9 +195,9 @@ export class BillingGroup extends pulumi.CustomResource {
  */
 export interface BillingGroupState {
     /**
-     * Account ID.
+     * Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      *
-     * @deprecated Use parentId instead. This field will be removed in the next major release.
+     * @deprecated Use `parentId` instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -188,55 +205,64 @@ export interface BillingGroupState {
      */
     addressLines?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+     * List of billing groups contact email addresses.
+     */
+    billingContactEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
     billingCurrency?: pulumi.Input<string>;
     /**
-     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+     * List of project billing email addresses.
      */
     billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Additional information to include on your invoice (for example, a reference number).
+     * Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
      */
     billingExtraText?: pulumi.Input<string>;
     /**
-     * Credit card ID.
+     * The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+     */
+    billingGroupId?: pulumi.Input<string>;
+    /**
+     * Credit card ID. Maximum length: `64`.
      */
     cardId?: pulumi.Input<string>;
     /**
-     * City, district, suburb, town, or village.
+     * Address city. Maximum length: `512`.
      */
     city?: pulumi.Input<string>;
     /**
-     * Your company name.
+     * Name of a company. Maximum length: `128`.
      */
     company?: pulumi.Input<string>;
     /**
-     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+     * Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     copyFromBillingGroup?: pulumi.Input<string>;
     /**
-     * Two-letter country code.
+     * Two letter country code for billing country. Maximum length: `2`.
      */
     countryCode?: pulumi.Input<string>;
     /**
-     * Name of the billing group.
+     * Billing group name. Maximum length: `128`.
      */
     name?: pulumi.Input<string>;
     /**
-     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID.
      */
     parentId?: pulumi.Input<string>;
     /**
-     * Address state.
+     * Address state or province. Maximum length: `128`.
      */
     state?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.BillingGroupTimeouts>;
     /**
-     * The VAT identification number for your company.
+     * EU VAT Identification Number. Maximum length: `64`.
      */
     vatId?: pulumi.Input<string>;
     /**
-     * Zip or postal code.
+     * Address zip code. Maximum length: `32`.
      */
     zipCode?: pulumi.Input<string>;
 }
@@ -246,9 +272,9 @@ export interface BillingGroupState {
  */
 export interface BillingGroupArgs {
     /**
-     * Account ID.
+     * Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      *
-     * @deprecated Use parentId instead. This field will be removed in the next major release.
+     * @deprecated Use `parentId` instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -256,55 +282,60 @@ export interface BillingGroupArgs {
      */
     addressLines?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+     * List of billing groups contact email addresses.
+     */
+    billingContactEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
     billingCurrency?: pulumi.Input<string>;
     /**
-     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+     * List of project billing email addresses.
      */
     billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Additional information to include on your invoice (for example, a reference number).
+     * Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
      */
     billingExtraText?: pulumi.Input<string>;
     /**
-     * Credit card ID.
+     * Credit card ID. Maximum length: `64`.
      */
     cardId?: pulumi.Input<string>;
     /**
-     * City, district, suburb, town, or village.
+     * Address city. Maximum length: `512`.
      */
     city?: pulumi.Input<string>;
     /**
-     * Your company name.
+     * Name of a company. Maximum length: `128`.
      */
     company?: pulumi.Input<string>;
     /**
-     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+     * Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     copyFromBillingGroup?: pulumi.Input<string>;
     /**
-     * Two-letter country code.
+     * Two letter country code for billing country. Maximum length: `2`.
      */
     countryCode?: pulumi.Input<string>;
     /**
-     * Name of the billing group.
+     * Billing group name. Maximum length: `128`.
      */
     name?: pulumi.Input<string>;
     /**
-     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID.
      */
     parentId?: pulumi.Input<string>;
     /**
-     * Address state.
+     * Address state or province. Maximum length: `128`.
      */
     state?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.BillingGroupTimeouts>;
     /**
-     * The VAT identification number for your company.
+     * EU VAT Identification Number. Maximum length: `64`.
      */
     vatId?: pulumi.Input<string>;
     /**
-     * Zip or postal code.
+     * Address zip code. Maximum length: `32`.
      */
     zipCode?: pulumi.Input<string>;
 }

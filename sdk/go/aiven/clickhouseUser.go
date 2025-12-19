@@ -50,10 +50,10 @@ import (
 type ClickhouseUser struct {
 	pulumi.CustomResourceState
 
-	// The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
 	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
 	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
 	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
@@ -84,6 +84,9 @@ func NewClickhouseUser(ctx *pulumi.Context,
 	}
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
+	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
 	if args.PasswordWo != nil {
 		args.PasswordWo = pulumi.ToSecret(args.PasswordWo).(pulumi.StringPtrInput)
@@ -116,10 +119,10 @@ func GetClickhouseUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClickhouseUser resources.
 type clickhouseUserState struct {
-	// The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
 	PasswordWo *string `pulumi:"passwordWo"`
 	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
@@ -136,10 +139,10 @@ type clickhouseUserState struct {
 }
 
 type ClickhouseUserState struct {
-	// The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
 	PasswordWo pulumi.StringPtrInput
 	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
 	PasswordWoVersion pulumi.IntPtrInput
@@ -160,8 +163,10 @@ func (ClickhouseUserState) ElementType() reflect.Type {
 }
 
 type clickhouseUserArgs struct {
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
 	PasswordWo *string `pulumi:"passwordWo"`
 	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
@@ -175,8 +180,10 @@ type clickhouseUserArgs struct {
 
 // The set of arguments for constructing a ClickhouseUser resource.
 type ClickhouseUserArgs struct {
+	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
 	PasswordWo pulumi.StringPtrInput
 	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
 	PasswordWoVersion pulumi.IntPtrInput
@@ -275,13 +282,13 @@ func (o ClickhouseUserOutput) ToClickhouseUserOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The password of the ClickHouse user (generated). Empty when using `passwordWo`.
+// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 func (o ClickhouseUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-// The password of the ClickHouse user (write-only, not stored in state). Must be used with `passwordWoVersion`. Cannot be empty.
+// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
 func (o ClickhouseUserOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }

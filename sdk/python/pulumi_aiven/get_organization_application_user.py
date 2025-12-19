@@ -63,16 +63,16 @@ class GetOrganizationApplicationUserResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Resource ID, a composite of `organization_id` and `user_id` IDs.
+        Resource ID composed as: `organization_id/user_id`.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="isSuperAdmin")
-    @_utilities.deprecated("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the OrganizationPermission resource.""")
+    @_utilities.deprecated("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.""")
     def is_super_admin(self) -> _builtins.bool:
         """
-        Alters super admin state of the organization application user. The default value is `false`.
+        Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         """
         return pulumi.get(self, "is_super_admin")
 

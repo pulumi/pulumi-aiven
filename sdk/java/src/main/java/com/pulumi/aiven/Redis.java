@@ -23,70 +23,6 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * Creates and manages and [Aiven for Caching](https://aiven.io/docs/products/caching) (formerly known as Aiven for Redis®) service.
- * 
- * !&gt; **End of life notice**
- * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
- * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
- * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
- * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
- * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
- * and update your existing `aiven.Redis` resources.
- * 
- * ## Example Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aiven.Redis;
- * import com.pulumi.aiven.RedisArgs;
- * import com.pulumi.aiven.inputs.RedisRedisUserConfigArgs;
- * import com.pulumi.aiven.inputs.RedisRedisUserConfigPublicAccessArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var redis1 = new Redis("redis1", RedisArgs.builder()
- *             .project(pr1.project())
- *             .cloudName("google-europe-west1")
- *             .plan("business-4")
- *             .serviceName("my-redis1")
- *             .maintenanceWindowDow("monday")
- *             .maintenanceWindowTime("10:00:00")
- *             .redisUserConfig(RedisRedisUserConfigArgs.builder()
- *                 .redisMaxmemoryPolicy("allkeys-random")
- *                 .publicAccess(RedisRedisUserConfigPublicAccessArgs.builder()
- *                     .redis(true)
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import aiven:index/redis:Redis redis1 project/service_name
- * ```
- * 
- */
 @ResourceType(type="aiven:index/redis:Redis")
 public class Redis extends com.pulumi.resources.CustomResource {
     /**
@@ -306,7 +242,11 @@ public class Redis extends com.pulumi.resources.CustomResource {
     /**
      * Redis user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Export(name="redisUserConfig", refs={RedisRedisUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ RedisRedisUserConfig> redisUserConfig;
 

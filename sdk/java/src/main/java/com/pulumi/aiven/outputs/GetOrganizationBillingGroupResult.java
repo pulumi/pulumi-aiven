@@ -20,12 +20,12 @@ public final class GetOrganizationBillingGroupResult {
      */
     private String billingAddressId;
     /**
-     * @return List of billing contact emails.
+     * @return Aiven contacts these email addresses when there are billing issues or questions.
      * 
      */
     private List<String> billingContactEmails;
     /**
-     * @return List of billing contact emails.
+     * @return PDF invoices are sent to these email addresses.
      * 
      */
     private List<String> billingEmails;
@@ -50,7 +50,7 @@ public final class GetOrganizationBillingGroupResult {
      */
     private String customInvoiceText;
     /**
-     * @return Resource ID, a composite of `organizationId` and `billingGroupId` IDs.
+     * @return Resource ID composed as: `organization_id/billing_group_id`.
      * 
      */
     private String id;
@@ -85,14 +85,14 @@ public final class GetOrganizationBillingGroupResult {
         return this.billingAddressId;
     }
     /**
-     * @return List of billing contact emails.
+     * @return Aiven contacts these email addresses when there are billing issues or questions.
      * 
      */
     public List<String> billingContactEmails() {
         return this.billingContactEmails;
     }
     /**
-     * @return List of billing contact emails.
+     * @return PDF invoices are sent to these email addresses.
      * 
      */
     public List<String> billingEmails() {
@@ -127,7 +127,7 @@ public final class GetOrganizationBillingGroupResult {
         return this.customInvoiceText;
     }
     /**
-     * @return Resource ID, a composite of `organizationId` and `billingGroupId` IDs.
+     * @return Resource ID composed as: `organization_id/billing_group_id`.
      * 
      */
     public String id() {

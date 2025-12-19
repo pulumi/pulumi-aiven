@@ -91,6 +91,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("publicAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
+        [Input("saslOauthbearerAllowedUrls")]
+        private InputList<string>? _saslOauthbearerAllowedUrls;
+
+        /// <summary>
+        /// List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        /// </summary>
+        public InputList<string> SaslOauthbearerAllowedUrls
+        {
+            get => _saslOauthbearerAllowedUrls ?? (_saslOauthbearerAllowedUrls = new InputList<string>());
+            set => _saslOauthbearerAllowedUrls = value;
+        }
+
         [Input("secretProviders")]
         private InputList<Inputs.KafkaConnectKafkaConnectUserConfigSecretProviderGetArgs>? _secretProviders;
         public InputList<Inputs.KafkaConnectKafkaConnectUserConfigSecretProviderGetArgs> SecretProviders

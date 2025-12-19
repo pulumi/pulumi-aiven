@@ -12,58 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages and [Aiven for Caching](https://aiven.io/docs/products/caching) (formerly known as Aiven for Redis®) service.
-//
-// !> **End of life notice**
-// In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
-// Aiven for Caching is entering its end-of-life cycle to comply with Redis's copyright and license agreements.
-// From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
-// From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
-// You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
-// and update your existing `Redis` resources.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewRedis(ctx, "redis1", &aiven.RedisArgs{
-//				Project:               pulumi.Any(pr1.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("business-4"),
-//				ServiceName:           pulumi.String("my-redis1"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				RedisUserConfig: &aiven.RedisRedisUserConfigArgs{
-//					RedisMaxmemoryPolicy: pulumi.String("allkeys-random"),
-//					PublicAccess: &aiven.RedisRedisUserConfigPublicAccessArgs{
-//						Redis: pulumi.Bool(true),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import aiven:index/redis:Redis redis1 project/service_name
-// ```
 type Redis struct {
 	pulumi.CustomResourceState
 
@@ -100,6 +48,8 @@ type Redis struct {
 	// Redis server provided values
 	Redis RedisRedisOutput `pulumi:"redis"`
 	// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	RedisUserConfig RedisRedisUserConfigPtrOutput `pulumi:"redisUserConfig"`
 	// The hostname of the service.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
@@ -209,6 +159,8 @@ type redisState struct {
 	// Redis server provided values
 	Redis *RedisRedis `pulumi:"redis"`
 	// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	RedisUserConfig *RedisRedisUserConfig `pulumi:"redisUserConfig"`
 	// The hostname of the service.
 	ServiceHost *string `pulumi:"serviceHost"`
@@ -271,6 +223,8 @@ type RedisState struct {
 	// Redis server provided values
 	Redis RedisRedisPtrInput
 	// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	RedisUserConfig RedisRedisUserConfigPtrInput
 	// The hostname of the service.
 	ServiceHost pulumi.StringPtrInput
@@ -325,6 +279,8 @@ type redisArgs struct {
 	// Redis server provided values
 	Redis *RedisRedis `pulumi:"redis"`
 	// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	RedisUserConfig *RedisRedisUserConfig `pulumi:"redisUserConfig"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []RedisServiceIntegration `pulumi:"serviceIntegrations"`
@@ -363,6 +319,8 @@ type RedisArgs struct {
 	// Redis server provided values
 	Redis RedisRedisPtrInput
 	// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	RedisUserConfig RedisRedisUserConfigPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations RedisServiceIntegrationArrayInput
@@ -543,6 +501,8 @@ func (o RedisOutput) Redis() RedisRedisOutput {
 }
 
 // Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+//
+// Deprecated: This property is deprecated.
 func (o RedisOutput) RedisUserConfig() RedisRedisUserConfigPtrOutput {
 	return o.ApplyT(func(v *Redis) RedisRedisUserConfigPtrOutput { return v.RedisUserConfig }).(RedisRedisUserConfigPtrOutput)
 }

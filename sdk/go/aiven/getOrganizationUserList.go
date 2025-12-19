@@ -50,19 +50,23 @@ func GetOrganizationUserList(ctx *pulumi.Context, args *GetOrganizationUserListA
 
 // A collection of arguments for invoking getOrganizationUserList.
 type GetOrganizationUserListArgs struct {
-	// The ID of the organization.
+	// ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
 	Id *string `pulumi:"id"`
-	// The name of the organization.
-	Name *string `pulumi:"name"`
+	// The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
+	Name     *string                          `pulumi:"name"`
+	Timeouts *GetOrganizationUserListTimeouts `pulumi:"timeouts"`
+	// List of users of the organization.
+	Users []GetOrganizationUserListUser `pulumi:"users"`
 }
 
 // A collection of values returned by getOrganizationUserList.
 type GetOrganizationUserListResult struct {
-	// The ID of the organization.
-	Id *string `pulumi:"id"`
-	// The name of the organization.
-	Name *string `pulumi:"name"`
-	// List of the users, their profile information, and other data.
+	// ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
+	Id string `pulumi:"id"`
+	// The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
+	Name     string                           `pulumi:"name"`
+	Timeouts *GetOrganizationUserListTimeouts `pulumi:"timeouts"`
+	// List of users of the organization.
 	Users []GetOrganizationUserListUser `pulumi:"users"`
 }
 
@@ -77,10 +81,13 @@ func GetOrganizationUserListOutput(ctx *pulumi.Context, args GetOrganizationUser
 
 // A collection of arguments for invoking getOrganizationUserList.
 type GetOrganizationUserListOutputArgs struct {
-	// The ID of the organization.
+	// ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the organization.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
+	Name     pulumi.StringPtrInput                   `pulumi:"name"`
+	Timeouts GetOrganizationUserListTimeoutsPtrInput `pulumi:"timeouts"`
+	// List of users of the organization.
+	Users GetOrganizationUserListUserArrayInput `pulumi:"users"`
 }
 
 func (GetOrganizationUserListOutputArgs) ElementType() reflect.Type {
@@ -102,17 +109,21 @@ func (o GetOrganizationUserListResultOutput) ToGetOrganizationUserListResultOutp
 	return o
 }
 
-// The ID of the organization.
-func (o GetOrganizationUserListResultOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetOrganizationUserListResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+// ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
+func (o GetOrganizationUserListResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the organization.
-func (o GetOrganizationUserListResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetOrganizationUserListResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
+func (o GetOrganizationUserListResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of the users, their profile information, and other data.
+func (o GetOrganizationUserListResultOutput) Timeouts() GetOrganizationUserListTimeoutsPtrOutput {
+	return o.ApplyT(func(v GetOrganizationUserListResult) *GetOrganizationUserListTimeouts { return v.Timeouts }).(GetOrganizationUserListTimeoutsPtrOutput)
+}
+
+// List of users of the organization.
 func (o GetOrganizationUserListResultOutput) Users() GetOrganizationUserListUserArrayOutput {
 	return o.ApplyT(func(v GetOrganizationUserListResult) []GetOrganizationUserListUser { return v.Users }).(GetOrganizationUserListUserArrayOutput)
 }

@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.BillingGroupTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -17,24 +18,24 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     public static final BillingGroupState Empty = new BillingGroupState();
 
     /**
-     * Account ID.
+     * Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      * 
      * @deprecated
-     * Use parentId instead. This field will be removed in the next major release.
+     * Use `parentId` instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
+    @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account ID.
+     * @return Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      * 
      * @deprecated
-     * Use parentId instead. This field will be removed in the next major release.
+     * Use `parentId` instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
+    @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -55,14 +56,29 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+     * List of billing groups contact email addresses.
+     * 
+     */
+    @Import(name="billingContactEmails")
+    private @Nullable Output<List<String>> billingContactEmails;
+
+    /**
+     * @return List of billing groups contact email addresses.
+     * 
+     */
+    public Optional<Output<List<String>>> billingContactEmails() {
+        return Optional.ofNullable(this.billingContactEmails);
+    }
+
+    /**
+     * Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     @Import(name="billingCurrency")
     private @Nullable Output<String> billingCurrency;
 
     /**
-     * @return Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+     * @return Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
     public Optional<Output<String>> billingCurrency() {
@@ -70,14 +86,14 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+     * List of project billing email addresses.
      * 
      */
     @Import(name="billingEmails")
     private @Nullable Output<List<String>> billingEmails;
 
     /**
-     * @return Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+     * @return List of project billing email addresses.
      * 
      */
     public Optional<Output<List<String>>> billingEmails() {
@@ -85,14 +101,14 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Additional information to include on your invoice (for example, a reference number).
+     * Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
      * 
      */
     @Import(name="billingExtraText")
     private @Nullable Output<String> billingExtraText;
 
     /**
-     * @return Additional information to include on your invoice (for example, a reference number).
+     * @return Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
      * 
      */
     public Optional<Output<String>> billingExtraText() {
@@ -100,14 +116,29 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Credit card ID.
+     * The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    @Import(name="billingGroupId")
+    private @Nullable Output<String> billingGroupId;
+
+    /**
+     * @return The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
+    public Optional<Output<String>> billingGroupId() {
+        return Optional.ofNullable(this.billingGroupId);
+    }
+
+    /**
+     * Credit card ID. Maximum length: `64`.
      * 
      */
     @Import(name="cardId")
     private @Nullable Output<String> cardId;
 
     /**
-     * @return Credit card ID.
+     * @return Credit card ID. Maximum length: `64`.
      * 
      */
     public Optional<Output<String>> cardId() {
@@ -115,14 +146,14 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * City, district, suburb, town, or village.
+     * Address city. Maximum length: `512`.
      * 
      */
     @Import(name="city")
     private @Nullable Output<String> city;
 
     /**
-     * @return City, district, suburb, town, or village.
+     * @return Address city. Maximum length: `512`.
      * 
      */
     public Optional<Output<String>> city() {
@@ -130,14 +161,14 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Your company name.
+     * Name of a company. Maximum length: `128`.
      * 
      */
     @Import(name="company")
     private @Nullable Output<String> company;
 
     /**
-     * @return Your company name.
+     * @return Name of a company. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> company() {
@@ -145,14 +176,14 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+     * Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="copyFromBillingGroup")
     private @Nullable Output<String> copyFromBillingGroup;
 
     /**
-     * @return ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+     * @return Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> copyFromBillingGroup() {
@@ -160,14 +191,14 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Two-letter country code.
+     * Two letter country code for billing country. Maximum length: `2`.
      * 
      */
     @Import(name="countryCode")
     private @Nullable Output<String> countryCode;
 
     /**
-     * @return Two-letter country code.
+     * @return Two letter country code for billing country. Maximum length: `2`.
      * 
      */
     public Optional<Output<String>> countryCode() {
@@ -175,14 +206,14 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the billing group.
+     * Billing group name. Maximum length: `128`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the billing group.
+     * @return Billing group name. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -190,14 +221,14 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID.
      * 
      */
     @Import(name="parentId")
     private @Nullable Output<String> parentId;
 
     /**
-     * @return Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization by using its ID.
      * 
      */
     public Optional<Output<String>> parentId() {
@@ -205,29 +236,36 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Address state.
+     * Address state or province. Maximum length: `128`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Address state.
+     * @return Address state or province. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<BillingGroupTimeoutsArgs> timeouts;
+
+    public Optional<Output<BillingGroupTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * The VAT identification number for your company.
+     * EU VAT Identification Number. Maximum length: `64`.
      * 
      */
     @Import(name="vatId")
     private @Nullable Output<String> vatId;
 
     /**
-     * @return The VAT identification number for your company.
+     * @return EU VAT Identification Number. Maximum length: `64`.
      * 
      */
     public Optional<Output<String>> vatId() {
@@ -235,14 +273,14 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Zip or postal code.
+     * Address zip code. Maximum length: `32`.
      * 
      */
     @Import(name="zipCode")
     private @Nullable Output<String> zipCode;
 
     /**
-     * @return Zip or postal code.
+     * @return Address zip code. Maximum length: `32`.
      * 
      */
     public Optional<Output<String>> zipCode() {
@@ -254,9 +292,11 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     private BillingGroupState(BillingGroupState $) {
         this.accountId = $.accountId;
         this.addressLines = $.addressLines;
+        this.billingContactEmails = $.billingContactEmails;
         this.billingCurrency = $.billingCurrency;
         this.billingEmails = $.billingEmails;
         this.billingExtraText = $.billingExtraText;
+        this.billingGroupId = $.billingGroupId;
         this.cardId = $.cardId;
         this.city = $.city;
         this.company = $.company;
@@ -265,6 +305,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.parentId = $.parentId;
         this.state = $.state;
+        this.timeouts = $.timeouts;
         this.vatId = $.vatId;
         this.zipCode = $.zipCode;
     }
@@ -288,30 +329,30 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use parentId instead. This field will be removed in the next major release.
+         * Use `parentId` instead. This field will be removed in the next major release.
          * 
          */
-        @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
+        @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use parentId instead. This field will be removed in the next major release.
+         * Use `parentId` instead. This field will be removed in the next major release.
          * 
          */
-        @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
+        @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -348,7 +389,38 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingCurrency Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+         * @param billingContactEmails List of billing groups contact email addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingContactEmails(@Nullable Output<List<String>> billingContactEmails) {
+            $.billingContactEmails = billingContactEmails;
+            return this;
+        }
+
+        /**
+         * @param billingContactEmails List of billing groups contact email addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingContactEmails(List<String> billingContactEmails) {
+            return billingContactEmails(Output.of(billingContactEmails));
+        }
+
+        /**
+         * @param billingContactEmails List of billing groups contact email addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingContactEmails(String... billingContactEmails) {
+            return billingContactEmails(List.of(billingContactEmails));
+        }
+
+        /**
+         * @param billingCurrency Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
          * 
          * @return builder
          * 
@@ -359,7 +431,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingCurrency Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+         * @param billingCurrency Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
          * 
          * @return builder
          * 
@@ -369,7 +441,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingEmails Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+         * @param billingEmails List of project billing email addresses.
          * 
          * @return builder
          * 
@@ -380,7 +452,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingEmails Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+         * @param billingEmails List of project billing email addresses.
          * 
          * @return builder
          * 
@@ -390,7 +462,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingEmails Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+         * @param billingEmails List of project billing email addresses.
          * 
          * @return builder
          * 
@@ -400,7 +472,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingExtraText Additional information to include on your invoice (for example, a reference number).
+         * @param billingExtraText Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
          * 
          * @return builder
          * 
@@ -411,7 +483,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingExtraText Additional information to include on your invoice (for example, a reference number).
+         * @param billingExtraText Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
          * 
          * @return builder
          * 
@@ -421,7 +493,28 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cardId Credit card ID.
+         * @param billingGroupId The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingGroupId(@Nullable Output<String> billingGroupId) {
+            $.billingGroupId = billingGroupId;
+            return this;
+        }
+
+        /**
+         * @param billingGroupId The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingGroupId(String billingGroupId) {
+            return billingGroupId(Output.of(billingGroupId));
+        }
+
+        /**
+         * @param cardId Credit card ID. Maximum length: `64`.
          * 
          * @return builder
          * 
@@ -432,7 +525,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cardId Credit card ID.
+         * @param cardId Credit card ID. Maximum length: `64`.
          * 
          * @return builder
          * 
@@ -442,7 +535,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param city City, district, suburb, town, or village.
+         * @param city Address city. Maximum length: `512`.
          * 
          * @return builder
          * 
@@ -453,7 +546,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param city City, district, suburb, town, or village.
+         * @param city Address city. Maximum length: `512`.
          * 
          * @return builder
          * 
@@ -463,7 +556,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param company Your company name.
+         * @param company Name of a company. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -474,7 +567,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param company Your company name.
+         * @param company Name of a company. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -484,7 +577,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param copyFromBillingGroup ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+         * @param copyFromBillingGroup Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -495,7 +588,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param copyFromBillingGroup ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+         * @param copyFromBillingGroup Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -505,7 +598,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryCode Two-letter country code.
+         * @param countryCode Two letter country code for billing country. Maximum length: `2`.
          * 
          * @return builder
          * 
@@ -516,7 +609,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryCode Two-letter country code.
+         * @param countryCode Two letter country code for billing country. Maximum length: `2`.
          * 
          * @return builder
          * 
@@ -526,7 +619,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the billing group.
+         * @param name Billing group name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -537,7 +630,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the billing group.
+         * @param name Billing group name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -547,7 +640,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentId Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param parentId Link a billing group to an existing organization by using its ID.
          * 
          * @return builder
          * 
@@ -558,7 +651,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentId Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param parentId Link a billing group to an existing organization by using its ID.
          * 
          * @return builder
          * 
@@ -568,7 +661,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Address state.
+         * @param state Address state or province. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -579,7 +672,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Address state.
+         * @param state Address state or province. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -588,8 +681,17 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
             return state(Output.of(state));
         }
 
+        public Builder timeouts(@Nullable Output<BillingGroupTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(BillingGroupTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param vatId The VAT identification number for your company.
+         * @param vatId EU VAT Identification Number. Maximum length: `64`.
          * 
          * @return builder
          * 
@@ -600,7 +702,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vatId The VAT identification number for your company.
+         * @param vatId EU VAT Identification Number. Maximum length: `64`.
          * 
          * @return builder
          * 
@@ -610,7 +712,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zipCode Zip or postal code.
+         * @param zipCode Address zip code. Maximum length: `32`.
          * 
          * @return builder
          * 
@@ -621,7 +723,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zipCode Zip or postal code.
+         * @param zipCode Address zip code. Maximum length: `32`.
          * 
          * @return builder
          * 
