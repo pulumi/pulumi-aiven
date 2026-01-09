@@ -52,33 +52,39 @@ func LookupMysqlUser(ctx *pulumi.Context, args *LookupMysqlUserArgs, opts ...pul
 
 // A collection of arguments for invoking getMysqlUser.
 type LookupMysqlUserArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL® service user.
+	ServiceName string                `pulumi:"serviceName"`
+	Timeouts    *GetMysqlUserTimeouts `pulumi:"timeouts"`
+	// The name of the MySQL® service user.
 	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getMysqlUser.
 type LookupMysqlUserResult struct {
-	// Access certificate for the user.
+	// Access certificate for TLS client authentication.
 	AccessCert string `pulumi:"accessCert"`
-	// Access certificate key for the user.
+	// Access key for TLS client authentication.
 	AccessKey string `pulumi:"accessKey"`
-	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql*native*password' and 'caching*sha2*password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication string `pulumi:"authentication"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name/username`.
 	Id string `pulumi:"id"`
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 	Password string `pulumi:"password"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
+	PasswordWo string `pulumi:"passwordWo"`
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
+	PasswordWoVersion int `pulumi:"passwordWoVersion"`
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// The name of the MySQL® service user.
+	ServiceName string                `pulumi:"serviceName"`
+	Timeouts    *GetMysqlUserTimeouts `pulumi:"timeouts"`
 	// User account type, such as primary or regular account.
 	Type string `pulumi:"type"`
-	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL® service user.
 	Username string `pulumi:"username"`
 }
 
@@ -93,11 +99,12 @@ func LookupMysqlUserOutput(ctx *pulumi.Context, args LookupMysqlUserOutputArgs, 
 
 // A collection of arguments for invoking getMysqlUser.
 type LookupMysqlUserOutputArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL® service user.
+	ServiceName pulumi.StringInput           `pulumi:"serviceName"`
+	Timeouts    GetMysqlUserTimeoutsPtrInput `pulumi:"timeouts"`
+	// The name of the MySQL® service user.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -120,39 +127,53 @@ func (o LookupMysqlUserResultOutput) ToLookupMysqlUserResultOutputWithContext(ct
 	return o
 }
 
-// Access certificate for the user.
+// Access certificate for TLS client authentication.
 func (o LookupMysqlUserResultOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// Access certificate key for the user.
+// Access key for TLS client authentication.
 func (o LookupMysqlUserResultOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql*native*password' and 'caching*sha2*password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 func (o LookupMysqlUserResultOutput) Authentication() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.Authentication }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name/username`.
 func (o LookupMysqlUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 func (o LookupMysqlUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
+func (o LookupMysqlUserResultOutput) PasswordWo() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.PasswordWo }).(pulumi.StringOutput)
+}
+
+// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
+func (o LookupMysqlUserResultOutput) PasswordWoVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupMysqlUserResult) int { return v.PasswordWoVersion }).(pulumi.IntOutput)
+}
+
+// Project name.
 func (o LookupMysqlUserResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the MySQL® service user.
 func (o LookupMysqlUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupMysqlUserResultOutput) Timeouts() GetMysqlUserTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupMysqlUserResult) *GetMysqlUserTimeouts { return v.Timeouts }).(GetMysqlUserTimeoutsPtrOutput)
 }
 
 // User account type, such as primary or regular account.
@@ -160,7 +181,7 @@ func (o LookupMysqlUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the MySQL® service user.
 func (o LookupMysqlUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

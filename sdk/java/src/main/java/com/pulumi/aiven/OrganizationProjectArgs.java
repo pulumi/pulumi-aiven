@@ -21,14 +21,14 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
     public static final OrganizationProjectArgs Empty = new OrganizationProjectArgs();
 
     /**
-     * Valid port number (10000-30000) to use as a base for service port allocation.
+     * Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
      * 
      */
     @Import(name="basePort")
     private @Nullable Output<Integer> basePort;
 
     /**
-     * @return Valid port number (10000-30000) to use as a base for service port allocation.
+     * @return Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
      * 
      */
     public Optional<Output<Integer>> basePort() {
@@ -164,7 +164,7 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param basePort Valid port number (10000-30000) to use as a base for service port allocation.
+         * @param basePort Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param basePort Valid port number (10000-30000) to use as a base for service port allocation.
+         * @param basePort Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
          * 
          * @return builder
          * 

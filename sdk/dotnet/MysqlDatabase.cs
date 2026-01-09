@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
+    /// Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
     /// 
     /// ## Example Usage
     /// 
@@ -35,32 +35,35 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
+    /// $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/mysqlDatabase:MysqlDatabase")]
     public partial class MysqlDatabase : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the database. Changing this property forces recreation of the resource.
+        /// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("databaseName")]
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         [Output("terminationProtection")]
-        public Output<bool?> TerminationProtection { get; private set; } = null!;
+        public Output<bool> TerminationProtection { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.MysqlDatabaseTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -109,25 +112,28 @@ namespace Pulumi.Aiven
     public sealed class MysqlDatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the database. Changing this property forces recreation of the resource.
+        /// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.MysqlDatabaseTimeoutsArgs>? Timeouts { get; set; }
 
         public MysqlDatabaseArgs()
         {
@@ -138,25 +144,28 @@ namespace Pulumi.Aiven
     public sealed class MysqlDatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the database. Changing this property forces recreation of the resource.
+        /// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.MysqlDatabaseTimeoutsGetArgs>? Timeouts { get; set; }
 
         public MysqlDatabaseState()
         {

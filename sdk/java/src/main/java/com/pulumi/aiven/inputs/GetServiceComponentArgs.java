@@ -48,6 +48,21 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     * 
+     */
+    @Import(name="kafkaSslCa")
+    private @Nullable Output<String> kafkaSslCa;
+
+    /**
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     * 
+     */
+    public Optional<Output<String>> kafkaSslCa() {
+        return Optional.ofNullable(this.kafkaSslCa);
+    }
+
+    /**
      * Project name
      * 
      */
@@ -127,6 +142,7 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
     private GetServiceComponentArgs(GetServiceComponentArgs $) {
         this.component = $.component;
         this.kafkaAuthenticationMethod = $.kafkaAuthenticationMethod;
+        this.kafkaSslCa = $.kafkaSslCa;
         this.project = $.project;
         this.route = $.route;
         this.serviceName = $.serviceName;
@@ -192,6 +208,27 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder kafkaAuthenticationMethod(String kafkaAuthenticationMethod) {
             return kafkaAuthenticationMethod(Output.of(kafkaAuthenticationMethod));
+        }
+
+        /**
+         * @param kafkaSslCa Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaSslCa(@Nullable Output<String> kafkaSslCa) {
+            $.kafkaSslCa = kafkaSslCa;
+            return this;
+        }
+
+        /**
+         * @param kafkaSslCa Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaSslCa(String kafkaSslCa) {
+            return kafkaSslCa(Output.of(kafkaSslCa));
         }
 
         /**

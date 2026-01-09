@@ -118,6 +118,12 @@ namespace Pulumi.Aiven
         public string? KafkaAuthenticationMethod { get; set; }
 
         /// <summary>
+        /// Kafka certificate used. The possible values are `Letsencrypt` and `ProjectCa`.
+        /// </summary>
+        [Input("kafkaSslCa")]
+        public string? KafkaSslCa { get; set; }
+
+        /// <summary>
         /// Project name
         /// </summary>
         [Input("project", required: true)]
@@ -166,6 +172,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("kafkaAuthenticationMethod")]
         public Input<string>? KafkaAuthenticationMethod { get; set; }
+
+        /// <summary>
+        /// Kafka certificate used. The possible values are `Letsencrypt` and `ProjectCa`.
+        /// </summary>
+        [Input("kafkaSslCa")]
+        public Input<string>? KafkaSslCa { get; set; }
 
         /// <summary>
         /// Project name

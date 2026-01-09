@@ -2,17 +2,31 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Gets information about an organizational unit.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleUnit = aiven.getOrganizationalUnit({
+ *     name: "Example organizational unit",
+ * });
+ * ```
  */
-export function getOrganizationalUnit(args: GetOrganizationalUnitArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationalUnitResult> {
+export function getOrganizationalUnit(args?: GetOrganizationalUnitArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationalUnitResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganizationalUnit:getOrganizationalUnit", {
+        "id": args.id,
         "name": args.name,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -21,9 +35,14 @@ export function getOrganizationalUnit(args: GetOrganizationalUnitArgs, opts?: pu
  */
 export interface GetOrganizationalUnitArgs {
     /**
-     * The name of the organizational unit.
+     * The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
      */
-    name: string;
+    id?: string;
+    /**
+     * The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
+     */
+    name?: string;
+    timeouts?: inputs.GetOrganizationalUnitTimeouts;
 }
 
 /**
@@ -31,15 +50,15 @@ export interface GetOrganizationalUnitArgs {
  */
 export interface GetOrganizationalUnitResult {
     /**
-     * Time of creation.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     readonly createTime: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
      */
     readonly id: string;
     /**
-     * The name of the organizational unit.
+     * The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
      */
     readonly name: string;
     /**
@@ -47,11 +66,12 @@ export interface GetOrganizationalUnitResult {
      */
     readonly parentId: string;
     /**
-     * Tenant ID.
+     * Tenant identifier.
      */
     readonly tenantId: string;
+    readonly timeouts?: outputs.GetOrganizationalUnitTimeouts;
     /**
-     * Time of last update.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     readonly updateTime: string;
 }
@@ -59,11 +79,23 @@ export interface GetOrganizationalUnitResult {
  * Gets information about an organizational unit.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleUnit = aiven.getOrganizationalUnit({
+ *     name: "Example organizational unit",
+ * });
+ * ```
  */
-export function getOrganizationalUnitOutput(args: GetOrganizationalUnitOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationalUnitResult> {
+export function getOrganizationalUnitOutput(args?: GetOrganizationalUnitOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationalUnitResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationalUnit:getOrganizationalUnit", {
+        "id": args.id,
         "name": args.name,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -72,7 +104,12 @@ export function getOrganizationalUnitOutput(args: GetOrganizationalUnitOutputArg
  */
 export interface GetOrganizationalUnitOutputArgs {
     /**
-     * The name of the organizational unit.
+     * The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
      */
-    name: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    /**
+     * The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
+     */
+    name?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationalUnitTimeoutsArgs>;
 }

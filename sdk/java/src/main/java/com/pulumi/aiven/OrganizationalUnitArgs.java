@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.OrganizationalUnitTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -17,14 +18,14 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
     public static final OrganizationalUnitArgs Empty = new OrganizationalUnitArgs();
 
     /**
-     * The name of the organizational unit.
+     * The name of the organizational unit. Maximum length: `128`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the organizational unit.
+     * @return The name of the organizational unit. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -32,18 +33,25 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the organization that the unit is created in.
+     * The ID of the organization that the unit is created in. Maximum length: `36`.
      * 
      */
     @Import(name="parentId", required=true)
     private Output<String> parentId;
 
     /**
-     * @return The ID of the organization that the unit is created in.
+     * @return The ID of the organization that the unit is created in. Maximum length: `36`.
      * 
      */
     public Output<String> parentId() {
         return this.parentId;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationalUnitTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationalUnitTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private OrganizationalUnitArgs() {}
@@ -51,6 +59,7 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
     private OrganizationalUnitArgs(OrganizationalUnitArgs $) {
         this.name = $.name;
         this.parentId = $.parentId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -72,7 +81,7 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the organizational unit.
+         * @param name The name of the organizational unit. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -83,7 +92,7 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the organizational unit.
+         * @param name The name of the organizational unit. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -93,7 +102,7 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param parentId The ID of the organization that the unit is created in.
+         * @param parentId The ID of the organization that the unit is created in. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -104,13 +113,22 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param parentId The ID of the organization that the unit is created in.
+         * @param parentId The ID of the organization that the unit is created in. Maximum length: `36`.
          * 
          * @return builder
          * 
          */
         public Builder parentId(String parentId) {
             return parentId(Output.of(parentId));
+        }
+
+        public Builder timeouts(@Nullable Output<OrganizationalUnitTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationalUnitTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public OrganizationalUnitArgs build() {

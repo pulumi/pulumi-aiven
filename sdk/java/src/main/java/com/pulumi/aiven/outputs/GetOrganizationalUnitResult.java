@@ -3,25 +3,28 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetOrganizationalUnitTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationalUnitResult {
     /**
-     * @return Time of creation.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     private String createTime;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     private String id;
     /**
-     * @return The name of the organizational unit.
+     * @return The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     private String name;
@@ -31,33 +34,34 @@ public final class GetOrganizationalUnitResult {
      */
     private String parentId;
     /**
-     * @return Tenant ID.
+     * @return Tenant identifier.
      * 
      */
     private String tenantId;
+    private @Nullable GetOrganizationalUnitTimeouts timeouts;
     /**
-     * @return Time of last update.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     private String updateTime;
 
     private GetOrganizationalUnitResult() {}
     /**
-     * @return Time of creation.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name of the organizational unit.
+     * @return The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     public String name() {
@@ -71,14 +75,17 @@ public final class GetOrganizationalUnitResult {
         return this.parentId;
     }
     /**
-     * @return Tenant ID.
+     * @return Tenant identifier.
      * 
      */
     public String tenantId() {
         return this.tenantId;
     }
+    public Optional<GetOrganizationalUnitTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return Time of last update.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public String updateTime() {
@@ -99,6 +106,7 @@ public final class GetOrganizationalUnitResult {
         private String name;
         private String parentId;
         private String tenantId;
+        private @Nullable GetOrganizationalUnitTimeouts timeouts;
         private String updateTime;
         public Builder() {}
         public Builder(GetOrganizationalUnitResult defaults) {
@@ -108,6 +116,7 @@ public final class GetOrganizationalUnitResult {
     	      this.name = defaults.name;
     	      this.parentId = defaults.parentId;
     	      this.tenantId = defaults.tenantId;
+    	      this.timeouts = defaults.timeouts;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -152,6 +161,12 @@ public final class GetOrganizationalUnitResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetOrganizationalUnitTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetOrganizationalUnitResult", "updateTime");
@@ -166,6 +181,7 @@ public final class GetOrganizationalUnitResult {
             _resultValue.name = name;
             _resultValue.parentId = parentId;
             _resultValue.tenantId = tenantId;
+            _resultValue.timeouts = timeouts;
             _resultValue.updateTime = updateTime;
             return _resultValue;
         }

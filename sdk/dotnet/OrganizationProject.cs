@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     public partial class OrganizationProject : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Valid port number (10000-30000) to use as a base for service port allocation.
+        /// Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
         /// </summary>
         [Output("basePort")]
         public Output<int> BasePort { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Aiven
     public sealed class OrganizationProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Valid port number (10000-30000) to use as a base for service port allocation.
+        /// Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
         /// </summary>
         [Input("basePort")]
         public Input<int>? BasePort { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.Aiven
     public sealed class OrganizationProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Valid port number (10000-30000) to use as a base for service port allocation.
+        /// Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
         /// </summary>
         [Input("basePort")]
         public Input<int>? BasePort { get; set; }

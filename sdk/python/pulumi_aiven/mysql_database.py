@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['MysqlDatabaseArgs', 'MysqlDatabase']
 
@@ -22,24 +24,30 @@ class MysqlDatabaseArgs:
                  database_name: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None):
+                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input['MysqlDatabaseTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a MysqlDatabase resource.
-        :param pulumi.Input[_builtins.str] database_name: The name of the database. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
         if termination_protection is not None:
+            warnings.warn("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""", DeprecationWarning)
+            pulumi.log.warn("""termination_protection is deprecated: Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
+        if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the database. Changing this property forces recreation of the resource.
+        Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -51,7 +59,7 @@ class MysqlDatabaseArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -63,7 +71,7 @@ class MysqlDatabaseArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -73,12 +81,22 @@ class MysqlDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
+    @_utilities.deprecated("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
     def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
     def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "termination_protection", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['MysqlDatabaseTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['MysqlDatabaseTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -87,12 +105,13 @@ class _MysqlDatabaseState:
                  database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None):
+                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input['MysqlDatabaseTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering MysqlDatabase resources.
-        :param pulumi.Input[_builtins.str] database_name: The name of the database. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         """
         if database_name is not None:
             pulumi.set(__self__, "database_name", database_name)
@@ -101,13 +120,18 @@ class _MysqlDatabaseState:
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
         if termination_protection is not None:
+            warnings.warn("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""", DeprecationWarning)
+            pulumi.log.warn("""termination_protection is deprecated: Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
+        if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the database. Changing this property forces recreation of the resource.
+        Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -119,7 +143,7 @@ class _MysqlDatabaseState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -131,7 +155,7 @@ class _MysqlDatabaseState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -141,12 +165,22 @@ class _MysqlDatabaseState:
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
+    @_utilities.deprecated("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
     def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
     def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "termination_protection", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['MysqlDatabaseTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['MysqlDatabaseTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.type_token("aiven:index/mysqlDatabase:MysqlDatabase")
@@ -159,9 +193,10 @@ class MysqlDatabase(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input[Union['MysqlDatabaseTimeoutsArgs', 'MysqlDatabaseTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
+        Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
 
         ## Example Usage
 
@@ -178,14 +213,14 @@ class MysqlDatabase(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
+        $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] database_name: The name of the database. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -194,7 +229,7 @@ class MysqlDatabase(pulumi.CustomResource):
                  args: MysqlDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
+        Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
 
         ## Example Usage
 
@@ -211,7 +246,7 @@ class MysqlDatabase(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
+        $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -233,6 +268,7 @@ class MysqlDatabase(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input[Union['MysqlDatabaseTimeoutsArgs', 'MysqlDatabaseTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -252,6 +288,7 @@ class MysqlDatabase(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["termination_protection"] = termination_protection
+            __props__.__dict__["timeouts"] = timeouts
         super(MysqlDatabase, __self__).__init__(
             'aiven:index/mysqlDatabase:MysqlDatabase',
             resource_name,
@@ -265,7 +302,8 @@ class MysqlDatabase(pulumi.CustomResource):
             database_name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            termination_protection: Optional[pulumi.Input[_builtins.bool]] = None) -> 'MysqlDatabase':
+            termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+            timeouts: Optional[pulumi.Input[Union['MysqlDatabaseTimeoutsArgs', 'MysqlDatabaseTimeoutsArgsDict']]] = None) -> 'MysqlDatabase':
         """
         Get an existing MysqlDatabase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -273,9 +311,9 @@ class MysqlDatabase(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] database_name: The name of the database. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -285,13 +323,14 @@ class MysqlDatabase(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["termination_protection"] = termination_protection
+        __props__.__dict__["timeouts"] = timeouts
         return MysqlDatabase(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the database. Changing this property forces recreation of the resource.
+        Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -299,7 +338,7 @@ class MysqlDatabase(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -307,12 +346,18 @@ class MysqlDatabase(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    @_utilities.deprecated("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
+    def termination_protection(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "termination_protection")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.MysqlDatabaseTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

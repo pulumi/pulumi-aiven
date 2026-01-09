@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an Aiven for MySQL® service user.
+// Creates and manages an Aiven for MySQL® service user. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
 //
 // ## Example Usage
 //
@@ -46,31 +46,32 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/mysqlUser:MysqlUser foo PROJECT/SERVICE_NAME/USERNAME
+// $ pulumi import aiven:index/mysqlUser:MysqlUser example PROJECT/SERVICE_NAME/USERNAME
 // ```
 type MysqlUser struct {
 	pulumi.CustomResourceState
 
-	// Access certificate for the user.
+	// Access certificate for TLS client authentication.
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
-	// Access certificate key for the user.
+	// Access key for TLS client authentication.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
-	Authentication pulumi.StringPtrOutput `pulumi:"authentication"`
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+	Authentication pulumi.StringOutput `pulumi:"authentication"`
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// The name of the MySQL® service user. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringOutput        `pulumi:"serviceName"`
+	Timeouts    MysqlUserTimeoutsPtrOutput `pulumi:"timeouts"`
 	// User account type, such as primary or regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -126,50 +127,52 @@ func GetMysqlUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MysqlUser resources.
 type mysqlUserState struct {
-	// Access certificate for the user.
+	// Access certificate for TLS client authentication.
 	AccessCert *string `pulumi:"accessCert"`
-	// Access certificate key for the user.
+	// Access key for TLS client authentication.
 	AccessKey *string `pulumi:"accessKey"`
-	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication *string `pulumi:"authentication"`
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName *string `pulumi:"serviceName"`
+	// The name of the MySQL® service user. Changing this property forces recreation of the resource.
+	ServiceName *string            `pulumi:"serviceName"`
+	Timeouts    *MysqlUserTimeouts `pulumi:"timeouts"`
 	// User account type, such as primary or regular account.
 	Type *string `pulumi:"type"`
-	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type MysqlUserState struct {
-	// Access certificate for the user.
+	// Access certificate for TLS client authentication.
 	AccessCert pulumi.StringPtrInput
-	// Access certificate key for the user.
+	// Access key for TLS client authentication.
 	AccessKey pulumi.StringPtrInput
-	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrInput
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL® service user. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
+	Timeouts    MysqlUserTimeoutsPtrInput
 	// User account type, such as primary or regular account.
 	Type pulumi.StringPtrInput
-	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -178,39 +181,41 @@ func (MysqlUserState) ElementType() reflect.Type {
 }
 
 type mysqlUserArgs struct {
-	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication *string `pulumi:"authentication"`
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL® service user. Changing this property forces recreation of the resource.
+	ServiceName string             `pulumi:"serviceName"`
+	Timeouts    *MysqlUserTimeouts `pulumi:"timeouts"`
+	// The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a MysqlUser resource.
 type MysqlUserArgs struct {
-	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrInput
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL® service user. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Timeouts    MysqlUserTimeoutsPtrInput
+	// The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -301,45 +306,49 @@ func (o MysqlUserOutput) ToMysqlUserOutputWithContext(ctx context.Context) Mysql
 	return o
 }
 
-// Access certificate for the user.
+// Access certificate for TLS client authentication.
 func (o MysqlUserOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// Access certificate key for the user.
+// Access key for TLS client authentication.
 func (o MysqlUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
-func (o MysqlUserOutput) Authentication() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MysqlUser) pulumi.StringPtrOutput { return v.Authentication }).(pulumi.StringPtrOutput)
+// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+func (o MysqlUserOutput) Authentication() pulumi.StringOutput {
+	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.Authentication }).(pulumi.StringOutput)
 }
 
-// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
 func (o MysqlUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
 func (o MysqlUserOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
 
-// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 func (o MysqlUserOutput) PasswordWoVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.IntPtrOutput { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o MysqlUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the MySQL® service user. Changing this property forces recreation of the resource.
 func (o MysqlUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o MysqlUserOutput) Timeouts() MysqlUserTimeoutsPtrOutput {
+	return o.ApplyT(func(v *MysqlUser) MysqlUserTimeoutsPtrOutput { return v.Timeouts }).(MysqlUserTimeoutsPtrOutput)
 }
 
 // User account type, such as primary or regular account.
@@ -347,7 +356,7 @@ func (o MysqlUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
 func (o MysqlUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

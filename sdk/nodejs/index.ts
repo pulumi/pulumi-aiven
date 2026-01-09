@@ -585,6 +585,11 @@ export const getServiceIntegrationEndpoint: typeof import("./getServiceIntegrati
 export const getServiceIntegrationEndpointOutput: typeof import("./getServiceIntegrationEndpoint").getServiceIntegrationEndpointOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceIntegrationEndpoint","getServiceIntegrationEndpointOutput"], () => require("./getServiceIntegrationEndpoint"));
 
+export { GetServiceListArgs, GetServiceListResult, GetServiceListOutputArgs } from "./getServiceList";
+export const getServiceList: typeof import("./getServiceList").getServiceList = null as any;
+export const getServiceListOutput: typeof import("./getServiceList").getServiceListOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceList","getServiceListOutput"], () => require("./getServiceList"));
+
 export { GetServicePlanArgs, GetServicePlanResult, GetServicePlanOutputArgs } from "./getServicePlan";
 export const getServicePlan: typeof import("./getServicePlan").getServicePlan = null as any;
 export const getServicePlanOutput: typeof import("./getServicePlan").getServicePlanOutput = null as any;

@@ -44,20 +44,21 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
+// $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example ORGANIZATIONAL_UNIT_ID
 // ```
 type OrganizationalUnit struct {
 	pulumi.CustomResourceState
 
-	// Time of creation.
+	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The name of the organizational unit.
+	// The name of the organizational unit. Maximum length: `128`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the organization that the unit is created in.
+	// The ID of the organization that the unit is created in. Maximum length: `36`.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
-	// Tenant ID.
-	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// Time of last update.
+	// Tenant identifier.
+	TenantId pulumi.StringOutput                 `pulumi:"tenantId"`
+	Timeouts OrganizationalUnitTimeoutsPtrOutput `pulumi:"timeouts"`
+	// Timestamp in ISO 8601 format, always in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -94,28 +95,30 @@ func GetOrganizationalUnit(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationalUnit resources.
 type organizationalUnitState struct {
-	// Time of creation.
+	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime *string `pulumi:"createTime"`
-	// The name of the organizational unit.
+	// The name of the organizational unit. Maximum length: `128`.
 	Name *string `pulumi:"name"`
-	// The ID of the organization that the unit is created in.
+	// The ID of the organization that the unit is created in. Maximum length: `36`.
 	ParentId *string `pulumi:"parentId"`
-	// Tenant ID.
-	TenantId *string `pulumi:"tenantId"`
-	// Time of last update.
+	// Tenant identifier.
+	TenantId *string                     `pulumi:"tenantId"`
+	Timeouts *OrganizationalUnitTimeouts `pulumi:"timeouts"`
+	// Timestamp in ISO 8601 format, always in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type OrganizationalUnitState struct {
-	// Time of creation.
+	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime pulumi.StringPtrInput
-	// The name of the organizational unit.
+	// The name of the organizational unit. Maximum length: `128`.
 	Name pulumi.StringPtrInput
-	// The ID of the organization that the unit is created in.
+	// The ID of the organization that the unit is created in. Maximum length: `36`.
 	ParentId pulumi.StringPtrInput
-	// Tenant ID.
+	// Tenant identifier.
 	TenantId pulumi.StringPtrInput
-	// Time of last update.
+	Timeouts OrganizationalUnitTimeoutsPtrInput
+	// Timestamp in ISO 8601 format, always in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -124,18 +127,20 @@ func (OrganizationalUnitState) ElementType() reflect.Type {
 }
 
 type organizationalUnitArgs struct {
-	// The name of the organizational unit.
+	// The name of the organizational unit. Maximum length: `128`.
 	Name *string `pulumi:"name"`
-	// The ID of the organization that the unit is created in.
-	ParentId string `pulumi:"parentId"`
+	// The ID of the organization that the unit is created in. Maximum length: `36`.
+	ParentId string                      `pulumi:"parentId"`
+	Timeouts *OrganizationalUnitTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a OrganizationalUnit resource.
 type OrganizationalUnitArgs struct {
-	// The name of the organizational unit.
+	// The name of the organizational unit. Maximum length: `128`.
 	Name pulumi.StringPtrInput
-	// The ID of the organization that the unit is created in.
+	// The ID of the organization that the unit is created in. Maximum length: `36`.
 	ParentId pulumi.StringInput
+	Timeouts OrganizationalUnitTimeoutsPtrInput
 }
 
 func (OrganizationalUnitArgs) ElementType() reflect.Type {
@@ -225,27 +230,31 @@ func (o OrganizationalUnitOutput) ToOrganizationalUnitOutputWithContext(ctx cont
 	return o
 }
 
-// Time of creation.
+// Timestamp in ISO 8601 format, always in UTC.
 func (o OrganizationalUnitOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The name of the organizational unit.
+// The name of the organizational unit. Maximum length: `128`.
 func (o OrganizationalUnitOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the organization that the unit is created in.
+// The ID of the organization that the unit is created in. Maximum length: `36`.
 func (o OrganizationalUnitOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Tenant ID.
+// Tenant identifier.
 func (o OrganizationalUnitOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Time of last update.
+func (o OrganizationalUnitOutput) Timeouts() OrganizationalUnitTimeoutsPtrOutput {
+	return o.ApplyT(func(v *OrganizationalUnit) OrganizationalUnitTimeoutsPtrOutput { return v.Timeouts }).(OrganizationalUnitTimeoutsPtrOutput)
+}
+
+// Timestamp in ISO 8601 format, always in UTC.
 func (o OrganizationalUnitOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

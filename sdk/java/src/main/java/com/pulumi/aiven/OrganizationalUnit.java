@@ -6,11 +6,13 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.OrganizationalUnitArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.OrganizationalUnitState;
+import com.pulumi.aiven.outputs.OrganizationalUnitTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -53,77 +55,83 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
+ * $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example ORGANIZATIONAL_UNIT_ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/organizationalUnit:OrganizationalUnit")
 public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
     /**
-     * Time of creation.
+     * Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Time of creation.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The name of the organizational unit.
+     * The name of the organizational unit. Maximum length: `128`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the organizational unit.
+     * @return The name of the organizational unit. Maximum length: `128`.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The ID of the organization that the unit is created in.
+     * The ID of the organization that the unit is created in. Maximum length: `36`.
      * 
      */
     @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
 
     /**
-     * @return The ID of the organization that the unit is created in.
+     * @return The ID of the organization that the unit is created in. Maximum length: `36`.
      * 
      */
     public Output<String> parentId() {
         return this.parentId;
     }
     /**
-     * Tenant ID.
+     * Tenant identifier.
      * 
      */
     @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
-     * @return Tenant ID.
+     * @return Tenant identifier.
      * 
      */
     public Output<String> tenantId() {
         return this.tenantId;
     }
+    @Export(name="timeouts", refs={OrganizationalUnitTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationalUnitTimeouts> timeouts;
+
+    public Output<Optional<OrganizationalUnitTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * Time of last update.
+     * Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Time of last update.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public Output<String> updateTime() {

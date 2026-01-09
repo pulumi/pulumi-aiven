@@ -60,6 +60,8 @@ type GetServiceComponentArgs struct {
 	Component string `pulumi:"component"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa *string `pulumi:"kafkaSslCa"`
 	// Project name
 	Project string `pulumi:"project"`
 	// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
@@ -113,6 +115,8 @@ type GetServiceComponentOutputArgs struct {
 	Component pulumi.StringInput `pulumi:"component"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa pulumi.StringPtrInput `pulumi:"kafkaSslCa"`
 	// Project name
 	Project pulumi.StringInput `pulumi:"project"`
 	// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.

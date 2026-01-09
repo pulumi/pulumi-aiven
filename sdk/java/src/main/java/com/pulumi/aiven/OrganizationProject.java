@@ -31,14 +31,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/organizationProject:OrganizationProject")
 public class OrganizationProject extends com.pulumi.resources.CustomResource {
     /**
-     * Valid port number (10000-30000) to use as a base for service port allocation.
+     * Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
      * 
      */
     @Export(name="basePort", refs={Integer.class}, tree="[0]")
     private Output<Integer> basePort;
 
     /**
-     * @return Valid port number (10000-30000) to use as a base for service port allocation.
+     * @return Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
      * 
      */
     public Output<Integer> basePort() {

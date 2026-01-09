@@ -139,6 +139,21 @@ public final class MySqlMysqlUserConfigMigrationArgs extends com.pulumi.resource
     }
 
     /**
+     * Skip dump-restore part and start replication. Default: `false`.
+     * 
+     */
+    @Import(name="reestablishReplication")
+    private @Nullable Output<Boolean> reestablishReplication;
+
+    /**
+     * @return Skip dump-restore part and start replication. Default: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> reestablishReplication() {
+        return Optional.ofNullable(this.reestablishReplication);
+    }
+
+    /**
      * The server where to migrate data from is secured with SSL. Default: `true`.
      * 
      */
@@ -179,6 +194,7 @@ public final class MySqlMysqlUserConfigMigrationArgs extends com.pulumi.resource
         this.method = $.method;
         this.password = $.password;
         this.port = $.port;
+        this.reestablishReplication = $.reestablishReplication;
         this.ssl = $.ssl;
         this.username = $.username;
     }
@@ -367,6 +383,27 @@ public final class MySqlMysqlUserConfigMigrationArgs extends com.pulumi.resource
          */
         public Builder port(Integer port) {
             return port(Output.of(port));
+        }
+
+        /**
+         * @param reestablishReplication Skip dump-restore part and start replication. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reestablishReplication(@Nullable Output<Boolean> reestablishReplication) {
+            $.reestablishReplication = reestablishReplication;
+            return this;
+        }
+
+        /**
+         * @param reestablishReplication Skip dump-restore part and start replication. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reestablishReplication(Boolean reestablishReplication) {
+            return reestablishReplication(Output.of(reestablishReplication));
         }
 
         /**

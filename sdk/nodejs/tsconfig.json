@@ -131,6 +131,7 @@
         "getServiceComponent.ts",
         "getServiceIntegration.ts",
         "getServiceIntegrationEndpoint.ts",
+        "getServiceList.ts",
         "getServicePlan.ts",
         "getServicePlanList.ts",
         "getThanos.ts",

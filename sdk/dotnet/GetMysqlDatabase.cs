@@ -94,22 +94,25 @@ namespace Pulumi.Aiven
     public sealed class GetMysqlDatabaseArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the database. Changing this property forces recreation of the resource.
+        /// Service database name.
         /// </summary>
         [Input("databaseName", required: true)]
         public string DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetMysqlDatabaseTimeoutsArgs? Timeouts { get; set; }
 
         public GetMysqlDatabaseArgs()
         {
@@ -120,22 +123,25 @@ namespace Pulumi.Aiven
     public sealed class GetMysqlDatabaseInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the database. Changing this property forces recreation of the resource.
+        /// Service database name.
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetMysqlDatabaseTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetMysqlDatabaseInvokeArgs()
         {
@@ -148,22 +154,23 @@ namespace Pulumi.Aiven
     public sealed class GetMysqlDatabaseResult
     {
         /// <summary>
-        /// The name of the database. Changing this property forces recreation of the resource.
+        /// Service database name.
         /// </summary>
         public readonly string DatabaseName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/database_name`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
         public readonly bool TerminationProtection;
+        public readonly Outputs.GetMysqlDatabaseTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetMysqlDatabaseResult(
@@ -175,13 +182,16 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
-            bool terminationProtection)
+            bool terminationProtection,
+
+            Outputs.GetMysqlDatabaseTimeoutsResult? timeouts)
         {
             DatabaseName = databaseName;
             Id = id;
             Project = project;
             ServiceName = serviceName;
             TerminationProtection = terminationProtection;
+            Timeouts = timeouts;
         }
     }
 }

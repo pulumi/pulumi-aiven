@@ -15,22 +15,70 @@ namespace Pulumi.Aiven
         /// Gets information about an organizational unit.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleUnit = Aiven.GetOrganizationalUnit.Invoke(new()
+        ///     {
+        ///         Name = "Example organizational unit",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetOrganizationalUnitResult> InvokeAsync(GetOrganizationalUnitArgs args, InvokeOptions? options = null)
+        public static Task<GetOrganizationalUnitResult> InvokeAsync(GetOrganizationalUnitArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationalUnitResult>("aiven:index/getOrganizationalUnit:getOrganizationalUnit", args ?? new GetOrganizationalUnitArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about an organizational unit.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleUnit = Aiven.GetOrganizationalUnit.Invoke(new()
+        ///     {
+        ///         Name = "Example organizational unit",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetOrganizationalUnitResult> Invoke(GetOrganizationalUnitInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetOrganizationalUnitResult> Invoke(GetOrganizationalUnitInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationalUnitResult>("aiven:index/getOrganizationalUnit:getOrganizationalUnit", args ?? new GetOrganizationalUnitInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about an organizational unit.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleUnit = Aiven.GetOrganizationalUnit.Invoke(new()
+        ///     {
+        ///         Name = "Example organizational unit",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationalUnitResult> Invoke(GetOrganizationalUnitInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationalUnitResult>("aiven:index/getOrganizationalUnit:getOrganizationalUnit", args ?? new GetOrganizationalUnitInvokeArgs(), options.WithDefaults());
@@ -40,10 +88,19 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationalUnitArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the organizational unit.
+        /// The ID of this resource. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// The name of the organizational unit. Exactly one of the fields must be specified: `Id` or `Name`.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
+
+        [Input("timeouts")]
+        public Inputs.GetOrganizationalUnitTimeoutsArgs? Timeouts { get; set; }
 
         public GetOrganizationalUnitArgs()
         {
@@ -54,10 +111,19 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationalUnitInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the organizational unit.
+        /// The ID of this resource. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The name of the organizational unit. Exactly one of the fields must be specified: `Id` or `Name`.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.GetOrganizationalUnitTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetOrganizationalUnitInvokeArgs()
         {
@@ -70,15 +136,15 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationalUnitResult
     {
         /// <summary>
-        /// Time of creation.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this resource. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the organizational unit.
+        /// The name of the organizational unit. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -86,11 +152,12 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ParentId;
         /// <summary>
-        /// Tenant ID.
+        /// Tenant identifier.
         /// </summary>
         public readonly string TenantId;
+        public readonly Outputs.GetOrganizationalUnitTimeoutsResult? Timeouts;
         /// <summary>
-        /// Time of last update.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         public readonly string UpdateTime;
 
@@ -106,6 +173,8 @@ namespace Pulumi.Aiven
 
             string tenantId,
 
+            Outputs.GetOrganizationalUnitTimeoutsResult? timeouts,
+
             string updateTime)
         {
             CreateTime = createTime;
@@ -113,6 +182,7 @@ namespace Pulumi.Aiven
             Name = name;
             ParentId = parentId;
             TenantId = tenantId;
+            Timeouts = timeouts;
             UpdateTime = updateTime;
         }
     }

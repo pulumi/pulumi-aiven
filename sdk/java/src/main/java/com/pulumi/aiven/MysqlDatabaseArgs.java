@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.MysqlDatabaseTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -18,14 +19,14 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
     public static final MysqlDatabaseArgs Empty = new MysqlDatabaseArgs();
 
     /**
-     * The name of the database. Changing this property forces recreation of the resource.
+     * Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="databaseName", required=true)
     private Output<String> databaseName;
 
     /**
-     * @return The name of the database. Changing this property forces recreation of the resource.
+     * @return Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> databaseName() {
@@ -33,14 +34,14 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -48,25 +49,44 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
 
+    /**
+     * @deprecated
+     * Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     * 
+     */
+    @Deprecated /* Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     @Import(name="terminationProtection")
     private @Nullable Output<Boolean> terminationProtection;
 
+    /**
+     * @deprecated
+     * Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     * 
+     */
+    @Deprecated /* Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     public Optional<Output<Boolean>> terminationProtection() {
         return Optional.ofNullable(this.terminationProtection);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<MysqlDatabaseTimeoutsArgs> timeouts;
+
+    public Optional<Output<MysqlDatabaseTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private MysqlDatabaseArgs() {}
@@ -76,6 +96,7 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.serviceName = $.serviceName;
         this.terminationProtection = $.terminationProtection;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -97,7 +118,7 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseName The name of the database. Changing this property forces recreation of the resource.
+         * @param databaseName Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -108,7 +129,7 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseName The name of the database. Changing this property forces recreation of the resource.
+         * @param databaseName Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -118,7 +139,7 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -129,7 +150,7 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -139,7 +160,7 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -150,7 +171,7 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -159,13 +180,38 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
             return serviceName(Output.of(serviceName));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+         * 
+         */
+        @Deprecated /* Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
         public Builder terminationProtection(@Nullable Output<Boolean> terminationProtection) {
             $.terminationProtection = terminationProtection;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+         * 
+         */
+        @Deprecated /* Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
         public Builder terminationProtection(Boolean terminationProtection) {
             return terminationProtection(Output.of(terminationProtection));
+        }
+
+        public Builder timeouts(@Nullable Output<MysqlDatabaseTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(MysqlDatabaseTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public MysqlDatabaseArgs build() {

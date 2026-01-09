@@ -1700,6 +1700,34 @@ export interface GetBillingGroupTimeoutsArgs {
     read?: pulumi.Input<string>;
 }
 
+export interface GetMysqlDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetMysqlDatabaseTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetMysqlUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetMysqlUserTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface GetOrganizationAddressTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -2266,6 +2294,168 @@ export interface GetOrganizationUserListUserUserInfoArgs {
      * User Email.
      */
     userEmail?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationalUnitTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationalUnitTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetServiceListService {
+    /**
+     * Cloud provider and location.
+     */
+    cloudDescription?: string;
+    /**
+     * Target cloud.
+     */
+    cloudName?: string;
+    /**
+     * Service creation timestamp (ISO 8601).
+     */
+    createTime?: string;
+    /**
+     * Megabytes of disk space for data storage.
+     */
+    diskSpaceMb?: number;
+    /**
+     * Number of service nodes in the active plan.
+     */
+    nodeCount?: number;
+    /**
+     * Number of CPUs for each node.
+     */
+    nodeCpuCount?: number;
+    /**
+     * Megabytes of memory for each node.
+     */
+    nodeMemoryMb?: number;
+    /**
+     * Subscription plan.
+     */
+    plan?: string;
+    /**
+     * Project VPC ID.
+     */
+    projectVpcId?: string;
+    /**
+     * Service name.
+     */
+    serviceName?: string;
+    /**
+     * Service type code.
+     */
+    serviceType?: string;
+    /**
+     * Single line description of the service.
+     */
+    serviceTypeDescription?: string;
+    /**
+     * URI for connecting to the service (may be null).
+     */
+    serviceUri?: string;
+    /**
+     * State of the service. The possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
+     */
+    state?: string;
+    /**
+     * Service is protected against termination and powering off.
+     */
+    terminationProtection?: boolean;
+    /**
+     * Service last update timestamp (ISO 8601).
+     */
+    updateTime?: string;
+}
+
+export interface GetServiceListServiceArgs {
+    /**
+     * Cloud provider and location.
+     */
+    cloudDescription?: pulumi.Input<string>;
+    /**
+     * Target cloud.
+     */
+    cloudName?: pulumi.Input<string>;
+    /**
+     * Service creation timestamp (ISO 8601).
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Megabytes of disk space for data storage.
+     */
+    diskSpaceMb?: pulumi.Input<number>;
+    /**
+     * Number of service nodes in the active plan.
+     */
+    nodeCount?: pulumi.Input<number>;
+    /**
+     * Number of CPUs for each node.
+     */
+    nodeCpuCount?: pulumi.Input<number>;
+    /**
+     * Megabytes of memory for each node.
+     */
+    nodeMemoryMb?: pulumi.Input<number>;
+    /**
+     * Subscription plan.
+     */
+    plan?: pulumi.Input<string>;
+    /**
+     * Project VPC ID.
+     */
+    projectVpcId?: pulumi.Input<string>;
+    /**
+     * Service name.
+     */
+    serviceName?: pulumi.Input<string>;
+    /**
+     * Service type code.
+     */
+    serviceType?: pulumi.Input<string>;
+    /**
+     * Single line description of the service.
+     */
+    serviceTypeDescription?: pulumi.Input<string>;
+    /**
+     * URI for connecting to the service (may be null).
+     */
+    serviceUri?: pulumi.Input<string>;
+    /**
+     * State of the service. The possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * Service is protected against termination and powering off.
+     */
+    terminationProtection?: pulumi.Input<boolean>;
+    /**
+     * Service last update timestamp (ISO 8601).
+     */
+    updateTime?: pulumi.Input<string>;
+}
+
+export interface GetServiceListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetServiceListTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
 }
 
 export interface GetServicePlanBackupConfig {
@@ -5436,6 +5626,10 @@ export interface MySqlMysqlUserConfigMigration {
      */
     port: pulumi.Input<number>;
     /**
+     * Skip dump-restore part and start replication. Default: `false`.
+     */
+    reestablishReplication?: pulumi.Input<boolean>;
+    /**
      * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: pulumi.Input<boolean>;
@@ -5655,6 +5849,56 @@ export interface MySqlTechEmail {
      * An email address to contact for technical issues
      */
     email: pulumi.Input<string>;
+}
+
+export interface MysqlDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface MysqlUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface OpenSearchComponent {
@@ -7096,6 +7340,31 @@ export interface OrganizationUserGroupMemberTimeouts {
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
     create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OrganizationalUnitTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */

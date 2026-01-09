@@ -3,10 +3,12 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationalUnitTimeouts;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationalUnitPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,24 +16,48 @@ public final class GetOrganizationalUnitPlainArgs extends com.pulumi.resources.I
     public static final GetOrganizationalUnitPlainArgs Empty = new GetOrganizationalUnitPlainArgs();
 
     /**
-     * The name of the organizational unit.
+     * The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
-    @Import(name="name", required=true)
-    private String name;
+    @Import(name="id")
+    private @Nullable String id;
 
     /**
-     * @return The name of the organizational unit.
+     * @return The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable String name;
+
+    /**
+     * @return The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable GetOrganizationalUnitTimeouts timeouts;
+
+    public Optional<GetOrganizationalUnitTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetOrganizationalUnitPlainArgs() {}
 
     private GetOrganizationalUnitPlainArgs(GetOrganizationalUnitPlainArgs $) {
+        this.id = $.id;
         this.name = $.name;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -53,20 +79,33 @@ public final class GetOrganizationalUnitPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param name The name of the organizational unit.
+         * @param id The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
          * 
          * @return builder
          * 
          */
-        public Builder name(String name) {
+        public Builder id(@Nullable String id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param name The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
+        public Builder timeouts(@Nullable GetOrganizationalUnitTimeouts timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
         public GetOrganizationalUnitPlainArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetOrganizationalUnitPlainArgs", "name");
-            }
             return $;
         }
     }

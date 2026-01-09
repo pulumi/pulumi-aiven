@@ -122,6 +122,7 @@ from .get_redis_user import *
 from .get_service_component import *
 from .get_service_integration import *
 from .get_service_integration_endpoint import *
+from .get_service_list import *
 from .get_service_plan import *
 from .get_service_plan_list import *
 from .get_thanos import *

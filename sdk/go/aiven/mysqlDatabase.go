@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
+// Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
 //
 // ## Example Usage
 //
@@ -45,18 +45,20 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
+// $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
 // ```
 type MysqlDatabase struct {
 	pulumi.CustomResourceState
 
-	// The name of the database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringOutput  `pulumi:"serviceName"`
-	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection pulumi.BoolOutput              `pulumi:"terminationProtection"`
+	Timeouts              MysqlDatabaseTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewMysqlDatabase registers a new resource with the given unique name, arguments, and options.
@@ -98,23 +100,27 @@ func GetMysqlDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MysqlDatabase resources.
 type mysqlDatabaseState struct {
-	// The name of the database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName *string `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           *string `pulumi:"serviceName"`
-	TerminationProtection *bool   `pulumi:"terminationProtection"`
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName *string `pulumi:"serviceName"`
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection *bool                  `pulumi:"terminationProtection"`
+	Timeouts              *MysqlDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 type MysqlDatabaseState struct {
-	// The name of the database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringPtrInput
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringPtrInput
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection pulumi.BoolPtrInput
+	Timeouts              MysqlDatabaseTimeoutsPtrInput
 }
 
 func (MysqlDatabaseState) ElementType() reflect.Type {
@@ -122,24 +128,28 @@ func (MysqlDatabaseState) ElementType() reflect.Type {
 }
 
 type mysqlDatabaseArgs struct {
-	// The name of the database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           string `pulumi:"serviceName"`
-	TerminationProtection *bool  `pulumi:"terminationProtection"`
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName string `pulumi:"serviceName"`
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection *bool                  `pulumi:"terminationProtection"`
+	Timeouts              *MysqlDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a MysqlDatabase resource.
 type MysqlDatabaseArgs struct {
-	// The name of the database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringInput
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringInput
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection pulumi.BoolPtrInput
+	Timeouts              MysqlDatabaseTimeoutsPtrInput
 }
 
 func (MysqlDatabaseArgs) ElementType() reflect.Type {
@@ -229,23 +239,28 @@ func (o MysqlDatabaseOutput) ToMysqlDatabaseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The name of the database. Changing this property forces recreation of the resource.
+// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 func (o MysqlDatabaseOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o MysqlDatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o MysqlDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-func (o MysqlDatabaseOutput) TerminationProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MysqlDatabase) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+func (o MysqlDatabaseOutput) TerminationProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MysqlDatabase) pulumi.BoolOutput { return v.TerminationProtection }).(pulumi.BoolOutput)
+}
+
+func (o MysqlDatabaseOutput) Timeouts() MysqlDatabaseTimeoutsPtrOutput {
+	return o.ApplyT(func(v *MysqlDatabase) MysqlDatabaseTimeoutsPtrOutput { return v.Timeouts }).(MysqlDatabaseTimeoutsPtrOutput)
 }
 
 type MysqlDatabaseArrayOutput struct{ *pulumi.OutputState }

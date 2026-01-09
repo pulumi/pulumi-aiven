@@ -81,7 +81,7 @@ type OrganizationApplicationUserToken struct {
 	LastUserAgent pulumi.StringOutput `pulumi:"lastUserAgent"`
 	// Human readable user agent string of the client that last used the token in case user agent is known.
 	LastUserAgentHumanReadable pulumi.StringOutput `pulumi:"lastUserAgentHumanReadable"`
-	// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+	// Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
 	MaxAgeSeconds pulumi.IntPtrOutput `pulumi:"maxAgeSeconds"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
@@ -158,7 +158,7 @@ type organizationApplicationUserTokenState struct {
 	LastUserAgent *string `pulumi:"lastUserAgent"`
 	// Human readable user agent string of the client that last used the token in case user agent is known.
 	LastUserAgentHumanReadable *string `pulumi:"lastUserAgentHumanReadable"`
-	// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+	// Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
 	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
@@ -196,7 +196,7 @@ type OrganizationApplicationUserTokenState struct {
 	LastUserAgent pulumi.StringPtrInput
 	// Human readable user agent string of the client that last used the token in case user agent is known.
 	LastUserAgentHumanReadable pulumi.StringPtrInput
-	// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+	// Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
 	MaxAgeSeconds pulumi.IntPtrInput
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
@@ -220,7 +220,7 @@ type organizationApplicationUserTokenArgs struct {
 	ExtendWhenUsed *bool `pulumi:"extendWhenUsed"`
 	// List of allowed IP ranges. Changing this property forces recreation of the resource.
 	IpAllowlists []string `pulumi:"ipAllowlists"`
-	// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+	// Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
 	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
@@ -239,7 +239,7 @@ type OrganizationApplicationUserTokenArgs struct {
 	ExtendWhenUsed pulumi.BoolPtrInput
 	// List of allowed IP ranges. Changing this property forces recreation of the resource.
 	IpAllowlists pulumi.StringArrayInput
-	// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+	// Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
 	MaxAgeSeconds pulumi.IntPtrInput
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
@@ -397,7 +397,7 @@ func (o OrganizationApplicationUserTokenOutput) LastUserAgentHumanReadable() pul
 	return o.ApplyT(func(v *OrganizationApplicationUserToken) pulumi.StringOutput { return v.LastUserAgentHumanReadable }).(pulumi.StringOutput)
 }
 
-// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+// Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
 func (o OrganizationApplicationUserTokenOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrganizationApplicationUserToken) pulumi.IntPtrOutput { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
 }

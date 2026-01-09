@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.OrganizationalUnitTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,14 +17,14 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
     public static final OrganizationalUnitState Empty = new OrganizationalUnitState();
 
     /**
-     * Time of creation.
+     * Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Time of creation.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -31,14 +32,14 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The name of the organizational unit.
+     * The name of the organizational unit. Maximum length: `128`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the organizational unit.
+     * @return The name of the organizational unit. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -46,14 +47,14 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The ID of the organization that the unit is created in.
+     * The ID of the organization that the unit is created in. Maximum length: `36`.
      * 
      */
     @Import(name="parentId")
     private @Nullable Output<String> parentId;
 
     /**
-     * @return The ID of the organization that the unit is created in.
+     * @return The ID of the organization that the unit is created in. Maximum length: `36`.
      * 
      */
     public Optional<Output<String>> parentId() {
@@ -61,29 +62,36 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Tenant ID.
+     * Tenant identifier.
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Tenant ID.
+     * @return Tenant identifier.
      * 
      */
     public Optional<Output<String>> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationalUnitTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationalUnitTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * Time of last update.
+     * Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Time of last update.
+     * @return Timestamp in ISO 8601 format, always in UTC.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -97,6 +105,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         this.name = $.name;
         this.parentId = $.parentId;
         this.tenantId = $.tenantId;
+        this.timeouts = $.timeouts;
         this.updateTime = $.updateTime;
     }
 
@@ -119,7 +128,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param createTime Time of creation.
+         * @param createTime Timestamp in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 
@@ -130,7 +139,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param createTime Time of creation.
+         * @param createTime Timestamp in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 
@@ -140,7 +149,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The name of the organizational unit.
+         * @param name The name of the organizational unit. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -151,7 +160,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The name of the organizational unit.
+         * @param name The name of the organizational unit. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -161,7 +170,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parentId The ID of the organization that the unit is created in.
+         * @param parentId The ID of the organization that the unit is created in. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -172,7 +181,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parentId The ID of the organization that the unit is created in.
+         * @param parentId The ID of the organization that the unit is created in. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -182,7 +191,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tenantId Tenant ID.
+         * @param tenantId Tenant identifier.
          * 
          * @return builder
          * 
@@ -193,7 +202,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tenantId Tenant ID.
+         * @param tenantId Tenant identifier.
          * 
          * @return builder
          * 
@@ -202,8 +211,17 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
             return tenantId(Output.of(tenantId));
         }
 
+        public Builder timeouts(@Nullable Output<OrganizationalUnitTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationalUnitTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param updateTime Time of last update.
+         * @param updateTime Timestamp in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 
@@ -214,7 +232,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param updateTime Time of last update.
+         * @param updateTime Timestamp in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 

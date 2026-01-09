@@ -200,14 +200,14 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
-     * Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+     * Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="maxAgeSeconds")
     private @Nullable Output<Integer> maxAgeSeconds;
 
     /**
-     * @return Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+     * @return Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<Integer>> maxAgeSeconds() {
@@ -585,7 +585,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param maxAgeSeconds Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+         * @param maxAgeSeconds Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -596,7 +596,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         }
 
         /**
-         * @param maxAgeSeconds Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+         * @param maxAgeSeconds Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

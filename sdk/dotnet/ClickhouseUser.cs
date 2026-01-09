@@ -35,7 +35,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example_user PROJECT/SERVICE_NAME/USERNAME
+    /// $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example_user PROJECT/SERVICE_NAME/USER_ID # USER_ID is found in the systems.users table in ClickHouse
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseUser:ClickhouseUser")]
