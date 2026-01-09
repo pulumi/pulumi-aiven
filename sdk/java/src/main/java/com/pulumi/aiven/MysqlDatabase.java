@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.MysqlDatabaseArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.MysqlDatabaseState;
+import com.pulumi.aiven.outputs.MysqlDatabaseTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -16,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
+ * Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
  * 
  * ## Example Usage
  * 
@@ -56,59 +57,71 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
+ * $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/mysqlDatabase:MysqlDatabase")
 public class MysqlDatabase extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the database. Changing this property forces recreation of the resource.
+     * Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="databaseName", refs={String.class}, tree="[0]")
     private Output<String> databaseName;
 
     /**
-     * @return The name of the database. Changing this property forces recreation of the resource.
+     * @return Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> databaseName() {
         return this.databaseName;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
+    /**
+     * @deprecated
+     * Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     * 
+     */
+    @Deprecated /* Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> terminationProtection;
+    private Output<Boolean> terminationProtection;
 
-    public Output<Optional<Boolean>> terminationProtection() {
-        return Codegen.optional(this.terminationProtection);
+    public Output<Boolean> terminationProtection() {
+        return this.terminationProtection;
+    }
+    @Export(name="timeouts", refs={MysqlDatabaseTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ MysqlDatabaseTimeouts> timeouts;
+
+    public Output<Optional<MysqlDatabaseTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

@@ -71,6 +71,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
+        /// Skip dump-restore part and start replication. Default: `False`.
+        /// </summary>
+        [Input("reestablishReplication")]
+        public Input<bool>? ReestablishReplication { get; set; }
+
+        /// <summary>
         /// The server where to migrate data from is secured with SSL. Default: `True`.
         /// </summary>
         [Input("ssl")]

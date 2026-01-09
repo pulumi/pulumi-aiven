@@ -241,14 +241,14 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
         return this.lastUserAgentHumanReadable;
     }
     /**
-     * Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+     * Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="maxAgeSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxAgeSeconds;
 
     /**
-     * @return Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+     * @return Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<Integer>> maxAgeSeconds() {

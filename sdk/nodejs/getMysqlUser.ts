@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -25,6 +27,7 @@ export function getMysqlUser(args: GetMysqlUserArgs, opts?: pulumi.InvokeOptions
     return pulumi.runtime.invoke("aiven:index/getMysqlUser:getMysqlUser", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "username": args.username,
     }, opts);
 }
@@ -34,15 +37,16 @@ export function getMysqlUser(args: GetMysqlUserArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetMysqlUserArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user.
      */
     serviceName: string;
+    timeouts?: inputs.GetMysqlUserTimeouts;
     /**
-     * The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user.
      */
     username: string;
 }
@@ -52,39 +56,48 @@ export interface GetMysqlUserArgs {
  */
 export interface GetMysqlUserResult {
     /**
-     * Access certificate for the user.
+     * Access certificate for TLS client authentication.
      */
     readonly accessCert: string;
     /**
-     * Access certificate key for the user.
+     * Access key for TLS client authentication.
      */
     readonly accessKey: string;
     /**
-     * Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+     * Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql*native*password' and 'caching*sha2*password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
      */
     readonly authentication: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/username`.
      */
     readonly id: string;
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      */
     readonly password: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
+     */
+    readonly passwordWo: string;
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
+     */
+    readonly passwordWoVersion: number;
+    /**
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user.
      */
     readonly serviceName: string;
+    readonly timeouts?: outputs.GetMysqlUserTimeouts;
     /**
      * User account type, such as primary or regular account.
      */
     readonly type: string;
     /**
-     * The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user.
      */
     readonly username: string;
 }
@@ -109,6 +122,7 @@ export function getMysqlUserOutput(args: GetMysqlUserOutputArgs, opts?: pulumi.I
     return pulumi.runtime.invokeOutput("aiven:index/getMysqlUser:getMysqlUser", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "username": args.username,
     }, opts);
 }
@@ -118,15 +132,16 @@ export function getMysqlUserOutput(args: GetMysqlUserOutputArgs, opts?: pulumi.I
  */
 export interface GetMysqlUserOutputArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetMysqlUserTimeoutsArgs>;
     /**
-     * The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user.
      */
     username: pulumi.Input<string>;
 }

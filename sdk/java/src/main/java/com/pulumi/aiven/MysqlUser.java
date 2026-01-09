@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.MysqlUserArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.MysqlUserState;
+import com.pulumi.aiven.outputs.MysqlUserTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -17,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an Aiven for MySQL® service user.
+ * Creates and manages an Aiven for MySQL® service user. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
  * 
  * ## Example Usage
  * 
@@ -58,63 +59,63 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/mysqlUser:MysqlUser foo PROJECT/SERVICE_NAME/USERNAME
+ * $ pulumi import aiven:index/mysqlUser:MysqlUser example PROJECT/SERVICE_NAME/USERNAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/mysqlUser:MysqlUser")
 public class MysqlUser extends com.pulumi.resources.CustomResource {
     /**
-     * Access certificate for the user.
+     * Access certificate for TLS client authentication.
      * 
      */
     @Export(name="accessCert", refs={String.class}, tree="[0]")
     private Output<String> accessCert;
 
     /**
-     * @return Access certificate for the user.
+     * @return Access certificate for TLS client authentication.
      * 
      */
     public Output<String> accessCert() {
         return this.accessCert;
     }
     /**
-     * Access certificate key for the user.
+     * Access key for TLS client authentication.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     /**
-     * @return Access certificate key for the user.
+     * @return Access key for TLS client authentication.
      * 
      */
     public Output<String> accessKey() {
         return this.accessKey;
     }
     /**
-     * Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+     * Service specific authentication details. Currently only used for MySQL where accepted options are &#39;mysql_native_password&#39; and &#39;caching_sha2_password&#39;, latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
      * 
      */
     @Export(name="authentication", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> authentication;
+    private Output<String> authentication;
 
     /**
-     * @return Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+     * @return Service specific authentication details. Currently only used for MySQL where accepted options are &#39;mysql_native_password&#39; and &#39;caching_sha2_password&#39;, latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
      * 
      */
-    public Output<Optional<String>> authentication() {
-        return Codegen.optional(this.authentication);
+    public Output<String> authentication() {
+        return this.authentication;
     }
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
      * 
      */
     public Output<String> password() {
@@ -122,7 +123,7 @@ public class MysqlUser extends com.pulumi.resources.CustomResource {
     }
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
      * 
      */
     @Export(name="passwordWo", refs={String.class}, tree="[0]")
@@ -130,53 +131,59 @@ public class MysqlUser extends com.pulumi.resources.CustomResource {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
      * 
      */
     public Output<Optional<String>> passwordWo() {
         return Codegen.optional(this.passwordWo);
     }
     /**
-     * Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     @Export(name="passwordWoVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> passwordWoVersion;
 
     /**
-     * @return Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     public Output<Optional<Integer>> passwordWoVersion() {
         return Codegen.optional(this.passwordWoVersion);
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the MySQL® service user. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+    @Export(name="timeouts", refs={MysqlUserTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ MysqlUserTimeouts> timeouts;
+
+    public Output<Optional<MysqlUserTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
     /**
      * User account type, such as primary or regular account.
@@ -193,14 +200,14 @@ public class MysqlUser extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

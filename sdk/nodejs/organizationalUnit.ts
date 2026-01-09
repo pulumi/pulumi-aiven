@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -22,7 +24,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
+ * $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example ORGANIZATIONAL_UNIT_ID
  * ```
  */
 export class OrganizationalUnit extends pulumi.CustomResource {
@@ -54,23 +56,24 @@ export class OrganizationalUnit extends pulumi.CustomResource {
     }
 
     /**
-     * Time of creation.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The name of the organizational unit.
+     * The name of the organizational unit. Maximum length: `128`.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The ID of the organization that the unit is created in.
+     * The ID of the organization that the unit is created in. Maximum length: `36`.
      */
     declare public readonly parentId: pulumi.Output<string>;
     /**
-     * Tenant ID.
+     * Tenant identifier.
      */
     declare public /*out*/ readonly tenantId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.OrganizationalUnitTimeouts | undefined>;
     /**
-     * Time of last update.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
@@ -91,6 +94,7 @@ export class OrganizationalUnit extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["parentId"] = state?.parentId;
             resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as OrganizationalUnitArgs | undefined;
@@ -99,6 +103,7 @@ export class OrganizationalUnit extends pulumi.CustomResource {
             }
             resourceInputs["name"] = args?.name;
             resourceInputs["parentId"] = args?.parentId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["tenantId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -113,23 +118,24 @@ export class OrganizationalUnit extends pulumi.CustomResource {
  */
 export interface OrganizationalUnitState {
     /**
-     * Time of creation.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The name of the organizational unit.
+     * The name of the organizational unit. Maximum length: `128`.
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the organization that the unit is created in.
+     * The ID of the organization that the unit is created in. Maximum length: `36`.
      */
     parentId?: pulumi.Input<string>;
     /**
-     * Tenant ID.
+     * Tenant identifier.
      */
     tenantId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.OrganizationalUnitTimeouts>;
     /**
-     * Time of last update.
+     * Timestamp in ISO 8601 format, always in UTC.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -139,11 +145,12 @@ export interface OrganizationalUnitState {
  */
 export interface OrganizationalUnitArgs {
     /**
-     * The name of the organizational unit.
+     * The name of the organizational unit. Maximum length: `128`.
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the organization that the unit is created in.
+     * The ID of the organization that the unit is created in. Maximum length: `36`.
      */
     parentId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.OrganizationalUnitTimeouts>;
 }

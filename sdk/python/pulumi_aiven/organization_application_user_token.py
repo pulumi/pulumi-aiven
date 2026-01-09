@@ -36,7 +36,7 @@ class OrganizationApplicationUserTokenArgs:
         :param pulumi.Input[_builtins.str] description: Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] extend_when_used: Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_allowlists: List of allowed IP ranges. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.int] max_age_seconds: Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.int] max_age_seconds: Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "organization_id", organization_id)
@@ -118,7 +118,7 @@ class OrganizationApplicationUserTokenArgs:
     @pulumi.getter(name="maxAgeSeconds")
     def max_age_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+        Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "max_age_seconds")
 
@@ -183,7 +183,7 @@ class _OrganizationApplicationUserTokenState:
         :param pulumi.Input[_builtins.str] last_used_time: Timestamp when the access token was last used, if ever.
         :param pulumi.Input[_builtins.str] last_user_agent: User agent string of the client that last used the token in case it has ever been used.
         :param pulumi.Input[_builtins.str] last_user_agent_human_readable: Human readable user agent string of the client that last used the token in case user agent is known.
-        :param pulumi.Input[_builtins.int] max_age_seconds: Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.int] max_age_seconds: Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] token_prefix: First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&gt; %2F, + =&gt; %2B, = =&gt; %3D).
@@ -374,7 +374,7 @@ class _OrganizationApplicationUserTokenState:
     @pulumi.getter(name="maxAgeSeconds")
     def max_age_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+        Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "max_age_seconds")
 
@@ -484,7 +484,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] extend_when_used: Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_allowlists: List of allowed IP ranges. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.int] max_age_seconds: Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.int] max_age_seconds: Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] user_id: User ID. Changing this property forces recreation of the resource.
@@ -622,7 +622,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] last_used_time: Timestamp when the access token was last used, if ever.
         :param pulumi.Input[_builtins.str] last_user_agent: User agent string of the client that last used the token in case it has ever been used.
         :param pulumi.Input[_builtins.str] last_user_agent_human_readable: Human readable user agent string of the client that last used the token in case user agent is known.
-        :param pulumi.Input[_builtins.int] max_age_seconds: Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.int] max_age_seconds: Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] token_prefix: First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&gt; %2F, + =&gt; %2B, = =&gt; %3D).
@@ -752,7 +752,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
     @pulumi.getter(name="maxAgeSeconds")
     def max_age_seconds(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+        Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "max_age_seconds")
 

@@ -34,38 +34,41 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
+    /// $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example ORGANIZATIONAL_UNIT_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organizationalUnit:OrganizationalUnit")]
     public partial class OrganizationalUnit : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Time of creation.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the organizational unit.
+        /// The name of the organizational unit. Maximum length: `128`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the organization that the unit is created in.
+        /// The ID of the organization that the unit is created in. Maximum length: `36`.
         /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// Tenant ID.
+        /// Tenant identifier.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.OrganizationalUnitTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// Time of last update.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -117,16 +120,19 @@ namespace Pulumi.Aiven
     public sealed class OrganizationalUnitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the organizational unit.
+        /// The name of the organizational unit. Maximum length: `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the organization that the unit is created in.
+        /// The ID of the organization that the unit is created in. Maximum length: `36`.
         /// </summary>
         [Input("parentId", required: true)]
         public Input<string> ParentId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationalUnitTimeoutsArgs>? Timeouts { get; set; }
 
         public OrganizationalUnitArgs()
         {
@@ -137,31 +143,34 @@ namespace Pulumi.Aiven
     public sealed class OrganizationalUnitState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time of creation.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The name of the organizational unit.
+        /// The name of the organizational unit. Maximum length: `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the organization that the unit is created in.
+        /// The ID of the organization that the unit is created in. Maximum length: `36`.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// Tenant ID.
+        /// Tenant identifier.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationalUnitTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Time of last update.
+        /// Timestamp in ISO 8601 format, always in UTC.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

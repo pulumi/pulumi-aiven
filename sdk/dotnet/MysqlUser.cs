@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an Aiven for MySQL® service user.
+    /// Creates and manages an Aiven for MySQL® service user. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
     /// 
     /// ## Example Usage
     /// 
@@ -36,60 +36,63 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/mysqlUser:MysqlUser foo PROJECT/SERVICE_NAME/USERNAME
+    /// $ pulumi import aiven:index/mysqlUser:MysqlUser example PROJECT/SERVICE_NAME/USERNAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/mysqlUser:MysqlUser")]
     public partial class MysqlUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access certificate for the user.
+        /// Access certificate for TLS client authentication.
         /// </summary>
         [Output("accessCert")]
         public Output<string> AccessCert { get; private set; } = null!;
 
         /// <summary>
-        /// Access certificate key for the user.
+        /// Access key for TLS client authentication.
         /// </summary>
         [Output("accessKey")]
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// Authentication details. The possible values are `CachingSha2Password`, `MysqlNativePassword` and `Null`.
+        /// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `CachingSha2Password` and `MysqlNativePassword`.
         /// </summary>
         [Output("authentication")]
-        public Output<string?> Authentication { get; private set; } = null!;
+        public Output<string> Authentication { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Value must be between `8` and `256`.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Value must be between `8` and `256`.
         /// </summary>
         [Output("passwordWo")]
         public Output<string?> PasswordWo { get; private set; } = null!;
 
         /// <summary>
-        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`. Minimum value: `1`.
         /// </summary>
         [Output("passwordWoVersion")]
         public Output<int?> PasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.MysqlUserTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// User account type, such as primary or regular account.
@@ -98,7 +101,7 @@ namespace Pulumi.Aiven
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -157,7 +160,7 @@ namespace Pulumi.Aiven
     public sealed class MysqlUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Authentication details. The possible values are `CachingSha2Password`, `MysqlNativePassword` and `Null`.
+        /// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `CachingSha2Password` and `MysqlNativePassword`.
         /// </summary>
         [Input("authentication")]
         public Input<string>? Authentication { get; set; }
@@ -166,7 +169,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Value must be between `8` and `256`.
         /// </summary>
         public Input<string>? Password
         {
@@ -183,7 +186,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Value must be between `8` and `256`.
         /// </summary>
         public Input<string>? PasswordWo
         {
@@ -196,25 +199,28 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`. Minimum value: `1`.
         /// </summary>
         [Input("passwordWoVersion")]
         public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.MysqlUserTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -231,7 +237,7 @@ namespace Pulumi.Aiven
         private Input<string>? _accessCert;
 
         /// <summary>
-        /// Access certificate for the user.
+        /// Access certificate for TLS client authentication.
         /// </summary>
         public Input<string>? AccessCert
         {
@@ -247,7 +253,7 @@ namespace Pulumi.Aiven
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// Access certificate key for the user.
+        /// Access key for TLS client authentication.
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -260,7 +266,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Authentication details. The possible values are `CachingSha2Password`, `MysqlNativePassword` and `Null`.
+        /// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `CachingSha2Password` and `MysqlNativePassword`.
         /// </summary>
         [Input("authentication")]
         public Input<string>? Authentication { get; set; }
@@ -269,7 +275,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Value must be between `8` and `256`.
         /// </summary>
         public Input<string>? Password
         {
@@ -286,7 +292,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Value must be between `8` and `256`.
         /// </summary>
         public Input<string>? PasswordWo
         {
@@ -299,22 +305,25 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`. Minimum value: `1`.
         /// </summary>
         [Input("passwordWoVersion")]
         public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.MysqlUserTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// User account type, such as primary or regular account.
@@ -323,7 +332,7 @@ namespace Pulumi.Aiven
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

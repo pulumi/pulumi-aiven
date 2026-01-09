@@ -46,6 +46,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
+        /// Skip dump-restore part and start replication. Default: `False`.
+        /// </summary>
+        public readonly bool? ReestablishReplication;
+        /// <summary>
         /// The server where to migrate data from is secured with SSL. Default: `True`.
         /// </summary>
         public readonly bool? Ssl;
@@ -72,6 +76,8 @@ namespace Pulumi.Aiven.Outputs
 
             int port,
 
+            bool? reestablishReplication,
+
             bool? ssl,
 
             string? username)
@@ -84,6 +90,7 @@ namespace Pulumi.Aiven.Outputs
             Method = method;
             Password = password;
             Port = port;
+            ReestablishReplication = reestablishReplication;
             Ssl = ssl;
             Username = username;
         }

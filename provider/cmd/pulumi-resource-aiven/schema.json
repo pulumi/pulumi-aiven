@@ -6091,6 +6091,10 @@
                     "type": "integer",
                     "description": "Port number of the server where to migrate data from. Example: \u003cspan pulumi-lang-nodejs=\"`1234`\" pulumi-lang-dotnet=\"`1234`\" pulumi-lang-go=\"`1234`\" pulumi-lang-python=\"`1234`\" pulumi-lang-yaml=\"`1234`\" pulumi-lang-java=\"`1234`\"\u003e`1234`\u003c/span\u003e.\n"
                 },
+                "reestablishReplication": {
+                    "type": "boolean",
+                    "description": "Skip dump-restore part and start replication. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                },
                 "ssl": {
                     "type": "boolean",
                     "description": "The server where to migrate data from is secured with SSL. Default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
@@ -6347,6 +6351,58 @@
             "required": [
                 "email"
             ]
+        },
+        "aiven:index/MysqlDatabaseTimeouts:MysqlDatabaseTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "default": {
+                    "type": "string",
+                    "description": "Timeout for all operations. Deprecated, use operation-specific timeouts instead.\n",
+                    "deprecationMessage": "Use operation-specific timeouts instead. This field will be removed in the next major version."
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/MysqlUserTimeouts:MysqlUserTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "default": {
+                    "type": "string",
+                    "description": "Timeout for all operations. Deprecated, use operation-specific timeouts instead.\n",
+                    "deprecationMessage": "Use operation-specific timeouts instead. This field will be removed in the next major version."
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
         },
         "aiven:index/OpenSearchComponent:OpenSearchComponent": {
             "properties": {
@@ -8044,6 +8100,32 @@
                 "create": {
                     "type": "string",
                     "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OrganizationalUnitTimeouts:OrganizationalUnitTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "default": {
+                    "type": "string",
+                    "description": "Timeout for all operations. Deprecated, use operation-specific timeouts instead.\n",
+                    "deprecationMessage": "Use operation-specific timeouts instead. This field will be removed in the next major version."
                 },
                 "delete": {
                     "type": "string",
@@ -17701,6 +17783,10 @@
                     "type": "integer",
                     "description": "Port number of the server where to migrate data from. Example: \u003cspan pulumi-lang-nodejs=\"`1234`\" pulumi-lang-dotnet=\"`1234`\" pulumi-lang-go=\"`1234`\" pulumi-lang-python=\"`1234`\" pulumi-lang-yaml=\"`1234`\" pulumi-lang-java=\"`1234`\"\u003e`1234`\u003c/span\u003e.\n"
                 },
+                "reestablishReplication": {
+                    "type": "boolean",
+                    "description": "Skip dump-restore part and start replication. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                },
                 "ssl": {
                     "type": "boolean",
                     "description": "The server where to migrate data from is secured with SSL. Default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
@@ -17982,6 +18068,24 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "aiven:index/getMysqlDatabaseTimeouts:getMysqlDatabaseTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getMysqlUserTimeouts:getMysqlUserTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
         },
         "aiven:index/getOpenSearchComponent:getOpenSearchComponent": {
             "properties": {
@@ -19929,6 +20033,15 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "aiven:index/getOrganizationalUnitTimeouts:getOrganizationalUnitTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
         },
         "aiven:index/getPgComponent:getPgComponent": {
             "properties": {
@@ -22701,6 +22814,108 @@
                 "perfEventsStatementsTimeLimit": {
                     "type": "integer",
                     "description": "Only include\u003cspan pulumi-lang-nodejs=\" perfEventsStatements \" pulumi-lang-dotnet=\" PerfEventsStatements \" pulumi-lang-go=\" perfEventsStatements \" pulumi-lang-python=\" perf_events_statements \" pulumi-lang-yaml=\" perfEventsStatements \" pulumi-lang-java=\" perfEventsStatements \"\u003e perf_events_statements \u003c/span\u003ewhose last seen is less than this many seconds. Example: \u003cspan pulumi-lang-nodejs=\"`86400`\" pulumi-lang-dotnet=\"`86400`\" pulumi-lang-go=\"`86400`\" pulumi-lang-python=\"`86400`\" pulumi-lang-yaml=\"`86400`\" pulumi-lang-java=\"`86400`\"\u003e`86400`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceListService:getServiceListService": {
+            "properties": {
+                "cloudDescription": {
+                    "type": "string",
+                    "description": "Cloud provider and location.\n"
+                },
+                "cloudName": {
+                    "type": "string",
+                    "description": "Target cloud.\n"
+                },
+                "createTime": {
+                    "type": "string",
+                    "description": "Service creation timestamp (ISO 8601).\n"
+                },
+                "diskSpaceMb": {
+                    "type": "integer",
+                    "description": "Megabytes of disk space for data storage.\n"
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "Number of service nodes in the active plan.\n"
+                },
+                "nodeCpuCount": {
+                    "type": "integer",
+                    "description": "Number of CPUs for each node.\n"
+                },
+                "nodeMemoryMb": {
+                    "type": "number",
+                    "description": "Megabytes of memory for each node.\n"
+                },
+                "plan": {
+                    "type": "string",
+                    "description": "Subscription plan.\n"
+                },
+                "projectVpcId": {
+                    "type": "string",
+                    "description": "Project VPC ID.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Service name.\n"
+                },
+                "serviceType": {
+                    "type": "string",
+                    "description": "Service type code.\n"
+                },
+                "serviceTypeDescription": {
+                    "type": "string",
+                    "description": "Single line description of the service.\n"
+                },
+                "serviceUri": {
+                    "type": "string",
+                    "description": "URI for connecting to the service (may be null).\n",
+                    "secret": true
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the service. The possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.\n"
+                },
+                "terminationProtection": {
+                    "type": "boolean",
+                    "description": "Service is protected against termination and powering off.\n"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "Service last update timestamp (ISO 8601).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cloudDescription",
+                "cloudName",
+                "createTime",
+                "diskSpaceMb",
+                "nodeCount",
+                "nodeCpuCount",
+                "nodeMemoryMb",
+                "plan",
+                "projectVpcId",
+                "serviceName",
+                "serviceType",
+                "serviceTypeDescription",
+                "serviceUri",
+                "state",
+                "terminationProtection",
+                "updateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getServiceListTimeouts:getServiceListTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
                 }
             },
             "type": "object"
@@ -27177,7 +27392,7 @@
             }
         },
         "aiven:index/clickhouseUser:ClickhouseUser": {
-            "description": "Creates and manages a ClickHouse user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleUser = new aiven.ClickhouseUser(\"example_user\", {\n    project: exampleProject.project,\n    serviceName: exampleService.serviceName,\n    username: \"analyst\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_user = aiven.ClickhouseUser(\"example_user\",\n    project=example_project[\"project\"],\n    service_name=example_service[\"serviceName\"],\n    username=\"analyst\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUser = new Aiven.ClickhouseUser(\"example_user\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleService.ServiceName,\n        Username = \"analyst\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewClickhouseUser(ctx, \"example_user\", \u0026aiven.ClickhouseUserArgs{\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tServiceName: pulumi.Any(exampleService.ServiceName),\n\t\t\tUsername:    pulumi.String(\"analyst\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.ClickhouseUser;\nimport com.pulumi.aiven.ClickhouseUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleUser = new ClickhouseUser(\"exampleUser\", ClickhouseUserArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleService.serviceName())\n            .username(\"analyst\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleUser:\n    type: aiven:ClickhouseUser\n    name: example_user\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${exampleService.serviceName}\n      username: analyst\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/clickhouseUser:ClickhouseUser example_user PROJECT/SERVICE_NAME/USERNAME\n```\n\n",
+            "description": "Creates and manages a ClickHouse user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleUser = new aiven.ClickhouseUser(\"example_user\", {\n    project: exampleProject.project,\n    serviceName: exampleService.serviceName,\n    username: \"analyst\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_user = aiven.ClickhouseUser(\"example_user\",\n    project=example_project[\"project\"],\n    service_name=example_service[\"serviceName\"],\n    username=\"analyst\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUser = new Aiven.ClickhouseUser(\"example_user\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleService.ServiceName,\n        Username = \"analyst\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewClickhouseUser(ctx, \"example_user\", \u0026aiven.ClickhouseUserArgs{\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tServiceName: pulumi.Any(exampleService.ServiceName),\n\t\t\tUsername:    pulumi.String(\"analyst\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.ClickhouseUser;\nimport com.pulumi.aiven.ClickhouseUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleUser = new ClickhouseUser(\"exampleUser\", ClickhouseUserArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleService.serviceName())\n            .username(\"analyst\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleUser:\n    type: aiven:ClickhouseUser\n    name: example_user\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${exampleService.serviceName}\n      username: analyst\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/clickhouseUser:ClickhouseUser example_user PROJECT/SERVICE_NAME/USER_ID # USER_ID is found in the systems.users table in ClickHouse\n```\n\n",
             "properties": {
                 "password": {
                     "type": "string",
@@ -34468,47 +34683,53 @@
             }
         },
         "aiven:index/mysqlDatabase:MysqlDatabase": {
-            "description": "Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleMysqlDatabase = new aiven.MysqlDatabase(\"example_mysql_database\", {\n    project: exampleProject.project,\n    serviceName: exampleMysql.serviceName,\n    databaseName: \"example-database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_mysql_database = aiven.MysqlDatabase(\"example_mysql_database\",\n    project=example_project[\"project\"],\n    service_name=example_mysql[\"serviceName\"],\n    database_name=\"example-database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleMysqlDatabase = new Aiven.MysqlDatabase(\"example_mysql_database\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleMysql.ServiceName,\n        DatabaseName = \"example-database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewMysqlDatabase(ctx, \"example_mysql_database\", \u0026aiven.MysqlDatabaseArgs{\n\t\t\tProject:      pulumi.Any(exampleProject.Project),\n\t\t\tServiceName:  pulumi.Any(exampleMysql.ServiceName),\n\t\t\tDatabaseName: pulumi.String(\"example-database\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.MysqlDatabase;\nimport com.pulumi.aiven.MysqlDatabaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleMysqlDatabase = new MysqlDatabase(\"exampleMysqlDatabase\", MysqlDatabaseArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleMysql.serviceName())\n            .databaseName(\"example-database\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleMysqlDatabase:\n    type: aiven:MysqlDatabase\n    name: example_mysql_database\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${exampleMysql.serviceName}\n      databaseName: example-database\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME\n```\n\n",
+            "description": "Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleMysqlDatabase = new aiven.MysqlDatabase(\"example_mysql_database\", {\n    project: exampleProject.project,\n    serviceName: exampleMysql.serviceName,\n    databaseName: \"example-database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_mysql_database = aiven.MysqlDatabase(\"example_mysql_database\",\n    project=example_project[\"project\"],\n    service_name=example_mysql[\"serviceName\"],\n    database_name=\"example-database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleMysqlDatabase = new Aiven.MysqlDatabase(\"example_mysql_database\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleMysql.ServiceName,\n        DatabaseName = \"example-database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewMysqlDatabase(ctx, \"example_mysql_database\", \u0026aiven.MysqlDatabaseArgs{\n\t\t\tProject:      pulumi.Any(exampleProject.Project),\n\t\t\tServiceName:  pulumi.Any(exampleMysql.ServiceName),\n\t\t\tDatabaseName: pulumi.String(\"example-database\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.MysqlDatabase;\nimport com.pulumi.aiven.MysqlDatabaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleMysqlDatabase = new MysqlDatabase(\"exampleMysqlDatabase\", MysqlDatabaseArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleMysql.serviceName())\n            .databaseName(\"example-database\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleMysqlDatabase:\n    type: aiven:MysqlDatabase\n    name: example_mysql_database\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${exampleMysql.serviceName}\n      databaseName: example-database\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME\n```\n\n",
             "properties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "The name of the database. Changing this property forces recreation of the resource.\n"
+                    "description": "Service database name. Maximum length: \u003cspan pulumi-lang-nodejs=\"`40`\" pulumi-lang-dotnet=\"`40`\" pulumi-lang-go=\"`40`\" pulumi-lang-python=\"`40`\" pulumi-lang-yaml=\"`40`\" pulumi-lang-java=\"`40`\"\u003e`40`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                    "description": "Project name. Changing this property forces recreation of the resource.\n"
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                    "description": "Service name. Changing this property forces recreation of the resource.\n"
                 },
                 "terminationProtection": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "deprecationMessage": "Instead use [\u003cspan pulumi-lang-nodejs=\"`preventDestroy`\" pulumi-lang-dotnet=\"`PreventDestroy`\" pulumi-lang-go=\"`preventDestroy`\" pulumi-lang-python=\"`prevent_destroy`\" pulumi-lang-yaml=\"`preventDestroy`\" pulumi-lang-java=\"`preventDestroy`\"\u003e`prevent_destroy`\u003c/span\u003e](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/MysqlDatabaseTimeouts:MysqlDatabaseTimeouts"
                 }
             },
             "required": [
                 "databaseName",
                 "project",
-                "serviceName"
+                "serviceName",
+                "terminationProtection"
             ],
             "inputProperties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "The name of the database. Changing this property forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Service database name. Maximum length: \u003cspan pulumi-lang-nodejs=\"`40`\" pulumi-lang-dotnet=\"`40`\" pulumi-lang-go=\"`40`\" pulumi-lang-python=\"`40`\" pulumi-lang-yaml=\"`40`\" pulumi-lang-java=\"`40`\"\u003e`40`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Project name. Changing this property forces recreation of the resource.\n"
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Service name. Changing this property forces recreation of the resource.\n"
                 },
                 "terminationProtection": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "deprecationMessage": "Instead use [\u003cspan pulumi-lang-nodejs=\"`preventDestroy`\" pulumi-lang-dotnet=\"`PreventDestroy`\" pulumi-lang-go=\"`preventDestroy`\" pulumi-lang-python=\"`prevent_destroy`\" pulumi-lang-yaml=\"`preventDestroy`\" pulumi-lang-java=\"`preventDestroy`\"\u003e`prevent_destroy`\u003c/span\u003e](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/MysqlDatabaseTimeouts:MysqlDatabaseTimeouts"
                 }
             },
             "requiredInputs": [
@@ -34521,64 +34742,68 @@
                 "properties": {
                     "databaseName": {
                         "type": "string",
-                        "description": "The name of the database. Changing this property forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Service database name. Maximum length: \u003cspan pulumi-lang-nodejs=\"`40`\" pulumi-lang-dotnet=\"`40`\" pulumi-lang-go=\"`40`\" pulumi-lang-python=\"`40`\" pulumi-lang-yaml=\"`40`\" pulumi-lang-java=\"`40`\"\u003e`40`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Project name. Changing this property forces recreation of the resource.\n"
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Service name. Changing this property forces recreation of the resource.\n"
                     },
                     "terminationProtection": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "deprecationMessage": "Instead use [\u003cspan pulumi-lang-nodejs=\"`preventDestroy`\" pulumi-lang-dotnet=\"`PreventDestroy`\" pulumi-lang-go=\"`preventDestroy`\" pulumi-lang-python=\"`prevent_destroy`\" pulumi-lang-yaml=\"`preventDestroy`\" pulumi-lang-java=\"`preventDestroy`\"\u003e`prevent_destroy`\u003c/span\u003e](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/MysqlDatabaseTimeouts:MysqlDatabaseTimeouts"
                     }
                 },
                 "type": "object"
             }
         },
         "aiven:index/mysqlUser:MysqlUser": {
-            "description": "Creates and manages an Aiven for MySQL® service user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleMysqlUser = new aiven.MysqlUser(\"example_mysql_user\", {\n    serviceName: exampleMysql.serviceName,\n    project: exampleProject.project,\n    username: \"example-mysql-user\",\n    password: serviceUserPw,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_mysql_user = aiven.MysqlUser(\"example_mysql_user\",\n    service_name=example_mysql[\"serviceName\"],\n    project=example_project[\"project\"],\n    username=\"example-mysql-user\",\n    password=service_user_pw)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleMysqlUser = new Aiven.MysqlUser(\"example_mysql_user\", new()\n    {\n        ServiceName = exampleMysql.ServiceName,\n        Project = exampleProject.Project,\n        Username = \"example-mysql-user\",\n        Password = serviceUserPw,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewMysqlUser(ctx, \"example_mysql_user\", \u0026aiven.MysqlUserArgs{\n\t\t\tServiceName: pulumi.Any(exampleMysql.ServiceName),\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tUsername:    pulumi.String(\"example-mysql-user\"),\n\t\t\tPassword:    pulumi.Any(serviceUserPw),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.MysqlUser;\nimport com.pulumi.aiven.MysqlUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleMysqlUser = new MysqlUser(\"exampleMysqlUser\", MysqlUserArgs.builder()\n            .serviceName(exampleMysql.serviceName())\n            .project(exampleProject.project())\n            .username(\"example-mysql-user\")\n            .password(serviceUserPw)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleMysqlUser:\n    type: aiven:MysqlUser\n    name: example_mysql_user\n    properties:\n      serviceName: ${exampleMysql.serviceName}\n      project: ${exampleProject.project}\n      username: example-mysql-user\n      password: ${serviceUserPw}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/mysqlUser:MysqlUser foo PROJECT/SERVICE_NAME/USERNAME\n```\n\n",
+            "description": "Creates and manages an Aiven for MySQL® service user. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleMysqlUser = new aiven.MysqlUser(\"example_mysql_user\", {\n    serviceName: exampleMysql.serviceName,\n    project: exampleProject.project,\n    username: \"example-mysql-user\",\n    password: serviceUserPw,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_mysql_user = aiven.MysqlUser(\"example_mysql_user\",\n    service_name=example_mysql[\"serviceName\"],\n    project=example_project[\"project\"],\n    username=\"example-mysql-user\",\n    password=service_user_pw)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleMysqlUser = new Aiven.MysqlUser(\"example_mysql_user\", new()\n    {\n        ServiceName = exampleMysql.ServiceName,\n        Project = exampleProject.Project,\n        Username = \"example-mysql-user\",\n        Password = serviceUserPw,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewMysqlUser(ctx, \"example_mysql_user\", \u0026aiven.MysqlUserArgs{\n\t\t\tServiceName: pulumi.Any(exampleMysql.ServiceName),\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tUsername:    pulumi.String(\"example-mysql-user\"),\n\t\t\tPassword:    pulumi.Any(serviceUserPw),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.MysqlUser;\nimport com.pulumi.aiven.MysqlUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleMysqlUser = new MysqlUser(\"exampleMysqlUser\", MysqlUserArgs.builder()\n            .serviceName(exampleMysql.serviceName())\n            .project(exampleProject.project())\n            .username(\"example-mysql-user\")\n            .password(serviceUserPw)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleMysqlUser:\n    type: aiven:MysqlUser\n    name: example_mysql_user\n    properties:\n      serviceName: ${exampleMysql.serviceName}\n      project: ${exampleProject.project}\n      username: example-mysql-user\n      password: ${serviceUserPw}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/mysqlUser:MysqlUser example PROJECT/SERVICE_NAME/USERNAME\n```\n\n",
             "properties": {
                 "accessCert": {
                     "type": "string",
-                    "description": "Access certificate for the user.",
+                    "description": "Access certificate for TLS client authentication.",
                     "secret": true
                 },
                 "accessKey": {
                     "type": "string",
-                    "description": "Access certificate key for the user.",
+                    "description": "Access key for TLS client authentication.",
                     "secret": true
                 },
                 "authentication": {
                     "type": "string",
-                    "description": "Authentication details. The possible values are \u003cspan pulumi-lang-nodejs=\"`cachingSha2Password`\" pulumi-lang-dotnet=\"`CachingSha2Password`\" pulumi-lang-go=\"`cachingSha2Password`\" pulumi-lang-python=\"`caching_sha2_password`\" pulumi-lang-yaml=\"`cachingSha2Password`\" pulumi-lang-java=\"`cachingSha2Password`\"\u003e`caching_sha2_password`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mysqlNativePassword`\" pulumi-lang-dotnet=\"`MysqlNativePassword`\" pulumi-lang-go=\"`mysqlNativePassword`\" pulumi-lang-python=\"`mysql_native_password`\" pulumi-lang-yaml=\"`mysqlNativePassword`\" pulumi-lang-java=\"`mysqlNativePassword`\"\u003e`mysql_native_password`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`null`\" pulumi-lang-dotnet=\"`Null`\" pulumi-lang-go=\"`null`\" pulumi-lang-python=\"`null`\" pulumi-lang-yaml=\"`null`\" pulumi-lang-java=\"`null`\"\u003e`null`\u003c/span\u003e."
+                    "description": "Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are \u003cspan pulumi-lang-nodejs=\"`cachingSha2Password`\" pulumi-lang-dotnet=\"`CachingSha2Password`\" pulumi-lang-go=\"`cachingSha2Password`\" pulumi-lang-python=\"`caching_sha2_password`\" pulumi-lang-yaml=\"`cachingSha2Password`\" pulumi-lang-java=\"`cachingSha2Password`\"\u003e`caching_sha2_password`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`mysqlNativePassword`\" pulumi-lang-dotnet=\"`MysqlNativePassword`\" pulumi-lang-go=\"`mysqlNativePassword`\" pulumi-lang-python=\"`mysql_native_password`\" pulumi-lang-yaml=\"`mysqlNativePassword`\" pulumi-lang-java=\"`mysqlNativePassword`\"\u003e`mysql_native_password`\u003c/span\u003e."
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.",
+                    "description": "The password of the service user (auto-generated if not provided). The field conflicts with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Value must be between \u003cspan pulumi-lang-nodejs=\"`8`\" pulumi-lang-dotnet=\"`8`\" pulumi-lang-go=\"`8`\" pulumi-lang-python=\"`8`\" pulumi-lang-yaml=\"`8`\" pulumi-lang-java=\"`8`\"\u003e`8`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`256`\" pulumi-lang-dotnet=\"`256`\" pulumi-lang-go=\"`256`\" pulumi-lang-python=\"`256`\" pulumi-lang-yaml=\"`256`\" pulumi-lang-java=\"`256`\"\u003e`256`\u003c/span\u003e.",
                     "secret": true
                 },
                 "passwordWo": {
                     "type": "string",
-                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe password of the service user (write-only, not stored in state). Must be used with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e. Must be 8-256 characters.",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe password of the service user (write-only, not stored in state). The field is required with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e. The field conflicts with \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e. Value must be between \u003cspan pulumi-lang-nodejs=\"`8`\" pulumi-lang-dotnet=\"`8`\" pulumi-lang-go=\"`8`\" pulumi-lang-python=\"`8`\" pulumi-lang-yaml=\"`8`\" pulumi-lang-java=\"`8`\"\u003e`8`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`256`\" pulumi-lang-dotnet=\"`256`\" pulumi-lang-go=\"`256`\" pulumi-lang-python=\"`256`\" pulumi-lang-yaml=\"`256`\" pulumi-lang-java=\"`256`\"\u003e`256`\u003c/span\u003e.",
                     "secret": true
                 },
                 "passwordWoVersion": {
                     "type": "integer",
-                    "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Increment this to rotate the password. Must be \u003e= 1."
+                    "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Increment this to rotate the password. The field is required with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Minimum value: \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\"\u003e`1`\u003c/span\u003e."
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                    "description": "Project name. Changing this property forces recreation of the resource.\n"
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the MySQL® service user. Changing this property forces recreation of the resource.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/MysqlUserTimeouts:MysqlUserTimeouts"
                 },
                 "type": {
                     "type": "string",
@@ -34586,12 +34811,13 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the MySQL® service user. Maximum length: \u003cspan pulumi-lang-nodejs=\"`64`\" pulumi-lang-dotnet=\"`64`\" pulumi-lang-go=\"`64`\" pulumi-lang-python=\"`64`\" pulumi-lang-yaml=\"`64`\" pulumi-lang-java=\"`64`\"\u003e`64`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                 }
             },
             "required": [
                 "accessCert",
                 "accessKey",
+                "authentication",
                 "password",
                 "project",
                 "serviceName",
@@ -34601,36 +34827,36 @@
             "inputProperties": {
                 "authentication": {
                     "type": "string",
-                    "description": "Authentication details. The possible values are \u003cspan pulumi-lang-nodejs=\"`cachingSha2Password`\" pulumi-lang-dotnet=\"`CachingSha2Password`\" pulumi-lang-go=\"`cachingSha2Password`\" pulumi-lang-python=\"`caching_sha2_password`\" pulumi-lang-yaml=\"`cachingSha2Password`\" pulumi-lang-java=\"`cachingSha2Password`\"\u003e`caching_sha2_password`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mysqlNativePassword`\" pulumi-lang-dotnet=\"`MysqlNativePassword`\" pulumi-lang-go=\"`mysqlNativePassword`\" pulumi-lang-python=\"`mysql_native_password`\" pulumi-lang-yaml=\"`mysqlNativePassword`\" pulumi-lang-java=\"`mysqlNativePassword`\"\u003e`mysql_native_password`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`null`\" pulumi-lang-dotnet=\"`Null`\" pulumi-lang-go=\"`null`\" pulumi-lang-python=\"`null`\" pulumi-lang-yaml=\"`null`\" pulumi-lang-java=\"`null`\"\u003e`null`\u003c/span\u003e."
+                    "description": "Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are \u003cspan pulumi-lang-nodejs=\"`cachingSha2Password`\" pulumi-lang-dotnet=\"`CachingSha2Password`\" pulumi-lang-go=\"`cachingSha2Password`\" pulumi-lang-python=\"`caching_sha2_password`\" pulumi-lang-yaml=\"`cachingSha2Password`\" pulumi-lang-java=\"`cachingSha2Password`\"\u003e`caching_sha2_password`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`mysqlNativePassword`\" pulumi-lang-dotnet=\"`MysqlNativePassword`\" pulumi-lang-go=\"`mysqlNativePassword`\" pulumi-lang-python=\"`mysql_native_password`\" pulumi-lang-yaml=\"`mysqlNativePassword`\" pulumi-lang-java=\"`mysqlNativePassword`\"\u003e`mysql_native_password`\u003c/span\u003e."
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.",
+                    "description": "The password of the service user (auto-generated if not provided). The field conflicts with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Value must be between \u003cspan pulumi-lang-nodejs=\"`8`\" pulumi-lang-dotnet=\"`8`\" pulumi-lang-go=\"`8`\" pulumi-lang-python=\"`8`\" pulumi-lang-yaml=\"`8`\" pulumi-lang-java=\"`8`\"\u003e`8`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`256`\" pulumi-lang-dotnet=\"`256`\" pulumi-lang-go=\"`256`\" pulumi-lang-python=\"`256`\" pulumi-lang-yaml=\"`256`\" pulumi-lang-java=\"`256`\"\u003e`256`\u003c/span\u003e.",
                     "secret": true
                 },
                 "passwordWo": {
                     "type": "string",
-                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe password of the service user (write-only, not stored in state). Must be used with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e. Must be 8-256 characters.",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe password of the service user (write-only, not stored in state). The field is required with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e. The field conflicts with \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e. Value must be between \u003cspan pulumi-lang-nodejs=\"`8`\" pulumi-lang-dotnet=\"`8`\" pulumi-lang-go=\"`8`\" pulumi-lang-python=\"`8`\" pulumi-lang-yaml=\"`8`\" pulumi-lang-java=\"`8`\"\u003e`8`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`256`\" pulumi-lang-dotnet=\"`256`\" pulumi-lang-go=\"`256`\" pulumi-lang-python=\"`256`\" pulumi-lang-yaml=\"`256`\" pulumi-lang-java=\"`256`\"\u003e`256`\u003c/span\u003e.",
                     "secret": true
                 },
                 "passwordWoVersion": {
                     "type": "integer",
-                    "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Increment this to rotate the password. Must be \u003e= 1."
+                    "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Increment this to rotate the password. The field is required with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Minimum value: \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\"\u003e`1`\u003c/span\u003e."
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Project name. Changing this property forces recreation of the resource.\n"
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the MySQL® service user. Changing this property forces recreation of the resource.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/MysqlUserTimeouts:MysqlUserTimeouts"
                 },
                 "username": {
                     "type": "string",
-                    "description": "The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the MySQL® service user. Maximum length: \u003cspan pulumi-lang-nodejs=\"`64`\" pulumi-lang-dotnet=\"`64`\" pulumi-lang-go=\"`64`\" pulumi-lang-python=\"`64`\" pulumi-lang-yaml=\"`64`\" pulumi-lang-java=\"`64`\"\u003e`64`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                 }
             },
             "requiredInputs": [
@@ -34643,41 +34869,42 @@
                 "properties": {
                     "accessCert": {
                         "type": "string",
-                        "description": "Access certificate for the user.",
+                        "description": "Access certificate for TLS client authentication.",
                         "secret": true
                     },
                     "accessKey": {
                         "type": "string",
-                        "description": "Access certificate key for the user.",
+                        "description": "Access key for TLS client authentication.",
                         "secret": true
                     },
                     "authentication": {
                         "type": "string",
-                        "description": "Authentication details. The possible values are \u003cspan pulumi-lang-nodejs=\"`cachingSha2Password`\" pulumi-lang-dotnet=\"`CachingSha2Password`\" pulumi-lang-go=\"`cachingSha2Password`\" pulumi-lang-python=\"`caching_sha2_password`\" pulumi-lang-yaml=\"`cachingSha2Password`\" pulumi-lang-java=\"`cachingSha2Password`\"\u003e`caching_sha2_password`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mysqlNativePassword`\" pulumi-lang-dotnet=\"`MysqlNativePassword`\" pulumi-lang-go=\"`mysqlNativePassword`\" pulumi-lang-python=\"`mysql_native_password`\" pulumi-lang-yaml=\"`mysqlNativePassword`\" pulumi-lang-java=\"`mysqlNativePassword`\"\u003e`mysql_native_password`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`null`\" pulumi-lang-dotnet=\"`Null`\" pulumi-lang-go=\"`null`\" pulumi-lang-python=\"`null`\" pulumi-lang-yaml=\"`null`\" pulumi-lang-java=\"`null`\"\u003e`null`\u003c/span\u003e."
+                        "description": "Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are \u003cspan pulumi-lang-nodejs=\"`cachingSha2Password`\" pulumi-lang-dotnet=\"`CachingSha2Password`\" pulumi-lang-go=\"`cachingSha2Password`\" pulumi-lang-python=\"`caching_sha2_password`\" pulumi-lang-yaml=\"`cachingSha2Password`\" pulumi-lang-java=\"`cachingSha2Password`\"\u003e`caching_sha2_password`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`mysqlNativePassword`\" pulumi-lang-dotnet=\"`MysqlNativePassword`\" pulumi-lang-go=\"`mysqlNativePassword`\" pulumi-lang-python=\"`mysql_native_password`\" pulumi-lang-yaml=\"`mysqlNativePassword`\" pulumi-lang-java=\"`mysqlNativePassword`\"\u003e`mysql_native_password`\u003c/span\u003e."
                     },
                     "password": {
                         "type": "string",
-                        "description": "The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.",
+                        "description": "The password of the service user (auto-generated if not provided). The field conflicts with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Value must be between \u003cspan pulumi-lang-nodejs=\"`8`\" pulumi-lang-dotnet=\"`8`\" pulumi-lang-go=\"`8`\" pulumi-lang-python=\"`8`\" pulumi-lang-yaml=\"`8`\" pulumi-lang-java=\"`8`\"\u003e`8`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`256`\" pulumi-lang-dotnet=\"`256`\" pulumi-lang-go=\"`256`\" pulumi-lang-python=\"`256`\" pulumi-lang-yaml=\"`256`\" pulumi-lang-java=\"`256`\"\u003e`256`\u003c/span\u003e.",
                         "secret": true
                     },
                     "passwordWo": {
                         "type": "string",
-                        "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe password of the service user (write-only, not stored in state). Must be used with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e. Must be 8-256 characters.",
+                        "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe password of the service user (write-only, not stored in state). The field is required with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e. The field conflicts with \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e. Value must be between \u003cspan pulumi-lang-nodejs=\"`8`\" pulumi-lang-dotnet=\"`8`\" pulumi-lang-go=\"`8`\" pulumi-lang-python=\"`8`\" pulumi-lang-yaml=\"`8`\" pulumi-lang-java=\"`8`\"\u003e`8`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`256`\" pulumi-lang-dotnet=\"`256`\" pulumi-lang-go=\"`256`\" pulumi-lang-python=\"`256`\" pulumi-lang-yaml=\"`256`\" pulumi-lang-java=\"`256`\"\u003e`256`\u003c/span\u003e.",
                         "secret": true
                     },
                     "passwordWoVersion": {
                         "type": "integer",
-                        "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Increment this to rotate the password. Must be \u003e= 1."
+                        "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Increment this to rotate the password. The field is required with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Minimum value: \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\"\u003e`1`\u003c/span\u003e."
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Project name. Changing this property forces recreation of the resource.\n"
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the MySQL® service user. Changing this property forces recreation of the resource.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/MysqlUserTimeouts:MysqlUserTimeouts"
                     },
                     "type": {
                         "type": "string",
@@ -34685,8 +34912,7 @@
                     },
                     "username": {
                         "type": "string",
-                        "description": "The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the MySQL® service user. Maximum length: \u003cspan pulumi-lang-nodejs=\"`64`\" pulumi-lang-dotnet=\"`64`\" pulumi-lang-go=\"`64`\" pulumi-lang-python=\"`64`\" pulumi-lang-yaml=\"`64`\" pulumi-lang-java=\"`64`\"\u003e`64`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                     }
                 },
                 "type": "object"
@@ -35833,7 +36059,7 @@
                 },
                 "maxAgeSeconds": {
                     "type": "integer",
-                    "description": "Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.\n"
+                    "description": "Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between \u003cspan pulumi-lang-nodejs=\"`600`\" pulumi-lang-dotnet=\"`600`\" pulumi-lang-go=\"`600`\" pulumi-lang-python=\"`600`\" pulumi-lang-yaml=\"`600`\" pulumi-lang-java=\"`600`\"\u003e`600`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`315360000`\" pulumi-lang-dotnet=\"`315360000`\" pulumi-lang-go=\"`315360000`\" pulumi-lang-python=\"`315360000`\" pulumi-lang-yaml=\"`315360000`\" pulumi-lang-java=\"`315360000`\"\u003e`315360000`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                 },
                 "organizationId": {
                     "type": "string",
@@ -35891,7 +36117,7 @@
                 },
                 "maxAgeSeconds": {
                     "type": "integer",
-                    "description": "Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.\n"
+                    "description": "Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between \u003cspan pulumi-lang-nodejs=\"`600`\" pulumi-lang-dotnet=\"`600`\" pulumi-lang-go=\"`600`\" pulumi-lang-python=\"`600`\" pulumi-lang-yaml=\"`600`\" pulumi-lang-java=\"`600`\"\u003e`600`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`315360000`\" pulumi-lang-dotnet=\"`315360000`\" pulumi-lang-go=\"`315360000`\" pulumi-lang-python=\"`315360000`\" pulumi-lang-yaml=\"`315360000`\" pulumi-lang-java=\"`315360000`\"\u003e`315360000`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                 },
                 "organizationId": {
                     "type": "string",
@@ -35973,7 +36199,7 @@
                     },
                     "maxAgeSeconds": {
                         "type": "integer",
-                        "description": "Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.\n"
+                        "description": "Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between \u003cspan pulumi-lang-nodejs=\"`600`\" pulumi-lang-dotnet=\"`600`\" pulumi-lang-go=\"`600`\" pulumi-lang-python=\"`600`\" pulumi-lang-yaml=\"`600`\" pulumi-lang-java=\"`600`\"\u003e`600`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`315360000`\" pulumi-lang-dotnet=\"`315360000`\" pulumi-lang-go=\"`315360000`\" pulumi-lang-python=\"`315360000`\" pulumi-lang-yaml=\"`315360000`\" pulumi-lang-java=\"`315360000`\"\u003e`315360000`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                     },
                     "organizationId": {
                         "type": "string",
@@ -36350,7 +36576,7 @@
             "properties": {
                 "basePort": {
                     "type": "integer",
-                    "description": "Valid port number (10000-30000) to use as a base for service port allocation.\n"
+                    "description": "Valid port number (10000-30000) to use as a base for service port allocation. Value must be between \u003cspan pulumi-lang-nodejs=\"`10000`\" pulumi-lang-dotnet=\"`10000`\" pulumi-lang-go=\"`10000`\" pulumi-lang-python=\"`10000`\" pulumi-lang-yaml=\"`10000`\" pulumi-lang-java=\"`10000`\"\u003e`10000`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`30000`\" pulumi-lang-dotnet=\"`30000`\" pulumi-lang-go=\"`30000`\" pulumi-lang-python=\"`30000`\" pulumi-lang-yaml=\"`30000`\" pulumi-lang-java=\"`30000`\"\u003e`30000`\u003c/span\u003e.\n"
                 },
                 "billingGroupId": {
                     "type": "string",
@@ -36402,7 +36628,7 @@
             "inputProperties": {
                 "basePort": {
                     "type": "integer",
-                    "description": "Valid port number (10000-30000) to use as a base for service port allocation.\n"
+                    "description": "Valid port number (10000-30000) to use as a base for service port allocation. Value must be between \u003cspan pulumi-lang-nodejs=\"`10000`\" pulumi-lang-dotnet=\"`10000`\" pulumi-lang-go=\"`10000`\" pulumi-lang-python=\"`10000`\" pulumi-lang-yaml=\"`10000`\" pulumi-lang-java=\"`10000`\"\u003e`10000`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`30000`\" pulumi-lang-dotnet=\"`30000`\" pulumi-lang-go=\"`30000`\" pulumi-lang-python=\"`30000`\" pulumi-lang-yaml=\"`30000`\" pulumi-lang-java=\"`30000`\"\u003e`30000`\u003c/span\u003e.\n"
                 },
                 "billingGroupId": {
                     "type": "string",
@@ -36449,7 +36675,7 @@
                 "properties": {
                     "basePort": {
                         "type": "integer",
-                        "description": "Valid port number (10000-30000) to use as a base for service port allocation.\n"
+                        "description": "Valid port number (10000-30000) to use as a base for service port allocation. Value must be between \u003cspan pulumi-lang-nodejs=\"`10000`\" pulumi-lang-dotnet=\"`10000`\" pulumi-lang-go=\"`10000`\" pulumi-lang-python=\"`10000`\" pulumi-lang-yaml=\"`10000`\" pulumi-lang-java=\"`10000`\"\u003e`10000`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`30000`\" pulumi-lang-dotnet=\"`30000`\" pulumi-lang-go=\"`30000`\" pulumi-lang-python=\"`30000`\" pulumi-lang-yaml=\"`30000`\" pulumi-lang-java=\"`30000`\"\u003e`30000`\u003c/span\u003e.\n"
                     },
                     "billingGroupId": {
                         "type": "string",
@@ -36849,27 +37075,30 @@
             }
         },
         "aiven:index/organizationalUnit:OrganizationalUnit": {
-            "description": "Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) in an Aiven organization.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleUnit = new aiven.OrganizationalUnit(\"example_unit\", {\n    name: \"Example organizational unit\",\n    parentId: main.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_unit = aiven.OrganizationalUnit(\"example_unit\",\n    name=\"Example organizational unit\",\n    parent_id=main[\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUnit = new Aiven.OrganizationalUnit(\"example_unit\", new()\n    {\n        Name = \"Example organizational unit\",\n        ParentId = main.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOrganizationalUnit(ctx, \"example_unit\", \u0026aiven.OrganizationalUnitArgs{\n\t\t\tName:     pulumi.String(\"Example organizational unit\"),\n\t\t\tParentId: pulumi.Any(main.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationalUnit;\nimport com.pulumi.aiven.OrganizationalUnitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleUnit = new OrganizationalUnit(\"exampleUnit\", OrganizationalUnitArgs.builder()\n            .name(\"Example organizational unit\")\n            .parentId(main.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleUnit:\n    type: aiven:OrganizationalUnit\n    name: example_unit\n    properties:\n      name: Example organizational unit\n      parentId: ${main.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID\n```\n\n",
+            "description": "Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) in an Aiven organization.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleUnit = new aiven.OrganizationalUnit(\"example_unit\", {\n    name: \"Example organizational unit\",\n    parentId: main.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_unit = aiven.OrganizationalUnit(\"example_unit\",\n    name=\"Example organizational unit\",\n    parent_id=main[\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUnit = new Aiven.OrganizationalUnit(\"example_unit\", new()\n    {\n        Name = \"Example organizational unit\",\n        ParentId = main.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOrganizationalUnit(ctx, \"example_unit\", \u0026aiven.OrganizationalUnitArgs{\n\t\t\tName:     pulumi.String(\"Example organizational unit\"),\n\t\t\tParentId: pulumi.Any(main.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationalUnit;\nimport com.pulumi.aiven.OrganizationalUnitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleUnit = new OrganizationalUnit(\"exampleUnit\", OrganizationalUnitArgs.builder()\n            .name(\"Example organizational unit\")\n            .parentId(main.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleUnit:\n    type: aiven:OrganizationalUnit\n    name: example_unit\n    properties:\n      name: Example organizational unit\n      parentId: ${main.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example ORGANIZATIONAL_UNIT_ID\n```\n\n",
             "properties": {
                 "createTime": {
                     "type": "string",
-                    "description": "Time of creation.\n"
+                    "description": "Timestamp in ISO 8601 format, always in UTC.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the organizational unit.\n"
+                    "description": "The name of the organizational unit. Maximum length: \u003cspan pulumi-lang-nodejs=\"`128`\" pulumi-lang-dotnet=\"`128`\" pulumi-lang-go=\"`128`\" pulumi-lang-python=\"`128`\" pulumi-lang-yaml=\"`128`\" pulumi-lang-java=\"`128`\"\u003e`128`\u003c/span\u003e.\n"
                 },
                 "parentId": {
                     "type": "string",
-                    "description": "The ID of the organization that the unit is created in.\n"
+                    "description": "The ID of the organization that the unit is created in. Maximum length: \u003cspan pulumi-lang-nodejs=\"`36`\" pulumi-lang-dotnet=\"`36`\" pulumi-lang-go=\"`36`\" pulumi-lang-python=\"`36`\" pulumi-lang-yaml=\"`36`\" pulumi-lang-java=\"`36`\"\u003e`36`\u003c/span\u003e.\n"
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "Tenant ID.\n"
+                    "description": "Tenant identifier.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/OrganizationalUnitTimeouts:OrganizationalUnitTimeouts"
                 },
                 "updateTime": {
                     "type": "string",
-                    "description": "Time of last update.\n"
+                    "description": "Timestamp in ISO 8601 format, always in UTC.\n"
                 }
             },
             "required": [
@@ -36882,11 +37111,14 @@
             "inputProperties": {
                 "name": {
                     "type": "string",
-                    "description": "The name of the organizational unit.\n"
+                    "description": "The name of the organizational unit. Maximum length: \u003cspan pulumi-lang-nodejs=\"`128`\" pulumi-lang-dotnet=\"`128`\" pulumi-lang-go=\"`128`\" pulumi-lang-python=\"`128`\" pulumi-lang-yaml=\"`128`\" pulumi-lang-java=\"`128`\"\u003e`128`\u003c/span\u003e.\n"
                 },
                 "parentId": {
                     "type": "string",
-                    "description": "The ID of the organization that the unit is created in.\n"
+                    "description": "The ID of the organization that the unit is created in. Maximum length: \u003cspan pulumi-lang-nodejs=\"`36`\" pulumi-lang-dotnet=\"`36`\" pulumi-lang-go=\"`36`\" pulumi-lang-python=\"`36`\" pulumi-lang-yaml=\"`36`\" pulumi-lang-java=\"`36`\"\u003e`36`\u003c/span\u003e.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/OrganizationalUnitTimeouts:OrganizationalUnitTimeouts"
                 }
             },
             "requiredInputs": [
@@ -36897,23 +37129,26 @@
                 "properties": {
                     "createTime": {
                         "type": "string",
-                        "description": "Time of creation.\n"
+                        "description": "Timestamp in ISO 8601 format, always in UTC.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the organizational unit.\n"
+                        "description": "The name of the organizational unit. Maximum length: \u003cspan pulumi-lang-nodejs=\"`128`\" pulumi-lang-dotnet=\"`128`\" pulumi-lang-go=\"`128`\" pulumi-lang-python=\"`128`\" pulumi-lang-yaml=\"`128`\" pulumi-lang-java=\"`128`\"\u003e`128`\u003c/span\u003e.\n"
                     },
                     "parentId": {
                         "type": "string",
-                        "description": "The ID of the organization that the unit is created in.\n"
+                        "description": "The ID of the organization that the unit is created in. Maximum length: \u003cspan pulumi-lang-nodejs=\"`36`\" pulumi-lang-dotnet=\"`36`\" pulumi-lang-go=\"`36`\" pulumi-lang-python=\"`36`\" pulumi-lang-yaml=\"`36`\" pulumi-lang-java=\"`36`\"\u003e`36`\u003c/span\u003e.\n"
                     },
                     "tenantId": {
                         "type": "string",
-                        "description": "Tenant ID.\n"
+                        "description": "Tenant identifier.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/OrganizationalUnitTimeouts:OrganizationalUnitTimeouts"
                     },
                     "updateTime": {
                         "type": "string",
-                        "description": "Time of last update.\n"
+                        "description": "Timestamp in ISO 8601 format, always in UTC.\n"
                     }
                 },
                 "type": "object"
@@ -45928,15 +46163,18 @@
                 "properties": {
                     "databaseName": {
                         "type": "string",
-                        "description": "The name of the database. Changing this property forces recreation of the resource.\n"
+                        "description": "Service database name.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                        "description": "Project name.\n"
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                        "description": "Service name.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getMysqlDatabaseTimeouts:getMysqlDatabaseTimeouts"
                     }
                 },
                 "type": "object",
@@ -45950,31 +46188,35 @@
                 "description": "A collection of values returned by getMysqlDatabase.\n",
                 "properties": {
                     "databaseName": {
-                        "description": "The name of the database. Changing this property forces recreation of the resource.\n",
+                        "description": "Service database name.\n",
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "Resource ID composed as: `project/service_name/database_name`.\n",
                         "type": "string"
                     },
                     "project": {
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "Project name.\n",
                         "type": "string"
                     },
                     "serviceName": {
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "Service name.\n",
                         "type": "string"
                     },
                     "terminationProtection": {
+                        "deprecationMessage": "Instead use [\u003cspan pulumi-lang-nodejs=\"`preventDestroy`\" pulumi-lang-dotnet=\"`PreventDestroy`\" pulumi-lang-go=\"`preventDestroy`\" pulumi-lang-python=\"`prevent_destroy`\" pulumi-lang-yaml=\"`preventDestroy`\" pulumi-lang-java=\"`preventDestroy`\"\u003e`prevent_destroy`\u003c/span\u003e](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)",
                         "type": "boolean"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getMysqlDatabaseTimeouts:getMysqlDatabaseTimeouts"
                     }
                 },
                 "required": [
                     "databaseName",
+                    "id",
                     "project",
                     "serviceName",
-                    "terminationProtection",
-                    "id"
+                    "terminationProtection"
                 ],
                 "type": "object"
             }
@@ -45986,15 +46228,18 @@
                 "properties": {
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                        "description": "Project name.\n"
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                        "description": "The name of the MySQL® service user.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getMysqlUserTimeouts:getMysqlUserTimeouts"
                     },
                     "username": {
                         "type": "string",
-                        "description": "The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                        "description": "The name of the MySQL® service user.\n"
                     }
                 },
                 "type": "object",
@@ -46008,42 +46253,54 @@
                 "description": "A collection of values returned by getMysqlUser.\n",
                 "properties": {
                     "accessCert": {
-                        "description": "Access certificate for the user.\n",
+                        "description": "Access certificate for TLS client authentication.\n",
                         "secret": true,
                         "type": "string"
                     },
                     "accessKey": {
-                        "description": "Access certificate key for the user.\n",
+                        "description": "Access key for TLS client authentication.\n",
                         "secret": true,
                         "type": "string"
                     },
                     "authentication": {
-                        "description": "Authentication details. The possible values are \u003cspan pulumi-lang-nodejs=\"`cachingSha2Password`\" pulumi-lang-dotnet=\"`CachingSha2Password`\" pulumi-lang-go=\"`cachingSha2Password`\" pulumi-lang-python=\"`caching_sha2_password`\" pulumi-lang-yaml=\"`cachingSha2Password`\" pulumi-lang-java=\"`cachingSha2Password`\"\u003e`caching_sha2_password`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mysqlNativePassword`\" pulumi-lang-dotnet=\"`MysqlNativePassword`\" pulumi-lang-go=\"`mysqlNativePassword`\" pulumi-lang-python=\"`mysql_native_password`\" pulumi-lang-yaml=\"`mysqlNativePassword`\" pulumi-lang-java=\"`mysqlNativePassword`\"\u003e`mysql_native_password`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`null`\" pulumi-lang-dotnet=\"`Null`\" pulumi-lang-go=\"`null`\" pulumi-lang-python=\"`null`\" pulumi-lang-yaml=\"`null`\" pulumi-lang-java=\"`null`\"\u003e`null`\u003c/span\u003e.\n",
+                        "description": "Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql*native*password' and 'caching*sha2*password', latter being default when this is not explicitly set. The possible values are \u003cspan pulumi-lang-nodejs=\"`cachingSha2Password`\" pulumi-lang-dotnet=\"`CachingSha2Password`\" pulumi-lang-go=\"`cachingSha2Password`\" pulumi-lang-python=\"`caching_sha2_password`\" pulumi-lang-yaml=\"`cachingSha2Password`\" pulumi-lang-java=\"`cachingSha2Password`\"\u003e`caching_sha2_password`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`mysqlNativePassword`\" pulumi-lang-dotnet=\"`MysqlNativePassword`\" pulumi-lang-go=\"`mysqlNativePassword`\" pulumi-lang-python=\"`mysql_native_password`\" pulumi-lang-yaml=\"`mysqlNativePassword`\" pulumi-lang-java=\"`mysqlNativePassword`\"\u003e`mysql_native_password`\u003c/span\u003e.\n",
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "Resource ID composed as: `project/service_name/username`.\n",
                         "type": "string"
                     },
                     "password": {
-                        "description": "The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.\n",
+                        "description": "The password of the service user (auto-generated if not provided). The field conflicts with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e.\n",
                         "secret": true,
                         "type": "string"
                     },
+                    "passwordWo": {
+                        "description": "The password of the service user (write-only, not stored in state). The field is required with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e. The field conflicts with \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e.\n",
+                        "secret": true,
+                        "type": "string"
+                    },
+                    "passwordWoVersion": {
+                        "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Increment this to rotate the password. The field is required with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e.\n",
+                        "type": "integer"
+                    },
                     "project": {
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "Project name.\n",
                         "type": "string"
                     },
                     "serviceName": {
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the MySQL® service user.\n",
                         "type": "string"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getMysqlUserTimeouts:getMysqlUserTimeouts"
                     },
                     "type": {
                         "description": "User account type, such as primary or regular account.\n",
                         "type": "string"
                     },
                     "username": {
-                        "description": "The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the MySQL® service user.\n",
                         "type": "string"
                     }
                 },
@@ -46051,12 +46308,14 @@
                     "accessCert",
                     "accessKey",
                     "authentication",
+                    "id",
                     "password",
+                    "passwordWo",
+                    "passwordWoVersion",
                     "project",
                     "serviceName",
                     "type",
-                    "username",
-                    "id"
+                    "username"
                 ],
                 "type": "object"
             }
@@ -47344,33 +47603,37 @@
             }
         },
         "aiven:index/getOrganizationalUnit:getOrganizationalUnit": {
-            "description": "Gets information about an organizational unit.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nvariables:\n  exampleUnit:\n    fn::invoke:\n      function: aiven:getOrganizationalUnit\n      arguments:\n        name: Example organizational unit\n        parentId: ${main.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Gets information about an organizational unit.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleUnit = aiven.getOrganizationalUnit({\n    name: \"Example organizational unit\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_unit = aiven.get_organizational_unit(name=\"Example organizational unit\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUnit = Aiven.GetOrganizationalUnit.Invoke(new()\n    {\n        Name = \"Example organizational unit\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOrganizationalUnit(ctx, \u0026aiven.LookupOrganizationalUnitArgs{\n\t\t\tName: pulumi.StringRef(\"Example organizational unit\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()\n            .name(\"Example organizational unit\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  exampleUnit:\n    fn::invoke:\n      function: aiven:getOrganizationalUnit\n      arguments:\n        name: Example organizational unit\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getOrganizationalUnit.\n",
                 "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of this resource. Exactly one of the fields must be specified: \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                    },
                     "name": {
                         "type": "string",
-                        "description": "The name of the organizational unit.\n"
+                        "description": "The name of the organizational unit. Exactly one of the fields must be specified: \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getOrganizationalUnitTimeouts:getOrganizationalUnitTimeouts"
                     }
                 },
-                "type": "object",
-                "required": [
-                    "name"
-                ]
+                "type": "object"
             },
             "outputs": {
                 "description": "A collection of values returned by getOrganizationalUnit.\n",
                 "properties": {
                     "createTime": {
-                        "description": "Time of creation.\n",
+                        "description": "Timestamp in ISO 8601 format, always in UTC.\n",
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this resource. Exactly one of the fields must be specified: \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n",
                         "type": "string"
                     },
                     "name": {
-                        "description": "The name of the organizational unit.\n",
+                        "description": "The name of the organizational unit. Exactly one of the fields must be specified: \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n",
                         "type": "string"
                     },
                     "parentId": {
@@ -47378,21 +47641,24 @@
                         "type": "string"
                     },
                     "tenantId": {
-                        "description": "Tenant ID.\n",
+                        "description": "Tenant identifier.\n",
                         "type": "string"
                     },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getOrganizationalUnitTimeouts:getOrganizationalUnitTimeouts"
+                    },
                     "updateTime": {
-                        "description": "Time of last update.\n",
+                        "description": "Timestamp in ISO 8601 format, always in UTC.\n",
                         "type": "string"
                     }
                 },
                 "required": [
                     "createTime",
+                    "id",
                     "name",
                     "parentId",
                     "tenantId",
-                    "updateTime",
-                    "id"
+                    "updateTime"
                 ],
                 "type": "object"
             }
@@ -48233,6 +48499,10 @@
                         "type": "string",
                         "description": "Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are \u003cspan pulumi-lang-nodejs=\"`certificate`\" pulumi-lang-dotnet=\"`Certificate`\" pulumi-lang-go=\"`certificate`\" pulumi-lang-python=\"`certificate`\" pulumi-lang-yaml=\"`certificate`\" pulumi-lang-java=\"`certificate`\"\u003e`certificate`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`sasl`\" pulumi-lang-dotnet=\"`Sasl`\" pulumi-lang-go=\"`sasl`\" pulumi-lang-python=\"`sasl`\" pulumi-lang-yaml=\"`sasl`\" pulumi-lang-java=\"`sasl`\"\u003e`sasl`\u003c/span\u003e.\n"
                     },
+                    "kafkaSslCa": {
+                        "type": "string",
+                        "description": "Kafka certificate used. The possible values are \u003cspan pulumi-lang-nodejs=\"`letsencrypt`\" pulumi-lang-dotnet=\"`Letsencrypt`\" pulumi-lang-go=\"`letsencrypt`\" pulumi-lang-python=\"`letsencrypt`\" pulumi-lang-yaml=\"`letsencrypt`\" pulumi-lang-java=\"`letsencrypt`\"\u003e`letsencrypt`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`projectCa`\" pulumi-lang-dotnet=\"`ProjectCa`\" pulumi-lang-go=\"`projectCa`\" pulumi-lang-python=\"`project_ca`\" pulumi-lang-yaml=\"`projectCa`\" pulumi-lang-java=\"`projectCa`\"\u003e`project_ca`\u003c/span\u003e.\n"
+                    },
                     "project": {
                         "type": "string",
                         "description": "Project name\n"
@@ -48733,6 +49003,60 @@
                     "prometheusUserConfigs",
                     "rsyslogUserConfigs",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "aiven:index/getServiceList:getServiceList": {
+            "description": "A list of all services in a project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\n// Use the `aiven_service_list` data source to query all services in a project.\nconst allServices = aiven.getServiceList({\n    project: \"example-project-name\",\n});\nexport const serviceNames = allServices.then(allServices =\u003e .map(service =\u003e (service.name)));\nexport const serviceTypes = allServices.then(allServices =\u003e .map(service =\u003e (service.serviceType)));\nconst kafkaServices = allServices.then(allServices =\u003e .filter(service =\u003e service.serviceType == \"kafka\").map(service =\u003e (service)));\nexport const kafkaServiceNames = kafkaServices.map(service =\u003e (service.name));\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\n# Use the `aiven_service_list` data source to query all services in a project.\nall_services = aiven.get_service_list(project=\"example-project-name\")\npulumi.export(\"serviceNames\", [service.name for service in all_services.services])\npulumi.export(\"serviceTypes\", [service.service_type for service in all_services.services])\nkafka_services = [service for service in all_services.services if service.service_type == \"kafka\"]\npulumi.export(\"kafkaServiceNames\", [service.name for service in kafka_services])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Use the `aiven_service_list` data source to query all services in a project.\n    var allServices = Aiven.GetServiceList.Invoke(new()\n    {\n        Project = \"example-project-name\",\n    });\n\n    var kafkaServices = .Where(service =\u003e service.ServiceType == \"kafka\").Select(service =\u003e \n    {\n        return service;\n    }).ToList();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"serviceNames\"] = .Select(service =\u003e \n        {\n            return service.Name;\n        }).ToList(),\n        [\"serviceTypes\"] = .Select(service =\u003e \n        {\n            return service.ServiceType;\n        }).ToList(),\n        [\"kafkaServiceNames\"] = kafkaServices.Select(service =\u003e \n        {\n            return service.Name;\n        }).ToList(),\n    };\n});\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServiceList.\n",
+                "properties": {
+                    "project": {
+                        "type": "string",
+                        "description": "Project name.\n"
+                    },
+                    "services": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServiceListService:getServiceListService"
+                        },
+                        "description": "List of services under the project.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getServiceListTimeouts:getServiceListTimeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServiceList.\n",
+                "properties": {
+                    "id": {
+                        "description": "Resource ID, equal to \u003cspan pulumi-lang-nodejs=\"`project`\" pulumi-lang-dotnet=\"`Project`\" pulumi-lang-go=\"`project`\" pulumi-lang-python=\"`project`\" pulumi-lang-yaml=\"`project`\" pulumi-lang-java=\"`project`\"\u003e`project`\u003c/span\u003e.\n",
+                        "type": "string"
+                    },
+                    "project": {
+                        "description": "Project name.\n",
+                        "type": "string"
+                    },
+                    "services": {
+                        "description": "List of services under the project.\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServiceListService:getServiceListService"
+                        },
+                        "type": "array"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getServiceListTimeouts:getServiceListTimeouts"
+                    }
+                },
+                "required": [
+                    "id",
+                    "project"
                 ],
                 "type": "object"
             }

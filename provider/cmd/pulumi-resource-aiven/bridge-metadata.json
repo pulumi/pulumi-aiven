@@ -4331,6 +4331,15 @@
                     }
                 }
             },
+            "aiven_service_list": {
+                "current": "aiven:index/getServiceList:getServiceList",
+                "majorVersion": 6,
+                "fields": {
+                    "services": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "aiven_service_plan": {
                 "current": "aiven:index/getServicePlan:getServicePlan",
                 "majorVersion": 6,
@@ -4587,8 +4596,8 @@
             "aiven:index/m3dbUser:M3dbUser": 0,
             "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow": 0,
             "aiven:index/mySql:MySql": 0,
-            "aiven:index/mysqlDatabase:MysqlDatabase": 0,
-            "aiven:index/mysqlUser:MysqlUser": 0,
+            "aiven:index/mysqlDatabase:MysqlDatabase": 1,
+            "aiven:index/mysqlUser:MysqlUser": 1,
             "aiven:index/openSearch:OpenSearch": 0,
             "aiven:index/openSearchAclConfig:OpenSearchAclConfig": 0,
             "aiven:index/openSearchAclRule:OpenSearchAclRule": 0,
@@ -4606,7 +4615,7 @@
             "aiven:index/organizationUserGroup:OrganizationUserGroup": 0,
             "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember": 1,
             "aiven:index/organizationVpc:OrganizationVpc": 0,
-            "aiven:index/organizationalUnit:OrganizationalUnit": 0,
+            "aiven:index/organizationalUnit:OrganizationalUnit": 1,
             "aiven:index/pg:Pg": 0,
             "aiven:index/pgDatabase:PgDatabase": 0,
             "aiven:index/pgUser:PgUser": 0,
@@ -4673,8 +4682,8 @@
             "aiven:index/getM3dbUser:getM3dbUser": 0,
             "aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow": 0,
             "aiven:index/getMySql:getMySql": 0,
-            "aiven:index/getMysqlDatabase:getMysqlDatabase": 0,
-            "aiven:index/getMysqlUser:getMysqlUser": 0,
+            "aiven:index/getMysqlDatabase:getMysqlDatabase": 1,
+            "aiven:index/getMysqlUser:getMysqlUser": 1,
             "aiven:index/getOpenSearch:getOpenSearch": 0,
             "aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig": 0,
             "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule": 0,
@@ -4692,7 +4701,7 @@
             "aiven:index/getOrganizationUserGroupMemberList:getOrganizationUserGroupMemberList": 1,
             "aiven:index/getOrganizationUserList:getOrganizationUserList": 1,
             "aiven:index/getOrganizationVpc:getOrganizationVpc": 0,
-            "aiven:index/getOrganizationalUnit:getOrganizationalUnit": 0,
+            "aiven:index/getOrganizationalUnit:getOrganizationalUnit": 1,
             "aiven:index/getPg:getPg": 0,
             "aiven:index/getPgDatabase:getPgDatabase": 0,
             "aiven:index/getPgUser:getPgUser": 0,
@@ -4704,6 +4713,7 @@
             "aiven:index/getServiceComponent:getServiceComponent": 0,
             "aiven:index/getServiceIntegration:getServiceIntegration": 0,
             "aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint": 0,
+            "aiven:index/getServiceList:getServiceList": 1,
             "aiven:index/getServicePlan:getServicePlan": 1,
             "aiven:index/getServicePlanList:getServicePlanList": 1,
             "aiven:index/getThanos:getThanos": 0,

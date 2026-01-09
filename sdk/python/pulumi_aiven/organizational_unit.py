@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['OrganizationalUnitArgs', 'OrganizationalUnit']
 
@@ -20,21 +22,24 @@ __all__ = ['OrganizationalUnitArgs', 'OrganizationalUnit']
 class OrganizationalUnitArgs:
     def __init__(__self__, *,
                  parent_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['OrganizationalUnitTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationalUnit resource.
-        :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in.
-        :param pulumi.Input[_builtins.str] name: The name of the organizational unit.
+        :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in. Maximum length: `36`.
+        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `128`.
         """
         pulumi.set(__self__, "parent_id", parent_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the organization that the unit is created in.
+        The ID of the organization that the unit is created in. Maximum length: `36`.
         """
         return pulumi.get(self, "parent_id")
 
@@ -46,13 +51,22 @@ class OrganizationalUnitArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the organizational unit.
+        The name of the organizational unit. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['OrganizationalUnitTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['OrganizationalUnitTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -62,14 +76,15 @@ class _OrganizationalUnitState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['OrganizationalUnitTimeoutsArgs']] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationalUnit resources.
-        :param pulumi.Input[_builtins.str] create_time: Time of creation.
-        :param pulumi.Input[_builtins.str] name: The name of the organizational unit.
-        :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in.
-        :param pulumi.Input[_builtins.str] tenant_id: Tenant ID.
-        :param pulumi.Input[_builtins.str] update_time: Time of last update.
+        :param pulumi.Input[_builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
+        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in. Maximum length: `36`.
+        :param pulumi.Input[_builtins.str] tenant_id: Tenant identifier.
+        :param pulumi.Input[_builtins.str] update_time: Timestamp in ISO 8601 format, always in UTC.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -79,6 +94,8 @@ class _OrganizationalUnitState:
             pulumi.set(__self__, "parent_id", parent_id)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -86,7 +103,7 @@ class _OrganizationalUnitState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Time of creation.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -98,7 +115,7 @@ class _OrganizationalUnitState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the organizational unit.
+        The name of the organizational unit. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
@@ -110,7 +127,7 @@ class _OrganizationalUnitState:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the organization that the unit is created in.
+        The ID of the organization that the unit is created in. Maximum length: `36`.
         """
         return pulumi.get(self, "parent_id")
 
@@ -122,7 +139,7 @@ class _OrganizationalUnitState:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Tenant ID.
+        Tenant identifier.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -131,10 +148,19 @@ class _OrganizationalUnitState:
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['OrganizationalUnitTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['OrganizationalUnitTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Time of last update.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "update_time")
 
@@ -151,6 +177,7 @@ class OrganizationalUnit(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['OrganizationalUnitTimeoutsArgs', 'OrganizationalUnitTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) in an Aiven organization.
@@ -169,13 +196,13 @@ class OrganizationalUnit(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
+        $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example ORGANIZATIONAL_UNIT_ID
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: The name of the organizational unit.
-        :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in.
+        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in. Maximum length: `36`.
         """
         ...
     @overload
@@ -200,7 +227,7 @@ class OrganizationalUnit(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
+        $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example ORGANIZATIONAL_UNIT_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -220,6 +247,7 @@ class OrganizationalUnit(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['OrganizationalUnitTimeoutsArgs', 'OrganizationalUnitTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -233,6 +261,7 @@ class OrganizationalUnit(pulumi.CustomResource):
             if parent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'parent_id'")
             __props__.__dict__["parent_id"] = parent_id
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["create_time"] = None
             __props__.__dict__["tenant_id"] = None
             __props__.__dict__["update_time"] = None
@@ -250,6 +279,7 @@ class OrganizationalUnit(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             parent_id: Optional[pulumi.Input[_builtins.str]] = None,
             tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['OrganizationalUnitTimeoutsArgs', 'OrganizationalUnitTimeoutsArgsDict']]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationalUnit':
         """
         Get an existing OrganizationalUnit resource's state with the given name, id, and optional extra
@@ -258,11 +288,11 @@ class OrganizationalUnit(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] create_time: Time of creation.
-        :param pulumi.Input[_builtins.str] name: The name of the organizational unit.
-        :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in.
-        :param pulumi.Input[_builtins.str] tenant_id: Tenant ID.
-        :param pulumi.Input[_builtins.str] update_time: Time of last update.
+        :param pulumi.Input[_builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
+        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in. Maximum length: `36`.
+        :param pulumi.Input[_builtins.str] tenant_id: Tenant identifier.
+        :param pulumi.Input[_builtins.str] update_time: Timestamp in ISO 8601 format, always in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -272,6 +302,7 @@ class OrganizationalUnit(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parent_id"] = parent_id
         __props__.__dict__["tenant_id"] = tenant_id
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["update_time"] = update_time
         return OrganizationalUnit(resource_name, opts=opts, __props__=__props__)
 
@@ -279,7 +310,7 @@ class OrganizationalUnit(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Time of creation.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -287,7 +318,7 @@ class OrganizationalUnit(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the organizational unit.
+        The name of the organizational unit. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
@@ -295,7 +326,7 @@ class OrganizationalUnit(pulumi.CustomResource):
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the organization that the unit is created in.
+        The ID of the organization that the unit is created in. Maximum length: `36`.
         """
         return pulumi.get(self, "parent_id")
 
@@ -303,15 +334,20 @@ class OrganizationalUnit(pulumi.CustomResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Tenant ID.
+        Tenant identifier.
         """
         return pulumi.get(self, "tenant_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.OrganizationalUnitTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Time of last update.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "update_time")
 

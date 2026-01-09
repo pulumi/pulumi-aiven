@@ -29,6 +29,7 @@ export function getServiceComponent(args: GetServiceComponentArgs, opts?: pulumi
     return pulumi.runtime.invoke("aiven:index/getServiceComponent:getServiceComponent", {
         "component": args.component,
         "kafkaAuthenticationMethod": args.kafkaAuthenticationMethod,
+        "kafkaSslCa": args.kafkaSslCa,
         "project": args.project,
         "route": args.route,
         "serviceName": args.serviceName,
@@ -49,6 +50,10 @@ export interface GetServiceComponentArgs {
      * Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
      */
     kafkaAuthenticationMethod?: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: string;
     /**
      * Project name
      */
@@ -145,6 +150,7 @@ export function getServiceComponentOutput(args: GetServiceComponentOutputArgs, o
     return pulumi.runtime.invokeOutput("aiven:index/getServiceComponent:getServiceComponent", {
         "component": args.component,
         "kafkaAuthenticationMethod": args.kafkaAuthenticationMethod,
+        "kafkaSslCa": args.kafkaSslCa,
         "project": args.project,
         "route": args.route,
         "serviceName": args.serviceName,
@@ -165,6 +171,10 @@ export interface GetServiceComponentOutputArgs {
      * Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
     /**
      * Project name
      */

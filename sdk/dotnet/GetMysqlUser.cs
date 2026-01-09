@@ -94,19 +94,22 @@ namespace Pulumi.Aiven
     public sealed class GetMysqlUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetMysqlUserTimeoutsArgs? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -120,19 +123,22 @@ namespace Pulumi.Aiven
     public sealed class GetMysqlUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GetMysqlUserTimeoutsInputArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -148,39 +154,48 @@ namespace Pulumi.Aiven
     public sealed class GetMysqlUserResult
     {
         /// <summary>
-        /// Access certificate for the user.
+        /// Access certificate for TLS client authentication.
         /// </summary>
         public readonly string AccessCert;
         /// <summary>
-        /// Access certificate key for the user.
+        /// Access key for TLS client authentication.
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// Authentication details. The possible values are `CachingSha2Password`, `MysqlNativePassword` and `Null`.
+        /// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql*native*password' and 'caching*sha2*password', latter being default when this is not explicitly set. The possible values are `CachingSha2Password` and `MysqlNativePassword`.
         /// </summary>
         public readonly string Authentication;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/username`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`.
+        /// </summary>
+        public readonly string PasswordWo;
+        /// <summary>
+        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`.
+        /// </summary>
+        public readonly int PasswordWoVersion;
+        /// <summary>
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user.
         /// </summary>
         public readonly string ServiceName;
+        public readonly Outputs.GetMysqlUserTimeoutsResult? Timeouts;
         /// <summary>
         /// User account type, such as primary or regular account.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL® service user.
         /// </summary>
         public readonly string Username;
 
@@ -196,9 +211,15 @@ namespace Pulumi.Aiven
 
             string password,
 
+            string passwordWo,
+
+            int passwordWoVersion,
+
             string project,
 
             string serviceName,
+
+            Outputs.GetMysqlUserTimeoutsResult? timeouts,
 
             string type,
 
@@ -209,8 +230,11 @@ namespace Pulumi.Aiven
             Authentication = authentication;
             Id = id;
             Password = password;
+            PasswordWo = passwordWo;
+            PasswordWoVersion = passwordWoVersion;
             Project = project;
             ServiceName = serviceName;
+            Timeouts = timeouts;
             Type = type;
             Username = username;
         }

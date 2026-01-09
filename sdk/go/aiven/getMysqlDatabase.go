@@ -52,25 +52,28 @@ func LookupMysqlDatabase(ctx *pulumi.Context, args *LookupMysqlDatabaseArgs, opt
 
 // A collection of arguments for invoking getMysqlDatabase.
 type LookupMysqlDatabaseArgs struct {
-	// The name of the database. Changing this property forces recreation of the resource.
+	// Service database name.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// Service name.
+	ServiceName string                    `pulumi:"serviceName"`
+	Timeouts    *GetMysqlDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getMysqlDatabase.
 type LookupMysqlDatabaseResult struct {
-	// The name of the database. Changing this property forces recreation of the resource.
+	// Service database name.
 	DatabaseName string `pulumi:"databaseName"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name/database_name`.
 	Id string `pulumi:"id"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           string `pulumi:"serviceName"`
-	TerminationProtection bool   `pulumi:"terminationProtection"`
+	// Service name.
+	ServiceName string `pulumi:"serviceName"`
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection bool                      `pulumi:"terminationProtection"`
+	Timeouts              *GetMysqlDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 func LookupMysqlDatabaseOutput(ctx *pulumi.Context, args LookupMysqlDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupMysqlDatabaseResultOutput {
@@ -84,12 +87,13 @@ func LookupMysqlDatabaseOutput(ctx *pulumi.Context, args LookupMysqlDatabaseOutp
 
 // A collection of arguments for invoking getMysqlDatabase.
 type LookupMysqlDatabaseOutputArgs struct {
-	// The name of the database. Changing this property forces recreation of the resource.
+	// Service database name.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Service name.
+	ServiceName pulumi.StringInput               `pulumi:"serviceName"`
+	Timeouts    GetMysqlDatabaseTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupMysqlDatabaseOutputArgs) ElementType() reflect.Type {
@@ -111,28 +115,33 @@ func (o LookupMysqlDatabaseResultOutput) ToLookupMysqlDatabaseResultOutputWithCo
 	return o
 }
 
-// The name of the database. Changing this property forces recreation of the resource.
+// Service database name.
 func (o LookupMysqlDatabaseResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlDatabaseResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name/database_name`.
 func (o LookupMysqlDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name.
 func (o LookupMysqlDatabaseResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlDatabaseResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name.
 func (o LookupMysqlDatabaseResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 func (o LookupMysqlDatabaseResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMysqlDatabaseResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
+}
+
+func (o LookupMysqlDatabaseResultOutput) Timeouts() GetMysqlDatabaseTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupMysqlDatabaseResult) *GetMysqlDatabaseTimeouts { return v.Timeouts }).(GetMysqlDatabaseTimeoutsPtrOutput)
 }
 
 func init() {

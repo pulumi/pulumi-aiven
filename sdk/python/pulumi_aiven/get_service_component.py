@@ -171,6 +171,7 @@ class AwaitableGetServiceComponentResult(GetServiceComponentResult):
 
 def get_service_component(component: Optional[_builtins.str] = None,
                           kafka_authentication_method: Optional[_builtins.str] = None,
+                          kafka_ssl_ca: Optional[_builtins.str] = None,
                           project: Optional[_builtins.str] = None,
                           route: Optional[_builtins.str] = None,
                           service_name: Optional[_builtins.str] = None,
@@ -198,6 +199,7 @@ def get_service_component(component: Optional[_builtins.str] = None,
 
     :param _builtins.str component: Service component name
     :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
+    :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
     :param _builtins.str project: Project name
     :param _builtins.str route: Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
     :param _builtins.str service_name: Service name
@@ -207,6 +209,7 @@ def get_service_component(component: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['component'] = component
     __args__['kafkaAuthenticationMethod'] = kafka_authentication_method
+    __args__['kafkaSslCa'] = kafka_ssl_ca
     __args__['project'] = project
     __args__['route'] = route
     __args__['serviceName'] = service_name
@@ -229,6 +232,7 @@ def get_service_component(component: Optional[_builtins.str] = None,
         usage=pulumi.get(__ret__, 'usage'))
 def get_service_component_output(component: Optional[pulumi.Input[_builtins.str]] = None,
                                  kafka_authentication_method: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 kafka_ssl_ca: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  project: Optional[pulumi.Input[_builtins.str]] = None,
                                  route: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  service_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -256,6 +260,7 @@ def get_service_component_output(component: Optional[pulumi.Input[_builtins.str]
 
     :param _builtins.str component: Service component name
     :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
+    :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
     :param _builtins.str project: Project name
     :param _builtins.str route: Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
     :param _builtins.str service_name: Service name
@@ -265,6 +270,7 @@ def get_service_component_output(component: Optional[pulumi.Input[_builtins.str]
     __args__ = dict()
     __args__['component'] = component
     __args__['kafkaAuthenticationMethod'] = kafka_authentication_method
+    __args__['kafkaSslCa'] = kafka_ssl_ca
     __args__['project'] = project
     __args__['route'] = route
     __args__['serviceName'] = service_name

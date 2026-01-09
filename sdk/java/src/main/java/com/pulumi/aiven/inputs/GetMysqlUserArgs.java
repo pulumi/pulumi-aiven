@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetMysqlUserTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetMysqlUserArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +18,14 @@ public final class GetMysqlUserArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetMysqlUserArgs Empty = new GetMysqlUserArgs();
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public Output<String> project() {
@@ -30,29 +33,36 @@ public final class GetMysqlUserArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the MySQL® service user.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<GetMysqlUserTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetMysqlUserTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the MySQL® service user.
      * 
      */
     public Output<String> username() {
@@ -64,6 +74,7 @@ public final class GetMysqlUserArgs extends com.pulumi.resources.InvokeArgs {
     private GetMysqlUserArgs(GetMysqlUserArgs $) {
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.username = $.username;
     }
 
@@ -86,7 +97,7 @@ public final class GetMysqlUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -97,7 +108,7 @@ public final class GetMysqlUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -107,7 +118,7 @@ public final class GetMysqlUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName The name of the MySQL® service user.
          * 
          * @return builder
          * 
@@ -118,7 +129,7 @@ public final class GetMysqlUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName The name of the MySQL® service user.
          * 
          * @return builder
          * 
@@ -127,8 +138,17 @@ public final class GetMysqlUserArgs extends com.pulumi.resources.InvokeArgs {
             return serviceName(Output.of(serviceName));
         }
 
+        public Builder timeouts(@Nullable Output<GetMysqlUserTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetMysqlUserTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param username The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the MySQL® service user.
          * 
          * @return builder
          * 
@@ -139,7 +159,7 @@ public final class GetMysqlUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param username The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the MySQL® service user.
          * 
          * @return builder
          * 

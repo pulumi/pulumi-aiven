@@ -55,6 +55,11 @@ public final class GetMySqlMysqlUserConfigMigration {
      */
     private Integer port;
     /**
+     * @return Skip dump-restore part and start replication. Default: `false`.
+     * 
+     */
+    private @Nullable Boolean reestablishReplication;
+    /**
      * @return The server where to migrate data from is secured with SSL. Default: `true`.
      * 
      */
@@ -123,6 +128,13 @@ public final class GetMySqlMysqlUserConfigMigration {
         return this.port;
     }
     /**
+     * @return Skip dump-restore part and start replication. Default: `false`.
+     * 
+     */
+    public Optional<Boolean> reestablishReplication() {
+        return Optional.ofNullable(this.reestablishReplication);
+    }
+    /**
      * @return The server where to migrate data from is secured with SSL. Default: `true`.
      * 
      */
@@ -154,6 +166,7 @@ public final class GetMySqlMysqlUserConfigMigration {
         private @Nullable String method;
         private @Nullable String password;
         private Integer port;
+        private @Nullable Boolean reestablishReplication;
         private @Nullable Boolean ssl;
         private @Nullable String username;
         public Builder() {}
@@ -167,6 +180,7 @@ public final class GetMySqlMysqlUserConfigMigration {
     	      this.method = defaults.method;
     	      this.password = defaults.password;
     	      this.port = defaults.port;
+    	      this.reestablishReplication = defaults.reestablishReplication;
     	      this.ssl = defaults.ssl;
     	      this.username = defaults.username;
         }
@@ -224,6 +238,12 @@ public final class GetMySqlMysqlUserConfigMigration {
             return this;
         }
         @CustomType.Setter
+        public Builder reestablishReplication(@Nullable Boolean reestablishReplication) {
+
+            this.reestablishReplication = reestablishReplication;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ssl(@Nullable Boolean ssl) {
 
             this.ssl = ssl;
@@ -245,6 +265,7 @@ public final class GetMySqlMysqlUserConfigMigration {
             _resultValue.method = method;
             _resultValue.password = password;
             _resultValue.port = port;
+            _resultValue.reestablishReplication = reestablishReplication;
             _resultValue.ssl = ssl;
             _resultValue.username = username;
             return _resultValue;

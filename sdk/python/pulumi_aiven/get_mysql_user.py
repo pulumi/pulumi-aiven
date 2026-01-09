@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetMysqlUserResult',
@@ -26,7 +28,7 @@ class GetMysqlUserResult:
     """
     A collection of values returned by getMysqlUser.
     """
-    def __init__(__self__, access_cert=None, access_key=None, authentication=None, id=None, password=None, project=None, service_name=None, type=None, username=None):
+    def __init__(__self__, access_cert=None, access_key=None, authentication=None, id=None, password=None, password_wo=None, password_wo_version=None, project=None, service_name=None, timeouts=None, type=None, username=None):
         if access_cert and not isinstance(access_cert, str):
             raise TypeError("Expected argument 'access_cert' to be a str")
         pulumi.set(__self__, "access_cert", access_cert)
@@ -42,12 +44,21 @@ class GetMysqlUserResult:
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
+        if password_wo and not isinstance(password_wo, str):
+            raise TypeError("Expected argument 'password_wo' to be a str")
+        pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version and not isinstance(password_wo_version, int):
+            raise TypeError("Expected argument 'password_wo_version' to be a int")
+        pulumi.set(__self__, "password_wo_version", password_wo_version)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -59,7 +70,7 @@ class GetMysqlUserResult:
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> _builtins.str:
         """
-        Access certificate for the user.
+        Access certificate for TLS client authentication.
         """
         return pulumi.get(self, "access_cert")
 
@@ -67,7 +78,7 @@ class GetMysqlUserResult:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> _builtins.str:
         """
-        Access certificate key for the user.
+        Access key for TLS client authentication.
         """
         return pulumi.get(self, "access_key")
 
@@ -75,7 +86,7 @@ class GetMysqlUserResult:
     @pulumi.getter
     def authentication(self) -> _builtins.str:
         """
-        Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
+        Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql*native*password' and 'caching*sha2*password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
         """
         return pulumi.get(self, "authentication")
 
@@ -83,7 +94,7 @@ class GetMysqlUserResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/username`.
         """
         return pulumi.get(self, "id")
 
@@ -91,15 +102,31 @@ class GetMysqlUserResult:
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> _builtins.str:
+        """
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> _builtins.int:
+        """
+        Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`.
+        """
+        return pulumi.get(self, "password_wo_version")
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -107,9 +134,14 @@ class GetMysqlUserResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the MySQL® service user.
         """
         return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetMysqlUserTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter
@@ -123,7 +155,7 @@ class GetMysqlUserResult:
     @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the MySQL® service user.
         """
         return pulumi.get(self, "username")
 
@@ -139,14 +171,18 @@ class AwaitableGetMysqlUserResult(GetMysqlUserResult):
             authentication=self.authentication,
             id=self.id,
             password=self.password,
+            password_wo=self.password_wo,
+            password_wo_version=self.password_wo_version,
             project=self.project,
             service_name=self.service_name,
+            timeouts=self.timeouts,
             type=self.type,
             username=self.username)
 
 
 def get_mysql_user(project: Optional[_builtins.str] = None,
                    service_name: Optional[_builtins.str] = None,
+                   timeouts: Optional[Union['GetMysqlUserTimeoutsArgs', 'GetMysqlUserTimeoutsArgsDict']] = None,
                    username: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMysqlUserResult:
     """
@@ -164,13 +200,14 @@ def get_mysql_user(project: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: The name of the MySQL® service user.
+    :param _builtins.str username: The name of the MySQL® service user.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getMysqlUser:getMysqlUser', __args__, opts=opts, typ=GetMysqlUserResult).value
@@ -181,12 +218,16 @@ def get_mysql_user(project: Optional[_builtins.str] = None,
         authentication=pulumi.get(__ret__, 'authentication'),
         id=pulumi.get(__ret__, 'id'),
         password=pulumi.get(__ret__, 'password'),
+        password_wo=pulumi.get(__ret__, 'password_wo'),
+        password_wo_version=pulumi.get(__ret__, 'password_wo_version'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         type=pulumi.get(__ret__, 'type'),
         username=pulumi.get(__ret__, 'username'))
 def get_mysql_user_output(project: Optional[pulumi.Input[_builtins.str]] = None,
                           service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                          timeouts: Optional[pulumi.Input[Optional[Union['GetMysqlUserTimeoutsArgs', 'GetMysqlUserTimeoutsArgsDict']]]] = None,
                           username: Optional[pulumi.Input[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMysqlUserResult]:
     """
@@ -204,13 +245,14 @@ def get_mysql_user_output(project: Optional[pulumi.Input[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: The name of the MySQL® service user.
+    :param _builtins.str username: The name of the MySQL® service user.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getMysqlUser:getMysqlUser', __args__, opts=opts, typ=GetMysqlUserResult)
@@ -220,7 +262,10 @@ def get_mysql_user_output(project: Optional[pulumi.Input[_builtins.str]] = None,
         authentication=pulumi.get(__response__, 'authentication'),
         id=pulumi.get(__response__, 'id'),
         password=pulumi.get(__response__, 'password'),
+        password_wo=pulumi.get(__response__, 'password_wo'),
+        password_wo_version=pulumi.get(__response__, 'password_wo_version'),
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         type=pulumi.get(__response__, 'type'),
         username=pulumi.get(__response__, 'username')))

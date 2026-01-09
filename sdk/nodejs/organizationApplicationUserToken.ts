@@ -109,7 +109,7 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lastUserAgentHumanReadable: pulumi.Output<string>;
     /**
-     * Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+     * Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
      */
     declare public readonly maxAgeSeconds: pulumi.Output<number | undefined>;
     /**
@@ -248,7 +248,7 @@ export interface OrganizationApplicationUserTokenState {
      */
     lastUserAgentHumanReadable?: pulumi.Input<string>;
     /**
-     * Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+     * Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
      */
     maxAgeSeconds?: pulumi.Input<number>;
     /**
@@ -287,7 +287,7 @@ export interface OrganizationApplicationUserTokenArgs {
      */
     ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+     * Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
      */
     maxAgeSeconds?: pulumi.Input<number>;
     /**

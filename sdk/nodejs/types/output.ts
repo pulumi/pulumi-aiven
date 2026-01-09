@@ -6264,6 +6264,10 @@ export interface GetMySqlMysqlUserConfigMigration {
      */
     port: number;
     /**
+     * Skip dump-restore part and start replication. Default: `false`.
+     */
+    reestablishReplication?: boolean;
+    /**
      * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: boolean;
@@ -6483,6 +6487,20 @@ export interface GetMySqlTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface GetMysqlDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetMysqlUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetOpenSearchComponent {
@@ -8015,6 +8033,13 @@ export interface GetOrganizationUserListUserUserInfo {
      * User Email.
      */
     userEmail: string;
+}
+
+export interface GetOrganizationalUnitTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetPgComponent {
@@ -10106,6 +10131,80 @@ export interface GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      * Only include perfEventsStatements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: number;
+}
+
+export interface GetServiceListService {
+    /**
+     * Cloud provider and location.
+     */
+    cloudDescription: string;
+    /**
+     * Target cloud.
+     */
+    cloudName: string;
+    /**
+     * Service creation timestamp (ISO 8601).
+     */
+    createTime: string;
+    /**
+     * Megabytes of disk space for data storage.
+     */
+    diskSpaceMb: number;
+    /**
+     * Number of service nodes in the active plan.
+     */
+    nodeCount: number;
+    /**
+     * Number of CPUs for each node.
+     */
+    nodeCpuCount: number;
+    /**
+     * Megabytes of memory for each node.
+     */
+    nodeMemoryMb: number;
+    /**
+     * Subscription plan.
+     */
+    plan: string;
+    /**
+     * Project VPC ID.
+     */
+    projectVpcId: string;
+    /**
+     * Service name.
+     */
+    serviceName: string;
+    /**
+     * Service type code.
+     */
+    serviceType: string;
+    /**
+     * Single line description of the service.
+     */
+    serviceTypeDescription: string;
+    /**
+     * URI for connecting to the service (may be null).
+     */
+    serviceUri: string;
+    /**
+     * State of the service. The possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
+     */
+    state: string;
+    /**
+     * Service is protected against termination and powering off.
+     */
+    terminationProtection: boolean;
+    /**
+     * Service last update timestamp (ISO 8601).
+     */
+    updateTime: string;
+}
+
+export interface GetServiceListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetServicePlanBackupConfig {
@@ -13727,6 +13826,10 @@ export interface MySqlMysqlUserConfigMigration {
      */
     port: number;
     /**
+     * Skip dump-restore part and start replication. Default: `false`.
+     */
+    reestablishReplication?: boolean;
+    /**
      * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: boolean;
@@ -13946,6 +14049,56 @@ export interface MySqlTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface MysqlDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface MysqlUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface OpenSearchComponent {
@@ -15387,6 +15540,31 @@ export interface OrganizationUserGroupMemberTimeouts {
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
     create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface OrganizationalUnitTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOrganizationalUnitResult',
@@ -26,7 +28,7 @@ class GetOrganizationalUnitResult:
     """
     A collection of values returned by getOrganizationalUnit.
     """
-    def __init__(__self__, create_time=None, id=None, name=None, parent_id=None, tenant_id=None, update_time=None):
+    def __init__(__self__, create_time=None, id=None, name=None, parent_id=None, tenant_id=None, timeouts=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -42,6 +44,9 @@ class GetOrganizationalUnitResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -50,7 +55,7 @@ class GetOrganizationalUnitResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        Time of creation.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -58,7 +63,7 @@ class GetOrganizationalUnitResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
         """
         return pulumi.get(self, "id")
 
@@ -66,7 +71,7 @@ class GetOrganizationalUnitResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the organizational unit.
+        The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
         """
         return pulumi.get(self, "name")
 
@@ -82,15 +87,20 @@ class GetOrganizationalUnitResult:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> _builtins.str:
         """
-        Tenant ID.
+        Tenant identifier.
         """
         return pulumi.get(self, "tenant_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetOrganizationalUnitTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> _builtins.str:
         """
-        Time of last update.
+        Timestamp in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "update_time")
 
@@ -106,21 +116,34 @@ class AwaitableGetOrganizationalUnitResult(GetOrganizationalUnitResult):
             name=self.name,
             parent_id=self.parent_id,
             tenant_id=self.tenant_id,
+            timeouts=self.timeouts,
             update_time=self.update_time)
 
 
-def get_organizational_unit(name: Optional[_builtins.str] = None,
+def get_organizational_unit(id: Optional[_builtins.str] = None,
+                            name: Optional[_builtins.str] = None,
+                            timeouts: Optional[Union['GetOrganizationalUnitTimeoutsArgs', 'GetOrganizationalUnitTimeoutsArgsDict']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationalUnitResult:
     """
     Gets information about an organizational unit.
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
 
-    :param _builtins.str name: The name of the organizational unit.
+    example_unit = aiven.get_organizational_unit(name="Example organizational unit")
+    ```
+
+
+    :param _builtins.str id: The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
+    :param _builtins.str name: The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['name'] = name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganizationalUnit:getOrganizationalUnit', __args__, opts=opts, typ=GetOrganizationalUnitResult).value
 
@@ -130,19 +153,32 @@ def get_organizational_unit(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         parent_id=pulumi.get(__ret__, 'parent_id'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_organizational_unit_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_organizational_unit_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                   name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                   timeouts: Optional[pulumi.Input[Optional[Union['GetOrganizationalUnitTimeoutsArgs', 'GetOrganizationalUnitTimeoutsArgsDict']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationalUnitResult]:
     """
     Gets information about an organizational unit.
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
 
-    :param _builtins.str name: The name of the organizational unit.
+    example_unit = aiven.get_organizational_unit(name="Example organizational unit")
+    ```
+
+
+    :param _builtins.str id: The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
+    :param _builtins.str name: The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['name'] = name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationalUnit:getOrganizationalUnit', __args__, opts=opts, typ=GetOrganizationalUnitResult)
     return __ret__.apply(lambda __response__: GetOrganizationalUnitResult(
@@ -151,4 +187,5 @@ def get_organizational_unit_output(name: Optional[pulumi.Input[_builtins.str]] =
         name=pulumi.get(__response__, 'name'),
         parent_id=pulumi.get(__response__, 'parent_id'),
         tenant_id=pulumi.get(__response__, 'tenant_id'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         update_time=pulumi.get(__response__, 'update_time')))

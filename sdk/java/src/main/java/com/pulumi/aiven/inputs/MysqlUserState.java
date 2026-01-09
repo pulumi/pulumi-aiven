@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.MysqlUserTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -17,14 +18,14 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
     public static final MysqlUserState Empty = new MysqlUserState();
 
     /**
-     * Access certificate for the user.
+     * Access certificate for TLS client authentication.
      * 
      */
     @Import(name="accessCert")
     private @Nullable Output<String> accessCert;
 
     /**
-     * @return Access certificate for the user.
+     * @return Access certificate for TLS client authentication.
      * 
      */
     public Optional<Output<String>> accessCert() {
@@ -32,14 +33,14 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Access certificate key for the user.
+     * Access key for TLS client authentication.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return Access certificate key for the user.
+     * @return Access key for TLS client authentication.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -47,14 +48,14 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+     * Service specific authentication details. Currently only used for MySQL where accepted options are &#39;mysql_native_password&#39; and &#39;caching_sha2_password&#39;, latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
      * 
      */
     @Import(name="authentication")
     private @Nullable Output<String> authentication;
 
     /**
-     * @return Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+     * @return Service specific authentication details. Currently only used for MySQL where accepted options are &#39;mysql_native_password&#39; and &#39;caching_sha2_password&#39;, latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
      * 
      */
     public Optional<Output<String>> authentication() {
@@ -62,14 +63,14 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -78,7 +79,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
      * 
      */
     @Import(name="passwordWo")
@@ -86,7 +87,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
      * 
      */
     public Optional<Output<String>> passwordWo() {
@@ -94,14 +95,14 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     @Import(name="passwordWoVersion")
     private @Nullable Output<Integer> passwordWoVersion;
 
     /**
-     * @return Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     public Optional<Output<Integer>> passwordWoVersion() {
@@ -109,14 +110,14 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -124,18 +125,25 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the MySQL® service user. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
         return Optional.ofNullable(this.serviceName);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<MysqlUserTimeoutsArgs> timeouts;
+
+    public Optional<Output<MysqlUserTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     /**
@@ -154,14 +162,14 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -179,6 +187,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         this.passwordWoVersion = $.passwordWoVersion;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.type = $.type;
         this.username = $.username;
     }
@@ -202,7 +211,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert Access certificate for the user.
+         * @param accessCert Access certificate for TLS client authentication.
          * 
          * @return builder
          * 
@@ -213,7 +222,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert Access certificate for the user.
+         * @param accessCert Access certificate for TLS client authentication.
          * 
          * @return builder
          * 
@@ -223,7 +232,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey Access certificate key for the user.
+         * @param accessKey Access key for TLS client authentication.
          * 
          * @return builder
          * 
@@ -234,7 +243,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey Access certificate key for the user.
+         * @param accessKey Access key for TLS client authentication.
          * 
          * @return builder
          * 
@@ -244,7 +253,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authentication Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+         * @param authentication Service specific authentication details. Currently only used for MySQL where accepted options are &#39;mysql_native_password&#39; and &#39;caching_sha2_password&#39;, latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
          * 
          * @return builder
          * 
@@ -255,7 +264,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authentication Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
+         * @param authentication Service specific authentication details. Currently only used for MySQL where accepted options are &#39;mysql_native_password&#39; and &#39;caching_sha2_password&#39;, latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
          * 
          * @return builder
          * 
@@ -265,7 +274,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -276,7 +285,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -287,7 +296,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -299,7 +308,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -309,7 +318,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -320,7 +329,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -330,7 +339,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -341,7 +350,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -351,7 +360,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName The name of the MySQL® service user. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -362,13 +371,22 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName The name of the MySQL® service user. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        public Builder timeouts(@Nullable Output<MysqlUserTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(MysqlUserTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         /**
@@ -393,7 +411,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -404,7 +422,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

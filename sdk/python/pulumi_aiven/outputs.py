@@ -202,6 +202,8 @@ __all__ = [
     'MySqlServiceIntegration',
     'MySqlTag',
     'MySqlTechEmail',
+    'MysqlDatabaseTimeouts',
+    'MysqlUserTimeouts',
     'OpenSearchComponent',
     'OpenSearchOpensearch',
     'OpenSearchOpensearchUserConfig',
@@ -256,6 +258,7 @@ __all__ = [
     'OrganizationProjectTimeouts',
     'OrganizationTimeouts',
     'OrganizationUserGroupMemberTimeouts',
+    'OrganizationalUnitTimeouts',
     'PgComponent',
     'PgPg',
     'PgPgParam',
@@ -549,6 +552,8 @@ __all__ = [
     'GetMySqlServiceIntegrationResult',
     'GetMySqlTagResult',
     'GetMySqlTechEmailResult',
+    'GetMysqlDatabaseTimeoutsResult',
+    'GetMysqlUserTimeoutsResult',
     'GetOpenSearchComponentResult',
     'GetOpenSearchOpensearchResult',
     'GetOpenSearchOpensearchUserConfigResult',
@@ -608,6 +613,7 @@ __all__ = [
     'GetOrganizationUserListTimeoutsResult',
     'GetOrganizationUserListUserResult',
     'GetOrganizationUserListUserUserInfoResult',
+    'GetOrganizationalUnitTimeoutsResult',
     'GetPgComponentResult',
     'GetPgPgResult',
     'GetPgPgParamResult',
@@ -690,6 +696,8 @@ __all__ = [
     'GetServiceIntegrationPrometheusUserConfigResult',
     'GetServiceIntegrationPrometheusUserConfigSourceMysqlResult',
     'GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafResult',
+    'GetServiceListServiceResult',
+    'GetServiceListTimeoutsResult',
     'GetServicePlanBackupConfigResult',
     'GetServicePlanListServicePlanResult',
     'GetServicePlanListServicePlanRegionsResult',
@@ -16907,6 +16915,8 @@ class MySqlMysqlUserConfigMigration(dict):
             suggest = "ignore_dbs"
         elif key == "ignoreRoles":
             suggest = "ignore_roles"
+        elif key == "reestablishReplication":
+            suggest = "reestablish_replication"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MySqlMysqlUserConfigMigration. Access the value via the '{suggest}' property getter instead.")
@@ -16928,6 +16938,7 @@ class MySqlMysqlUserConfigMigration(dict):
                  ignore_roles: Optional[_builtins.str] = None,
                  method: Optional[_builtins.str] = None,
                  password: Optional[_builtins.str] = None,
+                 reestablish_replication: Optional[_builtins.bool] = None,
                  ssl: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
@@ -16939,6 +16950,7 @@ class MySqlMysqlUserConfigMigration(dict):
         :param _builtins.str ignore_roles: Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
         :param _builtins.str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param _builtins.str password: Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+        :param _builtins.bool reestablish_replication: Skip dump-restore part and start replication. Default: `false`.
         :param _builtins.bool ssl: The server where to migrate data from is secured with SSL. Default: `true`.
         :param _builtins.str username: User name for authentication with the server where to migrate data from. Example: `myname`.
         """
@@ -16956,6 +16968,8 @@ class MySqlMysqlUserConfigMigration(dict):
             pulumi.set(__self__, "method", method)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if reestablish_replication is not None:
+            pulumi.set(__self__, "reestablish_replication", reestablish_replication)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
         if username is not None:
@@ -17024,6 +17038,14 @@ class MySqlMysqlUserConfigMigration(dict):
         Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="reestablishReplication")
+    def reestablish_replication(self) -> Optional[_builtins.bool]:
+        """
+        Skip dump-restore part and start replication. Default: `false`.
+        """
+        return pulumi.get(self, "reestablish_replication")
 
     @_builtins.property
     @pulumi.getter
@@ -17767,6 +17789,142 @@ class MySqlTechEmail(dict):
         An email address to contact for technical issues
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class MysqlDatabaseTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class MysqlUserTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -22937,6 +23095,74 @@ class OrganizationUserGroupMemberTimeouts(dict):
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
         return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OrganizationalUnitTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
 
     @_builtins.property
     @pulumi.getter
@@ -45138,6 +45364,7 @@ class GetMySqlMysqlUserConfigMigrationResult(dict):
                  ignore_roles: Optional[_builtins.str] = None,
                  method: Optional[_builtins.str] = None,
                  password: Optional[_builtins.str] = None,
+                 reestablish_replication: Optional[_builtins.bool] = None,
                  ssl: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
@@ -45149,6 +45376,7 @@ class GetMySqlMysqlUserConfigMigrationResult(dict):
         :param _builtins.str ignore_roles: Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
         :param _builtins.str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param _builtins.str password: Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+        :param _builtins.bool reestablish_replication: Skip dump-restore part and start replication. Default: `false`.
         :param _builtins.bool ssl: The server where to migrate data from is secured with SSL. Default: `true`.
         :param _builtins.str username: User name for authentication with the server where to migrate data from. Example: `myname`.
         """
@@ -45166,6 +45394,8 @@ class GetMySqlMysqlUserConfigMigrationResult(dict):
             pulumi.set(__self__, "method", method)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if reestablish_replication is not None:
+            pulumi.set(__self__, "reestablish_replication", reestablish_replication)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
         if username is not None:
@@ -45234,6 +45464,14 @@ class GetMySqlMysqlUserConfigMigrationResult(dict):
         Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="reestablishReplication")
+    def reestablish_replication(self) -> Optional[_builtins.bool]:
+        """
+        Skip dump-restore part and start replication. Default: `false`.
+        """
+        return pulumi.get(self, "reestablish_replication")
 
     @_builtins.property
     @pulumi.getter
@@ -45864,6 +46102,44 @@ class GetMySqlTechEmailResult(dict):
         An email address to contact for technical issues
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GetMysqlDatabaseTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetMysqlUserTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -50260,6 +50536,25 @@ class GetOrganizationUserListUserUserInfoResult(dict):
         User Email.
         """
         return pulumi.get(self, "user_email")
+
+
+@pulumi.output_type
+class GetOrganizationalUnitTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -56169,6 +56464,208 @@ class GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafResult(dict):
         Only include perf_events_statements whose last seen is less than this many seconds. Example: `86400`.
         """
         return pulumi.get(self, "perf_events_statements_time_limit")
+
+
+@pulumi.output_type
+class GetServiceListServiceResult(dict):
+    def __init__(__self__, *,
+                 cloud_description: _builtins.str,
+                 cloud_name: _builtins.str,
+                 create_time: _builtins.str,
+                 disk_space_mb: _builtins.int,
+                 node_count: _builtins.int,
+                 node_cpu_count: _builtins.int,
+                 node_memory_mb: _builtins.float,
+                 plan: _builtins.str,
+                 project_vpc_id: _builtins.str,
+                 service_name: _builtins.str,
+                 service_type: _builtins.str,
+                 service_type_description: _builtins.str,
+                 service_uri: _builtins.str,
+                 state: _builtins.str,
+                 termination_protection: _builtins.bool,
+                 update_time: _builtins.str):
+        """
+        :param _builtins.str cloud_description: Cloud provider and location.
+        :param _builtins.str cloud_name: Target cloud.
+        :param _builtins.str create_time: Service creation timestamp (ISO 8601).
+        :param _builtins.int disk_space_mb: Megabytes of disk space for data storage.
+        :param _builtins.int node_count: Number of service nodes in the active plan.
+        :param _builtins.int node_cpu_count: Number of CPUs for each node.
+        :param _builtins.float node_memory_mb: Megabytes of memory for each node.
+        :param _builtins.str plan: Subscription plan.
+        :param _builtins.str project_vpc_id: Project VPC ID.
+        :param _builtins.str service_name: Service name.
+        :param _builtins.str service_type: Service type code.
+        :param _builtins.str service_type_description: Single line description of the service.
+        :param _builtins.str service_uri: URI for connecting to the service (may be null).
+        :param _builtins.str state: State of the service. The possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
+        :param _builtins.bool termination_protection: Service is protected against termination and powering off.
+        :param _builtins.str update_time: Service last update timestamp (ISO 8601).
+        """
+        pulumi.set(__self__, "cloud_description", cloud_description)
+        pulumi.set(__self__, "cloud_name", cloud_name)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "disk_space_mb", disk_space_mb)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_cpu_count", node_cpu_count)
+        pulumi.set(__self__, "node_memory_mb", node_memory_mb)
+        pulumi.set(__self__, "plan", plan)
+        pulumi.set(__self__, "project_vpc_id", project_vpc_id)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "service_type", service_type)
+        pulumi.set(__self__, "service_type_description", service_type_description)
+        pulumi.set(__self__, "service_uri", service_uri)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "termination_protection", termination_protection)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudDescription")
+    def cloud_description(self) -> _builtins.str:
+        """
+        Cloud provider and location.
+        """
+        return pulumi.get(self, "cloud_description")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> _builtins.str:
+        """
+        Target cloud.
+        """
+        return pulumi.get(self, "cloud_name")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        Service creation timestamp (ISO 8601).
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="diskSpaceMb")
+    def disk_space_mb(self) -> _builtins.int:
+        """
+        Megabytes of disk space for data storage.
+        """
+        return pulumi.get(self, "disk_space_mb")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> _builtins.int:
+        """
+        Number of service nodes in the active plan.
+        """
+        return pulumi.get(self, "node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCpuCount")
+    def node_cpu_count(self) -> _builtins.int:
+        """
+        Number of CPUs for each node.
+        """
+        return pulumi.get(self, "node_cpu_count")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeMemoryMb")
+    def node_memory_mb(self) -> _builtins.float:
+        """
+        Megabytes of memory for each node.
+        """
+        return pulumi.get(self, "node_memory_mb")
+
+    @_builtins.property
+    @pulumi.getter
+    def plan(self) -> _builtins.str:
+        """
+        Subscription plan.
+        """
+        return pulumi.get(self, "plan")
+
+    @_builtins.property
+    @pulumi.getter(name="projectVpcId")
+    def project_vpc_id(self) -> _builtins.str:
+        """
+        Project VPC ID.
+        """
+        return pulumi.get(self, "project_vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> _builtins.str:
+        """
+        Service name.
+        """
+        return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> _builtins.str:
+        """
+        Service type code.
+        """
+        return pulumi.get(self, "service_type")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceTypeDescription")
+    def service_type_description(self) -> _builtins.str:
+        """
+        Single line description of the service.
+        """
+        return pulumi.get(self, "service_type_description")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceUri")
+    def service_uri(self) -> _builtins.str:
+        """
+        URI for connecting to the service (may be null).
+        """
+        return pulumi.get(self, "service_uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        State of the service. The possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> _builtins.bool:
+        """
+        Service is protected against termination and powering off.
+        """
+        return pulumi.get(self, "termination_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        Service last update timestamp (ISO 8601).
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetServiceListTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type

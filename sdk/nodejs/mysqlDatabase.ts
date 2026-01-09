@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
+ * Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
  *
  * ## Example Usage
  *
@@ -23,7 +25,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
+ * $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
  * ```
  */
 export class MysqlDatabase extends pulumi.CustomResource {
@@ -55,18 +57,22 @@ export class MysqlDatabase extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the database. Changing this property forces recreation of the resource.
+     * Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
      */
     declare public readonly databaseName: pulumi.Output<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
-    declare public readonly terminationProtection: pulumi.Output<boolean | undefined>;
+    /**
+     * @deprecated Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     */
+    declare public readonly terminationProtection: pulumi.Output<boolean>;
+    declare public readonly timeouts: pulumi.Output<outputs.MysqlDatabaseTimeouts | undefined>;
 
     /**
      * Create a MysqlDatabase resource with the given unique name, arguments, and options.
@@ -85,6 +91,7 @@ export class MysqlDatabase extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
             resourceInputs["terminationProtection"] = state?.terminationProtection;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as MysqlDatabaseArgs | undefined;
             if (args?.databaseName === undefined && !opts.urn) {
@@ -100,6 +107,7 @@ export class MysqlDatabase extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["terminationProtection"] = args?.terminationProtection;
+            resourceInputs["timeouts"] = args?.timeouts;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MysqlDatabase.__pulumiType, name, resourceInputs, opts);
@@ -111,18 +119,22 @@ export class MysqlDatabase extends pulumi.CustomResource {
  */
 export interface MysqlDatabaseState {
     /**
-     * The name of the database. Changing this property forces recreation of the resource.
+     * Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
      */
     databaseName?: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
+    /**
+     * @deprecated Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     */
     terminationProtection?: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.MysqlDatabaseTimeouts>;
 }
 
 /**
@@ -130,16 +142,20 @@ export interface MysqlDatabaseState {
  */
 export interface MysqlDatabaseArgs {
     /**
-     * The name of the database. Changing this property forces recreation of the resource.
+     * Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
      */
     databaseName: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    /**
+     * @deprecated Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     */
     terminationProtection?: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.MysqlDatabaseTimeouts>;
 }

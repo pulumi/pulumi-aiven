@@ -120,7 +120,7 @@ namespace Pulumi.Aiven
         public Output<string> LastUserAgentHumanReadable { get; private set; } = null!;
 
         /// <summary>
-        /// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+        /// Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("maxAgeSeconds")]
         public Output<int?> MaxAgeSeconds { get; private set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+        /// Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("maxAgeSeconds")]
         public Input<int>? MaxAgeSeconds { get; set; }
@@ -356,7 +356,7 @@ namespace Pulumi.Aiven
         public Input<string>? LastUserAgentHumanReadable { get; set; }
 
         /// <summary>
-        /// Time the token remains valid since creation (or since last use if extend*when*used is true). Changing this property forces recreation of the resource.
+        /// Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("maxAgeSeconds")]
         public Input<int>? MaxAgeSeconds { get; set; }

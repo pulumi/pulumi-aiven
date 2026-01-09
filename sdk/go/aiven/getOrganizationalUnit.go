@@ -14,6 +14,30 @@ import (
 // Gets information about an organizational unit.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupOrganizationalUnit(ctx, &aiven.LookupOrganizationalUnitArgs{
+//				Name: pulumi.StringRef("Example organizational unit"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupOrganizationalUnit(ctx *pulumi.Context, args *LookupOrganizationalUnitArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationalUnitResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationalUnitResult
@@ -26,23 +50,27 @@ func LookupOrganizationalUnit(ctx *pulumi.Context, args *LookupOrganizationalUni
 
 // A collection of arguments for invoking getOrganizationalUnit.
 type LookupOrganizationalUnitArgs struct {
-	// The name of the organizational unit.
-	Name string `pulumi:"name"`
+	// The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
+	Id *string `pulumi:"id"`
+	// The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
+	Name     *string                        `pulumi:"name"`
+	Timeouts *GetOrganizationalUnitTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getOrganizationalUnit.
 type LookupOrganizationalUnitResult struct {
-	// Time of creation.
+	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime string `pulumi:"createTime"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
 	Id string `pulumi:"id"`
-	// The name of the organizational unit.
+	// The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
 	Name string `pulumi:"name"`
 	// The ID of the organization that the unit is created in.
 	ParentId string `pulumi:"parentId"`
-	// Tenant ID.
-	TenantId string `pulumi:"tenantId"`
-	// Time of last update.
+	// Tenant identifier.
+	TenantId string                         `pulumi:"tenantId"`
+	Timeouts *GetOrganizationalUnitTimeouts `pulumi:"timeouts"`
+	// Timestamp in ISO 8601 format, always in UTC.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -57,8 +85,11 @@ func LookupOrganizationalUnitOutput(ctx *pulumi.Context, args LookupOrganization
 
 // A collection of arguments for invoking getOrganizationalUnit.
 type LookupOrganizationalUnitOutputArgs struct {
-	// The name of the organizational unit.
-	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
+	Name     pulumi.StringPtrInput                 `pulumi:"name"`
+	Timeouts GetOrganizationalUnitTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupOrganizationalUnitOutputArgs) ElementType() reflect.Type {
@@ -80,17 +111,17 @@ func (o LookupOrganizationalUnitResultOutput) ToLookupOrganizationalUnitResultOu
 	return o
 }
 
-// Time of creation.
+// Timestamp in ISO 8601 format, always in UTC.
 func (o LookupOrganizationalUnitResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
 func (o LookupOrganizationalUnitResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the organizational unit.
+// The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
 func (o LookupOrganizationalUnitResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -100,12 +131,16 @@ func (o LookupOrganizationalUnitResultOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Tenant ID.
+// Tenant identifier.
 func (o LookupOrganizationalUnitResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Time of last update.
+func (o LookupOrganizationalUnitResultOutput) Timeouts() GetOrganizationalUnitTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationalUnitResult) *GetOrganizationalUnitTimeouts { return v.Timeouts }).(GetOrganizationalUnitTimeoutsPtrOutput)
+}
+
+// Timestamp in ISO 8601 format, always in UTC.
 func (o LookupOrganizationalUnitResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
