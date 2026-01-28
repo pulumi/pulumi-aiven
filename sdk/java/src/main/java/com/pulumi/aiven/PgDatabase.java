@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.PgDatabaseArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.PgDatabaseState;
+import com.pulumi.aiven.outputs.PgDatabaseTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -16,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages a database in an Aiven for PostgreSQL® service.
+ * Creates and manages an [Aiven for PostgreSQL®](https://aiven.io/docs/products/postgresql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
  * 
  * ## Example Usage
  * 
@@ -56,87 +57,99 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/pgDatabase:PgDatabase main PROJECT/SERVICE_NAME/DATABASE_NAME
+ * $ pulumi import aiven:index/pgDatabase:PgDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/pgDatabase:PgDatabase")
 public class PgDatabase extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="databaseName", refs={String.class}, tree="[0]")
     private Output<String> databaseName;
 
     /**
-     * @return The name of the service database. Changing this property forces recreation of the resource.
+     * @return Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> databaseName() {
         return this.databaseName;
     }
     /**
-     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="lcCollate", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> lcCollate;
+    private Output<String> lcCollate;
 
     /**
-     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * @return Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<Optional<String>> lcCollate() {
-        return Codegen.optional(this.lcCollate);
+    public Output<String> lcCollate() {
+        return this.lcCollate;
     }
     /**
-     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="lcCtype", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> lcCtype;
+    private Output<String> lcCtype;
 
     /**
-     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * @return Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<Optional<String>> lcCtype() {
-        return Codegen.optional(this.lcCtype);
+    public Output<String> lcCtype() {
+        return this.lcCtype;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
+    /**
+     * @deprecated
+     * Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     * 
+     */
+    @Deprecated /* Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> terminationProtection;
+    private Output<Boolean> terminationProtection;
 
-    public Output<Optional<Boolean>> terminationProtection() {
-        return Codegen.optional(this.terminationProtection);
+    public Output<Boolean> terminationProtection() {
+        return this.terminationProtection;
+    }
+    @Export(name="timeouts", refs={PgDatabaseTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ PgDatabaseTimeouts> timeouts;
+
+    public Output<Optional<PgDatabaseTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

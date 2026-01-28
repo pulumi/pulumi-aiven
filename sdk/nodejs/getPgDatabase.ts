@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Gets information about a database in an Aiven for PostgreSQL® service.
+ * Gets information about an Aiven for PostgreSQL® database.
  *
  * ## Example Usage
  *
@@ -26,6 +28,7 @@ export function getPgDatabase(args: GetPgDatabaseArgs, opts?: pulumi.InvokeOptio
         "databaseName": args.databaseName,
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -34,17 +37,18 @@ export function getPgDatabase(args: GetPgDatabaseArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetPgDatabaseArgs {
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * Service database name.
      */
     databaseName: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetPgDatabaseTimeouts;
 }
 
 /**
@@ -52,33 +56,37 @@ export interface GetPgDatabaseArgs {
  */
 export interface GetPgDatabaseResult {
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * Service database name.
      */
     readonly databaseName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/database_name`.
      */
     readonly id: string;
     /**
-     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`.
      */
     readonly lcCollate: string;
     /**
-     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`.
      */
     readonly lcCtype: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
+    /**
+     * @deprecated Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     */
     readonly terminationProtection: boolean;
+    readonly timeouts?: outputs.GetPgDatabaseTimeouts;
 }
 /**
- * Gets information about a database in an Aiven for PostgreSQL® service.
+ * Gets information about an Aiven for PostgreSQL® database.
  *
  * ## Example Usage
  *
@@ -99,6 +107,7 @@ export function getPgDatabaseOutput(args: GetPgDatabaseOutputArgs, opts?: pulumi
         "databaseName": args.databaseName,
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -107,15 +116,16 @@ export function getPgDatabaseOutput(args: GetPgDatabaseOutputArgs, opts?: pulumi
  */
 export interface GetPgDatabaseOutputArgs {
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * Service database name.
      */
     databaseName: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetPgDatabaseTimeoutsArgs>;
 }

@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetPgDatabase
     {
         /// <summary>
-        /// Gets information about a database in an Aiven for PostgreSQL® service.
+        /// Gets information about an Aiven for PostgreSQL® database.
         /// 
         /// ## Example Usage
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPgDatabaseResult>("aiven:index/getPgDatabase:getPgDatabase", args ?? new GetPgDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a database in an Aiven for PostgreSQL® service.
+        /// Gets information about an Aiven for PostgreSQL® database.
         /// 
         /// ## Example Usage
         /// 
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetPgDatabaseResult>("aiven:index/getPgDatabase:getPgDatabase", args ?? new GetPgDatabaseInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a database in an Aiven for PostgreSQL® service.
+        /// Gets information about an Aiven for PostgreSQL® database.
         /// 
         /// ## Example Usage
         /// 
@@ -94,22 +94,25 @@ namespace Pulumi.Aiven
     public sealed class GetPgDatabaseArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
+        /// Service database name.
         /// </summary>
         [Input("databaseName", required: true)]
         public string DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetPgDatabaseTimeoutsArgs? Timeouts { get; set; }
 
         public GetPgDatabaseArgs()
         {
@@ -120,22 +123,25 @@ namespace Pulumi.Aiven
     public sealed class GetPgDatabaseInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
+        /// Service database name.
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetPgDatabaseTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetPgDatabaseInvokeArgs()
         {
@@ -148,30 +154,31 @@ namespace Pulumi.Aiven
     public sealed class GetPgDatabaseResult
     {
         /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
+        /// Service database name.
         /// </summary>
         public readonly string DatabaseName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/database_name`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`.
         /// </summary>
         public readonly string LcCollate;
         /// <summary>
-        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`.
         /// </summary>
         public readonly string LcCtype;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
         public readonly bool TerminationProtection;
+        public readonly Outputs.GetPgDatabaseTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetPgDatabaseResult(
@@ -187,7 +194,9 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
-            bool terminationProtection)
+            bool terminationProtection,
+
+            Outputs.GetPgDatabaseTimeoutsResult? timeouts)
         {
             DatabaseName = databaseName;
             Id = id;
@@ -196,6 +205,7 @@ namespace Pulumi.Aiven
             Project = project;
             ServiceName = serviceName;
             TerminationProtection = terminationProtection;
+            Timeouts = timeouts;
         }
     }
 }

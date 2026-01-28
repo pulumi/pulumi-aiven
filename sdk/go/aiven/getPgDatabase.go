@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about a database in an Aiven for PostgreSQL® service.
+// Gets information about an Aiven for PostgreSQL® database.
 //
 // ## Example Usage
 //
@@ -52,29 +52,32 @@ func LookupPgDatabase(ctx *pulumi.Context, args *LookupPgDatabaseArgs, opts ...p
 
 // A collection of arguments for invoking getPgDatabase.
 type LookupPgDatabaseArgs struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// Service database name.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// Service name.
+	ServiceName string                 `pulumi:"serviceName"`
+	Timeouts    *GetPgDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getPgDatabase.
 type LookupPgDatabaseResult struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// Service database name.
 	DatabaseName string `pulumi:"databaseName"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name/database_name`.
 	Id string `pulumi:"id"`
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`.
 	LcCollate string `pulumi:"lcCollate"`
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`.
 	LcCtype string `pulumi:"lcCtype"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           string `pulumi:"serviceName"`
-	TerminationProtection bool   `pulumi:"terminationProtection"`
+	// Service name.
+	ServiceName string `pulumi:"serviceName"`
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection bool                   `pulumi:"terminationProtection"`
+	Timeouts              *GetPgDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 func LookupPgDatabaseOutput(ctx *pulumi.Context, args LookupPgDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupPgDatabaseResultOutput {
@@ -88,12 +91,13 @@ func LookupPgDatabaseOutput(ctx *pulumi.Context, args LookupPgDatabaseOutputArgs
 
 // A collection of arguments for invoking getPgDatabase.
 type LookupPgDatabaseOutputArgs struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// Service database name.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Service name.
+	ServiceName pulumi.StringInput            `pulumi:"serviceName"`
+	Timeouts    GetPgDatabaseTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupPgDatabaseOutputArgs) ElementType() reflect.Type {
@@ -115,38 +119,43 @@ func (o LookupPgDatabaseResultOutput) ToLookupPgDatabaseResultOutputWithContext(
 	return o
 }
 
-// The name of the service database. Changing this property forces recreation of the resource.
+// Service database name.
 func (o LookupPgDatabaseResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgDatabaseResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name/database_name`.
 func (o LookupPgDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`.
 func (o LookupPgDatabaseResultOutput) LcCollate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgDatabaseResult) string { return v.LcCollate }).(pulumi.StringOutput)
 }
 
-// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`.
 func (o LookupPgDatabaseResultOutput) LcCtype() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgDatabaseResult) string { return v.LcCtype }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name.
 func (o LookupPgDatabaseResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgDatabaseResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name.
 func (o LookupPgDatabaseResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 func (o LookupPgDatabaseResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPgDatabaseResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
+}
+
+func (o LookupPgDatabaseResultOutput) Timeouts() GetPgDatabaseTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupPgDatabaseResult) *GetPgDatabaseTimeouts { return v.Timeouts }).(GetPgDatabaseTimeoutsPtrOutput)
 }
 
 func init() {

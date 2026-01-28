@@ -91,6 +91,21 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * 
+     */
+    @Import(name="backupIntervalHours")
+    private @Nullable Output<Integer> backupIntervalHours;
+
+    /**
+     * @return Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * 
+     */
+    public Optional<Output<Integer>> backupIntervalHours() {
+        return Optional.ofNullable(this.backupIntervalHours);
+    }
+
+    /**
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
@@ -103,6 +118,21 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<Integer>> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
+    }
+
+    /**
+     * Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     * 
+     */
+    @Import(name="backupRetentionDays")
+    private @Nullable Output<Integer> backupRetentionDays;
+
+    /**
+     * @return Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     * 
+     */
+    public Optional<Output<Integer>> backupRetentionDays() {
+        return Optional.ofNullable(this.backupRetentionDays);
     }
 
     /**
@@ -563,7 +593,9 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         this.adminPassword = $.adminPassword;
         this.adminUsername = $.adminUsername;
         this.backupHour = $.backupHour;
+        this.backupIntervalHours = $.backupIntervalHours;
         this.backupMinute = $.backupMinute;
+        this.backupRetentionDays = $.backupRetentionDays;
         this.enableHaReplicaDns = $.enableHaReplicaDns;
         this.enableIpv6 = $.enableIpv6;
         this.ipFilterObjects = $.ipFilterObjects;
@@ -698,6 +730,27 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param backupIntervalHours Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupIntervalHours(@Nullable Output<Integer> backupIntervalHours) {
+            $.backupIntervalHours = backupIntervalHours;
+            return this;
+        }
+
+        /**
+         * @param backupIntervalHours Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupIntervalHours(Integer backupIntervalHours) {
+            return backupIntervalHours(Output.of(backupIntervalHours));
+        }
+
+        /**
          * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
          * 
          * @return builder
@@ -716,6 +769,27 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder backupMinute(Integer backupMinute) {
             return backupMinute(Output.of(backupMinute));
+        }
+
+        /**
+         * @param backupRetentionDays Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionDays(@Nullable Output<Integer> backupRetentionDays) {
+            $.backupRetentionDays = backupRetentionDays;
+            return this;
+        }
+
+        /**
+         * @param backupRetentionDays Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionDays(Integer backupRetentionDays) {
+            return backupRetentionDays(Output.of(backupRetentionDays));
         }
 
         /**

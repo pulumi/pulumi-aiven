@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['PgDatabaseArgs', 'PgDatabase']
 
@@ -24,14 +26,15 @@ class PgDatabaseArgs:
                  service_name: pulumi.Input[_builtins.str],
                  lc_collate: Optional[pulumi.Input[_builtins.str]] = None,
                  lc_ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None):
+                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input['PgDatabaseTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a PgDatabase resource.
-        :param pulumi.Input[_builtins.str] database_name: The name of the service database. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "project", project)
@@ -41,13 +44,18 @@ class PgDatabaseArgs:
         if lc_ctype is not None:
             pulumi.set(__self__, "lc_ctype", lc_ctype)
         if termination_protection is not None:
+            warnings.warn("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""", DeprecationWarning)
+            pulumi.log.warn("""termination_protection is deprecated: Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
+        if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service database. Changing this property forces recreation of the resource.
+        Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -59,7 +67,7 @@ class PgDatabaseArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -71,7 +79,7 @@ class PgDatabaseArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -83,7 +91,7 @@ class PgDatabaseArgs:
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -95,7 +103,7 @@ class PgDatabaseArgs:
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -105,12 +113,22 @@ class PgDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
+    @_utilities.deprecated("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
     def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
     def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "termination_protection", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['PgDatabaseTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['PgDatabaseTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -121,14 +139,15 @@ class _PgDatabaseState:
                  lc_ctype: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None):
+                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input['PgDatabaseTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering PgDatabase resources.
-        :param pulumi.Input[_builtins.str] database_name: The name of the service database. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         """
         if database_name is not None:
             pulumi.set(__self__, "database_name", database_name)
@@ -141,13 +160,18 @@ class _PgDatabaseState:
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
         if termination_protection is not None:
+            warnings.warn("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""", DeprecationWarning)
+            pulumi.log.warn("""termination_protection is deprecated: Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
+        if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the service database. Changing this property forces recreation of the resource.
+        Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -159,7 +183,7 @@ class _PgDatabaseState:
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -171,7 +195,7 @@ class _PgDatabaseState:
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -183,7 +207,7 @@ class _PgDatabaseState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -195,7 +219,7 @@ class _PgDatabaseState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -205,12 +229,22 @@ class _PgDatabaseState:
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
+    @_utilities.deprecated("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
     def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
     def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "termination_protection", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['PgDatabaseTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['PgDatabaseTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.type_token("aiven:index/pgDatabase:PgDatabase")
@@ -225,9 +259,10 @@ class PgDatabase(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input[Union['PgDatabaseTimeoutsArgs', 'PgDatabaseTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Creates and manages a database in an Aiven for PostgreSQL® service.
+        Creates and manages an [Aiven for PostgreSQL®](https://aiven.io/docs/products/postgresql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
 
         ## Example Usage
 
@@ -244,16 +279,16 @@ class PgDatabase(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/pgDatabase:PgDatabase main PROJECT/SERVICE_NAME/DATABASE_NAME
+        $ pulumi import aiven:index/pgDatabase:PgDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] database_name: The name of the service database. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -262,7 +297,7 @@ class PgDatabase(pulumi.CustomResource):
                  args: PgDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages a database in an Aiven for PostgreSQL® service.
+        Creates and manages an [Aiven for PostgreSQL®](https://aiven.io/docs/products/postgresql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
 
         ## Example Usage
 
@@ -279,7 +314,7 @@ class PgDatabase(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/pgDatabase:PgDatabase main PROJECT/SERVICE_NAME/DATABASE_NAME
+        $ pulumi import aiven:index/pgDatabase:PgDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -303,6 +338,7 @@ class PgDatabase(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input[Union['PgDatabaseTimeoutsArgs', 'PgDatabaseTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -324,6 +360,7 @@ class PgDatabase(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["termination_protection"] = termination_protection
+            __props__.__dict__["timeouts"] = timeouts
         super(PgDatabase, __self__).__init__(
             'aiven:index/pgDatabase:PgDatabase',
             resource_name,
@@ -339,7 +376,8 @@ class PgDatabase(pulumi.CustomResource):
             lc_ctype: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            termination_protection: Optional[pulumi.Input[_builtins.bool]] = None) -> 'PgDatabase':
+            termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+            timeouts: Optional[pulumi.Input[Union['PgDatabaseTimeoutsArgs', 'PgDatabaseTimeoutsArgsDict']]] = None) -> 'PgDatabase':
         """
         Get an existing PgDatabase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -347,11 +385,11 @@ class PgDatabase(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] database_name: The name of the service database. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -363,29 +401,30 @@ class PgDatabase(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["termination_protection"] = termination_protection
+        __props__.__dict__["timeouts"] = timeouts
         return PgDatabase(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service database. Changing this property forces recreation of the resource.
+        Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
     @_builtins.property
     @pulumi.getter(name="lcCollate")
-    def lc_collate(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def lc_collate(self) -> pulumi.Output[_builtins.str]:
         """
-        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_collate")
 
     @_builtins.property
     @pulumi.getter(name="lcCtype")
-    def lc_ctype(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def lc_ctype(self) -> pulumi.Output[_builtins.str]:
         """
-        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -393,7 +432,7 @@ class PgDatabase(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -401,12 +440,18 @@ class PgDatabase(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    @_utilities.deprecated("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
+    def termination_protection(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "termination_protection")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.PgDatabaseTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

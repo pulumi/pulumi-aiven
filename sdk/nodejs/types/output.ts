@@ -4548,6 +4548,14 @@ export interface GetKafkaKafkaUserConfig {
      */
     aivenKafkaTopicMessages?: boolean;
     /**
+     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     */
+    backupIntervalHours?: number;
+    /**
+     * Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     */
+    backupRetentionDays?: number;
+    /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      */
     customDomain?: string;
@@ -8081,6 +8089,13 @@ export interface GetPgComponent {
     usage: string;
 }
 
+export interface GetPgDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
 export interface GetPgPg {
     /**
      * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
@@ -8187,9 +8202,17 @@ export interface GetPgPgUserConfig {
      */
     backupHour?: number;
     /**
+     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     */
+    backupIntervalHours?: number;
+    /**
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
+    /**
+     * Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     */
+    backupRetentionDays?: number;
     /**
      * Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
      */
@@ -12110,6 +12133,14 @@ export interface KafkaKafkaUserConfig {
      */
     aivenKafkaTopicMessages?: boolean;
     /**
+     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     */
+    backupIntervalHours?: number;
+    /**
+     * Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     */
+    backupRetentionDays?: number;
+    /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      */
     customDomain?: string;
@@ -15618,6 +15649,31 @@ export interface PgComponent {
     usage: string;
 }
 
+export interface PgDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface PgPg {
     /**
      * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
@@ -15724,9 +15780,17 @@ export interface PgPgUserConfig {
      */
     backupHour?: number;
     /**
+     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     */
+    backupIntervalHours?: number;
+    /**
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
+    /**
+     * Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     */
+    backupRetentionDays?: number;
     /**
      * Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
      */

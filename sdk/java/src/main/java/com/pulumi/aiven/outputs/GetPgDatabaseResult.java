@@ -3,91 +3,110 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetPgDatabaseTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgDatabaseResult {
     /**
-     * @return The name of the service database. Changing this property forces recreation of the resource.
+     * @return Service database name.
      * 
      */
     private String databaseName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/database_name`.
      * 
      */
     private String id;
     /**
-     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`.
      * 
      */
     private String lcCollate;
     /**
-     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`.
      * 
      */
     private String lcCtype;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
+    /**
+     * @deprecated
+     * Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     * 
+     */
+    @Deprecated /* Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     private Boolean terminationProtection;
+    private @Nullable GetPgDatabaseTimeouts timeouts;
 
     private GetPgDatabaseResult() {}
     /**
-     * @return The name of the service database. Changing this property forces recreation of the resource.
+     * @return Service database name.
      * 
      */
     public String databaseName() {
         return this.databaseName;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/database_name`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`.
      * 
      */
     public String lcCollate() {
         return this.lcCollate;
     }
     /**
-     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`.
      * 
      */
     public String lcCtype() {
         return this.lcCtype;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @deprecated
+     * Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     * 
+     */
+    @Deprecated /* Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     public Boolean terminationProtection() {
         return this.terminationProtection;
+    }
+    public Optional<GetPgDatabaseTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     public static Builder builder() {
@@ -106,6 +125,7 @@ public final class GetPgDatabaseResult {
         private String project;
         private String serviceName;
         private Boolean terminationProtection;
+        private @Nullable GetPgDatabaseTimeouts timeouts;
         public Builder() {}
         public Builder(GetPgDatabaseResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -116,6 +136,7 @@ public final class GetPgDatabaseResult {
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
     	      this.terminationProtection = defaults.terminationProtection;
+    	      this.timeouts = defaults.timeouts;
         }
 
         @CustomType.Setter
@@ -174,6 +195,12 @@ public final class GetPgDatabaseResult {
             this.terminationProtection = terminationProtection;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetPgDatabaseTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
         public GetPgDatabaseResult build() {
             final var _resultValue = new GetPgDatabaseResult();
             _resultValue.databaseName = databaseName;
@@ -183,6 +210,7 @@ public final class GetPgDatabaseResult {
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
             _resultValue.terminationProtection = terminationProtection;
+            _resultValue.timeouts = timeouts;
             return _resultValue;
         }
     }

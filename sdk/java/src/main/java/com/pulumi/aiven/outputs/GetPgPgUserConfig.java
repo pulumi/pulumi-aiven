@@ -47,10 +47,20 @@ public final class GetPgPgUserConfig {
      */
     private @Nullable Integer backupHour;
     /**
+     * @return Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * 
+     */
+    private @Nullable Integer backupIntervalHours;
+    /**
      * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     private @Nullable Integer backupMinute;
+    /**
+     * @return Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     * 
+     */
+    private @Nullable Integer backupRetentionDays;
     /**
      * @return Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
      * 
@@ -235,11 +245,25 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.backupHour);
     }
     /**
+     * @return Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * 
+     */
+    public Optional<Integer> backupIntervalHours() {
+        return Optional.ofNullable(this.backupIntervalHours);
+    }
+    /**
      * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     public Optional<Integer> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
+    }
+    /**
+     * @return Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     * 
+     */
+    public Optional<Integer> backupRetentionDays() {
+        return Optional.ofNullable(this.backupRetentionDays);
     }
     /**
      * @return Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
@@ -466,7 +490,9 @@ public final class GetPgPgUserConfig {
         private @Nullable String adminPassword;
         private @Nullable String adminUsername;
         private @Nullable Integer backupHour;
+        private @Nullable Integer backupIntervalHours;
         private @Nullable Integer backupMinute;
+        private @Nullable Integer backupRetentionDays;
         private @Nullable Boolean enableHaReplicaDns;
         private @Nullable Boolean enableIpv6;
         private @Nullable List<GetPgPgUserConfigIpFilterObject> ipFilterObjects;
@@ -503,7 +529,9 @@ public final class GetPgPgUserConfig {
     	      this.adminPassword = defaults.adminPassword;
     	      this.adminUsername = defaults.adminUsername;
     	      this.backupHour = defaults.backupHour;
+    	      this.backupIntervalHours = defaults.backupIntervalHours;
     	      this.backupMinute = defaults.backupMinute;
+    	      this.backupRetentionDays = defaults.backupRetentionDays;
     	      this.enableHaReplicaDns = defaults.enableHaReplicaDns;
     	      this.enableIpv6 = defaults.enableIpv6;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
@@ -560,9 +588,21 @@ public final class GetPgPgUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder backupIntervalHours(@Nullable Integer backupIntervalHours) {
+
+            this.backupIntervalHours = backupIntervalHours;
+            return this;
+        }
+        @CustomType.Setter
         public Builder backupMinute(@Nullable Integer backupMinute) {
 
             this.backupMinute = backupMinute;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backupRetentionDays(@Nullable Integer backupRetentionDays) {
+
+            this.backupRetentionDays = backupRetentionDays;
             return this;
         }
         @CustomType.Setter
@@ -754,7 +794,9 @@ public final class GetPgPgUserConfig {
             _resultValue.adminPassword = adminPassword;
             _resultValue.adminUsername = adminUsername;
             _resultValue.backupHour = backupHour;
+            _resultValue.backupIntervalHours = backupIntervalHours;
             _resultValue.backupMinute = backupMinute;
+            _resultValue.backupRetentionDays = backupRetentionDays;
             _resultValue.enableHaReplicaDns = enableHaReplicaDns;
             _resultValue.enableIpv6 = enableIpv6;
             _resultValue.ipFilterObjects = ipFilterObjects;
