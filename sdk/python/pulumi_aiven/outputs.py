@@ -260,6 +260,7 @@ __all__ = [
     'OrganizationUserGroupMemberTimeouts',
     'OrganizationalUnitTimeouts',
     'PgComponent',
+    'PgDatabaseTimeouts',
     'PgPg',
     'PgPgParam',
     'PgPgUserConfig',
@@ -615,6 +616,7 @@ __all__ = [
     'GetOrganizationUserListUserUserInfoResult',
     'GetOrganizationalUnitTimeoutsResult',
     'GetPgComponentResult',
+    'GetPgDatabaseTimeoutsResult',
     'GetPgPgResult',
     'GetPgPgParamResult',
     'GetPgPgUserConfigResult',
@@ -10939,6 +10941,10 @@ class KafkaKafkaUserConfig(dict):
             suggest = "additional_backup_regions"
         elif key == "aivenKafkaTopicMessages":
             suggest = "aiven_kafka_topic_messages"
+        elif key == "backupIntervalHours":
+            suggest = "backup_interval_hours"
+        elif key == "backupRetentionDays":
+            suggest = "backup_retention_days"
         elif key == "customDomain":
             suggest = "custom_domain"
         elif key == "followerFetching":
@@ -11010,6 +11016,8 @@ class KafkaKafkaUserConfig(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[_builtins.str] = None,
                  aiven_kafka_topic_messages: Optional[_builtins.bool] = None,
+                 backup_interval_hours: Optional[_builtins.int] = None,
+                 backup_retention_days: Optional[_builtins.int] = None,
                  custom_domain: Optional[_builtins.str] = None,
                  follower_fetching: Optional['outputs.KafkaKafkaUserConfigFollowerFetching'] = None,
                  ip_filter_objects: Optional[Sequence['outputs.KafkaKafkaUserConfigIpFilterObject']] = None,
@@ -11042,6 +11050,8 @@ class KafkaKafkaUserConfig(dict):
         """
         :param _builtins.str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param _builtins.bool aiven_kafka_topic_messages: Allow access to read Kafka topic messages in the Aiven Console and REST API.
+        :param _builtins.int backup_interval_hours: Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        :param _builtins.int backup_retention_days: Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
         :param _builtins.str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         :param 'KafkaKafkaUserConfigFollowerFetchingArgs' follower_fetching: Enable follower fetching
         :param Sequence['KafkaKafkaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -11075,6 +11085,10 @@ class KafkaKafkaUserConfig(dict):
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if aiven_kafka_topic_messages is not None:
             pulumi.set(__self__, "aiven_kafka_topic_messages", aiven_kafka_topic_messages)
+        if backup_interval_hours is not None:
+            pulumi.set(__self__, "backup_interval_hours", backup_interval_hours)
+        if backup_retention_days is not None:
+            pulumi.set(__self__, "backup_retention_days", backup_retention_days)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if follower_fetching is not None:
@@ -11150,6 +11164,22 @@ class KafkaKafkaUserConfig(dict):
         Allow access to read Kafka topic messages in the Aiven Console and REST API.
         """
         return pulumi.get(self, "aiven_kafka_topic_messages")
+
+    @_builtins.property
+    @pulumi.getter(name="backupIntervalHours")
+    def backup_interval_hours(self) -> Optional[_builtins.int]:
+        """
+        Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        """
+        return pulumi.get(self, "backup_interval_hours")
+
+    @_builtins.property
+    @pulumi.getter(name="backupRetentionDays")
+    def backup_retention_days(self) -> Optional[_builtins.int]:
+        """
+        Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+        """
+        return pulumi.get(self, "backup_retention_days")
 
     @_builtins.property
     @pulumi.getter(name="customDomain")
@@ -23326,6 +23356,74 @@ class PgComponent(dict):
 
 
 @pulumi.output_type
+class PgDatabaseTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class PgPg(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -23633,8 +23731,12 @@ class PgPgUserConfig(dict):
             suggest = "admin_username"
         elif key == "backupHour":
             suggest = "backup_hour"
+        elif key == "backupIntervalHours":
+            suggest = "backup_interval_hours"
         elif key == "backupMinute":
             suggest = "backup_minute"
+        elif key == "backupRetentionDays":
+            suggest = "backup_retention_days"
         elif key == "enableHaReplicaDns":
             suggest = "enable_ha_replica_dns"
         elif key == "enableIpv6":
@@ -23696,7 +23798,9 @@ class PgPgUserConfig(dict):
                  admin_password: Optional[_builtins.str] = None,
                  admin_username: Optional[_builtins.str] = None,
                  backup_hour: Optional[_builtins.int] = None,
+                 backup_interval_hours: Optional[_builtins.int] = None,
                  backup_minute: Optional[_builtins.int] = None,
+                 backup_retention_days: Optional[_builtins.int] = None,
                  enable_ha_replica_dns: Optional[_builtins.bool] = None,
                  enable_ipv6: Optional[_builtins.bool] = None,
                  ip_filter_objects: Optional[Sequence['outputs.PgPgUserConfigIpFilterObject']] = None,
@@ -23731,7 +23835,9 @@ class PgPgUserConfig(dict):
         :param _builtins.str admin_password: Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         :param _builtins.str admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
         :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+        :param _builtins.int backup_interval_hours: Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
         :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param _builtins.int backup_retention_days: Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
         :param _builtins.bool enable_ha_replica_dns: Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
         :param _builtins.bool enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param Sequence['PgPgUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -23770,8 +23876,12 @@ class PgPgUserConfig(dict):
             pulumi.set(__self__, "admin_username", admin_username)
         if backup_hour is not None:
             pulumi.set(__self__, "backup_hour", backup_hour)
+        if backup_interval_hours is not None:
+            pulumi.set(__self__, "backup_interval_hours", backup_interval_hours)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if backup_retention_days is not None:
+            pulumi.set(__self__, "backup_retention_days", backup_retention_days)
         if enable_ha_replica_dns is not None:
             pulumi.set(__self__, "enable_ha_replica_dns", enable_ha_replica_dns)
         if enable_ipv6 is not None:
@@ -23864,12 +23974,28 @@ class PgPgUserConfig(dict):
         return pulumi.get(self, "backup_hour")
 
     @_builtins.property
+    @pulumi.getter(name="backupIntervalHours")
+    def backup_interval_hours(self) -> Optional[_builtins.int]:
+        """
+        Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        """
+        return pulumi.get(self, "backup_interval_hours")
+
+    @_builtins.property
     @pulumi.getter(name="backupMinute")
     def backup_minute(self) -> Optional[_builtins.int]:
         """
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
         return pulumi.get(self, "backup_minute")
+
+    @_builtins.property
+    @pulumi.getter(name="backupRetentionDays")
+    def backup_retention_days(self) -> Optional[_builtins.int]:
+        """
+        Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+        """
+        return pulumi.get(self, "backup_retention_days")
 
     @_builtins.property
     @pulumi.getter(name="enableHaReplicaDns")
@@ -40543,6 +40669,8 @@ class GetKafkaKafkaUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[_builtins.str] = None,
                  aiven_kafka_topic_messages: Optional[_builtins.bool] = None,
+                 backup_interval_hours: Optional[_builtins.int] = None,
+                 backup_retention_days: Optional[_builtins.int] = None,
                  custom_domain: Optional[_builtins.str] = None,
                  follower_fetching: Optional['outputs.GetKafkaKafkaUserConfigFollowerFetchingResult'] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetKafkaKafkaUserConfigIpFilterObjectResult']] = None,
@@ -40575,6 +40703,8 @@ class GetKafkaKafkaUserConfigResult(dict):
         """
         :param _builtins.str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param _builtins.bool aiven_kafka_topic_messages: Allow access to read Kafka topic messages in the Aiven Console and REST API.
+        :param _builtins.int backup_interval_hours: Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        :param _builtins.int backup_retention_days: Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
         :param _builtins.str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         :param 'GetKafkaKafkaUserConfigFollowerFetchingArgs' follower_fetching: Enable follower fetching
         :param Sequence['GetKafkaKafkaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -40608,6 +40738,10 @@ class GetKafkaKafkaUserConfigResult(dict):
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if aiven_kafka_topic_messages is not None:
             pulumi.set(__self__, "aiven_kafka_topic_messages", aiven_kafka_topic_messages)
+        if backup_interval_hours is not None:
+            pulumi.set(__self__, "backup_interval_hours", backup_interval_hours)
+        if backup_retention_days is not None:
+            pulumi.set(__self__, "backup_retention_days", backup_retention_days)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if follower_fetching is not None:
@@ -40683,6 +40817,22 @@ class GetKafkaKafkaUserConfigResult(dict):
         Allow access to read Kafka topic messages in the Aiven Console and REST API.
         """
         return pulumi.get(self, "aiven_kafka_topic_messages")
+
+    @_builtins.property
+    @pulumi.getter(name="backupIntervalHours")
+    def backup_interval_hours(self) -> Optional[_builtins.int]:
+        """
+        Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        """
+        return pulumi.get(self, "backup_interval_hours")
+
+    @_builtins.property
+    @pulumi.getter(name="backupRetentionDays")
+    def backup_retention_days(self) -> Optional[_builtins.int]:
+        """
+        Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+        """
+        return pulumi.get(self, "backup_retention_days")
 
     @_builtins.property
     @pulumi.getter(name="customDomain")
@@ -50664,6 +50814,25 @@ class GetPgComponentResult(dict):
 
 
 @pulumi.output_type
+class GetPgDatabaseTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetPgPgResult(dict):
     def __init__(__self__, *,
                  bouncer: _builtins.str,
@@ -50905,7 +51074,9 @@ class GetPgPgUserConfigResult(dict):
                  admin_password: Optional[_builtins.str] = None,
                  admin_username: Optional[_builtins.str] = None,
                  backup_hour: Optional[_builtins.int] = None,
+                 backup_interval_hours: Optional[_builtins.int] = None,
                  backup_minute: Optional[_builtins.int] = None,
+                 backup_retention_days: Optional[_builtins.int] = None,
                  enable_ha_replica_dns: Optional[_builtins.bool] = None,
                  enable_ipv6: Optional[_builtins.bool] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetPgPgUserConfigIpFilterObjectResult']] = None,
@@ -50940,7 +51111,9 @@ class GetPgPgUserConfigResult(dict):
         :param _builtins.str admin_password: Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         :param _builtins.str admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
         :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+        :param _builtins.int backup_interval_hours: Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
         :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param _builtins.int backup_retention_days: Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
         :param _builtins.bool enable_ha_replica_dns: Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
         :param _builtins.bool enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param Sequence['GetPgPgUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -50979,8 +51152,12 @@ class GetPgPgUserConfigResult(dict):
             pulumi.set(__self__, "admin_username", admin_username)
         if backup_hour is not None:
             pulumi.set(__self__, "backup_hour", backup_hour)
+        if backup_interval_hours is not None:
+            pulumi.set(__self__, "backup_interval_hours", backup_interval_hours)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if backup_retention_days is not None:
+            pulumi.set(__self__, "backup_retention_days", backup_retention_days)
         if enable_ha_replica_dns is not None:
             pulumi.set(__self__, "enable_ha_replica_dns", enable_ha_replica_dns)
         if enable_ipv6 is not None:
@@ -51073,12 +51250,28 @@ class GetPgPgUserConfigResult(dict):
         return pulumi.get(self, "backup_hour")
 
     @_builtins.property
+    @pulumi.getter(name="backupIntervalHours")
+    def backup_interval_hours(self) -> Optional[_builtins.int]:
+        """
+        Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        """
+        return pulumi.get(self, "backup_interval_hours")
+
+    @_builtins.property
     @pulumi.getter(name="backupMinute")
     def backup_minute(self) -> Optional[_builtins.int]:
         """
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
         return pulumi.get(self, "backup_minute")
+
+    @_builtins.property
+    @pulumi.getter(name="backupRetentionDays")
+    def backup_retention_days(self) -> Optional[_builtins.int]:
+        """
+        Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+        """
+        return pulumi.get(self, "backup_retention_days")
 
     @_builtins.property
     @pulumi.getter(name="enableHaReplicaDns")

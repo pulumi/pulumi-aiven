@@ -22,6 +22,7 @@ import com.pulumi.aiven.inputs.KafkaKafkaUserConfigTieredStorageArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -69,6 +70,36 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> aivenKafkaTopicMessages() {
         return Optional.ofNullable(this.aivenKafkaTopicMessages);
+    }
+
+    /**
+     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * 
+     */
+    @Import(name="backupIntervalHours")
+    private @Nullable Output<Integer> backupIntervalHours;
+
+    /**
+     * @return Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * 
+     */
+    public Optional<Output<Integer>> backupIntervalHours() {
+        return Optional.ofNullable(this.backupIntervalHours);
+    }
+
+    /**
+     * Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     * 
+     */
+    @Import(name="backupRetentionDays")
+    private @Nullable Output<Integer> backupRetentionDays;
+
+    /**
+     * @return Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     * 
+     */
+    public Optional<Output<Integer>> backupRetentionDays() {
+        return Optional.ofNullable(this.backupRetentionDays);
     }
 
     /**
@@ -511,6 +542,8 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     private KafkaKafkaUserConfigArgs(KafkaKafkaUserConfigArgs $) {
         this.additionalBackupRegions = $.additionalBackupRegions;
         this.aivenKafkaTopicMessages = $.aivenKafkaTopicMessages;
+        this.backupIntervalHours = $.backupIntervalHours;
+        this.backupRetentionDays = $.backupRetentionDays;
         this.customDomain = $.customDomain;
         this.followerFetching = $.followerFetching;
         this.ipFilterObjects = $.ipFilterObjects;
@@ -608,6 +641,48 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder aivenKafkaTopicMessages(Boolean aivenKafkaTopicMessages) {
             return aivenKafkaTopicMessages(Output.of(aivenKafkaTopicMessages));
+        }
+
+        /**
+         * @param backupIntervalHours Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupIntervalHours(@Nullable Output<Integer> backupIntervalHours) {
+            $.backupIntervalHours = backupIntervalHours;
+            return this;
+        }
+
+        /**
+         * @param backupIntervalHours Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupIntervalHours(Integer backupIntervalHours) {
+            return backupIntervalHours(Output.of(backupIntervalHours));
+        }
+
+        /**
+         * @param backupRetentionDays Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionDays(@Nullable Output<Integer> backupRetentionDays) {
+            $.backupRetentionDays = backupRetentionDays;
+            return this;
+        }
+
+        /**
+         * @param backupRetentionDays Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionDays(Integer backupRetentionDays) {
+            return backupRetentionDays(Output.of(backupRetentionDays));
         }
 
         /**

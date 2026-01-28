@@ -22,6 +22,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? AivenKafkaTopicMessages;
         /// <summary>
+        /// Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        /// </summary>
+        public readonly int? BackupIntervalHours;
+        /// <summary>
+        /// Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+        /// </summary>
+        public readonly int? BackupRetentionDays;
+        /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         /// </summary>
         public readonly string? CustomDomain;
@@ -141,6 +149,10 @@ namespace Pulumi.Aiven.Outputs
 
             bool? aivenKafkaTopicMessages,
 
+            int? backupIntervalHours,
+
+            int? backupRetentionDays,
+
             string? customDomain,
 
             Outputs.GetKafkaKafkaUserConfigFollowerFetchingResult? followerFetching,
@@ -201,6 +213,8 @@ namespace Pulumi.Aiven.Outputs
         {
             AdditionalBackupRegions = additionalBackupRegions;
             AivenKafkaTopicMessages = aivenKafkaTopicMessages;
+            BackupIntervalHours = backupIntervalHours;
+            BackupRetentionDays = backupRetentionDays;
             CustomDomain = customDomain;
             FollowerFetching = followerFetching;
             IpFilterObjects = ipFilterObjects;

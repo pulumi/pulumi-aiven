@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetPgDatabaseTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetPgDatabaseArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +18,14 @@ public final class GetPgDatabaseArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetPgDatabaseArgs Empty = new GetPgDatabaseArgs();
 
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * Service database name.
      * 
      */
     @Import(name="databaseName", required=true)
     private Output<String> databaseName;
 
     /**
-     * @return The name of the service database. Changing this property forces recreation of the resource.
+     * @return Service database name.
      * 
      */
     public Output<String> databaseName() {
@@ -30,14 +33,14 @@ public final class GetPgDatabaseArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public Output<String> project() {
@@ -45,18 +48,25 @@ public final class GetPgDatabaseArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<GetPgDatabaseTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetPgDatabaseTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetPgDatabaseArgs() {}
@@ -65,6 +75,7 @@ public final class GetPgDatabaseArgs extends com.pulumi.resources.InvokeArgs {
         this.databaseName = $.databaseName;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -86,7 +97,7 @@ public final class GetPgDatabaseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
+         * @param databaseName Service database name.
          * 
          * @return builder
          * 
@@ -97,7 +108,7 @@ public final class GetPgDatabaseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
+         * @param databaseName Service database name.
          * 
          * @return builder
          * 
@@ -107,7 +118,7 @@ public final class GetPgDatabaseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -118,7 +129,7 @@ public final class GetPgDatabaseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -128,7 +139,7 @@ public final class GetPgDatabaseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -139,13 +150,22 @@ public final class GetPgDatabaseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        public Builder timeouts(@Nullable Output<GetPgDatabaseTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetPgDatabaseTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public GetPgDatabaseArgs build() {

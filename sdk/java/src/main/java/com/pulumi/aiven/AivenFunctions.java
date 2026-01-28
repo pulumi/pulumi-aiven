@@ -11264,7 +11264,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getPg:getPg", TypeShape.of(GetPgResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a database in an Aiven for PostgreSQL® service.
+     * Gets information about an Aiven for PostgreSQL® database.
      * 
      * ## Example Usage
      * 
@@ -11306,7 +11306,7 @@ public final class AivenFunctions {
         return getPgDatabase(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about a database in an Aiven for PostgreSQL® service.
+     * Gets information about an Aiven for PostgreSQL® database.
      * 
      * ## Example Usage
      * 
@@ -11348,7 +11348,7 @@ public final class AivenFunctions {
         return getPgDatabasePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about a database in an Aiven for PostgreSQL® service.
+     * Gets information about an Aiven for PostgreSQL® database.
      * 
      * ## Example Usage
      * 
@@ -11390,7 +11390,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getPgDatabase:getPgDatabase", TypeShape.of(GetPgDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a database in an Aiven for PostgreSQL® service.
+     * Gets information about an Aiven for PostgreSQL® database.
      * 
      * ## Example Usage
      * 
@@ -11432,7 +11432,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getPgDatabase:getPgDatabase", TypeShape.of(GetPgDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a database in an Aiven for PostgreSQL® service.
+     * Gets information about an Aiven for PostgreSQL® database.
      * 
      * ## Example Usage
      * 

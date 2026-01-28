@@ -30,9 +30,17 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BackupHour;
         /// <summary>
+        /// Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        /// </summary>
+        public readonly int? BackupIntervalHours;
+        /// <summary>
         /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         /// </summary>
         public readonly int? BackupMinute;
+        /// <summary>
+        /// Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+        /// </summary>
+        public readonly int? BackupRetentionDays;
         /// <summary>
         /// Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `False`.
         /// </summary>
@@ -160,7 +168,11 @@ namespace Pulumi.Aiven.Outputs
 
             int? backupHour,
 
+            int? backupIntervalHours,
+
             int? backupMinute,
+
+            int? backupRetentionDays,
 
             bool? enableHaReplicaDns,
 
@@ -224,7 +236,9 @@ namespace Pulumi.Aiven.Outputs
             AdminPassword = adminPassword;
             AdminUsername = adminUsername;
             BackupHour = backupHour;
+            BackupIntervalHours = backupIntervalHours;
             BackupMinute = backupMinute;
+            BackupRetentionDays = backupRetentionDays;
             EnableHaReplicaDns = enableHaReplicaDns;
             EnableIpv6 = enableIpv6;
             IpFilterObjects = ipFilterObjects;

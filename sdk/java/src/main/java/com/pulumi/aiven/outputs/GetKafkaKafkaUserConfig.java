@@ -21,6 +21,7 @@ import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigSingleZone;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigTieredStorage;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,6 +44,16 @@ public final class GetKafkaKafkaUserConfig {
      * 
      */
     private @Nullable Boolean aivenKafkaTopicMessages;
+    /**
+     * @return Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * 
+     */
+    private @Nullable Integer backupIntervalHours;
+    /**
+     * @return Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     * 
+     */
+    private @Nullable Integer backupRetentionDays;
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
      * 
@@ -207,6 +218,20 @@ public final class GetKafkaKafkaUserConfig {
      */
     public Optional<Boolean> aivenKafkaTopicMessages() {
         return Optional.ofNullable(this.aivenKafkaTopicMessages);
+    }
+    /**
+     * @return Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * 
+     */
+    public Optional<Integer> backupIntervalHours() {
+        return Optional.ofNullable(this.backupIntervalHours);
+    }
+    /**
+     * @return Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+     * 
+     */
+    public Optional<Integer> backupRetentionDays() {
+        return Optional.ofNullable(this.backupRetentionDays);
     }
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
@@ -423,6 +448,8 @@ public final class GetKafkaKafkaUserConfig {
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
         private @Nullable Boolean aivenKafkaTopicMessages;
+        private @Nullable Integer backupIntervalHours;
+        private @Nullable Integer backupRetentionDays;
         private @Nullable String customDomain;
         private @Nullable GetKafkaKafkaUserConfigFollowerFetching followerFetching;
         private @Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
@@ -457,6 +484,8 @@ public final class GetKafkaKafkaUserConfig {
     	      Objects.requireNonNull(defaults);
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.aivenKafkaTopicMessages = defaults.aivenKafkaTopicMessages;
+    	      this.backupIntervalHours = defaults.backupIntervalHours;
+    	      this.backupRetentionDays = defaults.backupRetentionDays;
     	      this.customDomain = defaults.customDomain;
     	      this.followerFetching = defaults.followerFetching;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
@@ -498,6 +527,18 @@ public final class GetKafkaKafkaUserConfig {
         public Builder aivenKafkaTopicMessages(@Nullable Boolean aivenKafkaTopicMessages) {
 
             this.aivenKafkaTopicMessages = aivenKafkaTopicMessages;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backupIntervalHours(@Nullable Integer backupIntervalHours) {
+
+            this.backupIntervalHours = backupIntervalHours;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backupRetentionDays(@Nullable Integer backupRetentionDays) {
+
+            this.backupRetentionDays = backupRetentionDays;
             return this;
         }
         @CustomType.Setter
@@ -696,6 +737,8 @@ public final class GetKafkaKafkaUserConfig {
             final var _resultValue = new GetKafkaKafkaUserConfig();
             _resultValue.additionalBackupRegions = additionalBackupRegions;
             _resultValue.aivenKafkaTopicMessages = aivenKafkaTopicMessages;
+            _resultValue.backupIntervalHours = backupIntervalHours;
+            _resultValue.backupRetentionDays = backupRetentionDays;
             _resultValue.customDomain = customDomain;
             _resultValue.followerFetching = followerFetching;
             _resultValue.ipFilterObjects = ipFilterObjects;

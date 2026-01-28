@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages a database in an Aiven for PostgreSQL® service.
+// Creates and manages an [Aiven for PostgreSQL®](https://aiven.io/docs/products/postgresql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
 //
 // ## Example Usage
 //
@@ -45,22 +45,24 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/pgDatabase:PgDatabase main PROJECT/SERVICE_NAME/DATABASE_NAME
+// $ pulumi import aiven:index/pgDatabase:PgDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
 // ```
 type PgDatabase struct {
 	pulumi.CustomResourceState
 
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-	LcCollate pulumi.StringPtrOutput `pulumi:"lcCollate"`
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-	LcCtype pulumi.StringPtrOutput `pulumi:"lcCtype"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	LcCollate pulumi.StringOutput `pulumi:"lcCollate"`
+	// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	LcCtype pulumi.StringOutput `pulumi:"lcCtype"`
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringOutput  `pulumi:"serviceName"`
-	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection pulumi.BoolOutput           `pulumi:"terminationProtection"`
+	Timeouts              PgDatabaseTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewPgDatabase registers a new resource with the given unique name, arguments, and options.
@@ -102,31 +104,35 @@ func GetPgDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PgDatabase resources.
 type pgDatabaseState struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName *string `pulumi:"databaseName"`
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate *string `pulumi:"lcCollate"`
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype *string `pulumi:"lcCtype"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           *string `pulumi:"serviceName"`
-	TerminationProtection *bool   `pulumi:"terminationProtection"`
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName *string `pulumi:"serviceName"`
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection *bool               `pulumi:"terminationProtection"`
+	Timeouts              *PgDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 type PgDatabaseState struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringPtrInput
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate pulumi.StringPtrInput
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringPtrInput
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringPtrInput
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection pulumi.BoolPtrInput
+	Timeouts              PgDatabaseTimeoutsPtrInput
 }
 
 func (PgDatabaseState) ElementType() reflect.Type {
@@ -134,32 +140,36 @@ func (PgDatabaseState) ElementType() reflect.Type {
 }
 
 type pgDatabaseArgs struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate *string `pulumi:"lcCollate"`
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype *string `pulumi:"lcCtype"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           string `pulumi:"serviceName"`
-	TerminationProtection *bool  `pulumi:"terminationProtection"`
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName string `pulumi:"serviceName"`
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection *bool               `pulumi:"terminationProtection"`
+	Timeouts              *PgDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a PgDatabase resource.
 type PgDatabaseArgs struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringInput
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate pulumi.StringPtrInput
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringInput
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringInput
+	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection pulumi.BoolPtrInput
+	Timeouts              PgDatabaseTimeoutsPtrInput
 }
 
 func (PgDatabaseArgs) ElementType() reflect.Type {
@@ -249,33 +259,38 @@ func (o PgDatabaseOutput) ToPgDatabaseOutputWithContext(ctx context.Context) PgD
 	return o
 }
 
-// The name of the service database. Changing this property forces recreation of the resource.
+// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 func (o PgDatabaseOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-func (o PgDatabaseOutput) LcCollate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PgDatabase) pulumi.StringPtrOutput { return v.LcCollate }).(pulumi.StringPtrOutput)
+// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+func (o PgDatabaseOutput) LcCollate() pulumi.StringOutput {
+	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.LcCollate }).(pulumi.StringOutput)
 }
 
-// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-func (o PgDatabaseOutput) LcCtype() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PgDatabase) pulumi.StringPtrOutput { return v.LcCtype }).(pulumi.StringPtrOutput)
+// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+func (o PgDatabaseOutput) LcCtype() pulumi.StringOutput {
+	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.LcCtype }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o PgDatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o PgDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-func (o PgDatabaseOutput) TerminationProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PgDatabase) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+func (o PgDatabaseOutput) TerminationProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PgDatabase) pulumi.BoolOutput { return v.TerminationProtection }).(pulumi.BoolOutput)
+}
+
+func (o PgDatabaseOutput) Timeouts() PgDatabaseTimeoutsPtrOutput {
+	return o.ApplyT(func(v *PgDatabase) PgDatabaseTimeoutsPtrOutput { return v.Timeouts }).(PgDatabaseTimeoutsPtrOutput)
 }
 
 type PgDatabaseArrayOutput struct{ *pulumi.OutputState }

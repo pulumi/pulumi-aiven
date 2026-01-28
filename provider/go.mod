@@ -34,7 +34,7 @@ require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/agnivade/levenshtein v1.2.1 // indirect
 	github.com/aiven/aiven-go-client/v2 v2.37.0 // indirect
-	github.com/aiven/go-client-codegen v0.142.0 // indirect
+	github.com/aiven/go-client-codegen v0.145.0 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect

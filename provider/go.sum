@@ -1414,8 +1414,8 @@ github.com/agnivade/levenshtein v1.2.1 h1:EHBY3UOn1gwdy/VbFwgo4cxecRznFk7fKWN1KO
 github.com/agnivade/levenshtein v1.2.1/go.mod h1:QVVI16kDrtSuwcpd0p1+xMC6Z/VfhtCyDIjcwga4/DU=
 github.com/aiven/aiven-go-client/v2 v2.37.0 h1:bROOt9K5VJxacavzC/UrtDEZuI0KlDX/oP76W+DsxcM=
 github.com/aiven/aiven-go-client/v2 v2.37.0/go.mod h1:XHS4+7sseQk+GR4Wwre3IvVonWb6fGNk67WmAzs+qZk=
-github.com/aiven/go-client-codegen v0.142.0 h1:CukRLL1BkYpb/4X2EYDgypqXj6QBXdVkteXt4egiqqc=
-github.com/aiven/go-client-codegen v0.142.0/go.mod h1:+6eIsNIBB4KHMBTzy7maVAyoIZUyscTsL8ssHxrZZrU=
+github.com/aiven/go-client-codegen v0.145.0 h1:UmwRa3w4vpGdSeiKvbWZFLKmDLUO06B1ZtIxDuDyLFU=
+github.com/aiven/go-client-codegen v0.145.0/go.mod h1:+6eIsNIBB4KHMBTzy7maVAyoIZUyscTsL8ssHxrZZrU=
 github.com/ajstarks/deck v0.0.0-20200831202436-30c9fc6549a9/go.mod h1:JynElWSGnm/4RlzPXRlREEwqTHAN3T56Bv2ITsFT3gY=
 github.com/ajstarks/deck/generate v0.0.0-20210309230005-c3f852c02e19/go.mod h1:T13YZdzov6OU0A1+RfKZiZN9ca6VeKdBdyDV+BY97Tk=
 github.com/ajstarks/svgo v0.0.0-20180226025133-644b8db467af/go.mod h1:K08gAheRH3/J6wwsYMMT4xOr94bZjxIelGM0+d/wbFw=

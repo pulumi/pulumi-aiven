@@ -47,10 +47,22 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? BackupHour { get; set; }
 
         /// <summary>
+        /// Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        /// </summary>
+        [Input("backupIntervalHours")]
+        public Input<int>? BackupIntervalHours { get; set; }
+
+        /// <summary>
         /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         /// </summary>
         [Input("backupMinute")]
         public Input<int>? BackupMinute { get; set; }
+
+        /// <summary>
+        /// Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+        /// </summary>
+        [Input("backupRetentionDays")]
+        public Input<int>? BackupRetentionDays { get; set; }
 
         /// <summary>
         /// Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `False`.

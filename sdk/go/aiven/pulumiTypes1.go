@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetM3AggregatorM3aggregatorUserConfigIpFilterObject struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description *string `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network string `pulumi:"network"`
+}
+
+// GetM3AggregatorM3aggregatorUserConfigIpFilterObjectInput is an input type that accepts GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs and GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput values.
+// You can construct a concrete instance of `GetM3AggregatorM3aggregatorUserConfigIpFilterObjectInput` via:
+//
+//	GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs{...}
+type GetM3AggregatorM3aggregatorUserConfigIpFilterObjectInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput() GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput
+	ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutputWithContext(context.Context) GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput
+}
+
+type GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs) ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput() GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput {
+	return i.ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs) ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput)
+}
+
+// GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayInput is an input type that accepts GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArray and GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput values.
+// You can construct a concrete instance of `GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayInput` via:
+//
+//	GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArray{ GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs{...} }
+type GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput() GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput
+	ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutputWithContext(context.Context) GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput
+}
+
+type GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArray []GetM3AggregatorM3aggregatorUserConfigIpFilterObjectInput
+
+func (GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorM3aggregatorUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArray) ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput() GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput {
+	return i.ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArray) ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput)
+}
+
+type GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput) ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput() GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput {
+	return o
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput) ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput {
+	return o
+}
+
+// Description for IP filter list entry. Example: `Production service IP range`.
+func (o GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfigIpFilterObject) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// CIDR address block. Example: `10.20.0.0/16`.
+func (o GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfigIpFilterObject) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorM3aggregatorUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput) ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput() GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput) ToGetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput) Index(i pulumi.IntInput) GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3AggregatorM3aggregatorUserConfigIpFilterObject {
+		return vs[0].([]GetM3AggregatorM3aggregatorUserConfigIpFilterObject)[vs[1].(int)]
+	}).(GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput)
+}
+
 type GetM3AggregatorServiceIntegration struct {
 	// Type of the service integration
 	IntegrationType string `pulumi:"integrationType"`
@@ -18769,6 +18875,143 @@ func (o GetPgComponentArrayOutput) Index(i pulumi.IntInput) GetPgComponentOutput
 	}).(GetPgComponentOutput)
 }
 
+type GetPgDatabaseTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetPgDatabaseTimeoutsInput is an input type that accepts GetPgDatabaseTimeoutsArgs and GetPgDatabaseTimeoutsOutput values.
+// You can construct a concrete instance of `GetPgDatabaseTimeoutsInput` via:
+//
+//	GetPgDatabaseTimeoutsArgs{...}
+type GetPgDatabaseTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetPgDatabaseTimeoutsOutput() GetPgDatabaseTimeoutsOutput
+	ToGetPgDatabaseTimeoutsOutputWithContext(context.Context) GetPgDatabaseTimeoutsOutput
+}
+
+type GetPgDatabaseTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetPgDatabaseTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgDatabaseTimeouts)(nil)).Elem()
+}
+
+func (i GetPgDatabaseTimeoutsArgs) ToGetPgDatabaseTimeoutsOutput() GetPgDatabaseTimeoutsOutput {
+	return i.ToGetPgDatabaseTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetPgDatabaseTimeoutsArgs) ToGetPgDatabaseTimeoutsOutputWithContext(ctx context.Context) GetPgDatabaseTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgDatabaseTimeoutsOutput)
+}
+
+func (i GetPgDatabaseTimeoutsArgs) ToGetPgDatabaseTimeoutsPtrOutput() GetPgDatabaseTimeoutsPtrOutput {
+	return i.ToGetPgDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgDatabaseTimeoutsArgs) ToGetPgDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) GetPgDatabaseTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgDatabaseTimeoutsOutput).ToGetPgDatabaseTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetPgDatabaseTimeoutsPtrInput is an input type that accepts GetPgDatabaseTimeoutsArgs, GetPgDatabaseTimeoutsPtr and GetPgDatabaseTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetPgDatabaseTimeoutsPtrInput` via:
+//
+//	        GetPgDatabaseTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgDatabaseTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetPgDatabaseTimeoutsPtrOutput() GetPgDatabaseTimeoutsPtrOutput
+	ToGetPgDatabaseTimeoutsPtrOutputWithContext(context.Context) GetPgDatabaseTimeoutsPtrOutput
+}
+
+type getPgDatabaseTimeoutsPtrType GetPgDatabaseTimeoutsArgs
+
+func GetPgDatabaseTimeoutsPtr(v *GetPgDatabaseTimeoutsArgs) GetPgDatabaseTimeoutsPtrInput {
+	return (*getPgDatabaseTimeoutsPtrType)(v)
+}
+
+func (*getPgDatabaseTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgDatabaseTimeouts)(nil)).Elem()
+}
+
+func (i *getPgDatabaseTimeoutsPtrType) ToGetPgDatabaseTimeoutsPtrOutput() GetPgDatabaseTimeoutsPtrOutput {
+	return i.ToGetPgDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgDatabaseTimeoutsPtrType) ToGetPgDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) GetPgDatabaseTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgDatabaseTimeoutsPtrOutput)
+}
+
+type GetPgDatabaseTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetPgDatabaseTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgDatabaseTimeouts)(nil)).Elem()
+}
+
+func (o GetPgDatabaseTimeoutsOutput) ToGetPgDatabaseTimeoutsOutput() GetPgDatabaseTimeoutsOutput {
+	return o
+}
+
+func (o GetPgDatabaseTimeoutsOutput) ToGetPgDatabaseTimeoutsOutputWithContext(ctx context.Context) GetPgDatabaseTimeoutsOutput {
+	return o
+}
+
+func (o GetPgDatabaseTimeoutsOutput) ToGetPgDatabaseTimeoutsPtrOutput() GetPgDatabaseTimeoutsPtrOutput {
+	return o.ToGetPgDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgDatabaseTimeoutsOutput) ToGetPgDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) GetPgDatabaseTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgDatabaseTimeouts) *GetPgDatabaseTimeouts {
+		return &v
+	}).(GetPgDatabaseTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetPgDatabaseTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgDatabaseTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetPgDatabaseTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgDatabaseTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgDatabaseTimeouts)(nil)).Elem()
+}
+
+func (o GetPgDatabaseTimeoutsPtrOutput) ToGetPgDatabaseTimeoutsPtrOutput() GetPgDatabaseTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetPgDatabaseTimeoutsPtrOutput) ToGetPgDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) GetPgDatabaseTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetPgDatabaseTimeoutsPtrOutput) Elem() GetPgDatabaseTimeoutsOutput {
+	return o.ApplyT(func(v *GetPgDatabaseTimeouts) GetPgDatabaseTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgDatabaseTimeouts
+		return ret
+	}).(GetPgDatabaseTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetPgDatabaseTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgDatabaseTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetPgPg struct {
 	// PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
 	//
@@ -19140,8 +19383,12 @@ type GetPgPgUserConfig struct {
 	AdminUsername *string `pulumi:"adminUsername"`
 	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
 	BackupHour *int `pulumi:"backupHour"`
+	// Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+	BackupIntervalHours *int `pulumi:"backupIntervalHours"`
 	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
 	BackupMinute *int `pulumi:"backupMinute"`
+	// Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+	BackupRetentionDays *int `pulumi:"backupRetentionDays"`
 	// Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
 	EnableHaReplicaDns *bool `pulumi:"enableHaReplicaDns"`
 	// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
@@ -19226,8 +19473,12 @@ type GetPgPgUserConfigArgs struct {
 	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
 	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
 	BackupHour pulumi.IntPtrInput `pulumi:"backupHour"`
+	// Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+	BackupIntervalHours pulumi.IntPtrInput `pulumi:"backupIntervalHours"`
 	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
 	BackupMinute pulumi.IntPtrInput `pulumi:"backupMinute"`
+	// Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+	BackupRetentionDays pulumi.IntPtrInput `pulumi:"backupRetentionDays"`
 	// Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
 	EnableHaReplicaDns pulumi.BoolPtrInput `pulumi:"enableHaReplicaDns"`
 	// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
@@ -19363,9 +19614,19 @@ func (o GetPgPgUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
 }
 
+// Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+func (o GetPgPgUserConfigOutput) BackupIntervalHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) *int { return v.BackupIntervalHours }).(pulumi.IntPtrOutput)
+}
+
 // The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
 func (o GetPgPgUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+}
+
+// Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+func (o GetPgPgUserConfigOutput) BackupRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) *int { return v.BackupRetentionDays }).(pulumi.IntPtrOutput)
 }
 
 // Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
@@ -37416,6 +37677,8 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfigIpFilterObjectInput)(nil)).Elem(), GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorServiceIntegrationInput)(nil)).Elem(), GetM3AggregatorServiceIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorServiceIntegrationArrayInput)(nil)).Elem(), GetM3AggregatorServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorTagInput)(nil)).Elem(), GetM3AggregatorTagArgs{})
@@ -37614,6 +37877,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationalUnitTimeoutsPtrInput)(nil)).Elem(), GetOrganizationalUnitTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgComponentInput)(nil)).Elem(), GetPgComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgComponentArrayInput)(nil)).Elem(), GetPgComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgDatabaseTimeoutsInput)(nil)).Elem(), GetPgDatabaseTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgDatabaseTimeoutsPtrInput)(nil)).Elem(), GetPgDatabaseTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgInput)(nil)).Elem(), GetPgPgArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgArrayInput)(nil)).Elem(), GetPgPgArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgParamInput)(nil)).Elem(), GetPgPgParamArgs{})
@@ -37838,6 +38103,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorTagOutput{})
@@ -38036,6 +38303,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOrganizationalUnitTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetPgComponentOutput{})
 	pulumi.RegisterOutputType(GetPgComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetPgDatabaseTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetPgDatabaseTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetPgPgOutput{})
 	pulumi.RegisterOutputType(GetPgPgArrayOutput{})
 	pulumi.RegisterOutputType(GetPgPgParamOutput{})

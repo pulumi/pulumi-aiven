@@ -3929,6 +3929,14 @@
                     "type": "boolean",
                     "description": "Allow access to read Kafka topic messages in the Aiven Console and REST API.\n"
                 },
+                "backupIntervalHours": {
+                    "type": "integer",
+                    "description": "Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: \u003cspan pulumi-lang-nodejs=\"`24`\" pulumi-lang-dotnet=\"`24`\" pulumi-lang-go=\"`24`\" pulumi-lang-python=\"`24`\" pulumi-lang-yaml=\"`24`\" pulumi-lang-java=\"`24`\"\u003e`24`\u003c/span\u003e.\n"
+                },
+                "backupRetentionDays": {
+                    "type": "integer",
+                    "description": "Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
+                },
                 "customDomain": {
                     "type": "string",
                     "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.\n"
@@ -4467,8 +4475,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether to enable the Diskless functionality.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Whether to enable the Diskless functionality.\n"
                 }
             },
             "type": "object",
@@ -8198,6 +8205,32 @@
                 }
             }
         },
+        "aiven:index/PgDatabaseTimeouts:PgDatabaseTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "default": {
+                    "type": "string",
+                    "description": "Timeout for all operations. Deprecated, use operation-specific timeouts instead.\n",
+                    "deprecationMessage": "Use operation-specific timeouts instead. This field will be removed in the next major version."
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/PgPg:PgPg": {
             "properties": {
                 "bouncer": {
@@ -8374,9 +8407,17 @@
                     "type": "integer",
                     "description": "The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: \u003cspan pulumi-lang-nodejs=\"`3`\" pulumi-lang-dotnet=\"`3`\" pulumi-lang-go=\"`3`\" pulumi-lang-python=\"`3`\" pulumi-lang-yaml=\"`3`\" pulumi-lang-java=\"`3`\"\u003e`3`\u003c/span\u003e.\n"
                 },
+                "backupIntervalHours": {
+                    "type": "integer",
+                    "description": "Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: \u003cspan pulumi-lang-nodejs=\"`24`\" pulumi-lang-dotnet=\"`24`\" pulumi-lang-go=\"`24`\" pulumi-lang-python=\"`24`\" pulumi-lang-yaml=\"`24`\" pulumi-lang-java=\"`24`\"\u003e`24`\u003c/span\u003e.\n"
+                },
                 "backupMinute": {
                     "type": "integer",
                     "description": "The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: \u003cspan pulumi-lang-nodejs=\"`30`\" pulumi-lang-dotnet=\"`30`\" pulumi-lang-go=\"`30`\" pulumi-lang-python=\"`30`\" pulumi-lang-yaml=\"`30`\" pulumi-lang-java=\"`30`\"\u003e`30`\u003c/span\u003e.\n"
+                },
+                "backupRetentionDays": {
+                    "type": "integer",
+                    "description": "Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
                 },
                 "enableHaReplicaDns": {
                     "type": "boolean",
@@ -15481,6 +15522,14 @@
                     "type": "boolean",
                     "description": "Allow access to read Kafka topic messages in the Aiven Console and REST API.\n"
                 },
+                "backupIntervalHours": {
+                    "type": "integer",
+                    "description": "Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: \u003cspan pulumi-lang-nodejs=\"`24`\" pulumi-lang-dotnet=\"`24`\" pulumi-lang-go=\"`24`\" pulumi-lang-python=\"`24`\" pulumi-lang-yaml=\"`24`\" pulumi-lang-java=\"`24`\"\u003e`24`\u003c/span\u003e.\n"
+                },
+                "backupRetentionDays": {
+                    "type": "integer",
+                    "description": "Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
+                },
                 "customDomain": {
                     "type": "string",
                     "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.\n"
@@ -20100,6 +20149,15 @@
                 }
             }
         },
+        "aiven:index/getPgDatabaseTimeouts:getPgDatabaseTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getPgPg:getPgPg": {
             "properties": {
                 "bouncer": {
@@ -20276,9 +20334,17 @@
                     "type": "integer",
                     "description": "The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: \u003cspan pulumi-lang-nodejs=\"`3`\" pulumi-lang-dotnet=\"`3`\" pulumi-lang-go=\"`3`\" pulumi-lang-python=\"`3`\" pulumi-lang-yaml=\"`3`\" pulumi-lang-java=\"`3`\"\u003e`3`\u003c/span\u003e.\n"
                 },
+                "backupIntervalHours": {
+                    "type": "integer",
+                    "description": "Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: \u003cspan pulumi-lang-nodejs=\"`24`\" pulumi-lang-dotnet=\"`24`\" pulumi-lang-go=\"`24`\" pulumi-lang-python=\"`24`\" pulumi-lang-yaml=\"`24`\" pulumi-lang-java=\"`24`\"\u003e`24`\u003c/span\u003e.\n"
+                },
                 "backupMinute": {
                     "type": "integer",
                     "description": "The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: \u003cspan pulumi-lang-nodejs=\"`30`\" pulumi-lang-dotnet=\"`30`\" pulumi-lang-go=\"`30`\" pulumi-lang-python=\"`30`\" pulumi-lang-yaml=\"`30`\" pulumi-lang-java=\"`30`\"\u003e`30`\u003c/span\u003e.\n"
+                },
+                "backupRetentionDays": {
+                    "type": "integer",
+                    "description": "Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
                 },
                 "enableHaReplicaDns": {
                     "type": "boolean",
@@ -37558,65 +37624,71 @@
             }
         },
         "aiven:index/pgDatabase:PgDatabase": {
-            "description": "Creates and manages a database in an Aiven for PostgreSQL® service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst main = new aiven.PgDatabase(\"main\", {\n    project: exampleProject.project,\n    serviceName: examplePostgres.serviceName,\n    databaseName: \"example-database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmain = aiven.PgDatabase(\"main\",\n    project=example_project[\"project\"],\n    service_name=example_postgres[\"serviceName\"],\n    database_name=\"example-database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Aiven.PgDatabase(\"main\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = examplePostgres.ServiceName,\n        DatabaseName = \"example-database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewPgDatabase(ctx, \"main\", \u0026aiven.PgDatabaseArgs{\n\t\t\tProject:      pulumi.Any(exampleProject.Project),\n\t\t\tServiceName:  pulumi.Any(examplePostgres.ServiceName),\n\t\t\tDatabaseName: pulumi.String(\"example-database\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.PgDatabase;\nimport com.pulumi.aiven.PgDatabaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new PgDatabase(\"main\", PgDatabaseArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(examplePostgres.serviceName())\n            .databaseName(\"example-database\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: aiven:PgDatabase\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${examplePostgres.serviceName}\n      databaseName: example-database\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/pgDatabase:PgDatabase main PROJECT/SERVICE_NAME/DATABASE_NAME\n```\n\n",
+            "description": "Creates and manages an [Aiven for PostgreSQL®](https://aiven.io/docs/products/postgresql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst main = new aiven.PgDatabase(\"main\", {\n    project: exampleProject.project,\n    serviceName: examplePostgres.serviceName,\n    databaseName: \"example-database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmain = aiven.PgDatabase(\"main\",\n    project=example_project[\"project\"],\n    service_name=example_postgres[\"serviceName\"],\n    database_name=\"example-database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Aiven.PgDatabase(\"main\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = examplePostgres.ServiceName,\n        DatabaseName = \"example-database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewPgDatabase(ctx, \"main\", \u0026aiven.PgDatabaseArgs{\n\t\t\tProject:      pulumi.Any(exampleProject.Project),\n\t\t\tServiceName:  pulumi.Any(examplePostgres.ServiceName),\n\t\t\tDatabaseName: pulumi.String(\"example-database\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.PgDatabase;\nimport com.pulumi.aiven.PgDatabaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new PgDatabase(\"main\", PgDatabaseArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(examplePostgres.serviceName())\n            .databaseName(\"example-database\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: aiven:PgDatabase\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${examplePostgres.serviceName}\n      databaseName: example-database\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/pgDatabase:PgDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME\n```\n\n",
             "properties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "The name of the service database. Changing this property forces recreation of the resource.\n"
+                    "description": "Service database name. Maximum length: \u003cspan pulumi-lang-nodejs=\"`40`\" pulumi-lang-dotnet=\"`40`\" pulumi-lang-go=\"`40`\" pulumi-lang-python=\"`40`\" pulumi-lang-yaml=\"`40`\" pulumi-lang-java=\"`40`\"\u003e`40`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                 },
                 "lcCollate": {
                     "type": "string",
-                    "description": "Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n"
+                    "description": "Default string sort order (`LC_COLLATE`) of the database. Maximum length: \u003cspan pulumi-lang-nodejs=\"`128`\" pulumi-lang-dotnet=\"`128`\" pulumi-lang-go=\"`128`\" pulumi-lang-python=\"`128`\" pulumi-lang-yaml=\"`128`\" pulumi-lang-java=\"`128`\"\u003e`128`\u003c/span\u003e. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n"
                 },
                 "lcCtype": {
                     "type": "string",
-                    "description": "Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n"
+                    "description": "Default character classification (`LC_CTYPE`) of the database. Maximum length: \u003cspan pulumi-lang-nodejs=\"`128`\" pulumi-lang-dotnet=\"`128`\" pulumi-lang-go=\"`128`\" pulumi-lang-python=\"`128`\" pulumi-lang-yaml=\"`128`\" pulumi-lang-java=\"`128`\"\u003e`128`\u003c/span\u003e. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                    "description": "Project name. Changing this property forces recreation of the resource.\n"
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                    "description": "Service name. Changing this property forces recreation of the resource.\n"
                 },
                 "terminationProtection": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "deprecationMessage": "Instead use [\u003cspan pulumi-lang-nodejs=\"`preventDestroy`\" pulumi-lang-dotnet=\"`PreventDestroy`\" pulumi-lang-go=\"`preventDestroy`\" pulumi-lang-python=\"`prevent_destroy`\" pulumi-lang-yaml=\"`preventDestroy`\" pulumi-lang-java=\"`preventDestroy`\"\u003e`prevent_destroy`\u003c/span\u003e](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/PgDatabaseTimeouts:PgDatabaseTimeouts"
                 }
             },
             "required": [
                 "databaseName",
+                "lcCollate",
+                "lcCtype",
                 "project",
-                "serviceName"
+                "serviceName",
+                "terminationProtection"
             ],
             "inputProperties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "The name of the service database. Changing this property forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Service database name. Maximum length: \u003cspan pulumi-lang-nodejs=\"`40`\" pulumi-lang-dotnet=\"`40`\" pulumi-lang-go=\"`40`\" pulumi-lang-python=\"`40`\" pulumi-lang-yaml=\"`40`\" pulumi-lang-java=\"`40`\"\u003e`40`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                 },
                 "lcCollate": {
                     "type": "string",
-                    "description": "Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Default string sort order (`LC_COLLATE`) of the database. Maximum length: \u003cspan pulumi-lang-nodejs=\"`128`\" pulumi-lang-dotnet=\"`128`\" pulumi-lang-go=\"`128`\" pulumi-lang-python=\"`128`\" pulumi-lang-yaml=\"`128`\" pulumi-lang-java=\"`128`\"\u003e`128`\u003c/span\u003e. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n"
                 },
                 "lcCtype": {
                     "type": "string",
-                    "description": "Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Default character classification (`LC_CTYPE`) of the database. Maximum length: \u003cspan pulumi-lang-nodejs=\"`128`\" pulumi-lang-dotnet=\"`128`\" pulumi-lang-go=\"`128`\" pulumi-lang-python=\"`128`\" pulumi-lang-yaml=\"`128`\" pulumi-lang-java=\"`128`\"\u003e`128`\u003c/span\u003e. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Project name. Changing this property forces recreation of the resource.\n"
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Service name. Changing this property forces recreation of the resource.\n"
                 },
                 "terminationProtection": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "deprecationMessage": "Instead use [\u003cspan pulumi-lang-nodejs=\"`preventDestroy`\" pulumi-lang-dotnet=\"`PreventDestroy`\" pulumi-lang-go=\"`preventDestroy`\" pulumi-lang-python=\"`prevent_destroy`\" pulumi-lang-yaml=\"`preventDestroy`\" pulumi-lang-java=\"`preventDestroy`\"\u003e`prevent_destroy`\u003c/span\u003e](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/PgDatabaseTimeouts:PgDatabaseTimeouts"
                 }
             },
             "requiredInputs": [
@@ -37629,31 +37701,30 @@
                 "properties": {
                     "databaseName": {
                         "type": "string",
-                        "description": "The name of the service database. Changing this property forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Service database name. Maximum length: \u003cspan pulumi-lang-nodejs=\"`40`\" pulumi-lang-dotnet=\"`40`\" pulumi-lang-go=\"`40`\" pulumi-lang-python=\"`40`\" pulumi-lang-yaml=\"`40`\" pulumi-lang-java=\"`40`\"\u003e`40`\u003c/span\u003e. Changing this property forces recreation of the resource.\n"
                     },
                     "lcCollate": {
                         "type": "string",
-                        "description": "Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Default string sort order (`LC_COLLATE`) of the database. Maximum length: \u003cspan pulumi-lang-nodejs=\"`128`\" pulumi-lang-dotnet=\"`128`\" pulumi-lang-go=\"`128`\" pulumi-lang-python=\"`128`\" pulumi-lang-yaml=\"`128`\" pulumi-lang-java=\"`128`\"\u003e`128`\u003c/span\u003e. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n"
                     },
                     "lcCtype": {
                         "type": "string",
-                        "description": "Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Default character classification (`LC_CTYPE`) of the database. Maximum length: \u003cspan pulumi-lang-nodejs=\"`128`\" pulumi-lang-dotnet=\"`128`\" pulumi-lang-go=\"`128`\" pulumi-lang-python=\"`128`\" pulumi-lang-yaml=\"`128`\" pulumi-lang-java=\"`128`\"\u003e`128`\u003c/span\u003e. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Project name. Changing this property forces recreation of the resource.\n"
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Service name. Changing this property forces recreation of the resource.\n"
                     },
                     "terminationProtection": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "deprecationMessage": "Instead use [\u003cspan pulumi-lang-nodejs=\"`preventDestroy`\" pulumi-lang-dotnet=\"`PreventDestroy`\" pulumi-lang-go=\"`preventDestroy`\" pulumi-lang-python=\"`prevent_destroy`\" pulumi-lang-yaml=\"`preventDestroy`\" pulumi-lang-java=\"`preventDestroy`\"\u003e`prevent_destroy`\u003c/span\u003e](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/PgDatabaseTimeouts:PgDatabaseTimeouts"
                     }
                 },
                 "type": "object"
@@ -47866,21 +47937,24 @@
             }
         },
         "aiven:index/getPgDatabase:getPgDatabase": {
-            "description": "Gets information about a database in an Aiven for PostgreSQL® service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst main = aiven.getPgDatabase({\n    project: exampleProject.project,\n    serviceName: examplePostgres.serviceName,\n    databaseName: \"example-database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmain = aiven.get_pg_database(project=example_project[\"project\"],\n    service_name=example_postgres[\"serviceName\"],\n    database_name=\"example-database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = Aiven.GetPgDatabase.Invoke(new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = examplePostgres.ServiceName,\n        DatabaseName = \"example-database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupPgDatabase(ctx, \u0026aiven.LookupPgDatabaseArgs{\n\t\t\tProject:      exampleProject.Project,\n\t\t\tServiceName:  examplePostgres.ServiceName,\n\t\t\tDatabaseName: \"example-database\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetPgDatabaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(examplePostgres.serviceName())\n            .databaseName(\"example-database\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  main:\n    fn::invoke:\n      function: aiven:getPgDatabase\n      arguments:\n        project: ${exampleProject.project}\n        serviceName: ${examplePostgres.serviceName}\n        databaseName: example-database\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Gets information about an Aiven for PostgreSQL® database.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst main = aiven.getPgDatabase({\n    project: exampleProject.project,\n    serviceName: examplePostgres.serviceName,\n    databaseName: \"example-database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmain = aiven.get_pg_database(project=example_project[\"project\"],\n    service_name=example_postgres[\"serviceName\"],\n    database_name=\"example-database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = Aiven.GetPgDatabase.Invoke(new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = examplePostgres.ServiceName,\n        DatabaseName = \"example-database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupPgDatabase(ctx, \u0026aiven.LookupPgDatabaseArgs{\n\t\t\tProject:      exampleProject.Project,\n\t\t\tServiceName:  examplePostgres.ServiceName,\n\t\t\tDatabaseName: \"example-database\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetPgDatabaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(examplePostgres.serviceName())\n            .databaseName(\"example-database\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  main:\n    fn::invoke:\n      function: aiven:getPgDatabase\n      arguments:\n        project: ${exampleProject.project}\n        serviceName: ${examplePostgres.serviceName}\n        databaseName: example-database\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPgDatabase.\n",
                 "properties": {
                     "databaseName": {
                         "type": "string",
-                        "description": "The name of the service database. Changing this property forces recreation of the resource.\n"
+                        "description": "Service database name.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                        "description": "Project name.\n"
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                        "description": "Service name.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getPgDatabaseTimeouts:getPgDatabaseTimeouts"
                     }
                 },
                 "type": "object",
@@ -47894,41 +47968,45 @@
                 "description": "A collection of values returned by getPgDatabase.\n",
                 "properties": {
                     "databaseName": {
-                        "description": "The name of the service database. Changing this property forces recreation of the resource.\n",
+                        "description": "Service database name.\n",
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "Resource ID composed as: `project/service_name/database_name`.\n",
                         "type": "string"
                     },
                     "lcCollate": {
-                        "description": "Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n",
+                        "description": "Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`.\n",
                         "type": "string"
                     },
                     "lcCtype": {
-                        "description": "Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.\n",
+                        "description": "Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`.\n",
                         "type": "string"
                     },
                     "project": {
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "Project name.\n",
                         "type": "string"
                     },
                     "serviceName": {
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "Service name.\n",
                         "type": "string"
                     },
                     "terminationProtection": {
+                        "deprecationMessage": "Instead use [\u003cspan pulumi-lang-nodejs=\"`preventDestroy`\" pulumi-lang-dotnet=\"`PreventDestroy`\" pulumi-lang-go=\"`preventDestroy`\" pulumi-lang-python=\"`prevent_destroy`\" pulumi-lang-yaml=\"`preventDestroy`\" pulumi-lang-java=\"`preventDestroy`\"\u003e`prevent_destroy`\u003c/span\u003e](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)",
                         "type": "boolean"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/getPgDatabaseTimeouts:getPgDatabaseTimeouts"
                     }
                 },
                 "required": [
                     "databaseName",
+                    "id",
                     "lcCollate",
                     "lcCtype",
                     "project",
                     "serviceName",
-                    "terminationProtection",
-                    "id"
+                    "terminationProtection"
                 ],
                 "type": "object"
             }
