@@ -2690,7 +2690,7 @@ export interface GovernanceAccessAccessData {
     /**
      * Required property. Acls. Changing this property forces recreation of the resource.
      */
-    acls?: pulumi.Input<pulumi.Input<inputs.GovernanceAccessAccessDataAcl>[]>;
+    acls: pulumi.Input<pulumi.Input<inputs.GovernanceAccessAccessDataAcl>[]>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */

@@ -22,22 +22,21 @@ __all__ = ['OrganizationPermissionArgs', 'OrganizationPermission']
 class OrganizationPermissionArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[_builtins.str],
+                 permissions: pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]],
                  resource_id: pulumi.Input[_builtins.str],
                  resource_type: pulumi.Input[_builtins.str],
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]] = None,
                  timeouts: Optional[pulumi.Input['OrganizationPermissionTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationPermission resource.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Required property. List of roles to set.
         :param pulumi.Input[_builtins.str] resource_id: Resource Id. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Required property. List of roles to set.
         """
         pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "permissions", permissions)
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
-        if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
 
@@ -52,6 +51,18 @@ class OrganizationPermissionArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "organization_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]:
+        """
+        Required property. List of roles to set.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]):
+        pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
@@ -76,18 +87,6 @@ class OrganizationPermissionArgs:
     @resource_type.setter
     def resource_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "resource_type", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]]:
-        """
-        Required property. List of roles to set.
-        """
-        return pulumi.get(self, "permissions")
-
-    @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]]]):
-        pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter
@@ -366,6 +365,8 @@ class OrganizationPermission(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            if permissions is None and not opts.urn:
+                raise TypeError("Missing required property 'permissions'")
             __props__.__dict__["permissions"] = permissions
             if resource_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_id'")
@@ -422,7 +423,7 @@ class OrganizationPermission(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> pulumi.Output[Optional[Sequence['outputs.OrganizationPermissionPermission']]]:
+    def permissions(self) -> pulumi.Output[Sequence['outputs.OrganizationPermissionPermission']]:
         """
         Required property. List of roles to set.
         """
