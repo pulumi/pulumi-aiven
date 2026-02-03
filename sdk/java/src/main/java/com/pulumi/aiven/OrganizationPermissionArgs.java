@@ -38,15 +38,15 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
      * Required property. List of roles to set.
      * 
      */
-    @Import(name="permissions")
-    private @Nullable Output<List<OrganizationPermissionPermissionArgs>> permissions;
+    @Import(name="permissions", required=true)
+    private Output<List<OrganizationPermissionPermissionArgs>> permissions;
 
     /**
      * @return Required property. List of roles to set.
      * 
      */
-    public Optional<Output<List<OrganizationPermissionPermissionArgs>>> permissions() {
-        return Optional.ofNullable(this.permissions);
+    public Output<List<OrganizationPermissionPermissionArgs>> permissions() {
+        return this.permissions;
     }
 
     /**
@@ -141,7 +141,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder permissions(@Nullable Output<List<OrganizationPermissionPermissionArgs>> permissions) {
+        public Builder permissions(Output<List<OrganizationPermissionPermissionArgs>> permissions) {
             $.permissions = permissions;
             return this;
         }
@@ -220,6 +220,9 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         public OrganizationPermissionArgs build() {
             if ($.organizationId == null) {
                 throw new MissingRequiredPropertyException("OrganizationPermissionArgs", "organizationId");
+            }
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("OrganizationPermissionArgs", "permissions");
             }
             if ($.resourceId == null) {
                 throw new MissingRequiredPropertyException("OrganizationPermissionArgs", "resourceId");

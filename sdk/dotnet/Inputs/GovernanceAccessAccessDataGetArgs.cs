@@ -12,7 +12,7 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GovernanceAccessAccessDataGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("acls")]
+        [Input("acls", required: true)]
         private InputList<Inputs.GovernanceAccessAccessDataAclGetArgs>? _acls;
 
         /// <summary>

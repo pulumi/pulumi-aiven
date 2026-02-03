@@ -63,7 +63,7 @@ type GovernanceAccess struct {
 	pulumi.CustomResourceState
 
 	// Required property. access type specific data. Changing this property forces recreation of the resource.
-	AccessData GovernanceAccessAccessDataPtrOutput `pulumi:"accessData"`
+	AccessData GovernanceAccessAccessDataOutput `pulumi:"accessData"`
 	// Label to describe the access. Changing this property forces recreation of the resource.
 	AccessName pulumi.StringOutput `pulumi:"accessName"`
 	// An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
@@ -84,6 +84,9 @@ func NewGovernanceAccess(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccessData == nil {
+		return nil, errors.New("invalid value for required argument 'AccessData'")
+	}
 	if args.AccessName == nil {
 		return nil, errors.New("invalid value for required argument 'AccessName'")
 	}
@@ -153,7 +156,7 @@ func (GovernanceAccessState) ElementType() reflect.Type {
 
 type governanceAccessArgs struct {
 	// Required property. access type specific data. Changing this property forces recreation of the resource.
-	AccessData *GovernanceAccessAccessData `pulumi:"accessData"`
+	AccessData GovernanceAccessAccessData `pulumi:"accessData"`
 	// Label to describe the access. Changing this property forces recreation of the resource.
 	AccessName string `pulumi:"accessName"`
 	// An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
@@ -168,7 +171,7 @@ type governanceAccessArgs struct {
 // The set of arguments for constructing a GovernanceAccess resource.
 type GovernanceAccessArgs struct {
 	// Required property. access type specific data. Changing this property forces recreation of the resource.
-	AccessData GovernanceAccessAccessDataPtrInput
+	AccessData GovernanceAccessAccessDataInput
 	// Label to describe the access. Changing this property forces recreation of the resource.
 	AccessName pulumi.StringInput
 	// An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
@@ -268,8 +271,8 @@ func (o GovernanceAccessOutput) ToGovernanceAccessOutputWithContext(ctx context.
 }
 
 // Required property. access type specific data. Changing this property forces recreation of the resource.
-func (o GovernanceAccessOutput) AccessData() GovernanceAccessAccessDataPtrOutput {
-	return o.ApplyT(func(v *GovernanceAccess) GovernanceAccessAccessDataPtrOutput { return v.AccessData }).(GovernanceAccessAccessDataPtrOutput)
+func (o GovernanceAccessOutput) AccessData() GovernanceAccessAccessDataOutput {
+	return o.ApplyT(func(v *GovernanceAccess) GovernanceAccessAccessDataOutput { return v.AccessData }).(GovernanceAccessAccessDataOutput)
 }
 
 // Label to describe the access. Changing this property forces recreation of the resource.

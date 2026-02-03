@@ -106,7 +106,7 @@ export class OrganizationPermission extends pulumi.CustomResource {
     /**
      * Required property. List of roles to set.
      */
-    declare public readonly permissions: pulumi.Output<outputs.OrganizationPermissionPermission[] | undefined>;
+    declare public readonly permissions: pulumi.Output<outputs.OrganizationPermissionPermission[]>;
     /**
      * Resource Id. Changing this property forces recreation of the resource.
      */
@@ -139,6 +139,9 @@ export class OrganizationPermission extends pulumi.CustomResource {
             const args = argsOrState as OrganizationPermissionArgs | undefined;
             if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
+            }
+            if (args?.permissions === undefined && !opts.urn) {
+                throw new Error("Missing required property 'permissions'");
             }
             if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
@@ -191,7 +194,7 @@ export interface OrganizationPermissionArgs {
     /**
      * Required property. List of roles to set.
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[]>;
+    permissions: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[]>;
     /**
      * Resource Id. Changing this property forces recreation of the resource.
      */

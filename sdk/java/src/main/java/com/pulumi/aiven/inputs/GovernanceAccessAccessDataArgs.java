@@ -22,15 +22,15 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
      * Required property. Acls. Changing this property forces recreation of the resource.
      * 
      */
-    @Import(name="acls")
-    private @Nullable Output<List<GovernanceAccessAccessDataAclArgs>> acls;
+    @Import(name="acls", required=true)
+    private Output<List<GovernanceAccessAccessDataAclArgs>> acls;
 
     /**
      * @return Required property. Acls. Changing this property forces recreation of the resource.
      * 
      */
-    public Optional<Output<List<GovernanceAccessAccessDataAclArgs>>> acls() {
-        return Optional.ofNullable(this.acls);
+    public Output<List<GovernanceAccessAccessDataAclArgs>> acls() {
+        return this.acls;
     }
 
     /**
@@ -111,7 +111,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder acls(@Nullable Output<List<GovernanceAccessAccessDataAclArgs>> acls) {
+        public Builder acls(Output<List<GovernanceAccessAccessDataAclArgs>> acls) {
             $.acls = acls;
             return this;
         }
@@ -200,6 +200,9 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         public GovernanceAccessAccessDataArgs build() {
+            if ($.acls == null) {
+                throw new MissingRequiredPropertyException("GovernanceAccessAccessDataArgs", "acls");
+            }
             if ($.project == null) {
                 throw new MissingRequiredPropertyException("GovernanceAccessAccessDataArgs", "project");
             }

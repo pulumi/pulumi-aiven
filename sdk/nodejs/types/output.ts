@@ -10899,7 +10899,7 @@ export interface GovernanceAccessAccessData {
     /**
      * Required property. Acls. Changing this property forces recreation of the resource.
      */
-    acls?: outputs.GovernanceAccessAccessDataAcl[];
+    acls: outputs.GovernanceAccessAccessDataAcl[];
     /**
      * Project name. Changing this property forces recreation of the resource.
      */

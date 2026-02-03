@@ -6582,22 +6582,29 @@ class GovernanceAccessAccessData(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 acls: Sequence['outputs.GovernanceAccessAccessDataAcl'],
                  project: _builtins.str,
                  service_name: _builtins.str,
-                 acls: Optional[Sequence['outputs.GovernanceAccessAccessDataAcl']] = None,
                  username: Optional[_builtins.str] = None):
         """
+        :param Sequence['GovernanceAccessAccessDataAclArgs'] acls: Required property. Acls. Changing this property forces recreation of the resource.
         :param _builtins.str project: Project name. Changing this property forces recreation of the resource.
         :param _builtins.str service_name: Service name. Changing this property forces recreation of the resource.
-        :param Sequence['GovernanceAccessAccessDataAclArgs'] acls: Required property. Acls. Changing this property forces recreation of the resource.
         :param _builtins.str username: The service username assigned to the access. Changing this property forces recreation of the resource.
         """
+        pulumi.set(__self__, "acls", acls)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
-        if acls is not None:
-            pulumi.set(__self__, "acls", acls)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def acls(self) -> Sequence['outputs.GovernanceAccessAccessDataAcl']:
+        """
+        Required property. Acls. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "acls")
 
     @_builtins.property
     @pulumi.getter
@@ -6614,14 +6621,6 @@ class GovernanceAccessAccessData(dict):
         Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
-
-    @_builtins.property
-    @pulumi.getter
-    def acls(self) -> Optional[Sequence['outputs.GovernanceAccessAccessDataAcl']]:
-        """
-        Required property. Acls. Changing this property forces recreation of the resource.
-        """
-        return pulumi.get(self, "acls")
 
     @_builtins.property
     @pulumi.getter

@@ -69,7 +69,7 @@ export class GovernanceAccess extends pulumi.CustomResource {
     /**
      * Required property. access type specific data. Changing this property forces recreation of the resource.
      */
-    declare public readonly accessData: pulumi.Output<outputs.GovernanceAccessAccessData | undefined>;
+    declare public readonly accessData: pulumi.Output<outputs.GovernanceAccessAccessData>;
     /**
      * Label to describe the access. Changing this property forces recreation of the resource.
      */
@@ -114,6 +114,9 @@ export class GovernanceAccess extends pulumi.CustomResource {
             resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as GovernanceAccessArgs | undefined;
+            if (args?.accessData === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accessData'");
+            }
             if (args?.accessName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessName'");
             }
@@ -174,7 +177,7 @@ export interface GovernanceAccessArgs {
     /**
      * Required property. access type specific data. Changing this property forces recreation of the resource.
      */
-    accessData?: pulumi.Input<inputs.GovernanceAccessAccessData>;
+    accessData: pulumi.Input<inputs.GovernanceAccessAccessData>;
     /**
      * Label to describe the access. Changing this property forces recreation of the resource.
      */

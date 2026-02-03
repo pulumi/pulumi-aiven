@@ -175,7 +175,7 @@ namespace Pulumi.Aiven
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("permissions")]
+        [Input("permissions", required: true)]
         private InputList<Inputs.OrganizationPermissionPermissionArgs>? _permissions;
 
         /// <summary>

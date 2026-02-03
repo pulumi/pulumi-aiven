@@ -22,15 +22,15 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
      * Required property. access type specific data. Changing this property forces recreation of the resource.
      * 
      */
-    @Import(name="accessData")
-    private @Nullable Output<GovernanceAccessAccessDataArgs> accessData;
+    @Import(name="accessData", required=true)
+    private Output<GovernanceAccessAccessDataArgs> accessData;
 
     /**
      * @return Required property. access type specific data. Changing this property forces recreation of the resource.
      * 
      */
-    public Optional<Output<GovernanceAccessAccessDataArgs>> accessData() {
-        return Optional.ofNullable(this.accessData);
+    public Output<GovernanceAccessAccessDataArgs> accessData() {
+        return this.accessData;
     }
 
     /**
@@ -135,7 +135,7 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder accessData(@Nullable Output<GovernanceAccessAccessDataArgs> accessData) {
+        public Builder accessData(Output<GovernanceAccessAccessDataArgs> accessData) {
             $.accessData = accessData;
             return this;
         }
@@ -244,6 +244,9 @@ public final class GovernanceAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         public GovernanceAccessArgs build() {
+            if ($.accessData == null) {
+                throw new MissingRequiredPropertyException("GovernanceAccessArgs", "accessData");
+            }
             if ($.accessName == null) {
                 throw new MissingRequiredPropertyException("GovernanceAccessArgs", "accessName");
             }
