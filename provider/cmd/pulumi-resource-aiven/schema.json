@@ -2297,12 +2297,14 @@
             },
             "type": "object",
             "required": [
+                "acls",
                 "project",
                 "serviceName"
             ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "acls",
                         "project",
                         "serviceName",
                         "username"
@@ -29875,6 +29877,7 @@
                 }
             },
             "required": [
+                "accessData",
                 "accessName",
                 "accessType",
                 "organizationId",
@@ -29906,6 +29909,7 @@
                 }
             },
             "requiredInputs": [
+                "accessData",
                 "accessName",
                 "accessType",
                 "organizationId"
@@ -36576,6 +36580,7 @@
             },
             "required": [
                 "organizationId",
+                "permissions",
                 "resourceId",
                 "resourceType"
             ],
@@ -36605,6 +36610,7 @@
             },
             "requiredInputs": [
                 "organizationId",
+                "permissions",
                 "resourceId",
                 "resourceType"
             ],
