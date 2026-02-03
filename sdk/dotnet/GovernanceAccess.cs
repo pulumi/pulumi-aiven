@@ -60,7 +60,7 @@ namespace Pulumi.Aiven
         /// Required property. access type specific data. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("accessData")]
-        public Output<Outputs.GovernanceAccessAccessData?> AccessData { get; private set; } = null!;
+        public Output<Outputs.GovernanceAccessAccessData> AccessData { get; private set; } = null!;
 
         /// <summary>
         /// Label to describe the access. Changing this property forces recreation of the resource.
@@ -144,8 +144,8 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Required property. access type specific data. Changing this property forces recreation of the resource.
         /// </summary>
-        [Input("accessData")]
-        public Input<Inputs.GovernanceAccessAccessDataArgs>? AccessData { get; set; }
+        [Input("accessData", required: true)]
+        public Input<Inputs.GovernanceAccessAccessDataArgs> AccessData { get; set; } = null!;
 
         /// <summary>
         /// Label to describe the access. Changing this property forces recreation of the resource.

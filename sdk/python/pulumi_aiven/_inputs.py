@@ -8898,6 +8898,10 @@ class FlinkTechEmailArgs:
 
 if not MYPY:
     class GovernanceAccessAccessDataArgsDict(TypedDict):
+        acls: pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgsDict']]]
+        """
+        Required property. Acls. Changing this property forces recreation of the resource.
+        """
         project: pulumi.Input[_builtins.str]
         """
         Project name. Changing this property forces recreation of the resource.
@@ -8905,10 +8909,6 @@ if not MYPY:
         service_name: pulumi.Input[_builtins.str]
         """
         Service name. Changing this property forces recreation of the resource.
-        """
-        acls: NotRequired[pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgsDict']]]]
-        """
-        Required property. Acls. Changing this property forces recreation of the resource.
         """
         username: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -8920,22 +8920,33 @@ elif False:
 @pulumi.input_type
 class GovernanceAccessAccessDataArgs:
     def __init__(__self__, *,
+                 acls: pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]],
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]] acls: Required property. Acls. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]] acls: Required property. Acls. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: The service username assigned to the access. Changing this property forces recreation of the resource.
         """
+        pulumi.set(__self__, "acls", acls)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
-        if acls is not None:
-            pulumi.set(__self__, "acls", acls)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def acls(self) -> pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]]:
+        """
+        Required property. Acls. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]]):
+        pulumi.set(self, "acls", value)
 
     @_builtins.property
     @pulumi.getter
@@ -8960,18 +8971,6 @@ class GovernanceAccessAccessDataArgs:
     @service_name.setter
     def service_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]]]:
-        """
-        Required property. Acls. Changing this property forces recreation of the resource.
-        """
-        return pulumi.get(self, "acls")
-
-    @acls.setter
-    def acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgs']]]]):
-        pulumi.set(self, "acls", value)
 
     @_builtins.property
     @pulumi.getter

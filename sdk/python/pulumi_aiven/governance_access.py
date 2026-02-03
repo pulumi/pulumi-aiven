@@ -21,29 +21,40 @@ __all__ = ['GovernanceAccessArgs', 'GovernanceAccess']
 @pulumi.input_type
 class GovernanceAccessArgs:
     def __init__(__self__, *,
+                 access_data: pulumi.Input['GovernanceAccessAccessDataArgs'],
                  access_name: pulumi.Input[_builtins.str],
                  access_type: pulumi.Input[_builtins.str],
                  organization_id: pulumi.Input[_builtins.str],
-                 access_data: Optional[pulumi.Input['GovernanceAccessAccessDataArgs']] = None,
                  owner_user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a GovernanceAccess resource.
+        :param pulumi.Input['GovernanceAccessAccessDataArgs'] access_data: Required property. access type specific data. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] access_name: Label to describe the access. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] access_type: An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input['GovernanceAccessAccessDataArgs'] access_data: Required property. access type specific data. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] owner_user_group_id: The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
+        pulumi.set(__self__, "access_data", access_data)
         pulumi.set(__self__, "access_name", access_name)
         pulumi.set(__self__, "access_type", access_type)
         pulumi.set(__self__, "organization_id", organization_id)
-        if access_data is not None:
-            pulumi.set(__self__, "access_data", access_data)
         if owner_user_group_id is not None:
             pulumi.set(__self__, "owner_user_group_id", owner_user_group_id)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
+
+    @_builtins.property
+    @pulumi.getter(name="accessData")
+    def access_data(self) -> pulumi.Input['GovernanceAccessAccessDataArgs']:
+        """
+        Required property. access type specific data. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "access_data")
+
+    @access_data.setter
+    def access_data(self, value: pulumi.Input['GovernanceAccessAccessDataArgs']):
+        pulumi.set(self, "access_data", value)
 
     @_builtins.property
     @pulumi.getter(name="accessName")
@@ -80,18 +91,6 @@ class GovernanceAccessArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "organization_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accessData")
-    def access_data(self) -> Optional[pulumi.Input['GovernanceAccessAccessDataArgs']]:
-        """
-        Required property. access type specific data. Changing this property forces recreation of the resource.
-        """
-        return pulumi.get(self, "access_data")
-
-    @access_data.setter
-    def access_data(self, value: Optional[pulumi.Input['GovernanceAccessAccessDataArgs']]):
-        pulumi.set(self, "access_data", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUserGroupId")
@@ -350,6 +349,8 @@ class GovernanceAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GovernanceAccessArgs.__new__(GovernanceAccessArgs)
 
+            if access_data is None and not opts.urn:
+                raise TypeError("Missing required property 'access_data'")
             __props__.__dict__["access_data"] = access_data
             if access_name is None and not opts.urn:
                 raise TypeError("Missing required property 'access_name'")
@@ -409,7 +410,7 @@ class GovernanceAccess(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accessData")
-    def access_data(self) -> pulumi.Output[Optional['outputs.GovernanceAccessAccessData']]:
+    def access_data(self) -> pulumi.Output['outputs.GovernanceAccessAccessData']:
         """
         Required property. access type specific data. Changing this property forces recreation of the resource.
         """

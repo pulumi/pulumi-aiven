@@ -18,7 +18,7 @@ public final class GovernanceAccessAccessData {
      * @return Required property. Acls. Changing this property forces recreation of the resource.
      * 
      */
-    private @Nullable List<GovernanceAccessAccessDataAcl> acls;
+    private List<GovernanceAccessAccessDataAcl> acls;
     /**
      * @return Project name. Changing this property forces recreation of the resource.
      * 
@@ -41,7 +41,7 @@ public final class GovernanceAccessAccessData {
      * 
      */
     public List<GovernanceAccessAccessDataAcl> acls() {
-        return this.acls == null ? List.of() : this.acls;
+        return this.acls;
     }
     /**
      * @return Project name. Changing this property forces recreation of the resource.
@@ -74,7 +74,7 @@ public final class GovernanceAccessAccessData {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GovernanceAccessAccessDataAcl> acls;
+        private List<GovernanceAccessAccessDataAcl> acls;
         private String project;
         private String serviceName;
         private @Nullable String username;
@@ -88,8 +88,10 @@ public final class GovernanceAccessAccessData {
         }
 
         @CustomType.Setter
-        public Builder acls(@Nullable List<GovernanceAccessAccessDataAcl> acls) {
-
+        public Builder acls(List<GovernanceAccessAccessDataAcl> acls) {
+            if (acls == null) {
+              throw new MissingRequiredPropertyException("GovernanceAccessAccessData", "acls");
+            }
             this.acls = acls;
             return this;
         }

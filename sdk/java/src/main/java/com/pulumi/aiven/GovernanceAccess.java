@@ -79,14 +79,14 @@ public class GovernanceAccess extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accessData", refs={GovernanceAccessAccessData.class}, tree="[0]")
-    private Output</* @Nullable */ GovernanceAccessAccessData> accessData;
+    private Output<GovernanceAccessAccessData> accessData;
 
     /**
      * @return Required property. access type specific data. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<Optional<GovernanceAccessAccessData>> accessData() {
-        return Codegen.optional(this.accessData);
+    public Output<GovernanceAccessAccessData> accessData() {
+        return this.accessData;
     }
     /**
      * Label to describe the access. Changing this property forces recreation of the resource.

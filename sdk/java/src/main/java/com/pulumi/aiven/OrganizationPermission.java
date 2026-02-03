@@ -122,14 +122,14 @@ public class OrganizationPermission extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="permissions", refs={List.class,OrganizationPermissionPermission.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<OrganizationPermissionPermission>> permissions;
+    private Output<List<OrganizationPermissionPermission>> permissions;
 
     /**
      * @return Required property. List of roles to set.
      * 
      */
-    public Output<Optional<List<OrganizationPermissionPermission>>> permissions() {
-        return Codegen.optional(this.permissions);
+    public Output<List<OrganizationPermissionPermission>> permissions() {
+        return this.permissions;
     }
     /**
      * Resource Id. Changing this property forces recreation of the resource.
