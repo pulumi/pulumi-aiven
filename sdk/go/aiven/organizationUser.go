@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates and manages an Aiven Organization user.
+//
+// > **This resource is deprecated**
+// Users cannot be invited to an organization using Terraform.
+// Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+// After the user accepts the invite you can get their information using the `OrganizationUser` data source. You can manage
+// user access to projects with the `OrganizationUserGroup`, `OrganizationUserGroupMember`,
+// and `OrganizationPermission` resources.
 type OrganizationUser struct {
 	pulumi.CustomResourceState
 

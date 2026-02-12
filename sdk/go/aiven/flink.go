@@ -106,7 +106,8 @@ type Flink struct {
 	ServiceUri pulumi.StringOutput `pulumi:"serviceUri"`
 	// Username used for connecting to the service, if applicable
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
-	State           pulumi.StringOutput `pulumi:"state"`
+	// Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+	State pulumi.StringOutput `pulumi:"state"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
@@ -215,7 +216,8 @@ type flinkState struct {
 	ServiceUri *string `pulumi:"serviceUri"`
 	// Username used for connecting to the service, if applicable
 	ServiceUsername *string `pulumi:"serviceUsername"`
-	State           *string `pulumi:"state"`
+	// Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+	State *string `pulumi:"state"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
@@ -277,7 +279,8 @@ type FlinkState struct {
 	ServiceUri pulumi.StringPtrInput
 	// Username used for connecting to the service, if applicable
 	ServiceUsername pulumi.StringPtrInput
-	State           pulumi.StringPtrInput
+	// Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+	State pulumi.StringPtrInput
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
@@ -576,6 +579,7 @@ func (o FlinkOutput) ServiceUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v *Flink) pulumi.StringOutput { return v.ServiceUsername }).(pulumi.StringOutput)
 }
 
+// Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
 func (o FlinkOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Flink) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

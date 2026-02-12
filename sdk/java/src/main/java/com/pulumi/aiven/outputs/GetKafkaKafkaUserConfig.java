@@ -108,6 +108,10 @@ public final class GetKafkaKafkaUserConfig {
      * 
      */
     private @Nullable List<GetKafkaKafkaUserConfigKafkaConnectPluginVersion> kafkaConnectPluginVersions;
+    /**
+     * @return Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth_method: token) and AWS Secrets Manager (provider: aws, auth_method: credentials) are supported. Secrets can be referenced in connector config with ${&lt;provider_name&gt;:&lt;secret_path&gt;:&lt;key_name&gt;}
+     * 
+     */
     private @Nullable List<GetKafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders;
     /**
      * @return Kafka Diskless configuration values
@@ -307,6 +311,10 @@ public final class GetKafkaKafkaUserConfig {
     public List<GetKafkaKafkaUserConfigKafkaConnectPluginVersion> kafkaConnectPluginVersions() {
         return this.kafkaConnectPluginVersions == null ? List.of() : this.kafkaConnectPluginVersions;
     }
+    /**
+     * @return Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth_method: token) and AWS Secrets Manager (provider: aws, auth_method: credentials) are supported. Secrets can be referenced in connector config with ${&lt;provider_name&gt;:&lt;secret_path&gt;:&lt;key_name&gt;}
+     * 
+     */
     public List<GetKafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders() {
         return this.kafkaConnectSecretProviders == null ? List.of() : this.kafkaConnectSecretProviders;
     }

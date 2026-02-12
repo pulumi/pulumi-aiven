@@ -77,8 +77,9 @@ type LookupKafkaTopicResult struct {
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// Tags for the topic.
-	Tags                  []GetKafkaTopicTag `pulumi:"tags"`
-	TerminationProtection bool               `pulumi:"terminationProtection"`
+	Tags []GetKafkaTopicTag `pulumi:"tags"`
+	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+	TerminationProtection bool `pulumi:"terminationProtection"`
 	// The description of the topic
 	TopicDescription string `pulumi:"topicDescription"`
 	// The name of the topic. Changing this property forces recreation of the resource.
@@ -163,6 +164,7 @@ func (o LookupKafkaTopicResultOutput) Tags() GetKafkaTopicTagArrayOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) []GetKafkaTopicTag { return v.Tags }).(GetKafkaTopicTagArrayOutput)
 }
 
+// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
 func (o LookupKafkaTopicResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
 }

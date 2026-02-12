@@ -4,6 +4,16 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Creates and manages an Aiven Organization user.
+ *
+ * > **This resource is deprecated**
+ * Users cannot be invited to an organization using Terraform.
+ * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+ * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
+ * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
+ * and `aiven.OrganizationPermission` resources.
+ */
 export class OrganizationUser extends pulumi.CustomResource {
     /**
      * Get an existing OrganizationUser resource's state with the given name, ID, and optional extra

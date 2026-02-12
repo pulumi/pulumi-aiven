@@ -192,6 +192,9 @@ namespace Pulumi.Aiven
         [Output("serviceUsername")]
         public Output<string> ServiceUsername { get; private set; } = null!;
 
+        /// <summary>
+        /// Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+        /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
@@ -595,6 +598,9 @@ namespace Pulumi.Aiven
         [Input("serviceUsername")]
         public Input<string>? ServiceUsername { get; set; }
 
+        /// <summary>
+        /// Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

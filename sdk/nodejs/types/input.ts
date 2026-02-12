@@ -3651,6 +3651,9 @@ export interface KafkaConnectKafkaConnectUserConfig {
      * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
      */
     saslOauthbearerAllowedUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     */
     secretProviders?: pulumi.Input<pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProvider>[]>;
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
@@ -3973,6 +3976,9 @@ export interface KafkaKafkaUserConfig {
      * The plugin selected by the user
      */
     kafkaConnectPluginVersions?: pulumi.Input<pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectPluginVersion>[]>;
+    /**
+     * Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     */
     kafkaConnectSecretProviders?: pulumi.Input<pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProvider>[]>;
     /**
      * Kafka Diskless configuration values

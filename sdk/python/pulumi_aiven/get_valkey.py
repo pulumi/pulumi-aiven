@@ -306,6 +306,9 @@ class GetValkeyResult:
     @_builtins.property
     @pulumi.getter
     def state(self) -> _builtins.str:
+        """
+        Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+        """
         return pulumi.get(self, "state")
 
     @_builtins.property

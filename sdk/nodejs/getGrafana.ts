@@ -147,6 +147,9 @@ export interface GetGrafanaResult {
      * Username used for connecting to the service, if applicable
      */
     readonly serviceUsername: string;
+    /**
+     * Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+     */
     readonly state: string;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again

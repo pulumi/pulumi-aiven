@@ -78,6 +78,10 @@ public final class KafkaConnectKafkaConnectUserConfig {
      * 
      */
     private @Nullable List<String> saslOauthbearerAllowedUrls;
+    /**
+     * @return Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     * 
+     */
     private @Nullable List<KafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders;
     /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
@@ -169,6 +173,10 @@ public final class KafkaConnectKafkaConnectUserConfig {
     public List<String> saslOauthbearerAllowedUrls() {
         return this.saslOauthbearerAllowedUrls == null ? List.of() : this.saslOauthbearerAllowedUrls;
     }
+    /**
+     * @return Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     * 
+     */
     public List<KafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders() {
         return this.secretProviders == null ? List.of() : this.secretProviders;
     }

@@ -773,32 +773,27 @@ __all__ = [
     'GetServicePlanTimeoutsArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccountAuthenticationSamlFieldMappingArgsDict(TypedDict):
-        email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name for user email
-        """
-        first_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name for user's first name
-        """
-        identity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name for user's identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
-        """
-        last_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name for user's last name
-        """
-        real_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name for user's full name. If specified, first*name and last*name mappings are ignored
-        """
-elif False:
-    AccountAuthenticationSamlFieldMappingArgsDict: TypeAlias = Mapping[str, Any]
+class AccountAuthenticationSamlFieldMappingArgsDict(TypedDict):
+    email: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name for user email
+    """
+    first_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name for user's first name
+    """
+    identity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name for user's identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+    """
+    last_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name for user's last name
+    """
+    real_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name for user's full name. If specified, first*name and last*name mappings are ignored
+    """
 
 @pulumi.input_type
 class AccountAuthenticationSamlFieldMappingArgs:
@@ -887,66 +882,63 @@ class AccountAuthenticationSamlFieldMappingArgs:
         pulumi.set(self, "real_name", value)
 
 
-if not MYPY:
-    class AlloydbomniAlloydbomniArgsDict(TypedDict):
-        bouncer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
-        """
-        dbname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Primary AlloyDB Omni database name.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AlloyDB Omni primary node host IP or name.
-        """
-        max_connections: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
-        """
-        params: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniParamArgsDict']]]]
-        """
-        AlloyDB Omni connection parameters.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AlloyDB Omni admin user password.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        AlloyDB Omni port.
-        """
-        replica_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AlloyDB Omni replica URI for services with a replica.
-        """
-        sslmode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AlloyDB Omni SSL mode setting.
-        """
-        standby_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        AlloyDB Omni standby connection URIs.
-        """
-        syncing_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        AlloyDB Omni syncing connection URIs.
-        """
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AlloyDB Omni primary connection URI.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        AlloyDB Omni primary connection URIs.
-        """
-        user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AlloyDB Omni admin user name.
-        """
-elif False:
-    AlloydbomniAlloydbomniArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniAlloydbomniArgsDict(TypedDict):
+    bouncer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+    """
+    dbname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Primary AlloyDB Omni database name.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AlloyDB Omni primary node host IP or name.
+    """
+    max_connections: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
+    """
+    params: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniParamArgsDict']]]]
+    """
+    AlloyDB Omni connection parameters.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AlloyDB Omni admin user password.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    AlloyDB Omni port.
+    """
+    replica_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AlloyDB Omni replica URI for services with a replica.
+    """
+    sslmode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AlloyDB Omni SSL mode setting.
+    """
+    standby_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    AlloyDB Omni standby connection URIs.
+    """
+    syncing_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    AlloyDB Omni syncing connection URIs.
+    """
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AlloyDB Omni primary connection URI.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    AlloyDB Omni primary connection URIs.
+    """
+    user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AlloyDB Omni admin user name.
+    """
 
 @pulumi.input_type
 class AlloydbomniAlloydbomniArgs:
@@ -1183,34 +1175,31 @@ class AlloydbomniAlloydbomniArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class AlloydbomniAlloydbomniParamArgsDict(TypedDict):
-        database_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Primary AlloyDB Omni database name.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AlloyDB Omni host IP or name.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AlloyDB Omni admin user password.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        AlloyDB Omni port.
-        """
-        sslmode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AlloyDB Omni SSL mode setting.
-        """
-        user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AlloyDB Omni admin user name.
-        """
-elif False:
-    AlloydbomniAlloydbomniParamArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniAlloydbomniParamArgsDict(TypedDict):
+    database_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Primary AlloyDB Omni database name.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AlloyDB Omni host IP or name.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AlloyDB Omni admin user password.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    AlloyDB Omni port.
+    """
+    sslmode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AlloyDB Omni SSL mode setting.
+    """
+    user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AlloyDB Omni admin user name.
+    """
 
 @pulumi.input_type
 class AlloydbomniAlloydbomniParamArgs:
@@ -1315,138 +1304,135 @@ class AlloydbomniAlloydbomniParamArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class AlloydbomniAlloydbomniUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        admin_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-        """
-        admin_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-        """
-        alloydbomni_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `15`, and newer. PostgreSQL major version.
-        """
-        backup_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        """
-        backup_minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-        """
-        enable_ipv6: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-        """
-        google_columnar_engine_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `true`.
-        """
-        google_columnar_engine_memory_size_percentage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Allocate the amount of RAM to store columnar data. Default: `10`.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of nodes for the service. Example: `3`.
-        """
-        pg: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgArgsDict']]
-        """
-        postgresql.conf configuration values
-        """
-        pg_read_replica: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
-        """
-        pg_service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        pg_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `15`, and newer. PostgreSQL major version.
-        """
-        pgaudit: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgsDict']]
-        """
-        System-wide settings for the pgaudit extension
-        """
-        pgbouncer: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict']]
-        """
-        PGBouncer connection pooling settings
-        """
-        pglookout: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPglookoutArgsDict']]
-        """
-        System-wide settings for pglookout
-        """
-        private_access: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        recovery_target_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        shared_buffers_percentage: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-        synchronous_replication: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-        """
-        variant: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
-        """
-        work_mem: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
-        """
-elif False:
-    AlloydbomniAlloydbomniUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniAlloydbomniUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    admin_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+    """
+    admin_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
+    """
+    alloydbomni_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `15`, and newer. PostgreSQL major version.
+    """
+    backup_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+    """
+    backup_minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+    """
+    enable_ipv6: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+    """
+    google_columnar_engine_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `true`.
+    """
+    google_columnar_engine_memory_size_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Allocate the amount of RAM to store columnar data. Default: `10`.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of nodes for the service. Example: `3`.
+    """
+    pg: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgArgsDict']]
+    """
+    postgresql.conf configuration values
+    """
+    pg_read_replica: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+    """
+    pg_service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    pg_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `15`, and newer. PostgreSQL major version.
+    """
+    pgaudit: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgsDict']]
+    """
+    System-wide settings for the pgaudit extension
+    """
+    pgbouncer: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict']]
+    """
+    PGBouncer connection pooling settings
+    """
+    pglookout: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPglookoutArgsDict']]
+    """
+    System-wide settings for pglookout
+    """
+    private_access: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    recovery_target_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    shared_buffers_percentage: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
+    synchronous_replication: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+    """
+    variant: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+    """
+    work_mem: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
+    """
 
 @pulumi.input_type
 class AlloydbomniAlloydbomniUserConfigArgs:
@@ -1971,18 +1957,15 @@ class AlloydbomniAlloydbomniUserConfigArgs:
         pulumi.set(self, "work_mem", value)
 
 
-if not MYPY:
-    class AlloydbomniAlloydbomniUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    AlloydbomniAlloydbomniUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniAlloydbomniUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class AlloydbomniAlloydbomniUserConfigIpFilterObjectArgs:
@@ -2022,206 +2005,203 @@ class AlloydbomniAlloydbomniUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class AlloydbomniAlloydbomniUserConfigPgArgsDict(TypedDict):
-        autovacuum_analyze_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-        """
-        autovacuum_analyze_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-        """
-        autovacuum_freeze_max_age: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
-        """
-        autovacuum_max_workers: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
-        """
-        autovacuum_naptime: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
-        """
-        autovacuum_vacuum_cost_delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
-        """
-        autovacuum_vacuum_cost_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
-        """
-        autovacuum_vacuum_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-        """
-        autovacuum_vacuum_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
-        """
-        bgwriter_delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
-        """
-        bgwriter_flush_after: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
-        """
-        bgwriter_lru_maxpages: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-        """
-        bgwriter_lru_multiplier: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
-        """
-        deadlock_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
-        """
-        default_toast_compression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
-        """
-        idle_in_transaction_session_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Time out sessions with open transactions after this number of milliseconds.
-        """
-        jit: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Controls system-wide use of Just-in-Time Compilation (JIT).
-        """
-        log_autovacuum_min_duration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
-        """
-        log_error_verbosity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-        """
-        log_line_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
-        """
-        log_min_duration_statement: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Log statements that take more than this number of milliseconds to run, -1 disables.
-        """
-        log_temp_files: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
-        """
-        max_files_per_process: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
-        """
-        max_locks_per_transaction: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
-        """
-        max_logical_replication_workers: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
-        """
-        max_parallel_workers: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
-        """
-        max_parallel_workers_per_gather: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
-        """
-        max_pred_locks_per_transaction: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
-        """
-        max_prepared_transactions: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
-        """
-        max_replication_slots: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
-        """
-        max_slot_wal_keep_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
-        """
-        max_stack_depth: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
-        """
-        max_standby_archive_delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max standby archive delay in milliseconds. The default is `30000` (upstream default).
-        """
-        max_standby_streaming_delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
-        """
-        max_sync_workers_per_subscription: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of synchronization workers per subscription. The default is `2`.
-        """
-        max_wal_senders: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
-        """
-        max_worker_processes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
-        """
-        password_encryption: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
-        """
-        pg_partman_bgw_dot_interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
-        """
-        pg_partman_bgw_dot_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
-        """
-        pg_stat_statements_dot_track: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-        """
-        temp_file_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL temporary file limit in KiB, -1 for unlimited.
-        """
-        timezone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL service timezone. Example: `Europe/Helsinki`.
-        """
-        track_activity_query_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
-        """
-        track_commit_timestamp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
-        """
-        track_functions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
-        """
-        track_io_timing: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
-        """
-        wal_sender_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
-        """
-        wal_writer_delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
-        """
-elif False:
-    AlloydbomniAlloydbomniUserConfigPgArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniAlloydbomniUserConfigPgArgsDict(TypedDict):
+    autovacuum_analyze_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+    """
+    autovacuum_analyze_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
+    """
+    autovacuum_freeze_max_age: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
+    """
+    autovacuum_max_workers: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
+    """
+    autovacuum_naptime: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
+    """
+    autovacuum_vacuum_cost_delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
+    """
+    autovacuum_vacuum_cost_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
+    """
+    autovacuum_vacuum_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+    """
+    autovacuum_vacuum_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
+    """
+    bgwriter_delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
+    """
+    bgwriter_flush_after: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+    """
+    bgwriter_lru_maxpages: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
+    """
+    bgwriter_lru_multiplier: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+    """
+    deadlock_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
+    """
+    default_toast_compression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
+    """
+    idle_in_transaction_session_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Time out sessions with open transactions after this number of milliseconds.
+    """
+    jit: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Controls system-wide use of Just-in-Time Compilation (JIT).
+    """
+    log_autovacuum_min_duration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
+    """
+    log_error_verbosity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+    """
+    log_line_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+    """
+    log_min_duration_statement: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Log statements that take more than this number of milliseconds to run, -1 disables.
+    """
+    log_temp_files: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+    """
+    max_files_per_process: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
+    """
+    max_locks_per_transaction: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
+    """
+    max_logical_replication_workers: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+    """
+    max_parallel_workers: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
+    """
+    max_parallel_workers_per_gather: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
+    """
+    max_pred_locks_per_transaction: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
+    """
+    max_prepared_transactions: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
+    """
+    max_replication_slots: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
+    """
+    max_slot_wal_keep_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
+    """
+    max_stack_depth: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
+    """
+    max_standby_archive_delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max standby archive delay in milliseconds. The default is `30000` (upstream default).
+    """
+    max_standby_streaming_delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
+    """
+    max_sync_workers_per_subscription: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of synchronization workers per subscription. The default is `2`.
+    """
+    max_wal_senders: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
+    """
+    max_worker_processes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
+    """
+    password_encryption: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
+    """
+    pg_partman_bgw_dot_interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
+    """
+    pg_partman_bgw_dot_role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
+    """
+    pg_stat_statements_dot_track: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
+    """
+    temp_file_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL temporary file limit in KiB, -1 for unlimited.
+    """
+    timezone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL service timezone. Example: `Europe/Helsinki`.
+    """
+    track_activity_query_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
+    """
+    track_commit_timestamp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
+    """
+    track_functions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
+    """
+    track_io_timing: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+    """
+    wal_sender_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
+    """
+    wal_writer_delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
+    """
 
 @pulumi.input_type
 class AlloydbomniAlloydbomniUserConfigPgArgs:
@@ -3014,66 +2994,63 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
         pulumi.set(self, "wal_writer_delay", value)
 
 
-if not MYPY:
-    class AlloydbomniAlloydbomniUserConfigPgauditArgsDict(TypedDict):
-        feature_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-        """
-        log_catalog: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
-        """
-        log_client: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-        """
-        log_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-        """
-        log_max_string_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-        """
-        log_nested_statements: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-        """
-        log_parameter: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-        """
-        log_parameter_max_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
-        """
-        log_relation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-        """
-        log_rows: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Log Rows. Default: `false`.
-        """
-        log_statement: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-        """
-        log_statement_once: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-        """
-        logs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies which classes of statements will be logged by session audit logging.
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the master role to use for object audit logging.
-        """
-elif False:
-    AlloydbomniAlloydbomniUserConfigPgauditArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniAlloydbomniUserConfigPgauditArgsDict(TypedDict):
+    feature_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+    """
+    log_catalog: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
+    """
+    log_client: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+    """
+    log_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+    """
+    log_max_string_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+    """
+    log_nested_statements: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+    """
+    log_parameter: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+    """
+    log_parameter_max_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+    """
+    log_relation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+    """
+    log_rows: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Log Rows. Default: `false`.
+    """
+    log_statement: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+    """
+    log_statement_once: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+    """
+    logs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies which classes of statements will be logged by session audit logging.
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the master role to use for object audit logging.
+    """
 
 @pulumi.input_type
 class AlloydbomniAlloydbomniUserConfigPgauditArgs:
@@ -3306,50 +3283,47 @@ class AlloydbomniAlloydbomniUserConfigPgauditArgs:
         pulumi.set(self, "role", value)
 
 
-if not MYPY:
-    class AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict(TypedDict):
-        autodb_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
-        """
-        autodb_max_db_connections: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
-        """
-        autodb_pool_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
-        """
-        autodb_pool_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
-        """
-        ignore_startup_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of parameters to ignore when given in startup packet.
-        """
-        max_prepared_statements: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
-        """
-        min_pool_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
-        """
-        server_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
-        """
-        server_lifetime: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
-        """
-        server_reset_query_always: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
-        """
-elif False:
-    AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict(TypedDict):
+    autodb_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
+    """
+    autodb_max_db_connections: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
+    """
+    autodb_pool_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
+    """
+    autodb_pool_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
+    """
+    ignore_startup_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of parameters to ignore when given in startup packet.
+    """
+    max_prepared_statements: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+    """
+    min_pool_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
+    """
+    server_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
+    """
+    server_lifetime: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
+    """
+    server_reset_query_always: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+    """
 
 @pulumi.input_type
 class AlloydbomniAlloydbomniUserConfigPgbouncerArgs:
@@ -3518,14 +3492,11 @@ class AlloydbomniAlloydbomniUserConfigPgbouncerArgs:
         pulumi.set(self, "server_reset_query_always", value)
 
 
-if not MYPY:
-    class AlloydbomniAlloydbomniUserConfigPglookoutArgsDict(TypedDict):
-        max_failover_replication_time_lag: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
-        """
-elif False:
-    AlloydbomniAlloydbomniUserConfigPglookoutArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniAlloydbomniUserConfigPglookoutArgsDict(TypedDict):
+    max_failover_replication_time_lag: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
+    """
 
 @pulumi.input_type
 class AlloydbomniAlloydbomniUserConfigPglookoutArgs:
@@ -3550,22 +3521,19 @@ class AlloydbomniAlloydbomniUserConfigPglookoutArgs:
         pulumi.set(self, "max_failover_replication_time_lag", value)
 
 
-if not MYPY:
-    class AlloydbomniAlloydbomniUserConfigPrivateAccessArgsDict(TypedDict):
-        pg: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    AlloydbomniAlloydbomniUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniAlloydbomniUserConfigPrivateAccessArgsDict(TypedDict):
+    pg: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class AlloydbomniAlloydbomniUserConfigPrivateAccessArgs:
@@ -3622,22 +3590,19 @@ class AlloydbomniAlloydbomniUserConfigPrivateAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        pg: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable pg.
-        """
-        pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable pgbouncer.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable prometheus.
-        """
-elif False:
-    AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    pg: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable pg.
+    """
+    pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable pgbouncer.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable prometheus.
+    """
 
 @pulumi.input_type
 class AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgs:
@@ -3694,22 +3659,19 @@ class AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class AlloydbomniAlloydbomniUserConfigPublicAccessArgsDict(TypedDict):
-        pg: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    AlloydbomniAlloydbomniUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniAlloydbomniUserConfigPublicAccessArgsDict(TypedDict):
+    pg: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class AlloydbomniAlloydbomniUserConfigPublicAccessArgs:
@@ -3766,46 +3728,43 @@ class AlloydbomniAlloydbomniUserConfigPublicAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class AlloydbomniComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    AlloydbomniComponentArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class AlloydbomniComponentArgs:
@@ -3958,18 +3917,15 @@ class AlloydbomniComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class AlloydbomniServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration. The possible value is `read_replica`.
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    AlloydbomniServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration. The possible value is `read_replica`.
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class AlloydbomniServiceIntegrationArgs:
@@ -4008,18 +3964,15 @@ class AlloydbomniServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class AlloydbomniTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    AlloydbomniTagArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class AlloydbomniTagArgs:
@@ -4058,14 +4011,11 @@ class AlloydbomniTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AlloydbomniTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    AlloydbomniTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class AlloydbomniTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class AlloydbomniTechEmailArgs:
@@ -4089,30 +4039,27 @@ class AlloydbomniTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class BillingGroupTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    BillingGroupTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class BillingGroupTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class BillingGroupTimeoutsArgs:
@@ -4205,14 +4152,11 @@ class BillingGroupTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class CassandraCassandraArgsDict(TypedDict):
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Cassandra server URIs.
-        """
-elif False:
-    CassandraCassandraArgsDict: TypeAlias = Mapping[str, Any]
+class CassandraCassandraArgsDict(TypedDict):
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Cassandra server URIs.
+    """
 
 @pulumi.input_type
 class CassandraCassandraArgs:
@@ -4237,74 +4181,71 @@ class CassandraCassandraArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class CassandraCassandraUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        backup_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        """
-        backup_minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-        """
-        cassandra: NotRequired[pulumi.Input['CassandraCassandraUserConfigCassandraArgsDict']]
-        """
-        Cassandra configuration values
-        """
-        cassandra_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        migrate_sstableloader: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
-        """
-        private_access: NotRequired[pulumi.Input['CassandraCassandraUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['CassandraCassandraUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        service_to_join_with: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    CassandraCassandraUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CassandraCassandraUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    backup_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+    """
+    backup_minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+    """
+    cassandra: NotRequired[pulumi.Input['CassandraCassandraUserConfigCassandraArgsDict']]
+    """
+    Cassandra configuration values
+    """
+    cassandra_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    migrate_sstableloader: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
+    """
+    private_access: NotRequired[pulumi.Input['CassandraCassandraUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['CassandraCassandraUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    service_to_join_with: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class CassandraCassandraUserConfigArgs:
@@ -4573,30 +4514,27 @@ class CassandraCassandraUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class CassandraCassandraUserConfigCassandraArgsDict(TypedDict):
-        batch_size_fail_threshold_in_kb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
-        """
-        batch_size_warn_threshold_in_kb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
-        """
-        datacenter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
-        """
-        read_request_timeout_in_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
-        """
-        write_request_timeout_in_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
-        """
-elif False:
-    CassandraCassandraUserConfigCassandraArgsDict: TypeAlias = Mapping[str, Any]
+class CassandraCassandraUserConfigCassandraArgsDict(TypedDict):
+    batch_size_fail_threshold_in_kb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
+    """
+    batch_size_warn_threshold_in_kb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
+    """
+    datacenter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
+    """
+    read_request_timeout_in_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+    """
+    write_request_timeout_in_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+    """
 
 @pulumi.input_type
 class CassandraCassandraUserConfigCassandraArgs:
@@ -4685,18 +4623,15 @@ class CassandraCassandraUserConfigCassandraArgs:
         pulumi.set(self, "write_request_timeout_in_ms", value)
 
 
-if not MYPY:
-    class CassandraCassandraUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    CassandraCassandraUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class CassandraCassandraUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class CassandraCassandraUserConfigIpFilterObjectArgs:
@@ -4736,14 +4671,11 @@ class CassandraCassandraUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class CassandraCassandraUserConfigPrivateAccessArgsDict(TypedDict):
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    CassandraCassandraUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class CassandraCassandraUserConfigPrivateAccessArgsDict(TypedDict):
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class CassandraCassandraUserConfigPrivateAccessArgs:
@@ -4768,14 +4700,11 @@ class CassandraCassandraUserConfigPrivateAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class CassandraCassandraUserConfigPublicAccessArgsDict(TypedDict):
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    CassandraCassandraUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class CassandraCassandraUserConfigPublicAccessArgsDict(TypedDict):
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class CassandraCassandraUserConfigPublicAccessArgs:
@@ -4800,46 +4729,43 @@ class CassandraCassandraUserConfigPublicAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class CassandraComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    CassandraComponentArgsDict: TypeAlias = Mapping[str, Any]
+class CassandraComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class CassandraComponentArgs:
@@ -4992,18 +4918,15 @@ class CassandraComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class CassandraServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    CassandraServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class CassandraServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class CassandraServiceIntegrationArgs:
@@ -5042,18 +4965,15 @@ class CassandraServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class CassandraTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    CassandraTagArgsDict: TypeAlias = Mapping[str, Any]
+class CassandraTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class CassandraTagArgs:
@@ -5092,14 +5012,11 @@ class CassandraTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CassandraTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    CassandraTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class CassandraTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class CassandraTechEmailArgs:
@@ -5123,14 +5040,11 @@ class CassandraTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class ClickhouseClickhouseArgsDict(TypedDict):
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        ClickHouse server URIs.
-        """
-elif False:
-    ClickhouseClickhouseArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseClickhouseArgsDict(TypedDict):
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    ClickHouse server URIs.
+    """
 
 @pulumi.input_type
 class ClickhouseClickhouseArgs:
@@ -5155,70 +5069,67 @@ class ClickhouseClickhouseArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class ClickhouseClickhouseUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        backup_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        """
-        backup_minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-        """
-        enable_ipv6: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        private_access: NotRequired[pulumi.Input['ClickhouseClickhouseUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['ClickhouseClickhouseUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['ClickhouseClickhouseUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    ClickhouseClickhouseUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseClickhouseUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    backup_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+    """
+    backup_minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+    """
+    enable_ipv6: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    private_access: NotRequired[pulumi.Input['ClickhouseClickhouseUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['ClickhouseClickhouseUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['ClickhouseClickhouseUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class ClickhouseClickhouseUserConfigArgs:
@@ -5475,18 +5386,15 @@ class ClickhouseClickhouseUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class ClickhouseClickhouseUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    ClickhouseClickhouseUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseClickhouseUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class ClickhouseClickhouseUserConfigIpFilterObjectArgs:
@@ -5526,26 +5434,23 @@ class ClickhouseClickhouseUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ClickhouseClickhouseUserConfigPrivateAccessArgsDict(TypedDict):
-        clickhouse: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        clickhouse_https: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        clickhouse_mysql: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    ClickhouseClickhouseUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseClickhouseUserConfigPrivateAccessArgsDict(TypedDict):
+    clickhouse: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    clickhouse_https: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    clickhouse_mysql: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class ClickhouseClickhouseUserConfigPrivateAccessArgs:
@@ -5618,26 +5523,23 @@ class ClickhouseClickhouseUserConfigPrivateAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class ClickhouseClickhouseUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        clickhouse: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable clickhouse.
-        """
-        clickhouse_https: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable clickhouse_https.
-        """
-        clickhouse_mysql: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable clickhouse_mysql.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable prometheus.
-        """
-elif False:
-    ClickhouseClickhouseUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseClickhouseUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    clickhouse: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable clickhouse.
+    """
+    clickhouse_https: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable clickhouse_https.
+    """
+    clickhouse_mysql: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable clickhouse_mysql.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable prometheus.
+    """
 
 @pulumi.input_type
 class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs:
@@ -5710,26 +5612,23 @@ class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class ClickhouseClickhouseUserConfigPublicAccessArgsDict(TypedDict):
-        clickhouse: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        clickhouse_https: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        clickhouse_mysql: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    ClickhouseClickhouseUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseClickhouseUserConfigPublicAccessArgsDict(TypedDict):
+    clickhouse: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    clickhouse_https: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    clickhouse_mysql: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class ClickhouseClickhouseUserConfigPublicAccessArgs:
@@ -5802,46 +5701,43 @@ class ClickhouseClickhouseUserConfigPublicAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class ClickhouseComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    ClickhouseComponentArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class ClickhouseComponentArgs:
@@ -5994,30 +5890,27 @@ class ClickhouseComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class ClickhouseGrantPrivilegeGrantArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The column to grant access to. Changing this property forces recreation of the resource.
-        """
-        privilege: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
-        """
-        table: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The table to grant access to. Changing this property forces recreation of the resource.
-        """
-        with_grant: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
-        """
-elif False:
-    ClickhouseGrantPrivilegeGrantArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseGrantPrivilegeGrantArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    """
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The column to grant access to. Changing this property forces recreation of the resource.
+    """
+    privilege: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
+    """
+    table: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The table to grant access to. Changing this property forces recreation of the resource.
+    """
+    with_grant: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
+    """
 
 @pulumi.input_type
 class ClickhouseGrantPrivilegeGrantArgs:
@@ -6105,14 +5998,11 @@ class ClickhouseGrantPrivilegeGrantArgs:
         pulumi.set(self, "with_grant", value)
 
 
-if not MYPY:
-    class ClickhouseGrantRoleGrantArgsDict(TypedDict):
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
-elif False:
-    ClickhouseGrantRoleGrantArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseGrantRoleGrantArgsDict(TypedDict):
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    """
 
 @pulumi.input_type
 class ClickhouseGrantRoleGrantArgs:
@@ -6137,18 +6027,15 @@ class ClickhouseGrantRoleGrantArgs:
         pulumi.set(self, "role", value)
 
 
-if not MYPY:
-    class ClickhouseServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    ClickhouseServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class ClickhouseServiceIntegrationArgs:
@@ -6187,18 +6074,15 @@ class ClickhouseServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class ClickhouseTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    ClickhouseTagArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class ClickhouseTagArgs:
@@ -6237,14 +6121,11 @@ class ClickhouseTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ClickhouseTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    ClickhouseTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class ClickhouseTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class ClickhouseTechEmailArgs:
@@ -6268,46 +6149,43 @@ class ClickhouseTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class DragonflyComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    DragonflyComponentArgsDict: TypeAlias = Mapping[str, Any]
+class DragonflyComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class DragonflyComponentArgs:
@@ -6460,26 +6338,23 @@ class DragonflyComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class DragonflyDragonflyArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Dragonfly password.
-        """
-        replica_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Dragonfly replica server URI.
-        """
-        slave_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Dragonfly slave server URIs.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Dragonfly server URIs.
-        """
-elif False:
-    DragonflyDragonflyArgsDict: TypeAlias = Mapping[str, Any]
+class DragonflyDragonflyArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Dragonfly password.
+    """
+    replica_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Dragonfly replica server URI.
+    """
+    slave_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Dragonfly slave server URIs.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Dragonfly server URIs.
+    """
 
 @pulumi.input_type
 class DragonflyDragonflyArgs:
@@ -6552,70 +6427,67 @@ class DragonflyDragonflyArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class DragonflyDragonflyUserConfigArgsDict(TypedDict):
-        cache_mode: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Evict entries when getting close to maxmemory limit. Default: `false`.
-        """
-        dragonfly_persistence: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `dfs`, `off`, `rdb`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
-        """
-        dragonfly_ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Require SSL to access Dragonfly. Default: `true`.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['DragonflyDragonflyUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        migration: NotRequired[pulumi.Input['DragonflyDragonflyUserConfigMigrationArgsDict']]
-        """
-        Migrate data from existing server
-        """
-        private_access: NotRequired[pulumi.Input['DragonflyDragonflyUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['DragonflyDragonflyUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['DragonflyDragonflyUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    DragonflyDragonflyUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DragonflyDragonflyUserConfigArgsDict(TypedDict):
+    cache_mode: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Evict entries when getting close to maxmemory limit. Default: `false`.
+    """
+    dragonfly_persistence: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `dfs`, `off`, `rdb`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+    """
+    dragonfly_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Require SSL to access Dragonfly. Default: `true`.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['DragonflyDragonflyUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    migration: NotRequired[pulumi.Input['DragonflyDragonflyUserConfigMigrationArgsDict']]
+    """
+    Migrate data from existing server
+    """
+    private_access: NotRequired[pulumi.Input['DragonflyDragonflyUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['DragonflyDragonflyUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['DragonflyDragonflyUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class DragonflyDragonflyUserConfigArgs:
@@ -6868,18 +6740,15 @@ class DragonflyDragonflyUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class DragonflyDragonflyUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    DragonflyDragonflyUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class DragonflyDragonflyUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class DragonflyDragonflyUserConfigIpFilterObjectArgs:
@@ -6919,46 +6788,43 @@ class DragonflyDragonflyUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class DragonflyDragonflyUserConfigMigrationArgsDict(TypedDict):
-        host: pulumi.Input[_builtins.str]
-        """
-        Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port number of the server where to migrate data from. Example: `1234`.
-        """
-        dbname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database name for bootstrapping the initial connection. Example: `defaultdb`.
-        """
-        ignore_dbs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
-        """
-        ignore_roles: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
-        """
-        method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The server where to migrate data from is secured with SSL. Default: `true`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User name for authentication with the server where to migrate data from. Example: `myname`.
-        """
-elif False:
-    DragonflyDragonflyUserConfigMigrationArgsDict: TypeAlias = Mapping[str, Any]
+class DragonflyDragonflyUserConfigMigrationArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port number of the server where to migrate data from. Example: `1234`.
+    """
+    dbname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database name for bootstrapping the initial connection. Example: `defaultdb`.
+    """
+    ignore_dbs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+    """
+    ignore_roles: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+    """
+    method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The server where to migrate data from is secured with SSL. Default: `true`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User name for authentication with the server where to migrate data from. Example: `myname`.
+    """
 
 @pulumi.input_type
 class DragonflyDragonflyUserConfigMigrationArgs:
@@ -7109,18 +6975,15 @@ class DragonflyDragonflyUserConfigMigrationArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class DragonflyDragonflyUserConfigPrivateAccessArgsDict(TypedDict):
-        dragonfly: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to dragonfly with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    DragonflyDragonflyUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class DragonflyDragonflyUserConfigPrivateAccessArgsDict(TypedDict):
+    dragonfly: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to dragonfly with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class DragonflyDragonflyUserConfigPrivateAccessArgs:
@@ -7161,18 +7024,15 @@ class DragonflyDragonflyUserConfigPrivateAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class DragonflyDragonflyUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        dragonfly: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable dragonfly.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable prometheus.
-        """
-elif False:
-    DragonflyDragonflyUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class DragonflyDragonflyUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    dragonfly: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable dragonfly.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable prometheus.
+    """
 
 @pulumi.input_type
 class DragonflyDragonflyUserConfigPrivatelinkAccessArgs:
@@ -7213,18 +7073,15 @@ class DragonflyDragonflyUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class DragonflyDragonflyUserConfigPublicAccessArgsDict(TypedDict):
-        dragonfly: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to dragonfly from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    DragonflyDragonflyUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class DragonflyDragonflyUserConfigPublicAccessArgsDict(TypedDict):
+    dragonfly: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to dragonfly from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class DragonflyDragonflyUserConfigPublicAccessArgs:
@@ -7265,18 +7122,15 @@ class DragonflyDragonflyUserConfigPublicAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class DragonflyServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    DragonflyServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class DragonflyServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class DragonflyServiceIntegrationArgs:
@@ -7315,18 +7169,15 @@ class DragonflyServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class DragonflyTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    DragonflyTagArgsDict: TypeAlias = Mapping[str, Any]
+class DragonflyTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class DragonflyTagArgs:
@@ -7365,14 +7216,11 @@ class DragonflyTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DragonflyTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    DragonflyTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class DragonflyTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class DragonflyTechEmailArgs:
@@ -7396,18 +7244,15 @@ class DragonflyTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class FlinkApplicationVersionSinkArgsDict(TypedDict):
-        create_table: pulumi.Input[_builtins.str]
-        """
-        The CREATE TABLE statement
-        """
-        integration_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The integration ID
-        """
-elif False:
-    FlinkApplicationVersionSinkArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkApplicationVersionSinkArgsDict(TypedDict):
+    create_table: pulumi.Input[_builtins.str]
+    """
+    The CREATE TABLE statement
+    """
+    integration_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The integration ID
+    """
 
 @pulumi.input_type
 class FlinkApplicationVersionSinkArgs:
@@ -7447,18 +7292,15 @@ class FlinkApplicationVersionSinkArgs:
         pulumi.set(self, "integration_id", value)
 
 
-if not MYPY:
-    class FlinkApplicationVersionSourceArgsDict(TypedDict):
-        create_table: pulumi.Input[_builtins.str]
-        """
-        The CREATE TABLE statement
-        """
-        integration_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The integration ID
-        """
-elif False:
-    FlinkApplicationVersionSourceArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkApplicationVersionSourceArgsDict(TypedDict):
+    create_table: pulumi.Input[_builtins.str]
+    """
+    The CREATE TABLE statement
+    """
+    integration_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The integration ID
+    """
 
 @pulumi.input_type
 class FlinkApplicationVersionSourceArgs:
@@ -7498,46 +7340,43 @@ class FlinkApplicationVersionSourceArgs:
         pulumi.set(self, "integration_id", value)
 
 
-if not MYPY:
-    class FlinkComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    FlinkComponentArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class FlinkComponentArgs:
@@ -7690,14 +7529,11 @@ class FlinkComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class FlinkFlinkArgsDict(TypedDict):
-        host_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The host and port of a Flink server.
-        """
-elif False:
-    FlinkFlinkArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkFlinkArgsDict(TypedDict):
+    host_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The host and port of a Flink server.
+    """
 
 @pulumi.input_type
 class FlinkFlinkArgs:
@@ -7722,62 +7558,59 @@ class FlinkFlinkArgs:
         pulumi.set(self, "host_ports", value)
 
 
-if not MYPY:
-    class FlinkFlinkUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        custom_code: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable to upload Custom JARs for Flink applications.
-        """
-        flink_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        number_of_task_slots: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
-        """
-        pekko_ask_timeout_s: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
-        """
-        pekko_framesize_b: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
-        """
-        privatelink_access: NotRequired[pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        public_access: NotRequired[pulumi.Input['FlinkFlinkUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    FlinkFlinkUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkFlinkUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    custom_code: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable to upload Custom JARs for Flink applications.
+    """
+    flink_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    number_of_task_slots: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
+    """
+    pekko_ask_timeout_s: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+    """
+    pekko_framesize_b: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
+    """
+    privatelink_access: NotRequired[pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    public_access: NotRequired[pulumi.Input['FlinkFlinkUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class FlinkFlinkUserConfigArgs:
@@ -8002,18 +7835,15 @@ class FlinkFlinkUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class FlinkFlinkUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    FlinkFlinkUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkFlinkUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class FlinkFlinkUserConfigIpFilterObjectArgs:
@@ -8053,18 +7883,15 @@ class FlinkFlinkUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class FlinkFlinkUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        flink: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable flink.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable prometheus.
-        """
-elif False:
-    FlinkFlinkUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkFlinkUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    flink: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable flink.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable prometheus.
+    """
 
 @pulumi.input_type
 class FlinkFlinkUserConfigPrivatelinkAccessArgs:
@@ -8105,14 +7932,11 @@ class FlinkFlinkUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class FlinkFlinkUserConfigPublicAccessArgsDict(TypedDict):
-        flink: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to flink from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    FlinkFlinkUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkFlinkUserConfigPublicAccessArgsDict(TypedDict):
+    flink: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to flink from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class FlinkFlinkUserConfigPublicAccessArgs:
@@ -8137,30 +7961,27 @@ class FlinkFlinkUserConfigPublicAccessArgs:
         pulumi.set(self, "flink", value)
 
 
-if not MYPY:
-    class FlinkJarApplicationApplicationVersionArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The creation timestamp of this entity in ISO 8601 format, always in UTC.
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The creator of this entity.
-        """
-        file_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationApplicationVersionFileInfoArgsDict']]]]
-        """
-        Flink JarApplicationVersion FileInfo.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ApplicationVersion ID.
-        """
-        version: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Version number.
-        """
-elif False:
-    FlinkJarApplicationApplicationVersionArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkJarApplicationApplicationVersionArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The creation timestamp of this entity in ISO 8601 format, always in UTC.
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The creator of this entity.
+    """
+    file_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationApplicationVersionFileInfoArgsDict']]]]
+    """
+    Flink JarApplicationVersion FileInfo.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ApplicationVersion ID.
+    """
+    version: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Version number.
+    """
 
 @pulumi.input_type
 class FlinkJarApplicationApplicationVersionArgs:
@@ -8249,34 +8070,31 @@ class FlinkJarApplicationApplicationVersionArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class FlinkJarApplicationApplicationVersionFileInfoArgsDict(TypedDict):
-        file_sha256: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        sha256 of the file if known.
-        """
-        file_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of the file in bytes.
-        """
-        file_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
-        """
-        verify_error_code: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
-        """
-        verify_error_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        In the case file_status is FAILED, may contain details about the failure.
-        """
-elif False:
-    FlinkJarApplicationApplicationVersionFileInfoArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkJarApplicationApplicationVersionFileInfoArgsDict(TypedDict):
+    file_sha256: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    sha256 of the file if known.
+    """
+    file_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of the file in bytes.
+    """
+    file_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+    """
+    verify_error_code: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+    """
+    verify_error_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    In the case file_status is FAILED, may contain details about the failure.
+    """
 
 @pulumi.input_type
 class FlinkJarApplicationApplicationVersionFileInfoArgs:
@@ -8381,58 +8199,55 @@ class FlinkJarApplicationApplicationVersionFileInfoArgs:
         pulumi.set(self, "verify_error_message", value)
 
 
-if not MYPY:
-    class FlinkJarApplicationCurrentDeploymentArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The creation timestamp of this entity in ISO 8601 format, always in UTC.
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The creator of this entity.
-        """
-        entry_class: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter.
-        """
-        error_msg: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Error message describing what caused deployment to fail.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deployment ID.
-        """
-        job_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Job ID.
-        """
-        last_savepoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Job savepoint.
-        """
-        parallelism: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
-        """
-        program_args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Arguments to pass during Flink job submission through the programArgsList parameter.
-        """
-        starting_savepoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Job savepoint.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
-        """
-        version_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ApplicationVersion ID.
-        """
-elif False:
-    FlinkJarApplicationCurrentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkJarApplicationCurrentDeploymentArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The creation timestamp of this entity in ISO 8601 format, always in UTC.
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The creator of this entity.
+    """
+    entry_class: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter.
+    """
+    error_msg: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Error message describing what caused deployment to fail.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deployment ID.
+    """
+    job_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Job ID.
+    """
+    last_savepoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Job savepoint.
+    """
+    parallelism: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+    """
+    program_args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Arguments to pass during Flink job submission through the programArgsList parameter.
+    """
+    starting_savepoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Job savepoint.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
+    """
+    version_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ApplicationVersion ID.
+    """
 
 @pulumi.input_type
 class FlinkJarApplicationCurrentDeploymentArgs:
@@ -8633,34 +8448,31 @@ class FlinkJarApplicationCurrentDeploymentArgs:
         pulumi.set(self, "version_id", value)
 
 
-if not MYPY:
-    class FlinkJarApplicationVersionFileInfoArgsDict(TypedDict):
-        file_sha256: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        sha256 of the file if known.
-        """
-        file_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of the file in bytes.
-        """
-        file_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
-        """
-        verify_error_code: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
-        """
-        verify_error_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        In the case file_status is FAILED, may contain details about the failure.
-        """
-elif False:
-    FlinkJarApplicationVersionFileInfoArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkJarApplicationVersionFileInfoArgsDict(TypedDict):
+    file_sha256: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    sha256 of the file if known.
+    """
+    file_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of the file in bytes.
+    """
+    file_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+    """
+    verify_error_code: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+    """
+    verify_error_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    In the case file_status is FAILED, may contain details about the failure.
+    """
 
 @pulumi.input_type
 class FlinkJarApplicationVersionFileInfoArgs:
@@ -8765,18 +8577,15 @@ class FlinkJarApplicationVersionFileInfoArgs:
         pulumi.set(self, "verify_error_message", value)
 
 
-if not MYPY:
-    class FlinkServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    FlinkServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class FlinkServiceIntegrationArgs:
@@ -8815,18 +8624,15 @@ class FlinkServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class FlinkTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    FlinkTagArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class FlinkTagArgs:
@@ -8865,14 +8671,11 @@ class FlinkTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class FlinkTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    FlinkTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class FlinkTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class FlinkTechEmailArgs:
@@ -8896,26 +8699,23 @@ class FlinkTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class GovernanceAccessAccessDataArgsDict(TypedDict):
-        acls: pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgsDict']]]
-        """
-        Required property. Acls. Changing this property forces recreation of the resource.
-        """
-        project: pulumi.Input[_builtins.str]
-        """
-        Project name. Changing this property forces recreation of the resource.
-        """
-        service_name: pulumi.Input[_builtins.str]
-        """
-        Service name. Changing this property forces recreation of the resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service username assigned to the access. Changing this property forces recreation of the resource.
-        """
-elif False:
-    GovernanceAccessAccessDataArgsDict: TypeAlias = Mapping[str, Any]
+class GovernanceAccessAccessDataArgsDict(TypedDict):
+    acls: pulumi.Input[Sequence[pulumi.Input['GovernanceAccessAccessDataAclArgsDict']]]
+    """
+    Required property. Acls. Changing this property forces recreation of the resource.
+    """
+    project: pulumi.Input[_builtins.str]
+    """
+    Project name. Changing this property forces recreation of the resource.
+    """
+    service_name: pulumi.Input[_builtins.str]
+    """
+    Service name. Changing this property forces recreation of the resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service username assigned to the access. Changing this property forces recreation of the resource.
+    """
 
 @pulumi.input_type
 class GovernanceAccessAccessDataArgs:
@@ -8985,42 +8785,39 @@ class GovernanceAccessAccessDataArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class GovernanceAccessAccessDataAclArgsDict(TypedDict):
-        operation: pulumi.Input[_builtins.str]
-        """
-        An enumeration. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
-        """
-        permission_type: pulumi.Input[_builtins.str]
-        """
-        An enumeration. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
-        """
-        resource_name: pulumi.Input[_builtins.str]
-        """
-        Acl resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
-        """
-        resource_type: pulumi.Input[_builtins.str]
-        """
-        An enumeration. The possible value is `Topic`. Changing this property forces recreation of the resource.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Acl ID.
-        """
-        pattern_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An enumeration. The possible value is `LITERAL`.
-        """
-        principal: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Acl principal.
-        """
-elif False:
-    GovernanceAccessAccessDataAclArgsDict: TypeAlias = Mapping[str, Any]
+class GovernanceAccessAccessDataAclArgsDict(TypedDict):
+    operation: pulumi.Input[_builtins.str]
+    """
+    An enumeration. The possible values are `Read` and `Write`. Changing this property forces recreation of the resource.
+    """
+    permission_type: pulumi.Input[_builtins.str]
+    """
+    An enumeration. The possible value is `ALLOW`. Changing this property forces recreation of the resource.
+    """
+    resource_name: pulumi.Input[_builtins.str]
+    """
+    Acl resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+    """
+    resource_type: pulumi.Input[_builtins.str]
+    """
+    An enumeration. The possible value is `Topic`. Changing this property forces recreation of the resource.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Acl ID.
+    """
+    pattern_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An enumeration. The possible value is `LITERAL`.
+    """
+    principal: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Acl principal.
+    """
 
 @pulumi.input_type
 class GovernanceAccessAccessDataAclArgs:
@@ -9153,26 +8950,23 @@ class GovernanceAccessAccessDataAclArgs:
         pulumi.set(self, "principal", value)
 
 
-if not MYPY:
-    class GovernanceAccessTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GovernanceAccessTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GovernanceAccessTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GovernanceAccessTimeoutsArgs:
@@ -9245,46 +9039,43 @@ class GovernanceAccessTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class GrafanaComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    GrafanaComponentArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class GrafanaComponentArgs:
@@ -9437,14 +9228,11 @@ class GrafanaComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaArgsDict(TypedDict):
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Grafana server URIs.
-        """
-elif False:
-    GrafanaGrafanaArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaArgsDict(TypedDict):
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Grafana server URIs.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaArgs:
@@ -9469,186 +9257,183 @@ class GrafanaGrafanaArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        alerting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
-        """
-        alerting_error_or_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
-        """
-        alerting_max_annotations_to_keep: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
-        """
-        alerting_nodata_or_nullvalues: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for 'no data or null values' for new alerting rules.
-        """
-        allow_embedding: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking.
-        """
-        auth_azuread: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigAuthAzureadArgsDict']]
-        """
-        Azure AD OAuth integration
-        """
-        auth_basic_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable basic authentication form, used by Grafana built-in login.
-        """
-        auth_generic_oauth: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigAuthGenericOauthArgsDict']]
-        """
-        Generic OAuth integration
-        """
-        auth_github: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigAuthGithubArgsDict']]
-        """
-        Github Auth integration
-        """
-        auth_gitlab: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigAuthGitlabArgsDict']]
-        """
-        GitLab Auth integration
-        """
-        auth_google: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigAuthGoogleArgsDict']]
-        """
-        Google Auth integration
-        """
-        cookie_samesite: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
-        """
-        custom_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
-        """
-        dashboard_previews_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
-        """
-        dashboard_scenes_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
-        """
-        dashboards_min_refresh_interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
-        """
-        dashboards_versions_to_keep: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Dashboard versions to keep per dashboard. Example: `20`.
-        """
-        dataproxy_send_user_header: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Send `X-Grafana-User` header to data source.
-        """
-        dataproxy_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timeout for data proxy requests in seconds. Example: `30`.
-        """
-        date_formats: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigDateFormatsArgsDict']]
-        """
-        Grafana date format specifications
-        """
-        disable_gravatar: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to true to disable gravatar. Defaults to false (gravatar is enabled).
-        """
-        editors_can_admin: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Editors can manage folders, teams and dashboards created by them.
-        """
-        external_image_storage: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigExternalImageStorageArgsDict']]
-        """
-        External image store settings
-        """
-        google_analytics_ua_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Google Analytics ID. Example: `UA-123456-4`.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['GrafanaGrafanaUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        metrics_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Grafana's /metrics endpoint.
-        """
-        oauth_allow_insecure_email_lookup: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
-        """
-        private_access: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        smtp_server: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigSmtpServerArgsDict']]
-        """
-        SMTP server settings
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-        unified_alerting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
-        """
-        user_auto_assign_org: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Auto-assign new users on signup to main organization. Defaults to false.
-        """
-        user_auto_assign_org_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
-        """
-        viewers_can_edit: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Users with view-only permission can edit but not save dashboards.
-        """
-        wal: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
-        """
-elif False:
-    GrafanaGrafanaUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    alerting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
+    """
+    alerting_error_or_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
+    """
+    alerting_max_annotations_to_keep: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
+    """
+    alerting_nodata_or_nullvalues: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for 'no data or null values' for new alerting rules.
+    """
+    allow_embedding: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking.
+    """
+    auth_azuread: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigAuthAzureadArgsDict']]
+    """
+    Azure AD OAuth integration
+    """
+    auth_basic_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable basic authentication form, used by Grafana built-in login.
+    """
+    auth_generic_oauth: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigAuthGenericOauthArgsDict']]
+    """
+    Generic OAuth integration
+    """
+    auth_github: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigAuthGithubArgsDict']]
+    """
+    Github Auth integration
+    """
+    auth_gitlab: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigAuthGitlabArgsDict']]
+    """
+    GitLab Auth integration
+    """
+    auth_google: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigAuthGoogleArgsDict']]
+    """
+    Google Auth integration
+    """
+    cookie_samesite: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+    """
+    custom_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
+    """
+    dashboard_previews_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+    """
+    dashboard_scenes_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+    """
+    dashboards_min_refresh_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
+    """
+    dashboards_versions_to_keep: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Dashboard versions to keep per dashboard. Example: `20`.
+    """
+    dataproxy_send_user_header: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Send `X-Grafana-User` header to data source.
+    """
+    dataproxy_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timeout for data proxy requests in seconds. Example: `30`.
+    """
+    date_formats: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigDateFormatsArgsDict']]
+    """
+    Grafana date format specifications
+    """
+    disable_gravatar: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to true to disable gravatar. Defaults to false (gravatar is enabled).
+    """
+    editors_can_admin: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Editors can manage folders, teams and dashboards created by them.
+    """
+    external_image_storage: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigExternalImageStorageArgsDict']]
+    """
+    External image store settings
+    """
+    google_analytics_ua_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Google Analytics ID. Example: `UA-123456-4`.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['GrafanaGrafanaUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    metrics_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Grafana's /metrics endpoint.
+    """
+    oauth_allow_insecure_email_lookup: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
+    """
+    private_access: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    smtp_server: NotRequired[pulumi.Input['GrafanaGrafanaUserConfigSmtpServerArgsDict']]
+    """
+    SMTP server settings
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
+    unified_alerting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
+    """
+    user_auto_assign_org: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Auto-assign new users on signup to main organization. Defaults to false.
+    """
+    user_auto_assign_org_role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
+    """
+    viewers_can_edit: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Users with view-only permission can edit but not save dashboards.
+    """
+    wal: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigArgs:
@@ -10365,38 +10150,35 @@ class GrafanaGrafanaUserConfigArgs:
         pulumi.set(self, "wal", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigAuthAzureadArgsDict(TypedDict):
-        auth_url: pulumi.Input[_builtins.str]
-        """
-        Authorization URL. Example: `https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/v2.0/authorize`.
-        """
-        client_id: pulumi.Input[_builtins.str]
-        """
-        Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
-        """
-        client_secret: pulumi.Input[_builtins.str]
-        """
-        Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
-        """
-        token_url: pulumi.Input[_builtins.str]
-        """
-        Token URL. Example: `https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/v2.0/token`.
-        """
-        allow_sign_up: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Automatically sign-up users on successful sign-in.
-        """
-        allowed_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allowed domains.
-        """
-        allowed_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Require users to belong to one of given groups.
-        """
-elif False:
-    GrafanaGrafanaUserConfigAuthAzureadArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigAuthAzureadArgsDict(TypedDict):
+    auth_url: pulumi.Input[_builtins.str]
+    """
+    Authorization URL. Example: `https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/v2.0/authorize`.
+    """
+    client_id: pulumi.Input[_builtins.str]
+    """
+    Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
+    """
+    client_secret: pulumi.Input[_builtins.str]
+    """
+    Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
+    """
+    token_url: pulumi.Input[_builtins.str]
+    """
+    Token URL. Example: `https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/v2.0/token`.
+    """
+    allow_sign_up: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Automatically sign-up users on successful sign-in.
+    """
+    allowed_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allowed domains.
+    """
+    allowed_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Require users to belong to one of given groups.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigAuthAzureadArgs:
@@ -10513,58 +10295,55 @@ class GrafanaGrafanaUserConfigAuthAzureadArgs:
         pulumi.set(self, "allowed_groups", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigAuthGenericOauthArgsDict(TypedDict):
-        api_url: pulumi.Input[_builtins.str]
-        """
-        API URL. Example: `https://yourprovider.com/api`.
-        """
-        auth_url: pulumi.Input[_builtins.str]
-        """
-        Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
-        """
-        client_id: pulumi.Input[_builtins.str]
-        """
-        Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
-        """
-        client_secret: pulumi.Input[_builtins.str]
-        """
-        Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
-        """
-        token_url: pulumi.Input[_builtins.str]
-        """
-        Token URL. Example: `https://yourprovider.com/oauth/token`.
-        """
-        allow_sign_up: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Automatically sign-up users on successful sign-in.
-        """
-        allowed_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allowed domains.
-        """
-        allowed_organizations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Require user to be member of one of the listed organizations.
-        """
-        auto_login: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow users to bypass the login screen and automatically log in.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the OAuth integration. Example: `My authentication`.
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        OAuth scopes.
-        """
-        use_refresh_token: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to true to use refresh token and check access token expiration.
-        """
-elif False:
-    GrafanaGrafanaUserConfigAuthGenericOauthArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigAuthGenericOauthArgsDict(TypedDict):
+    api_url: pulumi.Input[_builtins.str]
+    """
+    API URL. Example: `https://yourprovider.com/api`.
+    """
+    auth_url: pulumi.Input[_builtins.str]
+    """
+    Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
+    """
+    client_id: pulumi.Input[_builtins.str]
+    """
+    Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
+    """
+    client_secret: pulumi.Input[_builtins.str]
+    """
+    Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
+    """
+    token_url: pulumi.Input[_builtins.str]
+    """
+    Token URL. Example: `https://yourprovider.com/oauth/token`.
+    """
+    allow_sign_up: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Automatically sign-up users on successful sign-in.
+    """
+    allowed_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allowed domains.
+    """
+    allowed_organizations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Require user to be member of one of the listed organizations.
+    """
+    auto_login: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow users to bypass the login screen and automatically log in.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the OAuth integration. Example: `My authentication`.
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    OAuth scopes.
+    """
+    use_refresh_token: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to true to use refresh token and check access token expiration.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigAuthGenericOauthArgs:
@@ -10760,38 +10539,35 @@ class GrafanaGrafanaUserConfigAuthGenericOauthArgs:
         pulumi.set(self, "use_refresh_token", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigAuthGithubArgsDict(TypedDict):
-        client_id: pulumi.Input[_builtins.str]
-        """
-        Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
-        """
-        client_secret: pulumi.Input[_builtins.str]
-        """
-        Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
-        """
-        allow_sign_up: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Automatically sign-up users on successful sign-in.
-        """
-        allowed_organizations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Require users to belong to one of given organizations.
-        """
-        auto_login: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow users to bypass the login screen and automatically log in.
-        """
-        skip_org_role_sync: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Stop automatically syncing user roles.
-        """
-        team_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        Require users to belong to one of given team IDs.
-        """
-elif False:
-    GrafanaGrafanaUserConfigAuthGithubArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigAuthGithubArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
+    """
+    client_secret: pulumi.Input[_builtins.str]
+    """
+    Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
+    """
+    allow_sign_up: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Automatically sign-up users on successful sign-in.
+    """
+    allowed_organizations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Require users to belong to one of given organizations.
+    """
+    auto_login: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow users to bypass the login screen and automatically log in.
+    """
+    skip_org_role_sync: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Stop automatically syncing user roles.
+    """
+    team_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    Require users to belong to one of given team IDs.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigAuthGithubArgs:
@@ -10910,38 +10686,35 @@ class GrafanaGrafanaUserConfigAuthGithubArgs:
         pulumi.set(self, "team_ids", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigAuthGitlabArgsDict(TypedDict):
-        allowed_groups: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Require users to belong to one of given groups.
-        """
-        client_id: pulumi.Input[_builtins.str]
-        """
-        Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
-        """
-        client_secret: pulumi.Input[_builtins.str]
-        """
-        Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
-        """
-        allow_sign_up: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Automatically sign-up users on successful sign-in.
-        """
-        api_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
-        """
-        auth_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
-        """
-        token_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
-        """
-elif False:
-    GrafanaGrafanaUserConfigAuthGitlabArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigAuthGitlabArgsDict(TypedDict):
+    allowed_groups: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Require users to belong to one of given groups.
+    """
+    client_id: pulumi.Input[_builtins.str]
+    """
+    Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
+    """
+    client_secret: pulumi.Input[_builtins.str]
+    """
+    Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
+    """
+    allow_sign_up: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Automatically sign-up users on successful sign-in.
+    """
+    api_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
+    """
+    auth_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
+    """
+    token_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigAuthGitlabArgs:
@@ -11059,26 +10832,23 @@ class GrafanaGrafanaUserConfigAuthGitlabArgs:
         pulumi.set(self, "token_url", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigAuthGoogleArgsDict(TypedDict):
-        allowed_domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Domains allowed to sign-in to this Grafana.
-        """
-        client_id: pulumi.Input[_builtins.str]
-        """
-        Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
-        """
-        client_secret: pulumi.Input[_builtins.str]
-        """
-        Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
-        """
-        allow_sign_up: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Automatically sign-up users on successful sign-in.
-        """
-elif False:
-    GrafanaGrafanaUserConfigAuthGoogleArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigAuthGoogleArgsDict(TypedDict):
+    allowed_domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Domains allowed to sign-in to this Grafana.
+    """
+    client_id: pulumi.Input[_builtins.str]
+    """
+    Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
+    """
+    client_secret: pulumi.Input[_builtins.str]
+    """
+    Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
+    """
+    allow_sign_up: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Automatically sign-up users on successful sign-in.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigAuthGoogleArgs:
@@ -11148,42 +10918,39 @@ class GrafanaGrafanaUserConfigAuthGoogleArgs:
         pulumi.set(self, "allow_sign_up", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigDateFormatsArgsDict(TypedDict):
-        default_timezone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
-        """
-        full_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
-        """
-        interval_day: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
-        """
-        interval_hour: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
-        """
-        interval_minute: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
-        """
-        interval_month: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
-        """
-        interval_second: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
-        """
-        interval_year: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
-        """
-elif False:
-    GrafanaGrafanaUserConfigDateFormatsArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigDateFormatsArgsDict(TypedDict):
+    default_timezone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
+    """
+    full_date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
+    """
+    interval_day: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
+    """
+    interval_hour: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
+    """
+    interval_minute: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
+    """
+    interval_month: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
+    """
+    interval_second: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
+    """
+    interval_year: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigDateFormatsArgs:
@@ -11320,26 +11087,23 @@ class GrafanaGrafanaUserConfigDateFormatsArgs:
         pulumi.set(self, "interval_year", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigExternalImageStorageArgsDict(TypedDict):
-        access_key: pulumi.Input[_builtins.str]
-        """
-        S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
-        """
-        bucket_url: pulumi.Input[_builtins.str]
-        """
-        Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
-        """
-        provider: pulumi.Input[_builtins.str]
-        """
-        Enum: `s3`. External image store provider.
-        """
-        secret_key: pulumi.Input[_builtins.str]
-        """
-        S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
-        """
-elif False:
-    GrafanaGrafanaUserConfigExternalImageStorageArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigExternalImageStorageArgsDict(TypedDict):
+    access_key: pulumi.Input[_builtins.str]
+    """
+    S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
+    """
+    bucket_url: pulumi.Input[_builtins.str]
+    """
+    Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
+    """
+    provider: pulumi.Input[_builtins.str]
+    """
+    Enum: `s3`. External image store provider.
+    """
+    secret_key: pulumi.Input[_builtins.str]
+    """
+    S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigExternalImageStorageArgs:
@@ -11408,18 +11172,15 @@ class GrafanaGrafanaUserConfigExternalImageStorageArgs:
         pulumi.set(self, "secret_key", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    GrafanaGrafanaUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigIpFilterObjectArgs:
@@ -11459,14 +11220,11 @@ class GrafanaGrafanaUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigPrivateAccessArgsDict(TypedDict):
-        grafana: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to grafana with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    GrafanaGrafanaUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigPrivateAccessArgsDict(TypedDict):
+    grafana: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to grafana with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigPrivateAccessArgs:
@@ -11491,14 +11249,11 @@ class GrafanaGrafanaUserConfigPrivateAccessArgs:
         pulumi.set(self, "grafana", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        grafana: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable grafana.
-        """
-elif False:
-    GrafanaGrafanaUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    grafana: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable grafana.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigPrivatelinkAccessArgs:
@@ -11523,14 +11278,11 @@ class GrafanaGrafanaUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "grafana", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigPublicAccessArgsDict(TypedDict):
-        grafana: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to grafana from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    GrafanaGrafanaUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigPublicAccessArgsDict(TypedDict):
+    grafana: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to grafana from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigPublicAccessArgs:
@@ -11555,42 +11307,39 @@ class GrafanaGrafanaUserConfigPublicAccessArgs:
         pulumi.set(self, "grafana", value)
 
 
-if not MYPY:
-    class GrafanaGrafanaUserConfigSmtpServerArgsDict(TypedDict):
-        from_address: pulumi.Input[_builtins.str]
-        """
-        Address used for sending emails. Example: `yourgrafanauser@yourdomain.example.com`.
-        """
-        host: pulumi.Input[_builtins.str]
-        """
-        Server hostname or IP. Example: `smtp.example.com`.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        SMTP server port. Example: `25`.
-        """
-        from_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name used in outgoing emails, defaults to Grafana.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
-        """
-        skip_verify: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Skip verifying server certificate. Defaults to false.
-        """
-        starttls_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `MandatoryStartTLS`, `NoStartTLS`, `OpportunisticStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Username for SMTP authentication. Example: `smtpuser`.
-        """
-elif False:
-    GrafanaGrafanaUserConfigSmtpServerArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaGrafanaUserConfigSmtpServerArgsDict(TypedDict):
+    from_address: pulumi.Input[_builtins.str]
+    """
+    Address used for sending emails. Example: `yourgrafanauser@yourdomain.example.com`.
+    """
+    host: pulumi.Input[_builtins.str]
+    """
+    Server hostname or IP. Example: `smtp.example.com`.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    SMTP server port. Example: `25`.
+    """
+    from_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name used in outgoing emails, defaults to Grafana.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
+    """
+    skip_verify: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Skip verifying server certificate. Defaults to false.
+    """
+    starttls_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `MandatoryStartTLS`, `NoStartTLS`, `OpportunisticStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Username for SMTP authentication. Example: `smtpuser`.
+    """
 
 @pulumi.input_type
 class GrafanaGrafanaUserConfigSmtpServerArgs:
@@ -11724,18 +11473,15 @@ class GrafanaGrafanaUserConfigSmtpServerArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class GrafanaServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    GrafanaServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class GrafanaServiceIntegrationArgs:
@@ -11774,18 +11520,15 @@ class GrafanaServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class GrafanaTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    GrafanaTagArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class GrafanaTagArgs:
@@ -11824,14 +11567,11 @@ class GrafanaTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class GrafanaTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    GrafanaTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class GrafanaTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class GrafanaTechEmailArgs:
@@ -11855,46 +11595,43 @@ class GrafanaTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class InfluxDbComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    InfluxDbComponentArgsDict: TypeAlias = Mapping[str, Any]
+class InfluxDbComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class InfluxDbComponentArgs:
@@ -12047,26 +11784,23 @@ class InfluxDbComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class InfluxDbInfluxdbArgsDict(TypedDict):
-        database_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the default InfluxDB database
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        InfluxDB password
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        InfluxDB server URIs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        InfluxDB username
-        """
-elif False:
-    InfluxDbInfluxdbArgsDict: TypeAlias = Mapping[str, Any]
+class InfluxDbInfluxdbArgsDict(TypedDict):
+    database_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the default InfluxDB database
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    InfluxDB password
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    InfluxDB server URIs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    InfluxDB username
+    """
 
 @pulumi.input_type
 class InfluxDbInfluxdbArgs:
@@ -12139,70 +11873,67 @@ class InfluxDbInfluxdbArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class InfluxDbInfluxdbUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        custom_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
-        """
-        influxdb: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgsDict']]
-        """
-        influxdb.conf configuration values
-        """
-        influxdb_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        private_access: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    InfluxDbInfluxdbUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InfluxDbInfluxdbUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    custom_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
+    """
+    influxdb: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgsDict']]
+    """
+    influxdb.conf configuration values
+    """
+    influxdb_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    private_access: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigArgs:
@@ -12459,38 +12190,35 @@ class InfluxDbInfluxdbUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class InfluxDbInfluxdbUserConfigInfluxdbArgsDict(TypedDict):
-        log_queries_after: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
-        """
-        max_connection_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
-        """
-        max_row_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
-        """
-        max_select_buckets: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
-        """
-        max_select_point: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
-        """
-        query_log_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether queries should be logged before execution. May log sensitive data contained within a query.
-        """
-        query_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.
-        """
-elif False:
-    InfluxDbInfluxdbUserConfigInfluxdbArgsDict: TypeAlias = Mapping[str, Any]
+class InfluxDbInfluxdbUserConfigInfluxdbArgsDict(TypedDict):
+    log_queries_after: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+    """
+    max_connection_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+    """
+    max_row_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
+    """
+    max_select_buckets: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
+    """
+    max_select_point: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+    """
+    query_log_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether queries should be logged before execution. May log sensitive data contained within a query.
+    """
+    query_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.
+    """
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigInfluxdbArgs:
@@ -12611,18 +12339,15 @@ class InfluxDbInfluxdbUserConfigInfluxdbArgs:
         pulumi.set(self, "query_timeout", value)
 
 
-if not MYPY:
-    class InfluxDbInfluxdbUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    InfluxDbInfluxdbUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class InfluxDbInfluxdbUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigIpFilterObjectArgs:
@@ -12662,18 +12387,15 @@ class InfluxDbInfluxdbUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class InfluxDbInfluxdbUserConfigPrivateAccessArgsDict(TypedDict):
-        influxdb: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        user_backup: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to user_backup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    InfluxDbInfluxdbUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class InfluxDbInfluxdbUserConfigPrivateAccessArgsDict(TypedDict):
+    influxdb: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    user_backup: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to user_backup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigPrivateAccessArgs:
@@ -12714,18 +12436,15 @@ class InfluxDbInfluxdbUserConfigPrivateAccessArgs:
         pulumi.set(self, "user_backup", value)
 
 
-if not MYPY:
-    class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        influxdb: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable influxdb.
-        """
-        user_backup: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable user_backup.
-        """
-elif False:
-    InfluxDbInfluxdbUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    influxdb: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable influxdb.
+    """
+    user_backup: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable user_backup.
+    """
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs:
@@ -12766,18 +12485,15 @@ class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "user_backup", value)
 
 
-if not MYPY:
-    class InfluxDbInfluxdbUserConfigPublicAccessArgsDict(TypedDict):
-        influxdb: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        user_backup: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    InfluxDbInfluxdbUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class InfluxDbInfluxdbUserConfigPublicAccessArgsDict(TypedDict):
+    influxdb: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    user_backup: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigPublicAccessArgs:
@@ -12818,18 +12534,15 @@ class InfluxDbInfluxdbUserConfigPublicAccessArgs:
         pulumi.set(self, "user_backup", value)
 
 
-if not MYPY:
-    class InfluxDbServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    InfluxDbServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class InfluxDbServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class InfluxDbServiceIntegrationArgs:
@@ -12868,18 +12581,15 @@ class InfluxDbServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class InfluxDbTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    InfluxDbTagArgsDict: TypeAlias = Mapping[str, Any]
+class InfluxDbTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class InfluxDbTagArgs:
@@ -12918,14 +12628,11 @@ class InfluxDbTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class InfluxDbTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    InfluxDbTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class InfluxDbTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class InfluxDbTechEmailArgs:
@@ -12949,46 +12656,43 @@ class InfluxDbTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class KafkaComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    KafkaComponentArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class KafkaComponentArgs:
@@ -13141,46 +12845,43 @@ class KafkaComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class KafkaConnectComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    KafkaConnectComponentArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class KafkaConnectComponentArgs:
@@ -13333,59 +13034,59 @@ class KafkaConnectComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class KafkaConnectKafkaConnectUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        kafka_connect: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigKafkaConnectArgsDict']]
-        """
-        Kafka Connect configuration values
-        """
-        plugin_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigPluginVersionArgsDict']]]]
-        """
-        The plugin selected by the user
-        """
-        private_access: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        public_access: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        sasl_oauthbearer_allowed_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
-        """
-        secret_providers: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderArgsDict']]]]
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    KafkaConnectKafkaConnectUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectKafkaConnectUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    kafka_connect: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigKafkaConnectArgsDict']]
+    """
+    Kafka Connect configuration values
+    """
+    plugin_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigPluginVersionArgsDict']]]]
+    """
+    The plugin selected by the user
+    """
+    private_access: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    public_access: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    sasl_oauthbearer_allowed_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+    """
+    secret_providers: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderArgsDict']]]]
+    """
+    Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigArgs:
@@ -13414,6 +13115,7 @@ class KafkaConnectKafkaConnectUserConfigArgs:
         :param pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input['KafkaConnectKafkaConnectUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderArgs']]] secret_providers: Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
         :param pulumi.Input[_builtins.bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param pulumi.Input[_builtins.bool] static_ips: Use static public IP addresses.
         """
@@ -13575,6 +13277,9 @@ class KafkaConnectKafkaConnectUserConfigArgs:
     @_builtins.property
     @pulumi.getter(name="secretProviders")
     def secret_providers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderArgs']]]]:
+        """
+        Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
+        """
         return pulumi.get(self, "secret_providers")
 
     @secret_providers.setter
@@ -13606,18 +13311,15 @@ class KafkaConnectKafkaConnectUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class KafkaConnectKafkaConnectUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    KafkaConnectKafkaConnectUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectKafkaConnectUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs:
@@ -13657,74 +13359,71 @@ class KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class KafkaConnectKafkaConnectUserConfigKafkaConnectArgsDict(TypedDict):
-        connector_client_config_override_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
-        """
-        consumer_auto_offset_reset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
-        """
-        consumer_fetch_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
-        """
-        consumer_isolation_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
-        """
-        consumer_max_partition_fetch_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
-        """
-        consumer_max_poll_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
-        """
-        consumer_max_poll_records: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of records returned in a single call to poll() (defaults to 500).
-        """
-        offset_flush_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval at which to try committing offsets for tasks (defaults to 60000).
-        """
-        offset_flush_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
-        """
-        producer_batch_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
-        """
-        producer_buffer_memory: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
-        """
-        producer_compression_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
-        """
-        producer_linger_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
-        """
-        producer_max_request_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
-        """
-        scheduled_rebalance_max_delay_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
-        """
-        session_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
-        """
-elif False:
-    KafkaConnectKafkaConnectUserConfigKafkaConnectArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectKafkaConnectUserConfigKafkaConnectArgsDict(TypedDict):
+    connector_client_config_override_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
+    """
+    consumer_auto_offset_reset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+    """
+    consumer_fetch_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+    """
+    consumer_isolation_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+    """
+    consumer_max_partition_fetch_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
+    """
+    consumer_max_poll_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
+    """
+    consumer_max_poll_records: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of records returned in a single call to poll() (defaults to 500).
+    """
+    offset_flush_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval at which to try committing offsets for tasks (defaults to 60000).
+    """
+    offset_flush_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
+    """
+    producer_batch_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+    """
+    producer_buffer_memory: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
+    """
+    producer_compression_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+    """
+    producer_linger_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
+    """
+    producer_max_request_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+    """
+    scheduled_rebalance_max_delay_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
+    """
+    session_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
+    """
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
@@ -13989,18 +13688,15 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
         pulumi.set(self, "session_timeout_ms", value)
 
 
-if not MYPY:
-    class KafkaConnectKafkaConnectUserConfigPluginVersionArgsDict(TypedDict):
-        plugin_name: pulumi.Input[_builtins.str]
-        """
-        The name of the plugin. Example: `debezium-connector`.
-        """
-        version: pulumi.Input[_builtins.str]
-        """
-        The version of the plugin. Example: `2.5.0`.
-        """
-elif False:
-    KafkaConnectKafkaConnectUserConfigPluginVersionArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectKafkaConnectUserConfigPluginVersionArgsDict(TypedDict):
+    plugin_name: pulumi.Input[_builtins.str]
+    """
+    The name of the plugin. Example: `debezium-connector`.
+    """
+    version: pulumi.Input[_builtins.str]
+    """
+    The version of the plugin. Example: `2.5.0`.
+    """
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigPluginVersionArgs:
@@ -14039,18 +13735,15 @@ class KafkaConnectKafkaConnectUserConfigPluginVersionArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class KafkaConnectKafkaConnectUserConfigPrivateAccessArgsDict(TypedDict):
-        kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to kafka_connect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    KafkaConnectKafkaConnectUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectKafkaConnectUserConfigPrivateAccessArgsDict(TypedDict):
+    kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to kafka_connect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs:
@@ -14091,22 +13784,19 @@ class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        jolokia: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable jolokia.
-        """
-        kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable kafka_connect.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable prometheus.
-        """
-elif False:
-    KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    jolokia: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable jolokia.
+    """
+    kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable kafka_connect.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable prometheus.
+    """
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs:
@@ -14163,18 +13853,15 @@ class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class KafkaConnectKafkaConnectUserConfigPublicAccessArgsDict(TypedDict):
-        kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    KafkaConnectKafkaConnectUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectKafkaConnectUserConfigPublicAccessArgsDict(TypedDict):
+    kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigPublicAccessArgs:
@@ -14215,22 +13902,19 @@ class KafkaConnectKafkaConnectUserConfigPublicAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class KafkaConnectKafkaConnectUserConfigSecretProviderArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the secret provider. Used to reference secrets in connector config.
-        """
-        aws: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgsDict']]
-        """
-        AWS secret provider configuration
-        """
-        vault: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgsDict']]
-        """
-        Vault secret provider configuration
-        """
-elif False:
-    KafkaConnectKafkaConnectUserConfigSecretProviderArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectKafkaConnectUserConfigSecretProviderArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the secret provider. Used to reference secrets in connector config.
+    """
+    aws: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgsDict']]
+    """
+    AWS secret provider configuration
+    """
+    vault: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgsDict']]
+    """
+    Vault secret provider configuration
+    """
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigSecretProviderArgs:
@@ -14286,26 +13970,23 @@ class KafkaConnectKafkaConnectUserConfigSecretProviderArgs:
         pulumi.set(self, "vault", value)
 
 
-if not MYPY:
-    class KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgsDict(TypedDict):
-        auth_method: pulumi.Input[_builtins.str]
-        """
-        Enum: `credentials`. Auth method of the vault secret provider.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        Region used to lookup secrets with AWS SecretManager.
-        """
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Access key used to authenticate with aws.
-        """
-        secret_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Secret key used to authenticate with aws.
-        """
-elif False:
-    KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgsDict(TypedDict):
+    auth_method: pulumi.Input[_builtins.str]
+    """
+    Enum: `credentials`. Auth method of the vault secret provider.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    Region used to lookup secrets with AWS SecretManager.
+    """
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Access key used to authenticate with aws.
+    """
+    secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Secret key used to authenticate with aws.
+    """
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs:
@@ -14376,30 +14057,27 @@ class KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs:
         pulumi.set(self, "secret_key", value)
 
 
-if not MYPY:
-    class KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        Address of the Vault server.
-        """
-        auth_method: pulumi.Input[_builtins.str]
-        """
-        Enum: `token`. Auth method of the vault secret provider.
-        """
-        engine_version: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Enum: `1`, `2`, and newer. KV Secrets Engine version of the Vault server instance.
-        """
-        prefix_path_depth: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Token used to authenticate with vault and auth method `token`.
-        """
-elif False:
-    KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    Address of the Vault server.
+    """
+    auth_method: pulumi.Input[_builtins.str]
+    """
+    Enum: `token`. Auth method of the vault secret provider.
+    """
+    engine_version: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Enum: `1`, `2`, and newer. KV Secrets Engine version of the Vault server instance.
+    """
+    prefix_path_depth: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Token used to authenticate with vault and auth method `token`.
+    """
 
 @pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs:
@@ -14486,18 +14164,15 @@ class KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class KafkaConnectServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    KafkaConnectServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class KafkaConnectServiceIntegrationArgs:
@@ -14536,18 +14211,15 @@ class KafkaConnectServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class KafkaConnectTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    KafkaConnectTagArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class KafkaConnectTagArgs:
@@ -14586,14 +14258,11 @@ class KafkaConnectTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class KafkaConnectTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    KafkaConnectTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class KafkaConnectTechEmailArgs:
@@ -14617,18 +14286,15 @@ class KafkaConnectTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class KafkaConnectorTaskArgsDict(TypedDict):
-        connector: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the related connector.
-        """
-        task: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The task ID of the task.
-        """
-elif False:
-    KafkaConnectorTaskArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaConnectorTaskArgsDict(TypedDict):
+    connector: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the related connector.
+    """
+    task: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The task ID of the task.
+    """
 
 @pulumi.input_type
 class KafkaConnectorTaskArgs:
@@ -14669,34 +14335,31 @@ class KafkaConnectorTaskArgs:
         pulumi.set(self, "task", value)
 
 
-if not MYPY:
-    class KafkaKafkaArgsDict(TypedDict):
-        access_cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Kafka client certificate.
-        """
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Kafka client certificate key.
-        """
-        connect_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Kafka Connect URI.
-        """
-        rest_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Kafka REST URI.
-        """
-        schema_registry_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Schema Registry URI.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Kafka server URIs.
-        """
-elif False:
-    KafkaKafkaArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaArgsDict(TypedDict):
+    access_cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Kafka client certificate.
+    """
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Kafka client certificate key.
+    """
+    connect_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Kafka Connect URI.
+    """
+    rest_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Kafka REST URI.
+    """
+    schema_registry_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Schema Registry URI.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Kafka server URIs.
+    """
 
 @pulumi.input_type
 class KafkaKafkaArgs:
@@ -14801,139 +14464,139 @@ class KafkaKafkaArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        aiven_kafka_topic_messages: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow access to read Kafka topic messages in the Aiven Console and REST API.
-        """
-        backup_interval_hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
-        """
-        backup_retention_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
-        """
-        custom_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
-        """
-        follower_fetching: NotRequired[pulumi.Input['KafkaKafkaUserConfigFollowerFetchingArgsDict']]
-        """
-        Enable follower fetching
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        kafka: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaArgsDict']]
-        """
-        Kafka broker configuration values
-        """
-        kafka_authentication_methods: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgsDict']]
-        """
-        Kafka authentication methods
-        """
-        kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Kafka Connect service. Default: `false`.
-        """
-        kafka_connect_config: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaConnectConfigArgsDict']]
-        """
-        Kafka Connect configuration values
-        """
-        kafka_connect_plugin_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectPluginVersionArgsDict']]]]
-        """
-        The plugin selected by the user
-        """
-        kafka_connect_secret_providers: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderArgsDict']]]]
-        kafka_diskless: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaDisklessArgsDict']]
-        """
-        Kafka Diskless configuration values
-        """
-        kafka_rest: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Kafka-REST service. Default: `false`.
-        """
-        kafka_rest_authorization: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable authorization in Kafka-REST service.
-        """
-        kafka_rest_config: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgsDict']]
-        """
-        Kafka REST configuration
-        """
-        kafka_sasl_mechanisms: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaSaslMechanismsArgsDict']]
-        """
-        Kafka SASL mechanisms
-        """
-        kafka_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
-        """
-        letsencrypt_sasl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
-        """
-        letsencrypt_sasl_privatelink: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
-        """
-        private_access: NotRequired[pulumi.Input['KafkaKafkaUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['KafkaKafkaUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        public_access: NotRequired[pulumi.Input['KafkaKafkaUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        sasl_oauthbearer_allowed_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
-        """
-        schema_registry: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Schema-Registry service. Default: `false`.
-        """
-        schema_registry_config: NotRequired[pulumi.Input['KafkaKafkaUserConfigSchemaRegistryConfigArgsDict']]
-        """
-        Schema Registry configuration
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        single_zone: NotRequired[pulumi.Input['KafkaKafkaUserConfigSingleZoneArgsDict']]
-        """
-        Single-zone configuration
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-        tiered_storage: NotRequired[pulumi.Input['KafkaKafkaUserConfigTieredStorageArgsDict']]
-        """
-        Tiered storage configuration
-        """
-elif False:
-    KafkaKafkaUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    aiven_kafka_topic_messages: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow access to read Kafka topic messages in the Aiven Console and REST API.
+    """
+    backup_interval_hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+    """
+    backup_retention_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+    """
+    custom_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
+    """
+    follower_fetching: NotRequired[pulumi.Input['KafkaKafkaUserConfigFollowerFetchingArgsDict']]
+    """
+    Enable follower fetching
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    kafka: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaArgsDict']]
+    """
+    Kafka broker configuration values
+    """
+    kafka_authentication_methods: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgsDict']]
+    """
+    Kafka authentication methods
+    """
+    kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Kafka Connect service. Default: `false`.
+    """
+    kafka_connect_config: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaConnectConfigArgsDict']]
+    """
+    Kafka Connect configuration values
+    """
+    kafka_connect_plugin_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectPluginVersionArgsDict']]]]
+    """
+    The plugin selected by the user
+    """
+    kafka_connect_secret_providers: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderArgsDict']]]]
+    """
+    Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
+    """
+    kafka_diskless: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaDisklessArgsDict']]
+    """
+    Kafka Diskless configuration values
+    """
+    kafka_rest: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Kafka-REST service. Default: `false`.
+    """
+    kafka_rest_authorization: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable authorization in Kafka-REST service.
+    """
+    kafka_rest_config: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgsDict']]
+    """
+    Kafka REST configuration
+    """
+    kafka_sasl_mechanisms: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaSaslMechanismsArgsDict']]
+    """
+    Kafka SASL mechanisms
+    """
+    kafka_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
+    """
+    letsencrypt_sasl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
+    """
+    letsencrypt_sasl_privatelink: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
+    """
+    private_access: NotRequired[pulumi.Input['KafkaKafkaUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['KafkaKafkaUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    public_access: NotRequired[pulumi.Input['KafkaKafkaUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    sasl_oauthbearer_allowed_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+    """
+    schema_registry: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Schema-Registry service. Default: `false`.
+    """
+    schema_registry_config: NotRequired[pulumi.Input['KafkaKafkaUserConfigSchemaRegistryConfigArgsDict']]
+    """
+    Schema Registry configuration
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    single_zone: NotRequired[pulumi.Input['KafkaKafkaUserConfigSingleZoneArgsDict']]
+    """
+    Single-zone configuration
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
+    tiered_storage: NotRequired[pulumi.Input['KafkaKafkaUserConfigTieredStorageArgsDict']]
+    """
+    Tiered storage configuration
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigArgs:
@@ -14986,6 +14649,7 @@ class KafkaKafkaUserConfigArgs:
         :param pulumi.Input[_builtins.bool] kafka_connect: Enable Kafka Connect service. Default: `false`.
         :param pulumi.Input['KafkaKafkaUserConfigKafkaConnectConfigArgs'] kafka_connect_config: Kafka Connect configuration values
         :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectPluginVersionArgs']]] kafka_connect_plugin_versions: The plugin selected by the user
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderArgs']]] kafka_connect_secret_providers: Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
         :param pulumi.Input['KafkaKafkaUserConfigKafkaDisklessArgs'] kafka_diskless: Kafka Diskless configuration values
         :param pulumi.Input[_builtins.bool] kafka_rest: Enable Kafka-REST service. Default: `false`.
         :param pulumi.Input[_builtins.bool] kafka_rest_authorization: Enable authorization in Kafka-REST service.
@@ -15251,6 +14915,9 @@ class KafkaKafkaUserConfigArgs:
     @_builtins.property
     @pulumi.getter(name="kafkaConnectSecretProviders")
     def kafka_connect_secret_providers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderArgs']]]]:
+        """
+        Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
+        """
         return pulumi.get(self, "kafka_connect_secret_providers")
 
     @kafka_connect_secret_providers.setter
@@ -15474,14 +15141,11 @@ class KafkaKafkaUserConfigArgs:
         pulumi.set(self, "tiered_storage", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigFollowerFetchingArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable the follower fetching functionality.
-        """
-elif False:
-    KafkaKafkaUserConfigFollowerFetchingArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigFollowerFetchingArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable the follower fetching functionality.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigFollowerFetchingArgs:
@@ -15506,18 +15170,15 @@ class KafkaKafkaUserConfigFollowerFetchingArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    KafkaKafkaUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigIpFilterObjectArgs:
@@ -15557,202 +15218,199 @@ class KafkaKafkaUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigKafkaArgsDict(TypedDict):
-        auto_create_topics_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable auto-creation of topics. (Default: true).
-        """
-        compression_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
-        """
-        connections_max_idle_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.
-        """
-        default_replication_factor: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Replication factor for auto-created topics (Default: 3).
-        """
-        group_initial_rebalance_delay_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
-        """
-        group_max_session_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
-        """
-        group_min_session_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
-        """
-        log_cleaner_delete_retention_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How long are delete records retained? (Default: 86400000 (1 day)).
-        """
-        log_cleaner_max_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).
-        """
-        log_cleaner_min_cleanable_ratio: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.
-        """
-        log_cleaner_min_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted. (Default: 0 ms).
-        """
-        log_cleanup_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
-        """
-        log_flush_interval_messages: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
-        """
-        log_flush_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum time in ms that a message in any topic is kept in memory (page-cache) before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used (Default: null).
-        """
-        log_index_interval_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval with which Kafka adds an entry to the offset index (Default: 4096 bytes (4 kibibytes)). Example: `4096`.
-        """
-        log_index_size_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
-        """
-        log_local_retention_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value. (Default: -2).
-        """
-        log_local_retention_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value. (Default: -2).
-        """
-        log_message_downconversion_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).
-        """
-        log_message_timestamp_after_max_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
-        """
-        log_message_timestamp_before_max_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
-        """
-        log_message_timestamp_difference_max_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
-        """
-        log_message_timestamp_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time. (Default: CreateTime).
-        """
-        log_preallocate: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Should pre allocate file when create new segment? (Default: false).
-        """
-        log_retention_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum size of the log before deleting messages (Default: -1).
-        """
-        log_retention_hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
-        """
-        log_retention_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied. (Default: null, log.retention.hours applies).
-        """
-        log_roll_jitter_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used (Default: null).
-        """
-        log_roll_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum time before a new log segment is rolled out (in milliseconds). (Default: null, log.roll.hours applies (Default: 168, 7 days)).
-        """
-        log_segment_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum size of a single log file (Default: 1073741824 bytes (1 gibibyte)).
-        """
-        log_segment_delete_delay_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of time to wait before deleting a file from the filesystem (Default: 60000 ms (1 minute)). Example: `60000`.
-        """
-        max_connections_per_ip: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of connections allowed from each ip address (Default: 2147483647).
-        """
-        max_incremental_fetch_session_cache_slots: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of incremental fetch sessions that the broker will maintain. (Default: 1000). Example: `1000`.
-        """
-        message_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
-        """
-        min_insync_replicas: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. (Default: 1). Example: `1`.
-        """
-        num_partitions: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of partitions for auto-created topics (Default: 1).
-        """
-        offsets_retention_minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Log retention window in minutes for offsets topic (Default: 10080 minutes (7 days)). Example: `10080`.
-        """
-        producer_purgatory_purge_interval_requests: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The purge interval (in number of requests) of the producer request purgatory (Default: 1000).
-        """
-        replica_fetch_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of bytes of messages to attempt to fetch for each partition . This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. (Default: 1048576 bytes (1 mebibytes)).
-        """
-        replica_fetch_response_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum bytes expected for the entire fetch response. Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum. (Default: 10485760 bytes (10 mebibytes)).
-        """
-        sasl_oauthbearer_expected_audience: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences. (Default: null).
-        """
-        sasl_oauthbearer_expected_issuer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional setting for the broker to use to verify that the JWT was created by the expected issuer.(Default: null).
-        """
-        sasl_oauthbearer_jwks_endpoint_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. (Default: null).
-        """
-        sasl_oauthbearer_sub_claim_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the scope from which to extract the subject claim from the JWT.(Default: sub).
-        """
-        socket_request_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of bytes in a socket request (Default: 104857600 bytes).
-        """
-        transaction_partition_verification_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
-        """
-        transaction_remove_expired_transaction_cleanup_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
-        """
-        transaction_state_log_segment_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
-        """
-elif False:
-    KafkaKafkaUserConfigKafkaArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigKafkaArgsDict(TypedDict):
+    auto_create_topics_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable auto-creation of topics. (Default: true).
+    """
+    compression_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+    """
+    connections_max_idle_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.
+    """
+    default_replication_factor: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Replication factor for auto-created topics (Default: 3).
+    """
+    group_initial_rebalance_delay_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
+    """
+    group_max_session_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
+    """
+    group_min_session_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
+    """
+    log_cleaner_delete_retention_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How long are delete records retained? (Default: 86400000 (1 day)).
+    """
+    log_cleaner_max_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).
+    """
+    log_cleaner_min_cleanable_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.
+    """
+    log_cleaner_min_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted. (Default: 0 ms).
+    """
+    log_cleanup_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+    """
+    log_flush_interval_messages: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
+    """
+    log_flush_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum time in ms that a message in any topic is kept in memory (page-cache) before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used (Default: null).
+    """
+    log_index_interval_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval with which Kafka adds an entry to the offset index (Default: 4096 bytes (4 kibibytes)). Example: `4096`.
+    """
+    log_index_size_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)).
+    """
+    log_local_retention_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value. (Default: -2).
+    """
+    log_local_retention_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value. (Default: -2).
+    """
+    log_message_downconversion_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).
+    """
+    log_message_timestamp_after_max_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+    """
+    log_message_timestamp_before_max_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp. (Default: 9223372036854775807 (Long.MAX_VALUE)).
+    """
+    log_message_timestamp_difference_max_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
+    """
+    log_message_timestamp_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time. (Default: CreateTime).
+    """
+    log_preallocate: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Should pre allocate file when create new segment? (Default: false).
+    """
+    log_retention_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum size of the log before deleting messages (Default: -1).
+    """
+    log_retention_hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of hours to keep a log file before deleting it. Use -1 for unlimited retention or 1 or higher. Setting 0 is invalid and prevents Kafka from starting. (Default: 168 hours, or 1 week).
+    """
+    log_retention_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied. (Default: null, log.retention.hours applies).
+    """
+    log_roll_jitter_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used (Default: null).
+    """
+    log_roll_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum time before a new log segment is rolled out (in milliseconds). (Default: null, log.roll.hours applies (Default: 168, 7 days)).
+    """
+    log_segment_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum size of a single log file (Default: 1073741824 bytes (1 gibibyte)).
+    """
+    log_segment_delete_delay_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of time to wait before deleting a file from the filesystem (Default: 60000 ms (1 minute)). Example: `60000`.
+    """
+    max_connections_per_ip: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of connections allowed from each ip address (Default: 2147483647).
+    """
+    max_incremental_fetch_session_cache_slots: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of incremental fetch sessions that the broker will maintain. (Default: 1000). Example: `1000`.
+    """
+    message_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)).
+    """
+    min_insync_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. (Default: 1). Example: `1`.
+    """
+    num_partitions: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of partitions for auto-created topics (Default: 1).
+    """
+    offsets_retention_minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Log retention window in minutes for offsets topic (Default: 10080 minutes (7 days)). Example: `10080`.
+    """
+    producer_purgatory_purge_interval_requests: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The purge interval (in number of requests) of the producer request purgatory (Default: 1000).
+    """
+    replica_fetch_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of bytes of messages to attempt to fetch for each partition . This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. (Default: 1048576 bytes (1 mebibytes)).
+    """
+    replica_fetch_response_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum bytes expected for the entire fetch response. Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum. (Default: 10485760 bytes (10 mebibytes)).
+    """
+    sasl_oauthbearer_expected_audience: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences. (Default: null).
+    """
+    sasl_oauthbearer_expected_issuer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional setting for the broker to use to verify that the JWT was created by the expected issuer.(Default: null).
+    """
+    sasl_oauthbearer_jwks_endpoint_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. (Default: null).
+    """
+    sasl_oauthbearer_sub_claim_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the scope from which to extract the subject claim from the JWT.(Default: sub).
+    """
+    socket_request_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of bytes in a socket request (Default: 104857600 bytes).
+    """
+    transaction_partition_verification_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
+    """
+    transaction_remove_expired_transaction_cleanup_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
+    """
+    transaction_state_log_segment_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaArgs:
@@ -16529,18 +16187,15 @@ class KafkaKafkaUserConfigKafkaArgs:
         pulumi.set(self, "transaction_state_log_segment_bytes", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgsDict(TypedDict):
-        certificate: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable certificate/SSL authentication. Default: `true`.
-        """
-        sasl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable SASL authentication. Default: `false`.
-        """
-elif False:
-    KafkaKafkaUserConfigKafkaAuthenticationMethodsArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgsDict(TypedDict):
+    certificate: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable certificate/SSL authentication. Default: `true`.
+    """
+    sasl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable SASL authentication. Default: `false`.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs:
@@ -16581,74 +16236,71 @@ class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs:
         pulumi.set(self, "sasl", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigKafkaConnectConfigArgsDict(TypedDict):
-        connector_client_config_override_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
-        """
-        consumer_auto_offset_reset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
-        """
-        consumer_fetch_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
-        """
-        consumer_isolation_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
-        """
-        consumer_max_partition_fetch_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
-        """
-        consumer_max_poll_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
-        """
-        consumer_max_poll_records: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of records returned in a single call to poll() (defaults to 500).
-        """
-        offset_flush_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval at which to try committing offsets for tasks (defaults to 60000).
-        """
-        offset_flush_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
-        """
-        producer_batch_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
-        """
-        producer_buffer_memory: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
-        """
-        producer_compression_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
-        """
-        producer_linger_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
-        """
-        producer_max_request_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
-        """
-        scheduled_rebalance_max_delay_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
-        """
-        session_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
-        """
-elif False:
-    KafkaKafkaUserConfigKafkaConnectConfigArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigKafkaConnectConfigArgsDict(TypedDict):
+    connector_client_config_override_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
+    """
+    consumer_auto_offset_reset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+    """
+    consumer_fetch_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+    """
+    consumer_isolation_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+    """
+    consumer_max_partition_fetch_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
+    """
+    consumer_max_poll_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
+    """
+    consumer_max_poll_records: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of records returned in a single call to poll() (defaults to 500).
+    """
+    offset_flush_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval at which to try committing offsets for tasks (defaults to 60000).
+    """
+    offset_flush_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
+    """
+    producer_batch_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+    """
+    producer_buffer_memory: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
+    """
+    producer_compression_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+    """
+    producer_linger_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
+    """
+    producer_max_request_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+    """
+    scheduled_rebalance_max_delay_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
+    """
+    session_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaConnectConfigArgs:
@@ -16913,18 +16565,15 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
         pulumi.set(self, "session_timeout_ms", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigKafkaConnectPluginVersionArgsDict(TypedDict):
-        plugin_name: pulumi.Input[_builtins.str]
-        """
-        The name of the plugin. Example: `debezium-connector`.
-        """
-        version: pulumi.Input[_builtins.str]
-        """
-        The version of the plugin. Example: `2.5.0`.
-        """
-elif False:
-    KafkaKafkaUserConfigKafkaConnectPluginVersionArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigKafkaConnectPluginVersionArgsDict(TypedDict):
+    plugin_name: pulumi.Input[_builtins.str]
+    """
+    The name of the plugin. Example: `debezium-connector`.
+    """
+    version: pulumi.Input[_builtins.str]
+    """
+    The version of the plugin. Example: `2.5.0`.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaConnectPluginVersionArgs:
@@ -16963,22 +16612,19 @@ class KafkaKafkaUserConfigKafkaConnectPluginVersionArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigKafkaConnectSecretProviderArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the secret provider. Used to reference secrets in connector config.
-        """
-        aws: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgsDict']]
-        """
-        AWS secret provider configuration
-        """
-        vault: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgsDict']]
-        """
-        Vault secret provider configuration
-        """
-elif False:
-    KafkaKafkaUserConfigKafkaConnectSecretProviderArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigKafkaConnectSecretProviderArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the secret provider. Used to reference secrets in connector config.
+    """
+    aws: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgsDict']]
+    """
+    AWS secret provider configuration
+    """
+    vault: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgsDict']]
+    """
+    Vault secret provider configuration
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaConnectSecretProviderArgs:
@@ -17034,26 +16680,23 @@ class KafkaKafkaUserConfigKafkaConnectSecretProviderArgs:
         pulumi.set(self, "vault", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgsDict(TypedDict):
-        auth_method: pulumi.Input[_builtins.str]
-        """
-        Enum: `credentials`. Auth method of the vault secret provider.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        Region used to lookup secrets with AWS SecretManager.
-        """
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Access key used to authenticate with aws.
-        """
-        secret_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Secret key used to authenticate with aws.
-        """
-elif False:
-    KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgsDict(TypedDict):
+    auth_method: pulumi.Input[_builtins.str]
+    """
+    Enum: `credentials`. Auth method of the vault secret provider.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    Region used to lookup secrets with AWS SecretManager.
+    """
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Access key used to authenticate with aws.
+    """
+    secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Secret key used to authenticate with aws.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs:
@@ -17124,30 +16767,27 @@ class KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs:
         pulumi.set(self, "secret_key", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        Address of the Vault server.
-        """
-        auth_method: pulumi.Input[_builtins.str]
-        """
-        Enum: `token`. Auth method of the vault secret provider.
-        """
-        engine_version: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Enum: `1`, `2`, and newer. KV Secrets Engine version of the Vault server instance.
-        """
-        prefix_path_depth: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Token used to authenticate with vault and auth method `token`.
-        """
-elif False:
-    KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    Address of the Vault server.
+    """
+    auth_method: pulumi.Input[_builtins.str]
+    """
+    Enum: `token`. Auth method of the vault secret provider.
+    """
+    engine_version: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Enum: `1`, `2`, and newer. KV Secrets Engine version of the Vault server instance.
+    """
+    prefix_path_depth: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Token used to authenticate with vault and auth method `token`.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs:
@@ -17234,14 +16874,11 @@ class KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigKafkaDisklessArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether to enable the Diskless functionality.
-        """
-elif False:
-    KafkaKafkaUserConfigKafkaDisklessArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigKafkaDisklessArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether to enable the Diskless functionality.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaDisklessArgs:
@@ -17265,54 +16902,51 @@ class KafkaKafkaUserConfigKafkaDisklessArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigKafkaRestConfigArgsDict(TypedDict):
-        consumer_enable_auto_commit: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
-        """
-        consumer_idle_disconnect_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
-        """
-        consumer_request_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of bytes in unencoded message keys and values by a single request.
-        """
-        consumer_request_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
-        """
-        name_strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
-        """
-        name_strategy_validation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
-        """
-        producer_acks: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `-1`, `0`, `1`, `all`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
-        """
-        producer_compression_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
-        """
-        producer_linger_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Wait for up to the given delay to allow batching records together. Default: `0`.
-        """
-        producer_max_request_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
-        """
-        simpleconsumer_pool_size_max: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
-        """
-elif False:
-    KafkaKafkaUserConfigKafkaRestConfigArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigKafkaRestConfigArgsDict(TypedDict):
+    consumer_enable_auto_commit: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
+    """
+    consumer_idle_disconnect_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+    """
+    consumer_request_max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of bytes in unencoded message keys and values by a single request.
+    """
+    consumer_request_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
+    """
+    name_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+    """
+    name_strategy_validation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
+    """
+    producer_acks: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `-1`, `0`, `1`, `all`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
+    """
+    producer_compression_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+    """
+    producer_linger_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Wait for up to the given delay to allow batching records together. Default: `0`.
+    """
+    producer_max_request_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size.
+    """
+    simpleconsumer_pool_size_max: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaRestConfigArgs:
@@ -17497,22 +17131,19 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
         pulumi.set(self, "simpleconsumer_pool_size_max", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigKafkaSaslMechanismsArgsDict(TypedDict):
-        plain: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable PLAIN mechanism. Default: `true`.
-        """
-        scram_sha256: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable SCRAM-SHA-256 mechanism. Default: `true`.
-        """
-        scram_sha512: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable SCRAM-SHA-512 mechanism. Default: `true`.
-        """
-elif False:
-    KafkaKafkaUserConfigKafkaSaslMechanismsArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigKafkaSaslMechanismsArgsDict(TypedDict):
+    plain: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable PLAIN mechanism. Default: `true`.
+    """
+    scram_sha256: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable SCRAM-SHA-256 mechanism. Default: `true`.
+    """
+    scram_sha512: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable SCRAM-SHA-512 mechanism. Default: `true`.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigKafkaSaslMechanismsArgs:
@@ -17569,30 +17200,27 @@ class KafkaKafkaUserConfigKafkaSaslMechanismsArgs:
         pulumi.set(self, "scram_sha512", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigPrivateAccessArgsDict(TypedDict):
-        kafka: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to kafka with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to kafka_connect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        kafka_rest: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to kafka_rest with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        schema_registry: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    KafkaKafkaUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigPrivateAccessArgsDict(TypedDict):
+    kafka: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to kafka with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to kafka_connect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    kafka_rest: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to kafka_rest with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    schema_registry: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigPrivateAccessArgs:
@@ -17681,34 +17309,31 @@ class KafkaKafkaUserConfigPrivateAccessArgs:
         pulumi.set(self, "schema_registry", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        jolokia: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable jolokia.
-        """
-        kafka: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable kafka.
-        """
-        kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable kafka_connect.
-        """
-        kafka_rest: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable kafka_rest.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable prometheus.
-        """
-        schema_registry: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable schema_registry.
-        """
-elif False:
-    KafkaKafkaUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    jolokia: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable jolokia.
+    """
+    kafka: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable kafka.
+    """
+    kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable kafka_connect.
+    """
+    kafka_rest: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable kafka_rest.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable prometheus.
+    """
+    schema_registry: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable schema_registry.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigPrivatelinkAccessArgs:
@@ -17813,30 +17438,27 @@ class KafkaKafkaUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "schema_registry", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigPublicAccessArgsDict(TypedDict):
-        kafka: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        kafka_rest: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        schema_registry: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    KafkaKafkaUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigPublicAccessArgsDict(TypedDict):
+    kafka: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    kafka_connect: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    kafka_rest: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    schema_registry: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigPublicAccessArgs:
@@ -17925,26 +17547,23 @@ class KafkaKafkaUserConfigPublicAccessArgs:
         pulumi.set(self, "schema_registry", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigSchemaRegistryConfigArgsDict(TypedDict):
-        leader_eligibility: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
-        """
-        retriable_errors_silenced: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
-        """
-        schema_reader_strict_mode: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
-        """
-        topic_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
-        """
-elif False:
-    KafkaKafkaUserConfigSchemaRegistryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigSchemaRegistryConfigArgsDict(TypedDict):
+    leader_eligibility: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+    """
+    retriable_errors_silenced: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+    """
+    schema_reader_strict_mode: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+    """
+    topic_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigSchemaRegistryConfigArgs:
@@ -18017,18 +17636,15 @@ class KafkaKafkaUserConfigSchemaRegistryConfigArgs:
         pulumi.set(self, "topic_name", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigSingleZoneArgsDict(TypedDict):
-        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
-        """
-elif False:
-    KafkaKafkaUserConfigSingleZoneArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigSingleZoneArgsDict(TypedDict):
+    availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigSingleZoneArgs:
@@ -18069,18 +17685,15 @@ class KafkaKafkaUserConfigSingleZoneArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigTieredStorageArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable the tiered storage functionality.
-        """
-        local_cache: NotRequired[pulumi.Input['KafkaKafkaUserConfigTieredStorageLocalCacheArgsDict']]
-        """
-        Local cache configuration
-        """
-elif False:
-    KafkaKafkaUserConfigTieredStorageArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigTieredStorageArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable the tiered storage functionality.
+    """
+    local_cache: NotRequired[pulumi.Input['KafkaKafkaUserConfigTieredStorageLocalCacheArgsDict']]
+    """
+    Local cache configuration
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigTieredStorageArgs:
@@ -18125,14 +17738,11 @@ class KafkaKafkaUserConfigTieredStorageArgs:
         pulumi.set(self, "local_cache", value)
 
 
-if not MYPY:
-    class KafkaKafkaUserConfigTieredStorageLocalCacheArgsDict(TypedDict):
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Local cache size in bytes. Example: `1073741824`.
-        """
-elif False:
-    KafkaKafkaUserConfigTieredStorageLocalCacheArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaKafkaUserConfigTieredStorageLocalCacheArgsDict(TypedDict):
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Local cache size in bytes. Example: `1073741824`.
+    """
 
 @pulumi.input_type
 class KafkaKafkaUserConfigTieredStorageLocalCacheArgs:
@@ -18161,46 +17771,43 @@ class KafkaKafkaUserConfigTieredStorageLocalCacheArgs:
         pulumi.set(self, "size", value)
 
 
-if not MYPY:
-    class KafkaMirrorMakerComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    KafkaMirrorMakerComponentArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaMirrorMakerComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class KafkaMirrorMakerComponentArgs:
@@ -18353,42 +17960,39 @@ class KafkaMirrorMakerComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class KafkaMirrorMakerKafkaMirrormakerUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        kafka_mirrormaker: NotRequired[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict']]
-        """
-        Kafka MirrorMaker configuration values
-        """
-        sasl_oauthbearer_allowed_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    KafkaMirrorMakerKafkaMirrormakerUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaMirrorMakerKafkaMirrormakerUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    kafka_mirrormaker: NotRequired[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict']]
+    """
+    Kafka MirrorMaker configuration values
+    """
+    sasl_oauthbearer_allowed_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
@@ -18533,18 +18137,15 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs:
@@ -18584,66 +18185,63 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict(TypedDict):
-        admin_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
-        """
-        emit_checkpoints_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
-        """
-        emit_checkpoints_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
-        """
-        groups: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
-        """
-        groups_exclude: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
-        """
-        offset_lag_max: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How out-of-sync a remote partition can be before it is resynced. Example: `100`.
-        """
-        refresh_groups_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to periodically check for new consumer groups. Defaults to `true`.
-        """
-        refresh_groups_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
-        """
-        refresh_topics_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to periodically check for new topics and partitions. Defaults to `true`.
-        """
-        refresh_topics_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
-        """
-        sync_group_offsets_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
-        """
-        sync_group_offsets_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
-        """
-        sync_topic_configs_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to periodically configure remote topics to match their corresponding upstream topics.
-        """
-        tasks_max_per_cpu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
-        """
-elif False:
-    KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict(TypedDict):
+    admin_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+    """
+    emit_checkpoints_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
+    """
+    emit_checkpoints_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
+    """
+    groups: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
+    """
+    groups_exclude: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
+    """
+    offset_lag_max: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How out-of-sync a remote partition can be before it is resynced. Example: `100`.
+    """
+    refresh_groups_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to periodically check for new consumer groups. Defaults to `true`.
+    """
+    refresh_groups_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
+    """
+    refresh_topics_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to periodically check for new topics and partitions. Defaults to `true`.
+    """
+    refresh_topics_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
+    """
+    sync_group_offsets_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+    """
+    sync_group_offsets_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
+    """
+    sync_topic_configs_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to periodically configure remote topics to match their corresponding upstream topics.
+    """
+    tasks_max_per_cpu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
+    """
 
 @pulumi.input_type
 class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
@@ -18876,18 +18474,15 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
         pulumi.set(self, "tasks_max_per_cpu", value)
 
 
-if not MYPY:
-    class KafkaMirrorMakerServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    KafkaMirrorMakerServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaMirrorMakerServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class KafkaMirrorMakerServiceIntegrationArgs:
@@ -18926,18 +18521,15 @@ class KafkaMirrorMakerServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class KafkaMirrorMakerTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    KafkaMirrorMakerTagArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaMirrorMakerTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class KafkaMirrorMakerTagArgs:
@@ -18976,14 +18568,11 @@ class KafkaMirrorMakerTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class KafkaMirrorMakerTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    KafkaMirrorMakerTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaMirrorMakerTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class KafkaMirrorMakerTechEmailArgs:
@@ -19007,18 +18596,15 @@ class KafkaMirrorMakerTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class KafkaServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    KafkaServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class KafkaServiceIntegrationArgs:
@@ -19057,18 +18643,15 @@ class KafkaServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class KafkaTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    KafkaTagArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class KafkaTagArgs:
@@ -19107,14 +18690,11 @@ class KafkaTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class KafkaTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    KafkaTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class KafkaTechEmailArgs:
@@ -19138,122 +18718,119 @@ class KafkaTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class KafkaTopicConfigArgsDict(TypedDict):
-        cleanup_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
-        """
-        compression_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
-        """
-        delete_retention_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
-        """
-        diskless_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
-        """
-        file_delete_delay_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time to wait before deleting a file from the filesystem.
-        """
-        flush_messages: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
-        """
-        flush_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
-        """
-        index_interval_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
-        """
-        local_retention_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
-        """
-        local_retention_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
-        """
-        max_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
-        """
-        max_message_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
-        """
-        message_downconversion_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
-        """
-        message_format_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
-        """
-        message_timestamp_difference_max_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
-        """
-        message_timestamp_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
-        """
-        min_cleanable_dirty_ratio: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
-        """
-        min_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
-        """
-        min_insync_replicas: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
-        """
-        preallocate: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        True if we should preallocate the file on disk when creating a new log segment.
-        """
-        remote_storage_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether tiered storage should be enabled.
-        """
-        retention_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
-        """
-        retention_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
-        """
-        segment_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
-        """
-        segment_index_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
-        """
-        segment_jitter_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
-        """
-        segment_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
-        """
-        unclean_leader_election_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
-        """
-elif False:
-    KafkaTopicConfigArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaTopicConfigArgsDict(TypedDict):
+    cleanup_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
+    """
+    compression_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+    """
+    delete_retention_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
+    """
+    diskless_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+    """
+    file_delete_delay_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time to wait before deleting a file from the filesystem.
+    """
+    flush_messages: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+    """
+    flush_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+    """
+    index_interval_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
+    """
+    local_retention_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
+    """
+    local_retention_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+    """
+    max_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+    """
+    max_message_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
+    """
+    message_downconversion_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
+    """
+    message_format_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+    """
+    message_timestamp_difference_max_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
+    """
+    message_timestamp_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
+    """
+    min_cleanable_dirty_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+    """
+    min_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+    """
+    min_insync_replicas: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+    """
+    preallocate: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    True if we should preallocate the file on disk when creating a new log segment.
+    """
+    remote_storage_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether tiered storage should be enabled.
+    """
+    retention_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+    """
+    retention_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
+    """
+    segment_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+    """
+    segment_index_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+    """
+    segment_jitter_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+    """
+    segment_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+    """
+    unclean_leader_election_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
+    """
 
 @pulumi.input_type
 class KafkaTopicConfigArgs:
@@ -19710,18 +19287,15 @@ class KafkaTopicConfigArgs:
         pulumi.set(self, "unclean_leader_election_enable", value)
 
 
-if not MYPY:
-    class KafkaTopicTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Tag key. Maximum length: `64`.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Tag value. Maximum length: `256`.
-        """
-elif False:
-    KafkaTopicTagArgsDict: TypeAlias = Mapping[str, Any]
+class KafkaTopicTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Tag key. Maximum length: `64`.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Tag value. Maximum length: `256`.
+    """
 
 @pulumi.input_type
 class KafkaTopicTagArgs:
@@ -19761,46 +19335,43 @@ class KafkaTopicTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class M3AggregatorComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    M3AggregatorComponentArgsDict: TypeAlias = Mapping[str, Any]
+class M3AggregatorComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class M3AggregatorComponentArgs:
@@ -19953,18 +19524,15 @@ class M3AggregatorComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class M3AggregatorM3aggregatorArgsDict(TypedDict):
-        aggregator_http_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        M3 Aggregator HTTP URI.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        M3 Aggregator server URIs.
-        """
-elif False:
-    M3AggregatorM3aggregatorArgsDict: TypeAlias = Mapping[str, Any]
+class M3AggregatorM3aggregatorArgsDict(TypedDict):
+    aggregator_http_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    M3 Aggregator HTTP URI.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    M3 Aggregator server URIs.
+    """
 
 @pulumi.input_type
 class M3AggregatorM3aggregatorArgs:
@@ -20005,42 +19573,39 @@ class M3AggregatorM3aggregatorArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class M3AggregatorM3aggregatorUserConfigArgsDict(TypedDict):
-        custom_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        m3_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
-        """
-        m3aggregator_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    M3AggregatorM3aggregatorUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class M3AggregatorM3aggregatorUserConfigArgsDict(TypedDict):
+    custom_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    m3_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
+    """
+    m3aggregator_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class M3AggregatorM3aggregatorUserConfigArgs:
@@ -20181,18 +19746,15 @@ class M3AggregatorM3aggregatorUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class M3AggregatorM3aggregatorUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    M3AggregatorM3aggregatorUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class M3AggregatorM3aggregatorUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs:
@@ -20232,18 +19794,15 @@ class M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class M3AggregatorServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    M3AggregatorServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class M3AggregatorServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class M3AggregatorServiceIntegrationArgs:
@@ -20282,18 +19841,15 @@ class M3AggregatorServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class M3AggregatorTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    M3AggregatorTagArgsDict: TypeAlias = Mapping[str, Any]
+class M3AggregatorTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class M3AggregatorTagArgs:
@@ -20332,14 +19888,11 @@ class M3AggregatorTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class M3AggregatorTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    M3AggregatorTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class M3AggregatorTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class M3AggregatorTechEmailArgs:
@@ -20363,46 +19916,43 @@ class M3AggregatorTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class M3DbComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    M3DbComponentArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class M3DbComponentArgs:
@@ -20555,34 +20105,31 @@ class M3DbComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class M3DbM3dbArgsDict(TypedDict):
-        http_cluster_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        M3DB cluster URI.
-        """
-        http_node_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        M3DB node URI.
-        """
-        influxdb_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        InfluxDB URI.
-        """
-        prometheus_remote_read_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prometheus remote read URI.
-        """
-        prometheus_remote_write_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prometheus remote write URI.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        M3DB server URIs.
-        """
-elif False:
-    M3DbM3dbArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbArgsDict(TypedDict):
+    http_cluster_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    M3DB cluster URI.
+    """
+    http_node_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    M3DB node URI.
+    """
+    influxdb_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    InfluxDB URI.
+    """
+    prometheus_remote_read_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prometheus remote read URI.
+    """
+    prometheus_remote_write_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prometheus remote write URI.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    M3DB server URIs.
+    """
 
 @pulumi.input_type
 class M3DbM3dbArgs:
@@ -20687,82 +20234,79 @@ class M3DbM3dbArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        custom_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        limits: NotRequired[pulumi.Input['M3DbM3dbUserConfigLimitsArgsDict']]
-        """
-        M3 limits
-        """
-        m3: NotRequired[pulumi.Input['M3DbM3dbUserConfigM3ArgsDict']]
-        """
-        M3 specific configuration options
-        """
-        m3_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
-        """
-        m3coordinator_enable_graphite_carbon_ingest: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-        """
-        m3db_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-        """
-        namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigNamespaceArgsDict']]]]
-        """
-        List of M3 namespaces
-        """
-        private_access: NotRequired[pulumi.Input['M3DbM3dbUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['M3DbM3dbUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        rules: NotRequired[pulumi.Input['M3DbM3dbUserConfigRulesArgsDict']]
-        """
-        M3 rules
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    M3DbM3dbUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    custom_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    limits: NotRequired[pulumi.Input['M3DbM3dbUserConfigLimitsArgsDict']]
+    """
+    M3 limits
+    """
+    m3: NotRequired[pulumi.Input['M3DbM3dbUserConfigM3ArgsDict']]
+    """
+    M3 specific configuration options
+    """
+    m3_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
+    """
+    m3coordinator_enable_graphite_carbon_ingest: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+    """
+    m3db_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
+    """
+    namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigNamespaceArgsDict']]]]
+    """
+    List of M3 namespaces
+    """
+    private_access: NotRequired[pulumi.Input['M3DbM3dbUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['M3DbM3dbUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    rules: NotRequired[pulumi.Input['M3DbM3dbUserConfigRulesArgsDict']]
+    """
+    M3 rules
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigArgs:
@@ -21063,18 +20607,15 @@ class M3DbM3dbUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    M3DbM3dbUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigIpFilterObjectArgs:
@@ -21114,34 +20655,31 @@ class M3DbM3dbUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigLimitsArgsDict(TypedDict):
-        max_recently_queried_series_blocks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
-        """
-        max_recently_queried_series_disk_bytes_read: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
-        """
-        max_recently_queried_series_lookback: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
-        """
-        query_docs: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of docs fetched in single query. Example: `100000`.
-        """
-        query_require_exhaustive: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When query limits are exceeded, whether to return error or return partial results.
-        """
-        query_series: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of series fetched in single query. Example: `100000`.
-        """
-elif False:
-    M3DbM3dbUserConfigLimitsArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigLimitsArgsDict(TypedDict):
+    max_recently_queried_series_blocks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
+    """
+    max_recently_queried_series_disk_bytes_read: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
+    """
+    max_recently_queried_series_lookback: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
+    """
+    query_docs: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of docs fetched in single query. Example: `100000`.
+    """
+    query_require_exhaustive: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When query limits are exceeded, whether to return error or return partial results.
+    """
+    query_series: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of series fetched in single query. Example: `100000`.
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigLimitsArgs:
@@ -21246,14 +20784,11 @@ class M3DbM3dbUserConfigLimitsArgs:
         pulumi.set(self, "query_series", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigM3ArgsDict(TypedDict):
-        tag_options: NotRequired[pulumi.Input['M3DbM3dbUserConfigM3TagOptionsArgsDict']]
-        """
-        M3 Tag Options
-        """
-elif False:
-    M3DbM3dbUserConfigM3ArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigM3ArgsDict(TypedDict):
+    tag_options: NotRequired[pulumi.Input['M3DbM3dbUserConfigM3TagOptionsArgsDict']]
+    """
+    M3 Tag Options
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigM3Args:
@@ -21278,18 +20813,15 @@ class M3DbM3dbUserConfigM3Args:
         pulumi.set(self, "tag_options", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigM3TagOptionsArgsDict(TypedDict):
-        allow_tag_name_duplicates: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allows for duplicate tags to appear on series (not allowed by default).
-        """
-        allow_tag_value_empty: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allows for empty tags to appear on series (not allowed by default).
-        """
-elif False:
-    M3DbM3dbUserConfigM3TagOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigM3TagOptionsArgsDict(TypedDict):
+    allow_tag_name_duplicates: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allows for duplicate tags to appear on series (not allowed by default).
+    """
+    allow_tag_value_empty: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allows for empty tags to appear on series (not allowed by default).
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigM3TagOptionsArgs:
@@ -21330,26 +20862,23 @@ class M3DbM3dbUserConfigM3TagOptionsArgs:
         pulumi.set(self, "allow_tag_value_empty", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigNamespaceArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the namespace. Example: `default`.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
-        """
-        options: NotRequired[pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsArgsDict']]
-        """
-        Namespace options
-        """
-        resolution: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resolution for an aggregated namespace. Example: `30s`.
-        """
-elif False:
-    M3DbM3dbUserConfigNamespaceArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigNamespaceArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the namespace. Example: `default`.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
+    """
+    options: NotRequired[pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsArgsDict']]
+    """
+    Namespace options
+    """
+    resolution: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resolution for an aggregated namespace. Example: `30s`.
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigNamespaceArgs:
@@ -21420,22 +20949,19 @@ class M3DbM3dbUserConfigNamespaceArgs:
         pulumi.set(self, "resolution", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigNamespaceOptionsArgsDict(TypedDict):
-        retention_options: pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgsDict']
-        """
-        Retention options
-        """
-        snapshot_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Controls whether M3DB will create snapshot files for this namespace.
-        """
-        writes_to_commitlog: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Controls whether M3DB will include writes to this namespace in the commitlog.
-        """
-elif False:
-    M3DbM3dbUserConfigNamespaceOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigNamespaceOptionsArgsDict(TypedDict):
+    retention_options: pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgsDict']
+    """
+    Retention options
+    """
+    snapshot_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Controls whether M3DB will create snapshot files for this namespace.
+    """
+    writes_to_commitlog: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Controls whether M3DB will include writes to this namespace in the commitlog.
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigNamespaceOptionsArgs:
@@ -21491,30 +21017,27 @@ class M3DbM3dbUserConfigNamespaceOptionsArgs:
         pulumi.set(self, "writes_to_commitlog", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgsDict(TypedDict):
-        block_data_expiry_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls how long we wait before expiring stale data. Example: `5m`.
-        """
-        blocksize_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
-        """
-        buffer_future_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
-        """
-        buffer_past_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
-        """
-        retention_period_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
-        """
-elif False:
-    M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgsDict(TypedDict):
+    block_data_expiry_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls how long we wait before expiring stale data. Example: `5m`.
+    """
+    blocksize_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
+    """
+    buffer_future_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
+    """
+    buffer_past_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
+    """
+    retention_period_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs:
@@ -21603,14 +21126,11 @@ class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs:
         pulumi.set(self, "retention_period_duration", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigPrivateAccessArgsDict(TypedDict):
-        m3coordinator: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    M3DbM3dbUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigPrivateAccessArgsDict(TypedDict):
+    m3coordinator: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigPrivateAccessArgs:
@@ -21635,14 +21155,11 @@ class M3DbM3dbUserConfigPrivateAccessArgs:
         pulumi.set(self, "m3coordinator", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigPublicAccessArgsDict(TypedDict):
-        m3coordinator: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    M3DbM3dbUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigPublicAccessArgsDict(TypedDict):
+    m3coordinator: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigPublicAccessArgs:
@@ -21667,14 +21184,11 @@ class M3DbM3dbUserConfigPublicAccessArgs:
         pulumi.set(self, "m3coordinator", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigRulesArgsDict(TypedDict):
-        mappings: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingArgsDict']]]]
-        """
-        List of M3 mapping rules
-        """
-elif False:
-    M3DbM3dbUserConfigRulesArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigRulesArgsDict(TypedDict):
+    mappings: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingArgsDict']]]]
+    """
+    List of M3 mapping rules
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigRulesArgs:
@@ -21699,42 +21213,39 @@ class M3DbM3dbUserConfigRulesArgs:
         pulumi.set(self, "mappings", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigRulesMappingArgsDict(TypedDict):
-        filter: pulumi.Input[_builtins.str]
-        """
-        Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
-        """
-        aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of aggregations to be applied.
-        """
-        drop: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Only store the derived metric (as specified in the roll-up rules), if any.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The (optional) name of the rule. Example: `important disk metrics`.
-        """
-        namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-        """
-        namespaces_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgsDict']]]]
-        """
-        This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
-        """
-        namespaces_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgsDict']]]]
-        """
-        List of tags to be appended to matching metrics
-        """
-elif False:
-    M3DbM3dbUserConfigRulesMappingArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigRulesMappingArgsDict(TypedDict):
+    filter: pulumi.Input[_builtins.str]
+    """
+    Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
+    """
+    aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of aggregations to be applied.
+    """
+    drop: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Only store the derived metric (as specified in the roll-up rules), if any.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The (optional) name of the rule. Example: `important disk metrics`.
+    """
+    namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+    """
+    namespaces_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgsDict']]]]
+    """
+    This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
+    """
+    namespaces_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgsDict']]]]
+    """
+    List of tags to be appended to matching metrics
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigRulesMappingArgs:
@@ -21874,18 +21385,15 @@ class M3DbM3dbUserConfigRulesMappingArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgsDict(TypedDict):
-        resolution: pulumi.Input[_builtins.str]
-        """
-        The resolution for the matching namespace. Example: `30s`.
-        """
-        retention: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The retention period of the matching namespace. Example: `48h`.
-        """
-elif False:
-    M3DbM3dbUserConfigRulesMappingNamespacesObjectArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgsDict(TypedDict):
+    resolution: pulumi.Input[_builtins.str]
+    """
+    The resolution for the matching namespace. Example: `30s`.
+    """
+    retention: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The retention period of the matching namespace. Example: `48h`.
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs:
@@ -21925,18 +21433,15 @@ class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs:
         pulumi.set(self, "retention", value)
 
 
-if not MYPY:
-    class M3DbM3dbUserConfigRulesMappingTagArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the tag. Example: `my_tag`.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the tag. Example: `my_value`.
-        """
-elif False:
-    M3DbM3dbUserConfigRulesMappingTagArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbM3dbUserConfigRulesMappingTagArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the tag. Example: `my_tag`.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the tag. Example: `my_value`.
+    """
 
 @pulumi.input_type
 class M3DbM3dbUserConfigRulesMappingTagArgs:
@@ -21975,18 +21480,15 @@ class M3DbM3dbUserConfigRulesMappingTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class M3DbServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    M3DbServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class M3DbServiceIntegrationArgs:
@@ -22025,18 +21527,15 @@ class M3DbServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class M3DbTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    M3DbTagArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class M3DbTagArgs:
@@ -22075,14 +21574,11 @@ class M3DbTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class M3DbTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    M3DbTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class M3DbTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class M3DbTechEmailArgs:
@@ -22106,46 +21602,43 @@ class M3DbTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class MySqlComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    MySqlComponentArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class MySqlComponentArgs:
@@ -22298,30 +21791,27 @@ class MySqlComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class MySqlMysqlArgsDict(TypedDict):
-        params: NotRequired[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlParamArgsDict']]]]
-        """
-        MySQL connection parameters.
-        """
-        replica_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        MySQL replica URI for services with a replica.
-        """
-        standby_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        MySQL standby connection URIs.
-        """
-        syncing_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        MySQL syncing connection URIs.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        MySQL connection URIs.
-        """
-elif False:
-    MySqlMysqlArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlMysqlArgsDict(TypedDict):
+    params: NotRequired[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlParamArgsDict']]]]
+    """
+    MySQL connection parameters.
+    """
+    replica_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    MySQL replica URI for services with a replica.
+    """
+    standby_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    MySQL standby connection URIs.
+    """
+    syncing_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    MySQL syncing connection URIs.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    MySQL connection URIs.
+    """
 
 @pulumi.input_type
 class MySqlMysqlArgs:
@@ -22410,34 +21900,31 @@ class MySqlMysqlArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class MySqlMysqlParamArgsDict(TypedDict):
-        database_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Thr name of the primary MySQL database.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        MySQL host IP or name.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password for the admin service user.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        MySQL port.
-        """
-        sslmode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        MySQL SSL mode setting. Always set to "require".
-        """
-        user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username for the admin service user.
-        """
-elif False:
-    MySqlMysqlParamArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlMysqlParamArgsDict(TypedDict):
+    database_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Thr name of the primary MySQL database.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    MySQL host IP or name.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password for the admin service user.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    MySQL port.
+    """
+    sslmode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    MySQL SSL mode setting. Always set to "require".
+    """
+    user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username for the admin service user.
+    """
 
 @pulumi.input_type
 class MySqlMysqlParamArgs:
@@ -22542,94 +22029,91 @@ class MySqlMysqlParamArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class MySqlMysqlUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        admin_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-        """
-        admin_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-        """
-        backup_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
-        """
-        backup_minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
-        """
-        binlog_retention_period: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        migration: NotRequired[pulumi.Input['MySqlMysqlUserConfigMigrationArgsDict']]
-        """
-        Migrate data from existing server
-        """
-        mysql: NotRequired[pulumi.Input['MySqlMysqlUserConfigMysqlArgsDict']]
-        """
-        mysql.conf configuration values
-        """
-        mysql_incremental_backup: NotRequired[pulumi.Input['MySqlMysqlUserConfigMysqlIncrementalBackupArgsDict']]
-        """
-        MySQL incremental backup configuration
-        """
-        mysql_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `8`, and newer. MySQL major version.
-        """
-        private_access: NotRequired[pulumi.Input['MySqlMysqlUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['MySqlMysqlUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['MySqlMysqlUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        recovery_target_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    MySqlMysqlUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlMysqlUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    admin_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+    """
+    admin_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
+    """
+    backup_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
+    """
+    backup_minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
+    """
+    binlog_retention_period: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    migration: NotRequired[pulumi.Input['MySqlMysqlUserConfigMigrationArgsDict']]
+    """
+    Migrate data from existing server
+    """
+    mysql: NotRequired[pulumi.Input['MySqlMysqlUserConfigMysqlArgsDict']]
+    """
+    mysql.conf configuration values
+    """
+    mysql_incremental_backup: NotRequired[pulumi.Input['MySqlMysqlUserConfigMysqlIncrementalBackupArgsDict']]
+    """
+    MySQL incremental backup configuration
+    """
+    mysql_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `8`, and newer. MySQL major version.
+    """
+    private_access: NotRequired[pulumi.Input['MySqlMysqlUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['MySqlMysqlUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['MySqlMysqlUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    recovery_target_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class MySqlMysqlUserConfigArgs:
@@ -22978,18 +22462,15 @@ class MySqlMysqlUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class MySqlMysqlUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    MySqlMysqlUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlMysqlUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class MySqlMysqlUserConfigIpFilterObjectArgs:
@@ -23029,54 +22510,51 @@ class MySqlMysqlUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class MySqlMysqlUserConfigMigrationArgsDict(TypedDict):
-        host: pulumi.Input[_builtins.str]
-        """
-        Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port number of the server where to migrate data from. Example: `1234`.
-        """
-        dbname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database name for bootstrapping the initial connection. Example: `defaultdb`.
-        """
-        dump_tool: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
-        """
-        ignore_dbs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
-        """
-        ignore_roles: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
-        """
-        method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
-        """
-        reestablish_replication: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Skip dump-restore part and start replication. Default: `false`.
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The server where to migrate data from is secured with SSL. Default: `true`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User name for authentication with the server where to migrate data from. Example: `myname`.
-        """
-elif False:
-    MySqlMysqlUserConfigMigrationArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlMysqlUserConfigMigrationArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port number of the server where to migrate data from. Example: `1234`.
+    """
+    dbname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database name for bootstrapping the initial connection. Example: `defaultdb`.
+    """
+    dump_tool: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `mydumper`, `mysqldump`. Experimental! Tool to use for database dump and restore during migration. Default: mysqldump.
+    """
+    ignore_dbs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+    """
+    ignore_roles: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+    """
+    method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+    """
+    reestablish_replication: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Skip dump-restore part and start replication. Default: `false`.
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The server where to migrate data from is secured with SSL. Default: `true`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User name for authentication with the server where to migrate data from. Example: `myname`.
+    """
 
 @pulumi.input_type
 class MySqlMysqlUserConfigMigrationArgs:
@@ -23259,134 +22737,131 @@ class MySqlMysqlUserConfigMigrationArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class MySqlMysqlUserConfigMysqlArgsDict(TypedDict):
-        connect_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
-        """
-        default_time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
-        """
-        group_concat_max_len: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
-        """
-        information_schema_stats_expiry: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time, in seconds, before cached statistics expire. Example: `86400`.
-        """
-        innodb_change_buffer_max_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
-        """
-        innodb_flush_neighbors: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
-        """
-        innodb_ft_min_token_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
-        """
-        innodb_ft_server_stopword_table: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
-        """
-        innodb_lock_wait_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
-        """
-        innodb_log_buffer_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
-        """
-        innodb_online_alter_log_max_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
-        """
-        innodb_print_all_deadlocks: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
-        """
-        innodb_read_io_threads: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
-        """
-        innodb_rollback_on_timeout: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
-        """
-        innodb_thread_concurrency: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
-        """
-        innodb_write_io_threads: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
-        """
-        interactive_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
-        """
-        internal_tmp_mem_storage_engine: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
-        """
-        log_output: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
-        """
-        long_query_time: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
-        """
-        max_allowed_packet: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
-        """
-        max_heap_table_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
-        """
-        net_buffer_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
-        """
-        net_read_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
-        """
-        net_write_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
-        """
-        slow_query_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
-        """
-        sort_buffer_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
-        """
-        sql_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
-        """
-        sql_require_primary_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
-        """
-        tmp_table_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
-        """
-        wait_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
-        """
-elif False:
-    MySqlMysqlUserConfigMysqlArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlMysqlUserConfigMysqlArgsDict(TypedDict):
+    connect_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
+    """
+    default_time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
+    """
+    group_concat_max_len: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
+    """
+    information_schema_stats_expiry: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time, in seconds, before cached statistics expire. Example: `86400`.
+    """
+    innodb_change_buffer_max_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
+    """
+    innodb_flush_neighbors: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
+    """
+    innodb_ft_min_token_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
+    """
+    innodb_ft_server_stopword_table: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
+    """
+    innodb_lock_wait_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
+    """
+    innodb_log_buffer_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+    """
+    innodb_online_alter_log_max_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+    """
+    innodb_print_all_deadlocks: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+    """
+    innodb_read_io_threads: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
+    """
+    innodb_rollback_on_timeout: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+    """
+    innodb_thread_concurrency: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
+    """
+    innodb_write_io_threads: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
+    """
+    interactive_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
+    """
+    internal_tmp_mem_storage_engine: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
+    """
+    log_output: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+    """
+    long_query_time: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+    """
+    max_allowed_packet: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+    """
+    max_heap_table_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
+    """
+    net_buffer_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
+    """
+    net_read_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
+    """
+    net_write_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
+    """
+    slow_query_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
+    """
+    sort_buffer_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+    """
+    sql_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
+    """
+    sql_require_primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+    """
+    tmp_table_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
+    """
+    wait_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+    """
 
 @pulumi.input_type
 class MySqlMysqlUserConfigMysqlArgs:
@@ -23891,18 +23366,15 @@ class MySqlMysqlUserConfigMysqlArgs:
         pulumi.set(self, "wait_timeout", value)
 
 
-if not MYPY:
-    class MySqlMysqlUserConfigMysqlIncrementalBackupArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Enable periodic incremental backups. When enabled, full*backup*week_schedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
-        """
-        full_backup_week_schedule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.
-        """
-elif False:
-    MySqlMysqlUserConfigMysqlIncrementalBackupArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlMysqlUserConfigMysqlIncrementalBackupArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Enable periodic incremental backups. When enabled, full*backup*week_schedule must be set. Incremental backups only store changes since the last backup, making them faster and more storage-efficient than full backups. This is particularly useful for large databases where daily full backups would be too time-consuming or expensive.
+    """
+    full_backup_week_schedule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Example: `sun,wed`.
+    """
 
 @pulumi.input_type
 class MySqlMysqlUserConfigMysqlIncrementalBackupArgs:
@@ -23942,22 +23414,19 @@ class MySqlMysqlUserConfigMysqlIncrementalBackupArgs:
         pulumi.set(self, "full_backup_week_schedule", value)
 
 
-if not MYPY:
-    class MySqlMysqlUserConfigPrivateAccessArgsDict(TypedDict):
-        mysql: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        mysqlx: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to mysqlx with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    MySqlMysqlUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlMysqlUserConfigPrivateAccessArgsDict(TypedDict):
+    mysql: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    mysqlx: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to mysqlx with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class MySqlMysqlUserConfigPrivateAccessArgs:
@@ -24014,22 +23483,19 @@ class MySqlMysqlUserConfigPrivateAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class MySqlMysqlUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        mysql: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable mysql.
-        """
-        mysqlx: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable mysqlx.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable prometheus.
-        """
-elif False:
-    MySqlMysqlUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlMysqlUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    mysql: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable mysql.
+    """
+    mysqlx: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable mysqlx.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable prometheus.
+    """
 
 @pulumi.input_type
 class MySqlMysqlUserConfigPrivatelinkAccessArgs:
@@ -24086,22 +23552,19 @@ class MySqlMysqlUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class MySqlMysqlUserConfigPublicAccessArgsDict(TypedDict):
-        mysql: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        mysqlx: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    MySqlMysqlUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlMysqlUserConfigPublicAccessArgsDict(TypedDict):
+    mysql: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    mysqlx: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class MySqlMysqlUserConfigPublicAccessArgs:
@@ -24158,18 +23621,15 @@ class MySqlMysqlUserConfigPublicAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class MySqlServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration. The possible value is `read_replica`.
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    MySqlServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration. The possible value is `read_replica`.
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class MySqlServiceIntegrationArgs:
@@ -24208,18 +23668,15 @@ class MySqlServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class MySqlTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    MySqlTagArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class MySqlTagArgs:
@@ -24258,14 +23715,11 @@ class MySqlTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class MySqlTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    MySqlTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class MySqlTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class MySqlTechEmailArgs:
@@ -24289,30 +23743,27 @@ class MySqlTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class MysqlDatabaseTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    MysqlDatabaseTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class MysqlDatabaseTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class MysqlDatabaseTimeoutsArgs:
@@ -24405,30 +23856,27 @@ class MysqlDatabaseTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class MysqlUserTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    MysqlUserTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class MysqlUserTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class MysqlUserTimeoutsArgs:
@@ -24521,46 +23969,43 @@ class MysqlUserTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class OpenSearchComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    OpenSearchComponentArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class OpenSearchComponentArgs:
@@ -24713,30 +24158,27 @@ class OpenSearchComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchArgsDict(TypedDict):
-        kibana_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URI for Kibana dashboard frontend.
-        """
-        opensearch_dashboards_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URI for OpenSearch dashboard frontend.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OpenSearch password.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        OpenSearch server URIs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OpenSearch username.
-        """
-elif False:
-    OpenSearchOpensearchArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchArgsDict(TypedDict):
+    kibana_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URI for Kibana dashboard frontend.
+    """
+    opensearch_dashboards_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URI for OpenSearch dashboard frontend.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OpenSearch password.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    OpenSearch server URIs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OpenSearch username.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchArgs:
@@ -24829,122 +24271,119 @@ class OpenSearchOpensearchArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        azure_migration: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigAzureMigrationArgsDict']]
-        """
-        Azure migration settings
-        """
-        custom_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
-        """
-        disable_replication_factor_adjustment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
-        """
-        gcs_migration: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigGcsMigrationArgsDict']]
-        """
-        Google Cloud Storage migration settings
-        """
-        index_patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgsDict']]]]
-        """
-        Index patterns
-        """
-        index_rollup: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigIndexRollupArgsDict']]
-        """
-        Index rollup settings
-        """
-        index_template: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigIndexTemplateArgsDict']]
-        """
-        Template settings for all new indexes
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        jwt: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigJwtArgsDict']]
-        """
-        OpenSearch JWT Configuration
-        """
-        keep_index_refresh_interval: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
-        """
-        max_index_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Use index_patterns instead. Default: `0`.
-        """
-        openid: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgsDict']]
-        """
-        OpenSearch OpenID Connect Configuration
-        """
-        opensearch: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgsDict']]
-        """
-        OpenSearch settings
-        """
-        opensearch_dashboards: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgsDict']]
-        """
-        OpenSearch Dashboards settings
-        """
-        opensearch_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
-        """
-        private_access: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-        """
-        s3_migration: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigS3MigrationArgsDict']]
-        """
-        AWS S3 / AWS S3 compatible migration settings
-        """
-        saml: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigSamlArgsDict']]
-        """
-        OpenSearch SAML configuration
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    azure_migration: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigAzureMigrationArgsDict']]
+    """
+    Azure migration settings
+    """
+    custom_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
+    """
+    disable_replication_factor_adjustment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
+    """
+    gcs_migration: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigGcsMigrationArgsDict']]
+    """
+    Google Cloud Storage migration settings
+    """
+    index_patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgsDict']]]]
+    """
+    Index patterns
+    """
+    index_rollup: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigIndexRollupArgsDict']]
+    """
+    Index rollup settings
+    """
+    index_template: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigIndexTemplateArgsDict']]
+    """
+    Template settings for all new indexes
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    jwt: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigJwtArgsDict']]
+    """
+    OpenSearch JWT Configuration
+    """
+    keep_index_refresh_interval: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
+    """
+    max_index_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Use index_patterns instead. Default: `0`.
+    """
+    openid: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgsDict']]
+    """
+    OpenSearch OpenID Connect Configuration
+    """
+    opensearch: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgsDict']]
+    """
+    OpenSearch settings
+    """
+    opensearch_dashboards: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgsDict']]
+    """
+    OpenSearch Dashboards settings
+    """
+    opensearch_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+    """
+    private_access: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+    """
+    s3_migration: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigS3MigrationArgsDict']]
+    """
+    AWS S3 / AWS S3 compatible migration settings
+    """
+    saml: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigSamlArgsDict']]
+    """
+    OpenSearch SAML configuration
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigArgs:
@@ -25405,62 +24844,59 @@ class OpenSearchOpensearchUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigAzureMigrationArgsDict(TypedDict):
-        account: pulumi.Input[_builtins.str]
-        """
-        Account name.
-        """
-        base_path: pulumi.Input[_builtins.str]
-        """
-        The path to the repository data within its container. The value of this setting should not start or end with a /.
-        """
-        container: pulumi.Input[_builtins.str]
-        """
-        Azure container name.
-        """
-        indices: pulumi.Input[_builtins.str]
-        """
-        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
-        """
-        snapshot_name: pulumi.Input[_builtins.str]
-        """
-        The snapshot name to restore from.
-        """
-        chunk_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
-        """
-        compress: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set to true metadata files are stored in compressed format.
-        """
-        endpoint_suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines the DNS suffix for Azure Storage endpoints.
-        """
-        include_aliases: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to restore aliases alongside their associated indexes. Default is true.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Azure account secret key. One of key or sas_token should be specified.
-        """
-        readonly: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the repository is read-only. Default: `true`.
-        """
-        restore_global_state: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, restore the cluster state. Defaults to false.
-        """
-        sas_token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A shared access signatures (SAS) token. One of key or sas_token should be specified.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigAzureMigrationArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigAzureMigrationArgsDict(TypedDict):
+    account: pulumi.Input[_builtins.str]
+    """
+    Account name.
+    """
+    base_path: pulumi.Input[_builtins.str]
+    """
+    The path to the repository data within its container. The value of this setting should not start or end with a /.
+    """
+    container: pulumi.Input[_builtins.str]
+    """
+    Azure container name.
+    """
+    indices: pulumi.Input[_builtins.str]
+    """
+    A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+    """
+    snapshot_name: pulumi.Input[_builtins.str]
+    """
+    The snapshot name to restore from.
+    """
+    chunk_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+    """
+    compress: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set to true metadata files are stored in compressed format.
+    """
+    endpoint_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines the DNS suffix for Azure Storage endpoints.
+    """
+    include_aliases: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to restore aliases alongside their associated indexes. Default is true.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Azure account secret key. One of key or sas_token should be specified.
+    """
+    readonly: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the repository is read-only. Default: `true`.
+    """
+    restore_global_state: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, restore the cluster state. Defaults to false.
+    """
+    sas_token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A shared access signatures (SAS) token. One of key or sas_token should be specified.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigAzureMigrationArgs:
@@ -25672,50 +25108,47 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
         pulumi.set(self, "sas_token", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigGcsMigrationArgsDict(TypedDict):
-        base_path: pulumi.Input[_builtins.str]
-        """
-        The path to the repository data within its container. The value of this setting should not start or end with a /.
-        """
-        bucket: pulumi.Input[_builtins.str]
-        """
-        The path to the repository data within its container.
-        """
-        credentials: pulumi.Input[_builtins.str]
-        """
-        Google Cloud Storage credentials file content.
-        """
-        indices: pulumi.Input[_builtins.str]
-        """
-        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
-        """
-        snapshot_name: pulumi.Input[_builtins.str]
-        """
-        The snapshot name to restore from.
-        """
-        chunk_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
-        """
-        compress: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set to true metadata files are stored in compressed format.
-        """
-        include_aliases: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to restore aliases alongside their associated indexes. Default is true.
-        """
-        readonly: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the repository is read-only. Default: `true`.
-        """
-        restore_global_state: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, restore the cluster state. Defaults to false.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigGcsMigrationArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigGcsMigrationArgsDict(TypedDict):
+    base_path: pulumi.Input[_builtins.str]
+    """
+    The path to the repository data within its container. The value of this setting should not start or end with a /.
+    """
+    bucket: pulumi.Input[_builtins.str]
+    """
+    The path to the repository data within its container.
+    """
+    credentials: pulumi.Input[_builtins.str]
+    """
+    Google Cloud Storage credentials file content.
+    """
+    indices: pulumi.Input[_builtins.str]
+    """
+    A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+    """
+    snapshot_name: pulumi.Input[_builtins.str]
+    """
+    The snapshot name to restore from.
+    """
+    chunk_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+    """
+    compress: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set to true metadata files are stored in compressed format.
+    """
+    include_aliases: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to restore aliases alongside their associated indexes. Default is true.
+    """
+    readonly: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the repository is read-only. Default: `true`.
+    """
+    restore_global_state: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, restore the cluster state. Defaults to false.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigGcsMigrationArgs:
@@ -25879,22 +25312,19 @@ class OpenSearchOpensearchUserConfigGcsMigrationArgs:
         pulumi.set(self, "restore_global_state", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigIndexPatternArgsDict(TypedDict):
-        max_index_count: pulumi.Input[_builtins.int]
-        """
-        Maximum number of indexes to keep. Example: `3`.
-        """
-        pattern: pulumi.Input[_builtins.str]
-        """
-        fnmatch pattern. Example: `logs_*_foo_*`.
-        """
-        sorting_algorithm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigIndexPatternArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigIndexPatternArgsDict(TypedDict):
+    max_index_count: pulumi.Input[_builtins.int]
+    """
+    Maximum number of indexes to keep. Example: `3`.
+    """
+    pattern: pulumi.Input[_builtins.str]
+    """
+    fnmatch pattern. Example: `logs_*_foo_*`.
+    """
+    sorting_algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigIndexPatternArgs:
@@ -25949,30 +25379,27 @@ class OpenSearchOpensearchUserConfigIndexPatternArgs:
         pulumi.set(self, "sorting_algorithm", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigIndexRollupArgsDict(TypedDict):
-        rollup_dashboards_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether rollups are enabled in OpenSearch Dashboards. Defaults to true.
-        """
-        rollup_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the rollup plugin is enabled. Defaults to true.
-        """
-        rollup_search_backoff_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How many retries the plugin should attempt for failed rollup jobs. Defaults to 5.
-        """
-        rollup_search_backoff_millis: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The backoff time between retries for failed rollup jobs. Defaults to 1000ms.
-        """
-        rollup_search_search_all_jobs: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether OpenSearch should return all jobs that match all specified search terms. If disabled, OpenSearch returns just one, as opposed to all, of the jobs that matches the search terms. Defaults to false.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigIndexRollupArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigIndexRollupArgsDict(TypedDict):
+    rollup_dashboards_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether rollups are enabled in OpenSearch Dashboards. Defaults to true.
+    """
+    rollup_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the rollup plugin is enabled. Defaults to true.
+    """
+    rollup_search_backoff_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How many retries the plugin should attempt for failed rollup jobs. Defaults to 5.
+    """
+    rollup_search_backoff_millis: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The backoff time between retries for failed rollup jobs. Defaults to 1000ms.
+    """
+    rollup_search_search_all_jobs: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether OpenSearch should return all jobs that match all specified search terms. If disabled, OpenSearch returns just one, as opposed to all, of the jobs that matches the search terms. Defaults to false.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigIndexRollupArgs:
@@ -26061,22 +25488,19 @@ class OpenSearchOpensearchUserConfigIndexRollupArgs:
         pulumi.set(self, "rollup_search_search_all_jobs", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigIndexTemplateArgsDict(TypedDict):
-        mapping_nested_objects_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.
-        """
-        number_of_replicas: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.
-        """
-        number_of_shards: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigIndexTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigIndexTemplateArgsDict(TypedDict):
+    mapping_nested_objects_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Deprecated, use an index template instead. Example: `10000`.
+    """
+    number_of_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of replicas each primary shard has. Deprecated, use an index template instead. Example: `1`.
+    """
+    number_of_shards: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of primary shards that an index should have. Deprecated, use an index template instead. Example: `1`.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigIndexTemplateArgs:
@@ -26133,18 +25557,15 @@ class OpenSearchOpensearchUserConfigIndexTemplateArgs:
         pulumi.set(self, "number_of_shards", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigIpFilterObjectArgs:
@@ -26184,48 +25605,45 @@ class OpenSearchOpensearchUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigJwtArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: `false`.
-        """
-        signing_key: pulumi.Input[_builtins.str]
-        """
-        The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----
-        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
-        -----END PUBLIC KEY----- (PEM)`.
-        """
-        jwt_clock_skew_tolerance_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: `20`.
-        """
-        jwt_header: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.
-        """
-        jwt_url_parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: `token`.
-        """
-        required_audience: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If specified, the JWT must contain an `aud` claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.
-        """
-        required_issuer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If specified, the JWT must contain an `iss` claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.
-        """
-        roles_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: `roles`.
-        """
-        subject_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key in the JWT payload that contains the user's subject identifier. If not specified, the `sub` claim is used by default. Example: `sub`.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigJwtArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigJwtArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Enables or disables JWT-based authentication for OpenSearch. When enabled, users can authenticate using JWT tokens. Default: `false`.
+    """
+    signing_key: pulumi.Input[_builtins.str]
+    """
+    The secret key used to sign and verify JWT tokens. This should be a secure, randomly generated key HMAC key or public RSA/ECDSA key. Example: `MrJiimVjKgjRKCSk0s6rcEuCz17v5ZyFRqKARfZbuZE= (HMAC) or -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+    -----END PUBLIC KEY----- (PEM)`.
+    """
+    jwt_clock_skew_tolerance_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum allowed time difference in seconds between the JWT issuer's clock and the OpenSearch server's clock. This helps prevent token validation failures due to minor time synchronization issues. Default: `20`.
+    """
+    jwt_header: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP header name where the JWT token is transmitted. Typically `Authorization` for Bearer tokens. Default: `Authorization`.
+    """
+    jwt_url_parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If the JWT token is transmitted as a URL parameter instead of an HTTP header, specify the parameter name here. Example: `token`.
+    """
+    required_audience: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If specified, the JWT must contain an `aud` claim that matches this value. This provides additional security by ensuring the JWT was issued for the expected audience. Example: `https://myapp.example.com`.
+    """
+    required_issuer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If specified, the JWT must contain an `iss` claim that matches this value. This provides additional security by ensuring the JWT was issued by the expected issuer. Example: `https://auth.example.com`.
+    """
+    roles_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key in the JWT payload that contains the user's roles. If specified, roles will be extracted from the JWT for authorization. Example: `roles`.
+    """
+    subject_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key in the JWT payload that contains the user's subject identifier. If not specified, the `sub` claim is used by default. Example: `sub`.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigJwtArgs:
@@ -26380,58 +25798,55 @@ class OpenSearchOpensearchUserConfigJwtArgs:
         pulumi.set(self, "subject_key", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpenidArgsDict(TypedDict):
-        client_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the OpenID Connect client configured in your IdP. Required.
-        """
-        client_secret: pulumi.Input[_builtins.str]
-        """
-        The client secret of the OpenID Connect client configured in your IdP. Required.
-        """
-        connect_url: pulumi.Input[_builtins.str]
-        """
-        The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
-        """
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
-        """
-        header: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
-        """
-        jwt_header: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \\n\\n. Optional. Default is Authorization. Example: `preferred_username`.
-        """
-        jwt_url_parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
-        """
-        refresh_rate_limit_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
-        """
-        refresh_rate_limit_time_window_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
-        """
-        roles_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
-        """
-        subject_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpenidArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpenidArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the OpenID Connect client configured in your IdP. Required.
+    """
+    client_secret: pulumi.Input[_builtins.str]
+    """
+    The client secret of the OpenID Connect client configured in your IdP. Required.
+    """
+    connect_url: pulumi.Input[_builtins.str]
+    """
+    The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
+    """
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
+    """
+    header: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
+    """
+    jwt_header: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \\n\\n. Optional. Default is Authorization. Example: `preferred_username`.
+    """
+    jwt_url_parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
+    """
+    refresh_rate_limit_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
+    """
+    refresh_rate_limit_time_window_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
+    """
+    roles_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+    """
+    subject_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpenidArgs:
@@ -26628,242 +26043,239 @@ class OpenSearchOpensearchUserConfigOpenidArgs:
         pulumi.set(self, "subject_key", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchArgsDict(TypedDict):
-        action_auto_create_index_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Explicitly allow or block automatic creation of indices. Defaults to true.
-        """
-        action_destructive_requires_name: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Require explicit index names when deleting.
-        """
-        auth_failure_listeners: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgsDict']]
-        """
-        Opensearch Security Plugin Settings
-        """
-        cluster_filecache_remote_data_ratio: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
-        """
-        cluster_max_shards_per_node: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Controls the number of shards allowed in the cluster per data node. Example: `1000`.
-        """
-        cluster_remote_store: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgsDict']]
-        cluster_routing_allocation_balance_prefer_primary: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
-        """
-        cluster_routing_allocation_node_concurrent_recoveries: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
-        """
-        cluster_search_request_slowlog: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict']]
-        disk_watermarks: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgsDict']]
-        """
-        Watermark settings
-        """
-        email_sender_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
-        """
-        email_sender_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
-        """
-        email_sender_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Sender username for Opensearch alerts. Example: `jane@example.com`.
-        """
-        enable_remote_backed_storage: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable remote-backed storage.
-        """
-        enable_searchable_snapshots: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable searchable snapshots.
-        """
-        enable_security_audit: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable/Disable security audit.
-        """
-        enable_snapshot_api: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
-        """
-        http_max_content_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
-        """
-        http_max_header_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The max size of allowed headers, in bytes. Example: `8192`.
-        """
-        http_max_initial_line_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The max length of an HTTP URL, in bytes. Example: `4096`.
-        """
-        indices_fielddata_cache_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Relative amount. Maximum amount of heap memory used for field data cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data; too much memory used for field data cache will decrease amount of heap available for other operations.
-        """
-        indices_memory_index_buffer_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
-        """
-        indices_memory_max_index_buffer_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Absolute value. Default is unbound. Doesn't work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
-        """
-        indices_memory_min_index_buffer_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Absolute value. Default is 48mb. Doesn't work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
-        """
-        indices_queries_cache_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
-        """
-        indices_query_bool_max_clause_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
-        """
-        indices_recovery_max_bytes_per_sec: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
-        """
-        indices_recovery_max_concurrent_file_chunks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of file chunks sent in parallel for each recovery. Defaults to 2.
-        """
-        ism_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether ISM is enabled or not.
-        """
-        ism_history_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
-        """
-        ism_history_max_age: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum age before rolling over the audit history index in hours. Example: `24`.
-        """
-        ism_history_max_docs: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of documents before rolling over the audit history index.
-        """
-        ism_history_rollover_check_period: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time between rollover checks for the audit history index in hours. Example: `8`.
-        """
-        ism_history_rollover_retention_period: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How long audit history indices are kept in days. Example: `30`.
-        """
-        knn_memory_circuit_breaker_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable KNN memory circuit breaker. Defaults to true.
-        """
-        knn_memory_circuit_breaker_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
-        """
-        ml_commons_model_access_control_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
-        """
-        ml_commons_native_memory_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
-        """
-        ml_commons_only_run_on_ml_node: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
-        """
-        node_search_cache_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
-        """
-        override_main_response_version: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
-        """
-        plugins_alerting_filter_by_backend_roles: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
-        """
-        reindex_remote_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
-        """
-        remote_store: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgsDict']]
-        script_max_compilations_rate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
-        """
-        search_backpressure: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict']]
-        """
-        Search Backpressure Settings
-        """
-        search_insights_top_queries: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgsDict']]
-        search_max_buckets: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
-        """
-        segrep: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSegrepArgsDict']]
-        """
-        Segment Replication Backpressure Settings
-        """
-        shard_indexing_pressure: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict']]
-        """
-        Shard indexing back pressure settings
-        """
-        thread_pool_analyze_queue_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size for the thread pool queue. See documentation for exact details.
-        """
-        thread_pool_analyze_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
-        """
-        thread_pool_force_merge_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
-        """
-        thread_pool_get_queue_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size for the thread pool queue. See documentation for exact details.
-        """
-        thread_pool_get_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
-        """
-        thread_pool_search_queue_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size for the thread pool queue. See documentation for exact details.
-        """
-        thread_pool_search_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
-        """
-        thread_pool_search_throttled_queue_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size for the thread pool queue. See documentation for exact details.
-        """
-        thread_pool_search_throttled_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
-        """
-        thread_pool_write_queue_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size for the thread pool queue. See documentation for exact details.
-        """
-        thread_pool_write_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchArgsDict(TypedDict):
+    action_auto_create_index_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Explicitly allow or block automatic creation of indices. Defaults to true.
+    """
+    action_destructive_requires_name: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Require explicit index names when deleting.
+    """
+    auth_failure_listeners: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgsDict']]
+    """
+    Opensearch Security Plugin Settings
+    """
+    cluster_filecache_remote_data_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 0.
+    """
+    cluster_max_shards_per_node: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Controls the number of shards allowed in the cluster per data node. Example: `1000`.
+    """
+    cluster_remote_store: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgsDict']]
+    cluster_routing_allocation_balance_prefer_primary: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
+    """
+    cluster_routing_allocation_node_concurrent_recoveries: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
+    """
+    cluster_search_request_slowlog: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict']]
+    disk_watermarks: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgsDict']]
+    """
+    Watermark settings
+    """
+    email_sender_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
+    """
+    email_sender_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
+    """
+    email_sender_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Sender username for Opensearch alerts. Example: `jane@example.com`.
+    """
+    enable_remote_backed_storage: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable remote-backed storage.
+    """
+    enable_searchable_snapshots: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable searchable snapshots.
+    """
+    enable_security_audit: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable/Disable security audit.
+    """
+    enable_snapshot_api: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable/Disable snapshot API for custom repositories, this requires security management to be enabled.
+    """
+    http_max_content_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
+    """
+    http_max_header_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The max size of allowed headers, in bytes. Example: `8192`.
+    """
+    http_max_initial_line_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The max length of an HTTP URL, in bytes. Example: `4096`.
+    """
+    indices_fielddata_cache_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Relative amount. Maximum amount of heap memory used for field data cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data; too much memory used for field data cache will decrease amount of heap available for other operations.
+    """
+    indices_memory_index_buffer_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+    """
+    indices_memory_max_index_buffer_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Absolute value. Default is unbound. Doesn't work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+    """
+    indices_memory_min_index_buffer_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Absolute value. Default is 48mb. Doesn't work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+    """
+    indices_queries_cache_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+    """
+    indices_query_bool_max_clause_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
+    """
+    indices_recovery_max_bytes_per_sec: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
+    """
+    indices_recovery_max_concurrent_file_chunks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of file chunks sent in parallel for each recovery. Defaults to 2.
+    """
+    ism_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether ISM is enabled or not.
+    """
+    ism_history_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
+    """
+    ism_history_max_age: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum age before rolling over the audit history index in hours. Example: `24`.
+    """
+    ism_history_max_docs: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of documents before rolling over the audit history index.
+    """
+    ism_history_rollover_check_period: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time between rollover checks for the audit history index in hours. Example: `8`.
+    """
+    ism_history_rollover_retention_period: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How long audit history indices are kept in days. Example: `30`.
+    """
+    knn_memory_circuit_breaker_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable KNN memory circuit breaker. Defaults to true.
+    """
+    knn_memory_circuit_breaker_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
+    """
+    ml_commons_model_access_control_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+    """
+    ml_commons_native_memory_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
+    """
+    ml_commons_only_run_on_ml_node: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+    """
+    node_search_cache_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
+    """
+    override_main_response_version: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+    """
+    plugins_alerting_filter_by_backend_roles: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+    """
+    reindex_remote_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
+    """
+    remote_store: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgsDict']]
+    script_max_compilations_rate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
+    """
+    search_backpressure: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict']]
+    """
+    Search Backpressure Settings
+    """
+    search_insights_top_queries: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgsDict']]
+    search_max_buckets: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
+    """
+    segrep: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSegrepArgsDict']]
+    """
+    Segment Replication Backpressure Settings
+    """
+    shard_indexing_pressure: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict']]
+    """
+    Shard indexing back pressure settings
+    """
+    thread_pool_analyze_queue_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size for the thread pool queue. See documentation for exact details.
+    """
+    thread_pool_analyze_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+    """
+    thread_pool_force_merge_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+    """
+    thread_pool_get_queue_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size for the thread pool queue. See documentation for exact details.
+    """
+    thread_pool_get_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+    """
+    thread_pool_search_queue_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size for the thread pool queue. See documentation for exact details.
+    """
+    thread_pool_search_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+    """
+    thread_pool_search_throttled_queue_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size for the thread pool queue. See documentation for exact details.
+    """
+    thread_pool_search_throttled_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+    """
+    thread_pool_write_queue_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size for the thread pool queue. See documentation for exact details.
+    """
+    thread_pool_write_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchArgs:
@@ -27832,15 +27244,12 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         pulumi.set(self, "thread_pool_write_size", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgsDict(TypedDict):
-        internal_authentication_backend_limiting: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgsDict']]
-        ip_rate_limiting: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgsDict']]
-        """
-        IP address rate limiting settings
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgsDict(TypedDict):
+    internal_authentication_backend_limiting: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgsDict']]
+    ip_rate_limiting: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgsDict']]
+    """
+    IP address rate limiting settings
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs:
@@ -27881,38 +27290,35 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs:
         pulumi.set(self, "ip_rate_limiting", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgsDict(TypedDict):
-        allowed_tries: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of login attempts allowed before login is blocked. Example: `10`.
-        """
-        authentication_backend: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
-        """
-        block_expiry_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The duration of time that login remains blocked after a failed login. Example: `600`.
-        """
-        max_blocked_clients: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        internal*authentication*backend*limiting.max*blocked_clients. Example: `100000`.
-        """
-        max_tracked_clients: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of tracked IP addresses that have failed login. Example: `100000`.
-        """
-        time_window_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `username`. internal*authentication*backend_limiting.type.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgsDict(TypedDict):
+    allowed_tries: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of login attempts allowed before login is blocked. Example: `10`.
+    """
+    authentication_backend: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
+    """
+    block_expiry_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The duration of time that login remains blocked after a failed login. Example: `600`.
+    """
+    max_blocked_clients: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    internal*authentication*backend*limiting.max*blocked_clients. Example: `100000`.
+    """
+    max_tracked_clients: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of tracked IP addresses that have failed login. Example: `100000`.
+    """
+    time_window_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `username`. internal*authentication*backend_limiting.type.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs:
@@ -28033,34 +27439,31 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthen
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgsDict(TypedDict):
-        allowed_tries: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of login attempts allowed before login is blocked. Example: `10`.
-        """
-        block_expiry_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The duration of time that login remains blocked after a failed login. Example: `600`.
-        """
-        max_blocked_clients: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of blocked IP addresses. Example: `100000`.
-        """
-        max_tracked_clients: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of tracked IP addresses that have failed login. Example: `100000`.
-        """
-        time_window_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `ip`. The type of rate limiting.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgsDict(TypedDict):
+    allowed_tries: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of login attempts allowed before login is blocked. Example: `10`.
+    """
+    block_expiry_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The duration of time that login remains blocked after a failed login. Example: `600`.
+    """
+    max_blocked_clients: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of blocked IP addresses. Example: `100000`.
+    """
+    max_tracked_clients: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of tracked IP addresses that have failed login. Example: `100000`.
+    """
+    time_window_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `ip`. The type of rate limiting.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs:
@@ -28165,26 +27568,23 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgsDict(TypedDict):
-        state_global_metadata_upload_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The amount of time to wait for the cluster state upload to complete. Defaults to 20s.
-        """
-        state_metadata_manifest_upload_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The amount of time to wait for the manifest file upload to complete. The manifest file contains the details of each of the files uploaded for a single cluster state, both index metadata files and global metadata files. Defaults to 20s.
-        """
-        translog_buffer_interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default value of the translog buffer interval used when performing periodic translog updates. This setting is only effective when the index setting `index.remote_store.translog.buffer_interval` is not present. Defaults to 650ms.
-        """
-        translog_max_readers: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the maximum number of open translog files for remote-backed indexes. This limits the total number of translog files per shard. After reaching this limit, the remote store flushes the translog files. Default is 1000. The minimum required is 100. Example: `1000`.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgsDict(TypedDict):
+    state_global_metadata_upload_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The amount of time to wait for the cluster state upload to complete. Defaults to 20s.
+    """
+    state_metadata_manifest_upload_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The amount of time to wait for the manifest file upload to complete. The manifest file contains the details of each of the files uploaded for a single cluster state, both index metadata files and global metadata files. Defaults to 20s.
+    """
+    translog_buffer_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default value of the translog buffer interval used when performing periodic translog updates. This setting is only effective when the index setting `index.remote_store.translog.buffer_interval` is not present. Defaults to 650ms.
+    """
+    translog_max_readers: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the maximum number of open translog files for remote-backed indexes. This limits the total number of translog files per shard. After reaching this limit, the remote store flushes the translog files. Default is 1000. The minimum required is 100. Example: `1000`.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs:
@@ -28257,15 +27657,12 @@ class OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs:
         pulumi.set(self, "translog_max_readers", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict(TypedDict):
-        level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
-        """
-        threshold: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgsDict']]
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict(TypedDict):
+    level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+    """
+    threshold: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgsDict']]
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs:
@@ -28302,26 +27699,23 @@ class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs:
         pulumi.set(self, "threshold", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgsDict(TypedDict):
-        debug: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-        """
-        info: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-        """
-        trace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-        """
-        warn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgsDict(TypedDict):
+    debug: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+    """
+    info: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+    """
+    trace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+    """
+    warn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs:
@@ -28394,26 +27788,23 @@ class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresho
         pulumi.set(self, "warn", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchDashboardsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable OpenSearch Dashboards. Default: `true`.
-        """
-        max_old_space_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
-        """
-        multiple_data_source_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
-        """
-        opensearch_request_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchDashboardsArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchDashboardsArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable OpenSearch Dashboards. Default: `true`.
+    """
+    max_old_space_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
+    """
+    multiple_data_source_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+    """
+    opensearch_request_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs:
@@ -28486,22 +27877,19 @@ class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs:
         pulumi.set(self, "opensearch_request_timeout", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgsDict(TypedDict):
-        flood_stage: pulumi.Input[_builtins.int]
-        """
-        The flood stage watermark for disk usage. Example: `95`.
-        """
-        high: pulumi.Input[_builtins.int]
-        """
-        The high watermark for disk usage. Example: `90`.
-        """
-        low: pulumi.Input[_builtins.int]
-        """
-        The low watermark for disk usage. Example: `85`.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgsDict(TypedDict):
+    flood_stage: pulumi.Input[_builtins.int]
+    """
+    The flood stage watermark for disk usage. Example: `95`.
+    """
+    high: pulumi.Input[_builtins.int]
+    """
+    The high watermark for disk usage. Example: `90`.
+    """
+    low: pulumi.Input[_builtins.int]
+    """
+    The low watermark for disk usage. Example: `85`.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs:
@@ -28555,26 +27943,23 @@ class OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs:
         pulumi.set(self, "low", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgsDict(TypedDict):
-        segment_pressure_bytes_lag_variance_factor: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
-        """
-        segment_pressure_consecutive_failures_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
-        """
-        segment_pressure_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables remote segment backpressure. Default is `true`.
-        """
-        segment_pressure_time_lag_variance_factor: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgsDict(TypedDict):
+    segment_pressure_bytes_lag_variance_factor: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+    """
+    segment_pressure_consecutive_failures_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+    """
+    segment_pressure_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables remote segment backpressure. Default is `true`.
+    """
+    segment_pressure_time_lag_variance_factor: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs:
@@ -28647,26 +28032,23 @@ class OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs:
         pulumi.set(self, "segment_pressure_time_lag_variance_factor", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict(TypedDict):
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
-        """
-        node_duress: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgsDict']]
-        """
-        Node duress settings
-        """
-        search_shard_task: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgsDict']]
-        """
-        Search shard settings
-        """
-        search_task: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgsDict']]
-        """
-        Search task settings
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict(TypedDict):
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+    """
+    node_duress: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgsDict']]
+    """
+    Node duress settings
+    """
+    search_shard_task: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgsDict']]
+    """
+    Search shard settings
+    """
+    search_task: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgsDict']]
+    """
+    Search task settings
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs:
@@ -28739,22 +28121,19 @@ class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs:
         pulumi.set(self, "search_task", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgsDict(TypedDict):
-        cpu_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
-        """
-        heap_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
-        """
-        num_successive_breaches: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgsDict(TypedDict):
+    cpu_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
+    """
+    heap_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
+    """
+    num_successive_breaches: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs:
@@ -28811,46 +28190,43 @@ class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs:
         pulumi.set(self, "num_successive_breaches", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgsDict(TypedDict):
-        cancellation_burst: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
-        """
-        cancellation_rate: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
-        """
-        cancellation_ratio: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
-        """
-        cpu_time_millis_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
-        """
-        elapsed_time_millis_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
-        """
-        heap_moving_average_window_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
-        """
-        heap_percent_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
-        """
-        heap_variance: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
-        """
-        total_heap_percent_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgsDict(TypedDict):
+    cancellation_burst: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
+    """
+    cancellation_rate: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
+    """
+    cancellation_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
+    """
+    cpu_time_millis_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
+    """
+    elapsed_time_millis_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
+    """
+    heap_moving_average_window_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
+    """
+    heap_percent_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
+    """
+    heap_variance: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
+    """
+    total_heap_percent_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs:
@@ -29003,46 +28379,43 @@ class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskA
         pulumi.set(self, "total_heap_percent_threshold", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgsDict(TypedDict):
-        cancellation_burst: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
-        """
-        cancellation_rate: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
-        """
-        cancellation_ratio: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
-        """
-        cpu_time_millis_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
-        """
-        elapsed_time_millis_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
-        """
-        heap_moving_average_window_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
-        """
-        heap_percent_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
-        """
-        heap_variance: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
-        """
-        total_heap_percent_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgsDict(TypedDict):
+    cancellation_burst: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
+    """
+    cancellation_rate: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
+    """
+    cancellation_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
+    """
+    cpu_time_millis_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
+    """
+    elapsed_time_millis_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
+    """
+    heap_moving_average_window_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
+    """
+    heap_percent_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
+    """
+    heap_variance: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
+    """
+    total_heap_percent_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs:
@@ -29195,22 +28568,19 @@ class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs:
         pulumi.set(self, "total_heap_percent_threshold", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgsDict(TypedDict):
-        cpu: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgsDict']]
-        """
-        Top N queries monitoring by CPU
-        """
-        latency: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgsDict']]
-        """
-        Top N queries monitoring by latency
-        """
-        memory: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgsDict']]
-        """
-        Top N queries monitoring by memory
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgsDict(TypedDict):
+    cpu: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgsDict']]
+    """
+    Top N queries monitoring by CPU
+    """
+    latency: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgsDict']]
+    """
+    Top N queries monitoring by latency
+    """
+    memory: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgsDict']]
+    """
+    Top N queries monitoring by memory
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs:
@@ -29267,22 +28637,19 @@ class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs:
         pulumi.set(self, "memory", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable top N query monitoring by the metric. Default: `false`.
-        """
-        top_n_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specify the value of N for the top N queries by the metric.
-        """
-        window_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The window size of the top N queries by the metric.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable top N query monitoring by the metric. Default: `false`.
+    """
+    top_n_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specify the value of N for the top N queries by the metric.
+    """
+    window_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The window size of the top N queries by the metric.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs:
@@ -29339,22 +28706,19 @@ class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs:
         pulumi.set(self, "window_size", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable top N query monitoring by the metric. Default: `false`.
-        """
-        top_n_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specify the value of N for the top N queries by the metric.
-        """
-        window_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The window size of the top N queries by the metric.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable top N query monitoring by the metric. Default: `false`.
+    """
+    top_n_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specify the value of N for the top N queries by the metric.
+    """
+    window_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The window size of the top N queries by the metric.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs:
@@ -29411,22 +28775,19 @@ class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArg
         pulumi.set(self, "window_size", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable top N query monitoring by the metric. Default: `false`.
-        """
-        top_n_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specify the value of N for the top N queries by the metric.
-        """
-        window_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The window size of the top N queries by the metric.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable top N query monitoring by the metric. Default: `false`.
+    """
+    top_n_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specify the value of N for the top N queries by the metric.
+    """
+    window_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The window size of the top N queries by the metric.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs:
@@ -29483,26 +28844,23 @@ class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs
         pulumi.set(self, "window_size", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchSegrepArgsDict(TypedDict):
-        pressure_checkpoint_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
-        """
-        pressure_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
-        """
-        pressure_replica_stale_limit: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
-        """
-        pressure_time_limit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchSegrepArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchSegrepArgsDict(TypedDict):
+    pressure_checkpoint_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+    """
+    pressure_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+    """
+    pressure_replica_stale_limit: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+    """
+    pressure_time_limit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchSegrepArgs:
@@ -29575,26 +28933,23 @@ class OpenSearchOpensearchUserConfigOpensearchSegrepArgs:
         pulumi.set(self, "pressure_time_limit", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable or disable shard indexing backpressure. Default is false.
-        """
-        enforced: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
-        """
-        operating_factor: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict']]
-        """
-        Operating factor
-        """
-        primary_parameter: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgsDict']]
-        """
-        Primary parameter
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable or disable shard indexing backpressure. Default is false.
+    """
+    enforced: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
+    """
+    operating_factor: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict']]
+    """
+    Operating factor
+    """
+    primary_parameter: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgsDict']]
+    """
+    Primary parameter
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs:
@@ -29667,22 +29022,19 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs:
         pulumi.set(self, "primary_parameter", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict(TypedDict):
-        lower: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
-        """
-        optimal: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
-        """
-        upper: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict(TypedDict):
+    lower: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
+    """
+    optimal: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
+    """
+    upper: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs:
@@ -29739,12 +29091,9 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFact
         pulumi.set(self, "upper", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgsDict(TypedDict):
-        node: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict']]
-        shard: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict']]
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgsDict(TypedDict):
+    node: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict']]
+    shard: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict']]
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs:
@@ -29775,14 +29124,11 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParame
         pulumi.set(self, "shard", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict(TypedDict):
-        soft_limit: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict(TypedDict):
+    soft_limit: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs:
@@ -29807,14 +29153,11 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParame
         pulumi.set(self, "soft_limit", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict(TypedDict):
-        min_limit: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict(TypedDict):
+    min_limit: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs:
@@ -29839,22 +29182,19 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParame
         pulumi.set(self, "min_limit", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigPrivateAccessArgsDict(TypedDict):
-        opensearch: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        opensearch_dashboards: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigPrivateAccessArgsDict(TypedDict):
+    opensearch: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    opensearch_dashboards: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigPrivateAccessArgs:
@@ -29911,22 +29251,19 @@ class OpenSearchOpensearchUserConfigPrivateAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        opensearch: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable opensearch.
-        """
-        opensearch_dashboards: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable opensearch_dashboards.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable prometheus.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    opensearch: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable opensearch.
+    """
+    opensearch_dashboards: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable opensearch_dashboards.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable prometheus.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs:
@@ -29983,22 +29320,19 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigPublicAccessArgsDict(TypedDict):
-        opensearch: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        opensearch_dashboards: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigPublicAccessArgsDict(TypedDict):
+    opensearch: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    opensearch_dashboards: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigPublicAccessArgs:
@@ -30055,66 +29389,63 @@ class OpenSearchOpensearchUserConfigPublicAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigS3MigrationArgsDict(TypedDict):
-        access_key: pulumi.Input[_builtins.str]
-        """
-        AWS Access key.
-        """
-        base_path: pulumi.Input[_builtins.str]
-        """
-        The path to the repository data within its container. The value of this setting should not start or end with a /.
-        """
-        bucket: pulumi.Input[_builtins.str]
-        """
-        S3 bucket name.
-        """
-        indices: pulumi.Input[_builtins.str]
-        """
-        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        S3 region.
-        """
-        secret_key: pulumi.Input[_builtins.str]
-        """
-        AWS secret key.
-        """
-        snapshot_name: pulumi.Input[_builtins.str]
-        """
-        The snapshot name to restore from.
-        """
-        chunk_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
-        """
-        compress: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set to true metadata files are stored in compressed format.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
-        """
-        include_aliases: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to restore aliases alongside their associated indexes. Default is true.
-        """
-        readonly: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the repository is read-only. Default: `true`.
-        """
-        restore_global_state: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, restore the cluster state. Defaults to false.
-        """
-        server_side_encryption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set to true files are encrypted on server side.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigS3MigrationArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigS3MigrationArgsDict(TypedDict):
+    access_key: pulumi.Input[_builtins.str]
+    """
+    AWS Access key.
+    """
+    base_path: pulumi.Input[_builtins.str]
+    """
+    The path to the repository data within its container. The value of this setting should not start or end with a /.
+    """
+    bucket: pulumi.Input[_builtins.str]
+    """
+    S3 bucket name.
+    """
+    indices: pulumi.Input[_builtins.str]
+    """
+    A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    S3 region.
+    """
+    secret_key: pulumi.Input[_builtins.str]
+    """
+    AWS secret key.
+    """
+    snapshot_name: pulumi.Input[_builtins.str]
+    """
+    The snapshot name to restore from.
+    """
+    chunk_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+    """
+    compress: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set to true metadata files are stored in compressed format.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+    """
+    include_aliases: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to restore aliases alongside their associated indexes. Default is true.
+    """
+    readonly: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the repository is read-only. Default: `true`.
+    """
+    restore_global_state: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, restore the cluster state. Defaults to false.
+    """
+    server_side_encryption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set to true files are encrypted on server side.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigS3MigrationArgs:
@@ -30340,41 +29671,38 @@ class OpenSearchOpensearchUserConfigS3MigrationArgs:
         pulumi.set(self, "server_side_encryption", value)
 
 
-if not MYPY:
-    class OpenSearchOpensearchUserConfigSamlArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
-        """
-        idp_entity_id: pulumi.Input[_builtins.str]
-        """
-        The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
-        """
-        idp_metadata_url: pulumi.Input[_builtins.str]
-        """
-        The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
-        """
-        sp_entity_id: pulumi.Input[_builtins.str]
-        """
-        The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
-        """
-        idp_pemtrustedcas_content: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
-        ...
-        -----END CERTIFICATE-----
-        `.
-        """
-        roles_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
-        """
-        subject_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
-        """
-elif False:
-    OpenSearchOpensearchUserConfigSamlArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchOpensearchUserConfigSamlArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
+    """
+    idp_entity_id: pulumi.Input[_builtins.str]
+    """
+    The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
+    """
+    idp_metadata_url: pulumi.Input[_builtins.str]
+    """
+    The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
+    """
+    sp_entity_id: pulumi.Input[_builtins.str]
+    """
+    The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
+    """
+    idp_pemtrustedcas_content: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    `.
+    """
+    roles_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
+    """
+    subject_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
+    """
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigSamlArgs:
@@ -30497,18 +29825,15 @@ class OpenSearchOpensearchUserConfigSamlArgs:
         pulumi.set(self, "subject_key", value)
 
 
-if not MYPY:
-    class OpenSearchServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    OpenSearchServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class OpenSearchServiceIntegrationArgs:
@@ -30547,18 +29872,15 @@ class OpenSearchServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class OpenSearchTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    OpenSearchTagArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class OpenSearchTagArgs:
@@ -30597,14 +29919,11 @@ class OpenSearchTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class OpenSearchTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    OpenSearchTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class OpenSearchTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class OpenSearchTechEmailArgs:
@@ -30628,26 +29947,23 @@ class OpenSearchTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class OrganizationAddressTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    OrganizationAddressTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationAddressTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class OrganizationAddressTimeoutsArgs:
@@ -30720,26 +30036,23 @@ class OrganizationAddressTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class OrganizationApplicationUserTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    OrganizationApplicationUserTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationApplicationUserTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class OrganizationApplicationUserTimeoutsArgs:
@@ -30812,26 +30125,23 @@ class OrganizationApplicationUserTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class OrganizationApplicationUserTokenTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    OrganizationApplicationUserTokenTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationApplicationUserTokenTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class OrganizationApplicationUserTokenTimeoutsArgs:
@@ -30904,26 +30214,23 @@ class OrganizationApplicationUserTokenTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class OrganizationBillingGroupTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    OrganizationBillingGroupTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationBillingGroupTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class OrganizationBillingGroupTimeoutsArgs:
@@ -30996,26 +30303,23 @@ class OrganizationBillingGroupTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class OrganizationGroupProjectTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    OrganizationGroupProjectTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationGroupProjectTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class OrganizationGroupProjectTimeoutsArgs:
@@ -31088,30 +30392,27 @@ class OrganizationGroupProjectTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class OrganizationPermissionPermissionArgsDict(TypedDict):
-        permissions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
-        """
-        principal_id: pulumi.Input[_builtins.str]
-        """
-        ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
-        """
-        principal_type: pulumi.Input[_builtins.str]
-        """
-        An enumeration. The possible values are `user` and `user_group`.
-        """
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Create Time.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Update Time.
-        """
-elif False:
-    OrganizationPermissionPermissionArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationPermissionPermissionArgsDict(TypedDict):
+    permissions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+    """
+    principal_id: pulumi.Input[_builtins.str]
+    """
+    ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
+    """
+    principal_type: pulumi.Input[_builtins.str]
+    """
+    An enumeration. The possible values are `user` and `user_group`.
+    """
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Create Time.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Update Time.
+    """
 
 @pulumi.input_type
 class OrganizationPermissionPermissionArgs:
@@ -31197,26 +30498,23 @@ class OrganizationPermissionPermissionArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class OrganizationPermissionTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    OrganizationPermissionTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationPermissionTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class OrganizationPermissionTimeoutsArgs:
@@ -31289,18 +30587,15 @@ class OrganizationPermissionTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class OrganizationProjectTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Project tag key.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Project tag value.
-        """
-elif False:
-    OrganizationProjectTagArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationProjectTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Project tag key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Project tag value.
+    """
 
 @pulumi.input_type
 class OrganizationProjectTagArgs:
@@ -31339,26 +30634,23 @@ class OrganizationProjectTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class OrganizationProjectTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    OrganizationProjectTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationProjectTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class OrganizationProjectTimeoutsArgs:
@@ -31431,26 +30723,23 @@ class OrganizationProjectTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class OrganizationTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    OrganizationTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class OrganizationTimeoutsArgs:
@@ -31523,26 +30812,23 @@ class OrganizationTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class OrganizationUserGroupMemberTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    OrganizationUserGroupMemberTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationUserGroupMemberTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class OrganizationUserGroupMemberTimeoutsArgs:
@@ -31615,30 +30901,27 @@ class OrganizationUserGroupMemberTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class OrganizationalUnitTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    OrganizationalUnitTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationalUnitTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class OrganizationalUnitTimeoutsArgs:
@@ -31731,46 +31014,43 @@ class OrganizationalUnitTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class PgComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    PgComponentArgsDict: TypeAlias = Mapping[str, Any]
+class PgComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class PgComponentArgs:
@@ -31923,30 +31203,27 @@ class PgComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class PgDatabaseTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    PgDatabaseTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class PgDatabaseTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class PgDatabaseTimeoutsArgs:
@@ -32039,66 +31316,63 @@ class PgDatabaseTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class PgPgArgsDict(TypedDict):
-        bouncer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
-        """
-        dbname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Primary PostgreSQL database name.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL primary node host IP or name.
-        """
-        max_connections: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
-        """
-        params: NotRequired[pulumi.Input[Sequence[pulumi.Input['PgPgParamArgsDict']]]]
-        """
-        PostgreSQL connection parameters.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL admin user password.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL port.
-        """
-        replica_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL replica URI for services with a replica.
-        """
-        sslmode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL SSL mode setting.
-        """
-        standby_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        PostgreSQL standby connection URIs.
-        """
-        syncing_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        PostgreSQL syncing connection URIs.
-        """
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL primary connection URI.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        PostgreSQL primary connection URIs.
-        """
-        user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL admin user name.
-        """
-elif False:
-    PgPgArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgArgsDict(TypedDict):
+    bouncer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+    """
+    dbname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Primary PostgreSQL database name.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL primary node host IP or name.
+    """
+    max_connections: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
+    """
+    params: NotRequired[pulumi.Input[Sequence[pulumi.Input['PgPgParamArgsDict']]]]
+    """
+    PostgreSQL connection parameters.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL admin user password.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL port.
+    """
+    replica_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL replica URI for services with a replica.
+    """
+    sslmode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL SSL mode setting.
+    """
+    standby_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    PostgreSQL standby connection URIs.
+    """
+    syncing_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    PostgreSQL syncing connection URIs.
+    """
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL primary connection URI.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    PostgreSQL primary connection URIs.
+    """
+    user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL admin user name.
+    """
 
 @pulumi.input_type
 class PgPgArgs:
@@ -32335,34 +31609,31 @@ class PgPgArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class PgPgParamArgsDict(TypedDict):
-        database_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Primary PostgreSQL database name.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL host IP or name.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL admin user password.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL port.
-        """
-        sslmode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL SSL mode setting.
-        """
-        user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL admin user name.
-        """
-elif False:
-    PgPgParamArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgParamArgsDict(TypedDict):
+    database_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Primary PostgreSQL database name.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL host IP or name.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL admin user password.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL port.
+    """
+    sslmode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL SSL mode setting.
+    """
+    user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL admin user name.
+    """
 
 @pulumi.input_type
 class PgPgParamArgs:
@@ -32467,154 +31738,151 @@ class PgPgParamArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class PgPgUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        admin_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-        """
-        admin_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-        """
-        backup_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        """
-        backup_interval_hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
-        """
-        backup_minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-        """
-        backup_retention_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
-        """
-        enable_ha_replica_dns: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
-        """
-        enable_ipv6: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        migration: NotRequired[pulumi.Input['PgPgUserConfigMigrationArgsDict']]
-        """
-        Migrate data from existing server
-        """
-        node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of nodes for the service. Example: `3`.
-        """
-        pg: NotRequired[pulumi.Input['PgPgUserConfigPgArgsDict']]
-        """
-        postgresql.conf configuration values
-        """
-        pg_qualstats: NotRequired[pulumi.Input['PgPgUserConfigPgQualstatsArgsDict']]
-        """
-        System-wide settings for the pg*qualstats extension
-        """
-        pg_read_replica: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
-        """
-        pg_service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        pg_stat_monitor_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable the pg*stat*monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
-        """
-        pg_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
-        """
-        pgaudit: NotRequired[pulumi.Input['PgPgUserConfigPgauditArgsDict']]
-        """
-        System-wide settings for the pgaudit extension
-        """
-        pgbouncer: NotRequired[pulumi.Input['PgPgUserConfigPgbouncerArgsDict']]
-        """
-        PGBouncer connection pooling settings
-        """
-        pglookout: NotRequired[pulumi.Input['PgPgUserConfigPglookoutArgsDict']]
-        """
-        System-wide settings for pglookout
-        """
-        private_access: NotRequired[pulumi.Input['PgPgUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['PgPgUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['PgPgUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        recovery_target_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        shared_buffers_percentage: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-        synchronous_replication: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-        """
-        timescaledb: NotRequired[pulumi.Input['PgPgUserConfigTimescaledbArgsDict']]
-        """
-        System-wide settings for the timescaledb extension
-        """
-        variant: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
-        """
-        work_mem: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
-        """
-elif False:
-    PgPgUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    admin_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+    """
+    admin_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
+    """
+    backup_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+    """
+    backup_interval_hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+    """
+    backup_minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+    """
+    backup_retention_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
+    """
+    enable_ha_replica_dns: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
+    """
+    enable_ipv6: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    migration: NotRequired[pulumi.Input['PgPgUserConfigMigrationArgsDict']]
+    """
+    Migrate data from existing server
+    """
+    node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of nodes for the service. Example: `3`.
+    """
+    pg: NotRequired[pulumi.Input['PgPgUserConfigPgArgsDict']]
+    """
+    postgresql.conf configuration values
+    """
+    pg_qualstats: NotRequired[pulumi.Input['PgPgUserConfigPgQualstatsArgsDict']]
+    """
+    System-wide settings for the pg*qualstats extension
+    """
+    pg_read_replica: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+    """
+    pg_service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    pg_stat_monitor_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable the pg*stat*monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
+    """
+    pg_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
+    """
+    pgaudit: NotRequired[pulumi.Input['PgPgUserConfigPgauditArgsDict']]
+    """
+    System-wide settings for the pgaudit extension
+    """
+    pgbouncer: NotRequired[pulumi.Input['PgPgUserConfigPgbouncerArgsDict']]
+    """
+    PGBouncer connection pooling settings
+    """
+    pglookout: NotRequired[pulumi.Input['PgPgUserConfigPglookoutArgsDict']]
+    """
+    System-wide settings for pglookout
+    """
+    private_access: NotRequired[pulumi.Input['PgPgUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['PgPgUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['PgPgUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    recovery_target_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    shared_buffers_percentage: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
+    synchronous_replication: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+    """
+    timescaledb: NotRequired[pulumi.Input['PgPgUserConfigTimescaledbArgsDict']]
+    """
+    System-wide settings for the timescaledb extension
+    """
+    variant: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+    """
+    work_mem: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigArgs:
@@ -33207,18 +32475,15 @@ class PgPgUserConfigArgs:
         pulumi.set(self, "work_mem", value)
 
 
-if not MYPY:
-    class PgPgUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    PgPgUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigIpFilterObjectArgs:
@@ -33258,46 +32523,43 @@ class PgPgUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class PgPgUserConfigMigrationArgsDict(TypedDict):
-        host: pulumi.Input[_builtins.str]
-        """
-        Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port number of the server where to migrate data from. Example: `1234`.
-        """
-        dbname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database name for bootstrapping the initial connection. Example: `defaultdb`.
-        """
-        ignore_dbs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
-        """
-        ignore_roles: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
-        """
-        method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The server where to migrate data from is secured with SSL. Default: `true`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User name for authentication with the server where to migrate data from. Example: `myname`.
-        """
-elif False:
-    PgPgUserConfigMigrationArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigMigrationArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port number of the server where to migrate data from. Example: `1234`.
+    """
+    dbname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database name for bootstrapping the initial connection. Example: `defaultdb`.
+    """
+    ignore_dbs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+    """
+    ignore_roles: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+    """
+    method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The server where to migrate data from is secured with SSL. Default: `true`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User name for authentication with the server where to migrate data from. Example: `myname`.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigMigrationArgs:
@@ -33448,238 +32710,235 @@ class PgPgUserConfigMigrationArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class PgPgUserConfigPgArgsDict(TypedDict):
-        autovacuum_analyze_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-        """
-        autovacuum_analyze_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-        """
-        autovacuum_freeze_max_age: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
-        """
-        autovacuum_max_workers: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
-        """
-        autovacuum_naptime: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
-        """
-        autovacuum_vacuum_cost_delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
-        """
-        autovacuum_vacuum_cost_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
-        """
-        autovacuum_vacuum_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-        """
-        autovacuum_vacuum_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
-        """
-        bgwriter_delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
-        """
-        bgwriter_flush_after: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
-        """
-        bgwriter_lru_maxpages: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-        """
-        bgwriter_lru_multiplier: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
-        """
-        deadlock_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
-        """
-        default_toast_compression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
-        """
-        idle_in_transaction_session_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Time out sessions with open transactions after this number of milliseconds.
-        """
-        io_combine_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
-        """
-        io_max_combine_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
-        """
-        io_max_concurrency: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
-        """
-        io_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `io_uring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
-        """
-        io_workers: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
-        """
-        jit: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Controls system-wide use of Just-in-Time Compilation (JIT).
-        """
-        log_autovacuum_min_duration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
-        """
-        log_error_verbosity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-        """
-        log_line_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
-        """
-        log_min_duration_statement: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Log statements that take more than this number of milliseconds to run, -1 disables.
-        """
-        log_temp_files: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
-        """
-        max_connections: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
-        """
-        max_files_per_process: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
-        """
-        max_locks_per_transaction: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
-        """
-        max_logical_replication_workers: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
-        """
-        max_parallel_workers: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
-        """
-        max_parallel_workers_per_gather: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
-        """
-        max_pred_locks_per_transaction: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
-        """
-        max_prepared_transactions: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
-        """
-        max_replication_slots: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
-        """
-        max_slot_wal_keep_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
-        """
-        max_stack_depth: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
-        """
-        max_standby_archive_delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max standby archive delay in milliseconds. The default is `30000` (upstream default).
-        """
-        max_standby_streaming_delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
-        """
-        max_sync_workers_per_subscription: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of synchronization workers per subscription. The default is `2`.
-        """
-        max_wal_senders: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
-        """
-        max_worker_processes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
-        """
-        password_encryption: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
-        """
-        pg_partman_bgw_dot_interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
-        """
-        pg_partman_bgw_dot_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
-        """
-        pg_stat_monitor_dot_pgsm_enable_query_plan: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
-        """
-        pg_stat_monitor_dot_pgsm_max_buckets: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
-        """
-        pg_stat_statements_dot_track: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-        """
-        temp_file_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PostgreSQL temporary file limit in KiB, -1 for unlimited.
-        """
-        timezone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL service timezone. Example: `Europe/Helsinki`.
-        """
-        track_activity_query_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
-        """
-        track_commit_timestamp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
-        """
-        track_functions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
-        """
-        track_io_timing: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
-        """
-        wal_sender_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
-        """
-        wal_writer_delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
-        """
-elif False:
-    PgPgUserConfigPgArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigPgArgsDict(TypedDict):
+    autovacuum_analyze_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+    """
+    autovacuum_analyze_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
+    """
+    autovacuum_freeze_max_age: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
+    """
+    autovacuum_max_workers: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
+    """
+    autovacuum_naptime: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
+    """
+    autovacuum_vacuum_cost_delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
+    """
+    autovacuum_vacuum_cost_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
+    """
+    autovacuum_vacuum_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+    """
+    autovacuum_vacuum_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
+    """
+    bgwriter_delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
+    """
+    bgwriter_flush_after: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+    """
+    bgwriter_lru_maxpages: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
+    """
+    bgwriter_lru_multiplier: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+    """
+    deadlock_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
+    """
+    default_toast_compression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`. Only available for PostgreSQL 14+.
+    """
+    idle_in_transaction_session_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Time out sessions with open transactions after this number of milliseconds.
+    """
+    io_combine_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units. Version 17 and up only. Default: `16`.
+    """
+    io_max_combine_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
+    """
+    io_max_concurrency: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
+    """
+    io_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `io_uring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
+    """
+    io_workers: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+    """
+    jit: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Controls system-wide use of Just-in-Time Compilation (JIT).
+    """
+    log_autovacuum_min_duration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
+    """
+    log_error_verbosity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+    """
+    log_line_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+    """
+    log_min_duration_statement: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Log statements that take more than this number of milliseconds to run, -1 disables.
+    """
+    log_temp_files: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+    """
+    max_connections: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
+    """
+    max_files_per_process: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
+    """
+    max_locks_per_transaction: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
+    """
+    max_logical_replication_workers: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+    """
+    max_parallel_workers: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
+    """
+    max_parallel_workers_per_gather: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
+    """
+    max_pred_locks_per_transaction: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
+    """
+    max_prepared_transactions: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
+    """
+    max_replication_slots: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
+    """
+    max_slot_wal_keep_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
+    """
+    max_stack_depth: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
+    """
+    max_standby_archive_delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max standby archive delay in milliseconds. The default is `30000` (upstream default).
+    """
+    max_standby_streaming_delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
+    """
+    max_sync_workers_per_subscription: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of synchronization workers per subscription. The default is `2`.
+    """
+    max_wal_senders: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
+    """
+    max_worker_processes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
+    """
+    password_encryption: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
+    """
+    pg_partman_bgw_dot_interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
+    """
+    pg_partman_bgw_dot_role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
+    """
+    pg_stat_monitor_dot_pgsm_enable_query_plan: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+    """
+    pg_stat_monitor_dot_pgsm_max_buckets: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
+    """
+    pg_stat_statements_dot_track: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
+    """
+    temp_file_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PostgreSQL temporary file limit in KiB, -1 for unlimited.
+    """
+    timezone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL service timezone. Example: `Europe/Helsinki`.
+    """
+    track_activity_query_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
+    """
+    track_commit_timestamp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
+    """
+    track_functions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
+    """
+    track_io_timing: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+    """
+    wal_sender_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
+    """
+    wal_writer_delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigPgArgs:
@@ -34600,30 +33859,27 @@ class PgPgUserConfigPgArgs:
         pulumi.set(self, "wal_writer_delay", value)
 
 
-if not MYPY:
-    class PgPgUserConfigPgQualstatsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable / Disable pg_qualstats. Default: `false`.
-        """
-        min_err_estimate_num: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Error estimation num threshold to save quals. Default: `0`.
-        """
-        min_err_estimate_ratio: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Error estimation ratio threshold to save quals. Default: `0`.
-        """
-        track_constants: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable / Disable pg_qualstats constants tracking. Default: `true`.
-        """
-        track_pg_catalog: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Track quals on system catalogs too. Default: `false`.
-        """
-elif False:
-    PgPgUserConfigPgQualstatsArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigPgQualstatsArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable / Disable pg_qualstats. Default: `false`.
+    """
+    min_err_estimate_num: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Error estimation num threshold to save quals. Default: `0`.
+    """
+    min_err_estimate_ratio: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Error estimation ratio threshold to save quals. Default: `0`.
+    """
+    track_constants: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable / Disable pg_qualstats constants tracking. Default: `true`.
+    """
+    track_pg_catalog: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Track quals on system catalogs too. Default: `false`.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigPgQualstatsArgs:
@@ -34732,66 +33988,63 @@ class PgPgUserConfigPgQualstatsArgs:
         pulumi.set(self, "track_pg_catalog", value)
 
 
-if not MYPY:
-    class PgPgUserConfigPgauditArgsDict(TypedDict):
-        feature_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-        """
-        log_catalog: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
-        """
-        log_client: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-        """
-        log_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-        """
-        log_max_string_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-        """
-        log_nested_statements: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-        """
-        log_parameter: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-        """
-        log_parameter_max_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
-        """
-        log_relation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-        """
-        log_rows: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Log Rows. Default: `false`.
-        """
-        log_statement: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-        """
-        log_statement_once: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-        """
-        logs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies which classes of statements will be logged by session audit logging.
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the master role to use for object audit logging.
-        """
-elif False:
-    PgPgUserConfigPgauditArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigPgauditArgsDict(TypedDict):
+    feature_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+    """
+    log_catalog: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
+    """
+    log_client: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+    """
+    log_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
+    """
+    log_max_string_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+    """
+    log_nested_statements: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+    """
+    log_parameter: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+    """
+    log_parameter_max_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+    """
+    log_relation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+    """
+    log_rows: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Log Rows. Default: `false`.
+    """
+    log_statement: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+    """
+    log_statement_once: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+    """
+    logs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies which classes of statements will be logged by session audit logging.
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the master role to use for object audit logging.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigPgauditArgs:
@@ -35024,50 +34277,47 @@ class PgPgUserConfigPgauditArgs:
         pulumi.set(self, "role", value)
 
 
-if not MYPY:
-    class PgPgUserConfigPgbouncerArgsDict(TypedDict):
-        autodb_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
-        """
-        autodb_max_db_connections: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
-        """
-        autodb_pool_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
-        """
-        autodb_pool_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
-        """
-        ignore_startup_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of parameters to ignore when given in startup packet.
-        """
-        max_prepared_statements: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
-        """
-        min_pool_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
-        """
-        server_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
-        """
-        server_lifetime: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
-        """
-        server_reset_query_always: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
-        """
-elif False:
-    PgPgUserConfigPgbouncerArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigPgbouncerArgsDict(TypedDict):
+    autodb_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
+    """
+    autodb_max_db_connections: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
+    """
+    autodb_pool_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
+    """
+    autodb_pool_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
+    """
+    ignore_startup_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of parameters to ignore when given in startup packet.
+    """
+    max_prepared_statements: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+    """
+    min_pool_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
+    """
+    server_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
+    """
+    server_lifetime: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
+    """
+    server_reset_query_always: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigPgbouncerArgs:
@@ -35236,14 +34486,11 @@ class PgPgUserConfigPgbouncerArgs:
         pulumi.set(self, "server_reset_query_always", value)
 
 
-if not MYPY:
-    class PgPgUserConfigPglookoutArgsDict(TypedDict):
-        max_failover_replication_time_lag: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
-        """
-elif False:
-    PgPgUserConfigPglookoutArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigPglookoutArgsDict(TypedDict):
+    max_failover_replication_time_lag: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigPglookoutArgs:
@@ -35268,22 +34515,19 @@ class PgPgUserConfigPglookoutArgs:
         pulumi.set(self, "max_failover_replication_time_lag", value)
 
 
-if not MYPY:
-    class PgPgUserConfigPrivateAccessArgsDict(TypedDict):
-        pg: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    PgPgUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigPrivateAccessArgsDict(TypedDict):
+    pg: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigPrivateAccessArgs:
@@ -35340,22 +34584,19 @@ class PgPgUserConfigPrivateAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class PgPgUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        pg: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable pg.
-        """
-        pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable pgbouncer.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable prometheus.
-        """
-elif False:
-    PgPgUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    pg: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable pg.
+    """
+    pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable pgbouncer.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable prometheus.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigPrivatelinkAccessArgs:
@@ -35412,22 +34653,19 @@ class PgPgUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class PgPgUserConfigPublicAccessArgsDict(TypedDict):
-        pg: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    PgPgUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigPublicAccessArgsDict(TypedDict):
+    pg: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigPublicAccessArgs:
@@ -35484,14 +34722,11 @@ class PgPgUserConfigPublicAccessArgs:
         pulumi.set(self, "prometheus", value)
 
 
-if not MYPY:
-    class PgPgUserConfigTimescaledbArgsDict(TypedDict):
-        max_background_workers: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
-        """
-elif False:
-    PgPgUserConfigTimescaledbArgsDict: TypeAlias = Mapping[str, Any]
+class PgPgUserConfigTimescaledbArgsDict(TypedDict):
+    max_background_workers: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Changing this parameter causes a service restart. Default: `16`.
+    """
 
 @pulumi.input_type
 class PgPgUserConfigTimescaledbArgs:
@@ -35516,18 +34751,15 @@ class PgPgUserConfigTimescaledbArgs:
         pulumi.set(self, "max_background_workers", value)
 
 
-if not MYPY:
-    class PgServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    PgServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class PgServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class PgServiceIntegrationArgs:
@@ -35566,18 +34798,15 @@ class PgServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class PgTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    PgTagArgsDict: TypeAlias = Mapping[str, Any]
+class PgTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class PgTagArgs:
@@ -35616,14 +34845,11 @@ class PgTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class PgTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    PgTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class PgTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class PgTechEmailArgs:
@@ -35647,18 +34873,15 @@ class PgTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class ProjectTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Project tag key.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Project tag value.
-        """
-elif False:
-    ProjectTagArgsDict: TypeAlias = Mapping[str, Any]
+class ProjectTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Project tag key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Project tag value.
+    """
 
 @pulumi.input_type
 class ProjectTagArgs:
@@ -35697,46 +34920,43 @@ class ProjectTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class RedisComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    RedisComponentArgsDict: TypeAlias = Mapping[str, Any]
+class RedisComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class RedisComponentArgs:
@@ -35889,26 +35109,23 @@ class RedisComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class RedisRedisArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Redis password.
-        """
-        replica_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Redis replica server URI.
-        """
-        slave_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Redis slave server URIs.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Redis server URIs.
-        """
-elif False:
-    RedisRedisArgsDict: TypeAlias = Mapping[str, Any]
+class RedisRedisArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Redis password.
+    """
+    replica_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Redis replica server URI.
+    """
+    slave_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Redis slave server URIs.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Redis server URIs.
+    """
 
 @pulumi.input_type
 class RedisRedisArgs:
@@ -35981,118 +35198,115 @@ class RedisRedisArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class RedisRedisUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        backup_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        """
-        backup_minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['RedisRedisUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        migration: NotRequired[pulumi.Input['RedisRedisUserConfigMigrationArgsDict']]
-        """
-        Migrate data from existing server
-        """
-        private_access: NotRequired[pulumi.Input['RedisRedisUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['RedisRedisUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['RedisRedisUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-        """
-        redis_acl_channels_default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
-        """
-        redis_io_threads: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
-        """
-        redis_lfu_decay_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        LFU maxmemory-policy counter decay time in minutes. Default: `1`.
-        """
-        redis_lfu_log_factor: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
-        """
-        redis_maxmemory_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
-        """
-        redis_notify_keyspace_events: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set notify-keyspace-events option.
-        """
-        redis_number_of_databases: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
-        """
-        redis_persistence: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
-        """
-        redis_pubsub_client_output_buffer_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
-        """
-        redis_ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Require SSL to access Redis. Default: `true`.
-        """
-        redis_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Redis idle connection timeout in seconds. Default: `300`.
-        """
-        redis_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `7.0`, and newer. Redis major version.
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-elif False:
-    RedisRedisUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RedisRedisUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    backup_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+    """
+    backup_minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['RedisRedisUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    migration: NotRequired[pulumi.Input['RedisRedisUserConfigMigrationArgsDict']]
+    """
+    Migrate data from existing server
+    """
+    private_access: NotRequired[pulumi.Input['RedisRedisUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['RedisRedisUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['RedisRedisUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+    """
+    redis_acl_channels_default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+    """
+    redis_io_threads: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
+    """
+    redis_lfu_decay_time: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+    """
+    redis_lfu_log_factor: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+    """
+    redis_maxmemory_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
+    """
+    redis_notify_keyspace_events: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set notify-keyspace-events option.
+    """
+    redis_number_of_databases: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
+    """
+    redis_persistence: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+    """
+    redis_pubsub_client_output_buffer_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+    """
+    redis_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Require SSL to access Redis. Default: `true`.
+    """
+    redis_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Redis idle connection timeout in seconds. Default: `300`.
+    """
+    redis_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `7.0`, and newer. Redis major version.
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
 
 @pulumi.input_type
 class RedisRedisUserConfigArgs:
@@ -36537,18 +35751,15 @@ class RedisRedisUserConfigArgs:
         pulumi.set(self, "static_ips", value)
 
 
-if not MYPY:
-    class RedisRedisUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    RedisRedisUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class RedisRedisUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class RedisRedisUserConfigIpFilterObjectArgs:
@@ -36588,46 +35799,43 @@ class RedisRedisUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RedisRedisUserConfigMigrationArgsDict(TypedDict):
-        host: pulumi.Input[_builtins.str]
-        """
-        Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port number of the server where to migrate data from. Example: `1234`.
-        """
-        dbname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database name for bootstrapping the initial connection. Example: `defaultdb`.
-        """
-        ignore_dbs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
-        """
-        ignore_roles: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
-        """
-        method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The server where to migrate data from is secured with SSL. Default: `true`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User name for authentication with the server where to migrate data from. Example: `myname`.
-        """
-elif False:
-    RedisRedisUserConfigMigrationArgsDict: TypeAlias = Mapping[str, Any]
+class RedisRedisUserConfigMigrationArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port number of the server where to migrate data from. Example: `1234`.
+    """
+    dbname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database name for bootstrapping the initial connection. Example: `defaultdb`.
+    """
+    ignore_dbs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+    """
+    ignore_roles: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+    """
+    method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The server where to migrate data from is secured with SSL. Default: `true`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User name for authentication with the server where to migrate data from. Example: `myname`.
+    """
 
 @pulumi.input_type
 class RedisRedisUserConfigMigrationArgs:
@@ -36778,18 +35986,15 @@ class RedisRedisUserConfigMigrationArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class RedisRedisUserConfigPrivateAccessArgsDict(TypedDict):
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        redis: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to redis with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    RedisRedisUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class RedisRedisUserConfigPrivateAccessArgsDict(TypedDict):
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    redis: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to redis with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class RedisRedisUserConfigPrivateAccessArgs:
@@ -36830,18 +36035,15 @@ class RedisRedisUserConfigPrivateAccessArgs:
         pulumi.set(self, "redis", value)
 
 
-if not MYPY:
-    class RedisRedisUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable prometheus.
-        """
-        redis: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable redis.
-        """
-elif False:
-    RedisRedisUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class RedisRedisUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable prometheus.
+    """
+    redis: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable redis.
+    """
 
 @pulumi.input_type
 class RedisRedisUserConfigPrivatelinkAccessArgs:
@@ -36882,18 +36084,15 @@ class RedisRedisUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "redis", value)
 
 
-if not MYPY:
-    class RedisRedisUserConfigPublicAccessArgsDict(TypedDict):
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        redis: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    RedisRedisUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class RedisRedisUserConfigPublicAccessArgsDict(TypedDict):
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    redis: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class RedisRedisUserConfigPublicAccessArgs:
@@ -36934,18 +36133,15 @@ class RedisRedisUserConfigPublicAccessArgs:
         pulumi.set(self, "redis", value)
 
 
-if not MYPY:
-    class RedisServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration. The possible value is `read_replica`.
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    RedisServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class RedisServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration. The possible value is `read_replica`.
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class RedisServiceIntegrationArgs:
@@ -36984,18 +36180,15 @@ class RedisServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class RedisTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    RedisTagArgsDict: TypeAlias = Mapping[str, Any]
+class RedisTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class RedisTagArgs:
@@ -37034,14 +36227,11 @@ class RedisTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class RedisTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    RedisTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class RedisTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class RedisTechEmailArgs:
@@ -37065,14 +36255,11 @@ class RedisTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class ServiceIntegrationClickhouseCredentialsUserConfigArgsDict(TypedDict):
-        grants: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigGrantArgsDict']]]]
-        """
-        Grants to assign
-        """
-elif False:
-    ServiceIntegrationClickhouseCredentialsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationClickhouseCredentialsUserConfigArgsDict(TypedDict):
+    grants: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigGrantArgsDict']]]]
+    """
+    Grants to assign
+    """
 
 @pulumi.input_type
 class ServiceIntegrationClickhouseCredentialsUserConfigArgs:
@@ -37097,14 +36284,11 @@ class ServiceIntegrationClickhouseCredentialsUserConfigArgs:
         pulumi.set(self, "grants", value)
 
 
-if not MYPY:
-    class ServiceIntegrationClickhouseCredentialsUserConfigGrantArgsDict(TypedDict):
-        user: pulumi.Input[_builtins.str]
-        """
-        User or role to assign the grant to. Example: `alice`.
-        """
-elif False:
-    ServiceIntegrationClickhouseCredentialsUserConfigGrantArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationClickhouseCredentialsUserConfigGrantArgsDict(TypedDict):
+    user: pulumi.Input[_builtins.str]
+    """
+    User or role to assign the grant to. Example: `alice`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationClickhouseCredentialsUserConfigGrantArgs:
@@ -37128,14 +36312,11 @@ class ServiceIntegrationClickhouseCredentialsUserConfigGrantArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class ServiceIntegrationClickhouseKafkaUserConfigArgsDict(TypedDict):
-        tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableArgsDict']]]]
-        """
-        Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
-        """
-elif False:
-    ServiceIntegrationClickhouseKafkaUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationClickhouseKafkaUserConfigArgsDict(TypedDict):
+    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableArgsDict']]]]
+    """
+    Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
+    """
 
 @pulumi.input_type
 class ServiceIntegrationClickhouseKafkaUserConfigArgs:
@@ -37160,102 +36341,99 @@ class ServiceIntegrationClickhouseKafkaUserConfigArgs:
         pulumi.set(self, "tables", value)
 
 
-if not MYPY:
-    class ServiceIntegrationClickhouseKafkaUserConfigTableArgsDict(TypedDict):
-        columns: pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgsDict']]]
-        """
-        Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
-        """
-        data_format: pulumi.Input[_builtins.str]
-        """
-        Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
-        """
-        group_name: pulumi.Input[_builtins.str]
-        """
-        The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
-        """
-        topics: pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgsDict']]]
-        """
-        Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
-        """
-        auto_offset_reset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
-        """
-        date_time_input_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
-        """
-        handle_error_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
-        """
-        max_block_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
-        """
-        max_rows_per_message: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
-        """
-        num_consumers: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
-        """
-        poll_max_batch_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
-        """
-        poll_max_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
-        """
-        producer_batch_num_messages: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
-        """
-        producer_batch_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
-        """
-        producer_compression_codec: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
-        """
-        producer_compression_level: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
-        """
-        producer_linger_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
-        """
-        producer_queue_buffering_max_kbytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum size of the buffer in kilobytes before sending.
-        """
-        producer_queue_buffering_max_messages: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of messages to buffer before sending. Default: `100000`.
-        """
-        producer_request_required_acks: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
-        """
-        skip_broken_messages: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
-        """
-        thread_per_consumer: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
-        """
-elif False:
-    ServiceIntegrationClickhouseKafkaUserConfigTableArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationClickhouseKafkaUserConfigTableArgsDict(TypedDict):
+    columns: pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgsDict']]]
+    """
+    Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
+    """
+    data_format: pulumi.Input[_builtins.str]
+    """
+    Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. The format of the messages in the Kafka topics. Determines how ClickHouse parses and serializes the data (e.g., JSON, CSV, Avro). Default: `JSONEachRow`.
+    """
+    group_name: pulumi.Input[_builtins.str]
+    """
+    The Kafka consumer group name. Multiple consumers with the same group name will share the workload and maintain offset positions. Default: `clickhouse`.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the ClickHouse table to be created. This table can consume data from and write data to the specified Kafka topics. Example: `events`.
+    """
+    topics: pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgsDict']]]
+    """
+    Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
+    """
+    auto_offset_reset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
+    """
+    date_time_input_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
+    """
+    handle_error_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+    """
+    max_block_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
+    """
+    max_rows_per_message: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
+    """
+    num_consumers: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
+    """
+    poll_max_batch_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of messages to fetch in a single Kafka poll operation for reading. Default: `0`.
+    """
+    poll_max_timeout_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
+    """
+    producer_batch_num_messages: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of messages in a batch sent to Kafka. If the number of messages exceeds this value, the batch is sent. Default: `10000`.
+    """
+    producer_batch_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum size in bytes of a batch of messages sent to Kafka. If the batch size is exceeded, the batch is sent.
+    """
+    producer_compression_codec: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. The compression codec to use when sending a batch of messages to Kafka. Default: `none`.
+    """
+    producer_compression_level: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The compression level to use when sending a batch of messages to Kafka. Usable range is algorithm-dependent: [0-9] for gzip; [0-12] for lz4; only 0 for snappy; -1 = codec-dependent default compression level. Default: `-1`.
+    """
+    producer_linger_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time in milliseconds to wait for additional messages before sending a batch. If the time is exceeded, the batch is sent. Default: `5`.
+    """
+    producer_queue_buffering_max_kbytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum size of the buffer in kilobytes before sending.
+    """
+    producer_queue_buffering_max_messages: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of messages to buffer before sending. Default: `100000`.
+    """
+    producer_request_required_acks: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of acknowledgements the leader broker must receive from ISR brokers before responding to the request: 0=Broker does not send any response/ack to client, -1 will block until message is committed by all in sync replicas (ISRs). Default: `-1`.
+    """
+    skip_broken_messages: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of broken messages to skip before stopping processing when reading from Kafka. Useful for handling corrupted data without failing the entire integration. Default: `0`.
+    """
+    thread_per_consumer: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When enabled, each consumer runs in its own thread, providing better isolation and potentially better performance for high-throughput scenarios. Default: `false`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
@@ -37627,18 +36805,15 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
         pulumi.set(self, "thread_per_consumer", value)
 
 
-if not MYPY:
-    class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
-        """
-elif False:
-    ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the column in the ClickHouse table. This should match the field names in your Kafka message format. Example: `key`.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs:
@@ -37677,14 +36852,11 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
-        """
-elif False:
-    ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the Kafka topic to read messages from or write messages to. The topic must exist in the Kafka cluster. Example: `topic_name`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs:
@@ -37708,14 +36880,11 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class ServiceIntegrationClickhousePostgresqlUserConfigArgsDict(TypedDict):
-        databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgsDict']]]]
-        """
-        Databases to expose
-        """
-elif False:
-    ServiceIntegrationClickhousePostgresqlUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationClickhousePostgresqlUserConfigArgsDict(TypedDict):
+    databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgsDict']]]]
+    """
+    Databases to expose
+    """
 
 @pulumi.input_type
 class ServiceIntegrationClickhousePostgresqlUserConfigArgs:
@@ -37740,18 +36909,15 @@ class ServiceIntegrationClickhousePostgresqlUserConfigArgs:
         pulumi.set(self, "databases", value)
 
 
-if not MYPY:
-    class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgsDict(TypedDict):
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL database to expose. Default: `defaultdb`.
-        """
-        schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PostgreSQL schema to expose. Default: `public`.
-        """
-elif False:
-    ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgsDict(TypedDict):
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL database to expose. Default: `defaultdb`.
+    """
+    schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PostgreSQL schema to expose. Default: `public`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs:
@@ -37792,58 +36958,55 @@ class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs:
         pulumi.set(self, "schema", value)
 
 
-if not MYPY:
-    class ServiceIntegrationDatadogUserConfigArgsDict(TypedDict):
-        datadog_dbm_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Datadog Database Monitoring.
-        """
-        datadog_pgbouncer_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Datadog PgBouncer Metric Tracking.
-        """
-        datadog_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgsDict']]]]
-        """
-        Custom tags provided by user
-        """
-        exclude_consumer_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of custom metrics.
-        """
-        exclude_topics: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of topics to exclude.
-        """
-        include_consumer_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of custom metrics.
-        """
-        include_topics: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of topics to include.
-        """
-        kafka_custom_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of custom metrics.
-        """
-        max_jmx_metrics: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of JMX metrics to send. Example: `2000`.
-        """
-        mirrormaker_custom_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of custom metrics.
-        """
-        opensearch: NotRequired[pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgsDict']]
-        """
-        Datadog Opensearch Options
-        """
-        redis: NotRequired[pulumi.Input['ServiceIntegrationDatadogUserConfigRedisArgsDict']]
-        """
-        Datadog Redis Options
-        """
-elif False:
-    ServiceIntegrationDatadogUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationDatadogUserConfigArgsDict(TypedDict):
+    datadog_dbm_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Datadog Database Monitoring.
+    """
+    datadog_pgbouncer_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Datadog PgBouncer Metric Tracking.
+    """
+    datadog_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgsDict']]]]
+    """
+    Custom tags provided by user
+    """
+    exclude_consumer_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of custom metrics.
+    """
+    exclude_topics: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of topics to exclude.
+    """
+    include_consumer_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of custom metrics.
+    """
+    include_topics: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of topics to include.
+    """
+    kafka_custom_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of custom metrics.
+    """
+    max_jmx_metrics: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of JMX metrics to send. Example: `2000`.
+    """
+    mirrormaker_custom_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of custom metrics.
+    """
+    opensearch: NotRequired[pulumi.Input['ServiceIntegrationDatadogUserConfigOpensearchArgsDict']]
+    """
+    Datadog Opensearch Options
+    """
+    redis: NotRequired[pulumi.Input['ServiceIntegrationDatadogUserConfigRedisArgsDict']]
+    """
+    Datadog Redis Options
+    """
 
 @pulumi.input_type
 class ServiceIntegrationDatadogUserConfigArgs:
@@ -38044,18 +37207,15 @@ class ServiceIntegrationDatadogUserConfigArgs:
         pulumi.set(self, "redis", value)
 
 
-if not MYPY:
-    class ServiceIntegrationDatadogUserConfigDatadogTagArgsDict(TypedDict):
-        tag: pulumi.Input[_builtins.str]
-        """
-        Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
-        """
-        comment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional tag explanation. Example: `Used to tag primary replica metrics`.
-        """
-elif False:
-    ServiceIntegrationDatadogUserConfigDatadogTagArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationDatadogUserConfigDatadogTagArgsDict(TypedDict):
+    tag: pulumi.Input[_builtins.str]
+    """
+    Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+    """
+    comment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional tag explanation. Example: `Used to tag primary replica metrics`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationDatadogUserConfigDatadogTagArgs:
@@ -38095,26 +37255,23 @@ class ServiceIntegrationDatadogUserConfigDatadogTagArgs:
         pulumi.set(self, "comment", value)
 
 
-if not MYPY:
-    class ServiceIntegrationDatadogUserConfigOpensearchArgsDict(TypedDict):
-        cluster_stats_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Datadog Opensearch Cluster Monitoring.
-        """
-        index_stats_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Datadog Opensearch Index Monitoring.
-        """
-        pending_task_stats_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Datadog Opensearch Pending Task Monitoring.
-        """
-        pshard_stats_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Datadog Opensearch Primary Shard Monitoring.
-        """
-elif False:
-    ServiceIntegrationDatadogUserConfigOpensearchArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationDatadogUserConfigOpensearchArgsDict(TypedDict):
+    cluster_stats_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Datadog Opensearch Cluster Monitoring.
+    """
+    index_stats_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Datadog Opensearch Index Monitoring.
+    """
+    pending_task_stats_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Datadog Opensearch Pending Task Monitoring.
+    """
+    pshard_stats_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Datadog Opensearch Primary Shard Monitoring.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationDatadogUserConfigOpensearchArgs:
@@ -38187,14 +37344,11 @@ class ServiceIntegrationDatadogUserConfigOpensearchArgs:
         pulumi.set(self, "pshard_stats_enabled", value)
 
 
-if not MYPY:
-    class ServiceIntegrationDatadogUserConfigRedisArgsDict(TypedDict):
-        command_stats_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable command_stats option in the agent's configuration. Default: `false`.
-        """
-elif False:
-    ServiceIntegrationDatadogUserConfigRedisArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationDatadogUserConfigRedisArgsDict(TypedDict):
+    command_stats_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable command_stats option in the agent's configuration. Default: `false`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationDatadogUserConfigRedisArgs:
@@ -38219,14 +37373,11 @@ class ServiceIntegrationDatadogUserConfigRedisArgs:
         pulumi.set(self, "command_stats_enabled", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointAutoscalerUserConfigArgsDict(TypedDict):
-        autoscalings: pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgsDict']]]
-        """
-        Configure autoscaling thresholds for a service
-        """
-elif False:
-    ServiceIntegrationEndpointAutoscalerUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointAutoscalerUserConfigArgsDict(TypedDict):
+    autoscalings: pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgsDict']]]
+    """
+    Configure autoscaling thresholds for a service
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointAutoscalerUserConfigArgs:
@@ -38250,18 +37401,15 @@ class ServiceIntegrationEndpointAutoscalerUserConfigArgs:
         pulumi.set(self, "autoscalings", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgsDict(TypedDict):
-        cap_gb: pulumi.Input[_builtins.int]
-        """
-        The maximum total disk size (in gb) to allow autoscaler to scale up to. Example: `300`.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Enum: `autoscale_disk`. Type of autoscale event.
-        """
-elif False:
-    ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgsDict(TypedDict):
+    cap_gb: pulumi.Input[_builtins.int]
+    """
+    The maximum total disk size (in gb) to allow autoscaler to scale up to. Example: `300`.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Enum: `autoscale_disk`. Type of autoscale event.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs:
@@ -38300,42 +37448,39 @@ class ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointDatadogUserConfigArgsDict(TypedDict):
-        datadog_api_key: pulumi.Input[_builtins.str]
-        """
-        Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
-        """
-        datadog_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgsDict']]]]
-        """
-        Custom tags provided by user
-        """
-        disable_consumer_stats: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Disable consumer group metrics.
-        """
-        extra_tags_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Extra tags prefix. Defaults to aiven.
-        """
-        kafka_consumer_check_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
-        """
-        kafka_consumer_stats_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
-        """
-        max_partition_contexts: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of partition contexts to send. Example: `32000`.
-        """
-        site: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
-        """
-elif False:
-    ServiceIntegrationEndpointDatadogUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointDatadogUserConfigArgsDict(TypedDict):
+    datadog_api_key: pulumi.Input[_builtins.str]
+    """
+    Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
+    """
+    datadog_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgsDict']]]]
+    """
+    Custom tags provided by user
+    """
+    disable_consumer_stats: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disable consumer group metrics.
+    """
+    extra_tags_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Extra tags prefix. Defaults to aiven.
+    """
+    kafka_consumer_check_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
+    """
+    kafka_consumer_stats_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
+    """
+    max_partition_contexts: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of partition contexts to send. Example: `32000`.
+    """
+    site: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointDatadogUserConfigArgs:
@@ -38471,18 +37616,15 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
         pulumi.set(self, "site", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgsDict(TypedDict):
-        tag: pulumi.Input[_builtins.str]
-        """
-        Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
-        """
-        comment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional tag explanation. Example: `Used to tag primary replica metrics`.
-        """
-elif False:
-    ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgsDict(TypedDict):
+    tag: pulumi.Input[_builtins.str]
+    """
+    Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+    """
+    comment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional tag explanation. Example: `Used to tag primary replica metrics`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs:
@@ -38522,26 +37664,23 @@ class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs:
         pulumi.set(self, "comment", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict(TypedDict):
-        access_key: pulumi.Input[_builtins.str]
-        """
-        AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        AWS region. Example: `us-east-1`.
-        """
-        secret_key: pulumi.Input[_builtins.str]
-        """
-        AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
-        """
-        log_group_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AWS CloudWatch log group name. Example: `my-log-group`.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict(TypedDict):
+    access_key: pulumi.Input[_builtins.str]
+    """
+    AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    AWS region. Example: `us-east-1`.
+    """
+    secret_key: pulumi.Input[_builtins.str]
+    """
+    AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+    """
+    log_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AWS CloudWatch log group name. Example: `my-log-group`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
@@ -38611,26 +37750,23 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs:
         pulumi.set(self, "log_group_name", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict(TypedDict):
-        access_key: pulumi.Input[_builtins.str]
-        """
-        AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
-        """
-        namespace: pulumi.Input[_builtins.str]
-        """
-        AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        AWS region. Example: `us-east-1`.
-        """
-        secret_key: pulumi.Input[_builtins.str]
-        """
-        AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict(TypedDict):
+    access_key: pulumi.Input[_builtins.str]
+    """
+    AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
+    """
+    namespace: pulumi.Input[_builtins.str]
+    """
+    AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    AWS region. Example: `us-east-1`.
+    """
+    secret_key: pulumi.Input[_builtins.str]
+    """
+    AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs:
@@ -38699,22 +37835,19 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs:
         pulumi.set(self, "secret_key", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalAwsS3UserConfigArgsDict(TypedDict):
-        access_key_id: pulumi.Input[_builtins.str]
-        """
-        Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.
-        """
-        secret_access_key: pulumi.Input[_builtins.str]
-        """
-        Secret Access Key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        S3-compatible bucket URL. Example: `https://mybucket.s3-myregion.amazonaws.com/mydataset/`.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalAwsS3UserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalAwsS3UserConfigArgsDict(TypedDict):
+    access_key_id: pulumi.Input[_builtins.str]
+    """
+    Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.
+    """
+    secret_access_key: pulumi.Input[_builtins.str]
+    """
+    Secret Access Key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    S3-compatible bucket URL. Example: `https://mybucket.s3-myregion.amazonaws.com/mydataset/`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalAwsS3UserConfigArgs:
@@ -38768,22 +37901,19 @@ class ServiceIntegrationEndpointExternalAwsS3UserConfigArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict(TypedDict):
-        connection_string: pulumi.Input[_builtins.str]
-        """
-        Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.
-        """
-        container: pulumi.Input[_builtins.str]
-        """
-        Container. Example: `container-dev`.
-        """
-        blob_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Blob path. Example: `path/to/blob/file.csv`.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict(TypedDict):
+    connection_string: pulumi.Input[_builtins.str]
+    """
+    Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.
+    """
+    container: pulumi.Input[_builtins.str]
+    """
+    Container. Example: `container-dev`.
+    """
+    blob_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Blob path. Example: `path/to/blob/file.csv`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs:
@@ -38838,26 +37968,23 @@ class ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs:
         pulumi.set(self, "blob_path", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalClickhouseUserConfigArgsDict(TypedDict):
-        host: pulumi.Input[_builtins.str]
-        """
-        Hostname or IP address of the server. Example: `my.server.com`.
-        """
-        password: pulumi.Input[_builtins.str]
-        """
-        Password. Example: `jjKk45Nnd`.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Secure TCP server port. Example: `9440`.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        User name. Example: `default`.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalClickhouseUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalClickhouseUserConfigArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Hostname or IP address of the server. Example: `my.server.com`.
+    """
+    password: pulumi.Input[_builtins.str]
+    """
+    Password. Example: `jjKk45Nnd`.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Secure TCP server port. Example: `9440`.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    User name. Example: `default`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalClickhouseUserConfigArgs:
@@ -38926,33 +38053,30 @@ class ServiceIntegrationEndpointExternalClickhouseUserConfigArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict(TypedDict):
-        index_prefix: pulumi.Input[_builtins.str]
-        """
-        Elasticsearch index prefix. Default: `logs`.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        Elasticsearch connection URL. Example: `https://user:passwd@logs.example.com/`.
-        """
-        ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
-        ...
-        -----END CERTIFICATE-----
-        `.
-        """
-        index_days_max: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of days of logs to keep. Default: `3`.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Elasticsearch request timeout limit. Default: `10`.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict(TypedDict):
+    index_prefix: pulumi.Input[_builtins.str]
+    """
+    Elasticsearch index prefix. Default: `logs`.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    Elasticsearch connection URL. Example: `https://user:passwd@logs.example.com/`.
+    """
+    ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    `.
+    """
+    index_days_max: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of days of logs to keep. Default: `3`.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Elasticsearch request timeout limit. Default: `10`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
@@ -39045,18 +38169,15 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict(TypedDict):
-        project_id: pulumi.Input[_builtins.str]
-        """
-        GCP project id. Example: `snappy-photon-12345`.
-        """
-        service_account_credentials: pulumi.Input[_builtins.str]
-        """
-        This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "service_account", ...`.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict(TypedDict):
+    project_id: pulumi.Input[_builtins.str]
+    """
+    GCP project id. Example: `snappy-photon-12345`.
+    """
+    service_account_credentials: pulumi.Input[_builtins.str]
+    """
+    This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "service_account", ...`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs:
@@ -39095,22 +38216,19 @@ class ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs:
         pulumi.set(self, "service_account_credentials", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgsDict(TypedDict):
-        log_id: pulumi.Input[_builtins.str]
-        """
-        Google Cloud Logging log id. Example: `syslog`.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        GCP project id. Example: `snappy-photon-12345`.
-        """
-        service_account_credentials: pulumi.Input[_builtins.str]
-        """
-        This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "service_account", ...`.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgsDict(TypedDict):
+    log_id: pulumi.Input[_builtins.str]
+    """
+    Google Cloud Logging log id. Example: `syslog`.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    GCP project id. Example: `snappy-photon-12345`.
+    """
+    service_account_credentials: pulumi.Input[_builtins.str]
+    """
+    This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "service_account", ...`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs:
@@ -39164,55 +38282,52 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs:
         pulumi.set(self, "service_account_credentials", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalKafkaUserConfigArgsDict(TypedDict):
-        bootstrap_servers: pulumi.Input[_builtins.str]
-        """
-        Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
-        """
-        security_protocol: pulumi.Input[_builtins.str]
-        """
-        Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
-        """
-        sasl_mechanism: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
-        """
-        sasl_plain_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
-        """
-        sasl_plain_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
-        """
-        ssl_ca_cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
-        ...
-        -----END CERTIFICATE-----
-        `.
-        """
-        ssl_client_cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
-        ...
-        -----END CERTIFICATE-----
-        `.
-        """
-        ssl_client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
-        ...
-        -----END PRIVATE KEY-----
-        `.
-        """
-        ssl_endpoint_identification_algorithm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalKafkaUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalKafkaUserConfigArgsDict(TypedDict):
+    bootstrap_servers: pulumi.Input[_builtins.str]
+    """
+    Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
+    """
+    security_protocol: pulumi.Input[_builtins.str]
+    """
+    Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
+    """
+    sasl_mechanism: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
+    """
+    sasl_plain_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+    """
+    sasl_plain_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+    """
+    ssl_ca_cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    `.
+    """
+    ssl_client_cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    `.
+    """
+    ssl_client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+    ...
+    -----END PRIVATE KEY-----
+    `.
+    """
+    ssl_endpoint_identification_algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
@@ -39381,37 +38496,34 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
         pulumi.set(self, "ssl_endpoint_identification_algorithm", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalMysqlUserConfigArgsDict(TypedDict):
-        host: pulumi.Input[_builtins.str]
-        """
-        Hostname or IP address of the server. Example: `my.server.com`.
-        """
-        password: pulumi.Input[_builtins.str]
-        """
-        Password. Example: `jjKk45Nnd`.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port number of the server. Example: `5432`.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        User name. Example: `myname`.
-        """
-        ssl_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `verify-full`. SSL Mode. Default: `verify-full`.
-        """
-        ssl_root_cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
-        ...
-        -----END CERTIFICATE-----
-        `.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalMysqlUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalMysqlUserConfigArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Hostname or IP address of the server. Example: `my.server.com`.
+    """
+    password: pulumi.Input[_builtins.str]
+    """
+    Password. Example: `jjKk45Nnd`.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port number of the server. Example: `5432`.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    User name. Example: `myname`.
+    """
+    ssl_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `verify-full`. SSL Mode. Default: `verify-full`.
+    """
+    ssl_root_cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    `.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalMysqlUserConfigArgs:
@@ -39518,33 +38630,30 @@ class ServiceIntegrationEndpointExternalMysqlUserConfigArgs:
         pulumi.set(self, "ssl_root_cert", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict(TypedDict):
-        index_prefix: pulumi.Input[_builtins.str]
-        """
-        OpenSearch index prefix. Default: `logs`.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        OpenSearch connection URL. Example: `https://user:passwd@logs.example.com/`.
-        """
-        ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
-        ...
-        -----END CERTIFICATE-----
-        `.
-        """
-        index_days_max: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of days of logs to keep. Default: `3`.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        OpenSearch request timeout limit. Default: `10`.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict(TypedDict):
+    index_prefix: pulumi.Input[_builtins.str]
+    """
+    OpenSearch index prefix. Default: `logs`.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    OpenSearch connection URL. Example: `https://user:passwd@logs.example.com/`.
+    """
+    ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    `.
+    """
+    index_days_max: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of days of logs to keep. Default: `3`.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    OpenSearch request timeout limit. Default: `10`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs:
@@ -39637,54 +38746,51 @@ class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalPostgresqlArgsDict(TypedDict):
-        host: pulumi.Input[_builtins.str]
-        """
-        Hostname or IP address of the server. Example: `my.server.com`.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port number of the server. Example: `5432`.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        User name. Example: `myname`.
-        """
-        default_database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default database. Example: `testdb`.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password. Example: `jjKk45Nnd`.
-        """
-        ssl_client_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Client certificate. Example: `-----BEGIN CERTIFICATE-----
-        ...
-        -----END CERTIFICATE-----
-        `.
-        """
-        ssl_client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Client key. Example: `-----BEGIN PRIVATE KEY-----
-        ...
-        -----END PRIVATE KEY-----`.
-        """
-        ssl_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
-        """
-        ssl_root_cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
-        ...
-        -----END CERTIFICATE-----
-        `.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalPostgresqlArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalPostgresqlArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Hostname or IP address of the server. Example: `my.server.com`.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port number of the server. Example: `5432`.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    User name. Example: `myname`.
+    """
+    default_database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default database. Example: `testdb`.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password. Example: `jjKk45Nnd`.
+    """
+    ssl_client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Client certificate. Example: `-----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    `.
+    """
+    ssl_client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Client key. Example: `-----BEGIN PRIVATE KEY-----
+    ...
+    -----END PRIVATE KEY-----`.
+    """
+    ssl_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection. Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+    """
+    ssl_root_cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    `.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalPostgresqlArgs:
@@ -39850,22 +38956,19 @@ class ServiceIntegrationEndpointExternalPostgresqlArgs:
         pulumi.set(self, "ssl_root_cert", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalPrometheusUserConfigArgsDict(TypedDict):
-        basic_auth_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prometheus basic authentication password. Example: `fhyFNBjj3R`.
-        """
-        basic_auth_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prometheus basic authentication username. Example: `prom4851`.
-        """
-        service_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prometheus enabled write endpoint. Example: `https://write.example.com/`.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalPrometheusUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalPrometheusUserConfigArgsDict(TypedDict):
+    basic_auth_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prometheus basic authentication password. Example: `fhyFNBjj3R`.
+    """
+    basic_auth_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prometheus basic authentication username. Example: `prom4851`.
+    """
+    service_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prometheus enabled write endpoint. Example: `https://write.example.com/`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalPrometheusUserConfigArgs:
@@ -39922,26 +39025,23 @@ class ServiceIntegrationEndpointExternalPrometheusUserConfigArgs:
         pulumi.set(self, "service_uri", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgsDict(TypedDict):
-        authentication: pulumi.Input[_builtins.str]
-        """
-        Enum: `basic`, `none`. Authentication method.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
-        """
-        basic_auth_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Basic authentication password. Example: `Zm9vYg==`.
-        """
-        basic_auth_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Basic authentication user name. Example: `avnadmin`.
-        """
-elif False:
-    ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgsDict(TypedDict):
+    authentication: pulumi.Input[_builtins.str]
+    """
+    Enum: `basic`, `none`. Authentication method.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
+    """
+    basic_auth_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Basic authentication password. Example: `Zm9vYg==`.
+    """
+    basic_auth_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Basic authentication user name. Example: `avnadmin`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
@@ -40012,18 +39112,15 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
         pulumi.set(self, "basic_auth_username", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointJolokiaUserConfigArgsDict(TypedDict):
-        basic_auth_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Jolokia basic authentication password. Example: `yhfBNFii4C`.
-        """
-        basic_auth_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Jolokia basic authentication username. Example: `jol48k51`.
-        """
-elif False:
-    ServiceIntegrationEndpointJolokiaUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointJolokiaUserConfigArgsDict(TypedDict):
+    basic_auth_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Jolokia basic authentication password. Example: `yhfBNFii4C`.
+    """
+    basic_auth_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Jolokia basic authentication username. Example: `jol48k51`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointJolokiaUserConfigArgs:
@@ -40064,18 +39161,15 @@ class ServiceIntegrationEndpointJolokiaUserConfigArgs:
         pulumi.set(self, "basic_auth_username", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointPrometheusUserConfigArgsDict(TypedDict):
-        basic_auth_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prometheus basic authentication password. Example: `fhyFNBjj3R`.
-        """
-        basic_auth_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prometheus basic authentication username. Example: `prom4851`.
-        """
-elif False:
-    ServiceIntegrationEndpointPrometheusUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointPrometheusUserConfigArgsDict(TypedDict):
+    basic_auth_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prometheus basic authentication password. Example: `fhyFNBjj3R`.
+    """
+    basic_auth_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prometheus basic authentication username. Example: `prom4851`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointPrometheusUserConfigArgs:
@@ -40116,59 +39210,56 @@ class ServiceIntegrationEndpointPrometheusUserConfigArgs:
         pulumi.set(self, "basic_auth_username", value)
 
 
-if not MYPY:
-    class ServiceIntegrationEndpointRsyslogUserConfigArgsDict(TypedDict):
-        format: pulumi.Input[_builtins.str]
-        """
-        Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Rsyslog server port. Default: `514`.
-        """
-        server: pulumi.Input[_builtins.str]
-        """
-        Rsyslog server IP address or hostname. Example: `logs.example.com`.
-        """
-        tls: pulumi.Input[_builtins.bool]
-        """
-        Require TLS. Default: `true`.
-        """
-        ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
-        ...
-        -----END CERTIFICATE-----
-        `.
-        """
-        cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
-        ...
-        -----END CERTIFICATE-----
-        `.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
-        ...
-        -----END PRIVATE KEY-----
-        `.
-        """
-        logline: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom syslog message format. Example: `<%pri%>%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
-        """
-        max_message_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Rsyslog max message size. Default: `8192`.
-        """
-        sd: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Structured data block for log message. Example: `TOKEN tag="LiteralValue"`.
-        """
-elif False:
-    ServiceIntegrationEndpointRsyslogUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationEndpointRsyslogUserConfigArgsDict(TypedDict):
+    format: pulumi.Input[_builtins.str]
+    """
+    Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Rsyslog server port. Default: `514`.
+    """
+    server: pulumi.Input[_builtins.str]
+    """
+    Rsyslog server IP address or hostname. Example: `logs.example.com`.
+    """
+    tls: pulumi.Input[_builtins.bool]
+    """
+    Require TLS. Default: `true`.
+    """
+    ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    `.
+    """
+    cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    `.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+    ...
+    -----END PRIVATE KEY-----
+    `.
+    """
+    logline: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom syslog message format. Example: `<%pri%>%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
+    """
+    max_message_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Rsyslog max message size. Default: `8192`.
+    """
+    sd: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Structured data block for log message. Example: `TOKEN tag="LiteralValue"`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationEndpointRsyslogUserConfigArgs:
@@ -40351,14 +39442,11 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
         pulumi.set(self, "sd", value)
 
 
-if not MYPY:
-    class ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict(TypedDict):
-        selected_log_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
-        """
-elif False:
-    ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict(TypedDict):
+    selected_log_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs:
@@ -40383,18 +39471,15 @@ class ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs:
         pulumi.set(self, "selected_log_fields", value)
 
 
-if not MYPY:
-    class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict(TypedDict):
-        dropped_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgsDict']]]]
-        """
-        Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
-        """
-        extra_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgsDict']]]]
-        """
-        Metrics to allow through to AWS CloudWatch (in addition to default metrics)
-        """
-elif False:
-    ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict(TypedDict):
+    dropped_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgsDict']]]]
+    """
+    Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
+    """
+    extra_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgsDict']]]]
+    """
+    Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+    """
 
 @pulumi.input_type
 class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs:
@@ -40435,18 +39520,15 @@ class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs:
         pulumi.set(self, "extra_metrics", value)
 
 
-if not MYPY:
-    class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgsDict(TypedDict):
-        field: pulumi.Input[_builtins.str]
-        """
-        Identifier of a value in the metric. Example: `used`.
-        """
-        metric: pulumi.Input[_builtins.str]
-        """
-        Identifier of the metric. Example: `java.lang:Memory`.
-        """
-elif False:
-    ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgsDict(TypedDict):
+    field: pulumi.Input[_builtins.str]
+    """
+    Identifier of a value in the metric. Example: `used`.
+    """
+    metric: pulumi.Input[_builtins.str]
+    """
+    Identifier of the metric. Example: `java.lang:Memory`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs:
@@ -40485,18 +39567,15 @@ class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs:
         pulumi.set(self, "metric", value)
 
 
-if not MYPY:
-    class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgsDict(TypedDict):
-        field: pulumi.Input[_builtins.str]
-        """
-        Identifier of a value in the metric. Example: `used`.
-        """
-        metric: pulumi.Input[_builtins.str]
-        """
-        Identifier of the metric. Example: `java.lang:Memory`.
-        """
-elif False:
-    ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgsDict(TypedDict):
+    field: pulumi.Input[_builtins.str]
+    """
+    Identifier of a value in the metric. Example: `used`.
+    """
+    metric: pulumi.Input[_builtins.str]
+    """
+    Identifier of the metric. Example: `java.lang:Memory`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs:
@@ -40535,14 +39614,11 @@ class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs:
         pulumi.set(self, "metric", value)
 
 
-if not MYPY:
-    class ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict(TypedDict):
-        selected_log_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
-        """
-elif False:
-    ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict(TypedDict):
+    selected_log_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationExternalElasticsearchLogsUserConfigArgs:
@@ -40567,14 +39643,11 @@ class ServiceIntegrationExternalElasticsearchLogsUserConfigArgs:
         pulumi.set(self, "selected_log_fields", value)
 
 
-if not MYPY:
-    class ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict(TypedDict):
-        selected_log_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
-        """
-elif False:
-    ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict(TypedDict):
+    selected_log_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationExternalOpensearchLogsUserConfigArgs:
@@ -40599,14 +39672,11 @@ class ServiceIntegrationExternalOpensearchLogsUserConfigArgs:
         pulumi.set(self, "selected_log_fields", value)
 
 
-if not MYPY:
-    class ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict(TypedDict):
-        stringtype: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
-        """
-elif False:
-    ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict(TypedDict):
+    stringtype: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs:
@@ -40631,14 +39701,11 @@ class ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs:
         pulumi.set(self, "stringtype", value)
 
 
-if not MYPY:
-    class ServiceIntegrationKafkaConnectUserConfigArgsDict(TypedDict):
-        kafka_connect: NotRequired[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgsDict']]
-        """
-        Kafka Connect service configuration values
-        """
-elif False:
-    ServiceIntegrationKafkaConnectUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationKafkaConnectUserConfigArgsDict(TypedDict):
+    kafka_connect: NotRequired[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgsDict']]
+    """
+    Kafka Connect service configuration values
+    """
 
 @pulumi.input_type
 class ServiceIntegrationKafkaConnectUserConfigArgs:
@@ -40663,26 +39730,23 @@ class ServiceIntegrationKafkaConnectUserConfigArgs:
         pulumi.set(self, "kafka_connect", value)
 
 
-if not MYPY:
-    class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgsDict(TypedDict):
-        config_storage_topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
-        """
-        group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
-        """
-        offset_storage_topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
-        """
-        status_storage_topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
-        """
-elif False:
-    ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgsDict(TypedDict):
+    config_storage_topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
+    """
+    group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
+    """
+    offset_storage_topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
+    """
+    status_storage_topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs:
@@ -40755,18 +39819,15 @@ class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs:
         pulumi.set(self, "status_storage_topic", value)
 
 
-if not MYPY:
-    class ServiceIntegrationKafkaLogsUserConfigArgsDict(TypedDict):
-        kafka_topic: pulumi.Input[_builtins.str]
-        """
-        Topic name. Example: `mytopic`.
-        """
-        selected_log_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
-        """
-elif False:
-    ServiceIntegrationKafkaLogsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationKafkaLogsUserConfigArgsDict(TypedDict):
+    kafka_topic: pulumi.Input[_builtins.str]
+    """
+    Topic name. Example: `mytopic`.
+    """
+    selected_log_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationKafkaLogsUserConfigArgs:
@@ -40806,18 +39867,15 @@ class ServiceIntegrationKafkaLogsUserConfigArgs:
         pulumi.set(self, "selected_log_fields", value)
 
 
-if not MYPY:
-    class ServiceIntegrationKafkaMirrormakerUserConfigArgsDict(TypedDict):
-        cluster_alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
-        """
-        kafka_mirrormaker: NotRequired[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict']]
-        """
-        Kafka MirrorMaker configuration values
-        """
-elif False:
-    ServiceIntegrationKafkaMirrormakerUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationKafkaMirrormakerUserConfigArgsDict(TypedDict):
+    cluster_alias: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
+    """
+    kafka_mirrormaker: NotRequired[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict']]
+    """
+    Kafka MirrorMaker configuration values
+    """
 
 @pulumi.input_type
 class ServiceIntegrationKafkaMirrormakerUserConfigArgs:
@@ -40858,42 +39916,39 @@ class ServiceIntegrationKafkaMirrormakerUserConfigArgs:
         pulumi.set(self, "kafka_mirrormaker", value)
 
 
-if not MYPY:
-    class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict(TypedDict):
-        consumer_auto_offset_reset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
-        """
-        consumer_fetch_min_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum amount of data the server should return for a fetch request. Example: `1024`.
-        """
-        consumer_max_poll_records: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set consumer max.poll.records. The default is 500. Example: `500`.
-        """
-        producer_batch_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
-        """
-        producer_buffer_memory: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of bytes producer can use for buffering data before publishing to broker.
-        """
-        producer_compression_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
-        """
-        producer_linger_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
-        """
-        producer_max_request_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum request size in bytes.
-        """
-elif False:
-    ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict(TypedDict):
+    consumer_auto_offset_reset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+    """
+    consumer_fetch_min_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum amount of data the server should return for a fetch request. Example: `1024`.
+    """
+    consumer_max_poll_records: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set consumer max.poll.records. The default is 500. Example: `500`.
+    """
+    producer_batch_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+    """
+    producer_buffer_memory: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of bytes producer can use for buffering data before publishing to broker.
+    """
+    producer_compression_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+    """
+    producer_linger_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+    """
+    producer_max_request_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum request size in bytes.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
@@ -41030,22 +40085,19 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
         pulumi.set(self, "producer_max_request_size", value)
 
 
-if not MYPY:
-    class ServiceIntegrationLogsUserConfigArgsDict(TypedDict):
-        elasticsearch_index_days_max: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Elasticsearch index retention limit. Default: `3`.
-        """
-        elasticsearch_index_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Elasticsearch index prefix. Default: `logs`.
-        """
-        selected_log_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
-        """
-elif False:
-    ServiceIntegrationLogsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationLogsUserConfigArgsDict(TypedDict):
+    elasticsearch_index_days_max: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Elasticsearch index retention limit. Default: `3`.
+    """
+    elasticsearch_index_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Elasticsearch index prefix. Default: `logs`.
+    """
+    selected_log_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationLogsUserConfigArgs:
@@ -41102,30 +40154,27 @@ class ServiceIntegrationLogsUserConfigArgs:
         pulumi.set(self, "selected_log_fields", value)
 
 
-if not MYPY:
-    class ServiceIntegrationMetricsUserConfigArgsDict(TypedDict):
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-        """
-        retention_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
-        """
-        ro_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metrics_reader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-        """
-        source_mysql: NotRequired[pulumi.Input['ServiceIntegrationMetricsUserConfigSourceMysqlArgsDict']]
-        """
-        Configuration options for metrics where source service is MySQL
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metrics_writer`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-        """
-elif False:
-    ServiceIntegrationMetricsUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationMetricsUserConfigArgsDict(TypedDict):
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+    """
+    retention_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+    """
+    ro_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metrics_reader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+    """
+    source_mysql: NotRequired[pulumi.Input['ServiceIntegrationMetricsUserConfigSourceMysqlArgsDict']]
+    """
+    Configuration options for metrics where source service is MySQL
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metrics_writer`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationMetricsUserConfigArgs:
@@ -41214,14 +40263,11 @@ class ServiceIntegrationMetricsUserConfigArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ServiceIntegrationMetricsUserConfigSourceMysqlArgsDict(TypedDict):
-        telegraf: NotRequired[pulumi.Input['ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgsDict']]
-        """
-        Configuration options for Telegraf MySQL input plugin
-        """
-elif False:
-    ServiceIntegrationMetricsUserConfigSourceMysqlArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationMetricsUserConfigSourceMysqlArgsDict(TypedDict):
+    telegraf: NotRequired[pulumi.Input['ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgsDict']]
+    """
+    Configuration options for Telegraf MySQL input plugin
+    """
 
 @pulumi.input_type
 class ServiceIntegrationMetricsUserConfigSourceMysqlArgs:
@@ -41246,66 +40292,63 @@ class ServiceIntegrationMetricsUserConfigSourceMysqlArgs:
         pulumi.set(self, "telegraf", value)
 
 
-if not MYPY:
-    class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgsDict(TypedDict):
-        gather_event_waits: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
-        """
-        gather_file_events_stats: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
-        """
-        gather_index_io_waits: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.
-        """
-        gather_info_schema_auto_inc: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather auto_increment columns and max values from information schema.
-        """
-        gather_innodb_metrics: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.
-        """
-        gather_perf_events_statements: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.EVENTS*STATEMENTS*SUMMARY*BY_DIGEST.
-        """
-        gather_process_list: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
-        """
-        gather_slave_status: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from SHOW SLAVE STATUS command output.
-        """
-        gather_table_io_waits: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*TABLE.
-        """
-        gather_table_lock_waits: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.TABLE*LOCK_WAITS.
-        """
-        gather_table_schema: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from INFORMATION_SCHEMA.TABLES.
-        """
-        perf_events_statements_digest_text_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Truncates digest text from perf*events*statements into this many characters. Example: `120`.
-        """
-        perf_events_statements_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Limits metrics from perf*events*statements. Example: `250`.
-        """
-        perf_events_statements_time_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
-        """
-elif False:
-    ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgsDict(TypedDict):
+    gather_event_waits: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
+    """
+    gather_file_events_stats: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+    """
+    gather_index_io_waits: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.
+    """
+    gather_info_schema_auto_inc: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather auto_increment columns and max values from information schema.
+    """
+    gather_innodb_metrics: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.
+    """
+    gather_perf_events_statements: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.EVENTS*STATEMENTS*SUMMARY*BY_DIGEST.
+    """
+    gather_process_list: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+    """
+    gather_slave_status: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from SHOW SLAVE STATUS command output.
+    """
+    gather_table_io_waits: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*TABLE.
+    """
+    gather_table_lock_waits: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.TABLE*LOCK_WAITS.
+    """
+    gather_table_schema: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from INFORMATION_SCHEMA.TABLES.
+    """
+    perf_events_statements_digest_text_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Truncates digest text from perf*events*statements into this many characters. Example: `120`.
+    """
+    perf_events_statements_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Limits metrics from perf*events*statements. Example: `250`.
+    """
+    perf_events_statements_time_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs:
@@ -41538,14 +40581,11 @@ class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs:
         pulumi.set(self, "perf_events_statements_time_limit", value)
 
 
-if not MYPY:
-    class ServiceIntegrationPrometheusUserConfigArgsDict(TypedDict):
-        source_mysql: NotRequired[pulumi.Input['ServiceIntegrationPrometheusUserConfigSourceMysqlArgsDict']]
-        """
-        Configuration options for metrics where source service is MySQL
-        """
-elif False:
-    ServiceIntegrationPrometheusUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationPrometheusUserConfigArgsDict(TypedDict):
+    source_mysql: NotRequired[pulumi.Input['ServiceIntegrationPrometheusUserConfigSourceMysqlArgsDict']]
+    """
+    Configuration options for metrics where source service is MySQL
+    """
 
 @pulumi.input_type
 class ServiceIntegrationPrometheusUserConfigArgs:
@@ -41570,14 +40610,11 @@ class ServiceIntegrationPrometheusUserConfigArgs:
         pulumi.set(self, "source_mysql", value)
 
 
-if not MYPY:
-    class ServiceIntegrationPrometheusUserConfigSourceMysqlArgsDict(TypedDict):
-        telegraf: NotRequired[pulumi.Input['ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgsDict']]
-        """
-        Configuration options for Telegraf MySQL input plugin
-        """
-elif False:
-    ServiceIntegrationPrometheusUserConfigSourceMysqlArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationPrometheusUserConfigSourceMysqlArgsDict(TypedDict):
+    telegraf: NotRequired[pulumi.Input['ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgsDict']]
+    """
+    Configuration options for Telegraf MySQL input plugin
+    """
 
 @pulumi.input_type
 class ServiceIntegrationPrometheusUserConfigSourceMysqlArgs:
@@ -41602,66 +40639,63 @@ class ServiceIntegrationPrometheusUserConfigSourceMysqlArgs:
         pulumi.set(self, "telegraf", value)
 
 
-if not MYPY:
-    class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgsDict(TypedDict):
-        gather_event_waits: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
-        """
-        gather_file_events_stats: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
-        """
-        gather_index_io_waits: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.
-        """
-        gather_info_schema_auto_inc: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather auto_increment columns and max values from information schema.
-        """
-        gather_innodb_metrics: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.
-        """
-        gather_perf_events_statements: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.EVENTS*STATEMENTS*SUMMARY*BY_DIGEST.
-        """
-        gather_process_list: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
-        """
-        gather_slave_status: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from SHOW SLAVE STATUS command output.
-        """
-        gather_table_io_waits: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*TABLE.
-        """
-        gather_table_lock_waits: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from PERFORMANCE*SCHEMA.TABLE*LOCK_WAITS.
-        """
-        gather_table_schema: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Gather metrics from INFORMATION_SCHEMA.TABLES.
-        """
-        perf_events_statements_digest_text_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Truncates digest text from perf*events*statements into this many characters. Example: `120`.
-        """
-        perf_events_statements_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Limits metrics from perf*events*statements. Example: `250`.
-        """
-        perf_events_statements_time_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
-        """
-elif False:
-    ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgsDict(TypedDict):
+    gather_event_waits: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
+    """
+    gather_file_events_stats: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+    """
+    gather_index_io_waits: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.
+    """
+    gather_info_schema_auto_inc: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather auto_increment columns and max values from information schema.
+    """
+    gather_innodb_metrics: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.
+    """
+    gather_perf_events_statements: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.EVENTS*STATEMENTS*SUMMARY*BY_DIGEST.
+    """
+    gather_process_list: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+    """
+    gather_slave_status: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from SHOW SLAVE STATUS command output.
+    """
+    gather_table_io_waits: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*TABLE.
+    """
+    gather_table_lock_waits: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from PERFORMANCE*SCHEMA.TABLE*LOCK_WAITS.
+    """
+    gather_table_schema: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Gather metrics from INFORMATION_SCHEMA.TABLES.
+    """
+    perf_events_statements_digest_text_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Truncates digest text from perf*events*statements into this many characters. Example: `120`.
+    """
+    perf_events_statements_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Limits metrics from perf*events*statements. Example: `250`.
+    """
+    perf_events_statements_time_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
+    """
 
 @pulumi.input_type
 class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs:
@@ -41894,46 +40928,43 @@ class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs:
         pulumi.set(self, "perf_events_statements_time_limit", value)
 
 
-if not MYPY:
-    class ThanosComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    ThanosComponentArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class ThanosComponentArgs:
@@ -42086,18 +41117,15 @@ class ThanosComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class ThanosServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    ThanosServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class ThanosServiceIntegrationArgs:
@@ -42136,18 +41164,15 @@ class ThanosServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class ThanosTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    ThanosTagArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class ThanosTagArgs:
@@ -42186,14 +41211,11 @@ class ThanosTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ThanosTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    ThanosTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class ThanosTechEmailArgs:
@@ -42217,26 +41239,23 @@ class ThanosTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class ThanosThanosArgsDict(TypedDict):
-        query_frontend_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Query frontend URI.
-        """
-        query_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Query URI.
-        """
-        receiver_remote_write_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Receiver remote write URI.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Thanos server URIs.
-        """
-elif False:
-    ThanosThanosArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosThanosArgsDict(TypedDict):
+    query_frontend_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Query frontend URI.
+    """
+    query_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Query URI.
+    """
+    receiver_remote_write_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Receiver remote write URI.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Thanos server URIs.
+    """
 
 @pulumi.input_type
 class ThanosThanosArgs:
@@ -42309,78 +41328,75 @@ class ThanosThanosArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class ThanosThanosUserConfigArgsDict(TypedDict):
-        compactor: NotRequired[pulumi.Input['ThanosThanosUserConfigCompactorArgsDict']]
-        """
-        Configuration options for Thanos Compactor
-        """
-        env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Environmental variables.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['ThanosThanosUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        object_storage_usage_alert_threshold_gb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        After exceeding the limit a service alert is going to be raised (0 means not set).
-        """
-        private_access: NotRequired[pulumi.Input['ThanosThanosUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['ThanosThanosUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        public_access: NotRequired[pulumi.Input['ThanosThanosUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        query: NotRequired[pulumi.Input['ThanosThanosUserConfigQueryArgsDict']]
-        """
-        Configuration options for Thanos Query
-        """
-        query_frontend: NotRequired[pulumi.Input['ThanosThanosUserConfigQueryFrontendArgsDict']]
-        """
-        Configuration options for Thanos Query Frontend
-        """
-        receiver_ingesting: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Common configuration options for Thanos Receive.
-        """
-        receiver_routing: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Configuration options for Thanos Receive Routing.
-        """
-        ruler: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Configuration options for Thanos Ruler.
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-        store: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Configuration options for Thanos Store.
-        """
-elif False:
-    ThanosThanosUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosThanosUserConfigArgsDict(TypedDict):
+    compactor: NotRequired[pulumi.Input['ThanosThanosUserConfigCompactorArgsDict']]
+    """
+    Configuration options for Thanos Compactor
+    """
+    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Environmental variables.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['ThanosThanosUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    object_storage_usage_alert_threshold_gb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    After exceeding the limit a service alert is going to be raised (0 means not set).
+    """
+    private_access: NotRequired[pulumi.Input['ThanosThanosUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['ThanosThanosUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    public_access: NotRequired[pulumi.Input['ThanosThanosUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    query: NotRequired[pulumi.Input['ThanosThanosUserConfigQueryArgsDict']]
+    """
+    Configuration options for Thanos Query
+    """
+    query_frontend: NotRequired[pulumi.Input['ThanosThanosUserConfigQueryFrontendArgsDict']]
+    """
+    Configuration options for Thanos Query Frontend
+    """
+    receiver_ingesting: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Common configuration options for Thanos Receive.
+    """
+    receiver_routing: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Configuration options for Thanos Receive Routing.
+    """
+    ruler: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Configuration options for Thanos Ruler.
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
+    store: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Configuration options for Thanos Store.
+    """
 
 @pulumi.input_type
 class ThanosThanosUserConfigArgs:
@@ -42669,14 +41685,11 @@ class ThanosThanosUserConfigArgs:
         pulumi.set(self, "store", value)
 
 
-if not MYPY:
-    class ThanosThanosUserConfigCompactorArgsDict(TypedDict):
-        retention_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Retention time for data in days for each resolution (5m, 1h, raw).
-        """
-elif False:
-    ThanosThanosUserConfigCompactorArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosThanosUserConfigCompactorArgsDict(TypedDict):
+    retention_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Retention time for data in days for each resolution (5m, 1h, raw).
+    """
 
 @pulumi.input_type
 class ThanosThanosUserConfigCompactorArgs:
@@ -42701,18 +41714,15 @@ class ThanosThanosUserConfigCompactorArgs:
         pulumi.set(self, "retention_days", value)
 
 
-if not MYPY:
-    class ThanosThanosUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    ThanosThanosUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosThanosUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class ThanosThanosUserConfigIpFilterObjectArgs:
@@ -42752,18 +41762,15 @@ class ThanosThanosUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ThanosThanosUserConfigPrivateAccessArgsDict(TypedDict):
-        query_frontend: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        receiver_routing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    ThanosThanosUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosThanosUserConfigPrivateAccessArgsDict(TypedDict):
+    query_frontend: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    receiver_routing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class ThanosThanosUserConfigPrivateAccessArgs:
@@ -42804,18 +41811,15 @@ class ThanosThanosUserConfigPrivateAccessArgs:
         pulumi.set(self, "receiver_routing", value)
 
 
-if not MYPY:
-    class ThanosThanosUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        query_frontend: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable query_frontend.
-        """
-        receiver_routing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable receiver_routing.
-        """
-elif False:
-    ThanosThanosUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosThanosUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    query_frontend: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable query_frontend.
+    """
+    receiver_routing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable receiver_routing.
+    """
 
 @pulumi.input_type
 class ThanosThanosUserConfigPrivatelinkAccessArgs:
@@ -42856,38 +41860,35 @@ class ThanosThanosUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "receiver_routing", value)
 
 
-if not MYPY:
-    class ThanosThanosUserConfigPublicAccessArgsDict(TypedDict):
-        compactor: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        query: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        query_frontend: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        receiver_ingesting: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        receiver_routing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        ruler: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        store: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    ThanosThanosUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosThanosUserConfigPublicAccessArgsDict(TypedDict):
+    compactor: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    query: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    query_frontend: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    receiver_ingesting: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    receiver_routing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    ruler: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    store: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class ThanosThanosUserConfigPublicAccessArgs:
@@ -43008,34 +42009,31 @@ class ThanosThanosUserConfigPublicAccessArgs:
         pulumi.set(self, "store", value)
 
 
-if not MYPY:
-    class ThanosThanosUserConfigQueryArgsDict(TypedDict):
-        query_default_evaluation_interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set the default evaluation interval for subqueries. Default: `1m`.
-        """
-        query_lookback_delta: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
-        """
-        query_metadata_default_time_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
-        """
-        query_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Maximum time to process a query by the query node. Default: `2m`.
-        """
-        store_limits_request_samples: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
-        """
-        store_limits_request_series: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
-        """
-elif False:
-    ThanosThanosUserConfigQueryArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosThanosUserConfigQueryArgsDict(TypedDict):
+    query_default_evaluation_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set the default evaluation interval for subqueries. Default: `1m`.
+    """
+    query_lookback_delta: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
+    """
+    query_metadata_default_time_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
+    """
+    query_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Maximum time to process a query by the query node. Default: `2m`.
+    """
+    store_limits_request_samples: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+    """
+    store_limits_request_series: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+    """
 
 @pulumi.input_type
 class ThanosThanosUserConfigQueryArgs:
@@ -43140,14 +42138,11 @@ class ThanosThanosUserConfigQueryArgs:
         pulumi.set(self, "store_limits_request_series", value)
 
 
-if not MYPY:
-    class ThanosThanosUserConfigQueryFrontendArgsDict(TypedDict):
-        query_range_align_range_with_step: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
-        """
-elif False:
-    ThanosThanosUserConfigQueryFrontendArgsDict: TypeAlias = Mapping[str, Any]
+class ThanosThanosUserConfigQueryFrontendArgsDict(TypedDict):
+    query_range_align_range_with_step: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+    """
 
 @pulumi.input_type
 class ThanosThanosUserConfigQueryFrontendArgs:
@@ -43172,46 +42167,43 @@ class ThanosThanosUserConfigQueryFrontendArgs:
         pulumi.set(self, "query_range_align_range_with_step", value)
 
 
-if not MYPY:
-    class ValkeyComponentArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service component name
-        """
-        connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name for connecting to the service component
-        """
-        kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port number for connecting to the service component
-        """
-        route: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network access route
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS usage name
-        """
-elif False:
-    ValkeyComponentArgsDict: TypeAlias = Mapping[str, Any]
+class ValkeyComponentArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service component name
+    """
+    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connection info for connecting to the service component. This is a combination of host and port.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name for connecting to the service component
+    """
+    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka authentication method. This is a value specific to the 'kafka' service component
+    """
+    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port number for connecting to the service component
+    """
+    route: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network access route
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+    """
+    usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS usage name
+    """
 
 @pulumi.input_type
 class ValkeyComponentArgs:
@@ -43364,18 +42356,15 @@ class ValkeyComponentArgs:
         pulumi.set(self, "usage", value)
 
 
-if not MYPY:
-    class ValkeyServiceIntegrationArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Type of the service integration. The possible value is `read_replica`.
-        """
-        source_service_name: pulumi.Input[_builtins.str]
-        """
-        Name of the source service
-        """
-elif False:
-    ValkeyServiceIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class ValkeyServiceIntegrationArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Type of the service integration. The possible value is `read_replica`.
+    """
+    source_service_name: pulumi.Input[_builtins.str]
+    """
+    Name of the source service
+    """
 
 @pulumi.input_type
 class ValkeyServiceIntegrationArgs:
@@ -43414,18 +42403,15 @@ class ValkeyServiceIntegrationArgs:
         pulumi.set(self, "source_service_name", value)
 
 
-if not MYPY:
-    class ValkeyTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Service tag key
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Service tag value
-        """
-elif False:
-    ValkeyTagArgsDict: TypeAlias = Mapping[str, Any]
+class ValkeyTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Service tag key
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Service tag value
+    """
 
 @pulumi.input_type
 class ValkeyTagArgs:
@@ -43464,14 +42450,11 @@ class ValkeyTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ValkeyTechEmailArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        An email address to contact for technical issues
-        """
-elif False:
-    ValkeyTechEmailArgsDict: TypeAlias = Mapping[str, Any]
+class ValkeyTechEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    An email address to contact for technical issues
+    """
 
 @pulumi.input_type
 class ValkeyTechEmailArgs:
@@ -43495,26 +42478,23 @@ class ValkeyTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class ValkeyValkeyArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Valkey password.
-        """
-        replica_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Valkey replica server URI.
-        """
-        slave_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Valkey slave server URIs.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Valkey server URIs.
-        """
-elif False:
-    ValkeyValkeyArgsDict: TypeAlias = Mapping[str, Any]
+class ValkeyValkeyArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Valkey password.
+    """
+    replica_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Valkey replica server URI.
+    """
+    slave_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Valkey slave server URIs.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Valkey server URIs.
+    """
 
 @pulumi.input_type
 class ValkeyValkeyArgs:
@@ -43587,126 +42567,123 @@ class ValkeyValkeyArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class ValkeyValkeyUserConfigArgsDict(TypedDict):
-        additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        backup_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        """
-        backup_minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-        """
-        enable_ipv6: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-        """
-        frequent_snapshots: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
-        """
-        ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgsDict']]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        migration: NotRequired[pulumi.Input['ValkeyValkeyUserConfigMigrationArgsDict']]
-        """
-        Migrate data from existing server
-        """
-        private_access: NotRequired[pulumi.Input['ValkeyValkeyUserConfigPrivateAccessArgsDict']]
-        """
-        Allow access to selected service ports from private networks
-        """
-        privatelink_access: NotRequired[pulumi.Input['ValkeyValkeyUserConfigPrivatelinkAccessArgsDict']]
-        """
-        Allow access to selected service components through Privatelink
-        """
-        project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        public_access: NotRequired[pulumi.Input['ValkeyValkeyUserConfigPublicAccessArgsDict']]
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-        """
-        service_log: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use static public IP addresses.
-        """
-        valkey_acl_channels_default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
-        """
-        valkey_active_expire_effort: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
-        """
-        valkey_io_threads: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
-        """
-        valkey_lfu_decay_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        LFU maxmemory-policy counter decay time in minutes. Default: `1`.
-        """
-        valkey_lfu_log_factor: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
-        """
-        valkey_maxmemory_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
-        """
-        valkey_notify_keyspace_events: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set notify-keyspace-events option.
-        """
-        valkey_number_of_databases: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
-        """
-        valkey_persistence: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
-        """
-        valkey_pubsub_client_output_buffer_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
-        """
-        valkey_ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Require SSL to access Valkey. Default: `true`.
-        """
-        valkey_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Valkey idle connection timeout in seconds. Default: `300`.
-        """
-elif False:
-    ValkeyValkeyUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ValkeyValkeyUserConfigArgsDict(TypedDict):
+    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional Cloud Regions for Backup Replication.
+    """
+    backup_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+    """
+    backup_minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+    """
+    enable_ipv6: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+    """
+    frequent_snapshots: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+    """
+    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgsDict']]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+    """
+    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+    """
+    migration: NotRequired[pulumi.Input['ValkeyValkeyUserConfigMigrationArgsDict']]
+    """
+    Migrate data from existing server
+    """
+    private_access: NotRequired[pulumi.Input['ValkeyValkeyUserConfigPrivateAccessArgsDict']]
+    """
+    Allow access to selected service ports from private networks
+    """
+    privatelink_access: NotRequired[pulumi.Input['ValkeyValkeyUserConfigPrivatelinkAccessArgsDict']]
+    """
+    Allow access to selected service components through Privatelink
+    """
+    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+    """
+    public_access: NotRequired[pulumi.Input['ValkeyValkeyUserConfigPublicAccessArgsDict']]
+    """
+    Allow access to selected service ports from the public Internet
+    """
+    recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+    """
+    service_log: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Store logs for the service so that they are available in the HTTP API and console.
+    """
+    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use static public IP addresses.
+    """
+    valkey_acl_channels_default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+    """
+    valkey_active_expire_effort: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+    """
+    valkey_io_threads: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
+    """
+    valkey_lfu_decay_time: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+    """
+    valkey_lfu_log_factor: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+    """
+    valkey_maxmemory_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
+    """
+    valkey_notify_keyspace_events: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set notify-keyspace-events option.
+    """
+    valkey_number_of_databases: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
+    """
+    valkey_persistence: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+    """
+    valkey_pubsub_client_output_buffer_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+    """
+    valkey_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Require SSL to access Valkey. Default: `true`.
+    """
+    valkey_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Valkey idle connection timeout in seconds. Default: `300`.
+    """
 
 @pulumi.input_type
 class ValkeyValkeyUserConfigArgs:
@@ -44183,18 +43160,15 @@ class ValkeyValkeyUserConfigArgs:
         pulumi.set(self, "valkey_timeout", value)
 
 
-if not MYPY:
-    class ValkeyValkeyUserConfigIpFilterObjectArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-elif False:
-    ValkeyValkeyUserConfigIpFilterObjectArgsDict: TypeAlias = Mapping[str, Any]
+class ValkeyValkeyUserConfigIpFilterObjectArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    CIDR address block. Example: `10.20.0.0/16`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for IP filter list entry. Example: `Production service IP range`.
+    """
 
 @pulumi.input_type
 class ValkeyValkeyUserConfigIpFilterObjectArgs:
@@ -44234,46 +43208,43 @@ class ValkeyValkeyUserConfigIpFilterObjectArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ValkeyValkeyUserConfigMigrationArgsDict(TypedDict):
-        host: pulumi.Input[_builtins.str]
-        """
-        Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port number of the server where to migrate data from. Example: `1234`.
-        """
-        dbname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database name for bootstrapping the initial connection. Example: `defaultdb`.
-        """
-        ignore_dbs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
-        """
-        ignore_roles: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
-        """
-        method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
-        """
-        ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The server where to migrate data from is secured with SSL. Default: `true`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User name for authentication with the server where to migrate data from. Example: `myname`.
-        """
-elif False:
-    ValkeyValkeyUserConfigMigrationArgsDict: TypeAlias = Mapping[str, Any]
+class ValkeyValkeyUserConfigMigrationArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port number of the server where to migrate data from. Example: `1234`.
+    """
+    dbname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database name for bootstrapping the initial connection. Example: `defaultdb`.
+    """
+    ignore_dbs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+    """
+    ignore_roles: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+    """
+    method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+    """
+    ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The server where to migrate data from is secured with SSL. Default: `true`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User name for authentication with the server where to migrate data from. Example: `myname`.
+    """
 
 @pulumi.input_type
 class ValkeyValkeyUserConfigMigrationArgs:
@@ -44424,18 +43395,15 @@ class ValkeyValkeyUserConfigMigrationArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ValkeyValkeyUserConfigPrivateAccessArgsDict(TypedDict):
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        valkey: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to valkey with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-elif False:
-    ValkeyValkeyUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class ValkeyValkeyUserConfigPrivateAccessArgsDict(TypedDict):
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
+    valkey: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to valkey with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+    """
 
 @pulumi.input_type
 class ValkeyValkeyUserConfigPrivateAccessArgs:
@@ -44476,18 +43444,15 @@ class ValkeyValkeyUserConfigPrivateAccessArgs:
         pulumi.set(self, "valkey", value)
 
 
-if not MYPY:
-    class ValkeyValkeyUserConfigPrivatelinkAccessArgsDict(TypedDict):
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable prometheus.
-        """
-        valkey: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable valkey.
-        """
-elif False:
-    ValkeyValkeyUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+class ValkeyValkeyUserConfigPrivatelinkAccessArgsDict(TypedDict):
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable prometheus.
+    """
+    valkey: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable valkey.
+    """
 
 @pulumi.input_type
 class ValkeyValkeyUserConfigPrivatelinkAccessArgs:
@@ -44528,18 +43493,15 @@ class ValkeyValkeyUserConfigPrivatelinkAccessArgs:
         pulumi.set(self, "valkey", value)
 
 
-if not MYPY:
-    class ValkeyValkeyUserConfigPublicAccessArgsDict(TypedDict):
-        prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        valkey: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow clients to connect to valkey from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-elif False:
-    ValkeyValkeyUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
+class ValkeyValkeyUserConfigPublicAccessArgsDict(TypedDict):
+    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
+    valkey: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow clients to connect to valkey from the public internet for service nodes that are in a project VPC or another type of private network.
+    """
 
 @pulumi.input_type
 class ValkeyValkeyUserConfigPublicAccessArgs:
@@ -44580,14 +43542,11 @@ class ValkeyValkeyUserConfigPublicAccessArgs:
         pulumi.set(self, "valkey", value)
 
 
-if not MYPY:
-    class GetBillingGroupTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetBillingGroupTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetBillingGroupTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetBillingGroupTimeoutsArgs:
@@ -44612,14 +43571,11 @@ class GetBillingGroupTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetMysqlDatabaseTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetMysqlDatabaseTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetMysqlDatabaseTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetMysqlDatabaseTimeoutsArgs:
@@ -44644,14 +43600,11 @@ class GetMysqlDatabaseTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetMysqlUserTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetMysqlUserTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetMysqlUserTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetMysqlUserTimeoutsArgs:
@@ -44676,14 +43629,11 @@ class GetMysqlUserTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetOrganizationAddressTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetOrganizationAddressTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationAddressTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetOrganizationAddressTimeoutsArgs:
@@ -44708,14 +43658,11 @@ class GetOrganizationAddressTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetOrganizationApplicationUserTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetOrganizationApplicationUserTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationApplicationUserTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetOrganizationApplicationUserTimeoutsArgs:
@@ -44740,54 +43687,51 @@ class GetOrganizationApplicationUserTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetOrganizationBillingGroupListBillingGroupArgsDict(TypedDict):
-        billing_address_id: _builtins.str
-        """
-        Billing address ID.
-        """
-        billing_contact_emails: Sequence[_builtins.str]
-        """
-        List of billing contact emails.
-        """
-        billing_emails: Sequence[_builtins.str]
-        """
-        List of billing contact emails.
-        """
-        billing_group_id: _builtins.str
-        """
-        Billing group ID.
-        """
-        billing_group_name: _builtins.str
-        """
-        Billing Group Name.
-        """
-        currency: _builtins.str
-        """
-        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        """
-        custom_invoice_text: _builtins.str
-        """
-        Extra billing text.
-        """
-        organization_id: _builtins.str
-        """
-        Organization ID.
-        """
-        payment_method_id: _builtins.str
-        """
-        Payment method ID.
-        """
-        shipping_address_id: _builtins.str
-        """
-        Shipping address ID.
-        """
-        vat_id: _builtins.str
-        """
-        VAT ID.
-        """
-elif False:
-    GetOrganizationBillingGroupListBillingGroupArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationBillingGroupListBillingGroupArgsDict(TypedDict):
+    billing_address_id: _builtins.str
+    """
+    Billing address ID.
+    """
+    billing_contact_emails: Sequence[_builtins.str]
+    """
+    List of billing contact emails.
+    """
+    billing_emails: Sequence[_builtins.str]
+    """
+    List of billing contact emails.
+    """
+    billing_group_id: _builtins.str
+    """
+    Billing group ID.
+    """
+    billing_group_name: _builtins.str
+    """
+    Billing Group Name.
+    """
+    currency: _builtins.str
+    """
+    Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
+    """
+    custom_invoice_text: _builtins.str
+    """
+    Extra billing text.
+    """
+    organization_id: _builtins.str
+    """
+    Organization ID.
+    """
+    payment_method_id: _builtins.str
+    """
+    Payment method ID.
+    """
+    shipping_address_id: _builtins.str
+    """
+    Shipping address ID.
+    """
+    vat_id: _builtins.str
+    """
+    VAT ID.
+    """
 
 @pulumi.input_type
 class GetOrganizationBillingGroupListBillingGroupArgs:
@@ -44961,14 +43905,11 @@ class GetOrganizationBillingGroupListBillingGroupArgs:
         pulumi.set(self, "vat_id", value)
 
 
-if not MYPY:
-    class GetOrganizationBillingGroupListTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetOrganizationBillingGroupListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationBillingGroupListTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetOrganizationBillingGroupListTimeoutsArgs:
@@ -44993,14 +43934,11 @@ class GetOrganizationBillingGroupListTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetOrganizationBillingGroupTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetOrganizationBillingGroupTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationBillingGroupTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetOrganizationBillingGroupTimeoutsArgs:
@@ -45025,18 +43963,15 @@ class GetOrganizationBillingGroupTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetOrganizationProjectTagArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Project tag key.
-        """
-        value: _builtins.str
-        """
-        Project tag value.
-        """
-elif False:
-    GetOrganizationProjectTagArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationProjectTagArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Project tag key.
+    """
+    value: _builtins.str
+    """
+    Project tag value.
+    """
 
 @pulumi.input_type
 class GetOrganizationProjectTagArgs:
@@ -45075,14 +44010,11 @@ class GetOrganizationProjectTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class GetOrganizationProjectTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetOrganizationProjectTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationProjectTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetOrganizationProjectTimeoutsArgs:
@@ -45107,14 +44039,11 @@ class GetOrganizationProjectTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetOrganizationTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetOrganizationTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetOrganizationTimeoutsArgs:
@@ -45139,14 +44068,11 @@ class GetOrganizationTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetOrganizationUserGroupListTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetOrganizationUserGroupListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationUserGroupListTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetOrganizationUserGroupListTimeoutsArgs:
@@ -45171,38 +44097,35 @@ class GetOrganizationUserGroupListTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetOrganizationUserGroupListUserGroupArgsDict(TypedDict):
-        create_time: _builtins.str
-        """
-        User group creation time.
-        """
-        description: _builtins.str
-        """
-        Description.
-        """
-        managed_by_scim: _builtins.bool
-        """
-        Managed By Scim.
-        """
-        member_count: _builtins.int
-        """
-        Member Count.
-        """
-        update_time: _builtins.str
-        """
-        User group last update time.
-        """
-        user_group_id: _builtins.str
-        """
-        User Group ID.
-        """
-        user_group_name: _builtins.str
-        """
-        User Group Name.
-        """
-elif False:
-    GetOrganizationUserGroupListUserGroupArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationUserGroupListUserGroupArgsDict(TypedDict):
+    create_time: _builtins.str
+    """
+    User group creation time.
+    """
+    description: _builtins.str
+    """
+    Description.
+    """
+    managed_by_scim: _builtins.bool
+    """
+    Managed By Scim.
+    """
+    member_count: _builtins.int
+    """
+    Member Count.
+    """
+    update_time: _builtins.str
+    """
+    User group last update time.
+    """
+    user_group_id: _builtins.str
+    """
+    User Group ID.
+    """
+    user_group_name: _builtins.str
+    """
+    User Group Name.
+    """
 
 @pulumi.input_type
 class GetOrganizationUserGroupListUserGroupArgs:
@@ -45316,22 +44239,19 @@ class GetOrganizationUserGroupListUserGroupArgs:
         pulumi.set(self, "user_group_name", value)
 
 
-if not MYPY:
-    class GetOrganizationUserGroupMemberListMemberArgsDict(TypedDict):
-        last_activity_time: _builtins.str
-        """
-        Last Activity Time.
-        """
-        user_id: _builtins.str
-        """
-        User ID.
-        """
-        user_infos: NotRequired[Sequence['GetOrganizationUserGroupMemberListMemberUserInfoArgsDict']]
-        """
-        OrganizationUserInfo.
-        """
-elif False:
-    GetOrganizationUserGroupMemberListMemberArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationUserGroupMemberListMemberArgsDict(TypedDict):
+    last_activity_time: _builtins.str
+    """
+    Last Activity Time.
+    """
+    user_id: _builtins.str
+    """
+    User ID.
+    """
+    user_infos: NotRequired[Sequence['GetOrganizationUserGroupMemberListMemberUserInfoArgsDict']]
+    """
+    OrganizationUserInfo.
+    """
 
 @pulumi.input_type
 class GetOrganizationUserGroupMemberListMemberArgs:
@@ -45386,54 +44306,51 @@ class GetOrganizationUserGroupMemberListMemberArgs:
         pulumi.set(self, "user_infos", value)
 
 
-if not MYPY:
-    class GetOrganizationUserGroupMemberListMemberUserInfoArgsDict(TypedDict):
-        city: _builtins.str
-        """
-        City.
-        """
-        country: _builtins.str
-        """
-        Country.
-        """
-        create_time: _builtins.str
-        """
-        Creation time.
-        """
-        department: _builtins.str
-        """
-        Department.
-        """
-        is_application_user: _builtins.bool
-        """
-        Is Application User.
-        """
-        job_title: _builtins.str
-        """
-        Job Title.
-        """
-        managed_by_scim: _builtins.bool
-        """
-        Managed By Scim.
-        """
-        managing_organization_id: _builtins.str
-        """
-        Managing Organization ID.
-        """
-        real_name: _builtins.str
-        """
-        Real Name.
-        """
-        state: _builtins.str
-        """
-        State.
-        """
-        user_email: _builtins.str
-        """
-        User Email.
-        """
-elif False:
-    GetOrganizationUserGroupMemberListMemberUserInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationUserGroupMemberListMemberUserInfoArgsDict(TypedDict):
+    city: _builtins.str
+    """
+    City.
+    """
+    country: _builtins.str
+    """
+    Country.
+    """
+    create_time: _builtins.str
+    """
+    Creation time.
+    """
+    department: _builtins.str
+    """
+    Department.
+    """
+    is_application_user: _builtins.bool
+    """
+    Is Application User.
+    """
+    job_title: _builtins.str
+    """
+    Job Title.
+    """
+    managed_by_scim: _builtins.bool
+    """
+    Managed By Scim.
+    """
+    managing_organization_id: _builtins.str
+    """
+    Managing Organization ID.
+    """
+    real_name: _builtins.str
+    """
+    Real Name.
+    """
+    state: _builtins.str
+    """
+    State.
+    """
+    user_email: _builtins.str
+    """
+    User Email.
+    """
 
 @pulumi.input_type
 class GetOrganizationUserGroupMemberListMemberUserInfoArgs:
@@ -45607,14 +44524,11 @@ class GetOrganizationUserGroupMemberListMemberUserInfoArgs:
         pulumi.set(self, "user_email", value)
 
 
-if not MYPY:
-    class GetOrganizationUserGroupMemberListTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetOrganizationUserGroupMemberListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationUserGroupMemberListTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetOrganizationUserGroupMemberListTimeoutsArgs:
@@ -45639,14 +44553,11 @@ class GetOrganizationUserGroupMemberListTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetOrganizationUserListTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetOrganizationUserListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationUserListTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetOrganizationUserListTimeoutsArgs:
@@ -45671,30 +44582,27 @@ class GetOrganizationUserListTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetOrganizationUserListUserArgsDict(TypedDict):
-        is_super_admin: _builtins.bool
-        """
-        Super admin state of the organization user.
-        """
-        join_time: _builtins.str
-        """
-        Join time.
-        """
-        last_activity_time: _builtins.str
-        """
-        Last activity time.
-        """
-        user_id: _builtins.str
-        """
-        User ID.
-        """
-        user_infos: NotRequired[Sequence['GetOrganizationUserListUserUserInfoArgsDict']]
-        """
-        OrganizationUserInfo.
-        """
-elif False:
-    GetOrganizationUserListUserArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationUserListUserArgsDict(TypedDict):
+    is_super_admin: _builtins.bool
+    """
+    Super admin state of the organization user.
+    """
+    join_time: _builtins.str
+    """
+    Join time.
+    """
+    last_activity_time: _builtins.str
+    """
+    Last activity time.
+    """
+    user_id: _builtins.str
+    """
+    User ID.
+    """
+    user_infos: NotRequired[Sequence['GetOrganizationUserListUserUserInfoArgsDict']]
+    """
+    OrganizationUserInfo.
+    """
 
 @pulumi.input_type
 class GetOrganizationUserListUserArgs:
@@ -45779,54 +44687,51 @@ class GetOrganizationUserListUserArgs:
         pulumi.set(self, "user_infos", value)
 
 
-if not MYPY:
-    class GetOrganizationUserListUserUserInfoArgsDict(TypedDict):
-        city: _builtins.str
-        """
-        City.
-        """
-        country: _builtins.str
-        """
-        Country.
-        """
-        create_time: _builtins.str
-        """
-        Creation time.
-        """
-        department: _builtins.str
-        """
-        Department.
-        """
-        is_application_user: _builtins.bool
-        """
-        Is Application User.
-        """
-        job_title: _builtins.str
-        """
-        Job Title.
-        """
-        managed_by_scim: _builtins.bool
-        """
-        Managed By Scim.
-        """
-        managing_organization_id: _builtins.str
-        """
-        Managing Organization ID.
-        """
-        real_name: _builtins.str
-        """
-        Real Name.
-        """
-        state: _builtins.str
-        """
-        State.
-        """
-        user_email: _builtins.str
-        """
-        User Email.
-        """
-elif False:
-    GetOrganizationUserListUserUserInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationUserListUserUserInfoArgsDict(TypedDict):
+    city: _builtins.str
+    """
+    City.
+    """
+    country: _builtins.str
+    """
+    Country.
+    """
+    create_time: _builtins.str
+    """
+    Creation time.
+    """
+    department: _builtins.str
+    """
+    Department.
+    """
+    is_application_user: _builtins.bool
+    """
+    Is Application User.
+    """
+    job_title: _builtins.str
+    """
+    Job Title.
+    """
+    managed_by_scim: _builtins.bool
+    """
+    Managed By Scim.
+    """
+    managing_organization_id: _builtins.str
+    """
+    Managing Organization ID.
+    """
+    real_name: _builtins.str
+    """
+    Real Name.
+    """
+    state: _builtins.str
+    """
+    State.
+    """
+    user_email: _builtins.str
+    """
+    User Email.
+    """
 
 @pulumi.input_type
 class GetOrganizationUserListUserUserInfoArgs:
@@ -46000,14 +44905,11 @@ class GetOrganizationUserListUserUserInfoArgs:
         pulumi.set(self, "user_email", value)
 
 
-if not MYPY:
-    class GetOrganizationalUnitTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetOrganizationalUnitTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetOrganizationalUnitTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetOrganizationalUnitTimeoutsArgs:
@@ -46032,14 +44934,11 @@ class GetOrganizationalUnitTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetPgDatabaseTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetPgDatabaseTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetPgDatabaseTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetPgDatabaseTimeoutsArgs:
@@ -46064,74 +44963,71 @@ class GetPgDatabaseTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetServiceListServiceArgsDict(TypedDict):
-        cloud_description: _builtins.str
-        """
-        Cloud provider and location.
-        """
-        cloud_name: _builtins.str
-        """
-        Target cloud.
-        """
-        create_time: _builtins.str
-        """
-        Service creation timestamp (ISO 8601).
-        """
-        disk_space_mb: _builtins.int
-        """
-        Megabytes of disk space for data storage.
-        """
-        node_count: _builtins.int
-        """
-        Number of service nodes in the active plan.
-        """
-        node_cpu_count: _builtins.int
-        """
-        Number of CPUs for each node.
-        """
-        node_memory_mb: _builtins.float
-        """
-        Megabytes of memory for each node.
-        """
-        plan: _builtins.str
-        """
-        Subscription plan.
-        """
-        project_vpc_id: _builtins.str
-        """
-        Project VPC ID.
-        """
-        service_name: _builtins.str
-        """
-        Service name.
-        """
-        service_type: _builtins.str
-        """
-        Service type code.
-        """
-        service_type_description: _builtins.str
-        """
-        Single line description of the service.
-        """
-        service_uri: _builtins.str
-        """
-        URI for connecting to the service (may be null).
-        """
-        state: _builtins.str
-        """
-        State of the service. The possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
-        """
-        termination_protection: _builtins.bool
-        """
-        Service is protected against termination and powering off.
-        """
-        update_time: _builtins.str
-        """
-        Service last update timestamp (ISO 8601).
-        """
-elif False:
-    GetServiceListServiceArgsDict: TypeAlias = Mapping[str, Any]
+class GetServiceListServiceArgsDict(TypedDict):
+    cloud_description: _builtins.str
+    """
+    Cloud provider and location.
+    """
+    cloud_name: _builtins.str
+    """
+    Target cloud.
+    """
+    create_time: _builtins.str
+    """
+    Service creation timestamp (ISO 8601).
+    """
+    disk_space_mb: _builtins.int
+    """
+    Megabytes of disk space for data storage.
+    """
+    node_count: _builtins.int
+    """
+    Number of service nodes in the active plan.
+    """
+    node_cpu_count: _builtins.int
+    """
+    Number of CPUs for each node.
+    """
+    node_memory_mb: _builtins.float
+    """
+    Megabytes of memory for each node.
+    """
+    plan: _builtins.str
+    """
+    Subscription plan.
+    """
+    project_vpc_id: _builtins.str
+    """
+    Project VPC ID.
+    """
+    service_name: _builtins.str
+    """
+    Service name.
+    """
+    service_type: _builtins.str
+    """
+    Service type code.
+    """
+    service_type_description: _builtins.str
+    """
+    Single line description of the service.
+    """
+    service_uri: _builtins.str
+    """
+    URI for connecting to the service (may be null).
+    """
+    state: _builtins.str
+    """
+    State of the service. The possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
+    """
+    termination_protection: _builtins.bool
+    """
+    Service is protected against termination and powering off.
+    """
+    update_time: _builtins.str
+    """
+    Service last update timestamp (ISO 8601).
+    """
 
 @pulumi.input_type
 class GetServiceListServiceArgs:
@@ -46380,14 +45276,11 @@ class GetServiceListServiceArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class GetServiceListTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetServiceListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetServiceListTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetServiceListTimeoutsArgs:
@@ -46412,38 +45305,35 @@ class GetServiceListTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetServicePlanBackupConfigArgsDict(TypedDict):
-        frequent_interval_minutes: _builtins.int
-        """
-        Interval of taking a frequent backup in service types supporting different backup schedules.
-        """
-        frequent_oldest_age_minutes: _builtins.int
-        """
-        Maximum age of the oldest frequent backup in service types supporting different backup schedules.
-        """
-        infrequent_interval_minutes: _builtins.int
-        """
-        Interval of taking an infrequent backup in service types supporting different backup schedules.
-        """
-        infrequent_oldest_age_minutes: _builtins.int
-        """
-        Maximum age of the oldest infrequent backup in service types supporting different backup schedules.
-        """
-        interval: _builtins.int
-        """
-        The interval, in hours, at which backups are generated. For some services, like PostgreSQL, this is the interval at which full snapshots are taken and continuous incremental backup stream is maintained in addition to that.
-        """
-        max_count: _builtins.int
-        """
-        Maximum number of backups to keep. Zero when no backups are created.
-        """
-        recovery_mode: _builtins.str
-        """
-        Mechanism how backups can be restored. 'basic' means a backup is restored as is so that the system is restored to the state it was when the backup was generated. 'pitr' means point-in-time-recovery, which allows restoring the system to any state since the first available full snapshot. The possible values are `basic` and `pitr`.
-        """
-elif False:
-    GetServicePlanBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GetServicePlanBackupConfigArgsDict(TypedDict):
+    frequent_interval_minutes: _builtins.int
+    """
+    Interval of taking a frequent backup in service types supporting different backup schedules.
+    """
+    frequent_oldest_age_minutes: _builtins.int
+    """
+    Maximum age of the oldest frequent backup in service types supporting different backup schedules.
+    """
+    infrequent_interval_minutes: _builtins.int
+    """
+    Interval of taking an infrequent backup in service types supporting different backup schedules.
+    """
+    infrequent_oldest_age_minutes: _builtins.int
+    """
+    Maximum age of the oldest infrequent backup in service types supporting different backup schedules.
+    """
+    interval: _builtins.int
+    """
+    The interval, in hours, at which backups are generated. For some services, like PostgreSQL, this is the interval at which full snapshots are taken and continuous incremental backup stream is maintained in addition to that.
+    """
+    max_count: _builtins.int
+    """
+    Maximum number of backups to keep. Zero when no backups are created.
+    """
+    recovery_mode: _builtins.str
+    """
+    Mechanism how backups can be restored. 'basic' means a backup is restored as is so that the system is restored to the state it was when the backup was generated. 'pitr' means point-in-time-recovery, which allows restoring the system to any state since the first available full snapshot. The possible values are `basic` and `pitr`.
+    """
 
 @pulumi.input_type
 class GetServicePlanBackupConfigArgs:
@@ -46557,34 +45447,31 @@ class GetServicePlanBackupConfigArgs:
         pulumi.set(self, "recovery_mode", value)
 
 
-if not MYPY:
-    class GetServicePlanListServicePlanArgsDict(TypedDict):
-        max_memory_percent: _builtins.int
-        """
-        Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
-        """
-        node_count: _builtins.int
-        """
-        Number of nodes in this service plan.
-        """
-        regions: Mapping[str, 'GetServicePlanListServicePlanRegionsArgsDict']
-        """
-        Service plan hourly price per cloud region.
-        """
-        service_plan: _builtins.str
-        """
-        Subscription plan.
-        """
-        service_type: _builtins.str
-        """
-        Service type code.
-        """
-        shard_count: _builtins.int
-        """
-        Number of shards in this service plan.
-        """
-elif False:
-    GetServicePlanListServicePlanArgsDict: TypeAlias = Mapping[str, Any]
+class GetServicePlanListServicePlanArgsDict(TypedDict):
+    max_memory_percent: _builtins.int
+    """
+    Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
+    """
+    node_count: _builtins.int
+    """
+    Number of nodes in this service plan.
+    """
+    regions: Mapping[str, 'GetServicePlanListServicePlanRegionsArgsDict']
+    """
+    Service plan hourly price per cloud region.
+    """
+    service_plan: _builtins.str
+    """
+    Subscription plan.
+    """
+    service_type: _builtins.str
+    """
+    Service type code.
+    """
+    shard_count: _builtins.int
+    """
+    Number of shards in this service plan.
+    """
 
 @pulumi.input_type
 class GetServicePlanListServicePlanArgs:
@@ -46683,42 +45570,39 @@ class GetServicePlanListServicePlanArgs:
         pulumi.set(self, "shard_count", value)
 
 
-if not MYPY:
-    class GetServicePlanListServicePlanRegionsArgsDict(TypedDict):
-        disk_space_cap_mb: _builtins.int
-        """
-        Maximum amount of disk space possible for the plan in the given region.
-        """
-        disk_space_gb_price_usd: _builtins.str
-        """
-        Hourly additional disk space price per GiB in this region.
-        """
-        disk_space_mb: _builtins.int
-        """
-        Combined amount of service disk space of all service nodes in megabytes.
-        """
-        disk_space_step_mb: _builtins.int
-        """
-        Disk space change step size.
-        """
-        node_cpu_count: _builtins.int
-        """
-        Number of CPU cores on each service node.
-        """
-        node_memory_mb: _builtins.int
-        """
-        Amount of memory on each service node in megabytes.
-        """
-        object_storage_gb_price_usd: _builtins.str
-        """
-        Hourly object storage price per GiB in this region.
-        """
-        price_usd: _builtins.str
-        """
-        Hourly service price in this region.
-        """
-elif False:
-    GetServicePlanListServicePlanRegionsArgsDict: TypeAlias = Mapping[str, Any]
+class GetServicePlanListServicePlanRegionsArgsDict(TypedDict):
+    disk_space_cap_mb: _builtins.int
+    """
+    Maximum amount of disk space possible for the plan in the given region.
+    """
+    disk_space_gb_price_usd: _builtins.str
+    """
+    Hourly additional disk space price per GiB in this region.
+    """
+    disk_space_mb: _builtins.int
+    """
+    Combined amount of service disk space of all service nodes in megabytes.
+    """
+    disk_space_step_mb: _builtins.int
+    """
+    Disk space change step size.
+    """
+    node_cpu_count: _builtins.int
+    """
+    Number of CPU cores on each service node.
+    """
+    node_memory_mb: _builtins.int
+    """
+    Amount of memory on each service node in megabytes.
+    """
+    object_storage_gb_price_usd: _builtins.str
+    """
+    Hourly object storage price per GiB in this region.
+    """
+    price_usd: _builtins.str
+    """
+    Hourly service price in this region.
+    """
 
 @pulumi.input_type
 class GetServicePlanListServicePlanRegionsArgs:
@@ -46847,14 +45731,11 @@ class GetServicePlanListServicePlanRegionsArgs:
         pulumi.set(self, "price_usd", value)
 
 
-if not MYPY:
-    class GetServicePlanListTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetServicePlanListTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetServicePlanListTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetServicePlanListTimeoutsArgs:
@@ -46879,14 +45760,11 @@ class GetServicePlanListTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class GetServicePlanTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    GetServicePlanTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetServicePlanTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class GetServicePlanTimeoutsArgs:

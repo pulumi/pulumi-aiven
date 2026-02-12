@@ -14,6 +14,17 @@ import java.lang.Boolean;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Creates and manages an Aiven Organization user.
+ * 
+ * &gt; **This resource is deprecated**
+ * Users cannot be invited to an organization using Terraform.
+ * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+ * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
+ * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
+ * and `aiven.OrganizationPermission` resources.
+ * 
+ */
 @ResourceType(type="aiven:index/organizationUser:OrganizationUser")
 public class OrganizationUser extends com.pulumi.resources.CustomResource {
     /**

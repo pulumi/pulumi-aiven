@@ -176,7 +176,15 @@ class OrganizationUser(pulumi.CustomResource):
                  user_email: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a OrganizationUser resource with the given unique name, props, and options.
+        Creates and manages an Aiven Organization user.
+
+        > **This resource is deprecated**
+        Users cannot be invited to an organization using Terraform.
+        Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+        After the user accepts the invite you can get their information using the `OrganizationUser` data source. You can manage
+        user access to projects with the `OrganizationUserGroup`, `OrganizationUserGroupMember`,
+        and `OrganizationPermission` resources.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] organization_id: The unique organization ID. Changing this property forces recreation of the resource.
@@ -189,7 +197,15 @@ class OrganizationUser(pulumi.CustomResource):
                  args: OrganizationUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OrganizationUser resource with the given unique name, props, and options.
+        Creates and manages an Aiven Organization user.
+
+        > **This resource is deprecated**
+        Users cannot be invited to an organization using Terraform.
+        Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+        After the user accepts the invite you can get their information using the `OrganizationUser` data source. You can manage
+        user access to projects with the `OrganizationUserGroup`, `OrganizationUserGroupMember`,
+        and `OrganizationPermission` resources.
+
         :param str resource_name: The name of the resource.
         :param OrganizationUserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

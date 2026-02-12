@@ -288,7 +288,7 @@ class ClickhouseUser(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example_user PROJECT/SERVICE_NAME/USER_ID # USER_ID is found in the systems.users table in ClickHouse
+        terraform import aiven_clickhouse_user.example_user PROJECT/SERVICE_NAME/USER_ID  # USER_ID is found in the systems.users table in ClickHouse
         ```
 
         :param str resource_name: The name of the resource.
@@ -325,7 +325,7 @@ class ClickhouseUser(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example_user PROJECT/SERVICE_NAME/USER_ID # USER_ID is found in the systems.users table in ClickHouse
+        terraform import aiven_clickhouse_user.example_user PROJECT/SERVICE_NAME/USER_ID  # USER_ID is found in the systems.users table in ClickHouse
         ```
 
         :param str resource_name: The name of the resource.

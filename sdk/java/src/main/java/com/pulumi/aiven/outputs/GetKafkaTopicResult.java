@@ -55,6 +55,10 @@ public final class GetKafkaTopicResult {
      * 
      */
     private List<GetKafkaTopicTag> tags;
+    /**
+     * @return Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     * 
+     */
     private Boolean terminationProtection;
     /**
      * @return The description of the topic
@@ -124,6 +128,10 @@ public final class GetKafkaTopicResult {
     public List<GetKafkaTopicTag> tags() {
         return this.tags;
     }
+    /**
+     * @return Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     * 
+     */
     public Boolean terminationProtection() {
         return this.terminationProtection;
     }

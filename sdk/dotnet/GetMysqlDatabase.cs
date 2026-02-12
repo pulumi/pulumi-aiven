@@ -169,6 +169,9 @@ namespace Pulumi.Aiven
         /// Service name.
         /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `False`. **Deprecated**: Instead use `PreventDestroy`
+        /// </summary>
         public readonly bool TerminationProtection;
         public readonly Outputs.GetMysqlDatabaseTimeoutsResult? Timeouts;
 

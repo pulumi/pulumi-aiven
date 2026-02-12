@@ -190,9 +190,17 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.saslOauthbearerAllowedUrls);
     }
 
+    /**
+     * Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     * 
+     */
     @Import(name="secretProviders")
     private @Nullable Output<List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs>> secretProviders;
 
+    /**
+     * @return Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     * 
+     */
     public Optional<Output<List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs>>> secretProviders() {
         return Optional.ofNullable(this.secretProviders);
     }
@@ -543,15 +551,33 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
             return saslOauthbearerAllowedUrls(List.of(saslOauthbearerAllowedUrls));
         }
 
+        /**
+         * @param secretProviders Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretProviders(@Nullable Output<List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs>> secretProviders) {
             $.secretProviders = secretProviders;
             return this;
         }
 
+        /**
+         * @param secretProviders Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretProviders(List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs> secretProviders) {
             return secretProviders(Output.of(secretProviders));
         }
 
+        /**
+         * @param secretProviders Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretProviders(KafkaConnectKafkaConnectUserConfigSecretProviderArgs... secretProviders) {
             return secretProviders(List.of(secretProviders));
         }

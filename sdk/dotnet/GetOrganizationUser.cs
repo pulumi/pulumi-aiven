@@ -11,12 +11,42 @@ namespace Pulumi.Aiven
 {
     public static class GetOrganizationUser
     {
+        /// <summary>
+        /// The Organization User data source provides information about the existing Aiven Organization User.
+        /// 
+        /// &gt; **This resource is deprecated**
+        /// Users cannot be invited to an organization using Terraform.
+        /// Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+        /// After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
+        /// user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
+        /// and `aiven.OrganizationPermission` resources.
+        /// </summary>
         public static Task<GetOrganizationUserResult> InvokeAsync(GetOrganizationUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationUserResult>("aiven:index/getOrganizationUser:getOrganizationUser", args ?? new GetOrganizationUserArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// The Organization User data source provides information about the existing Aiven Organization User.
+        /// 
+        /// &gt; **This resource is deprecated**
+        /// Users cannot be invited to an organization using Terraform.
+        /// Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+        /// After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
+        /// user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
+        /// and `aiven.OrganizationPermission` resources.
+        /// </summary>
         public static Output<GetOrganizationUserResult> Invoke(GetOrganizationUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserResult>("aiven:index/getOrganizationUser:getOrganizationUser", args ?? new GetOrganizationUserInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// The Organization User data source provides information about the existing Aiven Organization User.
+        /// 
+        /// &gt; **This resource is deprecated**
+        /// Users cannot be invited to an organization using Terraform.
+        /// Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+        /// After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
+        /// user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
+        /// and `aiven.OrganizationPermission` resources.
+        /// </summary>
         public static Output<GetOrganizationUserResult> Invoke(GetOrganizationUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserResult>("aiven:index/getOrganizationUser:getOrganizationUser", args ?? new GetOrganizationUserInvokeArgs(), options.WithDefaults());
     }

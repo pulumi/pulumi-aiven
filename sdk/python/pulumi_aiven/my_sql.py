@@ -341,6 +341,7 @@ class _MySqlState:
         :param pulumi.Input[_builtins.str] service_type: Aiven internal service type code
         :param pulumi.Input[_builtins.str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[_builtins.str] service_username: Username used for connecting to the service, if applicable
+        :param pulumi.Input[_builtins.str] state: Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['MySqlTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input['MySqlTechEmailArgs']]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
@@ -700,6 +701,9 @@ class _MySqlState:
     @_builtins.property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -1018,6 +1022,7 @@ class MySql(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_type: Aiven internal service type code
         :param pulumi.Input[_builtins.str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[_builtins.str] service_username: Username used for connecting to the service, if applicable
+        :param pulumi.Input[_builtins.str] state: Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[Union['MySqlTagArgs', 'MySqlTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MySqlTechEmailArgs', 'MySqlTechEmailArgsDict']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
@@ -1254,6 +1259,9 @@ class MySql(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
+        """
+        Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+        """
         return pulumi.get(self, "state")
 
     @_builtins.property

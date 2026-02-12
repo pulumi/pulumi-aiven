@@ -30,6 +30,9 @@ namespace Pulumi.Aiven
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        /// <summary>
+        /// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is recommended to enable this for any production databases containing critical data. The default value is `False`.
+        /// </summary>
         [Output("terminationProtection")]
         public Output<bool?> TerminationProtection { get; private set; } = null!;
 
@@ -97,6 +100,9 @@ namespace Pulumi.Aiven
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is recommended to enable this for any production databases containing critical data. The default value is `False`.
+        /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 
@@ -126,6 +132,9 @@ namespace Pulumi.Aiven
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        /// <summary>
+        /// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is recommended to enable this for any production databases containing critical data. The default value is `False`.
+        /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 

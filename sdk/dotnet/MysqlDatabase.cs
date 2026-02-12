@@ -59,6 +59,9 @@ namespace Pulumi.Aiven
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        /// <summary>
+        /// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `False`. **Deprecated**: Instead use `PreventDestroy`
+        /// </summary>
         [Output("terminationProtection")]
         public Output<bool> TerminationProtection { get; private set; } = null!;
 
@@ -129,6 +132,9 @@ namespace Pulumi.Aiven
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `False`. **Deprecated**: Instead use `PreventDestroy`
+        /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 
@@ -161,6 +167,9 @@ namespace Pulumi.Aiven
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        /// <summary>
+        /// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `False`. **Deprecated**: Instead use `PreventDestroy`
+        /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 

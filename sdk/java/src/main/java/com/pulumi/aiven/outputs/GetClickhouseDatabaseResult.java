@@ -31,6 +31,10 @@ public final class GetClickhouseDatabaseResult {
      * 
      */
     private String serviceName;
+    /**
+     * @return Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     * 
+     */
     private Boolean terminationProtection;
 
     private GetClickhouseDatabaseResult() {}
@@ -62,6 +66,10 @@ public final class GetClickhouseDatabaseResult {
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     * 
+     */
     public Boolean terminationProtection() {
         return this.terminationProtection;
     }

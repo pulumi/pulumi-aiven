@@ -20,7 +20,8 @@ type InfluxdbDatabase struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringOutput  `pulumi:"serviceName"`
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is recommended to enable this for any production databases containing critical data. The default value is `false`.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
 
@@ -68,8 +69,9 @@ type influxdbDatabaseState struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           *string `pulumi:"serviceName"`
-	TerminationProtection *bool   `pulumi:"terminationProtection"`
+	ServiceName *string `pulumi:"serviceName"`
+	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is recommended to enable this for any production databases containing critical data. The default value is `false`.
+	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 type InfluxdbDatabaseState struct {
@@ -78,7 +80,8 @@ type InfluxdbDatabaseState struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringPtrInput
+	ServiceName pulumi.StringPtrInput
+	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is recommended to enable this for any production databases containing critical data. The default value is `false`.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -92,8 +95,9 @@ type influxdbDatabaseArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           string `pulumi:"serviceName"`
-	TerminationProtection *bool  `pulumi:"terminationProtection"`
+	ServiceName string `pulumi:"serviceName"`
+	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is recommended to enable this for any production databases containing critical data. The default value is `false`.
+	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a InfluxdbDatabase resource.
@@ -103,7 +107,8 @@ type InfluxdbDatabaseArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringInput
+	ServiceName pulumi.StringInput
+	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is recommended to enable this for any production databases containing critical data. The default value is `false`.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -209,6 +214,7 @@ func (o InfluxdbDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxdbDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is recommended to enable this for any production databases containing critical data. The default value is `false`.
 func (o InfluxdbDatabaseOutput) TerminationProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InfluxdbDatabase) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
 }

@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
+    /// Creates and manages an Aiven for ClickHouse® database.
+    /// 
+    /// &gt; Tables cannot be created using Aiven Terraform Provider. To create a table,
+    /// use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -67,6 +72,9 @@ namespace Pulumi.Aiven
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        /// <summary>
+        /// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `False`.
+        /// </summary>
         [Output("terminationProtection")]
         public Output<bool?> TerminationProtection { get; private set; } = null!;
 
@@ -134,6 +142,9 @@ namespace Pulumi.Aiven
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `False`.
+        /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 
@@ -163,6 +174,9 @@ namespace Pulumi.Aiven
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        /// <summary>
+        /// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `False`.
+        /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 

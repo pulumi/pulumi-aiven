@@ -84,6 +84,9 @@ class GetMysqlDatabaseResult:
     @pulumi.getter(name="terminationProtection")
     @_utilities.deprecated("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
     def termination_protection(self) -> _builtins.bool:
+        """
+        Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `prevent_destroy`
+        """
         return pulumi.get(self, "termination_protection")
 
     @_builtins.property

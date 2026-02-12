@@ -815,6 +815,21 @@ class ServiceIntegration(pulumi.CustomResource):
                  source_service_project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Creates and manages an Aiven [service integration](https://aiven.io/docs/platform/concepts/service-integration).
+
+        > Services integrations are not supported for services running on hobbyist plans.
+
+        You can set up an integration between two Aiven services or an Aiven service and an external
+        service. For example, you can send metrics from an Aiven service to a Grafana service to show dashboards, or create an observability pipeline by shipping logs
+        into Aiven for OpenSearch or Aiven for Clickhouse. For external integrations, you also need an
+        integration endpoint.
+
+        You can also use service integrations to enable and use the disk autoscaler.
+
+        > **Warning**
+        For services managed by Terraform, removing an autoscaler integration on services with `additional_disk_space` resets the service disk space to the service plan's disk size.
+        See [Remove the autoscaler](https://www.terraform.io/providers/aiven/aiven/latest/docs/guides/disk-autoscaler#remove-the-autoscaler) for more.
+
         ## Example Usage
 
         ```python
@@ -884,6 +899,21 @@ class ServiceIntegration(pulumi.CustomResource):
                  args: ServiceIntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Creates and manages an Aiven [service integration](https://aiven.io/docs/platform/concepts/service-integration).
+
+        > Services integrations are not supported for services running on hobbyist plans.
+
+        You can set up an integration between two Aiven services or an Aiven service and an external
+        service. For example, you can send metrics from an Aiven service to a Grafana service to show dashboards, or create an observability pipeline by shipping logs
+        into Aiven for OpenSearch or Aiven for Clickhouse. For external integrations, you also need an
+        integration endpoint.
+
+        You can also use service integrations to enable and use the disk autoscaler.
+
+        > **Warning**
+        For services managed by Terraform, removing an autoscaler integration on services with `additional_disk_space` resets the service disk space to the service plan's disk size.
+        See [Remove the autoscaler](https://www.terraform.io/providers/aiven/aiven/latest/docs/guides/disk-autoscaler#remove-the-autoscaler) for more.
+
         ## Example Usage
 
         ```python

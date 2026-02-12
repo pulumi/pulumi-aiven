@@ -85,6 +85,9 @@ export interface GetKafkaTopicResult {
      * Tags for the topic.
      */
     readonly tags: outputs.GetKafkaTopicTag[];
+    /**
+     * Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     */
     readonly terminationProtection: boolean;
     /**
      * The description of the topic
