@@ -60,6 +60,8 @@ type PgDatabase struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+	//
 	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection pulumi.BoolOutput           `pulumi:"terminationProtection"`
 	Timeouts              PgDatabaseTimeoutsPtrOutput `pulumi:"timeouts"`
@@ -114,6 +116,8 @@ type pgDatabaseState struct {
 	Project *string `pulumi:"project"`
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+	//
 	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection *bool               `pulumi:"terminationProtection"`
 	Timeouts              *PgDatabaseTimeouts `pulumi:"timeouts"`
@@ -130,6 +134,8 @@ type PgDatabaseState struct {
 	Project pulumi.StringPtrInput
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+	//
 	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection pulumi.BoolPtrInput
 	Timeouts              PgDatabaseTimeoutsPtrInput
@@ -150,6 +156,8 @@ type pgDatabaseArgs struct {
 	Project string `pulumi:"project"`
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+	//
 	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection *bool               `pulumi:"terminationProtection"`
 	Timeouts              *PgDatabaseTimeouts `pulumi:"timeouts"`
@@ -167,6 +175,8 @@ type PgDatabaseArgs struct {
 	Project pulumi.StringInput
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+	//
 	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection pulumi.BoolPtrInput
 	Timeouts              PgDatabaseTimeoutsPtrInput
@@ -284,6 +294,8 @@ func (o PgDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+//
 // Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 func (o PgDatabaseOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.BoolOutput { return v.TerminationProtection }).(pulumi.BoolOutput)

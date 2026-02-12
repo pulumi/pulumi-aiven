@@ -28,6 +28,7 @@ class ClickhouseDatabaseArgs:
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -75,6 +76,9 @@ class ClickhouseDatabaseArgs:
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+        """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
@@ -94,6 +98,7 @@ class _ClickhouseDatabaseState:
         :param pulumi.Input[_builtins.str] name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -143,6 +148,9 @@ class _ClickhouseDatabaseState:
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+        """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
@@ -162,6 +170,11 @@ class ClickhouseDatabase(pulumi.CustomResource):
                  termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Creates and manages an Aiven for ClickHouse® database.
+
+        > Tables cannot be created using Aiven Terraform Provider. To create a table,
+        use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
+
         ## Example Usage
 
         ```python
@@ -192,6 +205,7 @@ class ClickhouseDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
         """
         ...
     @overload
@@ -200,6 +214,11 @@ class ClickhouseDatabase(pulumi.CustomResource):
                  args: ClickhouseDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Creates and manages an Aiven for ClickHouse® database.
+
+        > Tables cannot be created using Aiven Terraform Provider. To create a table,
+        use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
+
         ## Example Usage
 
         ```python
@@ -285,6 +304,7 @@ class ClickhouseDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -323,5 +343,8 @@ class ClickhouseDatabase(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+        """
         return pulumi.get(self, "termination_protection")
 

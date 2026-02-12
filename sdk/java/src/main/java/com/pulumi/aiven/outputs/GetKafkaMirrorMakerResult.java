@@ -138,6 +138,10 @@ public final class GetKafkaMirrorMakerResult {
      * 
      */
     private String serviceUsername;
+    /**
+     * @return Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+     * 
+     */
     private String state;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
@@ -329,6 +333,10 @@ public final class GetKafkaMirrorMakerResult {
     public String serviceUsername() {
         return this.serviceUsername;
     }
+    /**
+     * @return Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+     * 
+     */
     public String state() {
         return this.state;
     }

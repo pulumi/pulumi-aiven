@@ -106,6 +106,8 @@ public class MysqlDatabase extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
+     * Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+     * 
      * @deprecated
      * Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
@@ -114,6 +116,10 @@ public class MysqlDatabase extends com.pulumi.resources.CustomResource {
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> terminationProtection;
 
+    /**
+     * @return Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+     * 
+     */
     public Output<Boolean> terminationProtection() {
         return this.terminationProtection;
     }

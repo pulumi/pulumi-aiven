@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates and manages an Aiven for ClickHouse® database.
+//
+// > Tables cannot be created using Aiven Terraform Provider. To create a table,
+// use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
+//
 // ## Example Usage
 //
 // ```go
@@ -64,7 +69,8 @@ type ClickhouseDatabase struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringOutput  `pulumi:"serviceName"`
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
 
@@ -109,8 +115,9 @@ type clickhouseDatabaseState struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           *string `pulumi:"serviceName"`
-	TerminationProtection *bool   `pulumi:"terminationProtection"`
+	ServiceName *string `pulumi:"serviceName"`
+	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 type ClickhouseDatabaseState struct {
@@ -119,7 +126,8 @@ type ClickhouseDatabaseState struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringPtrInput
+	ServiceName pulumi.StringPtrInput
+	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -133,8 +141,9 @@ type clickhouseDatabaseArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           string `pulumi:"serviceName"`
-	TerminationProtection *bool  `pulumi:"terminationProtection"`
+	ServiceName string `pulumi:"serviceName"`
+	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a ClickhouseDatabase resource.
@@ -144,7 +153,8 @@ type ClickhouseDatabaseArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           pulumi.StringInput
+	ServiceName pulumi.StringInput
+	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -250,6 +260,7 @@ func (o ClickhouseDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
 func (o ClickhouseDatabaseOutput) TerminationProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClickhouseDatabase) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
 }

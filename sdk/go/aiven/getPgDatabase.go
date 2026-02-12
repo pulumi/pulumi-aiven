@@ -75,6 +75,8 @@ type LookupPgDatabaseResult struct {
 	Project string `pulumi:"project"`
 	// Service name.
 	ServiceName string `pulumi:"serviceName"`
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+	//
 	// Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection bool                   `pulumi:"terminationProtection"`
 	Timeouts              *GetPgDatabaseTimeouts `pulumi:"timeouts"`
@@ -149,6 +151,8 @@ func (o LookupPgDatabaseResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+//
 // Deprecated: Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 func (o LookupPgDatabaseResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPgDatabaseResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)

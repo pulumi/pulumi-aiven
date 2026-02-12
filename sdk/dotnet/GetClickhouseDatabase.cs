@@ -163,6 +163,9 @@ namespace Pulumi.Aiven
         /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `False`.
+        /// </summary>
         public readonly bool TerminationProtection;
 
         [OutputConstructor]

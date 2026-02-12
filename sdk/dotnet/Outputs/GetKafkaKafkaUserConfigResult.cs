@@ -69,6 +69,9 @@ namespace Pulumi.Aiven.Outputs
         /// The plugin selected by the user
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaKafkaUserConfigKafkaConnectPluginVersionResult> KafkaConnectPluginVersions;
+        /// <summary>
+        /// Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth_method: token) and AWS Secrets Manager (provider: aws, auth_method: credentials) are supported. Secrets can be referenced in connector config with ${&lt;provider_name&gt;:&lt;secret_path&gt;:&lt;key_name&gt;}
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult> KafkaConnectSecretProviders;
         /// <summary>
         /// Kafka Diskless configuration values

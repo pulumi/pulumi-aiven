@@ -16,6 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Creates and manages an Aiven for ClickHouse® database.
+ * 
+ * &gt; Tables cannot be created using Aiven Terraform Provider. To create a table,
+ * use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -113,9 +118,17 @@ public class ClickhouseDatabase extends com.pulumi.resources.CustomResource {
     public Output<String> serviceName() {
         return this.serviceName;
     }
+    /**
+     * Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     * 
+     */
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
+    /**
+     * @return Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     * 
+     */
     public Output<Optional<Boolean>> terminationProtection() {
         return Codegen.optional(this.terminationProtection);
     }

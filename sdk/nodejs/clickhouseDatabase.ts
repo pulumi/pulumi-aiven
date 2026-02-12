@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Creates and manages an Aiven for ClickHouse® database.
+ *
+ * > Tables cannot be created using Aiven Terraform Provider. To create a table,
+ * use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -72,6 +77,9 @@ export class ClickhouseDatabase extends pulumi.CustomResource {
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
+    /**
+     * Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     */
     declare public readonly terminationProtection: pulumi.Output<boolean | undefined>;
 
     /**
@@ -125,6 +133,9 @@ export interface ClickhouseDatabaseState {
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
+    /**
+     * Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     */
     terminationProtection?: pulumi.Input<boolean>;
 }
 
@@ -144,5 +155,8 @@ export interface ClickhouseDatabaseArgs {
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    /**
+     * Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     */
     terminationProtection?: pulumi.Input<boolean>;
 }

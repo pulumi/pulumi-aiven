@@ -9988,18 +9988,73 @@ public final class AivenFunctions {
     public static CompletableFuture<GetOrganizationProjectResult> getOrganizationProjectPlain(GetOrganizationProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationProject:getOrganizationProject", TypeShape.of(GetOrganizationProjectResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The Organization User data source provides information about the existing Aiven Organization User.
+     * 
+     * &gt; **This resource is deprecated**
+     * Users cannot be invited to an organization using Terraform.
+     * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+     * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
+     * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
+     * and `aiven.OrganizationPermission` resources.
+     * 
+     */
     public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args) {
         return getOrganizationUser(args, InvokeOptions.Empty);
     }
+    /**
+     * The Organization User data source provides information about the existing Aiven Organization User.
+     * 
+     * &gt; **This resource is deprecated**
+     * Users cannot be invited to an organization using Terraform.
+     * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+     * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
+     * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
+     * and `aiven.OrganizationPermission` resources.
+     * 
+     */
     public static CompletableFuture<GetOrganizationUserResult> getOrganizationUserPlain(GetOrganizationUserPlainArgs args) {
         return getOrganizationUserPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * The Organization User data source provides information about the existing Aiven Organization User.
+     * 
+     * &gt; **This resource is deprecated**
+     * Users cannot be invited to an organization using Terraform.
+     * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+     * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
+     * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
+     * and `aiven.OrganizationPermission` resources.
+     * 
+     */
     public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The Organization User data source provides information about the existing Aiven Organization User.
+     * 
+     * &gt; **This resource is deprecated**
+     * Users cannot be invited to an organization using Terraform.
+     * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+     * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
+     * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
+     * and `aiven.OrganizationPermission` resources.
+     * 
+     */
     public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The Organization User data source provides information about the existing Aiven Organization User.
+     * 
+     * &gt; **This resource is deprecated**
+     * Users cannot be invited to an organization using Terraform.
+     * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+     * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
+     * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
+     * and `aiven.OrganizationPermission` resources.
+     * 
+     */
     public static CompletableFuture<GetOrganizationUserResult> getOrganizationUserPlain(GetOrganizationUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
     }

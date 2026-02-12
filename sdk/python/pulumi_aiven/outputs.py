@@ -9887,6 +9887,7 @@ class KafkaConnectKafkaConnectUserConfig(dict):
         :param 'KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'KafkaConnectKafkaConnectUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param Sequence[_builtins.str] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        :param Sequence['KafkaConnectKafkaConnectUserConfigSecretProviderArgs'] secret_providers: Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param _builtins.bool static_ips: Use static public IP addresses.
         """
@@ -10002,6 +10003,9 @@ class KafkaConnectKafkaConnectUserConfig(dict):
     @_builtins.property
     @pulumi.getter(name="secretProviders")
     def secret_providers(self) -> Optional[Sequence['outputs.KafkaConnectKafkaConnectUserConfigSecretProvider']]:
+        """
+        Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
+        """
         return pulumi.get(self, "secret_providers")
 
     @_builtins.property
@@ -11061,6 +11065,7 @@ class KafkaKafkaUserConfig(dict):
         :param _builtins.bool kafka_connect: Enable Kafka Connect service. Default: `false`.
         :param 'KafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
         :param Sequence['KafkaKafkaUserConfigKafkaConnectPluginVersionArgs'] kafka_connect_plugin_versions: The plugin selected by the user
+        :param Sequence['KafkaKafkaUserConfigKafkaConnectSecretProviderArgs'] kafka_connect_secret_providers: Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
         :param 'KafkaKafkaUserConfigKafkaDisklessArgs' kafka_diskless: Kafka Diskless configuration values
         :param _builtins.bool kafka_rest: Enable Kafka-REST service. Default: `false`.
         :param _builtins.bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
@@ -11264,6 +11269,9 @@ class KafkaKafkaUserConfig(dict):
     @_builtins.property
     @pulumi.getter(name="kafkaConnectSecretProviders")
     def kafka_connect_secret_providers(self) -> Optional[Sequence['outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider']]:
+        """
+        Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
+        """
         return pulumi.get(self, "kafka_connect_secret_providers")
 
     @_builtins.property
@@ -39828,6 +39836,7 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
         :param 'GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param Sequence[_builtins.str] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+        :param Sequence['GetKafkaConnectKafkaConnectUserConfigSecretProviderArgs'] secret_providers: Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth_method: token) and AWS Secrets Manager (provider: aws, auth_method: credentials) are supported. Secrets can be referenced in connector config with ${<provider_name>:<secret_path>:<key_name>}
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param _builtins.bool static_ips: Use static public IP addresses.
         """
@@ -39943,6 +39952,9 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
     @_builtins.property
     @pulumi.getter(name="secretProviders")
     def secret_providers(self) -> Optional[Sequence['outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderResult']]:
+        """
+        Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth_method: token) and AWS Secrets Manager (provider: aws, auth_method: credentials) are supported. Secrets can be referenced in connector config with ${<provider_name>:<secret_path>:<key_name>}
+        """
         return pulumi.get(self, "secret_providers")
 
     @_builtins.property
@@ -40714,6 +40726,7 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param _builtins.bool kafka_connect: Enable Kafka Connect service. Default: `false`.
         :param 'GetKafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
         :param Sequence['GetKafkaKafkaUserConfigKafkaConnectPluginVersionArgs'] kafka_connect_plugin_versions: The plugin selected by the user
+        :param Sequence['GetKafkaKafkaUserConfigKafkaConnectSecretProviderArgs'] kafka_connect_secret_providers: Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth_method: token) and AWS Secrets Manager (provider: aws, auth_method: credentials) are supported. Secrets can be referenced in connector config with ${<provider_name>:<secret_path>:<key_name>}
         :param 'GetKafkaKafkaUserConfigKafkaDisklessArgs' kafka_diskless: Kafka Diskless configuration values
         :param _builtins.bool kafka_rest: Enable Kafka-REST service. Default: `false`.
         :param _builtins.bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
@@ -40917,6 +40930,9 @@ class GetKafkaKafkaUserConfigResult(dict):
     @_builtins.property
     @pulumi.getter(name="kafkaConnectSecretProviders")
     def kafka_connect_secret_providers(self) -> Optional[Sequence['outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult']]:
+        """
+        Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth_method: token) and AWS Secrets Manager (provider: aws, auth_method: credentials) are supported. Secrets can be referenced in connector config with ${<provider_name>:<secret_path>:<key_name>}
+        """
         return pulumi.get(self, "kafka_connect_secret_providers")
 
     @_builtins.property

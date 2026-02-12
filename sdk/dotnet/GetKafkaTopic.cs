@@ -179,6 +179,9 @@ namespace Pulumi.Aiven
         /// Tags for the topic.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTopicTagResult> Tags;
+        /// <summary>
+        /// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+        /// </summary>
         public readonly bool TerminationProtection;
         /// <summary>
         /// The description of the topic

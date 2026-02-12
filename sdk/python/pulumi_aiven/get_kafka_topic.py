@@ -129,6 +129,9 @@ class GetKafkaTopicResult:
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> _builtins.bool:
+        """
+        Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+        """
         return pulumi.get(self, "termination_protection")
 
     @_builtins.property

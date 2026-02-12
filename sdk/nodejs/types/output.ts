@@ -4275,6 +4275,9 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
      * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
      */
     saslOauthbearerAllowedUrls?: string[];
+    /**
+     * Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth_method: token) and AWS Secrets Manager (provider: aws, auth_method: credentials) are supported. Secrets can be referenced in connector config with ${<provider_name>:<secret_path>:<key_name>}
+     */
     secretProviders?: outputs.GetKafkaConnectKafkaConnectUserConfigSecretProvider[];
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
@@ -4597,6 +4600,9 @@ export interface GetKafkaKafkaUserConfig {
      * The plugin selected by the user
      */
     kafkaConnectPluginVersions?: outputs.GetKafkaKafkaUserConfigKafkaConnectPluginVersion[];
+    /**
+     * Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth_method: token) and AWS Secrets Manager (provider: aws, auth_method: credentials) are supported. Secrets can be referenced in connector config with ${<provider_name>:<secret_path>:<key_name>}
+     */
     kafkaConnectSecretProviders?: outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProvider[];
     /**
      * Kafka Diskless configuration values
@@ -11860,6 +11866,9 @@ export interface KafkaConnectKafkaConnectUserConfig {
      * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
      */
     saslOauthbearerAllowedUrls?: string[];
+    /**
+     * Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     */
     secretProviders?: outputs.KafkaConnectKafkaConnectUserConfigSecretProvider[];
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
@@ -12182,6 +12191,9 @@ export interface KafkaKafkaUserConfig {
      * The plugin selected by the user
      */
     kafkaConnectPluginVersions?: outputs.KafkaKafkaUserConfigKafkaConnectPluginVersion[];
+    /**
+     * Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     */
     kafkaConnectSecretProviders?: outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider[];
     /**
      * Kafka Diskless configuration values

@@ -69,8 +69,9 @@ type LookupClickhouseDatabaseResult struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName           string `pulumi:"serviceName"`
-	TerminationProtection bool   `pulumi:"terminationProtection"`
+	ServiceName string `pulumi:"serviceName"`
+	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+	TerminationProtection bool `pulumi:"terminationProtection"`
 }
 
 func LookupClickhouseDatabaseOutput(ctx *pulumi.Context, args LookupClickhouseDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupClickhouseDatabaseResultOutput {
@@ -131,6 +132,7 @@ func (o LookupClickhouseDatabaseResultOutput) ServiceName() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
 func (o LookupClickhouseDatabaseResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
 }

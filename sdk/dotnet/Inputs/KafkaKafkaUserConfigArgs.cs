@@ -123,6 +123,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("kafkaConnectSecretProviders")]
         private InputList<Inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderArgs>? _kafkaConnectSecretProviders;
+
+        /// <summary>
+        /// Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+        /// </summary>
         public InputList<Inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderArgs> KafkaConnectSecretProviders
         {
             get => _kafkaConnectSecretProviders ?? (_kafkaConnectSecretProviders = new InputList<Inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderArgs>());

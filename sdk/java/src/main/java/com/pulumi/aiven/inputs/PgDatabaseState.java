@@ -93,6 +93,8 @@ public final class PgDatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+     * 
      * @deprecated
      * Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
@@ -102,6 +104,8 @@ public final class PgDatabaseState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> terminationProtection;
 
     /**
+     * @return Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+     * 
      * @deprecated
      * Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
@@ -254,6 +258,8 @@ public final class PgDatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param terminationProtection Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+         * 
          * @return builder
          * 
          * @deprecated
@@ -267,6 +273,8 @@ public final class PgDatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param terminationProtection Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+         * 
          * @return builder
          * 
          * @deprecated

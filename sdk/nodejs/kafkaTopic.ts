@@ -92,6 +92,9 @@ export class KafkaTopic extends pulumi.CustomResource {
      * Tags for the topic.
      */
     declare public readonly tags: pulumi.Output<outputs.KafkaTopicTag[] | undefined>;
+    /**
+     * Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     */
     declare public readonly terminationProtection: pulumi.Output<boolean | undefined>;
     /**
      * The description of the topic
@@ -190,6 +193,9 @@ export interface KafkaTopicState {
      * Tags for the topic.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
+    /**
+     * Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     */
     terminationProtection?: pulumi.Input<boolean>;
     /**
      * The description of the topic
@@ -233,6 +239,9 @@ export interface KafkaTopicArgs {
      * Tags for the topic.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
+    /**
+     * Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     */
     terminationProtection?: pulumi.Input<boolean>;
     /**
      * The description of the topic

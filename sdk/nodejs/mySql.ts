@@ -167,6 +167,9 @@ export class MySql extends pulumi.CustomResource {
      * Username used for connecting to the service, if applicable
      */
     declare public /*out*/ readonly serviceUsername: pulumi.Output<string>;
+    /**
+     * Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+     */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
@@ -377,6 +380,9 @@ export interface MySqlState {
      * Username used for connecting to the service, if applicable
      */
     serviceUsername?: pulumi.Input<string>;
+    /**
+     * Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
+     */
     state?: pulumi.Input<string>;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again

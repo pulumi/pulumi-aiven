@@ -78,6 +78,9 @@ class GetClickhouseDatabaseResult:
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> _builtins.bool:
+        """
+        Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+        """
         return pulumi.get(self, "termination_protection")
 
 

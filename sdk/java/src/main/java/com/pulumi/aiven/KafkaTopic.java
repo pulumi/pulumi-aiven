@@ -173,9 +173,17 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<KafkaTopicTag>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     * 
+     */
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
+    /**
+     * @return Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     * 
+     */
     public Output<Optional<Boolean>> terminationProtection() {
         return Codegen.optional(this.terminationProtection);
     }

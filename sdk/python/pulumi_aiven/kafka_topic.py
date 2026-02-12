@@ -41,6 +41,7 @@ class KafkaTopicArgs:
         :param pulumi.Input['KafkaTopicConfigArgs'] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         :param pulumi.Input[_builtins.str] owner_user_group_id: The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Tags for the topic.
+        :param pulumi.Input[_builtins.bool] termination_protection: Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
         :param pulumi.Input[_builtins.str] topic_description: The description of the topic
         """
         pulumi.set(__self__, "partitions", partitions)
@@ -158,6 +159,9 @@ class KafkaTopicArgs:
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+        """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
@@ -199,6 +203,7 @@ class _KafkaTopicState:
         :param pulumi.Input[_builtins.int] replication: The replication factor for the topic.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Tags for the topic.
+        :param pulumi.Input[_builtins.bool] termination_protection: Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
         :param pulumi.Input[_builtins.str] topic_description: The description of the topic
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
@@ -310,6 +315,9 @@ class _KafkaTopicState:
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+        """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
@@ -396,6 +404,7 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] replication: The replication factor for the topic.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]] tags: Tags for the topic.
+        :param pulumi.Input[_builtins.bool] termination_protection: Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
         :param pulumi.Input[_builtins.str] topic_description: The description of the topic
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
@@ -522,6 +531,7 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] replication: The replication factor for the topic.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]] tags: Tags for the topic.
+        :param pulumi.Input[_builtins.bool] termination_protection: Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
         :param pulumi.Input[_builtins.str] topic_description: The description of the topic
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
@@ -600,6 +610,9 @@ class KafkaTopic(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+        """
         return pulumi.get(self, "termination_protection")
 
     @_builtins.property

@@ -9,6 +9,16 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// Creates and manages an Aiven Organization user.
+    /// 
+    /// &gt; **This resource is deprecated**
+    /// Users cannot be invited to an organization using Terraform.
+    /// Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+    /// After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
+    /// user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
+    /// and `aiven.OrganizationPermission` resources.
+    /// </summary>
     [AivenResourceType("aiven:index/organizationUser:OrganizationUser")]
     public partial class OrganizationUser : global::Pulumi.CustomResource
     {

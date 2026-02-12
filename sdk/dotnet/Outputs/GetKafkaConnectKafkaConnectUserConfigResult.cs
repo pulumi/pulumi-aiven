@@ -53,6 +53,9 @@ namespace Pulumi.Aiven.Outputs
         /// List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         /// </summary>
         public readonly ImmutableArray<string> SaslOauthbearerAllowedUrls;
+        /// <summary>
+        /// Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth_method: token) and AWS Secrets Manager (provider: aws, auth_method: credentials) are supported. Secrets can be referenced in connector config with ${&lt;provider_name&gt;:&lt;secret_path&gt;:&lt;key_name&gt;}
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderResult> SecretProviders;
         /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.

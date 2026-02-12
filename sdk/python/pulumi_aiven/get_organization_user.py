@@ -102,7 +102,15 @@ def get_organization_user(organization_id: Optional[_builtins.str] = None,
                           user_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationUserResult:
     """
-    Use this data source to access information about an existing resource.
+    The Organization User data source provides information about the existing Aiven Organization User.
+
+    > **This resource is deprecated**
+    Users cannot be invited to an organization using Terraform.
+    Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+    After the user accepts the invite you can get their information using the `OrganizationUser` data source. You can manage
+    user access to projects with the `OrganizationUserGroup`, `OrganizationUserGroupMember`,
+    and `OrganizationPermission` resources.
+
 
     :param _builtins.str organization_id: The unique organization ID.
     :param _builtins.str user_email: This is a user email address
@@ -126,7 +134,15 @@ def get_organization_user_output(organization_id: Optional[pulumi.Input[_builtin
                                  user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationUserResult]:
     """
-    Use this data source to access information about an existing resource.
+    The Organization User data source provides information about the existing Aiven Organization User.
+
+    > **This resource is deprecated**
+    Users cannot be invited to an organization using Terraform.
+    Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
+    After the user accepts the invite you can get their information using the `OrganizationUser` data source. You can manage
+    user access to projects with the `OrganizationUserGroup`, `OrganizationUserGroupMember`,
+    and `OrganizationPermission` resources.
+
 
     :param _builtins.str organization_id: The unique organization ID.
     :param _builtins.str user_email: This is a user email address
