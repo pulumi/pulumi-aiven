@@ -42,6 +42,30 @@ namespace Pulumi.Aiven
 
     public sealed class GetOrganizationBillingGroupArgs : global::Pulumi.InvokeArgs
     {
+        [Input("billingContactEmails")]
+        private List<Inputs.GetOrganizationBillingGroupBillingContactEmailArgs>? _billingContactEmails;
+
+        /// <summary>
+        /// List of billing contact emails.
+        /// </summary>
+        public List<Inputs.GetOrganizationBillingGroupBillingContactEmailArgs> BillingContactEmails
+        {
+            get => _billingContactEmails ?? (_billingContactEmails = new List<Inputs.GetOrganizationBillingGroupBillingContactEmailArgs>());
+            set => _billingContactEmails = value;
+        }
+
+        [Input("billingEmails")]
+        private List<Inputs.GetOrganizationBillingGroupBillingEmailArgs>? _billingEmails;
+
+        /// <summary>
+        /// List of billing contact emails.
+        /// </summary>
+        public List<Inputs.GetOrganizationBillingGroupBillingEmailArgs> BillingEmails
+        {
+            get => _billingEmails ?? (_billingEmails = new List<Inputs.GetOrganizationBillingGroupBillingEmailArgs>());
+            set => _billingEmails = value;
+        }
+
         /// <summary>
         /// Billing group ID.
         /// </summary>
@@ -54,6 +78,18 @@ namespace Pulumi.Aiven
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
 
+        [Input("paymentMethods")]
+        private List<Inputs.GetOrganizationBillingGroupPaymentMethodArgs>? _paymentMethods;
+
+        /// <summary>
+        /// Payment method.
+        /// </summary>
+        public List<Inputs.GetOrganizationBillingGroupPaymentMethodArgs> PaymentMethods
+        {
+            get => _paymentMethods ?? (_paymentMethods = new List<Inputs.GetOrganizationBillingGroupPaymentMethodArgs>());
+            set => _paymentMethods = value;
+        }
+
         [Input("timeouts")]
         public Inputs.GetOrganizationBillingGroupTimeoutsArgs? Timeouts { get; set; }
 
@@ -65,6 +101,30 @@ namespace Pulumi.Aiven
 
     public sealed class GetOrganizationBillingGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("billingContactEmails")]
+        private InputList<Inputs.GetOrganizationBillingGroupBillingContactEmailInputArgs>? _billingContactEmails;
+
+        /// <summary>
+        /// List of billing contact emails.
+        /// </summary>
+        public InputList<Inputs.GetOrganizationBillingGroupBillingContactEmailInputArgs> BillingContactEmails
+        {
+            get => _billingContactEmails ?? (_billingContactEmails = new InputList<Inputs.GetOrganizationBillingGroupBillingContactEmailInputArgs>());
+            set => _billingContactEmails = value;
+        }
+
+        [Input("billingEmails")]
+        private InputList<Inputs.GetOrganizationBillingGroupBillingEmailInputArgs>? _billingEmails;
+
+        /// <summary>
+        /// List of billing contact emails.
+        /// </summary>
+        public InputList<Inputs.GetOrganizationBillingGroupBillingEmailInputArgs> BillingEmails
+        {
+            get => _billingEmails ?? (_billingEmails = new InputList<Inputs.GetOrganizationBillingGroupBillingEmailInputArgs>());
+            set => _billingEmails = value;
+        }
+
         /// <summary>
         /// Billing group ID.
         /// </summary>
@@ -76,6 +136,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("paymentMethods")]
+        private InputList<Inputs.GetOrganizationBillingGroupPaymentMethodInputArgs>? _paymentMethods;
+
+        /// <summary>
+        /// Payment method.
+        /// </summary>
+        public InputList<Inputs.GetOrganizationBillingGroupPaymentMethodInputArgs> PaymentMethods
+        {
+            get => _paymentMethods ?? (_paymentMethods = new InputList<Inputs.GetOrganizationBillingGroupPaymentMethodInputArgs>());
+            set => _paymentMethods = value;
+        }
 
         [Input("timeouts")]
         public Input<Inputs.GetOrganizationBillingGroupTimeoutsInputArgs>? Timeouts { get; set; }
@@ -95,13 +167,13 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string BillingAddressId;
         /// <summary>
-        /// Aiven contacts these email addresses when there are billing issues or questions.
+        /// List of billing contact emails.
         /// </summary>
-        public readonly ImmutableArray<string> BillingContactEmails;
+        public readonly ImmutableArray<Outputs.GetOrganizationBillingGroupBillingContactEmailResult> BillingContactEmails;
         /// <summary>
-        /// PDF invoices are sent to these email addresses.
+        /// List of billing contact emails.
         /// </summary>
-        public readonly ImmutableArray<string> BillingEmails;
+        public readonly ImmutableArray<Outputs.GetOrganizationBillingGroupBillingEmailResult> BillingEmails;
         /// <summary>
         /// Billing group ID.
         /// </summary>
@@ -127,9 +199,9 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
-        /// Payment method ID.
+        /// Payment method.
         /// </summary>
-        public readonly string PaymentMethodId;
+        public readonly ImmutableArray<Outputs.GetOrganizationBillingGroupPaymentMethodResult> PaymentMethods;
         /// <summary>
         /// Shipping address ID.
         /// </summary>
@@ -144,9 +216,9 @@ namespace Pulumi.Aiven
         private GetOrganizationBillingGroupResult(
             string billingAddressId,
 
-            ImmutableArray<string> billingContactEmails,
+            ImmutableArray<Outputs.GetOrganizationBillingGroupBillingContactEmailResult> billingContactEmails,
 
-            ImmutableArray<string> billingEmails,
+            ImmutableArray<Outputs.GetOrganizationBillingGroupBillingEmailResult> billingEmails,
 
             string billingGroupId,
 
@@ -160,7 +232,7 @@ namespace Pulumi.Aiven
 
             string organizationId,
 
-            string paymentMethodId,
+            ImmutableArray<Outputs.GetOrganizationBillingGroupPaymentMethodResult> paymentMethods,
 
             string shippingAddressId,
 
@@ -177,7 +249,7 @@ namespace Pulumi.Aiven
             CustomInvoiceText = customInvoiceText;
             Id = id;
             OrganizationId = organizationId;
-            PaymentMethodId = paymentMethodId;
+            PaymentMethods = paymentMethods;
             ShippingAddressId = shippingAddressId;
             Timeouts = timeouts;
             VatId = vatId;

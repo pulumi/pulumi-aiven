@@ -27,7 +27,7 @@ class OrganizationalUnitArgs:
         """
         The set of arguments for constructing a OrganizationalUnit resource.
         :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in. Maximum length: `36`.
-        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `83`.
         """
         pulumi.set(__self__, "parent_id", parent_id)
         if name is not None:
@@ -51,7 +51,7 @@ class OrganizationalUnitArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the organizational unit. Maximum length: `128`.
+        The name of the organizational unit. Maximum length: `83`.
         """
         return pulumi.get(self, "name")
 
@@ -81,7 +81,7 @@ class _OrganizationalUnitState:
         """
         Input properties used for looking up and filtering OrganizationalUnit resources.
         :param pulumi.Input[_builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
-        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `83`.
         :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] tenant_id: Tenant identifier.
         :param pulumi.Input[_builtins.str] update_time: Timestamp in ISO 8601 format, always in UTC.
@@ -115,7 +115,7 @@ class _OrganizationalUnitState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the organizational unit. Maximum length: `128`.
+        The name of the organizational unit. Maximum length: `83`.
         """
         return pulumi.get(self, "name")
 
@@ -201,7 +201,7 @@ class OrganizationalUnit(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `83`.
         :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in. Maximum length: `36`.
         """
         ...
@@ -289,7 +289,7 @@ class OrganizationalUnit(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
-        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `83`.
         :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] tenant_id: Tenant identifier.
         :param pulumi.Input[_builtins.str] update_time: Timestamp in ISO 8601 format, always in UTC.
@@ -318,7 +318,7 @@ class OrganizationalUnit(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the organizational unit. Maximum length: `128`.
+        The name of the organizational unit. Maximum length: `83`.
         """
         return pulumi.get(self, "name")
 

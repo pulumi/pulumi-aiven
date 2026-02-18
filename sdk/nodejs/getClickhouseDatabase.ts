@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Gets information about a ClickHouse database.
+ * Gets information about an Aiven for ClickHouse database.
  *
  * ## Example Usage
  *
@@ -26,6 +28,7 @@ export function getClickhouseDatabase(args: GetClickhouseDatabaseArgs, opts?: pu
         "name": args.name,
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -34,17 +37,18 @@ export function getClickhouseDatabase(args: GetClickhouseDatabaseArgs, opts?: pu
  */
 export interface GetClickhouseDatabaseArgs {
     /**
-     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
+     * Service database name.
      */
     name: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetClickhouseDatabaseTimeouts;
 }
 
 /**
@@ -52,28 +56,31 @@ export interface GetClickhouseDatabaseArgs {
  */
 export interface GetClickhouseDatabaseResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/name`.
      */
     readonly id: string;
     /**
-     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
+     * Service database name.
      */
     readonly name: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
     /**
-     * Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     * Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+     *
+     * @deprecated Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      */
     readonly terminationProtection: boolean;
+    readonly timeouts?: outputs.GetClickhouseDatabaseTimeouts;
 }
 /**
- * Gets information about a ClickHouse database.
+ * Gets information about an Aiven for ClickHouse database.
  *
  * ## Example Usage
  *
@@ -94,6 +101,7 @@ export function getClickhouseDatabaseOutput(args: GetClickhouseDatabaseOutputArg
         "name": args.name,
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -102,15 +110,16 @@ export function getClickhouseDatabaseOutput(args: GetClickhouseDatabaseOutputArg
  */
 export interface GetClickhouseDatabaseOutputArgs {
     /**
-     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
+     * Service database name.
      */
     name: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetClickhouseDatabaseTimeoutsArgs>;
 }

@@ -3,6 +3,9 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingContactEmailArgs;
+import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingEmailArgs;
+import com.pulumi.aiven.inputs.OrganizationBillingGroupPaymentMethodArgs;
 import com.pulumi.aiven.inputs.OrganizationBillingGroupTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -33,32 +36,32 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Aiven contacts these email addresses when there are billing issues or questions.
+     * Required property. List of billing contact emails.
      * 
      */
     @Import(name="billingContactEmails")
-    private @Nullable Output<List<String>> billingContactEmails;
+    private @Nullable Output<List<OrganizationBillingGroupBillingContactEmailArgs>> billingContactEmails;
 
     /**
-     * @return Aiven contacts these email addresses when there are billing issues or questions.
+     * @return Required property. List of billing contact emails.
      * 
      */
-    public Optional<Output<List<String>>> billingContactEmails() {
+    public Optional<Output<List<OrganizationBillingGroupBillingContactEmailArgs>>> billingContactEmails() {
         return Optional.ofNullable(this.billingContactEmails);
     }
 
     /**
-     * PDF invoices are sent to these email addresses.
+     * Required property. List of billing contact emails.
      * 
      */
     @Import(name="billingEmails")
-    private @Nullable Output<List<String>> billingEmails;
+    private @Nullable Output<List<OrganizationBillingGroupBillingEmailArgs>> billingEmails;
 
     /**
-     * @return PDF invoices are sent to these email addresses.
+     * @return Required property. List of billing contact emails.
      * 
      */
-    public Optional<Output<List<String>>> billingEmails() {
+    public Optional<Output<List<OrganizationBillingGroupBillingEmailArgs>>> billingEmails() {
         return Optional.ofNullable(this.billingEmails);
     }
 
@@ -138,18 +141,18 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Payment method ID.
+     * Required property. Payment method.
      * 
      */
-    @Import(name="paymentMethodId")
-    private @Nullable Output<String> paymentMethodId;
+    @Import(name="paymentMethod")
+    private @Nullable Output<OrganizationBillingGroupPaymentMethodArgs> paymentMethod;
 
     /**
-     * @return Payment method ID.
+     * @return Required property. Payment method.
      * 
      */
-    public Optional<Output<String>> paymentMethodId() {
-        return Optional.ofNullable(this.paymentMethodId);
+    public Optional<Output<OrganizationBillingGroupPaymentMethodArgs>> paymentMethod() {
+        return Optional.ofNullable(this.paymentMethod);
     }
 
     /**
@@ -200,7 +203,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         this.currency = $.currency;
         this.customInvoiceText = $.customInvoiceText;
         this.organizationId = $.organizationId;
-        this.paymentMethodId = $.paymentMethodId;
+        this.paymentMethod = $.paymentMethod;
         this.shippingAddressId = $.shippingAddressId;
         this.timeouts = $.timeouts;
         this.vatId = $.vatId;
@@ -246,64 +249,64 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingContactEmails Aiven contacts these email addresses when there are billing issues or questions.
+         * @param billingContactEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingContactEmails(@Nullable Output<List<String>> billingContactEmails) {
+        public Builder billingContactEmails(@Nullable Output<List<OrganizationBillingGroupBillingContactEmailArgs>> billingContactEmails) {
             $.billingContactEmails = billingContactEmails;
             return this;
         }
 
         /**
-         * @param billingContactEmails Aiven contacts these email addresses when there are billing issues or questions.
+         * @param billingContactEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingContactEmails(List<String> billingContactEmails) {
+        public Builder billingContactEmails(List<OrganizationBillingGroupBillingContactEmailArgs> billingContactEmails) {
             return billingContactEmails(Output.of(billingContactEmails));
         }
 
         /**
-         * @param billingContactEmails Aiven contacts these email addresses when there are billing issues or questions.
+         * @param billingContactEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingContactEmails(String... billingContactEmails) {
+        public Builder billingContactEmails(OrganizationBillingGroupBillingContactEmailArgs... billingContactEmails) {
             return billingContactEmails(List.of(billingContactEmails));
         }
 
         /**
-         * @param billingEmails PDF invoices are sent to these email addresses.
+         * @param billingEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingEmails(@Nullable Output<List<String>> billingEmails) {
+        public Builder billingEmails(@Nullable Output<List<OrganizationBillingGroupBillingEmailArgs>> billingEmails) {
             $.billingEmails = billingEmails;
             return this;
         }
 
         /**
-         * @param billingEmails PDF invoices are sent to these email addresses.
+         * @param billingEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingEmails(List<String> billingEmails) {
+        public Builder billingEmails(List<OrganizationBillingGroupBillingEmailArgs> billingEmails) {
             return billingEmails(Output.of(billingEmails));
         }
 
         /**
-         * @param billingEmails PDF invoices are sent to these email addresses.
+         * @param billingEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingEmails(String... billingEmails) {
+        public Builder billingEmails(OrganizationBillingGroupBillingEmailArgs... billingEmails) {
             return billingEmails(List.of(billingEmails));
         }
 
@@ -413,24 +416,24 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param paymentMethodId Payment method ID.
+         * @param paymentMethod Required property. Payment method.
          * 
          * @return builder
          * 
          */
-        public Builder paymentMethodId(@Nullable Output<String> paymentMethodId) {
-            $.paymentMethodId = paymentMethodId;
+        public Builder paymentMethod(@Nullable Output<OrganizationBillingGroupPaymentMethodArgs> paymentMethod) {
+            $.paymentMethod = paymentMethod;
             return this;
         }
 
         /**
-         * @param paymentMethodId Payment method ID.
+         * @param paymentMethod Required property. Payment method.
          * 
          * @return builder
          * 
          */
-        public Builder paymentMethodId(String paymentMethodId) {
-            return paymentMethodId(Output.of(paymentMethodId));
+        public Builder paymentMethod(OrganizationBillingGroupPaymentMethodArgs paymentMethod) {
+            return paymentMethod(Output.of(paymentMethod));
         }
 
         /**

@@ -43,6 +43,11 @@ public final class GetM3DbComponent {
      */
     private Integer port;
     /**
+     * @return Privatelink connection ID
+     * 
+     */
+    private String privatelinkConnectionId;
+    /**
      * @return Network access route
      * 
      */
@@ -102,6 +107,13 @@ public final class GetM3DbComponent {
         return this.port;
     }
     /**
+     * @return Privatelink connection ID
+     * 
+     */
+    public String privatelinkConnectionId() {
+        return this.privatelinkConnectionId;
+    }
+    /**
      * @return Network access route
      * 
      */
@@ -138,6 +150,7 @@ public final class GetM3DbComponent {
         private String kafkaAuthenticationMethod;
         private String kafkaSslCa;
         private Integer port;
+        private String privatelinkConnectionId;
         private String route;
         private Boolean ssl;
         private String usage;
@@ -150,6 +163,7 @@ public final class GetM3DbComponent {
     	      this.kafkaAuthenticationMethod = defaults.kafkaAuthenticationMethod;
     	      this.kafkaSslCa = defaults.kafkaSslCa;
     	      this.port = defaults.port;
+    	      this.privatelinkConnectionId = defaults.privatelinkConnectionId;
     	      this.route = defaults.route;
     	      this.ssl = defaults.ssl;
     	      this.usage = defaults.usage;
@@ -204,6 +218,14 @@ public final class GetM3DbComponent {
             return this;
         }
         @CustomType.Setter
+        public Builder privatelinkConnectionId(String privatelinkConnectionId) {
+            if (privatelinkConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetM3DbComponent", "privatelinkConnectionId");
+            }
+            this.privatelinkConnectionId = privatelinkConnectionId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder route(String route) {
             if (route == null) {
               throw new MissingRequiredPropertyException("GetM3DbComponent", "route");
@@ -235,6 +257,7 @@ public final class GetM3DbComponent {
             _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
             _resultValue.kafkaSslCa = kafkaSslCa;
             _resultValue.port = port;
+            _resultValue.privatelinkConnectionId = privatelinkConnectionId;
             _resultValue.route = route;
             _resultValue.ssl = ssl;
             _resultValue.usage = usage;

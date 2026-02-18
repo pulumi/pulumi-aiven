@@ -26,7 +26,7 @@ class GetMirrorMakerReplicationFlowResult:
     """
     A collection of values returned by getMirrorMakerReplicationFlow.
     """
-    def __init__(__self__, config_properties_excludes=None, emit_backward_heartbeats_enabled=None, emit_heartbeats_enabled=None, enable=None, exactly_once_delivery_enabled=None, id=None, offset_syncs_topic_location=None, project=None, replication_factor=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
+    def __init__(__self__, config_properties_excludes=None, emit_backward_heartbeats_enabled=None, emit_heartbeats_enabled=None, enable=None, exactly_once_delivery_enabled=None, follower_fetching_enabled=None, id=None, offset_syncs_topic_location=None, project=None, replication_factor=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
         if config_properties_excludes and not isinstance(config_properties_excludes, list):
             raise TypeError("Expected argument 'config_properties_excludes' to be a list")
         pulumi.set(__self__, "config_properties_excludes", config_properties_excludes)
@@ -42,6 +42,9 @@ class GetMirrorMakerReplicationFlowResult:
         if exactly_once_delivery_enabled and not isinstance(exactly_once_delivery_enabled, bool):
             raise TypeError("Expected argument 'exactly_once_delivery_enabled' to be a bool")
         pulumi.set(__self__, "exactly_once_delivery_enabled", exactly_once_delivery_enabled)
+        if follower_fetching_enabled and not isinstance(follower_fetching_enabled, bool):
+            raise TypeError("Expected argument 'follower_fetching_enabled' to be a bool")
+        pulumi.set(__self__, "follower_fetching_enabled", follower_fetching_enabled)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -118,6 +121,14 @@ class GetMirrorMakerReplicationFlowResult:
         Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
         """
         return pulumi.get(self, "exactly_once_delivery_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="followerFetchingEnabled")
+    def follower_fetching_enabled(self) -> _builtins.bool:
+        """
+        Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+        """
+        return pulumi.get(self, "follower_fetching_enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -227,6 +238,7 @@ class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlow
             emit_heartbeats_enabled=self.emit_heartbeats_enabled,
             enable=self.enable,
             exactly_once_delivery_enabled=self.exactly_once_delivery_enabled,
+            follower_fetching_enabled=self.follower_fetching_enabled,
             id=self.id,
             offset_syncs_topic_location=self.offset_syncs_topic_location,
             project=self.project,
@@ -281,6 +293,7 @@ def get_mirror_maker_replication_flow(project: Optional[_builtins.str] = None,
         emit_heartbeats_enabled=pulumi.get(__ret__, 'emit_heartbeats_enabled'),
         enable=pulumi.get(__ret__, 'enable'),
         exactly_once_delivery_enabled=pulumi.get(__ret__, 'exactly_once_delivery_enabled'),
+        follower_fetching_enabled=pulumi.get(__ret__, 'follower_fetching_enabled'),
         id=pulumi.get(__ret__, 'id'),
         offset_syncs_topic_location=pulumi.get(__ret__, 'offset_syncs_topic_location'),
         project=pulumi.get(__ret__, 'project'),
@@ -332,6 +345,7 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[_bui
         emit_heartbeats_enabled=pulumi.get(__response__, 'emit_heartbeats_enabled'),
         enable=pulumi.get(__response__, 'enable'),
         exactly_once_delivery_enabled=pulumi.get(__response__, 'exactly_once_delivery_enabled'),
+        follower_fetching_enabled=pulumi.get(__response__, 'follower_fetching_enabled'),
         id=pulumi.get(__response__, 'id'),
         offset_syncs_topic_location=pulumi.get(__response__, 'offset_syncs_topic_location'),
         project=pulumi.get(__response__, 'project'),

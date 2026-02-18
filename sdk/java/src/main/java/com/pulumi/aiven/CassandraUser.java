@@ -16,59 +16,6 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * Creates and manages an Aiven for Apache Cassandra® service user.
- * 
- * !&gt; **End of life notice**
- * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
- * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
- * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
- * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
- * before December 31, 2025. For further assistance, contact your account team.
- * 
- * ## Example Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aiven.CassandraUser;
- * import com.pulumi.aiven.CassandraUserArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleServiceUser = new CassandraUser("exampleServiceUser", CassandraUserArgs.builder()
- *             .serviceName(exampleCassandra.serviceName())
- *             .project(exampleProject.project())
- *             .username("example-cassandra-user")
- *             .password(serviceUserPw)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import aiven:index/cassandraUser:CassandraUser example_service_user PROJECT/SERVICE_NAME/USERNAME
- * ```
- * 
- */
 @ResourceType(type="aiven:index/cassandraUser:CassandraUser")
 public class CassandraUser extends com.pulumi.resources.CustomResource {
     /**

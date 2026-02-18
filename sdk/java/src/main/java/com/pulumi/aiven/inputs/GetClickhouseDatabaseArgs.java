@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetClickhouseDatabaseTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +18,14 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
     public static final GetClickhouseDatabaseArgs Empty = new GetClickhouseDatabaseArgs();
 
     /**
-     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
+     * Service database name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the ClickHouse database. Changing this property forces recreation of the resource.
+     * @return Service database name.
      * 
      */
     public Output<String> name() {
@@ -30,14 +33,14 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public Output<String> project() {
@@ -45,18 +48,25 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<GetClickhouseDatabaseTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetClickhouseDatabaseTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetClickhouseDatabaseArgs() {}
@@ -65,6 +75,7 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
         this.name = $.name;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -86,7 +97,7 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param name The name of the ClickHouse database. Changing this property forces recreation of the resource.
+         * @param name Service database name.
          * 
          * @return builder
          * 
@@ -97,7 +108,7 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param name The name of the ClickHouse database. Changing this property forces recreation of the resource.
+         * @param name Service database name.
          * 
          * @return builder
          * 
@@ -107,7 +118,7 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -118,7 +129,7 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -128,7 +139,7 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -139,13 +150,22 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        public Builder timeouts(@Nullable Output<GetClickhouseDatabaseTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetClickhouseDatabaseTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public GetClickhouseDatabaseArgs build() {

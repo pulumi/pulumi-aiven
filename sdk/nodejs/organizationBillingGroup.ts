@@ -51,13 +51,13 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      */
     declare public readonly billingAddressId: pulumi.Output<string>;
     /**
-     * Aiven contacts these email addresses when there are billing issues or questions.
+     * Required property. List of billing contact emails.
      */
-    declare public readonly billingContactEmails: pulumi.Output<string[]>;
+    declare public readonly billingContactEmails: pulumi.Output<outputs.OrganizationBillingGroupBillingContactEmail[]>;
     /**
-     * PDF invoices are sent to these email addresses.
+     * Required property. List of billing contact emails.
      */
-    declare public readonly billingEmails: pulumi.Output<string[]>;
+    declare public readonly billingEmails: pulumi.Output<outputs.OrganizationBillingGroupBillingEmail[]>;
     /**
      * Billing group ID.
      */
@@ -69,7 +69,7 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
     /**
      * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
-    declare public readonly currency: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly currency: pulumi.Output<string>;
     /**
      * Extra billing text. Maximum length: `256`.
      */
@@ -79,9 +79,9 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
-     * Payment method ID.
+     * Required property. Payment method.
      */
-    declare public readonly paymentMethodId: pulumi.Output<string>;
+    declare public readonly paymentMethod: pulumi.Output<outputs.OrganizationBillingGroupPaymentMethod>;
     /**
      * Shipping address ID. Maximum length: `36`.
      */
@@ -113,7 +113,7 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
             resourceInputs["currency"] = state?.currency;
             resourceInputs["customInvoiceText"] = state?.customInvoiceText;
             resourceInputs["organizationId"] = state?.organizationId;
-            resourceInputs["paymentMethodId"] = state?.paymentMethodId;
+            resourceInputs["paymentMethod"] = state?.paymentMethod;
             resourceInputs["shippingAddressId"] = state?.shippingAddressId;
             resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["vatId"] = state?.vatId;
@@ -134,8 +134,8 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
             if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if (args?.paymentMethodId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'paymentMethodId'");
+            if (args?.paymentMethod === undefined && !opts.urn) {
+                throw new Error("Missing required property 'paymentMethod'");
             }
             if (args?.shippingAddressId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shippingAddressId'");
@@ -144,14 +144,14 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
             resourceInputs["billingContactEmails"] = args?.billingContactEmails;
             resourceInputs["billingEmails"] = args?.billingEmails;
             resourceInputs["billingGroupName"] = args?.billingGroupName;
-            resourceInputs["currency"] = args?.currency;
             resourceInputs["customInvoiceText"] = args?.customInvoiceText;
             resourceInputs["organizationId"] = args?.organizationId;
-            resourceInputs["paymentMethodId"] = args?.paymentMethodId;
+            resourceInputs["paymentMethod"] = args?.paymentMethod;
             resourceInputs["shippingAddressId"] = args?.shippingAddressId;
             resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["vatId"] = args?.vatId;
             resourceInputs["billingGroupId"] = undefined /*out*/;
+            resourceInputs["currency"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationBillingGroup.__pulumiType, name, resourceInputs, opts);
@@ -167,13 +167,13 @@ export interface OrganizationBillingGroupState {
      */
     billingAddressId?: pulumi.Input<string>;
     /**
-     * Aiven contacts these email addresses when there are billing issues or questions.
+     * Required property. List of billing contact emails.
      */
-    billingContactEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingContactEmails?: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingContactEmail>[]>;
     /**
-     * PDF invoices are sent to these email addresses.
+     * Required property. List of billing contact emails.
      */
-    billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingEmails?: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingEmail>[]>;
     /**
      * Billing group ID.
      */
@@ -195,9 +195,9 @@ export interface OrganizationBillingGroupState {
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * Payment method ID.
+     * Required property. Payment method.
      */
-    paymentMethodId?: pulumi.Input<string>;
+    paymentMethod?: pulumi.Input<inputs.OrganizationBillingGroupPaymentMethod>;
     /**
      * Shipping address ID. Maximum length: `36`.
      */
@@ -218,21 +218,17 @@ export interface OrganizationBillingGroupArgs {
      */
     billingAddressId: pulumi.Input<string>;
     /**
-     * Aiven contacts these email addresses when there are billing issues or questions.
+     * Required property. List of billing contact emails.
      */
-    billingContactEmails: pulumi.Input<pulumi.Input<string>[]>;
+    billingContactEmails: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingContactEmail>[]>;
     /**
-     * PDF invoices are sent to these email addresses.
+     * Required property. List of billing contact emails.
      */
-    billingEmails: pulumi.Input<pulumi.Input<string>[]>;
+    billingEmails: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingEmail>[]>;
     /**
      * Billing Group Name. Maximum length: `128`.
      */
     billingGroupName: pulumi.Input<string>;
-    /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     */
-    currency?: pulumi.Input<string>;
     /**
      * Extra billing text. Maximum length: `256`.
      */
@@ -242,9 +238,9 @@ export interface OrganizationBillingGroupArgs {
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Payment method ID.
+     * Required property. Payment method.
      */
-    paymentMethodId: pulumi.Input<string>;
+    paymentMethod: pulumi.Input<inputs.OrganizationBillingGroupPaymentMethod>;
     /**
      * Shipping address ID. Maximum length: `36`.
      */

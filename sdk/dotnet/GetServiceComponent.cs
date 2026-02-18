@@ -124,6 +124,12 @@ namespace Pulumi.Aiven
         public string? KafkaSslCa { get; set; }
 
         /// <summary>
+        /// Privatelink connection ID
+        /// </summary>
+        [Input("privatelinkConnectionId")]
+        public string? PrivatelinkConnectionId { get; set; }
+
+        /// <summary>
         /// Project name
         /// </summary>
         [Input("project", required: true)]
@@ -178,6 +184,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("kafkaSslCa")]
         public Input<string>? KafkaSslCa { get; set; }
+
+        /// <summary>
+        /// Privatelink connection ID
+        /// </summary>
+        [Input("privatelinkConnectionId")]
+        public Input<string>? PrivatelinkConnectionId { get; set; }
 
         /// <summary>
         /// Project name
@@ -244,6 +256,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly int Port;
         /// <summary>
+        /// Privatelink connection ID
+        /// </summary>
+        public readonly string PrivatelinkConnectionId;
+        /// <summary>
         /// Project name
         /// </summary>
         public readonly string Project;
@@ -278,6 +294,8 @@ namespace Pulumi.Aiven
 
             int port,
 
+            string privatelinkConnectionId,
+
             string project,
 
             string? route,
@@ -294,6 +312,7 @@ namespace Pulumi.Aiven
             KafkaAuthenticationMethod = kafkaAuthenticationMethod;
             KafkaSslCa = kafkaSslCa;
             Port = port;
+            PrivatelinkConnectionId = privatelinkConnectionId;
             Project = project;
             Route = route;
             ServiceName = serviceName;

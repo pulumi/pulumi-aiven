@@ -332,7 +332,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BillingGroup(java.lang.String name, @Nullable BillingGroupArgs args) {
+    public BillingGroup(java.lang.String name, BillingGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -341,7 +341,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BillingGroup(java.lang.String name, @Nullable BillingGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public BillingGroup(java.lang.String name, BillingGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/billingGroup:BillingGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -349,7 +349,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
         super("aiven:index/billingGroup:BillingGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static BillingGroupArgs makeArgs(@Nullable BillingGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static BillingGroupArgs makeArgs(BillingGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

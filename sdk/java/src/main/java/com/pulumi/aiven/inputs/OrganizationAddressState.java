@@ -48,14 +48,14 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * City.
+     * City. Maximum length: `512`.
      * 
      */
     @Import(name="city")
     private @Nullable Output<String> city;
 
     /**
-     * @return City.
+     * @return City. Maximum length: `512`.
      * 
      */
     public Optional<Output<String>> city() {
@@ -261,7 +261,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param city City.
+         * @param city City. Maximum length: `512`.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param city City.
+         * @param city City. Maximum length: `512`.
          * 
          * @return builder
          * 

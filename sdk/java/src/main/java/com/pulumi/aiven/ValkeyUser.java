@@ -192,56 +192,56 @@ public class ValkeyUser extends com.pulumi.resources.CustomResource {
         return this.username;
     }
     /**
-     * Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
      * 
      */
     @Export(name="valkeyAclCategories", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> valkeyAclCategories;
 
     /**
-     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
      * 
      */
     public Output<Optional<List<String>>> valkeyAclCategories() {
         return Codegen.optional(this.valkeyAclCategories);
     }
     /**
-     * Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+     * Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
      * 
      */
     @Export(name="valkeyAclChannels", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> valkeyAclChannels;
 
     /**
-     * @return Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+     * @return Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
      * 
      */
     public Output<Optional<List<String>>> valkeyAclChannels() {
         return Codegen.optional(this.valkeyAclChannels);
     }
     /**
-     * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
      * 
      */
     @Export(name="valkeyAclCommands", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> valkeyAclCommands;
 
     /**
-     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
      * 
      */
     public Output<Optional<List<String>>> valkeyAclCommands() {
         return Codegen.optional(this.valkeyAclCommands);
     }
     /**
-     * Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
      * 
      */
     @Export(name="valkeyAclKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> valkeyAclKeys;
 
     /**
-     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
      * 
      */
     public Output<Optional<List<String>>> valkeyAclKeys() {

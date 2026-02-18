@@ -60,7 +60,7 @@ export class OrganizationalUnit extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The name of the organizational unit. Maximum length: `128`.
+     * The name of the organizational unit. Maximum length: `83`.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -122,7 +122,7 @@ export interface OrganizationalUnitState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The name of the organizational unit. Maximum length: `128`.
+     * The name of the organizational unit. Maximum length: `83`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -145,7 +145,7 @@ export interface OrganizationalUnitState {
  */
 export interface OrganizationalUnitArgs {
     /**
-     * The name of the organizational unit. Maximum length: `128`.
+     * The name of the organizational unit. Maximum length: `83`.
      */
     name?: pulumi.Input<string>;
     /**

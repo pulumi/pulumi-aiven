@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> AddressLines { get; private set; } = null!;
 
         /// <summary>
-        /// City.
+        /// City. Maximum length: `512`.
         /// </summary>
         [Output("city")]
         public Output<string> City { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// City.
+        /// City. Maximum length: `512`.
         /// </summary>
         [Input("city", required: true)]
         public Input<string> City { get; set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// City.
+        /// City. Maximum length: `512`.
         /// </summary>
         [Input("city")]
         public Input<string>? City { get; set; }

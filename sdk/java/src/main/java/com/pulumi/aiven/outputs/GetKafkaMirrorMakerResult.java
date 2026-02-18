@@ -19,7 +19,7 @@ import java.util.Objects;
 @CustomType
 public final class GetKafkaMirrorMakerResult {
     /**
-     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     private String additionalDiskSpace;
@@ -34,7 +34,7 @@ public final class GetKafkaMirrorMakerResult {
      */
     private List<GetKafkaMirrorMakerComponent> components;
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+     * @return Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      * 
      */
     private String diskSpace;
@@ -54,7 +54,7 @@ public final class GetKafkaMirrorMakerResult {
      */
     private String diskSpaceStep;
     /**
-     * @return The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+     * @return The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      * 
      */
     private String diskSpaceUsed;
@@ -84,7 +84,7 @@ public final class GetKafkaMirrorMakerResult {
      */
     private String maintenanceWindowTime;
     /**
-     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+     * @return Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     private String plan;
@@ -166,7 +166,7 @@ public final class GetKafkaMirrorMakerResult {
 
     private GetKafkaMirrorMakerResult() {}
     /**
-     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     public String additionalDiskSpace() {
@@ -187,7 +187,7 @@ public final class GetKafkaMirrorMakerResult {
         return this.components;
     }
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+     * @return Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      * 
      */
     public String diskSpace() {
@@ -215,7 +215,7 @@ public final class GetKafkaMirrorMakerResult {
         return this.diskSpaceStep;
     }
     /**
-     * @return The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+     * @return The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      * 
      */
     public String diskSpaceUsed() {
@@ -257,7 +257,7 @@ public final class GetKafkaMirrorMakerResult {
         return this.maintenanceWindowTime;
     }
     /**
-     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+     * @return Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     public String plan() {

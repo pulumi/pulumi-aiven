@@ -130,6 +130,12 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
+        /// The Google Private Service Connect connection ID.
+        /// </summary>
+        [Input("pscConnectionId")]
+        public Input<string>? PscConnectionId { get; set; }
+
+        /// <summary>
         /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]

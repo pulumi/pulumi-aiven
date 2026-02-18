@@ -44,6 +44,11 @@ public final class MySqlComponent {
      */
     private @Nullable Integer port;
     /**
+     * @return Privatelink connection ID
+     * 
+     */
+    private @Nullable String privatelinkConnectionId;
+    /**
      * @return Network access route
      * 
      */
@@ -103,6 +108,13 @@ public final class MySqlComponent {
         return Optional.ofNullable(this.port);
     }
     /**
+     * @return Privatelink connection ID
+     * 
+     */
+    public Optional<String> privatelinkConnectionId() {
+        return Optional.ofNullable(this.privatelinkConnectionId);
+    }
+    /**
      * @return Network access route
      * 
      */
@@ -139,6 +151,7 @@ public final class MySqlComponent {
         private @Nullable String kafkaAuthenticationMethod;
         private @Nullable String kafkaSslCa;
         private @Nullable Integer port;
+        private @Nullable String privatelinkConnectionId;
         private @Nullable String route;
         private @Nullable Boolean ssl;
         private @Nullable String usage;
@@ -151,6 +164,7 @@ public final class MySqlComponent {
     	      this.kafkaAuthenticationMethod = defaults.kafkaAuthenticationMethod;
     	      this.kafkaSslCa = defaults.kafkaSslCa;
     	      this.port = defaults.port;
+    	      this.privatelinkConnectionId = defaults.privatelinkConnectionId;
     	      this.route = defaults.route;
     	      this.ssl = defaults.ssl;
     	      this.usage = defaults.usage;
@@ -193,6 +207,12 @@ public final class MySqlComponent {
             return this;
         }
         @CustomType.Setter
+        public Builder privatelinkConnectionId(@Nullable String privatelinkConnectionId) {
+
+            this.privatelinkConnectionId = privatelinkConnectionId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder route(@Nullable String route) {
 
             this.route = route;
@@ -218,6 +238,7 @@ public final class MySqlComponent {
             _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
             _resultValue.kafkaSslCa = kafkaSslCa;
             _resultValue.port = port;
+            _resultValue.privatelinkConnectionId = privatelinkConnectionId;
             _resultValue.route = route;
             _resultValue.ssl = ssl;
             _resultValue.usage = usage;

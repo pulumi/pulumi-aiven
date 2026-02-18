@@ -102,7 +102,7 @@ type OrganizationPermission struct {
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Required property. List of roles to set.
 	Permissions OrganizationPermissionPermissionArrayOutput `pulumi:"permissions"`
-	// Resource Id. Changing this property forces recreation of the resource.
+	// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
 	ResourceType pulumi.StringOutput                     `pulumi:"resourceType"`
@@ -155,7 +155,7 @@ type organizationPermissionState struct {
 	OrganizationId *string `pulumi:"organizationId"`
 	// Required property. List of roles to set.
 	Permissions []OrganizationPermissionPermission `pulumi:"permissions"`
-	// Resource Id. Changing this property forces recreation of the resource.
+	// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
 	ResourceId *string `pulumi:"resourceId"`
 	// Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
 	ResourceType *string                         `pulumi:"resourceType"`
@@ -167,7 +167,7 @@ type OrganizationPermissionState struct {
 	OrganizationId pulumi.StringPtrInput
 	// Required property. List of roles to set.
 	Permissions OrganizationPermissionPermissionArrayInput
-	// Resource Id. Changing this property forces recreation of the resource.
+	// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
 	ResourceId pulumi.StringPtrInput
 	// Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
 	ResourceType pulumi.StringPtrInput
@@ -183,7 +183,7 @@ type organizationPermissionArgs struct {
 	OrganizationId string `pulumi:"organizationId"`
 	// Required property. List of roles to set.
 	Permissions []OrganizationPermissionPermission `pulumi:"permissions"`
-	// Resource Id. Changing this property forces recreation of the resource.
+	// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
 	ResourceId string `pulumi:"resourceId"`
 	// Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
 	ResourceType string                          `pulumi:"resourceType"`
@@ -196,7 +196,7 @@ type OrganizationPermissionArgs struct {
 	OrganizationId pulumi.StringInput
 	// Required property. List of roles to set.
 	Permissions OrganizationPermissionPermissionArrayInput
-	// Resource Id. Changing this property forces recreation of the resource.
+	// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
 	ResourceId pulumi.StringInput
 	// Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
 	ResourceType pulumi.StringInput
@@ -300,7 +300,7 @@ func (o OrganizationPermissionOutput) Permissions() OrganizationPermissionPermis
 	return o.ApplyT(func(v *OrganizationPermission) OrganizationPermissionPermissionArrayOutput { return v.Permissions }).(OrganizationPermissionPermissionArrayOutput)
 }
 
-// Resource Id. Changing this property forces recreation of the resource.
+// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
 func (o OrganizationPermissionOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationPermission) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }

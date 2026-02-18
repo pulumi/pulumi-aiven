@@ -18,27 +18,27 @@ namespace Pulumi.Aiven.Inputs
         [Input("billingAddressId", required: true)]
         public Input<string> BillingAddressId { get; set; } = null!;
 
-        [Input("billingContactEmails", required: true)]
-        private InputList<string>? _billingContactEmails;
+        [Input("billingContactEmails")]
+        private InputList<Inputs.GetOrganizationBillingGroupListBillingGroupBillingContactEmailInputArgs>? _billingContactEmails;
 
         /// <summary>
         /// List of billing contact emails.
         /// </summary>
-        public InputList<string> BillingContactEmails
+        public InputList<Inputs.GetOrganizationBillingGroupListBillingGroupBillingContactEmailInputArgs> BillingContactEmails
         {
-            get => _billingContactEmails ?? (_billingContactEmails = new InputList<string>());
+            get => _billingContactEmails ?? (_billingContactEmails = new InputList<Inputs.GetOrganizationBillingGroupListBillingGroupBillingContactEmailInputArgs>());
             set => _billingContactEmails = value;
         }
 
-        [Input("billingEmails", required: true)]
-        private InputList<string>? _billingEmails;
+        [Input("billingEmails")]
+        private InputList<Inputs.GetOrganizationBillingGroupListBillingGroupBillingEmailInputArgs>? _billingEmails;
 
         /// <summary>
         /// List of billing contact emails.
         /// </summary>
-        public InputList<string> BillingEmails
+        public InputList<Inputs.GetOrganizationBillingGroupListBillingGroupBillingEmailInputArgs> BillingEmails
         {
-            get => _billingEmails ?? (_billingEmails = new InputList<string>());
+            get => _billingEmails ?? (_billingEmails = new InputList<Inputs.GetOrganizationBillingGroupListBillingGroupBillingEmailInputArgs>());
             set => _billingEmails = value;
         }
 
@@ -72,11 +72,17 @@ namespace Pulumi.Aiven.Inputs
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
+        [Input("paymentMethods")]
+        private InputList<Inputs.GetOrganizationBillingGroupListBillingGroupPaymentMethodInputArgs>? _paymentMethods;
+
         /// <summary>
-        /// Payment method ID.
+        /// Payment method.
         /// </summary>
-        [Input("paymentMethodId", required: true)]
-        public Input<string> PaymentMethodId { get; set; } = null!;
+        public InputList<Inputs.GetOrganizationBillingGroupListBillingGroupPaymentMethodInputArgs> PaymentMethods
+        {
+            get => _paymentMethods ?? (_paymentMethods = new InputList<Inputs.GetOrganizationBillingGroupListBillingGroupPaymentMethodInputArgs>());
+            set => _paymentMethods = value;
+        }
 
         /// <summary>
         /// Shipping address ID.

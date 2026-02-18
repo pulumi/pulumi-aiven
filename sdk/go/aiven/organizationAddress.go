@@ -29,7 +29,7 @@ type OrganizationAddress struct {
 	AddressId pulumi.StringOutput `pulumi:"addressId"`
 	// Address Lines.
 	AddressLines pulumi.StringArrayOutput `pulumi:"addressLines"`
-	// City.
+	// City. Maximum length: `512`.
 	City pulumi.StringOutput `pulumi:"city"`
 	// Country Code.
 	CountryCode pulumi.StringOutput `pulumi:"countryCode"`
@@ -94,7 +94,7 @@ type organizationAddressState struct {
 	AddressId *string `pulumi:"addressId"`
 	// Address Lines.
 	AddressLines []string `pulumi:"addressLines"`
-	// City.
+	// City. Maximum length: `512`.
 	City *string `pulumi:"city"`
 	// Country Code.
 	CountryCode *string `pulumi:"countryCode"`
@@ -118,7 +118,7 @@ type OrganizationAddressState struct {
 	AddressId pulumi.StringPtrInput
 	// Address Lines.
 	AddressLines pulumi.StringArrayInput
-	// City.
+	// City. Maximum length: `512`.
 	City pulumi.StringPtrInput
 	// Country Code.
 	CountryCode pulumi.StringPtrInput
@@ -144,7 +144,7 @@ func (OrganizationAddressState) ElementType() reflect.Type {
 type organizationAddressArgs struct {
 	// Address Lines.
 	AddressLines []string `pulumi:"addressLines"`
-	// City.
+	// City. Maximum length: `512`.
 	City string `pulumi:"city"`
 	// Country Code.
 	CountryCode string `pulumi:"countryCode"`
@@ -163,7 +163,7 @@ type organizationAddressArgs struct {
 type OrganizationAddressArgs struct {
 	// Address Lines.
 	AddressLines pulumi.StringArrayInput
-	// City.
+	// City. Maximum length: `512`.
 	City pulumi.StringInput
 	// Country Code.
 	CountryCode pulumi.StringInput
@@ -275,7 +275,7 @@ func (o OrganizationAddressOutput) AddressLines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringArrayOutput { return v.AddressLines }).(pulumi.StringArrayOutput)
 }
 
-// City.
+// City. Maximum length: `512`.
 func (o OrganizationAddressOutput) City() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.City }).(pulumi.StringOutput)
 }

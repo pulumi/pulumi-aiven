@@ -49,7 +49,7 @@ type Organization struct {
 
 	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Name of the organization. Maximum length: `128`.
+	// Name of the organization. Maximum length: `83`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
 	//
@@ -92,7 +92,7 @@ func GetOrganization(ctx *pulumi.Context,
 type organizationState struct {
 	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime *string `pulumi:"createTime"`
-	// Name of the organization. Maximum length: `128`.
+	// Name of the organization. Maximum length: `83`.
 	Name *string `pulumi:"name"`
 	// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
 	//
@@ -106,7 +106,7 @@ type organizationState struct {
 type OrganizationState struct {
 	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime pulumi.StringPtrInput
-	// Name of the organization. Maximum length: `128`.
+	// Name of the organization. Maximum length: `83`.
 	Name pulumi.StringPtrInput
 	// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
 	//
@@ -122,14 +122,14 @@ func (OrganizationState) ElementType() reflect.Type {
 }
 
 type organizationArgs struct {
-	// Name of the organization. Maximum length: `128`.
+	// Name of the organization. Maximum length: `83`.
 	Name     *string               `pulumi:"name"`
 	Timeouts *OrganizationTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a Organization resource.
 type OrganizationArgs struct {
-	// Name of the organization. Maximum length: `128`.
+	// Name of the organization. Maximum length: `83`.
 	Name     pulumi.StringPtrInput
 	Timeouts OrganizationTimeoutsPtrInput
 }
@@ -226,7 +226,7 @@ func (o OrganizationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Name of the organization. Maximum length: `128`.
+// Name of the organization. Maximum length: `83`.
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

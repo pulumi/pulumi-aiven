@@ -63,6 +63,21 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
+     * Privatelink connection ID
+     * 
+     */
+    @Import(name="privatelinkConnectionId")
+    private @Nullable Output<String> privatelinkConnectionId;
+
+    /**
+     * @return Privatelink connection ID
+     * 
+     */
+    public Optional<Output<String>> privatelinkConnectionId() {
+        return Optional.ofNullable(this.privatelinkConnectionId);
+    }
+
+    /**
      * Project name
      * 
      */
@@ -143,6 +158,7 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
         this.component = $.component;
         this.kafkaAuthenticationMethod = $.kafkaAuthenticationMethod;
         this.kafkaSslCa = $.kafkaSslCa;
+        this.privatelinkConnectionId = $.privatelinkConnectionId;
         this.project = $.project;
         this.route = $.route;
         this.serviceName = $.serviceName;
@@ -229,6 +245,27 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder kafkaSslCa(String kafkaSslCa) {
             return kafkaSslCa(Output.of(kafkaSslCa));
+        }
+
+        /**
+         * @param privatelinkConnectionId Privatelink connection ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatelinkConnectionId(@Nullable Output<String> privatelinkConnectionId) {
+            $.privatelinkConnectionId = privatelinkConnectionId;
+            return this;
+        }
+
+        /**
+         * @param privatelinkConnectionId Privatelink connection ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatelinkConnectionId(String privatelinkConnectionId) {
+            return privatelinkConnectionId(Output.of(privatelinkConnectionId));
         }
 
         /**

@@ -30,7 +30,7 @@ class OrganizationPermissionArgs:
         The set of arguments for constructing a OrganizationPermission resource.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Required property. List of roles to set.
-        :param pulumi.Input[_builtins.str] resource_id: Resource Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "organization_id", organization_id)
@@ -68,7 +68,7 @@ class OrganizationPermissionArgs:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Resource Id. Changing this property forces recreation of the resource.
+        The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_id")
 
@@ -110,7 +110,7 @@ class _OrganizationPermissionState:
         Input properties used for looking up and filtering OrganizationPermission resources.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Required property. List of roles to set.
-        :param pulumi.Input[_builtins.str] resource_id: Resource Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         """
         if organization_id is not None:
@@ -152,7 +152,7 @@ class _OrganizationPermissionState:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource Id. Changing this property forces recreation of the resource.
+        The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_id")
 
@@ -263,7 +263,7 @@ class OrganizationPermission(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]] permissions: Required property. List of roles to set.
-        :param pulumi.Input[_builtins.str] resource_id: Resource Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         """
         ...
@@ -403,7 +403,7 @@ class OrganizationPermission(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]] permissions: Required property. List of roles to set.
-        :param pulumi.Input[_builtins.str] resource_id: Resource Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -437,7 +437,7 @@ class OrganizationPermission(pulumi.CustomResource):
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource Id. Changing this property forces recreation of the resource.
+        The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_id")
 

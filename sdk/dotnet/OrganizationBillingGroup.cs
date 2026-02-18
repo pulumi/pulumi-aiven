@@ -31,16 +31,16 @@ namespace Pulumi.Aiven
         public Output<string> BillingAddressId { get; private set; } = null!;
 
         /// <summary>
-        /// Aiven contacts these email addresses when there are billing issues or questions.
+        /// Required property. List of billing contact emails.
         /// </summary>
         [Output("billingContactEmails")]
-        public Output<ImmutableArray<string>> BillingContactEmails { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.OrganizationBillingGroupBillingContactEmail>> BillingContactEmails { get; private set; } = null!;
 
         /// <summary>
-        /// PDF invoices are sent to these email addresses.
+        /// Required property. List of billing contact emails.
         /// </summary>
         [Output("billingEmails")]
-        public Output<ImmutableArray<string>> BillingEmails { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.OrganizationBillingGroupBillingEmail>> BillingEmails { get; private set; } = null!;
 
         /// <summary>
         /// Billing group ID.
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven
         /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         /// </summary>
         [Output("currency")]
-        public Output<string?> Currency { get; private set; } = null!;
+        public Output<string> Currency { get; private set; } = null!;
 
         /// <summary>
         /// Extra billing text. Maximum length: `256`.
@@ -73,10 +73,10 @@ namespace Pulumi.Aiven
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Payment method ID.
+        /// Required property. Payment method.
         /// </summary>
-        [Output("paymentMethodId")]
-        public Output<string> PaymentMethodId { get; private set; } = null!;
+        [Output("paymentMethod")]
+        public Output<Outputs.OrganizationBillingGroupPaymentMethod> PaymentMethod { get; private set; } = null!;
 
         /// <summary>
         /// Shipping address ID. Maximum length: `36`.
@@ -146,26 +146,26 @@ namespace Pulumi.Aiven
         public Input<string> BillingAddressId { get; set; } = null!;
 
         [Input("billingContactEmails", required: true)]
-        private InputList<string>? _billingContactEmails;
+        private InputList<Inputs.OrganizationBillingGroupBillingContactEmailArgs>? _billingContactEmails;
 
         /// <summary>
-        /// Aiven contacts these email addresses when there are billing issues or questions.
+        /// Required property. List of billing contact emails.
         /// </summary>
-        public InputList<string> BillingContactEmails
+        public InputList<Inputs.OrganizationBillingGroupBillingContactEmailArgs> BillingContactEmails
         {
-            get => _billingContactEmails ?? (_billingContactEmails = new InputList<string>());
+            get => _billingContactEmails ?? (_billingContactEmails = new InputList<Inputs.OrganizationBillingGroupBillingContactEmailArgs>());
             set => _billingContactEmails = value;
         }
 
         [Input("billingEmails", required: true)]
-        private InputList<string>? _billingEmails;
+        private InputList<Inputs.OrganizationBillingGroupBillingEmailArgs>? _billingEmails;
 
         /// <summary>
-        /// PDF invoices are sent to these email addresses.
+        /// Required property. List of billing contact emails.
         /// </summary>
-        public InputList<string> BillingEmails
+        public InputList<Inputs.OrganizationBillingGroupBillingEmailArgs> BillingEmails
         {
-            get => _billingEmails ?? (_billingEmails = new InputList<string>());
+            get => _billingEmails ?? (_billingEmails = new InputList<Inputs.OrganizationBillingGroupBillingEmailArgs>());
             set => _billingEmails = value;
         }
 
@@ -174,12 +174,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("billingGroupName", required: true)]
         public Input<string> BillingGroupName { get; set; } = null!;
-
-        /// <summary>
-        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        /// </summary>
-        [Input("currency")]
-        public Input<string>? Currency { get; set; }
 
         /// <summary>
         /// Extra billing text. Maximum length: `256`.
@@ -194,10 +188,10 @@ namespace Pulumi.Aiven
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Payment method ID.
+        /// Required property. Payment method.
         /// </summary>
-        [Input("paymentMethodId", required: true)]
-        public Input<string> PaymentMethodId { get; set; } = null!;
+        [Input("paymentMethod", required: true)]
+        public Input<Inputs.OrganizationBillingGroupPaymentMethodArgs> PaymentMethod { get; set; } = null!;
 
         /// <summary>
         /// Shipping address ID. Maximum length: `36`.
@@ -229,26 +223,26 @@ namespace Pulumi.Aiven
         public Input<string>? BillingAddressId { get; set; }
 
         [Input("billingContactEmails")]
-        private InputList<string>? _billingContactEmails;
+        private InputList<Inputs.OrganizationBillingGroupBillingContactEmailGetArgs>? _billingContactEmails;
 
         /// <summary>
-        /// Aiven contacts these email addresses when there are billing issues or questions.
+        /// Required property. List of billing contact emails.
         /// </summary>
-        public InputList<string> BillingContactEmails
+        public InputList<Inputs.OrganizationBillingGroupBillingContactEmailGetArgs> BillingContactEmails
         {
-            get => _billingContactEmails ?? (_billingContactEmails = new InputList<string>());
+            get => _billingContactEmails ?? (_billingContactEmails = new InputList<Inputs.OrganizationBillingGroupBillingContactEmailGetArgs>());
             set => _billingContactEmails = value;
         }
 
         [Input("billingEmails")]
-        private InputList<string>? _billingEmails;
+        private InputList<Inputs.OrganizationBillingGroupBillingEmailGetArgs>? _billingEmails;
 
         /// <summary>
-        /// PDF invoices are sent to these email addresses.
+        /// Required property. List of billing contact emails.
         /// </summary>
-        public InputList<string> BillingEmails
+        public InputList<Inputs.OrganizationBillingGroupBillingEmailGetArgs> BillingEmails
         {
-            get => _billingEmails ?? (_billingEmails = new InputList<string>());
+            get => _billingEmails ?? (_billingEmails = new InputList<Inputs.OrganizationBillingGroupBillingEmailGetArgs>());
             set => _billingEmails = value;
         }
 
@@ -283,10 +277,10 @@ namespace Pulumi.Aiven
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// Payment method ID.
+        /// Required property. Payment method.
         /// </summary>
-        [Input("paymentMethodId")]
-        public Input<string>? PaymentMethodId { get; set; }
+        [Input("paymentMethod")]
+        public Input<Inputs.OrganizationBillingGroupPaymentMethodGetArgs>? PaymentMethod { get; set; }
 
         /// <summary>
         /// Shipping address ID. Maximum length: `36`.

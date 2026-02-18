@@ -60,14 +60,14 @@ public class OrganizationAddress extends com.pulumi.resources.CustomResource {
         return this.addressLines;
     }
     /**
-     * City.
+     * City. Maximum length: `512`.
      * 
      */
     @Export(name="city", refs={String.class}, tree="[0]")
     private Output<String> city;
 
     /**
-     * @return City.
+     * @return City. Maximum length: `512`.
      * 
      */
     public Output<String> city() {

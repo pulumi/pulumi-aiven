@@ -111,7 +111,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.OrganizationPermissionPermission>> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// Resource Id. Changing this property forces recreation of the resource.
+        /// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Resource Id. Changing this property forces recreation of the resource.
+        /// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Resource Id. Changing this property forces recreation of the resource.
+        /// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }

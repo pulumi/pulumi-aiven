@@ -183,6 +183,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly bool ExactlyOnceDeliveryEnabled;
         /// <summary>
+        /// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+        /// </summary>
+        public readonly bool FollowerFetchingEnabled;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -243,6 +247,8 @@ namespace Pulumi.Aiven
 
             bool exactlyOnceDeliveryEnabled,
 
+            bool followerFetchingEnabled,
+
             string id,
 
             string offsetSyncsTopicLocation,
@@ -272,6 +278,7 @@ namespace Pulumi.Aiven
             EmitHeartbeatsEnabled = emitHeartbeatsEnabled;
             Enable = enable;
             ExactlyOnceDeliveryEnabled = exactlyOnceDeliveryEnabled;
+            FollowerFetchingEnabled = followerFetchingEnabled;
             Id = id;
             OffsetSyncsTopicLocation = offsetSyncsTopicLocation;
             Project = project;

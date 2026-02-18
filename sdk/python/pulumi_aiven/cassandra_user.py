@@ -287,34 +287,7 @@ class CassandraUser(pulumi.CustomResource):
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Creates and manages an Aiven for Apache Cassandra® service user.
-
-        !> **End of life notice**
-        Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-        From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-        To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-        before December 31, 2025. For further assistance, contact your account team.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        example_service_user = aiven.CassandraUser("example_service_user",
-            service_name=example_cassandra["serviceName"],
-            project=example_project["project"],
-            username="example-cassandra-user",
-            password=service_user_pw)
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import aiven:index/cassandraUser:CassandraUser example_service_user PROJECT/SERVICE_NAME/USERNAME
-        ```
-
+        Create a CassandraUser resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
@@ -332,34 +305,7 @@ class CassandraUser(pulumi.CustomResource):
                  args: CassandraUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an Aiven for Apache Cassandra® service user.
-
-        !> **End of life notice**
-        Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-        From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-        To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-        before December 31, 2025. For further assistance, contact your account team.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        example_service_user = aiven.CassandraUser("example_service_user",
-            service_name=example_cassandra["serviceName"],
-            project=example_project["project"],
-            username="example-cassandra-user",
-            password=service_user_pw)
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import aiven:index/cassandraUser:CassandraUser example_service_user PROJECT/SERVICE_NAME/USERNAME
-        ```
-
+        Create a CassandraUser resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param CassandraUserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

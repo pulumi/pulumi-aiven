@@ -49,14 +49,14 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Resource Id. Changing this property forces recreation of the resource.
+     * The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
     /**
-     * @return Resource Id. Changing this property forces recreation of the resource.
+     * @return The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> resourceId() {
@@ -166,7 +166,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId Resource Id. Changing this property forces recreation of the resource.
+         * @param resourceId The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId Resource Id. Changing this property forces recreation of the resource.
+         * @param resourceId The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

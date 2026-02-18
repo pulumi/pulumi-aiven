@@ -161,7 +161,7 @@ namespace Pulumi.Aiven
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public BillingGroup(string name, BillingGroupArgs? args = null, CustomResourceOptions? options = null)
+        public BillingGroup(string name, BillingGroupArgs args, CustomResourceOptions? options = null)
             : base("aiven:index/billingGroup:BillingGroup", name, args ?? new BillingGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -292,8 +292,8 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Link a billing group to an existing organization by using its ID.
         /// </summary>
-        [Input("parentId")]
-        public Input<string>? ParentId { get; set; }
+        [Input("parentId", required: true)]
+        public Input<string> ParentId { get; set; } = null!;
 
         /// <summary>
         /// Address state or province. Maximum length: `128`.

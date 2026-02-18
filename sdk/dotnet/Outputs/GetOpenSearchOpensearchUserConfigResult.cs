@@ -82,7 +82,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult? OpensearchDashboards;
         /// <summary>
-        /// Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+        /// Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
         /// </summary>
         public readonly string? OpensearchVersion;
         /// <summary>

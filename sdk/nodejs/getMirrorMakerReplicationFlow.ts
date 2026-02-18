@@ -78,6 +78,10 @@ export interface GetMirrorMakerReplicationFlowResult {
      */
     readonly exactlyOnceDeliveryEnabled: boolean;
     /**
+     * Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     */
+    readonly followerFetchingEnabled: boolean;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

@@ -3,6 +3,9 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetOrganizationBillingGroupBillingContactEmail;
+import com.pulumi.aiven.outputs.GetOrganizationBillingGroupBillingEmail;
+import com.pulumi.aiven.outputs.GetOrganizationBillingGroupPaymentMethod;
 import com.pulumi.aiven.outputs.GetOrganizationBillingGroupTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -20,15 +23,15 @@ public final class GetOrganizationBillingGroupResult {
      */
     private String billingAddressId;
     /**
-     * @return Aiven contacts these email addresses when there are billing issues or questions.
+     * @return List of billing contact emails.
      * 
      */
-    private List<String> billingContactEmails;
+    private @Nullable List<GetOrganizationBillingGroupBillingContactEmail> billingContactEmails;
     /**
-     * @return PDF invoices are sent to these email addresses.
+     * @return List of billing contact emails.
      * 
      */
-    private List<String> billingEmails;
+    private @Nullable List<GetOrganizationBillingGroupBillingEmail> billingEmails;
     /**
      * @return Billing group ID.
      * 
@@ -60,10 +63,10 @@ public final class GetOrganizationBillingGroupResult {
      */
     private String organizationId;
     /**
-     * @return Payment method ID.
+     * @return Payment method.
      * 
      */
-    private String paymentMethodId;
+    private @Nullable List<GetOrganizationBillingGroupPaymentMethod> paymentMethods;
     /**
      * @return Shipping address ID.
      * 
@@ -85,18 +88,18 @@ public final class GetOrganizationBillingGroupResult {
         return this.billingAddressId;
     }
     /**
-     * @return Aiven contacts these email addresses when there are billing issues or questions.
+     * @return List of billing contact emails.
      * 
      */
-    public List<String> billingContactEmails() {
-        return this.billingContactEmails;
+    public List<GetOrganizationBillingGroupBillingContactEmail> billingContactEmails() {
+        return this.billingContactEmails == null ? List.of() : this.billingContactEmails;
     }
     /**
-     * @return PDF invoices are sent to these email addresses.
+     * @return List of billing contact emails.
      * 
      */
-    public List<String> billingEmails() {
-        return this.billingEmails;
+    public List<GetOrganizationBillingGroupBillingEmail> billingEmails() {
+        return this.billingEmails == null ? List.of() : this.billingEmails;
     }
     /**
      * @return Billing group ID.
@@ -141,11 +144,11 @@ public final class GetOrganizationBillingGroupResult {
         return this.organizationId;
     }
     /**
-     * @return Payment method ID.
+     * @return Payment method.
      * 
      */
-    public String paymentMethodId() {
-        return this.paymentMethodId;
+    public List<GetOrganizationBillingGroupPaymentMethod> paymentMethods() {
+        return this.paymentMethods == null ? List.of() : this.paymentMethods;
     }
     /**
      * @return Shipping address ID.
@@ -175,15 +178,15 @@ public final class GetOrganizationBillingGroupResult {
     @CustomType.Builder
     public static final class Builder {
         private String billingAddressId;
-        private List<String> billingContactEmails;
-        private List<String> billingEmails;
+        private @Nullable List<GetOrganizationBillingGroupBillingContactEmail> billingContactEmails;
+        private @Nullable List<GetOrganizationBillingGroupBillingEmail> billingEmails;
         private String billingGroupId;
         private String billingGroupName;
         private String currency;
         private String customInvoiceText;
         private String id;
         private String organizationId;
-        private String paymentMethodId;
+        private @Nullable List<GetOrganizationBillingGroupPaymentMethod> paymentMethods;
         private String shippingAddressId;
         private @Nullable GetOrganizationBillingGroupTimeouts timeouts;
         private String vatId;
@@ -199,7 +202,7 @@ public final class GetOrganizationBillingGroupResult {
     	      this.customInvoiceText = defaults.customInvoiceText;
     	      this.id = defaults.id;
     	      this.organizationId = defaults.organizationId;
-    	      this.paymentMethodId = defaults.paymentMethodId;
+    	      this.paymentMethods = defaults.paymentMethods;
     	      this.shippingAddressId = defaults.shippingAddressId;
     	      this.timeouts = defaults.timeouts;
     	      this.vatId = defaults.vatId;
@@ -214,25 +217,21 @@ public final class GetOrganizationBillingGroupResult {
             return this;
         }
         @CustomType.Setter
-        public Builder billingContactEmails(List<String> billingContactEmails) {
-            if (billingContactEmails == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationBillingGroupResult", "billingContactEmails");
-            }
+        public Builder billingContactEmails(@Nullable List<GetOrganizationBillingGroupBillingContactEmail> billingContactEmails) {
+
             this.billingContactEmails = billingContactEmails;
             return this;
         }
-        public Builder billingContactEmails(String... billingContactEmails) {
+        public Builder billingContactEmails(GetOrganizationBillingGroupBillingContactEmail... billingContactEmails) {
             return billingContactEmails(List.of(billingContactEmails));
         }
         @CustomType.Setter
-        public Builder billingEmails(List<String> billingEmails) {
-            if (billingEmails == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationBillingGroupResult", "billingEmails");
-            }
+        public Builder billingEmails(@Nullable List<GetOrganizationBillingGroupBillingEmail> billingEmails) {
+
             this.billingEmails = billingEmails;
             return this;
         }
-        public Builder billingEmails(String... billingEmails) {
+        public Builder billingEmails(GetOrganizationBillingGroupBillingEmail... billingEmails) {
             return billingEmails(List.of(billingEmails));
         }
         @CustomType.Setter
@@ -284,12 +283,13 @@ public final class GetOrganizationBillingGroupResult {
             return this;
         }
         @CustomType.Setter
-        public Builder paymentMethodId(String paymentMethodId) {
-            if (paymentMethodId == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationBillingGroupResult", "paymentMethodId");
-            }
-            this.paymentMethodId = paymentMethodId;
+        public Builder paymentMethods(@Nullable List<GetOrganizationBillingGroupPaymentMethod> paymentMethods) {
+
+            this.paymentMethods = paymentMethods;
             return this;
+        }
+        public Builder paymentMethods(GetOrganizationBillingGroupPaymentMethod... paymentMethods) {
+            return paymentMethods(List.of(paymentMethods));
         }
         @CustomType.Setter
         public Builder shippingAddressId(String shippingAddressId) {
@@ -324,7 +324,7 @@ public final class GetOrganizationBillingGroupResult {
             _resultValue.customInvoiceText = customInvoiceText;
             _resultValue.id = id;
             _resultValue.organizationId = organizationId;
-            _resultValue.paymentMethodId = paymentMethodId;
+            _resultValue.paymentMethods = paymentMethods;
             _resultValue.shippingAddressId = shippingAddressId;
             _resultValue.timeouts = timeouts;
             _resultValue.vatId = vatId;

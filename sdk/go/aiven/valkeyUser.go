@@ -104,13 +104,13 @@ type ValkeyUser struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
-	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 	ValkeyAclCategories pulumi.StringArrayOutput `pulumi:"valkeyAclCategories"`
-	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
 	ValkeyAclChannels pulumi.StringArrayOutput `pulumi:"valkeyAclChannels"`
-	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclCommands pulumi.StringArrayOutput `pulumi:"valkeyAclCommands"`
-	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclKeys pulumi.StringArrayOutput `pulumi:"valkeyAclKeys"`
 }
 
@@ -179,13 +179,13 @@ type valkeyUserState struct {
 	Type *string `pulumi:"type"`
 	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
-	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 	ValkeyAclCategories []string `pulumi:"valkeyAclCategories"`
-	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
 	ValkeyAclChannels []string `pulumi:"valkeyAclChannels"`
-	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclCommands []string `pulumi:"valkeyAclCommands"`
-	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclKeys []string `pulumi:"valkeyAclKeys"`
 }
 
@@ -205,13 +205,13 @@ type ValkeyUserState struct {
 	Type pulumi.StringPtrInput
 	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
-	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 	ValkeyAclCategories pulumi.StringArrayInput
-	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
 	ValkeyAclChannels pulumi.StringArrayInput
-	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclCommands pulumi.StringArrayInput
-	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclKeys pulumi.StringArrayInput
 }
 
@@ -233,13 +233,13 @@ type valkeyUserArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
-	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 	ValkeyAclCategories []string `pulumi:"valkeyAclCategories"`
-	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
 	ValkeyAclChannels []string `pulumi:"valkeyAclChannels"`
-	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclCommands []string `pulumi:"valkeyAclCommands"`
-	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclKeys []string `pulumi:"valkeyAclKeys"`
 }
 
@@ -258,13 +258,13 @@ type ValkeyUserArgs struct {
 	ServiceName pulumi.StringInput
 	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
-	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 	ValkeyAclCategories pulumi.StringArrayInput
-	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
 	ValkeyAclChannels pulumi.StringArrayInput
-	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclCommands pulumi.StringArrayInput
-	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclKeys pulumi.StringArrayInput
 }
 
@@ -391,22 +391,22 @@ func (o ValkeyUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
-// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 func (o ValkeyUserOutput) ValkeyAclCategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringArrayOutput { return v.ValkeyAclCategories }).(pulumi.StringArrayOutput)
 }
 
-// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
 func (o ValkeyUserOutput) ValkeyAclChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringArrayOutput { return v.ValkeyAclChannels }).(pulumi.StringArrayOutput)
 }
 
-// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 func (o ValkeyUserOutput) ValkeyAclCommands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringArrayOutput { return v.ValkeyAclCommands }).(pulumi.StringArrayOutput)
 }
 
-// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 func (o ValkeyUserOutput) ValkeyAclKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringArrayOutput { return v.ValkeyAclKeys }).(pulumi.StringArrayOutput)
 }

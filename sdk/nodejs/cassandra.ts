@@ -6,44 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Creates and manages an [Aiven for Apache Cassandra®](https://aiven.io/docs/products/cassandra) service.
- *
- * !> **End of life notice**
- * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
- * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
- * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
- * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
- * before December 31, 2025. For further assistance, contact your account team.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const exampleCassandra = new aiven.Cassandra("example_cassandra", {
- *     project: exampleProject.project,
- *     cloudName: "google-europe-west1",
- *     plan: "startup-4",
- *     serviceName: "example-cassandra-service",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- *     cassandraUserConfig: {
- *         migrateSstableloader: true,
- *         publicAccess: {
- *             prometheus: true,
- *         },
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import aiven:index/cassandra:Cassandra example_cassandra PROJECT/SERVICE_NAME
- * ```
- */
 export class Cassandra extends pulumi.CustomResource {
     /**
      * Get an existing Cassandra resource's state with the given name, ID, and optional extra
@@ -73,7 +35,7 @@ export class Cassandra extends pulumi.CustomResource {
     }
 
     /**
-     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      */
     declare public readonly additionalDiskSpace: pulumi.Output<string>;
     /**
@@ -93,9 +55,7 @@ export class Cassandra extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly components: pulumi.Output<outputs.CassandraComponent[]>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-     *
-     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+     * Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      */
     declare public readonly diskSpace: pulumi.Output<string | undefined>;
     /**
@@ -111,7 +71,7 @@ export class Cassandra extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly diskSpaceStep: pulumi.Output<string>;
     /**
-     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+     * The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      */
     declare public /*out*/ readonly diskSpaceUsed: pulumi.Output<string>;
     /**
@@ -127,7 +87,7 @@ export class Cassandra extends pulumi.CustomResource {
      */
     declare public readonly maintenanceWindowTime: pulumi.Output<string | undefined>;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
     declare public readonly plan: pulumi.Output<string>;
     /**
@@ -286,7 +246,7 @@ export class Cassandra extends pulumi.CustomResource {
  */
 export interface CassandraState {
     /**
-     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      */
     additionalDiskSpace?: pulumi.Input<string>;
     /**
@@ -306,9 +266,7 @@ export interface CassandraState {
      */
     components?: pulumi.Input<pulumi.Input<inputs.CassandraComponent>[]>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-     *
-     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+     * Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -324,7 +282,7 @@ export interface CassandraState {
      */
     diskSpaceStep?: pulumi.Input<string>;
     /**
-     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+     * The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      */
     diskSpaceUsed?: pulumi.Input<string>;
     /**
@@ -340,7 +298,7 @@ export interface CassandraState {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
     plan?: pulumi.Input<string>;
     /**
@@ -410,7 +368,7 @@ export interface CassandraState {
  */
 export interface CassandraArgs {
     /**
-     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      */
     additionalDiskSpace?: pulumi.Input<string>;
     /**
@@ -426,9 +384,7 @@ export interface CassandraArgs {
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-     *
-     * @deprecated Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+     * Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -440,7 +396,7 @@ export interface CassandraArgs {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
     plan: pulumi.Input<string>;
     /**

@@ -2299,48 +2299,6 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getBillingGroup:getBillingGroup", TypeShape.of(GetBillingGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about an Aiven for Apache Cassandra® service.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-cassandra-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      * @deprecated
      * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
@@ -2351,48 +2309,6 @@ public final class AivenFunctions {
         return getCassanda(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about an Aiven for Apache Cassandra® service.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-cassandra-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      * @deprecated
      * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
@@ -2403,48 +2319,6 @@ public final class AivenFunctions {
         return getCassandaPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about an Aiven for Apache Cassandra® service.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-cassandra-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      * @deprecated
      * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
@@ -2455,48 +2329,6 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getCassanda:getCassanda", TypeShape.of(GetCassandaResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about an Aiven for Apache Cassandra® service.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-cassandra-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      * @deprecated
      * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
@@ -2507,48 +2339,6 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getCassanda:getCassanda", TypeShape.of(GetCassandaResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about an Aiven for Apache Cassandra® service.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-cassandra-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      * @deprecated
      * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
@@ -2558,488 +2348,33 @@ public final class AivenFunctions {
     public static CompletableFuture<GetCassandaResult> getCassandaPlain(GetCassandaPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getCassanda:getCassanda", TypeShape.of(GetCassandaResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for Apache Cassandra® service.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-cassandra-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetCassandraResult> getCassandra(GetCassandraArgs args) {
         return getCassandra(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for Apache Cassandra® service.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-cassandra-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetCassandraResult> getCassandraPlain(GetCassandraPlainArgs args) {
         return getCassandraPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for Apache Cassandra® service.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-cassandra-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetCassandraResult> getCassandra(GetCassandraArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getCassandra:getCassandra", TypeShape.of(GetCassandraResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for Apache Cassandra® service.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-cassandra-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetCassandraResult> getCassandra(GetCassandraArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getCassandra:getCassandra", TypeShape.of(GetCassandraResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for Apache Cassandra® service.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-cassandra-service")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetCassandraResult> getCassandraPlain(GetCassandraPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getCassandra:getCassandra", TypeShape.of(GetCassandraResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for Apache Cassandra® service user.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName(exampleCassandra.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-cassandra-user")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetCassandraUserResult> getCassandraUser(GetCassandraUserArgs args) {
         return getCassandraUser(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for Apache Cassandra® service user.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName(exampleCassandra.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-cassandra-user")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetCassandraUserResult> getCassandraUserPlain(GetCassandraUserPlainArgs args) {
         return getCassandraUserPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for Apache Cassandra® service user.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName(exampleCassandra.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-cassandra-user")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetCassandraUserResult> getCassandraUser(GetCassandraUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getCassandraUser:getCassandraUser", TypeShape.of(GetCassandraUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for Apache Cassandra® service user.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName(exampleCassandra.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-cassandra-user")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetCassandraUserResult> getCassandraUser(GetCassandraUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getCassandraUser:getCassandraUser", TypeShape.of(GetCassandraUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for Apache Cassandra® service user.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-     * before December 31, 2025. For further assistance, contact your account team.
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetCassandraUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName(exampleCassandra.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-cassandra-user")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static CompletableFuture<GetCassandraUserResult> getCassandraUserPlain(GetCassandraUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getCassandraUser:getCassandraUser", TypeShape.of(GetCassandraUserResult.class), args, Utilities.withVersion(options));
     }
@@ -3249,7 +2584,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getClickhouse:getClickhouse", TypeShape.of(GetClickhouseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a ClickHouse database.
+     * Gets information about an Aiven for ClickHouse database.
      * 
      * ## Example Usage
      * 
@@ -3291,7 +2626,7 @@ public final class AivenFunctions {
         return getClickhouseDatabase(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about a ClickHouse database.
+     * Gets information about an Aiven for ClickHouse database.
      * 
      * ## Example Usage
      * 
@@ -3333,7 +2668,7 @@ public final class AivenFunctions {
         return getClickhouseDatabasePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about a ClickHouse database.
+     * Gets information about an Aiven for ClickHouse database.
      * 
      * ## Example Usage
      * 
@@ -3375,7 +2710,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getClickhouseDatabase:getClickhouseDatabase", TypeShape.of(GetClickhouseDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a ClickHouse database.
+     * Gets information about an Aiven for ClickHouse database.
      * 
      * ## Example Usage
      * 
@@ -3417,7 +2752,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getClickhouseDatabase:getClickhouseDatabase", TypeShape.of(GetClickhouseDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a ClickHouse database.
+     * Gets information about an Aiven for ClickHouse database.
      * 
      * ## Example Usage
      * 

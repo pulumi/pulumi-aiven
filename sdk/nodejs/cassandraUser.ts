@@ -4,36 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Creates and manages an Aiven for Apache Cassandra® service user.
- *
- * !> **End of life notice**
- * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
- * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
- * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
- * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
- * before December 31, 2025. For further assistance, contact your account team.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const exampleServiceUser = new aiven.CassandraUser("example_service_user", {
- *     serviceName: exampleCassandra.serviceName,
- *     project: exampleProject.project,
- *     username: "example-cassandra-user",
- *     password: serviceUserPw,
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import aiven:index/cassandraUser:CassandraUser example_service_user PROJECT/SERVICE_NAME/USERNAME
- * ```
- */
 export class CassandraUser extends pulumi.CustomResource {
     /**
      * Get an existing CassandraUser resource's state with the given name, ID, and optional extra

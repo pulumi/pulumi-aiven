@@ -55,7 +55,7 @@ export class OrganizationAddress extends pulumi.CustomResource {
      */
     declare public readonly addressLines: pulumi.Output<string[]>;
     /**
-     * City.
+     * City. Maximum length: `512`.
      */
     declare public readonly city: pulumi.Output<string>;
     /**
@@ -156,7 +156,7 @@ export interface OrganizationAddressState {
      */
     addressLines?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * City.
+     * City. Maximum length: `512`.
      */
     city?: pulumi.Input<string>;
     /**
@@ -199,7 +199,7 @@ export interface OrganizationAddressArgs {
      */
     addressLines: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * City.
+     * City. Maximum length: `512`.
      */
     city: pulumi.Input<string>;
     /**

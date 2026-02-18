@@ -76,14 +76,14 @@ public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The name of the organizational unit. Maximum length: `128`.
+     * The name of the organizational unit. Maximum length: `83`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the organizational unit. Maximum length: `128`.
+     * @return The name of the organizational unit. Maximum length: `83`.
      * 
      */
     public Output<String> name() {

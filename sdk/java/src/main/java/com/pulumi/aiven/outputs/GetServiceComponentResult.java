@@ -45,6 +45,11 @@ public final class GetServiceComponentResult {
      */
     private Integer port;
     /**
+     * @return Privatelink connection ID
+     * 
+     */
+    private String privatelinkConnectionId;
+    /**
      * @return Project name
      * 
      */
@@ -114,6 +119,13 @@ public final class GetServiceComponentResult {
         return this.port;
     }
     /**
+     * @return Privatelink connection ID
+     * 
+     */
+    public String privatelinkConnectionId() {
+        return this.privatelinkConnectionId;
+    }
+    /**
      * @return Project name
      * 
      */
@@ -164,6 +176,7 @@ public final class GetServiceComponentResult {
         private @Nullable String kafkaAuthenticationMethod;
         private String kafkaSslCa;
         private Integer port;
+        private String privatelinkConnectionId;
         private String project;
         private @Nullable String route;
         private @Nullable String serviceName;
@@ -178,6 +191,7 @@ public final class GetServiceComponentResult {
     	      this.kafkaAuthenticationMethod = defaults.kafkaAuthenticationMethod;
     	      this.kafkaSslCa = defaults.kafkaSslCa;
     	      this.port = defaults.port;
+    	      this.privatelinkConnectionId = defaults.privatelinkConnectionId;
     	      this.project = defaults.project;
     	      this.route = defaults.route;
     	      this.serviceName = defaults.serviceName;
@@ -232,6 +246,14 @@ public final class GetServiceComponentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder privatelinkConnectionId(String privatelinkConnectionId) {
+            if (privatelinkConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetServiceComponentResult", "privatelinkConnectionId");
+            }
+            this.privatelinkConnectionId = privatelinkConnectionId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(String project) {
             if (project == null) {
               throw new MissingRequiredPropertyException("GetServiceComponentResult", "project");
@@ -271,6 +293,7 @@ public final class GetServiceComponentResult {
             _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
             _resultValue.kafkaSslCa = kafkaSslCa;
             _resultValue.port = port;
+            _resultValue.privatelinkConnectionId = privatelinkConnectionId;
             _resultValue.project = project;
             _resultValue.route = route;
             _resultValue.serviceName = serviceName;

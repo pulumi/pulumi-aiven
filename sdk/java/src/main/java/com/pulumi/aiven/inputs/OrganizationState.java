@@ -32,14 +32,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the organization. Maximum length: `128`.
+     * Name of the organization. Maximum length: `83`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the organization. Maximum length: `128`.
+     * @return Name of the organization. Maximum length: `83`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -141,7 +141,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the organization. Maximum length: `128`.
+         * @param name Name of the organization. Maximum length: `83`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the organization. Maximum length: `128`.
+         * @param name Name of the organization. Maximum length: `83`.
          * 
          * @return builder
          * 

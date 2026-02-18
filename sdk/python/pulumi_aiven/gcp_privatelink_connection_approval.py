@@ -21,16 +21,20 @@ class GcpPrivatelinkConnectionApprovalArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 user_ip_address: pulumi.Input[_builtins.str]):
+                 user_ip_address: pulumi.Input[_builtins.str],
+                 psc_connection_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GcpPrivatelinkConnectionApproval resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] user_ip_address: The Private Service Connect connection user IP address.
+        :param pulumi.Input[_builtins.str] psc_connection_id: The Google Private Service Connect connection ID.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "user_ip_address", user_ip_address)
+        if psc_connection_id is not None:
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
 
     @_builtins.property
     @pulumi.getter
@@ -67,6 +71,18 @@ class GcpPrivatelinkConnectionApprovalArgs:
     @user_ip_address.setter
     def user_ip_address(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "user_ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Google Private Service Connect connection ID.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @psc_connection_id.setter
+    def psc_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "psc_connection_id", value)
 
 
 @pulumi.input_type
@@ -180,6 +196,7 @@ class GcpPrivatelinkConnectionApproval(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 psc_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  user_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -207,6 +224,7 @@ class GcpPrivatelinkConnectionApproval(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] psc_connection_id: The Google Private Service Connect connection ID.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] user_ip_address: The Private Service Connect connection user IP address.
         """
@@ -253,6 +271,7 @@ class GcpPrivatelinkConnectionApproval(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 psc_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  user_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -267,6 +286,7 @@ class GcpPrivatelinkConnectionApproval(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["psc_connection_id"] = psc_connection_id
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
@@ -274,7 +294,6 @@ class GcpPrivatelinkConnectionApproval(pulumi.CustomResource):
                 raise TypeError("Missing required property 'user_ip_address'")
             __props__.__dict__["user_ip_address"] = user_ip_address
             __props__.__dict__["privatelink_connection_id"] = None
-            __props__.__dict__["psc_connection_id"] = None
             __props__.__dict__["state"] = None
         super(GcpPrivatelinkConnectionApproval, __self__).__init__(
             'aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval',

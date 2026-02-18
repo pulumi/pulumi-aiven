@@ -47,7 +47,7 @@ namespace Pulumi.Aiven
     public partial class Dragonfly : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `Plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         /// </summary>
         [Output("additionalDiskSpace")]
         public Output<string> AdditionalDiskSpace { get; private set; } = null!;
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.DragonflyComponent>> Components { get; private set; } = null!;
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `AdditionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+        /// Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         /// </summary>
         [Output("diskSpace")]
         public Output<string?> DiskSpace { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceStep { get; private set; } = null!;
 
         /// <summary>
-        /// The disk space that the service is currently using. This is the sum of `DiskSpace` and `AdditionalDiskSpace` in human-readable format (for example: `90GiB`).
+        /// The disk space that the service is currently using. This is the sum of the `Plan` default disk space and `AdditionalDiskSpace` in human-readable format (for example: `90GiB`).
         /// </summary>
         [Output("diskSpaceUsed")]
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `Hobbyist`, `startup-x`, `business-x` and `premium-x` where `X` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `MyPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `Hobbyist`, `startup-x`, `business-x` and `premium-x` where `X` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.Aiven
     public sealed class DragonflyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `Plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
@@ -285,7 +285,7 @@ namespace Pulumi.Aiven
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `AdditionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+        /// Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -325,7 +325,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `Hobbyist`, `startup-x`, `business-x` and `premium-x` where `X` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `MyPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `Hobbyist`, `startup-x`, `business-x` and `premium-x` where `X` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -411,7 +411,7 @@ namespace Pulumi.Aiven
     public sealed class DragonflyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `Plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
@@ -435,7 +435,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `AdditionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+        /// Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -459,7 +459,7 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpaceStep { get; set; }
 
         /// <summary>
-        /// The disk space that the service is currently using. This is the sum of `DiskSpace` and `AdditionalDiskSpace` in human-readable format (for example: `90GiB`).
+        /// The disk space that the service is currently using. This is the sum of the `Plan` default disk space and `AdditionalDiskSpace` in human-readable format (for example: `90GiB`).
         /// </summary>
         [Input("diskSpaceUsed")]
         public Input<string>? DiskSpaceUsed { get; set; }
@@ -505,7 +505,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `Hobbyist`, `startup-x`, `business-x` and `premium-x` where `X` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `MyPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `Hobbyist`, `startup-x`, `business-x` and `premium-x` where `X` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }

@@ -27,21 +27,27 @@ func LookupOrganizationBillingGroup(ctx *pulumi.Context, args *LookupOrganizatio
 
 // A collection of arguments for invoking getOrganizationBillingGroup.
 type LookupOrganizationBillingGroupArgs struct {
+	// List of billing contact emails.
+	BillingContactEmails []GetOrganizationBillingGroupBillingContactEmail `pulumi:"billingContactEmails"`
+	// List of billing contact emails.
+	BillingEmails []GetOrganizationBillingGroupBillingEmail `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// ID of an organization.
-	OrganizationId string                               `pulumi:"organizationId"`
-	Timeouts       *GetOrganizationBillingGroupTimeouts `pulumi:"timeouts"`
+	OrganizationId string `pulumi:"organizationId"`
+	// Payment method.
+	PaymentMethods []GetOrganizationBillingGroupPaymentMethod `pulumi:"paymentMethods"`
+	Timeouts       *GetOrganizationBillingGroupTimeouts       `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getOrganizationBillingGroup.
 type LookupOrganizationBillingGroupResult struct {
 	// Billing address ID.
 	BillingAddressId string `pulumi:"billingAddressId"`
-	// Aiven contacts these email addresses when there are billing issues or questions.
-	BillingContactEmails []string `pulumi:"billingContactEmails"`
-	// PDF invoices are sent to these email addresses.
-	BillingEmails []string `pulumi:"billingEmails"`
+	// List of billing contact emails.
+	BillingContactEmails []GetOrganizationBillingGroupBillingContactEmail `pulumi:"billingContactEmails"`
+	// List of billing contact emails.
+	BillingEmails []GetOrganizationBillingGroupBillingEmail `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// Billing Group Name.
@@ -54,8 +60,8 @@ type LookupOrganizationBillingGroupResult struct {
 	Id string `pulumi:"id"`
 	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
-	// Payment method ID.
-	PaymentMethodId string `pulumi:"paymentMethodId"`
+	// Payment method.
+	PaymentMethods []GetOrganizationBillingGroupPaymentMethod `pulumi:"paymentMethods"`
 	// Shipping address ID.
 	ShippingAddressId string                               `pulumi:"shippingAddressId"`
 	Timeouts          *GetOrganizationBillingGroupTimeouts `pulumi:"timeouts"`
@@ -74,11 +80,17 @@ func LookupOrganizationBillingGroupOutput(ctx *pulumi.Context, args LookupOrgani
 
 // A collection of arguments for invoking getOrganizationBillingGroup.
 type LookupOrganizationBillingGroupOutputArgs struct {
+	// List of billing contact emails.
+	BillingContactEmails GetOrganizationBillingGroupBillingContactEmailArrayInput `pulumi:"billingContactEmails"`
+	// List of billing contact emails.
+	BillingEmails GetOrganizationBillingGroupBillingEmailArrayInput `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId pulumi.StringInput `pulumi:"billingGroupId"`
 	// ID of an organization.
-	OrganizationId pulumi.StringInput                          `pulumi:"organizationId"`
-	Timeouts       GetOrganizationBillingGroupTimeoutsPtrInput `pulumi:"timeouts"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	// Payment method.
+	PaymentMethods GetOrganizationBillingGroupPaymentMethodArrayInput `pulumi:"paymentMethods"`
+	Timeouts       GetOrganizationBillingGroupTimeoutsPtrInput        `pulumi:"timeouts"`
 }
 
 func (LookupOrganizationBillingGroupOutputArgs) ElementType() reflect.Type {
@@ -105,14 +117,18 @@ func (o LookupOrganizationBillingGroupResultOutput) BillingAddressId() pulumi.St
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.BillingAddressId }).(pulumi.StringOutput)
 }
 
-// Aiven contacts these email addresses when there are billing issues or questions.
-func (o LookupOrganizationBillingGroupResultOutput) BillingContactEmails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) []string { return v.BillingContactEmails }).(pulumi.StringArrayOutput)
+// List of billing contact emails.
+func (o LookupOrganizationBillingGroupResultOutput) BillingContactEmails() GetOrganizationBillingGroupBillingContactEmailArrayOutput {
+	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) []GetOrganizationBillingGroupBillingContactEmail {
+		return v.BillingContactEmails
+	}).(GetOrganizationBillingGroupBillingContactEmailArrayOutput)
 }
 
-// PDF invoices are sent to these email addresses.
-func (o LookupOrganizationBillingGroupResultOutput) BillingEmails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
+// List of billing contact emails.
+func (o LookupOrganizationBillingGroupResultOutput) BillingEmails() GetOrganizationBillingGroupBillingEmailArrayOutput {
+	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) []GetOrganizationBillingGroupBillingEmail {
+		return v.BillingEmails
+	}).(GetOrganizationBillingGroupBillingEmailArrayOutput)
 }
 
 // Billing group ID.
@@ -145,9 +161,11 @@ func (o LookupOrganizationBillingGroupResultOutput) OrganizationId() pulumi.Stri
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Payment method ID.
-func (o LookupOrganizationBillingGroupResultOutput) PaymentMethodId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.PaymentMethodId }).(pulumi.StringOutput)
+// Payment method.
+func (o LookupOrganizationBillingGroupResultOutput) PaymentMethods() GetOrganizationBillingGroupPaymentMethodArrayOutput {
+	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) []GetOrganizationBillingGroupPaymentMethod {
+		return v.PaymentMethods
+	}).(GetOrganizationBillingGroupPaymentMethodArrayOutput)
 }
 
 // Shipping address ID.

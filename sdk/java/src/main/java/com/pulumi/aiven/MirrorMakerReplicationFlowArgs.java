@@ -95,6 +95,21 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     * 
+     */
+    @Import(name="followerFetchingEnabled")
+    private @Nullable Output<Boolean> followerFetchingEnabled;
+
+    /**
+     * @return Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     * 
+     */
+    public Optional<Output<Boolean>> followerFetchingEnabled() {
+        return Optional.ofNullable(this.followerFetchingEnabled);
+    }
+
+    /**
      * Offset syncs topic location. The possible values are `source` and `target`.
      * 
      */
@@ -267,6 +282,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         this.emitHeartbeatsEnabled = $.emitHeartbeatsEnabled;
         this.enable = $.enable;
         this.exactlyOnceDeliveryEnabled = $.exactlyOnceDeliveryEnabled;
+        this.followerFetchingEnabled = $.followerFetchingEnabled;
         this.offsetSyncsTopicLocation = $.offsetSyncsTopicLocation;
         this.project = $.project;
         this.replicationFactor = $.replicationFactor;
@@ -411,6 +427,27 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
          */
         public Builder exactlyOnceDeliveryEnabled(Boolean exactlyOnceDeliveryEnabled) {
             return exactlyOnceDeliveryEnabled(Output.of(exactlyOnceDeliveryEnabled));
+        }
+
+        /**
+         * @param followerFetchingEnabled Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder followerFetchingEnabled(@Nullable Output<Boolean> followerFetchingEnabled) {
+            $.followerFetchingEnabled = followerFetchingEnabled;
+            return this;
+        }
+
+        /**
+         * @param followerFetchingEnabled Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder followerFetchingEnabled(Boolean followerFetchingEnabled) {
+            return followerFetchingEnabled(Output.of(followerFetchingEnabled));
         }
 
         /**

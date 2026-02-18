@@ -83,6 +83,8 @@ __all__ = [
     'ClickhouseClickhouseUserConfigPublicAccessArgsDict',
     'ClickhouseComponentArgs',
     'ClickhouseComponentArgsDict',
+    'ClickhouseDatabaseTimeoutsArgs',
+    'ClickhouseDatabaseTimeoutsArgsDict',
     'ClickhouseGrantPrivilegeGrantArgs',
     'ClickhouseGrantPrivilegeGrantArgsDict',
     'ClickhouseGrantRoleGrantArgs',
@@ -93,6 +95,8 @@ __all__ = [
     'ClickhouseTagArgsDict',
     'ClickhouseTechEmailArgs',
     'ClickhouseTechEmailArgsDict',
+    'CmkTimeoutsArgs',
+    'CmkTimeoutsArgsDict',
     'DragonflyComponentArgs',
     'DragonflyComponentArgsDict',
     'DragonflyDragonflyArgs',
@@ -483,6 +487,12 @@ __all__ = [
     'OrganizationApplicationUserTimeoutsArgsDict',
     'OrganizationApplicationUserTokenTimeoutsArgs',
     'OrganizationApplicationUserTokenTimeoutsArgsDict',
+    'OrganizationBillingGroupBillingContactEmailArgs',
+    'OrganizationBillingGroupBillingContactEmailArgsDict',
+    'OrganizationBillingGroupBillingEmailArgs',
+    'OrganizationBillingGroupBillingEmailArgsDict',
+    'OrganizationBillingGroupPaymentMethodArgs',
+    'OrganizationBillingGroupPaymentMethodArgsDict',
     'OrganizationBillingGroupTimeoutsArgs',
     'OrganizationBillingGroupTimeoutsArgsDict',
     'OrganizationGroupProjectTimeoutsArgs',
@@ -717,6 +727,8 @@ __all__ = [
     'ValkeyValkeyUserConfigPublicAccessArgsDict',
     'GetBillingGroupTimeoutsArgs',
     'GetBillingGroupTimeoutsArgsDict',
+    'GetClickhouseDatabaseTimeoutsArgs',
+    'GetClickhouseDatabaseTimeoutsArgsDict',
     'GetMysqlDatabaseTimeoutsArgs',
     'GetMysqlDatabaseTimeoutsArgsDict',
     'GetMysqlUserTimeoutsArgs',
@@ -725,10 +737,22 @@ __all__ = [
     'GetOrganizationAddressTimeoutsArgsDict',
     'GetOrganizationApplicationUserTimeoutsArgs',
     'GetOrganizationApplicationUserTimeoutsArgsDict',
+    'GetOrganizationBillingGroupBillingContactEmailArgs',
+    'GetOrganizationBillingGroupBillingContactEmailArgsDict',
+    'GetOrganizationBillingGroupBillingEmailArgs',
+    'GetOrganizationBillingGroupBillingEmailArgsDict',
     'GetOrganizationBillingGroupListBillingGroupArgs',
     'GetOrganizationBillingGroupListBillingGroupArgsDict',
+    'GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs',
+    'GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgsDict',
+    'GetOrganizationBillingGroupListBillingGroupBillingEmailArgs',
+    'GetOrganizationBillingGroupListBillingGroupBillingEmailArgsDict',
+    'GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs',
+    'GetOrganizationBillingGroupListBillingGroupPaymentMethodArgsDict',
     'GetOrganizationBillingGroupListTimeoutsArgs',
     'GetOrganizationBillingGroupListTimeoutsArgsDict',
+    'GetOrganizationBillingGroupPaymentMethodArgs',
+    'GetOrganizationBillingGroupPaymentMethodArgsDict',
     'GetOrganizationBillingGroupTimeoutsArgs',
     'GetOrganizationBillingGroupTimeoutsArgsDict',
     'GetOrganizationProjectTagArgs',
@@ -3753,6 +3777,10 @@ class AlloydbomniComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -3775,6 +3803,7 @@ class AlloydbomniComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -3785,6 +3814,7 @@ class AlloydbomniComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -3801,6 +3831,8 @@ class AlloydbomniComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -3879,6 +3911,18 @@ class AlloydbomniComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -4754,6 +4798,10 @@ class CassandraComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -4776,6 +4824,7 @@ class CassandraComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -4786,6 +4835,7 @@ class CassandraComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -4802,6 +4852,8 @@ class CassandraComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -4880,6 +4932,18 @@ class CassandraComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -5726,6 +5790,10 @@ class ClickhouseComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -5748,6 +5816,7 @@ class ClickhouseComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -5758,6 +5827,7 @@ class ClickhouseComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -5774,6 +5844,8 @@ class ClickhouseComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -5854,6 +5926,18 @@ class ClickhouseComponentArgs:
         pulumi.set(self, "port", value)
 
     @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def route(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -5888,6 +5972,119 @@ class ClickhouseComponentArgs:
     @usage.setter
     def usage(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "usage", value)
+
+
+class ClickhouseDatabaseTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class ClickhouseDatabaseTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 default: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 class ClickhouseGrantPrivilegeGrantArgsDict(TypedDict):
@@ -6149,6 +6346,95 @@ class ClickhouseTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
+class CmkTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class CmkTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
 class DragonflyComponentArgsDict(TypedDict):
     component: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -6174,6 +6460,10 @@ class DragonflyComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -6196,6 +6486,7 @@ class DragonflyComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -6206,6 +6497,7 @@ class DragonflyComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -6222,6 +6514,8 @@ class DragonflyComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -6300,6 +6594,18 @@ class DragonflyComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -7365,6 +7671,10 @@ class FlinkComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -7387,6 +7697,7 @@ class FlinkComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -7397,6 +7708,7 @@ class FlinkComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -7413,6 +7725,8 @@ class FlinkComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -7491,6 +7805,18 @@ class FlinkComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -9064,6 +9390,10 @@ class GrafanaComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -9086,6 +9416,7 @@ class GrafanaComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -9096,6 +9427,7 @@ class GrafanaComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -9112,6 +9444,8 @@ class GrafanaComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -9190,6 +9524,18 @@ class GrafanaComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -11620,6 +11966,10 @@ class InfluxDbComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -11642,6 +11992,7 @@ class InfluxDbComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -11652,6 +12003,7 @@ class InfluxDbComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -11668,6 +12020,8 @@ class InfluxDbComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -11746,6 +12100,18 @@ class InfluxDbComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -12681,6 +13047,10 @@ class KafkaComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -12703,6 +13073,7 @@ class KafkaComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -12713,6 +13084,7 @@ class KafkaComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -12729,6 +13101,8 @@ class KafkaComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -12807,6 +13181,18 @@ class KafkaComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -12870,6 +13256,10 @@ class KafkaConnectComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -12892,6 +13282,7 @@ class KafkaConnectComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -12902,6 +13293,7 @@ class KafkaConnectComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -12918,6 +13310,8 @@ class KafkaConnectComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -12996,6 +13390,18 @@ class KafkaConnectComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -17796,6 +18202,10 @@ class KafkaMirrorMakerComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -17818,6 +18228,7 @@ class KafkaMirrorMakerComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -17828,6 +18239,7 @@ class KafkaMirrorMakerComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -17844,6 +18256,8 @@ class KafkaMirrorMakerComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -17922,6 +18336,18 @@ class KafkaMirrorMakerComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -19360,6 +19786,10 @@ class M3AggregatorComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -19382,6 +19812,7 @@ class M3AggregatorComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -19392,6 +19823,7 @@ class M3AggregatorComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -19408,6 +19840,8 @@ class M3AggregatorComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -19486,6 +19920,18 @@ class M3AggregatorComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -19941,6 +20387,10 @@ class M3DbComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -19963,6 +20413,7 @@ class M3DbComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -19973,6 +20424,7 @@ class M3DbComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -19989,6 +20441,8 @@ class M3DbComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -20067,6 +20521,18 @@ class M3DbComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -21627,6 +22093,10 @@ class MySqlComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -21649,6 +22119,7 @@ class MySqlComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -21659,6 +22130,7 @@ class MySqlComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -21675,6 +22147,8 @@ class MySqlComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -21753,6 +22227,18 @@ class MySqlComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -23994,6 +24480,10 @@ class OpenSearchComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -24016,6 +24506,7 @@ class OpenSearchComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -24026,6 +24517,7 @@ class OpenSearchComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -24042,6 +24534,8 @@ class OpenSearchComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -24120,6 +24614,18 @@ class OpenSearchComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -24342,7 +24848,7 @@ class OpenSearchOpensearchUserConfigArgsDict(TypedDict):
     """
     opensearch_version: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+    Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
     """
     private_access: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigPrivateAccessArgsDict']]
     """
@@ -24434,7 +24940,7 @@ class OpenSearchOpensearchUserConfigArgs:
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgs'] openid: OpenSearch OpenID Connect Configuration
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgs'] opensearch: OpenSearch settings
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgs'] opensearch_dashboards: OpenSearch Dashboards settings
-        :param pulumi.Input[_builtins.str] opensearch_version: Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+        :param pulumi.Input[_builtins.str] opensearch_version: Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
         :param pulumi.Input['OpenSearchOpensearchUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['OpenSearchOpensearchUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input[_builtins.str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
@@ -24715,7 +25221,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+        Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -30214,6 +30720,109 @@ class OrganizationApplicationUserTokenTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
+class OrganizationBillingGroupBillingContactEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Email. Maximum length: `254`.
+    """
+
+@pulumi.input_type
+class OrganizationBillingGroupBillingContactEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] email: Email. Maximum length: `254`.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[_builtins.str]:
+        """
+        Email. Maximum length: `254`.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "email", value)
+
+
+class OrganizationBillingGroupBillingEmailArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Email. Maximum length: `254`.
+    """
+
+@pulumi.input_type
+class OrganizationBillingGroupBillingEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] email: Email. Maximum length: `254`.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[_builtins.str]:
+        """
+        Email. Maximum length: `254`.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "email", value)
+
+
+class OrganizationBillingGroupPaymentMethodArgsDict(TypedDict):
+    payment_method_id: pulumi.Input[_builtins.str]
+    """
+    Payment method ID. Maximum length: `36`.
+    """
+    payment_method_type: pulumi.Input[_builtins.str]
+    """
+    An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+    """
+
+@pulumi.input_type
+class OrganizationBillingGroupPaymentMethodArgs:
+    def __init__(__self__, *,
+                 payment_method_id: pulumi.Input[_builtins.str],
+                 payment_method_type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] payment_method_id: Payment method ID. Maximum length: `36`.
+        :param pulumi.Input[_builtins.str] payment_method_type: An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        pulumi.set(__self__, "payment_method_id", payment_method_id)
+        pulumi.set(__self__, "payment_method_type", payment_method_type)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodId")
+    def payment_method_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Payment method ID. Maximum length: `36`.
+        """
+        return pulumi.get(self, "payment_method_id")
+
+    @payment_method_id.setter
+    def payment_method_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "payment_method_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodType")
+    def payment_method_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        return pulumi.get(self, "payment_method_type")
+
+    @payment_method_type.setter
+    def payment_method_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "payment_method_type", value)
+
+
 class OrganizationBillingGroupTimeoutsArgsDict(TypedDict):
     create: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -31039,6 +31648,10 @@ class PgComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -31061,6 +31674,7 @@ class PgComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -31071,6 +31685,7 @@ class PgComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -31087,6 +31702,8 @@ class PgComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -31165,6 +31782,18 @@ class PgComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -34945,6 +35574,10 @@ class RedisComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -34967,6 +35600,7 @@ class RedisComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -34977,6 +35611,7 @@ class RedisComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -34993,6 +35628,8 @@ class RedisComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -35071,6 +35708,18 @@ class RedisComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -40953,6 +41602,10 @@ class ThanosComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -40975,6 +41628,7 @@ class ThanosComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -40985,6 +41639,7 @@ class ThanosComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -41001,6 +41656,8 @@ class ThanosComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -41079,6 +41736,18 @@ class ThanosComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -42192,6 +42861,10 @@ class ValkeyComponentArgsDict(TypedDict):
     """
     Port number for connecting to the service component
     """
+    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Privatelink connection ID
+    """
     route: NotRequired[pulumi.Input[_builtins.str]]
     """
     Network access route
@@ -42214,6 +42887,7 @@ class ValkeyComponentArgs:
                  kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
                  kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  usage: Optional[pulumi.Input[_builtins.str]] = None):
@@ -42224,6 +42898,7 @@ class ValkeyComponentArgs:
         :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
+        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
         :param pulumi.Input[_builtins.str] route: Network access route
         :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param pulumi.Input[_builtins.str] usage: DNS usage name
@@ -42240,6 +42915,8 @@ class ValkeyComponentArgs:
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -42318,6 +42995,18 @@ class ValkeyComponentArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @privatelink_connection_id.setter
+    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -43571,6 +44260,35 @@ class GetBillingGroupTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
+class GetClickhouseDatabaseTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetClickhouseDatabaseTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
 class GetMysqlDatabaseTimeoutsArgsDict(TypedDict):
     read: NotRequired[_builtins.str]
     """
@@ -43687,18 +44405,66 @@ class GetOrganizationApplicationUserTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
+class GetOrganizationBillingGroupBillingContactEmailArgsDict(TypedDict):
+    email: _builtins.str
+    """
+    Email.
+    """
+
+@pulumi.input_type
+class GetOrganizationBillingGroupBillingContactEmailArgs:
+    def __init__(__self__, *,
+                 email: _builtins.str):
+        """
+        :param _builtins.str email: Email.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Email.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: _builtins.str):
+        pulumi.set(self, "email", value)
+
+
+class GetOrganizationBillingGroupBillingEmailArgsDict(TypedDict):
+    email: _builtins.str
+    """
+    Email.
+    """
+
+@pulumi.input_type
+class GetOrganizationBillingGroupBillingEmailArgs:
+    def __init__(__self__, *,
+                 email: _builtins.str):
+        """
+        :param _builtins.str email: Email.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Email.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: _builtins.str):
+        pulumi.set(self, "email", value)
+
+
 class GetOrganizationBillingGroupListBillingGroupArgsDict(TypedDict):
     billing_address_id: _builtins.str
     """
     Billing address ID.
-    """
-    billing_contact_emails: Sequence[_builtins.str]
-    """
-    List of billing contact emails.
-    """
-    billing_emails: Sequence[_builtins.str]
-    """
-    List of billing contact emails.
     """
     billing_group_id: _builtins.str
     """
@@ -43720,10 +44486,6 @@ class GetOrganizationBillingGroupListBillingGroupArgsDict(TypedDict):
     """
     Organization ID.
     """
-    payment_method_id: _builtins.str
-    """
-    Payment method ID.
-    """
     shipping_address_id: _builtins.str
     """
     Shipping address ID.
@@ -43732,45 +44494,60 @@ class GetOrganizationBillingGroupListBillingGroupArgsDict(TypedDict):
     """
     VAT ID.
     """
+    billing_contact_emails: NotRequired[Sequence['GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgsDict']]
+    """
+    List of billing contact emails.
+    """
+    billing_emails: NotRequired[Sequence['GetOrganizationBillingGroupListBillingGroupBillingEmailArgsDict']]
+    """
+    List of billing contact emails.
+    """
+    payment_methods: NotRequired[Sequence['GetOrganizationBillingGroupListBillingGroupPaymentMethodArgsDict']]
+    """
+    Payment method.
+    """
 
 @pulumi.input_type
 class GetOrganizationBillingGroupListBillingGroupArgs:
     def __init__(__self__, *,
                  billing_address_id: _builtins.str,
-                 billing_contact_emails: Sequence[_builtins.str],
-                 billing_emails: Sequence[_builtins.str],
                  billing_group_id: _builtins.str,
                  billing_group_name: _builtins.str,
                  currency: _builtins.str,
                  custom_invoice_text: _builtins.str,
                  organization_id: _builtins.str,
-                 payment_method_id: _builtins.str,
                  shipping_address_id: _builtins.str,
-                 vat_id: _builtins.str):
+                 vat_id: _builtins.str,
+                 billing_contact_emails: Optional[Sequence['GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs']] = None,
+                 billing_emails: Optional[Sequence['GetOrganizationBillingGroupListBillingGroupBillingEmailArgs']] = None,
+                 payment_methods: Optional[Sequence['GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs']] = None):
         """
         :param _builtins.str billing_address_id: Billing address ID.
-        :param Sequence[_builtins.str] billing_contact_emails: List of billing contact emails.
-        :param Sequence[_builtins.str] billing_emails: List of billing contact emails.
         :param _builtins.str billing_group_id: Billing group ID.
         :param _builtins.str billing_group_name: Billing Group Name.
         :param _builtins.str currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         :param _builtins.str custom_invoice_text: Extra billing text.
         :param _builtins.str organization_id: Organization ID.
-        :param _builtins.str payment_method_id: Payment method ID.
         :param _builtins.str shipping_address_id: Shipping address ID.
         :param _builtins.str vat_id: VAT ID.
+        :param Sequence['GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs'] billing_contact_emails: List of billing contact emails.
+        :param Sequence['GetOrganizationBillingGroupListBillingGroupBillingEmailArgs'] billing_emails: List of billing contact emails.
+        :param Sequence['GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs'] payment_methods: Payment method.
         """
         pulumi.set(__self__, "billing_address_id", billing_address_id)
-        pulumi.set(__self__, "billing_contact_emails", billing_contact_emails)
-        pulumi.set(__self__, "billing_emails", billing_emails)
         pulumi.set(__self__, "billing_group_id", billing_group_id)
         pulumi.set(__self__, "billing_group_name", billing_group_name)
         pulumi.set(__self__, "currency", currency)
         pulumi.set(__self__, "custom_invoice_text", custom_invoice_text)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "payment_method_id", payment_method_id)
         pulumi.set(__self__, "shipping_address_id", shipping_address_id)
         pulumi.set(__self__, "vat_id", vat_id)
+        if billing_contact_emails is not None:
+            pulumi.set(__self__, "billing_contact_emails", billing_contact_emails)
+        if billing_emails is not None:
+            pulumi.set(__self__, "billing_emails", billing_emails)
+        if payment_methods is not None:
+            pulumi.set(__self__, "payment_methods", payment_methods)
 
     @_builtins.property
     @pulumi.getter(name="billingAddressId")
@@ -43783,30 +44560,6 @@ class GetOrganizationBillingGroupListBillingGroupArgs:
     @billing_address_id.setter
     def billing_address_id(self, value: _builtins.str):
         pulumi.set(self, "billing_address_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="billingContactEmails")
-    def billing_contact_emails(self) -> Sequence[_builtins.str]:
-        """
-        List of billing contact emails.
-        """
-        return pulumi.get(self, "billing_contact_emails")
-
-    @billing_contact_emails.setter
-    def billing_contact_emails(self, value: Sequence[_builtins.str]):
-        pulumi.set(self, "billing_contact_emails", value)
-
-    @_builtins.property
-    @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Sequence[_builtins.str]:
-        """
-        List of billing contact emails.
-        """
-        return pulumi.get(self, "billing_emails")
-
-    @billing_emails.setter
-    def billing_emails(self, value: Sequence[_builtins.str]):
-        pulumi.set(self, "billing_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="billingGroupId")
@@ -43869,18 +44622,6 @@ class GetOrganizationBillingGroupListBillingGroupArgs:
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="paymentMethodId")
-    def payment_method_id(self) -> _builtins.str:
-        """
-        Payment method ID.
-        """
-        return pulumi.get(self, "payment_method_id")
-
-    @payment_method_id.setter
-    def payment_method_id(self, value: _builtins.str):
-        pulumi.set(self, "payment_method_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="shippingAddressId")
     def shipping_address_id(self) -> _builtins.str:
         """
@@ -43903,6 +44644,145 @@ class GetOrganizationBillingGroupListBillingGroupArgs:
     @vat_id.setter
     def vat_id(self, value: _builtins.str):
         pulumi.set(self, "vat_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="billingContactEmails")
+    def billing_contact_emails(self) -> Optional[Sequence['GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs']]:
+        """
+        List of billing contact emails.
+        """
+        return pulumi.get(self, "billing_contact_emails")
+
+    @billing_contact_emails.setter
+    def billing_contact_emails(self, value: Optional[Sequence['GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs']]):
+        pulumi.set(self, "billing_contact_emails", value)
+
+    @_builtins.property
+    @pulumi.getter(name="billingEmails")
+    def billing_emails(self) -> Optional[Sequence['GetOrganizationBillingGroupListBillingGroupBillingEmailArgs']]:
+        """
+        List of billing contact emails.
+        """
+        return pulumi.get(self, "billing_emails")
+
+    @billing_emails.setter
+    def billing_emails(self, value: Optional[Sequence['GetOrganizationBillingGroupListBillingGroupBillingEmailArgs']]):
+        pulumi.set(self, "billing_emails", value)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethods")
+    def payment_methods(self) -> Optional[Sequence['GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs']]:
+        """
+        Payment method.
+        """
+        return pulumi.get(self, "payment_methods")
+
+    @payment_methods.setter
+    def payment_methods(self, value: Optional[Sequence['GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs']]):
+        pulumi.set(self, "payment_methods", value)
+
+
+class GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgsDict(TypedDict):
+    email: _builtins.str
+    """
+    Email.
+    """
+
+@pulumi.input_type
+class GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs:
+    def __init__(__self__, *,
+                 email: _builtins.str):
+        """
+        :param _builtins.str email: Email.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Email.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: _builtins.str):
+        pulumi.set(self, "email", value)
+
+
+class GetOrganizationBillingGroupListBillingGroupBillingEmailArgsDict(TypedDict):
+    email: _builtins.str
+    """
+    Email.
+    """
+
+@pulumi.input_type
+class GetOrganizationBillingGroupListBillingGroupBillingEmailArgs:
+    def __init__(__self__, *,
+                 email: _builtins.str):
+        """
+        :param _builtins.str email: Email.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Email.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: _builtins.str):
+        pulumi.set(self, "email", value)
+
+
+class GetOrganizationBillingGroupListBillingGroupPaymentMethodArgsDict(TypedDict):
+    payment_method_id: _builtins.str
+    """
+    Payment method ID.
+    """
+    payment_method_type: _builtins.str
+    """
+    An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+    """
+
+@pulumi.input_type
+class GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs:
+    def __init__(__self__, *,
+                 payment_method_id: _builtins.str,
+                 payment_method_type: _builtins.str):
+        """
+        :param _builtins.str payment_method_id: Payment method ID.
+        :param _builtins.str payment_method_type: An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        pulumi.set(__self__, "payment_method_id", payment_method_id)
+        pulumi.set(__self__, "payment_method_type", payment_method_type)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodId")
+    def payment_method_id(self) -> _builtins.str:
+        """
+        Payment method ID.
+        """
+        return pulumi.get(self, "payment_method_id")
+
+    @payment_method_id.setter
+    def payment_method_id(self, value: _builtins.str):
+        pulumi.set(self, "payment_method_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodType")
+    def payment_method_type(self) -> _builtins.str:
+        """
+        An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        return pulumi.get(self, "payment_method_type")
+
+    @payment_method_type.setter
+    def payment_method_type(self, value: _builtins.str):
+        pulumi.set(self, "payment_method_type", value)
 
 
 class GetOrganizationBillingGroupListTimeoutsArgsDict(TypedDict):
@@ -43932,6 +44812,53 @@ class GetOrganizationBillingGroupListTimeoutsArgs:
     @read.setter
     def read(self, value: Optional[_builtins.str]):
         pulumi.set(self, "read", value)
+
+
+class GetOrganizationBillingGroupPaymentMethodArgsDict(TypedDict):
+    payment_method_id: _builtins.str
+    """
+    Payment method ID.
+    """
+    payment_method_type: _builtins.str
+    """
+    An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+    """
+
+@pulumi.input_type
+class GetOrganizationBillingGroupPaymentMethodArgs:
+    def __init__(__self__, *,
+                 payment_method_id: _builtins.str,
+                 payment_method_type: _builtins.str):
+        """
+        :param _builtins.str payment_method_id: Payment method ID.
+        :param _builtins.str payment_method_type: An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        pulumi.set(__self__, "payment_method_id", payment_method_id)
+        pulumi.set(__self__, "payment_method_type", payment_method_type)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodId")
+    def payment_method_id(self) -> _builtins.str:
+        """
+        Payment method ID.
+        """
+        return pulumi.get(self, "payment_method_id")
+
+    @payment_method_id.setter
+    def payment_method_id(self, value: _builtins.str):
+        pulumi.set(self, "payment_method_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodType")
+    def payment_method_type(self) -> _builtins.str:
+        """
+        An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        return pulumi.get(self, "payment_method_type")
+
+    @payment_method_type.setter
+    def payment_method_type(self, value: _builtins.str):
+        pulumi.set(self, "payment_method_type", value)
 
 
 class GetOrganizationBillingGroupTimeoutsArgsDict(TypedDict):

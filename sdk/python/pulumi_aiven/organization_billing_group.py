@@ -22,26 +22,24 @@ __all__ = ['OrganizationBillingGroupArgs', 'OrganizationBillingGroup']
 class OrganizationBillingGroupArgs:
     def __init__(__self__, *,
                  billing_address_id: pulumi.Input[_builtins.str],
-                 billing_contact_emails: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 billing_emails: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 billing_contact_emails: pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]],
+                 billing_emails: pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]],
                  billing_group_name: pulumi.Input[_builtins.str],
                  organization_id: pulumi.Input[_builtins.str],
-                 payment_method_id: pulumi.Input[_builtins.str],
+                 payment_method: pulumi.Input['OrganizationBillingGroupPaymentMethodArgs'],
                  shipping_address_id: pulumi.Input[_builtins.str],
-                 currency: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_invoice_text: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input['OrganizationBillingGroupTimeoutsArgs']] = None,
                  vat_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationBillingGroup resource.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: Aiven contacts these email addresses when there are billing issues or questions.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: PDF invoices are sent to these email addresses.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]] billing_contact_emails: Required property. List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]] billing_emails: Required property. List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] payment_method_id: Payment method ID.
+        :param pulumi.Input['OrganizationBillingGroupPaymentMethodArgs'] payment_method: Required property. Payment method.
         :param pulumi.Input[_builtins.str] shipping_address_id: Shipping address ID. Maximum length: `36`.
-        :param pulumi.Input[_builtins.str] currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] vat_id: VAT ID.
         """
@@ -50,10 +48,8 @@ class OrganizationBillingGroupArgs:
         pulumi.set(__self__, "billing_emails", billing_emails)
         pulumi.set(__self__, "billing_group_name", billing_group_name)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "payment_method_id", payment_method_id)
+        pulumi.set(__self__, "payment_method", payment_method)
         pulumi.set(__self__, "shipping_address_id", shipping_address_id)
-        if currency is not None:
-            pulumi.set(__self__, "currency", currency)
         if custom_invoice_text is not None:
             pulumi.set(__self__, "custom_invoice_text", custom_invoice_text)
         if timeouts is not None:
@@ -75,26 +71,26 @@ class OrganizationBillingGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="billingContactEmails")
-    def billing_contact_emails(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+    def billing_contact_emails(self) -> pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]]:
         """
-        Aiven contacts these email addresses when there are billing issues or questions.
+        Required property. List of billing contact emails.
         """
         return pulumi.get(self, "billing_contact_emails")
 
     @billing_contact_emails.setter
-    def billing_contact_emails(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+    def billing_contact_emails(self, value: pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]]):
         pulumi.set(self, "billing_contact_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+    def billing_emails(self) -> pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]]:
         """
-        PDF invoices are sent to these email addresses.
+        Required property. List of billing contact emails.
         """
         return pulumi.get(self, "billing_emails")
 
     @billing_emails.setter
-    def billing_emails(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+    def billing_emails(self, value: pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]]):
         pulumi.set(self, "billing_emails", value)
 
     @_builtins.property
@@ -122,16 +118,16 @@ class OrganizationBillingGroupArgs:
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="paymentMethodId")
-    def payment_method_id(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="paymentMethod")
+    def payment_method(self) -> pulumi.Input['OrganizationBillingGroupPaymentMethodArgs']:
         """
-        Payment method ID.
+        Required property. Payment method.
         """
-        return pulumi.get(self, "payment_method_id")
+        return pulumi.get(self, "payment_method")
 
-    @payment_method_id.setter
-    def payment_method_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "payment_method_id", value)
+    @payment_method.setter
+    def payment_method(self, value: pulumi.Input['OrganizationBillingGroupPaymentMethodArgs']):
+        pulumi.set(self, "payment_method", value)
 
     @_builtins.property
     @pulumi.getter(name="shippingAddressId")
@@ -144,18 +140,6 @@ class OrganizationBillingGroupArgs:
     @shipping_address_id.setter
     def shipping_address_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "shipping_address_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def currency(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        """
-        return pulumi.get(self, "currency")
-
-    @currency.setter
-    def currency(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "currency", value)
 
     @_builtins.property
     @pulumi.getter(name="customInvoiceText")
@@ -195,28 +179,28 @@ class OrganizationBillingGroupArgs:
 class _OrganizationBillingGroupState:
     def __init__(__self__, *,
                  billing_address_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]]] = None,
+                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]]] = None,
                  billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  currency: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_invoice_text: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_method_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_method: Optional[pulumi.Input['OrganizationBillingGroupPaymentMethodArgs']] = None,
                  shipping_address_id: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input['OrganizationBillingGroupTimeoutsArgs']] = None,
                  vat_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationBillingGroup resources.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: Aiven contacts these email addresses when there are billing issues or questions.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: PDF invoices are sent to these email addresses.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]] billing_contact_emails: Required property. List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]] billing_emails: Required property. List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] payment_method_id: Payment method ID.
+        :param pulumi.Input['OrganizationBillingGroupPaymentMethodArgs'] payment_method: Required property. Payment method.
         :param pulumi.Input[_builtins.str] shipping_address_id: Shipping address ID. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] vat_id: VAT ID.
         """
@@ -236,8 +220,8 @@ class _OrganizationBillingGroupState:
             pulumi.set(__self__, "custom_invoice_text", custom_invoice_text)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
-        if payment_method_id is not None:
-            pulumi.set(__self__, "payment_method_id", payment_method_id)
+        if payment_method is not None:
+            pulumi.set(__self__, "payment_method", payment_method)
         if shipping_address_id is not None:
             pulumi.set(__self__, "shipping_address_id", shipping_address_id)
         if timeouts is not None:
@@ -259,26 +243,26 @@ class _OrganizationBillingGroupState:
 
     @_builtins.property
     @pulumi.getter(name="billingContactEmails")
-    def billing_contact_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def billing_contact_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]]]:
         """
-        Aiven contacts these email addresses when there are billing issues or questions.
+        Required property. List of billing contact emails.
         """
         return pulumi.get(self, "billing_contact_emails")
 
     @billing_contact_emails.setter
-    def billing_contact_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def billing_contact_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]]]):
         pulumi.set(self, "billing_contact_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]]]:
         """
-        PDF invoices are sent to these email addresses.
+        Required property. List of billing contact emails.
         """
         return pulumi.get(self, "billing_emails")
 
     @billing_emails.setter
-    def billing_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def billing_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]]]):
         pulumi.set(self, "billing_emails", value)
 
     @_builtins.property
@@ -342,16 +326,16 @@ class _OrganizationBillingGroupState:
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="paymentMethodId")
-    def payment_method_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="paymentMethod")
+    def payment_method(self) -> Optional[pulumi.Input['OrganizationBillingGroupPaymentMethodArgs']]:
         """
-        Payment method ID.
+        Required property. Payment method.
         """
-        return pulumi.get(self, "payment_method_id")
+        return pulumi.get(self, "payment_method")
 
-    @payment_method_id.setter
-    def payment_method_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "payment_method_id", value)
+    @payment_method.setter
+    def payment_method(self, value: Optional[pulumi.Input['OrganizationBillingGroupPaymentMethodArgs']]):
+        pulumi.set(self, "payment_method", value)
 
     @_builtins.property
     @pulumi.getter(name="shippingAddressId")
@@ -394,13 +378,12 @@ class OrganizationBillingGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_address_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]]] = None,
+                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]]] = None,
                  billing_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 currency: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_invoice_text: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_method_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_method: Optional[pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']]] = None,
                  shipping_address_id: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input[Union['OrganizationBillingGroupTimeoutsArgs', 'OrganizationBillingGroupTimeoutsArgsDict']]] = None,
                  vat_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -420,13 +403,12 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: Aiven contacts these email addresses when there are billing issues or questions.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: PDF invoices are sent to these email addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]] billing_contact_emails: Required property. List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]] billing_emails: Required property. List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] payment_method_id: Payment method ID.
+        :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']] payment_method: Required property. Payment method.
         :param pulumi.Input[_builtins.str] shipping_address_id: Shipping address ID. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] vat_id: VAT ID.
         """
@@ -464,13 +446,12 @@ class OrganizationBillingGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_address_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]]] = None,
+                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]]] = None,
                  billing_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 currency: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_invoice_text: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_method_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_method: Optional[pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']]] = None,
                  shipping_address_id: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input[Union['OrganizationBillingGroupTimeoutsArgs', 'OrganizationBillingGroupTimeoutsArgsDict']]] = None,
                  vat_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -495,20 +476,20 @@ class OrganizationBillingGroup(pulumi.CustomResource):
             if billing_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_group_name'")
             __props__.__dict__["billing_group_name"] = billing_group_name
-            __props__.__dict__["currency"] = currency
             __props__.__dict__["custom_invoice_text"] = custom_invoice_text
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
-            if payment_method_id is None and not opts.urn:
-                raise TypeError("Missing required property 'payment_method_id'")
-            __props__.__dict__["payment_method_id"] = payment_method_id
+            if payment_method is None and not opts.urn:
+                raise TypeError("Missing required property 'payment_method'")
+            __props__.__dict__["payment_method"] = payment_method
             if shipping_address_id is None and not opts.urn:
                 raise TypeError("Missing required property 'shipping_address_id'")
             __props__.__dict__["shipping_address_id"] = shipping_address_id
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["vat_id"] = vat_id
             __props__.__dict__["billing_group_id"] = None
+            __props__.__dict__["currency"] = None
         super(OrganizationBillingGroup, __self__).__init__(
             'aiven:index/organizationBillingGroup:OrganizationBillingGroup',
             resource_name,
@@ -520,14 +501,14 @@ class OrganizationBillingGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             billing_address_id: Optional[pulumi.Input[_builtins.str]] = None,
-            billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]]] = None,
+            billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]]] = None,
             billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             billing_group_name: Optional[pulumi.Input[_builtins.str]] = None,
             currency: Optional[pulumi.Input[_builtins.str]] = None,
             custom_invoice_text: Optional[pulumi.Input[_builtins.str]] = None,
             organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_method_id: Optional[pulumi.Input[_builtins.str]] = None,
+            payment_method: Optional[pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']]] = None,
             shipping_address_id: Optional[pulumi.Input[_builtins.str]] = None,
             timeouts: Optional[pulumi.Input[Union['OrganizationBillingGroupTimeoutsArgs', 'OrganizationBillingGroupTimeoutsArgsDict']]] = None,
             vat_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationBillingGroup':
@@ -539,14 +520,14 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: Aiven contacts these email addresses when there are billing issues or questions.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: PDF invoices are sent to these email addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]] billing_contact_emails: Required property. List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]] billing_emails: Required property. List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] payment_method_id: Payment method ID.
+        :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']] payment_method: Required property. Payment method.
         :param pulumi.Input[_builtins.str] shipping_address_id: Shipping address ID. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] vat_id: VAT ID.
         """
@@ -562,7 +543,7 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         __props__.__dict__["currency"] = currency
         __props__.__dict__["custom_invoice_text"] = custom_invoice_text
         __props__.__dict__["organization_id"] = organization_id
-        __props__.__dict__["payment_method_id"] = payment_method_id
+        __props__.__dict__["payment_method"] = payment_method
         __props__.__dict__["shipping_address_id"] = shipping_address_id
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["vat_id"] = vat_id
@@ -578,17 +559,17 @@ class OrganizationBillingGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="billingContactEmails")
-    def billing_contact_emails(self) -> pulumi.Output[Sequence[_builtins.str]]:
+    def billing_contact_emails(self) -> pulumi.Output[Sequence['outputs.OrganizationBillingGroupBillingContactEmail']]:
         """
-        Aiven contacts these email addresses when there are billing issues or questions.
+        Required property. List of billing contact emails.
         """
         return pulumi.get(self, "billing_contact_emails")
 
     @_builtins.property
     @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> pulumi.Output[Sequence[_builtins.str]]:
+    def billing_emails(self) -> pulumi.Output[Sequence['outputs.OrganizationBillingGroupBillingEmail']]:
         """
-        PDF invoices are sent to these email addresses.
+        Required property. List of billing contact emails.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -610,7 +591,7 @@ class OrganizationBillingGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def currency(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def currency(self) -> pulumi.Output[_builtins.str]:
         """
         Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         """
@@ -633,12 +614,12 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         return pulumi.get(self, "organization_id")
 
     @_builtins.property
-    @pulumi.getter(name="paymentMethodId")
-    def payment_method_id(self) -> pulumi.Output[_builtins.str]:
+    @pulumi.getter(name="paymentMethod")
+    def payment_method(self) -> pulumi.Output['outputs.OrganizationBillingGroupPaymentMethod']:
         """
-        Payment method ID.
+        Required property. Payment method.
         """
-        return pulumi.get(self, "payment_method_id")
+        return pulumi.get(self, "payment_method")
 
     @_builtins.property
     @pulumi.getter(name="shippingAddressId")

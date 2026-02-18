@@ -75,6 +75,8 @@ type LookupMirrorMakerReplicationFlowResult struct {
 	Enable bool `pulumi:"enable"`
 	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
 	ExactlyOnceDeliveryEnabled bool `pulumi:"exactlyOnceDeliveryEnabled"`
+	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+	FollowerFetchingEnabled bool `pulumi:"followerFetchingEnabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Offset syncs topic location. The possible values are `source` and `target`.
@@ -164,6 +166,11 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) Enable() pulumi.BoolOutput
 // Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
 func (o LookupMirrorMakerReplicationFlowResultOutput) ExactlyOnceDeliveryEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) bool { return v.ExactlyOnceDeliveryEnabled }).(pulumi.BoolOutput)
+}
+
+// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+func (o LookupMirrorMakerReplicationFlowResultOutput) FollowerFetchingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) bool { return v.FollowerFetchingEnabled }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

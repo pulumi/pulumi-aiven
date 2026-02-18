@@ -11,99 +11,12 @@ namespace Pulumi.Aiven
 {
     public static class GetCassandra
     {
-        /// <summary>
-        /// Gets information about an Aiven for Apache Cassandra® service.
-        /// 
-        /// !&gt; **End of life notice**
-        /// Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        /// From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-        /// From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-        /// To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-        /// before December 31, 2025. For further assistance, contact your account team.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleCassandra = Aiven.GetCassandra.Invoke(new()
-        ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = "example-cassandra-service",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetCassandraResult> InvokeAsync(GetCassandraArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCassandraResult>("aiven:index/getCassandra:getCassandra", args ?? new GetCassandraArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Gets information about an Aiven for Apache Cassandra® service.
-        /// 
-        /// !&gt; **End of life notice**
-        /// Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        /// From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-        /// From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-        /// To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-        /// before December 31, 2025. For further assistance, contact your account team.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleCassandra = Aiven.GetCassandra.Invoke(new()
-        ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = "example-cassandra-service",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetCassandraResult> Invoke(GetCassandraInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCassandraResult>("aiven:index/getCassandra:getCassandra", args ?? new GetCassandraInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Gets information about an Aiven for Apache Cassandra® service.
-        /// 
-        /// !&gt; **End of life notice**
-        /// Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        /// From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-        /// From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-        /// To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-        /// before December 31, 2025. For further assistance, contact your account team.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleCassandra = Aiven.GetCassandra.Invoke(new()
-        ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = "example-cassandra-service",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetCassandraResult> Invoke(GetCassandraInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCassandraResult>("aiven:index/getCassandra:getCassandra", args ?? new GetCassandraInvokeArgs(), options.WithDefaults());
     }
@@ -111,15 +24,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetCassandraArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -131,15 +38,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetCassandraInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -153,125 +54,38 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetCassandraResult
     {
-        /// <summary>
-        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
-        /// </summary>
         public readonly string AdditionalDiskSpace;
-        /// <summary>
-        /// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandraCassandraUserConfigResult> CassandraUserConfigs;
-        /// <summary>
-        /// Values provided by the Cassandra server.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandraCassandraResult> Cassandras;
-        /// <summary>
-        /// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
-        /// </summary>
         public readonly string CloudName;
-        /// <summary>
-        /// Service component information objects
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandraComponentResult> Components;
-        /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `AdditionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-        /// </summary>
         public readonly string DiskSpace;
-        /// <summary>
-        /// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
-        /// </summary>
         public readonly string DiskSpaceCap;
-        /// <summary>
-        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `DiskSpace`
-        /// </summary>
         public readonly string DiskSpaceDefault;
-        /// <summary>
-        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `DiskSpace` needs to increment from `DiskSpaceDefault` by increments of this size.
-        /// </summary>
         public readonly string DiskSpaceStep;
-        /// <summary>
-        /// The disk space that the service is currently using. This is the sum of `DiskSpace` and `AdditionalDiskSpace` in human-readable format (for example: `90GiB`).
-        /// </summary>
         public readonly string DiskSpaceUsed;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-        /// </summary>
         public readonly string MaintenanceWindowDow;
-        /// <summary>
-        /// Indicates whether the maintenance window is currently enabled for this service.
-        /// </summary>
         public readonly bool MaintenanceWindowEnabled;
-        /// <summary>
-        /// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        /// </summary>
         public readonly string MaintenanceWindowTime;
-        /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `Hobbyist`, `startup-x`, `business-x` and `premium-x` where `X` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
-        /// </summary>
         public readonly string Plan;
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
-        /// </summary>
         public readonly string ProjectVpcId;
-        /// <summary>
-        /// The hostname of the service.
-        /// </summary>
         public readonly string ServiceHost;
-        /// <summary>
-        /// Service integrations to specify when creating a service. Not applied after initial service creation
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandraServiceIntegrationResult> ServiceIntegrations;
-        /// <summary>
-        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// Password used for connecting to the service, if applicable
-        /// </summary>
         public readonly string ServicePassword;
-        /// <summary>
-        /// The port of the service
-        /// </summary>
         public readonly int ServicePort;
-        /// <summary>
-        /// Aiven internal service type code
-        /// </summary>
         public readonly string ServiceType;
-        /// <summary>
-        /// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
-        /// </summary>
         public readonly string ServiceUri;
-        /// <summary>
-        /// Username used for connecting to the service, if applicable
-        /// </summary>
         public readonly string ServiceUsername;
-        /// <summary>
-        /// Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
-        /// </summary>
         public readonly string State;
-        /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        /// </summary>
         public readonly ImmutableArray<string> StaticIps;
-        /// <summary>
-        /// Tags are key-value pairs that allow you to categorize services.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandraTagResult> Tags;
-        /// <summary>
-        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandraTechEmailResult> TechEmails;
-        /// <summary>
-        /// Prevents the service from being deleted. It is recommended to set this to `True` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
-        /// </summary>
         public readonly bool TerminationProtection;
 
         [OutputConstructor]

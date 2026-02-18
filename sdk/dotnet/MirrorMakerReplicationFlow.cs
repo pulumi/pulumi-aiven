@@ -93,6 +93,12 @@ namespace Pulumi.Aiven
         public Output<bool?> ExactlyOnceDeliveryEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+        /// </summary>
+        [Output("followerFetchingEnabled")]
+        public Output<bool> FollowerFetchingEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Offset syncs topic location. The possible values are `Source` and `Target`.
         /// </summary>
         [Output("offsetSyncsTopicLocation")]
@@ -241,6 +247,12 @@ namespace Pulumi.Aiven
         public Input<bool>? ExactlyOnceDeliveryEnabled { get; set; }
 
         /// <summary>
+        /// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+        /// </summary>
+        [Input("followerFetchingEnabled")]
+        public Input<bool>? FollowerFetchingEnabled { get; set; }
+
+        /// <summary>
         /// Offset syncs topic location. The possible values are `Source` and `Target`.
         /// </summary>
         [Input("offsetSyncsTopicLocation", required: true)]
@@ -361,6 +373,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("exactlyOnceDeliveryEnabled")]
         public Input<bool>? ExactlyOnceDeliveryEnabled { get; set; }
+
+        /// <summary>
+        /// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+        /// </summary>
+        [Input("followerFetchingEnabled")]
+        public Input<bool>? FollowerFetchingEnabled { get; set; }
 
         /// <summary>
         /// Offset syncs topic location. The possible values are `Source` and `Target`.

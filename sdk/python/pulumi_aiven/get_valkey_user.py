@@ -110,7 +110,7 @@ class GetValkeyUserResult:
     @pulumi.getter(name="valkeyAclCategories")
     def valkey_acl_categories(self) -> Sequence[_builtins.str]:
         """
-        Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`.
         """
         return pulumi.get(self, "valkey_acl_categories")
 
@@ -118,7 +118,7 @@ class GetValkeyUserResult:
     @pulumi.getter(name="valkeyAclChannels")
     def valkey_acl_channels(self) -> Sequence[_builtins.str]:
         """
-        Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+        Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
         """
         return pulumi.get(self, "valkey_acl_channels")
 
@@ -126,7 +126,7 @@ class GetValkeyUserResult:
     @pulumi.getter(name="valkeyAclCommands")
     def valkey_acl_commands(self) -> Sequence[_builtins.str]:
         """
-        Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
         """
         return pulumi.get(self, "valkey_acl_commands")
 
@@ -134,7 +134,7 @@ class GetValkeyUserResult:
     @pulumi.getter(name="valkeyAclKeys")
     def valkey_acl_keys(self) -> Sequence[_builtins.str]:
         """
-        Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
         """
         return pulumi.get(self, "valkey_acl_keys")
 
