@@ -62,6 +62,8 @@ type GetServiceComponentArgs struct {
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
 	KafkaSslCa *string `pulumi:"kafkaSslCa"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId *string `pulumi:"privatelinkConnectionId"`
 	// Project name
 	Project string `pulumi:"project"`
 	// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
@@ -88,6 +90,8 @@ type GetServiceComponentResult struct {
 	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId string `pulumi:"privatelinkConnectionId"`
 	// Project name
 	Project string `pulumi:"project"`
 	// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
@@ -117,6 +121,8 @@ type GetServiceComponentOutputArgs struct {
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
 	KafkaSslCa pulumi.StringPtrInput `pulumi:"kafkaSslCa"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId pulumi.StringPtrInput `pulumi:"privatelinkConnectionId"`
 	// Project name
 	Project pulumi.StringInput `pulumi:"project"`
 	// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
@@ -176,6 +182,11 @@ func (o GetServiceComponentResultOutput) KafkaSslCa() pulumi.StringOutput {
 // Port number for connecting to the service component
 func (o GetServiceComponentResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Privatelink connection ID
+func (o GetServiceComponentResultOutput) PrivatelinkConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) string { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
 }
 
 // Project name

@@ -140,7 +140,7 @@ export class BillingGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: BillingGroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: BillingGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BillingGroupArgs | BillingGroupState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -166,6 +166,9 @@ export class BillingGroup extends pulumi.CustomResource {
             resourceInputs["zipCode"] = state?.zipCode;
         } else {
             const args = argsOrState as BillingGroupArgs | undefined;
+            if (args?.parentId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'parentId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["addressLines"] = args?.addressLines;
             resourceInputs["billingContactEmails"] = args?.billingContactEmails;
@@ -324,7 +327,7 @@ export interface BillingGroupArgs {
     /**
      * Link a billing group to an existing organization by using its ID.
      */
-    parentId?: pulumi.Input<string>;
+    parentId: pulumi.Input<string>;
     /**
      * Address state or province. Maximum length: `128`.
      */

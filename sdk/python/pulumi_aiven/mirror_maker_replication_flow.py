@@ -30,6 +30,7 @@ class MirrorMakerReplicationFlowArgs:
                  emit_backward_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  emit_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  exactly_once_delivery_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 follower_fetching_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
                  sync_group_offsets_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  sync_group_offsets_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
@@ -48,6 +49,7 @@ class MirrorMakerReplicationFlowArgs:
         :param pulumi.Input[_builtins.bool] emit_backward_heartbeats_enabled: Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] emit_heartbeats_enabled: Enables emitting heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] exactly_once_delivery_enabled: Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+        :param pulumi.Input[_builtins.bool] follower_fetching_enabled: Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
         :param pulumi.Input[_builtins.int] replication_factor: Replication factor, `>= 1`.
         :param pulumi.Input[_builtins.bool] sync_group_offsets_enabled: Sync consumer group offsets. The default value is `false`.
         :param pulumi.Input[_builtins.int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync. The default value is `1`.
@@ -69,6 +71,8 @@ class MirrorMakerReplicationFlowArgs:
             pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
         if exactly_once_delivery_enabled is not None:
             pulumi.set(__self__, "exactly_once_delivery_enabled", exactly_once_delivery_enabled)
+        if follower_fetching_enabled is not None:
+            pulumi.set(__self__, "follower_fetching_enabled", follower_fetching_enabled)
         if replication_factor is not None:
             pulumi.set(__self__, "replication_factor", replication_factor)
         if sync_group_offsets_enabled is not None:
@@ -213,6 +217,18 @@ class MirrorMakerReplicationFlowArgs:
         pulumi.set(self, "exactly_once_delivery_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="followerFetchingEnabled")
+    def follower_fetching_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+        """
+        return pulumi.get(self, "follower_fetching_enabled")
+
+    @follower_fetching_enabled.setter
+    def follower_fetching_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "follower_fetching_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -281,6 +297,7 @@ class _MirrorMakerReplicationFlowState:
                  emit_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  exactly_once_delivery_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 follower_fetching_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  offset_syncs_topic_location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
@@ -299,6 +316,7 @@ class _MirrorMakerReplicationFlowState:
         :param pulumi.Input[_builtins.bool] emit_heartbeats_enabled: Enables emitting heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] enable: Enables replication flow for a service.
         :param pulumi.Input[_builtins.bool] exactly_once_delivery_enabled: Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+        :param pulumi.Input[_builtins.bool] follower_fetching_enabled: Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
         :param pulumi.Input[_builtins.str] offset_syncs_topic_location: Offset syncs topic location. The possible values are `source` and `target`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.int] replication_factor: Replication factor, `>= 1`.
@@ -321,6 +339,8 @@ class _MirrorMakerReplicationFlowState:
             pulumi.set(__self__, "enable", enable)
         if exactly_once_delivery_enabled is not None:
             pulumi.set(__self__, "exactly_once_delivery_enabled", exactly_once_delivery_enabled)
+        if follower_fetching_enabled is not None:
+            pulumi.set(__self__, "follower_fetching_enabled", follower_fetching_enabled)
         if offset_syncs_topic_location is not None:
             pulumi.set(__self__, "offset_syncs_topic_location", offset_syncs_topic_location)
         if project is not None:
@@ -403,6 +423,18 @@ class _MirrorMakerReplicationFlowState:
     @exactly_once_delivery_enabled.setter
     def exactly_once_delivery_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "exactly_once_delivery_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="followerFetchingEnabled")
+    def follower_fetching_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+        """
+        return pulumi.get(self, "follower_fetching_enabled")
+
+    @follower_fetching_enabled.setter
+    def follower_fetching_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "follower_fetching_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="offsetSyncsTopicLocation")
@@ -548,6 +580,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  emit_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  exactly_once_delivery_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 follower_fetching_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  offset_syncs_topic_location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
@@ -604,6 +637,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] emit_heartbeats_enabled: Enables emitting heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] enable: Enables replication flow for a service.
         :param pulumi.Input[_builtins.bool] exactly_once_delivery_enabled: Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+        :param pulumi.Input[_builtins.bool] follower_fetching_enabled: Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
         :param pulumi.Input[_builtins.str] offset_syncs_topic_location: Offset syncs topic location. The possible values are `source` and `target`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.int] replication_factor: Replication factor, `>= 1`.
@@ -679,6 +713,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  emit_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  exactly_once_delivery_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 follower_fetching_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  offset_syncs_topic_location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
@@ -706,6 +741,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                 raise TypeError("Missing required property 'enable'")
             __props__.__dict__["enable"] = enable
             __props__.__dict__["exactly_once_delivery_enabled"] = exactly_once_delivery_enabled
+            __props__.__dict__["follower_fetching_enabled"] = follower_fetching_enabled
             if offset_syncs_topic_location is None and not opts.urn:
                 raise TypeError("Missing required property 'offset_syncs_topic_location'")
             __props__.__dict__["offset_syncs_topic_location"] = offset_syncs_topic_location
@@ -744,6 +780,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
             emit_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             enable: Optional[pulumi.Input[_builtins.bool]] = None,
             exactly_once_delivery_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            follower_fetching_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             offset_syncs_topic_location: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
@@ -767,6 +804,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] emit_heartbeats_enabled: Enables emitting heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] enable: Enables replication flow for a service.
         :param pulumi.Input[_builtins.bool] exactly_once_delivery_enabled: Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+        :param pulumi.Input[_builtins.bool] follower_fetching_enabled: Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
         :param pulumi.Input[_builtins.str] offset_syncs_topic_location: Offset syncs topic location. The possible values are `source` and `target`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.int] replication_factor: Replication factor, `>= 1`.
@@ -788,6 +826,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         __props__.__dict__["emit_heartbeats_enabled"] = emit_heartbeats_enabled
         __props__.__dict__["enable"] = enable
         __props__.__dict__["exactly_once_delivery_enabled"] = exactly_once_delivery_enabled
+        __props__.__dict__["follower_fetching_enabled"] = follower_fetching_enabled
         __props__.__dict__["offset_syncs_topic_location"] = offset_syncs_topic_location
         __props__.__dict__["project"] = project
         __props__.__dict__["replication_factor"] = replication_factor
@@ -840,6 +879,14 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
         """
         return pulumi.get(self, "exactly_once_delivery_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="followerFetchingEnabled")
+    def follower_fetching_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+        """
+        return pulumi.get(self, "follower_fetching_enabled")
 
     @_builtins.property
     @pulumi.getter(name="offsetSyncsTopicLocation")

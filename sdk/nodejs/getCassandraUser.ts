@@ -4,29 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Gets information about an Aiven for Apache Cassandra® service user.
- *
- * !> **End of life notice**
- * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
- * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
- * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
- * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
- * before December 31, 2025. For further assistance, contact your account team.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const exampleServiceUser = aiven.getCassandraUser({
- *     serviceName: exampleCassandra.serviceName,
- *     project: exampleProject.project,
- *     username: "example-cassandra-user",
- * });
- * ```
- */
 export function getCassandraUser(args: GetCassandraUserArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandraUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getCassandraUser:getCassandraUser", {
@@ -40,17 +17,8 @@ export function getCassandraUser(args: GetCassandraUserArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getCassandraUser.
  */
 export interface GetCassandraUserArgs {
-    /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     project: string;
-    /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     serviceName: string;
-    /**
-     * Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     username: string;
 }
 
@@ -58,62 +26,18 @@ export interface GetCassandraUserArgs {
  * A collection of values returned by getCassandraUser.
  */
 export interface GetCassandraUserResult {
-    /**
-     * Access certificate for the user.
-     */
     readonly accessCert: string;
-    /**
-     * Access certificate key for the user.
-     */
     readonly accessKey: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
-     */
     readonly password: string;
-    /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     readonly project: string;
-    /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     readonly serviceName: string;
-    /**
-     * User account type, such as primary or regular account.
-     */
     readonly type: string;
-    /**
-     * Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     readonly username: string;
 }
-/**
- * Gets information about an Aiven for Apache Cassandra® service user.
- *
- * !> **End of life notice**
- * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
- * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
- * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
- * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
- * before December 31, 2025. For further assistance, contact your account team.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const exampleServiceUser = aiven.getCassandraUser({
- *     serviceName: exampleCassandra.serviceName,
- *     project: exampleProject.project,
- *     username: "example-cassandra-user",
- * });
- * ```
- */
 export function getCassandraUserOutput(args: GetCassandraUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCassandraUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getCassandraUser:getCassandraUser", {
@@ -127,16 +51,7 @@ export function getCassandraUserOutput(args: GetCassandraUserOutputArgs, opts?: 
  * A collection of arguments for invoking getCassandraUser.
  */
 export interface GetCassandraUserOutputArgs {
-    /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     project: pulumi.Input<string>;
-    /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     username: pulumi.Input<string>;
 }

@@ -28,7 +28,7 @@ class GetOrganizationBillingGroupResult:
     """
     A collection of values returned by getOrganizationBillingGroup.
     """
-    def __init__(__self__, billing_address_id=None, billing_contact_emails=None, billing_emails=None, billing_group_id=None, billing_group_name=None, currency=None, custom_invoice_text=None, id=None, organization_id=None, payment_method_id=None, shipping_address_id=None, timeouts=None, vat_id=None):
+    def __init__(__self__, billing_address_id=None, billing_contact_emails=None, billing_emails=None, billing_group_id=None, billing_group_name=None, currency=None, custom_invoice_text=None, id=None, organization_id=None, payment_methods=None, shipping_address_id=None, timeouts=None, vat_id=None):
         if billing_address_id and not isinstance(billing_address_id, str):
             raise TypeError("Expected argument 'billing_address_id' to be a str")
         pulumi.set(__self__, "billing_address_id", billing_address_id)
@@ -56,9 +56,9 @@ class GetOrganizationBillingGroupResult:
         if organization_id and not isinstance(organization_id, str):
             raise TypeError("Expected argument 'organization_id' to be a str")
         pulumi.set(__self__, "organization_id", organization_id)
-        if payment_method_id and not isinstance(payment_method_id, str):
-            raise TypeError("Expected argument 'payment_method_id' to be a str")
-        pulumi.set(__self__, "payment_method_id", payment_method_id)
+        if payment_methods and not isinstance(payment_methods, list):
+            raise TypeError("Expected argument 'payment_methods' to be a list")
+        pulumi.set(__self__, "payment_methods", payment_methods)
         if shipping_address_id and not isinstance(shipping_address_id, str):
             raise TypeError("Expected argument 'shipping_address_id' to be a str")
         pulumi.set(__self__, "shipping_address_id", shipping_address_id)
@@ -79,17 +79,17 @@ class GetOrganizationBillingGroupResult:
 
     @_builtins.property
     @pulumi.getter(name="billingContactEmails")
-    def billing_contact_emails(self) -> Sequence[_builtins.str]:
+    def billing_contact_emails(self) -> Optional[Sequence['outputs.GetOrganizationBillingGroupBillingContactEmailResult']]:
         """
-        Aiven contacts these email addresses when there are billing issues or questions.
+        List of billing contact emails.
         """
         return pulumi.get(self, "billing_contact_emails")
 
     @_builtins.property
     @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Sequence[_builtins.str]:
+    def billing_emails(self) -> Optional[Sequence['outputs.GetOrganizationBillingGroupBillingEmailResult']]:
         """
-        PDF invoices are sent to these email addresses.
+        List of billing contact emails.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -142,12 +142,12 @@ class GetOrganizationBillingGroupResult:
         return pulumi.get(self, "organization_id")
 
     @_builtins.property
-    @pulumi.getter(name="paymentMethodId")
-    def payment_method_id(self) -> _builtins.str:
+    @pulumi.getter(name="paymentMethods")
+    def payment_methods(self) -> Optional[Sequence['outputs.GetOrganizationBillingGroupPaymentMethodResult']]:
         """
-        Payment method ID.
+        Payment method.
         """
-        return pulumi.get(self, "payment_method_id")
+        return pulumi.get(self, "payment_methods")
 
     @_builtins.property
     @pulumi.getter(name="shippingAddressId")
@@ -186,14 +186,17 @@ class AwaitableGetOrganizationBillingGroupResult(GetOrganizationBillingGroupResu
             custom_invoice_text=self.custom_invoice_text,
             id=self.id,
             organization_id=self.organization_id,
-            payment_method_id=self.payment_method_id,
+            payment_methods=self.payment_methods,
             shipping_address_id=self.shipping_address_id,
             timeouts=self.timeouts,
             vat_id=self.vat_id)
 
 
-def get_organization_billing_group(billing_group_id: Optional[_builtins.str] = None,
+def get_organization_billing_group(billing_contact_emails: Optional[Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict']]] = None,
+                                   billing_emails: Optional[Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict']]] = None,
+                                   billing_group_id: Optional[_builtins.str] = None,
                                    organization_id: Optional[_builtins.str] = None,
+                                   payment_methods: Optional[Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict']]] = None,
                                    timeouts: Optional[Union['GetOrganizationBillingGroupTimeoutsArgs', 'GetOrganizationBillingGroupTimeoutsArgsDict']] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationBillingGroupResult:
     """
@@ -203,12 +206,18 @@ def get_organization_billing_group(billing_group_id: Optional[_builtins.str] = N
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
 
+    :param Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict']] billing_contact_emails: List of billing contact emails.
+    :param Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict']] billing_emails: List of billing contact emails.
     :param _builtins.str billing_group_id: Billing group ID.
     :param _builtins.str organization_id: ID of an organization.
+    :param Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict']] payment_methods: Payment method.
     """
     __args__ = dict()
+    __args__['billingContactEmails'] = billing_contact_emails
+    __args__['billingEmails'] = billing_emails
     __args__['billingGroupId'] = billing_group_id
     __args__['organizationId'] = organization_id
+    __args__['paymentMethods'] = payment_methods
     __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup', __args__, opts=opts, typ=GetOrganizationBillingGroupResult).value
@@ -223,12 +232,15 @@ def get_organization_billing_group(billing_group_id: Optional[_builtins.str] = N
         custom_invoice_text=pulumi.get(__ret__, 'custom_invoice_text'),
         id=pulumi.get(__ret__, 'id'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
-        payment_method_id=pulumi.get(__ret__, 'payment_method_id'),
+        payment_methods=pulumi.get(__ret__, 'payment_methods'),
         shipping_address_id=pulumi.get(__ret__, 'shipping_address_id'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
         vat_id=pulumi.get(__ret__, 'vat_id'))
-def get_organization_billing_group_output(billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_organization_billing_group_output(billing_contact_emails: Optional[pulumi.Input[Optional[Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict']]]]] = None,
+                                          billing_emails: Optional[pulumi.Input[Optional[Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict']]]]] = None,
+                                          billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                                           organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                          payment_methods: Optional[pulumi.Input[Optional[Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict']]]]] = None,
                                           timeouts: Optional[pulumi.Input[Optional[Union['GetOrganizationBillingGroupTimeoutsArgs', 'GetOrganizationBillingGroupTimeoutsArgsDict']]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationBillingGroupResult]:
     """
@@ -238,12 +250,18 @@ def get_organization_billing_group_output(billing_group_id: Optional[pulumi.Inpu
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
 
+    :param Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict']] billing_contact_emails: List of billing contact emails.
+    :param Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict']] billing_emails: List of billing contact emails.
     :param _builtins.str billing_group_id: Billing group ID.
     :param _builtins.str organization_id: ID of an organization.
+    :param Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict']] payment_methods: Payment method.
     """
     __args__ = dict()
+    __args__['billingContactEmails'] = billing_contact_emails
+    __args__['billingEmails'] = billing_emails
     __args__['billingGroupId'] = billing_group_id
     __args__['organizationId'] = organization_id
+    __args__['paymentMethods'] = payment_methods
     __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup', __args__, opts=opts, typ=GetOrganizationBillingGroupResult)
@@ -257,7 +275,7 @@ def get_organization_billing_group_output(billing_group_id: Optional[pulumi.Inpu
         custom_invoice_text=pulumi.get(__response__, 'custom_invoice_text'),
         id=pulumi.get(__response__, 'id'),
         organization_id=pulumi.get(__response__, 'organization_id'),
-        payment_method_id=pulumi.get(__response__, 'payment_method_id'),
+        payment_methods=pulumi.get(__response__, 'payment_methods'),
         shipping_address_id=pulumi.get(__response__, 'shipping_address_id'),
         timeouts=pulumi.get(__response__, 'timeouts'),
         vat_id=pulumi.get(__response__, 'vat_id')))

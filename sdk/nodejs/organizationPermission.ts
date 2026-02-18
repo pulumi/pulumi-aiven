@@ -110,7 +110,7 @@ export class OrganizationPermission extends pulumi.CustomResource {
      */
     declare public readonly permissions: pulumi.Output<outputs.OrganizationPermissionPermission[]>;
     /**
-     * Resource Id. Changing this property forces recreation of the resource.
+     * The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
      */
     declare public readonly resourceId: pulumi.Output<string>;
     /**
@@ -175,7 +175,7 @@ export interface OrganizationPermissionState {
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[]>;
     /**
-     * Resource Id. Changing this property forces recreation of the resource.
+     * The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
      */
     resourceId?: pulumi.Input<string>;
     /**
@@ -198,7 +198,7 @@ export interface OrganizationPermissionArgs {
      */
     permissions: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[]>;
     /**
-     * Resource Id. Changing this property forces recreation of the resource.
+     * The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
      */
     resourceId: pulumi.Input<string>;
     /**

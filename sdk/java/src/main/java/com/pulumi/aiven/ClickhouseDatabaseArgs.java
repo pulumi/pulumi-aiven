@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.ClickhouseDatabaseTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -18,14 +19,14 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
     public static final ClickhouseDatabaseArgs Empty = new ClickhouseDatabaseArgs();
 
     /**
-     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
+     * Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the ClickHouse database. Changing this property forces recreation of the resource.
+     * @return Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -33,14 +34,14 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -48,14 +49,14 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -63,18 +64,33 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     * Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+     * 
+     * @deprecated
+     * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
      */
+    @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     @Import(name="terminationProtection")
     private @Nullable Output<Boolean> terminationProtection;
 
     /**
-     * @return Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     * @return Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+     * 
+     * @deprecated
+     * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
      */
+    @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     public Optional<Output<Boolean>> terminationProtection() {
         return Optional.ofNullable(this.terminationProtection);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<ClickhouseDatabaseTimeoutsArgs> timeouts;
+
+    public Optional<Output<ClickhouseDatabaseTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private ClickhouseDatabaseArgs() {}
@@ -84,6 +100,7 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
         this.project = $.project;
         this.serviceName = $.serviceName;
         this.terminationProtection = $.terminationProtection;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -105,7 +122,7 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the ClickHouse database. Changing this property forces recreation of the resource.
+         * @param name Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -116,7 +133,7 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the ClickHouse database. Changing this property forces recreation of the resource.
+         * @param name Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -126,7 +143,7 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -137,7 +154,7 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -147,7 +164,7 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -158,7 +175,7 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -168,24 +185,41 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param terminationProtection Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+         * @param terminationProtection Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
          * 
          * @return builder
          * 
+         * @deprecated
+         * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+         * 
          */
+        @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
         public Builder terminationProtection(@Nullable Output<Boolean> terminationProtection) {
             $.terminationProtection = terminationProtection;
             return this;
         }
 
         /**
-         * @param terminationProtection Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+         * @param terminationProtection Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
          * 
          * @return builder
          * 
+         * @deprecated
+         * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+         * 
          */
+        @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
         public Builder terminationProtection(Boolean terminationProtection) {
             return terminationProtection(Output.of(terminationProtection));
+        }
+
+        public Builder timeouts(@Nullable Output<ClickhouseDatabaseTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(ClickhouseDatabaseTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public ClickhouseDatabaseArgs build() {

@@ -108,6 +108,21 @@ public final class PgComponentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Privatelink connection ID
+     * 
+     */
+    @Import(name="privatelinkConnectionId")
+    private @Nullable Output<String> privatelinkConnectionId;
+
+    /**
+     * @return Privatelink connection ID
+     * 
+     */
+    public Optional<Output<String>> privatelinkConnectionId() {
+        return Optional.ofNullable(this.privatelinkConnectionId);
+    }
+
+    /**
      * Network access route
      * 
      */
@@ -161,6 +176,7 @@ public final class PgComponentArgs extends com.pulumi.resources.ResourceArgs {
         this.kafkaAuthenticationMethod = $.kafkaAuthenticationMethod;
         this.kafkaSslCa = $.kafkaSslCa;
         this.port = $.port;
+        this.privatelinkConnectionId = $.privatelinkConnectionId;
         this.route = $.route;
         this.ssl = $.ssl;
         this.usage = $.usage;
@@ -308,6 +324,27 @@ public final class PgComponentArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder port(Integer port) {
             return port(Output.of(port));
+        }
+
+        /**
+         * @param privatelinkConnectionId Privatelink connection ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatelinkConnectionId(@Nullable Output<String> privatelinkConnectionId) {
+            $.privatelinkConnectionId = privatelinkConnectionId;
+            return this;
+        }
+
+        /**
+         * @param privatelinkConnectionId Privatelink connection ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatelinkConnectionId(String privatelinkConnectionId) {
+            return privatelinkConnectionId(Output.of(privatelinkConnectionId));
         }
 
         /**

@@ -13,6 +13,1001 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetKafkaTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// GetKafkaTechEmailInput is an input type that accepts GetKafkaTechEmailArgs and GetKafkaTechEmailOutput values.
+// You can construct a concrete instance of `GetKafkaTechEmailInput` via:
+//
+//	GetKafkaTechEmailArgs{...}
+type GetKafkaTechEmailInput interface {
+	pulumi.Input
+
+	ToGetKafkaTechEmailOutput() GetKafkaTechEmailOutput
+	ToGetKafkaTechEmailOutputWithContext(context.Context) GetKafkaTechEmailOutput
+}
+
+type GetKafkaTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetKafkaTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTechEmail)(nil)).Elem()
+}
+
+func (i GetKafkaTechEmailArgs) ToGetKafkaTechEmailOutput() GetKafkaTechEmailOutput {
+	return i.ToGetKafkaTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTechEmailArgs) ToGetKafkaTechEmailOutputWithContext(ctx context.Context) GetKafkaTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTechEmailOutput)
+}
+
+// GetKafkaTechEmailArrayInput is an input type that accepts GetKafkaTechEmailArray and GetKafkaTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetKafkaTechEmailArrayInput` via:
+//
+//	GetKafkaTechEmailArray{ GetKafkaTechEmailArgs{...} }
+type GetKafkaTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaTechEmailArrayOutput() GetKafkaTechEmailArrayOutput
+	ToGetKafkaTechEmailArrayOutputWithContext(context.Context) GetKafkaTechEmailArrayOutput
+}
+
+type GetKafkaTechEmailArray []GetKafkaTechEmailInput
+
+func (GetKafkaTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTechEmail)(nil)).Elem()
+}
+
+func (i GetKafkaTechEmailArray) ToGetKafkaTechEmailArrayOutput() GetKafkaTechEmailArrayOutput {
+	return i.ToGetKafkaTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTechEmailArray) ToGetKafkaTechEmailArrayOutputWithContext(ctx context.Context) GetKafkaTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTechEmailArrayOutput)
+}
+
+type GetKafkaTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTechEmail)(nil)).Elem()
+}
+
+func (o GetKafkaTechEmailOutput) ToGetKafkaTechEmailOutput() GetKafkaTechEmailOutput {
+	return o
+}
+
+func (o GetKafkaTechEmailOutput) ToGetKafkaTechEmailOutputWithContext(ctx context.Context) GetKafkaTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o GetKafkaTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetKafkaTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTechEmail)(nil)).Elem()
+}
+
+func (o GetKafkaTechEmailArrayOutput) ToGetKafkaTechEmailArrayOutput() GetKafkaTechEmailArrayOutput {
+	return o
+}
+
+func (o GetKafkaTechEmailArrayOutput) ToGetKafkaTechEmailArrayOutputWithContext(ctx context.Context) GetKafkaTechEmailArrayOutput {
+	return o
+}
+
+func (o GetKafkaTechEmailArrayOutput) Index(i pulumi.IntInput) GetKafkaTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaTechEmail {
+		return vs[0].([]GetKafkaTechEmail)[vs[1].(int)]
+	}).(GetKafkaTechEmailOutput)
+}
+
+type GetKafkaTopicConfig struct {
+	// The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
+	CleanupPolicy *string `pulumi:"cleanupPolicy"`
+	// Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+	CompressionType *string `pulumi:"compressionType"`
+	// The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
+	DeleteRetentionMs *string `pulumi:"deleteRetentionMs"`
+	// Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+	DisklessEnable *bool `pulumi:"disklessEnable"`
+	// The time to wait before deleting a file from the filesystem.
+	FileDeleteDelayMs *string `pulumi:"fileDeleteDelayMs"`
+	// This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+	FlushMessages *string `pulumi:"flushMessages"`
+	// This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+	FlushMs *string `pulumi:"flushMs"`
+	// This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
+	IndexIntervalBytes *string `pulumi:"indexIntervalBytes"`
+	// This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
+	LocalRetentionBytes *string `pulumi:"localRetentionBytes"`
+	// This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+	LocalRetentionMs *string `pulumi:"localRetentionMs"`
+	// The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+	MaxCompactionLagMs *string `pulumi:"maxCompactionLagMs"`
+	// The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
+	MaxMessageBytes *string `pulumi:"maxMessageBytes"`
+	// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
+	MessageDownconversionEnable *bool `pulumi:"messageDownconversionEnable"`
+	// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+	MessageFormatVersion *string `pulumi:"messageFormatVersion"`
+	// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
+	MessageTimestampDifferenceMaxMs *string `pulumi:"messageTimestampDifferenceMaxMs"`
+	// Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
+	MessageTimestampType *string `pulumi:"messageTimestampType"`
+	// This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+	MinCleanableDirtyRatio *float64 `pulumi:"minCleanableDirtyRatio"`
+	// The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+	MinCompactionLagMs *string `pulumi:"minCompactionLagMs"`
+	// When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+	MinInsyncReplicas *string `pulumi:"minInsyncReplicas"`
+	// True if we should preallocate the file on disk when creating a new log segment.
+	Preallocate *bool `pulumi:"preallocate"`
+	// Indicates whether tiered storage should be enabled.
+	RemoteStorageEnable *bool `pulumi:"remoteStorageEnable"`
+	// This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+	RetentionBytes *string `pulumi:"retentionBytes"`
+	// This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
+	RetentionMs *string `pulumi:"retentionMs"`
+	// This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+	SegmentBytes *string `pulumi:"segmentBytes"`
+	// This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+	SegmentIndexBytes *string `pulumi:"segmentIndexBytes"`
+	// The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+	SegmentJitterMs *string `pulumi:"segmentJitterMs"`
+	// This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+	SegmentMs *string `pulumi:"segmentMs"`
+	// Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
+	UncleanLeaderElectionEnable *bool `pulumi:"uncleanLeaderElectionEnable"`
+}
+
+// GetKafkaTopicConfigInput is an input type that accepts GetKafkaTopicConfigArgs and GetKafkaTopicConfigOutput values.
+// You can construct a concrete instance of `GetKafkaTopicConfigInput` via:
+//
+//	GetKafkaTopicConfigArgs{...}
+type GetKafkaTopicConfigInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicConfigOutput() GetKafkaTopicConfigOutput
+	ToGetKafkaTopicConfigOutputWithContext(context.Context) GetKafkaTopicConfigOutput
+}
+
+type GetKafkaTopicConfigArgs struct {
+	// The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
+	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
+	// Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+	CompressionType pulumi.StringPtrInput `pulumi:"compressionType"`
+	// The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
+	DeleteRetentionMs pulumi.StringPtrInput `pulumi:"deleteRetentionMs"`
+	// Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+	DisklessEnable pulumi.BoolPtrInput `pulumi:"disklessEnable"`
+	// The time to wait before deleting a file from the filesystem.
+	FileDeleteDelayMs pulumi.StringPtrInput `pulumi:"fileDeleteDelayMs"`
+	// This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+	FlushMessages pulumi.StringPtrInput `pulumi:"flushMessages"`
+	// This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+	FlushMs pulumi.StringPtrInput `pulumi:"flushMs"`
+	// This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
+	IndexIntervalBytes pulumi.StringPtrInput `pulumi:"indexIntervalBytes"`
+	// This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
+	LocalRetentionBytes pulumi.StringPtrInput `pulumi:"localRetentionBytes"`
+	// This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+	LocalRetentionMs pulumi.StringPtrInput `pulumi:"localRetentionMs"`
+	// The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+	MaxCompactionLagMs pulumi.StringPtrInput `pulumi:"maxCompactionLagMs"`
+	// The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
+	MaxMessageBytes pulumi.StringPtrInput `pulumi:"maxMessageBytes"`
+	// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
+	MessageDownconversionEnable pulumi.BoolPtrInput `pulumi:"messageDownconversionEnable"`
+	// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+	MessageFormatVersion pulumi.StringPtrInput `pulumi:"messageFormatVersion"`
+	// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
+	MessageTimestampDifferenceMaxMs pulumi.StringPtrInput `pulumi:"messageTimestampDifferenceMaxMs"`
+	// Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
+	MessageTimestampType pulumi.StringPtrInput `pulumi:"messageTimestampType"`
+	// This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+	MinCleanableDirtyRatio pulumi.Float64PtrInput `pulumi:"minCleanableDirtyRatio"`
+	// The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+	MinCompactionLagMs pulumi.StringPtrInput `pulumi:"minCompactionLagMs"`
+	// When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+	MinInsyncReplicas pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
+	// True if we should preallocate the file on disk when creating a new log segment.
+	Preallocate pulumi.BoolPtrInput `pulumi:"preallocate"`
+	// Indicates whether tiered storage should be enabled.
+	RemoteStorageEnable pulumi.BoolPtrInput `pulumi:"remoteStorageEnable"`
+	// This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+	RetentionBytes pulumi.StringPtrInput `pulumi:"retentionBytes"`
+	// This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
+	RetentionMs pulumi.StringPtrInput `pulumi:"retentionMs"`
+	// This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+	SegmentBytes pulumi.StringPtrInput `pulumi:"segmentBytes"`
+	// This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+	SegmentIndexBytes pulumi.StringPtrInput `pulumi:"segmentIndexBytes"`
+	// The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+	SegmentJitterMs pulumi.StringPtrInput `pulumi:"segmentJitterMs"`
+	// This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+	SegmentMs pulumi.StringPtrInput `pulumi:"segmentMs"`
+	// Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
+	UncleanLeaderElectionEnable pulumi.BoolPtrInput `pulumi:"uncleanLeaderElectionEnable"`
+}
+
+func (GetKafkaTopicConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicConfig)(nil)).Elem()
+}
+
+func (i GetKafkaTopicConfigArgs) ToGetKafkaTopicConfigOutput() GetKafkaTopicConfigOutput {
+	return i.ToGetKafkaTopicConfigOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicConfigArgs) ToGetKafkaTopicConfigOutputWithContext(ctx context.Context) GetKafkaTopicConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicConfigOutput)
+}
+
+// GetKafkaTopicConfigArrayInput is an input type that accepts GetKafkaTopicConfigArray and GetKafkaTopicConfigArrayOutput values.
+// You can construct a concrete instance of `GetKafkaTopicConfigArrayInput` via:
+//
+//	GetKafkaTopicConfigArray{ GetKafkaTopicConfigArgs{...} }
+type GetKafkaTopicConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicConfigArrayOutput() GetKafkaTopicConfigArrayOutput
+	ToGetKafkaTopicConfigArrayOutputWithContext(context.Context) GetKafkaTopicConfigArrayOutput
+}
+
+type GetKafkaTopicConfigArray []GetKafkaTopicConfigInput
+
+func (GetKafkaTopicConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTopicConfig)(nil)).Elem()
+}
+
+func (i GetKafkaTopicConfigArray) ToGetKafkaTopicConfigArrayOutput() GetKafkaTopicConfigArrayOutput {
+	return i.ToGetKafkaTopicConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicConfigArray) ToGetKafkaTopicConfigArrayOutputWithContext(ctx context.Context) GetKafkaTopicConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicConfigArrayOutput)
+}
+
+type GetKafkaTopicConfigOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicConfig)(nil)).Elem()
+}
+
+func (o GetKafkaTopicConfigOutput) ToGetKafkaTopicConfigOutput() GetKafkaTopicConfigOutput {
+	return o
+}
+
+func (o GetKafkaTopicConfigOutput) ToGetKafkaTopicConfigOutputWithContext(ctx context.Context) GetKafkaTopicConfigOutput {
+	return o
+}
+
+// The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
+func (o GetKafkaTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
+func (o GetKafkaTopicConfigOutput) CompressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
+}
+
+// The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
+func (o GetKafkaTopicConfigOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.DeleteRetentionMs }).(pulumi.StringPtrOutput)
+}
+
+// Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+func (o GetKafkaTopicConfigOutput) DisklessEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *bool { return v.DisklessEnable }).(pulumi.BoolPtrOutput)
+}
+
+// The time to wait before deleting a file from the filesystem.
+func (o GetKafkaTopicConfigOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.FileDeleteDelayMs }).(pulumi.StringPtrOutput)
+}
+
+// This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+func (o GetKafkaTopicConfigOutput) FlushMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.FlushMessages }).(pulumi.StringPtrOutput)
+}
+
+// This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
+func (o GetKafkaTopicConfigOutput) FlushMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.FlushMs }).(pulumi.StringPtrOutput)
+}
+
+// This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
+func (o GetKafkaTopicConfigOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.IndexIntervalBytes }).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
+func (o GetKafkaTopicConfigOutput) LocalRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.LocalRetentionBytes }).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+func (o GetKafkaTopicConfigOutput) LocalRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.LocalRetentionMs }).(pulumi.StringPtrOutput)
+}
+
+// The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+func (o GetKafkaTopicConfigOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MaxCompactionLagMs }).(pulumi.StringPtrOutput)
+}
+
+// The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
+func (o GetKafkaTopicConfigOutput) MaxMessageBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MaxMessageBytes }).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
+func (o GetKafkaTopicConfigOutput) MessageDownconversionEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *bool { return v.MessageDownconversionEnable }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+func (o GetKafkaTopicConfigOutput) MessageFormatVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MessageFormatVersion }).(pulumi.StringPtrOutput)
+}
+
+// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
+func (o GetKafkaTopicConfigOutput) MessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MessageTimestampDifferenceMaxMs }).(pulumi.StringPtrOutput)
+}
+
+// Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
+func (o GetKafkaTopicConfigOutput) MessageTimestampType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MessageTimestampType }).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+func (o GetKafkaTopicConfigOutput) MinCleanableDirtyRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *float64 { return v.MinCleanableDirtyRatio }).(pulumi.Float64PtrOutput)
+}
+
+// The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+func (o GetKafkaTopicConfigOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MinCompactionLagMs }).(pulumi.StringPtrOutput)
+}
+
+// When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+func (o GetKafkaTopicConfigOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MinInsyncReplicas }).(pulumi.StringPtrOutput)
+}
+
+// True if we should preallocate the file on disk when creating a new log segment.
+func (o GetKafkaTopicConfigOutput) Preallocate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *bool { return v.Preallocate }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether tiered storage should be enabled.
+func (o GetKafkaTopicConfigOutput) RemoteStorageEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *bool { return v.RemoteStorageEnable }).(pulumi.BoolPtrOutput)
+}
+
+// This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+func (o GetKafkaTopicConfigOutput) RetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.RetentionBytes }).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
+func (o GetKafkaTopicConfigOutput) RetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.RetentionMs }).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+func (o GetKafkaTopicConfigOutput) SegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.SegmentBytes }).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+func (o GetKafkaTopicConfigOutput) SegmentIndexBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.SegmentIndexBytes }).(pulumi.StringPtrOutput)
+}
+
+// The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+func (o GetKafkaTopicConfigOutput) SegmentJitterMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.SegmentJitterMs }).(pulumi.StringPtrOutput)
+}
+
+// This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+func (o GetKafkaTopicConfigOutput) SegmentMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.SegmentMs }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
+func (o GetKafkaTopicConfigOutput) UncleanLeaderElectionEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *bool { return v.UncleanLeaderElectionEnable }).(pulumi.BoolPtrOutput)
+}
+
+type GetKafkaTopicConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTopicConfig)(nil)).Elem()
+}
+
+func (o GetKafkaTopicConfigArrayOutput) ToGetKafkaTopicConfigArrayOutput() GetKafkaTopicConfigArrayOutput {
+	return o
+}
+
+func (o GetKafkaTopicConfigArrayOutput) ToGetKafkaTopicConfigArrayOutputWithContext(ctx context.Context) GetKafkaTopicConfigArrayOutput {
+	return o
+}
+
+func (o GetKafkaTopicConfigArrayOutput) Index(i pulumi.IntInput) GetKafkaTopicConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaTopicConfig {
+		return vs[0].([]GetKafkaTopicConfig)[vs[1].(int)]
+	}).(GetKafkaTopicConfigOutput)
+}
+
+type GetKafkaTopicTag struct {
+	// Tag key. Maximum length: `64`.
+	Key string `pulumi:"key"`
+	// Tag value. Maximum length: `256`.
+	Value *string `pulumi:"value"`
+}
+
+// GetKafkaTopicTagInput is an input type that accepts GetKafkaTopicTagArgs and GetKafkaTopicTagOutput values.
+// You can construct a concrete instance of `GetKafkaTopicTagInput` via:
+//
+//	GetKafkaTopicTagArgs{...}
+type GetKafkaTopicTagInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicTagOutput() GetKafkaTopicTagOutput
+	ToGetKafkaTopicTagOutputWithContext(context.Context) GetKafkaTopicTagOutput
+}
+
+type GetKafkaTopicTagArgs struct {
+	// Tag key. Maximum length: `64`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Tag value. Maximum length: `256`.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetKafkaTopicTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicTag)(nil)).Elem()
+}
+
+func (i GetKafkaTopicTagArgs) ToGetKafkaTopicTagOutput() GetKafkaTopicTagOutput {
+	return i.ToGetKafkaTopicTagOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicTagArgs) ToGetKafkaTopicTagOutputWithContext(ctx context.Context) GetKafkaTopicTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicTagOutput)
+}
+
+// GetKafkaTopicTagArrayInput is an input type that accepts GetKafkaTopicTagArray and GetKafkaTopicTagArrayOutput values.
+// You can construct a concrete instance of `GetKafkaTopicTagArrayInput` via:
+//
+//	GetKafkaTopicTagArray{ GetKafkaTopicTagArgs{...} }
+type GetKafkaTopicTagArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicTagArrayOutput() GetKafkaTopicTagArrayOutput
+	ToGetKafkaTopicTagArrayOutputWithContext(context.Context) GetKafkaTopicTagArrayOutput
+}
+
+type GetKafkaTopicTagArray []GetKafkaTopicTagInput
+
+func (GetKafkaTopicTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTopicTag)(nil)).Elem()
+}
+
+func (i GetKafkaTopicTagArray) ToGetKafkaTopicTagArrayOutput() GetKafkaTopicTagArrayOutput {
+	return i.ToGetKafkaTopicTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicTagArray) ToGetKafkaTopicTagArrayOutputWithContext(ctx context.Context) GetKafkaTopicTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicTagArrayOutput)
+}
+
+type GetKafkaTopicTagOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicTag)(nil)).Elem()
+}
+
+func (o GetKafkaTopicTagOutput) ToGetKafkaTopicTagOutput() GetKafkaTopicTagOutput {
+	return o
+}
+
+func (o GetKafkaTopicTagOutput) ToGetKafkaTopicTagOutputWithContext(ctx context.Context) GetKafkaTopicTagOutput {
+	return o
+}
+
+// Tag key. Maximum length: `64`.
+func (o GetKafkaTopicTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTopicTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Tag value. Maximum length: `256`.
+func (o GetKafkaTopicTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetKafkaTopicTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTopicTag)(nil)).Elem()
+}
+
+func (o GetKafkaTopicTagArrayOutput) ToGetKafkaTopicTagArrayOutput() GetKafkaTopicTagArrayOutput {
+	return o
+}
+
+func (o GetKafkaTopicTagArrayOutput) ToGetKafkaTopicTagArrayOutputWithContext(ctx context.Context) GetKafkaTopicTagArrayOutput {
+	return o
+}
+
+func (o GetKafkaTopicTagArrayOutput) Index(i pulumi.IntInput) GetKafkaTopicTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaTopicTag {
+		return vs[0].([]GetKafkaTopicTag)[vs[1].(int)]
+	}).(GetKafkaTopicTagOutput)
+}
+
+type GetM3AggregatorComponent struct {
+	// Service component name
+	Component string `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri string `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host string `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa string `pulumi:"kafkaSslCa"`
+	// Port number for connecting to the service component
+	Port int `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId string `pulumi:"privatelinkConnectionId"`
+	// Network access route
+	Route string `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl bool `pulumi:"ssl"`
+	// DNS usage name
+	Usage string `pulumi:"usage"`
+}
+
+// GetM3AggregatorComponentInput is an input type that accepts GetM3AggregatorComponentArgs and GetM3AggregatorComponentOutput values.
+// You can construct a concrete instance of `GetM3AggregatorComponentInput` via:
+//
+//	GetM3AggregatorComponentArgs{...}
+type GetM3AggregatorComponentInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorComponentOutput() GetM3AggregatorComponentOutput
+	ToGetM3AggregatorComponentOutputWithContext(context.Context) GetM3AggregatorComponentOutput
+}
+
+type GetM3AggregatorComponentArgs struct {
+	// Service component name
+	Component pulumi.StringInput `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri pulumi.StringInput `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host pulumi.StringInput `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
+	// Port number for connecting to the service component
+	Port pulumi.IntInput `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId pulumi.StringInput `pulumi:"privatelinkConnectionId"`
+	// Network access route
+	Route pulumi.StringInput `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl pulumi.BoolInput `pulumi:"ssl"`
+	// DNS usage name
+	Usage pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetM3AggregatorComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorComponent)(nil)).Elem()
+}
+
+func (i GetM3AggregatorComponentArgs) ToGetM3AggregatorComponentOutput() GetM3AggregatorComponentOutput {
+	return i.ToGetM3AggregatorComponentOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorComponentArgs) ToGetM3AggregatorComponentOutputWithContext(ctx context.Context) GetM3AggregatorComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorComponentOutput)
+}
+
+// GetM3AggregatorComponentArrayInput is an input type that accepts GetM3AggregatorComponentArray and GetM3AggregatorComponentArrayOutput values.
+// You can construct a concrete instance of `GetM3AggregatorComponentArrayInput` via:
+//
+//	GetM3AggregatorComponentArray{ GetM3AggregatorComponentArgs{...} }
+type GetM3AggregatorComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorComponentArrayOutput() GetM3AggregatorComponentArrayOutput
+	ToGetM3AggregatorComponentArrayOutputWithContext(context.Context) GetM3AggregatorComponentArrayOutput
+}
+
+type GetM3AggregatorComponentArray []GetM3AggregatorComponentInput
+
+func (GetM3AggregatorComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorComponent)(nil)).Elem()
+}
+
+func (i GetM3AggregatorComponentArray) ToGetM3AggregatorComponentArrayOutput() GetM3AggregatorComponentArrayOutput {
+	return i.ToGetM3AggregatorComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorComponentArray) ToGetM3AggregatorComponentArrayOutputWithContext(ctx context.Context) GetM3AggregatorComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorComponentArrayOutput)
+}
+
+type GetM3AggregatorComponentOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorComponent)(nil)).Elem()
+}
+
+func (o GetM3AggregatorComponentOutput) ToGetM3AggregatorComponentOutput() GetM3AggregatorComponentOutput {
+	return o
+}
+
+func (o GetM3AggregatorComponentOutput) ToGetM3AggregatorComponentOutputWithContext(ctx context.Context) GetM3AggregatorComponentOutput {
+	return o
+}
+
+// Service component name
+func (o GetM3AggregatorComponentOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+// Connection info for connecting to the service component. This is a combination of host and port.
+func (o GetM3AggregatorComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
+// Host name for connecting to the service component
+func (o GetM3AggregatorComponentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Kafka authentication method. This is a value specific to the 'kafka' service component
+func (o GetM3AggregatorComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+func (o GetM3AggregatorComponentOutput) KafkaSslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.KafkaSslCa }).(pulumi.StringOutput)
+}
+
+// Port number for connecting to the service component
+func (o GetM3AggregatorComponentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Privatelink connection ID
+func (o GetM3AggregatorComponentOutput) PrivatelinkConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
+}
+
+// Network access route
+func (o GetM3AggregatorComponentOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.Route }).(pulumi.StringOutput)
+}
+
+// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+func (o GetM3AggregatorComponentOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+}
+
+// DNS usage name
+func (o GetM3AggregatorComponentOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorComponent) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetM3AggregatorComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorComponent)(nil)).Elem()
+}
+
+func (o GetM3AggregatorComponentArrayOutput) ToGetM3AggregatorComponentArrayOutput() GetM3AggregatorComponentArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorComponentArrayOutput) ToGetM3AggregatorComponentArrayOutputWithContext(ctx context.Context) GetM3AggregatorComponentArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorComponentArrayOutput) Index(i pulumi.IntInput) GetM3AggregatorComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3AggregatorComponent {
+		return vs[0].([]GetM3AggregatorComponent)[vs[1].(int)]
+	}).(GetM3AggregatorComponentOutput)
+}
+
+type GetM3AggregatorM3aggregator struct {
+	// M3 Aggregator HTTP URI.
+	AggregatorHttpUri string `pulumi:"aggregatorHttpUri"`
+	// M3 Aggregator server URIs.
+	Uris []string `pulumi:"uris"`
+}
+
+// GetM3AggregatorM3aggregatorInput is an input type that accepts GetM3AggregatorM3aggregatorArgs and GetM3AggregatorM3aggregatorOutput values.
+// You can construct a concrete instance of `GetM3AggregatorM3aggregatorInput` via:
+//
+//	GetM3AggregatorM3aggregatorArgs{...}
+type GetM3AggregatorM3aggregatorInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorM3aggregatorOutput() GetM3AggregatorM3aggregatorOutput
+	ToGetM3AggregatorM3aggregatorOutputWithContext(context.Context) GetM3AggregatorM3aggregatorOutput
+}
+
+type GetM3AggregatorM3aggregatorArgs struct {
+	// M3 Aggregator HTTP URI.
+	AggregatorHttpUri pulumi.StringInput `pulumi:"aggregatorHttpUri"`
+	// M3 Aggregator server URIs.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (GetM3AggregatorM3aggregatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorM3aggregator)(nil)).Elem()
+}
+
+func (i GetM3AggregatorM3aggregatorArgs) ToGetM3AggregatorM3aggregatorOutput() GetM3AggregatorM3aggregatorOutput {
+	return i.ToGetM3AggregatorM3aggregatorOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorM3aggregatorArgs) ToGetM3AggregatorM3aggregatorOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorM3aggregatorOutput)
+}
+
+// GetM3AggregatorM3aggregatorArrayInput is an input type that accepts GetM3AggregatorM3aggregatorArray and GetM3AggregatorM3aggregatorArrayOutput values.
+// You can construct a concrete instance of `GetM3AggregatorM3aggregatorArrayInput` via:
+//
+//	GetM3AggregatorM3aggregatorArray{ GetM3AggregatorM3aggregatorArgs{...} }
+type GetM3AggregatorM3aggregatorArrayInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorM3aggregatorArrayOutput() GetM3AggregatorM3aggregatorArrayOutput
+	ToGetM3AggregatorM3aggregatorArrayOutputWithContext(context.Context) GetM3AggregatorM3aggregatorArrayOutput
+}
+
+type GetM3AggregatorM3aggregatorArray []GetM3AggregatorM3aggregatorInput
+
+func (GetM3AggregatorM3aggregatorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorM3aggregator)(nil)).Elem()
+}
+
+func (i GetM3AggregatorM3aggregatorArray) ToGetM3AggregatorM3aggregatorArrayOutput() GetM3AggregatorM3aggregatorArrayOutput {
+	return i.ToGetM3AggregatorM3aggregatorArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorM3aggregatorArray) ToGetM3AggregatorM3aggregatorArrayOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorM3aggregatorArrayOutput)
+}
+
+type GetM3AggregatorM3aggregatorOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorM3aggregatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorM3aggregator)(nil)).Elem()
+}
+
+func (o GetM3AggregatorM3aggregatorOutput) ToGetM3AggregatorM3aggregatorOutput() GetM3AggregatorM3aggregatorOutput {
+	return o
+}
+
+func (o GetM3AggregatorM3aggregatorOutput) ToGetM3AggregatorM3aggregatorOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorOutput {
+	return o
+}
+
+// M3 Aggregator HTTP URI.
+func (o GetM3AggregatorM3aggregatorOutput) AggregatorHttpUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregator) string { return v.AggregatorHttpUri }).(pulumi.StringOutput)
+}
+
+// M3 Aggregator server URIs.
+func (o GetM3AggregatorM3aggregatorOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregator) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type GetM3AggregatorM3aggregatorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorM3aggregatorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorM3aggregator)(nil)).Elem()
+}
+
+func (o GetM3AggregatorM3aggregatorArrayOutput) ToGetM3AggregatorM3aggregatorArrayOutput() GetM3AggregatorM3aggregatorArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorM3aggregatorArrayOutput) ToGetM3AggregatorM3aggregatorArrayOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorM3aggregatorArrayOutput) Index(i pulumi.IntInput) GetM3AggregatorM3aggregatorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3AggregatorM3aggregator {
+		return vs[0].([]GetM3AggregatorM3aggregator)[vs[1].(int)]
+	}).(GetM3AggregatorM3aggregatorOutput)
+}
+
+type GetM3AggregatorM3aggregatorUserConfig struct {
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects []GetM3AggregatorM3aggregatorUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters []string `pulumi:"ipFilters"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
+	M3Version *string `pulumi:"m3Version"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
+	M3aggregatorVersion *string `pulumi:"m3aggregatorVersion"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
+	// Use static public IP addresses.
+	StaticIps *bool `pulumi:"staticIps"`
+}
+
+// GetM3AggregatorM3aggregatorUserConfigInput is an input type that accepts GetM3AggregatorM3aggregatorUserConfigArgs and GetM3AggregatorM3aggregatorUserConfigOutput values.
+// You can construct a concrete instance of `GetM3AggregatorM3aggregatorUserConfigInput` via:
+//
+//	GetM3AggregatorM3aggregatorUserConfigArgs{...}
+type GetM3AggregatorM3aggregatorUserConfigInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorM3aggregatorUserConfigOutput() GetM3AggregatorM3aggregatorUserConfigOutput
+	ToGetM3AggregatorM3aggregatorUserConfigOutputWithContext(context.Context) GetM3AggregatorM3aggregatorUserConfigOutput
+}
+
+type GetM3AggregatorM3aggregatorUserConfigArgs struct {
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
+	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
+	M3aggregatorVersion pulumi.StringPtrInput `pulumi:"m3aggregatorVersion"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
+	// Use static public IP addresses.
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
+}
+
+func (GetM3AggregatorM3aggregatorUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (i GetM3AggregatorM3aggregatorUserConfigArgs) ToGetM3AggregatorM3aggregatorUserConfigOutput() GetM3AggregatorM3aggregatorUserConfigOutput {
+	return i.ToGetM3AggregatorM3aggregatorUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorM3aggregatorUserConfigArgs) ToGetM3AggregatorM3aggregatorUserConfigOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorM3aggregatorUserConfigOutput)
+}
+
+// GetM3AggregatorM3aggregatorUserConfigArrayInput is an input type that accepts GetM3AggregatorM3aggregatorUserConfigArray and GetM3AggregatorM3aggregatorUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetM3AggregatorM3aggregatorUserConfigArrayInput` via:
+//
+//	GetM3AggregatorM3aggregatorUserConfigArray{ GetM3AggregatorM3aggregatorUserConfigArgs{...} }
+type GetM3AggregatorM3aggregatorUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetM3AggregatorM3aggregatorUserConfigArrayOutput() GetM3AggregatorM3aggregatorUserConfigArrayOutput
+	ToGetM3AggregatorM3aggregatorUserConfigArrayOutputWithContext(context.Context) GetM3AggregatorM3aggregatorUserConfigArrayOutput
+}
+
+type GetM3AggregatorM3aggregatorUserConfigArray []GetM3AggregatorM3aggregatorUserConfigInput
+
+func (GetM3AggregatorM3aggregatorUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (i GetM3AggregatorM3aggregatorUserConfigArray) ToGetM3AggregatorM3aggregatorUserConfigArrayOutput() GetM3AggregatorM3aggregatorUserConfigArrayOutput {
+	return i.ToGetM3AggregatorM3aggregatorUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetM3AggregatorM3aggregatorUserConfigArray) ToGetM3AggregatorM3aggregatorUserConfigArrayOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetM3AggregatorM3aggregatorUserConfigArrayOutput)
+}
+
+type GetM3AggregatorM3aggregatorUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorM3aggregatorUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) ToGetM3AggregatorM3aggregatorUserConfigOutput() GetM3AggregatorM3aggregatorUserConfigOutput {
+	return o
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) ToGetM3AggregatorM3aggregatorUserConfigOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorUserConfigOutput {
+	return o
+}
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) IpFilterObjects() GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) []GetM3AggregatorM3aggregatorUserConfigIpFilterObject {
+		return v.IpFilterObjects
+	}).(GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+//
+// Deprecated: Deprecated. Use `ipFilterString` instead.
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) M3Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) M3aggregatorVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.M3aggregatorVersion }).(pulumi.StringPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o GetM3AggregatorM3aggregatorUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+type GetM3AggregatorM3aggregatorUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetM3AggregatorM3aggregatorUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetM3AggregatorM3aggregatorUserConfig)(nil)).Elem()
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigArrayOutput) ToGetM3AggregatorM3aggregatorUserConfigArrayOutput() GetM3AggregatorM3aggregatorUserConfigArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigArrayOutput) ToGetM3AggregatorM3aggregatorUserConfigArrayOutputWithContext(ctx context.Context) GetM3AggregatorM3aggregatorUserConfigArrayOutput {
+	return o
+}
+
+func (o GetM3AggregatorM3aggregatorUserConfigArrayOutput) Index(i pulumi.IntInput) GetM3AggregatorM3aggregatorUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetM3AggregatorM3aggregatorUserConfig {
+		return vs[0].([]GetM3AggregatorM3aggregatorUserConfig)[vs[1].(int)]
+	}).(GetM3AggregatorM3aggregatorUserConfigOutput)
+}
+
 type GetM3AggregatorM3aggregatorUserConfigIpFilterObject struct {
 	// Description for IP filter list entry. Example: `Production service IP range`.
 	Description *string `pulumi:"description"`
@@ -441,6 +1436,8 @@ type GetM3DbComponent struct {
 	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId string `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route string `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -473,6 +1470,8 @@ type GetM3DbComponentArgs struct {
 	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId pulumi.StringInput `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route pulumi.StringInput `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -560,6 +1559,11 @@ func (o GetM3DbComponentOutput) KafkaSslCa() pulumi.StringOutput {
 // Port number for connecting to the service component
 func (o GetM3DbComponentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetM3DbComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Privatelink connection ID
+func (o GetM3DbComponentOutput) PrivatelinkConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetM3DbComponent) string { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
 }
 
 // Network access route
@@ -3257,6 +4261,8 @@ type GetMySqlComponent struct {
 	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId string `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route string `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -3289,6 +4295,8 @@ type GetMySqlComponentArgs struct {
 	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId pulumi.StringInput `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route pulumi.StringInput `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -3376,6 +4384,11 @@ func (o GetMySqlComponentOutput) KafkaSslCa() pulumi.StringOutput {
 // Port number for connecting to the service component
 func (o GetMySqlComponentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetMySqlComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Privatelink connection ID
+func (o GetMySqlComponentOutput) PrivatelinkConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlComponent) string { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
 }
 
 // Network access route
@@ -6390,6 +7403,8 @@ type GetOpenSearchComponent struct {
 	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId string `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route string `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -6422,6 +7437,8 @@ type GetOpenSearchComponentArgs struct {
 	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId pulumi.StringInput `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route pulumi.StringInput `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -6509,6 +7526,11 @@ func (o GetOpenSearchComponentOutput) KafkaSslCa() pulumi.StringOutput {
 // Port number for connecting to the service component
 func (o GetOpenSearchComponentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetOpenSearchComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Privatelink connection ID
+func (o GetOpenSearchComponentOutput) PrivatelinkConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchComponent) string { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
 }
 
 // Network access route
@@ -6722,7 +7744,7 @@ type GetOpenSearchOpensearchUserConfig struct {
 	Opensearch *GetOpenSearchOpensearchUserConfigOpensearch `pulumi:"opensearch"`
 	// OpenSearch Dashboards settings
 	OpensearchDashboards *GetOpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
-	// Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+	// Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
 	OpensearchVersion *string `pulumi:"opensearchVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *GetOpenSearchOpensearchUserConfigPrivateAccess `pulumi:"privateAccess"`
@@ -6794,7 +7816,7 @@ type GetOpenSearchOpensearchUserConfigArgs struct {
 	Opensearch GetOpenSearchOpensearchUserConfigOpensearchPtrInput `pulumi:"opensearch"`
 	// OpenSearch Dashboards settings
 	OpensearchDashboards GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
-	// Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+	// Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
 	OpensearchVersion pulumi.StringPtrInput `pulumi:"opensearchVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
@@ -6972,7 +7994,7 @@ func (o GetOpenSearchOpensearchUserConfigOutput) OpensearchDashboards() GetOpenS
 	}).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
 }
 
-// Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+// Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
 func (o GetOpenSearchOpensearchUserConfigOutput) OpensearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.OpensearchVersion }).(pulumi.StringPtrOutput)
 }
@@ -16542,13 +17564,207 @@ func (o GetOrganizationApplicationUserTimeoutsPtrOutput) Read() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetOrganizationBillingGroupBillingContactEmail struct {
+	// Email.
+	Email string `pulumi:"email"`
+}
+
+// GetOrganizationBillingGroupBillingContactEmailInput is an input type that accepts GetOrganizationBillingGroupBillingContactEmailArgs and GetOrganizationBillingGroupBillingContactEmailOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupBillingContactEmailInput` via:
+//
+//	GetOrganizationBillingGroupBillingContactEmailArgs{...}
+type GetOrganizationBillingGroupBillingContactEmailInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupBillingContactEmailOutput
+	ToGetOrganizationBillingGroupBillingContactEmailOutputWithContext(context.Context) GetOrganizationBillingGroupBillingContactEmailOutput
+}
+
+type GetOrganizationBillingGroupBillingContactEmailArgs struct {
+	// Email.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetOrganizationBillingGroupBillingContactEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupBillingContactEmailArgs) ToGetOrganizationBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupBillingContactEmailOutput {
+	return i.ToGetOrganizationBillingGroupBillingContactEmailOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupBillingContactEmailArgs) ToGetOrganizationBillingGroupBillingContactEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingContactEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupBillingContactEmailOutput)
+}
+
+// GetOrganizationBillingGroupBillingContactEmailArrayInput is an input type that accepts GetOrganizationBillingGroupBillingContactEmailArray and GetOrganizationBillingGroupBillingContactEmailArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupBillingContactEmailArrayInput` via:
+//
+//	GetOrganizationBillingGroupBillingContactEmailArray{ GetOrganizationBillingGroupBillingContactEmailArgs{...} }
+type GetOrganizationBillingGroupBillingContactEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupBillingContactEmailArrayOutput
+	ToGetOrganizationBillingGroupBillingContactEmailArrayOutputWithContext(context.Context) GetOrganizationBillingGroupBillingContactEmailArrayOutput
+}
+
+type GetOrganizationBillingGroupBillingContactEmailArray []GetOrganizationBillingGroupBillingContactEmailInput
+
+func (GetOrganizationBillingGroupBillingContactEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupBillingContactEmailArray) ToGetOrganizationBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupBillingContactEmailArrayOutput {
+	return i.ToGetOrganizationBillingGroupBillingContactEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupBillingContactEmailArray) ToGetOrganizationBillingGroupBillingContactEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingContactEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupBillingContactEmailArrayOutput)
+}
+
+type GetOrganizationBillingGroupBillingContactEmailOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupBillingContactEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupBillingContactEmailOutput) ToGetOrganizationBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupBillingContactEmailOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingContactEmailOutput) ToGetOrganizationBillingGroupBillingContactEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingContactEmailOutput {
+	return o
+}
+
+// Email.
+func (o GetOrganizationBillingGroupBillingContactEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupBillingContactEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupBillingContactEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupBillingContactEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupBillingContactEmailArrayOutput) ToGetOrganizationBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupBillingContactEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingContactEmailArrayOutput) ToGetOrganizationBillingGroupBillingContactEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingContactEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingContactEmailArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupBillingContactEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupBillingContactEmail {
+		return vs[0].([]GetOrganizationBillingGroupBillingContactEmail)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupBillingContactEmailOutput)
+}
+
+type GetOrganizationBillingGroupBillingEmail struct {
+	// Email.
+	Email string `pulumi:"email"`
+}
+
+// GetOrganizationBillingGroupBillingEmailInput is an input type that accepts GetOrganizationBillingGroupBillingEmailArgs and GetOrganizationBillingGroupBillingEmailOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupBillingEmailInput` via:
+//
+//	GetOrganizationBillingGroupBillingEmailArgs{...}
+type GetOrganizationBillingGroupBillingEmailInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupBillingEmailOutput() GetOrganizationBillingGroupBillingEmailOutput
+	ToGetOrganizationBillingGroupBillingEmailOutputWithContext(context.Context) GetOrganizationBillingGroupBillingEmailOutput
+}
+
+type GetOrganizationBillingGroupBillingEmailArgs struct {
+	// Email.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetOrganizationBillingGroupBillingEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupBillingEmailArgs) ToGetOrganizationBillingGroupBillingEmailOutput() GetOrganizationBillingGroupBillingEmailOutput {
+	return i.ToGetOrganizationBillingGroupBillingEmailOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupBillingEmailArgs) ToGetOrganizationBillingGroupBillingEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupBillingEmailOutput)
+}
+
+// GetOrganizationBillingGroupBillingEmailArrayInput is an input type that accepts GetOrganizationBillingGroupBillingEmailArray and GetOrganizationBillingGroupBillingEmailArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupBillingEmailArrayInput` via:
+//
+//	GetOrganizationBillingGroupBillingEmailArray{ GetOrganizationBillingGroupBillingEmailArgs{...} }
+type GetOrganizationBillingGroupBillingEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupBillingEmailArrayOutput
+	ToGetOrganizationBillingGroupBillingEmailArrayOutputWithContext(context.Context) GetOrganizationBillingGroupBillingEmailArrayOutput
+}
+
+type GetOrganizationBillingGroupBillingEmailArray []GetOrganizationBillingGroupBillingEmailInput
+
+func (GetOrganizationBillingGroupBillingEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupBillingEmailArray) ToGetOrganizationBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupBillingEmailArrayOutput {
+	return i.ToGetOrganizationBillingGroupBillingEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupBillingEmailArray) ToGetOrganizationBillingGroupBillingEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupBillingEmailArrayOutput)
+}
+
+type GetOrganizationBillingGroupBillingEmailOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupBillingEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupBillingEmailOutput) ToGetOrganizationBillingGroupBillingEmailOutput() GetOrganizationBillingGroupBillingEmailOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingEmailOutput) ToGetOrganizationBillingGroupBillingEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingEmailOutput {
+	return o
+}
+
+// Email.
+func (o GetOrganizationBillingGroupBillingEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupBillingEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupBillingEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupBillingEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupBillingEmailArrayOutput) ToGetOrganizationBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupBillingEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingEmailArrayOutput) ToGetOrganizationBillingGroupBillingEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingEmailArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupBillingEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupBillingEmail {
+		return vs[0].([]GetOrganizationBillingGroupBillingEmail)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupBillingEmailOutput)
+}
+
 type GetOrganizationBillingGroupListBillingGroup struct {
 	// Billing address ID.
 	BillingAddressId string `pulumi:"billingAddressId"`
 	// List of billing contact emails.
-	BillingContactEmails []string `pulumi:"billingContactEmails"`
+	BillingContactEmails []GetOrganizationBillingGroupListBillingGroupBillingContactEmail `pulumi:"billingContactEmails"`
 	// List of billing contact emails.
-	BillingEmails []string `pulumi:"billingEmails"`
+	BillingEmails []GetOrganizationBillingGroupListBillingGroupBillingEmail `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// Billing Group Name.
@@ -16559,8 +17775,8 @@ type GetOrganizationBillingGroupListBillingGroup struct {
 	CustomInvoiceText string `pulumi:"customInvoiceText"`
 	// Organization ID.
 	OrganizationId string `pulumi:"organizationId"`
-	// Payment method ID.
-	PaymentMethodId string `pulumi:"paymentMethodId"`
+	// Payment method.
+	PaymentMethods []GetOrganizationBillingGroupListBillingGroupPaymentMethod `pulumi:"paymentMethods"`
 	// Shipping address ID.
 	ShippingAddressId string `pulumi:"shippingAddressId"`
 	// VAT ID.
@@ -16582,9 +17798,9 @@ type GetOrganizationBillingGroupListBillingGroupArgs struct {
 	// Billing address ID.
 	BillingAddressId pulumi.StringInput `pulumi:"billingAddressId"`
 	// List of billing contact emails.
-	BillingContactEmails pulumi.StringArrayInput `pulumi:"billingContactEmails"`
+	BillingContactEmails GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayInput `pulumi:"billingContactEmails"`
 	// List of billing contact emails.
-	BillingEmails pulumi.StringArrayInput `pulumi:"billingEmails"`
+	BillingEmails GetOrganizationBillingGroupListBillingGroupBillingEmailArrayInput `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId pulumi.StringInput `pulumi:"billingGroupId"`
 	// Billing Group Name.
@@ -16595,8 +17811,8 @@ type GetOrganizationBillingGroupListBillingGroupArgs struct {
 	CustomInvoiceText pulumi.StringInput `pulumi:"customInvoiceText"`
 	// Organization ID.
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
-	// Payment method ID.
-	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
+	// Payment method.
+	PaymentMethods GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayInput `pulumi:"paymentMethods"`
 	// Shipping address ID.
 	ShippingAddressId pulumi.StringInput `pulumi:"shippingAddressId"`
 	// VAT ID.
@@ -16660,13 +17876,17 @@ func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingAddressId() pu
 }
 
 // List of billing contact emails.
-func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingContactEmails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []string { return v.BillingContactEmails }).(pulumi.StringArrayOutput)
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingContactEmails() GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []GetOrganizationBillingGroupListBillingGroupBillingContactEmail {
+		return v.BillingContactEmails
+	}).(GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput)
 }
 
 // List of billing contact emails.
-func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingEmails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingEmails() GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []GetOrganizationBillingGroupListBillingGroupBillingEmail {
+		return v.BillingEmails
+	}).(GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput)
 }
 
 // Billing group ID.
@@ -16694,9 +17914,11 @@ func (o GetOrganizationBillingGroupListBillingGroupOutput) OrganizationId() pulu
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Payment method ID.
-func (o GetOrganizationBillingGroupListBillingGroupOutput) PaymentMethodId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.PaymentMethodId }).(pulumi.StringOutput)
+// Payment method.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) PaymentMethods() GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []GetOrganizationBillingGroupListBillingGroupPaymentMethod {
+		return v.PaymentMethods
+	}).(GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput)
 }
 
 // Shipping address ID.
@@ -16727,6 +17949,306 @@ func (o GetOrganizationBillingGroupListBillingGroupArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupListBillingGroup {
 		return vs[0].([]GetOrganizationBillingGroupListBillingGroup)[vs[1].(int)]
 	}).(GetOrganizationBillingGroupListBillingGroupOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmail struct {
+	// Email.
+	Email string `pulumi:"email"`
+}
+
+// GetOrganizationBillingGroupListBillingGroupBillingContactEmailInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs and GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupBillingContactEmailInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs{...}
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput
+	ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs struct {
+	// Email.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput)
+}
+
+// GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray and GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray{ GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs{...} }
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput
+	ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray []GetOrganizationBillingGroupListBillingGroupBillingContactEmailInput
+
+func (GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput {
+	return o
+}
+
+// Email.
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroupBillingContactEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupListBillingGroupBillingContactEmail {
+		return vs[0].([]GetOrganizationBillingGroupListBillingGroupBillingContactEmail)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingEmail struct {
+	// Email.
+	Email string `pulumi:"email"`
+}
+
+// GetOrganizationBillingGroupListBillingGroupBillingEmailInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupBillingEmailArgs and GetOrganizationBillingGroupListBillingGroupBillingEmailOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupBillingEmailInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupBillingEmailArgs{...}
+type GetOrganizationBillingGroupListBillingGroupBillingEmailInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailOutput
+	ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingEmailArgs struct {
+	// Email.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetOrganizationBillingGroupListBillingGroupBillingEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingEmailArgs) ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingEmailArgs) ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupBillingEmailOutput)
+}
+
+// GetOrganizationBillingGroupListBillingGroupBillingEmailArrayInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupBillingEmailArray and GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupBillingEmailArrayInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupBillingEmailArray{ GetOrganizationBillingGroupListBillingGroupBillingEmailArgs{...} }
+type GetOrganizationBillingGroupListBillingGroupBillingEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput
+	ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingEmailArray []GetOrganizationBillingGroupListBillingGroupBillingEmailInput
+
+func (GetOrganizationBillingGroupListBillingGroupBillingEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingEmailArray) ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingEmailArray) ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingEmailOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupBillingEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailOutput) ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailOutput) ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailOutput {
+	return o
+}
+
+// Email.
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroupBillingEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput) ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput) ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupListBillingGroupBillingEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupListBillingGroupBillingEmail {
+		return vs[0].([]GetOrganizationBillingGroupListBillingGroupBillingEmail)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupListBillingGroupBillingEmailOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupPaymentMethod struct {
+	// Payment method ID.
+	PaymentMethodId string `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	PaymentMethodType string `pulumi:"paymentMethodType"`
+}
+
+// GetOrganizationBillingGroupListBillingGroupPaymentMethodInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs and GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupPaymentMethodInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs{...}
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput
+	ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs struct {
+	// Payment method ID.
+	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	PaymentMethodType pulumi.StringInput `pulumi:"paymentMethodType"`
+}
+
+func (GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput)
+}
+
+// GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupPaymentMethodArray and GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupPaymentMethodArray{ GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs{...} }
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput
+	ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodArray []GetOrganizationBillingGroupListBillingGroupPaymentMethodInput
+
+func (GetOrganizationBillingGroupListBillingGroupPaymentMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupPaymentMethodArray) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupPaymentMethodArray) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput {
+	return o
+}
+
+// Payment method ID.
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) PaymentMethodId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroupPaymentMethod) string { return v.PaymentMethodId }).(pulumi.StringOutput)
+}
+
+// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) PaymentMethodType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroupPaymentMethod) string { return v.PaymentMethodType }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupListBillingGroupPaymentMethod {
+		return vs[0].([]GetOrganizationBillingGroupListBillingGroupPaymentMethod)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput)
 }
 
 type GetOrganizationBillingGroupListTimeouts struct {
@@ -16864,6 +18386,112 @@ func (o GetOrganizationBillingGroupListTimeoutsPtrOutput) Read() pulumi.StringPt
 		}
 		return v.Read
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationBillingGroupPaymentMethod struct {
+	// Payment method ID.
+	PaymentMethodId string `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	PaymentMethodType string `pulumi:"paymentMethodType"`
+}
+
+// GetOrganizationBillingGroupPaymentMethodInput is an input type that accepts GetOrganizationBillingGroupPaymentMethodArgs and GetOrganizationBillingGroupPaymentMethodOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupPaymentMethodInput` via:
+//
+//	GetOrganizationBillingGroupPaymentMethodArgs{...}
+type GetOrganizationBillingGroupPaymentMethodInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupPaymentMethodOutput
+	ToGetOrganizationBillingGroupPaymentMethodOutputWithContext(context.Context) GetOrganizationBillingGroupPaymentMethodOutput
+}
+
+type GetOrganizationBillingGroupPaymentMethodArgs struct {
+	// Payment method ID.
+	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	PaymentMethodType pulumi.StringInput `pulumi:"paymentMethodType"`
+}
+
+func (GetOrganizationBillingGroupPaymentMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupPaymentMethodArgs) ToGetOrganizationBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupPaymentMethodOutput {
+	return i.ToGetOrganizationBillingGroupPaymentMethodOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupPaymentMethodArgs) ToGetOrganizationBillingGroupPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationBillingGroupPaymentMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupPaymentMethodOutput)
+}
+
+// GetOrganizationBillingGroupPaymentMethodArrayInput is an input type that accepts GetOrganizationBillingGroupPaymentMethodArray and GetOrganizationBillingGroupPaymentMethodArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupPaymentMethodArrayInput` via:
+//
+//	GetOrganizationBillingGroupPaymentMethodArray{ GetOrganizationBillingGroupPaymentMethodArgs{...} }
+type GetOrganizationBillingGroupPaymentMethodArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupPaymentMethodArrayOutput
+	ToGetOrganizationBillingGroupPaymentMethodArrayOutputWithContext(context.Context) GetOrganizationBillingGroupPaymentMethodArrayOutput
+}
+
+type GetOrganizationBillingGroupPaymentMethodArray []GetOrganizationBillingGroupPaymentMethodInput
+
+func (GetOrganizationBillingGroupPaymentMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupPaymentMethodArray) ToGetOrganizationBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupPaymentMethodArrayOutput {
+	return i.ToGetOrganizationBillingGroupPaymentMethodArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupPaymentMethodArray) ToGetOrganizationBillingGroupPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupPaymentMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupPaymentMethodArrayOutput)
+}
+
+type GetOrganizationBillingGroupPaymentMethodOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupPaymentMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupPaymentMethodOutput) ToGetOrganizationBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupPaymentMethodOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupPaymentMethodOutput) ToGetOrganizationBillingGroupPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationBillingGroupPaymentMethodOutput {
+	return o
+}
+
+// Payment method ID.
+func (o GetOrganizationBillingGroupPaymentMethodOutput) PaymentMethodId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupPaymentMethod) string { return v.PaymentMethodId }).(pulumi.StringOutput)
+}
+
+// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+func (o GetOrganizationBillingGroupPaymentMethodOutput) PaymentMethodType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupPaymentMethod) string { return v.PaymentMethodType }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupPaymentMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupPaymentMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupPaymentMethodArrayOutput) ToGetOrganizationBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupPaymentMethodArrayOutput) ToGetOrganizationBillingGroupPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupPaymentMethodArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupPaymentMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupPaymentMethod {
+		return vs[0].([]GetOrganizationBillingGroupPaymentMethod)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupPaymentMethodOutput)
 }
 
 type GetOrganizationBillingGroupTimeouts struct {
@@ -18719,6 +20347,8 @@ type GetPgComponent struct {
 	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId string `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route string `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -18751,6 +20381,8 @@ type GetPgComponentArgs struct {
 	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId pulumi.StringInput `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route pulumi.StringInput `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -18838,6 +20470,11 @@ func (o GetPgComponentOutput) KafkaSslCa() pulumi.StringOutput {
 // Port number for connecting to the service component
 func (o GetPgComponentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPgComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Privatelink connection ID
+func (o GetPgComponentOutput) PrivatelinkConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgComponent) string { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
 }
 
 // Network access route
@@ -23566,6 +25203,8 @@ type GetRedisComponent struct {
 	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId string `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route string `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -23598,6 +25237,8 @@ type GetRedisComponentArgs struct {
 	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId pulumi.StringInput `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route pulumi.StringInput `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -23685,6 +25326,11 @@ func (o GetRedisComponentOutput) KafkaSslCa() pulumi.StringOutput {
 // Port number for connecting to the service component
 func (o GetRedisComponentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRedisComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Privatelink connection ID
+func (o GetRedisComponentOutput) PrivatelinkConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisComponent) string { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
 }
 
 // Network access route
@@ -33835,6 +35481,8 @@ type GetThanosComponent struct {
 	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId string `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route string `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -33867,6 +35515,8 @@ type GetThanosComponentArgs struct {
 	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId pulumi.StringInput `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route pulumi.StringInput `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -33954,6 +35604,11 @@ func (o GetThanosComponentOutput) KafkaSslCa() pulumi.StringOutput {
 // Port number for connecting to the service component
 func (o GetThanosComponentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetThanosComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Privatelink connection ID
+func (o GetThanosComponentOutput) PrivatelinkConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosComponent) string { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
 }
 
 // Network access route
@@ -35867,6 +37522,8 @@ type GetValkeyComponent struct {
 	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId string `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route string `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -35899,6 +37556,8 @@ type GetValkeyComponentArgs struct {
 	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId pulumi.StringInput `pulumi:"privatelinkConnectionId"`
 	// Network access route
 	Route pulumi.StringInput `pulumi:"route"`
 	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -35986,6 +37645,11 @@ func (o GetValkeyComponentOutput) KafkaSslCa() pulumi.StringOutput {
 // Port number for connecting to the service component
 func (o GetValkeyComponentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetValkeyComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Privatelink connection ID
+func (o GetValkeyComponentOutput) PrivatelinkConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyComponent) string { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
 }
 
 // Network access route
@@ -37677,6 +39341,18 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTechEmailInput)(nil)).Elem(), GetKafkaTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTechEmailArrayInput)(nil)).Elem(), GetKafkaTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicConfigInput)(nil)).Elem(), GetKafkaTopicConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicConfigArrayInput)(nil)).Elem(), GetKafkaTopicConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicTagInput)(nil)).Elem(), GetKafkaTopicTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicTagArrayInput)(nil)).Elem(), GetKafkaTopicTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorComponentInput)(nil)).Elem(), GetM3AggregatorComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorComponentArrayInput)(nil)).Elem(), GetM3AggregatorComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorM3aggregatorInput)(nil)).Elem(), GetM3AggregatorM3aggregatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorM3aggregatorArrayInput)(nil)).Elem(), GetM3AggregatorM3aggregatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfigInput)(nil)).Elem(), GetM3AggregatorM3aggregatorUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfigArrayInput)(nil)).Elem(), GetM3AggregatorM3aggregatorUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfigIpFilterObjectInput)(nil)).Elem(), GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorServiceIntegrationInput)(nil)).Elem(), GetM3AggregatorServiceIntegrationArgs{})
@@ -37845,10 +39521,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationAddressTimeoutsPtrInput)(nil)).Elem(), GetOrganizationAddressTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationApplicationUserTimeoutsInput)(nil)).Elem(), GetOrganizationApplicationUserTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationApplicationUserTimeoutsPtrInput)(nil)).Elem(), GetOrganizationApplicationUserTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupBillingContactEmailInput)(nil)).Elem(), GetOrganizationBillingGroupBillingContactEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupBillingContactEmailArrayInput)(nil)).Elem(), GetOrganizationBillingGroupBillingContactEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupBillingEmailInput)(nil)).Elem(), GetOrganizationBillingGroupBillingEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupBillingEmailArrayInput)(nil)).Elem(), GetOrganizationBillingGroupBillingEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingContactEmailInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingEmailInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupBillingEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingEmailArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupBillingEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupPaymentMethodInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupPaymentMethodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListTimeoutsInput)(nil)).Elem(), GetOrganizationBillingGroupListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationBillingGroupListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupPaymentMethodInput)(nil)).Elem(), GetOrganizationBillingGroupPaymentMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupPaymentMethodArrayInput)(nil)).Elem(), GetOrganizationBillingGroupPaymentMethodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupTimeoutsInput)(nil)).Elem(), GetOrganizationBillingGroupTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupTimeoutsPtrInput)(nil)).Elem(), GetOrganizationBillingGroupTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTagInput)(nil)).Elem(), GetOrganizationProjectTagArgs{})
@@ -38103,6 +39791,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetKafkaTechEmailOutput{})
+	pulumi.RegisterOutputType(GetKafkaTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicConfigOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicTagOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicTagArrayOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorComponentOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorM3aggregatorOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorM3aggregatorArrayOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorM3aggregatorUserConfigOutput{})
+	pulumi.RegisterOutputType(GetM3AggregatorM3aggregatorUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorM3aggregatorUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorServiceIntegrationOutput{})
@@ -38271,10 +39971,22 @@ func init() {
 	pulumi.RegisterOutputType(GetOrganizationAddressTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationApplicationUserTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetOrganizationApplicationUserTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupBillingContactEmailOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupBillingContactEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupBillingEmailOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupBillingEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupBillingEmailOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupPaymentMethodOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupPaymentMethodArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationProjectTagOutput{})

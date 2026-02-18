@@ -30,6 +30,7 @@ export function getServiceComponent(args: GetServiceComponentArgs, opts?: pulumi
         "component": args.component,
         "kafkaAuthenticationMethod": args.kafkaAuthenticationMethod,
         "kafkaSslCa": args.kafkaSslCa,
+        "privatelinkConnectionId": args.privatelinkConnectionId,
         "project": args.project,
         "route": args.route,
         "serviceName": args.serviceName,
@@ -54,6 +55,10 @@ export interface GetServiceComponentArgs {
      * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
      */
     kafkaSslCa?: string;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: string;
     /**
      * Project name
      */
@@ -105,6 +110,10 @@ export interface GetServiceComponentResult {
      */
     readonly port: number;
     /**
+     * Privatelink connection ID
+     */
+    readonly privatelinkConnectionId: string;
+    /**
      * Project name
      */
     readonly project: string;
@@ -151,6 +160,7 @@ export function getServiceComponentOutput(args: GetServiceComponentOutputArgs, o
         "component": args.component,
         "kafkaAuthenticationMethod": args.kafkaAuthenticationMethod,
         "kafkaSslCa": args.kafkaSslCa,
+        "privatelinkConnectionId": args.privatelinkConnectionId,
         "project": args.project,
         "route": args.route,
         "serviceName": args.serviceName,
@@ -175,6 +185,10 @@ export interface GetServiceComponentOutputArgs {
      * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
      */
     kafkaSslCa?: pulumi.Input<string>;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
     /**
      * Project name
      */

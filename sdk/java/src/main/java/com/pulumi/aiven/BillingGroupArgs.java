@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.inputs.BillingGroupTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -209,15 +210,15 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
      * Link a billing group to an existing organization by using its ID.
      * 
      */
-    @Import(name="parentId")
-    private @Nullable Output<String> parentId;
+    @Import(name="parentId", required=true)
+    private Output<String> parentId;
 
     /**
      * @return Link a billing group to an existing organization by using its ID.
      * 
      */
-    public Optional<Output<String>> parentId() {
-        return Optional.ofNullable(this.parentId);
+    public Output<String> parentId() {
+        return this.parentId;
     }
 
     /**
@@ -608,7 +609,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder parentId(@Nullable Output<String> parentId) {
+        public Builder parentId(Output<String> parentId) {
             $.parentId = parentId;
             return this;
         }
@@ -696,6 +697,9 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BillingGroupArgs build() {
+            if ($.parentId == null) {
+                throw new MissingRequiredPropertyException("BillingGroupArgs", "parentId");
+            }
             return $;
         }
     }

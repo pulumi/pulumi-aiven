@@ -65,7 +65,7 @@ export class GcpPrivatelinkConnectionApproval extends pulumi.CustomResource {
     /**
      * The Google Private Service Connect connection ID.
      */
-    declare public /*out*/ readonly pscConnectionId: pulumi.Output<string>;
+    declare public readonly pscConnectionId: pulumi.Output<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
@@ -110,10 +110,10 @@ export class GcpPrivatelinkConnectionApproval extends pulumi.CustomResource {
                 throw new Error("Missing required property 'userIpAddress'");
             }
             resourceInputs["project"] = args?.project;
+            resourceInputs["pscConnectionId"] = args?.pscConnectionId;
             resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["userIpAddress"] = args?.userIpAddress;
             resourceInputs["privatelinkConnectionId"] = undefined /*out*/;
-            resourceInputs["pscConnectionId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -159,6 +159,10 @@ export interface GcpPrivatelinkConnectionApprovalArgs {
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
+    /**
+     * The Google Private Service Connect connection ID.
+     */
+    pscConnectionId?: pulumi.Input<string>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */

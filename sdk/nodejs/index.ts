@@ -120,6 +120,11 @@ export type ClickhouseUser = import("./clickhouseUser").ClickhouseUser;
 export const ClickhouseUser: typeof import("./clickhouseUser").ClickhouseUser = null as any;
 utilities.lazyLoad(exports, ["ClickhouseUser"], () => require("./clickhouseUser"));
 
+export { CmkArgs, CmkState } from "./cmk";
+export type Cmk = import("./cmk").Cmk;
+export const Cmk: typeof import("./cmk").Cmk = null as any;
+utilities.lazyLoad(exports, ["Cmk"], () => require("./cmk"));
+
 export { ConnectionPoolArgs, ConnectionPoolState } from "./connectionPool";
 export type ConnectionPool = import("./connectionPool").ConnectionPool;
 export const ConnectionPool: typeof import("./connectionPool").ConnectionPool = null as any;
@@ -968,6 +973,8 @@ const _module = {
                 return new ClickhouseRole(name, <any>undefined, { urn })
             case "aiven:index/clickhouseUser:ClickhouseUser":
                 return new ClickhouseUser(name, <any>undefined, { urn })
+            case "aiven:index/cmk:Cmk":
+                return new Cmk(name, <any>undefined, { urn })
             case "aiven:index/connectionPool:ConnectionPool":
                 return new ConnectionPool(name, <any>undefined, { urn })
             case "aiven:index/dragonfly:Dragonfly":
@@ -1136,6 +1143,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/clickhouseDatabase", _modu
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseGrant", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseRole", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseUser", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/cmk", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/connectionPool", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/dragonfly", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flink", _module)

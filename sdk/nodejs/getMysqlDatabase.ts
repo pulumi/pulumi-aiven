@@ -72,9 +72,9 @@ export interface GetMysqlDatabaseResult {
      */
     readonly serviceName: string;
     /**
-     * Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `preventDestroy`
+     * Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
      *
-     * @deprecated Instead use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     * @deprecated Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      */
     readonly terminationProtection: boolean;
     readonly timeouts?: outputs.GetMysqlDatabaseTimeouts;

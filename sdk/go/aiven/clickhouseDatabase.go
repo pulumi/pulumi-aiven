@@ -12,10 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an Aiven for ClickHouse® database.
-//
-// > Tables cannot be created using Aiven Terraform Provider. To create a table,
-// use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
+// Creates and manages an [Aiven for ClickHouse](https://aiven.io/docs/products/clickhouse) database. > Tables cannot be created using Aiven Terraform Provider. To create a table, use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table). If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
 //
 // ## Example Usage
 //
@@ -59,19 +56,22 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase example_db PROJECT/SERVICE_NAME/DATABASE_NAME
+// $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase example PROJECT/SERVICE_NAME/NAME
 // ```
 type ClickhouseDatabase struct {
 	pulumi.CustomResourceState
 
-	// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
-	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection pulumi.BoolOutput                   `pulumi:"terminationProtection"`
+	Timeouts              ClickhouseDatabaseTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewClickhouseDatabase registers a new resource with the given unique name, arguments, and options.
@@ -110,25 +110,31 @@ func GetClickhouseDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClickhouseDatabase resources.
 type clickhouseDatabaseState struct {
-	// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	Name *string `pulumi:"name"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
-	TerminationProtection *bool `pulumi:"terminationProtection"`
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection *bool                       `pulumi:"terminationProtection"`
+	Timeouts              *ClickhouseDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 type ClickhouseDatabaseState struct {
-	// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	Name pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection pulumi.BoolPtrInput
+	Timeouts              ClickhouseDatabaseTimeoutsPtrInput
 }
 
 func (ClickhouseDatabaseState) ElementType() reflect.Type {
@@ -136,26 +142,32 @@ func (ClickhouseDatabaseState) ElementType() reflect.Type {
 }
 
 type clickhouseDatabaseArgs struct {
-	// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	Name *string `pulumi:"name"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
-	TerminationProtection *bool `pulumi:"terminationProtection"`
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection *bool                       `pulumi:"terminationProtection"`
+	Timeouts              *ClickhouseDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a ClickhouseDatabase resource.
 type ClickhouseDatabaseArgs struct {
-	// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	Name pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection pulumi.BoolPtrInput
+	Timeouts              ClickhouseDatabaseTimeoutsPtrInput
 }
 
 func (ClickhouseDatabaseArgs) ElementType() reflect.Type {
@@ -245,24 +257,30 @@ func (o ClickhouseDatabaseOutput) ToClickhouseDatabaseOutputWithContext(ctx cont
 	return o
 }
 
-// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 func (o ClickhouseDatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseDatabase) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o ClickhouseDatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseDatabase) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o ClickhouseDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
-func (o ClickhouseDatabaseOutput) TerminationProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ClickhouseDatabase) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+//
+// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+func (o ClickhouseDatabaseOutput) TerminationProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ClickhouseDatabase) pulumi.BoolOutput { return v.TerminationProtection }).(pulumi.BoolOutput)
+}
+
+func (o ClickhouseDatabaseOutput) Timeouts() ClickhouseDatabaseTimeoutsPtrOutput {
+	return o.ApplyT(func(v *ClickhouseDatabase) ClickhouseDatabaseTimeoutsPtrOutput { return v.Timeouts }).(ClickhouseDatabaseTimeoutsPtrOutput)
 }
 
 type ClickhouseDatabaseArrayOutput struct{ *pulumi.OutputState }

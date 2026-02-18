@@ -11,42 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about an Aiven for Apache Cassandra® service.
-//
-// !> **End of life notice**
-// Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-// From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-// From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-// To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-// before December 31, 2025. For further assistance, contact your account team.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupCassandra(ctx, &aiven.LookupCassandraArgs{
-//				Project:     exampleProject.Project,
-//				ServiceName: "example-cassandra-service",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // Deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra
 func GetCassanda(ctx *pulumi.Context, args *GetCassandaArgs, opts ...pulumi.InvokeOption) (*GetCassandaResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -60,74 +24,43 @@ func GetCassanda(ctx *pulumi.Context, args *GetCassandaArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getCassanda.
 type GetCassandaArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getCassanda.
 type GetCassandaResult struct {
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
-	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
-	// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	AdditionalDiskSpace  string                           `pulumi:"additionalDiskSpace"`
 	CassandraUserConfigs []GetCassandaCassandraUserConfig `pulumi:"cassandraUserConfigs"`
-	// Values provided by the Cassandra server.
-	Cassandras []GetCassandaCassandra `pulumi:"cassandras"`
-	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
-	CloudName string `pulumi:"cloudName"`
-	// Service component information objects
-	Components []GetCassandaComponent `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-	DiskSpace string `pulumi:"diskSpace"`
-	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
-	DiskSpaceCap string `pulumi:"diskSpaceCap"`
-	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
-	DiskSpaceDefault string `pulumi:"diskSpaceDefault"`
-	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
-	DiskSpaceStep string `pulumi:"diskSpaceStep"`
-	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
-	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
+	Cassandras           []GetCassandaCassandra           `pulumi:"cassandras"`
+	CloudName            string                           `pulumi:"cloudName"`
+	Components           []GetCassandaComponent           `pulumi:"components"`
+	DiskSpace            string                           `pulumi:"diskSpace"`
+	DiskSpaceCap         string                           `pulumi:"diskSpaceCap"`
+	DiskSpaceDefault     string                           `pulumi:"diskSpaceDefault"`
+	DiskSpaceStep        string                           `pulumi:"diskSpaceStep"`
+	DiskSpaceUsed        string                           `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
-	// Indicates whether the maintenance window is currently enabled for this service.
-	MaintenanceWindowEnabled bool `pulumi:"maintenanceWindowEnabled"`
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan string `pulumi:"plan"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId string `pulumi:"projectVpcId"`
-	// The hostname of the service.
-	ServiceHost string `pulumi:"serviceHost"`
-	// Service integrations to specify when creating a service. Not applied after initial service creation
-	ServiceIntegrations []GetCassandaServiceIntegration `pulumi:"serviceIntegrations"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-	ServiceName string `pulumi:"serviceName"`
-	// Password used for connecting to the service, if applicable
-	ServicePassword string `pulumi:"servicePassword"`
-	// The port of the service
-	ServicePort int `pulumi:"servicePort"`
-	// Aiven internal service type code
-	ServiceType string `pulumi:"serviceType"`
-	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
-	ServiceUri string `pulumi:"serviceUri"`
-	// Username used for connecting to the service, if applicable
-	ServiceUsername string `pulumi:"serviceUsername"`
-	// Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
-	State string `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps []string `pulumi:"staticIps"`
-	// Tags are key-value pairs that allow you to categorize services.
-	Tags []GetCassandaTag `pulumi:"tags"`
-	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
-	TechEmails []GetCassandaTechEmail `pulumi:"techEmails"`
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
-	TerminationProtection bool `pulumi:"terminationProtection"`
+	Id                       string                          `pulumi:"id"`
+	MaintenanceWindowDow     string                          `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowEnabled bool                            `pulumi:"maintenanceWindowEnabled"`
+	MaintenanceWindowTime    string                          `pulumi:"maintenanceWindowTime"`
+	Plan                     string                          `pulumi:"plan"`
+	Project                  string                          `pulumi:"project"`
+	ProjectVpcId             string                          `pulumi:"projectVpcId"`
+	ServiceHost              string                          `pulumi:"serviceHost"`
+	ServiceIntegrations      []GetCassandaServiceIntegration `pulumi:"serviceIntegrations"`
+	ServiceName              string                          `pulumi:"serviceName"`
+	ServicePassword          string                          `pulumi:"servicePassword"`
+	ServicePort              int                             `pulumi:"servicePort"`
+	ServiceType              string                          `pulumi:"serviceType"`
+	ServiceUri               string                          `pulumi:"serviceUri"`
+	ServiceUsername          string                          `pulumi:"serviceUsername"`
+	State                    string                          `pulumi:"state"`
+	StaticIps                []string                        `pulumi:"staticIps"`
+	Tags                     []GetCassandaTag                `pulumi:"tags"`
+	TechEmails               []GetCassandaTechEmail          `pulumi:"techEmails"`
+	TerminationProtection    bool                            `pulumi:"terminationProtection"`
 }
 
 func GetCassandaOutput(ctx *pulumi.Context, args GetCassandaOutputArgs, opts ...pulumi.InvokeOption) GetCassandaResultOutput {
@@ -141,9 +74,7 @@ func GetCassandaOutput(ctx *pulumi.Context, args GetCassandaOutputArgs, opts ...
 
 // A collection of arguments for invoking getCassanda.
 type GetCassandaOutputArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	Project     pulumi.StringInput `pulumi:"project"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -166,52 +97,42 @@ func (o GetCassandaResultOutput) ToGetCassandaResultOutputWithContext(ctx contex
 	return o
 }
 
-// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 func (o GetCassandaResultOutput) AdditionalDiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
-// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o GetCassandaResultOutput) CassandraUserConfigs() GetCassandaCassandraUserConfigArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaCassandraUserConfig { return v.CassandraUserConfigs }).(GetCassandaCassandraUserConfigArrayOutput)
 }
 
-// Values provided by the Cassandra server.
 func (o GetCassandaResultOutput) Cassandras() GetCassandaCassandraArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaCassandra { return v.Cassandras }).(GetCassandaCassandraArrayOutput)
 }
 
-// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 func (o GetCassandaResultOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.CloudName }).(pulumi.StringOutput)
 }
 
-// Service component information objects
 func (o GetCassandaResultOutput) Components() GetCassandaComponentArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaComponent { return v.Components }).(GetCassandaComponentArrayOutput)
 }
 
-// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
 func (o GetCassandaResultOutput) DiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.DiskSpace }).(pulumi.StringOutput)
 }
 
-// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 func (o GetCassandaResultOutput) DiskSpaceCap() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.DiskSpaceCap }).(pulumi.StringOutput)
 }
 
-// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
 func (o GetCassandaResultOutput) DiskSpaceDefault() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.DiskSpaceDefault }).(pulumi.StringOutput)
 }
 
-// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 func (o GetCassandaResultOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
 
-// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 func (o GetCassandaResultOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
@@ -221,97 +142,78 @@ func (o GetCassandaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 func (o GetCassandaResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
 }
 
-// Indicates whether the maintenance window is currently enabled for this service.
 func (o GetCassandaResultOutput) MaintenanceWindowEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCassandaResult) bool { return v.MaintenanceWindowEnabled }).(pulumi.BoolOutput)
 }
 
-// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 func (o GetCassandaResultOutput) MaintenanceWindowTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 func (o GetCassandaResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o GetCassandaResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
 func (o GetCassandaResultOutput) ProjectVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ProjectVpcId }).(pulumi.StringOutput)
 }
 
-// The hostname of the service.
 func (o GetCassandaResultOutput) ServiceHost() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServiceHost }).(pulumi.StringOutput)
 }
 
-// Service integrations to specify when creating a service. Not applied after initial service creation
 func (o GetCassandaResultOutput) ServiceIntegrations() GetCassandaServiceIntegrationArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaServiceIntegration { return v.ServiceIntegrations }).(GetCassandaServiceIntegrationArrayOutput)
 }
 
-// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 func (o GetCassandaResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Password used for connecting to the service, if applicable
 func (o GetCassandaResultOutput) ServicePassword() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServicePassword }).(pulumi.StringOutput)
 }
 
-// The port of the service
 func (o GetCassandaResultOutput) ServicePort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCassandaResult) int { return v.ServicePort }).(pulumi.IntOutput)
 }
 
-// Aiven internal service type code
 func (o GetCassandaResultOutput) ServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServiceType }).(pulumi.StringOutput)
 }
 
-// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
 func (o GetCassandaResultOutput) ServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServiceUri }).(pulumi.StringOutput)
 }
 
-// Username used for connecting to the service, if applicable
 func (o GetCassandaResultOutput) ServiceUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
 }
 
-// Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
 func (o GetCassandaResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetCassandaResultOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []string { return v.StaticIps }).(pulumi.StringArrayOutput)
 }
 
-// Tags are key-value pairs that allow you to categorize services.
 func (o GetCassandaResultOutput) Tags() GetCassandaTagArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaTag { return v.Tags }).(GetCassandaTagArrayOutput)
 }
 
-// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 func (o GetCassandaResultOutput) TechEmails() GetCassandaTechEmailArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaTechEmail { return v.TechEmails }).(GetCassandaTechEmailArrayOutput)
 }
 
-// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 func (o GetCassandaResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCassandaResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
 }

@@ -639,6 +639,10 @@ export interface AlloydbomniComponent {
      */
     port?: pulumi.Input<number>;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
+    /**
      * Network access route
      */
     route?: pulumi.Input<string>;
@@ -856,6 +860,10 @@ export interface CassandraComponent {
      */
     port?: pulumi.Input<number>;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
+    /**
      * Network access route
      */
     route?: pulumi.Input<string>;
@@ -1066,6 +1074,10 @@ export interface ClickhouseComponent {
      */
     port?: pulumi.Input<number>;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
+    /**
      * Network access route
      */
     route?: pulumi.Input<string>;
@@ -1077,6 +1089,31 @@ export interface ClickhouseComponent {
      * DNS usage name
      */
     usage?: pulumi.Input<string>;
+}
+
+export interface ClickhouseDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface ClickhouseGrantPrivilegeGrant {
@@ -1138,6 +1175,25 @@ export interface ClickhouseTechEmail {
     email: pulumi.Input<string>;
 }
 
+export interface CmkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface DragonflyComponent {
     /**
      * Service component name
@@ -1163,6 +1219,10 @@ export interface DragonflyComponent {
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
     /**
      * Network access route
      */
@@ -1420,6 +1480,10 @@ export interface FlinkComponent {
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
     /**
      * Network access route
      */
@@ -1700,6 +1764,20 @@ export interface GetBillingGroupTimeoutsArgs {
     read?: pulumi.Input<string>;
 }
 
+export interface GetClickhouseDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetClickhouseDatabaseTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface GetMysqlDatabaseTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -1756,6 +1834,34 @@ export interface GetOrganizationApplicationUserTimeoutsArgs {
     read?: pulumi.Input<string>;
 }
 
+export interface GetOrganizationBillingGroupBillingContactEmail {
+    /**
+     * Email.
+     */
+    email?: string;
+}
+
+export interface GetOrganizationBillingGroupBillingContactEmailArgs {
+    /**
+     * Email.
+     */
+    email?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationBillingGroupBillingEmail {
+    /**
+     * Email.
+     */
+    email?: string;
+}
+
+export interface GetOrganizationBillingGroupBillingEmailArgs {
+    /**
+     * Email.
+     */
+    email?: pulumi.Input<string>;
+}
+
 export interface GetOrganizationBillingGroupListBillingGroup {
     /**
      * Billing address ID.
@@ -1764,11 +1870,11 @@ export interface GetOrganizationBillingGroupListBillingGroup {
     /**
      * List of billing contact emails.
      */
-    billingContactEmails?: string[];
+    billingContactEmails?: inputs.GetOrganizationBillingGroupListBillingGroupBillingContactEmail[];
     /**
      * List of billing contact emails.
      */
-    billingEmails?: string[];
+    billingEmails?: inputs.GetOrganizationBillingGroupListBillingGroupBillingEmail[];
     /**
      * Billing group ID.
      */
@@ -1790,9 +1896,9 @@ export interface GetOrganizationBillingGroupListBillingGroup {
      */
     organizationId?: string;
     /**
-     * Payment method ID.
+     * Payment method.
      */
-    paymentMethodId?: string;
+    paymentMethods?: inputs.GetOrganizationBillingGroupListBillingGroupPaymentMethod[];
     /**
      * Shipping address ID.
      */
@@ -1811,11 +1917,11 @@ export interface GetOrganizationBillingGroupListBillingGroupArgs {
     /**
      * List of billing contact emails.
      */
-    billingContactEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingContactEmails?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs>[]>;
     /**
      * List of billing contact emails.
      */
-    billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingEmails?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupListBillingGroupBillingEmailArgs>[]>;
     /**
      * Billing group ID.
      */
@@ -1837,9 +1943,9 @@ export interface GetOrganizationBillingGroupListBillingGroupArgs {
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * Payment method ID.
+     * Payment method.
      */
-    paymentMethodId?: pulumi.Input<string>;
+    paymentMethods?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs>[]>;
     /**
      * Shipping address ID.
      */
@@ -1848,6 +1954,56 @@ export interface GetOrganizationBillingGroupListBillingGroupArgs {
      * VAT ID.
      */
     vatId?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationBillingGroupListBillingGroupBillingContactEmail {
+    /**
+     * Email.
+     */
+    email?: string;
+}
+
+export interface GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs {
+    /**
+     * Email.
+     */
+    email?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationBillingGroupListBillingGroupBillingEmail {
+    /**
+     * Email.
+     */
+    email?: string;
+}
+
+export interface GetOrganizationBillingGroupListBillingGroupBillingEmailArgs {
+    /**
+     * Email.
+     */
+    email?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationBillingGroupListBillingGroupPaymentMethod {
+    /**
+     * Payment method ID.
+     */
+    paymentMethodId?: string;
+    /**
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     */
+    paymentMethodType?: string;
+}
+
+export interface GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs {
+    /**
+     * Payment method ID.
+     */
+    paymentMethodId?: pulumi.Input<string>;
+    /**
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     */
+    paymentMethodType?: pulumi.Input<string>;
 }
 
 export interface GetOrganizationBillingGroupListTimeouts {
@@ -1862,6 +2018,28 @@ export interface GetOrganizationBillingGroupListTimeoutsArgs {
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
     read?: pulumi.Input<string>;
+}
+
+export interface GetOrganizationBillingGroupPaymentMethod {
+    /**
+     * Payment method ID.
+     */
+    paymentMethodId?: string;
+    /**
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     */
+    paymentMethodType?: string;
+}
+
+export interface GetOrganizationBillingGroupPaymentMethodArgs {
+    /**
+     * Payment method ID.
+     */
+    paymentMethodId?: pulumi.Input<string>;
+    /**
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     */
+    paymentMethodType?: pulumi.Input<string>;
 }
 
 export interface GetOrganizationBillingGroupTimeouts {
@@ -2785,6 +2963,10 @@ export interface GrafanaComponent {
      */
     port?: pulumi.Input<number>;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
+    /**
      * Network access route
      */
     route?: pulumi.Input<string>;
@@ -3325,6 +3507,10 @@ export interface InfluxDbComponent {
      */
     port?: pulumi.Input<number>;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
+    /**
      * Network access route
      */
     route?: pulumi.Input<string>;
@@ -3554,6 +3740,10 @@ export interface KafkaComponent {
      */
     port?: pulumi.Input<number>;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
+    /**
      * Network access route
      */
     route?: pulumi.Input<string>;
@@ -3592,6 +3782,10 @@ export interface KafkaConnectComponent {
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
     /**
      * Network access route
      */
@@ -4633,6 +4827,10 @@ export interface KafkaMirrorMakerComponent {
      */
     port?: pulumi.Input<number>;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
+    /**
      * Network access route
      */
     route?: pulumi.Input<string>;
@@ -4965,6 +5163,10 @@ export interface M3AggregatorComponent {
      */
     port?: pulumi.Input<number>;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
+    /**
      * Network access route
      */
     route?: pulumi.Input<string>;
@@ -5091,6 +5293,10 @@ export interface M3DbComponent {
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
     /**
      * Network access route
      */
@@ -5456,6 +5662,10 @@ export interface MySqlComponent {
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
     /**
      * Network access route
      */
@@ -5955,6 +6165,10 @@ export interface OpenSearchComponent {
      */
     port?: pulumi.Input<number>;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
+    /**
      * Network access route
      */
     route?: pulumi.Input<string>;
@@ -6065,7 +6279,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchDashboards>;
     /**
-     * Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+     * Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
      */
     opensearchVersion?: pulumi.Input<string>;
     /**
@@ -7234,6 +7448,31 @@ export interface OrganizationApplicationUserTokenTimeouts {
     update?: pulumi.Input<string>;
 }
 
+export interface OrganizationBillingGroupBillingContactEmail {
+    /**
+     * Email. Maximum length: `254`.
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface OrganizationBillingGroupBillingEmail {
+    /**
+     * Email. Maximum length: `254`.
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface OrganizationBillingGroupPaymentMethod {
+    /**
+     * Payment method ID. Maximum length: `36`.
+     */
+    paymentMethodId: pulumi.Input<string>;
+    /**
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     */
+    paymentMethodType: pulumi.Input<string>;
+}
+
 export interface OrganizationBillingGroupTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -7432,6 +7671,10 @@ export interface PgComponent {
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
     /**
      * Network access route
      */
@@ -8250,6 +8493,10 @@ export interface RedisComponent {
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
     /**
      * Network access route
      */
@@ -9557,6 +9804,10 @@ export interface ThanosComponent {
      */
     port?: pulumi.Input<number>;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
+    /**
      * Network access route
      */
     route?: pulumi.Input<string>;
@@ -9823,6 +10074,10 @@ export interface ValkeyComponent {
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId?: pulumi.Input<string>;
     /**
      * Network access route
      */

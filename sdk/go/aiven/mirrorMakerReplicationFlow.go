@@ -78,6 +78,8 @@ type MirrorMakerReplicationFlow struct {
 	Enable pulumi.BoolOutput `pulumi:"enable"`
 	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
 	ExactlyOnceDeliveryEnabled pulumi.BoolPtrOutput `pulumi:"exactlyOnceDeliveryEnabled"`
+	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+	FollowerFetchingEnabled pulumi.BoolOutput `pulumi:"followerFetchingEnabled"`
 	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation pulumi.StringOutput `pulumi:"offsetSyncsTopicLocation"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -163,6 +165,8 @@ type mirrorMakerReplicationFlowState struct {
 	Enable *bool `pulumi:"enable"`
 	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
 	ExactlyOnceDeliveryEnabled *bool `pulumi:"exactlyOnceDeliveryEnabled"`
+	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+	FollowerFetchingEnabled *bool `pulumi:"followerFetchingEnabled"`
 	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation *string `pulumi:"offsetSyncsTopicLocation"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -198,6 +202,8 @@ type MirrorMakerReplicationFlowState struct {
 	Enable pulumi.BoolPtrInput
 	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
 	ExactlyOnceDeliveryEnabled pulumi.BoolPtrInput
+	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+	FollowerFetchingEnabled pulumi.BoolPtrInput
 	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -237,6 +243,8 @@ type mirrorMakerReplicationFlowArgs struct {
 	Enable bool `pulumi:"enable"`
 	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
 	ExactlyOnceDeliveryEnabled *bool `pulumi:"exactlyOnceDeliveryEnabled"`
+	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+	FollowerFetchingEnabled *bool `pulumi:"followerFetchingEnabled"`
 	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation string `pulumi:"offsetSyncsTopicLocation"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -273,6 +281,8 @@ type MirrorMakerReplicationFlowArgs struct {
 	Enable pulumi.BoolInput
 	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
 	ExactlyOnceDeliveryEnabled pulumi.BoolPtrInput
+	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+	FollowerFetchingEnabled pulumi.BoolPtrInput
 	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation pulumi.StringInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -407,6 +417,11 @@ func (o MirrorMakerReplicationFlowOutput) Enable() pulumi.BoolOutput {
 // Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
 func (o MirrorMakerReplicationFlowOutput) ExactlyOnceDeliveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolPtrOutput { return v.ExactlyOnceDeliveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+func (o MirrorMakerReplicationFlowOutput) FollowerFetchingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.FollowerFetchingEnabled }).(pulumi.BoolOutput)
 }
 
 // Offset syncs topic location. The possible values are `source` and `target`.

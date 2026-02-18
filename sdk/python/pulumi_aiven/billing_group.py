@@ -21,6 +21,7 @@ __all__ = ['BillingGroupArgs', 'BillingGroup']
 @pulumi.input_type
 class BillingGroupArgs:
     def __init__(__self__, *,
+                 parent_id: pulumi.Input[_builtins.str],
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -33,13 +34,13 @@ class BillingGroupArgs:
                  copy_from_billing_group: Optional[pulumi.Input[_builtins.str]] = None,
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input['BillingGroupTimeoutsArgs']] = None,
                  vat_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zip_code: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BillingGroup resource.
+        :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
         :param pulumi.Input[_builtins.str] account_id: Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address lines 1 and 2. For example, street, PO box, or building.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: List of billing groups contact email addresses.
@@ -52,11 +53,11 @@ class BillingGroupArgs:
         :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
         :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] vat_id: EU VAT Identification Number. Maximum length: `64`.
         :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `32`.
         """
+        pulumi.set(__self__, "parent_id", parent_id)
         if account_id is not None:
             warnings.warn("""Use `parent_id` instead. This field will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""account_id is deprecated: Use `parent_id` instead. This field will be removed in the next major release.""")
@@ -84,8 +85,6 @@ class BillingGroupArgs:
             pulumi.set(__self__, "country_code", country_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if timeouts is not None:
@@ -94,6 +93,18 @@ class BillingGroupArgs:
             pulumi.set(__self__, "vat_id", vat_id)
         if zip_code is not None:
             pulumi.set(__self__, "zip_code", zip_code)
+
+    @_builtins.property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Link a billing group to an existing organization by using its ID.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "parent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -239,18 +250,6 @@ class BillingGroupArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Link a billing group to an existing organization by using its ID.
-        """
-        return pulumi.get(self, "parent_id")
-
-    @parent_id.setter
-    def parent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "parent_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -666,7 +665,7 @@ class BillingGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[BillingGroupArgs] = None,
+                 args: BillingGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
@@ -746,6 +745,8 @@ class BillingGroup(pulumi.CustomResource):
             __props__.__dict__["copy_from_billing_group"] = copy_from_billing_group
             __props__.__dict__["country_code"] = country_code
             __props__.__dict__["name"] = name
+            if parent_id is None and not opts.urn:
+                raise TypeError("Missing required property 'parent_id'")
             __props__.__dict__["parent_id"] = parent_id
             __props__.__dict__["state"] = state
             __props__.__dict__["timeouts"] = timeouts

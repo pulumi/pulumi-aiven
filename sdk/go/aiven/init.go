@@ -67,6 +67,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClickhouseRole{}
 	case "aiven:index/clickhouseUser:ClickhouseUser":
 		r = &ClickhouseUser{}
+	case "aiven:index/cmk:Cmk":
+		r = &Cmk{}
 	case "aiven:index/connectionPool:ConnectionPool":
 		r = &ConnectionPool{}
 	case "aiven:index/dragonfly:Dragonfly":
@@ -351,6 +353,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/clickhouseUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/cmk",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

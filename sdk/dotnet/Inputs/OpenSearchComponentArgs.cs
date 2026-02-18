@@ -49,6 +49,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? Port { get; set; }
 
         /// <summary>
+        /// Privatelink connection ID
+        /// </summary>
+        [Input("privatelinkConnectionId")]
+        public Input<string>? PrivatelinkConnectionId { get; set; }
+
+        /// <summary>
         /// Network access route
         /// </summary>
         [Input("route")]

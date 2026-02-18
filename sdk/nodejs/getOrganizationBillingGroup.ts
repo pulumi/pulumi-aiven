@@ -15,8 +15,11 @@ import * as utilities from "./utilities";
 export function getOrganizationBillingGroup(args: GetOrganizationBillingGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationBillingGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", {
+        "billingContactEmails": args.billingContactEmails,
+        "billingEmails": args.billingEmails,
         "billingGroupId": args.billingGroupId,
         "organizationId": args.organizationId,
+        "paymentMethods": args.paymentMethods,
         "timeouts": args.timeouts,
     }, opts);
 }
@@ -26,6 +29,14 @@ export function getOrganizationBillingGroup(args: GetOrganizationBillingGroupArg
  */
 export interface GetOrganizationBillingGroupArgs {
     /**
+     * List of billing contact emails.
+     */
+    billingContactEmails?: inputs.GetOrganizationBillingGroupBillingContactEmail[];
+    /**
+     * List of billing contact emails.
+     */
+    billingEmails?: inputs.GetOrganizationBillingGroupBillingEmail[];
+    /**
      * Billing group ID.
      */
     billingGroupId: string;
@@ -33,6 +44,10 @@ export interface GetOrganizationBillingGroupArgs {
      * ID of an organization.
      */
     organizationId: string;
+    /**
+     * Payment method.
+     */
+    paymentMethods?: inputs.GetOrganizationBillingGroupPaymentMethod[];
     timeouts?: inputs.GetOrganizationBillingGroupTimeouts;
 }
 
@@ -45,13 +60,13 @@ export interface GetOrganizationBillingGroupResult {
      */
     readonly billingAddressId: string;
     /**
-     * Aiven contacts these email addresses when there are billing issues or questions.
+     * List of billing contact emails.
      */
-    readonly billingContactEmails: string[];
+    readonly billingContactEmails?: outputs.GetOrganizationBillingGroupBillingContactEmail[];
     /**
-     * PDF invoices are sent to these email addresses.
+     * List of billing contact emails.
      */
-    readonly billingEmails: string[];
+    readonly billingEmails?: outputs.GetOrganizationBillingGroupBillingEmail[];
     /**
      * Billing group ID.
      */
@@ -77,9 +92,9 @@ export interface GetOrganizationBillingGroupResult {
      */
     readonly organizationId: string;
     /**
-     * Payment method ID.
+     * Payment method.
      */
-    readonly paymentMethodId: string;
+    readonly paymentMethods?: outputs.GetOrganizationBillingGroupPaymentMethod[];
     /**
      * Shipping address ID.
      */
@@ -99,8 +114,11 @@ export interface GetOrganizationBillingGroupResult {
 export function getOrganizationBillingGroupOutput(args: GetOrganizationBillingGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationBillingGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", {
+        "billingContactEmails": args.billingContactEmails,
+        "billingEmails": args.billingEmails,
         "billingGroupId": args.billingGroupId,
         "organizationId": args.organizationId,
+        "paymentMethods": args.paymentMethods,
         "timeouts": args.timeouts,
     }, opts);
 }
@@ -110,6 +128,14 @@ export function getOrganizationBillingGroupOutput(args: GetOrganizationBillingGr
  */
 export interface GetOrganizationBillingGroupOutputArgs {
     /**
+     * List of billing contact emails.
+     */
+    billingContactEmails?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupBillingContactEmailArgs>[]>;
+    /**
+     * List of billing contact emails.
+     */
+    billingEmails?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupBillingEmailArgs>[]>;
+    /**
      * Billing group ID.
      */
     billingGroupId: pulumi.Input<string>;
@@ -117,5 +143,9 @@ export interface GetOrganizationBillingGroupOutputArgs {
      * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
+    /**
+     * Payment method.
+     */
+    paymentMethods?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupPaymentMethodArgs>[]>;
     timeouts?: pulumi.Input<inputs.GetOrganizationBillingGroupTimeoutsArgs>;
 }

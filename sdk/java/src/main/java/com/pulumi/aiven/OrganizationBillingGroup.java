@@ -6,6 +6,9 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.OrganizationBillingGroupArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.OrganizationBillingGroupState;
+import com.pulumi.aiven.outputs.OrganizationBillingGroupBillingContactEmail;
+import com.pulumi.aiven.outputs.OrganizationBillingGroupBillingEmail;
+import com.pulumi.aiven.outputs.OrganizationBillingGroupPaymentMethod;
 import com.pulumi.aiven.outputs.OrganizationBillingGroupTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -46,31 +49,31 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
         return this.billingAddressId;
     }
     /**
-     * Aiven contacts these email addresses when there are billing issues or questions.
+     * Required property. List of billing contact emails.
      * 
      */
-    @Export(name="billingContactEmails", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> billingContactEmails;
+    @Export(name="billingContactEmails", refs={List.class,OrganizationBillingGroupBillingContactEmail.class}, tree="[0,1]")
+    private Output<List<OrganizationBillingGroupBillingContactEmail>> billingContactEmails;
 
     /**
-     * @return Aiven contacts these email addresses when there are billing issues or questions.
+     * @return Required property. List of billing contact emails.
      * 
      */
-    public Output<List<String>> billingContactEmails() {
+    public Output<List<OrganizationBillingGroupBillingContactEmail>> billingContactEmails() {
         return this.billingContactEmails;
     }
     /**
-     * PDF invoices are sent to these email addresses.
+     * Required property. List of billing contact emails.
      * 
      */
-    @Export(name="billingEmails", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> billingEmails;
+    @Export(name="billingEmails", refs={List.class,OrganizationBillingGroupBillingEmail.class}, tree="[0,1]")
+    private Output<List<OrganizationBillingGroupBillingEmail>> billingEmails;
 
     /**
-     * @return PDF invoices are sent to these email addresses.
+     * @return Required property. List of billing contact emails.
      * 
      */
-    public Output<List<String>> billingEmails() {
+    public Output<List<OrganizationBillingGroupBillingEmail>> billingEmails() {
         return this.billingEmails;
     }
     /**
@@ -106,14 +109,14 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
      * 
      */
     @Export(name="currency", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> currency;
+    private Output<String> currency;
 
     /**
      * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      * 
      */
-    public Output<Optional<String>> currency() {
-        return Codegen.optional(this.currency);
+    public Output<String> currency() {
+        return this.currency;
     }
     /**
      * Extra billing text. Maximum length: `256`.
@@ -144,18 +147,18 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
         return this.organizationId;
     }
     /**
-     * Payment method ID.
+     * Required property. Payment method.
      * 
      */
-    @Export(name="paymentMethodId", refs={String.class}, tree="[0]")
-    private Output<String> paymentMethodId;
+    @Export(name="paymentMethod", refs={OrganizationBillingGroupPaymentMethod.class}, tree="[0]")
+    private Output<OrganizationBillingGroupPaymentMethod> paymentMethod;
 
     /**
-     * @return Payment method ID.
+     * @return Required property. Payment method.
      * 
      */
-    public Output<String> paymentMethodId() {
-        return this.paymentMethodId;
+    public Output<OrganizationBillingGroupPaymentMethod> paymentMethod() {
+        return this.paymentMethod;
     }
     /**
      * Shipping address ID. Maximum length: `36`.

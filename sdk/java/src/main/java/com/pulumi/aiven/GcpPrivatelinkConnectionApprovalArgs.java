@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resources.ResourceArgs {
@@ -27,6 +29,21 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
      */
     public Output<String> project() {
         return this.project;
+    }
+
+    /**
+     * The Google Private Service Connect connection ID.
+     * 
+     */
+    @Import(name="pscConnectionId")
+    private @Nullable Output<String> pscConnectionId;
+
+    /**
+     * @return The Google Private Service Connect connection ID.
+     * 
+     */
+    public Optional<Output<String>> pscConnectionId() {
+        return Optional.ofNullable(this.pscConnectionId);
     }
 
     /**
@@ -63,6 +80,7 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
 
     private GcpPrivatelinkConnectionApprovalArgs(GcpPrivatelinkConnectionApprovalArgs $) {
         this.project = $.project;
+        this.pscConnectionId = $.pscConnectionId;
         this.serviceName = $.serviceName;
         this.userIpAddress = $.userIpAddress;
     }
@@ -104,6 +122,27 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pscConnectionId The Google Private Service Connect connection ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConnectionId(@Nullable Output<String> pscConnectionId) {
+            $.pscConnectionId = pscConnectionId;
+            return this;
+        }
+
+        /**
+         * @param pscConnectionId The Google Private Service Connect connection ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConnectionId(String pscConnectionId) {
+            return pscConnectionId(Output.of(pscConnectionId));
         }
 
         /**

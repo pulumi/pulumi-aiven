@@ -91,6 +91,10 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      */
     declare public readonly exactlyOnceDeliveryEnabled: pulumi.Output<boolean | undefined>;
     /**
+     * Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     */
+    declare public readonly followerFetchingEnabled: pulumi.Output<boolean>;
+    /**
      * Offset syncs topic location. The possible values are `source` and `target`.
      */
     declare public readonly offsetSyncsTopicLocation: pulumi.Output<string>;
@@ -153,6 +157,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             resourceInputs["emitHeartbeatsEnabled"] = state?.emitHeartbeatsEnabled;
             resourceInputs["enable"] = state?.enable;
             resourceInputs["exactlyOnceDeliveryEnabled"] = state?.exactlyOnceDeliveryEnabled;
+            resourceInputs["followerFetchingEnabled"] = state?.followerFetchingEnabled;
             resourceInputs["offsetSyncsTopicLocation"] = state?.offsetSyncsTopicLocation;
             resourceInputs["project"] = state?.project;
             resourceInputs["replicationFactor"] = state?.replicationFactor;
@@ -192,6 +197,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             resourceInputs["emitHeartbeatsEnabled"] = args?.emitHeartbeatsEnabled;
             resourceInputs["enable"] = args?.enable;
             resourceInputs["exactlyOnceDeliveryEnabled"] = args?.exactlyOnceDeliveryEnabled;
+            resourceInputs["followerFetchingEnabled"] = args?.followerFetchingEnabled;
             resourceInputs["offsetSyncsTopicLocation"] = args?.offsetSyncsTopicLocation;
             resourceInputs["project"] = args?.project;
             resourceInputs["replicationFactor"] = args?.replicationFactor;
@@ -233,6 +239,10 @@ export interface MirrorMakerReplicationFlowState {
      * Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
      */
     exactlyOnceDeliveryEnabled?: pulumi.Input<boolean>;
+    /**
+     * Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     */
+    followerFetchingEnabled?: pulumi.Input<boolean>;
     /**
      * Offset syncs topic location. The possible values are `source` and `target`.
      */
@@ -303,6 +313,10 @@ export interface MirrorMakerReplicationFlowArgs {
      * Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
      */
     exactlyOnceDeliveryEnabled?: pulumi.Input<boolean>;
+    /**
+     * Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     */
+    followerFetchingEnabled?: pulumi.Input<boolean>;
     /**
      * Offset syncs topic location. The possible values are `source` and `target`.
      */

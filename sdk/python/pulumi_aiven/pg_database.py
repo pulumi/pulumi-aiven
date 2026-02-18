@@ -35,7 +35,7 @@ class PgDatabaseArgs:
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `prevent_destroy`
+        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "project", project)
@@ -45,8 +45,8 @@ class PgDatabaseArgs:
         if lc_ctype is not None:
             pulumi.set(__self__, "lc_ctype", lc_ctype)
         if termination_protection is not None:
-            warnings.warn("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""", DeprecationWarning)
-            pulumi.log.warn("""termination_protection is deprecated: Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
+            warnings.warn("""Instead, use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""", DeprecationWarning)
+            pulumi.log.warn("""termination_protection is deprecated: Instead, use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
         if timeouts is not None:
@@ -114,10 +114,10 @@ class PgDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
-    @_utilities.deprecated("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
+    @_utilities.deprecated("""Instead, use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
     def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `prevent_destroy`
+        Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         return pulumi.get(self, "termination_protection")
 
@@ -152,7 +152,7 @@ class _PgDatabaseState:
         :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `prevent_destroy`
+        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         if database_name is not None:
             pulumi.set(__self__, "database_name", database_name)
@@ -165,8 +165,8 @@ class _PgDatabaseState:
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
         if termination_protection is not None:
-            warnings.warn("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""", DeprecationWarning)
-            pulumi.log.warn("""termination_protection is deprecated: Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
+            warnings.warn("""Instead, use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""", DeprecationWarning)
+            pulumi.log.warn("""termination_protection is deprecated: Instead, use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
         if timeouts is not None:
@@ -234,10 +234,10 @@ class _PgDatabaseState:
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
-    @_utilities.deprecated("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
+    @_utilities.deprecated("""Instead, use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
     def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `prevent_destroy`
+        Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         return pulumi.get(self, "termination_protection")
 
@@ -297,7 +297,7 @@ class PgDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `prevent_destroy`
+        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         ...
     @overload
@@ -399,7 +399,7 @@ class PgDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `prevent_destroy`
+        :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -456,10 +456,10 @@ class PgDatabase(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
-    @_utilities.deprecated("""Instead use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
+    @_utilities.deprecated("""Instead, use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
     def termination_protection(self) -> pulumi.Output[_builtins.bool]:
         """
-        Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console.**. The default value is `false`. **Deprecated**: Instead use `prevent_destroy`
+        Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         return pulumi.get(self, "termination_protection")
 

@@ -50,11 +50,13 @@ __all__ = [
     'ClickhouseClickhouseUserConfigPrivatelinkAccess',
     'ClickhouseClickhouseUserConfigPublicAccess',
     'ClickhouseComponent',
+    'ClickhouseDatabaseTimeouts',
     'ClickhouseGrantPrivilegeGrant',
     'ClickhouseGrantRoleGrant',
     'ClickhouseServiceIntegration',
     'ClickhouseTag',
     'ClickhouseTechEmail',
+    'CmkTimeouts',
     'DragonflyComponent',
     'DragonflyDragonfly',
     'DragonflyDragonflyUserConfig',
@@ -250,6 +252,9 @@ __all__ = [
     'OrganizationAddressTimeouts',
     'OrganizationApplicationUserTimeouts',
     'OrganizationApplicationUserTokenTimeouts',
+    'OrganizationBillingGroupBillingContactEmail',
+    'OrganizationBillingGroupBillingEmail',
+    'OrganizationBillingGroupPaymentMethod',
     'OrganizationBillingGroupTimeouts',
     'OrganizationGroupProjectTimeouts',
     'OrganizationPermissionPermission',
@@ -410,6 +415,7 @@ __all__ = [
     'GetClickhouseClickhouseUserConfigPrivatelinkAccessResult',
     'GetClickhouseClickhouseUserConfigPublicAccessResult',
     'GetClickhouseComponentResult',
+    'GetClickhouseDatabaseTimeoutsResult',
     'GetClickhouseServiceIntegrationResult',
     'GetClickhouseTagResult',
     'GetClickhouseTechEmailResult',
@@ -600,8 +606,14 @@ __all__ = [
     'GetOpenSearchTechEmailResult',
     'GetOrganizationAddressTimeoutsResult',
     'GetOrganizationApplicationUserTimeoutsResult',
+    'GetOrganizationBillingGroupBillingContactEmailResult',
+    'GetOrganizationBillingGroupBillingEmailResult',
     'GetOrganizationBillingGroupListBillingGroupResult',
+    'GetOrganizationBillingGroupListBillingGroupBillingContactEmailResult',
+    'GetOrganizationBillingGroupListBillingGroupBillingEmailResult',
+    'GetOrganizationBillingGroupListBillingGroupPaymentMethodResult',
     'GetOrganizationBillingGroupListTimeoutsResult',
+    'GetOrganizationBillingGroupPaymentMethodResult',
     'GetOrganizationBillingGroupTimeoutsResult',
     'GetOrganizationProjectTagResult',
     'GetOrganizationProjectTimeoutsResult',
@@ -2861,6 +2873,8 @@ class AlloydbomniComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AlloydbomniComponent. Access the value via the '{suggest}' property getter instead.")
@@ -2880,6 +2894,7 @@ class AlloydbomniComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -2890,6 +2905,7 @@ class AlloydbomniComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -2906,6 +2922,8 @@ class AlloydbomniComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -2960,6 +2978,14 @@ class AlloydbomniComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -3582,6 +3608,8 @@ class CassandraComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CassandraComponent. Access the value via the '{suggest}' property getter instead.")
@@ -3601,6 +3629,7 @@ class CassandraComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -3611,6 +3640,7 @@ class CassandraComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -3627,6 +3657,8 @@ class CassandraComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -3681,6 +3713,14 @@ class CassandraComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -4318,6 +4358,8 @@ class ClickhouseComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClickhouseComponent. Access the value via the '{suggest}' property getter instead.")
@@ -4337,6 +4379,7 @@ class ClickhouseComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -4347,6 +4390,7 @@ class ClickhouseComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -4363,6 +4407,8 @@ class ClickhouseComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -4419,6 +4465,14 @@ class ClickhouseComponent(dict):
         return pulumi.get(self, "port")
 
     @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @_builtins.property
     @pulumi.getter
     def route(self) -> Optional[_builtins.str]:
         """
@@ -4441,6 +4495,74 @@ class ClickhouseComponent(dict):
         DNS usage name
         """
         return pulumi.get(self, "usage")
+
+
+@pulumi.output_type
+class ClickhouseDatabaseTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -4641,6 +4763,61 @@ class ClickhouseTechEmail(dict):
 
 
 @pulumi.output_type
+class CmkTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class DragonflyComponent(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4651,6 +4828,8 @@ class DragonflyComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DragonflyComponent. Access the value via the '{suggest}' property getter instead.")
@@ -4670,6 +4849,7 @@ class DragonflyComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -4680,6 +4860,7 @@ class DragonflyComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -4696,6 +4877,8 @@ class DragonflyComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -4750,6 +4933,14 @@ class DragonflyComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -5540,6 +5731,8 @@ class FlinkComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FlinkComponent. Access the value via the '{suggest}' property getter instead.")
@@ -5559,6 +5752,7 @@ class FlinkComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -5569,6 +5763,7 @@ class FlinkComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -5585,6 +5780,8 @@ class FlinkComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -5639,6 +5836,14 @@ class FlinkComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -6819,6 +7024,8 @@ class GrafanaComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GrafanaComponent. Access the value via the '{suggest}' property getter instead.")
@@ -6838,6 +7045,7 @@ class GrafanaComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -6848,6 +7056,7 @@ class GrafanaComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -6864,6 +7073,8 @@ class GrafanaComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -6918,6 +7129,14 @@ class GrafanaComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -8729,6 +8948,8 @@ class InfluxDbComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InfluxDbComponent. Access the value via the '{suggest}' property getter instead.")
@@ -8748,6 +8969,7 @@ class InfluxDbComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -8758,6 +8980,7 @@ class InfluxDbComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -8774,6 +8997,8 @@ class InfluxDbComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -8828,6 +9053,14 @@ class InfluxDbComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -9558,6 +9791,8 @@ class KafkaComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in KafkaComponent. Access the value via the '{suggest}' property getter instead.")
@@ -9577,6 +9812,7 @@ class KafkaComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -9587,6 +9823,7 @@ class KafkaComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -9603,6 +9840,8 @@ class KafkaComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -9657,6 +9896,14 @@ class KafkaComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -9694,6 +9941,8 @@ class KafkaConnectComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in KafkaConnectComponent. Access the value via the '{suggest}' property getter instead.")
@@ -9713,6 +9962,7 @@ class KafkaConnectComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -9723,6 +9973,7 @@ class KafkaConnectComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -9739,6 +9990,8 @@ class KafkaConnectComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -9793,6 +10046,14 @@ class KafkaConnectComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -13425,6 +13686,8 @@ class KafkaMirrorMakerComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in KafkaMirrorMakerComponent. Access the value via the '{suggest}' property getter instead.")
@@ -13444,6 +13707,7 @@ class KafkaMirrorMakerComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -13454,6 +13718,7 @@ class KafkaMirrorMakerComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -13470,6 +13735,8 @@ class KafkaMirrorMakerComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -13524,6 +13791,14 @@ class KafkaMirrorMakerComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -14575,6 +14850,8 @@ class M3AggregatorComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in M3AggregatorComponent. Access the value via the '{suggest}' property getter instead.")
@@ -14594,6 +14871,7 @@ class M3AggregatorComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -14604,6 +14882,7 @@ class M3AggregatorComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -14620,6 +14899,8 @@ class M3AggregatorComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -14674,6 +14955,14 @@ class M3AggregatorComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -15019,6 +15308,8 @@ class M3DbComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in M3DbComponent. Access the value via the '{suggest}' property getter instead.")
@@ -15038,6 +15329,7 @@ class M3DbComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -15048,6 +15340,7 @@ class M3DbComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -15064,6 +15357,8 @@ class M3DbComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -15118,6 +15413,14 @@ class M3DbComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -16289,6 +16592,8 @@ class MySqlComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MySqlComponent. Access the value via the '{suggest}' property getter instead.")
@@ -16308,6 +16613,7 @@ class MySqlComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -16318,6 +16624,7 @@ class MySqlComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -16334,6 +16641,8 @@ class MySqlComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -16388,6 +16697,14 @@ class MySqlComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -17975,6 +18292,8 @@ class OpenSearchComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OpenSearchComponent. Access the value via the '{suggest}' property getter instead.")
@@ -17994,6 +18313,7 @@ class OpenSearchComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -18004,6 +18324,7 @@ class OpenSearchComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -18020,6 +18341,8 @@ class OpenSearchComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -18074,6 +18397,14 @@ class OpenSearchComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -18299,7 +18630,7 @@ class OpenSearchOpensearchUserConfig(dict):
         :param 'OpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration
         :param 'OpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings
         :param 'OpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings
-        :param _builtins.str opensearch_version: Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+        :param _builtins.str opensearch_version: Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
         :param 'OpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'OpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param _builtins.str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
@@ -18509,7 +18840,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+        Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -22713,6 +23044,90 @@ class OrganizationApplicationUserTokenTimeouts(dict):
 
 
 @pulumi.output_type
+class OrganizationBillingGroupBillingContactEmail(dict):
+    def __init__(__self__, *,
+                 email: _builtins.str):
+        """
+        :param _builtins.str email: Email. Maximum length: `254`.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Email. Maximum length: `254`.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class OrganizationBillingGroupBillingEmail(dict):
+    def __init__(__self__, *,
+                 email: _builtins.str):
+        """
+        :param _builtins.str email: Email. Maximum length: `254`.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Email. Maximum length: `254`.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class OrganizationBillingGroupPaymentMethod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "paymentMethodId":
+            suggest = "payment_method_id"
+        elif key == "paymentMethodType":
+            suggest = "payment_method_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrganizationBillingGroupPaymentMethod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrganizationBillingGroupPaymentMethod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrganizationBillingGroupPaymentMethod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 payment_method_id: _builtins.str,
+                 payment_method_type: _builtins.str):
+        """
+        :param _builtins.str payment_method_id: Payment method ID. Maximum length: `36`.
+        :param _builtins.str payment_method_type: An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        pulumi.set(__self__, "payment_method_id", payment_method_id)
+        pulumi.set(__self__, "payment_method_type", payment_method_type)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodId")
+    def payment_method_id(self) -> _builtins.str:
+        """
+        Payment method ID. Maximum length: `36`.
+        """
+        return pulumi.get(self, "payment_method_id")
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodType")
+    def payment_method_type(self) -> _builtins.str:
+        """
+        An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        return pulumi.get(self, "payment_method_type")
+
+
+@pulumi.output_type
 class OrganizationBillingGroupTimeouts(dict):
     def __init__(__self__, *,
                  create: Optional[_builtins.str] = None,
@@ -23237,6 +23652,8 @@ class PgComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PgComponent. Access the value via the '{suggest}' property getter instead.")
@@ -23256,6 +23673,7 @@ class PgComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -23266,6 +23684,7 @@ class PgComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -23282,6 +23701,8 @@ class PgComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -23336,6 +23757,14 @@ class PgComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -26024,6 +26453,8 @@ class RedisComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RedisComponent. Access the value via the '{suggest}' property getter instead.")
@@ -26043,6 +26474,7 @@ class RedisComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -26053,6 +26485,7 @@ class RedisComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -26069,6 +26502,8 @@ class RedisComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -26123,6 +26558,14 @@ class RedisComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -30681,6 +31124,8 @@ class ThanosComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ThanosComponent. Access the value via the '{suggest}' property getter instead.")
@@ -30700,6 +31145,7 @@ class ThanosComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -30710,6 +31156,7 @@ class ThanosComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -30726,6 +31173,8 @@ class ThanosComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -30780,6 +31229,14 @@ class ThanosComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -31660,6 +32117,8 @@ class ValkeyComponent(dict):
             suggest = "kafka_authentication_method"
         elif key == "kafkaSslCa":
             suggest = "kafka_ssl_ca"
+        elif key == "privatelinkConnectionId":
+            suggest = "privatelink_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ValkeyComponent. Access the value via the '{suggest}' property getter instead.")
@@ -31679,6 +32138,7 @@ class ValkeyComponent(dict):
                  kafka_authentication_method: Optional[_builtins.str] = None,
                  kafka_ssl_ca: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
+                 privatelink_connection_id: Optional[_builtins.str] = None,
                  route: Optional[_builtins.str] = None,
                  ssl: Optional[_builtins.bool] = None,
                  usage: Optional[_builtins.str] = None):
@@ -31689,6 +32149,7 @@ class ValkeyComponent(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -31705,6 +32166,8 @@ class ValkeyComponent(dict):
             pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if privatelink_connection_id is not None:
+            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if route is not None:
             pulumi.set(__self__, "route", route)
         if ssl is not None:
@@ -31759,6 +32222,14 @@ class ValkeyComponent(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> Optional[_builtins.str]:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -34414,6 +34885,7 @@ class GetAlloydbomniComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -34424,6 +34896,7 @@ class GetAlloydbomniComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -34434,6 +34907,7 @@ class GetAlloydbomniComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -34485,6 +34959,14 @@ class GetAlloydbomniComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -34968,6 +35450,7 @@ class GetCassandaComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -34978,6 +35461,7 @@ class GetCassandaComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -34988,6 +35472,7 @@ class GetCassandaComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -35039,6 +35524,14 @@ class GetCassandaComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -35503,6 +35996,7 @@ class GetCassandraComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -35513,6 +36007,7 @@ class GetCassandraComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -35523,6 +36018,7 @@ class GetCassandraComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -35574,6 +36070,14 @@ class GetCassandraComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -36087,6 +36591,7 @@ class GetClickhouseComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -36097,6 +36602,7 @@ class GetClickhouseComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -36107,6 +36613,7 @@ class GetClickhouseComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -36160,6 +36667,14 @@ class GetClickhouseComponentResult(dict):
         return pulumi.get(self, "port")
 
     @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @_builtins.property
     @pulumi.getter
     def route(self) -> _builtins.str:
         """
@@ -36182,6 +36697,25 @@ class GetClickhouseComponentResult(dict):
         DNS usage name
         """
         return pulumi.get(self, "usage")
+
+
+@pulumi.output_type
+class GetClickhouseDatabaseTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -36269,6 +36803,7 @@ class GetDragonflyComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -36279,6 +36814,7 @@ class GetDragonflyComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -36289,6 +36825,7 @@ class GetDragonflyComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -36340,6 +36877,14 @@ class GetDragonflyComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -36986,6 +37531,7 @@ class GetFlinkComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -36996,6 +37542,7 @@ class GetFlinkComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -37006,6 +37553,7 @@ class GetFlinkComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -37057,6 +37605,14 @@ class GetFlinkComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -37431,6 +37987,7 @@ class GetGrafanaComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -37441,6 +37998,7 @@ class GetGrafanaComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -37451,6 +38009,7 @@ class GetGrafanaComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -37502,6 +38061,14 @@ class GetGrafanaComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -38970,6 +39537,7 @@ class GetInfluxDbComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -38980,6 +39548,7 @@ class GetInfluxDbComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -38990,6 +39559,7 @@ class GetInfluxDbComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -39041,6 +39611,14 @@ class GetInfluxDbComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -39606,6 +40184,7 @@ class GetKafkaComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -39616,6 +40195,7 @@ class GetKafkaComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -39626,6 +40206,7 @@ class GetKafkaComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -39677,6 +40258,14 @@ class GetKafkaComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -39712,6 +40301,7 @@ class GetKafkaConnectComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -39722,6 +40312,7 @@ class GetKafkaConnectComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -39732,6 +40323,7 @@ class GetKafkaConnectComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -39783,6 +40375,14 @@ class GetKafkaConnectComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -42691,6 +43291,7 @@ class GetKafkaMirrorMakerComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -42701,6 +43302,7 @@ class GetKafkaMirrorMakerComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -42711,6 +43313,7 @@ class GetKafkaMirrorMakerComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -42762,6 +43365,14 @@ class GetKafkaMirrorMakerComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -43632,6 +44243,7 @@ class GetM3AggregatorComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -43642,6 +44254,7 @@ class GetM3AggregatorComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -43652,6 +44265,7 @@ class GetM3AggregatorComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -43703,6 +44317,14 @@ class GetM3AggregatorComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -43977,6 +44599,7 @@ class GetM3DbComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -43987,6 +44610,7 @@ class GetM3DbComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -43997,6 +44621,7 @@ class GetM3DbComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -44048,6 +44673,14 @@ class GetM3DbComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -44996,6 +45629,7 @@ class GetMySqlComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -45006,6 +45640,7 @@ class GetMySqlComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -45016,6 +45651,7 @@ class GetMySqlComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -45067,6 +45703,14 @@ class GetMySqlComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -46316,6 +46960,7 @@ class GetOpenSearchComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -46326,6 +46971,7 @@ class GetOpenSearchComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -46336,6 +46982,7 @@ class GetOpenSearchComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -46387,6 +47034,14 @@ class GetOpenSearchComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -46525,7 +47180,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         :param 'GetOpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration
         :param 'GetOpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings
         :param 'GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings
-        :param _builtins.str opensearch_version: Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+        :param _builtins.str opensearch_version: Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
         :param 'GetOpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param _builtins.str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
@@ -46735,7 +47390,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+        Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -49970,43 +50625,82 @@ class GetOrganizationApplicationUserTimeoutsResult(dict):
 
 
 @pulumi.output_type
+class GetOrganizationBillingGroupBillingContactEmailResult(dict):
+    def __init__(__self__, *,
+                 email: _builtins.str):
+        """
+        :param _builtins.str email: Email.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Email.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GetOrganizationBillingGroupBillingEmailResult(dict):
+    def __init__(__self__, *,
+                 email: _builtins.str):
+        """
+        :param _builtins.str email: Email.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Email.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
 class GetOrganizationBillingGroupListBillingGroupResult(dict):
     def __init__(__self__, *,
                  billing_address_id: _builtins.str,
-                 billing_contact_emails: Sequence[_builtins.str],
-                 billing_emails: Sequence[_builtins.str],
                  billing_group_id: _builtins.str,
                  billing_group_name: _builtins.str,
                  currency: _builtins.str,
                  custom_invoice_text: _builtins.str,
                  organization_id: _builtins.str,
-                 payment_method_id: _builtins.str,
                  shipping_address_id: _builtins.str,
-                 vat_id: _builtins.str):
+                 vat_id: _builtins.str,
+                 billing_contact_emails: Optional[Sequence['outputs.GetOrganizationBillingGroupListBillingGroupBillingContactEmailResult']] = None,
+                 billing_emails: Optional[Sequence['outputs.GetOrganizationBillingGroupListBillingGroupBillingEmailResult']] = None,
+                 payment_methods: Optional[Sequence['outputs.GetOrganizationBillingGroupListBillingGroupPaymentMethodResult']] = None):
         """
         :param _builtins.str billing_address_id: Billing address ID.
-        :param Sequence[_builtins.str] billing_contact_emails: List of billing contact emails.
-        :param Sequence[_builtins.str] billing_emails: List of billing contact emails.
         :param _builtins.str billing_group_id: Billing group ID.
         :param _builtins.str billing_group_name: Billing Group Name.
         :param _builtins.str currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         :param _builtins.str custom_invoice_text: Extra billing text.
         :param _builtins.str organization_id: Organization ID.
-        :param _builtins.str payment_method_id: Payment method ID.
         :param _builtins.str shipping_address_id: Shipping address ID.
         :param _builtins.str vat_id: VAT ID.
+        :param Sequence['GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs'] billing_contact_emails: List of billing contact emails.
+        :param Sequence['GetOrganizationBillingGroupListBillingGroupBillingEmailArgs'] billing_emails: List of billing contact emails.
+        :param Sequence['GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs'] payment_methods: Payment method.
         """
         pulumi.set(__self__, "billing_address_id", billing_address_id)
-        pulumi.set(__self__, "billing_contact_emails", billing_contact_emails)
-        pulumi.set(__self__, "billing_emails", billing_emails)
         pulumi.set(__self__, "billing_group_id", billing_group_id)
         pulumi.set(__self__, "billing_group_name", billing_group_name)
         pulumi.set(__self__, "currency", currency)
         pulumi.set(__self__, "custom_invoice_text", custom_invoice_text)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "payment_method_id", payment_method_id)
         pulumi.set(__self__, "shipping_address_id", shipping_address_id)
         pulumi.set(__self__, "vat_id", vat_id)
+        if billing_contact_emails is not None:
+            pulumi.set(__self__, "billing_contact_emails", billing_contact_emails)
+        if billing_emails is not None:
+            pulumi.set(__self__, "billing_emails", billing_emails)
+        if payment_methods is not None:
+            pulumi.set(__self__, "payment_methods", payment_methods)
 
     @_builtins.property
     @pulumi.getter(name="billingAddressId")
@@ -50015,22 +50709,6 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
         Billing address ID.
         """
         return pulumi.get(self, "billing_address_id")
-
-    @_builtins.property
-    @pulumi.getter(name="billingContactEmails")
-    def billing_contact_emails(self) -> Sequence[_builtins.str]:
-        """
-        List of billing contact emails.
-        """
-        return pulumi.get(self, "billing_contact_emails")
-
-    @_builtins.property
-    @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Sequence[_builtins.str]:
-        """
-        List of billing contact emails.
-        """
-        return pulumi.get(self, "billing_emails")
 
     @_builtins.property
     @pulumi.getter(name="billingGroupId")
@@ -50073,14 +50751,6 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
         return pulumi.get(self, "organization_id")
 
     @_builtins.property
-    @pulumi.getter(name="paymentMethodId")
-    def payment_method_id(self) -> _builtins.str:
-        """
-        Payment method ID.
-        """
-        return pulumi.get(self, "payment_method_id")
-
-    @_builtins.property
     @pulumi.getter(name="shippingAddressId")
     def shipping_address_id(self) -> _builtins.str:
         """
@@ -50095,6 +50765,95 @@ class GetOrganizationBillingGroupListBillingGroupResult(dict):
         VAT ID.
         """
         return pulumi.get(self, "vat_id")
+
+    @_builtins.property
+    @pulumi.getter(name="billingContactEmails")
+    def billing_contact_emails(self) -> Optional[Sequence['outputs.GetOrganizationBillingGroupListBillingGroupBillingContactEmailResult']]:
+        """
+        List of billing contact emails.
+        """
+        return pulumi.get(self, "billing_contact_emails")
+
+    @_builtins.property
+    @pulumi.getter(name="billingEmails")
+    def billing_emails(self) -> Optional[Sequence['outputs.GetOrganizationBillingGroupListBillingGroupBillingEmailResult']]:
+        """
+        List of billing contact emails.
+        """
+        return pulumi.get(self, "billing_emails")
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethods")
+    def payment_methods(self) -> Optional[Sequence['outputs.GetOrganizationBillingGroupListBillingGroupPaymentMethodResult']]:
+        """
+        Payment method.
+        """
+        return pulumi.get(self, "payment_methods")
+
+
+@pulumi.output_type
+class GetOrganizationBillingGroupListBillingGroupBillingContactEmailResult(dict):
+    def __init__(__self__, *,
+                 email: _builtins.str):
+        """
+        :param _builtins.str email: Email.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Email.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GetOrganizationBillingGroupListBillingGroupBillingEmailResult(dict):
+    def __init__(__self__, *,
+                 email: _builtins.str):
+        """
+        :param _builtins.str email: Email.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Email.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GetOrganizationBillingGroupListBillingGroupPaymentMethodResult(dict):
+    def __init__(__self__, *,
+                 payment_method_id: _builtins.str,
+                 payment_method_type: _builtins.str):
+        """
+        :param _builtins.str payment_method_id: Payment method ID.
+        :param _builtins.str payment_method_type: An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        pulumi.set(__self__, "payment_method_id", payment_method_id)
+        pulumi.set(__self__, "payment_method_type", payment_method_type)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodId")
+    def payment_method_id(self) -> _builtins.str:
+        """
+        Payment method ID.
+        """
+        return pulumi.get(self, "payment_method_id")
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodType")
+    def payment_method_type(self) -> _builtins.str:
+        """
+        An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        return pulumi.get(self, "payment_method_type")
 
 
 @pulumi.output_type
@@ -50114,6 +50873,35 @@ class GetOrganizationBillingGroupListTimeoutsResult(dict):
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
         return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetOrganizationBillingGroupPaymentMethodResult(dict):
+    def __init__(__self__, *,
+                 payment_method_id: _builtins.str,
+                 payment_method_type: _builtins.str):
+        """
+        :param _builtins.str payment_method_id: Payment method ID.
+        :param _builtins.str payment_method_type: An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        pulumi.set(__self__, "payment_method_id", payment_method_id)
+        pulumi.set(__self__, "payment_method_type", payment_method_type)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodId")
+    def payment_method_id(self) -> _builtins.str:
+        """
+        Payment method ID.
+        """
+        return pulumi.get(self, "payment_method_id")
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodType")
+    def payment_method_type(self) -> _builtins.str:
+        """
+        An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        return pulumi.get(self, "payment_method_type")
 
 
 @pulumi.output_type
@@ -50731,6 +51519,7 @@ class GetPgComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -50741,6 +51530,7 @@ class GetPgComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -50751,6 +51541,7 @@ class GetPgComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -50802,6 +51593,14 @@ class GetPgComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -53012,6 +53811,7 @@ class GetRedisComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -53022,6 +53822,7 @@ class GetRedisComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -53032,6 +53833,7 @@ class GetRedisComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -53083,6 +53885,14 @@ class GetRedisComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -57175,6 +57985,7 @@ class GetThanosComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -57185,6 +57996,7 @@ class GetThanosComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -57195,6 +58007,7 @@ class GetThanosComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -57246,6 +58059,14 @@ class GetThanosComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter
@@ -57921,6 +58742,7 @@ class GetValkeyComponentResult(dict):
                  kafka_authentication_method: _builtins.str,
                  kafka_ssl_ca: _builtins.str,
                  port: _builtins.int,
+                 privatelink_connection_id: _builtins.str,
                  route: _builtins.str,
                  ssl: _builtins.bool,
                  usage: _builtins.str):
@@ -57931,6 +58753,7 @@ class GetValkeyComponentResult(dict):
         :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
         :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param _builtins.int port: Port number for connecting to the service component
+        :param _builtins.str privatelink_connection_id: Privatelink connection ID
         :param _builtins.str route: Network access route
         :param _builtins.bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
         :param _builtins.str usage: DNS usage name
@@ -57941,6 +58764,7 @@ class GetValkeyComponentResult(dict):
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
         pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "usage", usage)
@@ -57992,6 +58816,14 @@ class GetValkeyComponentResult(dict):
         Port number for connecting to the service component
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
 
     @_builtins.property
     @pulumi.getter

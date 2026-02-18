@@ -20,11 +20,11 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// List of billing contact emails.
         /// </summary>
-        public readonly ImmutableArray<string> BillingContactEmails;
+        public readonly ImmutableArray<Outputs.GetOrganizationBillingGroupListBillingGroupBillingContactEmailResult> BillingContactEmails;
         /// <summary>
         /// List of billing contact emails.
         /// </summary>
-        public readonly ImmutableArray<string> BillingEmails;
+        public readonly ImmutableArray<Outputs.GetOrganizationBillingGroupListBillingGroupBillingEmailResult> BillingEmails;
         /// <summary>
         /// Billing group ID.
         /// </summary>
@@ -46,9 +46,9 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
-        /// Payment method ID.
+        /// Payment method.
         /// </summary>
-        public readonly string PaymentMethodId;
+        public readonly ImmutableArray<Outputs.GetOrganizationBillingGroupListBillingGroupPaymentMethodResult> PaymentMethods;
         /// <summary>
         /// Shipping address ID.
         /// </summary>
@@ -62,9 +62,9 @@ namespace Pulumi.Aiven.Outputs
         private GetOrganizationBillingGroupListBillingGroupResult(
             string billingAddressId,
 
-            ImmutableArray<string> billingContactEmails,
+            ImmutableArray<Outputs.GetOrganizationBillingGroupListBillingGroupBillingContactEmailResult> billingContactEmails,
 
-            ImmutableArray<string> billingEmails,
+            ImmutableArray<Outputs.GetOrganizationBillingGroupListBillingGroupBillingEmailResult> billingEmails,
 
             string billingGroupId,
 
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven.Outputs
 
             string organizationId,
 
-            string paymentMethodId,
+            ImmutableArray<Outputs.GetOrganizationBillingGroupListBillingGroupPaymentMethodResult> paymentMethods,
 
             string shippingAddressId,
 
@@ -90,7 +90,7 @@ namespace Pulumi.Aiven.Outputs
             Currency = currency;
             CustomInvoiceText = customInvoiceText;
             OrganizationId = organizationId;
-            PaymentMethodId = paymentMethodId;
+            PaymentMethods = paymentMethods;
             ShippingAddressId = shippingAddressId;
             VatId = vatId;
         }

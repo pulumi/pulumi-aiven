@@ -55,17 +55,11 @@ class GetCassandraUserResult:
     @_builtins.property
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> _builtins.str:
-        """
-        Access certificate for the user.
-        """
         return pulumi.get(self, "access_cert")
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> _builtins.str:
-        """
-        Access certificate key for the user.
-        """
         return pulumi.get(self, "access_key")
 
     @_builtins.property
@@ -79,41 +73,26 @@ class GetCassandraUserResult:
     @_builtins.property
     @pulumi.getter
     def password(self) -> _builtins.str:
-        """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
-        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
-        """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
-        """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        User account type, such as primary or regular account.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def username(self) -> _builtins.str:
-        """
-        Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "username")
 
 
@@ -138,30 +117,7 @@ def get_cassandra_user(project: Optional[_builtins.str] = None,
                        username: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCassandraUserResult:
     """
-    Gets information about an Aiven for Apache Cassandra® service user.
-
-    !> **End of life notice**
-    Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-    From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-    From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-    To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-    before December 31, 2025. For further assistance, contact your account team.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    example_service_user = aiven.get_cassandra_user(service_name=example_cassandra["serviceName"],
-        project=example_project["project"],
-        username="example-cassandra-user")
-    ```
-
-
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -184,30 +140,7 @@ def get_cassandra_user_output(project: Optional[pulumi.Input[_builtins.str]] = N
                               username: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCassandraUserResult]:
     """
-    Gets information about an Aiven for Apache Cassandra® service user.
-
-    !> **End of life notice**
-    Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-    From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-    From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-    To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-    before December 31, 2025. For further assistance, contact your account team.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    example_service_user = aiven.get_cassandra_user(service_name=example_cassandra["serviceName"],
-        project=example_project["project"],
-        username="example-cassandra-user")
-    ```
-
-
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['project'] = project

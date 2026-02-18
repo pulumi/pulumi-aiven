@@ -46,7 +46,7 @@ namespace Pulumi.Aiven
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the organization. Maximum length: `128`.
+        /// Name of the organization. Maximum length: `83`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.Aiven
     public sealed class OrganizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the organization. Maximum length: `128`.
+        /// Name of the organization. Maximum length: `83`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.Aiven
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Name of the organization. Maximum length: `128`.
+        /// Name of the organization. Maximum length: `83`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

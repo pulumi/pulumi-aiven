@@ -11,102 +11,12 @@ namespace Pulumi.Aiven
 {
     public static class GetCassandraUser
     {
-        /// <summary>
-        /// Gets information about an Aiven for Apache Cassandra® service user.
-        /// 
-        /// !&gt; **End of life notice**
-        /// Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        /// From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-        /// From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-        /// To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-        /// before December 31, 2025. For further assistance, contact your account team.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleServiceUser = Aiven.GetCassandraUser.Invoke(new()
-        ///     {
-        ///         ServiceName = exampleCassandra.ServiceName,
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-cassandra-user",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetCassandraUserResult> InvokeAsync(GetCassandraUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCassandraUserResult>("aiven:index/getCassandraUser:getCassandraUser", args ?? new GetCassandraUserArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Gets information about an Aiven for Apache Cassandra® service user.
-        /// 
-        /// !&gt; **End of life notice**
-        /// Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        /// From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-        /// From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-        /// To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-        /// before December 31, 2025. For further assistance, contact your account team.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleServiceUser = Aiven.GetCassandraUser.Invoke(new()
-        ///     {
-        ///         ServiceName = exampleCassandra.ServiceName,
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-cassandra-user",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetCassandraUserResult> Invoke(GetCassandraUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCassandraUserResult>("aiven:index/getCassandraUser:getCassandraUser", args ?? new GetCassandraUserInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Gets information about an Aiven for Apache Cassandra® service user.
-        /// 
-        /// !&gt; **End of life notice**
-        /// Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        /// From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
-        /// From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
-        /// To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
-        /// before December 31, 2025. For further assistance, contact your account team.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleServiceUser = Aiven.GetCassandraUser.Invoke(new()
-        ///     {
-        ///         ServiceName = exampleCassandra.ServiceName,
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-cassandra-user",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetCassandraUserResult> Invoke(GetCassandraUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCassandraUserResult>("aiven:index/getCassandraUser:getCassandraUser", args ?? new GetCassandraUserInvokeArgs(), options.WithDefaults());
     }
@@ -114,21 +24,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetCassandraUserArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
@@ -140,21 +41,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetCassandraUserInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
@@ -168,37 +60,16 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetCassandraUserResult
     {
-        /// <summary>
-        /// Access certificate for the user.
-        /// </summary>
         public readonly string AccessCert;
-        /// <summary>
-        /// Access certificate key for the user.
-        /// </summary>
         public readonly string AccessKey;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
-        /// </summary>
         public readonly string Password;
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// User account type, such as primary or regular account.
-        /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

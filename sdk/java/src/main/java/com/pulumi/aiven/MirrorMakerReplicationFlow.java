@@ -149,6 +149,20 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.exactlyOnceDeliveryEnabled);
     }
     /**
+     * Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     * 
+     */
+    @Export(name="followerFetchingEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> followerFetchingEnabled;
+
+    /**
+     * @return Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     * 
+     */
+    public Output<Boolean> followerFetchingEnabled() {
+        return this.followerFetchingEnabled;
+    }
+    /**
      * Offset syncs topic location. The possible values are `source` and `target`.
      * 
      */

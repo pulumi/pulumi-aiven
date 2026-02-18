@@ -19,225 +19,69 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCassandraResult {
-    /**
-     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
-     * 
-     */
     private String additionalDiskSpace;
-    /**
-     * @return Cassandra user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
-     * 
-     */
     private List<GetCassandraCassandraUserConfig> cassandraUserConfigs;
-    /**
-     * @return Values provided by the Cassandra server.
-     * 
-     */
     private List<GetCassandraCassandra> cassandras;
-    /**
-     * @return The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
-     * 
-     */
     private String cloudName;
-    /**
-     * @return Service component information objects
-     * 
-     */
     private List<GetCassandraComponent> components;
-    /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-     * 
-     */
     private String diskSpace;
-    /**
-     * @return The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
-     * 
-     */
     private String diskSpaceCap;
-    /**
-     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
-     * 
-     */
     private String diskSpaceDefault;
-    /**
-     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
-     * 
-     */
     private String diskSpaceStep;
-    /**
-     * @return The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
-     * 
-     */
     private String diskSpaceUsed;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-     * 
-     */
     private String maintenanceWindowDow;
-    /**
-     * @return Indicates whether the maintenance window is currently enabled for this service.
-     * 
-     */
     private Boolean maintenanceWindowEnabled;
-    /**
-     * @return Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-     * 
-     */
     private String maintenanceWindowTime;
-    /**
-     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
-     * 
-     */
     private String plan;
-    /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String project;
-    /**
-     * @return Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
-     * 
-     */
     private String projectVpcId;
-    /**
-     * @return The hostname of the service.
-     * 
-     */
     private String serviceHost;
-    /**
-     * @return Service integrations to specify when creating a service. Not applied after initial service creation
-     * 
-     */
     private List<GetCassandraServiceIntegration> serviceIntegrations;
-    /**
-     * @return Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-     * 
-     */
     private String serviceName;
-    /**
-     * @return Password used for connecting to the service, if applicable
-     * 
-     */
     private String servicePassword;
-    /**
-     * @return The port of the service
-     * 
-     */
     private Integer servicePort;
-    /**
-     * @return Aiven internal service type code
-     * 
-     */
     private String serviceType;
-    /**
-     * @return URI for connecting to the service. Service specific info is under &#34;kafka&#34;, &#34;pg&#34;, etc.
-     * 
-     */
     private String serviceUri;
-    /**
-     * @return Username used for connecting to the service, if applicable
-     * 
-     */
     private String serviceUsername;
-    /**
-     * @return Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
-     * 
-     */
     private String state;
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     private List<String> staticIps;
-    /**
-     * @return Tags are key-value pairs that allow you to categorize services.
-     * 
-     */
     private List<GetCassandraTag> tags;
-    /**
-     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
-     * 
-     */
     private List<GetCassandraTechEmail> techEmails;
-    /**
-     * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
-     * 
-     */
     private Boolean terminationProtection;
 
     private GetCassandraResult() {}
-    /**
-     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
-     * 
-     */
     public String additionalDiskSpace() {
         return this.additionalDiskSpace;
     }
-    /**
-     * @return Cassandra user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
-     * 
-     */
     public List<GetCassandraCassandraUserConfig> cassandraUserConfigs() {
         return this.cassandraUserConfigs;
     }
-    /**
-     * @return Values provided by the Cassandra server.
-     * 
-     */
     public List<GetCassandraCassandra> cassandras() {
         return this.cassandras;
     }
-    /**
-     * @return The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
-     * 
-     */
     public String cloudName() {
         return this.cloudName;
     }
-    /**
-     * @return Service component information objects
-     * 
-     */
     public List<GetCassandraComponent> components() {
         return this.components;
     }
-    /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-     * 
-     */
     public String diskSpace() {
         return this.diskSpace;
     }
-    /**
-     * @return The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
-     * 
-     */
     public String diskSpaceCap() {
         return this.diskSpaceCap;
     }
-    /**
-     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
-     * 
-     */
     public String diskSpaceDefault() {
         return this.diskSpaceDefault;
     }
-    /**
-     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
-     * 
-     */
     public String diskSpaceStep() {
         return this.diskSpaceStep;
     }
-    /**
-     * @return The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
-     * 
-     */
     public String diskSpaceUsed() {
         return this.diskSpaceUsed;
     }
@@ -248,136 +92,60 @@ public final class GetCassandraResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-     * 
-     */
     public String maintenanceWindowDow() {
         return this.maintenanceWindowDow;
     }
-    /**
-     * @return Indicates whether the maintenance window is currently enabled for this service.
-     * 
-     */
     public Boolean maintenanceWindowEnabled() {
         return this.maintenanceWindowEnabled;
     }
-    /**
-     * @return Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-     * 
-     */
     public String maintenanceWindowTime() {
         return this.maintenanceWindowTime;
     }
-    /**
-     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
-     * 
-     */
     public String plan() {
         return this.plan;
     }
-    /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String project() {
         return this.project;
     }
-    /**
-     * @return Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
-     * 
-     */
     public String projectVpcId() {
         return this.projectVpcId;
     }
-    /**
-     * @return The hostname of the service.
-     * 
-     */
     public String serviceHost() {
         return this.serviceHost;
     }
-    /**
-     * @return Service integrations to specify when creating a service. Not applied after initial service creation
-     * 
-     */
     public List<GetCassandraServiceIntegration> serviceIntegrations() {
         return this.serviceIntegrations;
     }
-    /**
-     * @return Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-     * 
-     */
     public String serviceName() {
         return this.serviceName;
     }
-    /**
-     * @return Password used for connecting to the service, if applicable
-     * 
-     */
     public String servicePassword() {
         return this.servicePassword;
     }
-    /**
-     * @return The port of the service
-     * 
-     */
     public Integer servicePort() {
         return this.servicePort;
     }
-    /**
-     * @return Aiven internal service type code
-     * 
-     */
     public String serviceType() {
         return this.serviceType;
     }
-    /**
-     * @return URI for connecting to the service. Service specific info is under &#34;kafka&#34;, &#34;pg&#34;, etc.
-     * 
-     */
     public String serviceUri() {
         return this.serviceUri;
     }
-    /**
-     * @return Username used for connecting to the service, if applicable
-     * 
-     */
     public String serviceUsername() {
         return this.serviceUsername;
     }
-    /**
-     * @return Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
-     * 
-     */
     public String state() {
         return this.state;
     }
-    /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
-     * 
-     */
     public List<String> staticIps() {
         return this.staticIps;
     }
-    /**
-     * @return Tags are key-value pairs that allow you to categorize services.
-     * 
-     */
     public List<GetCassandraTag> tags() {
         return this.tags;
     }
-    /**
-     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
-     * 
-     */
     public List<GetCassandraTechEmail> techEmails() {
         return this.techEmails;
     }
-    /**
-     * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
-     * 
-     */
     public Boolean terminationProtection() {
         return this.terminationProtection;
     }

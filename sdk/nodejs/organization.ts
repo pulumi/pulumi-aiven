@@ -57,7 +57,7 @@ export class Organization extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Name of the organization. Maximum length: `128`.
+     * Name of the organization. Maximum length: `83`.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -112,7 +112,7 @@ export interface OrganizationState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Name of the organization. Maximum length: `128`.
+     * Name of the organization. Maximum length: `83`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -133,7 +133,7 @@ export interface OrganizationState {
  */
 export interface OrganizationArgs {
     /**
-     * Name of the organization. Maximum length: `128`.
+     * Name of the organization. Maximum length: `83`.
      */
     name?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationTimeouts>;

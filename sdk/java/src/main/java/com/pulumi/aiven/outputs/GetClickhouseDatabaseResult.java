@@ -3,75 +3,90 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetClickhouseDatabaseTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClickhouseDatabaseResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/name`.
      * 
      */
     private String id;
     /**
-     * @return The name of the ClickHouse database. Changing this property forces recreation of the resource.
+     * @return Service database name.
      * 
      */
     private String name;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
     /**
-     * @return Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     * @return Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+     * 
+     * @deprecated
+     * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
      */
+    @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     private Boolean terminationProtection;
+    private @Nullable GetClickhouseDatabaseTimeouts timeouts;
 
     private GetClickhouseDatabaseResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/name`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name of the ClickHouse database. Changing this property forces recreation of the resource.
+     * @return Service database name.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+     * @return Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+     * 
+     * @deprecated
+     * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
      */
+    @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     public Boolean terminationProtection() {
         return this.terminationProtection;
+    }
+    public Optional<GetClickhouseDatabaseTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     public static Builder builder() {
@@ -88,6 +103,7 @@ public final class GetClickhouseDatabaseResult {
         private String project;
         private String serviceName;
         private Boolean terminationProtection;
+        private @Nullable GetClickhouseDatabaseTimeouts timeouts;
         public Builder() {}
         public Builder(GetClickhouseDatabaseResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -96,6 +112,7 @@ public final class GetClickhouseDatabaseResult {
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
     	      this.terminationProtection = defaults.terminationProtection;
+    	      this.timeouts = defaults.timeouts;
         }
 
         @CustomType.Setter
@@ -138,6 +155,12 @@ public final class GetClickhouseDatabaseResult {
             this.terminationProtection = terminationProtection;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetClickhouseDatabaseTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
         public GetClickhouseDatabaseResult build() {
             final var _resultValue = new GetClickhouseDatabaseResult();
             _resultValue.id = id;
@@ -145,6 +168,7 @@ public final class GetClickhouseDatabaseResult {
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
             _resultValue.terminationProtection = terminationProtection;
+            _resultValue.timeouts = timeouts;
             return _resultValue;
         }
     }

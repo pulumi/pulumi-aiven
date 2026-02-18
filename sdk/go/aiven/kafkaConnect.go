@@ -95,15 +95,13 @@ import (
 type KafkaConnect struct {
 	pulumi.CustomResourceState
 
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace pulumi.StringOutput `pulumi:"additionalDiskSpace"`
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components KafkaConnectComponentArrayOutput `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-	//
-	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+	// Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -111,7 +109,7 @@ type KafkaConnect struct {
 	DiskSpaceDefault pulumi.StringOutput `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
-	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+	// The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaConnectUserConfig KafkaConnectKafkaConnectUserConfigPtrOutput `pulumi:"kafkaConnectUserConfig"`
@@ -121,7 +119,7 @@ type KafkaConnect struct {
 	MaintenanceWindowEnabled pulumi.BoolOutput `pulumi:"maintenanceWindowEnabled"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -199,15 +197,13 @@ func GetKafkaConnect(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaConnect resources.
 type kafkaConnectState struct {
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []KafkaConnectComponent `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-	//
-	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+	// Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -215,7 +211,7 @@ type kafkaConnectState struct {
 	DiskSpaceDefault *string `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
-	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+	// The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaConnectUserConfig *KafkaConnectKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
@@ -225,7 +221,7 @@ type kafkaConnectState struct {
 	MaintenanceWindowEnabled *bool `pulumi:"maintenanceWindowEnabled"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
@@ -260,15 +256,13 @@ type kafkaConnectState struct {
 }
 
 type KafkaConnectState struct {
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components KafkaConnectComponentArrayInput
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-	//
-	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+	// Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -276,7 +270,7 @@ type KafkaConnectState struct {
 	DiskSpaceDefault pulumi.StringPtrInput
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
-	// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+	// The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 	DiskSpaceUsed pulumi.StringPtrInput
 	// KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaConnectUserConfig KafkaConnectKafkaConnectUserConfigPtrInput
@@ -286,7 +280,7 @@ type KafkaConnectState struct {
 	MaintenanceWindowEnabled pulumi.BoolPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
@@ -325,13 +319,11 @@ func (KafkaConnectState) ElementType() reflect.Type {
 }
 
 type kafkaConnectArgs struct {
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName *string `pulumi:"cloudName"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-	//
-	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+	// Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaConnectUserConfig *KafkaConnectKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
@@ -339,7 +331,7 @@ type kafkaConnectArgs struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -361,13 +353,11 @@ type kafkaConnectArgs struct {
 
 // The set of arguments for constructing a KafkaConnect resource.
 type KafkaConnectArgs struct {
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrInput
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-	//
-	// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+	// Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrInput
 	// KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaConnectUserConfig KafkaConnectKafkaConnectUserConfigPtrInput
@@ -375,7 +365,7 @@ type KafkaConnectArgs struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
@@ -482,7 +472,7 @@ func (o KafkaConnectOutput) ToKafkaConnectOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 func (o KafkaConnectOutput) AdditionalDiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConnect) pulumi.StringOutput { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
@@ -497,9 +487,7 @@ func (o KafkaConnectOutput) Components() KafkaConnectComponentArrayOutput {
 	return o.ApplyT(func(v *KafkaConnect) KafkaConnectComponentArrayOutput { return v.Components }).(KafkaConnectComponentArrayOutput)
 }
 
-// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-//
-// Deprecated: Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+// Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
 func (o KafkaConnectOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnect) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }
@@ -519,7 +507,7 @@ func (o KafkaConnectOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConnect) pulumi.StringOutput { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
 
-// The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+// The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
 func (o KafkaConnectOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConnect) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
@@ -544,7 +532,7 @@ func (o KafkaConnectOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnect) pulumi.StringPtrOutput { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
 }
 
-// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+// Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 func (o KafkaConnectOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConnect) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }

@@ -10,59 +10,23 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCassandraUserResult {
-    /**
-     * @return Access certificate for the user.
-     * 
-     */
     private String accessCert;
-    /**
-     * @return Access certificate key for the user.
-     * 
-     */
     private String accessKey;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
-     * 
-     */
     private String password;
-    /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String project;
-    /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String serviceName;
-    /**
-     * @return User account type, such as primary or regular account.
-     * 
-     */
     private String type;
-    /**
-     * @return Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String username;
 
     private GetCassandraUserResult() {}
-    /**
-     * @return Access certificate for the user.
-     * 
-     */
     public String accessCert() {
         return this.accessCert;
     }
-    /**
-     * @return Access certificate key for the user.
-     * 
-     */
     public String accessKey() {
         return this.accessKey;
     }
@@ -73,38 +37,18 @@ public final class GetCassandraUserResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
-     * 
-     */
     public String password() {
         return this.password;
     }
-    /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String project() {
         return this.project;
     }
-    /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String serviceName() {
         return this.serviceName;
     }
-    /**
-     * @return User account type, such as primary or regular account.
-     * 
-     */
     public String type() {
         return this.type;
     }
-    /**
-     * @return Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String username() {
         return this.username;
     }

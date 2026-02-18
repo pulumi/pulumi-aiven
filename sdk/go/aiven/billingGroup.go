@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -100,9 +101,12 @@ type BillingGroup struct {
 func NewBillingGroup(ctx *pulumi.Context,
 	name string, args *BillingGroupArgs, opts ...pulumi.ResourceOption) (*BillingGroup, error) {
 	if args == nil {
-		args = &BillingGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ParentId == nil {
+		return nil, errors.New("invalid value for required argument 'ParentId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BillingGroup
 	err := ctx.RegisterResource("aiven:index/billingGroup:BillingGroup", name, args, &resource, opts...)
@@ -237,7 +241,7 @@ type billingGroupArgs struct {
 	// Billing group name. Maximum length: `128`.
 	Name *string `pulumi:"name"`
 	// Link a billing group to an existing organization by using its ID.
-	ParentId *string `pulumi:"parentId"`
+	ParentId string `pulumi:"parentId"`
 	// Address state or province. Maximum length: `128`.
 	State    *string               `pulumi:"state"`
 	Timeouts *BillingGroupTimeouts `pulumi:"timeouts"`
@@ -276,7 +280,7 @@ type BillingGroupArgs struct {
 	// Billing group name. Maximum length: `128`.
 	Name pulumi.StringPtrInput
 	// Link a billing group to an existing organization by using its ID.
-	ParentId pulumi.StringPtrInput
+	ParentId pulumi.StringInput
 	// Address state or province. Maximum length: `128`.
 	State    pulumi.StringPtrInput
 	Timeouts BillingGroupTimeoutsPtrInput

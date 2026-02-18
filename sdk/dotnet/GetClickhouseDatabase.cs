@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetClickhouseDatabase
     {
         /// <summary>
-        /// Gets information about a ClickHouse database.
+        /// Gets information about an Aiven for ClickHouse database.
         /// 
         /// ## Example Usage
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClickhouseDatabaseResult>("aiven:index/getClickhouseDatabase:getClickhouseDatabase", args ?? new GetClickhouseDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a ClickHouse database.
+        /// Gets information about an Aiven for ClickHouse database.
         /// 
         /// ## Example Usage
         /// 
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetClickhouseDatabaseResult>("aiven:index/getClickhouseDatabase:getClickhouseDatabase", args ?? new GetClickhouseDatabaseInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a ClickHouse database.
+        /// Gets information about an Aiven for ClickHouse database.
         /// 
         /// ## Example Usage
         /// 
@@ -94,22 +94,25 @@ namespace Pulumi.Aiven
     public sealed class GetClickhouseDatabaseArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+        /// Service database name.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetClickhouseDatabaseTimeoutsArgs? Timeouts { get; set; }
 
         public GetClickhouseDatabaseArgs()
         {
@@ -120,22 +123,25 @@ namespace Pulumi.Aiven
     public sealed class GetClickhouseDatabaseInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+        /// Service database name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetClickhouseDatabaseTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetClickhouseDatabaseInvokeArgs()
         {
@@ -148,25 +154,26 @@ namespace Pulumi.Aiven
     public sealed class GetClickhouseDatabaseResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/name`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+        /// Service database name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `False`.
+        /// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `False`. **Deprecated**: Instead, use `PreventDestroy`
         /// </summary>
         public readonly bool TerminationProtection;
+        public readonly Outputs.GetClickhouseDatabaseTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetClickhouseDatabaseResult(
@@ -178,13 +185,16 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
-            bool terminationProtection)
+            bool terminationProtection,
+
+            Outputs.GetClickhouseDatabaseTimeoutsResult? timeouts)
         {
             Id = id;
             Name = name;
             Project = project;
             ServiceName = serviceName;
             TerminationProtection = terminationProtection;
+            Timeouts = timeouts;
         }
     }
 }

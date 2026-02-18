@@ -3,11 +3,16 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListBillingGroupBillingContactEmail;
+import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListBillingGroupBillingEmail;
+import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListBillingGroupPaymentMethod;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationBillingGroupListBillingGroup extends com.pulumi.resources.InvokeArgs {
@@ -33,30 +38,30 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
      * List of billing contact emails.
      * 
      */
-    @Import(name="billingContactEmails", required=true)
-    private List<String> billingContactEmails;
+    @Import(name="billingContactEmails")
+    private @Nullable List<GetOrganizationBillingGroupListBillingGroupBillingContactEmail> billingContactEmails;
 
     /**
      * @return List of billing contact emails.
      * 
      */
-    public List<String> billingContactEmails() {
-        return this.billingContactEmails;
+    public Optional<List<GetOrganizationBillingGroupListBillingGroupBillingContactEmail>> billingContactEmails() {
+        return Optional.ofNullable(this.billingContactEmails);
     }
 
     /**
      * List of billing contact emails.
      * 
      */
-    @Import(name="billingEmails", required=true)
-    private List<String> billingEmails;
+    @Import(name="billingEmails")
+    private @Nullable List<GetOrganizationBillingGroupListBillingGroupBillingEmail> billingEmails;
 
     /**
      * @return List of billing contact emails.
      * 
      */
-    public List<String> billingEmails() {
-        return this.billingEmails;
+    public Optional<List<GetOrganizationBillingGroupListBillingGroupBillingEmail>> billingEmails() {
+        return Optional.ofNullable(this.billingEmails);
     }
 
     /**
@@ -135,18 +140,18 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
     }
 
     /**
-     * Payment method ID.
+     * Payment method.
      * 
      */
-    @Import(name="paymentMethodId", required=true)
-    private String paymentMethodId;
+    @Import(name="paymentMethods")
+    private @Nullable List<GetOrganizationBillingGroupListBillingGroupPaymentMethod> paymentMethods;
 
     /**
-     * @return Payment method ID.
+     * @return Payment method.
      * 
      */
-    public String paymentMethodId() {
-        return this.paymentMethodId;
+    public Optional<List<GetOrganizationBillingGroupListBillingGroupPaymentMethod>> paymentMethods() {
+        return Optional.ofNullable(this.paymentMethods);
     }
 
     /**
@@ -190,7 +195,7 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
         this.currency = $.currency;
         this.customInvoiceText = $.customInvoiceText;
         this.organizationId = $.organizationId;
-        this.paymentMethodId = $.paymentMethodId;
+        this.paymentMethods = $.paymentMethods;
         this.shippingAddressId = $.shippingAddressId;
         this.vatId = $.vatId;
     }
@@ -230,7 +235,7 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
          * @return builder
          * 
          */
-        public Builder billingContactEmails(List<String> billingContactEmails) {
+        public Builder billingContactEmails(@Nullable List<GetOrganizationBillingGroupListBillingGroupBillingContactEmail> billingContactEmails) {
             $.billingContactEmails = billingContactEmails;
             return this;
         }
@@ -241,7 +246,7 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
          * @return builder
          * 
          */
-        public Builder billingContactEmails(String... billingContactEmails) {
+        public Builder billingContactEmails(GetOrganizationBillingGroupListBillingGroupBillingContactEmail... billingContactEmails) {
             return billingContactEmails(List.of(billingContactEmails));
         }
 
@@ -251,7 +256,7 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
          * @return builder
          * 
          */
-        public Builder billingEmails(List<String> billingEmails) {
+        public Builder billingEmails(@Nullable List<GetOrganizationBillingGroupListBillingGroupBillingEmail> billingEmails) {
             $.billingEmails = billingEmails;
             return this;
         }
@@ -262,7 +267,7 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
          * @return builder
          * 
          */
-        public Builder billingEmails(String... billingEmails) {
+        public Builder billingEmails(GetOrganizationBillingGroupListBillingGroupBillingEmail... billingEmails) {
             return billingEmails(List.of(billingEmails));
         }
 
@@ -322,14 +327,24 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
         }
 
         /**
-         * @param paymentMethodId Payment method ID.
+         * @param paymentMethods Payment method.
          * 
          * @return builder
          * 
          */
-        public Builder paymentMethodId(String paymentMethodId) {
-            $.paymentMethodId = paymentMethodId;
+        public Builder paymentMethods(@Nullable List<GetOrganizationBillingGroupListBillingGroupPaymentMethod> paymentMethods) {
+            $.paymentMethods = paymentMethods;
             return this;
+        }
+
+        /**
+         * @param paymentMethods Payment method.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentMethods(GetOrganizationBillingGroupListBillingGroupPaymentMethod... paymentMethods) {
+            return paymentMethods(List.of(paymentMethods));
         }
 
         /**
@@ -358,12 +373,6 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
             if ($.billingAddressId == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "billingAddressId");
             }
-            if ($.billingContactEmails == null) {
-                throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "billingContactEmails");
-            }
-            if ($.billingEmails == null) {
-                throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "billingEmails");
-            }
             if ($.billingGroupId == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "billingGroupId");
             }
@@ -378,9 +387,6 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
             }
             if ($.organizationId == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "organizationId");
-            }
-            if ($.paymentMethodId == null) {
-                throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "paymentMethodId");
             }
             if ($.shippingAddressId == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "shippingAddressId");

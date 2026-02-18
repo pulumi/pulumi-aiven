@@ -134,14 +134,14 @@ public class OrganizationPermission extends com.pulumi.resources.CustomResource 
         return this.permissions;
     }
     /**
-     * Resource Id. Changing this property forces recreation of the resource.
+     * The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
-     * @return Resource Id. Changing this property forces recreation of the resource.
+     * @return The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceId() {

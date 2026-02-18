@@ -51,7 +51,7 @@ type OrganizationalUnit struct {
 
 	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The name of the organizational unit. Maximum length: `128`.
+	// The name of the organizational unit. Maximum length: `83`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the organization that the unit is created in. Maximum length: `36`.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
@@ -97,7 +97,7 @@ func GetOrganizationalUnit(ctx *pulumi.Context,
 type organizationalUnitState struct {
 	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime *string `pulumi:"createTime"`
-	// The name of the organizational unit. Maximum length: `128`.
+	// The name of the organizational unit. Maximum length: `83`.
 	Name *string `pulumi:"name"`
 	// The ID of the organization that the unit is created in. Maximum length: `36`.
 	ParentId *string `pulumi:"parentId"`
@@ -111,7 +111,7 @@ type organizationalUnitState struct {
 type OrganizationalUnitState struct {
 	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime pulumi.StringPtrInput
-	// The name of the organizational unit. Maximum length: `128`.
+	// The name of the organizational unit. Maximum length: `83`.
 	Name pulumi.StringPtrInput
 	// The ID of the organization that the unit is created in. Maximum length: `36`.
 	ParentId pulumi.StringPtrInput
@@ -127,7 +127,7 @@ func (OrganizationalUnitState) ElementType() reflect.Type {
 }
 
 type organizationalUnitArgs struct {
-	// The name of the organizational unit. Maximum length: `128`.
+	// The name of the organizational unit. Maximum length: `83`.
 	Name *string `pulumi:"name"`
 	// The ID of the organization that the unit is created in. Maximum length: `36`.
 	ParentId string                      `pulumi:"parentId"`
@@ -136,7 +136,7 @@ type organizationalUnitArgs struct {
 
 // The set of arguments for constructing a OrganizationalUnit resource.
 type OrganizationalUnitArgs struct {
-	// The name of the organizational unit. Maximum length: `128`.
+	// The name of the organizational unit. Maximum length: `83`.
 	Name pulumi.StringPtrInput
 	// The ID of the organization that the unit is created in. Maximum length: `36`.
 	ParentId pulumi.StringInput
@@ -235,7 +235,7 @@ func (o OrganizationalUnitOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The name of the organizational unit. Maximum length: `128`.
+// The name of the organizational unit. Maximum length: `83`.
 func (o OrganizationalUnitOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

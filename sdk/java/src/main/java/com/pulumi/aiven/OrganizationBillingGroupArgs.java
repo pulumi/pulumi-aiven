@@ -3,6 +3,9 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingContactEmailArgs;
+import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingEmailArgs;
+import com.pulumi.aiven.inputs.OrganizationBillingGroupPaymentMethodArgs;
 import com.pulumi.aiven.inputs.OrganizationBillingGroupTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -34,32 +37,32 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Aiven contacts these email addresses when there are billing issues or questions.
+     * Required property. List of billing contact emails.
      * 
      */
     @Import(name="billingContactEmails", required=true)
-    private Output<List<String>> billingContactEmails;
+    private Output<List<OrganizationBillingGroupBillingContactEmailArgs>> billingContactEmails;
 
     /**
-     * @return Aiven contacts these email addresses when there are billing issues or questions.
+     * @return Required property. List of billing contact emails.
      * 
      */
-    public Output<List<String>> billingContactEmails() {
+    public Output<List<OrganizationBillingGroupBillingContactEmailArgs>> billingContactEmails() {
         return this.billingContactEmails;
     }
 
     /**
-     * PDF invoices are sent to these email addresses.
+     * Required property. List of billing contact emails.
      * 
      */
     @Import(name="billingEmails", required=true)
-    private Output<List<String>> billingEmails;
+    private Output<List<OrganizationBillingGroupBillingEmailArgs>> billingEmails;
 
     /**
-     * @return PDF invoices are sent to these email addresses.
+     * @return Required property. List of billing contact emails.
      * 
      */
-    public Output<List<String>> billingEmails() {
+    public Output<List<OrganizationBillingGroupBillingEmailArgs>> billingEmails() {
         return this.billingEmails;
     }
 
@@ -76,21 +79,6 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
      */
     public Output<String> billingGroupName() {
         return this.billingGroupName;
-    }
-
-    /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    @Import(name="currency")
-    private @Nullable Output<String> currency;
-
-    /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    public Optional<Output<String>> currency() {
-        return Optional.ofNullable(this.currency);
     }
 
     /**
@@ -124,18 +112,18 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Payment method ID.
+     * Required property. Payment method.
      * 
      */
-    @Import(name="paymentMethodId", required=true)
-    private Output<String> paymentMethodId;
+    @Import(name="paymentMethod", required=true)
+    private Output<OrganizationBillingGroupPaymentMethodArgs> paymentMethod;
 
     /**
-     * @return Payment method ID.
+     * @return Required property. Payment method.
      * 
      */
-    public Output<String> paymentMethodId() {
-        return this.paymentMethodId;
+    public Output<OrganizationBillingGroupPaymentMethodArgs> paymentMethod() {
+        return this.paymentMethod;
     }
 
     /**
@@ -182,10 +170,9 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
         this.billingContactEmails = $.billingContactEmails;
         this.billingEmails = $.billingEmails;
         this.billingGroupName = $.billingGroupName;
-        this.currency = $.currency;
         this.customInvoiceText = $.customInvoiceText;
         this.organizationId = $.organizationId;
-        this.paymentMethodId = $.paymentMethodId;
+        this.paymentMethod = $.paymentMethod;
         this.shippingAddressId = $.shippingAddressId;
         this.timeouts = $.timeouts;
         this.vatId = $.vatId;
@@ -231,64 +218,64 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param billingContactEmails Aiven contacts these email addresses when there are billing issues or questions.
+         * @param billingContactEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingContactEmails(Output<List<String>> billingContactEmails) {
+        public Builder billingContactEmails(Output<List<OrganizationBillingGroupBillingContactEmailArgs>> billingContactEmails) {
             $.billingContactEmails = billingContactEmails;
             return this;
         }
 
         /**
-         * @param billingContactEmails Aiven contacts these email addresses when there are billing issues or questions.
+         * @param billingContactEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingContactEmails(List<String> billingContactEmails) {
+        public Builder billingContactEmails(List<OrganizationBillingGroupBillingContactEmailArgs> billingContactEmails) {
             return billingContactEmails(Output.of(billingContactEmails));
         }
 
         /**
-         * @param billingContactEmails Aiven contacts these email addresses when there are billing issues or questions.
+         * @param billingContactEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingContactEmails(String... billingContactEmails) {
+        public Builder billingContactEmails(OrganizationBillingGroupBillingContactEmailArgs... billingContactEmails) {
             return billingContactEmails(List.of(billingContactEmails));
         }
 
         /**
-         * @param billingEmails PDF invoices are sent to these email addresses.
+         * @param billingEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingEmails(Output<List<String>> billingEmails) {
+        public Builder billingEmails(Output<List<OrganizationBillingGroupBillingEmailArgs>> billingEmails) {
             $.billingEmails = billingEmails;
             return this;
         }
 
         /**
-         * @param billingEmails PDF invoices are sent to these email addresses.
+         * @param billingEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingEmails(List<String> billingEmails) {
+        public Builder billingEmails(List<OrganizationBillingGroupBillingEmailArgs> billingEmails) {
             return billingEmails(Output.of(billingEmails));
         }
 
         /**
-         * @param billingEmails PDF invoices are sent to these email addresses.
+         * @param billingEmails Required property. List of billing contact emails.
          * 
          * @return builder
          * 
          */
-        public Builder billingEmails(String... billingEmails) {
+        public Builder billingEmails(OrganizationBillingGroupBillingEmailArgs... billingEmails) {
             return billingEmails(List.of(billingEmails));
         }
 
@@ -311,27 +298,6 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
          */
         public Builder billingGroupName(String billingGroupName) {
             return billingGroupName(Output.of(billingGroupName));
-        }
-
-        /**
-         * @param currency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder currency(@Nullable Output<String> currency) {
-            $.currency = currency;
-            return this;
-        }
-
-        /**
-         * @param currency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder currency(String currency) {
-            return currency(Output.of(currency));
         }
 
         /**
@@ -377,24 +343,24 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param paymentMethodId Payment method ID.
+         * @param paymentMethod Required property. Payment method.
          * 
          * @return builder
          * 
          */
-        public Builder paymentMethodId(Output<String> paymentMethodId) {
-            $.paymentMethodId = paymentMethodId;
+        public Builder paymentMethod(Output<OrganizationBillingGroupPaymentMethodArgs> paymentMethod) {
+            $.paymentMethod = paymentMethod;
             return this;
         }
 
         /**
-         * @param paymentMethodId Payment method ID.
+         * @param paymentMethod Required property. Payment method.
          * 
          * @return builder
          * 
          */
-        public Builder paymentMethodId(String paymentMethodId) {
-            return paymentMethodId(Output.of(paymentMethodId));
+        public Builder paymentMethod(OrganizationBillingGroupPaymentMethodArgs paymentMethod) {
+            return paymentMethod(Output.of(paymentMethod));
         }
 
         /**
@@ -464,8 +430,8 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
             if ($.organizationId == null) {
                 throw new MissingRequiredPropertyException("OrganizationBillingGroupArgs", "organizationId");
             }
-            if ($.paymentMethodId == null) {
-                throw new MissingRequiredPropertyException("OrganizationBillingGroupArgs", "paymentMethodId");
+            if ($.paymentMethod == null) {
+                throw new MissingRequiredPropertyException("OrganizationBillingGroupArgs", "paymentMethod");
             }
             if ($.shippingAddressId == null) {
                 throw new MissingRequiredPropertyException("OrganizationBillingGroupArgs", "shippingAddressId");

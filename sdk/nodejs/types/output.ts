@@ -639,6 +639,10 @@ export interface AlloydbomniComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -856,6 +860,10 @@ export interface CassandraComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -1066,6 +1074,10 @@ export interface ClickhouseComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -1077,6 +1089,31 @@ export interface ClickhouseComponent {
      * DNS usage name
      */
     usage: string;
+}
+
+export interface ClickhouseDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface ClickhouseGrantPrivilegeGrant {
@@ -1138,6 +1175,25 @@ export interface ClickhouseTechEmail {
     email: string;
 }
 
+export interface CmkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface DragonflyComponent {
     /**
      * Service component name
@@ -1163,6 +1219,10 @@ export interface DragonflyComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -1420,6 +1480,10 @@ export interface FlinkComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -2320,6 +2384,10 @@ export interface GetAlloydbomniComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -2519,6 +2587,10 @@ export interface GetCassandaComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -2710,6 +2782,10 @@ export interface GetCassandraComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -2921,6 +2997,10 @@ export interface GetClickhouseComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -2932,6 +3012,13 @@ export interface GetClickhouseComponent {
      * DNS usage name
      */
     usage: string;
+}
+
+export interface GetClickhouseDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetClickhouseServiceIntegration {
@@ -2988,6 +3075,10 @@ export interface GetDragonflyComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -3246,6 +3337,10 @@ export interface GetFlinkComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -3408,6 +3503,10 @@ export interface GetGrafanaComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -3949,6 +4048,10 @@ export interface GetInfluxDbComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -4178,6 +4281,10 @@ export interface GetKafkaComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -4216,6 +4323,10 @@ export interface GetKafkaConnectComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -5257,6 +5368,10 @@ export interface GetKafkaMirrorMakerComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -5589,6 +5704,10 @@ export interface GetM3AggregatorComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -5715,6 +5834,10 @@ export interface GetM3DbComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -6080,6 +6203,10 @@ export interface GetMySqlComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -6543,6 +6670,10 @@ export interface GetOpenSearchComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -6653,7 +6784,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+     * Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
      */
     opensearchVersion?: string;
     /**
@@ -7779,6 +7910,20 @@ export interface GetOrganizationApplicationUserTimeouts {
     read?: string;
 }
 
+export interface GetOrganizationBillingGroupBillingContactEmail {
+    /**
+     * Email.
+     */
+    email: string;
+}
+
+export interface GetOrganizationBillingGroupBillingEmail {
+    /**
+     * Email.
+     */
+    email: string;
+}
+
 export interface GetOrganizationBillingGroupListBillingGroup {
     /**
      * Billing address ID.
@@ -7787,11 +7932,11 @@ export interface GetOrganizationBillingGroupListBillingGroup {
     /**
      * List of billing contact emails.
      */
-    billingContactEmails: string[];
+    billingContactEmails?: outputs.GetOrganizationBillingGroupListBillingGroupBillingContactEmail[];
     /**
      * List of billing contact emails.
      */
-    billingEmails: string[];
+    billingEmails?: outputs.GetOrganizationBillingGroupListBillingGroupBillingEmail[];
     /**
      * Billing group ID.
      */
@@ -7813,9 +7958,9 @@ export interface GetOrganizationBillingGroupListBillingGroup {
      */
     organizationId: string;
     /**
-     * Payment method ID.
+     * Payment method.
      */
-    paymentMethodId: string;
+    paymentMethods?: outputs.GetOrganizationBillingGroupListBillingGroupPaymentMethod[];
     /**
      * Shipping address ID.
      */
@@ -7826,11 +7971,47 @@ export interface GetOrganizationBillingGroupListBillingGroup {
     vatId: string;
 }
 
+export interface GetOrganizationBillingGroupListBillingGroupBillingContactEmail {
+    /**
+     * Email.
+     */
+    email: string;
+}
+
+export interface GetOrganizationBillingGroupListBillingGroupBillingEmail {
+    /**
+     * Email.
+     */
+    email: string;
+}
+
+export interface GetOrganizationBillingGroupListBillingGroupPaymentMethod {
+    /**
+     * Payment method ID.
+     */
+    paymentMethodId: string;
+    /**
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     */
+    paymentMethodType: string;
+}
+
 export interface GetOrganizationBillingGroupListTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
     read?: string;
+}
+
+export interface GetOrganizationBillingGroupPaymentMethod {
+    /**
+     * Payment method ID.
+     */
+    paymentMethodId: string;
+    /**
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     */
+    paymentMethodType: string;
 }
 
 export interface GetOrganizationBillingGroupTimeouts {
@@ -8081,6 +8262,10 @@ export interface GetPgComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -8881,6 +9066,10 @@ export interface GetRedisComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -10369,6 +10558,10 @@ export interface GetThanosComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -10635,6 +10828,10 @@ export interface GetValkeyComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -10999,6 +11196,10 @@ export interface GrafanaComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -11540,6 +11741,10 @@ export interface InfluxDbComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -11769,6 +11974,10 @@ export interface KafkaComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -11807,6 +12016,10 @@ export interface KafkaConnectComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -12848,6 +13061,10 @@ export interface KafkaMirrorMakerComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -13180,6 +13397,10 @@ export interface M3AggregatorComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -13306,6 +13527,10 @@ export interface M3DbComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -13671,6 +13896,10 @@ export interface MySqlComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -14170,6 +14399,10 @@ export interface OpenSearchComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -14280,7 +14513,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: outputs.OpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+     * Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
      */
     opensearchVersion?: string;
     /**
@@ -15449,6 +15682,31 @@ export interface OrganizationApplicationUserTokenTimeouts {
     update?: string;
 }
 
+export interface OrganizationBillingGroupBillingContactEmail {
+    /**
+     * Email. Maximum length: `254`.
+     */
+    email: string;
+}
+
+export interface OrganizationBillingGroupBillingEmail {
+    /**
+     * Email. Maximum length: `254`.
+     */
+    email: string;
+}
+
+export interface OrganizationBillingGroupPaymentMethod {
+    /**
+     * Payment method ID. Maximum length: `36`.
+     */
+    paymentMethodId: string;
+    /**
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     */
+    paymentMethodType: string;
+}
+
 export interface OrganizationBillingGroupTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -15647,6 +15905,10 @@ export interface PgComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -16465,6 +16727,10 @@ export interface RedisComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */
@@ -17772,6 +18038,10 @@ export interface ThanosComponent {
      */
     port: number;
     /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
+    /**
      * Network access route
      */
     route: string;
@@ -18038,6 +18308,10 @@ export interface ValkeyComponent {
      * Port number for connecting to the service component
      */
     port: number;
+    /**
+     * Privatelink connection ID
+     */
+    privatelinkConnectionId: string;
     /**
      * Network access route
      */

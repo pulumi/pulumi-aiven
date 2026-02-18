@@ -139,6 +139,8 @@ func (GcpPrivatelinkConnectionApprovalState) ElementType() reflect.Type {
 type gcpPrivatelinkConnectionApprovalArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
+	// The Google Private Service Connect connection ID.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// The Private Service Connect connection user IP address.
@@ -149,6 +151,8 @@ type gcpPrivatelinkConnectionApprovalArgs struct {
 type GcpPrivatelinkConnectionApprovalArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
+	// The Google Private Service Connect connection ID.
+	PscConnectionId pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// The Private Service Connect connection user IP address.

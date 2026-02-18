@@ -26,7 +26,7 @@ class GetServiceComponentResult:
     """
     A collection of values returned by getServiceComponent.
     """
-    def __init__(__self__, component=None, host=None, id=None, kafka_authentication_method=None, kafka_ssl_ca=None, port=None, project=None, route=None, service_name=None, ssl=None, usage=None):
+    def __init__(__self__, component=None, host=None, id=None, kafka_authentication_method=None, kafka_ssl_ca=None, port=None, privatelink_connection_id=None, project=None, route=None, service_name=None, ssl=None, usage=None):
         if component and not isinstance(component, str):
             raise TypeError("Expected argument 'component' to be a str")
         pulumi.set(__self__, "component", component)
@@ -45,6 +45,9 @@ class GetServiceComponentResult:
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
+        if privatelink_connection_id and not isinstance(privatelink_connection_id, str):
+            raise TypeError("Expected argument 'privatelink_connection_id' to be a str")
+        pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -110,6 +113,14 @@ class GetServiceComponentResult:
         return pulumi.get(self, "port")
 
     @_builtins.property
+    @pulumi.getter(name="privatelinkConnectionId")
+    def privatelink_connection_id(self) -> _builtins.str:
+        """
+        Privatelink connection ID
+        """
+        return pulumi.get(self, "privatelink_connection_id")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
@@ -162,6 +173,7 @@ class AwaitableGetServiceComponentResult(GetServiceComponentResult):
             kafka_authentication_method=self.kafka_authentication_method,
             kafka_ssl_ca=self.kafka_ssl_ca,
             port=self.port,
+            privatelink_connection_id=self.privatelink_connection_id,
             project=self.project,
             route=self.route,
             service_name=self.service_name,
@@ -172,6 +184,7 @@ class AwaitableGetServiceComponentResult(GetServiceComponentResult):
 def get_service_component(component: Optional[_builtins.str] = None,
                           kafka_authentication_method: Optional[_builtins.str] = None,
                           kafka_ssl_ca: Optional[_builtins.str] = None,
+                          privatelink_connection_id: Optional[_builtins.str] = None,
                           project: Optional[_builtins.str] = None,
                           route: Optional[_builtins.str] = None,
                           service_name: Optional[_builtins.str] = None,
@@ -200,6 +213,7 @@ def get_service_component(component: Optional[_builtins.str] = None,
     :param _builtins.str component: Service component name
     :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
     :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    :param _builtins.str privatelink_connection_id: Privatelink connection ID
     :param _builtins.str project: Project name
     :param _builtins.str route: Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
     :param _builtins.str service_name: Service name
@@ -210,6 +224,7 @@ def get_service_component(component: Optional[_builtins.str] = None,
     __args__['component'] = component
     __args__['kafkaAuthenticationMethod'] = kafka_authentication_method
     __args__['kafkaSslCa'] = kafka_ssl_ca
+    __args__['privatelinkConnectionId'] = privatelink_connection_id
     __args__['project'] = project
     __args__['route'] = route
     __args__['serviceName'] = service_name
@@ -225,6 +240,7 @@ def get_service_component(component: Optional[_builtins.str] = None,
         kafka_authentication_method=pulumi.get(__ret__, 'kafka_authentication_method'),
         kafka_ssl_ca=pulumi.get(__ret__, 'kafka_ssl_ca'),
         port=pulumi.get(__ret__, 'port'),
+        privatelink_connection_id=pulumi.get(__ret__, 'privatelink_connection_id'),
         project=pulumi.get(__ret__, 'project'),
         route=pulumi.get(__ret__, 'route'),
         service_name=pulumi.get(__ret__, 'service_name'),
@@ -233,6 +249,7 @@ def get_service_component(component: Optional[_builtins.str] = None,
 def get_service_component_output(component: Optional[pulumi.Input[_builtins.str]] = None,
                                  kafka_authentication_method: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  kafka_ssl_ca: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 privatelink_connection_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  project: Optional[pulumi.Input[_builtins.str]] = None,
                                  route: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  service_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -261,6 +278,7 @@ def get_service_component_output(component: Optional[pulumi.Input[_builtins.str]
     :param _builtins.str component: Service component name
     :param _builtins.str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
     :param _builtins.str kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+    :param _builtins.str privatelink_connection_id: Privatelink connection ID
     :param _builtins.str project: Project name
     :param _builtins.str route: Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
     :param _builtins.str service_name: Service name
@@ -271,6 +289,7 @@ def get_service_component_output(component: Optional[pulumi.Input[_builtins.str]
     __args__['component'] = component
     __args__['kafkaAuthenticationMethod'] = kafka_authentication_method
     __args__['kafkaSslCa'] = kafka_ssl_ca
+    __args__['privatelinkConnectionId'] = privatelink_connection_id
     __args__['project'] = project
     __args__['route'] = route
     __args__['serviceName'] = service_name
@@ -285,6 +304,7 @@ def get_service_component_output(component: Optional[pulumi.Input[_builtins.str]
         kafka_authentication_method=pulumi.get(__response__, 'kafka_authentication_method'),
         kafka_ssl_ca=pulumi.get(__response__, 'kafka_ssl_ca'),
         port=pulumi.get(__response__, 'port'),
+        privatelink_connection_id=pulumi.get(__response__, 'privatelink_connection_id'),
         project=pulumi.get(__response__, 'project'),
         route=pulumi.get(__response__, 'route'),
         service_name=pulumi.get(__response__, 'service_name'),

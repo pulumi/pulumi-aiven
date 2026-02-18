@@ -119,7 +119,7 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable OpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
     /**
-     * @return Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+     * @return Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
      * 
      */
     private @Nullable String opensearchVersion;
@@ -299,7 +299,7 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.opensearchDashboards);
     }
     /**
-     * @return Enum: `1`, `2`, `2.19`, and newer. OpenSearch version.
+     * @return Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
      * 
      */
     public Optional<String> opensearchVersion() {

@@ -25,14 +25,14 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
     public static final AlloydbomniState Empty = new AlloydbomniState();
 
     /**
-     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     @Import(name="additionalDiskSpace")
     private @Nullable Output<String> additionalDiskSpace;
 
     /**
-     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     public Optional<Output<String>> additionalDiskSpace() {
@@ -100,24 +100,16 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-     * 
-     * @deprecated
-     * Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+     * Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      * 
      */
-    @Deprecated /* Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan. */
     @Import(name="diskSpace")
     private @Nullable Output<String> diskSpace;
 
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-     * 
-     * @deprecated
-     * Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+     * @return Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      * 
      */
-    @Deprecated /* Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan. */
     public Optional<Output<String>> diskSpace() {
         return Optional.ofNullable(this.diskSpace);
     }
@@ -168,14 +160,14 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+     * The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      * 
      */
     @Import(name="diskSpaceUsed")
     private @Nullable Output<String> diskSpaceUsed;
 
     /**
-     * @return The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+     * @return The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      * 
      */
     public Optional<Output<String>> diskSpaceUsed() {
@@ -228,14 +220,14 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     @Import(name="plan")
     private @Nullable Output<String> plan;
 
     /**
-     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+     * @return Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     public Optional<Output<String>> plan() {
@@ -536,7 +528,7 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
          * 
          * @return builder
          * 
@@ -547,7 +539,7 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
+         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
          * 
          * @return builder
          * 
@@ -651,30 +643,22 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+         * @param diskSpace Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-         * 
          */
-        @Deprecated /* Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan. */
         public Builder diskSpace(@Nullable Output<String> diskSpace) {
             $.diskSpace = diskSpace;
             return this;
         }
 
         /**
-         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing. Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
+         * @param diskSpace Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan.
-         * 
          */
-        @Deprecated /* Please use `additionalDiskSpace` to specify the space to be added to the default disk space defined by the plan. */
         public Builder diskSpace(String diskSpace) {
             return diskSpace(Output.of(diskSpace));
         }
@@ -743,7 +727,7 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpaceUsed The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+         * @param diskSpaceUsed The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
          * 
          * @return builder
          * 
@@ -754,7 +738,7 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpaceUsed The disk space that the service is currently using. This is the sum of `diskSpace` and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
+         * @param diskSpaceUsed The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
          * 
          * @return builder
          * 
@@ -827,7 +811,7 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+         * @param plan Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
          * 
          * @return builder
          * 
@@ -838,7 +822,7 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
+         * @param plan Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
          * 
          * @return builder
          * 

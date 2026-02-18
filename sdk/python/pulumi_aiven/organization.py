@@ -25,7 +25,7 @@ class OrganizationArgs:
                  timeouts: Optional[pulumi.Input['OrganizationTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Organization resource.
-        :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `83`.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -36,7 +36,7 @@ class OrganizationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the organization. Maximum length: `128`.
+        Name of the organization. Maximum length: `83`.
         """
         return pulumi.get(self, "name")
 
@@ -65,7 +65,7 @@ class _OrganizationState:
         """
         Input properties used for looking up and filtering Organization resources.
         :param pulumi.Input[_builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
-        :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `83`.
         :param pulumi.Input[_builtins.str] tenant_id: Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
         :param pulumi.Input[_builtins.str] update_time: Timestamp in ISO 8601 format, always in UTC.
         """
@@ -99,7 +99,7 @@ class _OrganizationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the organization. Maximum length: `128`.
+        Name of the organization. Maximum length: `83`.
         """
         return pulumi.get(self, "name")
 
@@ -171,7 +171,7 @@ class Organization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `83`.
         """
         ...
     @overload
@@ -251,7 +251,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
-        :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `83`.
         :param pulumi.Input[_builtins.str] tenant_id: Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
         :param pulumi.Input[_builtins.str] update_time: Timestamp in ISO 8601 format, always in UTC.
         """
@@ -278,7 +278,7 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the organization. Maximum length: `128`.
+        Name of the organization. Maximum length: `83`.
         """
         return pulumi.get(self, "name")
 

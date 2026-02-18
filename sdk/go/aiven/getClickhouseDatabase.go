@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about a ClickHouse database.
+// Gets information about an Aiven for ClickHouse database.
 //
 // ## Example Usage
 //
@@ -52,26 +52,30 @@ func LookupClickhouseDatabase(ctx *pulumi.Context, args *LookupClickhouseDatabas
 
 // A collection of arguments for invoking getClickhouseDatabase.
 type LookupClickhouseDatabaseArgs struct {
-	// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+	// Service database name.
 	Name string `pulumi:"name"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// Service name.
+	ServiceName string                         `pulumi:"serviceName"`
+	Timeouts    *GetClickhouseDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getClickhouseDatabase.
 type LookupClickhouseDatabaseResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name/name`.
 	Id string `pulumi:"id"`
-	// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+	// Service database name.
 	Name string `pulumi:"name"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name.
 	ServiceName string `pulumi:"serviceName"`
-	// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
-	TerminationProtection bool `pulumi:"terminationProtection"`
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection bool                           `pulumi:"terminationProtection"`
+	Timeouts              *GetClickhouseDatabaseTimeouts `pulumi:"timeouts"`
 }
 
 func LookupClickhouseDatabaseOutput(ctx *pulumi.Context, args LookupClickhouseDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupClickhouseDatabaseResultOutput {
@@ -85,12 +89,13 @@ func LookupClickhouseDatabaseOutput(ctx *pulumi.Context, args LookupClickhouseDa
 
 // A collection of arguments for invoking getClickhouseDatabase.
 type LookupClickhouseDatabaseOutputArgs struct {
-	// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+	// Service database name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Service name.
+	ServiceName pulumi.StringInput                    `pulumi:"serviceName"`
+	Timeouts    GetClickhouseDatabaseTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupClickhouseDatabaseOutputArgs) ElementType() reflect.Type {
@@ -112,29 +117,35 @@ func (o LookupClickhouseDatabaseResultOutput) ToLookupClickhouseDatabaseResultOu
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name/name`.
 func (o LookupClickhouseDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the ClickHouse database. Changing this property forces recreation of the resource.
+// Service database name.
 func (o LookupClickhouseDatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name.
 func (o LookupClickhouseDatabaseResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name.
 func (o LookupClickhouseDatabaseResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+//
+// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 func (o LookupClickhouseDatabaseResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
+}
+
+func (o LookupClickhouseDatabaseResultOutput) Timeouts() GetClickhouseDatabaseTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupClickhouseDatabaseResult) *GetClickhouseDatabaseTimeouts { return v.Timeouts }).(GetClickhouseDatabaseTimeoutsPtrOutput)
 }
 
 func init() {

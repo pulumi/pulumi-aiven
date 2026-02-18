@@ -38,6 +38,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
+        /// Privatelink connection ID
+        /// </summary>
+        public readonly string? PrivatelinkConnectionId;
+        /// <summary>
         /// Network access route
         /// </summary>
         public readonly string? Route;
@@ -64,6 +68,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? port,
 
+            string? privatelinkConnectionId,
+
             string? route,
 
             bool? ssl,
@@ -76,6 +82,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaAuthenticationMethod = kafkaAuthenticationMethod;
             KafkaSslCa = kafkaSslCa;
             Port = port;
+            PrivatelinkConnectionId = privatelinkConnectionId;
             Route = route;
             Ssl = ssl;
             Usage = usage;

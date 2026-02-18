@@ -39,6 +39,11 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     private Boolean exactlyOnceDeliveryEnabled;
     /**
+     * @return Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     * 
+     */
+    private Boolean followerFetchingEnabled;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -134,6 +139,13 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     public Boolean exactlyOnceDeliveryEnabled() {
         return this.exactlyOnceDeliveryEnabled;
+    }
+    /**
+     * @return Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     * 
+     */
+    public Boolean followerFetchingEnabled() {
+        return this.followerFetchingEnabled;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -234,6 +246,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         private Boolean emitHeartbeatsEnabled;
         private Boolean enable;
         private Boolean exactlyOnceDeliveryEnabled;
+        private Boolean followerFetchingEnabled;
         private String id;
         private String offsetSyncsTopicLocation;
         private String project;
@@ -254,6 +267,7 @@ public final class GetMirrorMakerReplicationFlowResult {
     	      this.emitHeartbeatsEnabled = defaults.emitHeartbeatsEnabled;
     	      this.enable = defaults.enable;
     	      this.exactlyOnceDeliveryEnabled = defaults.exactlyOnceDeliveryEnabled;
+    	      this.followerFetchingEnabled = defaults.followerFetchingEnabled;
     	      this.id = defaults.id;
     	      this.offsetSyncsTopicLocation = defaults.offsetSyncsTopicLocation;
     	      this.project = defaults.project;
@@ -309,6 +323,14 @@ public final class GetMirrorMakerReplicationFlowResult {
               throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "exactlyOnceDeliveryEnabled");
             }
             this.exactlyOnceDeliveryEnabled = exactlyOnceDeliveryEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder followerFetchingEnabled(Boolean followerFetchingEnabled) {
+            if (followerFetchingEnabled == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "followerFetchingEnabled");
+            }
+            this.followerFetchingEnabled = followerFetchingEnabled;
             return this;
         }
         @CustomType.Setter
@@ -420,6 +442,7 @@ public final class GetMirrorMakerReplicationFlowResult {
             _resultValue.emitHeartbeatsEnabled = emitHeartbeatsEnabled;
             _resultValue.enable = enable;
             _resultValue.exactlyOnceDeliveryEnabled = exactlyOnceDeliveryEnabled;
+            _resultValue.followerFetchingEnabled = followerFetchingEnabled;
             _resultValue.id = id;
             _resultValue.offsetSyncsTopicLocation = offsetSyncsTopicLocation;
             _resultValue.project = project;

@@ -75,14 +75,14 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Name of the organization. Maximum length: `128`.
+     * Name of the organization. Maximum length: `83`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the organization. Maximum length: `128`.
+     * @return Name of the organization. Maximum length: `83`.
      * 
      */
     public Output<String> name() {

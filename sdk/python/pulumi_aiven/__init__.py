@@ -29,6 +29,7 @@ from .clickhouse_database import *
 from .clickhouse_grant import *
 from .clickhouse_role import *
 from .clickhouse_user import *
+from .cmk import *
 from .connection_pool import *
 from .dragonfly import *
 from .flink import *
@@ -382,6 +383,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/clickhouseUser:ClickhouseUser": "ClickhouseUser"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/cmk",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/cmk:Cmk": "Cmk"
   }
  },
  {

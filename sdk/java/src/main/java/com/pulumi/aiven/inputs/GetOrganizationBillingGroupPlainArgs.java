@@ -3,10 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationBillingGroupBillingContactEmail;
+import com.pulumi.aiven.inputs.GetOrganizationBillingGroupBillingEmail;
+import com.pulumi.aiven.inputs.GetOrganizationBillingGroupPaymentMethod;
 import com.pulumi.aiven.inputs.GetOrganizationBillingGroupTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +19,36 @@ import javax.annotation.Nullable;
 public final class GetOrganizationBillingGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetOrganizationBillingGroupPlainArgs Empty = new GetOrganizationBillingGroupPlainArgs();
+
+    /**
+     * List of billing contact emails.
+     * 
+     */
+    @Import(name="billingContactEmails")
+    private @Nullable List<GetOrganizationBillingGroupBillingContactEmail> billingContactEmails;
+
+    /**
+     * @return List of billing contact emails.
+     * 
+     */
+    public Optional<List<GetOrganizationBillingGroupBillingContactEmail>> billingContactEmails() {
+        return Optional.ofNullable(this.billingContactEmails);
+    }
+
+    /**
+     * List of billing contact emails.
+     * 
+     */
+    @Import(name="billingEmails")
+    private @Nullable List<GetOrganizationBillingGroupBillingEmail> billingEmails;
+
+    /**
+     * @return List of billing contact emails.
+     * 
+     */
+    public Optional<List<GetOrganizationBillingGroupBillingEmail>> billingEmails() {
+        return Optional.ofNullable(this.billingEmails);
+    }
 
     /**
      * Billing group ID.
@@ -46,6 +80,21 @@ public final class GetOrganizationBillingGroupPlainArgs extends com.pulumi.resou
         return this.organizationId;
     }
 
+    /**
+     * Payment method.
+     * 
+     */
+    @Import(name="paymentMethods")
+    private @Nullable List<GetOrganizationBillingGroupPaymentMethod> paymentMethods;
+
+    /**
+     * @return Payment method.
+     * 
+     */
+    public Optional<List<GetOrganizationBillingGroupPaymentMethod>> paymentMethods() {
+        return Optional.ofNullable(this.paymentMethods);
+    }
+
     @Import(name="timeouts")
     private @Nullable GetOrganizationBillingGroupTimeouts timeouts;
 
@@ -56,8 +105,11 @@ public final class GetOrganizationBillingGroupPlainArgs extends com.pulumi.resou
     private GetOrganizationBillingGroupPlainArgs() {}
 
     private GetOrganizationBillingGroupPlainArgs(GetOrganizationBillingGroupPlainArgs $) {
+        this.billingContactEmails = $.billingContactEmails;
+        this.billingEmails = $.billingEmails;
         this.billingGroupId = $.billingGroupId;
         this.organizationId = $.organizationId;
+        this.paymentMethods = $.paymentMethods;
         this.timeouts = $.timeouts;
     }
 
@@ -80,6 +132,48 @@ public final class GetOrganizationBillingGroupPlainArgs extends com.pulumi.resou
         }
 
         /**
+         * @param billingContactEmails List of billing contact emails.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingContactEmails(@Nullable List<GetOrganizationBillingGroupBillingContactEmail> billingContactEmails) {
+            $.billingContactEmails = billingContactEmails;
+            return this;
+        }
+
+        /**
+         * @param billingContactEmails List of billing contact emails.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingContactEmails(GetOrganizationBillingGroupBillingContactEmail... billingContactEmails) {
+            return billingContactEmails(List.of(billingContactEmails));
+        }
+
+        /**
+         * @param billingEmails List of billing contact emails.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingEmails(@Nullable List<GetOrganizationBillingGroupBillingEmail> billingEmails) {
+            $.billingEmails = billingEmails;
+            return this;
+        }
+
+        /**
+         * @param billingEmails List of billing contact emails.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingEmails(GetOrganizationBillingGroupBillingEmail... billingEmails) {
+            return billingEmails(List.of(billingEmails));
+        }
+
+        /**
          * @param billingGroupId Billing group ID.
          * 
          * @return builder
@@ -99,6 +193,27 @@ public final class GetOrganizationBillingGroupPlainArgs extends com.pulumi.resou
         public Builder organizationId(String organizationId) {
             $.organizationId = organizationId;
             return this;
+        }
+
+        /**
+         * @param paymentMethods Payment method.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentMethods(@Nullable List<GetOrganizationBillingGroupPaymentMethod> paymentMethods) {
+            $.paymentMethods = paymentMethods;
+            return this;
+        }
+
+        /**
+         * @param paymentMethods Payment method.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentMethods(GetOrganizationBillingGroupPaymentMethod... paymentMethods) {
+            return paymentMethods(List.of(paymentMethods));
         }
 
         public Builder timeouts(@Nullable GetOrganizationBillingGroupTimeouts timeouts) {

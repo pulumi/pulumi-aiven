@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetClickhouseDatabaseResult',
@@ -26,7 +28,7 @@ class GetClickhouseDatabaseResult:
     """
     A collection of values returned by getClickhouseDatabase.
     """
-    def __init__(__self__, id=None, name=None, project=None, service_name=None, termination_protection=None):
+    def __init__(__self__, id=None, name=None, project=None, service_name=None, termination_protection=None, timeouts=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -42,12 +44,15 @@ class GetClickhouseDatabaseResult:
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         pulumi.set(__self__, "termination_protection", termination_protection)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/name`.
         """
         return pulumi.get(self, "id")
 
@@ -55,7 +60,7 @@ class GetClickhouseDatabaseResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the ClickHouse database. Changing this property forces recreation of the resource.
+        Service database name.
         """
         return pulumi.get(self, "name")
 
@@ -63,7 +68,7 @@ class GetClickhouseDatabaseResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -71,17 +76,23 @@ class GetClickhouseDatabaseResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
+    @_utilities.deprecated("""Instead, use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
     def termination_protection(self) -> _builtins.bool:
         """
-        Client-side deletion protection that prevents the ClickHouse database from being deleted by Terraform. Enable this for production databases containing critical data. The default value is `false`.
+        Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         return pulumi.get(self, "termination_protection")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetClickhouseDatabaseTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
 
 class AwaitableGetClickhouseDatabaseResult(GetClickhouseDatabaseResult):
@@ -94,15 +105,17 @@ class AwaitableGetClickhouseDatabaseResult(GetClickhouseDatabaseResult):
             name=self.name,
             project=self.project,
             service_name=self.service_name,
-            termination_protection=self.termination_protection)
+            termination_protection=self.termination_protection,
+            timeouts=self.timeouts)
 
 
 def get_clickhouse_database(name: Optional[_builtins.str] = None,
                             project: Optional[_builtins.str] = None,
                             service_name: Optional[_builtins.str] = None,
+                            timeouts: Optional[Union['GetClickhouseDatabaseTimeoutsArgs', 'GetClickhouseDatabaseTimeoutsArgsDict']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClickhouseDatabaseResult:
     """
-    Gets information about a ClickHouse database.
+    Gets information about an Aiven for ClickHouse database.
 
     ## Example Usage
 
@@ -116,14 +129,15 @@ def get_clickhouse_database(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str name: Service database name.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getClickhouseDatabase:getClickhouseDatabase', __args__, opts=opts, typ=GetClickhouseDatabaseResult).value
 
@@ -132,13 +146,15 @@ def get_clickhouse_database(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
-        termination_protection=pulumi.get(__ret__, 'termination_protection'))
+        termination_protection=pulumi.get(__ret__, 'termination_protection'),
+        timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_clickhouse_database_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                    project: Optional[pulumi.Input[_builtins.str]] = None,
                                    service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                                   timeouts: Optional[pulumi.Input[Optional[Union['GetClickhouseDatabaseTimeoutsArgs', 'GetClickhouseDatabaseTimeoutsArgsDict']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClickhouseDatabaseResult]:
     """
-    Gets information about a ClickHouse database.
+    Gets information about an Aiven for ClickHouse database.
 
     ## Example Usage
 
@@ -152,14 +168,15 @@ def get_clickhouse_database_output(name: Optional[pulumi.Input[_builtins.str]] =
     ```
 
 
-    :param _builtins.str name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str name: Service database name.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getClickhouseDatabase:getClickhouseDatabase', __args__, opts=opts, typ=GetClickhouseDatabaseResult)
     return __ret__.apply(lambda __response__: GetClickhouseDatabaseResult(
@@ -167,4 +184,5 @@ def get_clickhouse_database_output(name: Optional[pulumi.Input[_builtins.str]] =
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),
-        termination_protection=pulumi.get(__response__, 'termination_protection')))
+        termination_protection=pulumi.get(__response__, 'termination_protection'),
+        timeouts=pulumi.get(__response__, 'timeouts')))
