@@ -327,6 +327,10 @@
                 "current": "aiven:index/clickhouseUser:ClickhouseUser",
                 "majorVersion": 6
             },
+            "aiven_cmk": {
+                "current": "aiven:index/cmk:Cmk",
+                "majorVersion": 6
+            },
             "aiven_connection_pool": {
                 "current": "aiven:index/connectionPool:ConnectionPool",
                 "majorVersion": 6
@@ -1541,6 +1545,9 @@
                     },
                     "billing_emails": {
                         "maxItemsOne": false
+                    },
+                    "payment_method": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -3745,6 +3752,9 @@
                     },
                     "billing_emails": {
                         "maxItemsOne": false
+                    },
+                    "payment_method": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3760,6 +3770,9 @@
                                     "maxItemsOne": false
                                 },
                                 "billing_emails": {
+                                    "maxItemsOne": false
+                                },
+                                "payment_method": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -4557,10 +4570,11 @@
             "aiven:index/cassandra:Cassandra": 0,
             "aiven:index/cassandraUser:CassandraUser": 0,
             "aiven:index/clickhouse:Clickhouse": 0,
-            "aiven:index/clickhouseDatabase:ClickhouseDatabase": 0,
+            "aiven:index/clickhouseDatabase:ClickhouseDatabase": 1,
             "aiven:index/clickhouseGrant:ClickhouseGrant": 0,
             "aiven:index/clickhouseRole:ClickhouseRole": 0,
             "aiven:index/clickhouseUser:ClickhouseUser": 0,
+            "aiven:index/cmk:Cmk": 1,
             "aiven:index/connectionPool:ConnectionPool": 0,
             "aiven:index/dragonfly:Dragonfly": 0,
             "aiven:index/flink:Flink": 0,
@@ -4652,7 +4666,7 @@
             "aiven:index/getCassandra:getCassandra": 0,
             "aiven:index/getCassandraUser:getCassandraUser": 0,
             "aiven:index/getClickhouse:getClickhouse": 0,
-            "aiven:index/getClickhouseDatabase:getClickhouseDatabase": 0,
+            "aiven:index/getClickhouseDatabase:getClickhouseDatabase": 1,
             "aiven:index/getClickhouseUser:getClickhouseUser": 0,
             "aiven:index/getConnectionPool:getConnectionPool": 0,
             "aiven:index/getDragonfly:getDragonfly": 0,
