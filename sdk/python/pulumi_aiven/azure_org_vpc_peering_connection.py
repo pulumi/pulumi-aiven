@@ -28,6 +28,7 @@ class AzureOrgVpcPeeringConnectionArgs:
                  vnet_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AzureOrgVpcPeeringConnection resource.
+
         :param pulumi.Input[_builtins.str] azure_subscription_id: The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_id: Identifier of the organization.
         :param pulumi.Input[_builtins.str] organization_vpc_id: Identifier of the organization VPC.
@@ -143,6 +144,7 @@ class _AzureOrgVpcPeeringConnectionState:
                  vnet_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzureOrgVpcPeeringConnection resources.
+
         :param pulumi.Input[_builtins.str] azure_subscription_id: The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_id: Identifier of the organization.
         :param pulumi.Input[_builtins.str] organization_vpc_id: Identifier of the organization VPC.
@@ -327,6 +329,7 @@ class AzureOrgVpcPeeringConnection(pulumi.CustomResource):
         $ pulumi import aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME/RESOURCE_GROUP
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] azure_subscription_id: The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
@@ -374,6 +377,7 @@ class AzureOrgVpcPeeringConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME/RESOURCE_GROUP
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AzureOrgVpcPeeringConnectionArgs args: The arguments to use to populate this resource's properties.

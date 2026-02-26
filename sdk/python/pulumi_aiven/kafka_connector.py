@@ -27,6 +27,7 @@ class KafkaConnectorArgs:
                  service_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a KafkaConnector resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The Kafka connector configuration parameters.
         :param pulumi.Input[_builtins.str] connector_name: The Kafka connector name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -102,6 +103,7 @@ class _KafkaConnectorState:
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]]] = None):
         """
         Input properties used for looking up and filtering KafkaConnector resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The Kafka connector configuration parameters.
         :param pulumi.Input[_builtins.str] connector_name: The Kafka connector name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] plugin_author: The Kafka connector author.
@@ -314,6 +316,7 @@ class KafkaConnector(pulumi.CustomResource):
         $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-connector PROJECT/SERVICE_NAME/CONNECTOR_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The Kafka connector configuration parameters.
@@ -359,6 +362,7 @@ class KafkaConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-connector PROJECT/SERVICE_NAME/CONNECTOR_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KafkaConnectorArgs args: The arguments to use to populate this resource's properties.

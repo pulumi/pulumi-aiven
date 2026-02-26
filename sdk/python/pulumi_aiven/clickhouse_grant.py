@@ -29,6 +29,7 @@ class ClickhouseGrantArgs:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClickhouseGrant resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]] privilege_grants: Grant privileges. Changing this property forces recreation of the resource.
@@ -131,6 +132,7 @@ class _ClickhouseGrantState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClickhouseGrant resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]] privilege_grants: Grant privileges. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] role: The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -303,6 +305,7 @@ class ClickhouseGrant(pulumi.CustomResource):
         $ pulumi import aiven:index/clickhouseGrant:ClickhouseGrant example_grant PROJECT/SERVICE_NAME/ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]] privilege_grants: Grant privileges. Changing this property forces recreation of the resource.
@@ -383,6 +386,7 @@ class ClickhouseGrant(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/clickhouseGrant:ClickhouseGrant example_grant PROJECT/SERVICE_NAME/ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClickhouseGrantArgs args: The arguments to use to populate this resource's properties.

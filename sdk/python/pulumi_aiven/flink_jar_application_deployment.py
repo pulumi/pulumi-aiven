@@ -30,6 +30,7 @@ class FlinkJarApplicationDeploymentArgs:
                  starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FlinkJarApplicationDeployment resource.
+
         :param pulumi.Input[_builtins.str] application_id: Application Id. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
@@ -185,6 +186,7 @@ class _FlinkJarApplicationDeploymentState:
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlinkJarApplicationDeployment resources.
+
         :param pulumi.Input[_builtins.str] application_id: Application Id. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
         :param pulumi.Input[_builtins.str] created_by: The creator of this entity.
@@ -488,6 +490,7 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
         $ pulumi import aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment example PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Application Id. Changing this property forces recreation of the resource.
@@ -549,6 +552,7 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment example PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlinkJarApplicationDeploymentArgs args: The arguments to use to populate this resource's properties.

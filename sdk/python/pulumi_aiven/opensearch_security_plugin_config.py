@@ -24,6 +24,7 @@ class OpensearchSecurityPluginConfigArgs:
                  service_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a OpensearchSecurityPluginConfig resource.
+
         :param pulumi.Input[_builtins.str] admin_password: The password for the os-sec-admin user.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -80,6 +81,7 @@ class _OpensearchSecurityPluginConfigState:
                  service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OpensearchSecurityPluginConfig resources.
+
         :param pulumi.Input[_builtins.bool] admin_enabled: Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
         :param pulumi.Input[_builtins.str] admin_password: The password for the os-sec-admin user.
         :param pulumi.Input[_builtins.bool] available: Whether the security plugin is available. This is always true for recently created services.
@@ -209,6 +211,7 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
         $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_password: The password for the os-sec-admin user.
@@ -246,6 +249,7 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OpensearchSecurityPluginConfigArgs args: The arguments to use to populate this resource's properties.

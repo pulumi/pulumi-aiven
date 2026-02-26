@@ -24,6 +24,7 @@ class OrganizationVpcArgs:
                  organization_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a OrganizationVpc resource.
+
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
@@ -81,6 +82,7 @@ class _OrganizationVpcState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationVpc resources.
+
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] create_time: Time of creation of the VPC.
         :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
@@ -223,6 +225,7 @@ class OrganizationVpc(pulumi.CustomResource):
         $ pulumi import aiven:index/organizationVpc:OrganizationVpc example ORGANIZATION_ID/ORGANIZATION_VPC_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
@@ -258,6 +261,7 @@ class OrganizationVpc(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/organizationVpc:OrganizationVpc example ORGANIZATION_ID/ORGANIZATION_VPC_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationVpcArgs args: The arguments to use to populate this resource's properties.

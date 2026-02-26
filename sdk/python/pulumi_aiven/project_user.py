@@ -24,6 +24,7 @@ class ProjectUserArgs:
                  project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ProjectUser resource.
+
         :param pulumi.Input[_builtins.str] email: Email address of the user in lowercase. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] member_type: Project membership type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -78,6 +79,7 @@ class _ProjectUserState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectUser resources.
+
         :param pulumi.Input[_builtins.bool] accepted: Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
         :param pulumi.Input[_builtins.str] email: Email address of the user in lowercase. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] member_type: Project membership type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
@@ -177,6 +179,7 @@ class ProjectUser(pulumi.CustomResource):
         $ pulumi import aiven:index/projectUser:ProjectUser mytestuser PROJECT/EMAIL
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: Email address of the user in lowercase. Changing this property forces recreation of the resource.
@@ -214,6 +217,7 @@ class ProjectUser(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/projectUser:ProjectUser mytestuser PROJECT/EMAIL
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectUserArgs args: The arguments to use to populate this resource's properties.

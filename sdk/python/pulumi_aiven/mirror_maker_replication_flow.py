@@ -38,6 +38,7 @@ class MirrorMakerReplicationFlowArgs:
                  topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a MirrorMakerReplicationFlow resource.
+
         :param pulumi.Input[_builtins.bool] enable: Enables replication flow for a service.
         :param pulumi.Input[_builtins.str] offset_syncs_topic_location: Offset syncs topic location. The possible values are `source` and `target`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -311,6 +312,7 @@ class _MirrorMakerReplicationFlowState:
                  topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] config_properties_excludes: List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\\\.replication\\\\.throttled\\\\.replicas", "leader\\\\.replication\\\\.throttled\\\\.replicas", "message\\\\.timestamp\\\\.difference\\\\.max\\\\.ms",  "message\\\\.timestamp\\\\.type"]
         :param pulumi.Input[_builtins.bool] emit_backward_heartbeats_enabled: Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] emit_heartbeats_enabled: Enables emitting heartbeats to the target cluster. The default value is `false`.
@@ -630,6 +632,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow example_replication_flow PROJECT/SERVICE_NAME/SOURCE_CLUSTER/TARGET_CLUSTER
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] config_properties_excludes: List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\\\.replication\\\\.throttled\\\\.replicas", "leader\\\\.replication\\\\.throttled\\\\.replicas", "message\\\\.timestamp\\\\.difference\\\\.max\\\\.ms",  "message\\\\.timestamp\\\\.type"]
@@ -692,6 +695,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow example_replication_flow PROJECT/SERVICE_NAME/SOURCE_CLUSTER/TARGET_CLUSTER
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MirrorMakerReplicationFlowArgs args: The arguments to use to populate this resource's properties.

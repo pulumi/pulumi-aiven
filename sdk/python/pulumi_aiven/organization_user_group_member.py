@@ -27,6 +27,7 @@ class OrganizationUserGroupMemberArgs:
                  timeouts: Optional[pulumi.Input['OrganizationUserGroupMemberTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationUserGroupMember resource.
+
         :param pulumi.Input[_builtins.str] group_id: ID of the user group. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] user_id: User ID. Changing this property forces recreation of the resource.
@@ -93,6 +94,7 @@ class _OrganizationUserGroupMemberState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationUserGroupMember resources.
+
         :param pulumi.Input[_builtins.str] group_id: ID of the user group. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] last_activity_time: Last Activity Time.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
@@ -187,6 +189,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
         $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember example ORGANIZATION_ID/GROUP_ID/USER_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: ID of the user group. Changing this property forces recreation of the resource.
@@ -207,6 +210,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember example ORGANIZATION_ID/GROUP_ID/USER_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationUserGroupMemberArgs args: The arguments to use to populate this resource's properties.

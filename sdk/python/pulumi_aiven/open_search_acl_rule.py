@@ -26,6 +26,7 @@ class OpenSearchAclRuleArgs:
                  username: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a OpenSearchAclRule resource.
+
         :param pulumi.Input[_builtins.str] index: The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] permission: The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -109,6 +110,7 @@ class _OpenSearchAclRuleState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OpenSearchAclRule resources.
+
         :param pulumi.Input[_builtins.str] index: The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] permission: The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -267,6 +269,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
         $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule PROJECT/SERVICE_NAME/USERNAME/INDEX
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] index: The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
@@ -348,6 +351,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule PROJECT/SERVICE_NAME/USERNAME/INDEX
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OpenSearchAclRuleArgs args: The arguments to use to populate this resource's properties.

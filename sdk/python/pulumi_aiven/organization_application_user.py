@@ -27,6 +27,7 @@ class OrganizationApplicationUserArgs:
                  timeouts: Optional[pulumi.Input['OrganizationApplicationUserTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationApplicationUser resource.
+
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         :param pulumi.Input[_builtins.str] name: Name.
@@ -100,6 +101,7 @@ class _OrganizationApplicationUserState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationApplicationUser resources.
+
         :param pulumi.Input[_builtins.str] email: User Email.
         :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         :param pulumi.Input[_builtins.str] name: Name.
@@ -224,6 +226,7 @@ class OrganizationApplicationUser(pulumi.CustomResource):
         $ pulumi import aiven:index/organizationApplicationUser:OrganizationApplicationUser example ORGANIZATION_ID/USER_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
@@ -255,6 +258,7 @@ class OrganizationApplicationUser(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/organizationApplicationUser:OrganizationApplicationUser example ORGANIZATION_ID/USER_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationApplicationUserArgs args: The arguments to use to populate this resource's properties.

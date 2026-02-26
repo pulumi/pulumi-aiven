@@ -30,6 +30,7 @@ class PgDatabaseArgs:
                  timeouts: Optional[pulumi.Input['PgDatabaseTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a PgDatabase resource.
+
         :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
@@ -147,6 +148,7 @@ class _PgDatabaseState:
                  timeouts: Optional[pulumi.Input['PgDatabaseTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering PgDatabase resources.
+
         :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
@@ -290,6 +292,7 @@ class PgDatabase(pulumi.CustomResource):
         $ pulumi import aiven:index/pgDatabase:PgDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
@@ -325,6 +328,7 @@ class PgDatabase(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/pgDatabase:PgDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PgDatabaseArgs args: The arguments to use to populate this resource's properties.

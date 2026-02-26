@@ -36,6 +36,7 @@ class AccountAuthenticationArgs:
                  saml_variant: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountAuthentication resource.
+
         :param pulumi.Input[_builtins.str] account_id: The unique id of the account.
         :param pulumi.Input[_builtins.str] type: The account authentication type. The possible values are `internal` and `saml`.
         :param pulumi.Input[_builtins.str] auto_join_team_id: Team ID
@@ -255,6 +256,7 @@ class _AccountAuthenticationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountAuthentication resources.
+
         :param pulumi.Input[_builtins.str] account_id: The unique id of the account.
         :param pulumi.Input[_builtins.str] authentication_id: Account authentication id
         :param pulumi.Input[_builtins.str] auto_join_team_id: Team ID
@@ -562,6 +564,7 @@ class AccountAuthentication(pulumi.CustomResource):
         $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo ACCOUNT_ID/AUTHENTICATION_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The unique id of the account.
@@ -597,6 +600,7 @@ class AccountAuthentication(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo ACCOUNT_ID/AUTHENTICATION_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountAuthenticationArgs args: The arguments to use to populate this resource's properties.

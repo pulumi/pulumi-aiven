@@ -31,6 +31,7 @@ class FlinkApplicationVersionArgs:
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None):
         """
         The set of arguments for constructing a FlinkApplicationVersion resource.
+
         :param pulumi.Input[_builtins.str] application_id: Application ID.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -175,6 +176,7 @@ class _FlinkApplicationVersionState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering FlinkApplicationVersion resources.
+
         :param pulumi.Input[_builtins.str] application_id: Application ID.
         :param pulumi.Input[_builtins.str] application_version_id: Application version ID.
         :param pulumi.Input[_builtins.str] created_at: Application version creation time.
@@ -435,6 +437,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Application ID.
@@ -505,6 +508,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlinkApplicationVersionArgs args: The arguments to use to populate this resource's properties.

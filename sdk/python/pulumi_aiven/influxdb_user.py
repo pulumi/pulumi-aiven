@@ -25,6 +25,7 @@ class InfluxdbUserArgs:
                  password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InfluxdbUser resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -97,6 +98,7 @@ class _InfluxdbUserState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InfluxdbUser resources.
+
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for the user if applicable for the service in question
         :param pulumi.Input[_builtins.str] access_key: Access certificate key for the user if applicable for the service in question
         :param pulumi.Input[_builtins.str] password: The password of the InfluxDB User.
@@ -218,6 +220,7 @@ class InfluxdbUser(pulumi.CustomResource):
                  __props__=None):
         """
         Create a InfluxdbUser resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the InfluxDB User.
@@ -233,6 +236,7 @@ class InfluxdbUser(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a InfluxdbUser resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param InfluxdbUserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

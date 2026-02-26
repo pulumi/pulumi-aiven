@@ -25,6 +25,7 @@ class InfluxdbDatabaseArgs:
                  termination_protection: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a InfluxdbDatabase resource.
+
         :param pulumi.Input[_builtins.str] database_name: The name of the service database. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -94,6 +95,7 @@ class _InfluxdbDatabaseState:
                  termination_protection: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering InfluxdbDatabase resources.
+
         :param pulumi.Input[_builtins.str] database_name: The name of the service database. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -170,6 +172,7 @@ class InfluxdbDatabase(pulumi.CustomResource):
                  __props__=None):
         """
         Create a InfluxdbDatabase resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_name: The name of the service database. Changing this property forces recreation of the resource.
@@ -185,6 +188,7 @@ class InfluxdbDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a InfluxdbDatabase resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param InfluxdbDatabaseArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

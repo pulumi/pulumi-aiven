@@ -27,6 +27,7 @@ class OrganizationGroupProjectArgs:
                  timeouts: Optional[pulumi.Input['OrganizationGroupProjectTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationGroupProject resource.
+
         :param pulumi.Input[_builtins.str] group_id: The ID of the user group.
         :param pulumi.Input[_builtins.str] project: The project that the users in the group are members of.
         :param pulumi.Input[_builtins.str] role: [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
@@ -92,6 +93,7 @@ class _OrganizationGroupProjectState:
                  timeouts: Optional[pulumi.Input['OrganizationGroupProjectTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OrganizationGroupProject resources.
+
         :param pulumi.Input[_builtins.str] group_id: The ID of the user group.
         :param pulumi.Input[_builtins.str] project: The project that the users in the group are members of.
         :param pulumi.Input[_builtins.str] role: [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
@@ -198,6 +200,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
         $ pulumi import aiven:index/organizationGroupProject:OrganizationGroupProject example PROJECT/USER_GROUP_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: The ID of the user group.
@@ -245,6 +248,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/organizationGroupProject:OrganizationGroupProject example PROJECT/USER_GROUP_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationGroupProjectArgs args: The arguments to use to populate this resource's properties.

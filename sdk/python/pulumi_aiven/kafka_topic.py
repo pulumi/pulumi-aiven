@@ -33,6 +33,7 @@ class KafkaTopicArgs:
                  topic_description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KafkaTopic resource.
+
         :param pulumi.Input[_builtins.int] partitions: The number of partitions to create in the topic.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.int] replication: The replication factor for the topic.
@@ -196,6 +197,7 @@ class _KafkaTopicState:
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaTopic resources.
+
         :param pulumi.Input['KafkaTopicConfigArgs'] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         :param pulumi.Input[_builtins.str] owner_user_group_id: The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         :param pulumi.Input[_builtins.int] partitions: The number of partitions to create in the topic.
@@ -395,6 +397,7 @@ class KafkaTopic(pulumi.CustomResource):
         $ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
@@ -442,6 +445,7 @@ class KafkaTopic(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KafkaTopicArgs args: The arguments to use to populate this resource's properties.

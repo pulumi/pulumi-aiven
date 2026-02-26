@@ -24,6 +24,7 @@ class KafkaSchemaConfigurationArgs:
                  compatibility_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KafkaSchemaConfiguration resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
@@ -78,6 +79,7 @@ class _KafkaSchemaConfigurationState:
                  service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaSchemaConfiguration resources.
+
         :param pulumi.Input[_builtins.str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -157,6 +159,7 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         $ pulumi import aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration config PROJECT/SERVICE_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
@@ -189,6 +192,7 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration config PROJECT/SERVICE_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KafkaSchemaConfigurationArgs args: The arguments to use to populate this resource's properties.

@@ -40,6 +40,7 @@ class BillingGroupArgs:
                  zip_code: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BillingGroup resource.
+
         :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
         :param pulumi.Input[_builtins.str] account_id: Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address lines 1 and 2. For example, street, PO box, or building.
@@ -320,6 +321,7 @@ class _BillingGroupState:
                  zip_code: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BillingGroup resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address lines 1 and 2. For example, street, PO box, or building.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_contact_emails: List of billing groups contact email addresses.
@@ -642,6 +644,7 @@ class BillingGroup(pulumi.CustomResource):
         $ pulumi import aiven:index/billingGroup:BillingGroup example BILLING_GROUP_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
@@ -691,6 +694,7 @@ class BillingGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/billingGroup:BillingGroup example BILLING_GROUP_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BillingGroupArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class KafkaSchemaRegistryAclArgs:
                  username: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a KafkaSchemaRegistryAcl resource.
+
         :param pulumi.Input[_builtins.str] permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] resource: Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
@@ -110,6 +111,7 @@ class _KafkaSchemaRegistryAclState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaSchemaRegistryAcl resources.
+
         :param pulumi.Input[_builtins.str] acl_id: Kafka Schema Registry ACL ID
         :param pulumi.Input[_builtins.str] permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -238,6 +240,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl foo PROJECT/SERVICE_NAME/ACL_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
@@ -274,6 +277,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl foo PROJECT/SERVICE_NAME/ACL_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KafkaSchemaRegistryAclArgs args: The arguments to use to populate this resource's properties.

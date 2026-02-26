@@ -28,6 +28,7 @@ class PgUserArgs:
                  pg_allow_replication: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PgUser resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -150,6 +151,7 @@ class _PgUserState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PgUser resources.
+
         :param pulumi.Input[_builtins.str] access_cert: The access certificate for the servie user.
         :param pulumi.Input[_builtins.str] access_key: The access certificate key for the service user.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
@@ -348,6 +350,7 @@ class PgUser(pulumi.CustomResource):
         $ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
@@ -393,6 +396,7 @@ class PgUser(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PgUserArgs args: The arguments to use to populate this resource's properties.

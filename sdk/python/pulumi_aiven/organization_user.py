@@ -23,6 +23,7 @@ class OrganizationUserArgs:
                  user_email: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a OrganizationUser resource.
+
         :param pulumi.Input[_builtins.str] organization_id: The unique organization ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
         """
@@ -65,6 +66,7 @@ class _OrganizationUserState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationUser resources.
+
         :param pulumi.Input[_builtins.bool] accepted: This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
         :param pulumi.Input[_builtins.str] create_time: Time of creation
         :param pulumi.Input[_builtins.str] invited_by: The email address of the user who sent an invitation to the user.
@@ -185,6 +187,7 @@ class OrganizationUser(pulumi.CustomResource):
         user access to projects with the `OrganizationUserGroup`, `OrganizationUserGroupMember`,
         and `OrganizationPermission` resources.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] organization_id: The unique organization ID. Changing this property forces recreation of the resource.
@@ -205,6 +208,7 @@ class OrganizationUser(pulumi.CustomResource):
         After the user accepts the invite you can get their information using the `OrganizationUser` data source. You can manage
         user access to projects with the `OrganizationUserGroup`, `OrganizationUserGroupMember`,
         and `OrganizationPermission` resources.
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationUserArgs args: The arguments to use to populate this resource's properties.

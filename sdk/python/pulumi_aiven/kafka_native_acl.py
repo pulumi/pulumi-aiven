@@ -30,6 +30,7 @@ class KafkaNativeAclArgs:
                  host: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KafkaNativeAcl resource.
+
         :param pulumi.Input[_builtins.str] operation: The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] pattern_type: Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] permission_type: Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
@@ -174,6 +175,7 @@ class _KafkaNativeAclState:
                  service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaNativeAcl resources.
+
         :param pulumi.Input[_builtins.str] host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] operation: The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] pattern_type: Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
@@ -358,6 +360,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
         $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example_acl PROJECT/SERVICE_NAME/ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
@@ -405,6 +408,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example_acl PROJECT/SERVICE_NAME/ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KafkaNativeAclArgs args: The arguments to use to populate this resource's properties.

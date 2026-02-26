@@ -25,6 +25,7 @@ class GcpPrivatelinkConnectionApprovalArgs:
                  psc_connection_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GcpPrivatelinkConnectionApproval resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] user_ip_address: The Private Service Connect connection user IP address.
@@ -96,6 +97,7 @@ class _GcpPrivatelinkConnectionApprovalState:
                  user_ip_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GcpPrivatelinkConnectionApproval resources.
+
         :param pulumi.Input[_builtins.str] privatelink_connection_id: Aiven internal ID for the private link connection.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] psc_connection_id: The Google Private Service Connect connection ID.
@@ -221,6 +223,7 @@ class GcpPrivatelinkConnectionApproval(pulumi.CustomResource):
         $ pulumi import aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval main PROJECT/SERVICE_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -254,6 +257,7 @@ class GcpPrivatelinkConnectionApproval(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval main PROJECT/SERVICE_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GcpPrivatelinkConnectionApprovalArgs args: The arguments to use to populate this resource's properties.

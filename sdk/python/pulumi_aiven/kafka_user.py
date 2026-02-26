@@ -27,6 +27,7 @@ class KafkaUserArgs:
                  password_wo_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a KafkaUser resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -133,6 +134,7 @@ class _KafkaUserState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaUser resources.
+
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for the user.
         :param pulumi.Input[_builtins.str] access_key: Access certificate key for the user.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
@@ -308,6 +310,7 @@ class KafkaUser(pulumi.CustomResource):
         $ pulumi import aiven:index/kafkaUser:KafkaUser example_user PROJECT/SERVICE_NAME/USERNAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
@@ -345,6 +348,7 @@ class KafkaUser(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/kafkaUser:KafkaUser example_user PROJECT/SERVICE_NAME/USERNAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KafkaUserArgs args: The arguments to use to populate this resource's properties.

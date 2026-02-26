@@ -23,6 +23,7 @@ class GcpPrivatelinkArgs:
                  service_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GcpPrivatelink resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -64,6 +65,7 @@ class _GcpPrivatelinkState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GcpPrivatelink resources.
+
         :param pulumi.Input[_builtins.str] google_service_attachment: Google Private Service Connect service attachment.
         :param pulumi.Input[_builtins.str] message: Printable result of the Google Cloud Private Service Connect request.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -171,6 +173,7 @@ class GcpPrivatelink(pulumi.CustomResource):
         $ pulumi import aiven:index/gcpPrivatelink:GcpPrivatelink main PROJECT/SERVICE_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -201,6 +204,7 @@ class GcpPrivatelink(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/gcpPrivatelink:GcpPrivatelink main PROJECT/SERVICE_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GcpPrivatelinkArgs args: The arguments to use to populate this resource's properties.

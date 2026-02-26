@@ -24,6 +24,7 @@ class OrganizationUserGroupArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationUserGroup resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the user group. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] name: The name of the user group. Changing this property forces recreation of the resource.
@@ -81,6 +82,7 @@ class _OrganizationUserGroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationUserGroup resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time of creation.
         :param pulumi.Input[_builtins.str] description: The description of the user group. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] group_id: The ID of the user group.
@@ -205,6 +207,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
         $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the user group. Changing this property forces recreation of the resource.
@@ -237,6 +240,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationUserGroupArgs args: The arguments to use to populate this resource's properties.

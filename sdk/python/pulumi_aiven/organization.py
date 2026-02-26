@@ -25,6 +25,7 @@ class OrganizationArgs:
                  timeouts: Optional[pulumi.Input['OrganizationTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Organization resource.
+
         :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `83`.
         """
         if name is not None:
@@ -64,6 +65,7 @@ class _OrganizationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Organization resources.
+
         :param pulumi.Input[_builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
         :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `83`.
         :param pulumi.Input[_builtins.str] tenant_id: Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
@@ -169,6 +171,7 @@ class Organization(pulumi.CustomResource):
         $ pulumi import aiven:index/organization:Organization example ORGANIZATION_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the organization. Maximum length: `83`.
@@ -196,6 +199,7 @@ class Organization(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/organization:Organization example ORGANIZATION_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationArgs args: The arguments to use to populate this resource's properties.
