@@ -28,6 +28,7 @@ class KafkaQuotaArgs:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KafkaQuota resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] client_id: Represents a logical group of clients, assigned a unique name by the client application.
@@ -174,6 +175,7 @@ class _KafkaQuotaState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaQuota resources.
+
         :param pulumi.Input[_builtins.str] client_id: Represents a logical group of clients, assigned a unique name by the client application.
                Quotas can be applied based on user, client-id, or both.
                The most relevant quota is chosen for each connection.
@@ -363,6 +365,7 @@ class KafkaQuota(pulumi.CustomResource):
         $ pulumi import aiven:index/kafkaQuota:KafkaQuota example_quota PROJECT/SERVICE_NAME/CLIENT_ID/
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] client_id: Represents a logical group of clients, assigned a unique name by the client application.
@@ -431,6 +434,7 @@ class KafkaQuota(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/kafkaQuota:KafkaQuota example_quota PROJECT/SERVICE_NAME/CLIENT_ID/
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KafkaQuotaArgs args: The arguments to use to populate this resource's properties.

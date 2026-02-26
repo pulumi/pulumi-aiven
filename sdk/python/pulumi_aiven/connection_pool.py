@@ -28,6 +28,7 @@ class ConnectionPoolArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectionPool resource.
+
         :param pulumi.Input[_builtins.str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] pool_name: Name of the pool. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -145,6 +146,7 @@ class _ConnectionPoolState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionPool resources.
+
         :param pulumi.Input[_builtins.str] connection_uri: The URI for connecting to the pool.
         :param pulumi.Input[_builtins.str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] pool_mode: The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
@@ -307,6 +309,7 @@ class ConnectionPool(pulumi.CustomResource):
         $ pulumi import aiven:index/connectionPool:ConnectionPool main PROJECT/SERVICE_NAME/POOL_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -347,6 +350,7 @@ class ConnectionPool(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/connectionPool:ConnectionPool main PROJECT/SERVICE_NAME/POOL_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionPoolArgs args: The arguments to use to populate this resource's properties.

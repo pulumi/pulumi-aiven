@@ -26,6 +26,7 @@ class OrganizationalUnitArgs:
                  timeouts: Optional[pulumi.Input['OrganizationalUnitTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationalUnit resource.
+
         :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `83`.
         """
@@ -80,6 +81,7 @@ class _OrganizationalUnitState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationalUnit resources.
+
         :param pulumi.Input[_builtins.str] create_time: Timestamp in ISO 8601 format, always in UTC.
         :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `83`.
         :param pulumi.Input[_builtins.str] parent_id: The ID of the organization that the unit is created in. Maximum length: `36`.
@@ -199,6 +201,7 @@ class OrganizationalUnit(pulumi.CustomResource):
         $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example ORGANIZATIONAL_UNIT_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the organizational unit. Maximum length: `83`.
@@ -229,6 +232,7 @@ class OrganizationalUnit(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example ORGANIZATIONAL_UNIT_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationalUnitArgs args: The arguments to use to populate this resource's properties.

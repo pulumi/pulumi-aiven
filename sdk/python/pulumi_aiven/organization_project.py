@@ -31,6 +31,7 @@ class OrganizationProjectArgs:
                  timeouts: Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationProject resource.
+
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
@@ -160,6 +161,7 @@ class _OrganizationProjectState:
                  timeouts: Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OrganizationProject resources.
+
         :param pulumi.Input[_builtins.int] base_port: Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
         :param pulumi.Input[_builtins.str] ca_cert: PEM encoded certificate.
@@ -318,6 +320,7 @@ class OrganizationProject(pulumi.CustomResource):
         $ pulumi import aiven:index/organizationProject:OrganizationProject example ORGANIZATION_ID/PROJECT_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] base_port: Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
@@ -342,6 +345,7 @@ class OrganizationProject(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/organizationProject:OrganizationProject example ORGANIZATION_ID/PROJECT_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationProjectArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class TransitGatewayVpcAttachmentArgs:
                  peer_region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitGatewayVpcAttachment resource.
+
         :param pulumi.Input[_builtins.str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] peer_vpc: Transit gateway ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection
@@ -113,6 +114,7 @@ class _TransitGatewayVpcAttachmentState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitGatewayVpcAttachment resources.
+
         :param pulumi.Input[_builtins.str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         :param pulumi.Input[_builtins.str] peer_vpc: Transit gateway ID. Changing this property forces recreation of the resource.
@@ -271,6 +273,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment PROJECT/VPC_ID/PEER_CLOUD_ACCOUNT/PEER_VPC/PEER_REGION
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
@@ -307,6 +310,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment PROJECT/VPC_ID/PEER_CLOUD_ACCOUNT/PEER_VPC/PEER_REGION
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitGatewayVpcAttachmentArgs args: The arguments to use to populate this resource's properties.

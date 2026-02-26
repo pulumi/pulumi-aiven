@@ -28,6 +28,7 @@ class ClickhouseDatabaseArgs:
                  timeouts: Optional[pulumi.Input['ClickhouseDatabaseTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a ClickhouseDatabase resource.
+
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
@@ -114,6 +115,7 @@ class _ClickhouseDatabaseState:
                  timeouts: Optional[pulumi.Input['ClickhouseDatabaseTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering ClickhouseDatabase resources.
+
         :param pulumi.Input[_builtins.str] name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
@@ -232,6 +234,7 @@ class ClickhouseDatabase(pulumi.CustomResource):
         $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase example PROJECT/SERVICE_NAME/NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
@@ -272,6 +275,7 @@ class ClickhouseDatabase(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase example PROJECT/SERVICE_NAME/NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClickhouseDatabaseArgs args: The arguments to use to populate this resource's properties.

@@ -33,6 +33,7 @@ class ProjectArgs:
                  use_source_project_billing_group: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         :param pulumi.Input[_builtins.str] account_id: Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[_builtins.bool] add_account_owners_admin_access: If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
@@ -216,6 +217,7 @@ class _ProjectState:
                  use_source_project_billing_group: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.str] account_id: Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[_builtins.bool] add_account_owners_admin_access: If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         :param pulumi.Input[_builtins.str] available_credits: The number of trial or promotional credits remaining for this project.
@@ -467,6 +469,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import aiven:index/project:Project example_project PROJECT
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
@@ -494,6 +497,7 @@ class Project(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/project:Project example_project PROJECT
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

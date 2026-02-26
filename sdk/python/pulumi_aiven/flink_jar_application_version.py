@@ -27,6 +27,7 @@ class FlinkJarApplicationVersionArgs:
                  source: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a FlinkJarApplicationVersion resource.
+
         :param pulumi.Input[_builtins.str] application_id: Application Id. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
@@ -101,6 +102,7 @@ class _FlinkJarApplicationVersionState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering FlinkJarApplicationVersion resources.
+
         :param pulumi.Input[_builtins.str] application_id: Application Id. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] application_version_id: ApplicationVersion ID.
         :param pulumi.Input[_builtins.str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
@@ -304,6 +306,7 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         $ pulumi import aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion example PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Application Id. Changing this property forces recreation of the resource.
@@ -355,6 +358,7 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion example PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlinkJarApplicationVersionArgs args: The arguments to use to populate this resource's properties.

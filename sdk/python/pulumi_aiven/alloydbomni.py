@@ -40,6 +40,7 @@ class AlloydbomniArgs:
                  termination_protection: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Alloydbomni resource.
+
         :param pulumi.Input[_builtins.str] plan: Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `my_plan_16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
@@ -330,6 +331,7 @@ class _AlloydbomniState:
                  termination_protection: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Alloydbomni resources.
+
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input['AlloydbomniAlloydbomniArgs'] alloydbomni: Values provided by the AlloyDB Omni server.
         :param pulumi.Input['AlloydbomniAlloydbomniUserConfigArgs'] alloydbomni_user_config: Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -861,6 +863,7 @@ class Alloydbomni(pulumi.CustomResource):
         $ pulumi import aiven:index/alloydbomni:Alloydbomni example_alloydbomni PROJECT/SERVICE_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
@@ -940,6 +943,7 @@ class Alloydbomni(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/alloydbomni:Alloydbomni example_alloydbomni PROJECT/SERVICE_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlloydbomniArgs args: The arguments to use to populate this resource's properties.

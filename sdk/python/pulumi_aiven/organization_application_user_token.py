@@ -31,6 +31,7 @@ class OrganizationApplicationUserTokenArgs:
                  timeouts: Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationApplicationUserToken resource.
+
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] user_id: User ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] description: Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
@@ -171,6 +172,7 @@ class _OrganizationApplicationUserTokenState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationApplicationUserToken resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create Time.
         :param pulumi.Input[_builtins.bool] created_manually: True for tokens explicitly created via the access_tokens API, false for tokens created via login.
         :param pulumi.Input[_builtins.bool] currently_active: true if API request was made with this access token.
@@ -479,6 +481,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         $ pulumi import aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken example ORGANIZATION_ID/USER_ID/TOKEN_PREFIX
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
@@ -518,6 +521,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken example ORGANIZATION_ID/USER_ID/TOKEN_PREFIX
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationApplicationUserTokenArgs args: The arguments to use to populate this resource's properties.

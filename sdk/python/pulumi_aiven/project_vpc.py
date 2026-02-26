@@ -24,6 +24,7 @@ class ProjectVpcArgs:
                  project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ProjectVpc resource.
+
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -78,6 +79,7 @@ class _ProjectVpcState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectVpc resources.
+
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -172,6 +174,7 @@ class ProjectVpc(pulumi.CustomResource):
         $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
@@ -204,6 +207,7 @@ class ProjectVpc(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectVpcArgs args: The arguments to use to populate this resource's properties.

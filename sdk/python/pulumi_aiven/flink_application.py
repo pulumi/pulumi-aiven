@@ -24,6 +24,7 @@ class FlinkApplicationArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FlinkApplication resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] name: The name of the application.
@@ -83,6 +84,7 @@ class _FlinkApplicationState:
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlinkApplication resources.
+
         :param pulumi.Input[_builtins.str] application_id: Application ID.
         :param pulumi.Input[_builtins.str] created_at: Application creation time.
         :param pulumi.Input[_builtins.str] created_by: The user who created the application.
@@ -237,6 +239,7 @@ class FlinkApplication(pulumi.CustomResource):
         $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the application.
@@ -269,6 +272,7 @@ class FlinkApplication(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlinkApplicationArgs args: The arguments to use to populate this resource's properties.

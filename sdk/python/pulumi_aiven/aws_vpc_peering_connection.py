@@ -25,6 +25,7 @@ class AwsVpcPeeringConnectionArgs:
                  vpc_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AwsVpcPeeringConnection resource.
+
         :param pulumi.Input[_builtins.str] aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] aws_vpc_region: The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
@@ -96,6 +97,7 @@ class _AwsVpcPeeringConnectionState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AwsVpcPeeringConnection resources.
+
         :param pulumi.Input[_builtins.str] aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] aws_vpc_peering_connection_id: The ID of the AWS VPC peering connection.
@@ -241,6 +243,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
         $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection aws_to_aiven_peering PROJECT/VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_VPC_REGION
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
@@ -279,6 +282,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection aws_to_aiven_peering PROJECT/VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_VPC_REGION
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AwsVpcPeeringConnectionArgs args: The arguments to use to populate this resource's properties.

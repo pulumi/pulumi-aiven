@@ -28,6 +28,7 @@ class MysqlDatabaseArgs:
                  timeouts: Optional[pulumi.Input['MysqlDatabaseTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a MysqlDatabase resource.
+
         :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
@@ -113,6 +114,7 @@ class _MysqlDatabaseState:
                  timeouts: Optional[pulumi.Input['MysqlDatabaseTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering MysqlDatabase resources.
+
         :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
@@ -224,6 +226,7 @@ class MysqlDatabase(pulumi.CustomResource):
         $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
@@ -257,6 +260,7 @@ class MysqlDatabase(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MysqlDatabaseArgs args: The arguments to use to populate this resource's properties.

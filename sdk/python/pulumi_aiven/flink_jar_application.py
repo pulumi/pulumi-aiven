@@ -26,6 +26,7 @@ class FlinkJarApplicationArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FlinkJarApplication resource.
+
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] name: Application name. Maximum length: `128`.
@@ -87,6 +88,7 @@ class _FlinkJarApplicationState:
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlinkJarApplication resources.
+
         :param pulumi.Input[_builtins.str] application_id: Application ID.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationApplicationVersionArgs']]] application_versions: JarApplicationVersions.
         :param pulumi.Input[_builtins.str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
@@ -284,6 +286,7 @@ class FlinkJarApplication(pulumi.CustomResource):
         $ pulumi import aiven:index/flinkJarApplication:FlinkJarApplication example PROJECT/SERVICE_NAME/APPLICATION_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Application name. Maximum length: `128`.
@@ -329,6 +332,7 @@ class FlinkJarApplication(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/flinkJarApplication:FlinkJarApplication example PROJECT/SERVICE_NAME/APPLICATION_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlinkJarApplicationArgs args: The arguments to use to populate this resource's properties.

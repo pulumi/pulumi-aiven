@@ -31,6 +31,7 @@ class ValkeyUserArgs:
                  valkey_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ValkeyUser resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -199,6 +200,7 @@ class _ValkeyUserState:
                  valkey_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ValkeyUser resources.
+
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
@@ -436,6 +438,7 @@ class ValkeyUser(pulumi.CustomResource):
         $ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
@@ -505,6 +508,7 @@ class ValkeyUser(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ValkeyUserArgs args: The arguments to use to populate this resource's properties.

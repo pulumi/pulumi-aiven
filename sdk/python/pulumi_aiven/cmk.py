@@ -28,6 +28,7 @@ class CmkArgs:
                  timeouts: Optional[pulumi.Input['CmkTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Cmk resource.
+
         :param pulumi.Input[_builtins.str] cmk_provider: CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] default_cmk: Mark the created CMK as default for all newly created services.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
@@ -112,6 +113,7 @@ class _CmkState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cmk resources.
+
         :param pulumi.Input[_builtins.str] cmk_id: Customer Managed Key identifier (CMK ID).
         :param pulumi.Input[_builtins.str] cmk_provider: CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] created_at: Created At.
@@ -283,6 +285,7 @@ class Cmk(pulumi.CustomResource):
         $ pulumi import aiven:index/cmk:Cmk example PROJECT/CMK_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cmk_provider: CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
@@ -320,6 +323,7 @@ class Cmk(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/cmk:Cmk example PROJECT/CMK_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CmkArgs args: The arguments to use to populate this resource's properties.

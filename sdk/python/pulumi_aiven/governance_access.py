@@ -29,6 +29,7 @@ class GovernanceAccessArgs:
                  timeouts: Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a GovernanceAccess resource.
+
         :param pulumi.Input['GovernanceAccessAccessDataArgs'] access_data: Required property. access type specific data. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] access_name: Label to describe the access. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] access_type: An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
@@ -126,6 +127,7 @@ class _GovernanceAccessState:
                  timeouts: Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering GovernanceAccess resources.
+
         :param pulumi.Input['GovernanceAccessAccessDataArgs'] access_data: Required property. access type specific data. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] access_name: Label to describe the access. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] access_type: An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
@@ -279,6 +281,7 @@ class GovernanceAccess(pulumi.CustomResource):
         $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']] access_data: Required property. access type specific data. Changing this property forces recreation of the resource.
@@ -328,6 +331,7 @@ class GovernanceAccess(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GovernanceAccessArgs args: The arguments to use to populate this resource's properties.

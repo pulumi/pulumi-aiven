@@ -24,6 +24,7 @@ class AwsPrivatelinkArgs:
                  service_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AwsPrivatelink resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] principals: List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -79,6 +80,7 @@ class _AwsPrivatelinkState:
                  service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AwsPrivatelink resources.
+
         :param pulumi.Input[_builtins.str] aws_service_id: AWS service ID.
         :param pulumi.Input[_builtins.str] aws_service_name: AWS service name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] principals: List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
@@ -188,6 +190,7 @@ class AwsPrivatelink(pulumi.CustomResource):
         $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink main PROJECT/SERVICE_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] principals: List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
@@ -220,6 +223,7 @@ class AwsPrivatelink(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink main PROJECT/SERVICE_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AwsPrivatelinkArgs args: The arguments to use to populate this resource's properties.

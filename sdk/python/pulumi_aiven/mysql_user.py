@@ -31,6 +31,7 @@ class MysqlUserArgs:
                  timeouts: Optional[pulumi.Input['MysqlUserTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a MysqlUser resource.
+
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the MySQL® service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
@@ -165,6 +166,7 @@ class _MysqlUserState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MysqlUser resources.
+
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for TLS client authentication.
         :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
@@ -368,6 +370,7 @@ class MysqlUser(pulumi.CustomResource):
         $ pulumi import aiven:index/mysqlUser:MysqlUser example PROJECT/SERVICE_NAME/USERNAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
@@ -406,6 +409,7 @@ class MysqlUser(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/mysqlUser:MysqlUser example PROJECT/SERVICE_NAME/USERNAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MysqlUserArgs args: The arguments to use to populate this resource's properties.

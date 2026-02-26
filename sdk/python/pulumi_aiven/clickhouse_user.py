@@ -27,6 +27,7 @@ class ClickhouseUserArgs:
                  password_wo_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ClickhouseUser resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
@@ -132,6 +133,7 @@ class _ClickhouseUserState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClickhouseUser resources.
+
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
@@ -291,6 +293,7 @@ class ClickhouseUser(pulumi.CustomResource):
         terraform import aiven_clickhouse_user.example_user PROJECT/SERVICE_NAME/USER_ID  # USER_ID is found in the systems.users table in ClickHouse
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
@@ -327,6 +330,7 @@ class ClickhouseUser(pulumi.CustomResource):
         ```sh
         terraform import aiven_clickhouse_user.example_user PROJECT/SERVICE_NAME/USER_ID  # USER_ID is found in the systems.users table in ClickHouse
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClickhouseUserArgs args: The arguments to use to populate this resource's properties.

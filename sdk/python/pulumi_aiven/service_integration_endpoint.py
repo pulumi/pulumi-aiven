@@ -45,6 +45,7 @@ class ServiceIntegrationEndpointArgs:
                  rsyslog_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointRsyslogUserConfigArgs']] = None):
         """
         The set of arguments for constructing a ServiceIntegrationEndpoint resource.
+
         :param pulumi.Input[_builtins.str] endpoint_name: Name of the service integration endpoint.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_azure_blob_storage`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
         :param pulumi.Input[_builtins.str] project: Project the service integration endpoint is in.
@@ -403,6 +404,7 @@ class _ServiceIntegrationEndpointState:
                  rsyslog_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointRsyslogUserConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ServiceIntegrationEndpoint resources.
+
         :param pulumi.Input['ServiceIntegrationEndpointAutoscalerUserConfigArgs'] autoscaler_user_config: Autoscaler user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] endpoint_config: Backend configuration for the endpoint.
@@ -817,6 +819,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         $ pulumi import aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint example_endpoint PROJECT/ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServiceIntegrationEndpointAutoscalerUserConfigArgs', 'ServiceIntegrationEndpointAutoscalerUserConfigArgsDict']] autoscaler_user_config: Autoscaler user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -884,6 +887,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint example_endpoint PROJECT/ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceIntegrationEndpointArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class StaticIpArgs:
                  project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a StaticIp resource.
+
         :param pulumi.Input[_builtins.str] cloud_name: Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -65,6 +66,7 @@ class _StaticIpState:
                  static_ip_address_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StaticIp resources.
+
         :param pulumi.Input[_builtins.str] cloud_name: Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] ip_address: The address of the static ip.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -170,6 +172,7 @@ class StaticIp(pulumi.CustomResource):
         """
         The StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_name: Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
@@ -183,6 +186,7 @@ class StaticIp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
+
 
         :param str resource_name: The name of the resource.
         :param StaticIpArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class AccountTeamProjectArgs:
                  team_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountTeamProject resource.
+
         :param pulumi.Input[_builtins.str] account_id: The unique account id
         :param pulumi.Input[_builtins.str] team_id: An account team id
         :param pulumi.Input[_builtins.str] project_name: The name of an already existing project
@@ -95,6 +96,7 @@ class _AccountTeamProjectState:
                  team_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountTeamProject resources.
+
         :param pulumi.Input[_builtins.str] account_id: The unique account id
         :param pulumi.Input[_builtins.str] project_name: The name of an already existing project
         :param pulumi.Input[_builtins.str] team_id: An account team id
@@ -205,6 +207,7 @@ class AccountTeamProject(pulumi.CustomResource):
         $ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The unique account id
@@ -253,6 +256,7 @@ class AccountTeamProject(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountTeamProjectArgs args: The arguments to use to populate this resource's properties.

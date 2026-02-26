@@ -24,6 +24,7 @@ class AzurePrivatelinkConnectionApprovalArgs:
                  endpoint_ip_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AzurePrivatelinkConnectionApproval resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] endpoint_ip_address: IP address of Azure private endpoint.
@@ -80,6 +81,7 @@ class _AzurePrivatelinkConnectionApprovalState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzurePrivatelinkConnectionApproval resources.
+
         :param pulumi.Input[_builtins.str] endpoint_ip_address: IP address of Azure private endpoint.
         :param pulumi.Input[_builtins.str] privatelink_connection_id: The ID of the Private Link connection.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -226,6 +228,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
         $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval PROJECT/SERVICE_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_ip_address: IP address of Azure private endpoint.
@@ -295,6 +298,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval PROJECT/SERVICE_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AzurePrivatelinkConnectionApprovalArgs args: The arguments to use to populate this resource's properties.

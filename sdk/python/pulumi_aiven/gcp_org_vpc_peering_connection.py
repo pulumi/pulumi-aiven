@@ -25,6 +25,7 @@ class GcpOrgVpcPeeringConnectionArgs:
                  peer_vpc: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GcpOrgVpcPeeringConnection resource.
+
         :param pulumi.Input[_builtins.str] gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_id: Identifier of the organization.
         :param pulumi.Input[_builtins.str] organization_vpc_id: Identifier of the organization VPC.
@@ -95,6 +96,7 @@ class _GcpOrgVpcPeeringConnectionState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GcpOrgVpcPeeringConnection resources.
+
         :param pulumi.Input[_builtins.str] gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_id: Identifier of the organization.
         :param pulumi.Input[_builtins.str] organization_vpc_id: Identifier of the organization VPC.
@@ -228,6 +230,7 @@ class GcpOrgVpcPeeringConnection(pulumi.CustomResource):
         $ pulumi import aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/GCP_PROJECT_ID/VPC_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
@@ -269,6 +272,7 @@ class GcpOrgVpcPeeringConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/GCP_PROJECT_ID/VPC_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GcpOrgVpcPeeringConnectionArgs args: The arguments to use to populate this resource's properties.

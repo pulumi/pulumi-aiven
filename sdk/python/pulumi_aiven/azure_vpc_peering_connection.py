@@ -27,6 +27,7 @@ class AzureVpcPeeringConnectionArgs:
                  vpc_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AzureVpcPeeringConnection resource.
+
         :param pulumi.Input[_builtins.str] azure_subscription_id: The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] peer_azure_app_id: The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] peer_azure_tenant_id: The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
@@ -128,6 +129,7 @@ class _AzureVpcPeeringConnectionState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzureVpcPeeringConnection resources.
+
         :param pulumi.Input[_builtins.str] azure_subscription_id: The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] peer_azure_app_id: The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] peer_azure_tenant_id: The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
@@ -307,6 +309,7 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
         $ pulumi import aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection azure_to_aiven_peering PROJECT/VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] azure_subscription_id: The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
@@ -349,6 +352,7 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection azure_to_aiven_peering PROJECT/VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AzureVpcPeeringConnectionArgs args: The arguments to use to populate this resource's properties.

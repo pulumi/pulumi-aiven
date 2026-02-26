@@ -24,6 +24,7 @@ class AccountTeamMemberArgs:
                  user_email: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AccountTeamMember resource.
+
         :param pulumi.Input[_builtins.str] account_id: The unique account id. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] team_id: An account team id. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
@@ -80,6 +81,7 @@ class _AccountTeamMemberState:
                  user_email: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountTeamMember resources.
+
         :param pulumi.Input[_builtins.bool] accepted: is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
         :param pulumi.Input[_builtins.str] account_id: The unique account id. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] create_time: Time of creation
@@ -216,6 +218,7 @@ class AccountTeamMember(pulumi.CustomResource):
         $ pulumi import aiven:index/accountTeamMember:AccountTeamMember foo ACCOUNT_ID/TEAM_ID/USER_EMAIL
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The unique account id. Changing this property forces recreation of the resource.
@@ -260,6 +263,7 @@ class AccountTeamMember(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/accountTeamMember:AccountTeamMember foo ACCOUNT_ID/TEAM_ID/USER_EMAIL
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountTeamMemberArgs args: The arguments to use to populate this resource's properties.

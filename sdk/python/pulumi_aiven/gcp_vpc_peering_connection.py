@@ -24,6 +24,7 @@ class GcpVpcPeeringConnectionArgs:
                  vpc_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GcpVpcPeeringConnection resource.
+
         :param pulumi.Input[_builtins.str] gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] peer_vpc: Google Cloud VPC network name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
@@ -80,6 +81,7 @@ class _GcpVpcPeeringConnectionState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GcpVpcPeeringConnection resources.
+
         :param pulumi.Input[_builtins.str] gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] peer_vpc: Google Cloud VPC network name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] self_link: Computed Google Cloud network peering link.
@@ -204,6 +206,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
         $ pulumi import aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection foo PROJECT_NAME/VPC_ID/GCP_PROJECT_ID/PEER_VPC
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
@@ -236,6 +239,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection foo PROJECT_NAME/VPC_ID/GCP_PROJECT_ID/PEER_VPC
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GcpVpcPeeringConnectionArgs args: The arguments to use to populate this resource's properties.

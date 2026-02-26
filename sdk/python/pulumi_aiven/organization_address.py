@@ -31,6 +31,7 @@ class OrganizationAddressArgs:
                  zip_code: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationAddress resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address Lines.
         :param pulumi.Input[_builtins.str] city: City. Maximum length: `512`.
         :param pulumi.Input[_builtins.str] country_code: Country Code.
@@ -162,6 +163,7 @@ class _OrganizationAddressState:
                  zip_code: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationAddress resources.
+
         :param pulumi.Input[_builtins.str] address_id: Address ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address Lines.
         :param pulumi.Input[_builtins.str] city: City. Maximum length: `512`.
@@ -353,6 +355,7 @@ class OrganizationAddress(pulumi.CustomResource):
         $ pulumi import aiven:index/organizationAddress:OrganizationAddress example ORGANIZATION_ID/ADDRESS_ID
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address Lines.
@@ -380,6 +383,7 @@ class OrganizationAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import aiven:index/organizationAddress:OrganizationAddress example ORGANIZATION_ID/ADDRESS_ID
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationAddressArgs args: The arguments to use to populate this resource's properties.

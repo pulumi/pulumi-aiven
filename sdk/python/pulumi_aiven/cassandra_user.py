@@ -27,6 +27,7 @@ class CassandraUserArgs:
                  password_wo_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a CassandraUser resource.
+
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -133,6 +134,7 @@ class _CassandraUserState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CassandraUser resources.
+
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for the user.
         :param pulumi.Input[_builtins.str] access_key: Access certificate key for the user.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
@@ -288,6 +290,7 @@ class CassandraUser(pulumi.CustomResource):
                  __props__=None):
         """
         Create a CassandraUser resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
@@ -306,6 +309,7 @@ class CassandraUser(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a CassandraUser resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param CassandraUserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
