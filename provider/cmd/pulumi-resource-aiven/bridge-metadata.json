@@ -3251,6 +3251,22 @@
                     }
                 }
             },
+            "aiven_kafka_topic_list": {
+                "current": "aiven:index/getKafkaTopicList:getKafkaTopicList",
+                "majorVersion": 6,
+                "fields": {
+                    "topics": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "aiven_kafka_user": {
                 "current": "aiven:index/getKafkaUser:getKafkaUser",
                 "majorVersion": 6
@@ -3777,6 +3793,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "aiven_organization_payment_method_list": {
+                "current": "aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList",
+                "majorVersion": 6,
+                "fields": {
+                    "payment_methods": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -4578,8 +4603,8 @@
             "aiven:index/connectionPool:ConnectionPool": 0,
             "aiven:index/dragonfly:Dragonfly": 0,
             "aiven:index/flink:Flink": 0,
-            "aiven:index/flinkApplication:FlinkApplication": 0,
-            "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment": 0,
+            "aiven:index/flinkApplication:FlinkApplication": 1,
+            "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment": 1,
             "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": 0,
             "aiven:index/flinkJarApplication:FlinkJarApplication": 0,
             "aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment": 0,
@@ -4632,7 +4657,7 @@
             "aiven:index/organizationalUnit:OrganizationalUnit": 1,
             "aiven:index/pg:Pg": 0,
             "aiven:index/pgDatabase:PgDatabase": 1,
-            "aiven:index/pgUser:PgUser": 0,
+            "aiven:index/pgUser:PgUser": 1,
             "aiven:index/project:Project": 0,
             "aiven:index/projectUser:ProjectUser": 0,
             "aiven:index/projectVpc:ProjectVpc": 0,
@@ -4672,7 +4697,7 @@
             "aiven:index/getDragonfly:getDragonfly": 0,
             "aiven:index/getExternalIdentity:getExternalIdentity": 1,
             "aiven:index/getFlink:getFlink": 0,
-            "aiven:index/getFlinkApplication:getFlinkApplication": 0,
+            "aiven:index/getFlinkApplication:getFlinkApplication": 1,
             "aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion": 0,
             "aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection": 0,
             "aiven:index/getGcpPrivatelink:getGcpPrivatelink": 0,
@@ -4690,6 +4715,7 @@
             "aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration": 0,
             "aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl": 0,
             "aiven:index/getKafkaTopic:getKafkaTopic": 0,
+            "aiven:index/getKafkaTopicList:getKafkaTopicList": 1,
             "aiven:index/getKafkaUser:getKafkaUser": 0,
             "aiven:index/getM3Aggregator:getM3Aggregator": 0,
             "aiven:index/getM3Db:getM3Db": 0,
@@ -4708,6 +4734,7 @@
             "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser": 1,
             "aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup": 1,
             "aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList": 1,
+            "aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList": 1,
             "aiven:index/getOrganizationProject:getOrganizationProject": 1,
             "aiven:index/getOrganizationUser:getOrganizationUser": 0,
             "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 0,
@@ -4718,7 +4745,7 @@
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": 1,
             "aiven:index/getPg:getPg": 0,
             "aiven:index/getPgDatabase:getPgDatabase": 1,
-            "aiven:index/getPgUser:getPgUser": 0,
+            "aiven:index/getPgUser:getPgUser": 1,
             "aiven:index/getProject:getProject": 0,
             "aiven:index/getProjectUser:getProjectUser": 0,
             "aiven:index/getProjectVpc:getProjectVpc": 0,
