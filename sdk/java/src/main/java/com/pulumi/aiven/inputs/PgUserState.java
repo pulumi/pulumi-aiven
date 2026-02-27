@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.PgUserTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -18,14 +19,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     public static final PgUserState Empty = new PgUserState();
 
     /**
-     * The access certificate for the servie user.
+     * Access certificate for TLS client authentication.
      * 
      */
     @Import(name="accessCert")
     private @Nullable Output<String> accessCert;
 
     /**
-     * @return The access certificate for the servie user.
+     * @return Access certificate for TLS client authentication.
      * 
      */
     public Optional<Output<String>> accessCert() {
@@ -33,14 +34,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The access certificate key for the service user.
+     * Access key for TLS client authentication.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return The access certificate key for the service user.
+     * @return Access key for TLS client authentication.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -48,14 +49,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -64,7 +65,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
      * 
      */
     @Import(name="passwordWo")
@@ -72,7 +73,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
      * 
      */
     public Optional<Output<String>> passwordWo() {
@@ -80,14 +81,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     @Import(name="passwordWoVersion")
     private @Nullable Output<Integer> passwordWoVersion;
 
     /**
-     * @return Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     public Optional<Output<Integer>> passwordWoVersion() {
@@ -110,14 +111,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -125,18 +126,25 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
         return Optional.ofNullable(this.serviceName);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<PgUserTimeoutsArgs> timeouts;
+
+    public Optional<Output<PgUserTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     /**
@@ -155,14 +163,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -180,6 +188,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         this.pgAllowReplication = $.pgAllowReplication;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.type = $.type;
         this.username = $.username;
     }
@@ -203,7 +212,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert The access certificate for the servie user.
+         * @param accessCert Access certificate for TLS client authentication.
          * 
          * @return builder
          * 
@@ -214,7 +223,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert The access certificate for the servie user.
+         * @param accessCert Access certificate for TLS client authentication.
          * 
          * @return builder
          * 
@@ -224,7 +233,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey The access certificate key for the service user.
+         * @param accessKey Access key for TLS client authentication.
          * 
          * @return builder
          * 
@@ -235,7 +244,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey The access certificate key for the service user.
+         * @param accessKey Access key for TLS client authentication.
          * 
          * @return builder
          * 
@@ -245,7 +254,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -256,7 +265,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -267,7 +276,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -279,7 +288,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -289,7 +298,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -300,7 +309,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -331,7 +340,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -342,7 +351,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -352,7 +361,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName The name of the service. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -363,13 +372,22 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName The name of the service. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        public Builder timeouts(@Nullable Output<PgUserTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(PgUserTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         /**
@@ -394,7 +412,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -405,7 +423,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

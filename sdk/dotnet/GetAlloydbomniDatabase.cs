@@ -11,69 +11,12 @@ namespace Pulumi.Aiven
 {
     public static class GetAlloydbomniDatabase
     {
-        /// <summary>
-        /// Gets information about a database in an Aiven for AlloyDB Omni service.
-        /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-        /// 
-        /// !&gt; **End of life notice**
-        /// Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        /// From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-        /// services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-        /// On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-        /// these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-        /// Aiven for PostgreSQL®,
-        /// Aiven for ClickHouse®,
-        /// and Aiven for MySQL®.
-        /// To ensure uninterrupted service, complete your migration before December 5, 2025.
-        /// For further assistance, contact the Aiven support team or your
-        /// account team.
-        /// </summary>
         public static Task<GetAlloydbomniDatabaseResult> InvokeAsync(GetAlloydbomniDatabaseArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlloydbomniDatabaseResult>("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", args ?? new GetAlloydbomniDatabaseArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Gets information about a database in an Aiven for AlloyDB Omni service.
-        /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-        /// 
-        /// !&gt; **End of life notice**
-        /// Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        /// From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-        /// services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-        /// On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-        /// these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-        /// Aiven for PostgreSQL®,
-        /// Aiven for ClickHouse®,
-        /// and Aiven for MySQL®.
-        /// To ensure uninterrupted service, complete your migration before December 5, 2025.
-        /// For further assistance, contact the Aiven support team or your
-        /// account team.
-        /// </summary>
         public static Output<GetAlloydbomniDatabaseResult> Invoke(GetAlloydbomniDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlloydbomniDatabaseResult>("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", args ?? new GetAlloydbomniDatabaseInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Gets information about a database in an Aiven for AlloyDB Omni service.
-        /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-        /// 
-        /// !&gt; **End of life notice**
-        /// Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        /// From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-        /// services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-        /// On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-        /// these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-        /// Aiven for PostgreSQL®,
-        /// Aiven for ClickHouse®,
-        /// and Aiven for MySQL®.
-        /// To ensure uninterrupted service, complete your migration before December 5, 2025.
-        /// For further assistance, contact the Aiven support team or your
-        /// account team.
-        /// </summary>
         public static Output<GetAlloydbomniDatabaseResult> Invoke(GetAlloydbomniDatabaseInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlloydbomniDatabaseResult>("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", args ?? new GetAlloydbomniDatabaseInvokeArgs(), options.WithDefaults());
     }
@@ -81,21 +24,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetAlloydbomniDatabaseArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("databaseName", required: true)]
         public string DatabaseName { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -107,21 +41,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetAlloydbomniDatabaseInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -135,29 +60,14 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetAlloydbomniDatabaseResult
     {
-        /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string DatabaseName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string LcCollate;
-        /// <summary>
-        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string LcCtype;
-        /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

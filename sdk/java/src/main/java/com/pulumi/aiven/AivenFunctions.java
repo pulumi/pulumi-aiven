@@ -89,6 +89,8 @@ import com.pulumi.aiven.inputs.GetKafkaSchemaPlainArgs;
 import com.pulumi.aiven.inputs.GetKafkaSchemaRegistryAclArgs;
 import com.pulumi.aiven.inputs.GetKafkaSchemaRegistryAclPlainArgs;
 import com.pulumi.aiven.inputs.GetKafkaTopicArgs;
+import com.pulumi.aiven.inputs.GetKafkaTopicListArgs;
+import com.pulumi.aiven.inputs.GetKafkaTopicListPlainArgs;
 import com.pulumi.aiven.inputs.GetKafkaTopicPlainArgs;
 import com.pulumi.aiven.inputs.GetKafkaUserArgs;
 import com.pulumi.aiven.inputs.GetKafkaUserPlainArgs;
@@ -125,6 +127,8 @@ import com.pulumi.aiven.inputs.GetOrganizationBillingGroupArgs;
 import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListArgs;
 import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationBillingGroupPlainArgs;
+import com.pulumi.aiven.inputs.GetOrganizationPaymentMethodListArgs;
+import com.pulumi.aiven.inputs.GetOrganizationPaymentMethodListPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
 import com.pulumi.aiven.inputs.GetOrganizationProjectPlainArgs;
@@ -220,6 +224,7 @@ import com.pulumi.aiven.outputs.GetKafkaResult;
 import com.pulumi.aiven.outputs.GetKafkaSchemaConfigurationResult;
 import com.pulumi.aiven.outputs.GetKafkaSchemaRegistryAclResult;
 import com.pulumi.aiven.outputs.GetKafkaSchemaResult;
+import com.pulumi.aiven.outputs.GetKafkaTopicListResult;
 import com.pulumi.aiven.outputs.GetKafkaTopicResult;
 import com.pulumi.aiven.outputs.GetKafkaUserResult;
 import com.pulumi.aiven.outputs.GetM3AggregatorResult;
@@ -238,6 +243,7 @@ import com.pulumi.aiven.outputs.GetOrganizationAddressResult;
 import com.pulumi.aiven.outputs.GetOrganizationApplicationUserResult;
 import com.pulumi.aiven.outputs.GetOrganizationBillingGroupListResult;
 import com.pulumi.aiven.outputs.GetOrganizationBillingGroupResult;
+import com.pulumi.aiven.outputs.GetOrganizationPaymentMethodListResult;
 import com.pulumi.aiven.outputs.GetOrganizationProjectResult;
 import com.pulumi.aiven.outputs.GetOrganizationResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserGroupListResult;
@@ -763,348 +769,48 @@ public final class AivenFunctions {
     public static CompletableFuture<GetAccountTeamProjectResult> getAccountTeamProjectPlain(GetAccountTeamProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAccountTeamProject:getAccountTeamProject", TypeShape.of(GetAccountTeamProjectResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for AlloyDB Omni service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args) {
         return getAlloydbomni(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for AlloyDB Omni service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static CompletableFuture<GetAlloydbomniResult> getAlloydbomniPlain(GetAlloydbomniPlainArgs args) {
         return getAlloydbomniPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for AlloyDB Omni service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAlloydbomni:getAlloydbomni", TypeShape.of(GetAlloydbomniResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for AlloyDB Omni service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAlloydbomni:getAlloydbomni", TypeShape.of(GetAlloydbomniResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for AlloyDB Omni service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static CompletableFuture<GetAlloydbomniResult> getAlloydbomniPlain(GetAlloydbomniPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAlloydbomni:getAlloydbomni", TypeShape.of(GetAlloydbomniResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about a database in an Aiven for AlloyDB Omni service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args) {
         return getAlloydbomniDatabase(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about a database in an Aiven for AlloyDB Omni service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static CompletableFuture<GetAlloydbomniDatabaseResult> getAlloydbomniDatabasePlain(GetAlloydbomniDatabasePlainArgs args) {
         return getAlloydbomniDatabasePlain(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about a database in an Aiven for AlloyDB Omni service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", TypeShape.of(GetAlloydbomniDatabaseResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about a database in an Aiven for AlloyDB Omni service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", TypeShape.of(GetAlloydbomniDatabaseResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about a database in an Aiven for AlloyDB Omni service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static CompletableFuture<GetAlloydbomniDatabaseResult> getAlloydbomniDatabasePlain(GetAlloydbomniDatabasePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", TypeShape.of(GetAlloydbomniDatabaseResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for AlloyDB Omni service user.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args) {
         return getAlloydbomniUser(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for AlloyDB Omni service user.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static CompletableFuture<GetAlloydbomniUserResult> getAlloydbomniUserPlain(GetAlloydbomniUserPlainArgs args) {
         return getAlloydbomniUserPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * Gets information about an Aiven for AlloyDB Omni service user.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for AlloyDB Omni service user.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Gets information about an Aiven for AlloyDB Omni service user.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
-     * !&gt; **End of life notice**
-     * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-     * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-     * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-     * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-     * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-     * Aiven for PostgreSQL®,
-     * Aiven for ClickHouse®,
-     * and Aiven for MySQL®.
-     * To ensure uninterrupted service, complete your migration before December 5, 2025.
-     * For further assistance, contact the Aiven support team or your
-     * account team.
-     * 
-     */
     public static CompletableFuture<GetAlloydbomniUserResult> getAlloydbomniUserPlain(GetAlloydbomniUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
     }
@@ -6519,6 +6225,41 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaTopic:getKafkaTopic", TypeShape.of(GetKafkaTopicResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Lists Kafka topics for a service.
+     * 
+     */
+    public static Output<GetKafkaTopicListResult> getKafkaTopicList(GetKafkaTopicListArgs args) {
+        return getKafkaTopicList(args, InvokeOptions.Empty);
+    }
+    /**
+     * Lists Kafka topics for a service.
+     * 
+     */
+    public static CompletableFuture<GetKafkaTopicListResult> getKafkaTopicListPlain(GetKafkaTopicListPlainArgs args) {
+        return getKafkaTopicListPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Lists Kafka topics for a service.
+     * 
+     */
+    public static Output<GetKafkaTopicListResult> getKafkaTopicList(GetKafkaTopicListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafkaTopicList:getKafkaTopicList", TypeShape.of(GetKafkaTopicListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists Kafka topics for a service.
+     * 
+     */
+    public static Output<GetKafkaTopicListResult> getKafkaTopicList(GetKafkaTopicListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafkaTopicList:getKafkaTopicList", TypeShape.of(GetKafkaTopicListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists Kafka topics for a service.
+     * 
+     */
+    public static CompletableFuture<GetKafkaTopicListResult> getKafkaTopicListPlain(GetKafkaTopicListPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getKafkaTopicList:getKafkaTopicList", TypeShape.of(GetKafkaTopicListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Gets information about an Aiven for Apache Kafka® service user.
      * 
      * ## Example Usage
@@ -9117,6 +8858,56 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupListPlain(GetOrganizationBillingGroupListPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", TypeShape.of(GetOrganizationBillingGroupListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists payment methods for an organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetOrganizationPaymentMethodListResult> getOrganizationPaymentMethodList(GetOrganizationPaymentMethodListArgs args) {
+        return getOrganizationPaymentMethodList(args, InvokeOptions.Empty);
+    }
+    /**
+     * Lists payment methods for an organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationPaymentMethodListResult> getOrganizationPaymentMethodListPlain(GetOrganizationPaymentMethodListPlainArgs args) {
+        return getOrganizationPaymentMethodListPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Lists payment methods for an organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetOrganizationPaymentMethodListResult> getOrganizationPaymentMethodList(GetOrganizationPaymentMethodListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList", TypeShape.of(GetOrganizationPaymentMethodListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists payment methods for an organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetOrganizationPaymentMethodListResult> getOrganizationPaymentMethodList(GetOrganizationPaymentMethodListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList", TypeShape.of(GetOrganizationPaymentMethodListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists payment methods for an organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationPaymentMethodListResult> getOrganizationPaymentMethodListPlain(GetOrganizationPaymentMethodListPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList", TypeShape.of(GetOrganizationPaymentMethodListResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an Aiven project.

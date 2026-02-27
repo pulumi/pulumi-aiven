@@ -11,64 +11,24 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAlloydbomniUserResult {
-    /**
-     * @return The access certificate for the servie user.
-     * 
-     */
     private String accessCert;
-    /**
-     * @return The access certificate key for the service user.
-     * 
-     */
     private String accessKey;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
-     * 
-     */
     private String password;
-    /**
-     * @return Allows replication. For the default avnadmin user this attribute is required and is always `true`.
-     * 
-     */
     private Boolean pgAllowReplication;
-    /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String project;
-    /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String serviceName;
-    /**
-     * @return The service user account type, either primary or regular.
-     * 
-     */
     private String type;
-    /**
-     * @return The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     private String username;
 
     private GetAlloydbomniUserResult() {}
-    /**
-     * @return The access certificate for the servie user.
-     * 
-     */
     public String accessCert() {
         return this.accessCert;
     }
-    /**
-     * @return The access certificate key for the service user.
-     * 
-     */
     public String accessKey() {
         return this.accessKey;
     }
@@ -79,45 +39,21 @@ public final class GetAlloydbomniUserResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
-     * 
-     */
     public String password() {
         return this.password;
     }
-    /**
-     * @return Allows replication. For the default avnadmin user this attribute is required and is always `true`.
-     * 
-     */
     public Boolean pgAllowReplication() {
         return this.pgAllowReplication;
     }
-    /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String project() {
         return this.project;
     }
-    /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String serviceName() {
         return this.serviceName;
     }
-    /**
-     * @return The service user account type, either primary or regular.
-     * 
-     */
     public String type() {
         return this.type;
     }
-    /**
-     * @return The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String username() {
         return this.username;
     }

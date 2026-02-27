@@ -12,10 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data.
+// Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data. Use your own CMKs from your cloud provider's key management service (KMS) to encrypt data for all services in an Aiven project. This gives you complete control over your encryption keys, meaning you can independently manage the key lifecycle and access policies.
 //
 // **This resource is in the beta stage and may change without notice.** Set
 // the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+//
+// > **Warning**
+// If you remove a CMK, the services linked to the key will stop working. Migrate the services to another CMK or an Aiven-managed key before removing the CMK.
 //
 // ## Example Usage
 //
@@ -56,7 +59,7 @@ type Cmk struct {
 
 	// Customer Managed Key identifier (CMK ID).
 	CmkId pulumi.StringOutput `pulumi:"cmkId"`
-	// CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider pulumi.StringOutput `pulumi:"cmkProvider"`
 	// Created At.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -64,7 +67,7 @@ type Cmk struct {
 	DefaultCmk pulumi.BoolOutput `pulumi:"defaultCmk"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
 	Resource pulumi.StringOutput `pulumi:"resource"`
 	// Status. The possible values are `current`, `deleted` and `old`.
 	Status   pulumi.StringOutput  `pulumi:"status"`
@@ -117,7 +120,7 @@ func GetCmk(ctx *pulumi.Context,
 type cmkState struct {
 	// Customer Managed Key identifier (CMK ID).
 	CmkId *string `pulumi:"cmkId"`
-	// CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider *string `pulumi:"cmkProvider"`
 	// Created At.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -125,7 +128,7 @@ type cmkState struct {
 	DefaultCmk *bool `pulumi:"defaultCmk"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
 	Resource *string `pulumi:"resource"`
 	// Status. The possible values are `current`, `deleted` and `old`.
 	Status   *string      `pulumi:"status"`
@@ -137,7 +140,7 @@ type cmkState struct {
 type CmkState struct {
 	// Customer Managed Key identifier (CMK ID).
 	CmkId pulumi.StringPtrInput
-	// CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider pulumi.StringPtrInput
 	// Created At.
 	CreatedAt pulumi.StringPtrInput
@@ -145,7 +148,7 @@ type CmkState struct {
 	DefaultCmk pulumi.BoolPtrInput
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
 	Resource pulumi.StringPtrInput
 	// Status. The possible values are `current`, `deleted` and `old`.
 	Status   pulumi.StringPtrInput
@@ -159,26 +162,26 @@ func (CmkState) ElementType() reflect.Type {
 }
 
 type cmkArgs struct {
-	// CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider string `pulumi:"cmkProvider"`
 	// Mark the created CMK as default for all newly created services.
 	DefaultCmk bool `pulumi:"defaultCmk"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
 	Resource string       `pulumi:"resource"`
 	Timeouts *CmkTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a Cmk resource.
 type CmkArgs struct {
-	// CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider pulumi.StringInput
 	// Mark the created CMK as default for all newly created services.
 	DefaultCmk pulumi.BoolInput
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
 	Resource pulumi.StringInput
 	Timeouts CmkTimeoutsPtrInput
 }
@@ -275,7 +278,7 @@ func (o CmkOutput) CmkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cmk) pulumi.StringOutput { return v.CmkId }).(pulumi.StringOutput)
 }
 
-// CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 func (o CmkOutput) CmkProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cmk) pulumi.StringOutput { return v.CmkProvider }).(pulumi.StringOutput)
 }
@@ -295,7 +298,7 @@ func (o CmkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cmk) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
 func (o CmkOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cmk) pulumi.StringOutput { return v.Resource }).(pulumi.StringOutput)
 }

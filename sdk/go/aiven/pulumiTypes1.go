@@ -13,6 +13,421 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetKafkaMirrorMakerTag struct {
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
+	Value string `pulumi:"value"`
+}
+
+// GetKafkaMirrorMakerTagInput is an input type that accepts GetKafkaMirrorMakerTagArgs and GetKafkaMirrorMakerTagOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerTagInput` via:
+//
+//	GetKafkaMirrorMakerTagArgs{...}
+type GetKafkaMirrorMakerTagInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerTagOutput() GetKafkaMirrorMakerTagOutput
+	ToGetKafkaMirrorMakerTagOutputWithContext(context.Context) GetKafkaMirrorMakerTagOutput
+}
+
+type GetKafkaMirrorMakerTagArgs struct {
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetKafkaMirrorMakerTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerTag)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerTagArgs) ToGetKafkaMirrorMakerTagOutput() GetKafkaMirrorMakerTagOutput {
+	return i.ToGetKafkaMirrorMakerTagOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerTagArgs) ToGetKafkaMirrorMakerTagOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerTagOutput)
+}
+
+// GetKafkaMirrorMakerTagArrayInput is an input type that accepts GetKafkaMirrorMakerTagArray and GetKafkaMirrorMakerTagArrayOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerTagArrayInput` via:
+//
+//	GetKafkaMirrorMakerTagArray{ GetKafkaMirrorMakerTagArgs{...} }
+type GetKafkaMirrorMakerTagArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerTagArrayOutput() GetKafkaMirrorMakerTagArrayOutput
+	ToGetKafkaMirrorMakerTagArrayOutputWithContext(context.Context) GetKafkaMirrorMakerTagArrayOutput
+}
+
+type GetKafkaMirrorMakerTagArray []GetKafkaMirrorMakerTagInput
+
+func (GetKafkaMirrorMakerTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerTag)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerTagArray) ToGetKafkaMirrorMakerTagArrayOutput() GetKafkaMirrorMakerTagArrayOutput {
+	return i.ToGetKafkaMirrorMakerTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerTagArray) ToGetKafkaMirrorMakerTagArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerTagArrayOutput)
+}
+
+type GetKafkaMirrorMakerTagOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerTag)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerTagOutput) ToGetKafkaMirrorMakerTagOutput() GetKafkaMirrorMakerTagOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerTagOutput) ToGetKafkaMirrorMakerTagOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTagOutput {
+	return o
+}
+
+// Service tag key
+func (o GetKafkaMirrorMakerTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Service tag value
+func (o GetKafkaMirrorMakerTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetKafkaMirrorMakerTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerTag)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerTagArrayOutput) ToGetKafkaMirrorMakerTagArrayOutput() GetKafkaMirrorMakerTagArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerTagArrayOutput) ToGetKafkaMirrorMakerTagArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTagArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerTagArrayOutput) Index(i pulumi.IntInput) GetKafkaMirrorMakerTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaMirrorMakerTag {
+		return vs[0].([]GetKafkaMirrorMakerTag)[vs[1].(int)]
+	}).(GetKafkaMirrorMakerTagOutput)
+}
+
+type GetKafkaMirrorMakerTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// GetKafkaMirrorMakerTechEmailInput is an input type that accepts GetKafkaMirrorMakerTechEmailArgs and GetKafkaMirrorMakerTechEmailOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerTechEmailInput` via:
+//
+//	GetKafkaMirrorMakerTechEmailArgs{...}
+type GetKafkaMirrorMakerTechEmailInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerTechEmailOutput() GetKafkaMirrorMakerTechEmailOutput
+	ToGetKafkaMirrorMakerTechEmailOutputWithContext(context.Context) GetKafkaMirrorMakerTechEmailOutput
+}
+
+type GetKafkaMirrorMakerTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetKafkaMirrorMakerTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerTechEmailArgs) ToGetKafkaMirrorMakerTechEmailOutput() GetKafkaMirrorMakerTechEmailOutput {
+	return i.ToGetKafkaMirrorMakerTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerTechEmailArgs) ToGetKafkaMirrorMakerTechEmailOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerTechEmailOutput)
+}
+
+// GetKafkaMirrorMakerTechEmailArrayInput is an input type that accepts GetKafkaMirrorMakerTechEmailArray and GetKafkaMirrorMakerTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerTechEmailArrayInput` via:
+//
+//	GetKafkaMirrorMakerTechEmailArray{ GetKafkaMirrorMakerTechEmailArgs{...} }
+type GetKafkaMirrorMakerTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerTechEmailArrayOutput() GetKafkaMirrorMakerTechEmailArrayOutput
+	ToGetKafkaMirrorMakerTechEmailArrayOutputWithContext(context.Context) GetKafkaMirrorMakerTechEmailArrayOutput
+}
+
+type GetKafkaMirrorMakerTechEmailArray []GetKafkaMirrorMakerTechEmailInput
+
+func (GetKafkaMirrorMakerTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerTechEmailArray) ToGetKafkaMirrorMakerTechEmailArrayOutput() GetKafkaMirrorMakerTechEmailArrayOutput {
+	return i.ToGetKafkaMirrorMakerTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerTechEmailArray) ToGetKafkaMirrorMakerTechEmailArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerTechEmailArrayOutput)
+}
+
+type GetKafkaMirrorMakerTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerTechEmailOutput) ToGetKafkaMirrorMakerTechEmailOutput() GetKafkaMirrorMakerTechEmailOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerTechEmailOutput) ToGetKafkaMirrorMakerTechEmailOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o GetKafkaMirrorMakerTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetKafkaMirrorMakerTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerTechEmail)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerTechEmailArrayOutput) ToGetKafkaMirrorMakerTechEmailArrayOutput() GetKafkaMirrorMakerTechEmailArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerTechEmailArrayOutput) ToGetKafkaMirrorMakerTechEmailArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerTechEmailArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerTechEmailArrayOutput) Index(i pulumi.IntInput) GetKafkaMirrorMakerTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaMirrorMakerTechEmail {
+		return vs[0].([]GetKafkaMirrorMakerTechEmail)[vs[1].(int)]
+	}).(GetKafkaMirrorMakerTechEmailOutput)
+}
+
+type GetKafkaServiceIntegration struct {
+	// Type of the service integration
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetKafkaServiceIntegrationInput is an input type that accepts GetKafkaServiceIntegrationArgs and GetKafkaServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetKafkaServiceIntegrationInput` via:
+//
+//	GetKafkaServiceIntegrationArgs{...}
+type GetKafkaServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetKafkaServiceIntegrationOutput() GetKafkaServiceIntegrationOutput
+	ToGetKafkaServiceIntegrationOutputWithContext(context.Context) GetKafkaServiceIntegrationOutput
+}
+
+type GetKafkaServiceIntegrationArgs struct {
+	// Type of the service integration
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetKafkaServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaServiceIntegration)(nil)).Elem()
+}
+
+func (i GetKafkaServiceIntegrationArgs) ToGetKafkaServiceIntegrationOutput() GetKafkaServiceIntegrationOutput {
+	return i.ToGetKafkaServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetKafkaServiceIntegrationArgs) ToGetKafkaServiceIntegrationOutputWithContext(ctx context.Context) GetKafkaServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaServiceIntegrationOutput)
+}
+
+// GetKafkaServiceIntegrationArrayInput is an input type that accepts GetKafkaServiceIntegrationArray and GetKafkaServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetKafkaServiceIntegrationArrayInput` via:
+//
+//	GetKafkaServiceIntegrationArray{ GetKafkaServiceIntegrationArgs{...} }
+type GetKafkaServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaServiceIntegrationArrayOutput() GetKafkaServiceIntegrationArrayOutput
+	ToGetKafkaServiceIntegrationArrayOutputWithContext(context.Context) GetKafkaServiceIntegrationArrayOutput
+}
+
+type GetKafkaServiceIntegrationArray []GetKafkaServiceIntegrationInput
+
+func (GetKafkaServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaServiceIntegration)(nil)).Elem()
+}
+
+func (i GetKafkaServiceIntegrationArray) ToGetKafkaServiceIntegrationArrayOutput() GetKafkaServiceIntegrationArrayOutput {
+	return i.ToGetKafkaServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaServiceIntegrationArray) ToGetKafkaServiceIntegrationArrayOutputWithContext(ctx context.Context) GetKafkaServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaServiceIntegrationArrayOutput)
+}
+
+type GetKafkaServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaServiceIntegration)(nil)).Elem()
+}
+
+func (o GetKafkaServiceIntegrationOutput) ToGetKafkaServiceIntegrationOutput() GetKafkaServiceIntegrationOutput {
+	return o
+}
+
+func (o GetKafkaServiceIntegrationOutput) ToGetKafkaServiceIntegrationOutputWithContext(ctx context.Context) GetKafkaServiceIntegrationOutput {
+	return o
+}
+
+// Type of the service integration
+func (o GetKafkaServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Name of the source service
+func (o GetKafkaServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetKafkaServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaServiceIntegration)(nil)).Elem()
+}
+
+func (o GetKafkaServiceIntegrationArrayOutput) ToGetKafkaServiceIntegrationArrayOutput() GetKafkaServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetKafkaServiceIntegrationArrayOutput) ToGetKafkaServiceIntegrationArrayOutputWithContext(ctx context.Context) GetKafkaServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetKafkaServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetKafkaServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaServiceIntegration {
+		return vs[0].([]GetKafkaServiceIntegration)[vs[1].(int)]
+	}).(GetKafkaServiceIntegrationOutput)
+}
+
+type GetKafkaTag struct {
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
+	Value string `pulumi:"value"`
+}
+
+// GetKafkaTagInput is an input type that accepts GetKafkaTagArgs and GetKafkaTagOutput values.
+// You can construct a concrete instance of `GetKafkaTagInput` via:
+//
+//	GetKafkaTagArgs{...}
+type GetKafkaTagInput interface {
+	pulumi.Input
+
+	ToGetKafkaTagOutput() GetKafkaTagOutput
+	ToGetKafkaTagOutputWithContext(context.Context) GetKafkaTagOutput
+}
+
+type GetKafkaTagArgs struct {
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetKafkaTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTag)(nil)).Elem()
+}
+
+func (i GetKafkaTagArgs) ToGetKafkaTagOutput() GetKafkaTagOutput {
+	return i.ToGetKafkaTagOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTagArgs) ToGetKafkaTagOutputWithContext(ctx context.Context) GetKafkaTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTagOutput)
+}
+
+// GetKafkaTagArrayInput is an input type that accepts GetKafkaTagArray and GetKafkaTagArrayOutput values.
+// You can construct a concrete instance of `GetKafkaTagArrayInput` via:
+//
+//	GetKafkaTagArray{ GetKafkaTagArgs{...} }
+type GetKafkaTagArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaTagArrayOutput() GetKafkaTagArrayOutput
+	ToGetKafkaTagArrayOutputWithContext(context.Context) GetKafkaTagArrayOutput
+}
+
+type GetKafkaTagArray []GetKafkaTagInput
+
+func (GetKafkaTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTag)(nil)).Elem()
+}
+
+func (i GetKafkaTagArray) ToGetKafkaTagArrayOutput() GetKafkaTagArrayOutput {
+	return i.ToGetKafkaTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTagArray) ToGetKafkaTagArrayOutputWithContext(ctx context.Context) GetKafkaTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTagArrayOutput)
+}
+
+type GetKafkaTagOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTag)(nil)).Elem()
+}
+
+func (o GetKafkaTagOutput) ToGetKafkaTagOutput() GetKafkaTagOutput {
+	return o
+}
+
+func (o GetKafkaTagOutput) ToGetKafkaTagOutputWithContext(ctx context.Context) GetKafkaTagOutput {
+	return o
+}
+
+// Service tag key
+func (o GetKafkaTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Service tag value
+func (o GetKafkaTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetKafkaTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTag)(nil)).Elem()
+}
+
+func (o GetKafkaTagArrayOutput) ToGetKafkaTagArrayOutput() GetKafkaTagArrayOutput {
+	return o
+}
+
+func (o GetKafkaTagArrayOutput) ToGetKafkaTagArrayOutputWithContext(ctx context.Context) GetKafkaTagArrayOutput {
+	return o
+}
+
+func (o GetKafkaTagArrayOutput) Index(i pulumi.IntInput) GetKafkaTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaTag {
+		return vs[0].([]GetKafkaTag)[vs[1].(int)]
+	}).(GetKafkaTagOutput)
+}
+
 type GetKafkaTechEmail struct {
 	// An email address to contact for technical issues
 	Email string `pulumi:"email"`
@@ -448,6 +863,454 @@ func (o GetKafkaTopicConfigArrayOutput) Index(i pulumi.IntInput) GetKafkaTopicCo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaTopicConfig {
 		return vs[0].([]GetKafkaTopicConfig)[vs[1].(int)]
 	}).(GetKafkaTopicConfigOutput)
+}
+
+type GetKafkaTopicListTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetKafkaTopicListTimeoutsInput is an input type that accepts GetKafkaTopicListTimeoutsArgs and GetKafkaTopicListTimeoutsOutput values.
+// You can construct a concrete instance of `GetKafkaTopicListTimeoutsInput` via:
+//
+//	GetKafkaTopicListTimeoutsArgs{...}
+type GetKafkaTopicListTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicListTimeoutsOutput() GetKafkaTopicListTimeoutsOutput
+	ToGetKafkaTopicListTimeoutsOutputWithContext(context.Context) GetKafkaTopicListTimeoutsOutput
+}
+
+type GetKafkaTopicListTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetKafkaTopicListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicListTimeouts)(nil)).Elem()
+}
+
+func (i GetKafkaTopicListTimeoutsArgs) ToGetKafkaTopicListTimeoutsOutput() GetKafkaTopicListTimeoutsOutput {
+	return i.ToGetKafkaTopicListTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicListTimeoutsArgs) ToGetKafkaTopicListTimeoutsOutputWithContext(ctx context.Context) GetKafkaTopicListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicListTimeoutsOutput)
+}
+
+func (i GetKafkaTopicListTimeoutsArgs) ToGetKafkaTopicListTimeoutsPtrOutput() GetKafkaTopicListTimeoutsPtrOutput {
+	return i.ToGetKafkaTopicListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicListTimeoutsArgs) ToGetKafkaTopicListTimeoutsPtrOutputWithContext(ctx context.Context) GetKafkaTopicListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicListTimeoutsOutput).ToGetKafkaTopicListTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetKafkaTopicListTimeoutsPtrInput is an input type that accepts GetKafkaTopicListTimeoutsArgs, GetKafkaTopicListTimeoutsPtr and GetKafkaTopicListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetKafkaTopicListTimeoutsPtrInput` via:
+//
+//	        GetKafkaTopicListTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKafkaTopicListTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicListTimeoutsPtrOutput() GetKafkaTopicListTimeoutsPtrOutput
+	ToGetKafkaTopicListTimeoutsPtrOutputWithContext(context.Context) GetKafkaTopicListTimeoutsPtrOutput
+}
+
+type getKafkaTopicListTimeoutsPtrType GetKafkaTopicListTimeoutsArgs
+
+func GetKafkaTopicListTimeoutsPtr(v *GetKafkaTopicListTimeoutsArgs) GetKafkaTopicListTimeoutsPtrInput {
+	return (*getKafkaTopicListTimeoutsPtrType)(v)
+}
+
+func (*getKafkaTopicListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaTopicListTimeouts)(nil)).Elem()
+}
+
+func (i *getKafkaTopicListTimeoutsPtrType) ToGetKafkaTopicListTimeoutsPtrOutput() GetKafkaTopicListTimeoutsPtrOutput {
+	return i.ToGetKafkaTopicListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getKafkaTopicListTimeoutsPtrType) ToGetKafkaTopicListTimeoutsPtrOutputWithContext(ctx context.Context) GetKafkaTopicListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicListTimeoutsPtrOutput)
+}
+
+type GetKafkaTopicListTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicListTimeouts)(nil)).Elem()
+}
+
+func (o GetKafkaTopicListTimeoutsOutput) ToGetKafkaTopicListTimeoutsOutput() GetKafkaTopicListTimeoutsOutput {
+	return o
+}
+
+func (o GetKafkaTopicListTimeoutsOutput) ToGetKafkaTopicListTimeoutsOutputWithContext(ctx context.Context) GetKafkaTopicListTimeoutsOutput {
+	return o
+}
+
+func (o GetKafkaTopicListTimeoutsOutput) ToGetKafkaTopicListTimeoutsPtrOutput() GetKafkaTopicListTimeoutsPtrOutput {
+	return o.ToGetKafkaTopicListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetKafkaTopicListTimeoutsOutput) ToGetKafkaTopicListTimeoutsPtrOutputWithContext(ctx context.Context) GetKafkaTopicListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKafkaTopicListTimeouts) *GetKafkaTopicListTimeouts {
+		return &v
+	}).(GetKafkaTopicListTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetKafkaTopicListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetKafkaTopicListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaTopicListTimeouts)(nil)).Elem()
+}
+
+func (o GetKafkaTopicListTimeoutsPtrOutput) ToGetKafkaTopicListTimeoutsPtrOutput() GetKafkaTopicListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetKafkaTopicListTimeoutsPtrOutput) ToGetKafkaTopicListTimeoutsPtrOutputWithContext(ctx context.Context) GetKafkaTopicListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetKafkaTopicListTimeoutsPtrOutput) Elem() GetKafkaTopicListTimeoutsOutput {
+	return o.ApplyT(func(v *GetKafkaTopicListTimeouts) GetKafkaTopicListTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetKafkaTopicListTimeouts
+		return ret
+	}).(GetKafkaTopicListTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetKafkaTopicListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaTopicListTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetKafkaTopicListTopic struct {
+	// The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic.
+	CleanupPolicy string `pulumi:"cleanupPolicy"`
+	// Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
+	DisklessEnable bool `pulumi:"disklessEnable"`
+	// When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+	MinInsyncReplicas int `pulumi:"minInsyncReplicas"`
+	// The user group that owns this topic.
+	OwnerUserGroupId string `pulumi:"ownerUserGroupId"`
+	// Number of partitions.
+	Partitions int `pulumi:"partitions"`
+	// Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
+	RemoteStorageEnable bool `pulumi:"remoteStorageEnable"`
+	// Number of replicas.
+	Replication int `pulumi:"replication"`
+	// This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+	RetentionBytes int `pulumi:"retentionBytes"`
+	// Retention period (hours).
+	RetentionHours int `pulumi:"retentionHours"`
+	// Topic state. The possible values are `ACTIVE`, `CONFIGURING` and `DELETING`.
+	State string `pulumi:"state"`
+	// Topic tags.
+	Tags []GetKafkaTopicListTopicTag `pulumi:"tags"`
+	// Topic description.
+	TopicDescription string `pulumi:"topicDescription"`
+	// Topic name.
+	TopicName string `pulumi:"topicName"`
+}
+
+// GetKafkaTopicListTopicInput is an input type that accepts GetKafkaTopicListTopicArgs and GetKafkaTopicListTopicOutput values.
+// You can construct a concrete instance of `GetKafkaTopicListTopicInput` via:
+//
+//	GetKafkaTopicListTopicArgs{...}
+type GetKafkaTopicListTopicInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicListTopicOutput() GetKafkaTopicListTopicOutput
+	ToGetKafkaTopicListTopicOutputWithContext(context.Context) GetKafkaTopicListTopicOutput
+}
+
+type GetKafkaTopicListTopicArgs struct {
+	// The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic.
+	CleanupPolicy pulumi.StringInput `pulumi:"cleanupPolicy"`
+	// Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
+	DisklessEnable pulumi.BoolInput `pulumi:"disklessEnable"`
+	// When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+	MinInsyncReplicas pulumi.IntInput `pulumi:"minInsyncReplicas"`
+	// The user group that owns this topic.
+	OwnerUserGroupId pulumi.StringInput `pulumi:"ownerUserGroupId"`
+	// Number of partitions.
+	Partitions pulumi.IntInput `pulumi:"partitions"`
+	// Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
+	RemoteStorageEnable pulumi.BoolInput `pulumi:"remoteStorageEnable"`
+	// Number of replicas.
+	Replication pulumi.IntInput `pulumi:"replication"`
+	// This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+	RetentionBytes pulumi.IntInput `pulumi:"retentionBytes"`
+	// Retention period (hours).
+	RetentionHours pulumi.IntInput `pulumi:"retentionHours"`
+	// Topic state. The possible values are `ACTIVE`, `CONFIGURING` and `DELETING`.
+	State pulumi.StringInput `pulumi:"state"`
+	// Topic tags.
+	Tags GetKafkaTopicListTopicTagArrayInput `pulumi:"tags"`
+	// Topic description.
+	TopicDescription pulumi.StringInput `pulumi:"topicDescription"`
+	// Topic name.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
+}
+
+func (GetKafkaTopicListTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicListTopic)(nil)).Elem()
+}
+
+func (i GetKafkaTopicListTopicArgs) ToGetKafkaTopicListTopicOutput() GetKafkaTopicListTopicOutput {
+	return i.ToGetKafkaTopicListTopicOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicListTopicArgs) ToGetKafkaTopicListTopicOutputWithContext(ctx context.Context) GetKafkaTopicListTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicListTopicOutput)
+}
+
+// GetKafkaTopicListTopicArrayInput is an input type that accepts GetKafkaTopicListTopicArray and GetKafkaTopicListTopicArrayOutput values.
+// You can construct a concrete instance of `GetKafkaTopicListTopicArrayInput` via:
+//
+//	GetKafkaTopicListTopicArray{ GetKafkaTopicListTopicArgs{...} }
+type GetKafkaTopicListTopicArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicListTopicArrayOutput() GetKafkaTopicListTopicArrayOutput
+	ToGetKafkaTopicListTopicArrayOutputWithContext(context.Context) GetKafkaTopicListTopicArrayOutput
+}
+
+type GetKafkaTopicListTopicArray []GetKafkaTopicListTopicInput
+
+func (GetKafkaTopicListTopicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTopicListTopic)(nil)).Elem()
+}
+
+func (i GetKafkaTopicListTopicArray) ToGetKafkaTopicListTopicArrayOutput() GetKafkaTopicListTopicArrayOutput {
+	return i.ToGetKafkaTopicListTopicArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicListTopicArray) ToGetKafkaTopicListTopicArrayOutputWithContext(ctx context.Context) GetKafkaTopicListTopicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicListTopicArrayOutput)
+}
+
+type GetKafkaTopicListTopicOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicListTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicListTopic)(nil)).Elem()
+}
+
+func (o GetKafkaTopicListTopicOutput) ToGetKafkaTopicListTopicOutput() GetKafkaTopicListTopicOutput {
+	return o
+}
+
+func (o GetKafkaTopicListTopicOutput) ToGetKafkaTopicListTopicOutputWithContext(ctx context.Context) GetKafkaTopicListTopicOutput {
+	return o
+}
+
+// The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic.
+func (o GetKafkaTopicListTopicOutput) CleanupPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) string { return v.CleanupPolicy }).(pulumi.StringOutput)
+}
+
+// Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
+func (o GetKafkaTopicListTopicOutput) DisklessEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) bool { return v.DisklessEnable }).(pulumi.BoolOutput)
+}
+
+// When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+func (o GetKafkaTopicListTopicOutput) MinInsyncReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) int { return v.MinInsyncReplicas }).(pulumi.IntOutput)
+}
+
+// The user group that owns this topic.
+func (o GetKafkaTopicListTopicOutput) OwnerUserGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) string { return v.OwnerUserGroupId }).(pulumi.StringOutput)
+}
+
+// Number of partitions.
+func (o GetKafkaTopicListTopicOutput) Partitions() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) int { return v.Partitions }).(pulumi.IntOutput)
+}
+
+// Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
+func (o GetKafkaTopicListTopicOutput) RemoteStorageEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) bool { return v.RemoteStorageEnable }).(pulumi.BoolOutput)
+}
+
+// Number of replicas.
+func (o GetKafkaTopicListTopicOutput) Replication() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) int { return v.Replication }).(pulumi.IntOutput)
+}
+
+// This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+func (o GetKafkaTopicListTopicOutput) RetentionBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) int { return v.RetentionBytes }).(pulumi.IntOutput)
+}
+
+// Retention period (hours).
+func (o GetKafkaTopicListTopicOutput) RetentionHours() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) int { return v.RetentionHours }).(pulumi.IntOutput)
+}
+
+// Topic state. The possible values are `ACTIVE`, `CONFIGURING` and `DELETING`.
+func (o GetKafkaTopicListTopicOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Topic tags.
+func (o GetKafkaTopicListTopicOutput) Tags() GetKafkaTopicListTopicTagArrayOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) []GetKafkaTopicListTopicTag { return v.Tags }).(GetKafkaTopicListTopicTagArrayOutput)
+}
+
+// Topic description.
+func (o GetKafkaTopicListTopicOutput) TopicDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) string { return v.TopicDescription }).(pulumi.StringOutput)
+}
+
+// Topic name.
+func (o GetKafkaTopicListTopicOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopic) string { return v.TopicName }).(pulumi.StringOutput)
+}
+
+type GetKafkaTopicListTopicArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicListTopicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTopicListTopic)(nil)).Elem()
+}
+
+func (o GetKafkaTopicListTopicArrayOutput) ToGetKafkaTopicListTopicArrayOutput() GetKafkaTopicListTopicArrayOutput {
+	return o
+}
+
+func (o GetKafkaTopicListTopicArrayOutput) ToGetKafkaTopicListTopicArrayOutputWithContext(ctx context.Context) GetKafkaTopicListTopicArrayOutput {
+	return o
+}
+
+func (o GetKafkaTopicListTopicArrayOutput) Index(i pulumi.IntInput) GetKafkaTopicListTopicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaTopicListTopic {
+		return vs[0].([]GetKafkaTopicListTopic)[vs[1].(int)]
+	}).(GetKafkaTopicListTopicOutput)
+}
+
+type GetKafkaTopicListTopicTag struct {
+	// Tag key.
+	Key string `pulumi:"key"`
+	// Tag value.
+	Value string `pulumi:"value"`
+}
+
+// GetKafkaTopicListTopicTagInput is an input type that accepts GetKafkaTopicListTopicTagArgs and GetKafkaTopicListTopicTagOutput values.
+// You can construct a concrete instance of `GetKafkaTopicListTopicTagInput` via:
+//
+//	GetKafkaTopicListTopicTagArgs{...}
+type GetKafkaTopicListTopicTagInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicListTopicTagOutput() GetKafkaTopicListTopicTagOutput
+	ToGetKafkaTopicListTopicTagOutputWithContext(context.Context) GetKafkaTopicListTopicTagOutput
+}
+
+type GetKafkaTopicListTopicTagArgs struct {
+	// Tag key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Tag value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetKafkaTopicListTopicTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicListTopicTag)(nil)).Elem()
+}
+
+func (i GetKafkaTopicListTopicTagArgs) ToGetKafkaTopicListTopicTagOutput() GetKafkaTopicListTopicTagOutput {
+	return i.ToGetKafkaTopicListTopicTagOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicListTopicTagArgs) ToGetKafkaTopicListTopicTagOutputWithContext(ctx context.Context) GetKafkaTopicListTopicTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicListTopicTagOutput)
+}
+
+// GetKafkaTopicListTopicTagArrayInput is an input type that accepts GetKafkaTopicListTopicTagArray and GetKafkaTopicListTopicTagArrayOutput values.
+// You can construct a concrete instance of `GetKafkaTopicListTopicTagArrayInput` via:
+//
+//	GetKafkaTopicListTopicTagArray{ GetKafkaTopicListTopicTagArgs{...} }
+type GetKafkaTopicListTopicTagArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaTopicListTopicTagArrayOutput() GetKafkaTopicListTopicTagArrayOutput
+	ToGetKafkaTopicListTopicTagArrayOutputWithContext(context.Context) GetKafkaTopicListTopicTagArrayOutput
+}
+
+type GetKafkaTopicListTopicTagArray []GetKafkaTopicListTopicTagInput
+
+func (GetKafkaTopicListTopicTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTopicListTopicTag)(nil)).Elem()
+}
+
+func (i GetKafkaTopicListTopicTagArray) ToGetKafkaTopicListTopicTagArrayOutput() GetKafkaTopicListTopicTagArrayOutput {
+	return i.ToGetKafkaTopicListTopicTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaTopicListTopicTagArray) ToGetKafkaTopicListTopicTagArrayOutputWithContext(ctx context.Context) GetKafkaTopicListTopicTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaTopicListTopicTagArrayOutput)
+}
+
+type GetKafkaTopicListTopicTagOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicListTopicTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaTopicListTopicTag)(nil)).Elem()
+}
+
+func (o GetKafkaTopicListTopicTagOutput) ToGetKafkaTopicListTopicTagOutput() GetKafkaTopicListTopicTagOutput {
+	return o
+}
+
+func (o GetKafkaTopicListTopicTagOutput) ToGetKafkaTopicListTopicTagOutputWithContext(ctx context.Context) GetKafkaTopicListTopicTagOutput {
+	return o
+}
+
+// Tag key.
+func (o GetKafkaTopicListTopicTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopicTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Tag value.
+func (o GetKafkaTopicListTopicTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaTopicListTopicTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetKafkaTopicListTopicTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaTopicListTopicTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaTopicListTopicTag)(nil)).Elem()
+}
+
+func (o GetKafkaTopicListTopicTagArrayOutput) ToGetKafkaTopicListTopicTagArrayOutput() GetKafkaTopicListTopicTagArrayOutput {
+	return o
+}
+
+func (o GetKafkaTopicListTopicTagArrayOutput) ToGetKafkaTopicListTopicTagArrayOutputWithContext(ctx context.Context) GetKafkaTopicListTopicTagArrayOutput {
+	return o
+}
+
+func (o GetKafkaTopicListTopicTagArrayOutput) Index(i pulumi.IntInput) GetKafkaTopicListTopicTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaTopicListTopicTag {
+		return vs[0].([]GetKafkaTopicListTopicTag)[vs[1].(int)]
+	}).(GetKafkaTopicListTopicTagOutput)
 }
 
 type GetKafkaTopicTag struct {
@@ -18631,6 +19494,249 @@ func (o GetOrganizationBillingGroupTimeoutsPtrOutput) Read() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetOrganizationPaymentMethodListPaymentMethod struct {
+	// Payment method ID.
+	PaymentMethodId string `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	PaymentMethodType string `pulumi:"paymentMethodType"`
+}
+
+// GetOrganizationPaymentMethodListPaymentMethodInput is an input type that accepts GetOrganizationPaymentMethodListPaymentMethodArgs and GetOrganizationPaymentMethodListPaymentMethodOutput values.
+// You can construct a concrete instance of `GetOrganizationPaymentMethodListPaymentMethodInput` via:
+//
+//	GetOrganizationPaymentMethodListPaymentMethodArgs{...}
+type GetOrganizationPaymentMethodListPaymentMethodInput interface {
+	pulumi.Input
+
+	ToGetOrganizationPaymentMethodListPaymentMethodOutput() GetOrganizationPaymentMethodListPaymentMethodOutput
+	ToGetOrganizationPaymentMethodListPaymentMethodOutputWithContext(context.Context) GetOrganizationPaymentMethodListPaymentMethodOutput
+}
+
+type GetOrganizationPaymentMethodListPaymentMethodArgs struct {
+	// Payment method ID.
+	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	PaymentMethodType pulumi.StringInput `pulumi:"paymentMethodType"`
+}
+
+func (GetOrganizationPaymentMethodListPaymentMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationPaymentMethodListPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationPaymentMethodListPaymentMethodArgs) ToGetOrganizationPaymentMethodListPaymentMethodOutput() GetOrganizationPaymentMethodListPaymentMethodOutput {
+	return i.ToGetOrganizationPaymentMethodListPaymentMethodOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationPaymentMethodListPaymentMethodArgs) ToGetOrganizationPaymentMethodListPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListPaymentMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPaymentMethodListPaymentMethodOutput)
+}
+
+// GetOrganizationPaymentMethodListPaymentMethodArrayInput is an input type that accepts GetOrganizationPaymentMethodListPaymentMethodArray and GetOrganizationPaymentMethodListPaymentMethodArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationPaymentMethodListPaymentMethodArrayInput` via:
+//
+//	GetOrganizationPaymentMethodListPaymentMethodArray{ GetOrganizationPaymentMethodListPaymentMethodArgs{...} }
+type GetOrganizationPaymentMethodListPaymentMethodArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationPaymentMethodListPaymentMethodArrayOutput() GetOrganizationPaymentMethodListPaymentMethodArrayOutput
+	ToGetOrganizationPaymentMethodListPaymentMethodArrayOutputWithContext(context.Context) GetOrganizationPaymentMethodListPaymentMethodArrayOutput
+}
+
+type GetOrganizationPaymentMethodListPaymentMethodArray []GetOrganizationPaymentMethodListPaymentMethodInput
+
+func (GetOrganizationPaymentMethodListPaymentMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationPaymentMethodListPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationPaymentMethodListPaymentMethodArray) ToGetOrganizationPaymentMethodListPaymentMethodArrayOutput() GetOrganizationPaymentMethodListPaymentMethodArrayOutput {
+	return i.ToGetOrganizationPaymentMethodListPaymentMethodArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationPaymentMethodListPaymentMethodArray) ToGetOrganizationPaymentMethodListPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListPaymentMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPaymentMethodListPaymentMethodArrayOutput)
+}
+
+type GetOrganizationPaymentMethodListPaymentMethodOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationPaymentMethodListPaymentMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationPaymentMethodListPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationPaymentMethodListPaymentMethodOutput) ToGetOrganizationPaymentMethodListPaymentMethodOutput() GetOrganizationPaymentMethodListPaymentMethodOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListPaymentMethodOutput) ToGetOrganizationPaymentMethodListPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListPaymentMethodOutput {
+	return o
+}
+
+// Payment method ID.
+func (o GetOrganizationPaymentMethodListPaymentMethodOutput) PaymentMethodId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationPaymentMethodListPaymentMethod) string { return v.PaymentMethodId }).(pulumi.StringOutput)
+}
+
+// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+func (o GetOrganizationPaymentMethodListPaymentMethodOutput) PaymentMethodType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationPaymentMethodListPaymentMethod) string { return v.PaymentMethodType }).(pulumi.StringOutput)
+}
+
+type GetOrganizationPaymentMethodListPaymentMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationPaymentMethodListPaymentMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationPaymentMethodListPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationPaymentMethodListPaymentMethodArrayOutput) ToGetOrganizationPaymentMethodListPaymentMethodArrayOutput() GetOrganizationPaymentMethodListPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListPaymentMethodArrayOutput) ToGetOrganizationPaymentMethodListPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListPaymentMethodArrayOutput) Index(i pulumi.IntInput) GetOrganizationPaymentMethodListPaymentMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationPaymentMethodListPaymentMethod {
+		return vs[0].([]GetOrganizationPaymentMethodListPaymentMethod)[vs[1].(int)]
+	}).(GetOrganizationPaymentMethodListPaymentMethodOutput)
+}
+
+type GetOrganizationPaymentMethodListTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationPaymentMethodListTimeoutsInput is an input type that accepts GetOrganizationPaymentMethodListTimeoutsArgs and GetOrganizationPaymentMethodListTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationPaymentMethodListTimeoutsInput` via:
+//
+//	GetOrganizationPaymentMethodListTimeoutsArgs{...}
+type GetOrganizationPaymentMethodListTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationPaymentMethodListTimeoutsOutput() GetOrganizationPaymentMethodListTimeoutsOutput
+	ToGetOrganizationPaymentMethodListTimeoutsOutputWithContext(context.Context) GetOrganizationPaymentMethodListTimeoutsOutput
+}
+
+type GetOrganizationPaymentMethodListTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationPaymentMethodListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationPaymentMethodListTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationPaymentMethodListTimeoutsArgs) ToGetOrganizationPaymentMethodListTimeoutsOutput() GetOrganizationPaymentMethodListTimeoutsOutput {
+	return i.ToGetOrganizationPaymentMethodListTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationPaymentMethodListTimeoutsArgs) ToGetOrganizationPaymentMethodListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPaymentMethodListTimeoutsOutput)
+}
+
+func (i GetOrganizationPaymentMethodListTimeoutsArgs) ToGetOrganizationPaymentMethodListTimeoutsPtrOutput() GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return i.ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationPaymentMethodListTimeoutsArgs) ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPaymentMethodListTimeoutsOutput).ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationPaymentMethodListTimeoutsPtrInput is an input type that accepts GetOrganizationPaymentMethodListTimeoutsArgs, GetOrganizationPaymentMethodListTimeoutsPtr and GetOrganizationPaymentMethodListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationPaymentMethodListTimeoutsPtrInput` via:
+//
+//	        GetOrganizationPaymentMethodListTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationPaymentMethodListTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationPaymentMethodListTimeoutsPtrOutput() GetOrganizationPaymentMethodListTimeoutsPtrOutput
+	ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(context.Context) GetOrganizationPaymentMethodListTimeoutsPtrOutput
+}
+
+type getOrganizationPaymentMethodListTimeoutsPtrType GetOrganizationPaymentMethodListTimeoutsArgs
+
+func GetOrganizationPaymentMethodListTimeoutsPtr(v *GetOrganizationPaymentMethodListTimeoutsArgs) GetOrganizationPaymentMethodListTimeoutsPtrInput {
+	return (*getOrganizationPaymentMethodListTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationPaymentMethodListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationPaymentMethodListTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationPaymentMethodListTimeoutsPtrType) ToGetOrganizationPaymentMethodListTimeoutsPtrOutput() GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return i.ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationPaymentMethodListTimeoutsPtrType) ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPaymentMethodListTimeoutsPtrOutput)
+}
+
+type GetOrganizationPaymentMethodListTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationPaymentMethodListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationPaymentMethodListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsOutput) ToGetOrganizationPaymentMethodListTimeoutsOutput() GetOrganizationPaymentMethodListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsOutput) ToGetOrganizationPaymentMethodListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsOutput) ToGetOrganizationPaymentMethodListTimeoutsPtrOutput() GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return o.ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsOutput) ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationPaymentMethodListTimeouts) *GetOrganizationPaymentMethodListTimeouts {
+		return &v
+	}).(GetOrganizationPaymentMethodListTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationPaymentMethodListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationPaymentMethodListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationPaymentMethodListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationPaymentMethodListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationPaymentMethodListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsPtrOutput) ToGetOrganizationPaymentMethodListTimeoutsPtrOutput() GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsPtrOutput) ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsPtrOutput) Elem() GetOrganizationPaymentMethodListTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationPaymentMethodListTimeouts) GetOrganizationPaymentMethodListTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationPaymentMethodListTimeouts
+		return ret
+	}).(GetOrganizationPaymentMethodListTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationPaymentMethodListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationPaymentMethodListTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetOrganizationProjectTag struct {
 	// Project tag key.
 	Key string `pulumi:"key"`
@@ -25082,6 +26188,143 @@ func (o GetPgTechEmailArrayOutput) Index(i pulumi.IntInput) GetPgTechEmailOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPgTechEmail {
 		return vs[0].([]GetPgTechEmail)[vs[1].(int)]
 	}).(GetPgTechEmailOutput)
+}
+
+type GetPgUserTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetPgUserTimeoutsInput is an input type that accepts GetPgUserTimeoutsArgs and GetPgUserTimeoutsOutput values.
+// You can construct a concrete instance of `GetPgUserTimeoutsInput` via:
+//
+//	GetPgUserTimeoutsArgs{...}
+type GetPgUserTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetPgUserTimeoutsOutput() GetPgUserTimeoutsOutput
+	ToGetPgUserTimeoutsOutputWithContext(context.Context) GetPgUserTimeoutsOutput
+}
+
+type GetPgUserTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetPgUserTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgUserTimeouts)(nil)).Elem()
+}
+
+func (i GetPgUserTimeoutsArgs) ToGetPgUserTimeoutsOutput() GetPgUserTimeoutsOutput {
+	return i.ToGetPgUserTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetPgUserTimeoutsArgs) ToGetPgUserTimeoutsOutputWithContext(ctx context.Context) GetPgUserTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgUserTimeoutsOutput)
+}
+
+func (i GetPgUserTimeoutsArgs) ToGetPgUserTimeoutsPtrOutput() GetPgUserTimeoutsPtrOutput {
+	return i.ToGetPgUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgUserTimeoutsArgs) ToGetPgUserTimeoutsPtrOutputWithContext(ctx context.Context) GetPgUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgUserTimeoutsOutput).ToGetPgUserTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetPgUserTimeoutsPtrInput is an input type that accepts GetPgUserTimeoutsArgs, GetPgUserTimeoutsPtr and GetPgUserTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetPgUserTimeoutsPtrInput` via:
+//
+//	        GetPgUserTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgUserTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetPgUserTimeoutsPtrOutput() GetPgUserTimeoutsPtrOutput
+	ToGetPgUserTimeoutsPtrOutputWithContext(context.Context) GetPgUserTimeoutsPtrOutput
+}
+
+type getPgUserTimeoutsPtrType GetPgUserTimeoutsArgs
+
+func GetPgUserTimeoutsPtr(v *GetPgUserTimeoutsArgs) GetPgUserTimeoutsPtrInput {
+	return (*getPgUserTimeoutsPtrType)(v)
+}
+
+func (*getPgUserTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgUserTimeouts)(nil)).Elem()
+}
+
+func (i *getPgUserTimeoutsPtrType) ToGetPgUserTimeoutsPtrOutput() GetPgUserTimeoutsPtrOutput {
+	return i.ToGetPgUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgUserTimeoutsPtrType) ToGetPgUserTimeoutsPtrOutputWithContext(ctx context.Context) GetPgUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgUserTimeoutsPtrOutput)
+}
+
+type GetPgUserTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetPgUserTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgUserTimeouts)(nil)).Elem()
+}
+
+func (o GetPgUserTimeoutsOutput) ToGetPgUserTimeoutsOutput() GetPgUserTimeoutsOutput {
+	return o
+}
+
+func (o GetPgUserTimeoutsOutput) ToGetPgUserTimeoutsOutputWithContext(ctx context.Context) GetPgUserTimeoutsOutput {
+	return o
+}
+
+func (o GetPgUserTimeoutsOutput) ToGetPgUserTimeoutsPtrOutput() GetPgUserTimeoutsPtrOutput {
+	return o.ToGetPgUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgUserTimeoutsOutput) ToGetPgUserTimeoutsPtrOutputWithContext(ctx context.Context) GetPgUserTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgUserTimeouts) *GetPgUserTimeouts {
+		return &v
+	}).(GetPgUserTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetPgUserTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgUserTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetPgUserTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgUserTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgUserTimeouts)(nil)).Elem()
+}
+
+func (o GetPgUserTimeoutsPtrOutput) ToGetPgUserTimeoutsPtrOutput() GetPgUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetPgUserTimeoutsPtrOutput) ToGetPgUserTimeoutsPtrOutputWithContext(ctx context.Context) GetPgUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetPgUserTimeoutsPtrOutput) Elem() GetPgUserTimeoutsOutput {
+	return o.ApplyT(func(v *GetPgUserTimeouts) GetPgUserTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgUserTimeouts
+		return ret
+	}).(GetPgUserTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetPgUserTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgUserTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetProjectTag struct {
@@ -39341,10 +40584,24 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerTagInput)(nil)).Elem(), GetKafkaMirrorMakerTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerTagArrayInput)(nil)).Elem(), GetKafkaMirrorMakerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerTechEmailInput)(nil)).Elem(), GetKafkaMirrorMakerTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerTechEmailArrayInput)(nil)).Elem(), GetKafkaMirrorMakerTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaServiceIntegrationInput)(nil)).Elem(), GetKafkaServiceIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaServiceIntegrationArrayInput)(nil)).Elem(), GetKafkaServiceIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTagInput)(nil)).Elem(), GetKafkaTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTagArrayInput)(nil)).Elem(), GetKafkaTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTechEmailInput)(nil)).Elem(), GetKafkaTechEmailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTechEmailArrayInput)(nil)).Elem(), GetKafkaTechEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicConfigInput)(nil)).Elem(), GetKafkaTopicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicConfigArrayInput)(nil)).Elem(), GetKafkaTopicConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicListTimeoutsInput)(nil)).Elem(), GetKafkaTopicListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicListTimeoutsPtrInput)(nil)).Elem(), GetKafkaTopicListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicListTopicInput)(nil)).Elem(), GetKafkaTopicListTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicListTopicArrayInput)(nil)).Elem(), GetKafkaTopicListTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicListTopicTagInput)(nil)).Elem(), GetKafkaTopicListTopicTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicListTopicTagArrayInput)(nil)).Elem(), GetKafkaTopicListTopicTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicTagInput)(nil)).Elem(), GetKafkaTopicTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaTopicTagArrayInput)(nil)).Elem(), GetKafkaTopicTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetM3AggregatorComponentInput)(nil)).Elem(), GetM3AggregatorComponentArgs{})
@@ -39539,6 +40796,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupPaymentMethodArrayInput)(nil)).Elem(), GetOrganizationBillingGroupPaymentMethodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupTimeoutsInput)(nil)).Elem(), GetOrganizationBillingGroupTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupTimeoutsPtrInput)(nil)).Elem(), GetOrganizationBillingGroupTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPaymentMethodListPaymentMethodInput)(nil)).Elem(), GetOrganizationPaymentMethodListPaymentMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPaymentMethodListPaymentMethodArrayInput)(nil)).Elem(), GetOrganizationPaymentMethodListPaymentMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPaymentMethodListTimeoutsInput)(nil)).Elem(), GetOrganizationPaymentMethodListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPaymentMethodListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationPaymentMethodListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTagInput)(nil)).Elem(), GetOrganizationProjectTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTagArrayInput)(nil)).Elem(), GetOrganizationProjectTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTimeoutsInput)(nil)).Elem(), GetOrganizationProjectTimeoutsArgs{})
@@ -39601,6 +40862,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgTagArrayInput)(nil)).Elem(), GetPgTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgTechEmailInput)(nil)).Elem(), GetPgTechEmailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgTechEmailArrayInput)(nil)).Elem(), GetPgTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgUserTimeoutsInput)(nil)).Elem(), GetPgUserTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgUserTimeoutsPtrInput)(nil)).Elem(), GetPgUserTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagInput)(nil)).Elem(), GetProjectTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagArrayInput)(nil)).Elem(), GetProjectTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisComponentInput)(nil)).Elem(), GetRedisComponentArgs{})
@@ -39791,10 +41054,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerTagOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerTagArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerTechEmailOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetKafkaServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaTagOutput{})
+	pulumi.RegisterOutputType(GetKafkaTagArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaTechEmailOutput{})
 	pulumi.RegisterOutputType(GetKafkaTechEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaTopicConfigOutput{})
 	pulumi.RegisterOutputType(GetKafkaTopicConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicListTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicListTopicOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicListTopicArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicListTopicTagOutput{})
+	pulumi.RegisterOutputType(GetKafkaTopicListTopicTagArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaTopicTagOutput{})
 	pulumi.RegisterOutputType(GetKafkaTopicTagArrayOutput{})
 	pulumi.RegisterOutputType(GetM3AggregatorComponentOutput{})
@@ -39989,6 +41266,10 @@ func init() {
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupPaymentMethodArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationPaymentMethodListPaymentMethodOutput{})
+	pulumi.RegisterOutputType(GetOrganizationPaymentMethodListPaymentMethodArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationPaymentMethodListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationPaymentMethodListTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationProjectTagOutput{})
 	pulumi.RegisterOutputType(GetOrganizationProjectTagArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationProjectTimeoutsOutput{})
@@ -40051,6 +41332,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPgTagArrayOutput{})
 	pulumi.RegisterOutputType(GetPgTechEmailOutput{})
 	pulumi.RegisterOutputType(GetPgTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetPgUserTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetPgUserTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetProjectTagOutput{})
 	pulumi.RegisterOutputType(GetProjectTagArrayOutput{})
 	pulumi.RegisterOutputType(GetRedisComponentOutput{})

@@ -94,22 +94,31 @@ namespace Pulumi.Aiven
     public sealed class GetFlinkApplicationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the application.
+        /// Application ID. Exactly one of the fields must be specified: `ApplicationId` or `Name`.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("applicationId")]
+        public string? ApplicationId { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Application name. Exactly one of the fields must be specified: `ApplicationId` or `Name`.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetFlinkApplicationTimeoutsArgs? Timeouts { get; set; }
 
         public GetFlinkApplicationArgs()
         {
@@ -120,22 +129,31 @@ namespace Pulumi.Aiven
     public sealed class GetFlinkApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the application.
+        /// Application ID. Exactly one of the fields must be specified: `ApplicationId` or `Name`.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Application name. Exactly one of the fields must be specified: `ApplicationId` or `Name`.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetFlinkApplicationTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetFlinkApplicationInvokeArgs()
         {
@@ -148,39 +166,40 @@ namespace Pulumi.Aiven
     public sealed class GetFlinkApplicationResult
     {
         /// <summary>
-        /// Application ID.
+        /// Application ID. Exactly one of the fields must be specified: `ApplicationId` or `Name`.
         /// </summary>
         public readonly string ApplicationId;
         /// <summary>
-        /// Application creation time.
+        /// The creation timestamp of this entity in ISO 8601 format, always in UTC.
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// The user who created the application.
+        /// The creator of this entity.
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/application_id`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the application.
+        /// Application name. Exactly one of the fields must be specified: `ApplicationId` or `Name`.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
+        public readonly Outputs.GetFlinkApplicationTimeoutsResult? Timeouts;
         /// <summary>
-        /// When the application was updated.
+        /// The update timestamp of this entity in ISO 8601 format, always in UTC.
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
-        /// The user who updated the application.
+        /// The latest updater of this entity.
         /// </summary>
         public readonly string UpdatedBy;
 
@@ -200,6 +219,8 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
+            Outputs.GetFlinkApplicationTimeoutsResult? timeouts,
+
             string updatedAt,
 
             string updatedBy)
@@ -211,6 +232,7 @@ namespace Pulumi.Aiven
             Name = name;
             Project = project;
             ServiceName = serviceName;
+            Timeouts = timeouts;
             UpdatedAt = updatedAt;
             UpdatedBy = updatedBy;
         }

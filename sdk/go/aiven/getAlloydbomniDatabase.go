@@ -11,23 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about a database in an Aiven for AlloyDB Omni service.
-//
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-//
-// !> **End of life notice**
-// Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-// From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-// services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-// On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-// these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-// Aiven for PostgreSQL®,
-// Aiven for ClickHouse®,
-// and Aiven for MySQL®.
-// To ensure uninterrupted service, complete your migration before December 5, 2025.
-// For further assistance, contact the Aiven support team or your
-// account team.
 func LookupAlloydbomniDatabase(ctx *pulumi.Context, args *LookupAlloydbomniDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupAlloydbomniDatabaseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlloydbomniDatabaseResult
@@ -40,27 +23,19 @@ func LookupAlloydbomniDatabase(ctx *pulumi.Context, args *LookupAlloydbomniDatab
 
 // A collection of arguments for invoking getAlloydbomniDatabase.
 type LookupAlloydbomniDatabaseArgs struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	Project      string `pulumi:"project"`
+	ServiceName  string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getAlloydbomniDatabase.
 type LookupAlloydbomniDatabaseResult struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-	LcCollate string `pulumi:"lcCollate"`
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-	LcCtype string `pulumi:"lcCtype"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Id          string `pulumi:"id"`
+	LcCollate   string `pulumi:"lcCollate"`
+	LcCtype     string `pulumi:"lcCtype"`
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -75,12 +50,9 @@ func LookupAlloydbomniDatabaseOutput(ctx *pulumi.Context, args LookupAlloydbomni
 
 // A collection of arguments for invoking getAlloydbomniDatabase.
 type LookupAlloydbomniDatabaseOutputArgs struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	Project      pulumi.StringInput `pulumi:"project"`
+	ServiceName  pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupAlloydbomniDatabaseOutputArgs) ElementType() reflect.Type {
@@ -102,7 +74,6 @@ func (o LookupAlloydbomniDatabaseResultOutput) ToLookupAlloydbomniDatabaseResult
 	return o
 }
 
-// The name of the service database. Changing this property forces recreation of the resource.
 func (o LookupAlloydbomniDatabaseResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniDatabaseResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }
@@ -112,22 +83,18 @@ func (o LookupAlloydbomniDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 func (o LookupAlloydbomniDatabaseResultOutput) LcCollate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniDatabaseResult) string { return v.LcCollate }).(pulumi.StringOutput)
 }
 
-// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 func (o LookupAlloydbomniDatabaseResultOutput) LcCtype() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniDatabaseResult) string { return v.LcCtype }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupAlloydbomniDatabaseResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniDatabaseResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupAlloydbomniDatabaseResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

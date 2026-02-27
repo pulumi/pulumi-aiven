@@ -237,7 +237,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl foo PROJECT/SERVICE_NAME/ACL_ID
+        $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl example PROJECT/SERVICE_NAME/ACL_ID
         ```
 
 
@@ -275,7 +275,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl foo PROJECT/SERVICE_NAME/ACL_ID
+        $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl example PROJECT/SERVICE_NAME/ACL_ID
         ```
 
 

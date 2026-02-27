@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -25,6 +27,7 @@ export function getPgUser(args: GetPgUserArgs, opts?: pulumi.InvokeOptions): Pro
     return pulumi.runtime.invoke("aiven:index/getPgUser:getPgUser", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "username": args.username,
     }, opts);
 }
@@ -34,15 +37,16 @@ export function getPgUser(args: GetPgUserArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetPgUserArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service.
      */
     serviceName: string;
+    timeouts?: inputs.GetPgUserTimeouts;
     /**
-     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service.
      */
     username: string;
 }
@@ -52,39 +56,48 @@ export interface GetPgUserArgs {
  */
 export interface GetPgUserResult {
     /**
-     * The access certificate for the servie user.
+     * Access certificate for TLS client authentication.
      */
     readonly accessCert: string;
     /**
-     * The access certificate key for the service user.
+     * Access key for TLS client authentication.
      */
     readonly accessKey: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/username`.
      */
     readonly id: string;
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      */
     readonly password: string;
+    /**
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
+     */
+    readonly passwordWo: string;
+    /**
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
+     */
+    readonly passwordWoVersion: number;
     /**
      * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
     readonly pgAllowReplication: boolean;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service.
      */
     readonly serviceName: string;
+    readonly timeouts?: outputs.GetPgUserTimeouts;
     /**
      * The service user account type, either primary or regular.
      */
     readonly type: string;
     /**
-     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service.
      */
     readonly username: string;
 }
@@ -109,6 +122,7 @@ export function getPgUserOutput(args: GetPgUserOutputArgs, opts?: pulumi.InvokeO
     return pulumi.runtime.invokeOutput("aiven:index/getPgUser:getPgUser", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "username": args.username,
     }, opts);
 }
@@ -118,15 +132,16 @@ export function getPgUserOutput(args: GetPgUserOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetPgUserOutputArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetPgUserTimeoutsArgs>;
     /**
-     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service.
      */
     username: pulumi.Input<string>;
 }

@@ -405,6 +405,11 @@ export const getKafkaTopic: typeof import("./getKafkaTopic").getKafkaTopic = nul
 export const getKafkaTopicOutput: typeof import("./getKafkaTopic").getKafkaTopicOutput = null as any;
 utilities.lazyLoad(exports, ["getKafkaTopic","getKafkaTopicOutput"], () => require("./getKafkaTopic"));
 
+export { GetKafkaTopicListArgs, GetKafkaTopicListResult, GetKafkaTopicListOutputArgs } from "./getKafkaTopicList";
+export const getKafkaTopicList: typeof import("./getKafkaTopicList").getKafkaTopicList = null as any;
+export const getKafkaTopicListOutput: typeof import("./getKafkaTopicList").getKafkaTopicListOutput = null as any;
+utilities.lazyLoad(exports, ["getKafkaTopicList","getKafkaTopicListOutput"], () => require("./getKafkaTopicList"));
+
 export { GetKafkaUserArgs, GetKafkaUserResult, GetKafkaUserOutputArgs } from "./getKafkaUser";
 export const getKafkaUser: typeof import("./getKafkaUser").getKafkaUser = null as any;
 export const getKafkaUserOutput: typeof import("./getKafkaUser").getKafkaUserOutput = null as any;
@@ -494,6 +499,11 @@ export { GetOrganizationBillingGroupListArgs, GetOrganizationBillingGroupListRes
 export const getOrganizationBillingGroupList: typeof import("./getOrganizationBillingGroupList").getOrganizationBillingGroupList = null as any;
 export const getOrganizationBillingGroupListOutput: typeof import("./getOrganizationBillingGroupList").getOrganizationBillingGroupListOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganizationBillingGroupList","getOrganizationBillingGroupListOutput"], () => require("./getOrganizationBillingGroupList"));
+
+export { GetOrganizationPaymentMethodListArgs, GetOrganizationPaymentMethodListResult, GetOrganizationPaymentMethodListOutputArgs } from "./getOrganizationPaymentMethodList";
+export const getOrganizationPaymentMethodList: typeof import("./getOrganizationPaymentMethodList").getOrganizationPaymentMethodList = null as any;
+export const getOrganizationPaymentMethodListOutput: typeof import("./getOrganizationPaymentMethodList").getOrganizationPaymentMethodListOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationPaymentMethodList","getOrganizationPaymentMethodListOutput"], () => require("./getOrganizationPaymentMethodList"));
 
 export { GetOrganizationProjectArgs, GetOrganizationProjectResult, GetOrganizationProjectOutputArgs } from "./getOrganizationProject";
 export const getOrganizationProject: typeof import("./getOrganizationProject").getOrganizationProject = null as any;

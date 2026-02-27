@@ -50,7 +50,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     private @Nullable Boolean logParameter;
     /**
-     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. Default: `0`.
      * 
      */
     private @Nullable Integer logParameterMaxSize;
@@ -136,7 +136,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgaudit {
         return Optional.ofNullable(this.logParameter);
     }
     /**
-     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. Default: `0`.
      * 
      */
     public Optional<Integer> logParameterMaxSize() {

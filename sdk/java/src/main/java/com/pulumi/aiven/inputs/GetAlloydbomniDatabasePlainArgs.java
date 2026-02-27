@@ -13,47 +13,23 @@ public final class GetAlloydbomniDatabasePlainArgs extends com.pulumi.resources.
 
     public static final GetAlloydbomniDatabasePlainArgs Empty = new GetAlloydbomniDatabasePlainArgs();
 
-    /**
-     * The name of the service database. Changing this property forces recreation of the resource.
-     * 
-     */
     @Import(name="databaseName", required=true)
     private String databaseName;
 
-    /**
-     * @return The name of the service database. Changing this property forces recreation of the resource.
-     * 
-     */
     public String databaseName() {
         return this.databaseName;
     }
 
-    /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     @Import(name="project", required=true)
     private String project;
 
-    /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String project() {
         return this.project;
     }
 
-    /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
-    /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     * 
-     */
     public String serviceName() {
         return this.serviceName;
     }
@@ -84,34 +60,16 @@ public final class GetAlloydbomniDatabasePlainArgs extends com.pulumi.resources.
             $ = new GetAlloydbomniDatabasePlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder databaseName(String databaseName) {
             $.databaseName = databaseName;
             return this;
         }
 
-        /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
             return this;

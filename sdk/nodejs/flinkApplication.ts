@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
+ * Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -23,7 +25,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_ID
+ * $ pulumi import aiven:index/flinkApplication:FlinkApplication example PROJECT/SERVICE_NAME/APPLICATION_ID
  * ```
  */
 export class FlinkApplication extends pulumi.CustomResource {
@@ -59,31 +61,32 @@ export class FlinkApplication extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly applicationId: pulumi.Output<string>;
     /**
-     * Application creation time.
+     * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * The user who created the application.
+     * The creator of this entity.
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
-     * The name of the application.
+     * Application name. Maximum length: `128`.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.FlinkApplicationTimeouts | undefined>;
     /**
-     * When the application was updated.
+     * The update timestamp of this entity in ISO 8601 format, always in UTC.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * The user who updated the application.
+     * The latest updater of this entity.
      */
     declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
 
@@ -106,6 +109,7 @@ export class FlinkApplication extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["updatedBy"] = state?.updatedBy;
         } else {
@@ -119,6 +123,7 @@ export class FlinkApplication extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["applicationId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
@@ -139,31 +144,32 @@ export interface FlinkApplicationState {
      */
     applicationId?: pulumi.Input<string>;
     /**
-     * Application creation time.
+     * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The user who created the application.
+     * The creator of this entity.
      */
     createdBy?: pulumi.Input<string>;
     /**
-     * The name of the application.
+     * Application name. Maximum length: `128`.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.FlinkApplicationTimeouts>;
     /**
-     * When the application was updated.
+     * The update timestamp of this entity in ISO 8601 format, always in UTC.
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * The user who updated the application.
+     * The latest updater of this entity.
      */
     updatedBy?: pulumi.Input<string>;
 }
@@ -173,15 +179,16 @@ export interface FlinkApplicationState {
  */
 export interface FlinkApplicationArgs {
     /**
-     * The name of the application.
+     * Application name. Maximum length: `128`.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.FlinkApplicationTimeouts>;
 }

@@ -272,7 +272,7 @@ class PgDatabase(pulumi.CustomResource):
                  timeouts: Optional[pulumi.Input[Union['PgDatabaseTimeoutsArgs', 'PgDatabaseTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Creates and manages an [Aiven for PostgreSQL®](https://aiven.io/docs/products/postgresql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
+        Creates and manages an [Aiven for PostgreSQL®](https://aiven.io/docs/products/postgresql) database. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -309,7 +309,7 @@ class PgDatabase(pulumi.CustomResource):
                  args: PgDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an [Aiven for PostgreSQL®](https://aiven.io/docs/products/postgresql) database. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
+        Creates and manages an [Aiven for PostgreSQL®](https://aiven.io/docs/products/postgresql) database. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 

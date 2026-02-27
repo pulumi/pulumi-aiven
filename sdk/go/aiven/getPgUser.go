@@ -52,33 +52,39 @@ func LookupPgUser(ctx *pulumi.Context, args *LookupPgUserArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getPgUser.
 type LookupPgUserArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service.
+	ServiceName string             `pulumi:"serviceName"`
+	Timeouts    *GetPgUserTimeouts `pulumi:"timeouts"`
+	// The name of the service user for this service.
 	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getPgUser.
 type LookupPgUserResult struct {
-	// The access certificate for the servie user.
+	// Access certificate for TLS client authentication.
 	AccessCert string `pulumi:"accessCert"`
-	// The access certificate key for the service user.
+	// Access key for TLS client authentication.
 	AccessKey string `pulumi:"accessKey"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name/username`.
 	Id string `pulumi:"id"`
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 	Password string `pulumi:"password"`
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
+	PasswordWo string `pulumi:"passwordWo"`
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
+	PasswordWoVersion int `pulumi:"passwordWoVersion"`
 	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication bool `pulumi:"pgAllowReplication"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// The name of the service.
+	ServiceName string             `pulumi:"serviceName"`
+	Timeouts    *GetPgUserTimeouts `pulumi:"timeouts"`
 	// The service user account type, either primary or regular.
 	Type string `pulumi:"type"`
-	// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service user for this service.
 	Username string `pulumi:"username"`
 }
 
@@ -93,11 +99,12 @@ func LookupPgUserOutput(ctx *pulumi.Context, args LookupPgUserOutputArgs, opts .
 
 // A collection of arguments for invoking getPgUser.
 type LookupPgUserOutputArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service.
+	ServiceName pulumi.StringInput        `pulumi:"serviceName"`
+	Timeouts    GetPgUserTimeoutsPtrInput `pulumi:"timeouts"`
+	// The name of the service user for this service.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -120,24 +127,34 @@ func (o LookupPgUserResultOutput) ToLookupPgUserResultOutputWithContext(ctx cont
 	return o
 }
 
-// The access certificate for the servie user.
+// Access certificate for TLS client authentication.
 func (o LookupPgUserResultOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// The access certificate key for the service user.
+// Access key for TLS client authentication.
 func (o LookupPgUserResultOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name/username`.
 func (o LookupPgUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 func (o LookupPgUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
+func (o LookupPgUserResultOutput) PasswordWo() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPgUserResult) string { return v.PasswordWo }).(pulumi.StringOutput)
+}
+
+// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
+func (o LookupPgUserResultOutput) PasswordWoVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupPgUserResult) int { return v.PasswordWoVersion }).(pulumi.IntOutput)
 }
 
 // Allows replication. For the default avnadmin user this attribute is required and is always `true`.
@@ -145,14 +162,18 @@ func (o LookupPgUserResultOutput) PgAllowReplication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPgUserResult) bool { return v.PgAllowReplication }).(pulumi.BoolOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name.
 func (o LookupPgUserResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service.
 func (o LookupPgUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupPgUserResultOutput) Timeouts() GetPgUserTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupPgUserResult) *GetPgUserTimeouts { return v.Timeouts }).(GetPgUserTimeoutsPtrOutput)
 }
 
 // The service user account type, either primary or regular.
@@ -160,7 +181,7 @@ func (o LookupPgUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service user for this service.
 func (o LookupPgUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

@@ -94,19 +94,22 @@ namespace Pulumi.Aiven
     public sealed class GetPgUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetPgUserTimeoutsArgs? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service user for this service.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -120,19 +123,22 @@ namespace Pulumi.Aiven
     public sealed class GetPgUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GetPgUserTimeoutsInputArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service user for this service.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -148,39 +154,48 @@ namespace Pulumi.Aiven
     public sealed class GetPgUserResult
     {
         /// <summary>
-        /// The access certificate for the servie user.
+        /// Access certificate for TLS client authentication.
         /// </summary>
         public readonly string AccessCert;
         /// <summary>
-        /// The access certificate key for the service user.
+        /// Access key for TLS client authentication.
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/username`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`.
         /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`.
+        /// </summary>
+        public readonly string PasswordWo;
+        /// <summary>
+        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`.
+        /// </summary>
+        public readonly int PasswordWoVersion;
         /// <summary>
         /// Allows replication. For the default avnadmin user this attribute is required and is always `True`.
         /// </summary>
         public readonly bool PgAllowReplication;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service.
         /// </summary>
         public readonly string ServiceName;
+        public readonly Outputs.GetPgUserTimeoutsResult? Timeouts;
         /// <summary>
         /// The service user account type, either primary or regular.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service user for this service.
         /// </summary>
         public readonly string Username;
 
@@ -194,11 +209,17 @@ namespace Pulumi.Aiven
 
             string password,
 
+            string passwordWo,
+
+            int passwordWoVersion,
+
             bool pgAllowReplication,
 
             string project,
 
             string serviceName,
+
+            Outputs.GetPgUserTimeoutsResult? timeouts,
 
             string type,
 
@@ -208,9 +229,12 @@ namespace Pulumi.Aiven
             AccessKey = accessKey;
             Id = id;
             Password = password;
+            PasswordWo = passwordWo;
+            PasswordWoVersion = passwordWoVersion;
             PgAllowReplication = pgAllowReplication;
             Project = project;
             ServiceName = serviceName;
+            Timeouts = timeouts;
             Type = type;
             Username = username;
         }

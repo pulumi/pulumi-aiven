@@ -6,61 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Creates and manages an Aiven for AlloyDB Omni service.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- *
- * !> **End of life notice**
- * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
- * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
- * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
- * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
- * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
- * Aiven for PostgreSQL®,
- * Aiven for ClickHouse®,
- * and Aiven for MySQL®.
- * To ensure uninterrupted service, complete your migration before December 5, 2025.
- * For further assistance, contact the Aiven support team or your
- * account team.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const exampleAlloydbomni = new aiven.Alloydbomni("example_alloydbomni", {
- *     project: exampleProject.project,
- *     cloudName: "google-europe-west1",
- *     plan: "startup-4",
- *     serviceName: "example-alloydbomni-service",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- *     tags: [{
- *         key: "test",
- *         value: "val",
- *     }],
- *     alloydbomniUserConfig: {
- *         publicAccess: {
- *             pg: true,
- *             prometheus: false,
- *         },
- *         pg: {
- *             idleInTransactionSessionTimeout: 900,
- *             logMinDurationStatement: -1,
- *         },
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import aiven:index/alloydbomni:Alloydbomni example_alloydbomni PROJECT/SERVICE_NAME
- * ```
- */
 export class Alloydbomni extends pulumi.CustomResource {
     /**
      * Get an existing Alloydbomni resource's state with the given name, ID, and optional extra

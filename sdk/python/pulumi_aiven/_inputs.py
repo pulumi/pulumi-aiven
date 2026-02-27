@@ -119,6 +119,10 @@ __all__ = [
     'DragonflyTagArgsDict',
     'DragonflyTechEmailArgs',
     'DragonflyTechEmailArgsDict',
+    'FlinkApplicationDeploymentTimeoutsArgs',
+    'FlinkApplicationDeploymentTimeoutsArgsDict',
+    'FlinkApplicationTimeoutsArgs',
+    'FlinkApplicationTimeoutsArgsDict',
     'FlinkApplicationVersionSinkArgs',
     'FlinkApplicationVersionSinkArgsDict',
     'FlinkApplicationVersionSourceArgs',
@@ -549,6 +553,8 @@ __all__ = [
     'PgTagArgsDict',
     'PgTechEmailArgs',
     'PgTechEmailArgsDict',
+    'PgUserTimeoutsArgs',
+    'PgUserTimeoutsArgsDict',
     'ProjectTagArgs',
     'ProjectTagArgsDict',
     'RedisComponentArgs',
@@ -729,6 +735,14 @@ __all__ = [
     'GetBillingGroupTimeoutsArgsDict',
     'GetClickhouseDatabaseTimeoutsArgs',
     'GetClickhouseDatabaseTimeoutsArgsDict',
+    'GetFlinkApplicationTimeoutsArgs',
+    'GetFlinkApplicationTimeoutsArgsDict',
+    'GetKafkaTopicListTimeoutsArgs',
+    'GetKafkaTopicListTimeoutsArgsDict',
+    'GetKafkaTopicListTopicArgs',
+    'GetKafkaTopicListTopicArgsDict',
+    'GetKafkaTopicListTopicTagArgs',
+    'GetKafkaTopicListTopicTagArgsDict',
     'GetMysqlDatabaseTimeoutsArgs',
     'GetMysqlDatabaseTimeoutsArgsDict',
     'GetMysqlUserTimeoutsArgs',
@@ -755,6 +769,10 @@ __all__ = [
     'GetOrganizationBillingGroupPaymentMethodArgsDict',
     'GetOrganizationBillingGroupTimeoutsArgs',
     'GetOrganizationBillingGroupTimeoutsArgsDict',
+    'GetOrganizationPaymentMethodListPaymentMethodArgs',
+    'GetOrganizationPaymentMethodListPaymentMethodArgsDict',
+    'GetOrganizationPaymentMethodListTimeoutsArgs',
+    'GetOrganizationPaymentMethodListTimeoutsArgsDict',
     'GetOrganizationProjectTagArgs',
     'GetOrganizationProjectTagArgsDict',
     'GetOrganizationProjectTimeoutsArgs',
@@ -781,6 +799,8 @@ __all__ = [
     'GetOrganizationalUnitTimeoutsArgsDict',
     'GetPgDatabaseTimeoutsArgs',
     'GetPgDatabaseTimeoutsArgsDict',
+    'GetPgUserTimeoutsArgs',
+    'GetPgUserTimeoutsArgsDict',
     'GetServiceListServiceArgs',
     'GetServiceListServiceArgsDict',
     'GetServiceListTimeoutsArgs',
@@ -1391,7 +1411,7 @@ class AlloydbomniAlloydbomniUserConfigArgsDict(TypedDict):
     """
     pg_service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+    Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
     """
     pg_version: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -1509,7 +1529,7 @@ class AlloydbomniAlloydbomniUserConfigArgs:
         :param pulumi.Input[_builtins.int] node_count: Number of nodes for the service. Example: `3`.
         :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPgArgs'] pg: postgresql.conf configuration values
         :param pulumi.Input[_builtins.bool] pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
-        :param pulumi.Input[_builtins.str] pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+        :param pulumi.Input[_builtins.str] pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         :param pulumi.Input[_builtins.str] pg_version: Enum: `15`, and newer. PostgreSQL major version.
         :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgs'] pgaudit: System-wide settings for the pgaudit extension
         :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPgbouncerArgs'] pgbouncer: PGBouncer connection pooling settings
@@ -1780,7 +1800,7 @@ class AlloydbomniAlloydbomniUserConfigArgs:
     @pulumi.getter(name="pgServiceToForkFrom")
     def pg_service_to_fork_from(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+        Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         """
         return pulumi.get(self, "pg_service_to_fork_from")
 
@@ -2032,7 +2052,7 @@ class AlloydbomniAlloydbomniUserConfigIpFilterObjectArgs:
 class AlloydbomniAlloydbomniUserConfigPgArgsDict(TypedDict):
     autovacuum_analyze_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
     """
-    Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+    Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
     """
     autovacuum_analyze_threshold: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -2052,15 +2072,15 @@ class AlloydbomniAlloydbomniUserConfigPgArgsDict(TypedDict):
     """
     autovacuum_vacuum_cost_delay: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
+    Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_delay value will be used. The default is `2` (upstream default).
     """
     autovacuum_vacuum_cost_limit: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
+    Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_limit value will be used. The default is `-1` (upstream default).
     """
     autovacuum_vacuum_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
     """
-    Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+    Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
     """
     autovacuum_vacuum_threshold: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -2072,7 +2092,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgsDict(TypedDict):
     """
     bgwriter_flush_after: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+    Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
     """
     bgwriter_lru_maxpages: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -2080,7 +2100,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgsDict(TypedDict):
     """
     bgwriter_lru_multiplier: NotRequired[pulumi.Input[_builtins.float]]
     """
-    The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+    The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
     """
     deadlock_timeout: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -2128,7 +2148,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgsDict(TypedDict):
     """
     max_logical_replication_workers: NotRequired[pulumi.Input[_builtins.int]]
     """
-    PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+    PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
     """
     max_parallel_workers: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -2152,7 +2172,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgsDict(TypedDict):
     """
     max_slot_wal_keep_size: NotRequired[pulumi.Input[_builtins.int]]
     """
-    PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
+    PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal_keep_size minimum WAL size setting takes precedence over this.
     """
     max_stack_depth: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -2280,19 +2300,19 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
                  wal_sender_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  wal_writer_delay: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.float] autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+        :param pulumi.Input[_builtins.float] autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
         :param pulumi.Input[_builtins.int] autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
         :param pulumi.Input[_builtins.int] autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
         :param pulumi.Input[_builtins.int] autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
         :param pulumi.Input[_builtins.int] autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
-        :param pulumi.Input[_builtins.int] autovacuum_vacuum_cost_delay: Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
-        :param pulumi.Input[_builtins.int] autovacuum_vacuum_cost_limit: Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
-        :param pulumi.Input[_builtins.float] autovacuum_vacuum_scale_factor: Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+        :param pulumi.Input[_builtins.int] autovacuum_vacuum_cost_delay: Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_delay value will be used. The default is `2` (upstream default).
+        :param pulumi.Input[_builtins.int] autovacuum_vacuum_cost_limit: Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_limit value will be used. The default is `-1` (upstream default).
+        :param pulumi.Input[_builtins.float] autovacuum_vacuum_scale_factor: Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
         :param pulumi.Input[_builtins.int] autovacuum_vacuum_threshold: Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
         :param pulumi.Input[_builtins.int] bgwriter_delay: Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
-        :param pulumi.Input[_builtins.int] bgwriter_flush_after: Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+        :param pulumi.Input[_builtins.int] bgwriter_flush_after: Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
         :param pulumi.Input[_builtins.int] bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-        :param pulumi.Input[_builtins.float] bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+        :param pulumi.Input[_builtins.float] bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
         :param pulumi.Input[_builtins.int] deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
         :param pulumi.Input[_builtins.str] default_toast_compression: Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
         :param pulumi.Input[_builtins.int] idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
@@ -2304,13 +2324,13 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
         :param pulumi.Input[_builtins.int] log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
         :param pulumi.Input[_builtins.int] max_files_per_process: PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
         :param pulumi.Input[_builtins.int] max_locks_per_transaction: PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.int] max_logical_replication_workers: PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+        :param pulumi.Input[_builtins.int] max_logical_replication_workers: PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
         :param pulumi.Input[_builtins.int] max_parallel_workers: Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
         :param pulumi.Input[_builtins.int] max_parallel_workers_per_gather: Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
         :param pulumi.Input[_builtins.int] max_pred_locks_per_transaction: PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
         :param pulumi.Input[_builtins.int] max_prepared_transactions: PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
         :param pulumi.Input[_builtins.int] max_replication_slots: PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.int] max_slot_wal_keep_size: PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
+        :param pulumi.Input[_builtins.int] max_slot_wal_keep_size: PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal_keep_size minimum WAL size setting takes precedence over this.
         :param pulumi.Input[_builtins.int] max_stack_depth: Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
         :param pulumi.Input[_builtins.int] max_standby_archive_delay: Max standby archive delay in milliseconds. The default is `30000` (upstream default).
         :param pulumi.Input[_builtins.int] max_standby_streaming_delay: Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
@@ -2433,7 +2453,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
     @pulumi.getter(name="autovacuumAnalyzeScaleFactor")
     def autovacuum_analyze_scale_factor(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+        Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
         """
         return pulumi.get(self, "autovacuum_analyze_scale_factor")
 
@@ -2493,7 +2513,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
     @pulumi.getter(name="autovacuumVacuumCostDelay")
     def autovacuum_vacuum_cost_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
+        Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_delay value will be used. The default is `2` (upstream default).
         """
         return pulumi.get(self, "autovacuum_vacuum_cost_delay")
 
@@ -2505,7 +2525,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
     @pulumi.getter(name="autovacuumVacuumCostLimit")
     def autovacuum_vacuum_cost_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
+        Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_limit value will be used. The default is `-1` (upstream default).
         """
         return pulumi.get(self, "autovacuum_vacuum_cost_limit")
 
@@ -2517,7 +2537,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
     @pulumi.getter(name="autovacuumVacuumScaleFactor")
     def autovacuum_vacuum_scale_factor(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+        Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
         """
         return pulumi.get(self, "autovacuum_vacuum_scale_factor")
 
@@ -2553,7 +2573,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
     @pulumi.getter(name="bgwriterFlushAfter")
     def bgwriter_flush_after(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+        Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
         """
         return pulumi.get(self, "bgwriter_flush_after")
 
@@ -2577,7 +2597,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
     @pulumi.getter(name="bgwriterLruMultiplier")
     def bgwriter_lru_multiplier(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+        The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
         """
         return pulumi.get(self, "bgwriter_lru_multiplier")
 
@@ -2721,7 +2741,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
     @pulumi.getter(name="maxLogicalReplicationWorkers")
     def max_logical_replication_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+        PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
         """
         return pulumi.get(self, "max_logical_replication_workers")
 
@@ -2793,7 +2813,7 @@ class AlloydbomniAlloydbomniUserConfigPgArgs:
     @pulumi.getter(name="maxSlotWalKeepSize")
     def max_slot_wal_keep_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
+        PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal_keep_size minimum WAL size setting takes precedence over this.
         """
         return pulumi.get(self, "max_slot_wal_keep_size")
 
@@ -3049,7 +3069,7 @@ class AlloydbomniAlloydbomniUserConfigPgauditArgsDict(TypedDict):
     """
     log_parameter_max_size: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+    Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
     """
     log_relation: NotRequired[pulumi.Input[_builtins.bool]]
     """
@@ -3101,7 +3121,7 @@ class AlloydbomniAlloydbomniUserConfigPgauditArgs:
         :param pulumi.Input[_builtins.int] log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
         :param pulumi.Input[_builtins.bool] log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         :param pulumi.Input[_builtins.bool] log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-        :param pulumi.Input[_builtins.int] log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+        :param pulumi.Input[_builtins.int] log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
         :param pulumi.Input[_builtins.bool] log_relation: Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         :param pulumi.Input[_builtins.bool] log_rows: Log Rows. Default: `false`.
         :param pulumi.Input[_builtins.bool] log_statement: Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
@@ -3226,7 +3246,7 @@ class AlloydbomniAlloydbomniUserConfigPgauditArgs:
     @pulumi.getter(name="logParameterMaxSize")
     def log_parameter_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \\n\\n. Default: `0`.
+        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
         """
         return pulumi.get(self, "log_parameter_max_size")
 
@@ -3330,7 +3350,7 @@ class AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict(TypedDict):
     """
     max_prepared_statements: NotRequired[pulumi.Input[_builtins.int]]
     """
-    PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+    PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max_prepared_statements is set to a non-zero value. Setting it to 0 disables prepared statements. max_prepared_statements defaults to 100, and its maximum is 3000. Default: `100`.
     """
     min_pool_size: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -3346,7 +3366,7 @@ class AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict(TypedDict):
     """
     server_reset_query_always: NotRequired[pulumi.Input[_builtins.bool]]
     """
-    Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+    Run server_reset_query (DISCARD ALL) in all pooling modes. Default: `false`.
     """
 
 @pulumi.input_type
@@ -3368,11 +3388,11 @@ class AlloydbomniAlloydbomniUserConfigPgbouncerArgs:
         :param pulumi.Input[_builtins.str] autodb_pool_mode: Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
         :param pulumi.Input[_builtins.int] autodb_pool_size: If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignore_startup_parameters: List of parameters to ignore when given in startup packet.
-        :param pulumi.Input[_builtins.int] max_prepared_statements: PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+        :param pulumi.Input[_builtins.int] max_prepared_statements: PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max_prepared_statements is set to a non-zero value. Setting it to 0 disables prepared statements. max_prepared_statements defaults to 100, and its maximum is 3000. Default: `100`.
         :param pulumi.Input[_builtins.int] min_pool_size: Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
         :param pulumi.Input[_builtins.int] server_idle_timeout: If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
         :param pulumi.Input[_builtins.int] server_lifetime: The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
-        :param pulumi.Input[_builtins.bool] server_reset_query_always: Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+        :param pulumi.Input[_builtins.bool] server_reset_query_always: Run server_reset_query (DISCARD ALL) in all pooling modes. Default: `false`.
         """
         if autodb_idle_timeout is not None:
             pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
@@ -3459,7 +3479,7 @@ class AlloydbomniAlloydbomniUserConfigPgbouncerArgs:
     @pulumi.getter(name="maxPreparedStatements")
     def max_prepared_statements(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+        PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max_prepared_statements is set to a non-zero value. Setting it to 0 disables prepared statements. max_prepared_statements defaults to 100, and its maximum is 3000. Default: `100`.
         """
         return pulumi.get(self, "max_prepared_statements")
 
@@ -3507,7 +3527,7 @@ class AlloydbomniAlloydbomniUserConfigPgbouncerArgs:
     @pulumi.getter(name="serverResetQueryAlways")
     def server_reset_query_always(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+        Run server_reset_query (DISCARD ALL) in all pooling modes. Default: `false`.
         """
         return pulumi.get(self, "server_reset_query_always")
 
@@ -7548,6 +7568,232 @@ class DragonflyTechEmailArgs:
     @email.setter
     def email(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "email", value)
+
+
+class FlinkApplicationDeploymentTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class FlinkApplicationDeploymentTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 default: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+class FlinkApplicationTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class FlinkApplicationTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 default: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 class FlinkApplicationVersionSinkArgsDict(TypedDict):
@@ -35502,6 +35748,119 @@ class PgTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
+class PgUserTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class PgUserTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 default: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
 class ProjectTagArgsDict(TypedDict):
     key: pulumi.Input[_builtins.str]
     """
@@ -44289,6 +44648,368 @@ class GetClickhouseDatabaseTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
+class GetFlinkApplicationTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetFlinkApplicationTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetKafkaTopicListTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetKafkaTopicListTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetKafkaTopicListTopicArgsDict(TypedDict):
+    cleanup_policy: _builtins.str
+    """
+    The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic.
+    """
+    diskless_enable: _builtins.bool
+    """
+    Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
+    """
+    min_insync_replicas: _builtins.int
+    """
+    When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+    """
+    owner_user_group_id: _builtins.str
+    """
+    The user group that owns this topic.
+    """
+    partitions: _builtins.int
+    """
+    Number of partitions.
+    """
+    remote_storage_enable: _builtins.bool
+    """
+    Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
+    """
+    replication: _builtins.int
+    """
+    Number of replicas.
+    """
+    retention_bytes: _builtins.int
+    """
+    This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+    """
+    retention_hours: _builtins.int
+    """
+    Retention period (hours).
+    """
+    state: _builtins.str
+    """
+    Topic state. The possible values are `ACTIVE`, `CONFIGURING` and `DELETING`.
+    """
+    topic_description: _builtins.str
+    """
+    Topic description.
+    """
+    topic_name: _builtins.str
+    """
+    Topic name.
+    """
+    tags: NotRequired[Sequence['GetKafkaTopicListTopicTagArgsDict']]
+    """
+    Topic tags.
+    """
+
+@pulumi.input_type
+class GetKafkaTopicListTopicArgs:
+    def __init__(__self__, *,
+                 cleanup_policy: _builtins.str,
+                 diskless_enable: _builtins.bool,
+                 min_insync_replicas: _builtins.int,
+                 owner_user_group_id: _builtins.str,
+                 partitions: _builtins.int,
+                 remote_storage_enable: _builtins.bool,
+                 replication: _builtins.int,
+                 retention_bytes: _builtins.int,
+                 retention_hours: _builtins.int,
+                 state: _builtins.str,
+                 topic_description: _builtins.str,
+                 topic_name: _builtins.str,
+                 tags: Optional[Sequence['GetKafkaTopicListTopicTagArgs']] = None):
+        """
+        :param _builtins.str cleanup_policy: The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic.
+        :param _builtins.bool diskless_enable: Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
+        :param _builtins.int min_insync_replicas: When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+        :param _builtins.str owner_user_group_id: The user group that owns this topic.
+        :param _builtins.int partitions: Number of partitions.
+        :param _builtins.bool remote_storage_enable: Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
+        :param _builtins.int replication: Number of replicas.
+        :param _builtins.int retention_bytes: This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+        :param _builtins.int retention_hours: Retention period (hours).
+        :param _builtins.str state: Topic state. The possible values are `ACTIVE`, `CONFIGURING` and `DELETING`.
+        :param _builtins.str topic_description: Topic description.
+        :param _builtins.str topic_name: Topic name.
+        :param Sequence['GetKafkaTopicListTopicTagArgs'] tags: Topic tags.
+        """
+        pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+        pulumi.set(__self__, "diskless_enable", diskless_enable)
+        pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
+        pulumi.set(__self__, "owner_user_group_id", owner_user_group_id)
+        pulumi.set(__self__, "partitions", partitions)
+        pulumi.set(__self__, "remote_storage_enable", remote_storage_enable)
+        pulumi.set(__self__, "replication", replication)
+        pulumi.set(__self__, "retention_bytes", retention_bytes)
+        pulumi.set(__self__, "retention_hours", retention_hours)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "topic_description", topic_description)
+        pulumi.set(__self__, "topic_name", topic_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="cleanupPolicy")
+    def cleanup_policy(self) -> _builtins.str:
+        """
+        The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic.
+        """
+        return pulumi.get(self, "cleanup_policy")
+
+    @cleanup_policy.setter
+    def cleanup_policy(self, value: _builtins.str):
+        pulumi.set(self, "cleanup_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disklessEnable")
+    def diskless_enable(self) -> _builtins.bool:
+        """
+        Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
+        """
+        return pulumi.get(self, "diskless_enable")
+
+    @diskless_enable.setter
+    def diskless_enable(self, value: _builtins.bool):
+        pulumi.set(self, "diskless_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minInsyncReplicas")
+    def min_insync_replicas(self) -> _builtins.int:
+        """
+        When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+        """
+        return pulumi.get(self, "min_insync_replicas")
+
+    @min_insync_replicas.setter
+    def min_insync_replicas(self, value: _builtins.int):
+        pulumi.set(self, "min_insync_replicas", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ownerUserGroupId")
+    def owner_user_group_id(self) -> _builtins.str:
+        """
+        The user group that owns this topic.
+        """
+        return pulumi.get(self, "owner_user_group_id")
+
+    @owner_user_group_id.setter
+    def owner_user_group_id(self, value: _builtins.str):
+        pulumi.set(self, "owner_user_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def partitions(self) -> _builtins.int:
+        """
+        Number of partitions.
+        """
+        return pulumi.get(self, "partitions")
+
+    @partitions.setter
+    def partitions(self, value: _builtins.int):
+        pulumi.set(self, "partitions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteStorageEnable")
+    def remote_storage_enable(self) -> _builtins.bool:
+        """
+        Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
+        """
+        return pulumi.get(self, "remote_storage_enable")
+
+    @remote_storage_enable.setter
+    def remote_storage_enable(self, value: _builtins.bool):
+        pulumi.set(self, "remote_storage_enable", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def replication(self) -> _builtins.int:
+        """
+        Number of replicas.
+        """
+        return pulumi.get(self, "replication")
+
+    @replication.setter
+    def replication(self, value: _builtins.int):
+        pulumi.set(self, "replication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionBytes")
+    def retention_bytes(self) -> _builtins.int:
+        """
+        This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+        """
+        return pulumi.get(self, "retention_bytes")
+
+    @retention_bytes.setter
+    def retention_bytes(self, value: _builtins.int):
+        pulumi.set(self, "retention_bytes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionHours")
+    def retention_hours(self) -> _builtins.int:
+        """
+        Retention period (hours).
+        """
+        return pulumi.get(self, "retention_hours")
+
+    @retention_hours.setter
+    def retention_hours(self, value: _builtins.int):
+        pulumi.set(self, "retention_hours", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Topic state. The possible values are `ACTIVE`, `CONFIGURING` and `DELETING`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: _builtins.str):
+        pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topicDescription")
+    def topic_description(self) -> _builtins.str:
+        """
+        Topic description.
+        """
+        return pulumi.get(self, "topic_description")
+
+    @topic_description.setter
+    def topic_description(self, value: _builtins.str):
+        pulumi.set(self, "topic_description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topicName")
+    def topic_name(self) -> _builtins.str:
+        """
+        Topic name.
+        """
+        return pulumi.get(self, "topic_name")
+
+    @topic_name.setter
+    def topic_name(self, value: _builtins.str):
+        pulumi.set(self, "topic_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence['GetKafkaTopicListTopicTagArgs']]:
+        """
+        Topic tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[Sequence['GetKafkaTopicListTopicTagArgs']]):
+        pulumi.set(self, "tags", value)
+
+
+class GetKafkaTopicListTopicTagArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Tag key.
+    """
+    value: _builtins.str
+    """
+    Tag value.
+    """
+
+@pulumi.input_type
+class GetKafkaTopicListTopicTagArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: Tag key.
+        :param _builtins.str value: Tag value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Tag value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: _builtins.str):
+        pulumi.set(self, "value", value)
+
+
 class GetMysqlDatabaseTimeoutsArgsDict(TypedDict):
     read: NotRequired[_builtins.str]
     """
@@ -44869,6 +45590,82 @@ class GetOrganizationBillingGroupTimeoutsArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetOrganizationBillingGroupTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetOrganizationPaymentMethodListPaymentMethodArgsDict(TypedDict):
+    payment_method_id: _builtins.str
+    """
+    Payment method ID.
+    """
+    payment_method_type: _builtins.str
+    """
+    An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+    """
+
+@pulumi.input_type
+class GetOrganizationPaymentMethodListPaymentMethodArgs:
+    def __init__(__self__, *,
+                 payment_method_id: _builtins.str,
+                 payment_method_type: _builtins.str):
+        """
+        :param _builtins.str payment_method_id: Payment method ID.
+        :param _builtins.str payment_method_type: An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        pulumi.set(__self__, "payment_method_id", payment_method_id)
+        pulumi.set(__self__, "payment_method_type", payment_method_type)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodId")
+    def payment_method_id(self) -> _builtins.str:
+        """
+        Payment method ID.
+        """
+        return pulumi.get(self, "payment_method_id")
+
+    @payment_method_id.setter
+    def payment_method_id(self, value: _builtins.str):
+        pulumi.set(self, "payment_method_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="paymentMethodType")
+    def payment_method_type(self) -> _builtins.str:
+        """
+        An enumeration. The possible values are `aws_subscription`, `azure_subscription`, `bank_transfer`, `credit_card`, `custom`, `disabled`, `gcp_subscription`, `no_payment_expected` and `partner`.
+        """
+        return pulumi.get(self, "payment_method_type")
+
+    @payment_method_type.setter
+    def payment_method_type(self, value: _builtins.str):
+        pulumi.set(self, "payment_method_type", value)
+
+
+class GetOrganizationPaymentMethodListTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetOrganizationPaymentMethodListTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[_builtins.str] = None):
         """
@@ -45869,6 +46666,35 @@ class GetPgDatabaseTimeoutsArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetPgDatabaseTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetPgUserTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetPgUserTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[_builtins.str] = None):
         """

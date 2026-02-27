@@ -124,14 +124,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
     }
 
     /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. Default: `0`.
      * 
      */
     @Import(name="logParameterMaxSize")
     private @Nullable Output<Integer> logParameterMaxSize;
 
     /**
-     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. Default: `0`.
      * 
      */
     public Optional<Output<Integer>> logParameterMaxSize() {
@@ -413,7 +413,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logParameterMaxSize Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+         * @param logParameterMaxSize Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. Default: `0`.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgauditArgs extends com.pulum
         }
 
         /**
-         * @param logParameterMaxSize Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+         * @param logParameterMaxSize Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. Default: `0`.
          * 
          * @return builder
          * 

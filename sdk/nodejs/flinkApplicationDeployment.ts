@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages the deployment of an Aiven for Apache Flink® application.
+ * Creates and manages the deployment of an Aiven for Apache Flink® application. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -63,7 +65,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
+ * $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment example PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
  * ```
  */
 export class FlinkApplicationDeployment extends pulumi.CustomResource {
@@ -95,39 +97,44 @@ export class FlinkApplicationDeployment extends pulumi.CustomResource {
     }
 
     /**
-     * Application ID.
+     * Application Id. Changing this property forces recreation of the resource.
      */
     declare public readonly applicationId: pulumi.Output<string>;
     /**
-     * Application deployment creation time.
+     * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * The user who deployed the application.
+     * The creator of this entity.
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
-     * The number of parallel instances for the task.
+     * Deployment ID.
      */
-    declare public readonly parallelism: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly deploymentId: pulumi.Output<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
+     */
+    declare public readonly parallelism: pulumi.Output<number>;
+    /**
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * Restart a Flink job if it fails.
+     * Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
      */
-    declare public readonly restartEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly restartEnabled: pulumi.Output<boolean>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
     /**
-     * The savepoint to deploy from.
+     * Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
      */
     declare public readonly startingSavepoint: pulumi.Output<string | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.FlinkApplicationDeploymentTimeouts | undefined>;
     /**
-     * Application version ID.
+     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     declare public readonly versionId: pulumi.Output<string>;
 
@@ -147,11 +154,13 @@ export class FlinkApplicationDeployment extends pulumi.CustomResource {
             resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["deploymentId"] = state?.deploymentId;
             resourceInputs["parallelism"] = state?.parallelism;
             resourceInputs["project"] = state?.project;
             resourceInputs["restartEnabled"] = state?.restartEnabled;
             resourceInputs["serviceName"] = state?.serviceName;
             resourceInputs["startingSavepoint"] = state?.startingSavepoint;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as FlinkApplicationDeploymentArgs | undefined;
@@ -173,9 +182,11 @@ export class FlinkApplicationDeployment extends pulumi.CustomResource {
             resourceInputs["restartEnabled"] = args?.restartEnabled;
             resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["startingSavepoint"] = args?.startingSavepoint;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["versionId"] = args?.versionId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["deploymentId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FlinkApplicationDeployment.__pulumiType, name, resourceInputs, opts);
@@ -187,39 +198,44 @@ export class FlinkApplicationDeployment extends pulumi.CustomResource {
  */
 export interface FlinkApplicationDeploymentState {
     /**
-     * Application ID.
+     * Application Id. Changing this property forces recreation of the resource.
      */
     applicationId?: pulumi.Input<string>;
     /**
-     * Application deployment creation time.
+     * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The user who deployed the application.
+     * The creator of this entity.
      */
     createdBy?: pulumi.Input<string>;
     /**
-     * The number of parallel instances for the task.
+     * Deployment ID.
+     */
+    deploymentId?: pulumi.Input<string>;
+    /**
+     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
      */
     parallelism?: pulumi.Input<number>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Restart a Flink job if it fails.
+     * Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
      */
     restartEnabled?: pulumi.Input<boolean>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * The savepoint to deploy from.
+     * Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
      */
     startingSavepoint?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.FlinkApplicationDeploymentTimeouts>;
     /**
-     * Application version ID.
+     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     versionId?: pulumi.Input<string>;
 }
@@ -229,31 +245,32 @@ export interface FlinkApplicationDeploymentState {
  */
 export interface FlinkApplicationDeploymentArgs {
     /**
-     * Application ID.
+     * Application Id. Changing this property forces recreation of the resource.
      */
     applicationId: pulumi.Input<string>;
     /**
-     * The number of parallel instances for the task.
+     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
      */
     parallelism?: pulumi.Input<number>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Restart a Flink job if it fails.
+     * Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
      */
     restartEnabled?: pulumi.Input<boolean>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The savepoint to deploy from.
+     * Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
      */
     startingSavepoint?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.FlinkApplicationDeploymentTimeouts>;
     /**
-     * Application version ID.
+     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     versionId: pulumi.Input<string>;
 }

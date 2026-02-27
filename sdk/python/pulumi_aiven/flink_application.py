@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['FlinkApplicationArgs', 'FlinkApplication']
 
@@ -21,24 +23,27 @@ class FlinkApplicationArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['FlinkApplicationTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a FlinkApplication resource.
 
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] name: The name of the application.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] name: Application name. Maximum length: `128`.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -50,7 +55,7 @@ class FlinkApplicationArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -62,13 +67,22 @@ class FlinkApplicationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the application.
+        Application name. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['FlinkApplicationTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['FlinkApplicationTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -80,19 +94,20 @@ class _FlinkApplicationState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['FlinkApplicationTimeoutsArgs']] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlinkApplication resources.
 
         :param pulumi.Input[_builtins.str] application_id: Application ID.
-        :param pulumi.Input[_builtins.str] created_at: Application creation time.
-        :param pulumi.Input[_builtins.str] created_by: The user who created the application.
-        :param pulumi.Input[_builtins.str] name: The name of the application.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] updated_at: When the application was updated.
-        :param pulumi.Input[_builtins.str] updated_by: The user who updated the application.
+        :param pulumi.Input[_builtins.str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        :param pulumi.Input[_builtins.str] created_by: The creator of this entity.
+        :param pulumi.Input[_builtins.str] name: Application name. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] updated_at: The update timestamp of this entity in ISO 8601 format, always in UTC.
+        :param pulumi.Input[_builtins.str] updated_by: The latest updater of this entity.
         """
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
@@ -106,6 +121,8 @@ class _FlinkApplicationState:
             pulumi.set(__self__, "project", project)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
         if updated_by is not None:
@@ -127,7 +144,7 @@ class _FlinkApplicationState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Application creation time.
+        The creation timestamp of this entity in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "created_at")
 
@@ -139,7 +156,7 @@ class _FlinkApplicationState:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The user who created the application.
+        The creator of this entity.
         """
         return pulumi.get(self, "created_by")
 
@@ -151,7 +168,7 @@ class _FlinkApplicationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the application.
+        Application name. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
@@ -163,7 +180,7 @@ class _FlinkApplicationState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -175,7 +192,7 @@ class _FlinkApplicationState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -184,10 +201,19 @@ class _FlinkApplicationState:
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['FlinkApplicationTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['FlinkApplicationTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When the application was updated.
+        The update timestamp of this entity in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "updated_at")
 
@@ -199,7 +225,7 @@ class _FlinkApplicationState:
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The user who updated the application.
+        The latest updater of this entity.
         """
         return pulumi.get(self, "updated_by")
 
@@ -217,9 +243,10 @@ class FlinkApplication(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['FlinkApplicationTimeoutsArgs', 'FlinkApplicationTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
+        Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -236,15 +263,15 @@ class FlinkApplication(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_ID
+        $ pulumi import aiven:index/flinkApplication:FlinkApplication example PROJECT/SERVICE_NAME/APPLICATION_ID
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: The name of the application.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] name: Application name. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -253,7 +280,7 @@ class FlinkApplication(pulumi.CustomResource):
                  args: FlinkApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
+        Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -270,7 +297,7 @@ class FlinkApplication(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_ID
+        $ pulumi import aiven:index/flinkApplication:FlinkApplication example PROJECT/SERVICE_NAME/APPLICATION_ID
         ```
 
 
@@ -292,6 +319,7 @@ class FlinkApplication(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['FlinkApplicationTimeoutsArgs', 'FlinkApplicationTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -308,6 +336,7 @@ class FlinkApplication(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["application_id"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
@@ -329,6 +358,7 @@ class FlinkApplication(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             service_name: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['FlinkApplicationTimeoutsArgs', 'FlinkApplicationTimeoutsArgsDict']]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None,
             updated_by: Optional[pulumi.Input[_builtins.str]] = None) -> 'FlinkApplication':
         """
@@ -339,13 +369,13 @@ class FlinkApplication(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Application ID.
-        :param pulumi.Input[_builtins.str] created_at: Application creation time.
-        :param pulumi.Input[_builtins.str] created_by: The user who created the application.
-        :param pulumi.Input[_builtins.str] name: The name of the application.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] updated_at: When the application was updated.
-        :param pulumi.Input[_builtins.str] updated_by: The user who updated the application.
+        :param pulumi.Input[_builtins.str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        :param pulumi.Input[_builtins.str] created_by: The creator of this entity.
+        :param pulumi.Input[_builtins.str] name: Application name. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] updated_at: The update timestamp of this entity in ISO 8601 format, always in UTC.
+        :param pulumi.Input[_builtins.str] updated_by: The latest updater of this entity.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -357,6 +387,7 @@ class FlinkApplication(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["updated_by"] = updated_by
         return FlinkApplication(resource_name, opts=opts, __props__=__props__)
@@ -373,7 +404,7 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        Application creation time.
+        The creation timestamp of this entity in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "created_at")
 
@@ -381,7 +412,7 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[_builtins.str]:
         """
-        The user who created the application.
+        The creator of this entity.
         """
         return pulumi.get(self, "created_by")
 
@@ -389,7 +420,7 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the application.
+        Application name. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
@@ -397,7 +428,7 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -405,15 +436,20 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.FlinkApplicationTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         """
-        When the application was updated.
+        The update timestamp of this entity in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "updated_at")
 
@@ -421,7 +457,7 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Output[_builtins.str]:
         """
-        The user who updated the application.
+        The latest updater of this entity.
         """
         return pulumi.get(self, "updated_by")
 

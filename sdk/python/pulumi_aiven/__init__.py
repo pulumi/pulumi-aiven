@@ -86,6 +86,7 @@ from .get_kafka_schema import *
 from .get_kafka_schema_configuration import *
 from .get_kafka_schema_registry_acl import *
 from .get_kafka_topic import *
+from .get_kafka_topic_list import *
 from .get_kafka_user import *
 from .get_m3_aggregator import *
 from .get_m3_db import *
@@ -104,6 +105,7 @@ from .get_organization_address import *
 from .get_organization_application_user import *
 from .get_organization_billing_group import *
 from .get_organization_billing_group_list import *
+from .get_organization_payment_method_list import *
 from .get_organization_project import *
 from .get_organization_user import *
 from .get_organization_user_group import *
