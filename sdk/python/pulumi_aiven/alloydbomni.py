@@ -810,59 +810,7 @@ class Alloydbomni(pulumi.CustomResource):
                  termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Creates and manages an Aiven for AlloyDB Omni service.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
-        !> **End of life notice**
-        Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-        services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-        On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-        these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-        Aiven for PostgreSQL®,
-        Aiven for ClickHouse®,
-        and Aiven for MySQL®.
-        To ensure uninterrupted service, complete your migration before December 5, 2025.
-        For further assistance, contact the Aiven support team or your
-        account team.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        example_alloydbomni = aiven.Alloydbomni("example_alloydbomni",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example-alloydbomni-service",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
-            tags=[{
-                "key": "test",
-                "value": "val",
-            }],
-            alloydbomni_user_config={
-                "public_access": {
-                    "pg": True,
-                    "prometheus": False,
-                },
-                "pg": {
-                    "idle_in_transaction_session_timeout": 900,
-                    "log_min_duration_statement": -1,
-                },
-            })
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import aiven:index/alloydbomni:Alloydbomni example_alloydbomni PROJECT/SERVICE_NAME
-        ```
-
+        Create a Alloydbomni resource with the given unique name, props, and options.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -891,59 +839,7 @@ class Alloydbomni(pulumi.CustomResource):
                  args: AlloydbomniArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an Aiven for AlloyDB Omni service.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
-        !> **End of life notice**
-        Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-        From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-        services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-        On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-        these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-        Aiven for PostgreSQL®,
-        Aiven for ClickHouse®,
-        and Aiven for MySQL®.
-        To ensure uninterrupted service, complete your migration before December 5, 2025.
-        For further assistance, contact the Aiven support team or your
-        account team.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        example_alloydbomni = aiven.Alloydbomni("example_alloydbomni",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example-alloydbomni-service",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
-            tags=[{
-                "key": "test",
-                "value": "val",
-            }],
-            alloydbomni_user_config={
-                "public_access": {
-                    "pg": True,
-                    "prometheus": False,
-                },
-                "pg": {
-                    "idle_in_transaction_session_timeout": 900,
-                    "log_min_duration_statement": -1,
-                },
-            })
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import aiven:index/alloydbomni:Alloydbomni example_alloydbomni PROJECT/SERVICE_NAME
-        ```
-
+        Create a Alloydbomni resource with the given unique name, props, and options.
 
         :param str resource_name: The name of the resource.
         :param AlloydbomniArgs args: The arguments to use to populate this resource's properties.

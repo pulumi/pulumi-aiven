@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Gets information about a database in an Aiven for AlloyDB Omni service.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- *
- * !> **End of life notice**
- * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
- * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
- * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
- * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
- * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
- * Aiven for PostgreSQL®,
- * Aiven for ClickHouse®,
- * and Aiven for MySQL®.
- * To ensure uninterrupted service, complete your migration before December 5, 2025.
- * For further assistance, contact the Aiven support team or your
- * account team.
- */
 export function getAlloydbomniDatabase(args: GetAlloydbomniDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetAlloydbomniDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", {
@@ -36,17 +17,8 @@ export function getAlloydbomniDatabase(args: GetAlloydbomniDatabaseArgs, opts?: 
  * A collection of arguments for invoking getAlloydbomniDatabase.
  */
 export interface GetAlloydbomniDatabaseArgs {
-    /**
-     * The name of the service database. Changing this property forces recreation of the resource.
-     */
     databaseName: string;
-    /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     project: string;
-    /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     serviceName: string;
 }
 
@@ -54,50 +26,16 @@ export interface GetAlloydbomniDatabaseArgs {
  * A collection of values returned by getAlloydbomniDatabase.
  */
 export interface GetAlloydbomniDatabaseResult {
-    /**
-     * The name of the service database. Changing this property forces recreation of the resource.
-     */
     readonly databaseName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-     */
     readonly lcCollate: string;
-    /**
-     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-     */
     readonly lcCtype: string;
-    /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     readonly project: string;
-    /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     readonly serviceName: string;
 }
-/**
- * Gets information about a database in an Aiven for AlloyDB Omni service.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- *
- * !> **End of life notice**
- * Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
- * From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
- * services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
- * On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
- * these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
- * Aiven for PostgreSQL®,
- * Aiven for ClickHouse®,
- * and Aiven for MySQL®.
- * To ensure uninterrupted service, complete your migration before December 5, 2025.
- * For further assistance, contact the Aiven support team or your
- * account team.
- */
 export function getAlloydbomniDatabaseOutput(args: GetAlloydbomniDatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlloydbomniDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", {
@@ -111,16 +49,7 @@ export function getAlloydbomniDatabaseOutput(args: GetAlloydbomniDatabaseOutputA
  * A collection of arguments for invoking getAlloydbomniDatabase.
  */
 export interface GetAlloydbomniDatabaseOutputArgs {
-    /**
-     * The name of the service database. Changing this property forces recreation of the resource.
-     */
     databaseName: pulumi.Input<string>;
-    /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     project: pulumi.Input<string>;
-    /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-     */
     serviceName: pulumi.Input<string>;
 }

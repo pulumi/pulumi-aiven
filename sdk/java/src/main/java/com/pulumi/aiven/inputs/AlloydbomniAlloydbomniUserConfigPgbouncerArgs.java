@@ -94,14 +94,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgbouncerArgs extends com.pul
     }
 
     /**
-     * PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+     * PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
      * 
      */
     @Import(name="maxPreparedStatements")
     private @Nullable Output<Integer> maxPreparedStatements;
 
     /**
-     * @return PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+     * @return PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
      * 
      */
     public Optional<Output<Integer>> maxPreparedStatements() {
@@ -154,14 +154,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgbouncerArgs extends com.pul
     }
 
     /**
-     * Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+     * Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
      * 
      */
     @Import(name="serverResetQueryAlways")
     private @Nullable Output<Boolean> serverResetQueryAlways;
 
     /**
-     * @return Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+     * @return Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> serverResetQueryAlways() {
@@ -317,7 +317,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgbouncerArgs extends com.pul
         }
 
         /**
-         * @param maxPreparedStatements PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+         * @param maxPreparedStatements PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgbouncerArgs extends com.pul
         }
 
         /**
-         * @param maxPreparedStatements PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+         * @param maxPreparedStatements PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgbouncerArgs extends com.pul
         }
 
         /**
-         * @param serverResetQueryAlways Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+         * @param serverResetQueryAlways Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgbouncerArgs extends com.pul
         }
 
         /**
-         * @param serverResetQueryAlways Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+         * @param serverResetQueryAlways Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
          * 
          * @return builder
          * 

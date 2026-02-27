@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
+// Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -45,26 +45,27 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_ID
+// $ pulumi import aiven:index/flinkApplication:FlinkApplication example PROJECT/SERVICE_NAME/APPLICATION_ID
 // ```
 type FlinkApplication struct {
 	pulumi.CustomResourceState
 
 	// Application ID.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// Application creation time.
+	// The creation timestamp of this entity in ISO 8601 format, always in UTC.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The user who created the application.
+	// The creator of this entity.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	// The name of the application.
+	// Application name. Maximum length: `128`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// When the application was updated.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringOutput               `pulumi:"serviceName"`
+	Timeouts    FlinkApplicationTimeoutsPtrOutput `pulumi:"timeouts"`
+	// The update timestamp of this entity in ISO 8601 format, always in UTC.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// The user who updated the application.
+	// The latest updater of this entity.
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 }
 
@@ -106,38 +107,40 @@ func GetFlinkApplication(ctx *pulumi.Context,
 type flinkApplicationState struct {
 	// Application ID.
 	ApplicationId *string `pulumi:"applicationId"`
-	// Application creation time.
+	// The creation timestamp of this entity in ISO 8601 format, always in UTC.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The user who created the application.
+	// The creator of this entity.
 	CreatedBy *string `pulumi:"createdBy"`
-	// The name of the application.
+	// Application name. Maximum length: `128`.
 	Name *string `pulumi:"name"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName *string `pulumi:"serviceName"`
-	// When the application was updated.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName *string                   `pulumi:"serviceName"`
+	Timeouts    *FlinkApplicationTimeouts `pulumi:"timeouts"`
+	// The update timestamp of this entity in ISO 8601 format, always in UTC.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// The user who updated the application.
+	// The latest updater of this entity.
 	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
 type FlinkApplicationState struct {
 	// Application ID.
 	ApplicationId pulumi.StringPtrInput
-	// Application creation time.
+	// The creation timestamp of this entity in ISO 8601 format, always in UTC.
 	CreatedAt pulumi.StringPtrInput
-	// The user who created the application.
+	// The creator of this entity.
 	CreatedBy pulumi.StringPtrInput
-	// The name of the application.
+	// Application name. Maximum length: `128`.
 	Name pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// When the application was updated.
+	Timeouts    FlinkApplicationTimeoutsPtrInput
+	// The update timestamp of this entity in ISO 8601 format, always in UTC.
 	UpdatedAt pulumi.StringPtrInput
-	// The user who updated the application.
+	// The latest updater of this entity.
 	UpdatedBy pulumi.StringPtrInput
 }
 
@@ -146,22 +149,24 @@ func (FlinkApplicationState) ElementType() reflect.Type {
 }
 
 type flinkApplicationArgs struct {
-	// The name of the application.
+	// Application name. Maximum length: `128`.
 	Name *string `pulumi:"name"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName string                    `pulumi:"serviceName"`
+	Timeouts    *FlinkApplicationTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a FlinkApplication resource.
 type FlinkApplicationArgs struct {
-	// The name of the application.
+	// Application name. Maximum length: `128`.
 	Name pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
+	Timeouts    FlinkApplicationTimeoutsPtrInput
 }
 
 func (FlinkApplicationArgs) ElementType() reflect.Type {
@@ -256,37 +261,41 @@ func (o FlinkApplicationOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// Application creation time.
+// The creation timestamp of this entity in ISO 8601 format, always in UTC.
 func (o FlinkApplicationOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The user who created the application.
+// The creator of this entity.
 func (o FlinkApplicationOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// The name of the application.
+// Application name. Maximum length: `128`.
 func (o FlinkApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o FlinkApplicationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o FlinkApplicationOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// When the application was updated.
+func (o FlinkApplicationOutput) Timeouts() FlinkApplicationTimeoutsPtrOutput {
+	return o.ApplyT(func(v *FlinkApplication) FlinkApplicationTimeoutsPtrOutput { return v.Timeouts }).(FlinkApplicationTimeoutsPtrOutput)
+}
+
+// The update timestamp of this entity in ISO 8601 format, always in UTC.
 func (o FlinkApplicationOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// The user who updated the application.
+// The latest updater of this entity.
 func (o FlinkApplicationOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }

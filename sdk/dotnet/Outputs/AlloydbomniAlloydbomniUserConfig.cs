@@ -74,7 +74,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? PgReadReplica;
         /// <summary>
-        /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `Anotherservicename`.
+        /// Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         public readonly string? PgServiceToForkFrom;
         /// <summary>

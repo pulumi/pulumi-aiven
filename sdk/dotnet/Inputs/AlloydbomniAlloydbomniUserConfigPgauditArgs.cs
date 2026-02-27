@@ -55,7 +55,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? LogParameter { get; set; }
 
         /// <summary>
-        /// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+        /// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. Default: `0`.
         /// </summary>
         [Input("logParameterMaxSize")]
         public Input<int>? LogParameterMaxSize { get; set; }

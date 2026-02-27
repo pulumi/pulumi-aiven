@@ -3,88 +3,117 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetPgUserTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgUserResult {
     /**
-     * @return The access certificate for the servie user.
+     * @return Access certificate for TLS client authentication.
      * 
      */
     private String accessCert;
     /**
-     * @return The access certificate key for the service user.
+     * @return Access key for TLS client authentication.
      * 
      */
     private String accessKey;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/username`.
      * 
      */
     private String id;
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      * 
      */
     private String password;
+    /**
+     * @return The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
+     * 
+     */
+    private String passwordWo;
+    /**
+     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
+     * 
+     */
+    private Integer passwordWoVersion;
     /**
      * @return Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      * 
      */
     private Boolean pgAllowReplication;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service.
      * 
      */
     private String serviceName;
+    private @Nullable GetPgUserTimeouts timeouts;
     /**
      * @return The service user account type, either primary or regular.
      * 
      */
     private String type;
     /**
-     * @return The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service user for this service.
      * 
      */
     private String username;
 
     private GetPgUserResult() {}
     /**
-     * @return The access certificate for the servie user.
+     * @return Access certificate for TLS client authentication.
      * 
      */
     public String accessCert() {
         return this.accessCert;
     }
     /**
-     * @return The access certificate key for the service user.
+     * @return Access key for TLS client authentication.
      * 
      */
     public String accessKey() {
         return this.accessKey;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/username`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      * 
      */
     public String password() {
         return this.password;
+    }
+    /**
+     * @return The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
+     * 
+     */
+    public String passwordWo() {
+        return this.passwordWo;
+    }
+    /**
+     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
+     * 
+     */
+    public Integer passwordWoVersion() {
+        return this.passwordWoVersion;
     }
     /**
      * @return Allows replication. For the default avnadmin user this attribute is required and is always `true`.
@@ -94,18 +123,21 @@ public final class GetPgUserResult {
         return this.pgAllowReplication;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service.
      * 
      */
     public String serviceName() {
         return this.serviceName;
+    }
+    public Optional<GetPgUserTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
     /**
      * @return The service user account type, either primary or regular.
@@ -115,7 +147,7 @@ public final class GetPgUserResult {
         return this.type;
     }
     /**
-     * @return The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service user for this service.
      * 
      */
     public String username() {
@@ -135,9 +167,12 @@ public final class GetPgUserResult {
         private String accessKey;
         private String id;
         private String password;
+        private String passwordWo;
+        private Integer passwordWoVersion;
         private Boolean pgAllowReplication;
         private String project;
         private String serviceName;
+        private @Nullable GetPgUserTimeouts timeouts;
         private String type;
         private String username;
         public Builder() {}
@@ -147,9 +182,12 @@ public final class GetPgUserResult {
     	      this.accessKey = defaults.accessKey;
     	      this.id = defaults.id;
     	      this.password = defaults.password;
+    	      this.passwordWo = defaults.passwordWo;
+    	      this.passwordWoVersion = defaults.passwordWoVersion;
     	      this.pgAllowReplication = defaults.pgAllowReplication;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
+    	      this.timeouts = defaults.timeouts;
     	      this.type = defaults.type;
     	      this.username = defaults.username;
         }
@@ -187,6 +225,22 @@ public final class GetPgUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder passwordWo(String passwordWo) {
+            if (passwordWo == null) {
+              throw new MissingRequiredPropertyException("GetPgUserResult", "passwordWo");
+            }
+            this.passwordWo = passwordWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWoVersion(Integer passwordWoVersion) {
+            if (passwordWoVersion == null) {
+              throw new MissingRequiredPropertyException("GetPgUserResult", "passwordWoVersion");
+            }
+            this.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pgAllowReplication(Boolean pgAllowReplication) {
             if (pgAllowReplication == null) {
               throw new MissingRequiredPropertyException("GetPgUserResult", "pgAllowReplication");
@@ -211,6 +265,12 @@ public final class GetPgUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetPgUserTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetPgUserResult", "type");
@@ -232,9 +292,12 @@ public final class GetPgUserResult {
             _resultValue.accessKey = accessKey;
             _resultValue.id = id;
             _resultValue.password = password;
+            _resultValue.passwordWo = passwordWo;
+            _resultValue.passwordWoVersion = passwordWoVersion;
             _resultValue.pgAllowReplication = pgAllowReplication;
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
+            _resultValue.timeouts = timeouts;
             _resultValue.type = type;
             _resultValue.username = username;
             return _resultValue;

@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.FlinkApplicationDeploymentArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.FlinkApplicationDeploymentState;
+import com.pulumi.aiven.outputs.FlinkApplicationDeploymentTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -17,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages the deployment of an Aiven for Apache Flink® application.
+ * Creates and manages the deployment of an Aiven for Apache Flink® application. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -109,133 +110,153 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
+ * $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment example PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment")
 public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResource {
     /**
-     * Application ID.
+     * Application Id. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
-     * @return Application ID.
+     * @return Application Id. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> applicationId() {
         return this.applicationId;
     }
     /**
-     * Application deployment creation time.
+     * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Application deployment creation time.
+     * @return The creation timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * The user who deployed the application.
+     * The creator of this entity.
      * 
      */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
-     * @return The user who deployed the application.
+     * @return The creator of this entity.
      * 
      */
     public Output<String> createdBy() {
         return this.createdBy;
     }
     /**
-     * The number of parallel instances for the task.
+     * Deployment ID.
+     * 
+     */
+    @Export(name="deploymentId", refs={String.class}, tree="[0]")
+    private Output<String> deploymentId;
+
+    /**
+     * @return Deployment ID.
+     * 
+     */
+    public Output<String> deploymentId() {
+        return this.deploymentId;
+    }
+    /**
+     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="parallelism", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> parallelism;
+    private Output<Integer> parallelism;
 
     /**
-     * @return The number of parallel instances for the task.
+     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<Optional<Integer>> parallelism() {
-        return Codegen.optional(this.parallelism);
+    public Output<Integer> parallelism() {
+        return this.parallelism;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Restart a Flink job if it fails.
+     * Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="restartEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> restartEnabled;
+    private Output<Boolean> restartEnabled;
 
     /**
-     * @return Restart a Flink job if it fails.
+     * @return Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<Optional<Boolean>> restartEnabled() {
-        return Codegen.optional(this.restartEnabled);
+    public Output<Boolean> restartEnabled() {
+        return this.restartEnabled;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * The savepoint to deploy from.
+     * Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="startingSavepoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> startingSavepoint;
 
     /**
-     * @return The savepoint to deploy from.
+     * @return Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> startingSavepoint() {
         return Codegen.optional(this.startingSavepoint);
     }
+    @Export(name="timeouts", refs={FlinkApplicationDeploymentTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ FlinkApplicationDeploymentTimeouts> timeouts;
+
+    public Output<Optional<FlinkApplicationDeploymentTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * Application version ID.
+     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**
-     * @return Application version ID.
+     * @return ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> versionId() {

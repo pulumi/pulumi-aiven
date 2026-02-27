@@ -7,10 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data.
+ * Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data. Use your own CMKs from your cloud provider's key management service (KMS) to encrypt data for all services in an Aiven project. This gives you complete control over your encryption keys, meaning you can independently manage the key lifecycle and access policies.
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ *
+ * > **Warning**
+ * If you remove a CMK, the services linked to the key will stop working. Migrate the services to another CMK or an Aiven-managed key before removing the CMK.
  *
  * ## Example Usage
  *
@@ -65,7 +68,7 @@ export class Cmk extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly cmkId: pulumi.Output<string>;
     /**
-     * CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      */
     declare public readonly cmkProvider: pulumi.Output<string>;
     /**
@@ -81,7 +84,7 @@ export class Cmk extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
      */
     declare public readonly resource: pulumi.Output<string>;
     /**
@@ -154,7 +157,7 @@ export interface CmkState {
      */
     cmkId?: pulumi.Input<string>;
     /**
-     * CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      */
     cmkProvider?: pulumi.Input<string>;
     /**
@@ -170,7 +173,7 @@ export interface CmkState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
      */
     resource?: pulumi.Input<string>;
     /**
@@ -189,7 +192,7 @@ export interface CmkState {
  */
 export interface CmkArgs {
     /**
-     * CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      */
     cmkProvider: pulumi.Input<string>;
     /**
@@ -201,7 +204,7 @@ export interface CmkArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
      */
     resource: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.CmkTimeouts>;

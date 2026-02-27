@@ -103,7 +103,7 @@ public final class AlloydbomniAlloydbomniUserConfig {
      */
     private @Nullable Boolean pgReadReplica;
     /**
-     * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+     * @return Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     private @Nullable String pgServiceToForkFrom;
@@ -299,7 +299,7 @@ public final class AlloydbomniAlloydbomniUserConfig {
         return Optional.ofNullable(this.pgReadReplica);
     }
     /**
-     * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+     * @return Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<String> pgServiceToForkFrom() {

@@ -10,10 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data.
+    /// Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data. Use your own CMKs from your cloud provider's key management service (KMS) to encrypt data for all services in an Aiven project. This gives you complete control over your encryption keys, meaning you can independently manage the key lifecycle and access policies.
     /// 
     /// **This resource is in the beta stage and may change without notice.** Set
     /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// 
+    /// &gt; **Warning**
+    /// If you remove a CMK, the services linked to the key will stop working. Migrate the services to another CMK or an Aiven-managed key before removing the CMK.
     /// 
     /// ## Example Usage
     /// 
@@ -52,7 +55,7 @@ namespace Pulumi.Aiven
         public Output<string> CmkId { get; private set; } = null!;
 
         /// <summary>
-        /// CMK provider. The possible values are `Aws`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
+        /// The cloud provider hosting the key management service (KMS). The possible values are `Aws`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("cmkProvider")]
         public Output<string> CmkProvider { get; private set; } = null!;
@@ -76,7 +79,7 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+        /// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("resource")]
         public Output<string> Resource { get; private set; } = null!;
@@ -143,7 +146,7 @@ namespace Pulumi.Aiven
     public sealed class CmkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CMK provider. The possible values are `Aws`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
+        /// The cloud provider hosting the key management service (KMS). The possible values are `Aws`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("cmkProvider", required: true)]
         public Input<string> CmkProvider { get; set; } = null!;
@@ -161,7 +164,7 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+        /// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resource", required: true)]
         public Input<string> Resource { get; set; } = null!;
@@ -184,7 +187,7 @@ namespace Pulumi.Aiven
         public Input<string>? CmkId { get; set; }
 
         /// <summary>
-        /// CMK provider. The possible values are `Aws`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
+        /// The cloud provider hosting the key management service (KMS). The possible values are `Aws`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("cmkProvider")]
         public Input<string>? CmkProvider { get; set; }
@@ -208,7 +211,7 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+        /// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }

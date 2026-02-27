@@ -49,9 +49,6 @@ class GetAlloydbomniDatabaseResult:
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> _builtins.str:
-        """
-        The name of the service database. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "database_name")
 
     @_builtins.property
@@ -65,33 +62,21 @@ class GetAlloydbomniDatabaseResult:
     @_builtins.property
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> _builtins.str:
-        """
-        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "lc_collate")
 
     @_builtins.property
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> _builtins.str:
-        """
-        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "lc_ctype")
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
-        """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
-        """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
 
@@ -114,28 +99,7 @@ def get_alloydbomni_database(database_name: Optional[_builtins.str] = None,
                              service_name: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlloydbomniDatabaseResult:
     """
-    Gets information about a database in an Aiven for AlloyDB Omni service.
-
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
-    !> **End of life notice**
-    Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-    From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-    services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-    On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-    these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-    Aiven for PostgreSQL®,
-    Aiven for ClickHouse®,
-    and Aiven for MySQL®.
-    To ensure uninterrupted service, complete your migration before December 5, 2025.
-    For further assistance, contact the Aiven support team or your
-    account team.
-
-
-    :param _builtins.str database_name: The name of the service database. Changing this property forces recreation of the resource.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name
@@ -156,28 +120,7 @@ def get_alloydbomni_database_output(database_name: Optional[pulumi.Input[_builti
                                     service_name: Optional[pulumi.Input[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlloydbomniDatabaseResult]:
     """
-    Gets information about a database in an Aiven for AlloyDB Omni service.
-
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
-    !> **End of life notice**
-    Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-    From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-    services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-    On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-    these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-    Aiven for PostgreSQL®,
-    Aiven for ClickHouse®,
-    and Aiven for MySQL®.
-    To ensure uninterrupted service, complete your migration before December 5, 2025.
-    For further assistance, contact the Aiven support team or your
-    account team.
-
-
-    :param _builtins.str database_name: The name of the service database. Changing this property forces recreation of the resource.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name

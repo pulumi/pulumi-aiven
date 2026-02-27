@@ -261,14 +261,14 @@ public final class AlloydbomniAlloydbomniUserConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     @Import(name="pgServiceToForkFrom")
     private @Nullable Output<String> pgServiceToForkFrom;
 
     /**
-     * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+     * @return Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<Output<String>> pgServiceToForkFrom() {
@@ -928,7 +928,7 @@ public final class AlloydbomniAlloydbomniUserConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param pgServiceToForkFrom Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+         * @param pgServiceToForkFrom Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 
@@ -939,7 +939,7 @@ public final class AlloydbomniAlloydbomniUserConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param pgServiceToForkFrom Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+         * @param pgServiceToForkFrom Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 

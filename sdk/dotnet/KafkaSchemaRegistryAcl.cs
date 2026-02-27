@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl foo PROJECT/SERVICE_NAME/ACL_ID
+    /// $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl example PROJECT/SERVICE_NAME/ACL_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl")]

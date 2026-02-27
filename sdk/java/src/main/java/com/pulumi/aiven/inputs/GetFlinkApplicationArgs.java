@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetFlinkApplicationTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,29 +18,44 @@ public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeAr
     public static final GetFlinkApplicationArgs Empty = new GetFlinkApplicationArgs();
 
     /**
-     * The name of the application.
+     * Application ID. Exactly one of the fields must be specified: `applicationId` or `name`.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="applicationId")
+    private @Nullable Output<String> applicationId;
 
     /**
-     * @return The name of the application.
+     * @return Application ID. Exactly one of the fields must be specified: `applicationId` or `name`.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> applicationId() {
+        return Optional.ofNullable(this.applicationId);
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Application name. Exactly one of the fields must be specified: `applicationId` or `name`.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Application name. Exactly one of the fields must be specified: `applicationId` or `name`.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public Output<String> project() {
@@ -45,26 +63,35 @@ public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<GetFlinkApplicationTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetFlinkApplicationTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private GetFlinkApplicationArgs() {}
 
     private GetFlinkApplicationArgs(GetFlinkApplicationArgs $) {
+        this.applicationId = $.applicationId;
         this.name = $.name;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -86,18 +113,39 @@ public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name The name of the application.
+         * @param applicationId Application ID. Exactly one of the fields must be specified: `applicationId` or `name`.
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder applicationId(@Nullable Output<String> applicationId) {
+            $.applicationId = applicationId;
+            return this;
+        }
+
+        /**
+         * @param applicationId Application ID. Exactly one of the fields must be specified: `applicationId` or `name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationId(String applicationId) {
+            return applicationId(Output.of(applicationId));
+        }
+
+        /**
+         * @param name Application name. Exactly one of the fields must be specified: `applicationId` or `name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the application.
+         * @param name Application name. Exactly one of the fields must be specified: `applicationId` or `name`.
          * 
          * @return builder
          * 
@@ -107,7 +155,7 @@ public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -118,7 +166,7 @@ public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -128,7 +176,7 @@ public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -139,7 +187,7 @@ public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -148,10 +196,16 @@ public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeAr
             return serviceName(Output.of(serviceName));
         }
 
+        public Builder timeouts(@Nullable Output<GetFlinkApplicationTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetFlinkApplicationTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         public GetFlinkApplicationArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetFlinkApplicationArgs", "name");
-            }
             if ($.project == null) {
                 throw new MissingRequiredPropertyException("GetFlinkApplicationArgs", "project");
             }

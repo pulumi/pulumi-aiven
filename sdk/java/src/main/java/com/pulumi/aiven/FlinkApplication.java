@@ -6,15 +6,17 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.FlinkApplicationArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.FlinkApplicationState;
+import com.pulumi.aiven.outputs.FlinkApplicationTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
+ * Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications). If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -54,7 +56,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_ID
+ * $ pulumi import aiven:index/flinkApplication:FlinkApplication example PROJECT/SERVICE_NAME/APPLICATION_ID
  * ```
  * 
  */
@@ -75,98 +77,104 @@ public class FlinkApplication extends com.pulumi.resources.CustomResource {
         return this.applicationId;
     }
     /**
-     * Application creation time.
+     * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Application creation time.
+     * @return The creation timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * The user who created the application.
+     * The creator of this entity.
      * 
      */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
-     * @return The user who created the application.
+     * @return The creator of this entity.
      * 
      */
     public Output<String> createdBy() {
         return this.createdBy;
     }
     /**
-     * The name of the application.
+     * Application name. Maximum length: `128`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the application.
+     * @return Application name. Maximum length: `128`.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
+    @Export(name="timeouts", refs={FlinkApplicationTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ FlinkApplicationTimeouts> timeouts;
+
+    public Output<Optional<FlinkApplicationTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * When the application was updated.
+     * The update timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return When the application was updated.
+     * @return The update timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     public Output<String> updatedAt() {
         return this.updatedAt;
     }
     /**
-     * The user who updated the application.
+     * The latest updater of this entity.
      * 
      */
     @Export(name="updatedBy", refs={String.class}, tree="[0]")
     private Output<String> updatedBy;
 
     /**
-     * @return The user who updated the application.
+     * @return The latest updater of this entity.
      * 
      */
     public Output<String> updatedBy() {

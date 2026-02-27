@@ -132,7 +132,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? PgReadReplica { get; set; }
 
         /// <summary>
-        /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `Anotherservicename`.
+        /// Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         [Input("pgServiceToForkFrom")]
         public Input<string>? PgServiceToForkFrom { get; set; }

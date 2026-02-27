@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['FlinkApplicationDeploymentArgs', 'FlinkApplicationDeployment']
 
@@ -25,17 +27,18 @@ class FlinkApplicationDeploymentArgs:
                  version_id: pulumi.Input[_builtins.str],
                  parallelism: Optional[pulumi.Input[_builtins.int]] = None,
                  restart_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['FlinkApplicationDeploymentTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a FlinkApplicationDeployment resource.
 
-        :param pulumi.Input[_builtins.str] application_id: Application ID.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] version_id: Application version ID.
-        :param pulumi.Input[_builtins.int] parallelism: The number of parallel instances for the task.
-        :param pulumi.Input[_builtins.bool] restart_enabled: Restart a Flink job if it fails.
-        :param pulumi.Input[_builtins.str] starting_savepoint: The savepoint to deploy from.
+        :param pulumi.Input[_builtins.str] application_id: Application Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.int] parallelism: Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "project", project)
@@ -47,12 +50,14 @@ class FlinkApplicationDeploymentArgs:
             pulumi.set(__self__, "restart_enabled", restart_enabled)
         if starting_savepoint is not None:
             pulumi.set(__self__, "starting_savepoint", starting_savepoint)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Application ID.
+        Application Id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "application_id")
 
@@ -64,7 +69,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -76,7 +81,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -88,7 +93,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter(name="versionId")
     def version_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Application version ID.
+        ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "version_id")
 
@@ -100,7 +105,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter
     def parallelism(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of parallel instances for the task.
+        Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "parallelism")
 
@@ -112,7 +117,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter(name="restartEnabled")
     def restart_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Restart a Flink job if it fails.
+        Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "restart_enabled")
 
@@ -124,13 +129,22 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter(name="startingSavepoint")
     def starting_savepoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The savepoint to deploy from.
+        Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "starting_savepoint")
 
     @starting_savepoint.setter
     def starting_savepoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "starting_savepoint", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['FlinkApplicationDeploymentTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['FlinkApplicationDeploymentTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -139,24 +153,27 @@ class _FlinkApplicationDeploymentState:
                  application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
                  parallelism: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  restart_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['FlinkApplicationDeploymentTimeoutsArgs']] = None,
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlinkApplicationDeployment resources.
 
-        :param pulumi.Input[_builtins.str] application_id: Application ID.
-        :param pulumi.Input[_builtins.str] created_at: Application deployment creation time.
-        :param pulumi.Input[_builtins.str] created_by: The user who deployed the application.
-        :param pulumi.Input[_builtins.int] parallelism: The number of parallel instances for the task.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.bool] restart_enabled: Restart a Flink job if it fails.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] starting_savepoint: The savepoint to deploy from.
-        :param pulumi.Input[_builtins.str] version_id: Application version ID.
+        :param pulumi.Input[_builtins.str] application_id: Application Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        :param pulumi.Input[_builtins.str] created_by: The creator of this entity.
+        :param pulumi.Input[_builtins.str] deployment_id: Deployment ID.
+        :param pulumi.Input[_builtins.int] parallelism: Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
@@ -164,6 +181,8 @@ class _FlinkApplicationDeploymentState:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
+        if deployment_id is not None:
+            pulumi.set(__self__, "deployment_id", deployment_id)
         if parallelism is not None:
             pulumi.set(__self__, "parallelism", parallelism)
         if project is not None:
@@ -174,6 +193,8 @@ class _FlinkApplicationDeploymentState:
             pulumi.set(__self__, "service_name", service_name)
         if starting_savepoint is not None:
             pulumi.set(__self__, "starting_savepoint", starting_savepoint)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if version_id is not None:
             pulumi.set(__self__, "version_id", version_id)
 
@@ -181,7 +202,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Application ID.
+        Application Id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "application_id")
 
@@ -193,7 +214,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Application deployment creation time.
+        The creation timestamp of this entity in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "created_at")
 
@@ -205,7 +226,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The user who deployed the application.
+        The creator of this entity.
         """
         return pulumi.get(self, "created_by")
 
@@ -214,10 +235,22 @@ class _FlinkApplicationDeploymentState:
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deployment ID.
+        """
+        return pulumi.get(self, "deployment_id")
+
+    @deployment_id.setter
+    def deployment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deployment_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def parallelism(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of parallel instances for the task.
+        Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "parallelism")
 
@@ -229,7 +262,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -241,7 +274,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="restartEnabled")
     def restart_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Restart a Flink job if it fails.
+        Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "restart_enabled")
 
@@ -253,7 +286,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -265,7 +298,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="startingSavepoint")
     def starting_savepoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The savepoint to deploy from.
+        Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "starting_savepoint")
 
@@ -274,10 +307,19 @@ class _FlinkApplicationDeploymentState:
         pulumi.set(self, "starting_savepoint", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['FlinkApplicationDeploymentTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['FlinkApplicationDeploymentTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="versionId")
     def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Application version ID.
+        ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "version_id")
 
@@ -298,10 +340,11 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                  restart_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['FlinkApplicationDeploymentTimeoutsArgs', 'FlinkApplicationDeploymentTimeoutsArgsDict']]] = None,
                  version_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Creates and manages the deployment of an Aiven for Apache Flink® application.
+        Creates and manages the deployment of an Aiven for Apache Flink® application. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -356,19 +399,19 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
+        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment example PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] application_id: Application ID.
-        :param pulumi.Input[_builtins.int] parallelism: The number of parallel instances for the task.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.bool] restart_enabled: Restart a Flink job if it fails.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] starting_savepoint: The savepoint to deploy from.
-        :param pulumi.Input[_builtins.str] version_id: Application version ID.
+        :param pulumi.Input[_builtins.str] application_id: Application Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.int] parallelism: Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -377,7 +420,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                  args: FlinkApplicationDeploymentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages the deployment of an Aiven for Apache Flink® application.
+        Creates and manages the deployment of an Aiven for Apache Flink® application. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -432,7 +475,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
+        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment example PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
         ```
 
 
@@ -457,6 +500,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                  restart_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['FlinkApplicationDeploymentTimeoutsArgs', 'FlinkApplicationDeploymentTimeoutsArgsDict']]] = None,
                  version_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -479,11 +523,13 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["starting_savepoint"] = starting_savepoint
+            __props__.__dict__["timeouts"] = timeouts
             if version_id is None and not opts.urn:
                 raise TypeError("Missing required property 'version_id'")
             __props__.__dict__["version_id"] = version_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
+            __props__.__dict__["deployment_id"] = None
         super(FlinkApplicationDeployment, __self__).__init__(
             'aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment',
             resource_name,
@@ -497,11 +543,13 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
             application_id: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             created_by: Optional[pulumi.Input[_builtins.str]] = None,
+            deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
             parallelism: Optional[pulumi.Input[_builtins.int]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             restart_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             service_name: Optional[pulumi.Input[_builtins.str]] = None,
             starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['FlinkApplicationDeploymentTimeoutsArgs', 'FlinkApplicationDeploymentTimeoutsArgsDict']]] = None,
             version_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'FlinkApplicationDeployment':
         """
         Get an existing FlinkApplicationDeployment resource's state with the given name, id, and optional extra
@@ -510,15 +558,16 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] application_id: Application ID.
-        :param pulumi.Input[_builtins.str] created_at: Application deployment creation time.
-        :param pulumi.Input[_builtins.str] created_by: The user who deployed the application.
-        :param pulumi.Input[_builtins.int] parallelism: The number of parallel instances for the task.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.bool] restart_enabled: Restart a Flink job if it fails.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] starting_savepoint: The savepoint to deploy from.
-        :param pulumi.Input[_builtins.str] version_id: Application version ID.
+        :param pulumi.Input[_builtins.str] application_id: Application Id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        :param pulumi.Input[_builtins.str] created_by: The creator of this entity.
+        :param pulumi.Input[_builtins.str] deployment_id: Deployment ID.
+        :param pulumi.Input[_builtins.int] parallelism: Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -527,11 +576,13 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["deployment_id"] = deployment_id
         __props__.__dict__["parallelism"] = parallelism
         __props__.__dict__["project"] = project
         __props__.__dict__["restart_enabled"] = restart_enabled
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["starting_savepoint"] = starting_savepoint
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["version_id"] = version_id
         return FlinkApplicationDeployment(resource_name, opts=opts, __props__=__props__)
 
@@ -539,7 +590,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Application ID.
+        Application Id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "application_id")
 
@@ -547,7 +598,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        Application deployment creation time.
+        The creation timestamp of this entity in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "created_at")
 
@@ -555,15 +606,23 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[_builtins.str]:
         """
-        The user who deployed the application.
+        The creator of this entity.
         """
         return pulumi.get(self, "created_by")
 
     @_builtins.property
-    @pulumi.getter
-    def parallelism(self) -> pulumi.Output[Optional[_builtins.int]]:
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The number of parallel instances for the task.
+        Deployment ID.
+        """
+        return pulumi.get(self, "deployment_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def parallelism(self) -> pulumi.Output[_builtins.int]:
+        """
+        Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "parallelism")
 
@@ -571,15 +630,15 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @_builtins.property
     @pulumi.getter(name="restartEnabled")
-    def restart_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def restart_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Restart a Flink job if it fails.
+        Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "restart_enabled")
 
@@ -587,7 +646,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -595,15 +654,20 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="startingSavepoint")
     def starting_savepoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The savepoint to deploy from.
+        Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "starting_savepoint")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.FlinkApplicationDeploymentTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="versionId")
     def version_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Application version ID.
+        ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "version_id")
 

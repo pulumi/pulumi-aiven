@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.FlinkApplicationTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -17,14 +18,14 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
     public static final FlinkApplicationArgs Empty = new FlinkApplicationArgs();
 
     /**
-     * The name of the application.
+     * Application name. Maximum length: `128`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the application.
+     * @return Application name. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -32,14 +33,14 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -47,18 +48,25 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<FlinkApplicationTimeoutsArgs> timeouts;
+
+    public Optional<Output<FlinkApplicationTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private FlinkApplicationArgs() {}
@@ -67,6 +75,7 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
         this.name = $.name;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -88,7 +97,7 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of the application.
+         * @param name Application name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -99,7 +108,7 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of the application.
+         * @param name Application name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -109,7 +118,7 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -120,7 +129,7 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -130,7 +139,7 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -141,13 +150,22 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        public Builder timeouts(@Nullable Output<FlinkApplicationTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(FlinkApplicationTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public FlinkApplicationArgs build() {

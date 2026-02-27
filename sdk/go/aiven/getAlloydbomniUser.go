@@ -11,23 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about an Aiven for AlloyDB Omni service user.
-//
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-//
-// !> **End of life notice**
-// Aiven for AlloyDB Omni is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
-// From **5 September 2025**, you can no longer create new Aiven for AlloyDB Omni services. Existing
-// services continue to operate until the end of life (EOL) date but you cannot change plans for these services.
-// On **5 December 2025**, all active Aiven for AlloyDB Omni services are powered off and deleted, making data from
-// these services inaccessible. The recommended alternatives to Aiven for AlloyDB Omni are:
-// Aiven for PostgreSQL®,
-// Aiven for ClickHouse®,
-// and Aiven for MySQL®.
-// To ensure uninterrupted service, complete your migration before December 5, 2025.
-// For further assistance, contact the Aiven support team or your
-// account team.
 func LookupAlloydbomniUser(ctx *pulumi.Context, args *LookupAlloydbomniUserArgs, opts ...pulumi.InvokeOption) (*LookupAlloydbomniUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlloydbomniUserResult
@@ -40,34 +23,23 @@ func LookupAlloydbomniUser(ctx *pulumi.Context, args *LookupAlloydbomniUserArgs,
 
 // A collection of arguments for invoking getAlloydbomniUser.
 type LookupAlloydbomniUserArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
-	// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Username string `pulumi:"username"`
+	Username    string `pulumi:"username"`
 }
 
 // A collection of values returned by getAlloydbomniUser.
 type LookupAlloydbomniUserResult struct {
-	// The access certificate for the servie user.
 	AccessCert string `pulumi:"accessCert"`
-	// The access certificate key for the service user.
-	AccessKey string `pulumi:"accessKey"`
+	AccessKey  string `pulumi:"accessKey"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
-	Password string `pulumi:"password"`
-	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
-	PgAllowReplication bool `pulumi:"pgAllowReplication"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// The service user account type, either primary or regular.
-	Type string `pulumi:"type"`
-	// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Username string `pulumi:"username"`
+	Id                 string `pulumi:"id"`
+	Password           string `pulumi:"password"`
+	PgAllowReplication bool   `pulumi:"pgAllowReplication"`
+	Project            string `pulumi:"project"`
+	ServiceName        string `pulumi:"serviceName"`
+	Type               string `pulumi:"type"`
+	Username           string `pulumi:"username"`
 }
 
 func LookupAlloydbomniUserOutput(ctx *pulumi.Context, args LookupAlloydbomniUserOutputArgs, opts ...pulumi.InvokeOption) LookupAlloydbomniUserResultOutput {
@@ -81,12 +53,9 @@ func LookupAlloydbomniUserOutput(ctx *pulumi.Context, args LookupAlloydbomniUser
 
 // A collection of arguments for invoking getAlloydbomniUser.
 type LookupAlloydbomniUserOutputArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Project     pulumi.StringInput `pulumi:"project"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Username pulumi.StringInput `pulumi:"username"`
+	Username    pulumi.StringInput `pulumi:"username"`
 }
 
 func (LookupAlloydbomniUserOutputArgs) ElementType() reflect.Type {
@@ -108,12 +77,10 @@ func (o LookupAlloydbomniUserResultOutput) ToLookupAlloydbomniUserResultOutputWi
 	return o
 }
 
-// The access certificate for the servie user.
 func (o LookupAlloydbomniUserResultOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniUserResult) string { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// The access certificate key for the service user.
 func (o LookupAlloydbomniUserResultOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniUserResult) string { return v.AccessKey }).(pulumi.StringOutput)
 }
@@ -123,32 +90,26 @@ func (o LookupAlloydbomniUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
 func (o LookupAlloydbomniUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 func (o LookupAlloydbomniUserResultOutput) PgAllowReplication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAlloydbomniUserResult) bool { return v.PgAllowReplication }).(pulumi.BoolOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupAlloydbomniUserResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniUserResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupAlloydbomniUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The service user account type, either primary or regular.
 func (o LookupAlloydbomniUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupAlloydbomniUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlloydbomniUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

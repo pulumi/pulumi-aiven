@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an Aiven for PostgreSQL® service user.
+ * Creates and manages an Aiven for PostgreSQL® service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -32,7 +34,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME
+ * $ pulumi import aiven:index/pgUser:PgUser example PROJECT/SERVICE_NAME/USERNAME
  * ```
  */
 export class PgUser extends pulumi.CustomResource {
@@ -64,44 +66,45 @@ export class PgUser extends pulumi.CustomResource {
     }
 
     /**
-     * The access certificate for the servie user.
+     * Access certificate for TLS client authentication.
      */
     declare public /*out*/ readonly accessCert: pulumi.Output<string>;
     /**
-     * The access certificate key for the service user.
+     * Access key for TLS client authentication.
      */
     declare public /*out*/ readonly accessKey: pulumi.Output<string>;
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
      */
     declare public readonly password: pulumi.Output<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
      */
     declare public readonly passwordWo: pulumi.Output<string | undefined>;
     /**
-     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      */
     declare public readonly passwordWoVersion: pulumi.Output<number | undefined>;
     /**
      * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
-    declare public readonly pgAllowReplication: pulumi.Output<boolean | undefined>;
+    declare public readonly pgAllowReplication: pulumi.Output<boolean>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.PgUserTimeouts | undefined>;
     /**
      * The service user account type, either primary or regular.
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
-     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
      */
     declare public readonly username: pulumi.Output<string>;
 
@@ -126,6 +129,7 @@ export class PgUser extends pulumi.CustomResource {
             resourceInputs["pgAllowReplication"] = state?.pgAllowReplication;
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["type"] = state?.type;
             resourceInputs["username"] = state?.username;
         } else {
@@ -145,6 +149,7 @@ export class PgUser extends pulumi.CustomResource {
             resourceInputs["pgAllowReplication"] = args?.pgAllowReplication;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["username"] = args?.username;
             resourceInputs["accessCert"] = undefined /*out*/;
             resourceInputs["accessKey"] = undefined /*out*/;
@@ -162,24 +167,24 @@ export class PgUser extends pulumi.CustomResource {
  */
 export interface PgUserState {
     /**
-     * The access certificate for the servie user.
+     * Access certificate for TLS client authentication.
      */
     accessCert?: pulumi.Input<string>;
     /**
-     * The access certificate key for the service user.
+     * Access key for TLS client authentication.
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
      */
     password?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
      */
     passwordWo?: pulumi.Input<string>;
     /**
-     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      */
     passwordWoVersion?: pulumi.Input<number>;
     /**
@@ -187,19 +192,20 @@ export interface PgUserState {
      */
     pgAllowReplication?: pulumi.Input<boolean>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.PgUserTimeouts>;
     /**
      * The service user account type, either primary or regular.
      */
     type?: pulumi.Input<string>;
     /**
-     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
 }
@@ -209,16 +215,16 @@ export interface PgUserState {
  */
 export interface PgUserArgs {
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
      */
     password?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
      */
     passwordWo?: pulumi.Input<string>;
     /**
-     * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      */
     passwordWoVersion?: pulumi.Input<number>;
     /**
@@ -226,15 +232,16 @@ export interface PgUserArgs {
      */
     pgAllowReplication?: pulumi.Input<boolean>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.PgUserTimeouts>;
     /**
-     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

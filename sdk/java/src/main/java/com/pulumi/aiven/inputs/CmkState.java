@@ -33,14 +33,14 @@ public final class CmkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="cmkProvider")
     private @Nullable Output<String> cmkProvider;
 
     /**
-     * @return CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * @return The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> cmkProvider() {
@@ -93,14 +93,14 @@ public final class CmkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resource")
     private @Nullable Output<String> resource;
 
     /**
-     * @return Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * @return The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> resource() {
@@ -198,7 +198,7 @@ public final class CmkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cmkProvider CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+         * @param cmkProvider The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class CmkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cmkProvider CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+         * @param cmkProvider The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class CmkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resource Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+         * @param resource The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class CmkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resource Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+         * @param resource The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

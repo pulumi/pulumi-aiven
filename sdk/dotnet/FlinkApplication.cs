@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
+    /// Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -35,7 +35,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_ID
+    /// $ pulumi import aiven:index/flinkApplication:FlinkApplication example PROJECT/SERVICE_NAME/APPLICATION_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/flinkApplication:FlinkApplication")]
@@ -48,43 +48,46 @@ namespace Pulumi.Aiven
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// Application creation time.
+        /// The creation timestamp of this entity in ISO 8601 format, always in UTC.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The user who created the application.
+        /// The creator of this entity.
         /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the application.
+        /// Application name. Maximum length: `128`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.FlinkApplicationTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// When the application was updated.
+        /// The update timestamp of this entity in ISO 8601 format, always in UTC.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The user who updated the application.
+        /// The latest updater of this entity.
         /// </summary>
         [Output("updatedBy")]
         public Output<string> UpdatedBy { get; private set; } = null!;
@@ -136,22 +139,25 @@ namespace Pulumi.Aiven
     public sealed class FlinkApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the application.
+        /// Application name. Maximum length: `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.FlinkApplicationTimeoutsArgs>? Timeouts { get; set; }
 
         public FlinkApplicationArgs()
         {
@@ -168,43 +174,46 @@ namespace Pulumi.Aiven
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// Application creation time.
+        /// The creation timestamp of this entity in ISO 8601 format, always in UTC.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The user who created the application.
+        /// The creator of this entity.
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// The name of the application.
+        /// Application name. Maximum length: `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.FlinkApplicationTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// When the application was updated.
+        /// The update timestamp of this entity in ISO 8601 format, always in UTC.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// The user who updated the application.
+        /// The latest updater of this entity.
         /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }

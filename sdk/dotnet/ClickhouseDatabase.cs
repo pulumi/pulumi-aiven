@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an [Aiven for ClickHouse](https://aiven.io/docs/products/clickhouse) database. &gt; Tables cannot be created using Aiven Terraform Provider. To create a table, use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table). If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
+    /// Creates and manages an [Aiven for ClickHouse](https://aiven.io/docs/products/clickhouse) database. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+    /// 
+    /// &gt; Tables cannot be created using Aiven Terraform Provider. To create a table, use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
     /// 
     /// ## Example Usage
     /// 

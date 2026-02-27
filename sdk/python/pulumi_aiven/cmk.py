@@ -29,10 +29,10 @@ class CmkArgs:
         """
         The set of arguments for constructing a Cmk resource.
 
-        :param pulumi.Input[_builtins.str] cmk_provider: CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cmk_provider: The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] default_cmk: Mark the created CMK as default for all newly created services.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "cmk_provider", cmk_provider)
         pulumi.set(__self__, "default_cmk", default_cmk)
@@ -45,7 +45,7 @@ class CmkArgs:
     @pulumi.getter(name="cmkProvider")
     def cmk_provider(self) -> pulumi.Input[_builtins.str]:
         """
-        CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+        The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cmk_provider")
 
@@ -81,7 +81,7 @@ class CmkArgs:
     @pulumi.getter
     def resource(self) -> pulumi.Input[_builtins.str]:
         """
-        Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+        The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource")
 
@@ -115,11 +115,11 @@ class _CmkState:
         Input properties used for looking up and filtering Cmk resources.
 
         :param pulumi.Input[_builtins.str] cmk_id: Customer Managed Key identifier (CMK ID).
-        :param pulumi.Input[_builtins.str] cmk_provider: CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cmk_provider: The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] created_at: Created At.
         :param pulumi.Input[_builtins.bool] default_cmk: Mark the created CMK as default for all newly created services.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] status: Status. The possible values are `current`, `deleted` and `old`.
         :param pulumi.Input[_builtins.str] updated_at: Updated At.
         """
@@ -158,7 +158,7 @@ class _CmkState:
     @pulumi.getter(name="cmkProvider")
     def cmk_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+        The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cmk_provider")
 
@@ -206,7 +206,7 @@ class _CmkState:
     @pulumi.getter
     def resource(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+        The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource")
 
@@ -261,10 +261,13 @@ class Cmk(pulumi.CustomResource):
                  timeouts: Optional[pulumi.Input[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data.
+        Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data. Use your own CMKs from your cloud provider's key management service (KMS) to encrypt data for all services in an Aiven project. This gives you complete control over your encryption keys, meaning you can independently manage the key lifecycle and access policies.
 
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+
+        > **Warning**
+        If you remove a CMK, the services linked to the key will stop working. Migrate the services to another CMK or an Aiven-managed key before removing the CMK.
 
         ## Example Usage
 
@@ -288,10 +291,10 @@ class Cmk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cmk_provider: CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cmk_provider: The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] default_cmk: Mark the created CMK as default for all newly created services.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -300,10 +303,13 @@ class Cmk(pulumi.CustomResource):
                  args: CmkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data.
+        Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data. Use your own CMKs from your cloud provider's key management service (KMS) to encrypt data for all services in an Aiven project. This gives you complete control over your encryption keys, meaning you can independently manage the key lifecycle and access policies.
 
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+
+        > **Warning**
+        If you remove a CMK, the services linked to the key will stop working. Migrate the services to another CMK or an Aiven-managed key before removing the CMK.
 
         ## Example Usage
 
@@ -398,11 +404,11 @@ class Cmk(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cmk_id: Customer Managed Key identifier (CMK ID).
-        :param pulumi.Input[_builtins.str] cmk_provider: CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cmk_provider: The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] created_at: Created At.
         :param pulumi.Input[_builtins.bool] default_cmk: Mark the created CMK as default for all newly created services.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] status: Status. The possible values are `current`, `deleted` and `old`.
         :param pulumi.Input[_builtins.str] updated_at: Updated At.
         """
@@ -433,7 +439,7 @@ class Cmk(pulumi.CustomResource):
     @pulumi.getter(name="cmkProvider")
     def cmk_provider(self) -> pulumi.Output[_builtins.str]:
         """
-        CMK provider. The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+        The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cmk_provider")
 
@@ -465,7 +471,7 @@ class Cmk(pulumi.CustomResource):
     @pulumi.getter
     def resource(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource name. Maximum length: `512`. Changing this property forces recreation of the resource.
+        The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource")
 

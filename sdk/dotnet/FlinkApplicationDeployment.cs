@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages the deployment of an Aiven for Apache Flink® application.
+    /// Creates and manages the deployment of an Aiven for Apache Flink® application. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -88,62 +88,71 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
+    /// $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment example PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment")]
     public partial class FlinkApplicationDeployment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Application ID.
+        /// Application Id. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// Application deployment creation time.
+        /// The creation timestamp of this entity in ISO 8601 format, always in UTC.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The user who deployed the application.
+        /// The creator of this entity.
         /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// The number of parallel instances for the task.
+        /// Deployment ID.
         /// </summary>
-        [Output("parallelism")]
-        public Output<int?> Parallelism { get; private set; } = null!;
+        [Output("deploymentId")]
+        public Output<string> DeploymentId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
+        /// </summary>
+        [Output("parallelism")]
+        public Output<int> Parallelism { get; private set; } = null!;
+
+        /// <summary>
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Restart a Flink job if it fails.
+        /// Specifies whether a Flink Job is restarted in case it fails. The default value is `True`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("restartEnabled")]
-        public Output<bool?> RestartEnabled { get; private set; } = null!;
+        public Output<bool> RestartEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The savepoint to deploy from.
+        /// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("startingSavepoint")]
         public Output<string?> StartingSavepoint { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.FlinkApplicationDeploymentTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// Application version ID.
+        /// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("versionId")]
         public Output<string> VersionId { get; private set; } = null!;
@@ -195,43 +204,46 @@ namespace Pulumi.Aiven
     public sealed class FlinkApplicationDeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Application ID.
+        /// Application Id. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
 
         /// <summary>
-        /// The number of parallel instances for the task.
+        /// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("parallelism")]
         public Input<int>? Parallelism { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Restart a Flink job if it fails.
+        /// Specifies whether a Flink Job is restarted in case it fails. The default value is `True`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("restartEnabled")]
         public Input<bool>? RestartEnabled { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The savepoint to deploy from.
+        /// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("startingSavepoint")]
         public Input<string>? StartingSavepoint { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.FlinkApplicationDeploymentTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Application version ID.
+        /// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("versionId", required: true)]
         public Input<string> VersionId { get; set; } = null!;
@@ -245,55 +257,64 @@ namespace Pulumi.Aiven
     public sealed class FlinkApplicationDeploymentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Application ID.
+        /// Application Id. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// Application deployment creation time.
+        /// The creation timestamp of this entity in ISO 8601 format, always in UTC.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The user who deployed the application.
+        /// The creator of this entity.
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// The number of parallel instances for the task.
+        /// Deployment ID.
+        /// </summary>
+        [Input("deploymentId")]
+        public Input<string>? DeploymentId { get; set; }
+
+        /// <summary>
+        /// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("parallelism")]
         public Input<int>? Parallelism { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Restart a Flink job if it fails.
+        /// Specifies whether a Flink Job is restarted in case it fails. The default value is `True`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("restartEnabled")]
         public Input<bool>? RestartEnabled { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The savepoint to deploy from.
+        /// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("startingSavepoint")]
         public Input<string>? StartingSavepoint { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.FlinkApplicationDeploymentTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Application version ID.
+        /// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

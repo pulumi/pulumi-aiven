@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.FlinkApplicationTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -31,14 +32,14 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Application creation time.
+     * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Application creation time.
+     * @return The creation timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -46,14 +47,14 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The user who created the application.
+     * The creator of this entity.
      * 
      */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
     /**
-     * @return The user who created the application.
+     * @return The creator of this entity.
      * 
      */
     public Optional<Output<String>> createdBy() {
@@ -61,14 +62,14 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the application.
+     * Application name. Maximum length: `128`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the application.
+     * @return Application name. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -76,14 +77,14 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -91,29 +92,36 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
         return Optional.ofNullable(this.serviceName);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<FlinkApplicationTimeoutsArgs> timeouts;
+
+    public Optional<Output<FlinkApplicationTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * When the application was updated.
+     * The update timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return When the application was updated.
+     * @return The update timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -121,14 +129,14 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The user who updated the application.
+     * The latest updater of this entity.
      * 
      */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
     /**
-     * @return The user who updated the application.
+     * @return The latest updater of this entity.
      * 
      */
     public Optional<Output<String>> updatedBy() {
@@ -144,6 +152,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.updatedAt = $.updatedAt;
         this.updatedBy = $.updatedBy;
     }
@@ -188,7 +197,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdAt Application creation time.
+         * @param createdAt The creation timestamp of this entity in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 
@@ -199,7 +208,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdAt Application creation time.
+         * @param createdAt The creation timestamp of this entity in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 
@@ -209,7 +218,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdBy The user who created the application.
+         * @param createdBy The creator of this entity.
          * 
          * @return builder
          * 
@@ -220,7 +229,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdBy The user who created the application.
+         * @param createdBy The creator of this entity.
          * 
          * @return builder
          * 
@@ -230,7 +239,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the application.
+         * @param name Application name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -241,7 +250,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the application.
+         * @param name Application name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -251,7 +260,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -262,7 +271,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -272,7 +281,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -283,7 +292,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -292,8 +301,17 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
             return serviceName(Output.of(serviceName));
         }
 
+        public Builder timeouts(@Nullable Output<FlinkApplicationTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(FlinkApplicationTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param updatedAt When the application was updated.
+         * @param updatedAt The update timestamp of this entity in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 
@@ -304,7 +322,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updatedAt When the application was updated.
+         * @param updatedAt The update timestamp of this entity in ISO 8601 format, always in UTC.
          * 
          * @return builder
          * 
@@ -314,7 +332,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updatedBy The user who updated the application.
+         * @param updatedBy The latest updater of this entity.
          * 
          * @return builder
          * 
@@ -325,7 +343,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updatedBy The user who updated the application.
+         * @param updatedBy The latest updater of this entity.
          * 
          * @return builder
          * 

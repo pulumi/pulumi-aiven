@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.FlinkApplicationDeploymentTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -19,14 +20,14 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
     public static final FlinkApplicationDeploymentArgs Empty = new FlinkApplicationDeploymentArgs();
 
     /**
-     * Application ID.
+     * Application Id. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="applicationId", required=true)
     private Output<String> applicationId;
 
     /**
-     * @return Application ID.
+     * @return Application Id. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> applicationId() {
@@ -34,14 +35,14 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The number of parallel instances for the task.
+     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="parallelism")
     private @Nullable Output<Integer> parallelism;
 
     /**
-     * @return The number of parallel instances for the task.
+     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<Integer>> parallelism() {
@@ -49,14 +50,14 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -64,14 +65,14 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Restart a Flink job if it fails.
+     * Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="restartEnabled")
     private @Nullable Output<Boolean> restartEnabled;
 
     /**
-     * @return Restart a Flink job if it fails.
+     * @return Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<Boolean>> restartEnabled() {
@@ -79,14 +80,14 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -94,29 +95,36 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The savepoint to deploy from.
+     * Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="startingSavepoint")
     private @Nullable Output<String> startingSavepoint;
 
     /**
-     * @return The savepoint to deploy from.
+     * @return Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> startingSavepoint() {
         return Optional.ofNullable(this.startingSavepoint);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<FlinkApplicationDeploymentTimeoutsArgs> timeouts;
+
+    public Optional<Output<FlinkApplicationDeploymentTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * Application version ID.
+     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="versionId", required=true)
     private Output<String> versionId;
 
     /**
-     * @return Application version ID.
+     * @return ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> versionId() {
@@ -132,6 +140,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         this.restartEnabled = $.restartEnabled;
         this.serviceName = $.serviceName;
         this.startingSavepoint = $.startingSavepoint;
+        this.timeouts = $.timeouts;
         this.versionId = $.versionId;
     }
 
@@ -154,7 +163,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param applicationId Application ID.
+         * @param applicationId Application Id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -165,7 +174,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param applicationId Application ID.
+         * @param applicationId Application Id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -175,7 +184,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param parallelism The number of parallel instances for the task.
+         * @param parallelism Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -186,7 +195,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param parallelism The number of parallel instances for the task.
+         * @param parallelism Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -196,7 +205,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -207,7 +216,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -217,7 +226,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param restartEnabled Restart a Flink job if it fails.
+         * @param restartEnabled Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -228,7 +237,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param restartEnabled Restart a Flink job if it fails.
+         * @param restartEnabled Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -238,7 +247,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -249,7 +258,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -259,7 +268,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param startingSavepoint The savepoint to deploy from.
+         * @param startingSavepoint Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -270,7 +279,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param startingSavepoint The savepoint to deploy from.
+         * @param startingSavepoint Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -279,8 +288,17 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
             return startingSavepoint(Output.of(startingSavepoint));
         }
 
+        public Builder timeouts(@Nullable Output<FlinkApplicationDeploymentTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(FlinkApplicationDeploymentTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param versionId Application version ID.
+         * @param versionId ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -291,7 +309,7 @@ public final class FlinkApplicationDeploymentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param versionId Application version ID.
+         * @param versionId ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

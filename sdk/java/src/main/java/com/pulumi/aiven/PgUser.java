@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.PgUserArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.PgUserState;
+import com.pulumi.aiven.outputs.PgUserTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -18,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an Aiven for PostgreSQL® service user.
+ * Creates and manages an Aiven for PostgreSQL® service user. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -68,49 +69,49 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME
+ * $ pulumi import aiven:index/pgUser:PgUser example PROJECT/SERVICE_NAME/USERNAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/pgUser:PgUser")
 public class PgUser extends com.pulumi.resources.CustomResource {
     /**
-     * The access certificate for the servie user.
+     * Access certificate for TLS client authentication.
      * 
      */
     @Export(name="accessCert", refs={String.class}, tree="[0]")
     private Output<String> accessCert;
 
     /**
-     * @return The access certificate for the servie user.
+     * @return Access certificate for TLS client authentication.
      * 
      */
     public Output<String> accessCert() {
         return this.accessCert;
     }
     /**
-     * The access certificate key for the service user.
+     * Access key for TLS client authentication.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     /**
-     * @return The access certificate key for the service user.
+     * @return Access key for TLS client authentication.
      * 
      */
     public Output<String> accessKey() {
         return this.accessKey;
     }
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
      * 
      */
     public Output<String> password() {
@@ -118,7 +119,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
     }
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
      * 
      */
     @Export(name="passwordWo", refs={String.class}, tree="[0]")
@@ -126,21 +127,21 @@ public class PgUser extends com.pulumi.resources.CustomResource {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
      * 
      */
     public Output<Optional<String>> passwordWo() {
         return Codegen.optional(this.passwordWo);
     }
     /**
-     * Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     @Export(name="passwordWoVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> passwordWoVersion;
 
     /**
-     * @return Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     public Output<Optional<Integer>> passwordWoVersion() {
@@ -151,42 +152,48 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="pgAllowReplication", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> pgAllowReplication;
+    private Output<Boolean> pgAllowReplication;
 
     /**
      * @return Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      * 
      */
-    public Output<Optional<Boolean>> pgAllowReplication() {
-        return Codegen.optional(this.pgAllowReplication);
+    public Output<Boolean> pgAllowReplication() {
+        return this.pgAllowReplication;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+    @Export(name="timeouts", refs={PgUserTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ PgUserTimeouts> timeouts;
+
+    public Output<Optional<PgUserTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
     /**
      * The service user account type, either primary or regular.
@@ -203,14 +210,14 @@ public class PgUser extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

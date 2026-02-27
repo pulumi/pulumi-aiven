@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an Aiven for MySQL® service user. If this resource is missing (e.g., after a service power off), it will be removed from the state and a new create plan will be generated.
+ * Creates and manages an Aiven for MySQL® service user. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 

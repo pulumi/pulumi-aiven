@@ -49,7 +49,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+        /// PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when MaxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. MaxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
         /// </summary>
         [Input("maxPreparedStatements")]
         public Input<int>? MaxPreparedStatements { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ServerLifetime { get; set; }
 
         /// <summary>
-        /// Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `False`.
+        /// Run ServerResetQuery (DISCARD ALL) in all pooling modes. Default: `False`.
         /// </summary>
         [Input("serverResetQueryAlways")]
         public Input<bool>? ServerResetQueryAlways { get; set; }

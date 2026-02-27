@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages the deployment of an Aiven for Apache Flink® application.
+// Creates and manages the deployment of an Aiven for Apache Flink® application. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -99,28 +99,31 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
+// $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment example PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
 // ```
 type FlinkApplicationDeployment struct {
 	pulumi.CustomResourceState
 
-	// Application ID.
+	// Application Id. Changing this property forces recreation of the resource.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// Application deployment creation time.
+	// The creation timestamp of this entity in ISO 8601 format, always in UTC.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The user who deployed the application.
+	// The creator of this entity.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	// The number of parallel instances for the task.
-	Parallelism pulumi.IntPtrOutput `pulumi:"parallelism"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Deployment ID.
+	DeploymentId pulumi.StringOutput `pulumi:"deploymentId"`
+	// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
+	Parallelism pulumi.IntOutput `pulumi:"parallelism"`
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Restart a Flink job if it fails.
-	RestartEnabled pulumi.BoolPtrOutput `pulumi:"restartEnabled"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
+	RestartEnabled pulumi.BoolOutput `pulumi:"restartEnabled"`
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// The savepoint to deploy from.
-	StartingSavepoint pulumi.StringPtrOutput `pulumi:"startingSavepoint"`
-	// Application version ID.
+	// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+	StartingSavepoint pulumi.StringPtrOutput                      `pulumi:"startingSavepoint"`
+	Timeouts          FlinkApplicationDeploymentTimeoutsPtrOutput `pulumi:"timeouts"`
+	// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 	VersionId pulumi.StringOutput `pulumi:"versionId"`
 }
 
@@ -166,44 +169,50 @@ func GetFlinkApplicationDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FlinkApplicationDeployment resources.
 type flinkApplicationDeploymentState struct {
-	// Application ID.
+	// Application Id. Changing this property forces recreation of the resource.
 	ApplicationId *string `pulumi:"applicationId"`
-	// Application deployment creation time.
+	// The creation timestamp of this entity in ISO 8601 format, always in UTC.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The user who deployed the application.
+	// The creator of this entity.
 	CreatedBy *string `pulumi:"createdBy"`
-	// The number of parallel instances for the task.
+	// Deployment ID.
+	DeploymentId *string `pulumi:"deploymentId"`
+	// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
 	Parallelism *int `pulumi:"parallelism"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Restart a Flink job if it fails.
+	// Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
 	RestartEnabled *bool `pulumi:"restartEnabled"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// The savepoint to deploy from.
-	StartingSavepoint *string `pulumi:"startingSavepoint"`
-	// Application version ID.
+	// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+	StartingSavepoint *string                             `pulumi:"startingSavepoint"`
+	Timeouts          *FlinkApplicationDeploymentTimeouts `pulumi:"timeouts"`
+	// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 	VersionId *string `pulumi:"versionId"`
 }
 
 type FlinkApplicationDeploymentState struct {
-	// Application ID.
+	// Application Id. Changing this property forces recreation of the resource.
 	ApplicationId pulumi.StringPtrInput
-	// Application deployment creation time.
+	// The creation timestamp of this entity in ISO 8601 format, always in UTC.
 	CreatedAt pulumi.StringPtrInput
-	// The user who deployed the application.
+	// The creator of this entity.
 	CreatedBy pulumi.StringPtrInput
-	// The number of parallel instances for the task.
+	// Deployment ID.
+	DeploymentId pulumi.StringPtrInput
+	// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
 	Parallelism pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Restart a Flink job if it fails.
+	// Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
 	RestartEnabled pulumi.BoolPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// The savepoint to deploy from.
+	// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
 	StartingSavepoint pulumi.StringPtrInput
-	// Application version ID.
+	Timeouts          FlinkApplicationDeploymentTimeoutsPtrInput
+	// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 	VersionId pulumi.StringPtrInput
 }
 
@@ -212,37 +221,39 @@ func (FlinkApplicationDeploymentState) ElementType() reflect.Type {
 }
 
 type flinkApplicationDeploymentArgs struct {
-	// Application ID.
+	// Application Id. Changing this property forces recreation of the resource.
 	ApplicationId string `pulumi:"applicationId"`
-	// The number of parallel instances for the task.
+	// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
 	Parallelism *int `pulumi:"parallelism"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Restart a Flink job if it fails.
+	// Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
 	RestartEnabled *bool `pulumi:"restartEnabled"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The savepoint to deploy from.
-	StartingSavepoint *string `pulumi:"startingSavepoint"`
-	// Application version ID.
+	// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+	StartingSavepoint *string                             `pulumi:"startingSavepoint"`
+	Timeouts          *FlinkApplicationDeploymentTimeouts `pulumi:"timeouts"`
+	// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 	VersionId string `pulumi:"versionId"`
 }
 
 // The set of arguments for constructing a FlinkApplicationDeployment resource.
 type FlinkApplicationDeploymentArgs struct {
-	// Application ID.
+	// Application Id. Changing this property forces recreation of the resource.
 	ApplicationId pulumi.StringInput
-	// The number of parallel instances for the task.
+	// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
 	Parallelism pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Restart a Flink job if it fails.
+	// Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
 	RestartEnabled pulumi.BoolPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The savepoint to deploy from.
+	// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
 	StartingSavepoint pulumi.StringPtrInput
-	// Application version ID.
+	Timeouts          FlinkApplicationDeploymentTimeoutsPtrInput
+	// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 	VersionId pulumi.StringInput
 }
 
@@ -333,47 +344,56 @@ func (o FlinkApplicationDeploymentOutput) ToFlinkApplicationDeploymentOutputWith
 	return o
 }
 
-// Application ID.
+// Application Id. Changing this property forces recreation of the resource.
 func (o FlinkApplicationDeploymentOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// Application deployment creation time.
+// The creation timestamp of this entity in ISO 8601 format, always in UTC.
 func (o FlinkApplicationDeploymentOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The user who deployed the application.
+// The creator of this entity.
 func (o FlinkApplicationDeploymentOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// The number of parallel instances for the task.
-func (o FlinkApplicationDeploymentOutput) Parallelism() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.IntPtrOutput { return v.Parallelism }).(pulumi.IntPtrOutput)
+// Deployment ID.
+func (o FlinkApplicationDeploymentOutput) DeploymentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.DeploymentId }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
+func (o FlinkApplicationDeploymentOutput) Parallelism() pulumi.IntOutput {
+	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.IntOutput { return v.Parallelism }).(pulumi.IntOutput)
+}
+
+// Project name. Changing this property forces recreation of the resource.
 func (o FlinkApplicationDeploymentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Restart a Flink job if it fails.
-func (o FlinkApplicationDeploymentOutput) RestartEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.BoolPtrOutput { return v.RestartEnabled }).(pulumi.BoolPtrOutput)
+// Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
+func (o FlinkApplicationDeploymentOutput) RestartEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.BoolOutput { return v.RestartEnabled }).(pulumi.BoolOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o FlinkApplicationDeploymentOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The savepoint to deploy from.
+// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
 func (o FlinkApplicationDeploymentOutput) StartingSavepoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringPtrOutput { return v.StartingSavepoint }).(pulumi.StringPtrOutput)
 }
 
-// Application version ID.
+func (o FlinkApplicationDeploymentOutput) Timeouts() FlinkApplicationDeploymentTimeoutsPtrOutput {
+	return o.ApplyT(func(v *FlinkApplicationDeployment) FlinkApplicationDeploymentTimeoutsPtrOutput { return v.Timeouts }).(FlinkApplicationDeploymentTimeoutsPtrOutput)
+}
+
+// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
 func (o FlinkApplicationDeploymentOutput) VersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }

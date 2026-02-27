@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -23,9 +25,11 @@ import * as utilities from "./utilities";
 export function getFlinkApplication(args: GetFlinkApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetFlinkApplicationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getFlinkApplication:getFlinkApplication", {
+        "applicationId": args.applicationId,
         "name": args.name,
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -34,17 +38,22 @@ export function getFlinkApplication(args: GetFlinkApplicationArgs, opts?: pulumi
  */
 export interface GetFlinkApplicationArgs {
     /**
-     * The name of the application.
+     * Application ID. Exactly one of the fields must be specified: `applicationId` or `name`.
      */
-    name: string;
+    applicationId?: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Application name. Exactly one of the fields must be specified: `applicationId` or `name`.
+     */
+    name?: string;
+    /**
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetFlinkApplicationTimeouts;
 }
 
 /**
@@ -52,39 +61,40 @@ export interface GetFlinkApplicationArgs {
  */
 export interface GetFlinkApplicationResult {
     /**
-     * Application ID.
+     * Application ID. Exactly one of the fields must be specified: `applicationId` or `name`.
      */
     readonly applicationId: string;
     /**
-     * Application creation time.
+     * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
     readonly createdAt: string;
     /**
-     * The user who created the application.
+     * The creator of this entity.
      */
     readonly createdBy: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/application_id`.
      */
     readonly id: string;
     /**
-     * The name of the application.
+     * Application name. Exactly one of the fields must be specified: `applicationId` or `name`.
      */
     readonly name: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
+    readonly timeouts?: outputs.GetFlinkApplicationTimeouts;
     /**
-     * When the application was updated.
+     * The update timestamp of this entity in ISO 8601 format, always in UTC.
      */
     readonly updatedAt: string;
     /**
-     * The user who updated the application.
+     * The latest updater of this entity.
      */
     readonly updatedBy: string;
 }
@@ -107,9 +117,11 @@ export interface GetFlinkApplicationResult {
 export function getFlinkApplicationOutput(args: GetFlinkApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlinkApplicationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getFlinkApplication:getFlinkApplication", {
+        "applicationId": args.applicationId,
         "name": args.name,
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -118,15 +130,20 @@ export function getFlinkApplicationOutput(args: GetFlinkApplicationOutputArgs, o
  */
 export interface GetFlinkApplicationOutputArgs {
     /**
-     * The name of the application.
+     * Application ID. Exactly one of the fields must be specified: `applicationId` or `name`.
      */
-    name: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Application name. Exactly one of the fields must be specified: `applicationId` or `name`.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetFlinkApplicationTimeoutsArgs>;
 }

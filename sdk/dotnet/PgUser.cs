@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an Aiven for PostgreSQL® service user.
+    /// Creates and manages an Aiven for PostgreSQL® service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -46,39 +46,39 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME
+    /// $ pulumi import aiven:index/pgUser:PgUser example PROJECT/SERVICE_NAME/USERNAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/pgUser:PgUser")]
     public partial class PgUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access certificate for the servie user.
+        /// Access certificate for TLS client authentication.
         /// </summary>
         [Output("accessCert")]
         public Output<string> AccessCert { get; private set; } = null!;
 
         /// <summary>
-        /// The access certificate key for the service user.
+        /// Access key for TLS client authentication.
         /// </summary>
         [Output("accessKey")]
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Value must be between `8` and `256`.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Value must be between `8` and `256`.
         /// </summary>
         [Output("passwordWo")]
         public Output<string?> PasswordWo { get; private set; } = null!;
 
         /// <summary>
-        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`. Minimum value: `1`.
         /// </summary>
         [Output("passwordWoVersion")]
         public Output<int?> PasswordWoVersion { get; private set; } = null!;
@@ -87,19 +87,22 @@ namespace Pulumi.Aiven
         /// Allows replication. For the default avnadmin user this attribute is required and is always `True`.
         /// </summary>
         [Output("pgAllowReplication")]
-        public Output<bool?> PgAllowReplication { get; private set; } = null!;
+        public Output<bool> PgAllowReplication { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.PgUserTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// The service user account type, either primary or regular.
@@ -108,7 +111,7 @@ namespace Pulumi.Aiven
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -170,7 +173,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Value must be between `8` and `256`.
         /// </summary>
         public Input<string>? Password
         {
@@ -187,7 +190,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Value must be between `8` and `256`.
         /// </summary>
         public Input<string>? PasswordWo
         {
@@ -200,7 +203,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`. Minimum value: `1`.
         /// </summary>
         [Input("passwordWoVersion")]
         public Input<int>? PasswordWoVersion { get; set; }
@@ -212,19 +215,22 @@ namespace Pulumi.Aiven
         public Input<bool>? PgAllowReplication { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.PgUserTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -241,7 +247,7 @@ namespace Pulumi.Aiven
         private Input<string>? _accessCert;
 
         /// <summary>
-        /// The access certificate for the servie user.
+        /// Access certificate for TLS client authentication.
         /// </summary>
         public Input<string>? AccessCert
         {
@@ -257,7 +263,7 @@ namespace Pulumi.Aiven
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// The access certificate key for the service user.
+        /// Access key for TLS client authentication.
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -273,7 +279,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Value must be between `8` and `256`.
         /// </summary>
         public Input<string>? Password
         {
@@ -290,7 +296,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Value must be between `8` and `256`.
         /// </summary>
         public Input<string>? PasswordWo
         {
@@ -303,7 +309,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`. Minimum value: `1`.
         /// </summary>
         [Input("passwordWoVersion")]
         public Input<int>? PasswordWoVersion { get; set; }
@@ -315,16 +321,19 @@ namespace Pulumi.Aiven
         public Input<bool>? PgAllowReplication { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.PgUserTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The service user account type, either primary or regular.
@@ -333,7 +342,7 @@ namespace Pulumi.Aiven
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

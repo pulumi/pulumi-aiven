@@ -180,7 +180,7 @@ export interface AlloydbomniAlloydbomniUserConfig {
      */
     pgReadReplica?: boolean;
     /**
-     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     pgServiceToForkFrom?: string;
     /**
@@ -262,7 +262,7 @@ export interface AlloydbomniAlloydbomniUserConfigIpFilterObject {
 
 export interface AlloydbomniAlloydbomniUserConfigPg {
     /**
-     * Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      */
     autovacuumAnalyzeScaleFactor?: number;
     /**
@@ -282,15 +282,15 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      */
     autovacuumNaptime?: number;
     /**
-     * Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
+     * Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
      */
     autovacuumVacuumCostDelay?: number;
     /**
-     * Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
      */
     autovacuumVacuumCostLimit?: number;
     /**
-     * Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      */
     autovacuumVacuumScaleFactor?: number;
     /**
@@ -302,7 +302,7 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      */
     bgwriterDelay?: number;
     /**
-     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
      */
     bgwriterFlushAfter?: number;
     /**
@@ -310,7 +310,7 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      */
     bgwriterLruMaxpages?: number;
     /**
-     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
      */
     bgwriterLruMultiplier?: number;
     /**
@@ -358,7 +358,7 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      */
     maxLocksPerTransaction?: number;
     /**
-     * PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+     * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
      */
     maxLogicalReplicationWorkers?: number;
     /**
@@ -382,7 +382,7 @@ export interface AlloydbomniAlloydbomniUserConfigPg {
      */
     maxReplicationSlots?: number;
     /**
-     * PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
+     * PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
      */
     maxSlotWalKeepSize?: number;
     /**
@@ -489,7 +489,7 @@ export interface AlloydbomniAlloydbomniUserConfigPgaudit {
      */
     logParameter?: boolean;
     /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
      */
     logParameterMaxSize?: number;
     /**
@@ -540,7 +540,7 @@ export interface AlloydbomniAlloydbomniUserConfigPgbouncer {
      */
     ignoreStartupParameters?: string[];
     /**
-     * PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+     * PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
      */
     maxPreparedStatements?: number;
     /**
@@ -556,7 +556,7 @@ export interface AlloydbomniAlloydbomniUserConfigPgbouncer {
      */
     serverLifetime?: number;
     /**
-     * Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+     * Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
      */
     serverResetQueryAlways?: boolean;
 }
@@ -1431,6 +1431,56 @@ export interface DragonflyTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface FlinkApplicationDeploymentTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface FlinkApplicationTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface FlinkApplicationVersionSink {
@@ -3287,6 +3337,13 @@ export interface GetDragonflyTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface GetFlinkApplicationTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetFlinkApplicationVersionSink {
@@ -5667,6 +5724,79 @@ export interface GetKafkaTopicConfig {
     uncleanLeaderElectionEnable?: boolean;
 }
 
+export interface GetKafkaTopicListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetKafkaTopicListTopic {
+    /**
+     * The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic.
+     */
+    cleanupPolicy: string;
+    /**
+     * Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
+     */
+    disklessEnable: boolean;
+    /**
+     * When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+     */
+    minInsyncReplicas: number;
+    /**
+     * The user group that owns this topic.
+     */
+    ownerUserGroupId: string;
+    /**
+     * Number of partitions.
+     */
+    partitions: number;
+    /**
+     * Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
+     */
+    remoteStorageEnable: boolean;
+    /**
+     * Number of replicas.
+     */
+    replication: number;
+    /**
+     * This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
+     */
+    retentionBytes: number;
+    /**
+     * Retention period (hours).
+     */
+    retentionHours: number;
+    /**
+     * Topic state. The possible values are `ACTIVE`, `CONFIGURING` and `DELETING`.
+     */
+    state: string;
+    /**
+     * Topic tags.
+     */
+    tags?: outputs.GetKafkaTopicListTopicTag[];
+    /**
+     * Topic description.
+     */
+    topicDescription: string;
+    /**
+     * Topic name.
+     */
+    topicName: string;
+}
+
+export interface GetKafkaTopicListTopicTag {
+    /**
+     * Tag key.
+     */
+    key: string;
+    /**
+     * Tag value.
+     */
+    value: string;
+}
+
 export interface GetKafkaTopicTag {
     /**
      * Tag key. Maximum length: `64`.
@@ -8021,6 +8151,24 @@ export interface GetOrganizationBillingGroupTimeouts {
     read?: string;
 }
 
+export interface GetOrganizationPaymentMethodListPaymentMethod {
+    /**
+     * Payment method ID.
+     */
+    paymentMethodId: string;
+    /**
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     */
+    paymentMethodType: string;
+}
+
+export interface GetOrganizationPaymentMethodListTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
 export interface GetOrganizationProjectTag {
     /**
      * Project tag key.
@@ -9028,6 +9176,13 @@ export interface GetPgTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface GetPgUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetProjectTag {
@@ -16689,6 +16844,31 @@ export interface PgTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface PgUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface ProjectTag {

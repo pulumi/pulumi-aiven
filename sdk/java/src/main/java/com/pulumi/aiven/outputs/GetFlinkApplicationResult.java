@@ -3,118 +3,125 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetFlinkApplicationTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlinkApplicationResult {
     /**
-     * @return Application ID.
+     * @return Application ID. Exactly one of the fields must be specified: `applicationId` or `name`.
      * 
      */
     private String applicationId;
     /**
-     * @return Application creation time.
+     * @return The creation timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     private String createdAt;
     /**
-     * @return The user who created the application.
+     * @return The creator of this entity.
      * 
      */
     private String createdBy;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/application_id`.
      * 
      */
     private String id;
     /**
-     * @return The name of the application.
+     * @return Application name. Exactly one of the fields must be specified: `applicationId` or `name`.
      * 
      */
     private String name;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
+    private @Nullable GetFlinkApplicationTimeouts timeouts;
     /**
-     * @return When the application was updated.
+     * @return The update timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     private String updatedAt;
     /**
-     * @return The user who updated the application.
+     * @return The latest updater of this entity.
      * 
      */
     private String updatedBy;
 
     private GetFlinkApplicationResult() {}
     /**
-     * @return Application ID.
+     * @return Application ID. Exactly one of the fields must be specified: `applicationId` or `name`.
      * 
      */
     public String applicationId() {
         return this.applicationId;
     }
     /**
-     * @return Application creation time.
+     * @return The creation timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     public String createdAt() {
         return this.createdAt;
     }
     /**
-     * @return The user who created the application.
+     * @return The creator of this entity.
      * 
      */
     public String createdBy() {
         return this.createdBy;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/application_id`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name of the application.
+     * @return Application name. Exactly one of the fields must be specified: `applicationId` or `name`.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
+    public Optional<GetFlinkApplicationTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return When the application was updated.
+     * @return The update timestamp of this entity in ISO 8601 format, always in UTC.
      * 
      */
     public String updatedAt() {
         return this.updatedAt;
     }
     /**
-     * @return The user who updated the application.
+     * @return The latest updater of this entity.
      * 
      */
     public String updatedBy() {
@@ -137,6 +144,7 @@ public final class GetFlinkApplicationResult {
         private String name;
         private String project;
         private String serviceName;
+        private @Nullable GetFlinkApplicationTimeouts timeouts;
         private String updatedAt;
         private String updatedBy;
         public Builder() {}
@@ -149,6 +157,7 @@ public final class GetFlinkApplicationResult {
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
+    	      this.timeouts = defaults.timeouts;
     	      this.updatedAt = defaults.updatedAt;
     	      this.updatedBy = defaults.updatedBy;
         }
@@ -210,6 +219,12 @@ public final class GetFlinkApplicationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetFlinkApplicationTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             if (updatedAt == null) {
               throw new MissingRequiredPropertyException("GetFlinkApplicationResult", "updatedAt");
@@ -234,6 +249,7 @@ public final class GetFlinkApplicationResult {
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
+            _resultValue.timeouts = timeouts;
             _resultValue.updatedAt = updatedAt;
             _resultValue.updatedBy = updatedBy;
             return _resultValue;

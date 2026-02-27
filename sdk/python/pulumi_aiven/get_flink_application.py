@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetFlinkApplicationResult',
@@ -26,7 +28,7 @@ class GetFlinkApplicationResult:
     """
     A collection of values returned by getFlinkApplication.
     """
-    def __init__(__self__, application_id=None, created_at=None, created_by=None, id=None, name=None, project=None, service_name=None, updated_at=None, updated_by=None):
+    def __init__(__self__, application_id=None, created_at=None, created_by=None, id=None, name=None, project=None, service_name=None, timeouts=None, updated_at=None, updated_by=None):
         if application_id and not isinstance(application_id, str):
             raise TypeError("Expected argument 'application_id' to be a str")
         pulumi.set(__self__, "application_id", application_id)
@@ -48,6 +50,9 @@ class GetFlinkApplicationResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if updated_at and not isinstance(updated_at, str):
             raise TypeError("Expected argument 'updated_at' to be a str")
         pulumi.set(__self__, "updated_at", updated_at)
@@ -59,7 +64,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> _builtins.str:
         """
-        Application ID.
+        Application ID. Exactly one of the fields must be specified: `application_id` or `name`.
         """
         return pulumi.get(self, "application_id")
 
@@ -67,7 +72,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         """
-        Application creation time.
+        The creation timestamp of this entity in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "created_at")
 
@@ -75,7 +80,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> _builtins.str:
         """
-        The user who created the application.
+        The creator of this entity.
         """
         return pulumi.get(self, "created_by")
 
@@ -83,7 +88,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/application_id`.
         """
         return pulumi.get(self, "id")
 
@@ -91,7 +96,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the application.
+        Application name. Exactly one of the fields must be specified: `application_id` or `name`.
         """
         return pulumi.get(self, "name")
 
@@ -99,7 +104,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -107,15 +112,20 @@ class GetFlinkApplicationResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetFlinkApplicationTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
         """
-        When the application was updated.
+        The update timestamp of this entity in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "updated_at")
 
@@ -123,7 +133,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> _builtins.str:
         """
-        The user who updated the application.
+        The latest updater of this entity.
         """
         return pulumi.get(self, "updated_by")
 
@@ -141,13 +151,16 @@ class AwaitableGetFlinkApplicationResult(GetFlinkApplicationResult):
             name=self.name,
             project=self.project,
             service_name=self.service_name,
+            timeouts=self.timeouts,
             updated_at=self.updated_at,
             updated_by=self.updated_by)
 
 
-def get_flink_application(name: Optional[_builtins.str] = None,
+def get_flink_application(application_id: Optional[_builtins.str] = None,
+                          name: Optional[_builtins.str] = None,
                           project: Optional[_builtins.str] = None,
                           service_name: Optional[_builtins.str] = None,
+                          timeouts: Optional[Union['GetFlinkApplicationTimeoutsArgs', 'GetFlinkApplicationTimeoutsArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlinkApplicationResult:
     """
     Gets information about an Aiven for Apache Flink® application.
@@ -164,14 +177,17 @@ def get_flink_application(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: The name of the application.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str application_id: Application ID. Exactly one of the fields must be specified: `application_id` or `name`.
+    :param _builtins.str name: Application name. Exactly one of the fields must be specified: `application_id` or `name`.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
+    __args__['applicationId'] = application_id
     __args__['name'] = name
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getFlinkApplication:getFlinkApplication', __args__, opts=opts, typ=GetFlinkApplicationResult).value
 
@@ -183,11 +199,14 @@ def get_flink_application(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
-def get_flink_application_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_flink_application_output(application_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  project: Optional[pulumi.Input[_builtins.str]] = None,
                                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                                 timeouts: Optional[pulumi.Input[Optional[Union['GetFlinkApplicationTimeoutsArgs', 'GetFlinkApplicationTimeoutsArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlinkApplicationResult]:
     """
     Gets information about an Aiven for Apache Flink® application.
@@ -204,14 +223,17 @@ def get_flink_application_output(name: Optional[pulumi.Input[_builtins.str]] = N
     ```
 
 
-    :param _builtins.str name: The name of the application.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str application_id: Application ID. Exactly one of the fields must be specified: `application_id` or `name`.
+    :param _builtins.str name: Application name. Exactly one of the fields must be specified: `application_id` or `name`.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
+    __args__['applicationId'] = application_id
     __args__['name'] = name
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getFlinkApplication:getFlinkApplication', __args__, opts=opts, typ=GetFlinkApplicationResult)
     return __ret__.apply(lambda __response__: GetFlinkApplicationResult(
@@ -222,5 +244,6 @@ def get_flink_application_output(name: Optional[pulumi.Input[_builtins.str]] = N
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         updated_at=pulumi.get(__response__, 'updated_at'),
         updated_by=pulumi.get(__response__, 'updated_by')))

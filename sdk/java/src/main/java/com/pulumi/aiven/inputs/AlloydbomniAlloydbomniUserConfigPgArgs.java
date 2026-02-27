@@ -19,14 +19,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
     public static final AlloydbomniAlloydbomniUserConfigPgArgs Empty = new AlloydbomniAlloydbomniUserConfigPgArgs();
 
     /**
-     * Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     @Import(name="autovacuumAnalyzeScaleFactor")
     private @Nullable Output<Double> autovacuumAnalyzeScaleFactor;
 
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+     * @return Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     public Optional<Output<Double>> autovacuumAnalyzeScaleFactor() {
@@ -94,14 +94,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
     }
 
     /**
-     * Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
+     * Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
      * 
      */
     @Import(name="autovacuumVacuumCostDelay")
     private @Nullable Output<Integer> autovacuumVacuumCostDelay;
 
     /**
-     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
      * 
      */
     public Optional<Output<Integer>> autovacuumVacuumCostDelay() {
@@ -109,14 +109,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
     }
 
     /**
-     * Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
      * 
      */
     @Import(name="autovacuumVacuumCostLimit")
     private @Nullable Output<Integer> autovacuumVacuumCostLimit;
 
     /**
-     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
      * 
      */
     public Optional<Output<Integer>> autovacuumVacuumCostLimit() {
@@ -124,14 +124,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
     }
 
     /**
-     * Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     @Import(name="autovacuumVacuumScaleFactor")
     private @Nullable Output<Double> autovacuumVacuumScaleFactor;
 
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+     * @return Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
      * 
      */
     public Optional<Output<Double>> autovacuumVacuumScaleFactor() {
@@ -169,14 +169,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
     }
 
     /**
-     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
      * 
      */
     @Import(name="bgwriterFlushAfter")
     private @Nullable Output<Integer> bgwriterFlushAfter;
 
     /**
-     * @return Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+     * @return Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
      * 
      */
     public Optional<Output<Integer>> bgwriterFlushAfter() {
@@ -199,14 +199,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
     }
 
     /**
-     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
      * 
      */
     @Import(name="bgwriterLruMultiplier")
     private @Nullable Output<Double> bgwriterLruMultiplier;
 
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+     * @return The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
      * 
      */
     public Optional<Output<Double>> bgwriterLruMultiplier() {
@@ -379,14 +379,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
     }
 
     /**
-     * PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+     * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
      * 
      */
     @Import(name="maxLogicalReplicationWorkers")
     private @Nullable Output<Integer> maxLogicalReplicationWorkers;
 
     /**
-     * @return PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+     * @return PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
      * 
      */
     public Optional<Output<Integer>> maxLogicalReplicationWorkers() {
@@ -469,14 +469,14 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
     }
 
     /**
-     * PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
+     * PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
      * 
      */
     @Import(name="maxSlotWalKeepSize")
     private @Nullable Output<Integer> maxSlotWalKeepSize;
 
     /**
-     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
      * 
      */
     public Optional<Output<Integer>> maxSlotWalKeepSize() {
@@ -826,7 +826,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
          * 
          * @return builder
          * 
@@ -837,7 +837,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
          * 
          * @return builder
          * 
@@ -931,7 +931,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param autovacuumVacuumCostDelay Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
+         * @param autovacuumVacuumCostDelay Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
          * 
          * @return builder
          * 
@@ -942,7 +942,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param autovacuumVacuumCostDelay Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*delay value will be used. The default is `2` (upstream default).
+         * @param autovacuumVacuumCostDelay Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
          * 
          * @return builder
          * 
@@ -952,7 +952,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
+         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
          * 
          * @return builder
          * 
@@ -963,7 +963,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum*cost*limit value will be used. The default is `-1` (upstream default).
+         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
          * 
          * @return builder
          * 
@@ -973,7 +973,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
          * 
          * @return builder
          * 
@@ -984,7 +984,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
+         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
          * 
          * @return builder
          * 
@@ -1036,7 +1036,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param bgwriterFlushAfter Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+         * @param bgwriterFlushAfter Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
          * 
          * @return builder
          * 
@@ -1047,7 +1047,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param bgwriterFlushAfter Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
+         * @param bgwriterFlushAfter Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
          * 
          * @return builder
          * 
@@ -1078,7 +1078,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
          * 
          * @return builder
          * 
@@ -1089,7 +1089,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
+         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
          * 
          * @return builder
          * 
@@ -1330,7 +1330,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param maxLogicalReplicationWorkers PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+         * @param maxLogicalReplicationWorkers PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1341,7 +1341,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param maxLogicalReplicationWorkers PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+         * @param maxLogicalReplicationWorkers PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
          * 
          * @return builder
          * 
@@ -1456,7 +1456,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param maxSlotWalKeepSize PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
+         * @param maxSlotWalKeepSize PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
          * 
          * @return builder
          * 
@@ -1467,7 +1467,7 @@ public final class AlloydbomniAlloydbomniUserConfigPgArgs extends com.pulumi.res
         }
 
         /**
-         * @param maxSlotWalKeepSize PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal*keep*size minimum WAL size setting takes precedence over this.
+         * @param maxSlotWalKeepSize PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
          * 
          * @return builder
          * 

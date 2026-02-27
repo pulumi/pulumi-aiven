@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? LogParameter;
         /// <summary>
-        /// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+        /// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. Default: `0`.
         /// </summary>
         public readonly int? LogParameterMaxSize;
         /// <summary>
