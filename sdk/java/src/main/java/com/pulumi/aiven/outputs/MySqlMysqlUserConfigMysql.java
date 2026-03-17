@@ -115,6 +115,11 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable Double longQueryTime;
     /**
+     * @return Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+     * 
+     */
+    private @Nullable Integer lowerCaseTableNames;
+    /**
      * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      * 
      */
@@ -312,6 +317,13 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.longQueryTime);
     }
     /**
+     * @return Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+     * 
+     */
+    public Optional<Integer> lowerCaseTableNames() {
+        return Optional.ofNullable(this.lowerCaseTableNames);
+    }
+    /**
      * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      * 
      */
@@ -418,6 +430,7 @@ public final class MySqlMysqlUserConfigMysql {
         private @Nullable String internalTmpMemStorageEngine;
         private @Nullable String logOutput;
         private @Nullable Double longQueryTime;
+        private @Nullable Integer lowerCaseTableNames;
         private @Nullable Integer maxAllowedPacket;
         private @Nullable Integer maxHeapTableSize;
         private @Nullable Integer netBufferLength;
@@ -452,6 +465,7 @@ public final class MySqlMysqlUserConfigMysql {
     	      this.internalTmpMemStorageEngine = defaults.internalTmpMemStorageEngine;
     	      this.logOutput = defaults.logOutput;
     	      this.longQueryTime = defaults.longQueryTime;
+    	      this.lowerCaseTableNames = defaults.lowerCaseTableNames;
     	      this.maxAllowedPacket = defaults.maxAllowedPacket;
     	      this.maxHeapTableSize = defaults.maxHeapTableSize;
     	      this.netBufferLength = defaults.netBufferLength;
@@ -586,6 +600,12 @@ public final class MySqlMysqlUserConfigMysql {
             return this;
         }
         @CustomType.Setter
+        public Builder lowerCaseTableNames(@Nullable Integer lowerCaseTableNames) {
+
+            this.lowerCaseTableNames = lowerCaseTableNames;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxAllowedPacket(@Nullable Integer maxAllowedPacket) {
 
             this.maxAllowedPacket = maxAllowedPacket;
@@ -673,6 +693,7 @@ public final class MySqlMysqlUserConfigMysql {
             _resultValue.internalTmpMemStorageEngine = internalTmpMemStorageEngine;
             _resultValue.logOutput = logOutput;
             _resultValue.longQueryTime = longQueryTime;
+            _resultValue.lowerCaseTableNames = lowerCaseTableNames;
             _resultValue.maxAllowedPacket = maxAllowedPacket;
             _resultValue.maxHeapTableSize = maxHeapTableSize;
             _resultValue.netBufferLength = netBufferLength;

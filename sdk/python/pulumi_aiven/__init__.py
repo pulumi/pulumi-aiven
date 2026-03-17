@@ -22,6 +22,7 @@ from .azure_privatelink import *
 from .azure_privatelink_connection_approval import *
 from .azure_vpc_peering_connection import *
 from .billing_group import *
+from .byoc_aws_entity import *
 from .cassandra import *
 from .cassandra_user import *
 from .clickhouse import *
@@ -329,6 +330,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/billingGroup:BillingGroup": "BillingGroup"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/byocAwsEntity",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/byocAwsEntity:ByocAwsEntity": "ByocAwsEntity"
   }
  },
  {

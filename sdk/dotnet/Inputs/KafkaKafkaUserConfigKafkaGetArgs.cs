@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigKafkaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable auto-creation of topics. (Default: true).
+        /// Enable auto-creation of topics. (Default: false).
         /// </summary>
         [Input("autoCreateTopicsEnable")]
         public Input<bool>? AutoCreateTopicsEnable { get; set; }

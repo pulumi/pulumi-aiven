@@ -319,6 +319,21 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+     * 
+     */
+    @Import(name="lowerCaseTableNames")
+    private @Nullable Output<Integer> lowerCaseTableNames;
+
+    /**
+     * @return Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+     * 
+     */
+    public Optional<Output<Integer>> lowerCaseTableNames() {
+        return Optional.ofNullable(this.lowerCaseTableNames);
+    }
+
+    /**
      * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      * 
      */
@@ -506,6 +521,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         this.internalTmpMemStorageEngine = $.internalTmpMemStorageEngine;
         this.logOutput = $.logOutput;
         this.longQueryTime = $.longQueryTime;
+        this.lowerCaseTableNames = $.lowerCaseTableNames;
         this.maxAllowedPacket = $.maxAllowedPacket;
         this.maxHeapTableSize = $.maxHeapTableSize;
         this.netBufferLength = $.netBufferLength;
@@ -955,6 +971,27 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
          */
         public Builder longQueryTime(Double longQueryTime) {
             return longQueryTime(Output.of(longQueryTime));
+        }
+
+        /**
+         * @param lowerCaseTableNames Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lowerCaseTableNames(@Nullable Output<Integer> lowerCaseTableNames) {
+            $.lowerCaseTableNames = lowerCaseTableNames;
+            return this;
+        }
+
+        /**
+         * @param lowerCaseTableNames Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lowerCaseTableNames(Integer lowerCaseTableNames) {
+            return lowerCaseTableNames(Output.of(lowerCaseTableNames));
         }
 
         /**

@@ -53,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AzureVpcPeeringConnection{}
 	case "aiven:index/billingGroup:BillingGroup":
 		r = &BillingGroup{}
+	case "aiven:index/byocAwsEntity:ByocAwsEntity":
+		r = &ByocAwsEntity{}
 	case "aiven:index/cassandra:Cassandra":
 		r = &Cassandra{}
 	case "aiven:index/cassandraUser:CassandraUser":
@@ -318,6 +320,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/billingGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/byocAwsEntity",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

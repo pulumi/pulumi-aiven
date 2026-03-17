@@ -23,7 +23,7 @@ public final class GovernanceAccessAccessData {
      * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
-    private String project;
+    private String projectName;
     /**
      * @return Service name. Changing this property forces recreation of the resource.
      * 
@@ -47,8 +47,8 @@ public final class GovernanceAccessAccessData {
      * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
-    public String project() {
-        return this.project;
+    public String projectName() {
+        return this.projectName;
     }
     /**
      * @return Service name. Changing this property forces recreation of the resource.
@@ -75,14 +75,14 @@ public final class GovernanceAccessAccessData {
     @CustomType.Builder
     public static final class Builder {
         private List<GovernanceAccessAccessDataAcl> acls;
-        private String project;
+        private String projectName;
         private String serviceName;
         private @Nullable String username;
         public Builder() {}
         public Builder(GovernanceAccessAccessData defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acls = defaults.acls;
-    	      this.project = defaults.project;
+    	      this.projectName = defaults.projectName;
     	      this.serviceName = defaults.serviceName;
     	      this.username = defaults.username;
         }
@@ -99,11 +99,11 @@ public final class GovernanceAccessAccessData {
             return acls(List.of(acls));
         }
         @CustomType.Setter
-        public Builder project(String project) {
-            if (project == null) {
-              throw new MissingRequiredPropertyException("GovernanceAccessAccessData", "project");
+        public Builder projectName(String projectName) {
+            if (projectName == null) {
+              throw new MissingRequiredPropertyException("GovernanceAccessAccessData", "projectName");
             }
-            this.project = project;
+            this.projectName = projectName;
             return this;
         }
         @CustomType.Setter
@@ -123,7 +123,7 @@ public final class GovernanceAccessAccessData {
         public GovernanceAccessAccessData build() {
             final var _resultValue = new GovernanceAccessAccessData();
             _resultValue.acls = acls;
-            _resultValue.project = project;
+            _resultValue.projectName = projectName;
             _resultValue.serviceName = serviceName;
             _resultValue.username = username;
             return _resultValue;

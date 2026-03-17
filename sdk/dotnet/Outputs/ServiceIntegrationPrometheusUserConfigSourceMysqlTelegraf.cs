@@ -42,6 +42,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? GatherProcessList;
         /// <summary>
+        /// Gather metrics from SHOW REPLICA STATUS command output.
+        /// </summary>
+        public readonly bool? GatherReplicaStatus;
+        /// <summary>
         /// Gather metrics from SHOW SLAVE STATUS command output.
         /// </summary>
         public readonly bool? GatherSlaveStatus;
@@ -86,6 +90,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? gatherProcessList,
 
+            bool? gatherReplicaStatus,
+
             bool? gatherSlaveStatus,
 
             bool? gatherTableIoWaits,
@@ -107,6 +113,7 @@ namespace Pulumi.Aiven.Outputs
             GatherInnodbMetrics = gatherInnodbMetrics;
             GatherPerfEventsStatements = gatherPerfEventsStatements;
             GatherProcessList = gatherProcessList;
+            GatherReplicaStatus = gatherReplicaStatus;
             GatherSlaveStatus = gatherSlaveStatus;
             GatherTableIoWaits = gatherTableIoWaits;
             GatherTableLockWaits = gatherTableLockWaits;

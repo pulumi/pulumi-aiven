@@ -33,6 +33,21 @@ public final class GovernanceAccessState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The ID of the access.
+     * 
+     */
+    @Import(name="accessId")
+    private @Nullable Output<String> accessId;
+
+    /**
+     * @return The ID of the access.
+     * 
+     */
+    public Optional<Output<String>> accessId() {
+        return Optional.ofNullable(this.accessId);
+    }
+
+    /**
      * Label to describe the access. Changing this property forces recreation of the resource.
      * 
      */
@@ -92,21 +107,6 @@ public final class GovernanceAccessState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.ownerUserGroupId);
     }
 
-    /**
-     * The ID of the access.
-     * 
-     */
-    @Import(name="susbcriptionId")
-    private @Nullable Output<String> susbcriptionId;
-
-    /**
-     * @return The ID of the access.
-     * 
-     */
-    public Optional<Output<String>> susbcriptionId() {
-        return Optional.ofNullable(this.susbcriptionId);
-    }
-
     @Import(name="timeouts")
     private @Nullable Output<GovernanceAccessTimeoutsArgs> timeouts;
 
@@ -118,11 +118,11 @@ public final class GovernanceAccessState extends com.pulumi.resources.ResourceAr
 
     private GovernanceAccessState(GovernanceAccessState $) {
         this.accessData = $.accessData;
+        this.accessId = $.accessId;
         this.accessName = $.accessName;
         this.accessType = $.accessType;
         this.organizationId = $.organizationId;
         this.ownerUserGroupId = $.ownerUserGroupId;
-        this.susbcriptionId = $.susbcriptionId;
         this.timeouts = $.timeouts;
     }
 
@@ -163,6 +163,27 @@ public final class GovernanceAccessState extends com.pulumi.resources.ResourceAr
          */
         public Builder accessData(GovernanceAccessAccessDataArgs accessData) {
             return accessData(Output.of(accessData));
+        }
+
+        /**
+         * @param accessId The ID of the access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessId(@Nullable Output<String> accessId) {
+            $.accessId = accessId;
+            return this;
+        }
+
+        /**
+         * @param accessId The ID of the access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessId(String accessId) {
+            return accessId(Output.of(accessId));
         }
 
         /**
@@ -247,27 +268,6 @@ public final class GovernanceAccessState extends com.pulumi.resources.ResourceAr
          */
         public Builder ownerUserGroupId(String ownerUserGroupId) {
             return ownerUserGroupId(Output.of(ownerUserGroupId));
-        }
-
-        /**
-         * @param susbcriptionId The ID of the access.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder susbcriptionId(@Nullable Output<String> susbcriptionId) {
-            $.susbcriptionId = susbcriptionId;
-            return this;
-        }
-
-        /**
-         * @param susbcriptionId The ID of the access.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder susbcriptionId(String susbcriptionId) {
-            return susbcriptionId(Output.of(susbcriptionId));
         }
 
         public Builder timeouts(@Nullable Output<GovernanceAccessTimeoutsArgs> timeouts) {

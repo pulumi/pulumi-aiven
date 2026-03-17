@@ -36,7 +36,7 @@ import (
 //				AccessName:     pulumi.String("example-topic-access"),
 //				AccessType:     pulumi.String("KAFKA"),
 //				AccessData: &aiven.GovernanceAccessAccessDataArgs{
-//					Project:     pulumi.Any(exampleProject.Project),
+//					Project:     exampleProject.Project,
 //					ServiceName: pulumi.Any(exampleKafka.ServiceName),
 //					Acls: aiven.GovernanceAccessAccessDataAclArray{
 //						&aiven.GovernanceAccessAccessDataAclArgs{
@@ -62,13 +62,15 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
+// $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/ACCESS_ID
 // ```
 type GovernanceAccess struct {
 	pulumi.CustomResourceState
 
 	// Required property. access type specific data. Changing this property forces recreation of the resource.
 	AccessData GovernanceAccessAccessDataOutput `pulumi:"accessData"`
+	// The ID of the access.
+	AccessId pulumi.StringOutput `pulumi:"accessId"`
 	// Label to describe the access. Changing this property forces recreation of the resource.
 	AccessName pulumi.StringOutput `pulumi:"accessName"`
 	// An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
@@ -76,10 +78,8 @@ type GovernanceAccess struct {
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
-	OwnerUserGroupId pulumi.StringPtrOutput `pulumi:"ownerUserGroupId"`
-	// The ID of the access.
-	SusbcriptionId pulumi.StringOutput               `pulumi:"susbcriptionId"`
-	Timeouts       GovernanceAccessTimeoutsPtrOutput `pulumi:"timeouts"`
+	OwnerUserGroupId pulumi.StringPtrOutput            `pulumi:"ownerUserGroupId"`
+	Timeouts         GovernanceAccessTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewGovernanceAccess registers a new resource with the given unique name, arguments, and options.
@@ -126,6 +126,8 @@ func GetGovernanceAccess(ctx *pulumi.Context,
 type governanceAccessState struct {
 	// Required property. access type specific data. Changing this property forces recreation of the resource.
 	AccessData *GovernanceAccessAccessData `pulumi:"accessData"`
+	// The ID of the access.
+	AccessId *string `pulumi:"accessId"`
 	// Label to describe the access. Changing this property forces recreation of the resource.
 	AccessName *string `pulumi:"accessName"`
 	// An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
@@ -133,15 +135,15 @@ type governanceAccessState struct {
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
 	// The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
-	OwnerUserGroupId *string `pulumi:"ownerUserGroupId"`
-	// The ID of the access.
-	SusbcriptionId *string                   `pulumi:"susbcriptionId"`
-	Timeouts       *GovernanceAccessTimeouts `pulumi:"timeouts"`
+	OwnerUserGroupId *string                   `pulumi:"ownerUserGroupId"`
+	Timeouts         *GovernanceAccessTimeouts `pulumi:"timeouts"`
 }
 
 type GovernanceAccessState struct {
 	// Required property. access type specific data. Changing this property forces recreation of the resource.
 	AccessData GovernanceAccessAccessDataPtrInput
+	// The ID of the access.
+	AccessId pulumi.StringPtrInput
 	// Label to describe the access. Changing this property forces recreation of the resource.
 	AccessName pulumi.StringPtrInput
 	// An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
@@ -150,9 +152,7 @@ type GovernanceAccessState struct {
 	OrganizationId pulumi.StringPtrInput
 	// The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OwnerUserGroupId pulumi.StringPtrInput
-	// The ID of the access.
-	SusbcriptionId pulumi.StringPtrInput
-	Timeouts       GovernanceAccessTimeoutsPtrInput
+	Timeouts         GovernanceAccessTimeoutsPtrInput
 }
 
 func (GovernanceAccessState) ElementType() reflect.Type {
@@ -280,6 +280,11 @@ func (o GovernanceAccessOutput) AccessData() GovernanceAccessAccessDataOutput {
 	return o.ApplyT(func(v *GovernanceAccess) GovernanceAccessAccessDataOutput { return v.AccessData }).(GovernanceAccessAccessDataOutput)
 }
 
+// The ID of the access.
+func (o GovernanceAccessOutput) AccessId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GovernanceAccess) pulumi.StringOutput { return v.AccessId }).(pulumi.StringOutput)
+}
+
 // Label to describe the access. Changing this property forces recreation of the resource.
 func (o GovernanceAccessOutput) AccessName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GovernanceAccess) pulumi.StringOutput { return v.AccessName }).(pulumi.StringOutput)
@@ -298,11 +303,6 @@ func (o GovernanceAccessOutput) OrganizationId() pulumi.StringOutput {
 // The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
 func (o GovernanceAccessOutput) OwnerUserGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GovernanceAccess) pulumi.StringPtrOutput { return v.OwnerUserGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the access.
-func (o GovernanceAccessOutput) SusbcriptionId() pulumi.StringOutput {
-	return o.ApplyT(func(v *GovernanceAccess) pulumi.StringOutput { return v.SusbcriptionId }).(pulumi.StringOutput)
 }
 
 func (o GovernanceAccessOutput) Timeouts() GovernanceAccessTimeoutsPtrOutput {

@@ -95,21 +95,6 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
     }
 
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    @Import(name="currency", required=true)
-    private String currency;
-
-    /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    public String currency() {
-        return this.currency;
-    }
-
-    /**
      * Extra billing text.
      * 
      */
@@ -192,7 +177,6 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
         this.billingEmails = $.billingEmails;
         this.billingGroupId = $.billingGroupId;
         this.billingGroupName = $.billingGroupName;
-        this.currency = $.currency;
         this.customInvoiceText = $.customInvoiceText;
         this.organizationId = $.organizationId;
         this.paymentMethods = $.paymentMethods;
@@ -294,17 +278,6 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
         }
 
         /**
-         * @param currency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder currency(String currency) {
-            $.currency = currency;
-            return this;
-        }
-
-        /**
          * @param customInvoiceText Extra billing text.
          * 
          * @return builder
@@ -378,9 +351,6 @@ public final class GetOrganizationBillingGroupListBillingGroup extends com.pulum
             }
             if ($.billingGroupName == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "billingGroupName");
-            }
-            if ($.currency == null) {
-                throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "currency");
             }
             if ($.customInvoiceText == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "customInvoiceText");

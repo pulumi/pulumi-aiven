@@ -43,11 +43,6 @@ public final class GetOrganizationBillingGroupResult {
      */
     private String billingGroupName;
     /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    private String currency;
-    /**
      * @return Extra billing text.
      * 
      */
@@ -116,13 +111,6 @@ public final class GetOrganizationBillingGroupResult {
         return this.billingGroupName;
     }
     /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    public String currency() {
-        return this.currency;
-    }
-    /**
      * @return Extra billing text.
      * 
      */
@@ -182,7 +170,6 @@ public final class GetOrganizationBillingGroupResult {
         private @Nullable List<GetOrganizationBillingGroupBillingEmail> billingEmails;
         private String billingGroupId;
         private String billingGroupName;
-        private String currency;
         private String customInvoiceText;
         private String id;
         private String organizationId;
@@ -198,7 +185,6 @@ public final class GetOrganizationBillingGroupResult {
     	      this.billingEmails = defaults.billingEmails;
     	      this.billingGroupId = defaults.billingGroupId;
     	      this.billingGroupName = defaults.billingGroupName;
-    	      this.currency = defaults.currency;
     	      this.customInvoiceText = defaults.customInvoiceText;
     	      this.id = defaults.id;
     	      this.organizationId = defaults.organizationId;
@@ -248,14 +234,6 @@ public final class GetOrganizationBillingGroupResult {
               throw new MissingRequiredPropertyException("GetOrganizationBillingGroupResult", "billingGroupName");
             }
             this.billingGroupName = billingGroupName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder currency(String currency) {
-            if (currency == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationBillingGroupResult", "currency");
-            }
-            this.currency = currency;
             return this;
         }
         @CustomType.Setter
@@ -320,7 +298,6 @@ public final class GetOrganizationBillingGroupResult {
             _resultValue.billingEmails = billingEmails;
             _resultValue.billingGroupId = billingGroupId;
             _resultValue.billingGroupName = billingGroupName;
-            _resultValue.currency = currency;
             _resultValue.customInvoiceText = customInvoiceText;
             _resultValue.id = id;
             _resultValue.organizationId = organizationId;

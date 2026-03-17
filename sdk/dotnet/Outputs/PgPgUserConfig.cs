@@ -141,6 +141,7 @@ namespace Pulumi.Aiven.Outputs
         /// Use static public IP addresses.
         /// </summary>
         public readonly bool? StaticIps;
+        public readonly ImmutableArray<Outputs.PgPgUserConfigSwitchoverWindow> SwitchoverWindows;
         /// <summary>
         /// Enum: `Off`, `Quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         /// </summary>
@@ -224,6 +225,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? staticIps,
 
+            ImmutableArray<Outputs.PgPgUserConfigSwitchoverWindow> switchoverWindows,
+
             string? synchronousReplication,
 
             Outputs.PgPgUserConfigTimescaledb? timescaledb,
@@ -264,6 +267,7 @@ namespace Pulumi.Aiven.Outputs
             ServiceToForkFrom = serviceToForkFrom;
             SharedBuffersPercentage = sharedBuffersPercentage;
             StaticIps = staticIps;
+            SwitchoverWindows = switchoverWindows;
             SynchronousReplication = synchronousReplication;
             Timescaledb = timescaledb;
             Variant = variant;

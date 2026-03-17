@@ -13,6 +13,7 @@ import com.pulumi.aiven.outputs.GetPgPgUserConfigPglookout;
 import com.pulumi.aiven.outputs.GetPgPgUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetPgPgUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetPgPgUserConfigPublicAccess;
+import com.pulumi.aiven.outputs.GetPgPgUserConfigSwitchoverWindow;
 import com.pulumi.aiven.outputs.GetPgPgUserConfigTimescaledb;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -194,6 +195,7 @@ public final class GetPgPgUserConfig {
      * 
      */
     private @Nullable Boolean staticIps;
+    private @Nullable List<GetPgPgUserConfigSwitchoverWindow> switchoverWindows;
     /**
      * @return Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      * 
@@ -448,6 +450,9 @@ public final class GetPgPgUserConfig {
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
+    public List<GetPgPgUserConfigSwitchoverWindow> switchoverWindows() {
+        return this.switchoverWindows == null ? List.of() : this.switchoverWindows;
+    }
     /**
      * @return Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      * 
@@ -518,6 +523,7 @@ public final class GetPgPgUserConfig {
         private @Nullable String serviceToForkFrom;
         private @Nullable Double sharedBuffersPercentage;
         private @Nullable Boolean staticIps;
+        private @Nullable List<GetPgPgUserConfigSwitchoverWindow> switchoverWindows;
         private @Nullable String synchronousReplication;
         private @Nullable GetPgPgUserConfigTimescaledb timescaledb;
         private @Nullable String variant;
@@ -557,6 +563,7 @@ public final class GetPgPgUserConfig {
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.sharedBuffersPercentage = defaults.sharedBuffersPercentage;
     	      this.staticIps = defaults.staticIps;
+    	      this.switchoverWindows = defaults.switchoverWindows;
     	      this.synchronousReplication = defaults.synchronousReplication;
     	      this.timescaledb = defaults.timescaledb;
     	      this.variant = defaults.variant;
@@ -765,6 +772,15 @@ public final class GetPgPgUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder switchoverWindows(@Nullable List<GetPgPgUserConfigSwitchoverWindow> switchoverWindows) {
+
+            this.switchoverWindows = switchoverWindows;
+            return this;
+        }
+        public Builder switchoverWindows(GetPgPgUserConfigSwitchoverWindow... switchoverWindows) {
+            return switchoverWindows(List.of(switchoverWindows));
+        }
+        @CustomType.Setter
         public Builder synchronousReplication(@Nullable String synchronousReplication) {
 
             this.synchronousReplication = synchronousReplication;
@@ -822,6 +838,7 @@ public final class GetPgPgUserConfig {
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.sharedBuffersPercentage = sharedBuffersPercentage;
             _resultValue.staticIps = staticIps;
+            _resultValue.switchoverWindows = switchoverWindows;
             _resultValue.synchronousReplication = synchronousReplication;
             _resultValue.timescaledb = timescaledb;
             _resultValue.variant = variant;

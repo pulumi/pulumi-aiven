@@ -18,6 +18,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("additionalBackupRegions")]
         public Input<string>? AdditionalBackupRegions { get; set; }
 
+        [Input("gcpAuthAllowedUrls")]
+        private InputList<string>? _gcpAuthAllowedUrls;
+
+        /// <summary>
+        /// Allow-list of HTTPS URLs used to validate GCP CredentialSource requests for Kafka Connect.
+        /// </summary>
+        public InputList<string> GcpAuthAllowedUrls
+        {
+            get => _gcpAuthAllowedUrls ?? (_gcpAuthAllowedUrls = new InputList<string>());
+            set => _gcpAuthAllowedUrls = value;
+        }
+
         [Input("ipFilterObjects")]
         private InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 

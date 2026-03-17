@@ -29,14 +29,14 @@ public final class GetOrganizationPaymentMethodListPaymentMethod extends com.pul
     }
 
     /**
-     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      * 
      */
     @Import(name="paymentMethodType", required=true)
     private String paymentMethodType;
 
     /**
-     * @return An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * @return An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      * 
      */
     public String paymentMethodType() {
@@ -80,7 +80,7 @@ public final class GetOrganizationPaymentMethodListPaymentMethod extends com.pul
         }
 
         /**
-         * @param paymentMethodType An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+         * @param paymentMethodType An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
          * 
          * @return builder
          * 

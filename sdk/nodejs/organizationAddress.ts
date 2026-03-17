@@ -55,11 +55,11 @@ export class OrganizationAddress extends pulumi.CustomResource {
      */
     declare public readonly addressLines: pulumi.Output<string[]>;
     /**
-     * City. Maximum length: `512`.
+     * City. Maximum length: `125`.
      */
     declare public readonly city: pulumi.Output<string>;
     /**
-     * Country Code.
+     * Country Code. Maximum length: `2`.
      */
     declare public readonly countryCode: pulumi.Output<string>;
     /**
@@ -84,7 +84,7 @@ export class OrganizationAddress extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
-     * Zip Code. Maximum length: `32`.
+     * Zip Code. Maximum length: `10`.
      */
     declare public readonly zipCode: pulumi.Output<string | undefined>;
 
@@ -156,11 +156,11 @@ export interface OrganizationAddressState {
      */
     addressLines?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * City. Maximum length: `512`.
+     * City. Maximum length: `125`.
      */
     city?: pulumi.Input<string>;
     /**
-     * Country Code.
+     * Country Code. Maximum length: `2`.
      */
     countryCode?: pulumi.Input<string>;
     /**
@@ -185,7 +185,7 @@ export interface OrganizationAddressState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * Zip Code. Maximum length: `32`.
+     * Zip Code. Maximum length: `10`.
      */
     zipCode?: pulumi.Input<string>;
 }
@@ -199,11 +199,11 @@ export interface OrganizationAddressArgs {
      */
     addressLines: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * City. Maximum length: `512`.
+     * City. Maximum length: `125`.
      */
     city: pulumi.Input<string>;
     /**
-     * Country Code.
+     * Country Code. Maximum length: `2`.
      */
     countryCode: pulumi.Input<string>;
     /**
@@ -220,7 +220,7 @@ export interface OrganizationAddressArgs {
     state?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationAddressTimeouts>;
     /**
-     * Zip Code. Maximum length: `32`.
+     * Zip Code. Maximum length: `10`.
      */
     zipCode?: pulumi.Input<string>;
 }

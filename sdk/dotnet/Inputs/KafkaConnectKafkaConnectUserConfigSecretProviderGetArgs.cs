@@ -19,6 +19,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigSecretProviderAwsGetArgs>? Aws { get; set; }
 
         /// <summary>
+        /// ENV secret provider configuration
+        /// </summary>
+        [Input("env")]
+        public Input<Inputs.KafkaConnectKafkaConnectUserConfigSecretProviderEnvGetArgs>? Env { get; set; }
+
+        /// <summary>
         /// Name of the secret provider. Used to reference secrets in connector config.
         /// </summary>
         [Input("name", required: true)]

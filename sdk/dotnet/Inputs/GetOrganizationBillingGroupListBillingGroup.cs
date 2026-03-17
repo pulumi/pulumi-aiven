@@ -55,12 +55,6 @@ namespace Pulumi.Aiven.Inputs
         public string BillingGroupName { get; set; } = null!;
 
         /// <summary>
-        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        /// </summary>
-        [Input("currency", required: true)]
-        public string Currency { get; set; } = null!;
-
-        /// <summary>
         /// Extra billing text.
         /// </summary>
         [Input("customInvoiceText", required: true)]

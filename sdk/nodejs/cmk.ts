@@ -78,7 +78,7 @@ export class Cmk extends pulumi.CustomResource {
     /**
      * Mark the created CMK as default for all newly created services.
      */
-    declare public readonly defaultCmk: pulumi.Output<boolean>;
+    declare public readonly defaultCmk: pulumi.Output<boolean | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
@@ -123,9 +123,6 @@ export class Cmk extends pulumi.CustomResource {
             const args = argsOrState as CmkArgs | undefined;
             if (args?.cmkProvider === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cmkProvider'");
-            }
-            if (args?.defaultCmk === undefined && !opts.urn) {
-                throw new Error("Missing required property 'defaultCmk'");
             }
             if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
@@ -198,7 +195,7 @@ export interface CmkArgs {
     /**
      * Mark the created CMK as default for all newly created services.
      */
-    defaultCmk: pulumi.Input<boolean>;
+    defaultCmk?: pulumi.Input<boolean>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */

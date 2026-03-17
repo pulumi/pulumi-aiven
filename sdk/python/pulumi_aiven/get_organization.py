@@ -58,17 +58,17 @@ class GetOrganizationResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
+    def id(self) -> _builtins.str:
         """
-        ID of the organization.
+        Organization ID. Exactly one of the fields must be specified: `id` or `name`.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
-        Name of the organization.
+        Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
         """
         return pulumi.get(self, "name")
 
@@ -126,8 +126,8 @@ def get_organization(id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str id: ID of the organization.
-    :param _builtins.str name: Name of the organization.
+    :param _builtins.str id: Organization ID. Exactly one of the fields must be specified: `id` or `name`.
+    :param _builtins.str name: Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -160,8 +160,8 @@ def get_organization_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] 
     ```
 
 
-    :param _builtins.str id: ID of the organization.
-    :param _builtins.str name: Name of the organization.
+    :param _builtins.str id: Organization ID. Exactly one of the fields must be specified: `id` or `name`.
+    :param _builtins.str name: Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
     """
     __args__ = dict()
     __args__['id'] = id

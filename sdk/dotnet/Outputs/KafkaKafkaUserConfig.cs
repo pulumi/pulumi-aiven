@@ -34,9 +34,21 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
+        /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        /// </summary>
+        public readonly bool? EnableIpv6;
+        /// <summary>
         /// Enable follower fetching
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigFollowerFetching? FollowerFetching;
+        /// <summary>
+        /// Allow-list of HTTPS URLs used to validate GCP CredentialSource requests for Kafka Connect.
+        /// </summary>
+        public readonly ImmutableArray<string> GcpAuthAllowedUrls;
+        /// <summary>
+        /// Inkless configuration values
+        /// </summary>
+        public readonly Outputs.KafkaKafkaUserConfigInkless? Inkless;
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
@@ -158,7 +170,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? customDomain,
 
+            bool? enableIpv6,
+
             Outputs.KafkaKafkaUserConfigFollowerFetching? followerFetching,
+
+            ImmutableArray<string> gcpAuthAllowedUrls,
+
+            Outputs.KafkaKafkaUserConfigInkless? inkless,
 
             ImmutableArray<Outputs.KafkaKafkaUserConfigIpFilterObject> ipFilterObjects,
 
@@ -219,7 +237,10 @@ namespace Pulumi.Aiven.Outputs
             BackupIntervalHours = backupIntervalHours;
             BackupRetentionDays = backupRetentionDays;
             CustomDomain = customDomain;
+            EnableIpv6 = enableIpv6;
             FollowerFetching = followerFetching;
+            GcpAuthAllowedUrls = gcpAuthAllowedUrls;
+            Inkless = inkless;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;

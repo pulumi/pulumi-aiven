@@ -150,7 +150,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable Integer logTempFiles;
     /**
-     * @return Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica&#39;s value. After the change is applied to the replica, you can increase the primary service&#39;s value. Changing this parameter causes a service restart.
+     * @return Sets the PostgreSQL maximum number of concurrent connections to the database server. For services with a read replica, first increase the read replica&#39;s value. After the change is applied to the replica, you can increase the primary service&#39;s value. Changing this parameter causes a service restart.
      * 
      */
     private @Nullable Integer maxConnections;
@@ -165,7 +165,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable Integer maxLocksPerTransaction;
     /**
-     * @return PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+     * @return PostgreSQL maximum logical replication workers (taken from the pool defined by max_worker_processes). The default is `4` (upstream default). Changing this parameter causes a service restart.
      * 
      */
     private @Nullable Integer maxLogicalReplicationWorkers;
@@ -491,7 +491,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.logTempFiles);
     }
     /**
-     * @return Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica&#39;s value. After the change is applied to the replica, you can increase the primary service&#39;s value. Changing this parameter causes a service restart.
+     * @return Sets the PostgreSQL maximum number of concurrent connections to the database server. For services with a read replica, first increase the read replica&#39;s value. After the change is applied to the replica, you can increase the primary service&#39;s value. Changing this parameter causes a service restart.
      * 
      */
     public Optional<Integer> maxConnections() {
@@ -512,7 +512,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.maxLocksPerTransaction);
     }
     /**
-     * @return PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+     * @return PostgreSQL maximum logical replication workers (taken from the pool defined by max_worker_processes). The default is `4` (upstream default). Changing this parameter causes a service restart.
      * 
      */
     public Optional<Integer> maxLogicalReplicationWorkers() {

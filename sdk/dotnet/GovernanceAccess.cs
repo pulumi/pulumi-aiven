@@ -55,7 +55,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
+    /// $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/ACCESS_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/governanceAccess:GovernanceAccess")]
@@ -66,6 +66,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("accessData")]
         public Output<Outputs.GovernanceAccessAccessData> AccessData { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the access.
+        /// </summary>
+        [Output("accessId")]
+        public Output<string> AccessId { get; private set; } = null!;
 
         /// <summary>
         /// Label to describe the access. Changing this property forces recreation of the resource.
@@ -90,12 +96,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("ownerUserGroupId")]
         public Output<string?> OwnerUserGroupId { get; private set; } = null!;
-
-        /// <summary>
-        /// The ID of the access.
-        /// </summary>
-        [Output("susbcriptionId")]
-        public Output<string> SusbcriptionId { get; private set; } = null!;
 
         [Output("timeouts")]
         public Output<Outputs.GovernanceAccessTimeouts?> Timeouts { get; private set; } = null!;
@@ -194,6 +194,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.GovernanceAccessAccessDataGetArgs>? AccessData { get; set; }
 
         /// <summary>
+        /// The ID of the access.
+        /// </summary>
+        [Input("accessId")]
+        public Input<string>? AccessId { get; set; }
+
+        /// <summary>
         /// Label to describe the access. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("accessName")]
@@ -216,12 +222,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("ownerUserGroupId")]
         public Input<string>? OwnerUserGroupId { get; set; }
-
-        /// <summary>
-        /// The ID of the access.
-        /// </summary>
-        [Input("susbcriptionId")]
-        public Input<string>? SusbcriptionId { get; set; }
 
         [Input("timeouts")]
         public Input<Inputs.GovernanceAccessTimeoutsGetArgs>? Timeouts { get; set; }

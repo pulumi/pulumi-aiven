@@ -29,6 +29,7 @@
         "azurePrivatelinkConnectionApproval.ts",
         "azureVpcPeeringConnection.ts",
         "billingGroup.ts",
+        "byocAwsEntity.ts",
         "cassandra.ts",
         "cassandraUser.ts",
         "clickhouse.ts",

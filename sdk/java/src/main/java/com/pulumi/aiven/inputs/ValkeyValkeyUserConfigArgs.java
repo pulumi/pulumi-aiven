@@ -466,6 +466,21 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.valkeyTimeout);
     }
 
+    /**
+     * Enum: `8.1`, `9.0`, and newer. Valkey major version.
+     * 
+     */
+    @Import(name="valkeyVersion")
+    private @Nullable Output<String> valkeyVersion;
+
+    /**
+     * @return Enum: `8.1`, `9.0`, and newer. Valkey major version.
+     * 
+     */
+    public Optional<Output<String>> valkeyVersion() {
+        return Optional.ofNullable(this.valkeyVersion);
+    }
+
     private ValkeyValkeyUserConfigArgs() {}
 
     private ValkeyValkeyUserConfigArgs(ValkeyValkeyUserConfigArgs $) {
@@ -498,6 +513,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         this.valkeyPubsubClientOutputBufferLimit = $.valkeyPubsubClientOutputBufferLimit;
         this.valkeySsl = $.valkeySsl;
         this.valkeyTimeout = $.valkeyTimeout;
+        this.valkeyVersion = $.valkeyVersion;
     }
 
     public static Builder builder() {
@@ -1167,6 +1183,27 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder valkeyTimeout(Integer valkeyTimeout) {
             return valkeyTimeout(Output.of(valkeyTimeout));
+        }
+
+        /**
+         * @param valkeyVersion Enum: `8.1`, `9.0`, and newer. Valkey major version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyVersion(@Nullable Output<String> valkeyVersion) {
+            $.valkeyVersion = valkeyVersion;
+            return this;
+        }
+
+        /**
+         * @param valkeyVersion Enum: `8.1`, `9.0`, and newer. Valkey major version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyVersion(String valkeyVersion) {
+            return valkeyVersion(Output.of(valkeyVersion));
         }
 
         public ValkeyValkeyUserConfigArgs build() {

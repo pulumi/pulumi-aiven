@@ -122,7 +122,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogTempFiles;
         /// <summary>
-        /// Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
+        /// Sets the PostgreSQL maximum number of concurrent connections to the database server. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
         /// </summary>
         public readonly int? MaxConnections;
         /// <summary>
@@ -134,7 +134,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxLocksPerTransaction;
         /// <summary>
-        /// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+        /// PostgreSQL maximum logical replication workers (taken from the pool defined by max_worker_processes). The default is `4` (upstream default). Changing this parameter causes a service restart.
         /// </summary>
         public readonly int? MaxLogicalReplicationWorkers;
         /// <summary>

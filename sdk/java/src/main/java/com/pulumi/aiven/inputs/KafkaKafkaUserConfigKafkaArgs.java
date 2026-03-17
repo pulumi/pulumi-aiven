@@ -19,14 +19,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     public static final KafkaKafkaUserConfigKafkaArgs Empty = new KafkaKafkaUserConfigKafkaArgs();
 
     /**
-     * Enable auto-creation of topics. (Default: true).
+     * Enable auto-creation of topics. (Default: false).
      * 
      */
     @Import(name="autoCreateTopicsEnable")
     private @Nullable Output<Boolean> autoCreateTopicsEnable;
 
     /**
-     * @return Enable auto-creation of topics. (Default: true).
+     * @return Enable auto-creation of topics. (Default: false).
      * 
      */
     public Optional<Output<Boolean>> autoCreateTopicsEnable() {
@@ -810,7 +810,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autoCreateTopicsEnable Enable auto-creation of topics. (Default: true).
+         * @param autoCreateTopicsEnable Enable auto-creation of topics. (Default: false).
          * 
          * @return builder
          * 
@@ -821,7 +821,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autoCreateTopicsEnable Enable auto-creation of topics. (Default: true).
+         * @param autoCreateTopicsEnable Enable auto-creation of topics. (Default: false).
          * 
          * @return builder
          * 

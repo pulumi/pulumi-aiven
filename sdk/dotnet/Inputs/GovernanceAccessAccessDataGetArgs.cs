@@ -27,8 +27,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("projectName", required: true)]
+        public Input<string> ProjectName { get; set; } = null!;
 
         /// <summary>
         /// Service name. Changing this property forces recreation of the resource.

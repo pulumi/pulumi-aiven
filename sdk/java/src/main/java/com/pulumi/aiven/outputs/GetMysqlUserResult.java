@@ -6,7 +6,6 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.GetMysqlUserTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -39,16 +38,6 @@ public final class GetMysqlUserResult {
      * 
      */
     private String password;
-    /**
-     * @return The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
-     * 
-     */
-    private String passwordWo;
-    /**
-     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
-     * 
-     */
-    private Integer passwordWoVersion;
     /**
      * @return Project name.
      * 
@@ -108,20 +97,6 @@ public final class GetMysqlUserResult {
         return this.password;
     }
     /**
-     * @return The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
-     * 
-     */
-    public String passwordWo() {
-        return this.passwordWo;
-    }
-    /**
-     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
-     * 
-     */
-    public Integer passwordWoVersion() {
-        return this.passwordWoVersion;
-    }
-    /**
      * @return Project name.
      * 
      */
@@ -167,8 +142,6 @@ public final class GetMysqlUserResult {
         private String authentication;
         private String id;
         private String password;
-        private String passwordWo;
-        private Integer passwordWoVersion;
         private String project;
         private String serviceName;
         private @Nullable GetMysqlUserTimeouts timeouts;
@@ -182,8 +155,6 @@ public final class GetMysqlUserResult {
     	      this.authentication = defaults.authentication;
     	      this.id = defaults.id;
     	      this.password = defaults.password;
-    	      this.passwordWo = defaults.passwordWo;
-    	      this.passwordWoVersion = defaults.passwordWoVersion;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
     	      this.timeouts = defaults.timeouts;
@@ -232,22 +203,6 @@ public final class GetMysqlUserResult {
             return this;
         }
         @CustomType.Setter
-        public Builder passwordWo(String passwordWo) {
-            if (passwordWo == null) {
-              throw new MissingRequiredPropertyException("GetMysqlUserResult", "passwordWo");
-            }
-            this.passwordWo = passwordWo;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder passwordWoVersion(Integer passwordWoVersion) {
-            if (passwordWoVersion == null) {
-              throw new MissingRequiredPropertyException("GetMysqlUserResult", "passwordWoVersion");
-            }
-            this.passwordWoVersion = passwordWoVersion;
-            return this;
-        }
-        @CustomType.Setter
         public Builder project(String project) {
             if (project == null) {
               throw new MissingRequiredPropertyException("GetMysqlUserResult", "project");
@@ -292,8 +247,6 @@ public final class GetMysqlUserResult {
             _resultValue.authentication = authentication;
             _resultValue.id = id;
             _resultValue.password = password;
-            _resultValue.passwordWo = passwordWo;
-            _resultValue.passwordWoVersion = passwordWoVersion;
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
             _resultValue.timeouts = timeouts;

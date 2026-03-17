@@ -55,6 +55,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? GatherProcessList { get; set; }
 
         /// <summary>
+        /// Gather metrics from SHOW REPLICA STATUS command output.
+        /// </summary>
+        [Input("gatherReplicaStatus")]
+        public Input<bool>? GatherReplicaStatus { get; set; }
+
+        /// <summary>
         /// Gather metrics from SHOW SLAVE STATUS command output.
         /// </summary>
         [Input("gatherSlaveStatus")]

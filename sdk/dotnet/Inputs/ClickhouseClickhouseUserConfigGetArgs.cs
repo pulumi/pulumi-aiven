@@ -31,6 +31,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? BackupMinute { get; set; }
 
         /// <summary>
+        /// Enum: `25.3`, and newer. ClickHouse major version.
+        /// </summary>
+        [Input("clickhouseVersion")]
+        public Input<string>? ClickhouseVersion { get; set; }
+
+        /// <summary>
         /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         /// </summary>
         [Input("enableIpv6")]
@@ -120,6 +126,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("staticIps")]
         public Input<bool>? StaticIps { get; set; }
+
+        /// <summary>
+        /// The percentage of free disk space required on local storage before data is moved to object storage. A value of 0.2 means data is moved when local storage has less than 20% free space. Default: `0.2`.
+        /// </summary>
+        [Input("tieredStorageMoveFactor")]
+        public Input<double>? TieredStorageMoveFactor { get; set; }
 
         public ClickhouseClickhouseUserConfigGetArgs()
         {

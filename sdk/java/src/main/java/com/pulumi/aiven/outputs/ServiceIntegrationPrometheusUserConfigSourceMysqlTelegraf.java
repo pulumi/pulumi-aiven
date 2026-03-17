@@ -48,6 +48,11 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      */
     private @Nullable Boolean gatherProcessList;
     /**
+     * @return Gather metrics from SHOW REPLICA STATUS command output.
+     * 
+     */
+    private @Nullable Boolean gatherReplicaStatus;
+    /**
      * @return Gather metrics from SHOW SLAVE STATUS command output.
      * 
      */
@@ -134,6 +139,13 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
         return Optional.ofNullable(this.gatherProcessList);
     }
     /**
+     * @return Gather metrics from SHOW REPLICA STATUS command output.
+     * 
+     */
+    public Optional<Boolean> gatherReplicaStatus() {
+        return Optional.ofNullable(this.gatherReplicaStatus);
+    }
+    /**
      * @return Gather metrics from SHOW SLAVE STATUS command output.
      * 
      */
@@ -199,6 +211,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
         private @Nullable Boolean gatherInnodbMetrics;
         private @Nullable Boolean gatherPerfEventsStatements;
         private @Nullable Boolean gatherProcessList;
+        private @Nullable Boolean gatherReplicaStatus;
         private @Nullable Boolean gatherSlaveStatus;
         private @Nullable Boolean gatherTableIoWaits;
         private @Nullable Boolean gatherTableLockWaits;
@@ -216,6 +229,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
     	      this.gatherInnodbMetrics = defaults.gatherInnodbMetrics;
     	      this.gatherPerfEventsStatements = defaults.gatherPerfEventsStatements;
     	      this.gatherProcessList = defaults.gatherProcessList;
+    	      this.gatherReplicaStatus = defaults.gatherReplicaStatus;
     	      this.gatherSlaveStatus = defaults.gatherSlaveStatus;
     	      this.gatherTableIoWaits = defaults.gatherTableIoWaits;
     	      this.gatherTableLockWaits = defaults.gatherTableLockWaits;
@@ -265,6 +279,12 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
         public Builder gatherProcessList(@Nullable Boolean gatherProcessList) {
 
             this.gatherProcessList = gatherProcessList;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gatherReplicaStatus(@Nullable Boolean gatherReplicaStatus) {
+
+            this.gatherReplicaStatus = gatherReplicaStatus;
             return this;
         }
         @CustomType.Setter
@@ -318,6 +338,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
             _resultValue.gatherInnodbMetrics = gatherInnodbMetrics;
             _resultValue.gatherPerfEventsStatements = gatherPerfEventsStatements;
             _resultValue.gatherProcessList = gatherProcessList;
+            _resultValue.gatherReplicaStatus = gatherReplicaStatus;
             _resultValue.gatherSlaveStatus = gatherSlaveStatus;
             _resultValue.gatherTableIoWaits = gatherTableIoWaits;
             _resultValue.gatherTableLockWaits = gatherTableLockWaits;

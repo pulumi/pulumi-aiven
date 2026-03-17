@@ -133,6 +133,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<double>? LongQueryTime { get; set; }
 
         /// <summary>
+        /// Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+        /// </summary>
+        [Input("lowerCaseTableNames")]
+        public Input<int>? LowerCaseTableNames { get; set; }
+
+        /// <summary>
         /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
         /// </summary>
         [Input("maxAllowedPacket")]

@@ -94,6 +94,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly double? LongQueryTime;
         /// <summary>
+        /// Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+        /// </summary>
+        public readonly int? LowerCaseTableNames;
+        /// <summary>
         /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
         /// </summary>
         public readonly int? MaxAllowedPacket;
@@ -180,6 +184,8 @@ namespace Pulumi.Aiven.Outputs
 
             double? longQueryTime,
 
+            int? lowerCaseTableNames,
+
             int? maxAllowedPacket,
 
             int? maxHeapTableSize,
@@ -222,6 +228,7 @@ namespace Pulumi.Aiven.Outputs
             InternalTmpMemStorageEngine = internalTmpMemStorageEngine;
             LogOutput = logOutput;
             LongQueryTime = longQueryTime;
+            LowerCaseTableNames = lowerCaseTableNames;
             MaxAllowedPacket = maxAllowedPacket;
             MaxHeapTableSize = maxHeapTableSize;
             NetBufferLength = netBufferLength;

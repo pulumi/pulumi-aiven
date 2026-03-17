@@ -48,6 +48,21 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     }
 
     /**
+     * Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+     * 
+     */
+    @Import(name="gcpAuthAllowedUrls")
+    private @Nullable Output<List<String>> gcpAuthAllowedUrls;
+
+    /**
+     * @return Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+     * 
+     */
+    public Optional<Output<List<String>>> gcpAuthAllowedUrls() {
+        return Optional.ofNullable(this.gcpAuthAllowedUrls);
+    }
+
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -239,6 +254,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
 
     private KafkaConnectKafkaConnectUserConfigArgs(KafkaConnectKafkaConnectUserConfigArgs $) {
         this.additionalBackupRegions = $.additionalBackupRegions;
+        this.gcpAuthAllowedUrls = $.gcpAuthAllowedUrls;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
@@ -298,6 +314,37 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
+        }
+
+        /**
+         * @param gcpAuthAllowedUrls Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpAuthAllowedUrls(@Nullable Output<List<String>> gcpAuthAllowedUrls) {
+            $.gcpAuthAllowedUrls = gcpAuthAllowedUrls;
+            return this;
+        }
+
+        /**
+         * @param gcpAuthAllowedUrls Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpAuthAllowedUrls(List<String> gcpAuthAllowedUrls) {
+            return gcpAuthAllowedUrls(Output.of(gcpAuthAllowedUrls));
+        }
+
+        /**
+         * @param gcpAuthAllowedUrls Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpAuthAllowedUrls(String... gcpAuthAllowedUrls) {
+            return gcpAuthAllowedUrls(List.of(gcpAuthAllowedUrls));
         }
 
         /**

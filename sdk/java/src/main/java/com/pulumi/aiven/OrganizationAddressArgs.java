@@ -34,14 +34,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * City. Maximum length: `512`.
+     * City. Maximum length: `125`.
      * 
      */
     @Import(name="city", required=true)
     private Output<String> city;
 
     /**
-     * @return City. Maximum length: `512`.
+     * @return City. Maximum length: `125`.
      * 
      */
     public Output<String> city() {
@@ -49,14 +49,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Country Code.
+     * Country Code. Maximum length: `2`.
      * 
      */
     @Import(name="countryCode", required=true)
     private Output<String> countryCode;
 
     /**
-     * @return Country Code.
+     * @return Country Code. Maximum length: `2`.
      * 
      */
     public Output<String> countryCode() {
@@ -116,14 +116,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Zip Code. Maximum length: `32`.
+     * Zip Code. Maximum length: `10`.
      * 
      */
     @Import(name="zipCode")
     private @Nullable Output<String> zipCode;
 
     /**
-     * @return Zip Code. Maximum length: `32`.
+     * @return Zip Code. Maximum length: `10`.
      * 
      */
     public Optional<Output<String>> zipCode() {
@@ -193,7 +193,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param city City. Maximum length: `512`.
+         * @param city City. Maximum length: `125`.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param city City. Maximum length: `512`.
+         * @param city City. Maximum length: `125`.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param countryCode Country Code.
+         * @param countryCode Country Code. Maximum length: `2`.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param countryCode Country Code.
+         * @param countryCode Country Code. Maximum length: `2`.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zipCode Zip Code. Maximum length: `32`.
+         * @param zipCode Zip Code. Maximum length: `10`.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zipCode Zip Code. Maximum length: `32`.
+         * @param zipCode Zip Code. Maximum length: `10`.
          * 
          * @return builder
          * 

@@ -88,13 +88,13 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the organization.
+        /// Organization ID. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Name of the organization.
+        /// Name of the organization. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -111,13 +111,13 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the organization.
+        /// Organization ID. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Name of the organization.
+        /// Name of the organization. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -140,13 +140,13 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// ID of the organization.
+        /// Organization ID. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
-        public readonly string? Id;
+        public readonly string Id;
         /// <summary>
-        /// Name of the organization.
+        /// Name of the organization. Exactly one of the fields must be specified: `Id` or `Name`.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
         /// </summary>
@@ -161,9 +161,9 @@ namespace Pulumi.Aiven
         private GetOrganizationResult(
             string createTime,
 
-            string? id,
+            string id,
 
-            string? name,
+            string name,
 
             string tenantId,
 

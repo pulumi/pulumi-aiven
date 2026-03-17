@@ -183,10 +183,6 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string BillingGroupName;
         /// <summary>
-        /// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        /// </summary>
-        public readonly string Currency;
-        /// <summary>
         /// Extra billing text.
         /// </summary>
         public readonly string CustomInvoiceText;
@@ -224,8 +220,6 @@ namespace Pulumi.Aiven
 
             string billingGroupName,
 
-            string currency,
-
             string customInvoiceText,
 
             string id,
@@ -245,7 +239,6 @@ namespace Pulumi.Aiven
             BillingEmails = billingEmails;
             BillingGroupId = billingGroupId;
             BillingGroupName = billingGroupName;
-            Currency = currency;
             CustomInvoiceText = customInvoiceText;
             Id = id;
             OrganizationId = organizationId;

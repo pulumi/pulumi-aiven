@@ -20,7 +20,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
-        public readonly string Project;
+        public readonly string ProjectName;
         /// <summary>
         /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
@@ -34,14 +34,14 @@ namespace Pulumi.Aiven.Outputs
         private GovernanceAccessAccessData(
             ImmutableArray<Outputs.GovernanceAccessAccessDataAcl> acls,
 
-            string project,
+            string projectName,
 
             string serviceName,
 
             string? username)
         {
             Acls = acls;
-            Project = project;
+            ProjectName = projectName;
             ServiceName = serviceName;
             Username = username;
         }

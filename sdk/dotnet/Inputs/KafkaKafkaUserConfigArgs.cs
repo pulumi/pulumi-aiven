@@ -43,10 +43,34 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? CustomDomain { get; set; }
 
         /// <summary>
+        /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        /// </summary>
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
         /// Enable follower fetching
         /// </summary>
         [Input("followerFetching")]
         public Input<Inputs.KafkaKafkaUserConfigFollowerFetchingArgs>? FollowerFetching { get; set; }
+
+        [Input("gcpAuthAllowedUrls")]
+        private InputList<string>? _gcpAuthAllowedUrls;
+
+        /// <summary>
+        /// Allow-list of HTTPS URLs used to validate GCP CredentialSource requests for Kafka Connect.
+        /// </summary>
+        public InputList<string> GcpAuthAllowedUrls
+        {
+            get => _gcpAuthAllowedUrls ?? (_gcpAuthAllowedUrls = new InputList<string>());
+            set => _gcpAuthAllowedUrls = value;
+        }
+
+        /// <summary>
+        /// Inkless configuration values
+        /// </summary>
+        [Input("inkless")]
+        public Input<Inputs.KafkaKafkaUserConfigInklessArgs>? Inkless { get; set; }
 
         [Input("ipFilterObjects")]
         private InputList<Inputs.KafkaKafkaUserConfigIpFilterObjectArgs>? _ipFilterObjects;

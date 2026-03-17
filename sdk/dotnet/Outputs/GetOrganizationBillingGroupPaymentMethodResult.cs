@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string PaymentMethodId;
         /// <summary>
-        /// An enumeration. The possible values are `AwsSubscription`, `AzureSubscription`, `BankTransfer`, `CreditCard`, `Custom`, `Disabled`, `GcpSubscription`, `NoPaymentExpected` and `Partner`.
+        /// An enumeration. The possible values are `AwsSubscription`, `AzureSubscription`, `BankTransfer`, `CreditCard`, `Custom` and `GcpSubscription`.
         /// </summary>
         public readonly string PaymentMethodType;
 

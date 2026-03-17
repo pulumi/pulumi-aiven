@@ -217,7 +217,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable String nodeSearchCacheSize;
     /**
-     * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+     * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
      * 
      */
     private @Nullable Boolean overrideMainResponseVersion;
@@ -588,7 +588,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.nodeSearchCacheSize);
     }
     /**
-     * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+     * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
      * 
      */
     public Optional<Boolean> overrideMainResponseVersion() {

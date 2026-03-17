@@ -37,15 +37,15 @@ public final class CmkArgs extends com.pulumi.resources.ResourceArgs {
      * Mark the created CMK as default for all newly created services.
      * 
      */
-    @Import(name="defaultCmk", required=true)
-    private Output<Boolean> defaultCmk;
+    @Import(name="defaultCmk")
+    private @Nullable Output<Boolean> defaultCmk;
 
     /**
      * @return Mark the created CMK as default for all newly created services.
      * 
      */
-    public Output<Boolean> defaultCmk() {
-        return this.defaultCmk;
+    public Optional<Output<Boolean>> defaultCmk() {
+        return Optional.ofNullable(this.defaultCmk);
     }
 
     /**
@@ -140,7 +140,7 @@ public final class CmkArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder defaultCmk(Output<Boolean> defaultCmk) {
+        public Builder defaultCmk(@Nullable Output<Boolean> defaultCmk) {
             $.defaultCmk = defaultCmk;
             return this;
         }
@@ -209,9 +209,6 @@ public final class CmkArgs extends com.pulumi.resources.ResourceArgs {
         public CmkArgs build() {
             if ($.cmkProvider == null) {
                 throw new MissingRequiredPropertyException("CmkArgs", "cmkProvider");
-            }
-            if ($.defaultCmk == null) {
-                throw new MissingRequiredPropertyException("CmkArgs", "defaultCmk");
             }
             if ($.project == null) {
                 throw new MissingRequiredPropertyException("CmkArgs", "project");

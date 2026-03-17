@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BackupMinute;
         /// <summary>
+        /// Enum: `25.3`, and newer. ClickHouse major version.
+        /// </summary>
+        public readonly string? ClickhouseVersion;
+        /// <summary>
         /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         /// </summary>
         public readonly bool? EnableIpv6;
@@ -73,6 +77,10 @@ namespace Pulumi.Aiven.Outputs
         /// Use static public IP addresses.
         /// </summary>
         public readonly bool? StaticIps;
+        /// <summary>
+        /// The percentage of free disk space required on local storage before data is moved to object storage. A value of 0.2 means data is moved when local storage has less than 20% free space. Default: `0.2`.
+        /// </summary>
+        public readonly double? TieredStorageMoveFactor;
 
         [OutputConstructor]
         private GetClickhouseClickhouseUserConfigResult(
@@ -81,6 +89,8 @@ namespace Pulumi.Aiven.Outputs
             int? backupHour,
 
             int? backupMinute,
+
+            string? clickhouseVersion,
 
             bool? enableIpv6,
 
@@ -104,11 +114,14 @@ namespace Pulumi.Aiven.Outputs
 
             string? serviceToForkFrom,
 
-            bool? staticIps)
+            bool? staticIps,
+
+            double? tieredStorageMoveFactor)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             BackupHour = backupHour;
             BackupMinute = backupMinute;
+            ClickhouseVersion = clickhouseVersion;
             EnableIpv6 = enableIpv6;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
@@ -121,6 +134,7 @@ namespace Pulumi.Aiven.Outputs
             ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
+            TieredStorageMoveFactor = tieredStorageMoveFactor;
         }
     }
 }

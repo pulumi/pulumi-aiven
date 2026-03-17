@@ -13,6 +13,7 @@ import com.pulumi.aiven.inputs.PgPgUserConfigPglookoutArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPublicAccessArgs;
+import com.pulumi.aiven.inputs.PgPgUserConfigSwitchoverWindowArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigTimescaledbArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -526,6 +527,13 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.staticIps);
     }
 
+    @Import(name="switchoverWindows")
+    private @Nullable Output<List<PgPgUserConfigSwitchoverWindowArgs>> switchoverWindows;
+
+    public Optional<Output<List<PgPgUserConfigSwitchoverWindowArgs>>> switchoverWindows() {
+        return Optional.ofNullable(this.switchoverWindows);
+    }
+
     /**
      * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      * 
@@ -621,6 +629,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.sharedBuffersPercentage = $.sharedBuffersPercentage;
         this.staticIps = $.staticIps;
+        this.switchoverWindows = $.switchoverWindows;
         this.synchronousReplication = $.synchronousReplication;
         this.timescaledb = $.timescaledb;
         this.variant = $.variant;
@@ -1365,6 +1374,19 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
+        }
+
+        public Builder switchoverWindows(@Nullable Output<List<PgPgUserConfigSwitchoverWindowArgs>> switchoverWindows) {
+            $.switchoverWindows = switchoverWindows;
+            return this;
+        }
+
+        public Builder switchoverWindows(List<PgPgUserConfigSwitchoverWindowArgs> switchoverWindows) {
+            return switchoverWindows(Output.of(switchoverWindows));
+        }
+
+        public Builder switchoverWindows(PgPgUserConfigSwitchoverWindowArgs... switchoverWindows) {
+            return switchoverWindows(List.of(switchoverWindows));
         }
 
         /**

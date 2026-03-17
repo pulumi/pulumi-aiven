@@ -76,10 +76,6 @@ export interface GetOrganizationBillingGroupResult {
      */
     readonly billingGroupName: string;
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     */
-    readonly currency: string;
-    /**
      * Extra billing text.
      */
     readonly customInvoiceText: string;

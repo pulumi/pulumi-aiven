@@ -105,20 +105,6 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
         return this.billingGroupName;
     }
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    @Export(name="currency", refs={String.class}, tree="[0]")
-    private Output<String> currency;
-
-    /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    public Output<String> currency() {
-        return this.currency;
-    }
-    /**
      * Extra billing text. Maximum length: `256`.
      * 
      */

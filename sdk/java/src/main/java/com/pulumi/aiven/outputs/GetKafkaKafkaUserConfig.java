@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigFollowerFetching;
+import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigInkless;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafka;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
@@ -60,10 +61,25 @@ public final class GetKafkaKafkaUserConfig {
      */
     private @Nullable String customDomain;
     /**
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    private @Nullable Boolean enableIpv6;
+    /**
      * @return Enable follower fetching
      * 
      */
     private @Nullable GetKafkaKafkaUserConfigFollowerFetching followerFetching;
+    /**
+     * @return Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+     * 
+     */
+    private @Nullable List<String> gcpAuthAllowedUrls;
+    /**
+     * @return Inkless configuration values
+     * 
+     */
+    private @Nullable GetKafkaKafkaUserConfigInkless inkless;
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
@@ -245,11 +261,32 @@ public final class GetKafkaKafkaUserConfig {
         return Optional.ofNullable(this.customDomain);
     }
     /**
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    public Optional<Boolean> enableIpv6() {
+        return Optional.ofNullable(this.enableIpv6);
+    }
+    /**
      * @return Enable follower fetching
      * 
      */
     public Optional<GetKafkaKafkaUserConfigFollowerFetching> followerFetching() {
         return Optional.ofNullable(this.followerFetching);
+    }
+    /**
+     * @return Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+     * 
+     */
+    public List<String> gcpAuthAllowedUrls() {
+        return this.gcpAuthAllowedUrls == null ? List.of() : this.gcpAuthAllowedUrls;
+    }
+    /**
+     * @return Inkless configuration values
+     * 
+     */
+    public Optional<GetKafkaKafkaUserConfigInkless> inkless() {
+        return Optional.ofNullable(this.inkless);
     }
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -459,7 +496,10 @@ public final class GetKafkaKafkaUserConfig {
         private @Nullable Integer backupIntervalHours;
         private @Nullable Integer backupRetentionDays;
         private @Nullable String customDomain;
+        private @Nullable Boolean enableIpv6;
         private @Nullable GetKafkaKafkaUserConfigFollowerFetching followerFetching;
+        private @Nullable List<String> gcpAuthAllowedUrls;
+        private @Nullable GetKafkaKafkaUserConfigInkless inkless;
         private @Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
@@ -495,7 +535,10 @@ public final class GetKafkaKafkaUserConfig {
     	      this.backupIntervalHours = defaults.backupIntervalHours;
     	      this.backupRetentionDays = defaults.backupRetentionDays;
     	      this.customDomain = defaults.customDomain;
+    	      this.enableIpv6 = defaults.enableIpv6;
     	      this.followerFetching = defaults.followerFetching;
+    	      this.gcpAuthAllowedUrls = defaults.gcpAuthAllowedUrls;
+    	      this.inkless = defaults.inkless;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
@@ -556,9 +599,30 @@ public final class GetKafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder enableIpv6(@Nullable Boolean enableIpv6) {
+
+            this.enableIpv6 = enableIpv6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder followerFetching(@Nullable GetKafkaKafkaUserConfigFollowerFetching followerFetching) {
 
             this.followerFetching = followerFetching;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gcpAuthAllowedUrls(@Nullable List<String> gcpAuthAllowedUrls) {
+
+            this.gcpAuthAllowedUrls = gcpAuthAllowedUrls;
+            return this;
+        }
+        public Builder gcpAuthAllowedUrls(String... gcpAuthAllowedUrls) {
+            return gcpAuthAllowedUrls(List.of(gcpAuthAllowedUrls));
+        }
+        @CustomType.Setter
+        public Builder inkless(@Nullable GetKafkaKafkaUserConfigInkless inkless) {
+
+            this.inkless = inkless;
             return this;
         }
         @CustomType.Setter
@@ -748,7 +812,10 @@ public final class GetKafkaKafkaUserConfig {
             _resultValue.backupIntervalHours = backupIntervalHours;
             _resultValue.backupRetentionDays = backupRetentionDays;
             _resultValue.customDomain = customDomain;
+            _resultValue.enableIpv6 = enableIpv6;
             _resultValue.followerFetching = followerFetching;
+            _resultValue.gcpAuthAllowedUrls = gcpAuthAllowedUrls;
+            _resultValue.inkless = inkless;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;

@@ -19,15 +19,15 @@ public final class GetOrganizationResult {
      */
     private String createTime;
     /**
-     * @return ID of the organization.
+     * @return Organization ID. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
-    private @Nullable String id;
+    private String id;
     /**
-     * @return Name of the organization.
+     * @return Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
@@ -53,18 +53,18 @@ public final class GetOrganizationResult {
         return this.createTime;
     }
     /**
-     * @return ID of the organization.
+     * @return Organization ID. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
     /**
-     * @return Name of the organization.
+     * @return Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
@@ -98,8 +98,8 @@ public final class GetOrganizationResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
-        private @Nullable String id;
-        private @Nullable String name;
+        private String id;
+        private String name;
         private String tenantId;
         private @Nullable GetOrganizationTimeouts timeouts;
         private String updateTime;
@@ -123,14 +123,18 @@ public final class GetOrganizationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "id");
+            }
             this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "name");
+            }
             this.name = name;
             return this;
         }

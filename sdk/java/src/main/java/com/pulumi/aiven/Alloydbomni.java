@@ -56,7 +56,11 @@ public class Alloydbomni extends com.pulumi.resources.CustomResource {
     /**
      * Alloydbomni user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Export(name="alloydbomniUserConfig", refs={AlloydbomniAlloydbomniUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ AlloydbomniAlloydbomniUserConfig> alloydbomniUserConfig;
 

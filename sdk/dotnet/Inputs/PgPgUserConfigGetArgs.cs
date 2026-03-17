@@ -233,6 +233,14 @@ namespace Pulumi.Aiven.Inputs
         [Input("staticIps")]
         public Input<bool>? StaticIps { get; set; }
 
+        [Input("switchoverWindows")]
+        private InputList<Inputs.PgPgUserConfigSwitchoverWindowGetArgs>? _switchoverWindows;
+        public InputList<Inputs.PgPgUserConfigSwitchoverWindowGetArgs> SwitchoverWindows
+        {
+            get => _switchoverWindows ?? (_switchoverWindows = new InputList<Inputs.PgPgUserConfigSwitchoverWindowGetArgs>());
+            set => _switchoverWindows = value;
+        }
+
         /// <summary>
         /// Enum: `Off`, `Quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         /// </summary>

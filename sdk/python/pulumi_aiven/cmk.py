@@ -22,22 +22,23 @@ __all__ = ['CmkArgs', 'Cmk']
 class CmkArgs:
     def __init__(__self__, *,
                  cmk_provider: pulumi.Input[_builtins.str],
-                 default_cmk: pulumi.Input[_builtins.bool],
                  project: pulumi.Input[_builtins.str],
                  resource: pulumi.Input[_builtins.str],
+                 default_cmk: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeouts: Optional[pulumi.Input['CmkTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Cmk resource.
 
         :param pulumi.Input[_builtins.str] cmk_provider: The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.bool] default_cmk: Mark the created CMK as default for all newly created services.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] default_cmk: Mark the created CMK as default for all newly created services.
         """
         pulumi.set(__self__, "cmk_provider", cmk_provider)
-        pulumi.set(__self__, "default_cmk", default_cmk)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "resource", resource)
+        if default_cmk is not None:
+            pulumi.set(__self__, "default_cmk", default_cmk)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
 
@@ -52,18 +53,6 @@ class CmkArgs:
     @cmk_provider.setter
     def cmk_provider(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "cmk_provider", value)
-
-    @_builtins.property
-    @pulumi.getter(name="defaultCmk")
-    def default_cmk(self) -> pulumi.Input[_builtins.bool]:
-        """
-        Mark the created CMK as default for all newly created services.
-        """
-        return pulumi.get(self, "default_cmk")
-
-    @default_cmk.setter
-    def default_cmk(self, value: pulumi.Input[_builtins.bool]):
-        pulumi.set(self, "default_cmk", value)
 
     @_builtins.property
     @pulumi.getter
@@ -88,6 +77,18 @@ class CmkArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "resource", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultCmk")
+    def default_cmk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Mark the created CMK as default for all newly created services.
+        """
+        return pulumi.get(self, "default_cmk")
+
+    @default_cmk.setter
+    def default_cmk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "default_cmk", value)
 
     @_builtins.property
     @pulumi.getter
@@ -363,8 +364,6 @@ class Cmk(pulumi.CustomResource):
             if cmk_provider is None and not opts.urn:
                 raise TypeError("Missing required property 'cmk_provider'")
             __props__.__dict__["cmk_provider"] = cmk_provider
-            if default_cmk is None and not opts.urn:
-                raise TypeError("Missing required property 'default_cmk'")
             __props__.__dict__["default_cmk"] = default_cmk
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -453,7 +452,7 @@ class Cmk(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="defaultCmk")
-    def default_cmk(self) -> pulumi.Output[_builtins.bool]:
+    def default_cmk(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Mark the created CMK as default for all newly created services.
         """

@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigKafka
     {
         /// <summary>
-        /// Enable auto-creation of topics. (Default: true).
+        /// Enable auto-creation of topics. (Default: false).
         /// </summary>
         public readonly bool? AutoCreateTopicsEnable;
         /// <summary>

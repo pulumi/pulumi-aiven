@@ -168,6 +168,11 @@ public final class GetValkeyValkeyUserConfig {
      * 
      */
     private @Nullable Integer valkeyTimeout;
+    /**
+     * @return Enum: `8.1`, `9.0`, and newer. Valkey major version.
+     * 
+     */
+    private @Nullable String valkeyVersion;
 
     private GetValkeyValkeyUserConfig() {}
     /**
@@ -377,6 +382,13 @@ public final class GetValkeyValkeyUserConfig {
     public Optional<Integer> valkeyTimeout() {
         return Optional.ofNullable(this.valkeyTimeout);
     }
+    /**
+     * @return Enum: `8.1`, `9.0`, and newer. Valkey major version.
+     * 
+     */
+    public Optional<String> valkeyVersion() {
+        return Optional.ofNullable(this.valkeyVersion);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -416,6 +428,7 @@ public final class GetValkeyValkeyUserConfig {
         private @Nullable Integer valkeyPubsubClientOutputBufferLimit;
         private @Nullable Boolean valkeySsl;
         private @Nullable Integer valkeyTimeout;
+        private @Nullable String valkeyVersion;
         public Builder() {}
         public Builder(GetValkeyValkeyUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -448,6 +461,7 @@ public final class GetValkeyValkeyUserConfig {
     	      this.valkeyPubsubClientOutputBufferLimit = defaults.valkeyPubsubClientOutputBufferLimit;
     	      this.valkeySsl = defaults.valkeySsl;
     	      this.valkeyTimeout = defaults.valkeyTimeout;
+    	      this.valkeyVersion = defaults.valkeyVersion;
         }
 
         @CustomType.Setter
@@ -633,6 +647,12 @@ public final class GetValkeyValkeyUserConfig {
             this.valkeyTimeout = valkeyTimeout;
             return this;
         }
+        @CustomType.Setter
+        public Builder valkeyVersion(@Nullable String valkeyVersion) {
+
+            this.valkeyVersion = valkeyVersion;
+            return this;
+        }
         public GetValkeyValkeyUserConfig build() {
             final var _resultValue = new GetValkeyValkeyUserConfig();
             _resultValue.additionalBackupRegions = additionalBackupRegions;
@@ -664,6 +684,7 @@ public final class GetValkeyValkeyUserConfig {
             _resultValue.valkeyPubsubClientOutputBufferLimit = valkeyPubsubClientOutputBufferLimit;
             _resultValue.valkeySsl = valkeySsl;
             _resultValue.valkeyTimeout = valkeyTimeout;
+            _resultValue.valkeyVersion = valkeyVersion;
             return _resultValue;
         }
     }

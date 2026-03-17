@@ -48,14 +48,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQuer
     }
 
     /**
-     * The window size of the top N queries by the metric.
+     * Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
      * 
      */
     @Import(name="windowSize")
     private @Nullable Output<String> windowSize;
 
     /**
-     * @return The window size of the top N queries by the metric.
+     * @return Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
      * 
      */
     public Optional<Output<String>> windowSize() {
@@ -131,7 +131,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQuer
         }
 
         /**
-         * @param windowSize The window size of the top N queries by the metric.
+         * @param windowSize Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQuer
         }
 
         /**
-         * @param windowSize The window size of the top N queries by the metric.
+         * @param windowSize Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
          * 
          * @return builder
          * 

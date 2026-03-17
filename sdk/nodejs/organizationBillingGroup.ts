@@ -67,10 +67,6 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      */
     declare public readonly billingGroupName: pulumi.Output<string>;
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     */
-    declare public /*out*/ readonly currency: pulumi.Output<string>;
-    /**
      * Extra billing text. Maximum length: `256`.
      */
     declare public readonly customInvoiceText: pulumi.Output<string | undefined>;
@@ -110,7 +106,6 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
             resourceInputs["billingEmails"] = state?.billingEmails;
             resourceInputs["billingGroupId"] = state?.billingGroupId;
             resourceInputs["billingGroupName"] = state?.billingGroupName;
-            resourceInputs["currency"] = state?.currency;
             resourceInputs["customInvoiceText"] = state?.customInvoiceText;
             resourceInputs["organizationId"] = state?.organizationId;
             resourceInputs["paymentMethod"] = state?.paymentMethod;
@@ -151,7 +146,6 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
             resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["vatId"] = args?.vatId;
             resourceInputs["billingGroupId"] = undefined /*out*/;
-            resourceInputs["currency"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationBillingGroup.__pulumiType, name, resourceInputs, opts);
@@ -182,10 +176,6 @@ export interface OrganizationBillingGroupState {
      * Billing Group Name. Maximum length: `128`.
      */
     billingGroupName?: pulumi.Input<string>;
-    /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     */
-    currency?: pulumi.Input<string>;
     /**
      * Extra billing text. Maximum length: `256`.
      */

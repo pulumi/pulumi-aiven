@@ -28,7 +28,7 @@ class GetPgUserResult:
     """
     A collection of values returned by getPgUser.
     """
-    def __init__(__self__, access_cert=None, access_key=None, id=None, password=None, password_wo=None, password_wo_version=None, pg_allow_replication=None, project=None, service_name=None, timeouts=None, type=None, username=None):
+    def __init__(__self__, access_cert=None, access_key=None, id=None, password=None, pg_allow_replication=None, project=None, service_name=None, timeouts=None, type=None, username=None):
         if access_cert and not isinstance(access_cert, str):
             raise TypeError("Expected argument 'access_cert' to be a str")
         pulumi.set(__self__, "access_cert", access_cert)
@@ -41,12 +41,6 @@ class GetPgUserResult:
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
-        if password_wo and not isinstance(password_wo, str):
-            raise TypeError("Expected argument 'password_wo' to be a str")
-        pulumi.set(__self__, "password_wo", password_wo)
-        if password_wo_version and not isinstance(password_wo_version, int):
-            raise TypeError("Expected argument 'password_wo_version' to be a int")
-        pulumi.set(__self__, "password_wo_version", password_wo_version)
         if pg_allow_replication and not isinstance(pg_allow_replication, bool):
             raise TypeError("Expected argument 'pg_allow_replication' to be a bool")
         pulumi.set(__self__, "pg_allow_replication", pg_allow_replication)
@@ -97,22 +91,6 @@ class GetPgUserResult:
         The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`.
         """
         return pulumi.get(self, "password")
-
-    @_builtins.property
-    @pulumi.getter(name="passwordWo")
-    def password_wo(self) -> _builtins.str:
-        """
-        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`.
-        """
-        return pulumi.get(self, "password_wo")
-
-    @_builtins.property
-    @pulumi.getter(name="passwordWoVersion")
-    def password_wo_version(self) -> _builtins.int:
-        """
-        Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`.
-        """
-        return pulumi.get(self, "password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="pgAllowReplication")
@@ -170,8 +148,6 @@ class AwaitableGetPgUserResult(GetPgUserResult):
             access_key=self.access_key,
             id=self.id,
             password=self.password,
-            password_wo=self.password_wo,
-            password_wo_version=self.password_wo_version,
             pg_allow_replication=self.pg_allow_replication,
             project=self.project,
             service_name=self.service_name,
@@ -217,8 +193,6 @@ def get_pg_user(project: Optional[_builtins.str] = None,
         access_key=pulumi.get(__ret__, 'access_key'),
         id=pulumi.get(__ret__, 'id'),
         password=pulumi.get(__ret__, 'password'),
-        password_wo=pulumi.get(__ret__, 'password_wo'),
-        password_wo_version=pulumi.get(__ret__, 'password_wo_version'),
         pg_allow_replication=pulumi.get(__ret__, 'pg_allow_replication'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
@@ -261,8 +235,6 @@ def get_pg_user_output(project: Optional[pulumi.Input[_builtins.str]] = None,
         access_key=pulumi.get(__response__, 'access_key'),
         id=pulumi.get(__response__, 'id'),
         password=pulumi.get(__response__, 'password'),
-        password_wo=pulumi.get(__response__, 'password_wo'),
-        password_wo_version=pulumi.get(__response__, 'password_wo_version'),
         pg_allow_replication=pulumi.get(__response__, 'pg_allow_replication'),
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),

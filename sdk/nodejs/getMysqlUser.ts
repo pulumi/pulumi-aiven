@@ -76,14 +76,6 @@ export interface GetMysqlUserResult {
      */
     readonly password: string;
     /**
-     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
-     */
-    readonly passwordWo: string;
-    /**
-     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
-     */
-    readonly passwordWoVersion: number;
-    /**
      * Project name.
      */
     readonly project: string;

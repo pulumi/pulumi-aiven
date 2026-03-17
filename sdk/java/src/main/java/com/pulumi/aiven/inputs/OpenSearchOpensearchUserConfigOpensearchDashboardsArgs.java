@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -76,6 +77,36 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
         return Optional.ofNullable(this.opensearchRequestTimeout);
     }
 
+    /**
+     * Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+     * 
+     */
+    @Import(name="sessionKeepalive")
+    private @Nullable Output<Boolean> sessionKeepalive;
+
+    /**
+     * @return Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> sessionKeepalive() {
+        return Optional.ofNullable(this.sessionKeepalive);
+    }
+
+    /**
+     * Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+     * 
+     */
+    @Import(name="sessionTtl")
+    private @Nullable Output<String> sessionTtl;
+
+    /**
+     * @return Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+     * 
+     */
+    public Optional<Output<String>> sessionTtl() {
+        return Optional.ofNullable(this.sessionTtl);
+    }
+
     private OpenSearchOpensearchUserConfigOpensearchDashboardsArgs() {}
 
     private OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(OpenSearchOpensearchUserConfigOpensearchDashboardsArgs $) {
@@ -83,6 +114,8 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
         this.maxOldSpaceSize = $.maxOldSpaceSize;
         this.multipleDataSourceEnabled = $.multipleDataSourceEnabled;
         this.opensearchRequestTimeout = $.opensearchRequestTimeout;
+        this.sessionKeepalive = $.sessionKeepalive;
+        this.sessionTtl = $.sessionTtl;
     }
 
     public static Builder builder() {
@@ -185,6 +218,48 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
          */
         public Builder opensearchRequestTimeout(Integer opensearchRequestTimeout) {
             return opensearchRequestTimeout(Output.of(opensearchRequestTimeout));
+        }
+
+        /**
+         * @param sessionKeepalive Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionKeepalive(@Nullable Output<Boolean> sessionKeepalive) {
+            $.sessionKeepalive = sessionKeepalive;
+            return this;
+        }
+
+        /**
+         * @param sessionKeepalive Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionKeepalive(Boolean sessionKeepalive) {
+            return sessionKeepalive(Output.of(sessionKeepalive));
+        }
+
+        /**
+         * @param sessionTtl Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionTtl(@Nullable Output<String> sessionTtl) {
+            $.sessionTtl = sessionTtl;
+            return this;
+        }
+
+        /**
+         * @param sessionTtl Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionTtl(String sessionTtl) {
+            return sessionTtl(Output.of(sessionTtl));
         }
 
         public OpenSearchOpensearchUserConfigOpensearchDashboardsArgs build() {

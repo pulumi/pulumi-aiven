@@ -181,6 +181,24 @@
                     }
                 }
             },
+            "aiven_byoc_aws_entity": {
+                "current": "aiven:index/byocAwsEntity:ByocAwsEntity",
+                "majorVersion": 6,
+                "fields": {
+                    "aiven_management_cidr_blocks": {
+                        "maxItemsOne": false
+                    },
+                    "contact_emails": {
+                        "maxItemsOne": false
+                    },
+                    "custom_cloud_names": {
+                        "maxItemsOne": false
+                    },
+                    "errors": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "aiven_cassandra": {
                 "current": "aiven:index/cassandra:Cassandra",
                 "majorVersion": 6,
@@ -782,6 +800,12 @@
                                 "follower_fetching": {
                                     "maxItemsOne": true
                                 },
+                                "gcp_auth_allowed_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "inkless": {
+                                    "maxItemsOne": true
+                                },
                                 "ip_filter": {
                                     "maxItemsOne": false
                                 },
@@ -808,6 +832,9 @@
                                     "elem": {
                                         "fields": {
                                             "aws": {
+                                                "maxItemsOne": true
+                                            },
+                                            "env": {
                                                 "maxItemsOne": true
                                             },
                                             "vault": {
@@ -888,6 +915,9 @@
                                 "additional_backup_regions": {
                                     "maxItemsOne": true
                                 },
+                                "gcp_auth_allowed_urls": {
+                                    "maxItemsOne": false
+                                },
                                 "ip_filter": {
                                     "maxItemsOne": false
                                 },
@@ -920,6 +950,9 @@
                                     "elem": {
                                         "fields": {
                                             "aws": {
+                                                "maxItemsOne": true
+                                            },
+                                            "env": {
                                                 "maxItemsOne": true
                                             },
                                             "vault": {
@@ -1685,6 +1718,9 @@
                                 },
                                 "public_access": {
                                     "maxItemsOne": true
+                                },
+                                "switchover_windows": {
+                                    "maxItemsOne": false
                                 },
                                 "timescaledb": {
                                     "maxItemsOne": true
@@ -3009,6 +3045,12 @@
                                 "follower_fetching": {
                                     "maxItemsOne": true
                                 },
+                                "gcp_auth_allowed_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "inkless": {
+                                    "maxItemsOne": true
+                                },
                                 "ip_filter": {
                                     "maxItemsOne": false
                                 },
@@ -3035,6 +3077,9 @@
                                     "elem": {
                                         "fields": {
                                             "aws": {
+                                                "maxItemsOne": true
+                                            },
+                                            "env": {
                                                 "maxItemsOne": true
                                             },
                                             "vault": {
@@ -3115,6 +3160,9 @@
                                 "additional_backup_regions": {
                                     "maxItemsOne": true
                                 },
+                                "gcp_auth_allowed_urls": {
+                                    "maxItemsOne": false
+                                },
                                 "ip_filter": {
                                     "maxItemsOne": false
                                 },
@@ -3147,6 +3195,9 @@
                                     "elem": {
                                         "fields": {
                                             "aws": {
+                                                "maxItemsOne": true
+                                            },
+                                            "env": {
                                                 "maxItemsOne": true
                                             },
                                             "vault": {
@@ -3957,6 +4008,9 @@
                                 "public_access": {
                                     "maxItemsOne": true
                                 },
+                                "switchover_windows": {
+                                    "maxItemsOne": false
+                                },
                                 "timescaledb": {
                                     "maxItemsOne": true
                                 }
@@ -4592,6 +4646,7 @@
             "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval": 0,
             "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection": 0,
             "aiven:index/billingGroup:BillingGroup": 1,
+            "aiven:index/byocAwsEntity:ByocAwsEntity": 1,
             "aiven:index/cassandra:Cassandra": 0,
             "aiven:index/cassandraUser:CassandraUser": 0,
             "aiven:index/clickhouse:Clickhouse": 0,

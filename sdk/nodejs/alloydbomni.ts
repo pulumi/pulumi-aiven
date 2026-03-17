@@ -44,6 +44,8 @@ export class Alloydbomni extends pulumi.CustomResource {
     declare public readonly alloydbomni: pulumi.Output<outputs.AlloydbomniAlloydbomni>;
     /**
      * Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     declare public readonly alloydbomniUserConfig: pulumi.Output<outputs.AlloydbomniAlloydbomniUserConfig | undefined>;
     /**
@@ -261,6 +263,8 @@ export interface AlloydbomniState {
     alloydbomni?: pulumi.Input<inputs.AlloydbomniAlloydbomni>;
     /**
      * Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     alloydbomniUserConfig?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfig>;
     /**
@@ -387,6 +391,8 @@ export interface AlloydbomniArgs {
     alloydbomni?: pulumi.Input<inputs.AlloydbomniAlloydbomni>;
     /**
      * Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     alloydbomniUserConfig?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfig>;
     /**

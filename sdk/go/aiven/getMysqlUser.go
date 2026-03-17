@@ -73,10 +73,6 @@ type LookupMysqlUserResult struct {
 	Id string `pulumi:"id"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 	Password string `pulumi:"password"`
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
-	PasswordWo string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
-	PasswordWoVersion int `pulumi:"passwordWoVersion"`
 	// Project name.
 	Project string `pulumi:"project"`
 	// The name of the MySQL® service user.
@@ -150,16 +146,6 @@ func (o LookupMysqlUserResultOutput) Id() pulumi.StringOutput {
 // The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 func (o LookupMysqlUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.Password }).(pulumi.StringOutput)
-}
-
-// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
-func (o LookupMysqlUserResultOutput) PasswordWo() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.PasswordWo }).(pulumi.StringOutput)
-}
-
-// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
-func (o LookupMysqlUserResultOutput) PasswordWoVersion() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupMysqlUserResult) int { return v.PasswordWoVersion }).(pulumi.IntOutput)
 }
 
 // Project name.
